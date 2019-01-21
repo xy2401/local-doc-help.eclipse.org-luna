@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Using Multiple Instance Activities</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+<div class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Business Objects",
+      "concepts-integration.html","business-objects.html",
+      "key-concepts.html","Concepts");
+ -->
+</script>
+</div>
+<div class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Activity Criticality",
+      "concepts-integration.html","activity-criticality.html",
+      "key-concepts.html","Concepts");
+ -->
+</script>
+</div>
+<h1>Using Multiple Instance Activities</h1>
+<p>Stardust supports multiple execution instances.
+These multiple instances can be performed in parallel or sequentially.</p>
+<ul>
+   <li><a href="#use">Common Use Cases</a></li>
+   <li><a href="#how">How do Multiple Instances Activities work</a></li>
+   <li><a href="#model">Modeling Multiple Instance Activities in Stardust</a></li>
+   <li><a href="#uex">Use Case Examples</a></li>
+</ul>
+<h2 id="use">Common Use Cases</h2>
+<p>Suppose a company needs a review task for a document review that should be performed by a specific number of users.
+The review is only considered as completed once all users have completed their review task.
+Instead of running a loop to give the task from one user to the next user once resolved, a multiple instances activity
+can be used. This task enables you to run a subprocess for each separate review task in a set of data.</p>
+<p>Other common use cases are for example:</p>
+<ul>
+   <li>creating separate instances for different regions within the
+   same organization as the policies and business procedures might significantly vary from one region to another</li>
+   <li>using parallel multiple instances for the parallel calculation of quarterly sales for the branch offices of a company</li>
+   <li>requesting offers from multiple providers</li>
+</ul>
+
+<h2 id="how">How do Multiple Instances Activities work</h2>
+<p>Multi instances tasks enable you to run a subprocess or application for each element of a data set.
+When this subprocess or application activity is performed, it creates a set of instances, one for each element of the data set.
+You can configure the activity to process these instances in parallel or sequentially.
+<!--  Optionally you can define the number of instances.--> The entire multi instance block is
+ completed when all instances are completed or aborted.</p>
+<ul>
+   <li><a href="#seq">Using Sequential Multiple Instances</a></li>
+   <li><a href="#par">Using Parallel Multiple Instances</a></li>
+   <li><a href="#data">Passing Data</a></li>
+   <li><a href="#abort">Aborting Subsets of a Multiple Instance Activity</a></li>
+   <li><a href="#limit">Limiting the Transaction Batch Size</a></li>
+</ul>
+<h3 id="seq">Using Sequential Multiple Instances</h3>
+<p>Sequential multiple instance activities are required if an instance should consider the result of
+the preceding instance.</p>
+<p>If a multi instance activity is defined as sequential, all resulting instances
+are executed sequentially until the last instance has been completed.
+A new instance is generated for each data in the order they are received with the data set list
+after the previous instance has been completed.</p>
+<p>Three horizontal lines indicate that the multi-instance activity is sequential.</p>
+<p class="image"><img src="images/activity-eclipse-seq.png" alt="Sequential Multi Instance Activity"> <br>
+<strong>Figure:</strong> Example Sequential Multi Instance Activity in the Eclipse Modeler</p>
+<p class="image"><img src="images/activity-bpm-seq.png" alt="Sequential Multi Instance Activity"> <br>
+<strong>Figure:</strong> Example Sequential Multi Instance Activity in the Business Process Modeler</p>
+<p class="note"><strong>Note</strong><br>
+Please use the sequential processing type with care. In some cases it might lead to uncompleted processes.</p>
+
+<h4>Behavior in case of exceptions</h4>
+<p>In case an application exception occurs, the last activity instance is interrupted and
+sequential processing will resume after a recovery. If a system exception, or any other condition
+causing the transaction to roll back, occurs, all instances of the multiple instance activity will roll back.</p>
+<h3 id="par">Using Parallel Multiple Instances</h3>
+<p>Multiple instances defined as parallel are executed at the same time until all instances are completed.</p>
+<p>Three vertical lines indicate that the multi-instance activity is parallel.</p>
+<p class="image"><img src="images/activity-eclipse-para.png" alt="Parallel Multi Instance Activity"> <br>
+<strong>Figure:</strong> Example Parallel Multi Instance Activity in the Eclipse Modeler</p>
+<p class="image"><img src="images/activity-bpm-para.png" alt="Parallel Multi Instance Activity"> <br>
+<strong>Figure:</strong> Example Parallel Multi Instance Activity in the Business Process Modeler</p>
+<h4>Behavior in case of exceptions</h4>
+<p>In case an application exception is thrown during the execution of an instance, this particular instance
+is interrupted and the other instances will be processed and completed normally. A recovery will restart
+processing of the interrupted instances.</p>
+<p>If a system exception, or any other condition causing the transaction to roll back, occurs during processing
+of one instance, the corresponding activity thread will roll back. However, the other instances belonging
+to this multiple instance activity will not be affected.</p>
+<h3 id="data">Passing Data</h3>
+<p>The extraction of single elements from in data lists and assembly of out data lists
+from the return values of the single instances is performed via an index-based algorithm.
+Hence, each instance has access via the multiple instance access points to only its own
+in and out data element but not to the entire list.</p>
+<p>Input and Output parameters are provided to specify
+the data parameters defined for the application or process interface accordingly.</p>
+<h3 id="abort">Aborting Subsets of a Multiple Instance Activity</h3>
+<p>If a subset of the instances in a multiple instance activity is aborted,
+the same semantics as in single-instance activities is employed:</p>
+<ul>
+   <li>If the activity is aborted with a scope of only this single activity, processing of
+   the multiple instance ensemble will proceed as if the activity would have been completed.
+   Processing will continue with the workflow proceeding the multiple instance activity.</li>
+   <li>Out data belonging to aborted instances that were aborted will be set to the following values:
+   <ul>
+      <li>Default data where applicable (Java types, enumerations)</li>
+      <li><tt>null/empty</tt> in all other cases</li>
+   </ul></li>
+</ul>
+<h3 id="limit">Limiting the Transaction Batch Size</h3>
+<p>By default all instances are processed in one transaction.
+You can configure the number of instances to process in one transaction
+for sequential multiple instance activities by enabling limitation and setting
+a value for the maximum batch size.
+The transaction will be committed after processing of the specified number of
+instances. A new transaction or activity thread will be started for processing
+subsequent activity instances and the instance counter and transaction duration timer
+will be reset to <tt>0</tt>.</p>
+<h2 id="model">Modeling Multiple Instance Activities in Stardust</h2>
+<ul>
+   <li><a href="#supact">Supported Activity Types</a></li>
+   <li><a href="#supparm">Supported Parameter Data Types</a></li>
+   <li><a href="#procmode">Processing Modes</a></li>
+   <li><a href="#bpm">Using Multiple Instances in the Business Process Web Modeler</a></li>
+   <li><a href="#eclipse">Using Multiple Instances in the Eclipse Modeler</a></li>
+   <li><a href="#listmi">Limitation of List Size</a></li>
+</ul>
+<h3 id="supact">Supported Activity Types</h3>
+<p>You can specify application activities and subprocess activities using a process interface as multi-instance activities.
+The following activity types are not supported as multiple instance activities:</p>
+<ul>
+   <li>Route activities</li>
+   <li>Manual activities</li>
+   <li>Subprocesses not using a process interface</li>
+</ul>
+<p>In case multiple instance execution is required for any of these activity types,
+you can re-factor these activities into a subprocess using a process interface with the required parameters.</p>
+<h4>Restrictions on Relocation Sources</h4>
+<p>Multiple instance processing, both parallel and sequential, is not supported for activities that are Relocation Source.</p>
+<h4>Restrictions on Subprocesses with Synchronous/Shared Data</h4>
+<p>Multiple instance parallel processing is not compatible with subprocesses of Execution type
+<tt>Synchronous/Shared Data</tt>. The reason is that in or out data mappings are performed concurrently on the same set of data, 
+thus some of the instances will lose their own input and instead process the input from a concurrent activity instance.
+However for sequential processing the Execution type <tt>Synchronous/Shared Data</tt> is supported as each subsequent data mapping is
+performed after the previous activity has terminated.</p>
+<h3 id="supparm">Supported Parameter Data Types</h3>
+<p>The following list data types are supported as input or return data of multiple instance activities:</p>
+<table>
+   <tr>
+      <th>Type</th>
+      <th>Restrictions</th>
+      <th>Comments</th>
+   </tr>
+   <tr>
+      <td>Document Lists (including Process Attachments) </td>
+      <td>none</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Folder Lists</td>
+      <td>none</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>XSD-List typed nodes of structured data</td>
+      <td>Note that currently it is not possible to access list values of imported structured data types
+      in the Eclipse modeler.</td>
+      <td>internally as well as externally defined types </td>
+   </tr>
+   <tr>
+      <td>java.util.List types</td>
+      <td>none</td>
+      <td>typed lists (untyped lists would return plain objects without specified method access types)</td>
+   </tr>
+   <tr>
+      <td>Java arrays</td>
+      <td>supported as input type only</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Java-based Enumeration types</td>
+      <td>supported as input type only</td>
+      <td>supported via array <tt>&lt;some enum&gt;.getClass().getEnumConstants()</tt></td>
+   </tr>
+</table>
+<h3 id="procmode">Processing Modes</h3>
+<p>The following processing mode types can be set for an activity:</p>
+<ul>
+   <li>Single-instance - default implementation</li>
+   <li>Multiple instance parallel - see section <a href="#par">Using Parallel Multiple Instances</a></li>
+   <li>Multiple instance sequential - see section <a href="#seq">Using Sequential Multiple Instances</a></li>
+</ul>
+<h3 id="bpm">Using Multiple Instances in the Business Process Web Modeler</h3>
+<p>In the Business Process Web modeler, the processing mode can be set in the property pane of the activity.
+A Processing property page is available, where the parameters can be selected.</p>
+<p>Selecting a processing mode for Multiple instance parallel or Multiple instance sequential enables
+multiple instance processing for the activity and adds the appropriate symbol to the activity in the model diagram.</p>
+<p>For details on settings for multiple instance activities in the Business Process Web modeler refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html#proctype">Setting Processing Type Properties</a>
+of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html">Specifying Activity Properties</a>
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">Business Process Modeling Handbook</a>.</p>
+
+<h4>Setting input and output parameters in the Web modeler</h4>
+<p>Input and Output Parameters can be defined to specify the data parameter definitions used for multi-instance processing.</p>
+<ul>
+   <li>Input Parameter (required) - specifies the IN data parameter definitions used for multi-instance processing.
+   All IN data parameters defined for the application or process interface are available in the list.</li>
+   <li>Index Parameter (optional) - allows to map the access point into which the current list iteration index will be passed</li>
+   <li>Output Output Parameter (optional) - specifies the out data parameter definitions used for multi-instance processing.
+   All OUT data parameters defined for the application or process interface are available in the list.</li>
+</ul>
+<h4>Setting data mappings and access points in the Web modeler</h4>
+<p>Data mapping access points for multiple instance activities 
+follow the existing semantics for setting the same for application activities and process interface. 
+In the Web modeler, they can be 
+easily identified in the <strong>Input Access Point</strong> and <strong>Output Access Point</strong>
+ drop-down lists to be access points for multiple instances
+activities as they have the term <tt>List</tt> appended.</p>
+<h3 id="eclipse">Using Multiple Instances in the Eclipse Modeler</h3>
+<p>In the Eclipse modeler, the processing mode is set via the Control Flow.
+To use the multiple instance processing mode, select <tt>Multi Instance</tt> as Loop type.</p>
+<h4>Setting input and output parameters in the Eclipse Modeler</h4>
+<p>If Multi-Instance is selected as Loop type in the Control Flow of an activity, the following Input
+and Output Parameters can be defined to specify the data parameter definitions used for multiple
+instance processing:</p>
+<ul>
+   <li>Input - applies to the Input Parameter for the Business Process Modeler described above</li>
+   <li>Counter - applies to the Index Parameter described above</li>
+   <li>Output - applies to the Output Parameter described above</li>
+</ul>
+<p>For details on setting control flow for multiple instance activities
+in the Eclipse modeler refer to section
+<a href="../handbooks/modelling/activities/mg-defdesk-4.htm#control">Control Flow</a>
+of chapter
+<a href="../handbooks/modelling/activities/mg-defdesk-4.htm">Specifying Activities</a>.</p>
+<h4>Setting data mappings and access points in the Eclipse modeler</h4>
+<p>Data mapping access points for multiple instance activities in the Eclipse modeler follow the existing semantics for 
+setting the same for application activities and process interface.</p>
+
+<h3 id="listmi">Limitation of List Size</h3>
+<p>The limit of the list size which can be used with the new feature without running into transactional errors or performance issues 
+depends on the layout of the runtime environment. For the standard setup on a small machine (4 cores) list sizes up to 10000 entries 
+have been tested before running into transactional problems.</p>
+
+<h2 id="uex">Use Case Examples</h2>
+<ul>
+   <li><a href="#subprocex">Multiple Instance Subprocess Activity Example</a></li>
+   <li><a href="#applex">Multiple Instance Application Activity Example</a></li>
+</ul>
+<h3 id="subprocex">Multiple Instance Subprocess Activity Example</h3>
+<p>In this example we create a process to review a list of data and edit it if required.
+The review and update is done for each data element separately.</p>
+<p>First we create a model in the Business Process Modeler with the following data types and data:</p>
+<ul>
+   <li>a structured data type and according data with a list of Strings</li>
+   <li>a primitive data type of type <tt>Text</tt> for the data elements of the String list</li>
+   <li>a primitive data type of type <tt>Number</tt> to show the current index of the String list data element in the subprocess</li>
+</ul>
+<h4>Creating the Subprocess</h4>
+<p>Now we create a process that we want to use as subprocess. We set the subprocess type
+ to <strong>Provide Process Interface</strong> and enter parameter definitions
+that can be used as access points for the data flow of the data list.</p>
+<p>As in data parameters we define the primitive String data for retrieving the data element of the current index
+ and the primitive Number data, which will be used to show the current index of the data element.
+Similarly, we define the primitive String data as out data parameter to provide changes in the data element.</p>
+<p class="image"><img src="images/multi-process-interface.png" alt="Process Interface Settings"><br>
+<strong>Figure:</strong> Process Interface settings</p>
+<p>Then we enter two activities, one to display the index of the data element and one
+to review and update the data element.</p>
+<p class="image"><img src="images/multi-subprocess.png" alt="Subprocess"><br>
+<strong>Figure:</strong> Subprocess Diagram</p>
+<h4>Creating the Subprocess activity</h4>
+<p>To create the subprocess activity, drag the created subprocess to the diagram
+canvas of the main process.</p>
+<p>In the <strong>General Properties</strong> pane, we select <strong>Subprocess</strong> with
+Execution type <tt>Synchronous/Shared Data</tt> and processing type <tt>Multi instance Sequential</tt>.</p>
+<p class="image"><img src="images/multi-subproc-prop.png" alt="Setting Subprocess properties"><br>
+<strong>Figure:</strong> Setting Subprocess properties</p>
+<h4>Setting the Processing Properties</h4>
+<p>In the <strong>Processing</strong> Properties page of the subprocess activity, we select
+the processing type <strong>Multi-instance Sequential</strong> if not already set.</p>
+<p>We define the input and output parameters to apply to the parameters specified for the process interface accordingly.
+The input parameter definition points to the list data elements that we want to use to create activity instances from.
+Whereas the output parameter points to the array element used to capture data from the current activity instance.
+The index parameter provides the index of the list data element, which is currently processed.</p>
+<p class="image"><img src="images/multi-inst-proc-set.png" alt="Setting the processing type and parameters"><br>
+<strong>Figure:</strong> Setting the processing type and parameters</p>
+<h4>Creating the main process</h4>
+<p>For the main process we need the below mentioned tasks in the following sequence:</p>
+<ol>
+   <li>a Start event</li>
+   <li>a manual task for entering the data list</li>
+   <li>the subprocess activity, which will be defined as multiple instance task</li>
+   <li>a manual task to display the updated list</li>
+</ol>
+<p class="image"><img src="images/multi-inst-process.png" alt="Main process with multiple instance activity"><br>
+<strong>Figure:</strong> Main process with multiple instance activity</p>
+<h4>Setting the Data Flow</h4>
+<p>We use the following data flow for our String list:</p>
+<ol>
+   <li>a default in and out data mapping to the first activity to retrieve the data list</li>
+   <li>an in and out data mapping to the subprocess activity</li>
+   <li>an out data mapping to the last activity to display the results in the data list</li>
+</ol>
+<p>As access points to the subprocess activity we select the input and output parameters for
+the processing of the multiple instance and the data path of the data elements accordingly.</p>
+<p class="image"><img src="images/multi-inst-access-pts.png" alt="Setting the access points"><br>
+<strong>Figure:</strong> Setting the access points</p>
+<h4>Running the Example</h4>
+<p>To test our example, we start the main process, enter values in the data list and complete the activity.</p>
+<p class="image"><img src="images/multi-inst-enter-data.png" alt="Entering data in the data list"><br>
+<strong>Figure:</strong> Entering data in the data list</p>
+<p>At first the count of the current index is displayed, which is <tt>0</tt> for the first entry. Complete the activity.</p>
+<p class="image"><img src="images/multi-inst-index.png" alt="Current index"><br>
+<strong>Figure:</strong> Current index</p>
+<p>Now the subprocess activity displays the first data element of the list. Review and optionally edit the String and complete.</p>
+<p class="image"><img src="images/multi-inst-edit-element.png" alt="Edit data element"><br>
+<strong>Figure:</strong> Enter data element</p>
+<p>For each data element that we have entered, this process is repeated.
+Once the last data element is reviewed, the activity to display the result is invoked.
+We can see the complete data list with the edited Strings.
+<p class="image"><img src="images/multi-inst-result.png" alt="Edited Data List"><br>
+<strong>Figure:</strong> Edited Data List</p>
+<h3 id="applex">Multiple Instance Application Activity Example</h3>
+<p>In this example we create a process where a list of String data is converted to upper case letters
+via a Message Transformation application.
+The converting is done for each data element separately.</p>
+<p>First we create a model in the Business Process Modeler with a structured data type
+ and according data with a list of Strings.</p>
+<h4>Creating the Message Transformation application</h4>
+<p>Now we create a message transformation application. We enter parameter definitions
+that can be used as access points for the data flow of the data list.</p>
+<p>As input parameters we define a primitive of type Text for retrieving the data element of the current index.
+Similarly, we define a primitive of type String as output parameter to provide
+the converted String.</p>
+<p class="image"><img src="images/mi-mta-params.png" alt="Parameter settings for the Message Transformation"><br>
+<strong>Figure:</strong> Parameter settings for the Message Transformation</p>
+<p>In the <strong>Configuration</strong> tab, we map the input parameter to the output parameter
+and use the String method <tt>toUpperCase()</tt> to convert the String to upper case letters.</p>
+<p class="image"><img src="images/mi-mta-config.png" alt="Message Transformation Configuration"><br>
+<strong>Figure:</strong> Message Transformation Configuration</p>
+<h4>Creating the Process</h4>
+<p>To create the process we:</p>
+<ol>
+   <li>Create a Start event</li>
+   <li>Create an activity for entering the data list</li>
+   <li>Drag the message transformation application to the canvas to create the application activity</li>
+   <li>Create an activity to display a list with the converted String data</li>
+</ol>
+<p class="image"><img src="images/mi-appl-process.png" alt="Process diagram"><br>
+<strong>Figure:</strong> Process diagram</p>
+<h4>Setting the Processing Properties</h4>
+<p>In the Processing Properties page of the application activity, we select
+the processing type <strong>Multi-instance Sequential</strong>.</p>
+<p>We set the parameters to apply to the parameters defined for the
+message transformation application accordingly. In this example, we leave the Index Parameter empty as we do not use it.</p>
+<p class="image"><img src="images/mi-appl-proc-set.png" alt="Setting the processing type and parameters"><br>
+<strong>Figure:</strong> Setting the processing type and parameters</p>
+<h4>Setting the Data Flow</h4>
+<p>Now we create the data flow for our String list:</p>
+<ol>
+   <li>a default in and out data mapping to the first activity to retrieve the data list</li>
+   <li>an in and out data mapping to the application activity</li>
+   <li>an out data mapping to the last activity to display the results in the data list</li>
+</ol>
+<p>As access points to the application activity we select the input and output parameters for
+the processing of the multiple instance and the data path of the data elements accordingly.</p>
+<p class="image"><img src="images/mi-appl-access-pts.png" alt="Setting the access points"><br>
+<strong>Figure:</strong> Setting the access points</p>
+<h4>Running the Example</h4>
+<p>To test our example, we start the main process, enter values in the data list and complete the activity.</p>
+<p class="image"><img src="images/mi-appl-enter-data.png" alt="Entering data in the data list"><br>
+<strong>Figure:</strong> Entering data in the data list</p>
+<p>For each data element that we have entered, the message transformation is converting the
+String to upper case letters.
+Once the last data element is converted, the activity to display the result is invoked.
+We can see the complete data list with the converted Strings.</p>
+<p class="image"><img src="images/mi-appl-result.png" alt="Converted Data List"><br>
+<strong>Figure:</strong> Converted Data List</p>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+writeFooter();
+-->
+</script>
+</body>
+</html>

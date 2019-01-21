@@ -1,0 +1,3070 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'>
+<title>List of Error Codes</title>
+<link rel="STYLESHEET" href="../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<script language="JavaScript" src="../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+	    "api/toc.html","",
+        "toc.html","Reference");
+ -->
+</script>
+<h1>List of Error Codes</h1>
+<p>This chapter describes the predefined error codes provided by the
+Stardust.</p>
+<ul>
+	<li><a href="#model">Model</a></li>
+	<li><a href="#auditTr">Audit Trail</a></li>
+	<li><a href="#dms">Document Management Service</a></li>
+	<li><a href="#auth">Authentication / Authorization</a></li>
+	<li><a href="#runtime">Runtime Data</a></li>
+   <li><a href="#jms">JMS</a></li>
+   <li><a href="#pref">Preference Storage</a></li>
+   <li><a href="#query">Query</a></li>
+   <li><a href="#ws">WebServices</a></li>
+   <li><a href="#login">Login</a></li>
+   <li><a href="#ejb">EJB</a></li>
+   <li><a href="#cli">CLI</a></li>
+   <li><a href="#archive">Archiver</a></li>
+   <li><a href="#jdbc">JDBC</a></li>
+   <li><a href="#pojo">POJO</a></li>
+   <li><a href="#struct">Structured Data</a></li>
+   <li><a href="#gen">Generic</a></li>
+   <li><a href="#valid">Validation</a></li>
+   <li><a href="#portal">Portal</a></li>
+   <li><a href="#config">License</a></li>
+</ul>
+
+<h2 id="model">Model</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>MDL01000</td>
+      <td>Cannot find current model manager.</td>
+   </tr>
+   <tr>
+      <td>MDL01001</td>
+      <td>No model deployed.</td>
+   </tr>
+   <tr>
+      <td>MDL01002</td>
+      <td>No active model found.</td>
+   </tr>
+   <tr>
+      <td>MDL01003</td>
+      <td>The Audit Trail Database does not contain a model with the OID {0}.</td>
+   </tr>
+   <tr>
+      <td>MDL01004</td>
+      <td>No active model with id ''{0}'' found.</td>
+   </tr>
+   <tr>
+      <td>MDL01005</td>
+      <td>No matching model with id ''{0}'' found.</td>
+   </tr>
+   <tr>
+      <td>MDL01006</td>
+      <td>Unknown IPP version: ''{0}'' for model ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01007</td>
+      <td>Unsupported IPP version: ''{0}'' for model ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01008</td>
+      <td>File is not a IPP model file: root node ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>MDL01009</td>
+      <td>IPP model file could not be parsed. See parse error message: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL_01102</td>
+      <td>Cannot find process definition ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL_01103</td>
+      <td>Cannot find process definition {0} for process instance {1}.</td>
+   </tr>
+   <tr>
+      <td>MDL_01104</td>
+      <td>Cannot find data mapped to formal parameter {0} for process definition {1}.</td>
+   </tr>
+   <tr>
+      <td>MDL01105</td>
+      <td>Cannot find implementation of ''{0}'' in model ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL_01112</td>
+      <td>Cannot find activity definition ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL_01113</td>
+      <td>Cannot find activity definition {0} for activity instance {1}.</td>
+   </tr>
+   <tr>
+      <td>MDL_01114</td>
+      <td>Cannot find activity definition {0} for work item {1}.</td>
+   </tr>
+   <tr>
+      <td>MDL_01115</td>
+      <td>Cannot find activity with runtime OID ''{0}'' in model with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01122</td>
+      <td>Cannot find data ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01123</td>
+      <td>XPath ''{0}'' is not defined.</td>
+   </tr>
+   <tr>
+      <td>MDL01124</td>
+      <td>XPath ''{0}'' (''{1}'') can not be found for data ''{2}''</td>
+   </tr>
+   <tr>
+      <td>MDL01132</td>
+      <td>Cannot find data path ''{0}'' for process oid ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01134</td>
+      <td>Cannot find IN data path ''{0}'' for process oid ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01136</td>
+      <td>Cannot find OUT data path ''{0}'' for process oid ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01142</td>
+      <td>Cannot find data mapping ''{0}'' for context ''{1}'' and activity oid ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01144</td>
+      <td>Cannot find IN data mapping ''{0}'' for context ''{1}'' and activity oid ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01146</td>
+      <td>Cannot find OUT data mapping ''{0}'' for context ''{1}'' and activity oid ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01152</td>
+      <td>Undefined context ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01161</td>
+      <td>Cannot find model participant with runtime oid ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01162</td>
+      <td>Cannot find model participant ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01163</td>
+      <td>Cannot find model participant ''{0}'' in model with runtime oid ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01172</td>
+      <td>Cannot find event handler ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01182</td>
+      <td>Cannot find type declaration ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01183</td>
+      <td>Unsupported dataTypeId: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL02021</td>
+      <td>The data path ''{0}'' contains an invalid data reference.</td>
+   </tr>
+   <tr>
+      <td>MDL02022</td>
+      <td>The IN data path ''{0}'' contains an invalid data reference.</td>
+   </tr>
+   <tr>
+      <td>MDL02023</td>
+      <td>The OUT data path ''{0}'' contains an invalid data reference.</td>
+   </tr>
+   <tr>
+      <td>MDL03001</td>
+      <td>DTD validation failed\n{0}</td>
+   </tr>
+   <tr>
+      <td>MDL03002</td>
+      <td>XSD validation failed\n{0}</td>
+   </tr>
+   <tr>
+      <td>MDL03003</td>
+      <td>The resulting document does not have a root of type {0}.</td>
+   </tr>
+   <tr>
+      <td>MDL03004</td>
+      <td>The quality assurance code ''{0}'' has an invalid id.</td>
+   </tr>
+   <tr>
+      <td>MDL03005</td>
+      <td>The quality assurance code ''{0}'' has {1} duplicates.</td>
+   </tr>
+   <tr>
+      <td>MDL04001</td>
+      <td>Context with id ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>MDL04002</td>
+      <td>Exception during the consistency check of conditional performer ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04003</td>
+      <td>Unsupported conditional performer kind: {0}</td>
+   </tr>
+   <tr>
+      <td>MDL04004</td>
+      <td>Failed resolving conditional performer identity.</td>
+   </tr>
+   <tr>
+      <td>MDL04005</td>
+      <td>Conditional performer was resolved as {0}.</td>
+   </tr>
+   <tr>
+      <td>MDL04006</td>
+      <td>Cannot retrieve conditional participant performer for handle ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04007</td>
+      <td>Cannot create model from file ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04008</td>
+      <td>Cannot write to file {0}</td>
+   </tr>
+   <tr>
+      <td>MDL04009</td>
+      <td>The user ''{0}'' does not exist or is using an incorrect password.);</td>
+   </tr>
+   <tr>
+      <td>MDL04010</td>
+      <td>There is already a type declaration with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04011</td>
+      <td>There is already an application with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04012</td>
+      <td>There is already a workflow data with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04013</td>
+      <td>There is already a process definition with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04014</td>
+      <td>Invalid symbol ''{0}'</td>
+   </tr>
+   <tr>
+      <td>MDL04015</td>
+      <td>An organization definition ''{0}'' cannot be its own suborganization/superorganization.</td>
+   </tr>
+   <tr>
+      <td>MDL04016</td>
+      <td>An organization ''{0}'' is already a direct or indirect suborganization of organization ''{1}''. Cyclic references are illegal.</td>
+   </tr>
+   <tr>
+      <td>MDL04017</td>
+      <td>Partition not initialized.</td>
+   </tr>
+   <tr>
+      <td>MDL04018</td>
+      <td>There is already an activity with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04019</td>
+      <td>There is already a transition with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04020</td>
+      <td>Relocation transition in process ''{0}'' must not have any source or target activity attached.</td>
+   </tr>
+   <tr>
+      <td>MDL04021</td>
+      <td>From Activity does not belong to ''{0}''. Activity OID: {1}</td>
+   </tr>
+   <tr>
+      <td>MDL04022</td>
+      <td>To Activity does not belong to ''{0}''. Activity OID: {1}</td>
+   </tr>
+   <tr>
+      <td>MDL04023</td>
+      <td>Multiple incoming transitions are only allowed for "AND or XOR activity joins. Transition OID: {0}, target activity OID: {1}</td>
+   </tr>
+   <tr>
+      <td>MDL04024</td>
+      <td>Multiple outgoing transitions are only allowed for "AND or XOR activity splits. Transition OID: {0}, target activity OID: {1}</td>
+   </tr>
+   <tr>
+      <td>MDL04025</td>
+      <td>The selected Symbol does not represent an activity.</td>
+   </tr>
+   <tr>
+      <td>MDL04026</td>
+      <td>Connection between symbols already exists.</td>
+   </tr>
+   <tr>
+      <td>MDL04027</td>
+      <td>A route activity does not participate in data flow.</td>
+   </tr>
+   <tr>
+      <td>MDL04028</td>
+      <td>The Userobject of the first Symbol is not valid for the LinkType!</td>
+   </tr>
+   <tr>
+      <td>MDL04029</td>
+      <td>The selected symbol does not represent an organization.</td>
+   </tr>
+   <tr>
+      <td>MDL04030</td>
+      <td>One of the connected symbols must be an annotation.</td>
+   </tr>
+   <tr>
+      <td>MDL04031</td>
+      <td>An annotation can't refer to itself.</td>
+   </tr>
+   <tr>
+      <td>MDL04032</td>
+      <td>A route activity can't have a performer.</td>
+   </tr>
+   <tr>
+      <td>MDL04033</td>
+      <td>A subprocss activity can't have a performer.</td>
+   </tr>
+   <tr>
+      <td>MDL04034</td>
+      <td>An activity performing a non-interactive application can't have a performer.</td>
+   </tr>
+   <tr>
+      <td>MDL04035</td>
+      <td>The selected symbol does not represent an process definition.</td>
+   </tr>
+   <tr>
+      <td>MDL04036</td>
+      <td>Both connected symbols must be activities.</td>
+   </tr>
+   <tr>
+      <td>MDL04037</td>
+      <td>There is already a root model with id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04038</td>
+      <td>Unable to delete model. It is providing a primary implementation.</td>
+   </tr>
+   <tr>
+      <td>MDL04039</td>
+      <td>Unable to delete model. It is referenced by at least one other model.</td>
+   </tr>
+   <tr>
+      <td>MDL04040</td>
+      <td>Null values are not supported with operator ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL04041</td>
+      <td>Inconsistent operator use {0} --&gt; {1}</td>
+   </tr>
+   <tr>
+      <td>MDL04042</td>
+      <td>No workflow data defined with ID ''{0}'' in this model version.</td>
+   </tr>
+   <tr>
+      <td>MDL04043</td>
+      <td>Failed evaluating XPath expression: ''{0}''</td>
+   </tr>
+   <tr>
+      <td>MDL04044</td>
+      <td>Context element not initialized.</td>
+   </tr>
+   <tr>
+      <td>MDL04045</td>
+      <td>XPath expression: ''{0}'' was unable to find any suitable node.</td>
+   </tr>
+   <tr>
+      <td>MDL04046</td>
+      <td>XPath expression: ''{0}'' evaluated to multiple nodes.</td>
+   </tr>
+   <tr>
+      <td>MDL04047</td>
+      <td>XPath expression: ''{0}'' evaluated to a non Node value.</td>
+   </tr>
+   <tr>
+      <td>MDL04048</td>
+      <td>Invalid XML access point.</td>
+   </tr>
+   <tr>
+      <td>MDL04049</td>
+      <td>Department hierarchy entry for ''{0}'' and ''{1}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>MDL04050</td>
+      <td>Unknown event type ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL05051</td>
+      <td>No property ''{0}'' specified.</td>
+   </tr>
+   <tr>
+      <td>MDL05052</td>
+      <td>Cannot send notification message: {0}</td>
+   </tr>
+</table>
+<h2 id="auditTr">Audit Trail</h2>
+<table>
+	<tr>
+		<th>Error Code</th>
+		<th>Default Error Message</th>
+	</tr>
+   <tr>
+      <td>ATDB00011</td>
+      <td>Archive audit trails must not be modified.</td>
+   </tr>
+   <tr>
+      <td>ATDB00012</td>
+      <td>Unable to archive non-root process instances ({0}).</td>
+   </tr>
+   <tr>
+      <td>ATDB00013</td>
+      <td>Unable to delete non-root process instances ({0}).</td>
+   </tr>
+   <tr>
+      <td>ATDB00014</td>
+      <td>Unable to delete non-terminated process instances ({0}).</td>
+   </tr>
+   <tr>
+      <td>ATDB00021</td>
+      <td>The operation ''{0}'' is not allowed in a production runtime environment.</td>
+   </tr>
+   <tr>
+      <td>ATDB00111</td>
+      <td>Partition not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB00112</td>
+      <td>Partition with OID {0} not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB00113</td>
+      <td>Partition with ID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01101</td>
+      <td>Process instance not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01102</td>
+      <td>Process instance with OID {0} not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01103</td>
+      <td>Process instance with OID {0} is not terminated.</td>
+   </tr>
+   <tr>
+      <td>ATDB01104</td>
+      <td>Process instance with OID {0} is terminated.</td>
+   </tr>
+   <tr>
+      <td>ATDB01105</td>
+      <td>Process instance with OID {0} is in process of aborting.</td>
+   </tr>
+   <tr>
+      <td>ATDB01111</td>
+      <td>Activity instance not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01112</td>
+      <td>Activity instance with OID {0} not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01121</td>
+      <td>No matching log entry found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01131</td>
+      <td>Work item not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB01132</td>
+      <td>Work item with OID {0} not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02101</td>
+      <td>No matching realm found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02102</td>
+      <td>User realm with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02103</td>
+      <td>User realm ''{0}'' for partition with oid ''{1}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02104</td>
+      <td>User realm ''{0}'' exists.</td>
+   </tr>
+   <tr>
+      <td>ATDB02105</td>
+      <td>User realm ''{0}'' cannot be dropped since at least one user is assigned to it.</td>
+   </tr>
+   <tr>
+      <td>ATDB02111</td>
+      <td>No matching user found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02112</td>
+      <td>User with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02113</td>
+      <td>User with ID ''{0}'' not found for realm ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02114</td>
+      <td>User with ID ''{0}'' already exists for realm ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02115</td>
+      <td>Deputy user with OID ''{0}'' already exists for user with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02116</td>
+      <td>Deputy user with OID ''{0}'' does not exists for user with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02117</td>
+      <td>User with OID ''{0}'' cannot be declared as its own deputy user.</td>
+   </tr>
+   <tr>
+      <td>ATDB02118</td>
+      <td>Permission denied to add deputy to user with OID ''{0}'' for user with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02119</td>
+      <td>Permission denied to modify deputy of user with OID ''{0}'' for user with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02120</td>
+      <td>Permission denied to remove deputy of user with OID ''{0}'' for user with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02121</td>
+      <td>No matching user domain found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02122</td>
+      <td>User domain with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02123</td>
+      <td>User domain with ID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02124</td>
+      <td>Default domain for partition ''{1}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02131</td>
+      <td>No matching domain hierarchy found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02132</td>
+      <td>Domain hierarchy with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02141</td>
+      <td>No matching domain association found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02142</td>
+      <td>Domain association with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02151</td>
+      <td>No matching user group found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02152</td>
+      <td>User group with OID {0} not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02153</td>
+      <td>User group with ID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02154</td>
+      <td>User group with ID ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>ATDB02191</td>
+      <td>No matching session.</td>
+   </tr>
+   <tr>
+      <td>ATDB02192</td>
+      <td>Session with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02201</td>
+      <td>Department with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB02202</td>
+      <td>Department with ID ''{0}'' not found for parent with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02203</td>
+      <td>Department with ID ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>ATDB02204</td>
+      <td>Department with ID ''{0}'' not found for parent with ID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB02211</td>
+      <td>Department hierarchy with OID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>ATDB03001</td>
+      <td>Failed evaluating recovery status.</td>
+   </tr>
+   <tr>
+      <td>ATDB03002</td>
+      <td>Partition with id ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>ATDB03003</td>
+      <td>There is no password set for the sysop-user.\n But as your schema seems to contain data sysop-user authorization is required.</td>
+   </tr>
+   <tr>
+      <td>ATDB03004</td>
+      <td>Please specify appropriate password for sysop-user.</td>
+   </tr>
+   <tr>
+      <td>ATDB03005</td>
+      <td>Please specify appropriate password for sysop user before trying to change password.</td>
+   </tr>
+   <tr>
+      <td>ATDB03006</td>
+      <td>Unable to set value of audit trail property ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB03007</td>
+      <td>Failed during sysop-user authorization.</td>
+   </tr>
+   <tr>
+      <td>ATDB03008</td>
+      <td>Invalid runtime setup configuration file.</td>
+   </tr>
+   <tr>
+      <td>ATDB03009</td>
+      <td>Cluster configuration already exists. Use option -dropDataClusters or -updateDataClusters first.</td>
+   </tr>
+   <tr>
+      <td>ATDB03010</td>
+      <td>Cluster configuration does not exists. Provide valid configuration file.</td>
+   </tr>
+   <tr>
+      <td>ATDB03011</td>
+      <td>Unable to delete value of audit trail property ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ATDB03012</td>
+      <td>Failed to update criticalities in AuditTrail.</td>
+   </tr>
+</table>
+<h2 id="dms">Document Management Service</h2>
+<table>
+	<tr>
+		<th>Error Code</th>
+		<th>Default Error Message</th>
+	</tr>
+   <tr>
+      <td>DMS00000</td>
+      <td>Generic DMS error, see stacktrace for details.</td>
+   </tr>
+   <tr>
+      <td>DMS00001</td>
+      <td>No JCR document repository service is set. Check the configuration.</td>
+   </tr>
+   <tr>
+      <td>DMS01103</td>
+      <td>Folder with ID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>DMS01110</td>
+      <td>Creating a folder with empty name is not possible. Folder name must be supplied.</td>
+   </tr>
+   <tr>
+      <td>DMS01111</td>
+      <td>Creating a document with empty name is not possible. Document name must be supplied.</td>
+   </tr>
+   <tr>
+      <td>DMS01113</td>
+      <td>File with ID ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>DMS01122</td>
+      <td>No matching document found.</td>
+   </tr>
+   <tr>
+      <td>DMS01123</td>
+      <td>Resource item already exists.</td>
+   </tr>
+   <tr>
+      <td>DMS01303</td>
+      <td>DocumentType with DocumentTypeID ''{0}'' is invalid.</td>
+   </tr>
+   <tr>
+      <td>DMS01313</td>
+      <td>Error synchronizing DocumentType with DMS, see stacktrace for details.</td>
+   </tr>
+   <tr>
+      <td>DMS02000</td>
+      <td>Generic DMS security error, see stacktrace for details.</td>
+   </tr>
+   <tr>
+      <td>DMS02001</td>
+      <td>Administrator role required.</td>
+   </tr>
+   <tr>
+      <td>DMS02002</td>
+      <td>Preferences can not be saved. Access to preferences stored in DMS is restricted to read only.</td>
+   </tr>
+   <tr>
+      <td>DMS02003</td>
+      <td>Write operations are not allowed. DMS is limited to read only operations while the engine is in archive mode.</td>
+   </tr>
+   <tr>
+      <td>DMS02101</td>
+      <td>Access denied on folder ''{0}''</td>
+   </tr>
+   <tr>
+      <td>DMS02102</td>
+      <td>Access denied on document ''{0}''</td>
+   </tr>
+   <tr>
+      <td>DMS03001</td>
+      <td>An element with Id ''{0}'' is already present.</td>
+   </tr>
+   <tr>
+      <td>DMS03101</td>
+      <td>Loading default providers failed. The repositoryId ''{0}'' is already bound by provider ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>DMS03102</td>
+      <td>The configuration value ''{0}'' cannot be empty or null.</td>
+   </tr>
+   <tr>
+      <td>DMS03103</td>
+      <td>The repository provider ''{0}'' was not found.</td>
+   </tr>
+   <tr>
+      <td>DMS03104</td>
+      <td>A repository is already bound for repository id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DMS03105</td>
+      <td>Unbinding the default repository is not allowed.</td>
+   </tr>
+   <tr>
+      <td>DMS03106</td>
+      <td>Unbinding the system repository is not allowed.</td>
+   </tr>
+   <tr>
+      <td>DMS03107</td>
+      <td>No repository is bound for repository id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DMS03108</td>
+      <td>Repository was not found for jndiName: {0}</td>
+   </tr>
+   <tr>
+      <td>DMS04001</td>
+      <td>Failed retrieving content for document ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DMS04002</td>
+      <td>Failed updating content for document ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DMS04003</td>
+      <td>Failed reading entity bean attribute.</td>
+   </tr>
+   <tr>
+      <td>DMS04004</td>
+      <td>Failed setting document attribute.</td>
+   </tr>
+   <tr>
+      <td>DMS04005</td>
+      <td>Invalid handle: {0}</td>
+   </tr>
+   <tr>
+      <td>DMS04006</td>
+      <td>Invalid repository space: {0}</td>
+   </tr>
+   <tr>
+      <td>DMS04009</td>
+      <td>Unsupported value: {0}</td>
+   </tr>
+   <tr>
+      <td>DMS04011</td>
+      <td>Setting empty name in documents or folders is not possible. Non-empty name must be supplied.</td>
+   </tr>
+   <tr>
+      <td>DMS04012</td>
+      <td>No value for mandatory IN access point ''{0}'' supplied.</td>
+   </tr>
+   <tr>
+      <td>DMS04013</td>
+      <td>No DocumentManagementService is available. Check the configuration.</td>
+   </tr>
+   <tr>
+      <td>DMS04014</td>
+      <td>Element ''{0}'' is not found.</td>
+   </tr>
+</table>
+<h2 id="auth">Authentication / Authorization</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>AUTHx00101</td>
+      <td>Not logged in.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00121</td>
+      <td>The user with OID {0} is not valid.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00122</td>
+      <td>Password expired for user with OID {0}.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00123</td>
+      <td>User {0} does not exist or invalid password submitted.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00124</td>
+      <td>User {0} does not exist or invalid password submitted. Please try again.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00125</td>
+      <td>Maximum number of login retries exceeded. User {0} temporarily invalidated.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00126</td>
+      <td>User {0} disabled by PasswordRules.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00127</td>
+      <td>You have not specified the correct old password.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00128</td>
+      <td>Password validation for new password failed.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00129</td>
+      <td>You have not specified the new password.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00130</td>
+      <td>Password expired for User {0}.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00131</td>
+      <td>Provided invalid token for password reset.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00301</td>
+      <td>Operation requires fully initialized user with OID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00302</td>
+      <td>Operation requires fully initialized user group with OID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00303</td>
+      <td>Operation requires internal authentication.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00501</td>
+      <td>Missing dynamic participant synchronization provider.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00542</td>
+      <td>User ''{0}'' not available in external registry.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00545</td>
+      <td>Failed to initially synchronize external user ''{0}''. Exceeded maximum number of retries.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00548</td>
+      <td>Importing external users is not enabled.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00562</td>
+      <td>User group ''{0}'' not available in external registry.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00565</td>
+      <td>Failed to initially synchronize external user group ''{0}''. Exceeded maximum number of retries.</td>
+   </tr>
+   <tr>
+      <td>AUTHx00585</td>
+      <td>Failed to initially synchronize external department ''{0}'' for parent ''{1}''. Exceeded maximum number of retries.</td>
+   </tr>
+   <tr>
+      <td>AUTHx01000</td>
+      <td>The user ''{2}'' does not have the permission ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>AUTHx01100</td>
+      <td>Invalid grant ''{0}'' for department with OID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>AUTHx01101</td>
+      <td>User with OID {0} cannot join to invalid user group with ID ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>AUTHx01200</td>
+      <td>Security check on Preferences failed: Saving preferences is only allowed for own 'realmId'/'account'.</td>
+   </tr>
+   <tr>
+      <td>AUTHx02001</td>
+      <td>All access rights revoked for user {0}.</td>
+   </tr>
+   <tr>
+      <td>AUTHx03001</td>
+      <td>Partition not specified.</td>
+   </tr>
+   <tr>
+      <td>AUTHx03002</td>
+      <td>Domain not specified.</td>
+   </tr>
+   <tr>
+      <td>AUTHx03003</td>
+      <td>User realm not specified.</td>
+   </tr>
+   <tr>
+      <td>AUTHx03004</td>
+      <td>Login cancelled by the user.</td>
+   </tr>
+</table>
+<h2 id="runtime">Runtime</h2>
+
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>BPMRT01000</td>
+      <td>An unknown error occurred.</td>
+   </tr>
+   <tr>
+      <td>BPMRT01501</td>
+      <td>No Daemon of type ''{0}'' registered.</td>
+   </tr>
+   <tr>
+      <td>BPMRT01502</td>
+      <td>Daemon ''{0}'' is running.</td>
+   </tr>
+   <tr>
+      <td>BPMRT01503</td>
+      <td>Daemon ''{0}'' is not responding.\nPlease explicitely stop the daemon first.</td>
+   </tr>
+   <tr>
+      <td>BPMRT02121</td>
+      <td>Failed to create data value for data ID ''{0}''. Exceeded maximum number of retries.</td>
+   </tr>
+   <tr>
+      <td>CONC03100</td>
+      <td>The daemon {0} is already running.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03101</td>
+      <td>The Activity instance with OID {0} is activated by the current user.</td>
+   </tr>
+   <tr>
+      <td>CONC03102</td>
+      <td>The Activity instance ''{5}.{4}.{3}'' with OID {0} is activated by the user ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03103</td>
+      <td>Activity instance with OID {0} is terminated.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03104</td>
+      <td>Access to activity instance with OID {0} is not granted to user {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03105</td>
+      <td>The activity instance with OID {0} is a subprocess activity, thus allowing no direct manipulation.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03106</td>
+      <td>The activity instance with OID {0} is not allowed to be aborted.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03107</td>
+      <td>The user with OID {0} is not authorized to perform the activity instance with OID {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03108</td>
+      <td>The model participant with ID ''{0}'' is not authorized to perform the activity instance with OID {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03109</td>
+      <td>The user group with OID {0} is not authorized to perform the activity instance with OID {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03110</td>
+      <td>The activity instance with OID {0} cannot be delegated because it is not in suspended or hibernated state.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03111</td>
+      <td>The activity instance with OID {0} is on a different users worklist, thus not allowed to be activated by user ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03112</td>
+      <td>The user with OID {0} is excluded to perform the activity instance with OID {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03113</td>
+      <td>Activity instance with OID {0} is in process of aborting.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03114</td>
+      <td>The activity instance with OID {0} cannot be delegated because it is non interactive.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03115</td>
+      <td>The activity instance with OID {0} cannot be forced to completion because it is interactive.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03116</td>
+      <td>The activity instance with OID {0} cannot be delegated to participant not in user group.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03201</td>
+      <td>Activity instance with OID {0} and handler binding are from a different model.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03202</td>
+      <td>Process instance with OID {0} and handler binding are from a different model.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03501</td>
+      <td>Received a timeout while counting instances of {0}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03601</td>
+      <td>Concurrent attempt to lock object of type {1} with OID {0}, row not selected.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03602</td>
+      <td>Cannot lock handler with object oid {0}, type '{1}' for handler with oid {2}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03701</td>
+      <td>Rolling back activity thread.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03702</td>
+      <td>Activity thread rolled back at activity with ID ''{0}'', reason: {1}</td>
+   </tr>
+   <tr>
+      <td>BPMRT03703</td>
+      <td>Need activity to start activity thread.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03704</td>
+      <td>Need process instance to start activity thread.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03705</td>
+      <td>Cannot start asynchronous activity thread while performing ad-hoc transition.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03706</td>
+      <td>Activity instance ''{0}''is not the ad-hoc transition source.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03810</td>
+      <td>Argument must not be null: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03811</td>
+      <td>Argument ''{0}'' must not be of type ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03812</td>
+      <td>Argument ''{0}'' must have ''{1}'' attribute set.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03813</td>
+      <td>Invalid organization hierarchy.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03814</td>
+      <td>There are active activity instances in the scope of department with OID {0}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03815</td>
+      <td>Null elements are not allowed in collection attribute ''{0}''</td>
+   </tr>
+   <tr>
+      <td>BPMRT03816</td>
+      <td>An empty collection is not allowed for attribute ''{0}''</td>
+   </tr>
+   <tr>
+      <td>BPMRT03817</td>
+      <td>Attribute ''{0}'' must not be null</td>
+   </tr>
+   <tr>
+      <td>BPMRT03831</td>
+      <td>Process instance with OID {0} is a case.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03832</td>
+      <td>Process instance with OID {0} is already a member of another case.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03833</td>
+      <td>Process instance with OID {0} is not active.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03834</td>
+      <td>Process instance with OID {0} is not a case.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03835</td>
+      <td>Process instance with OID {0} is not a member of the case with OID {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03840</td>
+      <td>Process instance with OID {0} is a transient process instance.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03850</td>
+      <td>No changes are allowed to model with id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03901</td>
+      <td>Illegal state change: {0} --&gt; {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03902</td>
+      <td>Illegal state change: {0} --&gt; {1} for {2}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03903</td>
+      <td>Illegal state change: {0} --&gt; {1} for {2} . Process instance state was {3}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03904</td>
+      <td>Cannot run activity thread for activity instance {0} because process instance {1} is aborted.</td>
+   </tr>
+   <tr>
+      <td>BPMRT03905</td>
+      <td>Cannot run activity thread for activity {0} because process instance {1} is aborted.</td>
+   </tr>
+   <tr>
+      <td>BPMRT04002</td>
+      <td>New value is of incompatible type for data ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT04003</td>
+      <td>New value is of incompatible type for data ''{0}'' and path ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT04004</td>
+      <td>Invalid probability specified, it must be in the interval 0-100 (borders inclusive) but was ''{0}''</td>
+   </tr>
+   <tr>
+      <td>BPMRT04005</td>
+      <td>The current user with oid ''{0}'' is not allowed to activate the quality assurance activity instance with oid ''{1}''</td>
+   </tr>
+   <tr>
+      <td>BPMRT04006</td>
+      <td>Delegation of a quality assurance instance with oid ''{0}'' to the monitored user with oid ''{1}'' is not allowed</td>
+   </tr>
+   <tr>
+      <td>BPMRT04007</td>
+      <td>Changing data for quality assurance instances which are not marked as ''PASS_WITH_CORRECTION'' is not allowed.</td>
+   </tr>
+   <tr>
+      <td>BPMRT04008</td>
+      <td>Can not complete quality assurance instance with oid ''{0}'', no activity instance attributes set.</td>
+   </tr>
+   <tr>
+      <td>BPMRT04009</td>
+      <td>When a quality assurance activity instance is marked as ''FAILED'' or ''PASS_WITH_CORRECTION'' and the activity supplies error codes, at least one has to be selected.</td>
+   </tr>
+   <tr>
+      <td>BPMRT05001</td>
+      <td>Synchronization of document data to repository failed for document with id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT06001</td>
+      <td>Invalid credential provider configuration: {0}</td>
+   </tr>
+   <tr>
+      <td>BPMRT07001</td>
+      <td>The model repository ''{0}'' is no directory.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07002</td>
+      <td>I/O Error during save.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07003</td>
+      <td>Cannot lock file ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07004</td>
+      <td>Unable to load XPDL export stylesheet</td>
+   </tr>
+   <tr>
+      <td>BPMRT07005</td>
+      <td>Invalid JAXP setup</td>
+   </tr>
+   <tr>
+      <td>BPMRT07006</td>
+      <td>Failed reading XPDL model file.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07007</td>
+      <td>Could not retrieve activity instance for criticality update.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07008</td>
+      <td>Failed retrieving number of nonterminated process instances for model with OID {0}</td>
+   </tr>
+   <tr>
+      <td>BPMRT07009</td>
+      <td>Unable to delete model. It has open process instances.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07010</td>
+      <td>Failed verifying preconditions.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07011</td>
+      <td>Failed resolving process instance closure.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07012</td>
+      <td>Activity instance was deleted</td>
+   </tr>
+   <tr>
+      <td>BPMRT07013</td>
+      <td>User {0} is not allowed to change profile for scope {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07014</td>
+      <td>Inconsistent pair values : {0} - {1}</td>
+   </tr>
+   <tr>
+      <td>BPMRT07015</td>
+      <td>Inconsistent collection values : {0} - {1}</td>
+   </tr>
+   <tr>
+      <td>BPMRT07016</td>
+      <td>Input not serializable.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07017</td>
+      <td>Deployed object of type {0} differs in its id from its defined value: expected: [{1}] &lt;-&gt; persisted: [{2}].</td>
+   </tr>
+   <tr>
+      <td>BPMRT07018</td>
+      <td>No valid evaluator class provided.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07019</td>
+      <td>Cannot assign more users to participant. Cardinality {0} exceeded.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07020</td>
+      <td>User with account ''{0}'' already exists in user realm with id ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07021</td>
+      <td>Domain with id ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07022</td>
+      <td>The ID for a partitions default domain is not allowed to be changed.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07023</td>
+      <td>Domain hierarchy entry for ''{0}'' and ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07024</td>
+      <td>UserDomainUserLink for ''{0}'' and ''{1}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07025</td>
+      <td>User Realm with id ''{0}'' already exists.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07026</td>
+      <td>Process instance referenced by Oid {0} has to be a scope process instance.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07027</td>
+      <td>A single data-slot must not contain both storage types sValueColumn and nValueColumn.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07028</td>
+      <td>A numeric data-slot must not contain both storage types nValueColumn and dValueColumn.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07029</td>
+      <td>A data-slot must not contain storage type dValueColumn without storage type sValueColumn.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07030</td>
+      <td>Invalid runtime setup configuration.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07031</td>
+      <td>User group with id ''{0}'' already exists for {1}.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07032</td>
+      <td>Unable to use XML Schema for model validation.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07032</td>
+      <td>Unable to set default XML Schema URI for model validation.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07033</td>
+      <td>Error during XML serialization.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07034</td>
+      <td>Error reading xml.</td>
+   </tr>
+   <tr>
+      <td>BPMRT07035</td>
+      <td>File not found: ''{0}''</td>
+   </tr>
+</table>
+<h2 id="jms">JMS</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>JMS01001</td>
+      <td>No message acceptors found for the message\:\n{0}</td>
+   </tr>
+   <tr>
+      <td>JMS01002</td>
+      <td>Failed closing BLOB after reading.</td>
+   </tr>
+   <tr>
+      <td>JMS01003</td>
+      <td>Failed connecting to JMS AuditTrail queue.</td>
+   </tr>
+   <tr>
+      <td>JMS01004</td>
+      <td>Failed reading process BLOB from JMS AuditTrail queue.</td>
+   </tr>
+   <tr>
+      <td>JMS01005</td>
+      <td>Failed initializing JMS BLOB builder.</td>
+   </tr>
+   <tr>
+      <td>JMS01006</td>
+      <td>Failed writing BLOB to JMS.</td>
+   </tr>
+   <tr>
+      <td>JMS01007</td>
+      <td>Failed persisting process BLOB. Failing SQL statement: {0}</td>
+   </tr>
+   <tr>
+      <td>JMS01008</td>
+      <td>Failed persisting process BLOB at table {0}</td>
+   </tr>
+   <tr>
+      <td>JMS01009</td>
+      <td>Unexpected section marker: {0}</td>
+   </tr>
+   <tr>
+      <td>JMS01010</td>
+      <td>Message type for id ''{0}'' not supported</td>
+   </tr>
+   <tr>
+      <td>JMS01011</td>
+      <td>Matching {0} found, but it is not of receiving nature.</td>
+   </tr>
+</table>
+<h2 id="pref">Preference Storage</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>PREF01001</td>
+      <td>Preference store must not be modified.</td>
+   </tr>
+   <tr>
+      <td>PREF01002</td>
+      <td>Empty preference store must not be modified.</td>
+   </tr>
+   <tr>
+      <td>PREF01003</td>
+      <td>No user specified PreferenceScope USER and REALM not available.</td>
+   </tr>
+   <tr>
+      <td>PREF01004</td>
+      <td>No current partition was found. PreferenceScope PARTITION not available.</td>
+   </tr>
+   <tr>
+      <td>PREF01005</td>
+      <td>AuditTrail persistence not supported for PreferenceScope: {0}</td>
+   </tr>
+   <tr>
+      <td>PREF01006</td>
+      <td>No current user was found. PreferenceScope USER and REALM not available.</td>
+   </tr>
+   <tr>
+      <td>PREF01007</td>
+      <td>Querying is not supported for scope: {0}</td>
+   </tr>
+   <tr>
+      <td>PREF01008</td>
+      <td>PreferenceScope not supported: {0}</td>
+   </tr>
+   <tr>
+      <td>PREF01009</td>
+      <td>PreferenceScope.DEFAULT is read only</td>
+   </tr>
+   <tr>
+      <td>PREF01010</td>
+      <td>Not a valid preferences path: {0}</td>
+   </tr>
+   <tr>
+      <td>PREF01011</td>
+      <td>Unknown value for property 'Infinity.Preferences.Store', only 'AuditTrail' or 'DMS_READ_ONLY' are allowed.</td>
+   </tr>
+</table>
+<h2 id="query">Query</h2>
+
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>QUERY01001</td>
+      <td>Attribute name (XPath) must be specified for queries on structured data only. Data with ID ''{0}'' is not a structured data.</td>
+   </tr>
+   <tr>
+      <td>QUERY01002</td>
+      <td>Attribute name (XPath) must be specified for queries on structured data (data ID ''{0}'', XPath ''{1}'').</td>
+   </tr>
+   <tr>
+      <td>QUERY01003</td>
+      <td>In a query, structured data attribute name (XPath) must point to a primitive type or to a list of primitive types (data ID ''{0}'', XPath ''{1}'').</td>
+   </tr>
+   <tr>
+      <td>QUERY01004</td>
+      <td>In a query, structured data attribute name (XPath) in orderBy clause must point to a primitive type and return exactly one value (data ID ''{0}'', XPath ''{1}'').</td>
+   </tr>
+   <tr>
+      <td>QUERY02001</td>
+      <td>{0} is {1} for this query.</td>
+   </tr>
+   <tr>
+      <td>QUERY02010</td>
+      <td>{0} is not available when activity instance history is disabled.</td>
+   </tr>
+   <tr>
+      <td>QUERY02020</td>
+      <td>Empty value list for {0} operator.</td>
+   </tr>
+   <tr>
+      <td>QUERY02021</td>
+      <td>Value types are inhomogeneous: {0}</td>
+   </tr>
+   <tr>
+      <td>QUERY03001</td>
+      <td>Null values are not supported with operator {0}.</td>
+   </tr>
+   <tr>
+      <td>QUERY03002</td>
+      <td>Inconsistent operator use {0} --&gt; {1}.</td>
+   </tr>
+   <tr>
+      <td>QUERY03003</td>
+      <td>Types of lower and upper bound are inhomogeneous: [class {0}, class {1}].</td>
+   </tr>
+   <tr>
+      <td>QUERY03004</td>
+      <td>Attribute not supported for Order term.</td>
+   </tr>
+   <tr>
+      <td>QUERY03005</td>
+      <td>DocumentQuery.META_DATA.any() only supports the LIKE operator.</td>
+   </tr>
+   <tr>
+      <td>QUERY03006</td>
+      <td>Operator not supported: {0}</td>
+   </tr>
+   <tr>
+      <td>QUERY03007</td>
+      <td>Attribute META_DATA.any() only supports the LIKE operator.</td>
+   </tr>
+   <tr>
+      <td>QUERY03008</td>
+      <td>Attribute not supported.</td>
+   </tr>
+   <tr>
+      <td>QUERY03009</td>
+      <td>Only the long or string representation of a date is supported. {0}</td>
+   </tr>
+   <tr>
+      <td>QUERY03010</td>
+      <td>Unsupported DataFilter operator for big data value: {0}</td>
+   </tr>
+   <tr>
+      <td>QUERY03011</td>
+      <td>Failed evaluating process instance closure.</td>
+   </tr>
+   <tr>
+      <td>QUERY03012</td>
+      <td>The value of skippedEntries must not be less than 0.</td>
+   </tr>
+   <tr>
+      <td>QUERY03013</td>
+      <td>Failed executing query.</td>
+   </tr>
+   <tr>
+      <td>QUERY03014</td>
+      <td>Failed evaluating process instance closure result set.</td>
+   </tr>
+</table>
+<h2 id="ws">WebServices</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>IPPWS01001</td>
+      <td>Web Service Properties ''{0}'', ''{1}''' and ''{2}'' have to be set.</td>
+   </tr>
+   <tr>
+      <td>IPPWS01002</td>
+      <td>Unable to add session properties to SOAP header.</td>
+   </tr>
+   <tr>
+      <td>IPPWS01003</td>
+      <td>Unable to add session properties to nonexisting SOAP header.</td>
+   </tr>
+   <tr>
+      <td>IPPWS01004</td>
+      <td>Cannot proceed due to malformed URL.</td>
+   </tr>
+   <tr>
+      <td>IPPWS01005</td>
+      <td>Failed resolving Web Service Properties.</td>
+   </tr>
+   <tr>
+      <td>IPPWS02001</td>
+      <td>Cannot create Web Service Environment: Username must not be null.</td>
+   </tr>
+   <tr>
+      <td>IPPWS02002</td>
+      <td>Cannot create Web Service Environment: Session properties must not be null.</td>
+   </tr>
+   <tr>
+      <td>IPPWS02003</td>
+      <td>Cannot create Web Service Environment: Neither Username/Password nor Session Properties have been set.</td>
+   </tr>
+   <tr>
+      <td>IPPWS03001</td>
+      <td>The specified metaDataType ''{0}'' does not match the type defined for data ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>IPPWS03101</td>
+      <td>Invalid data value ''{0}'' for data ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>IPPWS03102</td>
+      <td>WS-Security authentication requires a username to be specified.</td>
+   </tr>
+</table>
+<h2 id="login">Login</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>LOGIN01001</td>
+      <td>The supplied username/password pair was invalid</td>
+   </tr>
+   <tr>
+      <td>LOGIN01002</td>
+      <td>Unable to connect to the configured LDAP server</td>
+   </tr>
+   <tr>
+      <td>LOGIN01003</td>
+      <td>NamingException: {0} caught, class: {1}.</td>
+   </tr>
+</table>
+<h2 id="ejb">EJB</h2>
+
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>EJB01001</td>
+      <td>Unknown carrier message type: {0}</td>
+   </tr>
+   <tr>
+      <td>EJB01002</td>
+      <td>Invalid service factory configuration: {0}</td>
+   </tr>
+   <tr>
+      <td>EJB01003</td>
+      <td>Missing data source for ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>EJB01004</td>
+      <td>Invalid tunneling service endpoint.</td>
+   </tr>
+   <tr>
+      <td>EJB01005</td>
+      <td>Failed loading service interface class.</td>
+   </tr>
+   <tr>
+      <td>EJB01006</td>
+      <td>Failed obtaining entity bean PK</td>
+   </tr>
+   <tr>
+      <td>EJB01007</td>
+      <td>Failed obtaining entity bean PK: no 'getPrimaryKey()' method on ''{0}''</td>
+   </tr>
+   <tr>
+      <td>EJB01008</td>
+      <td>Failed looking up entity bean via PK</td>
+   </tr>
+   <tr>
+      <td>EJB01009</td>
+      <td>Invalid Id access:</td>
+   </tr>
+   <tr>
+      <td>EJB01010</td>
+      <td>Failed retrieving entity bean.</td>
+   </tr>
+   <tr>
+      <td>EJBO1011</td>
+      <td>No EntityManager could be retrieved.</td>
+   </tr>
+   <tr>
+      <td>EJB01012</td>
+      <td>Failed reading entity bean attribute.</td>
+   </tr>
+   <tr>
+      <td>EJB01013</td>
+      <td>Failed translating Entity Bean handle to bean reference.</td>
+   </tr>
+   <tr>
+      <td>EJB01014</td>
+      <td>Failed setting entity bean attribute.</td>
+   </tr>
+   <tr>
+      <td>EJB01015</td>
+      <td>Cannot create session bean.</td>
+   </tr>
+</table>
+<h2 id="cli">CLI</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>CLI01001</td>
+      <td>Invalid Department path provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01002</td>
+      <td>Deprecated ProcessModel detected, only one parent organization is allowed!</td>
+   </tr>
+   <tr>
+      <td>CLI01003</td>
+      <td>No model active.</td>
+   </tr>
+   <tr>
+      <td>CLI01004</td>
+      <td>Organisation: ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>CLI01005</td>
+      <td>'-interfaceModelOid' not provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01006</td>
+      <td>'-processId' not provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01007</td>
+      <td>'-implementationModelId' not provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01008</td>
+      <td>SQL Exception occurred: {0}</td>
+   </tr>
+   <tr>
+      <td>CLI01009</td>
+      <td>Could not initialize ddl spool file: {0}</td>
+   </tr>
+   <tr>
+      <td>CLI01010</td>
+      <td>Unsupported date format for option -timestamp: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>CLI01011</td>
+      <td>No archive audittrail schema specified.</td>
+   </tr>
+   <tr>
+      <td>CLI01012</td>
+      <td>No audittrail partition specified.</td>
+   </tr>
+   <tr>
+      <td>CLI01013</td>
+      <td>Interval value ''{0}'' for option ''{1}'' is not in correct format. Format has to be "nn{d{ays}|h{ours}|m{inutes}}"</td>
+   </tr>
+   <tr>
+      <td>CLI01014</td>
+      <td>No file name provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01015</td>
+      <td>No schema name provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01016</td>
+      <td>Driver not found.</td>
+   </tr>
+   <tr>
+      <td>CLI01017</td>
+      <td>Please provide a target filename.</td>
+   </tr>
+   <tr>
+      <td>CLI01018</td>
+      <td>Neither a repository nor a model file were provided.</td>
+   </tr>
+   <tr>
+      <td>CLI01019</td>
+      <td>Failed resolving partition oids.</td>
+   </tr>
+   <tr>
+      <td>CLI01020</td>
+      <td>Invalid Department Path!, Department: {0} does not exists for Organization {1} ,either create it manually or specify option -r to create it automatically</td>
+   </tr>
+</table>
+<h2 id="archive">Archiver</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>ARCH01001</td>
+      <td>Failed verifying preconditions.</td>
+   </tr>
+   <tr>
+      <td>ARCH01002</td>
+      <td>Failed archiving log entries.</td>
+   </tr>
+   <tr>
+      <td>ARCH01003</td>
+      <td>Failed archiving entries from {0} included in transitive closure of already archived log entries.</td>
+   </tr>
+   <tr>
+      <td>ARCH01004</td>
+      <td>Failed to find starting time.</td>
+   </tr>
+   <tr>
+      <td>ARCH01005</td>
+      <td>Failed resolving process instance closure.</td>
+   </tr>
+   <tr>
+      <td>ARCH01006</td>
+      <td>Failed archiving processes.</td>
+   </tr>
+   <tr>
+      <td>ARCH01007</td>
+      <td>Failed archiving processes terminated before {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01008</td>
+      <td>Failed archiving processes for model with OID {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01009</td>
+      <td>Failed archiving processes for model with OID {0} terminated before {1}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01010</td>
+      <td>Failed deleting model with OID {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01011</td>
+      <td>Failed deleting log entries created before {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01012</td>
+      <td>Failed inserting user session entries expired before {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01013</td>
+      <td>Failed deleting user session entries expired before {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01014</td>
+      <td>Failed finding minimum value for attribute ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01015</td>
+      <td>Failed finding maximum value for attribute ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01016</td>
+      <td>Failed obtaining JDBC connection to audit trail db.</td>
+   </tr>
+   <tr>
+      <td>ARCH01017</td>
+      <td>Invalid partition ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01018</td>
+      <td>Failed resolving partition ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01019</td>
+      <td>Cannot archive models with nonterminated process instances (found {0} nonterminated process instances).</td>
+   </tr>
+   <tr>
+      <td>ARCH01020</td>
+      <td>Unable to delete closure of model with OID {0} due to {1} nonterminated process instances.</td>
+   </tr>
+   <tr>
+      <td>ARCH01021</td>
+      <td>Cannot archive process instances (found {0} nonterminated process instances).</td>
+   </tr>
+   <tr>
+      <td>ARCH01022</td>
+      <td>Cannot delete process instances (found {0} nonterminated process instances).</td>
+   </tr>
+   <tr>
+      <td>ARCH01023</td>
+      <td>Failed deleting user sessions.</td>
+   </tr>
+   <tr>
+      <td>ARCH01024</td>
+      <td>Data can only be deleted, standalone archiving is not supported.</td>
+   </tr>
+   <tr>
+      <td>ARCH01025</td>
+      <td>Failed retrieving number of nonterminated process instances for model with OID {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01026</td>
+      <td>Failed retrieving models.</td>
+   </tr>
+   <tr>
+      <td>ARCH01027</td>
+      <td>Failed deleting data {0} for terminated processes.</td>
+   </tr>
+   <tr>
+      <td>ARCH01028</td>
+      <td>Failed finding unused models.</td>
+   </tr>
+   <tr>
+      <td>ARCH01029</td>
+      <td>Failed finding models.</td>
+   </tr>
+   <tr>
+      <td>ARCH01030</td>
+      <td>Failed synchronizing archived utility tables.</td>
+   </tr>
+   <tr>
+      <td>ARCH01031</td>
+      <td>Failed synchronizing model table archive.</td>
+   </tr>
+   <tr>
+      <td>ARCH01032</td>
+      <td>Failed synchronizing organizational table archive.</td>
+   </tr>
+   <tr>
+      <td>ARCH01033</td>
+      <td>Failed deleting entries from data cluster table ''{0}''. Reason: {1}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01034</td>
+      <td>No model with id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01035</td>
+      <td>Cannot delete data for nonexisting data id ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ARCH01036</td>
+      <td>Couldn't synchronize data cluster table ''{0}''. Reason: {1}</td>
+   </tr>
+   <tr>
+      <td>ARCH01037</td>
+      <td>Failed archiving entries from {0} included in transitive closure of already archived process instances.</td>
+   </tr>
+   <tr>
+      <td>ARCH01038</td>
+      <td>Failed synchronizing PK-stable table {0}.</td>
+   </tr>
+   <tr>
+      <td>ARCH01039</td>
+      <td>Id:{0} - Qualified Id needed as we have different model id.</td>
+   </tr>
+   <tr>
+      <td>ARCH01040</td>
+      <td>Failed synchronizing string_data table archive.</td>
+   </tr>
+   <tr>
+      <td>ARCH01041</td>
+      <td>Failed patching archive.</td>
+   </tr>
+</table>
+<h2 id="jdbc">JDBC</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>JDBC01001</td>
+      <td>Cannot write to file ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>JDBC01002</td>
+      <td>Couldn't verify lock table ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>JDBC01003</td>
+      <td>Data cluster table ''{0}'' is not allowed because this name is predefined by IPP engine.</td>
+   </tr>
+   <tr>
+      <td>JDBC01004</td>
+      <td>Error creating data cluster table ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>JDBC01005</td>
+      <td>Cannot create data value field for slot column: ''{0}''.{1}</td>
+   </tr>
+   <tr>
+      <td>JDBC01006</td>
+      <td>Database has to support sequences or automatic identity columns.</td>
+   </tr>
+   <tr>
+      <td>JDBC01007</td>
+      <td>INSERT ... VALUES ...is not yet implemented.</td>
+   </tr>
+   <tr>
+      <td>JDBC01008</td>
+      <td>Failed to load JDBC driver ''{0}''</td>
+   </tr>
+   <tr>
+      <td>JDBC01009</td>
+      <td>Maximum number of connections {0} in connection pool exceeded.</td>
+   </tr>
+   <tr>
+      <td>JDBC01010</td>
+      <td>Archive AuditTrail does not allow changes.</td>
+   </tr>
+   <tr>
+      <td>JDBC01011</td>
+      <td>Invalid TX isolation level {0}, requiring TRANSACTION_READ_COMMITTED ({1})</td>
+   </tr>
+   <tr>
+      <td>JDBC01012</td>
+      <td>Derby session rolled back.</td>
+   </tr>
+   <tr>
+      <td>JDBC01013</td>
+      <td>Failed obtaining new sequence values, result set was empty.</td>
+   </tr>
+   <tr>
+      <td>JDBC01014</td>
+      <td>Failed deleting entries from data cluster table ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>JDBC01015</td>
+      <td>Unknown column modification type: {0}</td>
+   </tr>
+   <tr>
+      <td>JDBC01016</td>
+      <td>Preparation of string to value migration failed.</td>
+   </tr>
+</table>
+<h2 id="pojo">POJO</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>POJO01001</td>
+      <td>Cannot create object.</td>
+   </tr>
+   <tr>
+      <td>POJO01002</td>
+      <td>Access point ''{0}'' does not exist,  {1}</td>
+   </tr>
+   <tr>
+      <td>POJO01003</td>
+      <td>Failed reading bean attribute.</td>
+   </tr>
+   <tr>
+      <td>POJO01004</td>
+      <td>Failed setting bean attribute.</td>
+   </tr>
+   <tr>
+      <td>POJO01005</td>
+      <td>Can't convert value ''{0}'' to type ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>POJO01006</td>
+      <td>Not a Java data type.</td>
+   </tr>
+   <tr>
+      <td>POJO01007</td>
+      <td>Invalid Java Bean access path type: {0}</td>
+   </tr>
+   <tr>
+      <td>POJO01008</td>
+      <td>The method ''{0}'' from class ''{1}'' does not exist or is not accessible.</td>
+   </tr>
+   <tr>
+      <td>POJO01009</td>
+      <td>The method ''{0}'' not accessible in class ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>POJO01010</td>
+      <td>Illegal argument for method ''{0}'' in class ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>POJO01011</td>
+      <td>Setter for in path does not accept a single parameter: {0}</td>
+   </tr>
+   <tr>
+      <td>POJO01012</td>
+      <td>Final setter for in path does not accept a single parameter: {0}</td>
+   </tr>
+   <tr>
+      <td>POJO01013</td>
+      <td>Failed reading java value.</td>
+   </tr>
+   <tr>
+      <td>POJO01014</td>
+      <td>Failed setting java value.</td>
+   </tr>
+</table>
+<h2 id="struct">Structured Data</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>SDT01001</td>
+      <td>Failed generating XML.</td>
+   </tr>
+   <tr>
+      <td>SDT01002</td>
+      <td>Attribute must be detached.</td>
+   </tr>
+   <tr>
+      <td>SDT01003</td>
+      <td>No such attribute: {0}</td>
+   </tr>
+   <tr>
+      <td>SDT01004</td>
+      <td>Failed reading XML input.</td>
+   </tr>
+   <tr>
+      <td>SDT01005</td>
+      <td>Expression ''{0}'' was expected to return 0 or 1 hits, but it returned ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01006</td>
+      <td>Could not parse date/time/datetime ''{0}'' using standard XSD date/time/datetime formats ''{1}'', ''{2}'', ''{3}'' and additional format ''{4}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01007</td>
+      <td>BigData type ''{0}'' is supported yet.</td>
+   </tr>
+   <tr>
+      <td>SDT01008</td>
+      <td>Boolean value must be 'true' or 'false'.</td>
+   </tr>
+   <tr>
+      <td>SDT01009</td>
+      <td>The enum value ''{0}'' is not allowed for element ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01010</td>
+      <td>XPath ''{0}'' can not be assigned multiple values.</td>
+   </tr>
+   <tr>
+      <td>SDT01011</td>
+      <td>XPath ''{0}'' can not be used to set data value.</td>
+   </tr>
+   <tr>
+      <td>SDT01012</td>
+      <td>No data found for XPath ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01013</td>
+      <td>XPath ''{0}'' can not be used to set data value since it returns nodes from different origins.</td>
+   </tr>
+   <tr>
+      <td>SDT01014</td>
+      <td>inPath ''{0}'' can not be used to set data value.</td>
+   </tr>
+   <tr>
+      <td>SDT01015</td>
+      <td>Could not create qualified XPath from xPath ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01016</td>
+      <td>Could not find XSD ''{0}'' in CLASSPATH</td>
+   </tr>
+   <tr>
+      <td>SDT01017</td>
+      <td>Null values are not supported with operator {0}.</td>
+   </tr>
+   <tr>
+      <td>SDT01018</td>
+      <td>Can not determine BridgeObject from AccessPoint of ''{0}''</td>
+   </tr>
+   <tr>
+      <td>SDT01019</td>
+      <td>XPath ''{0}'' can not be used for IN data mapping since it can return several items from different levels.</td>
+   </tr>
+   <tr>
+      <td>SDT01020</td>
+      <td>Failed parsing XML document.</td>
+   </tr>
+   <tr>
+      <td>SDT01021</td>
+      <td>Node must be detached.</td>
+   </tr>
+   <tr>
+      <td>SDT01022</td>
+      <td>Invalid child element: {0}</td>
+   </tr>
+   <tr>
+      <td>SDT01023</td>
+      <td>No such child: {0}</td>
+   </tr>
+   <tr>
+      <td>SDT01024</td>
+      <td>Could not analyse structured data: ''{0}'' for xpath oid ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01025</td>
+      <td>XPath ''{0}'' is not defined."</td>
+   </tr>
+</table>
+<h2 id="gen">Generic</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>GEN01001</td>
+      <td>An exception occurred.</td>
+   </tr>
+   <tr>
+      <td>GEN01002</td>
+      <td>An exception occurred. Message: {0}</td>
+   </tr>
+</table>
+<h2 id="valid">Validation</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>VAL01000</td>
+      <td>Duplicate identifier: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>VAL01001</td>
+      <td>''{0}'' is not a valid identifier.</td>
+   </tr>
+   <tr>
+      <td>VAL01002</td>
+      <td>Cannot retrieve class ''{0}'' for validation.</td>
+   </tr>
+   <tr>
+      <td>VAL01003</td>
+      <td>{0} has no ID.</td>
+   </tr>
+   <tr>
+      <td>VAL01004</td>
+      <td>{0} has an invalid ID.</td>
+   </tr>
+   <tr>
+      <td>VAL01005</td>
+      <td>DMS operation is not set.</td>
+   </tr>
+   <tr>
+      <td>MDL01001</td>
+      <td>Invalid QA code ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01002</td>
+      <td>Duplicate QA code ''{0}'' (used {1} times).</td>
+   </tr>
+   <tr>
+      <td>MDL01003</td>
+      <td>Unsupported scripting language: {0}</td>
+   </tr>
+   <tr>
+      <td>MDL01004</td>
+      <td>Configuration Variable ''{0}'' has no default value defined.</td>
+   </tr>
+   <tr>
+      <td>MDL01005</td>
+      <td>Configuration Variable ''{0}'' is never used.</td>
+   </tr>
+   <tr>
+      <td>MDL01006</td>
+      <td>Referenced Configuration Variable ''{0}'' does not exist.</td>
+   </tr>
+   <tr>
+      <td>MDL01007</td>
+      <td>Circular references to model ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>MDL01008</td>
+      <td>Reference to model ''{0}'' is invalid until {1}.</td>
+   </tr>
+   <tr>
+      <td>MDL01009</td>
+      <td>Reference for ''{0}'' was not resolved to the last deployed model version.</td>
+   </tr>
+   <tr>
+      <td>MDL01010</td>
+      <td>Reference for ''{0}'' is resolved to multiple model versions.</td>
+   </tr>
+   <tr>
+      <td>MDL01011</td>
+      <td>No model with oid {0} found.</td>
+   </tr>
+   <tr>
+      <td>MDL01012</td>
+      <td>No model active.</td>
+   </tr>
+   <tr>
+      <td>MDL01013</td>
+      <td>No model deployed.</td>
+   </tr>
+   <tr>
+      <td>MDL01014</td>
+      <td>Referenced package with namespace ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>MDL01015</td>
+      <td>The audit trail database contains a model with ID ''{0}'' which differs from the ID ''{1}'' of this model.</td>
+   </tr>
+   <tr>
+      <td>MDL01016</td>
+      <td>Predecessor model with oid {0} not found.</td>
+   </tr>
+   <tr>
+      <td>MDL01017</td>
+      <td>The model was created with an unknown CARNOT version.</td>
+   </tr>
+   <tr>
+      <td>MDL01018</td>
+      <td>The model was created with CARNOT version {0}.</td>
+   </tr>
+   <tr>
+      <td>MDL01019</td>
+      <td>Configuration Variable ''{0}'' is invalid.</td>
+   </tr>
+   <tr>
+      <td>PD01001</td>
+      <td>No start activity defined.</td>
+   </tr>
+   <tr>
+      <td>PD01002</td>
+      <td>Duplicate ID for process definition ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>PD01003</td>
+      <td>ID for process definition ''{0}'' exceeds maximum length of {1} characters.</td>
+   </tr>
+   <tr>
+      <td>PD01004</td>
+      <td>Invalid Formal Parameter: {0} has no data set.</td>
+   </tr>
+   <tr>
+      <td>PD01005</td>
+      <td>Duplicate transition: {0} has the same source/target with {1} transition.</td>
+   </tr>
+   <tr>
+      <td>PD01006</td>
+      <td>Multiple start activities, {0} defined for process definition ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>PD01007</td>
+      <td>No activities defined for process definition ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>PD01008</td>
+      <td>Unresolved reference to process interface ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>PD01009</td>
+      <td>Potential deadlock exists between activity ''{0}'' and ''{1}'' in process definition ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>APP01001</td>
+      <td>Application type of {0} is no longer supported.</td>
+   </tr>
+   <tr>
+      <td>APP01002</td>
+      <td>Unspecified class for JFC application.</td>
+   </tr>
+   <tr>
+      <td>APP01003</td>
+      <td>Unspecified completion method for JFC application.</td>
+   </tr>
+   <tr>
+      <td>APP01004</td>
+      <td>Couldn't find completion method ''{0}''  for JFC application.</td>
+   </tr>
+   <tr>
+      <td>APP01005</td>
+      <td>Duplicate ID for application ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>APP01006</td>
+      <td>{0}: No type mapping defined for xml type ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>APP01007</td>
+      <td>{0}: Xml type ''{1}'' has an invalid type mapping: ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>APP01008</td>
+      <td>{0}: Template for part ''{1}'' is invalid: {2}</td>
+   </tr>
+   <tr>
+      <td>APP01009</td>
+      <td>{0}: WSDL URL ''{1}'' is invalid: {2}</td>
+   </tr>
+   <tr>
+      <td>APP01010</td>
+      <td>{0}: Property ''{1}'' not set.</td>
+   </tr>
+   <tr>
+      <td>APP01011</td>
+      <td>Property ''{0}'' not set.</td>
+   </tr>
+   <tr>
+      <td>APP01012</td>
+      <td>Parameter has no id defined.</td>
+   </tr>
+   <tr>
+      <td>APP01013</td>
+      <td>Parameter has invalid id defined.</td>
+   </tr>
+   <tr>
+      <td>APP01014</td>
+      <td>No location specified for parameter ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>APP01015</td>
+      <td>No valid Type for Parameter ''{0}'' (Class ''{1}'' cannot be found).</td>
+   </tr>
+   <tr>
+      <td>APP01016</td>
+      <td>No valid Type for Parameter ''{0}'' (Class ''{1}'' could not be loaded).</td>
+   </tr>
+   <tr>
+      <td>APP01017</td>
+      <td>Duplicate Id used: ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>APP01018</td>
+      <td>Invalid mail address.</td>
+   </tr>
+   <tr>
+      <td>APP01019</td>
+      <td>Undefined html path for JSP application.</td>
+   </tr>
+   <tr>
+      <td>ACTN01001</td>
+      <td>No Data defined.</td>
+   </tr>
+   <tr>
+      <td>ACTN01002</td>
+      <td>No AccessPoint defined.</td>
+   </tr>
+   <tr>
+      <td>ACTN01003</td>
+      <td>No Process selected.</td>
+   </tr>
+   <tr>
+      <td>ACTN01004</td>
+      <td>{0} does not have a Name.</td>
+   </tr>
+   <tr>
+      <td>ACTN01005</td>
+      <td>{0} does not have a Type.</td>
+   </tr>
+   <tr>
+      <td>ACTN01006</td>
+      <td>No ReceiverType specified.</td>
+   </tr>
+   <tr>
+      <td>ACTN01007</td>
+      <td>No receiving participant selected.</td>
+   </tr>
+   <tr>
+      <td>ACTN01008</td>
+      <td>No email address specified.</td>
+   </tr>
+   <tr>
+      <td>ACTY01001</td>
+      <td>Duplicate ID for activity ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01002</td>
+      <td>ID for activity ''{0}'' exceeds maximum length of {1} characters.</td>
+   </tr>
+   <tr>
+      <td>ACTY01003</td>
+      <td>No performer set for manual or interactive application activity ''{0}'' of process ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01004</td>
+      <td>The associated performer ''{0}'' set for manual or interactive application activity ''{1}'' doesn't exist in the model.</td>
+   </tr>
+   <tr>
+      <td>ACTY01005</td>
+      <td>Performer should not be a conditional performer for quality assurance activity ''{0}'' of process ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01006</td>
+      <td>No quality assurance performer set for quality assurance activity ''{0}'' of process ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01007</td>
+      <td>Quality assurance performer should not be a conditional performer for quality assurance activity ''{0}'' of process ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01008</td>
+      <td>No implementation process set for subprocess activity ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01009</td>
+      <td>Value 'subProcessMode' is not set for activity ''{0}''. This will be evaluated as 'Sync Shared'.</td>
+   </tr>
+   <tr>
+      <td>ACTY01010</td>
+      <td>No application set for application activity ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01011</td>
+      <td>No access point for application ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01012</td>
+      <td>No exception flow transition for event handler with ID ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01013</td>
+      <td>Multiple boundary events for exceptions not having disjunct type hierarchies (''{0}'' and ''{1}''). Only one will be processed during event handling.</td>
+   </tr>
+   <tr>
+      <td>ACTY01014</td>
+      <td>Intermediate events must have one inbound and one outbound sequence flow.</td>
+   </tr>
+   <tr>
+      <td>ACTY01015</td>
+      <td>Shared data subprocess mode is incompatible with parallel multi-instance activity ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>ACTY01016</td>
+      <td>No loop input data specified for parallel multi-instance activity ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>COND01001</td>
+      <td>{0} is not an Exception.</td>
+   </tr>
+   <tr>
+      <td>COND01002</td>
+      <td>ExpressionCondition has no condition specified.</td>
+   </tr>
+   <tr>
+      <td>COND01003</td>
+      <td>Target State is the same with Source State.</td>
+   </tr>
+   <tr>
+      <td>COND01004</td>
+      <td>Invalid data mapping.</td>
+   </tr>
+   <tr>
+      <td>COND01005</td>
+      <td>Invalid data path.</td>
+   </tr>
+   <tr>
+      <td>COND01006</td>
+      <td>Invalid data specified.</td>
+   </tr>
+   <tr>
+      <td>COND01007</td>
+      <td>Timer condition using data has to have either process or activity context.</td>
+   </tr>
+   <tr>
+      <td>COND01008</td>
+      <td>No period specified.</td>
+   </tr>
+   <tr>
+      <td>COND01009</td>
+      <td>No Data specified.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01001</td>
+      <td>Unspecified participant for {0} trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01002</td>
+      <td>Invalid participant ''{0}'' for {1} trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01003</td>
+      <td>Unspecified start time for timer trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01004</td>
+      <td>Duplicate ID for process definition ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01005</td>
+      <td>ID ''{0}'' for trigger ''{1}'' exceeds maximum length of {2} characters.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01006</td>
+      <td>No Name set for trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01007</td>
+      <td>No type set for trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01008</td>
+      <td>Parameter Mapping does not specify a Data.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01009</td>
+      <td>Parameter Mapping does not specify a Parameter.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01010</td>
+      <td>Parameter ''{0}'' for Parameter Mapping is invalid.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01011</td>
+      <td>AccessPoint has invalid id defined.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01012</td>
+      <td>Scan triggers do not support \"{0}\" access point type.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01013</td>
+      <td>Parameter Mapping ''{0}'' contains an invalid type conversion.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01014</td>
+      <td>Unspecified message type for JMS trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01015</td>
+      <td>Parameter has no id.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01016</td>
+      <td>Parameter has invalid id defined.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01017</td>
+      <td>No Location specified for parameter: {0}</td>
+   </tr>
+   <tr>
+      <td>TRIGG01018</td>
+      <td>Please provide a valid Type for Parameter ''{0}'' (Class ''{1}'' cannot be found).</td>
+   </tr>
+   <tr>
+      <td>TRIGG01019</td>
+      <td>Please provide a valid Type for Parameter ''{0}'' (Class ''{1}'' could not be loaded).</td>
+   </tr>
+   <tr>
+      <td>TRIGG01020</td>
+      <td>Unspecified user name for mail trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01021</td>
+      <td>Unspecified password for mail trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01022</td>
+      <td>Unspecified server name for mail trigger.</td>
+   </tr>
+   <tr>
+      <td>TRIGG01023</td>
+      <td>Unspecified protocol for mail trigger.</td>
+   </tr>
+   <tr>
+      <td>TRAN01001</td>
+      <td>ID ''{0}'' for transition ''{1}'' exceeds maximum length of {2} characters.</td>
+   </tr>
+   <tr>
+      <td>TRAN01002</td>
+      <td>No boundary event handler with ID ''{0}'' for exception transition with ID ''{1}'' found.</td>
+   </tr>
+   <tr>
+      <td>TRAN01003</td>
+      <td>Expression scripting language: \"text/carnotEL\" do not match the model scripting language: \" {0} \".</td>
+   </tr>
+   <tr>
+      <td>TRAN01004</td>
+      <td>Unsupported scripting language: \" {0} "\".</td>
+   </tr>
+   <tr>
+      <td>SDT01000</td>
+      <td>Duplicate ID for type declaration ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>SDT01001</td>
+      <td>Type declaration is not allowed to contain variables: {0}</td>
+   </tr>
+   <tr>
+      <td>SDT01002</td>
+      <td>TypeDeclaration ''{0}'': referenced parent type ''{1}'' not found.</td>
+   </tr>
+   <tr>
+      <td>PART01001</td>
+      <td>No data associated to the conditional performer ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>PART01002</td>
+      <td>The data expression for the conditional performer ''{0}'' yields a value of unsupported type. Performers can be looked up by string (User account, User Group ID or Participant ID) or longs (User, User Group or Participant OID).</td>
+   </tr>
+   <tr>
+      <td>PART01003</td>
+      <td>"The realm data expression for the conditional performer ''{0}'' yields a value of unsupported type. Performers can be looked up by string (User Realm ID) or longs (User Realm OID).</td>
+   </tr>
+   <tr>
+      <td>PART01004</td>
+      <td>Missing 'Administrator' participant.</td>
+   </tr>
+   <tr>
+      <td>PART01005</td>
+      <td>'Administrator' participant must be a role.</td>
+   </tr>
+   <tr>
+      <td>PART01006</td>
+      <td>Administrator is not allowed to have relationships to any organizations.</td>
+   </tr>
+   <tr>
+      <td>PART01007</td>
+      <td>Scoped participants are not allowed for model level grants.</td>
+   </tr>
+   <tr>
+      <td>PART01008</td>
+      <td>Duplicate ID for participant ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>PART01009</td>
+      <td>ID for participant ''{0}'' exceeds maximum length of {1} characters.</td>
+   </tr>
+   <tr>
+      <td>PART01010</td>
+      <td>The associated organization ''{0}'' set for participant ''{1}'' doesn't exist in the model.</td>
+   </tr>
+   <tr>
+      <td>PART01011</td>
+      <td>The data of the scoped organization ''{0}'' must exist.</td>
+   </tr>
+   <tr>
+      <td>PART01012</td>
+      <td>The data of the scoped organization ''{0}'' can only be a primitive or structured type.</td>
+   </tr>
+   <tr>
+      <td>PART01013</td>
+      <td>The data of the scoped organization ''{0}'' must not be null.</td>
+   </tr>
+   <tr>
+      <td>PART01014</td>
+      <td>The data path of the scoped organization ''{0}'' must not be null when structured data type is used.</td>
+   </tr>
+   <tr>
+      <td>PART01015</td>
+      <td>The type of the data ''{0}'' the scoped organization ''{1}'' is not ''{2}''.</td>
+   </tr>
+   <tr>
+      <td>PART01016</td>
+      <td>The organization ''{0}'' is scoped. But in audit trail this organization is unscoped.</td>
+   </tr>
+   <tr>
+      <td>PART01017</td>
+      <td>The organization ''{0}'' is unscoped. But in audit trail this organization is scoped.</td>
+   </tr>
+   <tr>
+      <td>PART01018</td>
+      <td>The data id ''{0}'' of the scoped organization ''{1}'' is different from the data id ''{2}'' of the deployed scoped organization in audit trail.</td>
+   </tr>
+   <tr>
+      <td>PART01019</td>
+      <td>The data id ''{0}'' of the scoped organization ''{1}'' is different from the data path ''{2}'' of the deployed scoped organization in audit trail.</td>
+   </tr>
+   <tr>
+      <td>PART01020</td>
+      <td>Multiple super organizations are not allowed.</td>
+   </tr>
+   <tr>
+      <td>PART01021</td>
+      <td>The model to deploy contains a different 'Manager Of'-association ''{0}'' than the deployed model in audit trail.</td>
+   </tr>
+   <tr>
+      <td>PART01021</td>
+      <td>The model to deploy contains a different organization tree of the scoped organization ''{0}'' than the scoped organization tree of the model in audit trail.</td>
+   </tr>
+   <tr>
+      <td>DATA01001</td>
+      <td>Duplicate ID for data ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01002</td>
+      <td>ID for data ''{0}'' exceeds maximum length of {1} characters.</td>
+   </tr>
+   <tr>
+      <td>DATA01003</td>
+      <td>No activity set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01004</td>
+      <td>No data set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01005</td>
+      <td>No useful ID set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01006</td>
+      <td>No useful Name set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01007</td>
+      <td>DataMapping ''{0}'' has no unique ID for the direction ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01008</td>
+      <td>Cannot resolve AccessPointProvider for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01009</td>
+      <td>Context ''{0}'' of data mapping ''{1}'' is invalid.</td>
+   </tr>
+   <tr>
+      <td>DATA01010</td>
+      <td>Application ''{0}'' of data mapping ''{1}'' is invalid.</td>
+   </tr>
+   <tr>
+      <td>DATA01011</td>
+      <td>Data ''{0}'' is not of the correct type for data mapping ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01012</td>
+      <td>Formal parameter with id ''{0}'' could not be resolved for data mapping ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01013</td>
+      <td>Application access point with id ''{0}'' could not be resolved for data mapping ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01014</td>
+      <td>No application access point set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01015</td>
+      <td>No context set for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01016</td>
+      <td>Context ''{0}'' for data mapping ''{1}'' is undefined."</td>
+   </tr>
+   <tr>
+      <td>DATA01017</td>
+      <td>Data path is not valid for data mapping ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01018</td>
+      <td>Duplicate ID for data path ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>DATA01019</td>
+      <td>No Name specified for DataPath.</td>
+   </tr>
+   <tr>
+      <td>DATA01020</td>
+      <td>No Data specified for DataPath.</td>
+   </tr>
+   <tr>
+      <td>DATA01021</td>
+      <td>Key descriptors must be either primitive or structured types.</td>
+   </tr>
+   <tr>
+      <td>DATA01022</td>
+      <td>Structured key descriptors must have primitive type.</td>
+   </tr>
+   <tr>
+      <td>DATA01023</td>
+      <td>No schema found for structured key descriptor.</td>
+   </tr>
+   <tr>
+      <td>DATA01024</td>
+      <td>Structured key descriptors must be indexed and persistent.</td>
+   </tr>
+   <tr>
+      <td>DATA01025</td>
+      <td>DataPath marked as key descriptor but it's not a descriptor.</td>
+   </tr>
+   <tr>
+      <td>DATA01026</td>
+      <td>Unspecified type for primitive data.</td>
+   </tr>
+   <tr>
+      <td>EVEN01000</td>
+      <td>Duplicate ID for event handler ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>EVEN01001</td>
+      <td>ID for event handler ''{0}'' exceeds maximum length of {1} characters.</td>
+   </tr>
+   <tr>
+      <td>EVEN01002</td>
+      <td>EventHandler does not have a condition type.</td>
+   </tr>
+   <tr>
+      <td>EVEN01003</td>
+      <td>Duplicate ID for event action ''{0}''.</td>
+   </tr>
+   <tr>
+      <td>JAVA01001</td>
+      <td>Java class not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01002</td>
+      <td>Completion method not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01003</td>
+      <td>Could not find method ''{0}'' in class ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>JAVA01004</td>
+      <td>Constructor not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01005</td>
+      <td>Could not find constructor ''{0}'' in class ''{1}''.</td>
+   </tr>
+   <tr>
+      <td>JAVA01006</td>
+      <td>Class ''{0}'' not found.</td>
+   </tr>
+   <tr>
+      <td>JAVA01007</td>
+      <td>Class ''{0}'' could not be loaded.</td>
+   </tr>
+   <tr>
+      <td>JAVA01008</td>
+      <td>Empty class name.</td>
+   </tr>
+   <tr>
+      <td>JAVA01009</td>
+      <td>Class ''{0}'' has no default constructor.</td>
+   </tr>
+   <tr>
+      <td>JAVA01010</td>
+      <td>Cannot load class ''{0}'' : {1}</td>
+   </tr>
+   <tr>
+      <td>JAVA01011</td>
+      <td>{0} interface not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01012</td>
+      <td>{0} method not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01013</td>
+      <td>Business interface not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01014</td>
+      <td>Bean type is not specified.</td>
+   </tr>
+   <tr>
+      <td>JAVA01015</td>
+      <td>Bean ID was not specified.</td>
+   </tr>
+</table>
+<h2 id="portal">Portal</h2>
+<table>
+   <tr>
+      <th>Error Code</th>
+      <th>Default Error Message</th>
+   </tr>
+   <tr>
+      <td>CWP01000</td>
+      <td>Unable to convert data-mapping value.</td>
+   </tr>
+   <tr>
+      <td>CWP01001</td>
+      <td>Unable to initialize new session.</td>
+   </tr>
+   <tr>
+      <td>CWP01002</td>
+      <td>You have no permission to delegate the activity.</td>
+   </tr>
+   <tr>
+      <td>CWP01003</td>
+      <td>Unable to delegate the activity.</td>
+   </tr>
+   <tr>
+      <td>CWP01004</td>
+      <td>Unable to recover the current session, because it has possibly expired. Please login again! </td>
+   </tr>
+   <tr>
+      <td>CWP01005</td>
+      <td>An unknown error occurred during login.</td>
+   </tr>
+   <tr>
+      <td>CWP01006</td>
+      <td>The audit trail contains no model.</td>
+   </tr>
+   <tr>
+      <td>CWP01007</td>
+      <td>Unable to delegate the activity because it is no longer available in the worklist.</td>
+   </tr>
+   <tr>
+      <td>PP01000</td>
+      <td>Unable to activate the activity.</td>
+   </tr>
+   <tr>
+      <td>PP01001</td>
+      <td>Unable to abort the current activity.</td>
+   </tr>
+   <tr>
+      <td>PP01002</td>
+      <td>Current activity does not allow abort by performer.</td>
+   </tr>
+   <tr>
+      <td>PP01003</td>
+      <td>Unable to suspend the current activity.</td>
+   </tr>
+   <tr>
+      <td>PP01004</td>
+      <td>Unable to start the activity.</td>
+   </tr>
+   <tr>
+      <td>PP01005</td>
+      <td>Unable to complete the current activity.</td>
+   </tr>
+   <tr>
+      <td>PP01006</td>
+      <td>Failed invoking completion method.</td>
+   </tr>
+   <tr>
+      <td>PP01007</td>
+      <td>No suitable application context found for method invocation.</td>
+   </tr>
+   <tr>
+      <td>PP01008</td>
+      <td>Failed evaluating out data mapping.</td>
+   </tr>
+   <tr>
+      <td>CONC03102</td>
+      <td>Event Failed: Activity is activated.</td>
+   </tr>
+</table>
+<h2 id="config">License</h2>
+<table>
+	<tr>
+		<th>Error Code</th>
+		<th>Default Error Message</th>
+	</tr>
+	<tr>
+		<td>LIC00001</td>
+		<td>License is not valid for this release.</td>
+	</tr>
+	<tr>
+		<td>LIC00002</td>
+		<td>Your license for running the component of the Stardust (TM)
+		Process Workbench<br>
+		has expired.<br>
+		Please contact your Stardust sales representative to renew it.</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+<!--	
+writeFooter(); 
+-->
+</script>
+
+</body>
+</html>

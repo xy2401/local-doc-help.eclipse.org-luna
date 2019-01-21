@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Configuring Subprocess Activities</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Manual Activities",
+        "act-control-flow.html","manual-activities.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","activities-preface.html","Working with Activities");
+ -->
+</script>
+<h1>Configuring Subprocess Activities</h1>
+<p>You have the option to configure subprocess activities by
+assigning a process to a subprocess activity or by creating them 
+from activity networks.</p>
+<ul>
+	<li><a href="#defSubAct">Defining Subprocess Activities</a></li>
+	<li><a href="#network">Creating Subprocesses from Activity Networks</a></li>
+	<li><a href="#auto">Automatic Creation of a Subprocess</a></li>
+	<li><a href="#semantics">Data Copy/Mapping Semantics - Pass by Value vs Pass by Reference</a></li>
+	<li><a href="#heuristics">Data Mapping Heuristics for Spawned Subprocesses and Peer Processes</a></li>
+	<li><a href="#behavior">Behavior of Subprocesses in Process Instance Hierarchy</a></li>
+</ul>
+<h2 id="defSubAct">Configuring Subprocess Activities</h2>
+<p>To define an activity as a subprocess, select <strong>Subprocess</strong>
+as the type of the activity. In the properties dialog, select the desired process from
+list of existing process definitions.<br/> If you select 
+<strong>Display Imported Model Elements as Groups</strong> check box, 
+the references for the referenced process definitions are displayed. 
+It also groups local and referenced elements. 
+
+&nbsp;</p>
+<p class="image"><img src="images/mg-defdesk-21.png"
+    alt="Configuring a Subprocess"> <br>
+<strong>Figure:</strong> Configuring a Subprocess</p>
+<p>If you assign a process to a subprocess activity, you have the option to 
+give the activity the name of this process.
+Please refer to the section <a href="#naming">
+Naming the subprocess</a> for details.</p>
+<p>You can configure your subprocesses with the following 
+three different execution types:</p>
+<ul>
+
+    <li><a href="#synchShared">Synchronous with shared data</a></li>
+    <li><a href="#synchSep">Synchronous with separate data</a></li>
+    <li><a href="#asynch">Asynchronous with separate data</a></li>
+    
+</ul>
+
+<h3 id="synchShared">Synchronous Subprocesses with Shared Data</h3>
+<p>Synchronous subprocesses with shared data &quot;inherit&quot; data from their super
+process. Hence, you do not have to pass data to or retrieve data from synchronous
+subprocesses explicitly by data mappings.</p>
+<p class="image"><img src="images/mg-subprocess-sync-shared.png"
+    alt="Subprocess Properties"><br>
+<strong>Figure:</strong> Subprocess Properties Dialog with Execution Type Synchronous Shared Data</p>
+<h3 id="synchSep">Synchronous subprocesses with separate data</h3>
+<p>Subprocesses being invoked with the option <strong>synchronous, separate
+data</strong> will not have access to data values bound to the scope of their parent process
+instance. In the activities properties dialog you can enable or disable the
+option <strong>Copy all Data</strong> to determine the type of data handling.</p>
+<p>With this option disabled the invoked process instance scope will initially contain
+no data value. Passing data between the invoking process instance and back has to be
+explicitly performed with IN or OUT data mappings.</p>
+<p>Having the option enabled, a copy of the value of any user-defined data existing in
+the parent process instance scope at invocation time will be created in the invoked
+process instance scope. You can still work with OUT data mappings, but IN data mappings
+are disabled.</p>
+<p class="image"><img src="images/mg-subprocess-sync-sep.png" alt=""> <br>
+<strong>Figure:</strong> Subprocess Properties Dialog with Execution Type Synchronous Separate Data</p>
+<p class="image"><img src="images/mg-subprocess-sync-sep-2.png" alt=""> <br>
+<strong>Figure:</strong> Execution Type Synchronous Separate with Copy all Data enabled.</p>
+<p>Generally, any root process instance and any process instance invoked with the <strong>Synchronous
+Separate</strong> option will function as scope for data values. Any process instance will have
+exactly one associated scope, where scope process instances are their own scope, and
+non-scope process instances have the same scope as their parent process instance.</p>
+<h3 id="asynch">Asynchronous subprocesses with separate data</h3>
+<p>Asynchronous subprocesses receive a copy of the super process data (separate data).
+The subprocess is detached from the super process and becomes a
+root process instead of scope process.</p>
+<p class="image"><img src="images/mg-subprocess-async-sep.png" alt=""> <br>
+<strong>Figure:</strong> Subprocess Properties Dialog with Execution Type Asynchronous Separate Data</p>
+<p>Switching between the options will not delete existing data mappings if the
+selected combination does not support them but a succeeding warning is displayed if the <strong>Copy 
+Process Data </strong> checkbox is selected and also the data mappings are provided.</p>
+<h3 id="naming">Naming</h3>
+<p>If you assign a process to a subprocess activity, you have the option to
+give the activity the name of this process. In this case you have to set the
+preferences option <strong>Auto Name Generation of Subprocess
+Activities</strong> to enabled, as described in the <a href="../mg-preferences.html">Setting
+Process Manager Preferences</a> section of the <a href="../mg-modeler-preface.html">Stardust
+Process Workbench</a> chapter. If option <strong>Enable Auto ID Generation</strong> is enabled
+in the Process Manager preferences, also the Id of the
+activity is changing according to the process name as described in the <a
+    href="../mg-preferences.html#autoID">Auto Id Generation</a> section.</p>
+<p class="image"><img src="images/mg-subprocess-naming.png"
+    alt="Automatic Naming of Subprocess" /> <br>
+<strong>Figure:</strong> Automatic Name Generation of a Subprocess</p>
+<h2 id="network">Creating Subprocesses from Activity Networks</h2>
+<p>In the Stardust modeler you can create subprocesses from a selected activity network.
+Selected activities will be replaced by a subprocess activity in the source process. 
+Additional process definitions will be created containing all dependent elements.
+The connections between organizations and other participants are deleted.</p>
+<h3>Requirements</h3>
+<p>A subprocess can only be created if it follows these rules:</p>
+<ul>
+    <li>the activity network must not have more than one in and one out transition</li>
+    <li>the activities must be connected together</li>
+    <li>the selected network contains no trigger</li>
+</ul>
+<h3>Creating a Subprocess</h3>
+<p>Select the activities to be replaced , e.g. by holding the <strong>Ctrl</strong> key
+and clicking on them. Right-click and select <strong>Create Subprocess</strong>.</p>
+<p class="image"><img src="images/create-subprocess.png" alt="Create a Subprocess"> <br>
+<strong>Figure:</strong> Create a Subprocess from the selected Activities.</p>
+<p>A new activity with subprocess implementation is created:</p>
+<p class="image"><img src="images/create-subprocess-procdef.png" alt="new Subprocess Activity"> <br>
+<strong>Figure:</strong> A new Subprocess Activity is created.</p>
+<p>Also a new process definition is created containing all the selected
+activities and according transitions.</p>
+<p class="image"><img src="images/create-subprocess-new-processdef.png" alt="new Process Definition"> <br>
+<strong>Figure:</strong> A new Process Definition is created.</p>
+<h3>Behavior in Lanes</h3>
+<p>If the source mouse location is a lane, the subprocess activity is also created 
+in this lane.</p> 
+<!--<p class="image"><img src="images/" alt=""> <br>
+<strong>Figure:</strong> .</p>  -->
+
+<h3>Creating Subprocesses from Activities having Symbols in Multiple Diagrams</h3>
+<p>In case you create a subprocess from an activity network with
+activities having symbols also in other diagrams, the symbols are removed from
+these diagrams as well. This applies also for other elements which are moved
+to the new process definition.</p>
+<h2 id="auto">Automatic Creation of a Subprocess</h2>
+<p>The subprocess is created automatically when a process interface is defined in one model and referenced
+in another model, through file connection, and its process definition is imported via drag-n-drop gesture.
+</p>
+<h3>Show Subprocess Diagram</h3>
+<p> The <strong>Show Subprocess Diagram</strong> option is available in two cases.
+<ul>
+	<li><a href="#local">Local Subprocess</a></li>
+	<li><a href="#refer">Referenced Subprocess</a></li>
+
+</ul>
+<h3 id="local">Local Subprocess</h3>
+<p>The <strong>Show Subprocess Diagram</strong> option is available at the subprocess level when you
+associate any process definition of the same model with that subprocess.
+To view this option, perform the following steps:
+</p>
+<ol>
+	<li>Assign any other local process definition with the subprocess
+	<p class="image"><img src="images/local-sub.png"
+    alt=""> <br>
+<strong>Figure:</strong> Subprocess - Assign Process Definition</p></li>
+	<li>Right-click the subprocess and select <strong>Show Subprocess Diagram</strong> option.
+	The subprocess diagram opens in the same model editor. In this case, you can edit and save the changes.
+	<p class="image"><img src="images/local-subprocess.png"
+    alt=""> <br>
+<strong>Figure:</strong> Local Subprocess - Show Subprocess Diagram</p></li>
+</ol>
+
+
+
+<h3 id="refer">Referenced Subprocess</h3>
+<p>The <strong>Show Subprocess Diagram</strong> option is available at the subprocess activity 
+of consumer model.
+To view this option, perform the following steps:</p>
+
+<ol>
+	<li>Ensure that the process interface is defined in the provider model</li>
+	<li>Ensure that file connection is created from the consumer model</li>
+	<li>Once the file connection is established, drag and drop the Process Definition that is
+	displayed under the File Connection node in the Outline tree of consumer model.
+	
+	<p class="image"><img src="images/sub-process.png"
+    alt=""> <br>
+<strong>Figure:</strong> Subprocess - Created via drag-n-drop</p>
+	</li>
+	<li>Right-click the subprocess and select <strong>Show Subprocess Diagram</strong> option
+	
+	<p class="image"><img src="images/show-sub-diag.png"
+    alt=""> <br>
+<strong>Figure:</strong> Show Subprocess Diagram</p>
+	</li>
+	
+	<li>Click <strong>OK</strong> in the <strong>Open Referenced Model</strong> dialog box. 
+	The subprocess 
+	diagram opens in the new model editor.</li>
+</ol>
+
+<h2 id="semantics">Data Copy/Mapping Semantics for Spawned Subprocesses</h2>
+<p>Spawned subprocesses inherit the data of their root process by copy using the usual semantic 
+for copy all data. Similarly, processes that are aborted and started from the root process instance 
+copy the data using the following data copy semantics.</p>
+
+
+	<table>
+	<tr>
+		<th>Data</th>
+		<th>Synchronous/Asynchronous Subprocess</th>
+		<th>Spawned Subprocess And Peer Process </th>
+	
+	</tr>
+	<tr>
+    	<td>Primitive Data</td>
+    	<td>Passed by value </td>
+		<td>Passed by value </td>
+	</tr>
+	<tr>
+    	<td>Serializable Data </td>
+    	<td>Passed by value </td>
+		<td>Passed by value </td>
+	</tr>
+	<tr>
+    	<td>Structured Data</td>
+    	<td>Passed by value </td>
+		<td>Passed by value </td>
+		
+	</tr>
+	<tr>
+    	<td>XML Document </td>
+    	<td>Passed by value</td>
+		<td>Passed by value</td>
+		
+	</tr>
+	<tr>
+    	<td>Hibernate Data </td>
+    	<td>Passed by reference</td>
+		<td>Passed by reference</td>
+		
+	</tr>
+	<tr>
+    	<td>Entity Bean</td>
+    	<td>Passed by reference</td>
+		<td>Passed by reference</td>
+		
+	</tr>
+	<tr>
+    	<td>Document </td>
+    	<td>Passed by reference</td>
+		<td>Passed by reference, except for the Extract Pages functionality. In the latter case new documents are created.</td>
+		
+	</tr>
+	<tr>
+		<td>Document List</td>
+		<td>Shallow copy means the list get copied and content passed by reference </td>
+		<td>Shallow copy means the list get copied and content passed by reference</td>	
+	</tr>
+	<tr>
+		<td>Folder </td>
+		<td>Passed by reference</td>
+		<td>Passed by reference</td>	
+	</tr>
+	<tr>
+		<td>Folder List</td>
+		<td>Shallow copy means the list get copied and content passed by reference</td>
+		<td>Shallow copy means the list get copied and content passed by reference</td>	
+	</tr>
+	<tr>
+		<td>Notes </td>
+		<td>Passed by value</td>
+		<td>Passed by value</td>	
+	</tr>
+	<tr>
+		<td>Process Attachment </td>
+		<td>Refer Document List</td>
+		<td>Refer Document List</td>	
+	</tr>
+	
+	
+</table>
+<h3 id="heuristics">Data Mapping Heuristics for Spawned Subprocesses and Peer Processes</h3>
+<p>Data mapping heuristics is only applied to document data and document list.
+Consider Po is the originating process instance while Ps is spawned one. The following
+data mapping heuristic apply for spawned subprocesses and peer processes.</p>
+
+<table>
+	<tr>
+		<th>Data</th>
+		<th>Mapping Heuristic</th>
+	
+	</tr>
+	
+	<tr>
+		<td>Document </td>
+		<td>All data values of Po are passed to Ps regardless of whether Ps uses this data. 
+		In addition, the following copy heuristics apply to the document data values Po has, 
+		but the Process Definition of  Ps does not use and the data of Ps that hasn't been initialized 
+		yet via the prior step (passing all data from Po to Ps): 
+			<ul>
+				<li>The same-type-rule - If Po uses a document data d1 with document type t1 and 
+				Po has exactly one document data with type t1 and if Ps has exactly one document 
+				data d2 with the same document type t1 then the document (including meta data) 
+				will be passed from d1 to d2.</li>
+				<li>The one-document-rule - If Po has exactly one document data d1 with type 
+				t1 and Ps uses exactly one document data d2 with type t1 (t1 and t2 might be the same types or not)}} 
+    then this document data (excluding meta data) will be passed from d1 to d2.</li>
+		<li>else  
+   the document data (including meta data) will be passed as process attachment(s) from Po to Ps 
+   (unless Ps does not support process attachments).</li>
+   </ul> 
+		</td>
+	</tr>
+	<tr>
+		<td>Document List </td>
+		<td>Same as Document</td>
+	</tr>
+	
+	
+</table>
+
+<p>Currently, Stardust Portal does not support viewing of Document List, Folder and Folder List.</p>
+
+<h3 id="spawnscope">Department Scoping for Spawn Subprocess</h3>
+<p>In case the data associated with root process contains department information, it gets copied to the 
+spawned process as it is. Thus, the department scope of a spawned process inherits the department scope
+of the root process.</p>
+
+<h2 id="behavior">Behavior of Subprocesses in Process Instance Hierarchy</h2>
+
+<table>
+	<tr>
+		<th></th>
+		<th>Is Subprocess Of Root Process Instance </th>
+		<th>Subprocess Instance Must Be Completed <br>To Complete Root Process Instance</th>
+		<th>Abort Of Root Process Instance Results<br> In Abort Of Subprocess Instance</th>
+		<th>Abort Of Subprocess Instance Results <br>In Abort Of Root Process Instance</th>
+		<th>Interrupted Subprocess: Recovery Of <br>Root Process Instance Recovers Subprocess</th>
+	
+	</tr>
+	<tr>
+		<td>Synchronous Subprocess </td>
+		<td>Supported</td>
+		<td>Supported</td>
+		<td>Supported (If it hasn't been terminated yet)</td>
+		<td>Supported (configurable - the user can decide whether to abort root process instance)</td>
+		<td>Supported</td>
+	</tr>
+	<tr>
+		<td>Asynchronous Subprocess </td>
+		<td>Not Supported</td>
+		<td>Not Supported</td>
+		<td>Not Supported</td>
+		<td>Not Supported</td>
+		<td>Not Supported (since asynchronous 'subprocesses' are not real subprocesses) </td>
+		
+	</tr>
+	<tr>
+		<td>Spawned Subprocess </td>
+		<td>Supported</td>
+		<td>Supported</td>
+		<td>Supported (If it hasn't been terminated yet)</td>
+		<td>Supported (configurable - the user can decide whether to abort root process instance </td>
+		<td>Supported</td>
+	</tr>
+	
+</table>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

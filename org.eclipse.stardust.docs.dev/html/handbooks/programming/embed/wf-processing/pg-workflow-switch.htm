@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Workflow Processing to Abort and Start Subprocess</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Workflow Processing to Abort and Join Processes",
+     "pg-workflow-spawn.htm","pg-workflow-join.htm",
+     "../../../handbooks.htm","Developer Handbook",
+     "../../pg-preface.htm","Programming Guide",
+     "../pg-embedded-preface.htm","Embedded Usage",
+     "wf-preface.html","Processing Workflow");
+ -->
+</script>
+<h1>Workflow Processing to Abort and Start Subprocess</h1>
+
+<p>This chapter describes the usage of Stardust API to abort and start 
+subprocesses:</p>
+
+<ul>
+    <li><a href="#switch">Aborting and Starting a Process</a></li>
+	<li><a href="#link">Querying for Linked Process Instances</a></li>
+</ul>
+
+<h2 id="switch">Aborting and Starting a Process</h2>
+<p>The 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+provides a method  <tt>spawnPeerProcessInstance</tt>, which allows to abort the
+originating process and start a peer process.
+The user should have the right to abort the originating process if the <tt>abortProcessInstance</tt> 
+parameter is set to <tt>true</tt>, otherwise an IllegalArgumentException occurs.
+Also, the peer process should be a startable process.</p>
+<pre>
+   public ProcessInstance spawnPeerProcessInstance(long processInstanceOid,
+         String spawnProcessID, boolean copyData, Map&lt;String, ? extends Serializable&gt; data,
+         boolean abortProcessInstance, String comment) throws IllegalOperationException,
+         ObjectNotFoundException, InvalidArgumentException;
+</pre>  
+<p>Parameters are the following:</p>
+<ul>
+    <li><tt>processInstanceOid</tt> - The oid of the process to spawn from.</li>
+    <li><tt>spawnProcessID</tt> - The id of the process definition to spawn as a new root process.</li>
+    <li><tt>copyData</tt> - Defines if data of the parent process definition should be copied to the spawned process.</li>
+    <li><tt>data</tt> - Contains data IDs as key set and corresponding data values to be set as values.</li>
+    <li><tt>abortProcessInstance</tt> - whether the originating process instance should be aborted. Currently has to be true.</li>
+    <li><tt>comment</tt> - Allows to specify a comment for the link that is created.</li>
+</ul>
+<p>The required permission to execute this method is <strong>spawnPeerProcessInstance</strong>.</p>
+<p>You can use a generalized implementation of this method in case you like to
+switch between versions of a process definition and perform relocation in
+the same step. Refer to the next chapter <a href="pg-embed-relocation.html">
+Relocating Activities</a> for details.</p>
+<h2 id="link">Querying for Linked Process Instances</h2>
+<p>Using the <tt>ProcessInstanceQuery</tt> class, you can find process instances to which a process instance is linked
+to via the given link type(s) and direction.</p>
+<pre>
+public class ProcessInstanceQuery extends Query
+{
+   ...
+
+   /**
+    * Creates a query for finding process instances the given process instance is linked to via the given link type(s) and direction.
+    *
+    * @param piOid the OID of the process instance the query should be executed for
+    * @param direction the direction of the links that should be taken into account when determining the linked process instances
+    * @param linkType the link types that should be taken into account when determining the linked process instances
+    * @return ...
+    */
+   public static ProcessInstanceQuery findLinked(long processInstanceOid, LinkDirection direction, String ... linkType);
+}
+</pre>
+<p>To specify the direction, use <tt>ProcessInstanceDetailsOptions</tt></p>
+<pre>
+public enum LinkDirection
+{
+  TO,
+  FROM,
+  TO_FROM;
+}
+</pre>
+<p>To view the linked processes and their details, you need to specify the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceDetailsPolicy.html">
+ProcessInstanceDetailsPolicy</a>
+and the subsequent enum class 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ProcessInstanceDetailsOptions.html">
+ProcessInstanceDetailsOptions</a>.</p>
+<pre>
+public enum ProcessInstanceDetailsOptions
+{
+   ...
+	
+   /**
+   * The process instance details will contain information about the linked process instances.
+   */
+  WITH_LINK_INFO
+}
+</pre>
+
+<p>Note that when using the API to abort and start a process, you may get a <tt>ConcurrencyException</tt>. 
+In that case, wait for sometime and retry the API call.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

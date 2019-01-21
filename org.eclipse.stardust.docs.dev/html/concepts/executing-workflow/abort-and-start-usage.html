@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Aborting and Starting Processes</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<div class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Aborting and Joining Processes",
+      "document-triage.html","abort-and-join.html",
+      "../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+</div>
+<div class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Aborting and Joining Processes",
+      "extract-pages.html","abort-and-join.html",
+      "../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+</div>
+<h1>Aborting and Starting Processes</h1>
+
+<p>The Abort and Start functionality aborts an existing process instance and
+starts another process. The data associated with aborted process is passed by copy to the 
+newly started process. The newly started process is not coupled at all with the originating (aborted) process
+regarding its life-cycle. The newly created process contains a 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/process-details/proc-linked.html">
+link</a> to the originating one and vice-versa. Target process definitions are all
+startable processes including a new instance of the originally running process definition
+itself.
+<!-- not implemented yet:
+Target process definitions can be 
+from other model versions.-->
+</p>
+<ul>
+    <li><a href="#usage">Common Usage Pattern</a></li>
+    <li><a href="#procedure">Aborting and Starting Procedure</a></li>
+    <li><a href="#portal">Aborting and Starting Processes in the Portal</a></li>
+</ul>
+<h2 id="usage">Common Usage Pattern</h2>
+<p>Consider a scenario of an organization that has implemented Stardust Portal workflows to manage several 
+of its mission critical business processes, most of which are document-centric.
+After using the system for several months, the company notices that approximately 4% 
+of the process instances are started in the incorrect process definition, mostly due 
+to user error. When this occurs, an operator downloads the documents referenced to 
+the process instance, aborts it, starts a process instance in the correct process 
+definition, and manually uploads the documents to the newly started process instance. 
+This is quite time-consuming, and there is no link to show any relationship 
+between the two process instances.</p>
+<p>With the abort and start option these steps are performed in one 
+functionality.</p>
+<h3>Usage Pattern coupled with Relocation</h3>
+<p>Assuming a company has a business process A, and active transactional jobs, 
+process instances, exist with that process:</p>
+<ul>
+    <li>Aiming for business efficiency or due to the need to accommodate changes
+     in business rules and regulations, the company updates the process model 
+     and deploys it as a new version.</li>
+    <li>By using the Abort and Start together with the relocation functionality, 
+    the company relocates all the remaining transactional jobs in the old 
+    version of process A to the newer one and continues operations based on
+    the new process definition.</li>
+</ul>
+<p>For details on relocation, refer to chapter
+<a href="concept-relocation.html">Relocation of Activities</a>.</p>
+<h3>Example Usage</h3>
+<p></p>
+<ul>
+	<li>Start a Process Instance</li>
+	<li>Upload a document to the Process Instance</li>
+	<li>Log into the Stardust Portal with a user who does not have declarative security permission
+	to abort this Process Instances</li>
+	<li>Activate an Activity in the newly created Process Instance</li>
+	<li>Click the arrow next to the Abort icon, and show that the <strong>Abort and Start</strong> option is disabled</li>
+	<li>Log out from the current user session</li>
+	<li>Log into Stardust Portal with a user who has declarative security to 
+	abort process instances and ability to start processes in another process definition.</li>
+	<li>Activate an Activity in the newly created process instance</li>
+	<li>Click the arrow next to the Abort icon, and then select <strong>Abort and Start</strong></li>
+	<li>Show that <strong>Start Process</strong> drop-down list contains processes that the logged in user has ability to manually start</li>
+	<li>Click <strong>OK</strong> to start a process</li>
+	<li>Click <strong>OK</strong> on the Confirmation message to launch the Process Details for 
+	the newly started process instance</li>
+	<li>Open the <strong>Documents</strong> panel and show that the document(s) from the source appear</li>
+	<li>Open the <strong>Process History</strong> panel and show that the source process instance is not shown</li>
+	<li>Open the <strong>Linked Processes</strong> panel and show the link to the source process instance</li>
+	<li>Click the link to launch Process History for the source process instance</li>
+	<li>Open the <strong>Process History</strong> panel and show that the target process instance is not shown</li>
+	<li>Open the <strong>Linked Processes</strong> panel and show the link to the target process instance</li>
+</ul>
+<p>For detail instructions, please refer to the tutorial 
+<a href="../../tutorial/derived-procs/abort-and-start-process.html">
+Aborting and Starting Processes</a>
+of the <a href="../../toc.html"> Developers Handbook</a>.</p>
+<h2 id="procedure">Aborting and Starting Procedure</h2>
+<p>Aborting and starting a process is performed in the following sequence:</p>
+<ol>
+    <li>A new process instance is started in the selected process definition.</li>
+    <li>Data from the source (in scope) process instance is copied to the newly
+    started process instance.</li>
+    <li>The in-scope process instance is aborted.</li>
+    <li>A link is created from the source process instance to the target
+    process instance.</li>
+    <li>A link is created from the target process instance to the source process
+    instance.</li>
+</ol>
+<h3>Linked Processes</h3>
+<p>The newly started process is linked to the originating one. The link is an 
+additional property of a process instance but does not influence the process 
+hierarchy. API is provided to retrieve the linking information from an existing 
+process instance. Refer to chapter
+<a href="../../handbooks/programming/embed/wf-processing/pg-workflow-switch.htm">
+Workflow Processing to Abort and Start Subprocess</a> in the
+<a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+for details.</p> 
+<p>The links are established from the root process instance of the source process 
+instance to the newly created process instance. They are established between 
+root processes, even if the source and target
+process instances are not root process instances.</p>
+<p>The links created for each process instance will have the following Link Types
+depending on if they are the source process instance or target process instance:</p>
+<ul>
+    <li>Link type for source process instance is: <tt>Switched To</tt></li>
+    <li>Link type for target process instance is: <tt>Switched From</tt></li>
+</ul>
+<p>In case the target process is another instance of the source process, the following
+Link Types are created:</p>
+<ul>
+    <li>Link type for source process instance is: <tt>Migrated To</tt></li>
+    <li>Link type for target process instance is: <tt>Migrated From</tt></li>
+</ul>
+<h2 id="portal">Aborting and Starting Processes in the Portal</h2>
+<p>The aborting action in the Stardust portal provides the option to abort
+and start a process. The process to be started can be selected along with 
+a linking comment. For details refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/switch-process-dialog.html">
+Aborting a Process and Starting a new Instance</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a>.</p>
+<p>Linked processes can be viewed in the Process Details view of the process
+instance. Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/process-details/proc-linked.html">
+Linked Processes</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a> for details.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

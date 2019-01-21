@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Pools and Lanes Usage</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using Annotations","mg-defdesk-14.htm","mg-defdesk-15.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Pools and Lanes Usage</h1>
+<p>The Stardust Process Workbench Modeler provides you with the
+option to structure and organize your model by using Pools and Lanes.</p>
+<ul>
+	<li><a href="#settings">Diagram Settings</a></li>
+	<li><a href="#pools">Pools</a></li>
+	<li><a href="#lanes">Lanes</a></li>
+</ul>
+<h2 id="settings">Diagram Settings</h2>
+<p>Before you start working with pools and lanes, you can choose
+specific settings for your process or model diagrams:</p>
+<ul>
+	<li><a href="#classic">Drawing Mode</a></li>
+	<li><a href="#orientation">Orientation</a></li>
+</ul>
+<h3 id="classic">Drawing Mode</h3>
+<p>To work with pools and lanes, you have to choose a special
+drawing mode, the <strong>BPMN</strong> mode. There is a default drawing
+mode setting for your workspace, which you can change in the preferences
+settings, as described in the section <a
+	href="mg-preferences.html#classicMode">Default Drawing Mode</a> of the
+<a href="mg-preferences.html">Setting Process Manager Preferences</a> chapter.</p>
+<p>To enable or disable the drawing mode for a process diagram:</p>
+<ul>
+	<li>Right-click in the process diagram.</li>
+	<li>Select <strong>Drawing Mode</strong>.</li>
+	<li>Choose one of the options <strong>Classic</strong> or <strong>BPMN</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-classic-mode.png"
+	alt="Drawing Mode Option" /> <br>
+<strong>Figure:</strong> Drawing Mode Option</p>
+<p>Note, that this is only possible before creating the first pool
+or lane in your diagram.</p>
+<h3 id="orientation">Orientation</h3>
+<p>Before creating the first lane in your diagram, you can choose
+the modeling direction:</p>
+<ul>
+	<li>Right-click directly on the diagram canvas or right-click the
+	diagram in the Outline view.</li>
+	<li>Select <strong>Orientation</strong>.</li>
+	<li>Choose one the modeling directions <strong>Vertical</strong>
+	or <strong>Horizontal</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-orientation.png"
+	alt="Modeling Direction" /> <br>
+<strong>Figure:</strong> Setting the Modeling Direction</p>
+<p>The default modeling direction is "vertical". You can change the
+default value in the Preferences dialog (see chapter <a
+	href="mg-preferences.html">Setting Process Manager Preferences</a>).</p>
+<p class="image"><img src="images/lanes-horizontal.png"
+	alt="Modeling Direction Horizontal" /> <br>
+<strong>Figure:</strong> Lanes displayed in horizontal Modeling
+Direction</p>
+<p class="image"><img src="images/lanes-vertical.png"
+	alt="Modeling Direction Vertical" /> <br>
+<strong>Figure:</strong> Lanes displayed in vertical Modeling Direction</p>
+<p>Note that changing the modeling orientation is only possible in
+empty pools. Once you added elements or lanes to the pool, the modeling
+orientation is fixed.</p>
+
+<h2 id="pools">Pools</h2>
+<p>A <strong>pool</strong> serves as a graphical container. It must
+at least include one <strong>lane</strong>. In the Stardust Process
+Workbench a process diagram automatically represents a default pool. The
+default pool is demarcating the diagram boundaries. It is not possible
+to create other pools in a process diagram or to associate Participants.</p>
+<p class="image"><img src="images/mg-pool-container.png" alt="Pool" />
+<br>
+<strong>Figure:</strong> Representation of the Default Pool in a Diagram</p>
+<h2 id="lanes">Lanes</h2>
+<p>Lanes are used to organize and categorize activities within a
+pool. Lanes can only be drawn in process diagrams, not in model
+diagrams.</p>
+<p>You can use lanes as assignment of participants or just to serve
+for the inner structuring of pools. They can be drawn directly in
+process diagrams.</p>
+<!-- <p class="image"><img src="images/mg-lanes.png" alt="Lanes" border="0"/>
+<br><strong>Figure:</strong> Representation of Lanes in a Diagram</p> -->
+<p>This section covers the following topics:</p>
+<ul>
+	<li><a href="#create">Creating a Lane</a></li>
+	<li><a href="#handling">Handling Lanes</a></li>
+	<li><a href="#assignment">Participant Assignment</a></li>
+</ul>
+<h3 id="create">Creating a Lane</h3>
+<p>A pool can have more than one lane and lanes can be nested within
+other lanes, as described in the section <a href="#nested">Nesting
+Lanes</a>.</p>
+<p>This section describes how to create lanes and what has to be
+considered when integrating them into the process definition. It covers
+the following topics:</p>
+<ul>
+	<li><a href="#createLane">Create a Lane in a Diagram</a></li>
+	<li><a href="#symbols">Symbols in Lanes</a></li>
+	<li><a href="#title">Lane Title Bar</a></li>
+	<li><a href="#nested">Nesting Lanes</a></li>
+	<li><a href="#delete">Deleting Lanes</a></li>
+</ul>
+<h4 id="createLane">Create a Lane in a Diagram</h4>
+<p>To create a lane:</p>
+<ul>
+	<li>Open the diagram of the process you want to place your lane
+	in.</li>
+	<li>In the diagram toolbar palette select <strong>Lane</strong>.</li>
+	<li>Click on the diagram canvas. The lane is created in rectangle
+	shape.</li>
+</ul>
+<p class="image"><img src="images/mg-draw-lane.png"
+	alt="Drawing a lane" /> <br>
+<strong>Figure:</strong> Drawing a Lane on the Process Diagram</p>
+<p>To use the functionality of lanes, there should exist at least
+two lanes. Thus a second lane will be created automatically in case the
+created lane is the first one in the parent lane or pool and elements
+exist already in the container.</p>
+<p class="image"><img src="images/mg-new-lanes.png"
+	alt="Newly Created Lanes" /> <br>
+<strong>Figure:</strong> Newly Created Lanes</p>
+<p>Double-click the lane to open the properties dialog and set the <strong>ID</strong>
+and <strong>Name</strong> of the created lane. In the <strong>Participant</strong>
+list choose the participant the lane will be assigned to.<p>Please refer to the section 
+<a href="#assignment">Participant Assignment</a> for detailed information.</p>
+<h4 id="symbols">Symbols in Lanes</h4>
+<p>All symbols of model elements, like activities, applications,
+data and participants, are tied to lanes. Their entire bounding box fit
+into lanes. Newly created symbols are created in a lane. Existing
+symbols can be dragged into lanes, as described in the section <a
+	href="#dragDrop">Drag and Drop of Symbols between Lanes</a>.</p>
+<p>If a symbol or symbol group is placed in a lane whose boundaries
+are smaller then the bounding box of the symbols, the lane is resized
+accordingly.</p>
+<h4 id="title">Lane Title Bar</h4>
+<p>A title bar is provided for lanes on the left of the lane for
+horizontal drawing direction and on the top for vertical drawing
+direction. The title bar contains buttons for collapse and expand as
+well as the name of the lane and the name and ID of the associated
+participant if such an association exists.</p>
+<p class="image"><img src="images/mg-lane-title.png"
+	alt="Lane Title Bar" /> <br>
+<strong>Figure:</strong> Lane Title Bar</p>
+<h4 id="nested">Nesting Lanes</h4>
+<p>Theoretically lanes can be nested unlimited. A lane is inserted
+into another lane by selecting the corresponding palette symbol and
+selecting a position within an existing lane.</p>
+<p class="image"><img src="images/mg-nested-lanes.png"
+	alt="Nested Lanes" /> <br>
+<strong>Figure:</strong> Nested Lanes</p>
+<p>If the parent pool or lane already contains symbols, a second
+lane is created in addition to the newly inserted lane and all existing
+symbols are put into this second lane. This second lane is not bound to
+a participant, it serves as a graphical help. The second lane is
+positioned left to the newly inserted lane when the drop position is in
+the right half of the lane and vice versa.</p>
+<p>For example:</p>
+<p class="image"><img src="images/mg-nested-lanes-symbols-pos-1.png"
+	alt="Right Drop Position" /> <br>
+<strong>Figure:</strong> Right Drop Position</p>
+<p class="image"><img src="images/mg-nested-lanes-symbols-pos-2.png"
+	alt="Positioning of Lane with Symbols after Right Drop" /> <br>
+<strong>Figure:</strong> Positioning of Lane with Symbols after Right
+Drop</p>
+<h4 id="delete">Deleting Lanes</h4>
+<p>Note that when deleting a lane, all symbols residing in this lane
+will be removed from the diagram, but the according elements still exist
+in the model or process definition.</p>
+<h3 id="handling">Handling Lanes</h3>
+<p>This section covers the following topics:</p>
+<ul>
+	<li><a href="#resizing">Resizing Lanes</a></li>
+	<li><a href="#shrink">Shrink to Fit</a></li>
+	<li><a href="#dragDrop">Drag and Drop of Symbols between Lanes</a></li>
+	<li><a href="#dragLanes">Drag and Drop of Lanes</a></li>
+	<li><a href="#collapse">Collapsing and Expanding</a></li>
+</ul>
+<h4 id="resizing">Resizing Lanes</h4>
+<p>Newly created lanes have a default width and height depending on
+the drawing directions. The containing lanes or pools are resized
+accordingly. Stretching or shrinking lanes in drawing direction
+stretches or shrinks the entire pool or lane containment hierarchy. A
+lane cannot be smaller then the boundary box of all contained symbols.</p>
+<p>Handles to resize lanes are displayed for a selected lane:</p>
+<p class="image"><img src="images/mg-resize-lane.png"
+	alt="Resizing a Lane" /> <br>
+<strong>Figure:</strong> Resizing a Lane</p>
+<h4 id="shrink">Shrink to Fit</h4>
+<p>To obtain a better overview you can shrink a lane or the default
+pool to the smallest possible size according to the symbols and sub-lanes
+it contains. Only the lanes and sub-lanes will be shrunk, which contain
+at least one model element.</p>
+<p class="image"><img src="images/lanes-shrink-to-fit.png"
+	alt="Choose the Shrink to Fit Option." /> <br>
+<strong>Figure:</strong> Choose the Shrink to Fit Option.</p>
+<p class="image"><img src="images/lanes-shrink-to-fit-result.png"
+	alt="Lanes after Shrinking." /> <br>
+<strong>Figure:</strong> Lanes after Shrinking.</p>
+<h4 id="dragDrop">Drag and Drop of Symbols between Lanes</h4>
+<p>Symbols - single symbols or groups - can be dragged between
+arbitrary lanes in the diagram and this way associated with the new
+lane. If a group of selected symbols is dragged, they all will be
+positioned in the target lane. The boundary of the target lane adapts to
+the size of all containing lanes.</p>
+<p>Moving an interactive activity into a lane will associate the
+lane performer, if existent.</p>
+<h4 id="dragLanes">Drag and Drop of Lanes</h4>
+<p>Lanes can be dragged in their surrounding lane or pool or even
+across the boundaries of those similar to the mechanisms of lane
+insertion. This way a lane may also change its level in a lane
+hierarchy.</p>
+<p>Dragging lanes in a containing lane or pool can be used to
+reorder lanes. When a lane is dragged and dropped, all symbols will be
+moved with the lane. Links across the boundaries of the lane will be
+rerouted. The positioning of the existing symbols in the parent lane,
+where it will be dropped, follows the same procedure as for nesting
+lanes, as described in the section <a href="#nested">Nesting Lanes</a>.</p>
+<h4 id="collapse">Collapsing and Expanding</h4>
+<p>Lanes can be collapsed and expanded via a corresponding button on
+the right side of the title bar. A collapsed lane does not display
+contained symbols. All links from these symbols to symbols outside of
+the lane are ending at appropriate positions on the lane border.</p>
+<p>When a lane is collapsed, the containing lane or pool size is adapted
+according to the containment principle. Expanding a collapsed lane
+restores the size of the lane on collapse and the position of the
+symbols in the lane.</p>
+<p class="image"><img src="images/mg-collapse-lane.png"
+	alt="Select Collapsing Button" /> <br>
+<strong>Figure:</strong> Select Collapsing Button</p>
+<p class="image"><img src="images/mg-collapse-lane-2.png"
+	alt="A Lane after Collapsing" /> <br>
+<strong>Figure:</strong> A Lane after Collapsing</p>
+<!-- TODO: future feature "shrink to fit" -->
+
+<h3 id="assignment">Participant Assignment</h3>
+<p>Lanes may be associated with participants. 
+Activities automatically get the participant assignment of the
+lane they are residing in.</p>
+<p>When a lane is associated with a participant, this is indicated
+in the title box of the lane by a different color. The title bar of a
+lane with an associated participant is colored dark grey, whereas the
+title bar of a lane without associated participants has a light grey:</p>
+<p class="image"><img src="images/mg-lane-participant-title.png"
+	alt="Lanes with and without participant assignment" /> <br>
+<strong>Figure:</strong> Lanes with and without participant assignment</p>
+<p>You can set or change
+the default participant of a lane <a href="#explicitly">explicitly</a> or in the 
+<a href="#propDialog">properties dialog</a>.</p>
+<h4 id="explicitly">Setting the Participant explicitly</h4>
+<p>Right-click the lane and
+select <strong>Set Default Participant</strong>. In the <strong>Default
+Lane Participant</strong> dialog choose the participant to assign the lane to.
+Only those participants compliant with the participant and lane
+hierarchy are listed for this association.</p>
+<p class="image"><img src="images/mg-assign-part.png"
+	alt="Choosing the participant assigned to the lane" /> <br>
+<strong>Figure:</strong> Choosing the Participant to assign the Lane to.</p>
+<p>Note that it is not possible to assign a participant to a lane, when the child
+lane already has a participant assigned. In this case the option 
+<strong>Set Default Participant</strong> is not provided for the parent lane.</p>
+<h4 id="propDialog">Setting the Participant in the Properties Dialog</h4>
+<p>Double-click the lane to open its properties dialog. In the Participant list choose the participant
+the lane will be assigned to.</p>
+<p class="image"><img src="images/mg-lane-props.png"
+	alt="Lane Properties Dialog" /> <br>
+<strong>Figure:</strong> Setting the Properties of the Lane.</p>
+<p>To remove the assignment of a participant from a lane, click the <strong>None</strong> button.</p>
+<p class="image"><img src="images/mg-lane-props-none.png"
+	alt="Remove an assigned Participant" /> <br>
+<strong>Figure:</strong> Remove the Assignment of a Participant.</p>
+<p>Note that it is not possible to assign a participant to a lane, when the child
+lane already has a participant assigned. In this case the proposed participants list will be 
+empty and the following warning will appear in the properties dialog:</p>
+<p class="image"><img src="images/mg-lanes-assignment-warning.png"
+	alt="Participant Assignment Warning" /> <br>
+<strong>Figure:</strong> Participant Assignment Warning</p>
+<h4 id="partBeh">Behavior of Participant Assignment</h4>
+<p>A participant can also be assigned to an activity by selecting
+the <strong>Connect</strong> option in the diagrams toolbar. To avoid
+conflicts between the assignment via lane and the manual assignment, the
+assignment behavior while positioning an activity in a lane is the
+following:</p>
+<ul>
+	<li>If the activity has no participant, it gets the performer of
+	the lane.</li>
+	<li>If the activity has a participant other than the lane, the old
+	assignment will be removed and replaced by the one of the lane.</li>
+	<li>If the activity has an assignment from a lane and is moved to
+	another lane with a different performer, a dialog opens to ask if a
+	replacement is desired.
+	<ul>
+		<li>Click <strong>Yes</strong> to replace the assigned performer
+		with the one of the new lane.</li>
+		<li>Click <strong>No</strong> to keep the old assignment.
+        <p class="image"><img src="images/mg-replace-dialog.png" alt="" /></p></li>
+	</ul>
+	</li>
+    <li>If an activity is converted to a manual activity, the performer is set to
+    the performer of the lane, where it resides.</li>
+</ul>
+
+<p>A warning in the <strong>Problems View</strong> indicates the case 
+that an activity resides in a lane with
+a performer other than the one of the activity, e.g.:</p>
+<p class="image"><img src="images/lane-participant-warning.png" alt="" />
+<p><strong><span class="tip">! </span>Tip:</strong>
+To directly edit the property dialog of the according activity,
+double-click on the warning entry.</p>
+<h4>Association Restrictions during Lane Movements</h4>
+<p>Lanes associated to an organization cannot be nested inside
+lanes or moved to lanes associated to a subordinate organization or
+role. For example:</p>
+<p class="image"><img src="images/lane-participant-restriction.png"
+	alt="Restriction of Moving Lanes" /> <br>
+<strong>Figure:</strong> Restriction of Moving Lanes to Lanes with
+Subordinate Participants</p>
+<p>The options for the participant selection in the property page of
+the inserted lane are restricted to subordinate organizations or roles.</p>
+<p class="image"><img
+	src="images/lane-participant-restriction-2.png"
+	alt="Restriction of Moving Lanes" /> <br>
+<strong>Figure:</strong> Property Page with Participant Options after
+Moving the Lane</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

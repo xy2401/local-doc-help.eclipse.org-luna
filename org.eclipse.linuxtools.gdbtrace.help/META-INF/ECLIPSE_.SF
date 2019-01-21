@@ -1,0 +1,70 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: ZKV/UroQWdbp1tOvCFBUlOGBM8o=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: yDisvNHUyom3rNfjU2mpdGvmbKU=
+
+Name: doc/Visualizing-Tracepoint-Data.html
+SHA1-Digest: Xj1jaHO/xNQEFfLhFBxHB54Al9E=
+
+Name: doc/GDB-Trace-Perspective.html
+SHA1-Digest: XzOgRBHvklgJ30lL3Mt3cl8rRuM=
+
+Name: doc/User-Guide.html
+SHA1-Digest: v6g2vJ9ZHZTDx2GBKo/5PB2PzQI=
+
+Name: doc/images/next.gif
+SHA1-Digest: 1SnKGQL6SjY0yyCLH1m0p3Xz7Lc=
+
+Name: doc/images/prev.gif
+SHA1-Digest: wBqOdbbC2J+FoHXQZJqbR4tWUUg=
+
+Name: doc/Collecting-Tracepoint-Data.html
+SHA1-Digest: /uCiqjelsCM+aty7ci+oQJyRBnE=
+
+Name: about.html
+SHA1-Digest: p+J1lshfujMqAzV5/VljRFB28RA=
+
+Name: plugin.properties
+SHA1-Digest: LQ2aTbWBQs9n5uX1UPm8CBB2Er4=
+
+Name: doc/images/gdb_icon16.png
+SHA1-Digest: n21B6pvGCm6OOTPjZwkPuccyVRU=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gdbtrace/org.eclipse.linux
+ tools.gdbtrace.help/pom.xml
+SHA1-Digest: pCmKlH40HtHbeR8oP5mLxaAdiHM=
+
+Name: doc/Importing-Tracepoint-Data.html
+SHA1-Digest: CLIBY0rzpBdJtlDX8aAxWdP7CDE=
+
+Name: doc/images/home.gif
+SHA1-Digest: IB8LlFUEnrFsLROZTI1Pj1CD8lo=
+
+Name: doc/User-Guide-toc.xml
+SHA1-Digest: H0qcV/kV3mY3wONHNyQ2lV/uwmA=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gdbtrace/org.eclipse.linux
+ tools.gdbtrace.help/pom.properties
+SHA1-Digest: dR9E+ceMB+BAr5sv2tv8hx5UZiM=
+
+Name: doc/images/GDBTracePerspective.png
+SHA1-Digest: JTbiWjzwbmVUUYqoiOW9n5RAJ2s=
+
+Name: doc/User-Guide.mediawiki
+SHA1-Digest: h7Km+ES0z15GNEDduFAhS516xZ4=
+
+Name: doc/Getting-Started.html
+SHA1-Digest: VPIMIwVc+35HVyVeAzyzWZuTkx0=
+
+Name: doc/References.html
+SHA1-Digest: lCUtxFtJ4SWSyhAIRGOfbjZa3Bo=
+
+Name: plugin.xml
+SHA1-Digest: sjJOk3rTl+3mL0gMKLJDlM3TIZg=
+
+Name: book.css
+SHA1-Digest: USLLtXn/HXw82HFD9qdBVtYQSnk=
+
+Name: doc/Updating-This-Document.html
+SHA1-Digest: U/Sxy+64NgMbbm52IIk/K3rluhc=
+

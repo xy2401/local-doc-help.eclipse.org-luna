@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Delegating Worklist Items</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Relocation of Activities",
+		"worklist-concept.html","concept-relocation.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Delegating Worklist Items</h1>
+<p>In some cases it might be necessary to delegate an activity to
+another user, user group or department. Delegation can be performed 
+on activities, which are in the
+worklist of the current user and the user has the authorization to delegate for. 
+Please refer to the chapter <a href="worklist-concept.html">Worklists</a> for 
+details on the worklist concept.</p>
+<p>Activities can be delegated from the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html"
+> Stardust Portal</a> views. A dialog is provided, where you can choose
+the role, organization, user group or department to delegate the activity to. Please
+refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/delegation-view.html">
+Delegating Activities</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> guide for detailed information on this dialog.</p>
+<!--<p>Once an activity is activated it will be suspended before delegation depending
+on the permission the performing user has.</p>-->
+<h2>Delegating to Conditional Performers of Kind User Group</h2>
+<p>In case an activity instance is in the worklist of a conditional 
+performer of kind <strong>User Group</strong>, delegation is restricted to users
+having a grant on the user group that the conditional performer is resolved to.</p>
+<p>For details on conditional performers refer to section
+<a href="../workflow-basics/mg-basics-9.htm#condPerf">Conditional Performers</a>
+of chapter
+<a href="../workflow-basics/mg-basics-9.htm">Participants and Users</a>.</p>
+
+<h2>Delegating to Different Departments</h2>
+<p>A special case is the delegation to different departments. This
+ is possible in case the current model participant of the activity instance 
+ in question is a scoped partition and the logged-in user has the grant 
+ "Delegate To Department" on that activity instance, which 
+is described in section <a href="#deleDep">Authorization for Delegating to Other Departments</a>.</p>
+
+<h2>Delegation Authorization</h2>
+<p>If a user is authorized to
+delegate the activity, depends on which role, organization, user group
+or department the user is part of and assigned to as well as the according
+security declaration.</p>
+<p>The authorization settings for activities are
+performed during the modeling process in the property page of the
+activity. For detailed information on how to set security for
+activities, please refer to the section <a
+	href="../../handbooks/modelling/property-page-authorization.html#activities"
+> Authorization for Activities</a> of the chapter <a
+	href="../../handbooks/modelling/property-page-authorization.html"
+>Authorization</a> in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling
+Guide</a>.</p>
+
+<h3 id="deleDep">Authorization for Delegating to Other Departments</h3>
+<!-- TODO clarify
+<p>In the current model participant of the activity instance in question is a scoped partition
+and the logged-in user has the grant "Delegate to other departments" on that activity instance,
+an additional category "Departments" is offered for selection. </p>
+<p class="image"><img src="images/"
+	alt=""> <br>
+<strong>Figure:</strong> </p>
+<p>If "Departments" is selected as a target category, a list of all possible target departments 
+for the current activity is displayed for selection and filtering. Selecting a department from 
+the list and confirming the change causes the activity instance to be delegated to the 
+selected department.</p>-->
+<!-- 
+still to be clarified
+<h3 id="delegate">Delegation between Target Departments</h3>
+<p>Delegation to different departments is possible in the single
+activity delegation dialog, in case the current model participant of the
+activity instance in question is a scoped partition and the logged-in
+user has the grant "Delegate To Department" on that activity instance.
+Please refer to the chapter <a
+	href="../../handbooks/modelling/property-page-authorization.html"
+>Authorization</a> of the <a href="../../handbooks/modelling/mg-preface.htm">Modeling
+Guide</a> for detailed information on declarative security and the grant
+"Delegate To Department".</p>
+<p>Delegation to different departments is possible in the single
+activity delegation, if the current model participant of the activity
+instance in question is a scoped partition and the logged-in user has
+the grant "Delegate To Department" on that activity instance.</p>
+ <p>In this case, an additional category "Departments" is offered for
+selection in the delegation dialog. Naming of this select box will be
+adapted to "Delegation Target" in order to include this case. If
+"Departments" is selected as a target category, a list of all possible
+target departments for the current activity will be displayed for
+selection/filtering. Selecting a department from the list and confirming
+the change will cause the activity instance to be delegated to the
+selected department.-->
+<p>If delegation to other departments is allowed, depends on the following security
+settings of the according activity:</p>
+<ul>
+	<li><strong>Delegation to other users</strong>:
+	<p>In case the performing user has the security grant "Delegation to other users",
+	he is allowed to delegate to participants being part of or sub-organizations of the 
+	users organization,
+	whenever the target combination of participant and department exists.</p></li>
+	<li><strong>Delegation to other departments</strong>:<p>In case the performing 
+	user has the security grant "Delegation to other departments",
+	he is allowed to delegate to participants being part of or sub-organizations of 
+	the users organization,
+	if the delegation target department is for the model participant.</p></li>
+</ul>
+<p>Please refer to the chapter 
+<a href="../../handbooks/modelling/property-page-authorization.html">
+Authorization</a> of the 
+<a href="../../handbooks/modelling/mg-preface.htm">
+Modeling Guide</a>
+for detailed information on the according permissions.</p>
+<h3>Delegation to other users versus Delegation to other departments</h3>
+<p>To determine if an activity delegation succeeds with the 
+"Delegation to other users" permission, or requires the 
+"Delegation to other departments" permission, depends on the 
+following cases. In case the input for delegation is:</p>
+<ol>
+	<li>the source participant, represented by a source participant and a source department</li>
+	<li>the target participant, represented by a target participant and a target department</li>
+	<li>the default performer of the activity, represented by a participant</li>
+</ol>
+<p>then the delegation permissions needed are:</p>
+<ul>
+	<li>Delegation is only allowed if both, the source and target participant 
+	are children of the default participant.</li>
+	<li>In case the source and target department share the same parent department
+	 at default participant level, the delegation only requires the "Delegation to other users" permission.</li>
+	<li>If the source and target department do not share the same parent department 
+	at default participant level, the delegation requires the "Delegation to other departments" permission.</li>
+</ul>
+<script language="JavaScript"
+	type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

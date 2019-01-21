@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Defining Roles and Organizations</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("On Using Bookmarks",
+		"tut-main-7.htm","tut-main-9.htm",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1>Defining Roles and Organizations</h1>
+
+<p>Participants are in most cases human resources which perform the work represented
+by an activity instance. Being assigned one or more activities, a participant can perform
+<span class="Stil1">work items</span> representing these activities by working off his
+worklist. A convenient way of modeling the resource assignments is to assign a role or an
+organization to each activity and let individual humans fill this role or belong to this
+organization. Also, both individual humans and roles can be assigned to one or more
+organizations.</p>
+
+<p>Among participants, individual humans have a special status. You cannot change your
+business model each time an employee leaves your company or a new one enters. So humans
+must be created later in the runtime environment. Consequently, in your modeling
+environment you only use roles and organizations. Individual human performers are created
+and assigned to these roles and organizations in the <strong>Administration Perspective</strong>.</p>
+
+<p>We will create a role of a call center agent to model the performer for the
+activity of case creation. Additionally, we will create a role of an engineer to model the
+performer for the activity <strong>Analyze To Solve</strong>. Then, we will create and
+associate an engineering organization with the remaining Deliver Patch activity we have
+modeled.</p>
+
+<h2 id="createRole">Creating a Role</h2>
+<p>Roles capture the workflow relevant properties for a performer of an activity or a
+collection of activities and provide a mechanism for associating participants with these
+activities. Each role must be both assigned to an activity and filled with human resources
+(users) to finally take part in the process. To create a role:</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Participants &gt; Role</strong>.</li>
+</ol>
+<p class="image"><img src="images/tut-new-role.png" alt="Creating a New Role"></p>
+<ol start="2">
+    <li>Click on the diagram canvas and place the role close to the first activity.</li>
+    <li>Open the properties dialog of the newly created role and enter <strong>Callcenter
+    Agent</strong> in the name field.</li>
+    <li>Close the dialog by selecting <strong>OK</strong>.</li>
+</ol>
+<p class="image"><img src="images/tut-role-properties.png" alt="Role Properties">
+<br>
+<strong>Figure:</strong> Setting the properties of the new Role.</p>
+<p>Repeat this step to create the <strong>Engineer</strong> Role. Place the second
+created role near the <strong>Analyze To Solve activity</strong>.</p>
+<h2 id="assignRole">Assigning a Role to an Activity</h2>
+<p>A role establishes a connection between an activity and its performer, so it has to
+be connected to an activity on one side. On the other side it has to be resolved as
+explicit human-role assignment in the user managing facilities of the 
+<strong>Stardust Workflow Execution Perspective</strong>.</p>
+<p>To assign the role of the <strong>Callcenter Agent</strong> to the <strong>Create
+Case</strong>:</p>
+<ol>
+    <li>In the diagrams toolbar palette, select <strong>Connect</strong></li>
+    <li>Click the symbol representing the role.</li>
+    <li>Click the symbol representing the activity <strong>Enter Data</strong>.</li>
+</ol>
+<p class="image"><img src="images/tut-main-21.png" alt="Assign role to activity">
+<br>
+<strong>Figure:</strong> Assigning a Role to an Activity</p>
+
+<p>We will later assign a user to the role in the 
+<strong>Stardust Administration Perspective</strong>.</p>
+<p>Also assign the role <strong>Engineer</strong> to the activity <strong>Analyze
+To Solve</strong>.</p>
+<h3 id="createOrg">Creating an Organization</h3>
+<p>Since the definitions of organizational units in an enterprise, like hierarchies of
+participants, refer to the entire model, we can use a model-bound diagram to define such
+structures. Any diagram at the&nbsp;model level could be used, and some modelers create a
+specifically named diagram for their organization (by choosing New Diagram on the context
+menu of the Model). However, another popular convention with Stardust is to simply use the
+default model diagram&nbsp;as&nbsp;shown below. &nbsp;</p>
+<p>In the <a href="../../handbooks/modelling/model-views/views-outline.html">Outline
+    view</a>&nbsp;click the Default Diagram of the <strong>ACME Workflow Model</strong>.
+</p>
+<p class="image"><img alt="model dflt diagram" src="images/tut-default-diagrams.png">
+<br>
+<strong>Figure:</strong> Choosing Model Default Diagram</p>
+
+<p>A blank diagram is opened in the diagram display area. Create a new organization in
+this diagram.</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Participants &gt;
+    Organizations</strong>.</li>
+    <li>Place the organization symbol to the diagram.</li>
+</ol>
+<p class="image"><img src="images/tut-create-organization.png" alt="Creating an Organization">
+<br>
+<strong>Figure:</strong> Creating an Organization</p>
+<p>Since we want the organization to represent the general organization of <strong>ACME
+Headquarters</strong>, the name and ID of the representation has to be changed. Change the
+properties of the organization you have just created:</p>
+<ol>
+    <li>Double-click the newly created organization symbol in the diagram to open the
+    properties dialog.</li>
+    <li>Change the name of the organization to <strong>ACME Headquarters</strong>
+    with the <strong>ID</strong> <tt>ACMEHeadquarters</tt>.</li>
+</ol>
+
+<h2 id="assignOrg">Assigning Members to an Organization</h2>
+
+<p>Your process model now contains the role <strong>Callcenter Agent</strong> and <strong>Engineer</strong>
+as well as the organization <strong>ACME Headquarters</strong>. There are no relationships
+between any of these model components. We want to assign both roles to the headquarters
+organization.</p>
+<ol>
+    <li>In the <a href="../../handbooks/modelling/model-views/views-outline.html">Outline
+    view</a> select the participant <strong>Callcenter Agent</strong> and drag it into the
+    diagram.</li>
+    <li>In the diagram toolbar palette select <strong>Connect</strong>.</li>
+    <li>Select the <strong>Callcenter Agent</strong>.</li>
+    <li>Subsequently, click the <strong>ACME Headquarters</strong> organization
+    symbol.</li>
+</ol>
+<p class="image"><img src="images/tut-connect-participants-2.png"
+    alt="Connect Participants"> <br>
+<strong>Figure:</strong> Assigning a Member to an Organization</p>
+<p>A list opens where you have to choose between <strong>Works For</strong> and <strong>Manager
+Of</strong>. Select <strong>Manager Of</strong> to make the Callcenter Agent role the team leader of
+the organization ACME Headquarters. Please refer to the section <a
+    href="../../handbooks/modelling/mg-defdesk-10.htm#teamLeader">The Team Leader Role</a> of the
+chapter <a href="../../handbooks/modelling/mg-defdesk-10.htm">Modeling the Organizational Structure</a>
+for detailed information on the team leader role.</p>
+<p>Now a connection between the organization and the role appears in the diagram as a
+visualization of the relationship between the two elements. Assign also the <strong>Engineer</strong>
+to the <strong>ACME Headquarters</strong>.</p>
+<p class="image"><img src="images/role-relationship.png"
+    alt="Organizational Structure"> <br>
+<strong>Figure:</strong> Organizational Structure</p>
+<p>Now switch to the Support Case Management Process default diagram and assign the
+remaining activity Deliver Patch to the newly created organization:</p>
+<ol>
+    <li>Double-click the <strong>Default</strong> diagram element pertaining to the
+    process definition for the <strong>Support Case Management Process</strong>.</li>
+    <li>Then drag the <strong>ACME Headquarters</strong> symbol from the <a
+        href="../../handbooks/modelling/model-views/views-outline.html">Outline view</a> to the
+    diagram and make an assignment to the activity <strong>Deliver Patch</strong>. The
+    relationships between the <strong>ACME Headquarters</strong>, the organization and the
+    roles used in the model diagram will be automatically drawn in the diagram.</li>
+</ol>
+<p>Your diagram of the ACME support case management process should look
+like the following now:</p>
+<p class="image"><img src="images/model-overview_orgSize.png"
+    alt="Support Case Management Process modeled in Stardust "> <br>
+<strong>Figure:</strong> The Support Case Management Process modeled in Stardust </p>
+<p><strong><span class="tip">! </span>Tip:</strong> Stardust diagrams adhere to the
+BPMN (Business Process Modeling Notation) standard. &nbsp;The standard specifies how
+various model elements should appear on a diagram. In this tutorial, all the elements are
+shown on the diagram.&nbsp;Stardust also permits the designer to construct a process
+definition with fewer modeling elements visible. For example, you can define participant
+roles, data, triggers and applications in the Outline view and use them in the
+properties&nbsp;dialogs of activities and transitions without showing them on the diagram.
+This approach does not document the process as thoroughly on the diagram, &nbsp;but may be
+desirable for some solutions.&nbsp;Stardust diagrams with fewer model elements visible
+are&nbsp;still BPMN compliant, but convey less process detail in the diagram itself. In
+all cases, every model element must be defined in the Outline view or it does not exist.
+&nbsp;Activities, transitions and split-join gateways, at a minimum, are expected to
+appear on the visible diagram.<br>
+</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

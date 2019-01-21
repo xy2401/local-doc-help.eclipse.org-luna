@@ -1,0 +1,209 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.cdt
+Bundle-SymbolicName: org.eclipse.cdt.autotools.docs;singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/cdt/or
+ g.eclipse.cdt.git;path="build/org.eclipse.cdt.autotools.docs";commitI
+ d=4fb1274ec5914c38e47bd3649507726fda26150b
+Require-Bundle: org.eclipse.help,org.eclipse.ui.cheatsheets,org.apache
+ .ant;bundle-version="1.7.1"
+Bundle-Version: 2.0.2.201502131403
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %provider
+Bundle-Name: %bundleName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsBuildConsole.png
+SHA1-Digest: oc03T/axsBF0VDqrEGsZShodPlE=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConvertToCProject.png
+SHA1-Digest: J0prwZYiPbNwms1PZywh+l/OiqQ=
+
+Name: tools.xml
+SHA1-Digest: Xrx7AOqCM+/SMuUy1vzfoOKIgEM=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConfigureConsole.png
+SHA1-Digest: kyWB0XAtTeAUU2NACRObCWmUwRQ=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsBuildMakeTarget.png
+SHA1-Digest: QDDyqTnNDoHIKNhj0CWlhQZdACk=
+
+Name: CDT/Autotools/User_Guide/Make-Targets.html
+SHA1-Digest: xTPFCdthozSUXsRPedaunAfBxb8=
+
+Name: doc/notices.html
+SHA1-Digest: QgTPU/F+iptbgX69YCbgCaZxU5s=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAutomake.png
+SHA1-Digest: FAPwpdl5XdR54RasS7v8OxKlO+A=
+
+Name: index/_0.fdt
+SHA1-Digest: t5WQBIYH66eudTFYmNHHNCAt4e4=
+
+Name: CDT/Autotools/User_Guide/User-Guide.html
+SHA1-Digest: 4nMUtVznjfMrhPEoTI56FE1jcnw=
+
+Name: index/indexed_contributions
+SHA1-Digest: Z+Nvz8hVpwoPh8TwLiDhmh0z4Ts=
+
+Name: index/_0.fdx
+SHA1-Digest: 9zFBA4A6G4t954zCHpkL3B1pVpo=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConvertWizard.png
+SHA1-Digest: sEr/O7EUmRppBTKjnUx51/Nv0Fc=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConvertProject.png
+SHA1-Digest: ZO+vtieGum1vLhhjwkMe4GZfB9A=
+
+Name: index/segments.gen
+SHA1-Digest: 0qa/uioKpCmO6iscE6rldo0UW0U=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsNewCProjectWizard.png
+SHA1-Digest: TWBe78l1cvzlNh2M+m/+MMawfGE=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAutomakeEditor.png
+SHA1-Digest: OUt5ht49hm5Q6zui5ONk8QbJTEA=
+
+Name: cheatsheets/autotools.xml
+SHA1-Digest: /NFGNKp4iA9z3KSpQ8GZArhP5jE=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsNewConfiguration.png
+SHA1-Digest: GG4mvZSDtbfgbzYf4tw1dP/DHl8=
+
+Name: index/segments_1
+SHA1-Digest: jKGx8WbsUXKk9AeQQVHHF9eqsWA=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsCheckOutAs.png
+SHA1-Digest: kOOSFF3SPP403bBBr+Zz1907H/0=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsBuilders.png
+SHA1-Digest: CbTuMv+U0sQLUGAObGL074Z5m9E=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsCreateMakeTarget.png
+SHA1-Digest: WuB3tObmw1yjB3ofsnR/yhkAvlU=
+
+Name: index/_0.tii
+SHA1-Digest: 6GCgQIRFy5Uqd/YKZSokNpXl3r8=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAutoheader.png
+SHA1-Digest: lOsoWgl3lmeVVRDtZLB15/aXZ7I=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConsole.png
+SHA1-Digest: 4QC1sMjbJKNiPc6FwOBF/jvT5lI=
+
+Name: META-INF/maven/org.eclipse.cdt/org.eclipse.cdt.autotools.docs/po
+ m.xml
+SHA1-Digest: cmk1NZAdxom0oh++B+1uD1xgXpQ=
+
+Name: index/_0.tis
+SHA1-Digest: jKq5/O0GDgFdTbjSalT8JTYQ5MM=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: index/_0.fnm
+SHA1-Digest: IdhqGshqwGn25r92yDKmqJY3n8U=
+
+Name: index/_0.frq
+SHA1-Digest: s+gH0CJMWji8PlzQfhQkwR3ZQL0=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsConfigureSettings.png
+SHA1-Digest: S3NQtyb8QhaPal/JBx5EU6N5Srs=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsEditorsTab.png
+SHA1-Digest: DCtxVXel82aGfrI5cdQjePEwemA=
+
+Name: index/_0.nrm
+SHA1-Digest: QXpEJTPjaQCdqIkimnzy1hi+rDE=
+
+Name: CDT/Autotools/User_Guide/Configuration.html
+SHA1-Digest: Vw9qPvbxZ7bz0E0skI98071TSkM=
+
+Name: plugin.properties
+SHA1-Digest: Nj4aIgSJfULN3CYEQ1hML+760iE=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsLibtoolize.png
+SHA1-Digest: UMWSsVSE9Bk9PbHmu1HtMw3ofzo=
+
+Name: CDT/Autotools/User_Guide/Special-Editors.html
+SHA1-Digest: pP2id0fVjKX0HSRmLkN29nzaEV8=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsToolSettings.png
+SHA1-Digest: E8oeK2Y+LlBDPGbMFCn+2URedhI=
+
+Name: index/indexed_dependencies
+SHA1-Digest: XEw6K+sJLHcRvaMoIBlHDCxxXZ4=
+
+Name: index/_0.prx
+SHA1-Digest: ZTFEXjZXKDkL3jw5NbIHirE0GlQ=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsMakeTargetMenu.png
+SHA1-Digest: RPT3yiR51yXdM3el5UKkhrOtiag=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsCBuildProperties.png
+SHA1-Digest: 5/uBpRHwBP+/kFvGEMO8NTTebT8=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAutoconfEditor.png
+SHA1-Digest: F3e+n1dF0fD1dffgWXY+YFmabmM=
+
+Name: plugin.xml
+SHA1-Digest: BnrFdH26Gmvno6tbINQ4o4LBxwM=
+
+Name: CDT/Autotools/User_Guide/Invoking-Autotools.html
+SHA1-Digest: IGz5rQmNiEpyYFMevK3DN7n8akY=
+
+Name: index/indexed_docs
+SHA1-Digest: OZnUp7e7En9cUWhc/VmY2M54bZU=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAclocal.png
+SHA1-Digest: ULcCAcmZaLRmRVmO56VhibwjjW0=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsEditorPreferences.png
+SHA1-Digest: Ctwel4+CB7y63sAWhtv0qqcp8c4=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsProperties.png
+SHA1-Digest: 9Q9ANJBsvrX0+8gHUV6g4TTeK9M=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: CDT/Autotools/User_Guide/Updating-This-Document.html
+SHA1-Digest: d8+EAzxhxRnIeNmPVuMCb3pV2fk=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsModifyMakeTarget.png
+SHA1-Digest: ZZsm3kSSuViEr0ITU69y82j3WGs=
+
+Name: toc.xml
+SHA1-Digest: 029Mc3YleSQ64tUzkk9a2DKQwuw=
+
+Name: META-INF/maven/org.eclipse.cdt/org.eclipse.cdt.autotools.docs/po
+ m.properties
+SHA1-Digest: 4Rbmb/hQJl2WxgGYjWq4Nlyw21Y=
+
+Name: CDT/Autotools/User_Guide/Supported-Environments.html
+SHA1-Digest: eOPs1m9eFlE3pMJdsO5nyC4BttE=
+
+Name: CDT/Autotools/User_Guide/Creating-an-Autotools-Project.html
+SHA1-Digest: 5qzhiMEaeeWvsoelYCWNghwZxvo=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsManageConfigurations.pn
+ g
+SHA1-Digest: j3Gj0JtVD/cGSAdkcSzxJvlHFkU=
+
+Name: CDT/Autotools/User_Guide/Building.html
+SHA1-Digest: 3l0FuNgOQjtPC/k0ZF18G0JC6qw=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: CDT/Autotools/User_Guide/images/AutotoolsAutoreconf.png
+SHA1-Digest: Nlv47SP8hTt/bfgxG8KVkeGXb+I=
+

@@ -1,0 +1,125 @@
+<!doctype html PUBLIC "-//W3C//DTD html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html"; charset=ISO-8859-1">  -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Implementing a Provider for arbitrary Repository Technologies</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+writeNavigation("Implementing a Repository Connection Extension Point",
+	    "pg-part-monitoring.html","pg-repository-extension.html",
+	      "../../handbooks.htm","Developer Handbook",
+	      "../pg-preface.htm","Programming Guide",
+	      "spi-toc.html","SPI");
+-->
+</script>
+<h1>Implementing a Provider for arbitrary Repository Technologies</h1>
+<p>Stardust allows to use federated document repositories as described in chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/repository-storage.html">Federated Document Repositories</a>
+in the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/key-concepts.html">Concepts</a> part.</p>
+<p>A repository provider is provided to allow implementing arbitrary repository technologies. </p>
+
+<h2>The Repository Provider Interface</h2>
+<p>By implementing the 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html">
+IRepositoryProvider</a> service provider interface and registering it via the 
+<tt>ServiceLocator</tt> contract at 
+<tt>META-INF/services/org.eclipse.stardust.engine.core.spi.dms.IRepositoryProvider$Factory</tt>
+ new Providers can be supplied.</p>
+
+<pre>
+@SPI(status = Status.Experimental, useRestriction = UseRestriction.Public)
+public interface IRepositoryProvider
+{
+
+   public interface Factory
+   {
+      IRepositoryProvider getInstance();
+   }
+
+   public String getProviderId();
+
+   public List&lt;IRepositoryConfiguration&gt; getDefaultConfigurations();
+
+   public IRepositoryInstance createInstance(IRepositoryConfiguration configuration,
+         String partitionId);
+
+   public void destroyInstance(IRepositoryInstance instance);
+
+   public IRepositoryProviderInfo getProviderInfo();
+
+}</pre>
+<p>This SPI allows to implement the <tt>IRepositoryProvider</tt> as an access layer
+for arbitrary repository technologies.</p>
+<h3>General Design</h3>
+<ul>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html">
+   IRepositoryProvider</a> represents the provider for a specific repository
+   technology</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryInstance.html">
+   IRepositoryInstance</a> represents one instance of a specific repository.
+   A repository instance is uniquely identified by the repositoryId.</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryService.html">
+   IRepositoryService</a> represents a service on the specific repository instance. 
+   This service provides all functionality for document management operations, like:
+   <ul>
+      <li>retrieving, adding, updating and deleting documents and folders</li>
+      <li>versioning documents</li>
+      <li>retrieving and updating document content</li>
+   </ul>
+   For details on document management operations, please refer to chapter
+   <a href="../embed/documents/pg-embed-doc-ops.html">Managing Documents and Folders</a>.</li>
+</ul>
+<h3>Life Cycle</h3>
+<p>The
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html">
+IRepositoryProvider</a> is loaded as part of the SPI contract.</p>
+<p>An
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryInstance.html">
+IRepositoryInstance</a> is usually located via a distinct URL or jndiName and is
+created and destroyed at runtime using the following methods:</p>
+<ul>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html#createInstance(org.eclipse.stardust.engine.core.spi.dms.IRepositoryConfiguration, java.lang.String)">
+   createInstance(IRepositoryConfiguration, String)</a> -
+   with the following parameters:
+   <ul>
+      <li>the configuration for the instance of type
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryConfiguration.html">
+   IRepositoryConfiguration</a></li>
+      <li>the Id of the partition on which the instance is used</li>
+   </ul></li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html#destroyInstance(org.eclipse.stardust.engine.core.spi.dms.IRepositoryInstance)">
+   destroyInstance(IRepositoryInstance)</a> -
+   with parameter of type 
+  <a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryInstance.html">
+   IRepositoryInstance</a> for the instance to be destroyed</li>
+</ul>
+<p>An
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryService.html">
+IRepositoryService</a> usually represents a session on the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryInstance.html">
+IRepositoryInstance</a> and contains all methods needed for repository operations.</p>
+<h3>Default Instances</h3>
+<p>If a configuration is supplied via 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html#getDefaultConfigurations()">
+getDefaultConfigurations()</a>, the repository instances are created after the provider is
+loaded. 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProvider.html#getDefaultConfigurations()">
+getDefaultConfigurations()</a> returns a list of
+repository configurations that should be used to implicitly create
+repository instances.</p>
+
+
+<h2>Example Implementation</h2>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

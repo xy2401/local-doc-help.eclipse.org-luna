@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>XSL Message Transformation Application Type</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Launching Message Transformations",
+    "message-transformation-appl.html","launch-message-transformations.html",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../mg-preface.htm","Modeling Guide",
+        "../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+
+<h1>XSL Message Transformation Application Type</h1>
+<p>The <strong>XSL Message Transformation Application Type</strong> is used
+to perform XSL transformations on a single input and a single output message.</p>
+
+<h2>Creating an XSL Message Transformation Application Type</h2>
+<p>To create an XSL Message Transformation Application, select <strong>Application</strong>
+in the diagram toolbar palette and choose <strong>XSL Message Transformation Application</strong>:</p>
+<p class="image"><img src="images/create-xsl-message-trans-appl.png"
+alt="Creating an XSL Message Transformation Application"><br>
+<strong>Figure:</strong> Creating an XSL Message Transformation Application</p>
+<h2>Properties</h2>
+<p>In the <strong>XSL Code</strong> editor enter the xsl code, or select 
+<strong>Browse</strong> to load a file with xsl code. This file content can then
+be edited in the <strong>XSL Code</strong> editor.</p>
+<p class="image"><img src="images/xsl-transformation-appl-props.png"
+alt="Message Transformation Application Props"><br>
+<strong>Figure:</strong> Properties of a Message Transformation Application.</p>
+
+<h2>Example</h2>
+<p>This is a small example to demonstrate the mapping from an input message to
+an output message via XSL code within an XSL Message Transformation Application.
+If you are not familiar with setting up a dynamic Web project and deploying
+a model, please refer to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+Rapid Application Development</a> guide for a detailed description. For detailed
+information on structured data types, please refer to the chapter
+<a href="../../data-integration/struct-data-preface.html">Structured Data Types</a>.</p>
+<p>In a dynamic Web project, we create a new model with two composite structured
+data types having each 
+an attribute <tt>name</tt> with type <tt>xsd:string</tt> and an 
+attribute <tt>address</tt>, which differs in definition.
+The first composite type defines the attribute <tt>address</tt> as
+anonymous, containing the elements <tt>zipcode</tt> and <tt>location</tt>,
+as shown in the following screenshot:</p>
+<p class="image"><img src="images/xsl-example-composite-1.png"
+alt="Composite Type 1"><br>
+<strong>Figure:</strong> Composite Type 1</p>
+<p>The second composite type defines the attribute <tt>address</tt> as
+of type <tt>xsd:string</tt>:</p>
+<p class="image"><img src="images/xsl-example-composite-2.png"
+alt="Composite Type 2"><br>
+<strong>Figure:</strong> Composite Type 2</p>
+<p>Now we create a model structure as shown in the following diagram:</p>
+<p class="image"><img src="images/xsl-example-diagram.png"
+alt="Example Model Diagram"><br>
+<strong>Figure:</strong> Example Model Diagram.</p>
+<p>whereby <tt>InputData</tt> is a structured data of the first composite type
+and <tt>OutputData</tt> is a structured data of the 
+second composite type.</p>
+<h3>Entering the XSL Code</h3>
+<p>The <tt>InputData</tt> entered by the manual activity should be transformed to be
+mapped to the type of the <tt>OutputData</tt>. Thus, we enter the following XSL 
+code in the XSL Message Transformation Application
+property page:</p>
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;xsl:template match="name"&gt;
+        &lt;name&gt;&lt;xsl:value-of select="."/&gt;&lt;/name&gt;
+    &lt;/xsl:template&gt;
+    &lt;xsl:template match="address"&gt;
+        &lt;address&gt;
+            &lt;xsl:value-of select="zipcode"/&gt;
+            &lt;xsl:text&gt;&lt;/xsl:text&gt;
+            &lt;xsl:value-of select="location"/&gt;
+        &lt;/address&gt;
+    &lt;/xsl:template&gt;         
+    &lt;xsl:template match="/"&gt;
+        &lt;root&gt;
+            &lt;xsl:apply-templates/&gt;
+        &lt;/root&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+<p class="image"><img src="images/xsl-example-code.png"
+alt="Property Page"><br>
+<strong>Figure:</strong> XSL Code entered in Property Page.</p>
+<h3>Testing the Example</h3>
+<p>To test the example, start your server, deploy your model 
+and start the Workflow Execution Perspective. Starting the manual activity
+invokes the following entry field for <tt>InputData</tt>:</p>
+<p class="image"><img src="images/xsl-example-activity-1.png"
+alt="Entry Field for Composite Type 1"><br>
+<strong>Figure:</strong> Entry Field for Composite Type 1.</p>
+<p>Completing this activity will pass the values to the
+XSL Message Transformation Application and map these values
+to the <tt>OutputData</tt> format. The subsequent manual 
+activity then displays the data in the new format:</p>
+<p class="image"><img src="images/xsl-example-activity-2.png"
+alt="Output Field with transformed Data"><br>
+<strong>Figure:</strong> Output Field with mapped Data.</p>
+
+<h2 id="retry">Configuring Retry Mechanism</h2>
+
+<p> The configurable retry mechanism provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+
+<p>For more information, please refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+
+<p>For example, you have added an application to the model.
+In the Property page of the application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+
+<p class="image"><img src="images/xslmsgparseretry.png" alt=""><br>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

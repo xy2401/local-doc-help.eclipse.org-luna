@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" type="text/css">
+<title>Modeling Pattern Support</title>
+<script src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+	writeNavigation("Retrieving Diagrams from Model Information",
+        "process-effort-calculation.html","mg-defdesk-16.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Modeling Pattern Support</h1>
+<p>Modeling patterns provide the ability to create complex models faster and
+to use and reuse modeling pattern.</p>
+<p>Stardust is shipped with some predefined modeling
+patterns. An Eclipse view, the <strong>Patterns View</strong> is provided, where
+you can select patterns and add them via drag &amp; drop into a model diagram.
+The model elements of the pattern are copied into the underlying process
+definition. A wizard is invoked which allows parameterization of the pattern.
+This dialog contains entry field for parameters specifying the individual
+pattern. This could be for example the number of activities or the type of
+activities.</p>
+<h2>The Stardust Patterns View</h2>
+<p>You can achieve the predefined patterns from the list in the <strong>Patterns
+Views</strong>. To open the <strong>Patterns Views</strong>, select <strong>Window
+&gt; Show View &gt; Process Manager &gt; Patterns View</strong>.</p>
+<p class="image"><img src="images/patterns-open-view.png" alt="Open View">
+<br>
+<strong>Figure:</strong> Open the Patterns View</p>
+<p>In this view you can choose predefined patterns from the categories <strong>Basic
+Control Flow Pattern</strong> and <strong>Advanced Branching and Synchronization
+Patterns</strong>, which are described in detail in the following section. The patterns
+can be dragged and dropped to a process diagram. In most cases you can set
+parameters, which will be requested in an opening dialog.</p>
+<p>On the right side of the view you can see a description and an example
+diagram for the pattern you selected.</p>
+<p class="image"><img src="images/patterns-view.png" alt="The Patterns View">
+<br>
+<strong>Figure:</strong> The Patterns View</p>
+<h2>Generic Patterns</h2>
+<h3>Basic Control Flow Pattern</h3>
+<p>Stardust provides the following basic control flow
+patterns:</p>
+<ul>
+    <li><a href="#sequ">Sequence</a></li>
+    <li><a href="#loop">Loop</a></li>
+    <li><a href="#pSplit">Parallel Split</a></li>
+    <li><a href="#splitSynch">Parallel Split and Synchronization</a></li>
+    <li><a href="#choice">Exclusive Choice</a></li>
+    <li><a href="#choiceMerge">Exclusive Choice and Merge</a></li>
+</ul>
+<h4 id="sequ">Sequence</h4>
+<p>This pattern consists of a sequence of activities. In the <strong>Sequence
+Template</strong> dialog you can set the following parameters:</p>
+<ul>
+    <li>number of activities</li>
+    <li>activity type (default <tt>Application Activity</tt>)</li>
+    <li>orientation (default <tt>Vertical</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-sequence-params.png"
+    alt="Sequence Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Parameters for the Sequence Pattern</p>
+<p>An example Sequence pattern with 3 application activities and vertical orientation
+would look like the following:</p>
+<p class="image"><img src="images/patterns-sequence-result.png"
+    alt="Sequence Pattern Result"> <br>
+<strong>Figure:</strong> Example Sequence Pattern added to the Diagram.</p>
+<h4 id="loop">Loop</h4>
+<p>This pattern consists of a sequence of N activities and a loop transition
+back to the first. In the <strong>Loop Template</strong> dialog you can set the
+following parameters:</p>
+<ul>
+    <li>number of activities in the "loop body"</li>
+    <li>activity type (default <tt>Application Activity</tt>)</li>
+    <li>loop condition</li>
+    <li>orientation (default <tt>Vertical</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-loop-params.png"
+    alt="Loop Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Loop Parameters for the Pattern</p>
+<p>An example Loop pattern with 2 activities, the loop condition <tt>State="R"</tt>
+and vertical orientation would look like the following:</p>
+<p class="image"><img src="images/patterns-loop-result.png"
+    alt="Loop Pattern Result"> <br>
+<strong>Figure:</strong> Example Loop Pattern added to the Diagram.</p>
+<h4 id="pSplit">Parallel Split</h4>
+<p>This pattern consists of a start activity which spawns via <tt>AND</tt>
+to N threads. In the <strong>AND Split Template</strong> dialog you can set the
+following parameters:</p>
+<ul>
+    <li>number of threads (N)</li>
+    <li>activity type (default <tt>Application Activity</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-split-params.png"
+    alt="Parallel Split Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Parallel Split Parameters for the Pattern</p>
+<p>An example Parallel Split pattern with 3 route activities
+would look like the following:</p>
+<p class="image"><img src="images/patterns-split-result.png"
+    alt="Parallel Split Pattern Result"> <br>
+<strong>Figure:</strong> Example Parallel Split Pattern added to the Diagram.</p>
+<h4 id="splitSynch">Parallel Split and Synchronization</h4>
+<p>This pattern consists of a start activity which spawns via <tt>AND</tt>
+to N threads with one activity each and joins via AND to one end activity. In
+the <strong>AND Split Template</strong> dialog you can set the following
+parameters:</p>
+<ul>
+    <li>number of threads (N)</li>
+    <li>activity type (default <tt>Application Activity</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-split-sychn-params.png"
+    alt="Parallel Split and Synchronization Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Parallel Split and Synchronization Parameters for
+the Pattern</p>
+<p>An example Parallel Split and Synchronization pattern with 3 application activities
+would look like the following:</p>
+<p class="image"><img src="images/patterns-split-sychn-result.png"
+    alt="Parallel Split and Synchronization Pattern Result"> <br>
+<strong>Figure:</strong> Example Parallel Split and Synchronization Pattern
+added to the Diagram.</p>
+<h4 id="choice">Exclusive Choice</h4>
+<p>This pattern consists of a start activity which spawns via <tt>XOR</tt>
+to <tt>ONE</tt> other threads out of N possible. In the <strong>Exclusive Choice Template</strong> dialog you can
+set the following parameters:</p>
+<ul>
+    <li>number of activities</li>
+    <li>type of activity (default: <tt>Application Activity</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-choice-params.png"
+    alt="Exclusive Choice Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Exclusive Choice Parameters for the Pattern</p>
+<p>An example Exclusive Choice pattern with 2 application activities
+would look like the following:</p>
+<p class="image"><img src="images/patterns-choice-result.png"
+    alt="Exclusive Choice Pattern Result"> <br>
+<strong>Figure:</strong> Example Exclusive Choice Pattern added to the Diagram.</p>
+<h4 id="choiceMerge">Exclusive Choice and Merge</h4>
+<p>Start activity which spawns via <tt>XOR</tt> to N threads with one
+activity each and joins via <tt>XOR</tt> to one end activity. In the <strong>Exclusive
+Choice and Merge Template</strong> dialog you can set the following parameters:</p>
+<ul>
+    <li>number of activities</li>
+    <li>type of activity (default: <tt>Application Activity</tt>)</li>
+</ul>
+<p class="image"><img src="images/patterns-choice-merge-params.png"
+    alt="Exclusive Choice and Merge Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter Exclusive Choice and Merge Parameters for the
+Pattern</p>
+<p>An example Exclusive Choice and Merge pattern with 2 application activities
+would look like the following:</p>
+<p class="image"><img src="images/patterns-choice-merge-result.png"
+    alt="Exclusive Choice and Merge Pattern Result"> <br>
+<strong>Figure:</strong> Example Exclusive Choice and Merge Pattern added to the
+Diagram.</p>
+<h3>Advanced Branching and Synchronization Patterns</h3>
+<h4>Dynamic Spawn</h4>
+<p>This is a pattern to dynamically spawn a subprocess for a list of entries
+and pass the entries to the subprocess, execute those and join them again.</p>
+<p>In the <strong>Dynamic Spawn</strong> dialog you can
+choose the implementation process to be set for the subprocess activity:</p>
+<p class="image"><img src="images/patterns-spawn-params.png"
+    alt="Exclusive Choice Pattern Parameters"> <br>
+<strong>Figure:</strong> Enter the Implementation Process for the Subprocess Activity.</p>
+<p>An example Dynamic Spawn pattern would look like the following:</p>
+<p class="image"><a href="images/patterns-spawn-result_orgSize.png" target="_blank">
+<img src="images/patterns-spawn-result.png"
+    alt="Exclusive Choice Pattern Result"></a><br>
+<strong>Figure:</strong> Example Dynamic Spawn Pattern added to the Diagram.</p>
+<script type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

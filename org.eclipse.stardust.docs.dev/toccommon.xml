@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc link_to="toc.xml#tocapi" label="Stardust Common API">
+  <topic label="Stardust Common API" href="html/reference/api/common/index.html">
+    <topic label="Overview" href="html/reference/api/common/overview-summary.html">
+      <topic label="org.eclipse.stardust.common.config Package" href="html/reference/api/common/org/eclipse/stardust/common/config/package-summary.html"/>
+      <topic label="org.eclipse.stardust.common.error Package" href="html/reference/api/common/org/eclipse/stardust/common/error/package-summary.html"/>
+      <topic label="org.eclipse.stardust.common.log Package" href="html/reference/api/common/org/eclipse/stardust/common/log/package-summary.html"/>
+      <topic label="org.eclipse.stardust.common Package" href="html/reference/api/common/org/eclipse/stardust/common/package-summary.html"/>
+      <topic label="org.eclipse.stardust.common.security.authentication Package" href="html/reference/api/common/org/eclipse/stardust/common/security/authentication/package-summary.html"/>
+      <topic label="org.eclipse.stardust.common.security Package" href="html/reference/api/common/org/eclipse/stardust/common/security/package-summary.html"/>
+    </topic>
+  </topic>
+</toc>

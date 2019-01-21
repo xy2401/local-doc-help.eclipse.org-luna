@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="help/developer/developer-guide.html#Developer_Guide" label="Developer Guide">
+	<topic href="help/developer/developer-guide.html#Architecture" label="Architecture">
+		<topic href="help/developer/developer-guide.html#Comparison_Process" label="Comparison Process">
+			<topic href="help/developer/developer-guide.html#Model_Resolving" label="Model Resolving"></topic>
+			<topic href="help/developer/developer-guide.html#Matching" label="Matching"></topic>
+			<topic href="help/developer/developer-guide.html#Differencing" label="Differencing"></topic>
+			<topic href="help/developer/developer-guide.html#Equivalences" label="Equivalences"></topic>
+			<topic href="help/developer/developer-guide.html#Requirements" label="Requirements"></topic>
+			<topic href="help/developer/developer-guide.html#Conflicts" label="Conflicts"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Project_Architecture" label="Project Architecture"></topic>
+		<topic href="help/developer/developer-guide.html#The_Comparison_Model" label="The Comparison Model"></topic>
+		<topic href="help/developer/developer-guide.html#Match" label="Match">
+			<topic href="help/developer/developer-guide.html#Diff" label="Diff"></topic>
+			<topic href="help/developer/developer-guide.html#Conflict" label="Conflict"></topic>
+			<topic href="help/developer/developer-guide.html#Equivalence" label="Equivalence"></topic>
+		</topic>
+	</topic>
+	<topic href="help/developer/developer-guide.html#Core_Concepts" label="Core Concepts">
+		<topic href="help/developer/developer-guide.html#Proxy_Resolution" label="Proxy Resolution"></topic>
+		<topic href="help/developer/developer-guide.html#Equality_Helper" label="Equality Helper"></topic>
+		<topic href="help/developer/developer-guide.html#Comparison_Scope" label="Comparison Scope"></topic>
+		<topic href="help/developer/developer-guide.html#Longest_Common_Subsequence" label="Longest Common Subsequence"></topic>
+	</topic>
+	<topic href="help/developer/developer-guide.html#Default_Behavior_and_Extensibility" label="Default Behavior and Extensibility">
+		<topic href="help/developer/developer-guide.html#Model_Resolving_2" label="Model Resolving"></topic>
+		<topic href="help/developer/developer-guide.html#Match_2" label="Match">
+			<topic href="help/developer/developer-guide.html#Overriding_the_Match_engine" label="Overriding the Match engine"></topic>
+			<topic href="help/developer/developer-guide.html#Changing_how_resources_are_matched" label="Changing how resources are matched"></topic>
+			<topic href="help/developer/developer-guide.html#Defining_custom_identifiers" label="Defining custom identifiers"></topic>
+			<topic href="help/developer/developer-guide.html#Ignoring_identifiers" label="Ignoring identifiers"></topic>
+			<topic href="help/developer/developer-guide.html#Refine_the_default_Match_result" label="Refine the default Match result"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Diff_2" label="Diff">
+			<topic href="help/developer/developer-guide.html#Overriding_the_Diff_engine" label="Overriding the Diff engine"></topic>
+			<topic href="help/developer/developer-guide.html#Changing_the_FeatureFilter" label="Changing the FeatureFilter"></topic>
+			<topic href="help/developer/developer-guide.html#Changing_the_Diff_Processor" label="Changing the Diff Processor"></topic>
+			<topic href="help/developer/developer-guide.html#Refine_the_default_Diff_result" label="Refine the default Diff result"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Equivalences_2" label="Equivalences">
+			<topic href="help/developer/developer-guide.html#Refine_the_default_equivalences" label="Refine the default equivalences"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Requirements_2" label="Requirements"></topic>
+		<topic href="help/developer/developer-guide.html#Refinement" label="Refinement"></topic>
+		<topic href="help/developer/developer-guide.html#Conflicts_2" label="Conflicts"></topic>
+		<topic href="help/developer/developer-guide.html#Merging" label="Merging">
+			<topic href="help/developer/developer-guide.html#Which_references_are_followed_during_merging" label="Which references are followed during merging"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#User_Interface" label="User Interface">
+			<topic href="help/developer/developer-guide.html#Add_your_own_filter" label="Add your own filter"></topic>
+			<topic href="help/developer/developer-guide.html#Add_your_own_group" label="Add your own group"></topic>
+			<topic href="help/developer/developer-guide.html#Customize_display_of_differences_inside_an_existing_group" label="Customize display of differences inside an existing group"></topic>
+			<topic href="help/developer/developer-guide.html#Add_your_own_accessor_factory" label="Add your own accessor factory"></topic>
+		</topic>
+	</topic>
+	<topic href="help/developer/developer-guide.html#Using_The_Compare_APIs" label="Using The Compare APIs">
+		<topic href="help/developer/developer-guide.html#Compare_two_models" label="Compare two models">
+			<topic href="help/developer/developer-guide.html#Loading_your_models" label="Loading your models"></topic>
+			<topic href="help/developer/developer-guide.html#Creating_the_comparison_scope" label="Creating the comparison scope"></topic>
+			<topic href="help/developer/developer-guide.html#Configuring_the_comparison" label="Configuring the comparison"></topic>
+			<topic href="help/developer/developer-guide.html#Putting_it_all_together" label="Putting it all together"></topic>
+			<topic href="help/developer/developer-guide.html#Comparing_from_an_Eclipse_plugin" label="Comparing from an Eclipse plugin"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Query_the_differences" label="Query the differences">
+			<topic href="help/developer/developer-guide.html#All_differences" label="All differences"></topic>
+			<topic href="help/developer/developer-guide.html#Differences_related_to_element_X" label="Differences related to element X"></topic>
+			<topic href="help/developer/developer-guide.html#Filtering_differences" label="Filtering differences"></topic>
+		</topic>
+		<topic href="help/developer/developer-guide.html#Merge_differences" label="Merge differences"></topic>
+		<topic href="help/developer/developer-guide.html#Open_a_compare_editor" label="Open a compare editor"></topic>
+	</topic>
+</toc>

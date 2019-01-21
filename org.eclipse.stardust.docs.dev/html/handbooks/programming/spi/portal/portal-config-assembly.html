@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing Interfaces for Portal Configurations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Implementing a Service Provider to indicate a Skin as default Skin",
+	   "portal-config-dele.html","portal-config-skin.html",
+      "../../../handbooks.htm","Developer Handbook",
+      "../../pg-preface.htm","Programming Guide",
+      "spi-toc.html","SPI",
+      "pg-portal-config.html","Portal Configurations");
+	 -->
+</script>
+<h1>Implementing an Assembly Line Activity Provider</h1>
+<p>The logic to decide which assembly line has to be activated next is 
+implemented via an assembly line activity provider class, which has to 
+implement the interface <tt>IAssemblyLineActivityProvider</tt>.
+The following class, which is used as default provider class for the 
+Stardust portal, illustrates an example implementation:</p>
+<pre>
+package org.eclipse.stardust.ui.web.processportal.common;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.eclipse.stardust.ui.web.processportal.spi.IAssemblyLineActivityProvider;
+
+import org.eclipse.stardust.common.CompareHelper;
+import org.eclipse.stardust.common.error.ConcurrencyException;
+import org.eclipse.stardust.engine.api.web.jsf.common.AbstractProcessExecutionPortal;
+import org.eclipse.stardust.engine.api.web.jsf.common.PortalException;
+import org.eclipse.stardust.engine.api.model.ConditionalPerformer;
+import org.eclipse.stardust.engine.api.model.ModelParticipant;
+import org.eclipse.stardust.engine.api.model.Participant;
+import org.eclipse.stardust.engine.api.query.ParticipantWorklist;
+import org.eclipse.stardust.engine.api.query.PerformingParticipantFilter;
+import org.eclipse.stardust.engine.api.query.SubsetPolicy;
+import org.eclipse.stardust.engine.api.query.UserWorklist;
+import org.eclipse.stardust.engine.api.query.Worklist;
+import org.eclipse.stardust.engine.api.query.WorklistQuery;
+import org.eclipse.stardust.engine.api.runtime.ActivityInstance;
+import org.eclipse.stardust.engine.api.runtime.WorkflowService;
+
+/**
+ * Default implementation of assembly line contract.
+ * 
+ * The order of the next pending assembly line activity is not predictable
+ * but you get at first the activities from the user worklist and after
+ * that from the participant worklist.
+ * 
+ * @see org.eclipse.stardust.ui.web.client.common.spi.IAssemblyLineActivityProvider
+ * @author rsauer
+ * @version $Revision: 31069 $
+ */
+public class DefaultAssemblyLineActivityProvider implements IAssemblyLineActivityProvider
+{
+
+   private WorklistQuery createWorklistQuery(Set participantIds, boolean outline)
+   {
+      WorklistQuery query = new WorklistQuery();
+      query.setUserContribution(SubsetPolicy.UNRESTRICTED);
+      for (Iterator i = participantIds.iterator(); i.hasNext();)
+      {
+         String participantId = (String) i.next();
+         query.setParticipantContribution(
+               PerformingParticipantFilter.forModelParticipant(participantId, false),
+               outline ? new SubsetPolicy(0, true) : null);
+      }
+      return query;
+   }
+   
+   private boolean isAssemblyLineActivity(Set assemblyLineParticipants, ActivityInstance ai)
+   {
+      ModelParticipant modelParticipant = ai.getActivity().getDefaultPerformer();
+      
+      if(modelParticipant != null)
+      {
+         String aiParticipantId = modelParticipant.getId();
+         if(modelParticipant instanceof ConditionalPerformer)
+         {
+            ConditionalPerformer cp = (ConditionalPerformer)modelParticipant;
+            Participant rp = cp.getResolvedPerformer();
+            if (rp instanceof ModelParticipant)
+            {
+               aiParticipantId = rp.getId();
+            }
+         }
+         if(assemblyLineParticipants != null)
+         {
+            for (Iterator patIter = assemblyLineParticipants.iterator(); patIter.hasNext();)
+            {
+               String participantId = (String) patIter.next();
+               if(CompareHelper.areEqual(participantId, aiParticipantId))
+               {
+                  return true;
+               }
+            }
+         }
+      }
+      return false;
+   }
+   
+   public ActivityInstance getNextAssemblyLineActivity(
+         AbstractProcessExecutionPortal portal, Set participantIds) throws PortalException
+   {
+      ActivityInstance result = null;
+
+      WorkflowService ws = portal.getWorkflowService();
+      if(ws != null)
+      {
+         Worklist wl = ws.getWorklist(
+               createWorklistQuery(participantIds, false));
+   
+         for (Iterator i = wl.getCumulatedItems().iterator(); i.hasNext() && result == null;)
+         {
+            ActivityInstance ai = (ActivityInstance) i.next();
+            if(isAssemblyLineActivity(participantIds, ai))
+            {
+               try
+               {
+                  // lock activity
+                  ws.activate(ai.getOID());
+      
+                  result = ai;
+                  break;
+               }
+               catch (ConcurrencyException ce)
+               {
+                  continue;
+               }
+            }
+         }
+      }
+      return result;
+   }
+
+   public long getAssemblyLineActivityCount(AbstractProcessExecutionPortal portal,
+         Set participantIds) throws PortalException
+   {
+      WorkflowService ws = portal.getWorkflowService();
+      Worklist worklist = ws != null ? ws.getWorklist(
+            createWorklistQuery(participantIds, true)) : null;
+      long activityCount = 0;
+      if(worklist != null)
+      {
+         if(worklist instanceof UserWorklist)
+         {
+            for(Iterator aiIter = worklist.iterator(); aiIter.hasNext();)
+            {
+               ActivityInstance ai = (ActivityInstance)aiIter.next();
+               if(isAssemblyLineActivity(participantIds, ai))
+               {
+                  activityCount += 1;
+               }
+            }
+         }
+         Iterator worklistIter = worklist.getSubWorklists();
+         while (worklistIter.hasNext())
+         {
+            worklist = (Worklist) worklistIter.next();
+            if (worklist instanceof ParticipantWorklist)
+            {
+               activityCount += worklist.getTotalCount();
+            }
+         }
+      }
+      return activityCount;
+   }
+}
+
+</pre>
+<p>The property <tt>Carnot.ProcessPortal.AssemblyLineActivityProvider</tt>
+determines the provider class to use. Per default, this is set to:</p>
+<pre>Carnot.ProcessPortal.AssemblyLineActivityProvider = 
+    org.eclipse.stardust.ui.web.processportal.common.DefaultAssemblyLineActivityProvider</pre>
+<p>In case you created a custom implementation class, change the value accordingly.</p>
+<h2>Implementing Activity Criticality with Assembly Line Provider</h2>
+<p>The <tt>org.eclipse.stardust.ui.web.processportal.common.CriticalityAwareAssemblyLineActivityProvider</tt>
+class uses the given criticality formula to order the worklist. The property 
+<tt>Carnot.ProcessPortal.AssemblyLineActivityProvider</tt> in <tt>carnot.properties</tt>
+ should point to this class instead of <tt>DefaultAssemblyLineActivityProvider</tt>.
+To use the given criticality criteria to order the worklist, 
+following property should be set in the Carnot.properties file: 
+</p>
+<pre>
+Carnot.ProcessPortal.AssemblyLineActivityProvider = org.eclipse.stardust.ui.web.processportal.
+common.CriticalityAwareAssemblyLineActivityProvider
+</pre>
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Specifying Activity Control Flow</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Configuring Subprocess Activities",
+        "mg-defdesk-4.htm","mg-subprocesses.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","activities-preface.html","Working with Activities");
+ -->
+</script>
+
+<h1>Specifying Activity Control Flow</h1>
+<p>Control flow options define the split, join and loop behavior around
+the activity. For details on the concept and use cases of control flow used in 
+Stardust, refer
+to chapter <a href="../../../concepts/workflow-basics/mg-basics-6.htm">Control Flow</a>
+in the <a href="../../../concepts/key-concepts.html">Concepts</a> section.</p>
+<p class="image"><img src="images/mg-defdesk-19.png"
+    alt="Control Flow Options"> <br>
+<strong>Figure:</strong> Control Flow Options</p>
+<ul>
+   <li><a href="#gateway">Gateways</a></li>
+   <li><a href="#join">Setting Join Behavior</a></li>
+   <li><a href="#split">Setting Split Behavior</a></li>
+   <li><a href="#loop">Setting Loop Behavior</a></li>
+</ul>
+<h2 id="gateway">Gateways</h2>
+<p>In the Stardust Eclipse Modeler, the control flow selected for an activity
+is represented as a diamond-shaped box, called <strong>gateway</strong>. The control flow behavior is
+visible via the icon inside a gateway, representing AND, XOR or OR split or join types.
+Find details and screenshots of specific gateways in the following sections.</p>
+<h3>Viewing a Gateway Tooltip</h3>
+<p>In some cases you do not see the type of the
+gateway from the diagram alone, for example if a gateway is a split gateway of the
+preceding or the join gateway of the next activity. Then use the gateways tooltip. Move
+the mouse over the gateway to display the name of the activity and the type of control
+flow.</p>
+<p class="image"><img src="images/gateway-tooltip.png" alt=""></p>
+
+<h2 id="join">Setting Join Behavior</h2>
+<p>The <strong>Join </strong>behavior specifies the runtime behavior in case of multiple
+transitions from the predecessor activity leading to the chosen activity. The
+following options are offered:</p>
+<ul>
+   <li><strong>None</strong></li>
+   <li><a href="#xorjoin">XOR</a></li>
+   <li><a href="#andjoin">AND</a></li>
+   <li><a href="#orjoin">OR</a></li>
+</ul>
+<h3 id="xorjoin">XOR Joins</h3>
+<p>If an activity is joined with the <strong> XOR</strong> option, one 
+incoming transition is processed the chosen activity is instantiated. If multiple
+incoming transitions are processed at runtime the chosen activity is
+instantiated multiple times. XOR joins are
+displayed by an empty gateway sign.</p>
+<p class="image"><img src="images/join-activity-xor.png" alt="XOR Join Icon"><br>
+<strong>Figure:</strong> XOR Join Icon</p>
+<h3 id="andjoin">AND Joins</h3>
+<p>If an activity is joined with the <strong>AND</strong> option,
+all incoming transitions are required to be processed for the
+execution of the activity.
+An AND-join is marked by a gateway sign with a plus icon in the middle.</p>
+<p class="image"><img src="images/join-activity-and.png" alt="AND Join Icon"><br>
+<strong>Figure:</strong> AND Join Icon</p>
+<h3 id="orjoin">OR Joins</h3>
+<p>If an activity is joined with the <strong>OR</strong> option,
+it is waiting for all incoming transitions that are evaluated to <tt>true</tt>. 
+OR joins are displayed as a gateway sign with a bold circle inside.</p>
+<p class="image"><img src="images/join-activity-or.png" alt="OR Join Icon"><br>
+<strong>Figure:</strong> OR Join Icon</p>
+<h3>Changing the Join Behavior</h3>
+<p>Apart from the property page settings you can change the join behavior of an 
+activity in the diagram directly. Right-click the activity and select 
+<strong>Join Behavior</strong>.
+Choose the desired join behavior for the activity.</p>
+<p class="image"><img src="images/select-join-behavior.png"
+    alt="Join Behavior"> <br>
+<strong>Figure:</strong> Changing the Join Behavior</p>
+
+<h2 id="split">Setting Split Behavior</h2>
+<p>The <Strong> Split </Strong> behavior specifies how multiple transitions to the following
+activities are to be executed. The following options are provided:</p>
+<ul>
+   <li><strong>None</strong></li>
+   <li><a href="#xorsplit">XOR</a></li>
+   <li><a href="#andsplit">AND</a></li>
+   <li><a href="#orsplit">OR</a></li>
+</ul>
+<h3 id="xorsplit">XOR Splits</h3>
+<p>If an activity is split with the <strong>XOR</strong> option, only one of
+the multiple transitions to the following activities is executed.
+Only the first transition
+is instantiated that condition evaluates to true. XOR splits are
+marked by an empty gateway sign.</p>
+<p class="image"><img src="images/split-activity-xor.png" alt="XOR Split Icon"><br>
+<strong>Figure:</strong> XOR Split Icon</p>
+<h3 id="andsplit">AND Splits</h3>
+<p>If an activity is split with the <strong>AND</strong> option,
+all outgoing transitions to the following activities are executed.</p>
+<p>Each transition is evaluated and followed if the evaluation results to true. An 
+AND-split is marked by a gateway sign with a plus icon in the middle.</p>
+<p class="image"><img src="images/split-activity-and.png" alt="AND Split Icon"><br>
+<strong>Figure:</strong> AND Split Icon</p>
+<h3 id="orsplit">OR Splits</h3>
+<p>If an activity is split with the <strong>OR</strong> option, each of
+the multiple transitions to the following activities is executed and, in case it evaluates
+to <tt>true</tt>, instantiated. OR splits are
+marked by a gateway sign with a bold circle inside.</p>
+<p class="image"><img src="images/split-activity-or.png" alt="OR Split Icon"><br>
+<strong>Figure:</strong> OR Split Icon</p>
+<p>Refer to section <a href="../../../concepts/workflow-basics/mg-basics-6.htm#orexample">Inclusive Gateway Usage Example</a>
+of chapter <a href="../../../concepts/workflow-basics/mg-basics-6.htm">Control Flow</a>
+in the <a href="../../../concepts/key-concepts.html">Concepts</a> section for an example
+use case.</p>
+<h3>Changing the Split Behavior</h3>
+<p>Apart from the property page settings you can change the split behavior of an 
+activity in the diagram directly. Right-click the activity and select 
+<strong>Split Behavior</strong>.
+Choose the desired split behavior for the activity.</p>
+<p class="image"><img src="images/select-split-behavior.png"
+    alt="Split Behavior"> <br>
+<strong>Figure:</strong> Changing the Split Behavior</p>
+
+<h2 id="loop">Setting Loop Behavior</h2>
+<p>The <strong>Loop</strong> behavior specifies how an activity is repeated 
+until the loop condition is fulfilled. During the runtime execution of loop activity   
+the specific part of the workflow is repeated.</p>
+<p>When an activity enters the loop, one or more instances of the activity are created and performed.
+On termination of the activity instance, the loop condition is evaluated and based on the result 
+a new activity instance is created. This is repeated until the loop gets terminated and then
+the subsequent activity is performed, if any.</p>
+<h3 id="noloop">No Loop</h3>
+<p>The option <strong>No Loop</strong> indicates that the activity is performed exactly 
+once regardless of the evaluation of the condition.</p>
+<h3 id="standard">Standard</h3>
+<p>If the option <strong>Standard</strong> is selected as loop type, you can choose 
+between a <strong>While</strong> or <strong>Repeat</strong> loop.
+In the <strong>Loop condition</strong> entry field, you can enter the condition.
+<p class="image"><img src="images/loop-standard.png" alt="Standard Loop"></p>
+<ul>
+   <li><strong>While</strong> - indicates that the condition is evaluated before the creation of an activity
+	instance. If the condition evaluation result is <tt>true</tt>, an activity instance is created and performed.
+	If <tt>false</tt>, the workflow continues and the next activity is performed. Using the <strong>While</strong> loop it 
+	is possible that no activity instance is created.</li>
+	<li><strong>Repeat</strong> - indicates that the condition is evaluated at the completion of the activity instance.
+	If the condition evaluation result is <tt>true</tt>, the loop ends and the next activity is performed.
+	If <tt>false</tt>, a new instance of the activity is created and repeated.</li>
+</ul>
+<h4>Example While loop</h4>
+<p>Currently, the single line format is supported only. The example in the following 
+figure uses the <strong>While</strong> loop condition:</p>
+<p class ="image"><img src = "images/while-loop.png" alt="">
+<br><strong>Figure:</strong>While Loop Condition</p>
+      
+<p> More elaborate cycles in the model
+should be modeled explicitly by cycles in the activity/transition graph. See
+figure below.</p>
+
+<p class="image"><a href="images/mg-defdesk-trans-cycle_orgSize.png"
+    target="_blank"><img src="images/mg-defdesk-trans-cycle.png" alt=""></a>
+<br>
+<strong>Figure:</strong> Transition in a Cycle</p>
+<p>In this example transition conditions influence the process flow.
+Please refer to <a href="../mg-defdesk-5.htm#transitionConditions">Specifying
+Transition Conditions</a>.</p>
+<h3 id="multi">Multi Instance</h3>
+<p>The <strong>Multi Instance</strong> loop type specifies that the activity is a 
+multiple instances activity. For details on the concept of multi instances activities as 
+well as the supported activity, application and parameter types, refer to chapter 
+<a href="../../../concepts/multi-instance.html">Using Multiple Instance Activities</a> of 
+the <a href="../../../concepts/key-concepts.html">Concepts</a> handbook.</p>
+<p>You can choose between <strong>Sequential</strong>
+<p class="image"><img src="images/loop-multi.png" alt="Multi Instance Loop"></p>
+<p>and <strong>Parallel</strong> processing.</p>
+<p class="image"><img src="images/loop-multi-para.png" alt="Multi Instance Loop"></p>
+<p>The following data parameter definitions to be used for the multi-instance processing
+can be set:</p>
+<ul>
+   <li><strong>Input</strong> (required)- specifies the IN data parameter definitions used for multi-instance processing.
+   All out data parameters defined for the application or process interface are available in the list.</li>
+   <li><strong>Counter</strong> (optional)- allows to map the access point into which the current list iteration index 
+   will be passed.</li>
+   <li><strong>Output</strong> (optional)- specifies the out data parameter definitions used for multi-instance processing.
+   All out data parameters defined for the application or process interface are available in the list</li>
+</ul>
+<p class="note"><strong>Note</strong><br>
+Please use the sequential processing type with care. In some cases it might lead to uncompleted processes.</p>
+
+<h4 id="limit">Limiting the Transaction Batch Size</h4>
+<p>In case of sequential processing, an additional option to limit the transaction
+batch size is provided.
+By default, the check box <strong>Limit Transaction Batch Size</strong> is disabled
+and all instances are processed in one transaction.</p>
+<p>You can configure the number of instances to process in one transaction 
+for sequential multiple instance activities by selecting this checkbox.
+Now the <strong>Maximum Batch Size</strong> entry field will be enabled containing the
+default value <tt>1</tt>. Enter a batch size, which should be an integer value specifying the 
+concrete limit. The transaction will be committed after processing of the specified number of
+instances. A new transaction or activity thread will be started for processing  
+subsequent activity instances and the instance counter and transaction duration timer 
+will be reset to <tt>0</tt>.</p>
+<p class="image"><img src="images/limit-batch-size.png" alt="Limiting Transaction Batch Size"><br>
+<strong>Figure:</strong> Limiting the Transaction Batch Size</p>
+
+<h4>Example Multi Instance Loop</h4>
+<p>The following example uses a multiple instance loop type in a subprocess activity.
+Formal in and output parameters of the process interface are used to pass each element of 
+a String list.</p>
+<p class="image"><img src="images/loop-multi-ex-diagram.png" alt="Multi Instance Loop Example"><br>
+<strong>Figure:</strong> Multi Instance Loop Example</p>
+ 
+<p class="image"><img src="images/loop-multi-ex-params.png" alt="Multi Instance Loop Example"><br>
+<strong>Figure:</strong> Multi Instance Loop Parameters</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

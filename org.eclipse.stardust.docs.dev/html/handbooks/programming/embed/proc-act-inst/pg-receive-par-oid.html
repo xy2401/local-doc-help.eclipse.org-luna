@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Receiving Parent Process Instance OID for Details Policy Option</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Activating the Next Activity Instance",
+        "pg-embed-proc-interfaces.html","pg-embed-next-act.html",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../pg-preface.htm","Programming Guide",
+        "../pg-embedded-preface.htm","Embedded Usage",
+        "procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Receiving Parent Process Instance OID for Specific Details Policy Option</h1>
+<p>You can use the enumeration
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ProcessInstanceDetailsOptions.html">
+ProcessInstanceDetailsOptions.html</a> to set more details options for
+process instance objects.</p>
+<pre>
+public enum ProcessInstanceDetailsOptions
+{
+   WITH_HIERARCHY_INFO
+}
+</pre>
+<p><strong>WITH_HIERARCHY_INFO</strong> determines, that the process instance 
+details will contain information about the parent process instance.</p>
+<p>To set the details options for a specific level of detail, 
+you can use the constructor of class 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceDetailsPolicy.html">
+ProcessInstanceDetailsPolicy</a>.</p>
+<pre>
+public ProcessInstanceDetailsPolicy(ProcessInstanceDetailsLevel level,
+        EnumSet&lt;ProcessInstanceDetailsOptions&gt; options)
+{
+    super();
+    this.level = level;
+    this.options = options.clone();
+}
+</pre>
+<p>To get the options used for details creation for a process instance, use method
+<pre>EnumSet&lt;ProcessInstanceDetailsOptions&gt; getDetailsOptions();
+</pre>
+<p>of the <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ProcessInstance.html">
+ProcessInstance</a> class.</p>
+<h2>Example</h2>
+<p>The following code snippet shows an example on how to receive the 
+parent process instance oid for a process instance object
+depending on a specific details policy option.</p>
+<pre>
+import java.util.EnumSet;
+import java.util.Iterator;
+
+import org.eclipse.stardust.engine.api.query.ProcessInstanceDetailsPolicy;
+import org.eclipse.stardust.engine.api.query.ProcessInstanceQuery;
+import org.eclipse.stardust.engine.api.query.ProcessInstances;
+import org.eclipse.stardust.engine.api.runtime.ProcessInstance;
+import org.eclipse.stardust.engine.api.runtime.QueryService;
+import org.eclipse.stardust.engine.api.runtime.ServiceFactory;
+import org.eclipse.stardust.engine.api.runtime.ServiceFactoryLocator;
+import org.eclipse.stardust.engine.api.runtime.dto.ProcessInstanceDetailsLevel;
+import org.eclipse.stardust.engine.api.runtime.dto.ProcessInstanceDetailsOptions;
+
+
+public class Main
+{
+   private static final String PROCESS_DEFINITION_1 = "ProcessDefinition_1";
+
+   public static void main(String[] args)
+   {
+      ServiceFactory sf = ServiceFactoryLocator.get("motu", "motu");
+      QueryService qs = sf.getQueryService();
+
+      ProcessInstanceQuery piq = ProcessInstanceQuery.findAll();
+
+      // create new policy... here default level
+      ProcessInstanceDetailsPolicy policy = new ProcessInstanceDetailsPolicy(ProcessInstanceDetailsLevel.Default);
+      // ... and additionally set more details options 
+      policy.getOptions().add(ProcessInstanceDetailsOptions.WITH_HIERARCHY_INFO);
+      // alternative approach: create policy by constructor only
+      // ProcessInstanceDetailsPolicy policy = new ProcessInstanceDetailsPolicy(ProcessInstanceDetailsLevel.Default, EnumSet.of(ProcessInstanceDetailsOptions.WITH_HIERARCHY_INFO));
+      
+      // setting this extended policy
+      piq.setPolicy(policy);
+      
+      ProcessInstances processInstances = qs.getAllProcessInstances(piq);
+
+      // iterate over all PIs
+      for (Iterator iterator = processInstances.iterator(); iterator.hasNext();)
+      {
+         ProcessInstance pi = (ProcessInstance) iterator.next();
+         
+         // retrieve the oid of parentProcessInstance
+         // can be ProcessInstance.UNKNOWN_OID, 0 or &gt;0.
+         // ProcessInstance.UNKNOWN_OID: not requested or an error occurred during fetch
+         // 0: no parent PI
+         // &gt;0: the oid
+         long parentProcessInstanceOid = pi.getParentProcessInstanceOid();
+         
+         // check the details options the PI has queries with
+         EnumSet&lt;ProcessInstanceDetailsOptions&gt; detailsOptions = pi.getDetailsOptions();
+      }
+   }
+}</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>
+

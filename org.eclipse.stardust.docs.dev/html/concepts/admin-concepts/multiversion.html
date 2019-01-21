@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Multiple Versions</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Managing Multi Partition Stardust Installations",
+		"ag-concepts-1.htm","ag-multipartition.htm",
+	    "../key-concepts.html","Concepts",
+	    "ag-concepts-preface.htm","Administrative Concepts");
+-->
+</script>
+<h1>Multiple Versions</h1>
+<p>The Stardust runtime environment allows you to maintain multiple
+revisions of a workflow model. Different model files with identical 
+model IDs are considered versions of the same model. They can be deployed 
+as new versions of 
+or to overwrite specific versions of the model already deployed.
+ Stardust handles multiple versions of the model transparently
+for the user.</p>
+<p>After the first base version of the model has been deployed to
+the audit trail database</p>
+<ul>
+    <li>administrators can create users and assign them to the
+    roles and organizations defined in this version,</li>
+    <li>processes can be instantiated and</li>
+    <li>worklists of the performers are filled with work items.</li>
+</ul>
+<p>Each model deployed has a validity period specified by the start
+and end time of validity. If the model does not specify the start or the
+end time, that boundary is considered unlimited.</p>
+<p>Models may have overlapping validity periods. In that case, an
+explicit priority assigned to the model at deployment time will be used
+to determine the active model. Models can also be enabled or disabled
+with a flag that can be set at deployment time or by a later change of
+the deployed model version.</p>
+<p>Thus, a model is defined as active if it is not disabled, the
+current time is between the start and end validity period of the model
+and it has the highest priority among the models satisfying the previous
+criteria.</p>
+<p>At the point of deployment of subsequent versions to the same
+audit trail database, the following operations occur:</p>
+<ul>
+    <li>Users from the previous versions are assigned to the roles
+    and organizations defined in the new version if the IDs of these
+    roles and organizations are the same as in the previous version.</li>
+    <li>The active model is recalculated. Processes will be
+    instantiated only as based on the definitions in the new active
+    model. Processes already instantiated in the previous models will
+    continue according to the original definition.</li>
+    <li>Worklists of the performers contain cumulated lists of work
+    items originating in both, the new active version and in the former
+    ones. This means that activities pertaining to processes started in
+    the past are performed according to the former process definitions,
+    whereas those pertaining to new processes are based on the
+    definition in the active model. The user, however, does not see this
+    difference in his worklist.</li>
+</ul>
+<p>In this way, an arbitrary number of versions can be deployed to
+the same runtime environment and coexist. However, there will be always
+at most one active version. New process instances will exclusively be
+started based on the process definitions of this model version.</p>
+<p>For details on versioning handling when using multi model 
+audit trail setups, refer to the section
+<a href="../multi-model/model-deployment.html#vhandl">Versioning Handling</a>
+of chapter
+<a href="../multi-model/model-deployment.html">Deploying Different Models into One Runtime</a>
+in the
+<a href="../multi-model/multi-model.html">Multi Model Audit Trail Setups</a>
+concepts part.</p>
+
+<h3>Deleting Model Versions having Grants</h3>
+<p>When deleting a model version having participants that do not exist in any other
+model version, also the grants in model elements given to these participants 
+will be deleted from the other model versions. In case the participants exist
+in other model versions, the grants remain.</p>
+<p>For example a first model version has two participants and in the
+next model version two more participants are added and given some permissions. 
+In case the second model version is deleted, also the grants given to the 
+participants added to this model are deleted, as the participants do not exist
+in another version. If on the other hand a third model version is created 
+having these participants and the second model version is deleted, the
+permissions will remain as they are still used in version three.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Defining Activity Criticality</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working with Process Definition Event Handlers",
+        "model-variables.html","mg-defdesk-12.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+
+<h1>Defining Activity Criticality</h1>
+<p>To calculate criticality of any activity, you can define a JavaScript formula
+in the Model property page.
+During model creation, a standard criticality formula is created along with
+default configuration variables used in this formula.
+The formula determines the way how to calculate and recalculate activity 
+criticality.</p>
+<p>For details and example usage of activity criticality, 
+refer to chapter
+<a href="../../concepts/activity-criticality.html">Activity Criticality</a> in the
+<a href="../../concepts/key-concepts.html">Concepts</a> section.</p>
+<h2 id="define">Defining the Activity Criticality Formula</h2>
+<p>To define the activity criticality formula:</p>
+<ol>
+	<li>In the <strong>Outline</strong> tree view of the modeler, right-click on the model and click <strong>
+	Properties</strong>. The model properties dialog box gets displayed.</li>
+	<li>Select <strong>Activity Criticality</strong> option in the left pane of the properties dialog box.</li>
+    <li>If not already created, the standard formula using the default 
+    configuration variables for criticality is displayed.
+	<p class="image"><a href="images/prop-critic_orgSize.png" target="_blank">
+        <img src="images/prop-critic.png" alt="Model Properties"></a>
+    <br>
+    <strong>Figure:</strong> Model Properties - Activity Criticality</p>
+    For details on the standard JavaScript formula provided by Stardust, refer
+    to section 
+     <a href="../../concepts/activity-criticality.html#standard">Standard 
+     JavaScript Formula</a> of chapter
+     <a href="../../concepts/activity-criticality.html">Activity Criticality</a> 
+    in the Stardust <a href="../../concepts/key-concepts.html">Concepts</a> 
+    section.</li> 
+    <li>In the <strong>Configuration Variables</strong> pane, you can see the
+    default configuration variables used in the standard formula.
+    <p class="image"><img src="images/act-prop-conf.png" alt="Model Properties">
+    <br>
+    <strong>Figure:</strong> Default Configuration Variables used for standard 
+    Formula.</p>   
+    For a detailed description of the default configuration variables, refer
+    to section 
+     <a href="../../concepts/activity-criticality.html#defaultVar">Default 
+     configuration variables</a> of chapter
+     <a href="../../concepts/activity-criticality.html">Activity Criticality</a> 
+    in the Stardust <a href="../../concepts/key-concepts.html">Concepts</a> 
+    section.</li> 
+	<li>Now you edit the standard criticality formula or specify a custom 
+    formula in the JavaScript editor named <strong>Formula</strong>.
+	<p class="image"><img src="images/crticality.png" alt="Formula">
+    <br>
+    <strong>Figure:</strong> Activity Criticality - Formula</p>
+    Refer to section
+    <a href="../../concepts/activity-criticality.html#js">JavaScript Formula</a> of
+    chapter
+    <a href="../../concepts/activity-criticality.html">Activity Criticality</a> 
+    in the <a href="../../concepts/key-concepts.html">Concepts</a> section
+    for a detailed description on the parameters, variables and syntax that can 
+    be used in the JavaScript code.</li>
+     <li>In case you use the standard formula, you can also modify the default 
+    values of the configuration variables.</li>
+	<li>Click <strong>Apply</strong> and <strong>OK</strong></li>
+</ol> 
+
+ 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

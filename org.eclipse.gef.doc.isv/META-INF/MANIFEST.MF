@@ -1,0 +1,2548 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.gef.doc.isv; singleton:=true
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)
+ ";resolution:=optional,org.eclipse.jface;bundle-version="[3.2.0,4.0.0
+ )";resolution:=optional,org.eclipse.ui.views;bundle-version="[3.2.0,4
+ .0.0)";resolution:=optional,org.eclipse.ui.workbench;bundle-version="
+ [3.2.0,4.0.0)";resolution:=optional,org.eclipse.draw2d;bundle-version
+ ="[3.8.0,4.0.0)";resolution:=optional,org.eclipse.platform.doc.isv;bu
+ ndle-version="[3.2.0,5.0.0)";resolution:=optional
+Bundle-Version: 3.9.100.201408150207
+Build-Jdk: 1.6.0_21
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %Plugin.providerName
+Bundle-Name: %Plugin.name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: reference/api/org/eclipse/gef/EditPartListener.Stub.html
+SHA1-Digest: Cm5deLXc0WkpwXqFL7/L8IedE0o=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/UndoRetargetA
+ ction.html
+SHA1-Digest: OG2XzkPooLdv3SuaHRCDzSsSz2c=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchWidthRet
+ argetAction.html
+SHA1-Digest: BxPShI903MjgzY8VYIVushsLmCM=
+
+Name: reference/api/org/eclipse/gef/editpolicies/OrderedLayoutEditPoli
+ cy.html
+SHA1-Digest: p9IixwdFqhrI99WPf8mp2RFEJrs=
+
+Name: reference/api/org/eclipse/gef/CompoundSnapToHelper.html
+SHA1-Digest: lUO76WlXh5r9jaBpzq/ip/yzlE8=
+
+Name: reference/api/org/eclipse/gef/LayerConstants.html
+SHA1-Digest: rR94lH/2s9pAozL8dKrWHJbGL7A=
+
+Name: reference/api/org/eclipse/gef/ui/properties/package-use.html
+SHA1-Digest: RachRn0ovdADdo4QDKy4Yo59+v0=
+
+Name: reference/api/index-files/index-14.html
+SHA1-Digest: gzYUScQ8iTeekmJqNsC4AEs5rYY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/PrintAction.html
+SHA1-Digest: daEqxx813flKbheGhe4aCZycqy0=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalEditor.html
+SHA1-Digest: EzQMxOGA9oCeosi1uaWrsYYnbR0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/package-tree.html
+SHA1-Digest: q5tQifnswYgQB1F1lpaVWoRTpZU=
+
+Name: guide/images/interactreconnect.gif
+SHA1-Digest: OdKHQ22a8lMSW1T7YYulmD3UcSw=
+
+Name: reference/api/org/eclipse/gef/util/package-use.html
+SHA1-Digest: VfLVQK2kYO6apkHI3EjvyUBs9Gw=
+
+Name: guide/images/editing2.gif
+SHA1-Digest: xPXj+uwBmxE2AWZMJnKTvVn198o=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteToolbar.h
+ tml
+SHA1-Digest: f5X7y7pgC4AVzvatPwHEwRfwU8w=
+
+Name: reference/api/org/eclipse/gef/ui/palette/package-use.html
+SHA1-Digest: Y/NjOZl2utj/2OfzhsPk1hzQx84=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/class-use/Palette
+ ViewerPage.html
+SHA1-Digest: GbpJR3RvV/fs/Hs0CPXoPz9zkfw=
+
+Name: reference/api/org/eclipse/gef/EditPartViewer.html
+SHA1-Digest: Y9TlRiw4Kr9pXUXDELda6/OxHJk=
+
+Name: reference/api/org/eclipse/gef/EditDomain.html
+SHA1-Digest: E9u9dZjOYPdd3BR66Bgm3YhQD/4=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/SimpleObjectTransfer
+ .html
+SHA1-Digest: xsM2xqEOYkpFq6OdctZvQMZLD6M=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteSettin
+ gsDialog.html
+SHA1-Digest: hVYlF3nFJyBLmK2IP+o+tHnTDP4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/Clipboard.html
+SHA1-Digest: 4iE78f4R7HvXTfOLiJibVttNV/8=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalViewer
+ KeyHandler.html
+SHA1-Digest: OIMRP2YTK96Co4Am4NEjS7abDmg=
+
+Name: reference/api/org/eclipse/gef/Handle.html
+SHA1-Digest: LAxCm+tdzUBjO/8iOdReBCa1zQI=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ResizableHandleK
+ it.html
+SHA1-Digest: ya9T8d4njTpWMhrtUhIW2xFV1Y4=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/PanningSelectionTo
+ ol.html
+SHA1-Digest: ybbxG9VLvPdGZTSA2no4PzQoNJ4=
+
+Name: reference/api/org/eclipse/gef/editpolicies/FlowLayoutEditPolicy.
+ html
+SHA1-Digest: VACjH7l6xHh7T+qRZ0lFECVigxk=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ConnectionEndpointEdi
+ tPolicy.html
+SHA1-Digest: giItCRMVM9mh5VBnhZcx9tYYuts=
+
+Name: guide/images/mvctree.gif
+SHA1-Digest: 9oQrvvRWT20J7t/Huy0V9UI500E=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchWidthAct
+ ion.html
+SHA1-Digest: XESPf8GufS9B2MwODAT4pd05XR0=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/package-tree.
+ html
+SHA1-Digest: TqNGC+MZ1oxV6ZhN+KhaSGr7Zk4=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteCustomizerDialog.html
+SHA1-Digest: WWQjYg9kXQQK5QKa1RoMFfbXzX0=
+
+Name: reference/api/org/eclipse/gef/class-use/TreeEditPart.html
+SHA1-Digest: M7fValWyhksmB1c6SfMY+/8DnDs=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/BendpointHandle.
+ html
+SHA1-Digest: DZZAsqY+x1ugDM+DKnZQQEJCGCA=
+
+Name: reference/api/org/eclipse/gef/handles/package-use.html
+SHA1-Digest: gT6kcTOxA1xRmapHy94ILoPHrk0=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteListener.html
+SHA1-Digest: QVmg8oKnVyPPKDQfAA+tk+SjWUI=
+
+Name: reference/api/org/eclipse/gef/doc-files/EditPart.gif
+SHA1-Digest: /kY+xoTm7piR4+D00QRFVc3/qoc=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/RootTreeEditPa
+ rt.html
+SHA1-Digest: QAHwYS9cdjmQJoHDNzOVDMaamZ8=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Def
+ aultEntryPage.html
+SHA1-Digest: dh0y0REvFJB6030iy8EsopENAbM=
+
+Name: reference/api/org/eclipse/gef/editpolicies/SnapFeedbackPolicy.ht
+ ml
+SHA1-Digest: cq/XHBctCU/UapCGZBEn59mGjPc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/PaletteViewerKeyHandler.h
+ tml
+SHA1-Digest: qKmToa2VGhCxxOpVG98KlXyUFMg=
+
+Name: reference/api/org/eclipse/gef/class-use/GraphicalEditPart.html
+SHA1-Digest: x3G++dG2gBBMNsiVUKGB/tm4gKA=
+
+Name: reference/api/org/eclipse/gef/editpolicies/AbstractEditPolicy.ht
+ ml
+SHA1-Digest: T31eUvSdDAezUVBcm17Nm/kV2wE=
+
+Name: guide/images/selectionhandles.gif
+SHA1-Digest: Cx0bOzEtLT5KhTAOVbwBpjYPv7o=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/CustomizeActi
+ on.html
+SHA1-Digest: jimCaaVu871OlpeRtAtpH3O+Bzo=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/SelectionTool.html
+SHA1-Digest: HShZpZF7ddFsUsddE1HEALWx/3w=
+
+Name: guide/index.html
+SHA1-Digest: TA5tmO2R2P6iry4SUloYUD4HxDc=
+
+Name: reference/api/stylesheet.css
+SHA1-Digest: ImkIJB0RcjV0xhyiSqc3bT1SXE8=
+
+Name: reference/api/org/eclipse/gef/class-use/SnapToGrid.html
+SHA1-Digest: 3O0WcaK1yGi/FAyxtWzcyuXXGrk=
+
+Name: META-INF/maven/org.eclipse.gef.plugins/org.eclipse.gef.doc.isv/p
+ om.properties
+SHA1-Digest: rF/Xpuctf4+l69x30CUYsl4ufRY=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/package-use.html
+SHA1-Digest: 6T8jiva0yeTcYIou1746Drn7vKg=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/BendpointEd
+ itPolicy.html
+SHA1-Digest: c8b+zmlE/BLz/4wx7WHuu13IFIE=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ZoomManager.ht
+ ml
+SHA1-Digest: 7zU+uV3JlMu68Seg0cjnHlWfi3k=
+
+Name: reference/api/org/eclipse/gef/class-use/NodeEditPart.html
+SHA1-Digest: P1RWkj/m3NKAnrIn6FCdXgBSIYQ=
+
+Name: reference/api/org/eclipse/gef/SnapToGeometry.Entry.html
+SHA1-Digest: fMhbcp5DRZl8pQsumfNECRl6QMM=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteEntryFactory.html
+SHA1-Digest: tTHJ716IihBSBQQJbj8GLBBznGY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/PrintAction.h
+ tml
+SHA1-Digest: nm5EcbPW3GLBOqsZvUI3BriM8xU=
+
+Name: reference/api/org/eclipse/gef/ui/parts/package-use.html
+SHA1-Digest: FZ/AgrwVNveRH/Hn6jaYrxoVxFw=
+
+Name: guide/guide.html
+SHA1-Digest: Z26B/hhwQusiAi7kSXtZllhG6aw=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/EntryPageCont
+ ainer.html
+SHA1-Digest: oLjXXc5HqGCdrAfQjNBU6mSI82E=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteDrawer
+ Factory.html
+SHA1-Digest: /RsVC7n4iLodw18arMQg2N3juug=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteTemplateE
+ ntry.html
+SHA1-Digest: pkLRWmahbzoOE8TIQwpJLZ4f6Tw=
+
+Name: reference/api/org/eclipse/gef/class-use/Request.html
+SHA1-Digest: ud3z1gJziVnTL7jIN4OvgveYXrs=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteContex
+ tMenuProvider.html
+SHA1-Digest: ObVreOw0gCDN/pK6AlI9XAmnQsA=
+
+Name: reference/api/org/eclipse/gef/ui/actions/DeleteAction.html
+SHA1-Digest: 0IMOEmZJi5UbwdQUff/xwVGbGXs=
+
+Name: reference/api/org/eclipse/gef/ui/properties/UndoablePropertyShee
+ tEntry.html
+SHA1-Digest: g3VqNL0KptANJ903T9bN344ekVw=
+
+Name: reference/api/org/eclipse/gef/tools/package-use.html
+SHA1-Digest: KjYFAbiZf/N/4bVrYY3IGW2PPWg=
+
+Name: reference/api/org/eclipse/gef/palette/ConnectionCreationToolEntr
+ y.html
+SHA1-Digest: kseh5zfKBGNcOHJrnXba5q9u984=
+
+Name: reference/api/org/eclipse/gef/util/class-use/EditPartUtilities.h
+ tml
+SHA1-Digest: t4NIUj20j0M79ydKbz5Xq3HaFDY=
+
+Name: reference/api/org/eclipse/gef/palette/SelectionToolEntry.html
+SHA1-Digest: qITV4DaSj4YmBbF4zCpIbfRAnkk=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ViewportMouseW
+ heelHelper.html
+SHA1-Digest: cHJ4u8qBU3IvAZR663ygcpHB36o=
+
+Name: reference/api/org/eclipse/gef/tools/DirectEditManager.html
+SHA1-Digest: ImB7XfZMQBVuYe/pBnEnJ+AHkkc=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteViewer.html
+SHA1-Digest: wh8GJC+vtxSSZa97h/oHruhY6LU=
+
+Name: reference/api/org/eclipse/gef/tools/DragTreeItemsTracker.html
+SHA1-Digest: sMDgb5Vts2L7mrhaXnYdnJrrHSk=
+
+Name: reference/api/index-files/index-7.html
+SHA1-Digest: 6QlHAco1aRXAMP2nwhuKHNDofTI=
+
+Name: reference/api/org/eclipse/gef/AccessibleAnchorProvider.html
+SHA1-Digest: WHS/CNNQvFRLVtH5SBAtpobJwec=
+
+Name: reference/api/org/eclipse/gef/EditPolicy.html
+SHA1-Digest: i9xTgjEjwPr2iTLx7CHC4dN8yp4=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractGraphicalEditPar
+ t.AccessibleGraphicalEditPart.html
+SHA1-Digest: aCVGuHKkAiPoYKYZOatEE2jCt+8=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteMessag
+ es.html
+SHA1-Digest: XrqE7I/sbvaxD5VkoQeLYL4E22A=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchHeightRetargetActi
+ on.html
+SHA1-Digest: SfOI5ejaPbEehjI+4S8D4SVarsw=
+
+Name: reference/api/org/eclipse/gef/NodeListener.html
+SHA1-Digest: qNk8yaDDKH+VOG/b1VXg5tGsTyI=
+
+Name: reference/api/org/eclipse/gef/rulers/package-tree.html
+SHA1-Digest: EBvuN8/kY//wJAi2t5aJ2pfjA9M=
+
+Name: reference/api/org/eclipse/gef/ui/actions/DirectEditAction.html
+SHA1-Digest: 1XBGMqHYZ3GfdsCi9O3SU9HQBkw=
+
+Name: reference/api/org/eclipse/gef/doc-files/gefoverview.gif
+SHA1-Digest: GENMquka3+BEruC4fNaUrzhp2IE=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/CreateGuideAc
+ tion.html
+SHA1-Digest: DFM/kihDbUqgXKDF+Yg7iGWzMII=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPartFactory.html
+SHA1-Digest: cIR90O6hTEbOybqZVYEKlhX47yQ=
+
+Name: guide/images/logiceditor.gif
+SHA1-Digest: mlvjWJVaPzuQDo5LzPf6PLIcQ4M=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/DirectEditManager.
+ DirectEditBorder.html
+SHA1-Digest: VGc92B2A7wsffYBBsNjbYlPYkU8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/PasteRetarget
+ Action.html
+SHA1-Digest: FSg1W+gCz/zVmpvISsgnRT/q/+8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/WorkbenchPart
+ Action.html
+SHA1-Digest: 2Q++bX519x+ZYUweXkZLnbdyTbE=
+
+Name: reference/api/org/eclipse/gef/handles/package-frame.html
+SHA1-Digest: UYRNDvyiPNlrinf6AFR7vdwEaDo=
+
+Name: reference/api/org/eclipse/gef/editpolicies/GraphicalNodeEditPoli
+ cy.html
+SHA1-Digest: I12n0q2OTLHAJp7KprFPxlSc/Kg=
+
+Name: reference/api/org/eclipse/gef/doc-files/mvc-gef.gif
+SHA1-Digest: 6vs4wedZ51fi6KRElisfQnejhjo=
+
+Name: reference/api/org/eclipse/gef/ConnectionEditPart.html
+SHA1-Digest: km6QkNPlkBf4ZPdQ5FzIXJ49daM=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/SelectionActi
+ on.html
+SHA1-Digest: XxIC84jW/Ix8jHxGI0yllrj93BE=
+
+Name: reference/api/org/eclipse/gef/ui/actions/PasteTemplateAction.htm
+ l
+SHA1-Digest: K9bBPI4LkW90ES7ap39LWXDQQKk=
+
+Name: reference/api/org/eclipse/gef/doc-files/complexcommand.gif
+SHA1-Digest: 78Iwoq2A0RhB0LUXvGpLWC6V7Pg=
+
+Name: guide/images/editing1.gif
+SHA1-Digest: bpWu/q2IYOzOXTQ15/riQtYMtZQ=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchSizeRetargetAction
+ .html
+SHA1-Digest: PGULY9jqWE32fmSaH/a1ybzKxbw=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/MarqueeDragTracker
+ .html
+SHA1-Digest: jWc5zxLyS4sB13IRl2uHgL6kETk=
+
+Name: reference/api/org/eclipse/gef/AutoexposeHelper.Search.html
+SHA1-Digest: 86PQL3oHEzSC86tMzP4xL+NMrTA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/FlyoutPalette
+ Composite.html
+SHA1-Digest: gX6/hsMH/Xk/hmfljfNDL6GK97Q=
+
+Name: reference/api/org/eclipse/gef/class-use/MouseWheelHandler.KeyGen
+ erator.html
+SHA1-Digest: 3NranmTBnHy2MAxO/joIhFuWFGQ=
+
+Name: reference/api/org/eclipse/gef/editpolicies/SelectionHandlesEditP
+ olicy.html
+SHA1-Digest: k1TkBeLrpitpzwHjMzmsCDJEDPQ=
+
+Name: reference/api/org/eclipse/gef/commands/CommandStackEventListener
+ .html
+SHA1-Digest: ZOTiF9zt+y62cwwaLxfR9zOcJP0=
+
+Name: reference/api/org/eclipse/gef/EditPartViewer.Conditional.html
+SHA1-Digest: a1zB83gdZWBMaKCqOS3HAl1HTq8=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/class-use/RulerComposite
+ .html
+SHA1-Digest: GD6Pcdj7AB5vjwLPqkuk6ZCPo0Q=
+
+Name: reference/api/serialized-form.html
+SHA1-Digest: vWSn2nAbEtcC4FKRFryfHY0ZS5M=
+
+Name: reference/api/org/eclipse/gef/palette/CreationToolEntry.html
+SHA1-Digest: jaFePp+0xo7t94kkHjs7241ZeMo=
+
+Name: reference/api/org/eclipse/gef/class-use/DragTracker.html
+SHA1-Digest: N/02Hrwiuh2M8eo7iQXUpY2PSTY=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ConnectionEndpoi
+ ntHandle.html
+SHA1-Digest: qmgiMIYGvZvFXqZf1MYbAvRVElA=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/RedoRetargetA
+ ction.html
+SHA1-Digest: RbePXN8zqRbAmmfEry2P6WoQhwY=
+
+Name: reference/api/org/eclipse/gef/ui/parts/package-frame.html
+SHA1-Digest: QQYEglG8Zy9OeTM2VY4Aq0CZkPM=
+
+Name: topics_Guide.xml
+SHA1-Digest: wFkEnGivZQhzThn8KBnNV1Ee3uY=
+
+Name: reference/api/index-files/index-15.html
+SHA1-Digest: n32LdHtQdlK4mdt+NRLS4O0UO2c=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteEditPa
+ rtFactory.html
+SHA1-Digest: 2Vz6OJO9XUz6Vgl56KaU8LJBIgI=
+
+Name: reference/api/index-files/index-1.html
+SHA1-Digest: iyerIQwinBF0M7bbnEvDY01tdl4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/CopyRetargetAction.html
+SHA1-Digest: /SY6jXiqG5Sc6sKg6LsVtH8AP9s=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/DirectEditReque
+ st.html
+SHA1-Digest: 1GnGJwibXUkMwScCJo7yg+bqR9c=
+
+Name: reference/api/org/eclipse/gef/doc-files/black.gif
+SHA1-Digest: YBW76vJSVEP9NWZKXaVxx8028xc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/PaletteViewerKe
+ yHandler.html
+SHA1-Digest: Ld0ZdapjlOLuxjZRtnRPPu7wp68=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchSizeAction.html
+SHA1-Digest: fUN+Nh1+MBW+mYaE2GzIC4sEF10=
+
+Name: reference/api/org/eclipse/gef/MouseWheelHandler.KeyGenerator.htm
+ l
+SHA1-Digest: DOnRSsXFR5QAKZc7HiWnYmjXSLw=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/TreeContain
+ erEditPolicy.html
+SHA1-Digest: LfFwhArCPrW13yolMICYBSyorBs=
+
+Name: reference/api/org/eclipse/gef/tools/package-frame.html
+SHA1-Digest: eWqWHMvkFwFsd+9JHbnG9Ca6Q+k=
+
+Name: reference/api/org/eclipse/gef/editpolicies/package-use.html
+SHA1-Digest: QcOo7r1OuGY6/dCN2xuE5h9Malc=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PanningSelection
+ ToolEntry.html
+SHA1-Digest: 44h2xOsMzfl3z/ShtOCGBEUCE4U=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPartListener.Stub.ht
+ ml
+SHA1-Digest: sF/DN171g81PhA7kgyeP30BfZHc=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/SelectionHa
+ ndlesEditPolicy.html
+SHA1-Digest: rYVtk/mRUijDaH8gSYWHiAg0L60=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractConnectionEditPa
+ rt.DefaultAccessibleAnchorProvider.html
+SHA1-Digest: ynIlzxkAEUr9/GOVwupElR7yv/c=
+
+Name: reference/api/org/eclipse/gef/class-use/Disposable.html
+SHA1-Digest: cU/6FE9142b+J/QdkRzE8NwZpjg=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/CommandStack.ht
+ ml
+SHA1-Digest: fw8FZFNyp5DMHt08N0sqPS3WAKk=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/PalettePage.html
+SHA1-Digest: aKGEBmn35pmLbPJdmjVYlDuwlOg=
+
+Name: reference/api/overview-summary.html
+SHA1-Digest: 7vkJTAC7kn2Dg5av3dWLE31GSLM=
+
+Name: reference/api/org/eclipse/gef/doc-files/blue.gif
+SHA1-Digest: Ut2rhK2qhbZGuam7EtLNAOmY9H0=
+
+Name: reference/api/org/eclipse/gef/class-use/SharedCursors.html
+SHA1-Digest: /4DsswRfgwWXAPIcJy7A99siOOs=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/DefaultEntryP
+ age.html
+SHA1-Digest: CHRsDHIsuH6KpPieuwuzYfRxtL8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ToggleGridAct
+ ion.html
+SHA1-Digest: vpZ9KrxvhU1lvTjmSGjl03H4vP0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/SelectionEditPolicy.h
+ tml
+SHA1-Digest: D2tBIwW64fuJtyRD4agH82qhfx4=
+
+Name: reference/api/index-files/index-20.html
+SHA1-Digest: mm+0jRXHnW7/HFiY27Y1jUmHfhs=
+
+Name: reference/api/org/eclipse/gef/util/package-summary.html
+SHA1-Digest: MjYJeuDHUKGozWxW/kksWyvHO1g=
+
+Name: reference/api/org/eclipse/gef/class-use/ExposeHelper.html
+SHA1-Digest: CUjq0OmAGrnu5Oq6VNaKg9TGrnA=
+
+Name: reference/api/org/eclipse/gef/requests/LocationRequest.html
+SHA1-Digest: jMS+w1dZaALtLlc9l9R+Fyss/BA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteContainerFactory.html
+SHA1-Digest: 5l/51Ihes3S56+wK6f1nFY736Vg=
+
+Name: reference/api/org/eclipse/gef/SnapToGrid.html
+SHA1-Digest: ipV7bsN1LY+46jhyx2O3VMiRILo=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ScalableRootEd
+ itPart.html
+SHA1-Digest: FpVPzKglAAoSROJ5tG2AwfFmvHg=
+
+Name: reference/api/org/eclipse/gef/tools/ResizeTracker.html
+SHA1-Digest: q233BYAMvYEk7YljjwmgSVUTIvs=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/MarqueeToolEntry
+ .html
+SHA1-Digest: ou0PkOcUX3NJIc1JwUsuLMangrQ=
+
+Name: reference/api/org/eclipse/gef/Request.html
+SHA1-Digest: wuPuXBRiVcdNqbG9qDnEcT8R5DU=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/SimpleRootEdit
+ Part.html
+SHA1-Digest: Y4+sFTCnZew0sJEEWfvDNvddBIQ=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ConnectionE
+ ditPolicy.html
+SHA1-Digest: fvT/5jB2CYWuuZFVpYdWBy2uP6E=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/SelectionReques
+ t.html
+SHA1-Digest: gBdFje1K4zdJRy1MpkWNuw2tFwc=
+
+Name: reference/api/org/eclipse/gef/commands/package-frame.html
+SHA1-Digest: v+c0ojkb+qn0LW6h1Zp5Z7CHPqE=
+
+Name: reference/api/org/eclipse/gef/commands/CommandStack.html
+SHA1-Digest: iiZcl8AqSPqY2Xd3+hFmWM48w8Y=
+
+Name: reference/api/org/eclipse/gef/ui/actions/EditorPartAction.html
+SHA1-Digest: /8eo6TFDgZEblIyuXUnU0fSULLs=
+
+Name: reference/api/org/eclipse/gef/package-use.html
+SHA1-Digest: jtDqGnzqnOR/65RSw258RDdbbRc=
+
+Name: reference/api/org/eclipse/gef/class-use/ConnectionEditPart.html
+SHA1-Digest: vPTDBlUEOXReViuq8hy4jR574V4=
+
+Name: reference/api/org/eclipse/gef/ui/properties/class-use/UndoablePr
+ opertySheetPage.html
+SHA1-Digest: t9I/Z1Hu/rLCdWCAopjdJ5WIxg8=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteCustom
+ izerDialog.html
+SHA1-Digest: 2vb3kPhgLcZk0kcYLZO+fKRvNWU=
+
+Name: reference/api/org/eclipse/gef/editparts/LayerManager.html
+SHA1-Digest: 1ccTQlFXhE3ZkreiZjSl9frMjV8=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/DirectEditP
+ olicy.html
+SHA1-Digest: dg0LHoePRFMC71fmPM4giQPIgrI=
+
+Name: reference/api/org/eclipse/gef/GraphicalEditPart.html
+SHA1-Digest: PYyCrfi+oxIDG3ZLzecpQQq9KR4=
+
+Name: reference/api/org/eclipse/gef/ui/palette/CustomizeAction.html
+SHA1-Digest: A1yG6WzsCySF6aAGOWWLNsSLVq4=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/NonResizableHand
+ le.html
+SHA1-Digest: JgSOIe9aKxP31/71ffrUHZ9g3UI=
+
+Name: reference/api/org/eclipse/gef/class-use/Handle.html
+SHA1-Digest: lpn2vVhzmwW+kaLrhqyZz/lJWqU=
+
+Name: guide/images/interactmove.gif
+SHA1-Digest: pZtrigv4YO7EImjo92cypdvO6HM=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/UnexecutableCom
+ mand.html
+SHA1-Digest: T90XIEBmPnMhKNCJBsP8y3zIwvA=
+
+Name: reference/api/org/eclipse/gef/commands/Command.html
+SHA1-Digest: ZQtSzfZYUGF0ex+9koh5Q0bbFrg=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ZoomOutAction.html
+SHA1-Digest: 3WMtl0F91iojCvm1tSW1tbAQNoc=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/package-summary.html
+SHA1-Digest: YtC81XBJrR12uzwBi49DjPdxa5w=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractGraphi
+ calEditPart.DefaultAccessibleAnchorProvider.html
+SHA1-Digest: dcKfDqlCBkiRs6fK2vcwT3FyTtI=
+
+Name: reference/api/org/eclipse/gef/ui/actions/UndoAction.html
+SHA1-Digest: Q7KF2YykTPVG1u2jmQ5rAK2wBEU=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/SettingsActio
+ n.html
+SHA1-Digest: VtWt6Qi9mHxupvPhUGZX1fQMmuY=
+
+Name: reference/api/index-files/index-8.html
+SHA1-Digest: Vp6JE6nGYR1dDpTUHkoMRVaUN4w=
+
+Name: reference/api/org/eclipse/gef/tools/ConnectionDragCreationTool.h
+ tml
+SHA1-Digest: cUMmif9x+3k+JPns/XPosUri104=
+
+Name: reference/api/org/eclipse/gef/doc-files/complexview.gif
+SHA1-Digest: yMqQLkAd5YbeFUTQ/OwAnHAxUFg=
+
+Name: reference/api/org/eclipse/gef/MouseWheelZoomHandler.html
+SHA1-Digest: DSQ8VOcaAnNE+4XDnmarTfLOg10=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/DragTreeItemsTrack
+ er.html
+SHA1-Digest: rzjuKxnZbcQMiDNsGjuLag1fff8=
+
+Name: reference/api/org/eclipse/gef/class-use/SharedImages.html
+SHA1-Digest: qRWcantx+/XuWVJhCz8nYk21Mp8=
+
+Name: reference/api/org/eclipse/gef/tools/package-tree.html
+SHA1-Digest: fJn/O/3qGfZjFJD/BXMM40JOhJU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchHeightAc
+ tion.html
+SHA1-Digest: +bZsvPEuyuLWyYmci8krpZOOTZg=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteContainer
+ .html
+SHA1-Digest: Zc0EBRWQw26TGstU3MA0QpLCZes=
+
+Name: reference/api/org/eclipse/gef/print/package-summary.html
+SHA1-Digest: TFp61RhJbilyq4aDkkvRDq0WY1Y=
+
+Name: reference/api/org/eclipse/gef/requests/DropRequest.html
+SHA1-Digest: 9Y88XFfjWMbH9cXojzap98qxoMw=
+
+Name: reference/api/org/eclipse/gef/class-use/SnapToGeometry.html
+SHA1-Digest: BniAtdELOCF3+8542GYzEdAJjiw=
+
+Name: reference/api/org/eclipse/gef/editpolicies/DirectEditPolicy.html
+SHA1-Digest: 4Bfc0nPja5cIvenTVcbGbZ6Qm9A=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteDrawer.html
+SHA1-Digest: SC60udcE5aBSmnik9M4/siz6VS4=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/LocationRequest
+ .html
+SHA1-Digest: 5LGk59CL2g/6MPMifefJt6NPxU8=
+
+Name: reference/api/org/eclipse/gef/doc-files/mvc-generic.gif
+SHA1-Digest: mw298LW/uMOAjaqRkr73u/y5MUQ=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteGroupF
+ actory.html
+SHA1-Digest: A7eWj/Oddig+aNYQLYFJNAH7QrQ=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/CreateRequest.h
+ tml
+SHA1-Digest: bj8b/oLzJaZWxdlfo6NfjYcd3Bk=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/BendpointMoveHan
+ dle.html
+SHA1-Digest: RdBLwtIKPsr1YTZznXJsH9wvRkg=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/CopyTemplateA
+ ction.html
+SHA1-Digest: 3CcEya002BCmeAZCF0ssGGJqxxQ=
+
+Name: notices.html
+SHA1-Digest: 2JdZ1MdVmBeSj+RNGcZrpimnvkk=
+
+Name: reference/api/org/eclipse/gef/class-use/KeyHandler.html
+SHA1-Digest: 7SdYBZefXdjHQ+kR2iZllolpass=
+
+Name: reference/api/org/eclipse/gef/tools/DirectEditManager.DirectEdit
+ Border.html
+SHA1-Digest: MuXF+KAPGVI5OsY3UoUq6nVoNEY=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/NonResizabl
+ eEditPolicy.html
+SHA1-Digest: k5+Hm3SdMjdeNI+Y91Yp7fDqjkU=
+
+Name: reference/api/org/eclipse/gef/dnd/DelegatingDropAdapter.html
+SHA1-Digest: k1N7dkZ01soepR4SlJWHCPoYV68=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchWidthRetargetActio
+ n.html
+SHA1-Digest: IcebgigD329ROq7G7IMdQCfvLbA=
+
+Name: reference/api/org/eclipse/gef/SelectionManager.html
+SHA1-Digest: LaOhBGTMHE9si1LnzoK8eXOTvXc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/DomainEventDisp
+ atcher.EditPartAccessibilityDispatcher.html
+SHA1-Digest: gbO5vfCSTHrgRnop0/9k5+JOj8M=
+
+Name: reference/api/org/eclipse/gef/GraphicalViewer.html
+SHA1-Digest: TznqacJLgnBcsId/ALuPFA0ch8o=
+
+Name: reference/api/org/eclipse/gef/ui/properties/package-frame.html
+SHA1-Digest: UVCsmjlor4H/0fe9wWMernd4vpE=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/UndoAction.ht
+ ml
+SHA1-Digest: I15cWbNhfEDvAUZAE1vjiTSKey0=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ZoomListener.h
+ tml
+SHA1-Digest: 3XoHWpdUiJMBIBDso5m1XQ3LeDY=
+
+Name: reference/api/org/eclipse/gef/class-use/ContextMenuProvider.html
+SHA1-Digest: c2oNoI7GTIlWdhUPNuHoAIBzm8w=
+
+Name: reference/api/org/eclipse/gef/ui/parts/ContentOutlinePage.html
+SHA1-Digest: Drlqv9lOqhdJY/J6xy3mlAMNWBs=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteSeparator
+ .html
+SHA1-Digest: 4r1euD0+aTy2zv8et4r9Tsi+6sQ=
+
+Name: reference/api/org/eclipse/gef/package-summary.html
+SHA1-Digest: vKgGbFH63oECTGpKV5GiTBpML+k=
+
+Name: reference/api/org/eclipse/gef/ContextMenuProvider.html
+SHA1-Digest: YSrjnhyJur4thGDwDVsCwh7tR8o=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteMessages.html
+SHA1-Digest: CbkbSZVaPKiWFwNDv5kUkiA4OhQ=
+
+Name: reference/api/org/eclipse/gef/tools/ToolUtilities.html
+SHA1-Digest: xMz8W8BAHcPo/psemPA7zyW3wO8=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteToolbar.html
+SHA1-Digest: MaMWnM/hq9P7h347JVXpbaN8zf0=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/CellEditorLocator.
+ html
+SHA1-Digest: 5hHl8UZJOE2p8roosvNJmkTU+Mw=
+
+Name: reference/api/org/eclipse/gef/ui/actions/DeleteRetargetAction.ht
+ ml
+SHA1-Digest: MeOPSN9nRP4v6HUvkOmARlWTCiU=
+
+Name: reference/api/org/eclipse/gef/editparts/SimpleRootEditPart.html
+SHA1-Digest: 2uzvMlIBRheDA4CtJP2DZibW5JE=
+
+Name: reference/api/org/eclipse/gef/editpolicies/AbstractTreeContainer
+ EditPolicy.html
+SHA1-Digest: U/85kepVSH4WGbDfp43MY6duCtg=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ContainerEditPolicy.h
+ tml
+SHA1-Digest: Tgp4n8bbWvwHzMDy7kgI6MrNlyo=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteSeparatorFactory.html
+SHA1-Digest: s68kiNedg9j8cXn8KT/DZMxnKLA=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ConnectionCreation
+ Tool.html
+SHA1-Digest: oW7C3LNPfbLwmKPIbX/6ozWTp6c=
+
+Name: reference/api/org/eclipse/gef/palette/package-summary.html
+SHA1-Digest: XQGhn4SzSIuonXqaBItgmNFs+Cw=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ComponentEditPolicy.h
+ tml
+SHA1-Digest: lM4yGUlC6WorFDSCpg3K3P0BPqI=
+
+Name: reference/api/org/eclipse/gef/GEF.html
+SHA1-Digest: cVB3b3HLZvQcM6cVxsbHYwe2BF0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/PasteRetargetAction.htm
+ l
+SHA1-Digest: k9l7nQ81Y64p7Np5cJ+K5ldgEhI=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ConnectionEndHan
+ dle.html
+SHA1-Digest: 98mi2mOWpr7PauI3vXgSY467jUI=
+
+Name: reference/api/org/eclipse/gef/handles/MoveHandle.html
+SHA1-Digest: bDkLlJSS+GskTZXhp/oRn+6l+Fg=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/class-use/Palette
+ Page.html
+SHA1-Digest: 5n+vJvtOkWw7/Ei/wdH1gKc5zaU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/WorkbenchPartAction.htm
+ l
+SHA1-Digest: jBI6tJkgO9JeZ/dVCmFCXTeJXpU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ActionRegistry.html
+SHA1-Digest: WlGFp0FhaWdi6DI3pkBjO6S3ekI=
+
+Name: reference/api/index-files/index-16.html
+SHA1-Digest: rlTJDNqjwpJVEtlnvNMeXpMXgCo=
+
+Name: reference/api/index-files/index-2.html
+SHA1-Digest: nW+vC3bhRVUFqY99s2+h01dPbBk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchSizeReta
+ rgetAction.html
+SHA1-Digest: yzRMmJht9VXhbK6uL5pehV9sxO4=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteGroup.htm
+ l
+SHA1-Digest: Tgp8z+Dulgav5Cs3FwtBGbn7ihk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ZoomComboCont
+ ributionItem.html
+SHA1-Digest: ogs5fBABAGi7G3sB2rDAcbuQ4ys=
+
+Name: reference/api/org/eclipse/gef/class-use/MouseWheelHandler.html
+SHA1-Digest: 7VcrTRALdJYBBzXDaPyqnvqUang=
+
+Name: reference/api/org/eclipse/gef/ui/actions/StackAction.html
+SHA1-Digest: QlLjNJobRewd/6PP7C+JWVjfyTI=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/PaletteViewerPage
+ .html
+SHA1-Digest: BkUAVsBr2RkwbkZEJ5G9dBE4tO4=
+
+Name: reference/api/org/eclipse/gef/handles/ConnectionHandle.html
+SHA1-Digest: /3T/QKUp5s2rbxfnklW9NF1qJSM=
+
+Name: reference/api/org/eclipse/gef/tools/ConnectionCreationTool.html
+SHA1-Digest: PF2A3iFtMtiLu2e9TtIho/g9KiY=
+
+Name: reference/api/org/eclipse/gef/tools/DeselectAllTracker.html
+SHA1-Digest: mDLwa0TbGyKy8OPcc0hNsL+5Pqk=
+
+Name: reference/api/org/eclipse/gef/print/package-tree.html
+SHA1-Digest: x7Q5hxxq9i8h9b+ohRXKkh0CPRk=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/AbstractTool.Input
+ .html
+SHA1-Digest: bqd9BqobDG5DvLnEJ/1n95LTdLA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/LayoutAction.
+ html
+SHA1-Digest: Ql85/ruhwvkQNNTZ+tXaXviSHxg=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/package-use.h
+ tml
+SHA1-Digest: TNoVccgCKKsJ7uQGZJANlp05Bks=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteStackFactory.html
+SHA1-Digest: Vv6UfkyAc8wINqJaQZQyKJ+J0d4=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractConnec
+ tionEditPart.DefaultAccessibleAnchorProvider.html
+SHA1-Digest: GFYQ2x0+lK43C/X7wI6v9OdQ0vU=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/ChangeBoundsReq
+ uest.html
+SHA1-Digest: WLtc888NOLu7g3DKpYbbG6kTpQM=
+
+Name: reference/api/org/eclipse/gef/Disposable.html
+SHA1-Digest: Q97mPirTlwwI8n50d6OQ/uYSIr4=
+
+Name: reference/api/org/eclipse/gef/ui/parts/DomainEventDispatcher.Edi
+ tPartAccessibilityDispatcher.html
+SHA1-Digest: Q5ScMQr03NwrZqinqrCuv77OU/A=
+
+Name: reference/api/org/eclipse/gef/class-use/RootEditPart.html
+SHA1-Digest: leSNkcdNhAn+mE4udKmE3fUNHlA=
+
+Name: about.html
+SHA1-Digest: upsJNogaGlPvrCoyWxm5ik9e9Bk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ZoomInRetargetAction.ht
+ ml
+SHA1-Digest: YoqgL3dagCpK9MuslIE26AQM/P8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/package-frame.html
+SHA1-Digest: 835CLMqSMi2IBHOi22ecMIc6wpE=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/package-frame.htm
+ l
+SHA1-Digest: KyI9tJmyIt5EtA88NSR9PtNZcuM=
+
+Name: reference/api/index-files/index-21.html
+SHA1-Digest: H11QRyIzs0B8tkla5cKusN5MHdc=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractTreeEd
+ itPart.html
+SHA1-Digest: FGPAhtKwW+6qltx8ugsH+ziXKp8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/SelectAllActi
+ on.html
+SHA1-Digest: qYSJjUtQbIIJw2G73rwBREcbnuc=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/ForwardedReques
+ t.html
+SHA1-Digest: jLyC3ijGaZMxxJ+hppZAgw/jY+E=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/package-frame
+ .html
+SHA1-Digest: g7+/zbWo+9eRil6isVZ6dOZlPc8=
+
+Name: reference/api/org/eclipse/gef/editpolicies/package-summary.html
+SHA1-Digest: MVsAr9W8MgCaD664ysFHfn1c4CY=
+
+Name: reference/api/org/eclipse/gef/requests/package-tree.html
+SHA1-Digest: 3oV6mWjhYCsWJtydz5GQCq4BCwg=
+
+Name: book.css
+SHA1-Digest: nxfEDHbxPeGDfv9VjTQGkI0Frls=
+
+Name: reference/api/org/eclipse/gef/requests/SelectionRequest.html
+SHA1-Digest: vnNUCQuCS0s7/CNXdOw3FLe6qIw=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/EntryPage.htm
+ l
+SHA1-Digest: oUNPq+yqcmYzHIdzmMjDFEENS5M=
+
+Name: reference/api/org/eclipse/gef/dnd/package-summary.html
+SHA1-Digest: lYoSszlHGYTcSWeiKx/CadV+PGs=
+
+Name: reference/api/org/eclipse/gef/RequestConstants.html
+SHA1-Digest: xbQ6UnySDvCa7q7VY0EO+x/CHR8=
+
+Name: reference/api/org/eclipse/gef/handles/ConnectionEndpointHandle.h
+ tml
+SHA1-Digest: zdIuvO1/Rb0X/wjYS8drmmerj9o=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractEditPa
+ rt.EditPolicyIterator.html
+SHA1-Digest: HMG4it/m+/4eYe6H0AIo0Burn+Y=
+
+Name: reference/api/org/eclipse/gef/ui/palette/DefaultPaletteViewerPre
+ ferences.html
+SHA1-Digest: ZmI6IEXVYIMvlaNnSO86sKetWk8=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/package-tree.html
+SHA1-Digest: pw3tuP/vUAFrtOA9z/Det+Awp00=
+
+Name: reference/api/org/eclipse/gef/TreeEditPart.html
+SHA1-Digest: 5O4MQmmbs4OQO65u/vC2IKYqs5c=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalEditor
+ .html
+SHA1-Digest: 3KBucBJ608f6El/g8Eh/SroVPEM=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/DomainEventDisp
+ atcher.html
+SHA1-Digest: 6I7pKlulI2kthiaoyOlaQddEa54=
+
+Name: reference/api/org/eclipse/gef/GEFPlugin.html
+SHA1-Digest: du37LrEpKD2tOixNzFK2bMtGqnQ=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/StackAction.h
+ tml
+SHA1-Digest: 7rprnEaUzThCd1ydzAI2Pup1zgI=
+
+Name: reference/api/org/eclipse/gef/ui/parts/TreeViewer.html
+SHA1-Digest: MEPKgj9rc7aX+VPml06Po1olUdk=
+
+Name: reference/api/index-files/index-10.html
+SHA1-Digest: bjDs9V0Dpxe1w/fccIVp6KLVr/4=
+
+Name: reference/api/org/eclipse/gef/commands/CommandStackListener.html
+SHA1-Digest: T7Ki0y6mcaSi3KMUx48m1OUnmDc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/AbstractEditPar
+ tViewer.html
+SHA1-Digest: 30IEKn2XU9v2qfvuC+527ZpM3CM=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/package-tree.html
+SHA1-Digest: hdCZ4s54ElTjeMCV9Itxir/yO+A=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/CommandStackEve
+ ntListener.html
+SHA1-Digest: /7Nt41QOrY27Ykl9MOPVmqyN5bw=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ResizeTracker.html
+SHA1-Digest: a3KOtaJUl2pDkvSLIPuyCXXubG4=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/GuideLayer.htm
+ l
+SHA1-Digest: azBWhHui5H78lY7WMpT/IoL6gYw=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/AbstractTool.html
+SHA1-Digest: ZJsBZuWCZJPQI3ZrH4LWfCE2CcY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/DeleteRetarge
+ tAction.html
+SHA1-Digest: UGBZSFXl7bgcxp17xz1aOjvo9X8=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteContai
+ nerFactory.html
+SHA1-Digest: LxXJWBFOrCfFkI9cm3g5p3qM5Vc=
+
+Name: reference/api/org/eclipse/gef/requests/CreateRequest.html
+SHA1-Digest: I/2aymCYWaYse42zU5AdZnVxOYE=
+
+Name: reference/api/index.html
+SHA1-Digest: 69F7X+hedcw7wTy3UgeXP7o0mQ8=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/ChangeIconSiz
+ eAction.html
+SHA1-Digest: clQz+H6z5BupxEWC4p6e7txClvk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ActionBarContributor.ht
+ ml
+SHA1-Digest: LV7CGMrUP3HFo5gYj/+GQE0wD9E=
+
+Name: guide/images/interactconnect.gif
+SHA1-Digest: iOVBOhiatwZDFQZcoSsh93nnbQ0=
+
+Name: reference/api/index-files/index-9.html
+SHA1-Digest: JKIDeRFmwIxNeLt28MA0mr/mUH0=
+
+Name: reference/api/org/eclipse/gef/NodeEditPart.html
+SHA1-Digest: kNZXi6gumLkC2gNuuBuClwXmKnE=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/CombinedTemplate
+ CreationEntry.html
+SHA1-Digest: 4ECI5SbxRKOqI6X4WkFfhteB4NU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ToggleRulerVisibilityAc
+ tion.html
+SHA1-Digest: pl/DC0+Cm0mRsh5ugpYEg7qBl+c=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/MoveHandle.html
+SHA1-Digest: WVs6m0XdCE7AHkOkHPyb7SxYK64=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteListener.
+ html
+SHA1-Digest: Y6e2LeCk4/lgd6CdzvLNENccPE4=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteGroup.html
+SHA1-Digest: ajqwQ2aaYI3NeaOZCBalO0U/wks=
+
+Name: reference/api/org/eclipse/gef/ui/parts/AbstractEditPartViewer.ht
+ ml
+SHA1-Digest: D0c4qsB8ucfg4H6Dbwe+cODJs5Y=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PinDrawerActi
+ on.html
+SHA1-Digest: N7KN6jOHRmWb3SU+nDm460oVlO8=
+
+Name: reference/api/org/eclipse/gef/doc-files/green.gif
+SHA1-Digest: jGaak7aNSz3c3H2oAxY3Q1e/EXY=
+
+Name: reference/api/org/eclipse/gef/KeyHandler.html
+SHA1-Digest: AVd+xC/wuPTVJT8g/rvdpHaeJSc=
+
+Name: reference/api/org/eclipse/gef/tools/ConnectionEndpointTracker.ht
+ ml
+SHA1-Digest: X/XWMmsWeHYq+EpKuF6NvwQ0oks=
+
+Name: guide/images/factory.gif
+SHA1-Digest: BUt1DX/QvmDuozVhBLRyhLReqVU=
+
+Name: reference/api/org/eclipse/gef/ui/properties/SetPropertyValueComm
+ and.html
+SHA1-Digest: VzNO6NXPPH6MekbvAYkqKkEp0Wk=
+
+Name: reference/api/org/eclipse/gef/rulers/RulerChangeListener.html
+SHA1-Digest: 6WIAeTiOd/bDmyfbLsAfdlUlqV4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ToggleSnapToG
+ eometryAction.html
+SHA1-Digest: HYJ0C2q0/el47c2oi2f6AGeteF4=
+
+Name: reference/api/org/eclipse/gef/editparts/LayerManager.Helper.html
+SHA1-Digest: PgWEkT6Giyhey+TkEiCBzl5VwyM=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/SelectionToolEnt
+ ry.html
+SHA1-Digest: lkBgo8NbmLn2WK9ly+outqgqtCc=
+
+Name: reference/api/org/eclipse/gef/class-use/MouseWheelZoomHandler.ht
+ ml
+SHA1-Digest: Sj6Rw7lhJwHk7SnPEFuC4iV3pRo=
+
+Name: reference/api/org/eclipse/gef/dnd/package-tree.html
+SHA1-Digest: O8OZxFcwRwUo4Ky1wziyL5YFAKo=
+
+Name: reference/api/org/eclipse/gef/class-use/GEFPlugin.html
+SHA1-Digest: 6TpEf6trLEVT3zxmw5v85q6LNNE=
+
+Name: reference/api/org/eclipse/gef/print/package-use.html
+SHA1-Digest: mGEf9O+ZvQAI0qQ8BBv84BWvwqo=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractConnectionEditPa
+ rt.html
+SHA1-Digest: lnf5vt6jfUHHxErZUHB99IKxkrk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ZoomInRetarge
+ tAction.html
+SHA1-Digest: 2lQ0bMrbNeOe8oxE7P8S3lp08Fo=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteDrawer.ht
+ ml
+SHA1-Digest: jrr0+Id9Y++JP/RXAhqdaQIjn00=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/CopyRetargetA
+ ction.html
+SHA1-Digest: vbAVBWbCinKI9qQ5ml3aw4G++p0=
+
+Name: reference/api/org/eclipse/gef/ui/parts/DomainEventDispatcher.htm
+ l
+SHA1-Digest: XHIe02wYEusIH3g94W7vj1uFOiU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/package-use.html
+SHA1-Digest: gxqxvdf3rX0gDvwb/bRfa2k0iL8=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ResizableEditPolicy.h
+ tml
+SHA1-Digest: F6mR4cJqBdyl59mzZSv5mimBK08=
+
+Name: guide/images/important.gif
+SHA1-Digest: 3Z4Kvahz4s603MTcILbJBmalS5U=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/package-summary.h
+ tml
+SHA1-Digest: PhWnsMqcI1C31mjYR2bxtkDe2Gw=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/CreateConnectio
+ nRequest.html
+SHA1-Digest: Ts7j8JKSCma8le3xSMIfM8CLmmw=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ZoomOutRetarg
+ etAction.html
+SHA1-Digest: rez20ZAACE+WOs5ZZuqVuGyh2WM=
+
+Name: reference/api/package-list
+SHA1-Digest: vndKsYIvYFF05FvzE2WnMOfHqQU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ZoomOutRetargetAction.h
+ tml
+SHA1-Digest: ke57SIrtu4DisVY0KuINh1Lhqlk=
+
+Name: reference/api/org/eclipse/gef/doc-files/mvc.html
+SHA1-Digest: eLzd7u1kBJfrjGeFfGnK/5NPeDI=
+
+Name: reference/api/org/eclipse/gef/print/PrintGraphicalViewerOperatio
+ n.html
+SHA1-Digest: 8ymE1sHTZUAtFY84Jh7BX/bC1Vc=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/SquareHandle.htm
+ l
+SHA1-Digest: Co8/km3ukKGFAddLHD9Da0Acr7Q=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/StrokePoint
+ List.html
+SHA1-Digest: ca/y+jLp2/MmYKfOuJ4JqOllIes=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/UpdateAction.
+ html
+SHA1-Digest: wRHj5Rt4ldNj9RgT747ky6TWTv8=
+
+Name: guide/images/interactresize.gif
+SHA1-Digest: mhfMbp4ZciWkp1FXKWEo3rHPUNg=
+
+Name: reference/api/org/eclipse/gef/AutoexposeHelper.html
+SHA1-Digest: 2h0UEHzNiYui/YIp8VOOM5ivVOM=
+
+Name: reference/api/org/eclipse/gef/util/EditPartUtilities.html
+SHA1-Digest: 0jsxN08Vng2UBCyyqx/8jvEXWrs=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractGraphi
+ calEditPart.AccessibleGraphicalEditPart.html
+SHA1-Digest: ltQRd6G99rHG7xi1r7Werf5f3K4=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ResizeHandle.htm
+ l
+SHA1-Digest: CprEdd41R+EwfoBHYXWQ/Zb/3kc=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchHeightRe
+ targetAction.html
+SHA1-Digest: ij+FLs1vov7bwQvgFu4KtmNBxUw=
+
+Name: reference/api/org/eclipse/gef/class-use/LayerConstants.html
+SHA1-Digest: A4XGmMhjgcI+kcXvlRVbPNrPPFA=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ToolUtilities.html
+SHA1-Digest: COyauKTdKCwmtklLIyHJ1Z8NGnc=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/SimpleDragTracker.
+ html
+SHA1-Digest: 8aC3TEUh8obEpeboADWigGq1iak=
+
+Name: reference/api/index-files/index-17.html
+SHA1-Digest: 0QhVhwCjvXqSR7Y+c71nDx2w8PI=
+
+Name: reference/api/index-files/index-3.html
+SHA1-Digest: wLY2CSj068+TKM68+jcTxcX6qFg=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/CommandStackEve
+ nt.html
+SHA1-Digest: 6KrZdXg8xZPEtLB8EIorgY0AvqI=
+
+Name: reference/api/org/eclipse/gef/Tool.html
+SHA1-Digest: bkWcKqkLell5ru65a0yhASL+XgM=
+
+Name: reference/api/org/eclipse/gef/rulers/class-use/RulerProvider.htm
+ l
+SHA1-Digest: C4zBHwGR2W9SDzpPpxmjnoNbI7k=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/MoveHandleLocato
+ r.html
+SHA1-Digest: JSId/7BRmogYRJYve8W8JJ4xOqM=
+
+Name: reference/api/org/eclipse/gef/requests/GroupRequest.html
+SHA1-Digest: nmKTxUP/BbA45TROoa5LBBUcxTc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/TreeViewer.html
+SHA1-Digest: wCq28UiosWz1aY0pj4y2qZQWgPs=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/ScrollingGraphi
+ calViewer.html
+SHA1-Digest: Oc2bv0N/4V7dOidXAKGx0A9Sqvs=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteViewerProvider.h
+ tml
+SHA1-Digest: uuxp7sCyWnP++Y390Xn9t+9q4GM=
+
+Name: reference/api/org/eclipse/gef/tools/TargetingTool.html
+SHA1-Digest: 8nSmDlVRv/4s9nRvHnxFRRhw/h4=
+
+Name: reference/api/org/eclipse/gef/tools/AbstractTool.html
+SHA1-Digest: 01UKanNrSZEUVCCIeFkcfqKPdow=
+
+Name: reference/api/org/eclipse/gef/editparts/ScalableRootEditPart.htm
+ l
+SHA1-Digest: 4eNrD8OK3EEy1bOPBM0TCGNLpLY=
+
+Name: reference/api/org/eclipse/gef/ui/properties/class-use/SetPropert
+ yValueCommand.html
+SHA1-Digest: yNFrej2JylCiizFqmvzi4710PaQ=
+
+Name: reference/api/org/eclipse/gef/class-use/AccessibleHandleProvider
+ .html
+SHA1-Digest: /wsneW3DpPwdf8dJIpHHxgIxsAM=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPartViewer.html
+SHA1-Digest: IPFUINDYwelY9FZ04ifai1nrnuA=
+
+Name: reference/api/org/eclipse/gef/ui/actions/package-tree.html
+SHA1-Digest: kDky5LaW9gSLZ1uXHOBHgviT/bs=
+
+Name: reference/api/org/eclipse/gef/editpolicies/TreeContainerEditPoli
+ cy.html
+SHA1-Digest: wxPbayiefWkGhJ+ACw5uJL6jqcM=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/NonResizableHand
+ leKit.html
+SHA1-Digest: ZoOk7v6HZ/D6jJSiCff0LZ28D54=
+
+Name: reference/api/org/eclipse/gef/ui/actions/CreateGuideAction.html
+SHA1-Digest: 90Ahyqt6KPqRzpAK03um6vNhvok=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/RulerComposite.html
+SHA1-Digest: oFkeDpB33YU4rpbElFTSnD+g2z0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ZoomOutAction
+ .html
+SHA1-Digest: nmpSGRuX7FE/9frT1+XeqaD+v/Q=
+
+Name: reference/api/org/eclipse/gef/EditPartFactory.html
+SHA1-Digest: cowSsZRrEnltlPEQap7TDZLAb9w=
+
+Name: reference/api/overview-tree.html
+SHA1-Digest: IusHz+A2cOzfqKoHIKIh1bLNsN8=
+
+Name: reference/api/org/eclipse/gef/package-tree.html
+SHA1-Digest: VQ7Rak5LpfeWUPhqgpVGipbQLtI=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/RootCompone
+ ntEditPolicy.html
+SHA1-Digest: 8h5DfWFWO7OAEHwutldHKQSk9pU=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteSepara
+ torFactory.html
+SHA1-Digest: 5DJLihcgaPq8fmeIumSld97AQ/4=
+
+Name: reference/api/org/eclipse/gef/dnd/AbstractTransferDragSourceList
+ ener.html
+SHA1-Digest: pQq76mDLejRc83oBLHfwiZo05y0=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPartViewer.Condition
+ al.html
+SHA1-Digest: mHT9ejd5peTLHZUWo/WSAGP/dSs=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ActionBarCont
+ ributor.html
+SHA1-Digest: hP9hMSZ0WGaohDfEqOV1hbqXY6E=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalEditorWithFlyout
+ Palette.html
+SHA1-Digest: DAmMSnIq17WSAKKuyemMeYOCKuA=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractGraphicalEditPar
+ t.DefaultAccessibleAnchorProvider.html
+SHA1-Digest: 50GKf2VTLPr/Yv28nM51trMibLs=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/SelectionEd
+ itPolicy.html
+SHA1-Digest: E4ZdvpQo0sGyTqHYrkpbqqD9pok=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalEditor
+ WithPalette.html
+SHA1-Digest: 5Dil9b8mqevf+aNchl1Q3HWWTeM=
+
+Name: reference/api/org/eclipse/gef/doc-files/dblack.gif
+SHA1-Digest: /optaTQt6cNmvGUOJz2xmbAzSxk=
+
+Name: reference/api/org/eclipse/gef/requests/package-use.html
+SHA1-Digest: W6id6Z/NxilAKdFJgoV3kLIcEY0=
+
+Name: reference/api/index-files/index-22.html
+SHA1-Digest: UH4xXBSTBGO19N5pMWaSm4pLlAI=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteViewerPreference
+ s.html
+SHA1-Digest: AmSQZTvLVSvp5TMRyTlHhkNfqNs=
+
+Name: reference/api/org/eclipse/gef/editparts/GraphicalRootEditPart.ht
+ ml
+SHA1-Digest: LmzcHYQm5qR1sVzWOTSWKtmkfmo=
+
+Name: reference/api/org/eclipse/gef/class-use/AutoexposeHelper.Search.
+ html
+SHA1-Digest: GaJJ9vo/TqKJ8BfkjREF0qGzWPU=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractGraphi
+ calEditPart.html
+SHA1-Digest: RS09lbl7f4yxNWxqMdPGF4CU0oE=
+
+Name: reference/api/org/eclipse/gef/SharedMessages.html
+SHA1-Digest: mYzVJ4BlPmDn5lq/aGCmvPrPf48=
+
+Name: reference/api/org/eclipse/gef/class-use/SnapToHelper.html
+SHA1-Digest: pEL+AVr4jBLZZJPYOQueOFWrS3g=
+
+Name: reference/api/org/eclipse/gef/requests/ForwardedRequest.html
+SHA1-Digest: 5//uPDy+OyDqQVdDwZz8gMJiom8=
+
+Name: reference/api/org/eclipse/gef/MouseWheelHandler.html
+SHA1-Digest: 3IBpyA56+YTGYELTY3KvIfIGhlI=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ViewportExpose
+ Helper.html
+SHA1-Digest: 9L1jRLk+6nNL0dvJwxH87lfVbGs=
+
+Name: reference/api/org/eclipse/gef/ui/actions/AlignmentAction.html
+SHA1-Digest: fx1RrA9RELRZVNa7epM74l5Cg+4=
+
+Name: reference/api/org/eclipse/gef/editparts/package-frame.html
+SHA1-Digest: dyRo/maMrfmy+W/fIhJ6NnDHj6A=
+
+Name: reference/api/org/eclipse/gef/handles/BendpointMoveHandle.html
+SHA1-Digest: LwfsnCEtrle/3a+2Jrgeup0WH4U=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/SetActivePale
+ tteToolAction.html
+SHA1-Digest: e3VybQUWvNfOH6Dzq+CObo+ikDw=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/ToolEntry.html
+SHA1-Digest: ZMQYvEwD4aCtFf6rramrf78iwoU=
+
+Name: reference/api/org/eclipse/gef/editpolicies/StrokePointList.html
+SHA1-Digest: JNJJHaWaxa+W0H057hxW+rc4rlQ=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/TransferDragSourceLi
+ stener.html
+SHA1-Digest: DKb6RgS8KGyI5ScU4XiDpV591nI=
+
+Name: reference/api/overview-frame.html
+SHA1-Digest: D+SY/5rJ9sJGaBdxUACb9CZBNpQ=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/RelativeHandleLo
+ cator.html
+SHA1-Digest: 5Iqbg9IZ3wD+RP9iNvcuioHWGsc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalEditor
+ WithFlyoutPalette.html
+SHA1-Digest: fY90HvP+4IzN3NFOJvXgJ3o2+es=
+
+Name: reference/api/org/eclipse/gef/requests/package-frame.html
+SHA1-Digest: h0Q+DhCEZ/7wPocFjMGoA6CoIUw=
+
+Name: guide/images/interactcreate.gif
+SHA1-Digest: VaO9RwY/DDQFEl17MvCib0iLESg=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/ReconnectReques
+ t.html
+SHA1-Digest: q7UVeSojUAS/2zl/fOUtsUeabOE=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/TargetRequest.h
+ tml
+SHA1-Digest: RHvQ1Kihmo4TMIwnUNVgkoiAZdI=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/ForwardUndoComp
+ oundCommand.html
+SHA1-Digest: t1IggIBLTa3PJWvUtDMGZ6bIYUM=
+
+Name: reference/api/index-files/index-11.html
+SHA1-Digest: Fz8LaNtUtbgY5ICc3aw7bfkv894=
+
+Name: reference/api/org/eclipse/gef/ExposeHelper.html
+SHA1-Digest: d1pxP1HQskxmvdCHlY3X0ajMFgU=
+
+Name: reference/api/org/eclipse/gef/KeyStroke.html
+SHA1-Digest: 4obWvIWM5ZKlMaJuoc+eFcEf+ao=
+
+Name: reference/api/org/eclipse/gef/dnd/SimpleObjectTransfer.html
+SHA1-Digest: pKyjM45SYT2cy1eBSO+cfvf/9L4=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteDrawerFactory.html
+SHA1-Digest: +C/LbK+fqMsnqeUBE5FB3QmUzrE=
+
+Name: reference/api/org/eclipse/gef/rulers/package-summary.html
+SHA1-Digest: eiLR2qZQA38xATas+O0NUuOuKoc=
+
+Name: reference/api/org/eclipse/gef/handles/SquareHandle.html
+SHA1-Digest: bpNN0xQu7SNYmlT6PtBmDF0UM9A=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalEditorWithFlyout
+ Palette.CustomPalettePage.html
+SHA1-Digest: VokIic4Muu+LqNKZHmoVBpVpAck=
+
+Name: reference/api/org/eclipse/gef/handles/NonResizableHandleKit.html
+SHA1-Digest: RbOtKrErna0+YvHkie4qRxDmWWo=
+
+Name: reference/api/org/eclipse/gef/commands/UnexecutableCommand.html
+SHA1-Digest: IBBWo67vE+ctagnEwPofLVvZ5sU=
+
+Name: reference/api/org/eclipse/gef/handles/ResizeHandle.html
+SHA1-Digest: l+yt2mNW/GHldiMCa4I2dLx0F7c=
+
+Name: reference/api/org/eclipse/gef/package-frame.html
+SHA1-Digest: fZO6Ws2fzrnYzd1P6gD/hL43vzg=
+
+Name: reference/api/org/eclipse/gef/class-use/SelectionManager.html
+SHA1-Digest: XehOPRF6xUkgqB3950Uzdoxs5GY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchWidthAction.html
+SHA1-Digest: O6xLLiy/Cf34ACCmt2CyOuydIfY=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalViewer
+ Impl.html
+SHA1-Digest: qUkqOWP4q2JhuYSF0kYqqvlI5zw=
+
+Name: reference/api/org/eclipse/gef/handles/ConnectionEndHandle.html
+SHA1-Digest: 1K8oG0kMWL0xD32hhQYr6INSPe4=
+
+Name: reference/api/org/eclipse/gef/commands/CompoundCommand.html
+SHA1-Digest: Ul26tAb2fQST8wU24QmLYgQIjs4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/GEFActionConstants.html
+SHA1-Digest: L2g6tsfEHneIhwosHsLUf2QwPuY=
+
+Name: reference/api/org/eclipse/gef/rulers/package-frame.html
+SHA1-Digest: XqVt73qNljMr6zStjHl3P9lCdIg=
+
+Name: reference/api/org/eclipse/gef/handles/BendpointCreationHandle.ht
+ ml
+SHA1-Digest: alccU2SHTky3EVFvI7Cuec+8mBE=
+
+Name: reference/api/org/eclipse/gef/editpolicies/package-frame.html
+SHA1-Digest: JXkrinLprOzYmlSY/RKOK4KJ/Fk=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ConnectionBendpoin
+ tTracker.html
+SHA1-Digest: Y5XJecr4Bqe0RQfaPeDlkbl4TnA=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/DirectEditAct
+ ion.html
+SHA1-Digest: 7QCykGGFOn7+MRcP4e4B7cmLgUQ=
+
+Name: reference/api/org/eclipse/gef/class-use/DefaultEditDomain.html
+SHA1-Digest: ujDiea8zSAR18xEYaSvcS7Rsih4=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/ConnectionCreati
+ onToolEntry.html
+SHA1-Digest: rl9h2pYWCL8ctB9dd07JuGVF3N4=
+
+Name: reference/api/org/eclipse/gef/editpolicies/FeedbackHelper.html
+SHA1-Digest: bY2KqhToBi0QSrpcT0rKsChtonI=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/DelegatingDragAdapte
+ r.html
+SHA1-Digest: 7B+ytw1YpiZ4TSv6IkHCo2OdMMk=
+
+Name: reference/api/org/eclipse/gef/editparts/ViewportAutoexposeHelper
+ .html
+SHA1-Digest: 14ttU5CkDgHGfqEM6zd9lsCY7D4=
+
+Name: reference/api/org/eclipse/gef/SharedImages.html
+SHA1-Digest: kGc7x0e4INnZhiWjhdIcS6A7Hmc=
+
+Name: guide/images/interactbend.gif
+SHA1-Digest: GexbAbAXMVv0NdTpVPiCVXHR/Mk=
+
+Name: reference/api/org/eclipse/gef/editpolicies/GraphicalEditPolicy.h
+ tml
+SHA1-Digest: QBx3npGU8FJ2XORecOeL39IwfnQ=
+
+Name: reference/api/org/eclipse/gef/palette/package-tree.html
+SHA1-Digest: kEOLrog3WUy3LXh+975xTLblAEc=
+
+Name: reference/api/org/eclipse/gef/class-use/SnapToGuides.html
+SHA1-Digest: cdHlrvL2Y1KYVYRvqDvs8c6y+XQ=
+
+Name: reference/api/org/eclipse/gef/handles/RelativeHandleLocator.html
+SHA1-Digest: 7G9PvGF8ubYdp3teZIgcnKFNp7o=
+
+Name: reference/api/org/eclipse/gef/handles/package-summary.html
+SHA1-Digest: n8UwIXHVNrRqdxmsfQoJSnPcGjA=
+
+Name: toc.xml
+SHA1-Digest: 3bJ0/M55NnWpw7zD9cRWadSTJrw=
+
+Name: reference/api/org/eclipse/gef/class-use/KeyStroke.html
+SHA1-Digest: aRYuIpB2kONtBMnFy8LDX6ewnQ4=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractConnec
+ tionEditPart.html
+SHA1-Digest: NVQxA1c0+Y8NlgTwMTfWi2MDWoU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/MatchSizeActi
+ on.html
+SHA1-Digest: P6tsLqN610Gx4+H/DTpJDw9OOvE=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/PaletteView.html
+SHA1-Digest: R3VEvGiHIqY9W9kL83nOJf+3nfs=
+
+Name: reference/api/org/eclipse/gef/ui/palette/FlyoutPaletteComposite.
+ html
+SHA1-Digest: lu9Ik9QTjh2XFWIpFerW2Zy5Q2o=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/CommandStackLis
+ tener.html
+SHA1-Digest: IbIVjQg20Cw5Sh/xeDSsxUlQjtg=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PinDrawerAction.html
+SHA1-Digest: TrhQzMFD6bGzZlrKhFQq9Y2vZ3o=
+
+Name: reference/api/deprecated-list.html
+SHA1-Digest: CJQqMYXwzBFXc3c8zCSfDQF/SmM=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ContainerEd
+ itPolicy.html
+SHA1-Digest: YrvQf40WoqM03gIijx6IHtEwhV0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ConnectionEditPolicy.
+ html
+SHA1-Digest: 04iz98paJfvUZy65HmKcLvJi3Uo=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ComponentEd
+ itPolicy.html
+SHA1-Digest: IXA99MZYZK1ygmPk1AtMY93JruM=
+
+Name: reference/api/org/eclipse/gef/ui/actions/UpdateAction.html
+SHA1-Digest: vdAbgJjr4IYRQLNOv5lbek6rE8c=
+
+Name: reference/api/org/eclipse/gef/MouseWheelHelper.html
+SHA1-Digest: p8CrHLu0majLixRnTaCL8ODj+UE=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/LayerManager.H
+ elper.html
+SHA1-Digest: s3Fc4mtKd4EU7jKy0wp1ZHskhJ0=
+
+Name: reference/api/org/eclipse/gef/dnd/TransferDragSourceListener.htm
+ l
+SHA1-Digest: 6PG4bkFHg8a7PMDP74XBVUguNBQ=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/FlowLayoutE
+ ditPolicy.html
+SHA1-Digest: GzpAxiiZkelfEsZpwR8/8pyzVfo=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/FlyoutPalette
+ Composite.FlyoutPreferences.html
+SHA1-Digest: vEl6f1IvpwZMJ7YUSo+INFd7KlE=
+
+Name: reference/api/index-files/index-18.html
+SHA1-Digest: 1YVjvQGsjtQQyw4ZYpbFsr3MP+Q=
+
+Name: reference/api/org/eclipse/gef/editparts/ZoomManager.html
+SHA1-Digest: 2H9s0hQUCBTSqEaqQpmBtZrtHdc=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteEditPartFactory.
+ html
+SHA1-Digest: V0e9vRykFqV067Y3tibgVTtbZWM=
+
+Name: reference/api/index-files/index-4.html
+SHA1-Digest: J1cdUEP0MnOWL6c/BMW8U7tHYFQ=
+
+Name: reference/api/org/eclipse/gef/class-use/AccessibleAnchorProvider
+ .html
+SHA1-Digest: kqLUEjrTOQu1bptUuADS5+0Vzmg=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/ContentOutlineP
+ age.html
+SHA1-Digest: DfE6FiGxEpQcx+05xlP/cMRnR+Y=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteEntryF
+ actory.html
+SHA1-Digest: vvCgPXZomVGFIhaPoFPf0HDvRlU=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractEditPart.html
+SHA1-Digest: HzS0sGihcI8vcW09XvJlzazNkh0=
+
+Name: reference/api/org/eclipse/gef/tools/MarqueeSelectionTool.html
+SHA1-Digest: PhQO23R/ht/h5ErF38PhFoF/gJE=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractTreeEditPart.htm
+ l
+SHA1-Digest: 0Y+goqkv3qY/gmhdhMt1TaSg8F8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/MatchHeightAction.html
+SHA1-Digest: 3q+wa1n+6dfwC8iQWEWNZ+W8zbQ=
+
+Name: reference/api/org/eclipse/gef/ui/parts/package-summary.html
+SHA1-Digest: uFMfVPaWMQ4xpOPSRadj9tVO/qc=
+
+Name: reference/api/org/eclipse/gef/ui/actions/package-summary.html
+SHA1-Digest: J8njMSKpdRtBA9OHcYxrESgKadA=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/package-use.html
+SHA1-Digest: Rr01rYLQMANKKCv8kRhTn9OB6o8=
+
+Name: reference/api/org/eclipse/gef/rulers/RulerChangeListener.Stub.ht
+ ml
+SHA1-Digest: WA8nonlVW2/yI8njDf9lVTIUu8s=
+
+Name: reference/api/org/eclipse/gef/editparts/IScrollableEditPart.html
+SHA1-Digest: 3jUuFE/fppR8PV0Dra2/dpuzY5M=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteSettingsDialog.html
+SHA1-Digest: q8EjzUOKMDK8ylOVYMisPqR7iqg=
+
+Name: reference/api/org/eclipse/gef/requests/CreateConnectionRequest.h
+ tml
+SHA1-Digest: OIAC7aizN8jQQ4ilVsSYzMxxjOs=
+
+Name: reference/api/org/eclipse/gef/tools/DragEditPartsTracker.html
+SHA1-Digest: zWSrhIB7Sz47qLuaaFnopcuAEHg=
+
+Name: reference/api/org/eclipse/gef/tools/package-summary.html
+SHA1-Digest: q24P3YvYK0Bx5kEnHEPkMWYjETE=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/DirectEditManager.
+ html
+SHA1-Digest: YODh35na6s/tg+ngNUl8uF48de4=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/AbstractTransferDrag
+ SourceListener.html
+SHA1-Digest: ZaauiZh/h1hH/zY3eSJ5+Lx5N0w=
+
+Name: reference/api/org/eclipse/gef/doc-files/terminology.html
+SHA1-Digest: mAwOQXkA7ziDOQMm3RNnbar/fnU=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteCustomizationAction.html
+SHA1-Digest: 8i5naKuYUcKWLVSpNFAW+6EYufk=
+
+Name: reference/api/org/eclipse/gef/print/package-frame.html
+SHA1-Digest: G+JUT+gq8kls/n+8fxKcg5lsod0=
+
+Name: reference/api/org/eclipse/gef/class-use/RequestConstants.html
+SHA1-Digest: X7jRb7ArWdYnlduUi9hWcWEJBAY=
+
+Name: reference/api/org/eclipse/gef/dnd/TemplateTransferDragSourceList
+ ener.html
+SHA1-Digest: ch1IVk3rZp+6YuC6hgKbxnb3UZI=
+
+Name: reference/api/org/eclipse/gef/dnd/AbstractTransferDropTargetList
+ ener.html
+SHA1-Digest: 7aovb9RKEdl7hz2/hmcXDXKYqgE=
+
+Name: reference/api/index-files/index-23.html
+SHA1-Digest: Um+qi4ZE2IGwZrE/WhVzsiz14l0=
+
+Name: reference/api/org/eclipse/gef/handles/BendpointHandle.html
+SHA1-Digest: Usap0IJaq9Mhg5dfgtv56UfeRKk=
+
+Name: reference/api/org/eclipse/gef/AccessibleEditPart.html
+SHA1-Digest: K7Tfr4ANh0h6BUCOkUffY11YYY0=
+
+Name: reference/api/org/eclipse/gef/requests/TargetRequest.html
+SHA1-Digest: 9pfjebx5LB77rfxsbA7CE+bjj4c=
+
+Name: reference/api/help-doc.html
+SHA1-Digest: Jugts2Q5Z/SZ2mThAQNvsbGjJiA=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/TargetingTool.html
+SHA1-Digest: p6KC9CCNPEko1zO/a9B0gZjgvqQ=
+
+Name: reference/api/org/eclipse/gef/EditPartListener.html
+SHA1-Digest: sNH+9bY0eRWZGzScxvfiF9uYywQ=
+
+Name: guide/images/selectsequence.gif
+SHA1-Digest: EBt+jBM2AlZ1N/hBtfX0M48m6l0=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/AlignmentReques
+ t.html
+SHA1-Digest: oViJ0WTseUTv75uZZNYHbIiolg0=
+
+Name: reference/api/org/eclipse/gef/palette/MarqueeToolEntry.html
+SHA1-Digest: 3C3hkw7Te74MOuspddFxl5wPT5k=
+
+Name: reference/api/org/eclipse/gef/rulers/class-use/RulerChangeListen
+ er.html
+SHA1-Digest: 3Uc7AGUnRRAbUsllM2AJmS+9V6k=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/AbstractHandle.h
+ tml
+SHA1-Digest: U6vJBR0IJSpJoteTrj8K7wGqeAo=
+
+Name: reference/api/org/eclipse/gef/ui/palette/ChangeIconSizeAction.ht
+ ml
+SHA1-Digest: VcgDo7YEfT/bxf4loL5S2qC+rT4=
+
+Name: reference/api/org/eclipse/gef/handles/ResizableHandleKit.html
+SHA1-Digest: 8dtMjEE0LS90z8SdofnhXI+eBYU=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ConstrainedLayoutEdit
+ Policy.html
+SHA1-Digest: y7VpTxcY3Fj90s3SwHQbBd7AF5U=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteRoot.html
+SHA1-Digest: cEqMyPMZerOeDyvlYPhMgVOQIGM=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/DeselectAllTracker
+ .html
+SHA1-Digest: yFa0ddy7n+bzB8ToJ6fCZYB0wmI=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteRoot.html
+SHA1-Digest: sB3z99Lgld1T7eq56K0vwhAyjhI=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/OrderedLayo
+ utEditPolicy.html
+SHA1-Digest: 5cB2dCVOUUoTglrtAwwehdF61mA=
+
+Name: reference/api/org/eclipse/gef/editparts/package-summary.html
+SHA1-Digest: Og5pHBXTQLCTDgwuigEih8cS0cA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/DefaultPalett
+ eViewerPreferences.html
+SHA1-Digest: Hk/1uvIZUY/kUBqSTItRCV1raN8=
+
+Name: reference/api/org/eclipse/gef/RootEditPart.html
+SHA1-Digest: ZB8l/+bonqQdpduHZDpuwqvNWsE=
+
+Name: reference/api/org/eclipse/gef/requests/ReconnectRequest.html
+SHA1-Digest: IaQmBXchaNy/chV8OJryURhE2cg=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/EditorPartAct
+ ion.html
+SHA1-Digest: Ak0fGORs/MPz6bfyNnbVRTRE1a0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/SaveAction.html
+SHA1-Digest: ki+ICrQSR2N8PEroQwvDePkWP5A=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/BendpointReques
+ t.html
+SHA1-Digest: IQt1uIOVkUd89FOO+Ma7fuajRZ4=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractEditPart.EditPol
+ icyIterator.html
+SHA1-Digest: EDZcIYla208TnyArCeS9jYkQuyE=
+
+Name: plugin.properties
+SHA1-Digest: UBbO2qEbmXQG7oE865OV2Nbit9E=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/BendpointCreatio
+ nHandle.html
+SHA1-Digest: HrWku1y5leszQu7e7iZfwpzhGeM=
+
+Name: reference/api/org/eclipse/gef/util/FlagSupport.html
+SHA1-Digest: 9S5Fhdbsb7BumjPVOFZPr54eiSU=
+
+Name: reference/api/index-files/index-12.html
+SHA1-Digest: ooJjAptkeEtosls3AG4E6idask8=
+
+Name: reference/api/org/eclipse/gef/ui/actions/SelectionAction.html
+SHA1-Digest: z85yPaTR3TFk0tgfK0XbrPVi9CQ=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/DrawerEntryPa
+ ge.html
+SHA1-Digest: Sd3jV4a/ocYb74LUr8DwuQ+DUPo=
+
+Name: reference/api/org/eclipse/gef/ui/parts/ScrollingGraphicalViewer.
+ html
+SHA1-Digest: bH3d7JkG3Ht5p09EoIsY/8LGVBo=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/LayerManager.h
+ tml
+SHA1-Digest: uzOocku8PNuuzYalNiMiSzksh8c=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/GroupRequest.ht
+ ml
+SHA1-Digest: SWWVj+orxNc1+tMhTgbI244m25c=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/TransferDropTargetLi
+ stener.html
+SHA1-Digest: ChoNaQRlxFQsslqt8OLPptg2PEA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Pal
+ etteGroupFactory.html
+SHA1-Digest: 1+0p8iGTVomDVzhMxf1WRrizNw0=
+
+Name: reference/api/org/eclipse/gef/editparts/GridLayer.html
+SHA1-Digest: eJycgqLROXsupNeEvHnYys+1eyo=
+
+Name: reference/api/org/eclipse/gef/tools/AbstractConnectionCreationTo
+ ol.html
+SHA1-Digest: fjVf1wIrqXLniamuTYRytAZ50NA=
+
+Name: plugin.xml
+SHA1-Digest: P/TVI/RkXv3D451uVi9uz2Um7EY=
+
+Name: guide/images/connectionhandles.gif
+SHA1-Digest: qI94vcSykVFNJ8yn6+x8yU1MWFc=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/SelectionSynchr
+ onizer.html
+SHA1-Digest: OUVf/DENXCk3Un6FXH7pfQUfq+U=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalViewerKeyHandler
+ .html
+SHA1-Digest: q1yeiVjfJuMKkblcp+3JpVzoGWk=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ConnectionStartH
+ andle.html
+SHA1-Digest: hf+zWSnQelvObjQ7XHJK5B3PIVs=
+
+Name: reference/api/org/eclipse/gef/ui/actions/UndoRetargetAction.html
+SHA1-Digest: MaSp2N0kQIVMUJvDIQ28XeiKgnQ=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/CreationToolEntr
+ y.html
+SHA1-Digest: 1NslYgVGeaKul/DrKiiGNsP584M=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteViewer
+ .html
+SHA1-Digest: eurX+hJbY+APKWVzkQtOAaBemZ8=
+
+Name: reference/api/org/eclipse/gef/palette/ToolEntry.html
+SHA1-Digest: EzYQd2qN9Mf5a8kZusoW8UVkrGY=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteStack.htm
+ l
+SHA1-Digest: OrhXsKdsbjsbTDYivHV3wWAlIYg=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteContainer.html
+SHA1-Digest: +mEJRelN5BclVGvCo1E6fq3JpGI=
+
+Name: reference/api/org/eclipse/gef/palette/CombinedTemplateCreationEn
+ try.html
+SHA1-Digest: t23wNlV1uaOkt3PcRToV+57prsM=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/SaveAction.ht
+ ml
+SHA1-Digest: eLsjoTrhA5umqMfs0fo2eCB0BgM=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ToggleGridAction.html
+SHA1-Digest: JE56RRNVC0LJ5NMNOMYrplHkdMQ=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/AbstractEditPa
+ rt.html
+SHA1-Digest: l6OphPQ8k1EU7P+kWthve9P1Za4=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/XYLayoutEdi
+ tPolicy.html
+SHA1-Digest: MI8+0F+sLokfh/mN+StNVR+g0/k=
+
+Name: reference/api/org/eclipse/gef/ui/views/palette/class-use/Palette
+ View.html
+SHA1-Digest: qobyjXjD/P0aHc/TaQxV4eg7lS4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ZoomInAction.
+ html
+SHA1-Digest: MK3xYQtN/YzxTcc230xHmwqoPxA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Ent
+ ryPageContainer.html
+SHA1-Digest: hDu5rF7aOFmD36cHdeGClYddezM=
+
+Name: guide/images/interactbendindex.gif
+SHA1-Digest: NCt40ZsSBHsRKOOn1b1Hbd6vEzU=
+
+Name: reference/api/org/eclipse/gef/ui/actions/AlignmentRetargetAction
+ .html
+SHA1-Digest: Awt0VZZUNG0neqT+W3AUtL5bFHc=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ConnectionEndpoint
+ Tracker.html
+SHA1-Digest: oCXOJ8SbUJU4QfsVTxnPQcRDAWg=
+
+Name: reference/api/org/eclipse/gef/editparts/GuideLayer.html
+SHA1-Digest: iIUyWonNQwvaLrCjQZzYleM4k6M=
+
+Name: topics_Reference.xml
+SHA1-Digest: HSzVHFC4/5nRsIL/qEwGJnjkbiY=
+
+Name: reference/api/org/eclipse/gef/tools/CellEditorLocator.html
+SHA1-Digest: P77ZgKTWUYe6Q7uLrtldLC5zcF4=
+
+Name: reference/api/allclasses-frame.html
+SHA1-Digest: jNu9pr18Q2CQDrIy9z8I6XouYkQ=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/AbstractTre
+ eContainerEditPolicy.html
+SHA1-Digest: mHnuJf69RySIi40jQIZ5ZeOJLy4=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/Constrained
+ LayoutEditPolicy.html
+SHA1-Digest: ejfQBAkBWsxOKvVKNxVf29Rravw=
+
+Name: reference/api/org/eclipse/gef/doc-files/EventFlow.gif
+SHA1-Digest: GRjNpVUerSOwkSFK2J4iU/ATzNw=
+
+Name: reference/api/org/eclipse/gef/palette/package-use.html
+SHA1-Digest: ikmElGdKZdv5m+Cy67zYZu/OHUc=
+
+Name: reference/api/org/eclipse/gef/ui/properties/package-tree.html
+SHA1-Digest: vrHp9QoVT8iq8hmcAe/dlCAsZ6w=
+
+Name: reference/api/org/eclipse/gef/ui/properties/class-use/UndoablePr
+ opertySheetEntry.html
+SHA1-Digest: H0UaniwkAif5rj+ixcJrfvfwLZ4=
+
+Name: reference/api/org/eclipse/gef/editparts/ViewportMouseWheelHelper
+ .html
+SHA1-Digest: hfmfv+BUuXcJQ14XYItP9y49nxE=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteCustom
+ izationAction.html
+SHA1-Digest: tMkOzrk8ojhgiBZxdmUAkRnkCac=
+
+Name: reference/api/org/eclipse/gef/editparts/package-use.html
+SHA1-Digest: EI4DzRqORRKFyfr38uKo1GjEnO0=
+
+Name: META-INF/maven/org.eclipse.gef.plugins/org.eclipse.gef.doc.isv/p
+ om.xml
+SHA1-Digest: bJTSgzTd7RvqXax7RdR5cF63Su8=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/FeedbackHel
+ per.html
+SHA1-Digest: QfGmS/EMP5LsghnrcMudczxaAbA=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteSeparator.html
+SHA1-Digest: D0xbfA97HF5JtJgqHP4fZyUquFc=
+
+Name: reference/api/org/eclipse/gef/class-use/AutoexposeHelper.html
+SHA1-Digest: IA8K59HguXOkiBg3rMd5ECOLM58=
+
+Name: reference/api/org/eclipse/gef/editpolicies/BendpointEditPolicy.h
+ tml
+SHA1-Digest: wLbH7Y1uyvn28EosngOQ4cRU3L8=
+
+Name: reference/api/org/eclipse/gef/editparts/package-tree.html
+SHA1-Digest: YH/LB7jfEuCAWfX9979k/xk6t4A=
+
+Name: reference/api/org/eclipse/gef/EditPart.html
+SHA1-Digest: sWcZ++Pe4E/bPiKduNjN6snT0Rc=
+
+Name: guide/images/gefmvc.gif
+SHA1-Digest: eBjUAOsoo+wpLQKsE9lqCuol/Io=
+
+Name: reference/api/org/eclipse/gef/util/class-use/FlagSupport.html
+SHA1-Digest: FIymcI3geQwq/XyvF3B03v5tIZA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Dra
+ werEntryPage.html
+SHA1-Digest: SsqPc585ZvXO1mpYf8SQL4a1IZI=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ResizableEd
+ itPolicy.html
+SHA1-Digest: WLmAK8EN37k8vbZnRVmqKVQZ4o4=
+
+Name: reference/api/org/eclipse/gef/class-use/NodeListener.html
+SHA1-Digest: 8iniIhIHdhs8+FNCQK5R+LK0Q4s=
+
+Name: reference/api/org/eclipse/gef/SharedCursors.html
+SHA1-Digest: jT4lTSeN7Z3NWShSEBFA6VOTsEM=
+
+Name: reference/api/org/eclipse/gef/class-use/AccessibleEditPart.html
+SHA1-Digest: H0YQ6+uJ8JvJ/gxeLz+tt4oGgB4=
+
+Name: reference/api/org/eclipse/gef/editparts/AbstractGraphicalEditPar
+ t.html
+SHA1-Digest: hZkENaTzMBtf1bGVfyOzUtn8W34=
+
+Name: reference/api/org/eclipse/gef/print/class-use/PrintGraphicalView
+ erOperation.html
+SHA1-Digest: JwVgO9gM9poqFDihpADpLgwdrDI=
+
+Name: reference/api/org/eclipse/gef/DefaultEditDomain.html
+SHA1-Digest: 1vGEP/m9af6pwkbR0C7wtc2jnwo=
+
+Name: reference/api/org/eclipse/gef/ui/parts/package-tree.html
+SHA1-Digest: sHypvYyObznEoMV/a44cI8CJakk=
+
+Name: reference/api/org/eclipse/gef/ui/parts/SelectionSynchronizer.htm
+ l
+SHA1-Digest: gHV6WYadyov8KdfvMFfHdLXKXwY=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/package-summa
+ ry.html
+SHA1-Digest: ThzOAgYkqYOUFlMt4NeEk6cOoi0=
+
+Name: reference/api/org/eclipse/gef/handles/ConnectionStartHandle.html
+SHA1-Digest: x67vntErMQeum9+NphnThgHkY1A=
+
+Name: reference/api/org/eclipse/gef/ui/palette/FlyoutPaletteComposite.
+ FlyoutPreferences.html
+SHA1-Digest: EqlIuZTtUVfZjn87JijAPTIoMKE=
+
+Name: reference/api/index-files/index-19.html
+SHA1-Digest: sWPJlD62g2Va34yzhwdlMP14yos=
+
+Name: reference/api/index-files/index-5.html
+SHA1-Digest: 4q6a4JMdR50SXU/wg6xXk47/u9w=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPart.html
+SHA1-Digest: hYMqBwU0TfFSJvfg8LhK9BFuVFM=
+
+Name: reference/api/org/eclipse/gef/SnapToGeometry.html
+SHA1-Digest: C7HSKIVY3tYhl3Q2C7sx+mAuZtA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/package-frame.html
+SHA1-Digest: J6/C3rn61LlQvM6qVWpgAjJJ3C8=
+
+Name: reference/api/org/eclipse/gef/tools/MarqueeDragTracker.html
+SHA1-Digest: kOHsg8UX+oY0ASH9nh4dB72ruT8=
+
+Name: reference/api/org/eclipse/gef/rulers/RulerProvider.html
+SHA1-Digest: U85sJmlpRZPM+ZtqONkcj3TDu9U=
+
+Name: reference/api/org/eclipse/gef/dnd/TransferDropTargetListener.htm
+ l
+SHA1-Digest: 9/J5x58Ojyx2kyz2PbWqLaHOJ84=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/MarqueeSelectionTo
+ ol.html
+SHA1-Digest: tbTagXRglLo/l/QAcaq14Ux9U8o=
+
+Name: reference/api/org/eclipse/gef/editparts/ViewportExposeHelper.htm
+ l
+SHA1-Digest: 7HqZ6QWeuyxZbtdjSGSRp8YA89U=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/SimpleFactory.h
+ tml
+SHA1-Digest: rpH2sArSp4YknWp07UNBHFdjNwA=
+
+Name: reference/api/org/eclipse/gef/handles/package-tree.html
+SHA1-Digest: XxSejxUz828Y0NapGqmQad7N2Y4=
+
+Name: reference/api/org/eclipse/gef/palette/class-use/PaletteEntry.htm
+ l
+SHA1-Digest: uRI6dfvL1WizKMqR9EGSy1Dg+QQ=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/Command.html
+SHA1-Digest: vyjl4d0eMgPaZV0kbuGa8EicBLY=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/DragEditPartsTrack
+ er.html
+SHA1-Digest: ON2dByGYh14wB8MN69tMQ0iRcZA=
+
+Name: reference/api/org/eclipse/gef/commands/package-tree.html
+SHA1-Digest: oMrJ1JBzRMMAPqG97rHQbdwM9a4=
+
+Name: reference/api/org/eclipse/gef/class-use/GEF.html
+SHA1-Digest: Kih35zFatlrDw0LEIv4gsLqQxGc=
+
+Name: reference/api/org/eclipse/gef/editpolicies/RootComponentEditPoli
+ cy.html
+SHA1-Digest: PAcEG5ILLB6dU+c+r5TDIeCtRtk=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteStack.html
+SHA1-Digest: UkBp9BFxgFKN3BnuPjU0wpdfeQA=
+
+Name: reference/api/org/eclipse/gef/editparts/ZoomListener.html
+SHA1-Digest: FY3dviNerK64x+E2a74x0Cxfqr0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/GraphicalNo
+ deEditPolicy.html
+SHA1-Digest: 4JhN8+pyjir29jJW/g16gICJNm0=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalViewerImpl.html
+SHA1-Digest: iFtdX2oOYRLk9pfZhbLzXbaUxJw=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/TemplateTransferDrag
+ SourceListener.html
+SHA1-Digest: pDexIjgm4Kv62X+IwxkCwP2usZk=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/TemplateTransfer.htm
+ l
+SHA1-Digest: KA1tLwwTCOrumKCZkxrIjOIp1Zk=
+
+Name: reference/api/index-files/index-24.html
+SHA1-Digest: UzQ16gUmYFlaojpsAeULeBmiADo=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/AbstractTransferDrop
+ TargetListener.html
+SHA1-Digest: 2rYXVC618hOtpYCddVaWHxx4zno=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/IScrollableEdi
+ tPart.html
+SHA1-Digest: FYRUOhBJ17S8o5lOsSrt+aeuYVI=
+
+Name: reference/api/org/eclipse/gef/requests/AlignmentRequest.html
+SHA1-Digest: xNFnSzWUKCucl72rymnOzZ3MP8M=
+
+Name: reference/api/org/eclipse/gef/doc-files/important.gif
+SHA1-Digest: 3Z4Kvahz4s603MTcILbJBmalS5U=
+
+Name: reference/api/org/eclipse/gef/dnd/TemplateTransferDropTargetList
+ ener.html
+SHA1-Digest: 2Mr8N1VoIuZ+5Fb351OjyC8sDxg=
+
+Name: reference/api/org/eclipse/gef/handles/CornerTriangleBorder.html
+SHA1-Digest: x2U3sOkBKb0Uelwb/MlT7iZBawY=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/SnapFeedbac
+ kPolicy.html
+SHA1-Digest: /o2WnxGzck6BbVJepR6gyYm3e+0=
+
+Name: reference/api/org/eclipse/gef/palette/package-frame.html
+SHA1-Digest: bGjFtRqqdMEpkPF1YI0sAbXTAPU=
+
+Name: guide/images/interactdelete.gif
+SHA1-Digest: /nwgA4IYvZ10mCA25MQunhs7kyU=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/AbstractEdi
+ tPolicy.html
+SHA1-Digest: PdEJejY+KrSzK8XFTb6n6uqi3bU=
+
+Name: guide.html
+SHA1-Digest: YuJItqaRSTn9S6gVbmkLxGPJGFM=
+
+Name: reference/api/org/eclipse/gef/editparts/FreeformGraphicalRootEdi
+ tPart.html
+SHA1-Digest: 32V6CE3WQpdLMCP4gjB2egBZ9Ok=
+
+Name: reference/api/org/eclipse/gef/requests/CreationFactory.html
+SHA1-Digest: nw6wIaMZZwqWSSGxnpOT6IRMt/s=
+
+Name: reference/api/constant-values.html
+SHA1-Digest: 0m4TMuaA6kXGaexBt8BtmESokEk=
+
+Name: reference/api/org/eclipse/gef/requests/BendpointRequest.html
+SHA1-Digest: 98U7e4h53kOxmIkU5ymQyUfIHQQ=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/ConnectionDragCrea
+ tionTool.html
+SHA1-Digest: TeWBGT8EhNkX76DZT58I+TbVASA=
+
+Name: reference/api/resources/inherit.gif
+SHA1-Digest: 42+8XxPTdk4LcKDh/HbbyXG+EKI=
+
+Name: reference/api/index-files/index-13.html
+SHA1-Digest: dg76Kaza83Jfp02WfFdrvGirSnY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/GEFActionCons
+ tants.html
+SHA1-Digest: hzNdxGrqxAEqArLZijrR9NMT2yA=
+
+Name: reference/api/org/eclipse/gef/SnapToHelper.html
+SHA1-Digest: UH6PcAXSUcGoHyC2TSCrwnzCc38=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteViewer
+ Provider.html
+SHA1-Digest: 1dNEBqY0XroYpzc8eNJHT9Yz11g=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteViewer
+ Preferences.html
+SHA1-Digest: yAKBv9xnX4iH3Q/nmOeLhG+mW44=
+
+Name: reference/api/org/eclipse/gef/class-use/EditDomain.html
+SHA1-Digest: I9DNcI1xWYEA9UlqByTARdqN8t8=
+
+Name: reference/api/org/eclipse/gef/tools/SelectionTool.html
+SHA1-Digest: pPDgGAAE4gr696DRZSPxQ2JxB1M=
+
+Name: reference/api/org/eclipse/gef/editpolicies/NonResizableEditPolic
+ y.html
+SHA1-Digest: iCGE98OK5ttkFrVa1tjpz1K5Fj4=
+
+Name: reference/api/org/eclipse/gef/ui/palette/LayoutAction.html
+SHA1-Digest: CBxxiE3AYiF8UA1p3s1It4453/w=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/class-use/Ent
+ ryPage.html
+SHA1-Digest: TXkq0Ic/67Ob+l0SlH2wpVsnu0o=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/CreationTool.html
+SHA1-Digest: 3iFp2wK9tyAoXKPdyCVjo4brX2Q=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/ConnectionHandle
+ .html
+SHA1-Digest: QVI2qyKpQxi+WV+BKrhmZUyj548=
+
+Name: reference/api/org/eclipse/gef/tools/PanningSelectionTool.html
+SHA1-Digest: Cr+ubS06gLsPK+W5s9x8nwQRJYI=
+
+Name: reference/api/org/eclipse/gef/palette/PanningSelectionToolEntry.
+ html
+SHA1-Digest: O4yfdBmfN/FtFB/FAwpqUrXY0wc=
+
+Name: reference/api/org/eclipse/gef/ui/actions/RedoRetargetAction.html
+SHA1-Digest: 8+dzzCHF7v3ZfutOiOh9Ucn+qFY=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/HandleBounds.htm
+ l
+SHA1-Digest: TJ/mGT1rmkz0Pup8LQhxHLw0H4M=
+
+Name: reference/api/org/eclipse/gef/ui/palette/class-use/PaletteCustom
+ izer.html
+SHA1-Digest: 1Jt4QQcQ/Rw6148XXwMKyeugoQU=
+
+Name: reference/api/org/eclipse/gef/commands/class-use/CompoundCommand
+ .html
+SHA1-Digest: L90KyLgnN6F3RBkdiAmptI3gCHw=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ConnectionE
+ ndpointEditPolicy.html
+SHA1-Digest: rPSnZ3bHZyrumjI/ZIVD4oRuKHA=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteCustomizer.html
+SHA1-Digest: sL3S1sNJSAwi2GIl8sAbXiN146I=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ScalableFreefo
+ rmRootEditPart.html
+SHA1-Digest: TbVWYhfDeTwXKrqf2DpBkcMYMbs=
+
+Name: reference/api/org/eclipse/gef/commands/package-summary.html
+SHA1-Digest: x7J2WFUXdX+I8qhdxu7DU7f1BAc=
+
+Name: reference/api/org/eclipse/gef/commands/ForwardUndoCompoundComman
+ d.html
+SHA1-Digest: hc3nXLcZ1Vs3EMdVVl+PuspQ85Y=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/GraphicalRootE
+ ditPart.html
+SHA1-Digest: 9VkdMZ8HYx4aq1J9y+AiasCDB3Y=
+
+Name: reference/api/org/eclipse/gef/class-use/Tool.html
+SHA1-Digest: 6ZP0fVCD7F2T4ACj2L2CgRxR8Vc=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ZoomInAction.html
+SHA1-Digest: 80B5OodB7oV2APbedmnG7H/WJtQ=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/LayoutEditP
+ olicy.html
+SHA1-Digest: 16CymxG/iWkP3XLRzZUZ3mIXYU4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/Clipboard.htm
+ l
+SHA1-Digest: QxyU1GI7MFXp0mA8r3LaFWCpNXU=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteEntry.html
+SHA1-Digest: GJtoWPqggwWbBBSvquYj822yOQY=
+
+Name: reference/api/org/eclipse/gef/handles/NonResizableHandle.html
+SHA1-Digest: VnJW1lHTGzof/eZWNhUAcQUIBL4=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ToggleSnapToGeometryAct
+ ion.html
+SHA1-Digest: MA39kNNm2LDFpJryQZ4KxHAlbBM=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/SelectEditPartTrac
+ ker.html
+SHA1-Digest: oAY0NwmkRIOqkx0mseYt52rDIiA=
+
+Name: reference/api/org/eclipse/gef/ui/parts/class-use/GraphicalEditor
+ WithFlyoutPalette.CustomPalettePage.html
+SHA1-Digest: YZJ7jbYG6exeJEoNDDVyRLnrnjk=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/DelegatingDropAdapte
+ r.html
+SHA1-Digest: TSpfMY42zIDfy3eeUMxXgfcCkZg=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/CreationFactory
+ .html
+SHA1-Digest: i/n+AjWSbcXZSquLCwRp1ri8tS4=
+
+Name: reference/api/org/eclipse/gef/class-use/GraphicalViewer.html
+SHA1-Digest: cdGUTggky0s8NyWZsuuZAEYxdOY=
+
+Name: reference/api/org/eclipse/gef/ui/palette/customize/PaletteStackF
+ actory.html
+SHA1-Digest: JcNJyafbMKZl34Da7LPGED+hNlo=
+
+Name: reference/api/org/eclipse/gef/class-use/MouseWheelHelper.html
+SHA1-Digest: FwWERusS82X1n21O3Xg1ZGAAqD8=
+
+Name: reference/api/org/eclipse/gef/doc-files/EditPartViewer.gif
+SHA1-Digest: AWtDAwJ6F8d52BaHbe5+I3wwK1w=
+
+Name: reference/api/org/eclipse/gef/requests/ChangeBoundsRequest.html
+SHA1-Digest: W7zxFXAunFk3LUUeziU7zlF4cmM=
+
+Name: reference/api/org/eclipse/gef/DragTracker.html
+SHA1-Digest: p0k5f7iPy1yiNETfpseOUv6WPj0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/GraphicalEd
+ itPolicy.html
+SHA1-Digest: w528T2OT3AhU77XfwASSD9LsyU4=
+
+Name: reference/api/org/eclipse/gef/editparts/ScalableFreeformRootEdit
+ Part.html
+SHA1-Digest: fVQdEtePZDl3C+nGV1yJg4Sl+3g=
+
+Name: reference/api/org/eclipse/gef/class-use/CompoundSnapToHelper.htm
+ l
+SHA1-Digest: iMNpX5pI1jrRsI0xuXi5hoAHeII=
+
+Name: reference/api/org/eclipse/gef/ui/actions/RedoAction.html
+SHA1-Digest: y95SNGCcm1t3Hv19JABBFyeUPps=
+
+Name: reference/api/org/eclipse/gef/ui/parts/GraphicalEditorWithPalett
+ e.html
+SHA1-Digest: 2WUnKqNmjfriw3I1RJrLjswXZII=
+
+Name: reference/api/org/eclipse/gef/util/package-frame.html
+SHA1-Digest: i9tDusRSz1piYwv695lDUgZe+u8=
+
+Name: reference/api/org/eclipse/gef/tools/SimpleDragTracker.html
+SHA1-Digest: ZCmB8pMqMHFmljzYAOkdrURfahg=
+
+Name: reference/api/org/eclipse/gef/editpolicies/LayoutEditPolicy.html
+SHA1-Digest: 0yzGqZU4cNeHQr9pVqMxboTNsSs=
+
+Name: reference/api/org/eclipse/gef/handles/MoveHandleLocator.html
+SHA1-Digest: j2IwRmrOs+Hxe3lU9v63pLj6gz0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/AlignmentReta
+ rgetAction.html
+SHA1-Digest: kDfY3Jg5uP56rWxQXwUq2OuOWms=
+
+Name: reference/api/org/eclipse/gef/palette/PaletteTemplateEntry.html
+SHA1-Digest: X5jY6vViKEz6f7kj9w5xh+K/cSw=
+
+Name: reference/api/org/eclipse/gef/requests/DirectEditRequest.html
+SHA1-Digest: QOPGl2ajw4TkVNnMKNQTYP4S5yw=
+
+Name: reference/api/org/eclipse/gef/ui/actions/SelectAllAction.html
+SHA1-Digest: Y3nefVCNkYoxhW2yMDXAplCtekQ=
+
+Name: reference/api/org/eclipse/gef/ui/palette/PaletteContextMenuProvi
+ der.html
+SHA1-Digest: +ShIDBvJ8ccllGqW3QSHotI+mG4=
+
+Name: reference/api/org/eclipse/gef/requests/SimpleFactory.html
+SHA1-Digest: /tGUKpzh7++mam2qetrC9nqY554=
+
+Name: reference/api/org/eclipse/gef/util/package-tree.html
+SHA1-Digest: eyREWWwzaqWjuFnuFLix1Wq671A=
+
+Name: reference/api/org/eclipse/gef/rulers/class-use/RulerChangeListen
+ er.Stub.html
+SHA1-Digest: eJKPfCc+ybcb8ZQUjlswsoYh0No=
+
+Name: reference/api/allclasses-noframe.html
+SHA1-Digest: FnokClqjDrXc/bYzoTFVadyZLZw=
+
+Name: reference/api/org/eclipse/gef/tools/class-use/AbstractConnection
+ CreationTool.html
+SHA1-Digest: xTbCKDOK7vEQ/9wu/CUYA7FBGDg=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/DeleteAction.
+ html
+SHA1-Digest: ebDMFYSFtKCQuV2uL25EocsgIa0=
+
+Name: reference/api/org/eclipse/gef/dnd/package-use.html
+SHA1-Digest: ZLtzh9zC069jyCQIre7K0hJDVic=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/ViewportAutoex
+ poseHelper.html
+SHA1-Digest: 9DzK35AwJxtih3JIm+ywcEpkiiA=
+
+Name: reference/api/index-files/index-6.html
+SHA1-Digest: 2sgw2yLyoO/UwPBsA5MVigy5+TQ=
+
+Name: reference/api/org/eclipse/gef/SnapToGuides.html
+SHA1-Digest: +akpxtE8phX7ey5+7Xjh4+8ysHs=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPolicy.html
+SHA1-Digest: R1ERdpgDic4I1BkY7ORRrM5/xxk=
+
+Name: reference/api/org/eclipse/gef/commands/package-use.html
+SHA1-Digest: E0SnKVkh82BTpcsA6llDAfL4D2w=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/PasteTemplate
+ Action.html
+SHA1-Digest: X/QexH0/8X0kcHK00GxR5WzYB5o=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/RedoAction.ht
+ ml
+SHA1-Digest: G5v6UBuyXvMLMS/3+A5NeLjsVrc=
+
+Name: reference/api/org/eclipse/gef/ui/properties/package-summary.html
+SHA1-Digest: vQa5zDvDVKHro40uWFEMDXPVOZA=
+
+Name: reference/api/org/eclipse/gef/requests/class-use/DropRequest.htm
+ l
+SHA1-Digest: 95P023f/Ub31fkoztfBi87K2jII=
+
+Name: reference/api/org/eclipse/gef/editpolicies/XYLayoutEditPolicy.ht
+ ml
+SHA1-Digest: Fqd4PHb/akUTeo2gL8lI1+701IM=
+
+Name: reference/api/org/eclipse/gef/editparts/RootTreeEditPart.html
+SHA1-Digest: H+qm8D2TjvgAcumW0todz3V7sa0=
+
+Name: reference/api/org/eclipse/gef/editpolicies/class-use/ScrollableS
+ electionFeedbackEditPolicy.html
+SHA1-Digest: glrBfYDAspsgfg3H2ZW5pmAsI58=
+
+Name: reference/api/org/eclipse/gef/requests/package-summary.html
+SHA1-Digest: F9d3qyY+y2q189v4ObLyEYrNMgU=
+
+Name: reference/api/org/eclipse/gef/editpolicies/ScrollableSelectionFe
+ edbackEditPolicy.html
+SHA1-Digest: yDyTpup4ftddPkaQxgPj3MsWcqk=
+
+Name: reference/api/org/eclipse/gef/ui/actions/ZoomComboContributionIt
+ em.html
+SHA1-Digest: VayOf8KM/ek0OnhgD0l3NzK+xfU=
+
+Name: reference/api/org/eclipse/gef/ui/palette/package-summary.html
+SHA1-Digest: tgnqfxWg3ano5DAcwLSkvOp6Qg0=
+
+Name: reference/api/org/eclipse/gef/AccessibleHandleProvider.html
+SHA1-Digest: 6fRYMy2UsAzeJrTnIWmk5lkcEyQ=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/GridLayer.html
+SHA1-Digest: tk0YpEz/4+5ZrxdN3qNEz+oMy3c=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/AlignmentActi
+ on.html
+SHA1-Digest: LN6hAyjlQKbY1/XuFl/T7mwtGIY=
+
+Name: reference/api/org/eclipse/gef/class-use/EditPartListener.html
+SHA1-Digest: 77vV0g9ZDav9M2AEOVZBFb0JKTM=
+
+Name: reference/api/org/eclipse/gef/handles/AbstractHandle.html
+SHA1-Digest: eYHTNuJM6+rZthOOMKvwlwLKumk=
+
+Name: reference/api/org/eclipse/gef/dnd/package-frame.html
+SHA1-Digest: bAaVNtH2SOYYSiuLwtotUGgpkyc=
+
+Name: reference/api/org/eclipse/gef/tools/CreationTool.html
+SHA1-Digest: iT4kgzF8NK9418tGzc9suRIzM0g=
+
+Name: reference/api/org/eclipse/gef/ui/rulers/package-frame.html
+SHA1-Digest: e9K5hLlj7vRePkGdHLG2l6WoEj4=
+
+Name: reference/api/org/eclipse/gef/editparts/class-use/FreeformGraphi
+ calRootEditPart.html
+SHA1-Digest: mN+DsUz8DmL7qMfF0roFFivUDRA=
+
+Name: reference/api/org/eclipse/gef/tools/SelectEditPartTracker.html
+SHA1-Digest: Uv7Dc/6cb9mA6PuMd++B9VBkfw0=
+
+Name: reference/api/org/eclipse/gef/ui/palette/SettingsAction.html
+SHA1-Digest: E3WSES08Udrbx4gxJlTTsB22QHo=
+
+Name: reference/api/org/eclipse/gef/handles/HandleBounds.html
+SHA1-Digest: VAG5C2yVZL46QHKdFNkBg3tzwEY=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ToggleRulerVi
+ sibilityAction.html
+SHA1-Digest: CPYff+vb3lZmh0jEKWKUuu0mFV0=
+
+Name: reference/api/org/eclipse/gef/dnd/DelegatingDragAdapter.html
+SHA1-Digest: 8HghNudn0brQY3Ww7AQa0ulctDU=
+
+Name: reference/api/org/eclipse/gef/dnd/TemplateTransfer.html
+SHA1-Digest: QI/MlJM+9NzdnvfpnvZr5Fo/2Ag=
+
+Name: reference/api/org/eclipse/gef/class-use/SnapToGeometry.Entry.htm
+ l
+SHA1-Digest: T5KurOykObxxEXzScNd87cQnoog=
+
+Name: reference/api/org/eclipse/gef/ui/actions/class-use/ActionRegistr
+ y.html
+SHA1-Digest: t8D4z4M1nVkFuWQZpzUcLOO4MTs=
+
+Name: reference/api/org/eclipse/gef/commands/CommandStackEvent.html
+SHA1-Digest: j1Ay1RW8Xjw6Dj3k2J0C2mcmOLs=
+
+Name: reference/api/org/eclipse/gef/ui/properties/UndoablePropertyShee
+ tPage.html
+SHA1-Digest: T1myqgv6n+28P+p/C/FlnkhxRQI=
+
+Name: reference/api/org/eclipse/gef/tools/ConnectionBendpointTracker.h
+ tml
+SHA1-Digest: RYY7D/SBWDt4kdkjVKX82etVyfM=
+
+Name: reference/api/org/eclipse/gef/class-use/SharedMessages.html
+SHA1-Digest: petg0bpUrn867zl3Ezviz+rl/Ts=
+
+Name: reference/api/org/eclipse/gef/rulers/package-use.html
+SHA1-Digest: 1yTwvSxK5SUoPMFMd28oTqTH+1E=
+
+Name: reference/api/org/eclipse/gef/ui/palette/package-tree.html
+SHA1-Digest: SF8+SG53P6mK/6pq0lFEodMxPX0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/CopyTemplateAction.html
+SHA1-Digest: VistuFCQY5xv3/zRcNCUc4Q1yFQ=
+
+Name: reference/api/org/eclipse/gef/dnd/class-use/TemplateTransferDrop
+ TargetListener.html
+SHA1-Digest: 8UzppFt99uiKa97ZEO8CNxztbZ8=
+
+Name: reference/api/org/eclipse/gef/handles/class-use/CornerTriangleBo
+ rder.html
+SHA1-Digest: 2rI9iS8OJH0unVDs2ia5B0cgTek=
+
+Name: reference/api/org/eclipse/gef/tools/AbstractTool.Input.html
+SHA1-Digest: BaJiAmcjpIwWcG/HYKqcNazLkC0=
+
+Name: reference/api/org/eclipse/gef/ui/actions/SetActivePaletteToolAct
+ ion.html
+SHA1-Digest: FxGkLYuZMDADgG4jODSNAkbA2EI=
+

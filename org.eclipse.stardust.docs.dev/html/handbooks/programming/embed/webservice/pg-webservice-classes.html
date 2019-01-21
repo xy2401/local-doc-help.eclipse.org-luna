@@ -1,0 +1,2146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Web Service API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Endpoints",
+        "","pg-webservice-endpoints.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage",
+		"../pg-webservice-api.html","Stardust Web Services");
+	-->
+ -->
+</script>
+<h1>Web Service API</h1>
+<p>Stardust provides Web Services with the same functionality
+as the appropriate services described in the chapter 
+<a href="../pg-embedded-3.htm">Stardust Services</a>,
+adjusted to be able to use the Web Services technology.</p>
+<ul>
+    <li><a href="#services">Web Services provided by Stardust</a></li>
+    <li><a href="#webdata">Supported Data Types</a></li>
+    <li><a href="#control">Controlling the Service Factory Cache Behavior</a></li>
+    <li><a href="#reauth">Enabling Re-authentication for Web Service Session Factory</a></li>
+    <li><a href="#examples">Examples</a></li>  
+</ul>
+<h2 id="services">Web Services provided by Stardust</h2>
+<p>Stardust provides the following Web Services:</p>
+<ul>
+    <li><a href="#admin">AdministrationService</a></li>
+    <li><a href="#document">DocumentManagementService</a></li>
+    <li><a href="#query">QueryService</a></li>
+    <li><a href="#user">UserService</a></li>
+    <li><a href="#workflow">WorkflowService</a></li>
+</ul>
+<h3 id="admin">AdministrationService</h3>
+<table id="AdministrationService">
+    <tr>
+        <th>AdministrationService</th>
+        <th>Web Service Operation</th>
+        <th>Comments</th>
+        
+    </tr>
+    <tr>
+        <td>DeploymentInfo <strong>deployModel</strong>(String model, int
+        predecessorOID)
+        <br>@Deprecated</td>
+        <td>see comments</td>
+        <td>use <strong>deployModel</strong>(...)</td>
+        
+    </tr>
+    <tr>
+        <td>DeploymentInfo <strong>overwriteModel</strong>(String model,
+        int modelOID)</td>
+        <td>see comments</td>
+        <td>use <strong>overwriteModel</strong>(...)</td>
+        
+    </tr>
+    <tr>
+        <td>DeploymentInfo <strong>deployModel</strong>(String model,
+        String configuration, int predecessorOID, Date validFrom, Date validTo,
+        String comment, boolean disabled, boolean ignoreWarnings)
+        <br>@Deprecated</td>
+        <td>DeploymentInfoXto <strong>deployModel</strong>( <br>
+        Integer predecessorOid, Date validFrom, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date validTo, String
+        comment, Boolean disabled, Boolean ignoreWarnings, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String configuration,
+        XmlValueXto model</td>
+        <td>required parameters:
+        <ul>
+            <li>XmlValueXto model</li>
+        </ul>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>DeploymentInfo <strong>overwriteModel</strong>(String model,
+        String configuration, int modelOID, Date validFrom, Date validTo, String
+        comment, boolean disabled, boolean ignoreWarnings)<br>@Deprecated</td>
+        <td>DeploymentInfoXto <strong>overwriteModel</strong>( <br>
+        int modelOid, Date validFrom, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date validTo, String
+        comment, Boolean disabled, Boolean ignoreWarnings, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String configuration,
+        XmlValueXto model)</td>
+        <td>required parameters:
+        <ul>
+            <li>XmlValueXto model</li>
+            <li>int modelOid</li>
+        </ul>
+        </td>
+        
+    </tr>
+   
+    <tr>
+        <td>DeploymentInfo <strong>deleteModel</strong>(long modelOID)</td>
+        <td>DeploymentInfoXto <strong>deleteModel</strong>(int modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>DeploymentInfo <strong>modifyModel</strong>(int modelOID, int
+        predecessorOID, Date, Date, String, boolean)</td>
+        <td>DeploymentInfoXto <strong>modifyModel</strong>(int modelOid,
+        Integer predecessorOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date validFrom, Date
+        validTo, String comment, boolean disabled)</td>
+        <td>required parameters:
+        <ul>
+            <li>int modelOid</li>
+        </ul>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>deleteProcesses</strong>(List&lt;Long&gt; piOids)
+        </td>
+        <td>void <strong>deleteProcesses</strong>(OidsXto oids)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>cleanupRuntime</strong>(boolean keepUsers)</td>
+        <td>void <strong>cleanupRuntime</strong>(boolean keepUsers)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>cleanupRuntimeAndModels</strong>()</td>
+        <td>void <strong>cleanupRuntimeAndModels</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>setProcessInstancePriority</strong>(long,
+        int)</td>
+        <td>see comment</td>
+        <td>use <strong>setProcessInstancePriority</strong>(long, int,
+        null)</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>setProcessInstancePriority</strong>(long,
+        int, boolean)</td>
+        <td>ProcessInstanceXto <strong>setProcessInstancePriority</strong>(long
+        oid, int priority, Boolean propagateToSubProcesses)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>abortProcessInstance</strong>(long)</td>
+        <td>ProcessInstanceXto <strong>abortProcessInstance</strong>(long
+        oid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>recoverProcessInstance</strong>(long)</td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>recoverProcessInstances</strong>(List&lt;Long&gt;)
+        </td>
+        <td>void <strong>recoverProcessInstances</strong>(OidsXto oids)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Daemon <strong>getDaemon</strong>(String, boolean)</td>
+        <td>DaemonsXto <strong>getDaemonStatus</strong>(DaemonParametersXto
+        daemonParameters)</td>
+        <td>if DaemonParameters element is empty or not existing: All
+        Daemons are returned</td>
+        
+    </tr>
+    <tr>
+        <td>Daemon <strong>stopDaemon</strong>(String, boolean)</td>
+        <td>DaemonsXto <strong>stopDaemon</strong>(DaemonParametersXto
+        daemonParameters)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Daemon <strong>startDaemon</strong>(String, boolean)</td>
+        <td>DaemonsXto <strong>startDaemon</strong>(DaemonParametersXto
+        daemonParameters)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;Deamon&gt; <strong>getAllDaemons</strong>(boolean)</td>
+        <td>-</td>
+        <td>Use <strong>getDaemonStatus</strong></td>
+        
+    </tr>
+    <tr>
+        <td>AuditTrailHealthReport <strong>getAuditTrailHealthReport</strong>()
+        </td>
+        <td>AuditTrailHealthReportXto <strong>getAuditTrailHealthReport</strong>()
+        </td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>recoverRuntimeEnvironment</strong>()</td>
+        <td>void <strong>recoverRuntimeEnvironment</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>startProcess</strong>(long, String,
+        Map&lt;String, Object&gt;, boolean)</td>
+        <td>ProcessInstanceXto <strong>startProcessForModel</strong>(long
+        modelOid, String processId, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ParametersXto
+        parameters, Boolean startSynchronously, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InputDocumentsXto
+        attachments)</td>
+        <td>if InputDocumentsXto is used, the Documents are added as
+        ProcessAttachments or Specific Documents. If the passed document is assigned to a document data,
+        in the JCR folder the document is persisted in by convention:
+        <tt>/ipp-respository/partitions/&lt;partionId&gt;/process-instances/&lt;yyyy&gt;/&lt;MM&gt;/&lt;dd&gt;/&lt;HH&gt;/pi-&lt;OID&gt;/specific-documents</tt>
+       <br> If the passed document is put into the process attachments, in the JCR folder the document is persisted in by convention:
+        <tt>/ipp-respository/partitions/&lt;partionId&gt;/process-instances/&lt;yyyy&gt;/&lt;MM&gt;/&lt;dd&gt;/&lt;HH&gt;/pi-&lt;OID&gt;/process-attachments</tt></td>
+        
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>forceCompletion</strong>(long,
+        Map&lt;String, Object&gt;)</td>
+        <td>ActivityInstanceXto <strong>forceCompletion</strong>(long
+        activityOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ParametersXto
+        outDataValues)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>forceSuspendToDefaultPerformer</strong>(long)
+        </td>
+        <td>ActivityInstanceXto <strong>forceSuspend</strong>(long
+        activityOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>()</td>
+        <td>UserXto <strong>getSessionUser</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>flushCaches</strong>()</td>
+        <td>void <strong>flushCaches</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;Permission&gt; <strong>getPermissions</strong>()</td>
+        <td>PermissionsXto <strong>getPermissions</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Map&lt;String,Object&gt; <strong>getProfile</strong>(ProfileScope)
+        </td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>setProfile</strong>(ProfileScope, Map&lt;String,
+        Object&gt;)</td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>writeLogEntry</strong>(LogType, ContextKind, long,
+        String, Throwable)</td>
+        <td>void <strong>writeLogEntry</strong>(LogTypeXto logType, Long
+        activityOid, Long processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String message)</td>
+        <td>Setting processOid or activityOid defines ContextKind. <br>
+        Throwable not supported.</td>
+        
+    </tr>
+    <tr>
+        <td>PasswordRules <strong>getPasswordRules</strong>()</td>
+        <td>PasswordRulesXto <strong>getPasswordRules</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>setPasswordRules</strong>(PasswordRules rules)</td>
+        <td>void <strong>setPasswordRules</strong>(PasswordRulesXto
+        passwordRules)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Department <strong>createDepartment</strong>(String id, String
+        name, String description, DepartmentInfo parent, OrganizationInfo
+        organization)</td>
+        <td>DepartmentXto <strong>createDepartment</strong>(String id,
+        String name, String description, DepartmentInfoXto parent,
+        OrganizationInfoXto organization)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Department <strong>getDepartment</strong>(long oid)</td>
+        <td>DepartmentXto <strong>getDepartment</strong>(long oid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Department <strong>modifyDepartment</strong>(long oid, String
+        name, String description)</td>
+        <td>DepartmentXto <strong>modifyDepartment</strong>(long oid,
+        String name, String description)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>removeDepartment</strong>(long oid)</td>
+        <td>void <strong>removeDepartment</strong>(long oid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+    	<td>Preferences <strong>getPreferences</strong>(PreferenceScope scope, String moduleId, String preferencesId)
+    	</td>
+    	<td>PreferencesXto getPreferences(PreferencesScopeXto scope, String moduleId, String preferencesId)  
+     	</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>void <strong>savePreferences</strong>(Preferences preferences)</td>
+    	<td></td>
+    	<td>use savePreferences(PreferencesListXto preferences)</td>
+    </tr>
+     <tr>
+    	<td>void <strong>savePreferences</strong>(List&lt;Preferences&gt; preferences)</td>
+    	<td>void savePreferences(PreferencesListXto preferences) </td>
+    	<td></td>
+    </tr>
+       
+    <tr>
+    	<td>ConfigurationVariables <strong>getConfigurationVariables</strong>(String modelId)
+    	</td>
+    	<td>List&lt;ConfigurationVariables&gt; <strong>getConfigurationVariables</strong>(List&lt;String&gt; modelIds)
+    	</td>
+    	<td></td>
+    </tr>
+    <tr>
+    	<td>ConfigurationVariables <strong>getConfigurationVariables</strong>(byte[] model)
+    	</td>
+    	<td>List&lt;ModelReconfigurationInfo&gt; <strong>saveConfigurationVariables</strong>(ConfigurationVariables configurationVariables, boolean force)
+    	</td>
+    	<td></td>
+    	   
+    </tr>
+     <tr>
+    	<td>RuntimePermissions <strong>getGlobalPermissions</strong>()
+    	</td>
+    	<td>void <strong>setGlobalPermissions</strong>(RuntimePermissions permissions)
+    	</td>
+    	<td></td>
+    	   
+    </tr>
+        
+</table>
+<h3 id="document">DocumentManagementService</h3>
+<table id="DocumentManagementService">
+    <tr>
+        <th>DocumentManagementService</th>
+        <th>Web Service Operation</th>
+        <th>Comments</th>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>getDocument</strong>(String documentId)</td>
+        <td>DocumentXto <strong>getDocument</strong>(String documentId,
+        QName metaDataType)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>getDocumentVersions</strong>(String folderId)</td>
+        <td>DocumentsXto <strong>getDocumentVersions</strong>(String
+        documentId, QName metaDataType)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>getDocuments</strong>(List documentIds)</td>
+        <td>DocumentsXto <strong>getDocuments</strong>(DocumentIdsXto
+        documentIds, QName metaDataType)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>findDocumentsByName</strong>(String namePattern)</td>
+        <td>DocumentsXto <strong>findDocuments</strong>(DocumentQuery
+        documentQuery)</td>
+        <td>use namePattern element</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>findDocuments</strong>(String expression)</td>
+        <td>DocumentsXto <strong>findDocuments</strong>(DocumentQuery
+        documentQuery)</td>
+        <td>use xPathQuery element</td>
+        
+    </tr>
+    <tr>
+        <td>byte[] <strong>retrieveDocumentContent</strong>(String docId)</td>
+        <td>base64Binary <strong>getDocumentContent</strong>(String
+        documentId)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>String <strong>requestDocumentContentDownload</strong>(String
+        documentId)</td>
+        <td>String <strong>requestDocumentContentDownload</strong>(String
+        documentId)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Folder <strong>getFolder</strong>(String folderId)</td>
+        <td>FolderXto <strong>getFolder</strong>(String folderId,
+        FolderLevelOfDetailXto , QName documentMetaDataType, QName
+        folderMetaDataType)</td>
+        <td>if 2ndParameter is null</td>
+        
+    </tr>
+    <tr>
+        <td>Folder <strong>getFolder</strong>(String folderId, int
+        levelOfDetail)</td>
+        <td>FolderXto <strong>getFolder</strong>(String folderId,
+        FolderLevelOfDetailXto folderLevelOfDetail, QName documentMetaDataType,
+        QName folderMetaDataType)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>getFolders</strong>(List folderIds, int
+        levelOfDetail)</td>
+        <td>FoldersXto <strong>getFolders</strong>(FolderIdsXto folderIds,
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FolderLevelOfDetailXto
+        folderLevelOfDetail, QName documentMetaDataType, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QName
+        folderMetaDataType)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>findFoldersByName</strong>(String namePattern, int
+        levelOfDetail)</td>
+        <td>FoldersXto <strong>findFolders</strong>(FolderQueryXto
+        folderQuery)</td>
+        <td>use namePattern element</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>findFolders</strong>(String expression, int
+        levelOfDetail)</td>
+        <td>FoldersXto <strong>findFolders</strong>(FolderQueryXto
+        folderQuery)</td>
+        <td>use xPathQuery element</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>createDocument</strong>(String folderId,
+        DocumentInfo document)</td>
+        <td>DocumentXto <strong>createDocument</strong>(String folderId,
+        boolean createMissingFolders, DocumentInfoXto documentInfo, DataHandler
+        content, DocumentVersionInfoXto versionInfo)</td>
+        <td>if the DataHandler value is null</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>createDocument</strong>(String folderId,
+        DocumentInfo document, byte[] content, String encoding)</td>
+        <td>DocumentXto <strong>createDocument</strong>(String folderId,
+        boolean createMissingFolders, DocumentInfoXto documentInfo, DataHandler
+        content, DocumentVersionInfoXto versionInfo)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>versionDocument</strong>(String documentId,
+        String versionLabel)</td>
+        <td>DocumentXto <strong>versionDocument</strong>(String documentId,
+        String versionLabel)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>updateDocument</strong>(Document document,
+        boolean createNewRevision, String versionLabel, boolean keepLocked)</td>
+        <td>see comment</td>
+        <td>use <strong>updateDocument</strong> with parameter: <br>
+        DataHandler = null</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>updateDocument</strong>(Document document,
+        byte[] content, String encoding, boolean createNewRevision, String
+        versionLabel, boolean keepLocked)</td>
+        <td>DocumentXto <strong>updateDocument</strong>(String documentId,
+        DocumentInfoXto documentInfo, DataHandler content,
+        DocumentVersionInfoXto versionInfo)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>String <strong>requestDocumentContentUpload</strong>(String
+        documentId)</td>
+        <td>String <strong>requestDocumentContentUpload</strong>(String
+        documentId)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>removeDocument</strong>(String documentId)</td>
+        <td>void <strong>removeDocument</strong>(String documentId)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Folder <strong>createFolder</strong>(String parentFolderId,
+        FolderInfo folder)</td>
+        <td>FolderXto <strong>createFolder</strong>(String parentFolderId,
+        FolderInfoXto folderInfo)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Folder <strong>updateFolder</strong>(Folder folder)</td>
+        <td>FolderXto <strong>updateFolder</strong>(FolderXto updateFolder)
+        </td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>removeFolder</strong>(String folderId, boolean
+        recursive)</td>
+        <td>void <strong>removeFolder</strong>(String folderId, Boolean
+        recursive)</td>
+        <td>default value for parameter: <br>
+        recursive = false</td>
+        
+    </tr>
+    <tr>
+        <td>Set&lt;AccessControlPolicy&gt; <strong>getApplicablePolicies</strong>(String
+        resourceId)</td>
+        <td>see comment</td>
+        <td>use <strong>getPolicies</strong> with: <br>
+        policyScope = APPLICABLE</td>
+        
+    </tr>
+    <tr>
+        <td>Set&lt;AccessControlPolicy&gt; <strong>getEffectivePolicies</strong>(String
+        resourceId)</td>
+        <td>see comment</td>
+        <td>use <strong>getPolicies</strong> with: <br>
+        policyScope = EFFECTIVE</td>
+        
+    </tr>
+    <tr>
+        <td>Set&lt;AccessControlPolicy&gt; <strong>getPolicies</strong>(String
+        resourceId)</td>
+        <td>AccessControlPoliciesXto <strong>getPolicies</strong>(String
+        resourceId, PolicyScopeXto policyScope)</td>
+        <td>policyScope = ALL</td>
+        
+    </tr>
+    <tr>
+        <td>Set&lt;Privilege&gt; <strong>getPrivileges</strong>(String
+        resourceId)</td>
+        <td>PrivilegesXto <strong>getPrivileges</strong>(String resourceId)
+        </td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>setPolicy</strong>(String resourceId,
+        AccessControlPolicy policy)</td>
+        <td>void <strong>setPolicy</strong>(String resourceId,
+        AccessControlPolicy policy)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>RepositoryMigrationReport <strong>migrateRepository</strong>(int
+        batchSize, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean
+        evaluateTotalCount)</td>
+        <td>RepositoryMigrationReportXto <strong>migrateRepository</strong>(int
+        batchSize, boolean evaluateTotalCount)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+    	<td>-</td>
+    	<td>DocumentTypeResultsXto getDocumentTypes(String modelId)</td>
+    	<td>modelId = null. Maps to all valid models.
+    	</td>
+    
+    
+    </tr>
+    
+    <tr>
+    	<td>byte[] getSchemaDefinition(String schemaLocation) </td>
+    	<td>XmlValueXto getDocumentTypeSchema(String schemaLocation)</td>
+    	<td></td>
+    
+    </tr>
+    
+    
+    
+    
+</table>
+<h3 id="query">QueryService</h3>
+<table id="QueryService">
+    <tr>
+        <th>QueryService</th>
+        <th>Web Service Operation</th>
+        <th>Comments</th>
+        
+    </tr>
+    <tr>
+        <td>long <strong>getUsersCount</strong>(UserQuery)</td>
+        <td>-</td>
+        <td>use <strong>findUsers</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>long <strong>getUserGroupsCount</strong>(UserGroupQuery)</td>
+        <td>-</td>
+        <td>use <strong>findUserGroups</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>long <strong>getProcessInstancesCount</strong>(ProcessInstanceQuery)
+        </td>
+        <td>-</td>
+        <td>use <strong>findProcesses</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>long <strong>getActivityInstancesCount</strong>(ActivityInstanceQuery)
+        </td>
+        <td>-</td>
+        <td>use <strong>findActivities</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>long <strong>getLogEntriesCount</strong>(LogEntryQuery)</td>
+        <td>-</td>
+        <td>use <strong>findLogEntries</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>Users <strong>getAllUsers</strong>(UserQuery)</td>
+        <td>UserQueryResultXto <strong>findUsers</strong>(UserQueryXto
+        userQuery)</td>
+        <td>see UserQuery</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroups <strong>getAllUserGroups</strong>(UserGroupQuery)</td>
+        <td>UserGroupQueryResultXto <strong>findUserGroups</strong>(UserGroupQueryXto
+        userGroupQuery)</td>
+        <td>see UserGroupQuery</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstances <strong>getAllProcessInstances</strong>(ProcessInstanceQuery)
+        </td>
+        <td>ProcessInstanceQueryResultXto <br>
+        <strong>findProcesses</strong>(ProcessInstanceQueryXto query)</td>
+        <td>see ProcessInstanceQuery</td>
+        
+    </tr>
+    <tr>
+        <td>ActivityInstances <strong>getAllActivityInstances</strong>(ActivityInstanceQuery)
+        </td>
+        <td>ActivityQueryResultXto <br>
+        <strong>findActivities</strong>(ActivityQueryXto query)</td>
+        <td>see ActivityQuery</td>
+        
+    </tr>
+    <tr>
+        <td>LogEntries <strong>getAllLogEntries</strong>(LogEntryQuery)</td>
+        <td>LogEntryQueryResult <strong>findLogEntries</strong>(LogEntryQueryXto
+        logEntryQuery)</td>
+        <td>see LogEntryQuery <br>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>findFirstUser</strong>(UserQuery)</td>
+        <td>-</td>
+        <td>use <strong>findUsers</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>findFirstUserGroup</strong>(UserGroupQuery)</td>
+        <td>-</td>
+        <td>use <strong>findUserGroups</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>findFirstProcessInstance</strong>(ProcessInstanceQuery)
+        </td>
+        <td>-</td>
+        <td>use <strong>findProcesses</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>findFirstActivityInstance</strong>(ActivityInstanceQuery)
+        </td>
+        <td>-</td>
+        <td>use <strong>findActivities</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>LogEntry <strong>findFirstLogEntry</strong>(LogEntryQuery)</td>
+        <td>-</td>
+        <td>use <strong>findLogEntries</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;ActivityInstance&gt; <strong>getAuditTrail</strong>(long)
+        </td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;DeployedModelDescription&gt; <strong>getAllModelDescriptions</strong>()
+        <br>@deprecated
+        </td>
+        <td>ModelDescriptionsXto <strong>getAllModelDescriptions</strong>()
+        </td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;DeployedModelDescription&gt; <strong>getAllAliveModelDescriptions</strong>()
+        <br>@deprecated
+        </td>
+        <td>ModelDescriptionsXto <strong>getAllAliveModelDescriptions</strong>()
+        </td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>DeployedModelDescription <strong>getActiveModelDescription</strong>()
+        <br>@deprecated
+        </td>
+        <td>see comment</td>
+        <td>use <strong>getModelDescription</strong>(Long modelOid) with
+        parameter: <br>
+        Long modelOid = null <br>
+        (the active model's description is returned)</td>
+        
+    </tr>
+    <tr>
+        <td>DeployedModelDescription <strong>getModelDescription</strong>(long)
+        </td>
+        <td>ModelDescriptionXto <strong>getModelDescription</strong>(Long
+        modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>boolean <strong>wasRedeployed</strong>(long modelOid, int
+        revision)</td>
+        <td>boolean <strong>wasRedeployed</strong>(long modelOid, int
+        revision)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>DeployedModel <strong>getModel</strong>(long modelOid)</td>
+        <td>see comment</td>
+        <td>use <strong>getModel</strong>() with parameter: <br>
+        Boolean computeAliveness = null</td>
+        
+    </tr>
+    <tr>
+        <td>DeployedModel <strong>getModel</strong>(long modelOid, boolean
+        computeAliveness)</td>
+        <td>ModelXto <strong>getModel</strong>(Long modelOid, Boolean
+        computeAliveness</td>
+        <td>
+        <ul>
+            <li>If Long modelOid is null, the modelOid of the ActiveModel
+            is used internally</li>
+            <li>Boolean computeAliveness default value is false</li>
+        </ul>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>DeployedModel <strong>getActiveModel</strong>()</td>
+        <td>see comment</td>
+        <td>use <strong>getModel</strong>() with parameter: <br>
+        Long modelOid = null <br>
+        Boolean computeAliveness = null</td>
+        
+    </tr>
+    <tr>
+        <td>String <strong>getModelAsXML</strong>(long modelOid)</td>
+        <td>XmlValueXto <strong>getModelAsXml</strong>(Long modelOid)</td>
+        <td>if Long modelOid = null, the active model is used</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;ProcessDefinition&gt; <strong>getAllProcessDefinitions</strong>(long
+        modelOid)</td>
+        <td>ProcessDefinitionsXto <strong>getAllProcessDefinitions</strong>(Long
+        modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessDefinition <strong>getProcessDefinition</strong>(long
+        processId, String modelOid)</td>
+        <td>ProcessDefinitionXto <strong>getProcessDefinition</strong>(String
+        processId, Long modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;ProcessDefinition&gt; <strong>getAllProcessDefinitions</strong>()
+        </td>
+        <td>see comment</td>
+        <td>use <strong>getAllProcessDefinitions</strong>(Long modelOid)
+        with parameter: <br>
+        Long modelOid = null</td>
+        
+    </tr>
+    <tr>
+        <td>ProcessDefinition <strong>getProcessDefinition</strong>(String
+        id)</td>
+        <td>see comment</td>
+        <td>use <strong>getProcessDefinition</strong>(String processId,
+        Long modelOid) with parameter: <br>
+        modelOid = null</td>
+        
+    </tr>
+    <tr>
+    	<td>DataQueryResult <strong>getAllData</strong>(DataQuery query)</td>
+    	<td>VariableDefinitionQueryResultXto <strong>findVariableDefinitions</strong>(VariableDefinitionQueryXto)</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+        <td>List&lt;Participant&gt; <strong>getAllParticipants</strong>(long
+        modelOid)</td>
+        <td>ParticipantsXto <strong>getAllParticipants</strong>(Long
+        modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>Participant <strong>getParticipant</strong>(long modelOid,
+        String id)</td>
+        <td>ParticipantXto <strong>getParticipant</strong>(String
+        participantId, Long modelOid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;Participant&gt; <strong>getAllParticipants</strong>()</td>
+        <td>see comment</td>
+        <td>use <strong>getAllParticipants</strong>(Long modelOid) with
+        parameter: <br>
+        modelOid = null</td>
+        
+    </tr>
+    <tr>
+        <td>Participant <strong>getParticipant</strong>(String id)</td>
+        <td>see comment</td>
+        <td>use <strong>getParticipant</strong>(String participantId, Long
+        modelOid) with parameter: <br>
+        modelOid = null</td>
+        
+    </tr>
+    <tr>
+        <td>List&lt;Permission&gt; <strong>getPermissions</strong>()</td>
+        <td>PermissionsXto <strong>getPermissions</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>byte[] <strong>getSchemaDefinition</strong>(long modelOid,
+        String typeDeclarationId)</td>
+        <td>XmlValueXto <strong>getSchemaDefinition</strong>(QName type,
+        Long modelOid)</td>
+        <td>if modelOid = null, the active model is used</td>
+        
+    </tr>
+    <tr>
+        <td>Document <strong>findFirstDocument</strong>(DocumentQuery
+        query) - deprecated</td>
+        <td>-</td>
+        <td>use <strong>findDocuments</strong> with SubsetPolicy</td>
+        
+    </tr>
+    <tr>
+        <td>Documents <strong>getAllDocuments</strong>(DocumentQuery query)
+        </td>
+        <td>DocumentQueryResultXto <strong>getAllDocuments</strong>(DocumentQueryXto)
+        </td>
+        <td>see DocumentQuery <br>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>ProcessDefinitions <strong>getProcessDefinitions</strong>(ProcessDefinitionQuery
+        query)</td>
+        <td>ProcessDefinitionQueryResultXto <strong>findProcessDefinitions</strong>(ProcessDefinitionQueryXto
+        query)</td>
+        <td>see ProcessDefinitionQuery <br>
+        </td>
+        
+    </tr>
+    <tr>
+    
+    	<td>Preferences <strong>getPreferences</strong>(PreferenceScope scope, String moduleId, String preferencesId)
+    	</td>
+    	<td>
+    	PreferencesXto getPreferences (PreferencesScopeXto scope, String moduleId, String preferencesId) 
+    	</td>
+    	<td></td>
+    
+    </tr>
+    <tr>
+    	<td>List &lt;Preferences&gt; <strong>getAllPreferences</strong>(PreferenceQuery preferenceQuery)</td>
+    	<td>PreferencesListXto findPreferences(PreferencesQueryXto query)</td>
+    	<td></td>
+       
+    </tr>
+    <tr>
+    	<td>Models getModels(DeployedModelQuery)</td>
+    	<td>ModelsQueryResultXto findModels (DeployedModelsQueryXto query)</td>
+    	<td></td>
+    </tr>
+    
+</table>
+<h3 id="user">UserService</h3>
+<table id="UserService">
+    <tr>
+        <th>UserService</th>
+        <th>Web Service Operation</th>
+        <th>Comments</th>
+        
+    </tr>
+    <tr>
+        <td>String <strong>startSession</strong>(String)</td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>String <strong>closeSession</strong>(String)</td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>boolean <strong>isInternalAuthentified</strong>() <strong>(@deprecated)</strong>
+        </td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>boolean <strong>isInternalAuthentication</strong>()</td>
+        <td>boolean <strong>isInternalAuthentication</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>boolean <strong>isInternalAuthorization</strong>()</td>
+        <td>boolean <strong>isInternalAuthorization</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>()</td>
+        <td>UserXto <strong>getSessionUser</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>modifyLoginUser</strong>(String oldPassword,
+        String firstName, String lastName, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String newPassword,
+        String eMail)</td>
+        <td>-</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>modifyUser</strong>(User user)</td>
+        <td>see comment</td>
+        <td>use UserXto <strong>modifyUser</strong>(UserXto, false)</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>modifyUser</strong>(User user, boolean
+        generatePassword)</td>
+        <td>UserXto <strong>modifyUser</strong>(UserXto user, Boolean
+        generatePassword)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>createUser</strong>(String account, String
+        firstName, String lastName, String description, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String password, String
+        eMail, Date validFrom, Date validTo)</td>
+        <td>see comment</td>
+        <td>use <strong>createUser</strong>(UserXto)</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>createUser</strong>(String realm, String account,
+        String firstName, String lastName, String description, String password,
+        String eMail, Date validFrom, Date validTo)</td>
+        <td>UserXto <strong>createUser</strong>(UserXto user)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>(String account)</td>
+        <td>-</td>
+        <td>use QueryService UserQuery</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>(String realm, String account)</td>
+        <td>-</td>
+        <td>use QueryService UserQuery</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>(long oid)</td>
+        <td>UserXto <strong>getUser</strong>(long oid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>invalidateUser</strong>(String account)</td>
+        <td>see comment</td>
+        <td>use <strong>invalidateUser</strong>(String,null)</td>
+        
+    </tr>
+    <tr>
+        <td>User <strong>invalidateUser</strong>(String realm, String
+        account)</td>
+        <td>UserXto <strong>invalidateUser</strong>(String accountId,String
+        realmId)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>createUserGroup</strong>(String id, String
+        name, String description, Date validFrom, Date validTo)</td>
+        <td>UserGroupXto <strong>createUserGroup</strong>(UserGroupXto
+        userGroup)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>getUserGroup</strong>(String id)</td>
+        <td>-</td>
+        <td>use QueryService UserGroupQuery</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>getUserGroup</strong>(long oid)</td>
+        <td>UserGroupXto <strong>getUserGroup</strong>(long oid)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>modifyUserGroup</strong>(UserGroup userGroup)
+        </td>
+        <td>UserGroupXto <strong>modifyUserGroup</strong>(UserGroupXto
+        userGroup)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>invalidateUserGroup</strong>(String id)</td>
+        <td>see comment</td>
+        <td>use <br>
+        <strong>invalidateUserGroup</strong>(null,String)</td>
+        
+    </tr>
+    <tr>
+        <td>UserGroup <strong>invalidateUserGroup</strong>(long oid)</td>
+        <td>UserGroupXto <strong>invalidateUserGroup</strong>(Long
+        userGroupOid, String userGroupId)</td>
+        <td>use <br>
+        <strong>invalidateUserGroup</strong>(long,null)</td>
+        
+    </tr>
+    <tr>
+        <td>UserRealm <strong>createUserRealm</strong>(String id, String
+        name, String description)</td>
+        <td>UserRealmXto <strong>createUserRealm</strong>(String id, String
+        name, String description)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>dropUserRealm</strong>(String id)</td>
+        <td>void <strong>dropUserRealm</strong>(String id)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>getUserRealms</strong>()</td>
+        <td>List&lt;UserRealmXto&gt; <strong>getUserRealms</strong>()</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>void <strong>resetPassword</strong>(String account, Map
+        properties)</td>
+        <td>void <strong>resetPassword</strong>(String account, MapXto
+        properties)</td>
+        <td>-</td>
+        
+    </tr>
+    <tr>
+        <td>List <strong>getDeputies</strong>(UserInfo user)</td>
+        <td>DeputiesXto <strong>addDeputy</strong>(UserInfoXto userXto)</td>
+        <td></td>        
+    </tr>
+    <tr>
+        <td>Deputy <strong>modifyDeputy</strong>(UserInfo user, UserInfo deputyUser, DeputyOptions options)</td>
+        <td>see comment</td>
+        <td>use DeputyXto <strong>modifyDeputy</strong>(UserInfoXto userXto, UserInfoXto deputyUserXto,
+         DeputyOptionsXto optionsXto)</td>        
+    </tr>
+    <tr>
+        <td>Deputy <strong>addDeputy</strong>(UserInfo user, UserInfo deputyUser, DeputyOptions options)</td>
+        <td>see comment</td>
+        <td>use DeputyXto <strong>addDeputy</strong>(UserInfoXto userXto, UserInfoXto deputyUserXto,
+         DeputyOptionsXto optionsXto)</td>        
+    </tr>
+    <tr>
+        <td>void <strong>removeDeputy</strong>(UserInfo user, UserInfo deputyUser)</td>
+        <td>see comment</td>
+        <td>use <strong>removeDeputy</strong>(UserInfoXto userXto, UserInfoXto deputyUserXto)</td>        
+    </tr>
+    <tr>
+        <td>List <strong>getUsersBeingDeputyFor</strong>(UserInfo deputyUser)</td>
+        <td>DeputiesXto <strong>getUsersBeingDeputyFor</strong>(UserInfoXto deputyUserXto)</td>
+        <td></td>        
+    </tr>
+</table>
+<h3>Supported Complex Data Types</h3>
+<p>For UserService the complex type called User is used differently for:</p>
+<ul>
+    <li>createUser</li>
+    <li>modifyUser</li>
+    <li>return type</li>
+</ul>
+<h4 id="crtuser">CreateUser</h4>
+<p>For the create user operation the following User type elements can be used. All
+other elements are ignored.</p>
+<table>
+    <tr>
+        <th>Element Name</th>
+        <th>Type</th>
+        <th>minOccurs</th>
+    </tr>
+    <tr>
+        <td>accountId</td>
+        <td>string</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>firstName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>lastName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>eMail</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validFrom</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validTo</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>userRealm</td>
+        <td>tns:UserRealm</td>
+        <td>0</td>
+    </tr>
+</table>
+<p class="note"><strong>Note</strong><br>
+Do not use a colon (":") character in your user name!</p>
+<h4>Example - CreateUser</h4>
+<pre>&lt;api:createUser&gt;<br>
+         &lt;api:user&gt;<br>
+            &lt;api:accountId&gt;lcarnot&lt;/api:accountId&gt;<br>
+            &lt;api:firstName&gt;Leonard&lt;/api:firstName&gt;<br>
+            &lt;api:lastName&gt;Carnot&lt;/api:lastName&gt;<br>
+            &lt;api:password&gt;pwd&lt;/api:password&gt;<br>
+            &lt;api:eMail&gt;a.b@c.de&lt;/api:eMail&gt;<br>
+            &lt;api:description&gt;This is a description.&lt;/api:description&gt;<br>
+            &lt;/api:user&gt;<br>
+      &lt;/api:createUser&gt;<br>
+
+</pre>
+<h4>Modify User</h4>
+<p>Modifying a user is best accomplished by modifying a User formerly
+retrieved via an API operation. For example, getUser. The elements userGroups or
+grants are used to add or remove user groups and grants to or from a user. If
+the userGroups or the grants element do not exist at all, the user groups or
+grants are not modified. If an empty element of userGroup or grants is used, all
+user groups or grants are removed from the user.</p>
+<p>For the modifyUser operation following elements can be used to modify a
+user. All other elements are ignored so a User element formerly retrieved from
+the API can just be modified and used as input for a modifyUser operation. The
+oid element is mandatory.</p>
+<table>
+    <tr>
+        <th>Element Name</th>
+        <th>Type</th>
+        <th>minOccurs</th>
+    </tr>
+    <tr>
+        <td>oid</td>
+        <td>long</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>accountId</td>
+        <td>string</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>passwordExpired</td>
+        <td>boolean</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>firstName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>lastName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>eMail</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validFrom</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validTo</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>userGroups</td>
+        <td>tns:UserGroups</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>grants</td>
+        <td>tns:Grants</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>attributes</td>
+        <td>tns:Attributes</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<h4>Example - Adding a grant for Administrator role.</h4>
+<pre>
+&lt;api:modifyUser&gt;<br>
+         &lt;api:user&gt;<br>
+            &lt;api:oid&gt;3&lt;/api:oid&gt;<br>
+            &lt;api:accountId&gt;lcarnot&lt;/api:accountId&gt;<br>
+            &lt;api:firstName&gt;Leonard&lt;/api:firstName&gt;<br>
+            &lt;api:lastName&gt;Carnot&lt;/api:lastName&gt;<br>
+            &lt;api:eMail&gt;f.g@h.ij&lt;/api:eMail&gt;<br>
+            &lt;api:description&gt;This is a changed description.&lt;/api:description&gt;<br>
+           &lt;api:grants&gt;<br>
+                 &lt;api:grant&gt;
+                  &lt;api:id&gt;Administrator&lt;/api:id&gt;<br>
+                &lt;/api:grant&gt;<br>
+           &lt;/api:grants&gt;<br>
+         &lt;/api:user&gt;<br>
+      &lt;/api:modifyUser&gt;<br> 
+</pre>
+<h4>User as Return Type</h4>
+<p>The following elements are used for returned User types resulting from
+Web service operations.</p>
+<table>
+    <tr>
+        <th>Element Name</th>
+        <th>Type</th>
+        <th>minOccurs</th>
+    </tr>
+    <tr>
+        <td>oid</td>
+        <td>long</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>accountId</td>
+        <td>string</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>firstName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>lastName</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>previousLoginTime</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>eMail</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validFrom</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>validTo</td>
+        <td>dateTime</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>detailsLevel</td>
+        <td>int</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>userRealm</td>
+        <td>tns:UserRealm</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>userGroups</td>
+        <td>tns:UserGroups</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>grants</td>
+        <td>tns:Grants</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>attributes</td>
+        <td>tns:Attributes</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>passwordExpired</td>
+        <td>boolean</td>
+        <td></td>
+    </tr>
+</table>
+<h4>Example</h4>
+<pre>
+    
+    &lt;modifiedUser&gt;<br>
+            &lt;oid&gt;3&lt;/oid&gt;<br>
+            &lt;accountId&gt;lcarnot&lt;/accountId&gt;<br>
+            &lt;firstName&gt;Leonard&lt;/firstName&gt;<br>
+            &lt;lastName&gt;Carnot&lt;/lastName&gt;<br>
+            &lt;eMail&gt;f.g@h.ij&lt;/eMail&gt;<br>
+            &lt;description&gt;This is a changed description.&lt;/description&gt;<br>
+            &lt;detailsLevel&gt;3&lt;/detailsLevel&gt;<br>
+            &lt;userRealm&gt;<br>
+               &lt;oid&gt;1&lt;/oid&gt;<br>
+               &lt;id&gt;carnot&lt;/id&gt;<br>
+               &lt;name&gt;CARNOT&lt;/name&gt;<br>
+               &lt;partitionOid&gt;1&lt;/partitionOid&gt;<br>
+               &lt;partitionId&gt;default&lt;/partitionId&gt;<br>
+            &lt;/userRealm&gt;<br>
+            &lt;grants&gt;<br>
+               &lt;grant&gt;<br>
+                  &lt;id&gt;Administrator&lt;/id&gt;<br>
+                  &lt;name&gt;Administrator&lt;/name&gt;<br>
+                  &lt;modelOid&gt;1&lt;/modelOid&gt;<br>
+                  &lt;elementOid&gt;10044&lt;/elementOid&gt;<br>
+                  &lt;organization&gt;false&lt;/organization&gt;<br>
+               &lt;/grant&gt;<br>
+            &lt;/grants&gt;<br>
+            &lt;passwordExpired&gt;false&lt;/passwordExpired&gt;<br>
+         &lt;/modifiedUser&gt;<br> 
+
+</pre>
+
+<h3 id="workflow">WorkflowService</h3>
+<table>
+    <tr>
+        <th>WorkflowService</th>
+        <th>Web Service Operation</th>
+        <th>Comments</th>
+    </tr>
+	<tr>
+		<td>ActivityInstance activate(long activityInstanceOID)</td>
+		<td>ActivityInstanceXto activateActivity(long activityOid) </td>
+		<td>-</td>	
+	
+	</tr>
+	<tr>
+		<td>ActivityInstance activateNextActivityInstance(long
+		activityInstanceOID)</td>
+		<td>ActivityInstanceXto activateNextActivity(Long activityOid, WorklistQueryXto worklistQuery)</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ActivityInstance activateNextActivityInstance(WorklistQuery query)</td>
+		<td>ActivityInstanceXto activateNextActivity(Long activityOid, WorklistQueryXto worklistQuery)</td>
+		<td></td>
+	</tr>
+    <tr>
+        <td>-</td>
+        <td>ParametersXto <strong>activateActivityAndGetInData</strong>(long
+        activityOid, String context)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>complete</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt; outData)
+        </td>
+        <td>ActivityInstanceXto <strong>completeActivity</strong>(long
+        activityOid, String context, ParametersXto outData, Boolean activate)</td>
+        <td>if parameter Boolean activate is false or null</td>
+    </tr>
+    <tr>
+        <td>ActivityCompletionLog <strong>complete</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt; outData,
+        int flags)</td>
+        <td>ActivityInstancesXto <strong>completeActivityAndActivateNext</strong>(long
+        activityOid, String context, ParametersXto outData, Boolean activate)</td>
+        <td>if parameter Boolean activate is false or null</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>activateAndComplete</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt; outData)
+        </td>
+        <td>ActivityInstanceXto <strong>completeActivity</strong>(long
+        activityOid, String context, ParametersXto outData, Boolean activate)</td>
+        <td>if parameter Boolean activate is true</td>
+    </tr>
+    <tr>
+        <td>ActivityCompletionLog <strong>activateAndComplete</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt; outData,
+        int flags)</td>
+        <td>ActivityInstancesXto <strong>completeActivityAndActivateNext</strong>(long
+        activityOid, String context, ParametersXto outData, Boolean activate)</td>
+        <td>if parameter Boolean activate is true</td>
+    </tr>
+    <tr>
+        <td>Serializable <strong>getInDataValue</strong>(long
+        activityInstanceOID, String, String)</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Map <strong>getInDataValues</strong>(long activityInstanceOID,
+        String context, Set&lt;String&gt; ids)</td>
+        <td>ParametersXto <strong>getActivityInData</strong>(long
+        activityOid, String context, DataIdsXto dataIds)</td>
+        <td>dataIds is optional for limiting results</td>
+    </tr>
+    <tr>
+        <td>Map <strong>getInDataValues</strong>(long, String) <strong>(@deprecated)</strong>
+        </td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspend</strong>(long
+        activityInstanceOID, ContextData outData)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        participant = null</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToDefaultPerformer</strong>(long
+        activityInstanceOID)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        context = null <br>
+        participant = DefaultParticipant</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToDefaultPerformer</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt; outData)
+        </td>
+        <td>ActivityInstanceXto <strong>suspendActivity</strong>(long
+        activityOid, ParticipantInfoBaseXto participant, String context,
+        ParametersXto outDataValues)</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        participant = DefaultParticipant</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToUser</strong>(long
+        activityInstanceOID)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        context = null <br>
+        participant = UserInfo with oid -10</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToUser</strong>(long
+        activityInstanceOID, String context, Map&lt;String, Object&gt;
+        outDataValues)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        participant = UserInfo with oid -10</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToUser</strong>(long
+        activityInstanceOID, long userOID)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter:&nbsp; <br>
+        context = null <br>
+        participant = UserInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToUser</strong>(long
+        activityInstanceOID, long userOID String context, Map&lt;String,
+        Object&gt; outData)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        participant = UserInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToParticipant</strong>(long
+        activityInstanceOID, String participant)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter:&nbsp; <br>
+        context = null <br>
+        participant = RoleInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>suspendToParticipant</strong>(long,
+        String participant, String context, Map&lt;String, Object&gt; outData)</td>
+        <td>see comment</td>
+        <td>use <strong>suspendActivity</strong> with parameter: <br>
+        participant = RoleInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>hibernate</strong>(long
+        activityInstanceOID)</td>
+        <td>ActivityInstanceXto <strong>hibernateActivity</strong>(long
+        activityOid)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>startProcess</strong>(String id,
+        Map&lt;String, Object&gt; data, boolean synchronously)</td>
+        <td>ProcessInstanceXto <strong>startProcess</strong>(String
+        processId, ParametersXto parameters, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Boolean
+        startSynchronously, InputDocumentsXto attachments)</td>
+        <td>if InputDocumentsXto is used, the Documents are added as
+        ProcessAttachments or Specific Documents. If the passed document is assigned to a document data,
+        in the JCR folder the document is persisted in by convention:
+        <tt>/ipp-repository/partitions/&lt;partionId&gt;/process-instances/&lt;yyyy&gt;/&lt;MM&gt;/&lt;dd&gt;/&lt;HH&gt;/pi-&lt;OID&gt;/specific-documents</tt>
+       <br> If the passed document is put into the process attachments, in the JCR folder the document is persisted in by convention:
+        <tt>/ipp-repository/partitions/&lt;partionId&gt;/process-instances/&lt;yyyy&gt;/&lt;MM&gt;/&lt;dd&gt;/&lt;HH&gt;/pi-&lt;OID&gt;/process-attachments</tt></td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>abortProcessInstance</strong>(long) <strong>(@deprecated)</strong>
+        </td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>spawnSubprocessInstance</strong>(long parentProcessInstanceOid,
+         String spawnProcessID, boolean copyData, Map&lt;String, ?&gt; data);
+    	</td>
+    	<td>see comment</td>
+    	<td>use spawnSubprocessInstances</td>
+    </tr>
+    <tr>
+    	<td>List&lt;ProcessInstance&gt; <strong>spawnSubprocessInstances</strong>
+    	(long parentProcessInstanceOid, List&lt;SubprocessSpawnInfo&gt; 
+    	subprocessSpawnInfo);</td>
+    	<td>ProcessInstancesXto spawnSubprocessInstances(long processInstanceOid,
+         ProcessSpawnInfosXto processSpawnInfos)
+    	</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>spawnPeerProcessInstance</strong>(
+         long processInstanceOid, String spawnProcessID, boolean copyData,
+         Map&lt;String, ?&gt; data, boolean abortProcessInstance, String comment);
+    	</td>
+    	<td>ProcessInstancesXto<strong>spawnPeerProcessInstance</strong>(long processInstanceOid,
+         String spawnProcessId, boolean copyData, ParametersXto parameters,
+         boolean abortProcessInstance, String comment)
+    	</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>createCase</strong>(String name, String description, long[] memberOids)</td>
+    	<td>ProcessInstanceXto <strong>createCase</strong>(String name, String description,
+         OidListXto memberOids)
+    	</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>joinCase</strong>(long caseOid, long[] memberOids)</td>
+    	<td>ProcessInstanceXto joinCase(long caseOid, OidListXto memberOids)</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>leaveCase</strong>(long caseOid, long[] memberOids</td>
+    	<td>ProcessInstanceXto <strong>leaveCase</strong>(long caseOid, OidListXto memberOids)</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>mergeCases</strong>(long targetCaseOid, long[] sourceCaseOids, String comment)</td>
+    	<td>ProcessInstance <strong>mergeCases</strong>(long targetCaseOid, long[] sourceCaseOids, String comment)</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>delegateCase</strong>(long caseOid, ParticipantInfo participant)</td>
+    	<td>ProcessInstanceXto <strong>delegateCase</strong>(long caseOid, ParticipantInfoXto participantInfo)</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+    	<td>ProcessInstance <strong>joinProcessInstance</strong>(long processInstanceOid,
+         long targetProcessInstanceOid, String comment)
+    	</td>
+    	<td><strong>joinProcessInstance</strong>(long processInstanceOid,
+         long targetProcessInstanceOid, String comment)
+    	</td>
+    	<td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>abortActivityInstance</strong>(long
+        activityInstanceOID)</td>
+        <td>see comment</td>
+        <td>use <strong>abortActivity</strong> with parameter: <br>
+        abortScope = null</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>abortActivityInstance</strong>(long
+        activityInstanceOID, AbortScope abortScope)</td>
+        <td>ActivityInstanceXto <strong>abortActivity</strong>(long
+        activityOid, AbortScopeXto abortScope)</td>
+        <td>-</td>
+    </tr>
+      <tr>
+    	<td>ProcessInstance <strong>abortProcessInstance</strong>(long processInstanceOid,
+         AbortScope abortScope)
+    	</td>
+    	<td>ProcessInstanceXto <strong>abortProcessInstance</strong>(long oid, AbortScopeXto abortScope)</td>
+    	<td>-</td>
+    </tr>
+           
+    <tr>
+        <td>DeployedModel <strong>getModel</strong>()</td>
+        <td>-</td>
+        <td>use QueryService</td>
+    </tr>
+    <tr>
+        <td>Worklist <strong>getWorklist</strong>(WorklistQuery)</td>
+        <td>WorklistXto <strong>findWorklist</strong>(WorklistQueryXto
+        worklistQuery)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>activateNextActivityInstance</strong>(long
+        activityInstanceOID)</td>
+        <td>ActivityInstanceXto <strong>activateNextActivity</strong>(long
+        activityOid)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>activateNextActivityInstanceForProcessInstance</strong>(long
+        processInstanceOID)</td>
+        <td>ActivityInstanceXto <strong>activateNextActivityForProcess</strong>(long
+        processOid)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>void <strong>setOutDataPath</strong>(long, String, Object)</td>
+        <td>-</td>
+        <td>use <strong>setProcessProperties</strong>()</td>
+    </tr>
+    <tr>
+        <td>void <strong>setOutDataPaths</strong>(long, Map&lt;String,
+        Object&gt;)</td>
+        <td>void <strong>setProcessProperties</strong>(long
+        processInstanceOid, InstancePropertiesXto propertyIds)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Object <strong>getInDataPath</strong>(long, String)</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Map <strong>getInDataPaths</strong>(long, Set&lt;String&gt;)</td>
+        <td>InstancePropertiesXto <strong>getProcessProperties</strong>(long
+        processInstanceOid, PropertyIdsXto propertyIds)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>delegateToDefaultPerformer</strong>(long
+        activityInstanceOID)</td>
+        <td>ActivityInstanceXto <strong>delegateActivity</strong>(long
+        activityOid, ParticipantInfoBaseXto participant)</td>
+        <td>use <strong>delegateActivity</strong> with parameter: <br>
+        participant = DefaultParticipant</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>delegateToUser</strong>(long
+        activityInstanceOID, long userOID)</td>
+        <td>see comment</td>
+        <td>use <strong>delegateActivity</strong> with parameter: <br>
+        participant = UserInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>delegateToParticipant</strong>(long
+        activityInstanceOID, String performer)</td>
+        <td>see comment</td>
+        <td>use <strong>delegateActivity</strong> with parameter: <br>
+        participant = RoleInfo</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>getActivityInstance</strong>(long
+        activityInstanceOID)</td>
+        <td>ActivityInstanceXto <strong>getActivity</strong>(long
+        activityOid)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>getProcessInstance</strong>(long
+        processInstanceOID)</td>
+        <td>ProcessInstanceXto <strong>getProcess</strong>(long processOid)
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>bindActivityEventHandler</strong>(long
+        activityInstanceOID, EventHandlerBinding)</td>
+        <td>ActivityEventBindingXto <strong>createActivityEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ProcessEventBindingXto
+        bindingInfo)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>bindProcessEventHandler</strong>(long
+        processInstanceOID, EventHandlerBinding)</td>
+        <td>ProcessEventBindingXto <strong>createProcessEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ProcessEventBindingXto
+        bindingInfo)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>bindActivityEventHandler</strong>(long
+        processInstanceOID, activityInstanceOID, String handler)</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>bindProcessEventHandler</strong>(long
+        processInstanceOID, String handler)</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ActivityInstance <strong>unbindActivityEventHandler</strong>(long
+        activityInstanceOID, String)</td>
+        <td>ActivityEventBindingXto <strong>removeActivityEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String eventHandlerId)
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ProcessInstance <strong>unbindProcessEventHandler</strong>(long
+        processInstanceOID, String)</td>
+        <td>ProcessEventBindingXto <strong>removeProcessEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String eventHandlerId)
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>EventHandlerBinding <strong>getActivityInstanceEventHandler</strong>(long
+        activityInstanceOID, String)</td>
+        <td>ActivityEventBindingXto <strong>getActivityEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String eventHandlerId)
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>EventHandlerBinding <strong>getProcessInstanceEventHandler</strong>(long
+        processInstanceOID, String)</td>
+        <td>ProcessEventBindingXto <strong>getProcessEventBinding</strong>(long
+        processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String eventHandlerId)
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>List <strong>getStartableProcessDefinitions</strong>()</td>
+        <td>ProcessDefinitionsXto <strong>getStartableProcessDefinitions</strong>()
+        </td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>User <strong>getUser</strong>()</td>
+        <td>UserXto <strong>getSessionUser</strong>()</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>List <strong>getPermissions</strong>()</td>
+        <td>PermissionsXto <strong>getPermissions</strong>()</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>void <strong>setProcessInstanceAttributes</strong>(ProcessInstanceAttributes
+        attributes)</td>
+        <td>-</td>
+        <td>handled in get/setProcessProperties</td>
+    </tr>
+    <tr>
+        <td>void <strong>writeLogEntry</strong>(LogType, ContextKind
+        contextType, long contextOid, String message, Throwable throwable)</td>
+        <td>void <strong>writeLogEntry</strong>(LogTypeXto logType, Long
+        activityOid, Long processOid, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String message)</td>
+        <td>Setting processOid or activityOid defines ContextKind. <br>
+        Throwable not supported.</td>
+    </tr>
+    <tr>
+        <td>List&lt;Department&gt; <strong>findAllDepartments</strong>(DepartmentInfo
+        parent, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OrganizationInfo
+        organization)</td>
+        <td>DepartmentsXto <strong>findAllDepartments</strong>(DepartmentInfoXto
+        parent, OrganizationInfoXto organization)</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Department <strong>findDepartment</strong>(DepartmentInfo
+        parent, String id, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OrganizationInfo
+        organization)</td>
+        <td>DepartmentXto <strong>findDepartment</strong>(DepartmentInfoXto
+        parent, OrganizationInfoXto organization, String id)</td>
+        <td>-</td>
+    </tr>
+</table>
+<h2 id="webdata">Supported Data Types</h2>
+<p>The following Java style data types are supported for the Web services:</p>
+<ul>
+    <li><a href="#primitive">Primitive</a></li>
+    <li><a href="#struct">Structured</a></li>
+    <li><a href="#dms">DMS</a></li>
+    <li><a href="#serial">Serializable</a></li>
+    <li><a href="#entity">Entity Bean</a></li>
+</ul>
+<h3 id="primitive">Primitive Data Type</h3>
+<table id="Primitive Data Type">
+    <tr>
+        <th>Primitive DataType</th>
+        <th>Mapped Type</th>
+    </tr>
+    <tr>
+        <td>String</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>Integer</td>
+        <td>int</td>
+    </tr>
+    <tr>
+        <td>Long</td>
+        <td>long</td>
+    </tr>
+    <tr>
+        <td>Boolean</td>
+        <td>boolean</td>
+    </tr>
+    <tr>
+        <td>Float</td>
+        <td>float</td>
+    </tr>
+    <tr>
+        <td>Double</td>
+        <td>double</td>
+    </tr>
+    <tr>
+        <td>Byte</td>
+        <td>byte</td>
+    </tr>
+    <tr>
+        <td>Short</td>
+        <td>short</td>
+    </tr>
+    <tr>
+        <td>Timestamp</td>
+        <td>dateTime</td>
+    </tr>
+    <tr>
+        <td>Character</td>
+        <td>*api:Char (Base64 encoded string)</td>
+    </tr>
+    <tr>
+        <td>Calendar (deprecated)</td>
+        <td>Base64Binary</td>
+    </tr>
+    <tr>
+        <td>Enumeration</td>
+        <td>string</td>
+    </tr>
+</table>
+<h3 id="struct">Structured Data Type</h3>
+<table>
+    <tr>
+        <th>Structured DataType</th>
+        <th>Cardinality</th>
+        <th>Mapped Type</th>
+    </tr>
+    <tr>
+        <td>SimpleType</td>
+        <td>Exactly one</td>
+        <td>Primitive</td>
+    </tr>
+    <tr>
+        <td>SimpleType</td>
+        <td>Zero or more</td>
+        <td>XML with list of Primitives</td>
+    </tr>
+    <tr>
+        <td>ComplexType</td>
+        <td>Exactly one</td>
+        <td>XML (using xsd from model)</td>
+    </tr>
+    <tr>
+        <td>ComplexType</td>
+        <td>Zero or more</td>
+        <td>XML (using xsd from model)</td>
+    </tr>
+</table>
+<h3 id="dms">DMS Data Type</h3>
+<table>
+    <tr>
+        <th>DMS DataType</th>
+        <th>Mapped Type</th>
+    </tr>
+    <tr>
+        <td>Document</td>
+        <td>api:Document</td>
+    </tr>
+    <tr>
+        <td>Documents</td>
+        <td>api:Documents</td>
+    </tr>
+    <tr>
+        <td>Folder</td>
+        <td>api:Folder</td>
+    </tr>
+    <tr>
+        <td>Folders</td>
+        <td>api:Folders</td>
+    </tr>
+</table>
+<h3 id="serial">Serializable Data Type</h3>
+<table>
+    <tr>
+        <th>Serializable DataType</th>
+        <th>Mapped Type</th>
+    </tr>
+    <tr>
+        <td>Primitive</td>
+        <td>Primitive</td>
+    </tr>
+    <tr>
+        <td>Non Primitive</td>
+        <td>Base64Binary</td>
+    </tr>
+</table>
+<h3 id="entity">Entity Bean Data Type</h3>
+<table>
+    <tr>
+        <th>Entity DataType</th>
+        <th>Mapped Type</th>
+    </tr>
+    <tr>
+        <td>Primitive</td>
+        <td>Primitive</td>
+    </tr>
+    <tr>
+        <td>Non-Primitive</td>
+        <td>Not Supported</td>
+    </tr>
+</table>
+<h2 id="control">Controlling the Service Factory Cache Behavior</h2>
+<p>To control the service factory cache timeout, set <tt>Carnot.WebService.SessionCache.Timeout</tt>
+property in <tt>carnot.properties</tt> file. 
+For as long as the user is using it, the session is extended.
+So with the Timeout property you can specify explicitly how long a service factory 
+is maintained in the cache. If this property is not specified, 
+it defaults to 300 seconds. You can specify any integer value in seconds, from 1 second upwards.
+</p>
+<p>To renew the entry timestamp, set <tt>Carnot.WebService.SessionCache.RenewOnAccess</tt> property
+in your <tt>carnot.properties</tt> file.
+</p>
+<p>By default, this property is true. 
+Each time the user is using a ServiceFactory from the cache, 
+the expiration time is reset to the <tt>last access time + timeout</tt> value.
+The validity of the ServiceFactory is extended with every access. 
+If this property is explicitly set to <tt>false</tt>, the validity period of the ServiceFactory 
+is no longer extended. After the Timeout period, it is automatically removed from the cache, 
+regardless it is accessed or not.   
+</p>
+<p>For information about these properties residing in the <tt>carnot.properties</tt>
+file, please refer to the <a
+    href="../../../operation/properties/ag-appendix-properties-2.htm#service">Service</a>
+section of the <a href="../../../operation/properties/ag-appendix-properties-2.htm">Server
+Side Properties</a> chapter.</p>
+<h2 id="reauth">Enabling Re-authentication for Web Service Session Factory</h2>
+<p>Re-authentication is performed in case re-authentication properties
+exist. These re-authentication properties are only transferred in case the following property is set in 
+your server-side <code>carnot.properties</code> file:</p>
+<pre>Carnot.WebService.SessionCache.ReAuthenticationInterval = 0</pre>
+<p>The default value of this property is -1, which does not add any re-authentication properties.</p>
+<p class="note"><strong>Note</strong><br>
+This property only works with tunneling EJB mode and Spring!</p>
+<h2 id="examples">Examples</h2>
+<p>Stardust provides both, a Java and a C# client example that illustrate
+how to communicate with Stardust Web Services:</p>
+<ul>
+	<li><a href="../../../../examples/ws-client-java/readme.html">
+		Stardust Web Services Java Client Example</a></li>
+	<li><a href="../../../../examples/ws-client-c-sharp/readme.html">
+		Stardust-WS C# Client Example</a></li>
+</ul>
+<p>You can download the examples as zip files from the locations
+mentioned in the above links.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

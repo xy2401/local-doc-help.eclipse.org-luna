@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Embedded Usage Concepts</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Stardust Services",
+	"","pg-embedded-3.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+
+<h1>Embedded Usage Concepts</h1>
+<p>This section explains the basic concepts and data types of the
+Stardust API in detail. You should also consult the JavaDoc shipped with
+the Stardust distribution.</p>
+
+<h2>Execution Environment</h2>
+<p>The entire runtime functionality of Stardust is provided as a
+set of services available as plain Java Beans, with optional support for
+operation behind an Enterprise Java Beans&#153; (EJB) facade deployed to
+an arbitrary EJB 2.0 compliant application server. Additionally, the
+process engine needs access to an audit trail database.</p>
+<p class="image"><img src="images/pg-embedded-1.png" alt=""> <br>
+<strong>Figure:</strong> Stardust Runtime Environment</p>
+
+<p>All Stardust workflow services operate against a Stardust 
+audit trail database which is specified by the JDBC connection or data
+source parameters provided during deployment.</p>
+<p>One single audit trail database and a (set of) Stardust 
+workflow engines operating against this database are called the Stardust 
+runtime environment. The steps to set up the Stardust runtime
+environment are described in detail in the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/toc.html">
+Deployment Concepts</a> chapters of the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a>.</p>
+<p>An Stardust client operating against the runtime environment
+has to run inside a compatible JVM depending on your
+application's or your application server's needs.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

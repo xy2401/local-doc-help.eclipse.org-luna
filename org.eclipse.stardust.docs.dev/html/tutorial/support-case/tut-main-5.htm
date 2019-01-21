@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Integrating Applications</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Handling Data in the Process",
+		"tut-main-4.htm","tut-main-6.htm",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1 id="intAppl"> Integrating Applications</h1>
+
+<p>You can model both manual activities and activities supported
+by
+your applications in the Stardust Process Workbench. The latter
+can be performed via an application integrated in your system.
+Integrated applications can be for instance SAP applications,
+Enterprise JavaBeans&trade; or JavaServer Pages&trade;.
+In this
+tutorial, you will use the 
+<strong>Stardust Workflow Execution Perspective</strong> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>.
+to assist with
+automatic generation of a JSF browser user interface.&nbsp;Application
+activities will be used for Java code integration and e-mail
+notifications.</p>
+<h2>Adding Sources to the Project</h2>
+<p>
+To use this tutorial for hands-on learning you need the classes from
+the <tt>org.eclipse.stardust.examples.supportcase</tt> package
+which you can find in the <tt>support-case/src</tt> folder of the
+provided support case example. In case you have not downloaded the
+example yet, click the following link to get the needed resources 
+in a zipped file:</p>
+<p class="ind"><a href="../../examples/tutorials/support-case/support-case.zip">support-case.zip</a></p>
+<!-- archive file of your Stardust installation (The sources can be found in <tt>examples/support-case/src</tt>). -->
+<p>This package has been designed to use
+the Spring JTA local mode. The business logic and the
+application functionality within Stardust will be demonstrated here.</p>
+
+<p>To make the classes available in the project you can add the source files to your project:</p>
+<ul><li>Right-click the <tt>src</tt> folder of your Support-Case dynamic Web project and 
+choose <strong>Import...</strong>.</li>
+  <li> Choose <strong>General &gt; File System</strong>.</li>
+</ul>
+<p class="image"><img src="images/tut-import-src.png" alt="Add Sources to Project">
+<br><strong>Figure:</strong> Add Sources to Project </p>
+<ul>
+  <li>Select <strong>Next</strong>.</li>
+  <li>Browse to <tt>&lt;your-support-examples-folder&gt;/support-case/src/java</tt> and 
+  select the check box beside 
+  <tt>com</tt> to add the package structure of the support-case tutorial classes. </li>
+</ul>
+<p class="image"><img src="images/tut-import-package.png" alt="Import">
+<br><strong>Figure:</strong> Browse to the Source Directory </p>  
+<ul>
+  <li>Click <strong>Finish</strong> to accept the import. </li>
+</ul>
+<p>After the import is done you can access the class files in the src folder. If you like you can change them or add additional class files to extend the tutorial process model. </p>
+<p class="image"><img src="images/tut-new-src-folder.png" alt="Src Folder Structure after Import">
+<br><strong>Figure:</strong> Source Folder Structure after Import </p>
+<h2>Configuring an Application</h2>
+<P  >Our example needs to integrate applications implemented as plain Java beans
+to manage their support process. The applications are available as the following
+Java classes:</P>
+<ul>
+    <li>the class <tt>org.eclipse.stardust.examples.supportcase.CreateSupportDataAppl</tt>
+     as the application called by the
+  <strong>Init Data</strong> and <strong>Notify Customer</strong> activities.</li>
+  <li>the class <tt>org.eclipse.stardust.examples.supportcase.SupportCase</tt>
+    as initializer of the support case data.</li>
+</ul>
+<p>
+To integrate them in your workflow model, you create an
+application object by using one of the following:</p>
+<ul>
+  <li>In the <strong>Outline view</strong> right-click <strong>Applications</strong> and select an
+application from the context menu; then drag it from the Outline onto
+the canvas, or</li>
+  <li>in the diagrams toolbar palette click <strong>Applications</strong>,
+choose the type of application you need in the pull-down menu and place
+the application symbol there with a mouse-click.</li>
+</ul>
+<p>Now create a Plain Java Application as the needed application for the Init Data activity. </p>
+<p class="image"> <img alt="Application selection" src="images/tut-main-10.png">
+<br><strong>Figure:</strong> Adding an Application to the Process Definition</p>
+<p>Either of these two steps
+will place an
+application icon on the canvas. Drag the application icon, <strong>Plain Java
+Application 1</strong>, and drop it near the <strong>Init Data</strong> Application Activity.</p>
+
+<h2 id="setupAppl">Setting up Applications</h2>
+<p>Applications represented in your model are invoked at process
+execution time by the workflow management system and support the
+processing of activities to which they are assigned.</p>
+<h3 id="supportCaseAppl">Support Case Application</h3>
+<p>To set the
+properties of the created application and assign it to the activity <strong>Init
+Data</strong>:</p>
+<ul>
+  <li>Double-click the newly created application symbol to open
+its properties dialog.</li>
+  <li>Select <strong>General</strong> in the left side of the properties dialog
+  and change the name to <strong>Support Case Factory</strong>.</li>
+  <li>The ID will track the name to
+form <tt>SupportCaseFactory</tt> <strong></strong>.</li>
+</ul>
+<p class="image"><img alt="App prop dialog" src="images/tut-main-11.png">
+<br><strong>Figure:</strong> Application Properties Dialog </p>
+<ul><li>On the left side of the panel click <strong>Plain
+Java Application</strong>.</li>
+  <li>In the <strong>Plain Java Application</strong>
+    dialog, <strong>Browse</strong> the classpath to find a
+    class named <tt>CreateSupportDataAppl</tt> (in package <tt>org.eclipse.stardust.examples.supportcase)</tt>.<br>
+    (Please refer to the section 
+    <a href="../../handbooks/modelling/mg-defdesk-6.htm#browse">Browsing to Classes and Methods</a>
+    of the chapter
+    <a href="../../handbooks/modelling/mg-defdesk-6.htm">Specifying Applications</a>
+     for detailed information on how
+    to browse to classes.)
+    <p class="image"><img src="images/tut-browse-java-class.png" alt="Browse to Class"></p>
+  </li>
+  <li>Set the <strong>Completion Method</strong> to <tt>createCustomer()</tt>
+    by selecting it in the opening method browser as you click the <strong>Browse</strong>
+  button.
+  <p class="image"><img src="images/tut-create-customer-appl.png" alt="Browse to Class"></p></li>
+  <li>Set the Constructor to <tt>CreateSupportDataAppl()</tt>.
+  <p class="image"><img src="images/tut-plain-java-appl.png" alt="Browse to Class"></p></li>
+  <li> <strong>OK</strong> the dialog.</li>
+</ul>
+<p>In this ACME example, the SupportCase class
+creates a
+data object which will represent the case as it progresses through the
+workflow. This is a popular pattern for Stardust applications,
+though there are many other ways the solution can be implemented.</p>
+
+
+
+<p>Proceed with the assignment of the application to the activity
+<strong>Init Data</strong>:</p>
+<ul>
+  <li>Select <strong>Connect</strong> in the
+diagram toolbar palette.</li>
+  <li>Click the symbol of the <strong>Support Case Factory</strong>
+application in the diagram.</li>
+  <li>Click the <strong>Init Data</strong> activity
+symbol.</li>
+</ul>
+<p class="image"><img alt="Connect Application Activity" src="images/tut-main-12.png">
+<br><strong>Figure:</strong> Assigning an Application to an Activity</p>
+<p>
+The Java Factory application&nbsp;is now configured and assigned to
+the activity <strong>Init Data</strong>.&nbsp;</p>
+<h3 id="notificationAppl">Notification Application</h3>
+<P  >
+Then create a second application named <strong>Notification</strong> 
+also as a plain java application.</P>
+<ul>
+	<li>In the diagram toolbar palette select <strong>Applications &gt; Plain Java Application</strong>.</li>
+	<li>Place the symbol on the diagram canvas near the <strong>Notify Customer</strong> activity.</li>
+	<li>Double-click the application symbol to open its properties dialog.</li>
+	<li>Select <strong>General</strong> in the left pane and type in the name <strong>Notification</strong>
+	 in the right properties pane.</li>
+	<li>Then select <strong>Plain Java Application</strong> in the left pane.</li>
+	<li>In the properties dialog of the right pane:
+	<ul>
+    <li>Browse to find the class <tt>CreateSupportDataAppl</tt> 
+    (in package <tt>org.eclipse.stardust.examples.supportcase)</tt>.</li>
+  <li>Set the <strong>Completion Method</strong> to <tt>notifyCustomer(java.util.Map)</tt>
+    by selecting it in the opening method browser as you click the <strong>Browse</strong>
+  button.</li>
+  <li>Set the Constructor to <tt>CreateSupportDataAppl()</tt>.</li>
+	<li>Click <strong>OK</strong>.</li>
+	</ul>
+	</li>
+</ul>
+<p class="image"><a href="images/tut-notification-props_orgSize.png" target="_blank">
+  <img src="images/tut-notification-props.png" alt="Properties for Notification Application"></a>
+<br><strong>Figure:</strong> Integrating a Plain Java Bean</p>
+<p>
+Proceed with the assignment of the application to the activity <strong>Notify Customer</strong>:</p>
+<ul>
+  <li>Select <strong>Connect</strong> in the
+diagram toolbar palette.</li>
+  <li>Click the symbol of the <strong>Notification</strong>
+application in the diagram.</li>
+  <li>Click the <strong>Notify Customer</strong> activity
+symbol.</li>
+</ul>
+<p class="image"><img alt="Connect Application Activity" src="images/tut-notification-connect.png">
+<br><strong>Figure:</strong> Assigning an Application to an Activity</p>
+<p>
+The <strong>Notification</strong> application is now configured and assigned to
+the activity <strong>Notify Customer</strong>.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

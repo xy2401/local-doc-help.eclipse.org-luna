@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Objects and Model Elements</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("API Visibility of Transient Workflow Objects",
+        "pg-embed-model-states.html","pg-embed-trans-procs.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Objects and Model Elements</h1>
+<ul>
+    <li><a href="#elements">Model Elements</a></li>
+    <li><a href="#runtimeObj">Runtime Objects</a></li>
+    <li><a href="#detailedObj">Detail Objects</a></li>
+    <li><a href="#keys">Keys</a></li>
+    <li><a href="#queryObjects">Query Objects</a></li>
+</ul>
+<h2 id="elements">Model Elements</h2>
+<p>Model Elements in the Stardust runtime are defined as model parts of deployed
+workflow models, e.g. a process definition, activity or a role. The base interface for all
+model elements is <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ModelElement.html">org.eclipse.stardust.engine.api.model.ModelElement</a>.</p>
+<p>Model elements usually are referred to by ID or by element object ID (element
+OID).</p>
+<p>The ID of a model element is a string assigned to this element at modeling time.
+The ID uniquely identifies a model element within an element specific scope, which may be
+the whole model or just a part of the model (e.g. an activity ID is only unique within the
+scope of its process definition). As IDs are user defined they allow for
+application-specific names easily to be used in the embedding application. As a downside,
+the modeler is responsible for ensuring consistency of IDs between model versions.</p>
+<p>The element OID in contrast is an automatically assigned 32-bit numeric
+identifier for model elements. Element OIDs are unique within model scope and guaranteed
+to be consistent between model versions. As a downside, the numeric nature of element OIDs
+makes them less intuitive to use in client applications than element IDs.</p>
+<p>Both the element ID as well as the element OID per se allow for model
+version-neutral element identification, e.g.:</p>
+<pre>WorkflowService workflowService = ...
+final Map NO_INPUT = Collections.EMPTY_MAP;
+workflowService.startProcess(&quot;INTERNET_ORDER&quot;, NO_INPUT, true);</pre>
+
+<p>starts the process with ID <tt>INTERNET_ORDER</tt> of the current model version
+but there may exist pending process instances with the same ID from other model versions.</p>
+<p>To uniquely identify model elements across model versions you have to
+additionally use the 32-bit numeric model OID attached to every model element during
+deployment. The pair of model OID/element OID is guaranteed to be unique within runtime
+environment scope.</p>
+<p>Model elements additionally may have a user-defined name possibly to be used as
+label in client applications.</p>
+
+<p>In the fragmented modeling environment, each referenced models have unique namespace assigned. 
+So when referencing and deploying, each model is identified uniquely.</p>
+
+<h2 id="runtimeObj">Runtime Objects</h2>
+<p>Runtime objects are defined as persistent objects created during runtime. They
+have a persistent representation as a row in the audit trail database. The base interface
+for runtime objects is <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/RuntimeObject.html">org.eclipse.stardust.engine.api.runtime.RuntimeObject</a>.</p>
+<p>Runtime objects (e.g. process instances, activity instances or users) are
+identified by their object ID (OID). The OIDs of runtime objects are 64-bit numeric
+identifiers guaranteed to be unique within the scope of a concrete runtime objects type,
+e.g.:</p>
+<pre>ActivityInstance activityInstance = ...
+WorkflowService workflowService = ...
+workflowservice.activate(activityInstance.getOID());</pre>
+
+<p>Runtime objects describing instances of model elements additionally have attached
+the element's ID, element OID and model OID.</p>
+
+<h2 id="detailedObj">Detail Objects</h2>
+<p>Many methods of the Stardust APIs return detail objects. Detail objects are a
+realization of the Data Transfer Object design pattern, efficiently passing to the clients
+serializable objects by value.</p>
+<p>Instances of these classes are often snapshot views of runtime objects or model
+elements, such as process instances, activity instances or activity definitions and
+contain data describing these runtime objects or model elements in a structured way (e.g.
+their OID, element ID or start timestamp). Due to their snapshot nature such objects are
+read-only. A common usage pattern is to retrieve an updated detail object as return value
+of modifying operations, thus efficiently being able to keep a synchronized view on
+interesting parts of a runtime environment in client applications.</p>
+<p>The following detail object interfaces referring to runtime objects are currently
+provided:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">org.eclipse.stardust.engine.api.runtime.ActivityInstance</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Daemon.html">
+    org.eclipse.stardust.engine.api.runtime.Daemon</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Department.html">
+    org.eclipse.stardust.engine.api.runtime.Department</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModel.html">
+    org.eclipse.stardust.engine.api.runtime.DeployedModel</a></li>
+    <li><a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModelDescription.html">
+    org.eclipse.stardust.engine.api.runtime.DeployedModelDescription</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeploymentInfo.html">
+    org.eclipse.stardust.engine.api.runtime.DeploymentInfo</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/EventActionBinding.html">
+    org.eclipse.stardust.engine.api.runtime.EventActionBinding</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/EventHandlerBinding.html">
+    org.eclipse.stardust.engine.api.runtime.EventHandlerBinding</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Grant.html">
+    org.eclipse.stardust.engine.api.runtime.Grant</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/LogEntry.html">
+    org.eclipse.stardust.engine.api.runtime.LogEntry</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Mail.html">
+    org.eclipse.stardust.engine.api.runtime.Mail</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ProcessInstance.html">
+    org.eclipse.stardust.engine.api.runtime.ProcessInstance</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/User.html">
+    org.eclipse.stardust.engine.api.runtime.User</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserGroup.html">
+    org.eclipse.stardust.engine.api.runtime.UserGroup</a></li>
+</ul>
+<p>Runtime detail object are in general located in the <tt>org.eclipse.stardust.engine.api.runtime</tt>
+package and specializations of the previously mentioned <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/RuntimeObject.html">org.eclipse.stardust.engine.api.runtime.RuntimeObject</a>
+interface where appropriate.</p>
+<p>The following detail object interfaces referring to model elements are provided:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/AccessPoint.html">org.eclipse.stardust.engine.api.model.AccessPoint</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Activity.html">
+    org.eclipse.stardust.engine.api.model.Activity</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ApplicationContext.html">
+    org.eclipse.stardust.engine.api.model.ApplicationContext</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Application.html">
+    org.eclipse.stardust.engine.api.model.Application</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ConditionalPerformer.html">
+    org.eclipse.stardust.engine.api.model.ConditionalPerformer</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/DataMapping.html">
+    org.eclipse.stardust.engine.api.model.DataMapping</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/DataPath.html">
+    org.eclipse.stardust.engine.api.model.DataPath</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/DynamicParticipant.html">
+    org.eclipse.stardust.engine.api.model.DynamicParticipant</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/EventAction.html">
+    org.eclipse.stardust.engine.api.model.EventAction</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/EventHandler.html">
+    org.eclipse.stardust.engine.api.model.EventHandler</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Model.html">
+    org.eclipse.stardust.engine.api.model.Model</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ModelParticipant.html">
+    org.eclipse.stardust.engine.api.model.ModelParticipant</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Organization.html">
+    org.eclipse.stardust.engine.api.model.Organization</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Participant.html">
+    org.eclipse.stardust.engine.api.model.Participant</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ParameterMapping.html">
+    org.eclipse.stardust.engine.api.model.ParameterMapping</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ProcessDefinition.html">
+    org.eclipse.stardust.engine.api.model.ProcessDefinition</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Role.html">
+    org.eclipse.stardust.engine.api.model.Role</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/Trigger.html">
+    org.eclipse.stardust.engine.api.model.Trigger</a></li>
+</ul>
+<p>Model element detail objects are in general located in the<br>
+<tt>org.eclipse.stardust.engine.api.model</tt> package and specialization of the previously mentioned<br>
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ModelElement.html">org.eclipse.stardust.engine.api.model.ModelElement</a>
+interface where appropriate.</p>
+<p>Detail objects are sometimes <tt>root</tt> detail objects, containing a possibly
+complex data structure of other <tt>child</tt> detail objects, e.g. an instance of <tt>User</tt>
+may contain references to instances of <tt>Grant</tt>, representing the role or
+organization assignments of the user.</p>
+<p>Specifically, most runtime detail objects contain the appropriate model element
+detail object for convenience. An exception of this rule is the <tt>ProcessInstance</tt>
+runtime detail object as the appropriate <tt>ProcessDefinition</tt> detail object will be
+usually costly to transfer due to its deeply nested structure and is omitted for
+performance reasons. Client applications needing <tt>ProcessDefinition</tt> model element
+detail objects are required to use the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a> for
+retrieval and highly advised to use some caching mechanism.</p>
+
+<h2 id="keys">Keys</h2>
+<p>Due to the lack of native support for enumerations in current JDKs Stardust
+employs a variation of the enum emulation pattern to define named constants. Such
+constants come in two flavors as numeric constants or character string constants.</p>
+<p>Numerical key classes are specializations of <a
+    href="../../../reference/api/common/org/eclipse/stardust/common/IntKey.html">org.eclipse.stardust.common.IntKey</a>. Such keys
+generally contain integer constants defining the numeric key values using an all-caps
+notation and additionally constants for key instances using a camel-case notation. Key
+instances additionally provide a human-readable name for keys.</p>
+<p>A sample implementation is:</p>
+<pre>public class ProcessInstanceState extends org.eclipse.stardust.common.IntKey<br>{<br>  public static final int CREATED = -1;<br>  public static final int ACTIVE = 0;<br>  public static final int ABORTED = 1;<br>  public static final int COMPLETED = 2;<br>  public static final int INTERRUPTED = 3;<br>...<br>  public static final ProcessInstanceState Created = new ProcessInstanceState(CREATED, &quot;Created&quot;);<br>  public static final ProcessInstanceState Active = new ProcessInstanceState(ACTIVE, &quot;Active&quot;);<br>  public static final ProcessInstanceState Aborted = new ProcessInstanceState(ABORTED, &quot;Aborted&quot;);<br>  public static final ProcessInstanceState Completed = new ProcessInstanceState(COMPLETED, &quot;Completed&quot;);<br>  public static final ProcessInstanceState Interrupted = new ProcessInstanceState(INTERRUPTED, &quot;Interrupted&quot;);<br>};</pre>
+<p>Numeric keys can be used in switch-statements as follows:</p>
+<pre>switch (state.getValue())<br>{<br>case ProcessInstanceState.ACTIVE: ...<br>case ProcessInstanceState.ABORTED: ...<br>case ProcessInstanceState.COMPLETED: ...<br>}</pre>
+<p>or in comparison:</p>
+<pre>if (ProcessInstanceState.Aborted.equals(state))<br>{<br>  ...<br>}</pre>
+<p>Left-hand-side key instances support <tt>equals()</tt>-comparison to both key
+instances and numeric key values as right-hand-side operand.</p>
+<p>The following numeric key classes are currently provided:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AcknowledgementState.html">org.eclipse.stardust.engine.api.runtime.AcknowledgementState</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstanceState.html">
+    org.eclipse.stardust.engine.api.runtime.ActivityInstanceState</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/LogCode.html">
+    org.eclipse.stardust.engine.api.runtime.LogCode</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/LogType.html">
+    org.eclipse.stardust.engine.api.runtime.LogType</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ParticipantType.html">
+    org.eclipse.stardust.engine.api.model.ParticipantType</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ProcessInstanceState.html">
+    org.eclipse.stardust.engine.api.runtime.ProcessInstanceState</a></li>
+</ul>
+<p>Character string-based key classes are specializations of <a
+    href="../../../reference/api/common/org/eclipse/stardust/common/StringKey.html">org.eclipse.stardust.common.StringKey</a>. Such keys
+generally contain constants for key instances using a camel-case notation. Key instances
+support both an internal ID as well as a human-readable name for keys.</p>
+<p>Left-hand-side key instances support <tt>equals()</tt>-comparison to both key
+instances and character string representations of the key's internal ID value as
+right-hand-side operand.</p>
+<p>The following character string based key classes are currently provided:</p>
+<ul>
+    <li><a href="../../../reference/api/common/org/eclipse/stardust/common/Direction.html">org.eclipse.stardust.common.Direction</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ImplementationType.html">
+    org.eclipse.stardust.engine.api.model.ImplementationType</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/SubProcessModeKey.html">
+    org.eclipse.stardust.engine.api.model.SubProcessModeKey</a></li>
+</ul>
+
+<h2 id="queryObjects">Query Objects</h2>
+<p>The Stardust Process Engine offers a rich query API for querying runtime elements
+working with two concepts:</p>
+<p>Query classes to express your query intentions. For every query type there is a
+subtype supporting the special semantics required to query the corresponding runtime
+elements:</p>
+<pre>public abstract class Query implements Serializable<br>{<br>  public final FilterAndTerm getFilter();<br>  public final FilterAndTerm where(FilterCriterion filter);<br>  public final OrderCriteria orderBy(OrderCriterion criterion);<br>  public final OrderCriteria orderBy(FilterableAttribute attribute);<br>  public final OrderCriteria orderBy(FilterableAttribute attribute, boolean ascending);<br>  public final EvaluationPolicy getPolicy(Class policyClass);<br>  public final void setPolicy(EvaluationPolicy policy);<br>  ...<br>}</pre>
+<p>A query contains one filter which can be arbitrarily complex (<tt>WHERE</tt>
+clause), a list of order criteria (<tt>ORDER BY</tt> clause) and possibly zero ore more
+policies which fine tune the behavior for more complex queries. Creating your own queries
+is discussed in detail in the chapter <a href="../pg-query-1.htm">Querying Workflow.</a></p>
+<p>You will never instantiate a Query class directly but one of the provided
+subclasses corresponding to the similarly named runtime elements. There are the following
+concrete Query subclasses all located in the <tt>org.eclipse.stardust.engine.api.query</tt> package:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">ActivityInstanceQuery</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html">
+    ProcessInstanceQuery</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/LogEntryQuery.html">
+    LogEntryQuery</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserQuery.html"> UserQuery</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserGroupQuery.html">
+    UserGroupQuery</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistQuery.html">WorklistQuery</a>
+    (A flavor of <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">ActivityInstanceQuery</a>
+    to take care of the hierarchical structure of worklists)</li>
+</ul>
+<p>Each of these classes provides a couple of static factory methods to provide
+instances of itself for the most common use cases, e.g.:</p>
+<pre>ActivityInstanceQuery findAlive();</pre>
+<p>on the <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">ActivityInstanceQuery</a>
+class.</p>
+<p><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/QueryResult.html">QueryResult</a>
+classes return the result of a query as a wrapped collection of the corresponding detail
+objects.</p>
+<pre>public interface QueryResult extends List, Serializable<br>{<br>  // inherits iterator() and size() from List<br>  public long getTotalCount();<br>  public SubsetPolicy getSubsetPolicy();<br>  public boolean hasMore();<br>}</pre>
+<p>There exists a <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/QueryResult.html">QueryResult</a>
+subtype for every query type, located in the <tt>org.eclipse.stardust.engine.api.query</tt> package:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstances.html">
+    ActivityInstances</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstances.html">
+    ProcessInstances</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/LogEntries.html">
+    LogEntries</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/Users.html"> Users</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserGroups.html">
+    UserGroups</a></li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/Worklist.html"> Worklist</a>,
+    having subtypes <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserWorklist.html">UserWorklist</a>
+    and <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ParticipantWorklist.html">ParticipantWorklist</a></li>
+</ul>
+<p>The actual queries are performed using the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a> with
+methods like:</p>
+<pre>ActivityInstance findFirstActivityInstance(ActivityInstanceQuery query);
+ActivityInstances findActivityInstances(ActivityInstanceQuery query);</pre>
+<p>As a result of a query you will get either a single detail object of the
+appropriate type or a subtype of a <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/QueryResult.html">QueryResult</a> object
+which encapsulates the returned items.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

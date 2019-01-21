@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Using JMS Application and JMS Trigger</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Defining a Process Interface with dynamic Process Selection",
+        "../portal-configuration/filter-provider.html","../process-interface-impl/proc-int-impl-ex.html",
+		"../tut-preface.htm","Tutorials");
+ -->
+</script>
+<h1 id="provider">Using JMS Application and JMS Trigger</h1>
+<p>This tutorial helps you to work with JMS application and JMS trigger.
+</p>
+
+<p>Using this example, you can:</p>
+<ul>
+	<li><a href="#model">Work with JMS Application</a></li>
+	<li><a href="#trig">Work with JMS Trigger</a></li>
+	
+</ul>
+<p>While creating this tutorial, it is assumed that you have the knowledge of JMS 1.1 specifications. For more information on
+JMS, please refer the chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-integration-6.htm">
+Integrating JMS</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-preface.htm">
+Modeling Guide</a>.</p>
+
+
+<h2>Importing the Example Model</h2>
+<p>
+You can download the example source code as well as the complete
+model from the following link as a ZIP file:</p>
+<ul>
+	<li><a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/examples/tutorials/jms/jms.zip">JMS Examples Sources</a></li>
+</ul>
+
+<h2 id ="model">Working with JMS Application</h2>
+<p>We are creating two JMS applications. One application is used to send the request and another application is used to 
+give response to the request. So, let's create a model.</p>
+
+<h3>Creating a Model</h3>
+<p>Perform the following steps to create the JMS application model.</p>
+<ol>
+	<li>Create a process named <strong>JMS_ApplicationProcess</strong></li>
+	<li>Create two manual activities named <strong>Manual Activity 2</strong> and <strong>Manual Activity 3</strong></li>
+	<li>Similarly, create two application activities named <strong>Sender</strong> and <strong>Reciever</strong></li>
+	<li>Create three primitive data named <strong>Primitive Data 1</strong> of String type, <strong>Primitive Data 2</strong>
+	 of String type and <strong>Process OID</strong> of long type</li>
+	<li>Create two JMS applications named <strong>JMS Application 1</strong> and <strong>JMS Application 2</strong></li>
+</ol>
+<h4>Setting Properties of JMS Application 1</h4>
+<ol>	
+	<li>Open the properties of JMS Application 1</li>
+	<li>Select <strong>JMS Application</strong> in the left pane of the properties page and then select 
+	<strong>Request</strong> check box as a type</li>
+	<p class="image"><img src="images/jms-app-request.png"
+    alt="JMS Application - Request"><br>
+<strong>Figure:</strong> In Data Mapping - Sender</p>
+	<li>Select <strong>Request</strong> from the left pane of the properties page to specify the request specific parameters</li>
+	<li>Specify the following request parameters</li>
+	<p class="image"><img src="images/request-param-send.png"
+    alt="Request Parameters"><br>
+<strong>Figure:</strong> Request Parameters</p>
+	<p>Note that you need to create the Connection Factory JNDI and Queue JNDI as per your requirement.</p>
+	<li>Select <strong>Request</strong> from the left pane and click <strong>Add</strong> to specify request access points</li>
+	<li>Specify <strong>Test_String</strong> as a request access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/test-string.png"
+    alt="Request Access Point"><br>
+<strong>Figure:</strong> Request Access Point</p>
+<li>Specify <strong>processInstanceOID</strong> as a request access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/processinstanceoid.png"
+    alt="Request Access Point"><br>
+<strong>Figure:</strong> Request Access Point</p>
+	
+	<li>Specify <strong>activityID</strong> as a request access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/activityID.png"
+    alt="Request Access Point"><br>
+<strong>Figure:</strong> Request Access Point</p>
+<p>Note that the default value is the ID of the activity <strong>Reciever</strong>.</p>
+</ol>
+
+<h4>Setting Properties of JMS Application 2</h4>	
+<ol>	
+	<li>Open the properties of <strong>JMS Application 2</strong></li>
+	<li>Select <strong>JMS Application</strong> in the left pane of the properties page and then select 
+	<strong>Response</strong> check box as a type</li>
+	<p class="image"><img src="images/jms-app-response.png"
+    alt="JMS Application - Response"><br>
+<strong>Figure:</strong> JMS Application - Response</p>
+	<li>Select <strong>Response</strong> from the left pane to specify the response specific parameters</li>
+	<li>Specify the following response parameters</li>
+	<p class="image"><img src="images/response-param.png"
+    alt="JMS Application - Response"><br>
+<strong>Figure:</strong> Response Parameters</p>
+	<li>Select <strong>Response</strong> from the left pane and click <strong>Add</strong> to specify response access points</li>
+	<li>Specify Test_String response access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/response-test-string.png"
+    alt="Response Access Point"><br>
+<strong>Figure:</strong> Response Access Point</p>
+</ol>
+
+<h4>Specifying Data Mappings</h4>
+<ol>
+
+	<li>Specify the following In Data Mappings for the application activity <strong>Sender</strong></li>
+	<p class="image"><img src="images/in-data-sender.png"
+    alt="In Data Mapping - Sender"><br>
+<strong>Figure:</strong> In Data Mapping - Sender</p>
+	<li>Specify the following In Data Mappings for the application activity <strong>Sender</strong></li>
+	<p class="image"><img src="images/in-data-sender2.png"
+    alt="In Data Mapping - Sender"><br>
+<strong>Figure:</strong> In Data Mapping - Sender</p>	
+	
+	<li>Specify the following out data mapping for the application activity <strong>Reciever</strong></li>
+	<p class="image"><img src="images/receive-out-map.png"
+    alt="Out Data Mapping - Reciever"><br>
+<strong>Figure:</strong> Out Data Mapping - Reciever</p>
+<li>Specify the following In Data Mapping for the Manual Activity 3</li>
+<p class="image"><img src="images/ma-in.png"
+    alt="In Data Mapping - Manual Activity 3"><br>
+<strong>Figure:</strong> In Data Mapping - Manual Activity 3</p>
+	<li>Connect manual trigger and these activities to each other. The created model would like as shown in the following
+	screenshot:</li>
+	<p class="image"><img src="images/Jms-test-process-model.png"
+    alt="JMS Application Process"><br>
+<strong>Figure:</strong> JMS Application Process</p>
+</ol>
+<h3>Deploying the JMS Model</h3>
+<p>Perform the following steps:</p>
+	<ol>
+		<li>Start the application server</li>
+		<li>Configure JMS connection factory and connection queue</li>
+		<li>Deploy the model</li>
+		<li>Start the Stardust Portal as described in the chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+    Logging in the Stardust Portal</a> of the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.
+    Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</li>
+		
+	</ol>
+<h3>Executing the Workflow</h3>
+<p>Perform the following steps:</p>
+
+<ol>
+	<li>In the Workflow Execution perspective, start the <strong>JMS_ApplicationProcess</strong>. </li>
+	<li>Specify the input in the Primitive_1 text box and complete the activity</li>
+	<p class="image"><img src="images/app-execute-one.png"
+    alt="Send Data"><br>
+   <strong>Figure:</strong> Send Data</p>
+	<p>As soon as you complete the activity, the JMS application activity receives the data and send it to the 
+	Reciever application activity. The Reciever activity sends that to the manual activity 3 and then the manual 
+	activity 3 displays the received data.</p>
+	 <p class="image"><img src="images/mn3.png"
+    alt="Send Data"><br>
+   <strong>Figure:</strong> Data Received</p>
+</ol>	
+<h2 id="trig">Working with JMS Trigger</h2>
+<p>We are creating a process named Process_Sender and Process_Trigger. In the JMS application request access point, the default value is specified as
+Process_Trigger - the ID of the process in which JMS trigger is defined. Process_Sender request is sent to the Process_Trigger.
+The Process_Trigger gives the response to this request.</p>
+
+<h3>Creating a Process named Process_Sender</h3>
+<p>So, let's create a process called Process_Sender which sends the request to the Process_Trigger. Then, create a 
+process called Process_Trigger.</p>	
+<p>Perform the following steps:</p>
+<ol>
+	<li>Create a manual trigger</li>
+	<li>Create a manual activity named <strong>Enter Text</strong> and create an application activity named <strong>JMS_APP1</strong></li>
+	<li>Create a JMS application named <strong>JMS_Sender</strong></li>
+	<li>Create a primitive data named <strong>Sended_Data</strong> of type <strong>String</strong></li>
+	<li>Open the properties of the <strong>JMS_Sender</strong> application</li>
+	<li>Select <strong>JMS Application</strong> from the left pane and select <strong>Request</strong> check box as a type</li>
+	<p class="image"><img src="images/sender-req.png"
+    alt="JMS_Sender - Request"><br>
+<strong>Figure:</strong> JMS_Sender - Request</p>
+	<li>Select <strong>Request</strong> from the left pane of the properties page to specify the request specific parameters
+</li>
+	<li>Specify the following request parameters</li>
+	<p class="image"><img src="images/sender-req-param.png"
+    alt="JMS_Sender - Request Parameters"><br>
+<strong>Figure:</strong> JMS_Sender - Request Parameters</p>
+	<li>Select <strong>Request</strong> from the left pane and click <strong>Add</strong> to specify request access points</li>
+	<li>Specify <strong>TextData</strong> as a request access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/textdata.png"
+    alt="Request Access Point"><br>
+<strong>Figure:</strong> Request Access Point</p>
+<li>Specify <strong>processID</strong> as a request access point as shown in the following screenshot:</li>
+	<p class="image"><img src="images/req-param-pro.png"
+    alt="Request Access Point"><br>
+<strong>Figure:</strong> Request Access Point</p>
+<p>Note that the ID of the Process_Trigger is specified as the default value which calls the process named Process_Trigger.</p>
+	<li>Specify the following out data mapping for the manual activity Enter Text</li>
+	<p class="image"><img src="images/entertext.png"
+    alt="Enter Text - Out Data Mapping"><br>
+	<strong>Figure:</strong> Enter Text - Out Data Mapping</p>
+	<li>Specify the following in data mapping for the application activity JMS_APP1</li>
+	<p class="image"><img src="images/sendata.png"
+    alt="JMS_APP1 - In Data Mapping"><br>
+	<strong>Figure:</strong> JMS_APP1 - In Data Mapping</p>
+</ol>
+<p>The created process would like as shown in the following screenshot.</p>
+<p class="image"><img src="images/process-sender.png"
+    alt="Process_Sender"><br>
+	<strong>Figure:</strong> Process_Sender</p>
+<h3>Creating a Process named Process_Trigger</h3>
+<p>The Process_Trigger specifies the trigger parameters to call the Process_Sender process.</p>
+
+<p>Perform the following steps:</p>
+<ol>
+	<li>Create a JMS trigger</li>
+	<li>Create a manual activity named <strong>Display Text</strong></li>
+	<li>Create a primitive data named <strong>Received Data</strong> of type string</li>
+	<li>Create the in data mapping for the activity Display Text</li>
+	<p class="image"><img src="images/in-display.png"
+    alt="In Data - Display Text"><br>
+	<strong>Figure:</strong> In Data - Display Text</p>
+	<li>Open the properties of the JMS trigger</li>
+	<li>Select <strong>JMS Trigger</strong> from the left pane of the properties page</li>
+	<li>Specify the following trigger specific parameters</li>
+	<p class="image"><img src="images/jms-trigger.png"
+    alt="JMS Trigger"><br>
+	<strong>Figure:</strong> JMS Trigger Parameters</p>
+	<li>In the Properties page, select JMS Trigger and click Add to specify out access point </li>
+	<li>Specify <storng>content</storng> as the out access point as shown in the following screenshot</li>
+	<p class="image"><img src="images/out-access.png"
+    alt="JMS Trigger"><br>
+	<strong>Figure:</strong> JMS Trigger - Out Access Point</p>
+	<li>Select <strong>Parameter Mapping</strong> from the left pane of the properties page and click <strong>Add</strong></li>
+	<p class="image"><img src="images/param.png"
+    alt="Parameter Mapping"><br>
+	<strong>Figure:</strong> Parameter Mapping</p>
+	<li>Specify the parameter mapping as shown in the following screenshot:</li>
+	<p class="image"><img src="images/param-map.png"
+    alt="Parameter content"><br>
+	<strong>Figure:</strong> Parameter content</p>
+</ol>
+<p>The created process would look like as shown in the following screenshot:</p>
+<p class="image"><img src="images/process-trigger.png"
+    alt="Process_Trigger"><br>
+	<strong>Figure:</strong> Process_Trigger</p>
+<h3>Deploying the Model</h3>
+<p>Perform the following steps:</p>
+	<ol>
+		<li>Start the application server</li>
+		<li>Configure JMS connection factory and connection queue</li>
+		<li>Deploy the model</li>
+		<li>Start the Stardust Portal as described in the chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+    Logging in the Stardust Portal</a> of the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.
+    Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</li>
+	</ol>
+<h3>Executing the Workflow</h3>
+<p>Perform the following steps:</p>
+<ol>
+	<li>In the <strong>Workflow Execution</strong> perspective, start the <strong>Process_Sender</strong> process</li>
+	<li>Enter details in the Enter Text manual activity and complete the activity</li>
+	<p class="image"><img src="images/enter.png"
+    alt="Enter Text"><br>
+	<strong>Figure:</strong> Enter Text</p>
+	<p>The <strong>JMS_APP1</strong> application sends this request to the <strong>Process_Trigger</strong>. 
+	That's why the call gets forwarded to the Process_Trigger process.</p>
+	<li>Refresh the <strong>My Processes</strong> panel and start the <strong>Process_Trigger</strong> process</li>
+	<p> The <strong>Display Text</strong> activity of the <strong>Process_Trigger</strong> receives the data and displays it.</p>
+	<p class="image"><img src="images/receive-data.png"
+    alt="Response from JMS Application"><br>
+	<strong>Figure:</strong> Response from JMS Application</p>
+</ol>	
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

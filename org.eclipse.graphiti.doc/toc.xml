@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--
+    <copyright>
+   
+    Copyright (c) 2005, 2011 SAP AG.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+       SAP AG - initial API, implementation and documentation
+       Bug 361638 - Add Chess example
+   
+    </copyright>
+   
+ -->
+
+<toc label="Graphiti Developer Guide">
+ <topic label="Concepts">
+    <link toc="toc_concepts.xml"/>
+ </topic>
+    <topic label="Tutorial">
+       <link toc="toc_graphiti.xml"/>
+    </topic>
+    <topic label="Further Topics">
+       <topic href="resources/docu/advanced/Patterns.htm" label="Patterns"/>
+       <topic href="resources/docu/advanced/IssueAnalysis.htm" label="Analysing Issues"/>
+       <topic href="resources/docu/advanced/BeyondEditors.htm" label="Diagrams beyond Editors"/>
+    </topic>
+    <topic label="Examples">
+       <topic href="resources/docu/examples/Tutorial.htm" label="Tutorial">
+       </topic>
+       <topic href="resources/docu/examples/Chess.htm" label="Chess Example">
+       </topic>
+       <topic href="resources/docu/examples/Filesystem.htm" label="Filesystem Example">
+       </topic>
+       <topic href="resources/docu/examples/Composite.htm" label="Diagram Composites">
+       </topic>
+    </topic>
+    <topic href="resources/docu/tools/Overview.html" label="Overview on Graphiti Tools">
+       <topic href="resources/docu/tools/NewPluginWizard.html" label="New Graphiti Plug-in Project Wizard">
+       </topic>
+    </topic>
+
+    <topic label="Reference">
+       <topic href="javadoc/overview-summary.html" label="API Reference">
+          <topic href="javadoc/org/eclipse/graphiti/package-summary.html" label="org.eclipse.graphiti">
+	          <topic href="javadoc/org/eclipse/graphiti/datatypes/package-summary.html" label="org.eclipse.graphiti.datatypes"/>
+	          <topic href="javadoc/org/eclipse/graphiti/dt/package-summary.html" label="org.eclipse.graphiti.dt"/>
+	          <topic href="javadoc/org/eclipse/graphiti/export/batik/package-summary.html" label="org.eclipse.graphiti.export.batik"/>
+	          <topic href="javadoc/org/eclipse/graphiti/features/package-summary.html" label="org.eclipse.graphiti.features">
+		          <topic href="javadoc/org/eclipse/graphiti/features/context/package-summary.html" label="org.eclipse.graphiti.features.context">
+		              <topic href="javadoc/org/eclipse/graphiti/features/context/impl/package-summary.html" label="org.eclipse.graphiti.features.context.impl"/>
+		          </topic>
+		          <topic href="javadoc/org/eclipse/graphiti/features/custom/package-summary.html" label="org.eclipse.graphiti.features.custom"/>
+		          <topic href="javadoc/org/eclipse/graphiti/features/impl/package-summary.html" label="org.eclipse.graphiti.features.impl"/>
+	          </topic>
+	          <topic href="javadoc/org/eclipse/graphiti/func/package-summary.html" label="org.eclipse.graphiti.func"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/mm/package-summary.html" label="org.eclipse.graphiti.mm">
+	          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/package-summary.html" label="org.eclipse.graphiti.mm.algorithms">
+		          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/impl/package-summary.html" label="org.eclipse.graphiti.mm.algorithms.impl"/>
+		          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/styles/package-summary.html" label="org.eclipse.graphiti.mm.algorithms.styles">
+			          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/package-summary.html" label="org.eclipse.graphiti.mm.algorithms.styles.impl"/>
+			          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/package-summary.html" label="org.eclipse.graphiti.mm.algorithms.styles.util"/>
+		          </topic>
+		          <topic href="javadoc/org/eclipse/graphiti/mm/algorithms/util/package-summary.html" label="org.eclipse.graphiti.mm.algorithms.util"/>
+	          </topic>
+	          <topic href="javadoc/org/eclipse/graphiti/mm/impl/package-summary.html" label="org.eclipse.graphiti.mm.impl"/>
+	          <topic href="javadoc/org/eclipse/graphiti/mm/pictograms/package-summary.html" label="org.eclipse.graphiti.mm.pictograms">
+		          <topic href="javadoc/org/eclipse/graphiti/mm/pictograms/impl/package-summary.html" label="org.eclipse.graphiti.mm.pictograms.impl"/>
+		          <topic href="javadoc/org/eclipse/graphiti/mm/pictograms/util/package-summary.html" label="org.eclipse.graphiti.mm.pictograms.util"/>
+	          </topic>
+	          <topic href="javadoc/org/eclipse/graphiti/mm/util/package-summary.html" label="org.eclipse.graphiti.mm.util"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/notification/package-summary.html" label="org.eclipse.graphiti.notification"/>
+          <topic href="javadoc/org/eclipse/graphiti/palette/package-summary.html" label="org.eclipse.graphiti.palette">
+	          <topic href="javadoc/org/eclipse/graphiti/palette/impl/package-summary.html" label="org.eclipse.graphiti.palette.impl"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/pattern/package-summary.html" label="org.eclipse.graphiti.pattern">
+	          <topic href="javadoc/org/eclipse/graphiti/pattern/config/package-summary.html" label="org.eclipse.graphiti.pattern.config"/>
+	          <topic href="javadoc/org/eclipse/graphiti/pattern/id/package-summary.html" label="org.eclipse.graphiti.pattern.id"/>
+	          <topic href="javadoc/org/eclipse/graphiti/pattern/mapping/package-summary.html" label="org.eclipse.graphiti.pattern.mapping">
+		          <topic href="javadoc/org/eclipse/graphiti/pattern/mapping/data/package-summary.html" label="org.eclipse.graphiti.pattern.mapping.data"/>
+	          </topic>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/platform/package-summary.html" label="org.eclipse.graphiti.platform">
+	          <topic href="javadoc/org/eclipse/graphiti/platform/ga/package-summary.html" label="org.eclipse.graphiti.platform.ga"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/services/package-summary.html" label="org.eclipse.graphiti.services">
+	          <topic href="javadoc/org/eclipse/graphiti/services/impl/package-summary.html" label="org.eclipse.graphiti.services.impl"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/tb/package-summary.html" label="org.eclipse.graphiti.tb"/>
+          <topic label="org.eclipse.graphiti.ui">
+             <topic href="javadoc/org/eclipse/graphiti/ui/editor/package-summary.html" label="org.eclipse.graphiti.ui.editor"/>
+             <topic href="javadoc/org/eclipse/graphiti/ui/features/package-summary.html" label="org.eclipse.graphiti.ui.features"/>
+             <topic href="javadoc/org/eclipse/graphiti/ui/platform/package-summary.html" label="org.eclipse.graphiti.ui.platform"/>
+             <topic href="javadoc/org/eclipse/graphiti/ui/print/package-summary.html" label="org.eclipse.graphiti.ui.print"/>
+             <topic href="javadoc/org/eclipse/graphiti/ui/saveasimage/package-summary.html" label="org.eclipse.graphiti.ui.saveasimage"/>
+             <topic href="javadoc/org/eclipse/graphiti/ui/services/package-summary.html" label="org.eclipse.graphiti.ui.services"/>
+          </topic>
+          <topic href="javadoc/org/eclipse/graphiti/util/package-summary.html" label="org.eclipse.graphiti.util"/>
+       </topic>
+		<topic label="Extension Points Reference" href="resources/docu/extension-points/index.html">
+			<topic label="diagramTypeProviders" href="resources/docu/extension-points/diagramTypeProviders.html" />
+			<topic label="diagramTypes" href="resources/docu/extension-points/diagramTypes.html" />
+			<topic label="imageProviders" href="resources/docu/extension-points/imageProviders.html" />
+		</topic>
+	</topic>
+    <topic href="resources/docu/whats-new.html" label="What&apos;s New">
+    </topic>
+	<topic label="Legal" href="resources/docu/Legal.html" />
+</toc>

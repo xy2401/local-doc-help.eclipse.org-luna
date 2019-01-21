@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Getting Started</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Creating a Process Definition",
+	    "tut-main-1.htm","tut-main-3.htm",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+<h1>Getting Started</h1>
+<p>If not already done, download the Stardust features as described in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">Installation Guide</a>.</p>
+<p>Apart from the Stardust installation, you only need a Tomcat installation 
+to go through this tutorial. Refer to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/releasenotes/releasenotes_211.html">
+Stardust Release Notes</a> for details on the Tomcat version supported with the current release.</p>
+<h2>Naming</h2>
+<p>As a start some names of the product are described here.
+For an overview on the provided packages provided by Stardust, refer 
+to the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">Installation Guide</a>.</p>
+<h3>Stardust</h3>
+<p>This is the general product name.</p>
+<h3>Stardust Process Engine</h3>
+<p>This name is used for the runtime component of Stardust.</p>
+<div class="ipp"><h3>Stardust License</h3>
+<p>Each Stardust application requires a valid Stardust license residing in a
+particular location. Please refer to the section <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm#license">License</a> of the Stardust <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm">Installation</a> chapter for detailed
+information.</p></div>
+<h2>Open the Process Workbench</h2>
+<p>To open the Stardust Process Workbench, start your Eclipse environment,
+where you installed the Stardust Process Workbench Eclipse plugins and
+features.</p>
+
+<p>We will now add the following views to the desktop:</p>
+<ol>
+    <li>Open <strong>Window &gt; Show Views &gt; Other...</strong>.</li>
+    <li>Add the <strong>Server &gt; Servers View</strong> and the <strong>Process Manager
+    &gt; Process Model Bookmarks</strong>.</li>
+</ol>
+<p>So, now we are ready to start the tutorial.</p>
+<h2>Starting the Modeling</h2>
+<p>Before your business process can be executed, you must model its elements
+(activities to be performed, variable definitions, applications and resources)
+as well as the relationships between these elements. For this purpose Stardust
+provides the <a href="../../handbooks/modelling/mg-modeler-preface.html">Stardust Process
+Workbench</a> where you can define
+your processes by drawing diagrams. Diagrams in Stardust contain process
+definitions, on the basis of which other components of Stardust, e.g. the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>, can control the enactment of your processes. The Process
+Workbench and the Stardust Portal will be introduced in the following sections.</p>
+<p>In our ACME example we will use applications and data implemented in
+Java, which have to be integrated in the business model. We have prepared the
+applications and data classes so that you can proceed with this tutorial without
+having to implement the model-specific components yourself. 
+To get the example resources in a zipped file, click the following link:</p>
+<p class="ind"><a href="../../examples/tutorials/support-case/support-case.zip">support-case.zip</a></p>
+<p>In the following figure you see a screenshot of the complete ACME
+Workflow example model:</p>
+<p class="image"><img src="images/model-overview-all_orgSize.png"
+    alt="The ACME Workflow Model"> <br>
+<strong>Figure:</strong> The ACME Workflow Model</p>
+<div class="ipp"><h3 id="setlicense">Setting the Stardust License</h3>
+<p>To set the Stardust license:</p>
+<ol>
+    <li>Select <strong>Window &gt; Preferences</strong> to open the
+    preferences dialog.</li>
+    <li>Select <strong>Process Manager</strong>.</li>
+    <li>In the <strong>License file</strong> section browse to the location
+    of your license file.</li>
+</ol>
+<p class="image"><img src="images/browse-to-license.png"
+    alt="Browse to your License File"> <br>
+<strong>Figure:</strong> Browse to your License File</p>
+<p>Please refer to the chapter <a href="../../handbooks/modelling/mg-preferences.html">Setting
+Process Manager Preferences</a> for detailed information on how to set Stardust
+preferences.</p></div>
+<h3 id="setUpTomcat">Setting up Embedded Tomcat in Eclipse</h3>
+<p>Eclipse provides integration for the Apache Tomcat Web environment and
+this can be used for rapid Stardust deployments&nbsp;within
+Eclipse.</p>
+<p>To establish Tomcat integration in Eclipse (this only needs to be done
+once for all successive deployments. It is not required for each Stardust
+deployment):</p>
+<ol>
+    <li>From the Eclipse main menu choose <strong>File &gt; New
+    &gt; Other...</strong><br>
+    <p><strong><span class="tip">! </span>Tip:</strong> If your Eclipse
+    installation does not have Server in the list of available objects to
+    create, you will need to update your environment with the necessary plug ins
+    of the Eclipse Web Tools Project, or use the Eclipse installation which
+    comes with the normal Stardust distribution.</p>
+    <p class="image"><img alt="Eclipse Server dialog"
+        src="images/new-server.png"></p>
+    </li>
+    <li>Select <strong>Server &gt; Server</strong>.</li>
+    <li>Click <strong>Next</strong>.
+    <p class="image"><img alt="Tomcat"
+        src="images/tut-choose-server.png"></p>
+    </li>
+    <li>Select <strong>Tomcat vx.x Server</strong></li>
+    <li>Click <strong>Finish</strong> if you previously configured a Tomcat
+    Server with your Eclipse Workbench.</li>
+    <li>Otherwise select <strong>Next</strong>.</li>
+    <li>Browse to the folder of your Tomcat installation.
+    <p class="image"><img alt="Browse to Installation Folder"
+        src="images/tut-server-browse.png"></p>
+    </li>
+    <li>Select <strong>Finish</strong>.</li>
+</ol>
+<p>If your Eclipse desktop does not yet have a view for Servers as shown
+below, select <strong>Window &gt; Show View</strong> in the main menu (or select
+the Show View button in the left lower corner of your Eclipse window) and choose
+<strong>Other... &gt; Server &gt; Servers</strong> to open it.</p>
+<!--  <p><strong><span class="tip">! </span>Tip:</strong> Eclipse views are
+dockable windows on the Eclipse work area, so you may want to drag-drop the
+Servers View into a set of stacked views as shown below.</p>-->
+<p class="image"><img alt="Eclipse server view"
+    src="images/tut-main-show-view-tip.png"></p>
+<h3 id="createProj">Creating an Eclipse Project with Process Manager Facets</h3>
+<p>For this tutorial we will use a Dynamic Web Project (from the Eclipse Web
+Tools Project). To create a new Dynamic Web Project, follow these steps in
+Eclipse:</p>
+<ol>
+	<li>On the main menu select <strong>File &gt; New &gt; Project...</strong>.</li>
+	<li>In the upcoming wizard choose <strong>Web &gt; Dynamic Web Project</strong>.
+    <li>Click <strong>Next</strong>
+        <p class="image"><img src="images/tut-main-1a.png"
+        alt="Creating a Dynamic Web Project - Step 1"> <br>
+        <strong>Figure:</strong> Creating a Dynamic Web Project - Step 1</p>
+    </li>
+    <li>Name your project <strong>Support-Case</strong><br>
+    <strong>Tip:</strong> Give the project a name that does not contain spaces
+    to make Web references easier. The project name will become part of a case
+    sensitive URL in a later part of this tutorial.</li>
+    <li>Make sure that the target runtime is set to the supported Apache Tomcat
+    version. If not, please set up the Apache Tomcat server as described in the
+    preceding section <a href="#setUpTomcat">Setting up Embedded Tomcat in
+    Eclipse</a>.</li>
+    <li>Select <strong>Dynamic web module_version</strong> <tt>2.4</tt> or <tt>2.5</tt>, 
+    as <tt>3.0</tt> is currently not supported by Stardust.
+    <p class="image"><img src="images/select-web-module-version.png" 
+    alt="dynamic web module version"> <br>
+    <strong>Figure:</strong> Set the dynamic web module version</p></li>
+    <li>In the <strong>Configurations</strong> entry, select 
+    <strong>Stardust Portal for Dynamic web module 2.4</strong> or
+    <strong>Stardust Portal for Dynamic web module 2.5</strong> respectively
+    in the drop down list.
+    The facets provided with this configuration contain among others the Stardust 
+    Portal facet, which enables you to run the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+    Stardust Portal</a> as Web application of your dynamic Web project. 
+    The provided facets can be added or removed later as desired. 
+    Please refer to the section described in section 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/dynamic-web-proj.html#facets">Process Manager Facets</a>
+    of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">Rapid Application Development</a>
+    guide for detailed information on the Process Manager facets.
+    <p class="image"><img src="images/project-settings.png"
+        alt="Select the Stardust Portal"> <br>
+    <strong>Figure:</strong> Select the Stardust Portal</p>
+    </li>
+    <li>Click <strong>Next</strong>.</li>
+    <li>Leave the default values for source and build path 
+	 and select <strong>Next</strong>.
+	<p class="image"><img src="images/set-build-path.png" alt="Set Build Path">
+	<br><strong>Figure:</strong> Set Build Path.</p></li>
+    
+    <li>Leave the entries in the <strong>Web Module</strong> dialog and
+    click <strong>Next</strong>.
+    <p class="image"><img src="images/create-proj-web-module.png"
+        alt="Web Module Dialog"></p>
+    </li>
+    <li>In the <strong>JSF Capabilities</strong> dialog enter the following
+    values:
+  <ul>
+    <li><strong>JSF Implementation Library</strong>: Disable Library Configuration</li>
+    <li><strong>JSF Configuration File</strong>: /WEB-INF/faces-config.xml (or a custom configuration file)</li>
+    <li><strong>JSF Servlet Name</strong>: Faces Servlet</li>
+    <li><strong>JSF Servlet Classname</strong>: javax.faces.webapp.FacesServlet</li>
+    <li><strong>URL Mapping Patterns</strong>: /faces/*</li>
+  </ul>
+    <p class="image"><img src="images/java-server-faces.png"
+        alt="JSF Capabilities Dialog"></p>
+    </li>
+    <li>Click <strong>Finish</strong>.</li>
+    <li>A dialog asking if you like to switch to the J2EE perspective
+    opens. The J2EE perspective is optional. It will not be needed so for this
+    tutorial, so click <strong>No</strong>.
+    <p class="image"><img src="images/tut-main-1d.png"
+        alt="Changing the Perspective"> <br>
+    <strong>Figure:</strong> Change the perspective</p>
+    </li>
+</ol>
+<p>A dialog opens to
+inform you to set a location for the repository path:</p>
+<p class="image"><img src="images/repository-home-warning.png"
+    alt="Repository Path Warning"><br>
+<strong>Figure:</strong> Repository Path Warning</p>
+
+<p>Please set a repository path as described in the section 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-deployment.html#repository">
+Setting the Repository Path</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/toc.html">
+Document Service Integration Guide</a>.</p>
+
+<p>After Eclipse created the project, you see a new project folder in the
+Package Explorer view:</p>
+<p class="image"><img src="images/tut-navigator-project.png"
+    alt="New Dynamic Web Project in Package Explorer"> <br>
+<strong>Figure:</strong> New Dynamic Web Project in the Package Explorer</p>
+<p align="left"><strong><span class="tip">! </span>Tip:</strong> You can use
+different explorer in eclipse. If you like to see all files under your project
+open the Navigator view.</p>
+
+<h3 id="opening">Creating a new Model</h3>
+<p>The next step is either to open an existing model or to create a new one.
+Both can be done in the <a href="../../handbooks/modelling/mg-modeler-preface.html">Stardust 
+Process Workbench</a>. Since no model exists in our introductory scenario, we will
+proceed with creating a new model.</p>
+
+<h4>Models</h4>
+<p>Three aspects are essential for a proper understanding of the notion and
+the function of a model:</p>
+<ul>
+    <li>A model represents all the organizational and operational context
+    of your business processes. Therefore, you will normally define all the
+    processes related to your company in a single model.</li>
+    <li>Stardust supports modeling in a multi-user environment. A group of
+    modelers can work on the same model.</li>
+    <li>Versioning information is preserved together with model
+    information. Stardust maintains a version hierarchy throughout the entire
+    life cycle of a model.</li>
+</ul>
+<p>To create a new model:</p>
+<ol>
+    <li>Right-click your project in the <strong>Package Explorer</strong>
+    and select <strong>New &gt; Other...</strong></li>
+    <li>In the dialog popping up, choose <strong>Process Manager Wizards
+    &gt; Process Model</strong>.</li>
+    <li>Click <strong>Next</strong>.
+    <p class="image"><img src="images/tut-main-2.png"
+        alt="Creating a New Model"> <br>
+    <strong>Figure:</strong> Creating a New Model</p>
+    </li>
+    <li>In the upcoming dialog fill in the model name <strong>ACME
+    Workflow Model</strong></li>
+</ol>
+<p class="image"><img src="images/tut-main-2a.png" alt=""> <br>
+<strong>Figure:</strong> Fill in Model Name</p>
+<h4>Finish</h4>
+<p>An open (editable) version of the ACME Workflow Model has now been
+created.</p>
+<div class="ipp"><h4>Note</h4>
+<p>In case you have not set your Stardust license in the preferences dialog
+as described in the section <a href="#setlicense">Setting the Stardust 
+License</a>, you will be prompted with the license dialog:</p>
+<p class="image"><img src="images/license.png" alt="License dialog"> <br>
+<strong>Figure:</strong> Licensing Dialog</p>
+<p>Browse to your license file. Additionally you have to set the license
+property in your <tt>carnot.properties</tt> file, residing in the <tt><nobr>ipp-resources</nobr></tt>
+folder of your Web application:</p>
+<pre>License.LicenseFilePath = &lt;path-to-your-license-file&gt;</pre></div>
+<h4>Importing the Model</h4>
+<p>If you wish to omit the modeling phase and just set up this scenario in a
+minimum of time, you can import an existing model instead of creating one
+manually. In the main menu use the option <strong>File &gt; Import...
+&gt; Process Manager &gt; Process Model</strong>. In the appearing
+dialog, choose <strong>Stardust XML</strong> as <strong>Model Type</strong> and
+select the file <tt>ACMEWorkflowModel.xpdl</tt> residing in your Stardust 
+installation in the directory <tt>examples/support-case/dat.</tt></p>
+<h3>On Handling Diagrams</h3>
+<p>Now you are ready to start building diagrams. In the Process Workbench
+window you will find the <a
+    href="../../handbooks/modelling/model-views/views-outline.html">Outline view</a> area,
+organizing the processes in your model and the components used in or by these
+processes. The Package Explorer area will display your projects and the created
+model files.</p>
+<p class="image"><a href="images/tut-initial-screen_orgSize.png"
+    target="_blank"> <img src="images/tut-initial-screen.png"
+    alt="Initial ACME Model Screen"></a> <br>
+<strong>Figure:</strong> Initial State of a Model in the Stardust Process
+Workbench</p>
+<h4>Diagrams</h4>
+<p>Diagrams are principally bound to a single process definition and contain
+a series of activities with the information connected to these activities
+(activity performers, data and applications). With each newly created process
+definition, a default diagram for this definition is created. You can add an
+arbitrary number of diagrams to a process definition. To get more detailed
+information on diagrams please refer to the chapter <a
+    href="../../handbooks/modelling/model-views/views-diagrams.html#diagrams">Working with Diagrams</a> of
+the <a href="../../handbooks/modelling/mg-preface.htm">Stardust Modeling</a> guide.</p>
+<p>The diagrams which you can see in the <a
+    href="../../handbooks/modelling/model-views/views-outline.html">Outline view</a> tree
+under the model element (which is the Stardust icon root element) are intended
+to visualize the hierarchies of participants in your model and the dependencies
+among process definitions, e.g. a graph of a process with its sub-processes. In
+this tutorial we want to direct your attention to diagrams bound to a single
+process definition, so we will focus on the diagrams which appear in the tree
+view after a process definition has been created.<br>
+</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

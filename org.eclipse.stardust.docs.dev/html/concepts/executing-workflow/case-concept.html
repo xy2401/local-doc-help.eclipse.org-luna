@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Case - Grouping Processes</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"abort-and-join.html","",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Case - Grouping Processes</h1>
+ 
+<p>A case is a special kind of a process instance. It allows to group arbitrary active process instances 
+under a new top-level and non-designed super-process instance called as a case process instance. </p>
+<p>The case exists of a root process instance called as the case process instance and an activity instance is 
+called as the case activity instance.</p>
+
+<h2 id ="struct">Structure of a Case</h2>
+<p>A case consists of case process instances. Each case process instance has case members. These case members are 
+root processes. The root processes can be from any model. Each root process can have subprocesses and spawned processes.
+If you abort case members, the case process instance gets completed. Similarly, if you complete all the case members, the 
+state of the case process instance gets completed.
+</p> 
+<p class="image"><img src="images/case.png"><br>
+<strong>Figure: Case Structure</strong> </p>
+
+<h2>Life-cycle of a Case</h2>
+<p>
+The case life-cycle differs from non-case process instance life-cycle:
+</p>
+
+<ul>
+
+	<li>Aborting any member of a case with scope root hierarchy does not abort the case process instance itself</li>
+	<li>Detaching a process instance changes the process instance state to
+		<ul>
+			<li>Aborted if no other case members exist (thus an empty case is always in Aborted state)</li>
+			<li>Completed if the detached process instance was the last active PI but at least one case member exists still</li>
+		</ul></li>
+	<li>Joining Cases
+		<ul>
+			<li>changes the state of the source case to Aborted</li>
+			<li>the target's case state stays Active</li>
+		</ul></li>
+</ul>
+
+<h2 id="casepi">The Case Process Instance</h2>
+<p>The case process instance is a process instance that is based on a technical process definition. 
+The technical process definition is a part of <a href="case-concept.html#tech">technical model</a>.
+The case process instance is represented using the <img src="images/case-pi-icon.png"> icon.
+The case process definition has following properties:</p>
+<ul>
+	<li>Process Definition ID = Case</li>
+	<li>Process Definition Name = Case Process</li>
+	<li>Process Definition Description</li>
+	<li>One Default Activity = Default Case Activity</li>
+</ul>
+<p>The starting user of the case process instance is called as the Case Originator.</p>
+<p>Following operations are not allowed on a case process instance.</p>
+
+<ul>
+	<li>Explicit abort</li>
+	<li>Aborting and starting a case process instance</li>
+	<li>Joining from non-case process instance to case process instance</li>
+</ul> 
+
+<h3>Data Scope of a Case</h3>
+<p>The case process instances and their subprocesses have private data scopes. No data is copied or shared between them.
+</p>
+
+<h2 id="caseai">The Case Activity Instance</h2>
+<p>The case activity instance is an activity instance that is based on a technical activity definition.
+The activity definition is a part of the case process definition. It has the following properties:
+</p>
+<ul>
+	<li>Case Activity ID = DefaultCaseActivity</li>
+	<li>Case Activity Name = Case Name</li>
+	<li>Case Activity Performer = Special performer representing the case owner</li>
+</ul>
+<p>Following operations are not allowed on a case activity instance:</p>
+<ul>
+	<li>Activate</li>
+	<li>Suspend</li>
+	<li>Complete</li>
+	<li>Delegate</li>
+</ul>
+<p>Please note that the case activities do not appear in assembly line mode.</p>
+
+<h3 id="cycle">Life-cycle of Case Activity</h3>
+<p>The activity instance is created at the time of case creation and 
+its state is strongly coupled to the state of the process instance.</p>
+<ul>
+	<li>The case activity instance is in suspended state as long as the case process instance is active</li> 
+	<li>The case activity instance is completed if the case process instance is completed</li>  
+	<li>The case activity instance is aborted if the process instance is in aborted state</li> 
+</ul>
+<p>State change is initiated internally only</p>
+<h2 id="scope">Department Scoping for Cases</h2>
+<p>Every case has an owner and the case owner controls the access to case related operations.</p>
+
+<h3>Current Performer of a Case Activity Instance</h3>
+<p>The current performer of the case activity instance is at the same time the owner of the case. 
+The owner of a case can explicitly be changed using the Delegate Case functionality.
+</p>
+
+<h2 id="owner">Owner of a Case</h2>
+<p>Initially owner of a case is the originator of case. The owner of a case can be any of the following:</p>
+<ul>
+	<li>valid Stardust Portal user</li>
+	<li>role of any active model</li>
+	<li>organization of any active model</li>
+	<li>scoped organization of any active model</li>
+	<li>implicitly scoped role of any active model</li>	
+	
+</ul>
+
+<h2 id="cdesc">Case Descriptors</h2>
+<p>
+A case has the ability to store descriptors and its values dynamically per process instance. 
+In the Stardust Portal, this is used to compute descriptors of a case based on matching descriptor value of 
+a case member.
+The data paths resulting to Primitive Java Objects are allowed for case descriptors. 
+</p>
+<h2 id="subcase">Sub-process Characteristics for Case Members</h2>
+<p>A sub-process of a case process instance differs in its sub-process characteristics from spawned subprocess.
+</p>
+<table>
+	<tr>
+		<th></th>
+		<th>Is Sub-process of <br>Case Process Instance</th>
+		<th>Sub-process Instance Must Be Completed <br>To Complete Case Process Instance</th>
+		<th>Abort Of Case Process Instance Results<br> In Abort Of Sub-process Instance</th>
+		<th>Abort Of Sub-process Instance Results<br> In Abort Of CaseProcess Instance</th>
+		<th>Interrupted Subprocess: Recovery Case<br> PI recovers Case Subprocess</th>
+	</tr>
+	<tr>
+		<td>Sub-process of Case Process</td>
+		<td>Supported</td>
+		<td>Supported</td>
+		<td>Not Valid</td>
+		<td>No, the case sub-process is not coupled with respect to abort-root functionality to its surrounding case.</td>
+		<td>Supported</td>
+	</tr>
+
+</table>
+
+<h2 id="tech">Predefined Model</h2>
+<p>A PredefinedModel or technical model is a system defined model. It is named as PredefinedModel.
+This PredefinedModel gets deployed automatically at the time of first deployment operation of any other model.
+Note that you cannot modify, deploy and delete this model. 
+It contains:</p>
+<ul>
+	<li>Default Case Process Definition</li>
+	<li>Default Case Activity instance</li>
+</ul>
+<p>It also contains two participants:</p>
+
+<ul>
+	<li>Default Case Performer</li>
+	<li>Administrator</li>
+</ul>
+
+<p>Also refer to the section, <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-deploy-model.html#pre">
+PredefinedModel in Deployment Dialog</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-deploy-model.html">
+ Deploying a Workflow Model </a>chapter in the 
+ <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-preface.htm">Modeling Guide</a>.</p>
+ 
+ <p>Also refer to section  
+ <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/modelmgnt/model-viewing.html#premodel">
+ Predefined Model</a> of chapter
+ <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/modelmgnt/model-viewing.html">
+Viewing Details on Deployed Models</a> 
+in the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+
+<h3>Default Case Process Definition</h3>
+<p>The case process is a default process definition for starting cases. As soon as you create a case, default case process 
+and default case activity gets created.</p>
+
+<h3>Default Case Activity Instance</h3>
+<p>The case activity is the default activity instance for a case.</p>
+
+<h3 id="performer">Case Performer</h3>
+<p>A technical model that is a PredefinedModel contains a default case activity of 
+the default case process definition. 
+The default performer of this activity is the case performer. 
+The case performer participant gets a special treatment with regards to permissions. 
+Technically it is defined as an Organization and has special 
+runtime code to determine if a user or participant is allowed to perform the DefaultCaseActivity. 
+Note that the case performer is not displayed in the Participant Management Tree of any model.
+</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %pluginProvider
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.jst.ws.jaxws.doc.user; singleton:=tru
+ e
+Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",org.ecli
+ pse.ui.cheatsheets;bundle-version="[3.3.100,4.0.0)"
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 1.0.400.v201309232209
+Bundle-ManifestVersion: 2
+
+Name: concepts/jaxws.html
+SHA1-Digest: B5VqIlwvTXnaoInt6oJqZ4vWogs=
+
+Name: legal.html
+SHA1-Digest: mmCM3YejzpmvEECrEFCWf6CtJ40=
+
+Name: reference/annotation_view.html
+SHA1-Digest: QzhbyWP5+nkE5pd7HyDigzGYFXA=
+
+Name: tips/tips_tricks.html
+SHA1-Digest: K7OYvF2IBDYQrlHKJHMhpaZVQhM=
+
+Name: images/wtp_logo_2010.png
+SHA1-Digest: OmE1NB3tM8AFmg/FTexDGR8yuYc=
+
+Name: tips/images/content_assist.png
+SHA1-Digest: UNv6GPKE7j+Z8FTzXx0H8KPOlkE=
+
+Name: tips/images/quick_fixes.png
+SHA1-Digest: ahJVO/br35ruSC+DqTDLmTRQPP8=
+
+Name: reference/annotation_processors.html
+SHA1-Digest: DK2a76zVADLWlOPB5iIm1Z2o5bE=
+
+Name: reference/images/annotations_view.png
+SHA1-Digest: RtaLUFjRiAyad3NABDGoFdE2rws=
+
+Name: plugin.properties
+SHA1-Digest: Fq+pRD3Jrdxv0G7cCK29eIHfM5k=
+
+Name: mainpage.html
+SHA1-Digest: s6R5D06DtlEiiXEh6fhTurrZMEA=
+
+Name: images/ngrelc.png
+SHA1-Digest: AtrS4kkJDBiPeN+v4oUlyJqqi/M=
+
+Name: plugin.xml
+SHA1-Digest: ZBciMtdAuVxcWfBOxoVR9VsTRDM=
+
+Name: META-INF/maven/org.eclipse.webtools.webservices/org.eclipse.jst.
+ ws.jaxws.doc.user/pom.xml
+SHA1-Digest: 2Kdtw7yUerf3BMfeEJ7nxneRqZE=
+
+Name: reference/images/annotations_view_expanded.png
+SHA1-Digest: I7vyf2f07GAmKEvQ4UzcSDfh4J0=
+
+Name: images/ngrelr.png
+SHA1-Digest: OzguzM/OK663iNL85kw/xEyPpdw=
+
+Name: gettingstarted/getting_started.html
+SHA1-Digest: sXwswZ00DEnQcVtsBBMK+4gNB+8=
+
+Name: images/ngrelt.png
+SHA1-Digest: T/aObgW4iyz6C+UTnzXp4mA1cV4=
+
+Name: META-INF/maven/org.eclipse.webtools.webservices/org.eclipse.jst.
+ ws.jaxws.doc.user/pom.properties
+SHA1-Digest: Xzu6B3RS0bMadLmIN34TUsEbQjQ=
+
+Name: about.html
+SHA1-Digest: do9P81S0q+g6DAuSSHJSwxm4jAc=
+
+Name: tocreference.xml
+SHA1-Digest: KRgW2IrOatj28jPsHRkrEqObWL0=
+
+Name: toctasks.xml
+SHA1-Digest: l+a3PMYr4Ex+mxWW7T2jH4SuYsI=
+
+Name: toc.xml
+SHA1-Digest: WTrymgpqJLkXSDdYQQSXtJpfCC0=
+
+Name: pom.xml
+SHA1-Digest: 2Kdtw7yUerf3BMfeEJ7nxneRqZE=
+
+Name: gettingstarted/requirements.html
+SHA1-Digest: OzXLQffgldJmTvGm8hu70q6P+2M=
+
+Name: tocconcepts.xml
+SHA1-Digest: L9Uqwsb8Zot7lgrs5wewtpXzQEc=
+
+Name: book.css
+SHA1-Digest: muimt1TAVOXv+uTwpU2WyCsHAgQ=
+

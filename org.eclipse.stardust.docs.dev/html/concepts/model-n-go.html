@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Simple Process Modeler (Technology Preview)</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Activity Criticality",
+		"business-objects.html","activity-criticality.html",
+		"key-concepts.html","Concepts");
+ -->
+</script>
+<h1>Simple Process Modeler (Technology Preview)</h1>
+<p>Stardust provides support for a
+business object-centric view on Process Data.</p>
+<ul>
+    <li><a href="#core">Core Model</a></li>
+    <ul><li><a href="#boj">Business Objects</a></li>
+    <li><a href="#wrap">Wrapper Processes</a></li>
+    <li><a href="#pd">Process Descriptors</a></li>
+    <li><a href="#pm">Process Model</a></li>
+    </ul>
+    <li><a href="#topology">Process Topology</a></li>
+</ul>
+<h2 id="core">Core Model</h2>
+<p>To work in the Model &amp; Go perspective, a core model and its elements must be defined in the Business 
+Process Modeler. A core model should define: </p>
+<ul>
+	<lI>Business Objects</lI>
+	<li>Participants</li>
+	<li>Applications</li>
+	<li>Sub-processes / Process Interfaces</li>
+	<li>Wrapper Processes</li>
+</ul>
+<p>Model &amp; Go! retrieves elements from all models in the model repository, therefore these elements 
+can be distributed between multiple models.</p>
+<h3 id="boj">Business Objects</h3>
+<p>A Business Object is not mandatory to create Process Definitions in the Process &amp; Go!, 
+but without it your Process Models can contain only the following:</p>
+<ul>
+	<li>User Tasks with a Simple Panel interface</li>
+	<li>E-mail Response Services</li>
+	<li>Activity Groups</li>
+</ul>
+<p>To work with service task, you need to have a business object and business object compatible application or process
+interface available.</p>
+<h3 id="wrap">Wrapper Processes</h3>
+<p>
+Simple Process Definitions can leverage wrapper processes defined in the core model, which the editor would invoke.
+Wrappers would apply "by name" data mapping logic. For the "by name" mapping we 
+would create a Data Mapping from Data X to Parameter X - assuming that the types are 
+consistent (e.g. BusinessDate or StartDate). The "by type" mapping would just find a parameter 
+of type Fund and try to find the only Process Data with that type - provided that there is only one.
+</p>
+
+<h3 id="pd">Process Descriptors</h3>
+<p>A descriptor is auto-created for each of the Business Object primitive marked as "Indexed."</p>
+<h3 id="pm">Process Model</h3>
+<p>Each Simple Process is in fact a Process Definition and appears in the Business Process Modeler perspective. 
+Simple Process models created in Model & Go! should not be modified in the Business Process Modeler.</p>
+<h2 id="topology">Process Topology</h2>
+<p>Simple process models are mapped to strictly block-structured process topologies. 
+This specifically implies absence of any loop constructs.
+Simple Processes have tabular structure. There is a sequence of rows, each of which may 
+contain one to many cells.</p> 
+
+<!-- Add screenshot here -->
+
+<p>How this maps to process definitions is potentially best explained by starting at
+ the cell level and working inside out.</p>
+<ul>
+	<li>Each cell is mapped to a combination of:
+	<ul>
+		<li>a leading XOR split gateway</li>
+		<li>a terminating XOR join gateway</li>
+		<li>an activity (the actual implementation of the activity, be it a manual task, 
+		a service call or a sub-process invocation)</li>
+		<li>transition flow that leads from the split gateway into 
+		the activity into the join gateway (the "happy path")
+		<ul>
+		<li>this is the "happy path", leading to activity execution</li>
+		<li>this is potentially guarded by the Activities condition (defaults to true)</li>		
+		</ul></li>
+		<li>an "otherwise" transition that leads from the split gateway to the join gateway
+		<ul>
+		<li>this is the shortcut path for skipping the activity if the guarding condition evaluates to false</li>
+		</ul>
+		</li>	
+	</ul></li>
+	<li>A row containing a single cell maps to the representation of the cell (two XOR gateways plus an activity)</li>
+	<li>A row containing multiple cells is mapped to a combination of:
+	<ul>
+		<li>a leading AND split gateway</li>
+		<li>a terminating AND join gateway</li>
+		<li>for each contained cell
+		<ul>
+			<li>the representation of the cell (two XOR gateways plus an activity)</li>
+			<li>a transition that leads from the AND split gateway into the cell's leading XOR split gateway</li>
+			<li>a transition that leads from the cells terminating XOR join gateway into the AND join gateway</li>
+		</ul></li>
+		<li>Adjacent rows are connected by exactly one transition, leading from the predecessor row's join gateway to the successor row's split gateway
+		<ul>
+			<li>depending on the row type (one cell or multiple) the leading / terminating gateway might either be an XOR or AND</li>
+			<li>in any case, there is exactly one leading and one terminating gateway, per row</li>
+		</ul>
+		</li>
+	</ul>	
+	</li>
+</ul>
+<p>This mapping ensures that:</p>
+<ul>
+	<li>rows are executed in strict sequence</li>
+	<li>each row is only completed if all contained cells are completed 
+	(or skipped, depending on condition evaluation)</li>
+</ul>
+
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

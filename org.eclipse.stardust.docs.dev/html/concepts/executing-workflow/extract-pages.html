@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Extracting Pages</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<div class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Document Rendezvous",
+		"spawn-usage-concept.html","document-rendezvous.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+</div>
+<div class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Aborting and Starting Processes",
+      "spawn-usage-concept.html","abort-and-start-usage.html",
+      "../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+</div>
+<h1>Extracting Pages</h1>
+<p>The functionality to extract pages from a document added to a process instance
+and pass those pages to a new process that will be started.</p>
+<ul>
+	<li><a href="#useCase">Use Case</a></li>
+	<li><a href="#version">Version Behavior of New Documents</a></li>
+</ul>
+<p>For details on extracting pages, refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/document-viewing/tiff-docs/extract-pages.html">
+Extract Pages</a>
+in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<h2 id="useCase">Common Use Case</h2>
+<p>Consider a scenario of an organization that often receives work via fax or regular
+mail containing multiple requests for a single client. These documents
+enter Stardust as single multi-page TIFF documents
+and are attached to a single process instance.</p>
+<p>The extracting pages functionality allows operators in the Stardust Process
+Platform to extract pages from these TIFF files and start a process instance for
+each separate request. Additionally, these process instances provide a linkage
+so that business units can track the separate requests as a single entity.</p>
+<p>The workflow would be as follows:</p>
+<ul>
+	<li>The company receives documents via fax.</li>
+	<li>Via a Scan client, the documents are scanned into a multi-page TIFF file
+	into a process definition.</li>
+	<li>The operator logs into the Stardust Portal and locates
+	the process definition created via the Scan operation.</li>
+	<li>He activates an activity in the created process instance and opens the 
+	multi-page document in the TIFF document viewer.</li>
+	<li>Now he clicks the <strong>Extract Pages</strong> icon in the Bookmarks View toolbar to launch
+	the <strong>Extract Pages</strong> dialog.</li> 
+	<li>The <strong>Start Process</strong> column in the dialog provides a drop down
+	list with all processes he has the ability to manually start.</li>
+	<li>The <strong>Document Type</strong> drop down list contains all document types.</li>
+	<li>In case the selected <strong>Document Type</strong> is linked to multiple
+	document types in the selected <strong>Start Process</strong> column, the 
+	<strong>Document Data</strong> list is enabled.</li>
+	<li>The operator selects to delete the extracted pages, copy annotations and bookmarks
+	and to copy process data.</li>
+	<li>Clicking <strong>OK</strong> starts the selected process.</li>
+	<li>Now a new process is started as sub-process of the original process.</li>
+	<li>This process is displayed in the Process History of the original process.</li>
+	<li>The extracted pages should be deleted in the TIFF document attached to
+	 the original process.</li>
+	<li>The added document fragments in the newly started process should contain the
+	extracted pages defined in the dialog. Annotations, bookmarks and data should be copied.</li>
+</ul>
+<h2 id="version">Version Behavior of New Documents</h2>
+<p>Extracting pages creates a new document version for the target document. A 
+version comment is automatically applied to the target document as follows:</p>
+<ul>
+	<li>Target Document Version Comment: 
+	<pre>Document created by extracting pages from <tt>source_doc_id</tt>.</pre></li>
+</ul>
+<p>In case <strong>Delete Pages</strong> is marked in the <strong>Extract Pages</strong>
+dialog for these pages, a new version of the source document is created and a version
+comment is automatically applied to the source document as follows:</p>
+<ul>
+	<li>Source Document Version Comment:
+	<pre>Extracted pages <tt>x-y</tt> to document <tt>target_doc_id</tt> and started process <tt>process_id</tt>.</pre></li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

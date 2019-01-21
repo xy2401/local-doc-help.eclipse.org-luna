@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Specifying Arbitrary Link Types</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Pools and Lanes Usage","mg-defdesk-13.htm","mg-pools-lanes.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Specifying Arbitrary Link Types</h1>
+<p>You can establish arbitrary links between two resources by
+connecting these with a graphical link. This link does not have any
+impact on the runtime behavior of a deployed process model but may be
+used to emphasize semantic relationships at modeling time.</p>
+<p>Each link has a type being characterized by its:</p>
+<ul>
+    <li>name,</li>
+    <li>semantics,</li>
+    <li>left and right resource types participating in this link,
+    </li>
+    <li>left and right roles,</li>
+    <li>left and right cardinalities and</li>
+    <li>attributes for its graphical representation.</li>
+</ul>
+<p>The predefined link between a role belonging to an organization
+and this organization is such a link type, too. The modeler can,
+however, define his own link types which suit the semantics of his
+model.</p>
+<h2>Creating a New Link Type</h2>
+<p>To create a new link type:</p>
+<ul>
+    <li>Select the model element in the <strong>Outline</strong>
+    view and in its pop-up menu choose the option <strong>New
+    Link Type</strong>.
+    <p class="imageimage"><img src="images/mg-new-link-type.png" alt=""></p></li>
+    <li>In the properties dialog of the new link type appearing
+    on the screen, enter the required parameters.
+    <p class="imageimage"><img src="images/mg-link-type.png" alt=""></p></li>
+</ul>
+<p>The new link type is now visible in the <strong>Outline
+View</strong>:</p>
+<p class="image"><img src="images/mg-link-type-in-outline.png"
+    alt=""
+/> <br>
+<strong>Figure:</strong> The new Link Type in the Outline View</p>
+<h3>General Parameters</h3>
+<p>The following <strong>Source Types</strong> and <strong>Target
+Types</strong> are provided:</p>
+<ul>
+    <li>Activity</li>
+    <li>Data</li>
+    <li>Role</li>
+    <li>Process Definition</li>
+    <li>Transition</li>
+    <li>Organization</li>
+    <li>Participant</li>
+</ul>
+<p>For the <strong>Source Cardinality</strong> and the <strong>Target
+Cardinality</strong> choose:</p>
+<ul>
+    <li>*:1</li>
+    <li>*:N</li>
+</ul>
+<h3>Visualization</h3>
+<p>The properties dialog of the link type also allows you to
+choose between different standard visualizations of the links, offering
+different colors, lines and shapes appearing at both ends of the link.
+To explore the possibilities and choose the visualization you wish:</p>
+<ol>
+    <li>Switch to the visualization properties by clicking on <strong>Visualization</strong>
+    on the left side of the dialog,</li>
+    <li>Fill in the fields with the options available in the
+    pull-down menus.</li>
+    <li><strong>OK</strong> the dialog.</li>
+</ol>
+<p class="image"><img src="images/mg-link-type-visualization.png" alt="">
+<br>
+<strong>Figure:</strong> Visualization Properties for Link Types</p>
+<h3>Using Custom Link Types</h3>
+<p>Once defined, each user-defined link type can be used as a
+predefined link type to establish graphical connections and
+corresponding links in the resource part of a workflow model. Stardust 
+will automatically add your link types to the resource symbol context
+menus and will maintain the constraints specified by the link type's
+cardinalities and types.</p>
+<p>The pop-up menu of the role in our example has been
+supplemented with the link <tt>Supervision</tt>. When linked to another
+role the relationship between the two participants will be represented
+as shown in the figures below.</p>
+<p class="image"><img src="images/mg-connect-roles-link-type.png"
+    alt="Link Type"
+> <br>
+<strong>Figure:</strong> Use of User-Defined Link Types in Diagrams</p>
+<p class="image"><img src="images/mg-defdesk-68.jpg" alt=""> <br>
+<strong>Figure:</strong> Representation of Generic Links in Diagrams</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Structured Data and Java Type Applications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Changing Authorization of Stardust Portal Elements",
+	"diagram-retrieval.htm","pg-embed-entitlements.html",
+		"../handbooks.htm","Developer Handbook",
+		"pg-preface.htm","Programming Guide");
+ -->
+</script>
+
+<h1>Structured Data and Java Type Applications</h1>
+<p>Java-based applications will see the results of dereferencing paths of 
+  data mappings on structured data types as</p>
+<ul>
+  <li>primitive Java types (<tt>boolean</tt>, <tt>int</tt>, <tt>java.lang.String</tt>)</li>
+  <li>dates (<tt>java.util.Date</tt>),</li>
+  <li>lists (<tt>java.util.List</tt>) or</li>
+  <li>maps<em> </em>(<tt>java.util.Map</tt>)<em>.</em></li>
+</ul>
+<p>The following process model shows a series of method invocations of Java class 
+  methods where data from a data of structured data type are passed to and retrieved 
+  from these applications. The process model also displays IN and OUT data mappings 
+  wherever defined:</p>
+<p align="center"><img src="images/process-model-with-java-applications.png" alt="Process Model with Java Applications"> 
+</p>
+<p>Hereby, the applications represent methods of Java classes as described below</p>
+<h2>Application CreateStructuredData</h2>
+<pre>public Map createStructuredDataCollections() throws ParseException 
+{
+   Map addressBaker = new HashMap();
+
+
+   addressBaker.put(&quot;street&quot;, &quot;Baker&quot;);
+   
+   Map addressNorth = new HashMap();
+   
+   addressNorth.put(&quot;street&quot;, &quot;North&quot;);
+   
+   Map customer1 = new HashMap();
+   List addresses1 = new ArrayList();
+   
+   addresses1.add(addressBaker);
+   addresses1.add(addressNorth);
+   customer1.put(&quot;address&quot;, addresses1);
+   customer1.put(&quot;name&quot;, &quot;Smith&quot;);
+   
+   Map customer2 = new HashMap();
+   List addresses2 = new ArrayList();
+   
+   addresses2.add(addressNorth);
+   customer2.put(&quot;address&quot;, addresses2);
+   customer2.put(&quot;name&quot;, &quot;James&quot;);
+   
+   Map order1 = new HashMap();
+   
+   order1.put(&quot;customer&quot;, customer1);
+   order1.put(&quot;qty&quot;, new Integer(100));
+   order1.put(&quot;ordernr&quot;, &quot;N1&quot;);
+   
+   Map order2 = new HashMap();
+   
+   order2.put(&quot;customer&quot;, customer2);
+   order2.put(&quot;qty&quot;, new Integer(200));
+   order2.put(&quot;ordernr&quot;, &quot;N2&quot;);
+   
+   List orders = new ArrayList();
+   
+   orders.add(order1);
+   orders.add(order2);
+
+   Map orderBook = new HashMap();
+   
+   orderBook.put(&quot;date&quot;, XSD_DATE_TIME_FORMAT.parseObject(&quot;1979-04-07T01:02:03&quot;));
+   orderBook.put(&quot;status&quot;, &quot;OPEN&quot;);
+   orderBook.put(&quot;order&quot;, orders);
+
+   return orderBook;
+}</pre>
+<h2>Application DumpStructuredDataAttribute</h2>
+<pre>public void dumpStructuredDataAttribute(int attribute) throws Exception
+{
+   System.out.println(&quot;DumpStructuredDataApp called. Attribute is: &quot; + attribute);
+}
+
+public void dumpStructuredDataAttribute(Date attribute) throws Exception
+{
+   System.out.println(&quot;DumpStructuredDataApp(Date) called. Attribute is: &quot; + attribute);
+}
+</pre>
+<h2>Application ChangeStructuredData</h2>
+<pre>
+public int getChangedOrderQty() throws Exception
+{
+   return 77;
+}
+
+
+public Map getChangedAddress(Map address)
+{
+   address.put(&quot;street&quot;, &quot;New Street&quot;);
+   
+   return address;
+}
+
+public List getChangedAddresses(List oldAddresses)
+{
+   for (Iterator i = oldAddresses.iterator(); i.hasNext(); )
+   {
+      Map oldAddress = (Map) i.next(); 
+      
+      oldAddress.put(&quot;street&quot;, oldAddress.get(&quot;street&quot;)+&quot;    CHANGED&quot;);
+   }
+
+   Map additionalAddress = new HashMap();
+   
+   additionalAddress.put(&quot;street&quot;, &quot;MY NEW STREET&quot;);
+   oldAddresses.add(additionalAddress);
+   
+   System.out.println(&quot;ChangeStructuredDataApp.getChangedAddress called, returning    &quot; + oldAddresses);
+   
+   return oldAddresses;
+}</pre>
+<h2>Application DumpStructuredData</h2>
+<p>The application <strong>DumpStructuredData</strong> dumps the whole structured data </p>
+<pre>public void dumpStructuredData(Map complexType) throws Exception 
+{ 
+   System.out.println(&quot;DumpStructuredDataApp called. ComplexType is: &quot;+complexType); 
+} 
+
+public void dumpStructuredData(List complexTypes) throws Exception 
+{
+   System.out.println(&quot;DumpStructuredDataApp called. ComplexType List is: &quot;+complexTypes); 
+}
+ 
+public void dumpStructuredDataAttribute(int attribute) throws Exception 
+{ 
+   System.out.println(&quot;DumpStructuredDataApp called. Attribute is: &quot;+attribute); 
+} 
+
+public void dumpStructuredDataAttribute(Date attribute) throws Exception 
+{ 
+   System.out.println(&quot;DumpStructuredDataApp(Date) called. Attribute is: &quot;+attribute); 
+}</pre>
+<h2>Using Structured Data in Queries</h2>
+<p>Structured data can be used in queries to retrieve process and activity instances, as described 
+in the section <a href="queries/query-build.html#structData">Using Structured Data in Queries</a> of
+the chapter <a href="queries/query-build.html">Building Queries</a>.</p>
+
+<h2>Deleting Structured Data</h2>
+<p>You can delete structured data by following ways:</p>
+
+<ul>
+	<li>new Hashmap() - All rows for this structured data are deleted.</li>
+	<li>null - All rows for this structured data are deleted. </li>
+	<li>Collections.emptyMap() - All rows for this structured data are deleted.</li>
+	<li>Collections.EMPTY_MAP - All rows for this structured data are deleted.</li>
+	<li>Empty String - All rows for this structured data are deleted.</li>
+	
+ </ul>
+ 
+ <p>So, if key-value pairs are provided for all elements of the structured data, but the value is either 
+ null or an empty string (string), 0 (number) or some other kind of empty value for 
+ the other supported xsd types, the row will be deleted.</p>
+<p>For example,</p> 
+<pre>
+Map&lt;String, Object&gt; dataMap = new HashMap&lt;String , Object&gt;();
+dataMap = null;
+ActivityInstance activityInstance2 = workflowService.activateNextActivityInstanceForProcessInstance(startProcess.getOID());
+workflowService.complete(activityInstance2.getOID(), "default", dataMap);
+</pre>
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

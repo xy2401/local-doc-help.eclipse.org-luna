@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Federated Document Repositories</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Audit Trail Persistence",
+      "multi-model/multi-model.html","audit-trail/audit-trail-persist.html",
+      "key-concepts.html","Concepts");
+ -->
+</script>
+<h1>Federated Document Repositories</h1>
+<p>Using federated document repositories in Stardust enables you to 
+instantiate an arbitrary number of document repositories. It makes it easy for you 
+to access and maintain user data in multiple repositories.</p>
+<ul>
+   <li><a href="#use">Use Cases</a></li>
+   <li><a href="#inst">Instantiating an arbitrary Number of Document Repositories</a></li>
+   <li><a href="#api">Managing Repositories via Stardust API</a>
+   <li><a href="#portal">Managing Repositories in the Stardust Portal</a></li>
+</ul>
+<h2 id="use">Use Cases</h2>
+<p>You might use federated document repositories in the following cases:</p>
+<ul>
+   <li>Depending on the lifecycle of a document you like to store it on different 
+   storage media or storage technology, e.g. for durability or cost reasons.</li>
+   <li>You have an existing document management or document repository technology 
+   you like to access seemlessly in Stardust e.g.:
+   <ul>
+      <li>SharePoint with a significant marketshare/distribution</li>
+      <li>FileNet</li>
+      <li>EC2</li>
+   </ul></li>
+   <li>You may have documents in different document repositories with possibly 
+   different technologies you want to access from Stardust</li>
+   <li>You want to connect to cloud-based document or data management services, e.g. MongoDB.</li>
+</ul>
+<h2 id="inst">Instantiating an arbitrary Number of Document Repositories</h2>
+<p>Stardust allows to instantiate an arbitrary number of document repositories 
+(repository instances) of the attached technologies at runtime. For example, you can have
+two repositories on JackRabbit and one on MongoDB.</p>
+<p>For this configuration, it is only required to 
+provide the according file root or URL. The changes then occur at runtime.</p>
+<p>For example to set up an additional repository for Jackrabbit on Tomcat
+without required transaction integration, you  
+simply have to add an additional bean besides the existing one in your <tt>jackrabbit-jcr-context.xml</tt>
+file. This bean should point to a different repository home and JNDI name. For details please
+refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-deployment.html#repos">Setting up additional Jackrabbit VFS Repositories</a>
+of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-deployment.html">Deployment</a>
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/toc.html">Document Service Integration Guide</a>.</p>
+<h2 id="api">Managing Repositories via Stardust API</h2>
+<p>The Stardust API provides means to manage document repositories as well
+as service providers to implement arbitrary repository technologies.</p>
+<h3>Managing Repositories via Document Service</h3>
+<p>The 
+<a href="../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">DocumentManagementService</a>
+API provides functionality to manage repositories and reflect locations 
+in the repository instance. It allows to:</p>
+<ul>
+   <li>move documents across repositories</li>
+   <li>bind and unbind repositories</li>
+   <li>retrieve information on all available repository providers</li>
+   <li>set a bound repository as default repository</li>
+   <li>identify the currently set default repository</li>
+</ul>
+<p>For details please refer to chapter
+<a href="../handbooks/programming/embed/documents/pg-embed-repos.html">Managing Document Repositories</a>
+in the
+<a href="../handbooks/programming/pg-preface.htm">Programming Guide</a>.</p>
+<h3>Implementing arbitrary Repository Technologies</h3>
+<p>Stardust provides a repository provider to allow implementing arbitrary repository technologies
+Please refer to chapter
+<a href="../handbooks/programming/spi/spi-repository.html">
+Implementing a Provider for arbitrary Repository Technologies</a>
+in the
+<a href="../handbooks/programming/pg-preface.htm">Programming Guide</a> for details.</p>
+<h2 id="portal">Managing Repositories in the Stardust Portal</h2>
+<p>The Stardust Portal provides means to manage arbitrary document repositories.</p>
+<ul>
+   <li><a href="#docres">Managing Document Repository Resources</a></li>
+   <li><a href="#search">Searching a Document in a specific Repository</a></li>
+</ul>
+<h3 id="docres">Managing Document Repository Resources</h3>
+<p>The <strong>Document Repository</strong> view in the <strong>Administration Perspective</strong>
+of the Stardust Portal provides functionality to manage your 
+document repositories. It allows to bind and unbind repositories as well as viewing 
+repository details and perform document operations.</p>
+<p>Please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-repository.html">
+Viewing and Managing Document Repository Resources</a>
+of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">
+End User Handbook</a> for details.</p>
+<h3 id="search">Searching a Document in a specific Repository</h3>
+<p>If you search a document in the <strong>Document Search</strong> view of the 
+<strong>Workflow Execution Perspective</strong>, you can restrict the search to 
+a specific repository. This repository can be selected in a list of provided repositories.
+Please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/document-search.html">
+Searching for Documents</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">
+End User Handbook</a> for details.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

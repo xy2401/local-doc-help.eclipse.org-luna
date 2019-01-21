@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Applying Worklist Filter</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using JMS Application and JMS Trigger",
+        "../multi-model-env/create-multi-model-preface.html","../jms/jms-example.html",
+		"../tut-preface.htm","Tutorials");
+ -->
+</script>
+<h1 id="provider">Applying Worklist Filter</h1>
+<p>This tutorial helps you to create and apply worklist filter from the Portal Configuration.
+</p>
+
+<p>Using this example, you can:</p>
+<ul>
+	<li><a href="#model">Create appropriate model</a></li>
+	<li><a href="#filterprovider">Create Java file with filter provider</a></li>
+	<li><a href="#java">Find location to put the created java file</a></li>
+	<li><a href="#portalfilter">Apply worklist filter</a></li>
+	
+</ul>
+
+<h2 id ="model">Creating a Model</h2>
+
+<p>Download the Support Case model. 
+You can download the example source code as well as the complete
+model from the following link as a ZIP file:</p>
+<ul>
+	<li><a href="../../examples/tutorials/support-case/support-case.zip">Support
+	Case Examples Sources</a></li>
+</ul>
+
+<p>You need to add following to the downloaded model:</p>
+<ul>
+	<li>Create Roles
+		<ul>
+			<li>PuneCenter</li>
+			<lI>MumbaiCenter</lI>		
+		</ul></li>
+	<li>Edit the structured data named Customer and add new field named Location</li>
+</ul>
+<h2 id="filterprovider">Creating a Filter Provider Java File</h2>
+<p>Create the java file named <tt>LocationFilter.java</tt>.</p>
+
+
+<p>By creating the filter provider, you can control the viewing of worklist of a particular location or role.
+For more information, please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/config/config-worklists.html">Configuring Worklists</a> 
+in the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">Stardust Portal</a> documentation.</p>
+<p>Note you can specify the filter based on your requirement. The following is the sample
+code snippet to create the LocationFilter.java.</p>
+<pre>
+package com.filters;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.stardust.ui.web.viewscommon.beans.SessionContex;
+import org.eclipse.stardust.ui.web.viewscommon.common.provider.AbstractFilterProvider;
+import org.eclipse.stardust.engine.api.query.DataFilter;
+import org.eclipse.stardust.engine.api.query.FilterAndTerm;
+import org.eclipse.stardust.engine.api.query.FilterOrTerm;
+import org.eclipse.stardust.engine.api.query.Query;
+import org.eclipse.stardust.engine.api.runtime.Grant;
+import org.eclipse.stardust.engine.api.runtime.User;
+
+
+public class LocationFilter extends AbstractFilterProvider
+{
+   private static final long serialVersionUID = 1L;
+
+   /* (non-Javadoc)
+    * @see org.eclipse.stardust.ui.web.client.common.spi.IFilterProvider#applyFilter(org.eclipse.stardust.engine.api.query.Query)
+    */
+   public void applyFilter(Query query)
+   {
+      System.out.println("Applying Filter Provider - LocationFilter.applyFilter()");
+      User user = SessionContext.findSessionContext().getUser();
+      
+      boolean puneCenter = false;
+      boolean mumbaiCenter = false;
+
+      List&lt;Grant&gt; grants = (List&lt;Grant&gt;) user.getAllGrants();
+      Iterator&lt;Grant&gt; iterator = grants.iterator();
+      while (iterator.hasNext())
+      {
+         Grant grant = iterator.next();
+
+         if (grant.getId().equalsIgnoreCase("PuneCenter"))
+         {
+            puneCenter = true;
+         }
+
+         if (grant.getId().equalsIgnoreCase("MumbaiCenter"))
+         {
+            mumbaiCenter = true;
+         }
+      }
+
+      System.out.println("puneCenter = " + puneCenter + ":: mumbaiCenter = " + mumbaiCenter);
+      
+      if (puneCenter &amp;&amp; mumbaiCenter)
+      {
+         FilterOrTerm filter = query.getFilter().addOrTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Pune%", false));
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Mumbai%", false));
+      }
+      else if (puneCenter)
+      {
+         FilterAndTerm filter = query.getFilter().addAndTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Pune%", false));
+      }
+      else if (mumbaiCenter)
+      {
+         FilterAndTerm filter = query.getFilter().addAndTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Mumbai%", false));
+      }
+      else
+      {
+         System.out.println("NOT Applying any Filter");
+      }
+   }
+}
+
+</pre>
+<h3 id="java">Adding the Java File</h3>
+<p>Add the LocationFilter.java file in the src folder of the project in which you have added the Support Case moodel.
+Make sure that the LocationFilter.java file is under the package called com.filters</p>
+<h2 id="portalfilter">Working in Stardust Portal and Applying the Filter</h2>
+<p>Perform the following steps:</p>
+<ol>
+	<li>Deploy your model</li>
+	<li>Login with user motu</li>
+	<li>Create three users named Croft Lara, Doodle Duck and Cityman Frank</li>
+	<li>Assign roles CallCenter, Engineer and PuneCenter to Croft Lara </li>
+	<li>Assign roles CallCenter, Engineer and MumbaiCenter to Doodle Duck </li>
+	<li>Assign roles CallCenter, Engineer, MumbaiCenter and PuneCenter to Cityman Frank</li>
+	<li>Assign role CallCenter to motu</li>
+	<li>Start five processes of Support Case Management Process and enter location as Pune, Mumbai and Delhi in each process.</li>
+	<li>Specify the following filter in the Configuration View and click Save:
+	
+	<pre>puneCenter=com.filters.LocationFilter,mumbaiCenter=com.filters.LocationFilter </pre>
+	
+	<p>The following screenshot displays the filter provider details:</p>
+<p class="image"><img src="images/filterprovider.png"
+    alt="Worklist - Filter Provider"><br>
+<strong>Figure:</strong> Worklist Configuration</p></li>
+	
+	
+	<li>Login with user Croft Lara and open her worklist. Note that Croft Lara can 
+	see activities with location Pune.</li>
+	<li>Login with user Doodle Duck and open his worklist. Note that Doodle Duck can see
+	activities with location Mumbai.</li>
+	<li>Login with user Cityman Frank and open his worklist. Note that Cityman Frank can 
+	see activities of both the locations that is Pune and Mumbai. Also, none of the three
+	users can see activities with location Delhi. The user motu can view all activities.</li>
+	
+</ol>
+
+<p>In case both roles are assigned to one user and only <tt>puneCenter=com.filters.LocationFilter</tt> is applied
+then that user can see the activities of the location Pune.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

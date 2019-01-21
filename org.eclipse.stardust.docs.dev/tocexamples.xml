@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?><!-- Copyright (c) 2011, 2014 SunGard CSA LLC and others. All rights reserved. This    program and the accompanying materials are made available under the terms of the    Eclipse Public License v1.0 which accompanies this distribution, and is available    at _http://www.eclipse.org/legal/epl-v10.html Contributors: SunGard CSA LLC - initial    API and implementation and/or initial documentation -->
+
+<toc label="Examples" link_to="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/toc.xml#tocexamples">
+   <topic label="Examples" href="html/examples/index.html">
+      <topic label="Security Examples" href="html/examples/security-index.html">
+         <topic label="LDAP Synchronization Provider Example" href="html/examples/ldap-sync/readme.html" />
+         <topic label="Java Property File Synchronization Provider Example"
+            href="html/examples/properties-sync/readme.html" />
+         <topic label="WebLogic AuthenticatedBeanFactory Example" href="html/examples/weblogic-auth/readme.html" />
+      </topic>
+      <topic label="Web Services API Examples" href="html/examples/ws-index.html">
+         <topic label="Stardust - Web Services Java Client Example"
+            href="html/examples/ws-client-java/readme.html" />
+         <topic label="Stardust - Web Services C# Client Example" href="html/examples/ws-client-c-sharp/readme.html" />
+      </topic>
+      <topic label="Service Provider Interface Examples" href="html/examples/spi/readme.html" />
+      <topic label="How to use the EJB3 Entity Data Type" href="html/examples/entity-data/readme.html" />
+      <topic label="Tutorial Examples" href="html/examples/tutorials/tutorials-index.html">
+         <topic label="Support Case Example" href="html/examples/tutorials/support-case/readme.html" />
+         <topic label="UI Mashup Example" href="html/examples/tutorials/mashup/readme.html" />
+         <topic label="Scoped Participants"
+            href="html/examples/tutorials/scopedParticipants/readme.html" />
+         <topic label="Defining and Running Reports" href="html/examples/tutorials/reports/readme.html" />
+         <topic label="Configuration Variables" href="html/examples/tutorials/config-variables/readme.html" />
+         <topic label="Performing Quality Assurance Examples" href="html/examples/tutorials/quality-assurance/readme.html" />
+         <topic label="Managing Unstructured Workflows" href="html/examples/tutorials/derive-procs/readme.html" />
+         <!-- TODO adjust label -->
+         <topic label="Multi Model Audit Trail Setups Tutorial" href="html/examples/tutorials/multi-model/readme.html" />
+         <topic label="JMS Example" href="html/examples/tutorials/jms/readme.html" />
+         <topic label="Process Interfaces and Dynamic Process Selection Example" href="html/examples/tutorials/process-interface-impl/readme.html" />
+      </topic>
+      <topic label="JFC Application Example" href="html/examples/jfc/readme.html" />
+      <topic label="Document Management Service" href="html/examples/dms/readme.html" />
+      <topic label="Correspondence Templates" href="html/examples/correspondence-templates/readme.html" />
+      <anchor id="tocippexamples" />
+   </topic>
+</toc>

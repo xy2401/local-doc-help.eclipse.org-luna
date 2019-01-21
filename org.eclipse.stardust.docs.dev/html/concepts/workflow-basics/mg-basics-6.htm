@@ -1,0 +1,561 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Control Flow</title>
+
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Applications","mg-basics-5.htm","mg-basics-7.htm",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+</body>
+<body>
+<h1>Control Flow</h1>
+<p>The Control Flow determines the flow of tokens through tasks and conditions.</p>
+<ul>
+   <li><a href="#lifecycle">Process Life Cycle of Control Flow</a></li>
+   <li><a href="#splits">Splits</a></li>
+   <li><a href="#joins">Joins</a></li>
+   <li><a href="#sfhandling">Modes of Split and Join Handling</a></li>
+   <li><a href="#pattern">Common Patterns</a></li>
+   <li><a href="#avoid">Scenarios to avoid</a></li>
+   <li><a href="#exception">Exception Flow combined in Inclusive Flow</a></li>
+</ul>
+<h2 id="lifecycle">Process Life Cycle of Control Flow</h2>
+<p>The process life cycle of control flow in Stardust includes the 
+following elements:</p>
+<ul>
+   <li><a href="#start">Start Events</a></li>
+   <li><a href="#end">End Events</a></li>
+   <li><a href="#trans">Transitions and Sequence Flow</a></li>
+   <li><a href="#gateways">Gateways</a></li>
+   <li><a href="#impl">Implicit Process Completion</a></li>
+</ul>
+<h3 id="start">Start Events</h3>
+<p>Start events instantiate the process. They can be determined to
+start a process automatically or allow an external event to initiate the process start.
+There are several types of start events enabling the process start by different resources,
+e.g. a performer, an incoming mail, a point in time or specific messages, depending on
+the modeler you choose. In order to be 
+executed, each process needs at least one trigger, or otherwise needs to be used as a 
+sub-process or by an event.</p>
+<h4>Start Events in the Eclipse Modeler</h4>
+<p>In the Eclipse modeler, start events are defined as automatic start event or as triggers.
+Refer to chapter <a href="../../handbooks/modelling/mg-defdesk-11.htm">Working with Triggers</a> 
+for details on the provided trigger types and how to use them.</p>
+<h4>Start Events in the Business Process Modeler</h4>
+<p>For details on using start events in the Business Process Modeler, refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-events.htm#adds">
+Adding Start Events</a> in chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-events.htm">
+Working with Events</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeling Handbook</a>.</p>
+<h3 id="end">End Events</h3>
+<p>End events describe how a process ends.</p>
+<h4>End Events in the Eclipse Modeler</h4>
+<p>The Eclipse Modeler provides a simple End Event only.</p>
+<h4>End Events in the Business Process Modeler</h4>
+<p>End events in the Business Process Modeler can be defined as message event or 
+simple end event.</p>
+<p>For details on using end events in the Business Process Modeler, refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-events.htm#adde">
+Adding End Event</a> in chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-events.htm">
+Working with Events</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeling Handbook</a>.</p>
+<h3 id="trans">Transitions and Sequence Flow</h3>
+<p>Control flow between activities at runtime is determined by transitions.
+A transition or sequence flow connects at least two activities.</p>
+<p>At runtime, after the source activity instance is completed the transition is
+instantiated and, if available, a transition condition is evaluated (see below). If the
+condition evaluates to <tt>true</tt> the subsequent activity instance(s) is(are) 
+instantiated.</p>
+<h4 id="transcond">Transition Conditions</h4>
+<p>Transition conditions are specified if the successor activity is to be performed
+under particular circumstances only. If a transition condition is set to 
+<strong>true</strong>, the
+transition will always be traversed and the successor activity executed.</p>
+<p>A JavaScript based condition expression editor is provided in the properties
+page of transitions, where you can add for example arithmetic, relational and
+logical operators as well as string matching operators. You can combine operators
+and values retrieved via dereferencing paths with
+JavaScript language.</p>
+<p>Refer to chapters
+<a href="../../handbooks/modelling/mg-defdesk-5.htm">Working with Transitions</a> and
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-con-sequence.htm">
+Working with Sequence Flows</a> for details on setting
+transition conditions in the Eclipse modeler and the Business Process Modeler
+accordingly.</p>
+<!--  <p>The precedence of the operators is the same as the precedence of the equivalent
+Java operators. Parentheses '(' and ')' can be used to override the normal precedence,
+equivalent to Java expression syntax.</p>
+<h3>Literals</h3>
+<p>The predicate string accepts literals of the following types:</p>
+<ul>
+    <li>A character literal, which is a single-quoted 8-bit character, e.g. 'c' or
+    'R'.</li>
+    <li>A string literal which is a double-quoted string (for example, <tt>"John
+    Doe"</tt>). When you include a string literal within a Java String that contains your
+    predicate, you must use the backslash character (&#92;) before the double-quote
+    characters (&quot;) that delimit the string literal.</li>
+    <li>A numeric or floating-point literal which is a literal with the same syntax
+    as in Java, e.g. 654 or 14356.987. No spaces are allowed in front of a negative number
+    e.g. -3.</li>
+    <li>Boolean constants TRUE and FALSE</li>
+    <li>Null constant in non-case-sensitive form: NULL or null</li>
+</ul>
+
+<h3>Variables</h3>
+<p>Stardust stores all workflow data defined in the model in a
+so-called symbol table. Therefore, these data can be used in the predicate as variables,
+if necessary with the appropriate dereferentiation path,<br>
+e.g.: <tt>streetname or customer.getAddress().getStreetName()</tt>.</p>
+<p>You cannot use the boolean values returned by such variables as a comparison
+result, which means you cannot define your comparison like this:</p>
+<pre>customer.getListOfLicenses().isEmpty</pre>
+<p>Instead, you define it as:</p>
+<pre>customer.getListOfLicenses().isEmpty = TRUE</pre>
+
+<h3>Arithmetic Operators</h3>
+<p>Arithmetic operators produce numeric values; their operands can be numeric
+literals and fields defined as variables in the model represented by numeric types.</p>
+<table>
+    <tr>
+        <td rowspan="1" colspan="1">+</td>
+        <td rowspan="1" colspan="1">Addition, unary plus</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">-</td>
+        <td rowspan="1" colspan="1">Subtraction, unary minus</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">*</td>
+        <td rowspan="1" colspan="1">Multiplication</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">/</td>
+        <td rowspan="1" colspan="1">Division</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">%</td>
+        <td rowspan="1" colspan="1">Modulo (remainder)</td>
+    </tr>
+</table>
+
+
+<h3>Relational Operators</h3>
+<p>Relational operators produce boolean values. Equality and inequality operators
+can compare two expressions of the same supported type. The other operators can compare
+numeric, character and string types only.</p>
+<table>
+    <tr>
+        <td rowspan="1" colspan="1">=</td>
+        <td rowspan="1" colspan="1">Equality</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">!=</td>
+        <td rowspan="1" colspan="1">Inequality</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">&gt;</td>
+        <td rowspan="1" colspan="1">Greater than</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">&lt;</td>
+        <td rowspan="1" colspan="1">Less than</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">&gt;=</td>
+        <td rowspan="1" colspan="1">Greater than or equal to</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">&lt;=</td>
+        <td rowspan="1" colspan="1">Less than or equal to</td>
+    </tr>
+</table>
+<p>Equality and inequality operators are also used to compare strings. In this case
+comparisons are case-sensitive and consider entire strings.</p>
+
+
+<h3>Logical Operators</h3>
+<p>Logical operators take boolean operands and return boolean values. Typical
+operands are expressions that use relational operators.</p>
+<table>
+    <tr>
+        <td rowspan="1" colspan="1">AND</td>
+        <td rowspan="1" colspan="1">Conjunction</td>
+    </tr>
+    <tr>
+        <td rowspan="1" colspan="1">OR</td>
+        <td rowspan="1" colspan="1">Disjunction</td>
+    </tr>
+    <tr>
+        <td>OTHERWISE</td>
+        <td>Disjunction - takes the first operand if it evaluates to a true value,
+        and the second operand otherwise.</td>
+    </tr>
+</table>
+<p>The words AND, OR and OTHERWISE are reserved words in the language. In complex
+predicates, including multiple logical operators, use parentheses to define the precedence
+of each of these operators. There is no NOT operator provided but instead of <tt>NOT
+nameArray.isEmpty()</tt> you may use <tt>nameArray.isEmpty() = FALSE</tt>.</p>-->
+<h4>Transitions in the Eclipse Modeler</h4>
+<p>A transition in the Eclipse modeler is rendered as a blue line with an arrow indicating the transition
+direction.</p>
+<p class="image"><img src="images/mg-basics-11.jpg" alt=""></p>
+<p>Refer to chapter
+<a href="../../handbooks/modelling/mg-defdesk-5.htm">Working with Transitions</a> 
+for details on using transitions in the Eclipse modeler.</p>
+<h4>Sequence Flow in the Business Process Modeler</h4>
+<p>A sequence flow in the Business Process modeler is rendered as a gray line with an arrow indicating the transition
+direction.</p>
+<p>Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-con-sequence.htm">
+Working with Sequence Flows</a> for details on using sequence flow in the Business Process 
+Modeler.</p>
+<p class="image"><img src="images/sequence-flow-bpm.png" alt=""></p>
+<h3 id="gateways">Gateways</h3>
+<p>Gateways are used to control sequence flow. Diamond-shaped rectangles represent 
+these gateways. Gateways controlling outgoing sequence flow are called <strong>splits</strong>.
+They are modeling constructs for choices or parallel activities. 
+Gateways controlling ingoing sequence flow are called <strong>joins</strong>.
+These are modeling constructs to merge parallel parts of the flow.</p>
+<p>Refer to chapters
+<a href="../../handbooks/modelling/activities/act-control-flow.html">
+Specifying Activity Control Flow</a> and
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-gateways.htm">
+Working with Gateways</a> for details on working with gateways in the
+Eclipse modeler and Business Process modeler accordingly.</p>
+
+<h3 id="impl">Implicit Process Completion</h3>
+<p>A process instance is completed when all activity instances are completed and no
+new activity instances can be created. This is called implicit process completion.</p>
+<p>See also the section <a href="#start">Start Events</a> for more details on triggering 
+a process.</p>
+<h2 id="splits">Splits</h2>
+<p>Splits are opening connectors. They determine the splitting behavior after a task.</p>
+<p>The following variants exist for splits:</p>
+<table class="autoWidth">
+   <tr>
+      <th>Split Type</th>
+      <th>Icon in the Eclipse Modeler</th>
+      <th>Icon in the Business Process Modeler</th>
+   </tr>
+   <tr>
+      <td class="center"><strong>XOR</strong></td>
+      <td class="center"><img class="noborder" src="images/split-xor-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/split-xor-icon-web.png" alt=""></td>
+   </tr>
+   <tr>
+      <td class="center"><strong>AND</strong></td>
+      <td class="center"><img class="noborder" src="images/split-and-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/split-and-icon-web.png" alt=""></td>
+   </tr>
+   <tr>
+      <td class="center"><strong>OR</strong></td>
+      <td class="center"><img class="noborder" src="images/split-or-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/split-or-icon-web.png" alt=""></td>
+   </tr>
+</table>
+<p>Refer to section <a href="#sfhandling">Modes of Split and Join Handling</a> for details 
+on the different handling variants of splits.</p>
+<h2 id="joins">Joins</h2>
+<p>Joins are closing connectors. They determine the joining behavior before a task.</p>
+<p>The following variants exist for joins:</p>
+<table class="autoWidth">
+   <tr>
+      <th>Join Type</th>
+      <th>Icon in the Eclipse Modeler</th>
+      <th>Icon in the Business Process Modeler</th>
+   </tr>
+   <tr>
+      <td class="center"><strong>XOR</strong></td>
+      <td class="center"><img class="noborder" src="images/join-xor-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/join-xor-icon-web.png" alt=""></td>
+   </tr>
+   <tr>
+      <td class="center"><strong>AND</strong></td>
+      <td class="center"><img class="noborder" src="images/join-and-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/join-and-icon-web.png" alt=""></td>
+   </tr>
+   <tr>
+      <td class="center"><strong>OR</strong></td>
+      <td class="center"><img class="noborder" src="images/join-or-icon.png" alt=""></td>
+      <td class="center"><img class="noborder" src="images/join-or-icon-web.png" alt=""></td>
+   </tr>
+</table>
+<p>Refer to section <a href="#sfhandling">Modes of Split and Join Handling</a> for details 
+on the different handling variants of joins.</p>
+
+<h2 id="sfhandling">Modes of Split and Join Handling</h2>
+<p>The following modes of split and join handling are provided in 
+a Stardust control flow:</p>
+<ul>
+   <li><a href="#spjxor">Exclusive Flow (XOR)</a></li>
+   <li><a href="#spjand">Parallel Flow (AND)</a></li>
+   <li><a href="#spjor">Conditional Parallel Flow (OR)</a></li>
+</ul>
+<h3 id="spjxor">Exclusive Flow (XOR)</h3>
+<h4 id="xorsplit">XOR Splits</h4>
+<p>An XOR-split indicates a decision point where only the first transition
+is instantiated that condition evaluates to <tt>true</tt>. 
+In the Eclipse modeler, the evaluation order corresponds
+to the order of transitions listed in the XOR split properties.</p>
+<p>After the gateway exactly one activity thread is performed. You should make sure
+that always at least one transition evaluates to true, e.g. by providing an alternative default
+flow. If no condition evaluates to <tt>true</tt>, this default flow will be taken.</p>
+<h4>Example XOR split</h4>
+<p>Suppose a document should be sent to a customer. It should be decided if it 
+will be send via fax or e-mail. If none of these options is possible, an alternative
+way of providing the document should be found.</p>
+<p>Assume the sequence flow to the activity to send via fax internally has a 
+higher order than the sequence flow to the activity to send via Email. If an 
+employee gets the document and decides to send it via fax and another decision 
+is taken to send it via E-mail, the document gets sent via fax and the sequence
+flow to send via Email is ignored.</p>
+<p class="image"><img src="images/xor-split-ex.png" alt=""><br>
+<strong>Figure:</strong> XOR Split usage example</p>
+<h4 id="xorjoin">XOR Joins</h4>
+<p>An XOR-join waits and instantiates a new join activity instance for each active incoming transition.
+If XOR joins are combined with split types other than XOR, 
+multiple incoming transitions may be instantiated at runtime.</p>
+
+<h4>Example XOR join</h4>
+<p>If not the alternative flow was taken, exactly one of the send options 
+has been taken and performed. The XOR join waits until one of the
+activities has been completed and then proceeds with the workflow.</p>
+<p class="image"><img src="images/xor-join-ex.png" alt=""><br>
+<strong>Figure:</strong> XOR Join usage example</p>
+
+<h3 id="spjand">Parallel Flow (AND)</h3>
+<h4 id="andsplit">AND Splits</h4>
+<p>An AND split indicates the start of a parallel workflow processing. 
+Usually AND splits are used for unconditional parallel flow.
+All outgoing transitions get activated simultaneausly and are processed in 
+parallel threads. Each outgoing transition is 
+instantiated exactly once.<p>
+
+<h4>Example AND split</h4>
+<p>If you like to prepare a meal with salad and meat, you have to prepare the salad as well as to fry the meat. 
+This could be done in parallel threads.</p>
+<p class="image"><img src="images/and-split-ex.png" alt=""><br>
+<strong>Figure:</strong> AND Split usage example</p>
+<!-- exception (meat is burned etc. salad drops) -->
+<h4 id="andjoin">AND Joins</h4>
+<p>AND joins require tokens in all the conditions preceding the
+AND join to enable the execution of the subsequent task.
+It waits for all incoming transitions before the join activity instance
+is instantiated.</p>
+
+<h4>Blocking conditions</h4>
+<p>An AND join will block indefinitely in the following cases:</p>
+<ul>
+   <li>one or more multiple incoming transitions cannot be traversed (e.g. due to blocking transition conditions)</li>
+   <li>the AND join is combined with an XOR split that will only instantiate one transition</li>
+</ul>   
+<h4>Example AND join</h4>
+<p>Taking the example above for using AND splits. The intention is to prepare a meal with salad 
+<strong>and</strong> meat.
+You have done both in parallel, prepared the salad and fried the meat. For example if the salad is prepared, but
+the meat not fried yet, you do not start dinner. Once both actions are done, you can eat the dinner.</p>
+<p class="image"><img src="images/and-join-ex.png" alt=""><br>
+<strong>Figure:</strong> AND Join usage example</p>
+<!-- exception -->
+
+<h3 id="spjor">Conditional Parallel Flow (OR)</h3>
+<h4 id="orsplit">OR Splits</h4>
+<p>OR splits in Stardust are similar to AND splits, but using conditional sequence flow.
+Using an OR split you can have multiple outgoing conditional sequence flows.
+All outgoing sequence flow conditions will be evaluated. 
+For the sequence flow conditions that evaluate to <tt>true</tt> the sequence flows are 
+followed in concurrent execution.</p>
+<p>Use OR splits if you want to perform one or more activities based on specific conditions.
+Create an alternative default sequence flow to follow for the case that none of the specified conditions
+of all sequence flows evaluate to <tt>true</tt>. If no condition evaluates to <tt>true</tt>
+and no default flow is available, the gateway blocks.</p>
+<h4>Example OR split</h4>
+<p>You like to prepare your dinner with salad and meat, but, if one of the ingredients is not present, 
+you are also content to have dinner with only one of those.
+The conditions are to have meat and/or salad in your fridge.</p>
+<p>Now the following possibilities arise:</p>
+<ul>
+   <li>If you have salad in your fridge, you prepare the salad.</li>
+   <li>If you have meat in your fridge, you fry the meat.</li>
+   <li>If you have both, you do both.</li>   
+   <li>If you have neither salad nor meat, you need an alternative and go out for dinner.</li>
+</ul>
+<p class="image"><img src="images/or-split-ex.png" alt=""><br>
+<strong>Figure:</strong> OR Split usage example</p>
+<h4 id="orjoin">OR Joins</h4>
+<p>OR joins used in Stardust basically are equal to AND joins. They both wait
+for all incoming tokens to be evaluated.</p>
+<p>If one condition evaluates to <tt>true</tt> this does not exclude the evaluation of the other 
+conditions. All sequence flows which evaluate to <tt>true</tt> will be traversed by a token.
+All incoming sequence flow arriving at the inclusive gateway wait in the 
+gateway until an execution has arrived for each of the incoming sequence flows that 
+have a process token.</p>
+<p>The join is instantiated when all active transitions have reached the OR join gateway.
+The possibility of incoming transitions that still arrive or not is dynamically recalculated
+at each activity processing step. This takes into account:
+<ul>
+   <li>Transitions conditions along the way</li>
+   <li>Additional splits and joins between the corresponding split and join gateway</li>
+</ul>
+<!--    "Token algorithm" -->
+<!--       Needs example -->
+      
+<!-- Has potential for vicious circles -->
+
+<h4>Example OR join</h4>
+<p>Let us look at the example above for using OR splits.
+The intention is to prepare dinner with salad and meat, or, if not present, only one of those.
+If at least one of the conditions that you have either salad or meat or both in the fridge, is 
+fulfilled, you have either prepared salad or fried meat or done both. Thus, the following process is
+to eat dinner at home.</p>
+<p class="image"><img src="images/or-join-ex.png" alt=""><br>
+<strong>Figure:</strong> OR Join usage example</p>
+
+<h2 id="pattern">Common Patterns</h2>
+<ul>
+   <li><a href="#excl">Selecting exclusive Alternatives</a></li>
+   <li><a href="#actpara">Processing several Activities in parallel</a></li>
+   <li><a href="#actoptpara">Processing several potential optional Activities in parallel</a></li>
+</ul>
+<p></p>
+<h3 id="excl">Selecting exclusive Alternatives</h3>
+<p>The following example demonstrates a use case where an XOR split is combined with an
+XOR join.</p>
+<p>Similar to the XOR split and join example above, documents should be send 
+via fax or mail. Altogether there are three alternatives, from which only one is
+taken:</p>
+<ul>
+   <li>the documents are sent via fax</li>
+   <li>or the documents are sent via mail</li>
+   <li>or - if none of these options is chosen - an alternative action is performed</li>
+</ul>
+<p>Once one of the transition conditions to send via fax or via mail is evaluated to <tt>true</tt>,
+the according activity is performed. No further transitions need to be evaluated and
+the workflow continues with the activity after the XOR join.</p>
+<p class="image"><img src="images/xor-join-split-diagram.png" alt=""><br>
+<strong>Figure:</strong> Exclusive Alternative Example</p>
+<h3 id="actpara">Processing several Activities in parallel</h3>
+<p>To process several activities in parallel, you can use a combination 
+of AND splits and joins.</p>
+<p>An alternative to using several activities to be processed in parallel
+is to use multiple instance activities. Refer to chapter
+<a href="../multi-instance.html">Using Multiple Instance Activities</a> for details.</p>
+<h4>Using AND split and AND join example</h4>
+<p>To send the documents mentioned in the example above via both options,
+fax and email, you can use an AND join and split combination. Both actions are 
+done in parallel and the join gateway waits until both actions are completed 
+before continuing with the subsequent activity to confirm the sending.</p>
+<p class="image"><img src="images/and-join-split-diagram.png" alt=""><br>
+<strong>Figure:</strong> AND split and AND join example</p>
+<p>Note that in case one of the activities fails, a locking conflict might occur
+at the join.</p>
+<!-- <h4>Locking conflicts at the join</h4> -->
+<!-- <p>If an activity fails, locking conflicts might occur at the join. -->
+<!-- Retry -->
+<!-- But not ideal wrt. quick processing -->
+<!-- <h4>Using OTHERWISE condition</h4> -->
+<h3 id="actoptpara">Processing several potential optional Activities in parallel</h3>
+<p>To process several activities in parallel, which are potential optional, 
+you can use a combination of OR splits and joins.</p>
+<p>An alternative to using several optional activities to be processed in parallel
+is to use multiple instance activities. Refer to chapter
+<a href="../multi-instance.html">Using Multiple Instance Activities</a> for details.</p>
+<h4>Inclusive OR split and join combination example</h4>
+<p>This example demonstrates a simple usage of an inclusive gateway.
+Similar to the example above documents should be sent, but in this example
+there is the option to send them either via fax, or e-mail or both.</p>
+<p>In the first activity the user imports the forms and decides the type of sending.
+We use an OR-split to two following activities, one for sending via e-mail and one for 
+sending via fax. The transitions to these activities have conditions to decide whether the 
+according send type is selected by the user.</p>
+<p>The last activity has an OR join to merge these activities.</p>
+<p>To prevent a blocking of the workflow in case the user will not send the forms at all,
+we also create an alternative flow.
+For this we use the <tt>OTHERWISE</tt> condition to an alternative activity, 
+which notifies that the forms were not sent.</p>
+<p class="image"><img src="images/incl-gateway-example.png" alt="Example"><br>
+<strong>Figure:</strong> Inclusive Gateway Usage Example</p>
+<p>The possible execution types of the above business process are:</p>
+<ul>
+   <li>the forms are delivered per e-mail</li>
+   <li>the forms are delivered per fax</li>
+   <li>the forms are delivered per e-mail and fax</li>
+   <li>the forms are not delivered (alternative behavior)</li>
+</ul>
+
+<h2 id="avoid">Scenarios to avoid</h2>
+<p>Special care should be taken when using parallel or AND gateways to avoid
+deadlocks. The following sections show some typical scenarios causing deadlocks.</p>
+<ul>
+   <li><a href="#vali">Deadlocks caused by Vicious Circles</a></li>
+   <li><a href="#nogo">Nonmatching Split and Join Gateways</a></li>
+</ul>
+
+<h3 id="vali">Deadlocks caused by Vicious Circles</h3>
+<p>Vicious circles, e.g. like the one in the following screenshot, can produce deadlocks.
+They are detected in the modeler as well as during deployment.</p>
+<p class="image"><img src="images/vicious-circle.png" alt="Vicious Circle Example"><br>
+<strong>Figure:</strong> Vicious Circle Example</p>
+<p>In the Eclipse modeler, a warning is indicated for the process containing the potential
+deadlock. You can view details in the <strong>Problems</strong> view.</p>
+<p class="image"><img src="images/vicious-circle-warning.png" alt="Deadlock warning"><br>
+<strong>Figure:</strong> Deadlock warning in the Problems view</p>
+<p>During model deployment, a warning dialog opens to indicate a potential deadlock
+in the process definition between specific activities.</p>
+<p class="image"><img src="images/deadlock-warning.png" alt="Deadlock warning"><br>
+<strong>Figure:</strong> Deadlock warning during deployment</p>
+<h3 id="nogo">Nonmatching Split and Join Gateways</h3>
+<p>You should avoid to use nonmatching split and join gateways that can 
+never terminate.</p>
+<h4>Example - combine XOR split with an AND join</h4>
+<p>Combine an XOR split with an AND join. The sequence flow which evaluates to <tt>true</tt>
+and has the highest order is followed only, but the AND join still waits for all incoming tokens
+and thus cannot continue.</p>
+<p>In the following example, even if both options to send per fax and to send per mail are chosen,
+only one of the sequence flows is traversed and we face a deadlock at the join gateway.
+The join gateway requires that all incoming sequence flows must be completed before continuing.</p>
+<p class="image"><img src="images/xor-and-nogo-ex.png" alt=""><br>
+<strong>Figure:</strong> Nonmatching Split and Join Gateways</p>
+
+<!-- <p class="image"><img src="images/or-or-example.png" alt=""><br> -->
+<!-- <strong>Figure:</strong> Inclusive Gateway usage example</p> -->
+<!-- <p class="image"><img src="images/and-and-example.png" alt=""><br> -->
+<!-- <strong>Figure:</strong> AND Split and Join example</p> -->
+
+
+<!-- JOining regular flow and exception flow -->
+<!-- OR joins combined with exception flow  -->
+<h2 id="exception">Exception Flow combined in Inclusive Flow</h2>
+<p>If an exception handling is added to an activity in an inclusive control flow,
+even in case an exception is thrown and the exception handler is activated, 
+all sequence flows which evaluate to <tt>true</tt>
+are still performed and completed in parallel.</p>
+<p>In our example for sending documents per fax or Email, we add the case that
+the fax progress fails. We add an exception handling to the activity for sending by fax.
+If we cannot send per fax, but additionally have chosen to send by Email, the documents
+are sent by Email and the exception handling for the failed fax (e.g. a notification) is
+also performed.</p>
+<p class="image"><img src="images/or-exception-behavior.png" alt=""><br>
+<strong>Figure:</strong> Exception flow in an inclusive flow</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

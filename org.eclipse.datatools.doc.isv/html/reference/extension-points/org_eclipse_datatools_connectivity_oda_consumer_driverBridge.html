@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DTP ODA Consumer Helper Driver Bridge</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">DTP ODA Consumer Helper Driver Bridge</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.connectivity.oda.consumer.driverBridge<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>3.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This ODA consumer helper component's extension point supports the use of a custom ODA driver bridge.  An extension would specify a run-time driver bridge that extends the consumer helper, and/or servers as an adapter to underlying data provider objects that do not implement the org.eclipse.datatools.connectivity.oda interfaces.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.bridge">bridge</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.bridge">bridge</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST bridge</p>
+<p class="code SchemaDtdAttlist">driverType&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">bridgeId&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Defines the custom driver bridge for a type of driver.</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>driverType</b> - The type of an underlying data driver for which an ODA driver bridge is applied.  It can be either the interface name or class name of the driver.  A bridge defined for a driver class takes precedence over those defined for a driver's interface(s).</li>
+<li><b>bridgeId</b> - The ODA data source element id of the driver bridge extension that adapts the ODA runtime interfaces for a data driver, and implements the ODA data source extension point <i>org.eclipse.datatools.connectivity.oda.dataSource</i>.
+<br>Its driver bridge extension's <i>driverClass</i> is the concrete class that serves as the custom bridge's entry point.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>The driver bridge must implement the runtime interfaces defined in the <i>org.eclipse.datatools.connectivity.oda</i> package. See the package's JavaDoc documentation and API interfaces for more information.
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+Copyright (c) 2006 Actuate Corporation.
+All rights reserved. This program and the accompanying materials are made available under the  terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+
+</p>
+</BODY>
+</HTML>

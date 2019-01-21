@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>Launching Message Transformations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Debugging Message Transformations",
+    "xsl-message-transformation-appl.html","debug-message-transformations.html",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../mg-preface.htm","Modeling Guide",
+        "../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+<h1>Launching Message Transformations</h1>
+<p>A launch configuration in Eclipse describes all parameters required to start
+a program or run a test. Launch configurations are stored with an Eclipse workspace,
+but can also be shared with others.</p>
+<p>Stardust provides two launch configurations for testing
+and debugging message processing scenarios:</p>
+<ul>
+    <li><a href="#parsing">Parsing and Serialization Launch Configuration</a></li>
+    <li><a href="#trans">Transformation Launch Configuration</a></li>
+</ul>
+<p>Transformations launch configurations rely on parsing launch configurations
+to create input messages for the transformation.</p>
+<h2 id="parsing">Parsing and Serialization Launch Configuration</h2>
+<p>The Parsing and Serialization Launch configuration 
+<strong>Message Processing Test</strong> describes:</p>
+<ul>
+    <li>the message structure (process model and data structure ID) of the
+        message to be parsed,</li>
+    <li>the message format (e.g. SWIFT),</li>
+    <li>the input file containing the message in the selected format.</li>
+</ul>
+<p>Launching a test based on this configuration parses the file content into a
+canonical DOM structure in memory and optionally serializes this DOM structure
+on the screen or in a file. For that serialization another serialization format
+than XML can be selected. This way serialization can be tested as well with
+this configuration.</p>
+<p>To create a new launch configuration:</p>
+<ol>
+    <li>In the main menu select <strong>Open Run Dialog</strong>.</li>
+</ol>
+<p class="image"><img src="images/open-run-dialog.png"></p>
+<ol start="2">
+    <li>In the run dialog select <strong>Message Processing Test</strong>.</li>
+    <li>Press the button <strong>Add</strong> button to add a new launch 
+        configuration: </li>
+</ol>
+<p class="image"><img src="images/add-new-run-config.png"></p>
+<ol start="5">
+    <li>In the <strong>Message Processing Test Configuration</strong> pane enter
+    the properties as described in the following section.</li>
+</ol>
+<h3>Message Processing Test Configuration</h3>
+<p>The following settings can be performed in the <strong>Message Processing
+Test Configuration</strong> pane:</p>
+<ul>
+    <li><a href="#structDataConf">Structured Data Selection</a></li>
+    <li><a href="#parsConf">Parsing</a></li>
+    <li><a href="#serialConf">Serialization</a></li>
+    <li><a href="#valiConf">Validation</a></li>
+</ul>
+
+<h4 id="structDataConf">Structured Data Selection</h4>
+<p>In the <strong>Structured Data Selection</strong> pane you can select the
+project and model where the structured data is stored and the structured data
+to be read as source.</p>
+<p class="image"><img src="images/run-config-struct-data.png" 
+alt="Structured Data Selection"><br>
+<strong>Figure:</strong> Enter Structured Data Selection.</p>
+<h4 id="parsConf">Parsing</h4>
+<p>In the <strong>Parsing</strong> pane select the source message file and the 
+source message format:</p>
+<p class="image"><img src="images/run-config-parsing.png" 
+alt="Parsing"><br>
+<strong>Figure:</strong> Enter Source Message File and Format for Parsing.</p>
+<p class="note"><strong>Note</strong><br>
+In case your process model is a consumer model and referring to structured data in a provider model,
+you need to import the related composite type manually. Export the composite type from the provider model as
+XSD file and then import it to the consumer model by using the <strong>Import Types</strong> option.</p>
+<h4 id="serialConf">Serialization</h4>
+<p>You have to enable the <strong>Test Serialization</strong> option to 
+be able to test the configuration. In the <strong>Target Message File</strong> field 
+enter or browse to the message file, where you want your parsed message output to be
+stored. Select the format of the output message in the <strong>Target Message Format</strong>
+entry.</p>
+<p class="image"><img src="images/run-config-serialization.png" 
+alt="Serialization"><br>
+<strong>Figure:</strong> Enter Target Message File and Format for Serialization.</p>
+<p>In case you want to view your output message on the screen, enable the
+<strong>Screen Output</strong> checkbox. The output message is then displayed 
+in the <strong>Console</strong> view, which you can open via the main menu entry
+<strong>Window &gt; Show View &gt; Console</strong>. In that case, the <strong>Target Message
+File</strong> entry will be disabled.</p>
+<p class="image"><img src="images/run-config-screen-output.png" 
+alt="Enabled Screen Output"><br>
+<strong>Figure:</strong> Enabled Screen Output</p>
+<h4 id="valiConf">Validation</h4>
+<p>In the <strong>Validation</strong> part it is possible to choose the validation
+options to check field validation rules or message validation rules:</p>
+<p class="image"><img src="images/run-config-validation.png" 
+alt="Validation"><br>
+<strong>Figure:</strong> Choose Validation Options.</p>
+
+<h2 id="trans">Transformation Launch Configuration</h2>
+<p>Based on message processing configurations, created beforehand, you can parse messages
+in the Message Transformation launcher. Therefore you have to create
+a new launch configuration, the <strong>Message Transformation Test</strong>
+configuration:</p>
+<ol>
+    <li>In the main menu select <strong>Open Run Dialog</strong>.</li>
+</ol>
+<p class="image"><img src="images/open-run-dialog.png"></p>
+<ol start="2">
+    <li>In the run dialog select <strong>Message Transformation Test</strong>.</li>
+    <li>Press the button <strong>Add</strong> button to add a new launch 
+        configuration: </li>
+</ol>
+<p class="image"><img src="images/add-new-run-config-trans.png"></p>
+<ol start="5">
+    <li>In the <strong>Message Transformation Test Configuration</strong> pane
+    enter the properties described in the following section.</li>
+</ol>
+<h3>Message Transformation Test Configuration</h3>
+<p>The following settings can be performed in the <strong>Message Transformation
+Test Configuration</strong> pane:</p>
+<ul>
+    <li><a href="#transformationConf">Transformation Selection</a></li>
+    <li><a href="#inputMessConf">Input Messages</a></li>
+</ul>
+<h4 id="transformationConf">Transformation Selection</h4>
+<p>In the Transformation Selection pane you can enter the project name, a process
+model and the message transformation application:</p>
+<p class="image"><img src="images/run-config-transformation.png" 
+alt="Transformation Selection"><br>
+<strong>Figure:</strong> Transformation Selection</p>
+<p>To choose the model, select the <strong>Browse</strong> button. A dialog 
+will open with a list of available models:</p>
+<p class="image"><img src="images/run-config-choose-model.png" 
+alt="Open Resource"><br>
+<strong>Figure:</strong> Select a Resource to open.</p>
+<h4 id="inputMessConf">Input Messages</h4>
+<p>In the input messages part all available input message ids and according message
+ types are displayed:</p>
+<p class="image"><img src="images/run-config-input-messages.png" 
+alt="Input Messages"><br>
+<strong>Figure:</strong> Input Messages</p>
+<p>In the launch configuration id part, choose the configuration you want to use for the
+parsing from a list with previously created message processing configurations:</p>
+<p class="image">
+<img src="images/debug-config-list.png" alt="Provided Launch Configurations"><br>
+<strong>Figure:</strong> Provided Launch Configurations</p>
+
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

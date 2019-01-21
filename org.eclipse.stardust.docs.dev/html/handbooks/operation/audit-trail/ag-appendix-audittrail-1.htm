@@ -1,0 +1,2806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>The Repository Model</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Technical Requirements to the Database Schema",
+	"","ag-appendix-audittrail-2.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-audittrail.html","Audit Trail Model");
+ -->
+</script>
+<h1>The Repository Model</h1>
+<p>The schema of the model and audit trail database is your basis
+for manifold operations including performing controlling and reporting
+tasks or writing embedding applications. The tables defined in the audit
+trail database comprise both tables storing audit trail data as well as
+tables storing model information.</p>
+<ul>
+	<li><a href="#tables">The Tables</a></li>
+	<li><a href="#tableusage">Example Usage of Tables</a></li>
+	<li><a href="#timestamp">Examples for Checking Timestamps in the Audit Trail</a></li>
+</ul>
+<h2 id="tables">The Tables</h2>
+<p>A suffix <tt>_DEFINITION</tt> always identifies tables designed
+for model information whereas the suffix/infix <tt>_INSTANCE</tt> or <tt>_INST</tt>
+always marks the audit trail specific tables. All tables have OIDs as
+the primary key. In the case of model elements it is a 64 bit identifier
+having the high 32 bits identifying the model and the low 32 bits
+identifying the element within the model context. An OID is always
+unique within the element scope. An OID for runtime elements on the
+contrary is like a counter, starting at 1 in each table. Timestamp
+format uses the number of ms (milliseconds) elapsed starting from
+1.1.1970. Note that Stardust stores data as long values in the audit trail. 
+The following sections provide tables with the
+corresponding columns forming the Stardust repository model.</p>
+<ul>
+    <li class="expand" onclick="openClose(this, 'table')">
+    <strong>Table Overview</strong></li>
+    <li class="noicon" id="table" style="display: none;">
+    <ul>
+    <li><a href="#act_inst_hist">ACT_INST_HISTORY TABLE</a></li>
+    <li><a href="#act_inst_prop">ACT_INST_PROPERTY TABLE</a></li>
+	<li><a href="#activity">ACTIVITY TABLE</a></li>
+	<li><a href="#act_inst_log">ACTIVITY_INST_LOG TABLE</a></li>
+    <li><a href="#act_inst">ACTIVITY_INSTANCE TABLE</a></li>
+    <li><a href="#act_inst_lck">ACTIVITY_INSTANCE_LCK TABLE</a></li>
+	<li><a href="#clob">CLOB_DATA TABLE</a></li>
+	<li><a href="#daemon_log">DAEMON_LOG TABLE</a></li>
+	<li><a href="#data">DATA TABLE</a></li>
+    <li><a href="#data_value">DATA_VALUE TABLE</a></li>
+    <li><a href="#data_value_lck">DATA_VALUE_LCK TABLE</a></li>
+	<li><a href="#dep">DEPARTMENT TABLE</a></li>
+	<li><a href="#dep_hier">DEPARTMENT_HIERARCHY TABLE</a></li>
+	<li><a href="#domain">DOMAIN TABLE</a></li>
+	<li><a href="#domain_hier">DOMAIN_HIERARCHY TABLE</a></li>
+	<li><a href="#ev_binding">EVENT_BINDING TABLE</a></li>
+    <li><a href="#ev_handler">EVENT_HANDLER TABLE</a></li>
+    <li><a href="#link_type">LINK_TYPE TABLE</a></li>
+    <li><a href="#log_entry">LOG_ENTRY TABLE</a></li>
+    <li><a href="#model">MODEL TABLE</a></li>
+    <li><a href="#model_dep">MODEL_DEP TABLE</a></li>
+    <li><a href="#model_dep_lck">MODEL_DEP_LCK TABLE</a></li>
+    <li><a href="#model_ref">MODEL_REF TABLE</a></li>
+    <li><a href="#participant">PARTICIPANT TABLE</a></li>
+    <li><a href="#partition">PARTITION TABLE</a></li>
+    <li><a href="#preferences">PREFERENCES TABLE</a></li>
+    <li><a href="#procinst_link">PROCINST_LINK TABLE</a></li>
+    <li><a href="#procinst_prop">PROC_INST_PROPERTY TABLE</a></li>
+    <li><a href="#proc_def">PROCESS_DEFINITION TABLE</a></li>
+    <li><a href="#proc_inst">PROCESS_INSTANCE TABLE</a></li>
+    <li><a href="#proc_inst_lck">PROCESS_INSTANCE_LCK TABLE</a></li>
+    <li><a href="#proc_trigger">PROCESS_TRIGGER TABLE</a></li>
+    <li><a href="#procinst_hier">PROCINST_HIERARCHY TABLE</a></li>
+    <li><a href="#procinst_scope">PROCINST_SCOPE TABLE</a></li>
+    <li><a href="#property">PROPERTY TABLE</a></li>
+    <li><a href="#string_data">STRING_DATA TABLE</a></li>
+    <li><a href="#struct_data">STRUCTURED_DATA TABLE</a></li>
+    <li><a href="#struct_data_val">STRUCTURED_DATA_VALUE TABLE</a></li>
+    <li><a href="#struct_data_val_lck">STRUCTURED_DATA_VALUE_LCK TABLE</a></li>
+    <li><a href="#timer_log">TIMER_LOG TABLE</a></li>
+    <li><a href="#trans_inst">TRANS_INST TABLE</a></li>
+    <li><a href="#trans_token">TRANS_TOKEN TABLE</a></li>
+    <li><a href="#trans_token_lck">TRANS_TOKEN_LCK TABLE</a></li>
+    <li><a href="#transition">TRANSITION TABLE</a></li>
+    <li><a href="#user_participant">USER_PARTICIPANT TABLE</a></li>
+    <li><a href="#user_property">USER_PROPERTY TABLE</a></li>
+    <li><a href="#user_usergroup">USER_USERGROUP TABLE</a></li>
+    <li><a href="#usergroup">USERGROUP TABLE</a></li>
+    <li><a href="#user_group_prop">USERGROUP_PROPERTY TABLE</a></li>
+    <li><a href="#wfuser_domain">WFUSER_DOMAIN TABLE</a></li>
+    <li><a href="#wfuser_realm">WFUSER_REALM TABLE</a></li>
+    <li><a href="#wfuser_session">WFUSER_SESSION TABLE</a></li>
+    <li><a href="#workflowuser">WORKFLOWUSER TABLE</a></li>
+    <li><a href="#workitem">WORKITEM TABLE</a></li>
+</ul></li>
+</ul>
+<h3 id="act_inst_hist">ACT_INST_HISTORY TABLE</h3>
+<p>This table stores audit trail data on instantiated activities and
+records worklist association intervals.</p>
+<table id="act_inst_hist_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>PROCESSINSTANCE</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key into process_instance.</td>
+    </tr>
+    <tr>
+        <td>ACTIVITYINSTANCE</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key into activity_instance.</td>
+    </tr>
+    <tr>
+        <td>STATE</td>
+        <td>INT</td>
+        <td>&nbsp;</td>
+        <td>The state the AI was in between fromTimestamp and
+        untilTimestamp. Domain is the ActivityInstanceState enumeration.</td>
+    </tr>
+    <tr>
+        <td>FROMTIMESTAMP</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>The point in time the AI entered this state.</td>
+    </tr>
+    <tr>
+        <td>UNTILTIMESTAMP</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>The point in time the AI entered the follow up state. May be
+        0 if the current state is no terminal state.</td>
+    </tr>
+    <tr>
+        <td>DOMAIN</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Included for further use. See field domain in table workitem.</td>
+    </tr>
+    <tr>
+        <td>PERFORMERKIND</td>
+        <td>INT</td>
+        <td>&nbsp;</td>
+        <td>Type discriminator for the performer field. Domain is the
+        PerformerType enumeration.</td>
+    </tr>
+    <tr>
+        <td>PERFORMER</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Designates the worklist the AI was associated with. Foreign
+        key into the workflowuser, participant or user_goup table, depending
+        on the value of performerKind.</td>
+    </tr>
+    <tr>
+        <td>DEPARTMENT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the department; may be null/0 for organizations
+        (organization with null scope).</td>
+    </tr>
+    <tr>
+        <td>ONBEHALFOFKIND</td>
+        <td>INT</td>
+        <td>&nbsp;</td>
+        <td>Type discriminator for the onBehalfOf field. Domain is the
+        PerformerType enumeration.</td>
+    </tr>
+    <tr>
+        <td>ONBEHALFOF</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Designates the predecessor non-user worklist the AI was
+        associated with. Foreign key into the workflowuser, participant or
+        user_goup table, depending on the value of onBehalfOfKind.</td>
+    </tr>
+    <tr>
+        <td>ONBEHALFOFDEPARTMENT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the department; may be null/0 for organizations
+        (organization with null scope).</td>
+    </tr>
+    <tr>
+        <td>ONBEHALFOFUSER</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the user the activity was executed on behalf of.</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Designates the user causing the AI to enter this state.
+        Foreign key into the workflowuser table.</td>
+    </tr>
+</table>
+<h3 id="act_inst_prop">ACT_INST_PROPERTY TABLE</h3>
+<p>This table stores activity instance dynamic properties.</p>
+<table id="act_inst_prop_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the property, unique within the audit trail</td>
+    </tr>
+    <tr>
+        <td>OBJECTOID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the activity instance, foreign key to
+        ACTIVITY_INSTANCE table</td>
+    </tr>
+    <tr>
+        <td>NAME</td>
+        <td>VARCHAR2</td>
+        <td>300</td>
+        <td>Property name</td>
+    </tr>
+    <tr>
+        <td>TYPE_KEY</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>Type of the data value, which can be (0) for BOOLEAN, (1) for
+        CHAR, (2) for BYTE, (3) for SHORT, (4) for INTEGER, (5) for LONG, (6)
+        for FLOAT, (7) for DOUBLE, (8) for STRING, (9) for DATE, (10) for
+        MONEY, (11) for BIG_STRING (stored in the overflow table STRING_DATA),
+        (12) for SERIALIZABLE, (13) for BIG_SERIALIZABLE (stored in the
+        overflow table STRING_DATA), (14) for PERIOD</td>
+    </tr>
+    <tr>
+        <td>NUMBER_VALUE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Stores data values with TYPE_KEY 0, 2, 3, 4, 5 or 9</td>
+    </tr>
+    <tr>
+        <td>STRING_VALUE</td>
+        <td>VARCHAR2</td>
+        <td>128</td>
+        <td>Stores data values with TYPE_KEY 1, 6, 7, 8, 10, 12 or 14</td>
+    </tr>
+    <tr>
+        <td>LASTMODIFICATIONTIME</td>
+        <td>LONG</td>
+        <td></td>
+        <td>Time stamp marking the most recent execution of the activity.</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>LONG</td>
+        <td></td>
+        <td>user who changed or created property.</td>
+    </tr>
+</table>
+<h3 id="activity">ACTIVITY TABLE</h3>
+<p>This table stores information on all activity definitions available in the
+model.</p>
+<table id="activity_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Activity's OID unique within the model</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>NUMBER</td>
+		<td></td>
+		<td>OID of the model which the activity belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>Activity's ID unique within the process</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>100</td>
+		<td>Activity's name in process definition</td>
+	</tr>
+    <tr>
+        <td>PROCESSDEFINITION</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Process definition OID, foreign key for table
+        PROCESS_DEFINITION</td>
+    </tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>Activity's description in process definition</td>
+	</tr>
+</table>
+<h3 id="act_inst_log">ACTIVITY_INST_LOG TABLE</h3>
+<p>This table stores logging information for activity instances if
+the process warehouse is active.</p>
+<table id="act_inst_log_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the log instance</td>
+	</tr>
+    <tr>
+        <td>TYPE</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>Type of the log, can be (0) for creation, (1) for activation,
+        (2) if suspended, (3) for completion, (4) for interruption and (5) for
+        abortion</td>
+    </tr>
+    <tr>
+        <td>STAMP</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the creation of the log instance</td>
+    </tr>
+	<tr>
+		<td>MODEL</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which the activity instance belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>PARTICIPANT</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the participant element in the model, reference to the
+		role or organization element in the model.</td>
+	</tr>
+	<tr>
+		<td>WORKFLOWUSER</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the workflow participant who performed the activity,
+		foreign key for table WORKFLOWUSER</td>
+	</tr>
+	<tr>
+		<td>ACTIVITYINSTANCE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Activity instance OID, foreign key for table
+		ACTIVITY_INSTANCE</td>
+	</tr>
+</table>
+<h3 id="act_inst">ACTIVITY_INSTANCE TABLE</h3>
+<p>This table stores audit trail data on instantiated activities.</p>
+<table id="act_inst_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Activity instance OID</td>
+    </tr>
+    <tr>
+        <td>STATE</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>State of the activity instance, can be (0) created, (1)
+        waiting to be processed by an application, (2) completed, (4)
+        interrupted because of an exception, (5) suspended to a user worklist,
+        (6) aborted and (7) hibernated waiting for an awakening event</td>
+    </tr>
+    <tr>
+        <td>STARTTIME</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the creation of the activity instance</td>
+    </tr>
+    <tr>
+        <td>LASTMODIFICATIONTIME</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the most recent execution of the activity</td>
+    </tr>
+    <tr>
+        <td>MODEL</td>
+        <td>NUMBER</td>
+        <td></td>
+        <td>OID of the model which the activity instance belongs to,
+        foreign key for table MODEL.</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Activity definition OID, foreign key for table ACTIVITY</td>
+    </tr>
+    <tr>
+        <td>CURRENTPERFORMER</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Role OID, foreign key for table USER_ROLE or
+        USER_ORGANISATION - can be joined to ROLEOID and ORGANISATIONOID in
+        the respective table.</td>
+    </tr>
+    <tr>
+        <td>CURRENTUSERPERFORMER</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the workflow participant to perform the activity,
+        foreign key for table WORKFLOWUSER</td>
+    </tr>
+    <tr>
+        <td>PERFORMEDBY</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the workflow participant who performed the activity,
+        foreign key for table WORKFLOWUSER</td>
+    </tr>
+    <tr>
+        <td>CURRENTDEPARTMENT</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the department of CURRENTPERFORMER,
+        foreign key for table DEPARTMENT</td>
+    </tr>
+    <tr>
+        <td>PROCESSINSTANCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the process instance which contains the activity
+        instance, foreign key for table PROCESS_INSTANCE</td>
+    </tr>
+    <tr>
+        <td>PROPERTIESAVAILABLE</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>Lookup to optimize access to properties of activity instance. If 
+        <tt>1</tt>, activity instance properties exist, otherwise no lookup in
+        <a href="#act_inst_prop">ACT_INST_PROPERTY TABLE</a> table is 
+        necessary.</td>
+    </tr>
+    <tr>
+        <td>CRITICALITY</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Holds the criticality value for an activity instance.</td>
+    </tr>
+</table>
+<h3 id="act_inst_lck">ACTIVITY_INSTANCE_LCK TABLE</h3>
+<p>This is the locking table for table ACTIVITY_INSTANCE.</p>
+<table id="act_inst_lck_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Activity instance OID</td>
+    </tr>
+</table>
+<h3 id="clob">CLOB_DATA TABLE</h3>
+<p>This table stores arbitrary string values, e.g. XML
+representations of structured data values.</p>
+<table id="clob_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the data string, unique within the audit trail</td>
+    </tr>
+    <tr>
+        <td>OWNERID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the referencing object</td>
+    </tr>
+    <tr>
+        <td>OWNERTYPE</td>
+        <td>VARCHAR(32)</td>
+        <td>&nbsp;</td>
+        <td>type of the referencing object</td>
+    </tr>
+    <tr>
+        <td>STRINGVALUE</td>
+        <td></td>
+        <td>&nbsp;</td>
+        <td>stored string value</td>
+    </tr>
+</table>
+<h3 id="daemon_log">DAEMON_LOG TABLE</h3>
+<p>This table stores the log entries in the audit trail written by
+daemons.</p>
+<table id="daemon_log_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Daemon log's OID, unique within a model</td>
+	</tr>
+	<tr>
+		<td>TYPE</td>
+		<td>VARCHAR2</td>
+		<td>100</td>
+		<td>Daemon type</td>
+	</tr>
+	<tr>
+		<td>CODE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Type of the timestamp, which can be 0 for daemon start time 1
+		for daemon last execution time</td>
+	</tr>
+	<tr>
+		<td>STAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp marking the start of a currently running daemon</td>
+	</tr>
+	<tr>
+		<td>STATE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Depending on the value in the code column, it can be:<br>
+		- the acknowledgment status for starting daemons (code = 0), (0) for
+		ok, (1) for requested and (2) for failure; - daemon execution state
+		for running daemons (code = 1), (0) for ok, (2) for warnings and (4)
+		for fatal errors</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>SHORT</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PARTITION, designating the partition
+		the model is part of.</td>
+	</tr>
+</table>
+<h3 id="data">DATA TABLE</h3>
+<p>This table stores information on the data definitions available
+in the model.</p>
+<table id="data_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Data value's OID, unique within a model</td>
+	</tr>
+    <tr>
+        <td>MODEL</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the model which the data definition belongs to ,
+        foreign key for table MODEL.</td>
+    </tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>Data definition's ID as modeled in the Stardust Process
+		Workbench.</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>100</td>
+		<td>Data definition's name.</td>
+	</tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>Data definition's description.</td>
+	</tr>
+</table>
+<h3 id="data_value">DATA_VALUE TABLE</h3>
+<p>This table stores all values of the workflow data manipulated
+during process execution.</p>
+<table id="data_value_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Data value's OID, unique within a model</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td></td>
+		<td>OID of the model which the data value belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>DATA</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the data element in the model, reference to the DATA
+		element in the model.</td>
+	</tr>
+	<tr>
+		<td>STRING_VALUE</td>
+		<td>VARCHAR2</td>
+		<td>128</td>
+		<td>Stores data values with TYPE_KEY 1, 6, 7, 8, 10, 12 or 14</td>
+	</tr>
+	<tr>
+		<td>NUMBER_VALUE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Stores data values with TYPE_KEY 0, 2, 3, 4, 5 or 9</td>
+	</tr>
+   <tr>
+      <td>DOUBLE_VALUE</td>
+      <td>DOUBLE</td>
+      <td></td>
+      <td>This column is used for ordering by numeric values.
+      It stores data values if the numeric value which is stored in column 
+      <tt>STRING_VALUE</tt> exceeds the value range defined by method <br>
+      <tt>Pair&lt;E, E&gt; DbDescriptor.getNumericSQLTypeValueBorders(Class&lt;E&gt;)</tt>
+      <br> which returns the minimum value in <tt>Pair.getFirst()</tt> and 
+      the maximum value in <tt>Pair.getSecond()</tt>. 
+      In that case this minimum or maximum value is stored in the column.</td>
+   </tr>
+	<tr>
+		<td>TYPE_KEY</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Type of the data value, which can be (-1) for NULL, (0) for
+		BOOLEAN, (1) for CHAR, (2) for BYTE, (3) for SHORT, (4) for INTEGER,
+		(5) for LONG, (6) for FLOAT, (7) for DOUBLE, (8) for STRING, (9) for
+		DATE, (10) for MONEY, (11) for BIG_STRING (stored in the overflow
+		table STRING_DATA), (12) for SERIALIZABLE, (13) for BIG_SERIALIZABLE
+		(stored in the overflow table STRING_DATA), (14) for PERIOD</td>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the process instance which uses the data instance,
+		foreign key for table PROCESS_INSTANCE</td>
+	</tr>
+</table>
+<h3 id="data_value_lck">DATA_VALUE_LCK TABLE</h3>
+<p>This is the locking table for the DATA_VALUE table.</p>
+<table id="data_value_lck_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Data value's OID, unique within a model</td>
+    </tr>
+</table>
+<h3 id="dep">DEPARTMENT TABLE</h3>
+<table id="dep_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the department. Is created automatically on department
+		creation. Unique even over different partitions.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>STRING</td>
+		<td>50</td>
+		<td>ID of the department; unique together with column
+		parentDepartment.</td>
+	</tr>
+    <tr>
+        <td>NAME</td>
+        <td>STRING</td>
+        <td>150</td>
+        <td>Name of the department.</td>
+    </tr>
+    <tr>
+        <td>DESCRIPTION</td>
+        <td>STRING</td>
+        <td>4000</td>
+        <td>Description for the department.</td>
+    </tr>
+	<tr>
+		<td>ORGANIZATION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Runtime OID of the assigned organization; RT OID for
+		organizations is identical for organizations with same ID even in
+		different model versions.</td>
+	</tr>
+    <tr>
+        <td>PARENTDEPARTMENT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the parent department, may be null/0 if top level.</td>
+    </tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the partition; partition is selected during login.</td>
+	</tr>
+</table>
+<h3 id="dep_hier">DEPARTMENT_HIERARCHY TABLE</h3>
+<table id="dep_hier_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>SUPERDEPARTMENT</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the department.</td>
+	</tr>
+	<tr>
+		<td>SUBDEPARTMENT</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of sub department.</td>
+	</tr>
+</table>
+<h3 id="domain">DOMAIN TABLE</h3>
+<table id="domain_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Primary Key, generated from sequence domain_seq.</td>
+	</tr>
+    <tr>
+        <td>ID</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Must be unique for all domains of the runtime environment.</td>
+    </tr>
+    <tr>
+        <td>DESCRIPTION</td>
+        <td>VARCHAR</td>
+        <td>4000</td>
+        <td>Description for the domain.</td>
+    </tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>SHORT</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PARTITION, designating the partition
+		the domain is part of.</td>
+	</tr>
+	<tr>
+		<td>SUPERDOMAIN</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table DOMAIN, designates the immediate parent
+		domain. Super domains must be part of the same partition. A value of
+		NULL designates the partitions default domain.</td>
+	</tr>
+</table>
+<h3 id="domain_hier">DOMAIN_HIERARCHY TABLE</h3>
+<p>This table stores information on the full ancestry of any domain.</p>
+<table id="domain_hier_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Primary Key, generated from sequence domain_hierarchy_seq.</td>
+	</tr>
+	<tr>
+		<td>SUPERDOMAIN</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table DOMAIN, designating an ancestry domain.
+		Domains are considered being ancestry domains for themselves.</td>
+	</tr>
+	<tr>
+		<td>SUBDOMAIN</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table DOMAIN, designating a child domain.</td>
+	</tr>
+</table>
+<h3 id="ev_binding">EVENT_BINDING TABLE</h3>
+<p>This table stores event binding information for bindable events.</p>
+<table id="ev_binding_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the binding, unique within the audit trail</td>
+	</tr>
+	<tr>
+		<td>OBJECTOID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the runtime instance, foreign key to ACTIVITY_INSTANCE
+		or PROCESS_INSTANCE table depending on the TYPE</td>
+	</tr>
+	<tr>
+		<td>TYPE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Type of the event handler, (1) for activity instance event
+		handlers, (2) for process instance event handlers</td>
+	</tr>
+    <tr>
+        <td>MODEL</td>
+        <td>LONG</td>
+        <td></td>
+        <td>OID of the model which the data definition belongs to ,
+        foreign key for table MODEL.</td>
+    </tr>
+	<tr>
+		<td>HANDLEROID</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Event handler id</td>
+	</tr>
+	<tr>
+		<td>BINDSTAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp when the binding was performed</td>
+	</tr>
+	<tr>
+		<td>TARGETSTAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp when the event should fire</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>SHORT</td>
+		<td></td>
+		<td>reference to entry in partition table.</td>
+	</tr>
+</table>
+<h3 id="ev_handler">EVENT_HANDLER TABLE</h3>
+<table id="ev_handler_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Primary key, generated from sequence ....</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Name of event handler.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR</td>
+		<td>50</td>
+		<td>Id of event handler. Needs to be unique.</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR</td>
+		<td>100</td>
+		<td>Name of event handler.</td>
+	</tr>
+	<tr>
+		<td>PROCESSDEFINITION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Process definition OID, foreign key for table
+		PROCESS_DEFINITION.</td>
+	</tr>
+	<tr>
+		<td>ACTIVITY</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Activity OID, foreign key for table
+		ACTIVITY.</td>
+	</tr>
+</table>
+<h3 id="link_type">LINK_TYPE TABLE</h3>
+<p></p>
+<table id="link_type_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>LONG</td>
+        <td></td>
+        <td>Primary key of the link type, generated from index LINK_TYPE_IDX1.</td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>ID of the link type.</td>
+    </tr>
+    <tr>
+        <td>DESCRIPTION</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Description</td>
+    </tr>
+    <tr>
+        <td>PARTITION</td>
+        <td>SHORT</td>
+        <td></td>
+        <td>Foreign key for table PARTITION for the partition the link type is
+        created in.</td>
+    </tr>
+    <tr>
+        <td>(LINK_TYPE_SEQ)</td>
+        <td>STRING</td>
+        <td></td>
+        <td>Link type sequence, only created if database supports sequences.</td>
+    </tr>
+</table>
+<h3 id="log_entry">LOG_ENTRY TABLE</h3>
+<p>This table stores the contents of all log entries in the audit
+trail written by the engine.</p>
+<table id="log_entry_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Log entry's OID, unique within the model</td>
+	</tr>
+	<tr>
+		<td>TYPE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Type of log, (1) for debug, (3) for info, (5) for warnings,
+		(7) for errors and (9) for fatal events</td>
+	</tr>
+	<tr>
+		<td>CODE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Server scope, (1) for process warehouse, (2) for security,
+		(3) for the engine, (4) for recovery, (5) for daemons and (6) for
+		events</td>
+	</tr>
+	<tr>
+		<td>SUBJECT</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Subject of the log entry in string form</td>
+	</tr>
+	<tr>
+		<td>STAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp, when the entry has been written</td>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the process instance which the log entry refers to,
+		foreign key for table PROCESS_INSTANCES</td>
+	</tr>
+	<tr>
+		<td>ACTIVITYINSTANCE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the activity instance which the log entry refers to,
+		foreign key for table ACTIVITY_INSTANCE</td>
+	</tr>
+	<tr>
+		<td>WORKFLOWUSER</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the workflow participant who performed the activity,
+		foreign key for table WORKFLOWUSER</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>SHORT</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PARTITION, designating the partition
+		the model is part of.</td>
+	</tr>
+</table>
+<h3 id="model">MODEL TABLE</h3>
+<p>This table stores information on model definition.</p>
+<table id="model_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the model instance in the audit trail</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>Model's ID as modeled in the Stardust Process Workbench</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Model's name</td>
+	</tr>
+	<tr>
+		<td>VALIDFROM</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Begin of the model's validity period saved as a time stamp</td>
+	</tr>
+	<tr>
+		<td>VALIDTO</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>End of the model's validity period saved as a time stamp</td>
+	</tr>
+	<tr>
+		<td>PREDECESSOR</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the predecessor model.</td>
+	</tr>
+	<tr>
+		<td>DEPLOYMENTCOMMENT</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>A comment that may be added at deployment time</td>
+	</tr>
+	<tr>
+		<td>DEPLOYMENTSTAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>The moment when the model was deployed, as a time stamp</td>
+	</tr>
+	<tr>
+		<td>VERSION</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Version number of the deployed model</td>
+	</tr>
+	<tr>
+		<td>REVISION</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Revision number of the deployed model (counts how many times
+		that version was changed)</td>
+	</tr>
+	<tr>
+		<td>DISABLED</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>(1) to mark a model as disabled, (0) otherwise</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>SHORT</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PARTITION, designating the partition
+		the model is part of.</td>
+	</tr>
+</table>
+<h3 id="model_dep">MODEL_DEP TABLE</h3>
+<p>This table contains the deployment history.</p>
+<table id="model_dep_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>	
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Unique identifier for each deployment operation. It is the primary key.</td>
+	</tr>
+	<tr>
+		<td>DEPLOYER</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The OID of the user performing the deployment. Foreign key into the WORKFLOWUSER table.</td>
+	</tr>
+	<tr>
+		<td>DEPLOYMENTTIME</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The deployment time (timestamp, milliseconds since 1.Jan.1970).</td>
+	</tr>	
+	<tr>
+		<td>VALIDFROM</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The moment from which the deployed model became valid (timestamp, milliseconds since 1.Jan.1970).</td>
+	</tr>	
+	<tr>
+		<td>VALIDTO</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Until the deployment model is valid (timestamp, milliseconds since 1.Jan.1970).</td>
+	</tr>
+		<tr>
+		<td>DISABLED</td>
+		<td>Number</td>
+		<td>&nbsp;</td>
+		<td> 1 if the model is deployed disabled or 0 if the model is deployed enabled.</td>
+	</tr>
+		<tr>
+		<td>DEPLOYMENTCOMMENT </td>
+		<td>VARCHAR</td>
+		<td>255</td>
+		<td>The comment associated with the deployment operation.</td>
+	</tr>
+</table>	
+<h3 id="model_dep_lck">MODEL_DEP_LCK TABLE</h3>
+<p>This table is the locking table for the MODEL_DEP table.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Unique identifier for each deployment operation.</td>
+    </tr>
+</table>
+<h3 id="model_ref">MODEL_REF TABLE</h3>
+<p>This table describes reference links between model versions. For each external model reference a table entry 
+is created. If a model references n models then n entries are created. The entries are created at deployment time.
+For example, If a model A with OID 1234 which references a model B with OID 3456 is deployed, an additional table 
+entry is created where CODE=0, MODELOID=1234, ID=(model-id), REFOID=3456, DEPLOYMENT=(increment).
+</p>
+<table id="model_ref_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>	
+	<tr>
+		<td>CODE</td>
+		<td>Number</td>
+		<td>&nbsp;</td>
+		<td>Specifies the type of the entry. Can be 0 for uses relationship or 1 for implements relationship.</td>
+	</tr>	
+	<tr>
+		<td>MODELOID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Depending on the code, it is either the using model OID or the interface OID.</td>
+	</tr>	
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR</td>
+		<td>255</td>
+		<td>Depending on the code, it is either the used model ID, or the ID of the model providing the primary implementation.</td>
+	</tr>
+	<tr>
+		<td>REFOID </td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td> Depending on the code, it is either the resolved model OID, or the runtime OID of the process definition defining the process interface.</td>
+	</tr>
+	<tr>
+		<td>DEPLOYMENT</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The deployment sequence number. Foreign key into the MODEL_DEP table.</td>
+	</tr>
+</table>
+
+<h3 id="participant">PARTICIPANT TABLE</h3>
+<p>This table stores information on all participants available in
+the model.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Particpant's OID, unique within the model</td>
+	</tr>
+    <tr>
+        <td>MODEL</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the model which the participant belongs to, foreign
+        key for table MODEL</td>
+    </tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>ID of the participant as modeled in the Stardust Process
+		Workbench.</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>100</td>
+		<td>Name of the participant.</td>
+	</tr>
+    <tr>
+        <td>TYPE</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>The type of the participant (role, user etc.).</td>
+    </tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>Participant's description</td>
+	</tr>
+</table>
+<h3 id="partition">PARTITION TABLE</h3>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>SHORT</td>
+		<td>&nbsp;</td>
+		<td>Primary Key, generated from sequence partition_seq. Supports
+		a maximum of 2^16 distinct partitions.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR</td>
+		<td>50</td>
+		<td>Id for the partition. Needs to be unique.</td>
+	</tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>Description for the partition</td>
+	</tr>
+</table>
+<h3 id="preferences">PREFERENCES TABLE</h3>
+<table id="preferences_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OWNERID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Owner scope ID of the preferences object
+		(of the corresponding partition, user realm or user, depending on
+		OWNERTYPE).</td>
+	</tr>
+	<tr>
+		<td>OWNERTYPE</td>
+		<td>VARCHAR</td>
+		<td>32</td>
+		<td>The preference scope type (PARTITION, REALM or USER) of the preferences object.</td>
+	</tr>
+	<tr>
+		<td>MODULEID</td>
+		<td>VARCHAR</td>
+		<td>255</td>
+		<td>ID of the module.</td>
+	</tr>
+	<tr>
+		<td>PREFERENCESID</td>
+		<td>VARCHAR</td>
+		<td>255</td>
+		<td>ID of the preferences object.</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Partition OID.</td>
+	</tr>
+	<tr>
+		<td>STRINGVALUE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Preferences string.</td>
+	</tr>
+</table>
+<h3 id="procinst_link">PROCINST_LINK TABLE</h3>
+<p></p>
+<table id="procinst_link_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>PROCESSINSTANCE</td>
+        <td>LONG</td>
+        <td></td>
+        <td>OID of process instance.</td>
+    </tr>
+    <tr>
+        <td>LINKEDPROCESSINSTANCE</td>
+        <td>LONG</td>
+        <td></td>
+        <td>OID of linked process instance.</td>
+    </tr>
+    <tr>
+        <td>LINKTYPE</td>
+        <td>LONG</td>
+        <td></td>
+        <td>OID of link type.</td>
+    </tr>
+    <tr>
+        <td>CREATETIME</td>
+        <td>LONG </td>
+        <td></td>
+        <td>Time when table entry was created in milliseconds 
+        (System.currentTimeMillis()).</td>
+    </tr>
+    <tr>
+        <td>CREATINGUSER</td>
+        <td>LONG</td>
+        <td></td>
+        <td>OID of user.</td>
+    </tr>
+    <tr>
+        <td>LINKINGCOMMENT</td>
+        <td>String</td>
+        <td></td>
+        <td>Linking comment.</td>
+    </tr>
+</table>
+<h3 id="procinst_prop">PROC_INST_PROPERTY TABLE</h3>
+<p>This table stores process instance dynamic properties.</p>
+<table id="procinst_prop_table">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the property, unique within the audit trail</td>
+    </tr>
+    <tr>
+        <td>OBJECTOID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the process instance, foreign key to PROCESS_INSTANCE
+        table</td>
+    </tr>
+    <tr>
+        <td>NAME</td>
+        <td>VARCHAR2</td>
+        <td>300</td>
+        <td>Property name</td>
+    </tr>
+    <tr>
+        <td>TYPE_KEY</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>Type of the data value, which can be (0) for BOOLEAN, (1) for
+        CHAR, (2) for BYTE, (3) for SHORT, (4) for INTEGER, (5) for LONG, (6)
+        for FLOAT, (7) for DOUBLE, (8) for STRING, (9) for DATE, (10) for
+        MONEY, (11) for BIG_STRING (stored in the overflow table STRING_DATA),
+        (12) for SERIALIZABLE, (13) for BIG_SERIALIZABLE (stored in the
+        overflow table STRING_DATA), (14) for PERIOD</td>
+    </tr>
+    <tr>
+        <td>NUMBER_VALUE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Stores data values with TYPE_KEY 0, 2, 3, 4, 5 or 9</td>
+    </tr>
+    <tr>
+        <td>STRING_VALUE</td>
+        <td>VARCHAR2</td>
+        <td>128</td>
+        <td>Stores data values with TYPE_KEY 1, 6, 7, 8, 10, 12 or 14</td>
+    </tr>
+    <tr>
+        <td>LASTMODIFICATIONTIME</td>
+        <td>LONG</td>
+        <td></td>
+        <td>Time stamp marking the most recent execution of the process
+        instance.</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>LONG</td>
+        <td></td>
+        <td>user who changed or created property.</td>
+    </tr>
+</table>
+<h3 id="proc_def">PROCESS_DEFINITION TABLE</h3>
+<p>This table stores information on all process definitions
+available in the model.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Process definition's OID, unique within the model</td>
+	</tr>
+    <tr>
+        <td>MODEL</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the model which the process definition belongs to,
+        foreign key for table MODEL</td>
+    </tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>Process definition's ID as modeled in the Stardust Process
+		Workbench</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>100</td>
+		<td>Process definition's name</td>
+	</tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>Process definition's description</td>
+	</tr>
+</table>
+<h3 id="proc_inst">PROCESS_INSTANCE TABLE</h3>
+<p>This table stores audit trail data on instantiated processes.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Process instance OID, unique within the model</td>
+	</tr>
+    <tr>
+        <td>STARTTIME</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Time stamp stating when the process has been instantiated</td>
+    </tr>
+    <tr>
+        <td>TERMINATIONTIME</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Time stamp stating when the process has been terminated</td>
+    </tr>
+    <tr>
+        <td>STATE</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>State of the process instance, can be (-1) unknown, (0)
+        active, (1) aborted, (2) completed, (3) interrupted</td>
+    </tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which this process instance belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+    <tr>
+        <td>PROCESSDEFINITION</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the process definition on the base of which the
+        process instance has been created, foreign key for table
+        PROCESS_DEFINITION</td>
+    </tr>
+    <tr>
+        <td>PRIORITY</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>priority of process instances in assembly mode:</td>
+    </tr>
+    <tr>
+        <td>TOKENCOUNT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>deprecated</td>
+    </tr>
+	<tr>
+		<td>PROPERTIESAVAILABLE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Lookup to optimize access to properties of process instance.</td>
+	</tr>
+    <tr>
+        <td>ROOTPROCESSINSTANCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the root process, or 0 if it is the root process</td>
+    </tr>
+    <tr>
+        <td>SCOPEPROCESSINSTANCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the scope and root process instance to which the
+        values of the data are bound.</td>
+    </tr>
+    <tr>
+        <td>STARTINGUSER</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the participant starting the process, foreign key for
+        table WORKFLOWUSER</td>
+    </tr>
+	<tr>
+		<td>STARTINGACTIVITYINSTANCE</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the first activity instance instantiating the process
+		if it is a subprocess</td>
+	</tr>
+</table>
+<h3 id="proc_inst_lck">PROCESS_INSTANCE_LCK TABLE</h3>
+<p>This table is the locking table for the PROCESS_INSTANCE table.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Process instance OID, unique within the model</td>
+    </tr>
+</table>
+<h3 id="proc_trigger">PROCESS_TRIGGER TABLE</h3>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The runtime OID of the trigger. Is unique together with column model. Triggers with same ID and have same runtime OID.</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Reference to the column oid of the table model</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR</td>
+		<td>50</td>
+		<td>The ID of the trigger</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR</td>
+		<td>100</td>
+		<td>The name of the trigger</td>
+	</tr>
+	<tr>
+		<td>PROCESSDEFINITION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Reference to the column OID of the table process_definition. The reference is distinct with column model.</td>
+	</tr>
+</table>
+<h3 id="procinst_hier">PROCINST_HIERARCHY TABLE</h3>
+<p>This table stores information on the ancestry and scope of
+process instances.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PROCESS_INSTANCE, designating an
+		ancestry process instance. Process instances are considered being
+		ancestors for themselves..</td>
+	</tr>
+	<tr>
+		<td>SUBPROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign Key for table process_instance, designating a child
+		process instance. Process instances are considered being children of
+		themselves.</td>
+	</tr>
+</table>
+<h3 id="procinst_scope">PROCINST_SCOPE TABLE</h3>
+<p>This table stores information on scope and root process
+instances.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PROCESS_INSTANCE, designating an
+		arbitrary process instance.</td>
+	</tr>
+	<tr>
+		<td>SCOPEPROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table PROCESS_INSTANCE, designating the scope
+		process instance of the process instance referenced in the
+		PROCESSINSTANCE column.</td>
+	</tr>
+	<tr>
+		<td>ROOTPROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>foreign key for table PROCESS_INSTANCE, designating the root
+		process instance of the process instance referenced in the
+		PROCESSINSTANCE column.</td>
+	</tr>
+</table>
+<h3 id="property">PROPERTY TABLE</h3>
+<p>This table stores property information alternatively to the
+regular property mechanism of Java.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the property, unique within the audit trail</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Name of the property</td>
+	</tr>
+	<tr>
+		<td>VALUE</td>
+		<td>VARCHAR2</td>
+		<td>500</td>
+		<td>Value of the property</td>
+	</tr>
+	<tr>
+		<td>LOCALE</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Setting of locale, for which the property applies</td>
+	</tr>
+	<tr>
+		<td>FLAGS</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Placeholder for flags</td>
+	</tr>
+    <tr>
+       <td>PARTITION</td>
+       <td>SHORT</td>
+       <td>&nbsp;</td>
+       <td>Foreign key for table PARTITION, designating the partition the property is part of. -1 means that property is valid for all partitions.</td>
+    </tr>
+</table>
+<h3 id="string_data">STRING_DATA TABLE</h3>
+<p>This table stores all data portions of data values segmented in
+4KB blocks and Base64-encoded.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the data string, unique within the audit trail</td>
+	</tr>
+	<tr>
+		<td>OBJECTID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the data value to which the portion of data stored
+		here in DATA column belongs. Foreign key for table using this row for
+		overflow, e.g. OID in DATA_VALUE and MODEL</td>
+	</tr>
+	<tr>
+		<td>DATA_TYPE</td>
+		<td>VARCHAR2</td>
+		<td>32</td>
+		<td>The name of the table which uses this row for overflow</td>
+	</tr>
+	<tr>
+		<td>DATA</td>
+		<td>VARCHAR2</td>
+		<td>4000</td>
+		<td>A portion of the large string value</td>
+	</tr>
+</table>
+<h3 id="struct_data">STRUCTURED_DATA TABLE</h3>
+<p>This table stores all possible XPath expressions identified
+during deployment, based on the Structured Data Definition.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the XPath, unique within the audit trail</td>
+	</tr>
+    <tr>
+        <td>XPATH</td>
+        <td>VARCHAR</td>
+        <td>200</td>
+        <td>String representation of this XPath</td>
+    </tr>
+	<tr>
+		<td>DATA</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the data element in the model, reference to the DATA
+		element in the model.</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which this data (and XPath) belongs to,
+		foreign key for table MODEL</td>
+	</tr>
+</table>
+<h3 id="struct_data_val">STRUCTURED_DATA_VALUE TABLE</h3>
+<p>This table stores structured data values.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the structured data value, unique within the audit
+		trail.</td>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td></td>
+		<td>OID of the process instance which contains the data instance,
+		foreign key for table PROCESS_INSTANCE.</td>
+	</tr>
+	<tr>
+		<td>PARENT</td>
+		<td>LONG</td>
+		<td></td>
+		<td>OID of the parent structured data value</td>
+	</tr>
+	<tr>
+		<td>ENTRYKEY</td>
+		<td>VARCHAR</td>
+		<td>50</td>
+		<td>For list structures, position of the structured data value in
+		a list.</td>
+	</tr>
+	<tr>
+		<td>XPATH</td>
+		<td>LONG</td>
+		<td></td>
+		<td>OID of the XPath, foreign key for table STRUCTURED_DATA.</td>
+	</tr>
+    <tr>
+        <td>TYPE_KEY</td>
+        <td>INTEGER</td>
+        <td></td>
+        <td>Type of the data value, which can be (-1) for NULL, (0) for
+        BOOLEAN, (1) for CHAR, (2) for BYTE, (3) for SHORT, (4) for INTEGER,
+        (5) for LONG, (6) for FLOAT, (7) for DOUBLE, (8) for STRING, (9) for
+        DATE, (10) for MONEY, (11) for BIG_STRING (stored in the overflow
+        table STRING_DATA), (12) for SERIALIZABLE, (13) for BIG_SERIALIZABLE
+        (stored in the overflow table STRING_DATA), (14) for PERIOD</td>
+    </tr>
+	<tr>
+		<td>STRING_VALUE</td>
+		<td>VARCHAR</td>
+		<td>256</td>
+		<td>Stores data values with TYPE_KEY 1, 6, 7, 8, 10, 12 or 14</td>
+	</tr>
+   <tr>
+      <td>NUMBER_VALUE</td>
+      <td>LONG</td>
+      <td></td>
+      <td>Stores data values with TYPE_KEY 0, 2, 3, 4, 5 or 9</td>
+   </tr>
+   <tr>
+      <td>DOUBLE_VALUE</td>
+      <td>DOUBLE</td>
+      <td></td>
+      <td>This column is used for ordering by numeric values.
+      It stores data values if the numeric value which is stored in column 
+      <tt>STRING_VALUE</tt> exceeds the value range defined by method <br>
+      <tt>Pair&lt;E, E&gt; DbDescriptor.getNumericSQLTypeValueBorders(Class&lt;E&gt;)</tt>
+      <br> which returns the minimum value in <tt>Pair.getFirst()</tt> and 
+      the maximum value in <tt>Pair.getSecond()</tt>. 
+      In that case this minimum or maximum value is stored in the column.</td>
+   </tr>
+</table>
+<h3 id="struct_data_val_lck">STRUCTURED_DATA_VALUE_LCK TABLE</h3>
+<p>This table is the locking table for the
+STRUCTURED_DATA_VALUE table.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the structured data value, unique within the audit
+        trail.</td>
+    </tr>
+</table>
+<h3 id="timer_log">TIMER_LOG TABLE</h3>
+<p>This table stores the contents of all log entries in the audit
+trail written by a timer daemon.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the daemon, unique within the model</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which the trigger belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>TRIGGEROID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of trigger in the model</td>
+	</tr>
+	<tr>
+		<td>STAMP</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp stating when the timer trigger has been fired</td>
+	</tr>
+</table>
+<h3 id="trans_inst">TRANS_INST TABLE</h3>
+<p>This table stores audit trail data on instantiated transitions.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the transition instance</td>
+    </tr>
+    <tr>
+        <td>MODEL</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the model which the transition instance belongs to,
+        foreign key for table MODEL.</td>
+    </tr>
+    <tr>
+        <td>TRANSITION</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the transition, foreign key for table TRANSITION</td>
+    </tr>
+    <tr>
+        <td>PROCESSINSTANCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the process instance to which the leaf activity
+        belongs, foreign key for table PROCESS_INSTANCE</td>
+    </tr>
+    <tr>
+        <td>SOURCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the source activity, foreign key in the
+        ACTIVITY_INSTANCE table</td>
+    </tr>
+    <tr>
+        <td>TARGET</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the target activity, foreign key in the
+        ACTIVITY_INSTANCE table</td>
+    </tr>
+</table>
+<h3 id="trans_token">TRANS_TOKEN TABLE</h3>
+<p>This table stores audit trail data on instantiated transitions.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the transition instance</td>
+    </tr>
+    <tr>
+        <td>PROCESSINSTANCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the process instance to which the leaf activity
+        belongs, foreign key for table PROCESS_INSTANCE</td>
+    </tr>
+    <tr>
+        <td>MODEL</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the model which the transition token belongs to,
+        foreign key for table MODEL.</td>
+    </tr>
+    <tr>
+        <td>TRANSITION</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the transition, foreign key for table TRANSITION</td>
+    </tr>
+    <tr>
+        <td>SOURCE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the source activity, foreign key in the
+        ACTIVITY_INSTANCE table</td>
+    </tr>
+    <tr>
+        <td>TARGET</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the target activity, foreign key in the
+        ACTIVITY_INSTANCE table</td>
+    </tr>
+    <tr>
+        <td>ISCONSUMED</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>(1) if the token is consumed, (0) otherwise</td>
+    </tr>
+</table>
+<h3 id="trans_token_lck">TRANS_TOKEN_LCK TABLE</h3>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the transition instance.</td>
+    </tr>
+</table>
+<h3 id="transition">TRANSITION TABLE</h3>
+<p>This table stores information an all transition definitions
+available in the model.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the transition definition, unique within the model</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which the transition belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>ID of the transition definition, unique within the process
+		definition</td>
+	</tr>
+	<tr>
+		<td>PROCESS_DEFINITION</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Process definition OID, foreign key for table
+		PROCESS_DEFINITION</td>
+	</tr>
+	<tr>
+		<td>SOURCEACTIVITY</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the predecessor activity in the model definition,
+		foreign key for table ACTIVITY</td>
+	</tr>
+	<tr>
+		<td>TARGETACTIVITY</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>OID of the successor activity in the model definition,
+		foreign key for table ACTIVITY</td>
+	</tr>
+	<tr>
+		<td>CONDITION</td>
+		<td>VARCHAR2</td>
+		<td>200</td>
+		<td>Predicate string defining the transition condition</td>
+	</tr>
+</table>
+<h3 id="user_participant">USER_PARTICIPANT TABLE</h3>
+<p>This table stores information on all links between user and
+participants available in the model.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the link</td>
+    </tr>
+    <tr>
+        <td>PARTICIPANT</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Participants's OID, foreign key for the table PARTICIPANT</td>
+    </tr>
+    <tr>
+        <td>DEPARTMENT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the department; may be null/0 for organizations
+        (organization with null scope).</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the user created in the runtime environment, foreign
+        key for table WORKFLOWUSER</td>
+    </tr>
+    <tr>
+        <td>ONBEHALFOF</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Designates the predecessor non-user worklist the AI was
+        associated with.</td>
+    </tr>
+</table>
+<h3 id="user_property">USER_PROPERTY TABLE</h3>
+<p>This table stores user specific properties (user has rights to
+change these properties).</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the property, unique within the audit trail</td>
+    </tr>
+    <tr>
+        <td>OBJECTOID</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>OID of the user, foreign key to WORKFLOWUSER table</td>
+    </tr>
+    <tr>
+        <td>NAME</td>
+        <td>VARCHAR2</td>
+        <td>300</td>
+        <td>Property name</td>
+    </tr>
+    <tr>
+        <td>TYPE_KEY</td>
+        <td>INTEGER</td>
+        <td>&nbsp;</td>
+        <td>Type of the data value, which can be (0) for BOOLEAN, (1) for
+        CHAR, (2) for BYTE, (3) for SHORT, (4) for INTEGER, (5) for LONG, (6)
+        for FLOAT, (7) for DOUBLE, (8) for STRING, (9) for DATE, (10) for
+        MONEY, (11) for BIG_STRING (stored in the overflow table STRING_DATA),
+        (12) for SERIALIZABLE, (13) for BIG_SERIALIZABLE (stored in the
+        overflow table STRING_DATA), (14) for PERIOD</td>
+    </tr>
+    <tr>
+        <td>NUMBER_VALUE</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Stores data values with TYPE_KEY 0, 2, 3, 4, 5 or 9</td>
+    </tr>
+    <tr>
+        <td>STRING_VALUE</td>
+        <td>VARCHAR2</td>
+        <td>128</td>
+        <td>Stores data values with TYPE_KEY 1, 6, 7, 8, 10, 12 or 14</td>
+    </tr>
+    <tr>
+        <td>LASTMODIFICATIONTIME</td>
+        <td>LONG</td>
+        <td></td>
+        <td>Time stamp marking the most recent execution of the activity.</td>
+    </tr>
+    <tr>
+        <td>SCOPE</td>
+        <td>STRING</td>
+        <td></td>
+        <td>Possible scopes are profile scope ("profile") for user UI settings and empty scope ("") for all other properties.</td>
+    </tr>
+</table>
+<h3 id="user_usergroup">USER_USERGROUP TABLE</h3>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>NUMBER/LONG</td>
+        <td>&nbsp;</td>
+        <td>The OID of the property. This is unique.</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>NUMBER/LONG</td>
+        <td>&nbsp;</td>
+        <td>Reference to the column oid of the table workflowuser</td>
+    </tr>
+    <tr>
+        <td>USERGROUP</td>
+        <td>NUMBER/LONG</td>
+        <td>&nbsp;</td>
+        <td>Reference to the column oid of the table usergroup</td>
+    </tr>
+</table>
+<h3 id="usergroup">USERGROUP TABLE</h3>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The OID of the user group. This is unique.</td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td>VARCHAR</td>
+		<td>50</td>
+		<td>The ID of the user group</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR</td>
+		<td>150</td>
+		<td>The name of the user group</td>
+	</tr>
+	<tr>
+		<td>VALIDFROM</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The timestamp in milliseconds since when the user group is valid. 0 means no restriction.</td>
+	</tr>
+	<tr>
+		<td>VALIDTO</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The timestamp in milliseconds upto when the user group is valid. 0 means no restriction.</td>
+	</tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR</td>
+		<td>&nbsp;</td>
+		<td>The description of the user group</td>
+	</tr>
+	<tr>
+		<td>PARTITION</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Reference to the column OID of the table partition</td>
+	</tr>
+</table>
+<h3 id="user_group_prop">USERGROUP_PROPERTY TABLE</h3>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER/LONG</td>
+		<td>&nbsp;</td>
+		<td>The OID of the property. This is unique.</td>
+	</tr>
+	<tr>
+		<td>OBJECTOID</td>
+		<td>NUMBER/LONG</td>
+		<td>&nbsp;</td>
+		<td>Reference to the column oid of the table usergroup</td>
+	</tr>
+	<tr>
+		<td>NAME</td>
+		<td>VARCHAR</td>
+		<td>&nbsp;</td>
+		<td>The unique name of the property</td>
+	</tr>
+	<tr>
+		<td>TYPE_KEY</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Classification key of the type of property. This is the same as for table data_value</td>
+	</tr>
+	<tr>
+		<td>NUMBER_VALUE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>The value of numeric properties</td>
+	</tr>
+	<tr>
+		<td>STRING_VALUE</td>
+		<td>VARCHAR</td>
+		<td>128</td>
+		<td>The value for string properties. Overflow follows the same rules as for table data_value.</td>
+	</tr>
+	<tr>
+		<td>LASTMODIFICATIONTIME</td>
+		<td>LONG</td>
+		<td></td>
+		<td>Time stamp marking the most recent execution of the activity.</td>
+	</tr>
+	<tr>
+		<td>WORKFLOWUSER</td>
+		<td>LONG</td>
+		<td></td>
+		<td>Reference to the column oid of the table workflowuser</td>
+	</tr>
+</table>
+<h3 id="wfuser_domain">WFUSER_DOMAIN TABLE</h3>
+<p>This table associates users with domains.</p>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Primary key, generated from sequence wfuser_domain_seq.</td>
+    </tr>
+    <tr>
+        <td>VALIDFROM</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Optionally specifies the earliest point in time the user is
+        associated with the domain.</td>
+    </tr>
+    <tr>
+        <td>VALIDTO</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Optionally specifies the latest point in time the user is
+        associated with the domain.</td>
+    </tr>
+    <tr>
+        <td>DOMAIN</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key for table DOMAIN.</td>
+    </tr>
+    <tr>
+        <td>WFUSER</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key for table WORKFLOWUSER.</td>
+    </tr>
+</table>
+<h3 id="wfuser_realm">WFUSER_REALM TABLE</h3>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Primary key, generated from sequence wfuser_realm_seq.</td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Needs to be unique in scope of the associated partition.</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Name of the realm.</td>
+    </tr>
+    <tr>
+        <td>DESCRIPTION</td>
+        <td>STRING</td>
+        <td>4000</td>
+        <td>Description for user realm.</td>
+    </tr>
+    <tr>
+        <td>PARTITION</td>
+        <td>SHORT</td>
+        <td>&nbsp;</td>
+        <td>Foreign key for table PARTITION.</td>
+    </tr>
+</table>
+<h3 id="wfuser_session">WFUSER_SESSION TABLE</h3>
+<table id="">
+    <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Length</th>
+        <th>Column Description</th>
+    </tr>
+    <tr>
+        <td>OID</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Primary key.</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Designates the user causing the session to enter this state.
+        Foreign key into the workflowuser table.</td>
+    </tr>
+    <tr>
+        <td>CLIENTID</td>
+        <td>STRING</td>
+        <td>&nbsp;</td>
+        <td>id of the client.</td>
+    </tr>
+    <tr>
+        <td>STARTTIME</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the creation of the session.</td>
+    </tr>
+    <tr>
+        <td>LASTMODIFICATIONTIME</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the most recent execution of the session.</td>
+    </tr>
+    <tr>
+        <td>EXPIRATIONTIME</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Time stamp marking the ending of the session.</td>
+    </tr>
+</table>
+<h3 id="workflowuser">WORKFLOWUSER TABLE</h3>
+<p>This table stores all data referring to users created in the
+runtime environment.</p>
+<table id="">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>OID</td>
+		<td>NUMBER</td>
+		<td>22</td>
+		<td>OID of the user, unique within model</td>
+	</tr>
+	<tr>
+		<td>ACCOUNT</td>
+		<td>VARCHAR2</td>
+		<td>50</td>
+		<td>User's ID used at log on</td>
+	</tr>
+	<tr>
+		<td>FIRSTNAME</td>
+		<td>VARCHAR2</td>
+		<td>150</td>
+		<td>User's first name</td>
+	</tr>
+	<tr>
+		<td>LASTNAME</td>
+		<td>VARCHAR2</td>
+		<td>150</td>
+		<td>User's last name</td>
+	</tr>
+	<tr>
+		<td>PASSWORD</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>User's password used at log on</td>
+	</tr>
+	<tr>
+		<td>EMAIL</td>
+		<td>VARCHAR2</td>
+		<td>150</td>
+		<td>User's email address to be used by the notification system</td>
+	</tr>
+	<tr>
+		<td>VALIDFROM</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Begin of the user's validity period saved as a time stamp</td>
+	</tr>
+	<tr>
+		<td>VALIDTO</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>End of the user's validity period saved as a time stamp
+		(after this point, the user becomes invalidated.)</td>
+	</tr>
+	<tr>
+		<td>DESCRIPTION</td>
+		<td>VARCHAR2</td>
+		<td>300</td>
+		<td>Description of the user</td>
+	</tr>
+	<tr>
+		<td>FAILEDLOGINCOUNT</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Counter of consecutive login failures</td>
+	</tr>
+	<tr>
+		<td>LASTLOGINTIME</td>
+		<td>NUMBER</td>
+		<td>&nbsp;</td>
+		<td>Time stamp of the last login</td>
+	</tr>
+	<tr>
+		<td>EXTENDEDSTATE</td>
+		<td>INTEGER</td>
+		<td>&nbsp;</td>
+		<td>Lookup to optimize access to properties of workflow user.</td>
+	</tr>
+    <tr>
+        <td>REALM</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key for table WFUSER_REALM, designating the realm the
+        user is part of.</td>
+    </tr>
+</table>
+<h3 id="workitem">WORKITEM TABLE</h3>
+<p>This table keeps track of pending interactive activity instances.</p>
+<table id="workitem_table">
+	<tr>
+		<th>Column Name</th>
+		<th>Data Type</th>
+		<th>Length</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>ACTIVITYINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Foreign key for table ACTIVITY_INSTANCE, designating the
+		activity instance this item is based on.</td>
+	</tr>
+	<tr>
+		<td>PROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Primary key</td>
+	</tr>
+	<tr>
+		<td>SCOPEPROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the scope and root process instance to which the
+		values of the data are bound.</td>
+	</tr>
+	<tr>
+		<td>ROOTPROCESSINSTANCE</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the root process, or 0 if it is the root process:</td>
+	</tr>
+	<tr>
+		<td>MODEL</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>OID of the model which the activity instance belongs to,
+		foreign key for table MODEL.</td>
+	</tr>
+	<tr>
+		<td>ACTIVITY</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Activity definition OID, foreign key for table ACTIVITY.</td>
+	</tr>
+	<tr>
+		<td>STATE</td>
+		<td>CHAR</td>
+		<td>&nbsp;</td>
+		<td>Overlay state for the ACTIVITY_INSTANCE state column; either
+		ACTIVE or SUSPENDED.</td>
+	</tr>
+	<tr>
+		<td>STARTTIME</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Time stamp marking the creation of the activity instance</td>
+	</tr>
+	<tr>
+		<td>LASTMODIFICATIONTIME</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Time stamp marking the most recent execution of the activity.</td>
+	</tr>
+    <tr>
+        <td>DOMAIN</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>Foreign key for table DOMAIN, designating the domain to be
+        used for performer resolution.</td>
+    </tr>
+	<tr>
+		<td>PERFORMERKIND</td>
+		<td>CHAR</td>
+		<td>&nbsp;</td>
+		<td>Designates what kind of performer is encoded in the
+		CURRENTPERFORMER field; either the WORKFLOWUSER-, PARTICIPANT- or
+		USER_GROUP- TABLE.</td>
+	</tr>
+	<tr>
+		<td>PERFORMER</td>
+		<td>LONG</td>
+		<td>&nbsp;</td>
+		<td>Designates the current performer of this work item. Foreign
+		key for either the WORKFLOWUSER-, PARTICIPANT- or USER_GROUP- TABLE.</td>
+	</tr>
+    <tr>
+        <td>DEPARTMENT</td>
+        <td>LONG</td>
+        <td>&nbsp;</td>
+        <td>OID of the department; may be null/0 for organizations
+        (organization with null scope).</td>
+    </tr>
+    <tr>
+        <td>CRITICALITY</td>
+        <td>NUMBER</td>
+        <td>&nbsp;</td>
+        <td>Holds the criticality value for an activity instance.</td>
+    </tr>
+</table>
+<h2 id="tableusage">Example Usage of Tables</h2>
+<h3 id="">Example DDL for CLOB_DATA</h3>
+<p>To create a <strong>CLOB_DATA</strong> table in your database,
+use the following <a href="../../../glossary.html#ddl">DDL</a> in an
+SQL environment:</p>
+<pre>
+CREATE TABLE archive.clob_data (oid BIGINT, ownerId BIGINT, ownerType VARCHAR(32), stringValue CLOB);
+CREATE INDEX archive.clob_dt_i1 ON archive.clob_data(ownerId, ownerType);
+CREATE UNIQUE INDEX archive.clob_dt_i2 ON archive.clob_data(oid);
+</pre>
+<h2 id="timestamp">Examples for Checking Timestamps in the Audit Trail</h2>
+<h3>Example of Timestamp for Oracle Database</h3>
+<p>The following query helps you to check timestamps in a Stardust audit trail
+ if it is configured using Oracle database:</p>
+<pre>
+select to_char(to_date('01-JAN-1970','DD-MON-YYYY') + ( ai.starttime / (1000 * 60 * 60 * 24) ),
+'DD-MON-YYYY HH24:MI:SS') "STARTTIME" from activitiy_instance ai;
+</pre>
+
+<h3>Example of Timestamp for MySQL Database</h3>
+<p>The following query helps you to check timestamp in audit trail if it is configured using MySQL database:</p>
+<pre>select cast(from_unixtime(ai.starttime / 1000) as datetime) from activity_instance ai</pre>
+<p>The above example query can be modified for timezone conversion:</p>
+<pre>select convert_tz(cast(from_unixtime(ai.starttime / 1000) as datetime), '+00:00', '+05:00') from activity_instance ai</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

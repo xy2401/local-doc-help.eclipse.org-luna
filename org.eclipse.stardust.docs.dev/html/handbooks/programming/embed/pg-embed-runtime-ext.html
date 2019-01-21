@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Runtime Extension Management</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Administration",
+        "pg-embed-performance.html","administration/admin-preface.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Runtime Extension Management</h1>
+<p>Stardust provides a runtime extension management based on the classpath. It
+is possible to disable extensions being present in the
+classpath and cache resolved extensions by configuration.</p>
+<h3>Configuration of Service Lookup</h3>
+<p>To configure service lookup, there are two properties available, which you can
+set in your <tt>carnot.properties</tt> file:</p>
+<ul>
+    <li>&lt;fully.qualified.InterfaceName&gt;.Providers</li>
+    <li>&lt;fully.qualified.InterfaceName&gt;.BlacklistedProviders</li>
+</ul>
+<h4>Providers</h4>
+<p>This property can contain a comma separated list of implementation classes. 
+This may be used to resolve providers which:</p>
+<ul>
+    <li>do not have a valid <tt>META-INF/services/&lt;fully.qualified.InterfaceName&gt;</tt>
+     descriptor, or whose descriptor cannot be found during classpath introspection.</li>
+    <li>should be resolved in a guaranteed order. Classpath introspection does 
+    not guarantee any order multiple providers get resolved.</li>
+</ul>
+<p>Refer to chapter
+<a href="../spi/pg-spi-tenant.html">Configuring SPI Implementations per Tenant</a> for details
+on how to add a custom SPI implementation to your runtime.</p>
+<h4>BlacklistedProviders</h4>
+<p>This property can contain a comma separated list of implementation classes 
+which should be removed from the list of resolved providers.</p>
+<h3>Caching</h3>
+<p>The list of resolved providers can be stored in the 
+<tt>&lt;fully.qualified.InterfaceName&gt;.ResolvedExtensionProviders</tt> parameter
+to prevent classpath inspections to be performed multiple times.</p>
+<p>Any reinitialization of the engine, including parameters, will reset the provider cache.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

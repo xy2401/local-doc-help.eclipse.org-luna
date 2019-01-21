@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>The Model File Format</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","","",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide");
+ -->
+</script>
+<h1>The Model File Format</h1>
+<p>Process models are stored in the <strong>XML Process
+Definition Language (XPDL)</strong> format of the Workflow Management Coalition
+(WfMC). This format is uniformly used in the whole Stardust Process
+Engine. Momentarily also the native Stardust file format is supported
+for backward compatibility. The Stardust Process Workbench is capable of
+loading and saving models in both formats. The models can be converted
+between these formats by saving them with extension <tt>.xpdl</tt> or <tt>.cwm</tt>
+respectively. You find a description of both file formats in the <a
+	href="../../tocschema.html">Stardust Schema Documentation</a>.</p>
+<p>All model elements in the sense of chapter Workflow Basics are
+represented as XML elements with a descriptive name. A process
+definition is e.g. defined in an XML element <tt>processDefinition</tt>.
+The model itself is considered a model element ,too and appears as root
+element model of the XML representation.</p>
+<p>All model elements viewed as XML share some common features as
+described in the following table:</p>
+<table border="1" id='id'>
+	<tr>
+		<th rowspan="1" colspan="1">Property</th>
+		<th rowspan="1" colspan="1">XML Representation</th>
+		<th rowspan="1" colspan="1">Comment</th>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>OID</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>oid attribute</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>Unique inside the model. Automatically generated.</p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>ID</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>id attribute</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>Normally unique inside the parent scope.</p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>Name</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>name attribute</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>A human readable name.</p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>Predefined</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>predefined attribute</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>Marks the element as predefined. Can't be edited in the
+		Process Workbench.</p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>Description</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>description sub element</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>An optional human readable description of the model element.</p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="1">
+		<p>Dynamic Attribute</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>attribute sub element</p>
+		</td>
+		<td rowspan="1" colspan="1">
+		<p>An arbitrary dynamic attribute. Used for tool specific
+		information or information for pluggable types.</p>
+		</td>
+	</tr>
+</table>
+<p>Please refer to the <a href="../../tocschema.html">
+Stardust Schema Documentation</a> for details on the standard Stardust formats.</p>
+
+<h2>Editing Stardust XPDL Models with External Tools</h2>
+<p>In general models produced or modified by the Stardust Process
+Platform modeler can be edited with other tools that supports XPDL 1.0
+standard. However, the Stardust modeler is maintaining
+specific information for most of the model elements in an <strong>ExtendedAttribute</strong>
+with the name <tt>&quot;CarnotExt&quot;</tt>.</p>
+<p>In certain cases, these elements may refer to standard
+identifiers. For example the diagram information is stored exclusively
+in the extended attribute, however it has references to workflow objects
+defined in the standard XPDL part.</p>
+<p>A concrete example is the <tt>carnot:Symbol
+(Kind="ACTIVITY")</tt>. This symbol has a live reference to the actual
+activity, and namely the field <tt>ModelElement</tt> contains the Id of
+the activity that it refers to. Similarly affected are <tt>carnot:Connection
+(Kind="TRANSITION")</tt> that refers a transition as well as the <tt>carnot:Symbols</tt>
+with the kind "DATA", "ROLE", "APPLICATION" or "PROCESS".</p>
+<p>When modifying the <strong>Id</strong> of a workflow element or
+deleting the element that is referenced by such a diagram symbol, please
+take care to synchronize the respective reference (attribute
+"ModelElement") in the <tt>carnot:Symbol</tt> or <tt>carnot:Connection</tt>.
+If such synchronization is not performed then dangling references may
+result or references can point to an element of a different type. In the
+latter case, the Stardust modeler will no longer be
+able to load the model due to ClassCastExceptions.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

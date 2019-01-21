@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>LTTng Plug-in User Guide - Data driven analysis</title>
+		<link type="text/css" rel="stylesheet" href="book.css"/>
+	</head>
+	<body>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<th style="width: 100%" align="center" colspan="3">Data driven analysis</th>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left">
+					<a href="Timestamp-formatting.html" title="Timestamp formatting">
+						<img alt="Previous" border="0" src="images/prev.gif"/>
+					</a>
+				</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right">
+					<a href="Limitations.html" title="Limitations">
+						<img alt="Next" border="0" src="images/next.gif"/>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top">Timestamp formatting</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">Limitations</td>
+			</tr>
+		</table><hr/>
+		<h1 id="Data_driven_analysis">Data driven analysis</h1>
+		<p>It is possible to define custom trace analyses and a way to view them in an XML format. These kind of analyses allow doing more with the trace data than what the default analyses shipped with TMF offer. It can be customized to a specific problem, and fine-tuned to show exactly what you're looking for.</p>
+		<h2 id="Importing_an_XML_file_containing_analysis">Importing an XML file containing analysis</h2>
+		<p>If you already have an XML file defining state providers and/or views, you can import it in your TMF workspace by right-clicking on the 
+			<i>Traces</i> or 
+			<i>Experiments</i> folder and selecting 
+			<i>Import XML Analysis</i>.
+		</p>
+		<p>
+			<img title=" Import XML analysis menu" alt=" Import XML analysis menu" border="0" src="images/import_XML_analysis.png"/>
+		</p>
+		<p>You will be prompted to select the file. It will be validated before importing it and if successful, the new analysis and views will be shown under the traces for which they apply. You will need to close any already opened traces and re-open them before the new analysis can be executed.</p>
+		<p>Right now, there is no way to "unimport" analyses from within the application. A UI to manage the imported analyses is currently being worked on. In the meantime, you can navigate to your workspace directory, and delete the files in .metadata/.plugins/org.eclipse.linuxtools.tmf.analysis.xml.core/xml_files .</p>
+		<h2 id="Defining_XML_components">Defining XML components</h2>
+		<p>To define XML components, you need to create a new XML file and use the XSD that comes with the XML plugin.</p>
+		<p>
+			<i>For now, the XSD is only available through the source code in org.eclipse.linuxtools.tmf.analysis.xml.core/src/org/eclipse/linuxtools/tmf/analysis/xml/core/module/xmlDefinition.xsd</i>.
+		</p>
+		<p>An empty file, with no content yet would look like this:</p>
+		<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;tmfxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="xmlDefinition.xsd"&gt;
+
+&lt;/tmfxml&gt;
+</pre>
+		<h2 id="Defining_an_XML_state_provider">Defining an XML state provider</h2>
+		<p>The state system is a component of TMF which can track the states of different elements of the system over the duration of a trace. To build this state system, events have to go chronologically through a state provider, which defines what changes are caused by the event to the system.</p>
+		<p>The state system obtained by the state provider can then be used to populate data-driven views without having to re-read the trace, or to query specific timestamps in the trace without needing to access the trace file.</p>
+		<h3 id="Definitions_and_example">Definitions and example</h3>
+		<p>Before we start, we'll define a few terms used in the following sections. The interested reader should read the 
+			<a href="/wiki/Developer-Guide.html" title="Developer-Guide">Tmf Developer Guide</a> for more complete description of the state system and state providers.
+		</p>
+		<ul>
+			<li>The 
+				<b>state system</b> can be viewed as a model of the system, where the different elements (attributes) can be seen as a tree, and their evolution (states) is tracked through time.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Attribute</b>: An attribute is the smallest element of the model that can be in any particular state. Since many attributes may have the same name, each attribute is represented by its full path in the attribute tree.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>State</b>: A state is a value assigned to an attribute at a given time. Each model has its own state values.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Attribute tree</b>: Elements in the model can be placed in a tree-like structure, for logical grouping. Each element in the tree can have both children and a state. Also, the tree is just a logical structure, all elements may be top-level elements.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>State history</b>: Whereas the attribute tree may be seen as the first dimension of the state system, the state history is the second dimension, over time. It tracks the intervals at which an attribute was in a given state.
+			</li>
+		</ul>
+		<p>In the following sections, we'll use an example trace with the following events:</p>
+		<ul>
+			<li>start(number): A new task with ID 'number' just started.</li>
+			<li>execute(number, fct_name): The task with ID 'number' is executing a critical section named 'fct_name'.</li>
+			<li>wait(number): The task with ID 'number' cannot execute a critical section and needs to wait for it.</li>
+			<li>exec_end(fct_name): A task finished executing the critical section named 'fct_name'.</li>
+			<li>stop(number): The task with ID 'number' has just finished.</li>
+		</ul>
+		<h3 id="Determining_the_state_system_structure">Determining the state system structure</h3>
+		<p>The first thing to do is to determine the attribute tree we'll use to represent the model of the system. The attribute tree is like a file system with directories and files, where files are logically gathered in the same parent directory. There is no one good way to build a tree, the logic will depend on the situation and on the person defining it.</p>
+		<p>The generated state system may be used later on to populate views, so attributes of the tree could be grouped in such a way as to make it easy to reach them with a simple path. The view will then be more simple.</p>
+		<p>In our example case, we'll want to track the status of each task and, for each critical section, which task is running them.</p>
+		<pre>
+|- Tasks
+|    |- 1
+|    |- 2
+|   ...
+|- Critical section
+     |- Crit_sect1
+     |- Crit_sect2
+    ...
+</pre>
+		<p>Then we determine how each event will affect the state of the attributes. But first, let's ask ourselves what values should each state take.</p>
+		<p>Let's see with the tree:</p>
+		<pre>
+|- Tasks            -&gt; Empty
+|    |- 1           -&gt; Each task can be in one of
+|    |- 2             RUNNING, CRITICAL, WAITING
+|   ...
+|- Critical section -&gt; Empty
+     |- Crit_sect1  -&gt; Each critical section will hold the currently running task number
+     |- Crit_sect2
+    ...
+</pre>
+		<p>Then we determine how each event will affect the state of the attributes. In the attribute paths below, elements in {} are values coming from the trace event, while strings are constants. For the sake of simplicity, we'll say "update attribute", but if an attribute does not exist, it will be created.</p>
+		<ul>
+			<li>start(number): Update state value of attribute "Tasks/{number}" to "RUNNING".</li>
+			<li>execute(number, fct_name): Update state value of attribute "Tasks/{number}" to "CRITICAL" and Update attribute "Critical section/{fct_name}" to "{number}".</li>
+			<li>wait(number): Update state value of attribute "Tasks/{number}" to "WAITING".</li>
+			<li>exec_end(fct_name): Update state value of attribute "Tasks/{valueOf Critical section/{fct_name}}" to RUNNING and update "Critical section/{fct_name}" to null.</li>
+			<li>stop(number): Update state value of attribute "Tasks/{number}" to null.</li>
+		</ul>
+		<h3 id="Writing_the_XML_state_provider">Writing the XML state provider</h3>
+		<p>Once the model is done at a high level, it is time to translate it to an XML data-driven analysis. For details on how to use each XML element, refer to the documentation available in the XSD files. Some elements will be commented on below.</p>
+		<p>First define the state provider element.</p>
+		<p>The "version" attribute indicates which version of the state system is defined here. Once a state provider has been defined for a trace type, it will typically be used by a team of people and it may be modified over time. This version number should be bumped each time a new version of the state provider is published. This will force a rebuild of any existing state histories (if applicable) whose version number is different from the current one.</p>
+		<p>The "id" attribute uniquely identifies this state provider, and the analysis that will contain it.</p>
+		<pre>
+&lt;stateProvider version="0" id="my.test.state.provider"&gt;
+</pre>
+		<p>Optional header information can be added to the state provider. A "traceType" should be defined to tell TMF which trace type this analysis will apply to. If no tracetype is specified, the analysis will appear under every trace. A "label" can optionally be added to have a more user-friendly name for the analysis.</p>
+		<pre>
+&lt;head&gt;
+    &lt;traceType id="my.trace.id" /&gt;
+    &lt;label value="My test analysis" /&gt;
+&lt;/head&gt;
+</pre>
+		<p>If pre-defined values will be used in the state provider, they must be defined before the state providers. They can then be referred to in the state changes by name, preceded by the '$' sign. It is not necessary to use pre-defined values, the state change can use values like (100, 101, 102) directly.</p>
+		<pre>
+&lt;definedValue name="RUNNING" value="100" /&gt;
+&lt;definedValue name="CRITICAL" value="101" /&gt;
+&lt;definedValue name="WAITING" value="102" /&gt;
+</pre>
+		<p>The following event handler shows what to do with the event named 
+			<i>start</i>. It causes one state change. The sequence of 
+			<b>stateAttribute</b> elements represents the path to the attribute in the attribute tree, each element being one level of the tree. The 
+			<b>stateValue</b> indicates which value to assign to the attribute at the given path. The "$RUNNING" value means it will use the predefined value named RUNNING above.
+		</p>
+		<p>Suppose the actual event is 
+			<i>start(3)</i>. The result of this state change is that at the time of the event, the state system attribute "Tasks/3" will have value 100.
+		</p>
+		<pre>
+&lt;eventHandler eventName="start"&gt;
+    &lt;stateChange&gt;
+        &lt;stateAttribute type="constant" value="Tasks" /&gt;
+        &lt;stateAttribute type="eventField" value="number" /&gt;
+        &lt;stateValue type="int" value="$RUNNING" /&gt;
+    &lt;/stateChange&gt;
+&lt;/eventHandler&gt;
+</pre>
+		<p>The full XML file for the example above would look like this:</p>
+		<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;tmfxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../org.eclipse.linuxtools.tmf.analysis.xml.core/src/org/eclipse/linuxtools/tmf/analysis/xml/core/module/xmlDefinition.xsd"&gt;
+    &lt;stateProvider version="0" id="my.test.state.provider"&gt;
+        &lt;head&gt;
+            &lt;traceType id="my.trace.id" /&gt;
+            &lt;label value="My test analysis" /&gt;
+        &lt;/head&gt;
+
+        &lt;definedValue name="RUNNING" value="100" /&gt;
+        &lt;definedValue name="CRITICAL" value="101" /&gt;
+        &lt;definedValue name="WAITING" value="102" /&gt;
+
+        &lt;eventHandler eventName="start"&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Tasks" /&gt;
+                &lt;stateAttribute type="eventField" value="number" /&gt;
+                &lt;stateValue type="int" value="$RUNNING" /&gt;
+            &lt;/stateChange&gt;
+        &lt;/eventHandler&gt;
+        &lt;eventHandler eventName="execute"&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Tasks" /&gt;
+                &lt;stateAttribute type="eventField" value="number" /&gt;
+                &lt;stateValue type="int" value="$CRITICAL" /&gt;
+            &lt;/stateChange&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Critical section" /&gt;
+                &lt;stateAttribute type="eventField" value="fct_name" /&gt;
+                &lt;stateValue type="eventField" value="number" /&gt;
+            &lt;/stateChange&gt;
+        &lt;/eventHandler&gt;
+        &lt;eventHandler eventName="wait"&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Tasks" /&gt;
+                &lt;stateAttribute type="eventField" value="number" /&gt;
+                &lt;stateValue type="int" value="$WAITING" /&gt;
+            &lt;/stateChange&gt;
+        &lt;/eventHandler&gt;
+        &lt;eventHandler eventName="exec_end"&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Tasks" /&gt;
+                &lt;stateAttribute type="query"&gt;
+                    &lt;stateAttribute type="constant" value="Critical section" /&gt;
+                    &lt;stateAttribute type="eventField" value="fct_name" /&gt;
+                &lt;/stateAttribute&gt;
+                &lt;stateValue type="int" value="$RUNNING" /&gt;
+            &lt;/stateChange&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Critical section" /&gt;
+                &lt;stateAttribute type="eventField" value="fct_name" /&gt;
+                &lt;stateValue type="null" /&gt;
+            &lt;/stateChange&gt;
+        &lt;/eventHandler&gt;
+        &lt;eventHandler eventName="stop"&gt;
+            &lt;stateChange&gt;
+                &lt;stateAttribute type="constant" value="Tasks" /&gt;
+                &lt;stateAttribute type="eventField" value="number" /&gt;
+                &lt;stateValue type="null" /&gt;
+            &lt;/stateChange&gt;
+        &lt;/eventHandler&gt;
+    &lt;/stateProvider&gt;
+&lt;/tmfxml&gt;
+</pre>
+		<h3 id="Debugging_the_XML_state_provider">Debugging the XML state provider</h3>
+		<p>To debug the state system that was generated by the XML state provider, one could use the 
+			<a href="LTTng.html#State_System_Explorer_View">State System Explorer View</a>, along with the events editor. By selecting an event, you can see what changes this event caused and the states of other attributes at the time.
+		</p>
+		<p>If there are corrections to make, you may modify the XML state provider file, and re-import it. To re-run the analysis, you must first delete the supplementary files by right-clicking on your trace, and selecting 
+			<i>Delete supplementary files...</i>. Check you analysis's .ht file, so that the analysis will be run again when the trace is reopened. The supplementary file deletion will have closed the trace, so it needs to be opened again to use the newly imported analysis file.
+		</p>
+		<p>If modifications are made to the XML state provider after it has been "published", the 
+			<b>version</b> attribute of the 
+			<b>xmlStateProvider</b> element should be updated. This avoids having to delete each trace's supplementary file manually. If the saved state system used a previous version, it will automatically be rebuilt from the XML file.
+		</p>
+		<h2 id="Defining_an_XML_time_graph_view">Defining an XML time graph view</h2>
+		<p>A time graph view is a view divided in two, with a tree viewer on the left showing information on the different entries to display and a Gantt-like viewer on the right, showing the state of the entries over time. The 
+			<a href="LTTng-Kernel-Analysis.html#Control_Flow_View">Control Flow View</a> is an example of a time graph view.
+		</p>
+		<p>Such views can be defined in XML using the data in the state system. The state system itself could have been built by an XML-defined state provider or by any pre-defined Java analysis. It only requires knowing the structure of the state system, which can be explored using the 
+			<a href="LTTng.html#State_System_Explorer_View">State System Explorer View</a> (or programmatically using the methods in 
+			<i>ITmfStateSystem</i>).
+		</p>
+		<p>In the example above, suppose we want to display the status for each task. In the state system, it means the path of the entries to display is "Tasks/*". The attribute whose value should be shown in the Gantt chart is the entry attribute itself. So the XML to display these entries would be as such:</p>
+		<pre>
+&lt;entry path="Tasks/*"&gt;
+    &lt;display type="self" /&gt;
+&lt;/entry&gt;
+</pre>
+		<p>But first, the view has to be declared. It has an ID, to uniquely identify this view among all the available XML files.</p>
+		<pre>
+&lt;timeGraphView id="my.test.time.graph.view"&gt;
+</pre>
+		<p>Optional header information can be added to the view. 
+			<b>analysis</b> elements will associate the view only to the analysis identified by the "id" attribute. It can be either the ID of the state provider, like in this case, or the analysis ID of any analysis defined in Java. If no analysis is specified, the view will appear under every analysis with a state system. The 
+			<b>label</b> element allows to give a more user-friendly name to the view. The label does not have to be unique. As long as the ID is unique, views for different analyses can use the same name.
+		</p>
+		<pre>
+&lt;head&gt;
+    &lt;analysis id="my.test.state.provider" /&gt;
+    &lt;label value="My Sample XML View" /&gt;
+&lt;/head&gt;
+</pre>
+		<p>Also, if the values of the attributes to display are known, they can be defined, along with a text to explain them and a color to draw them with. Note that the values are the same as defined in the state provider, but the name does not have to be the same. While in the state provider, a simple constant string makes sense to use in state changes. But in the view, the name will appear in the legend, so a user-friendly text is more appropriate.</p>
+		<pre>
+&lt;definedValue name="The process is running" value="100" color="#118811" /&gt;
+&lt;definedValue name="Critical section" value="101" color="#881111" /&gt;
+&lt;definedValue name="Waiting for critical section" value="102" color="#AEB522" /&gt;
+</pre>
+		<p>Here is the full XML for the time graph view:</p>
+		<pre>
+&lt;tmfxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../org.eclipse.linuxtools.tmf.analysis.xml.core/src/org/eclipse/linuxtools/tmf/analysis/xml/core/module/xmlDefinition.xsd"&gt;
+    &lt;timeGraphView id="my.test.time.graph.view"&gt;
+        &lt;head&gt;
+            &lt;analysis id="my.test.state.provider" /&gt;
+            &lt;label value="My Sample XML View" /&gt;
+        &lt;/head&gt;
+
+        &lt;definedValue name="The process is running" value="100" color="#118811" /&gt;
+        &lt;definedValue name="Critical section" value="101" color="#881111" /&gt;
+        &lt;definedValue name="Waiting for critical section" value="102" color="#AEB522" /&gt;
+
+        &lt;entry path="Tasks/*"&gt;
+            &lt;display type="self" /&gt;
+        &lt;/entry&gt;
+    &lt;/timeGraphView&gt;
+&lt;/tmfxml&gt;
+</pre>
+		<p>The following screenshot shows the result of the preceding example on a test trace. The trace used, as well as the XML file are available 
+			<a href="http://secretaire.dorsal.polymtl.ca/~gbastien/Xml4Traces/XML_documentation_example.tar.gz">here</a>.
+		</p>
+		<p>
+			<img title=" XML analysis with view" alt=" XML analysis with view" border="0" src="images/Xml_analysis_screenshot.png"/>
+		</p>
+		<h2 id="Defining_an_XML_XY_chart">Defining an XML XY chart</h2>
+		<p>An XY chart displays series as a set of numerical values over time. The X-axis represents the time and is synchronized with the trace's current time range. The Y-axis can be any numerical value.</p>
+		<p>Such views can be defined in XML using the data in the state system. The state system itself could have been built by an XML-defined state provider or by any pre-defined Java analysis. It only requires knowing the structure of the state system, which can be explored using the 
+			<a href="LTTng.html#State_System_Explorer_View">State System Explorer View</a> (or programmatically using the methods in 
+			<i>ITmfStateSystem</i>).
+		</p>
+		<p>We will use the LTTng Kernel Analysis on LTTng kernel traces to show an example XY chart. In this state system, the status of each CPU is a numerical value. We will display this value as the Y axis of the series. There will be one series per CPU. The XML to display these entries would be as such:</p>
+		<pre>
+&lt;entry path="CPUs/*"&gt;
+	&lt;display type="constant" value="Status" /&gt;
+	&lt;name type="self" /&gt;
+&lt;/entry&gt;
+</pre>
+		<p>But first, the view has to be declared. It has an ID, to uniquely identify this view among all the available XML files.</p>
+		<pre>
+&lt;xyView id="my.test.xy.chart.view"&gt;
+</pre>
+		<p>Like for the time graph views, optional header information can be added to the view. 
+			<b>analysis</b> elements will associate the view only to the analysis identified by the "id" attribute. It can be either the ID of the state provider, like in this case, or the analysis ID of any analysis defined in Java. If no analysis is specified, the view will appear under every analysis with a state system. The 
+			<b>label</b> element allows to give a more user-friendly name to the view. The label does not have to be unique. As long as the ID is unique, views for different analyses can use the same name.
+		</p>
+		<pre>
+&lt;head&gt;
+    &lt;analysis id="org.eclipse.linuxtools.lttng2.kernel.analysis" /&gt;
+    &lt;label value="CPU status XY view" /&gt;
+&lt;/head&gt;
+</pre>
+		<p>Here is the full XML for the XY Chart that displays the CPU status over time of an LTTng Kernel Trace:</p>
+		<pre>
+&lt;tmfxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../org.eclipse.linuxtools.tmf.analysis.xml.core/src/org/eclipse/linuxtools/tmf/analysis/xml/core/module/xmlDefinition.xsd"&gt;
+	&lt;xyView id="my.test.xy.chart.view"&gt;
+		&lt;head&gt;
+			&lt;analysis id="org.eclipse.linuxtools.lttng2.kernel.analysis" /&gt;
+			&lt;label value="CPU status XY view" /&gt;
+		&lt;/head&gt;
+
+		&lt;entry path="CPUs/*"&gt;
+			&lt;display type="constant" value="Status" /&gt;
+			&lt;name type="self" /&gt;
+		&lt;/entry&gt;
+	&lt;/xyView&gt;
+&lt;/tmfxml&gt;
+</pre>
+		<p>The following screenshot shows the result of the preceding example on a LTTng Kernel Trace.</p>
+		<p>
+			<img title=" XML XY chart" alt=" XML XY chart" border="0" src="images/XML_xy_chart.png"/>
+		</p><hr/>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<td style="width: 20%" align="left">
+					<a href="Timestamp-formatting.html" title="Timestamp formatting">
+						<img alt="Previous" border="0" src="images/prev.gif"/>
+					</a>
+				</td>
+				<td style="width: 60%" align="center">
+					<a href="User-Guide.html" title="LTTng Plug-in User Guide">
+						<img alt="LTTng Plug-in User Guide" border="0" src="images/home.gif"/>
+					</a>
+				</td>
+				<td style="width: 20%" align="right">
+					<a href="Limitations.html" title="Limitations">
+						<img alt="Next" border="0" src="images/next.gif"/>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top">Timestamp formatting</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">Limitations</td>
+			</tr>
+		</table>
+	</body>
+</html>

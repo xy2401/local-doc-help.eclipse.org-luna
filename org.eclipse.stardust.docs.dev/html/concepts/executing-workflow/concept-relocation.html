@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Relocating Activities</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Spawning a Subprocess",
+		"delegation-concept.html","spawn-usage-concept.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Relocating Activities</h1>
+<p>Stardust provides the option to allow navigation between different 
+interactive steps in a process workflow.</p>
+<ul>
+    <li><a href="#usecases">Common Use Cases</a></li>
+    <li><a href="#perform">Performing a Relocation</a></li>
+    <li><a href="#examples">Example Use Cases</a></li>
+    <li><a href="#api">API provided for Relocation</a></li>
+    <li><a href="#datcopy">Data Copy Semantics</a></li>
+   <li><a href="#hist">Process History Migration</a></li>
+</ul>
+<h2 id="usecases">Common Use Cases</h2>
+<p>Relocation could be useful in the following cases:</p>
+<ul>
+    <li><a href="#wfcorr">Workflow Corrections</a></li>   
+    <li><a href="#upgrade">Process Upgrades</a></li>
+</ul>
+<h3 id="wfcorr">Workflow Corrections</h3>
+<p>In some cases a user selects a wrong option in an activity and as a result 
+the workflow is in the wrong activity. To model correcting transitions for every 
+activity in the model would not be realizable. With the option to jump back to the activity where
+the wrong option was selected, the workflow can be corrected in a well-arranged way.</p>
+
+<h3 id="upgrade">Process Upgrades</h3>
+<p>A new version of the process is mandatory and the user must migrate existing 
+process instances to the new version and continue from the equivalent position.
+In this case, he could jump back only to the appropriate activities instead of 
+restarting the whole process.</p>
+
+<h2 id="perform">Performing a Relocation</h2>
+<p>A relocation is executed in two steps:</p>
+<ol>
+    <li>Finding a valid relocation target starting from a given activity.</li>
+    <li>Performing the transition to the target found above.</li>
+</ol>
+
+<h3 id="modeler">Marking Activities for Relocation</h3>
+<p>Relocation start points and end points are marked in the model.
+In the Activity property pages, two check boxes are available to determine:
+<ul>
+    <li>if this activity can be used as starting point for a relocation</li>
+    <li>if this activity can be used as the target of a relocation</li>
+</ul>
+<p>Refer to section 
+<a href="../../handbooks/modelling/activities/mg-defdesk-4.htm#actProperties">Modifying Activity Properties</a>
+in chapter
+<a href="../../handbooks/modelling/activities/mg-defdesk-4.htm">Specifying Activities</a>
+of the 
+<a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>
+for details on these settings.</p>
+
+<h3 id="st">Source and Target Activities</h3>
+<h4 id="source">Source Activities</h4>
+<p>Manual activities and application activity instances are supported as source 
+activity types.</p>
+<p>The following restrictions apply on activity instances to be used as 
+source activities:</p>
+<ul>
+   <li>interactive activities: relocation is restricted on activities in
+   application or hibernated state</li>
+   <li>non-interactive activities: the user must be an administrator 
+   and relocation is restricted on activities in
+   interrupted or hibernated state</li>
+   <li>the performer of the relocation needs to have administrative rights</li>
+</ul>
+
+<h4 id="target">Target Activities</h4>
+<p>All activity types are supported as target activity types. Note that
+only users with the administrator role can jump to application activities.</p>
+<h3 id="opts">Transition Options</h3>
+<p>The following transition options can be determined via API:</p>
+<ul>
+    <li>allow transitions out of subprocesses</li>
+    <li>allow transitions into subprocesses</li>
+    <li>allow relocation transitions in loops</li>
+</ul>
+<p>Note that jumping out of asynchronously started subprocess is not supported.</p>
+<p>For details refer to section
+<a href="../../handbooks/programming/embed/wf-processing/pg-embed-relocation.html#options">Transition Options</a>
+of chapter
+<a href="../../handbooks/programming/embed/wf-processing/pg-embed-relocation.html">Relocating Activities</a>
+in the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>.</p>
+<h3 id="terminate">Workflow after transition</h3>
+<p>After the transition is performed, the workflow must be able to continue in 
+a normal way from the target activity. The workflow continues in the following
+way:</p>
+<ul>
+   <li>If the target activity is in a subprocess, the transition might 
+   instantiate new subprocesses, one for every level. Created subprocesses 
+   should be in a state that allows normal termination.</li>
+   <li>If the target activity is in a super process, the current process instance 
+   and all intermediate process instances are terminated.</li>
+   <li>If the target activity is in a subprocess of a super-process, the 
+   intermediate process instances are terminated and new process instances 
+   will be created.</li>
+</ul>
+<h2 id="examples">Example Use Cases</h2>
+<p>The following examples are use cases for finding targets in workflows with
+activities marked for source and target relocation.</p>
+<ul>
+    <li><a href="#linear">Linear Flow</a></li>
+    <li><a href="#complex1">Complex Flow 1</a></li>
+    <li><a href="#complex2">Complex Flow 2</a></li>
+    <li><a href="#sub">Subprocess Flow</a></li>
+</ul>
+<h3 id="linear">Linear Flow</h3>
+<p>This example has several activities in a sequence.</p>
+<p class="image"><img src="images/reloc-linear.png"
+    alt="Linear Flow"> <br>
+<strong>Figure:</strong> Linear flow example</p>
+<p>If source activity is <strong>2</strong>, the following applies:</p>
+<ul>
+    <li>Forward targets are <strong>3</strong> and <strong>4</strong>.</li>
+    <li>Only <strong>1</strong> is backward target.</li>
+    <li><strong>1</strong> has no backward targets.</li>
+    <li><strong>4</strong> has no forward targets.</li>
+</ul>
+<h3 id="complex1">Complex Flow</h3>
+<p>This example complex flow is a combination of OR and AND joins.</p>
+<p class="image"><a href="images/reloc-complex-1_orgSize.png" target="_blank">
+<img src="images/reloc-complex-1.png" alt="Complex Flow"></a><br>
+<strong>Figure:</strong> Complex flow example</p>
+<p>Activity <strong>3</strong> is not marked as relocation target, thus it will 
+be skipped by the scanning algorithm.
+<p>Possible targets if relocating from <strong>1</strong>:</p>
+<ul>
+    <li><strong>5</strong> is possible target.</li>
+    <li><strong>3</strong> is skipped as not marked as relocation target.</li>
+    <li><strong>6</strong> or <strong>7</strong> cannot be targets, because they
+    are blocked by a split AND.</li>
+    <li>From activity <strong>5</strong> you can reach activity <strong>8</strong>.</li>
+</ul>
+<p>The following forward targets are possible:</p>
+<ul>
+    <li>from <strong>1</strong> to <strong>2</strong>, <strong>5</strong>, <strong>4</strong>, <strong>8</strong></li>
+    <li>from <strong>5</strong> to <strong>8</strong></li>
+    <li>from <strong>6</strong> to <strong>4</strong>, <strong>8</strong></li>
+</ul>
+<p>The following backwards targets are possible:</p>
+<ul>
+    <li>to <strong>8</strong> from <strong>4</strong>, <strong>2</strong>, <strong>1</strong>, <strong>6</strong>, <strong>7</strong>
+    <li>to <strong>6</strong> from none (blocked by an AND split)
+    <li>to <strong>4</strong> from <strong>2</strong>, <strong>1</strong>, <strong>6</strong>
+</ul>
+<h3 id="complex2">Complex Flow 2</h3>
+<p>This example shows another complex type with AND joins.</p>
+<p class="image"><a href="images/reloc-complex-2_orgSize.png" target="_blank">
+<img src="images/reloc-complex-2.png" alt="Complex Flow 2"></a><br>
+<strong>Figure:</strong> Complex flow example</p>
+<p>The following transitions are valid in this flow:</p>
+<ul>
+    <li><strong>5</strong> to <strong>8</strong> - possible because all the 
+    transitions that are split by <strong>5</strong> are collected before 
+    <strong>8</strong>.</li>
+    <li><strong>1</strong> to <strong>11</strong></li>
+    <li><strong>2</strong> to <strong>10</strong> </li>
+</ul>
+<h3 id="sub">Subprocess Flow</h3>
+<p>This example uses subprocesses in a three level sharing.</p>
+<p class="image"><img src="images/reloc-subflow.png"
+    alt="Subprocess Flow"> <br>
+<strong>Figure:</strong> Subprocess flow example</p>
+<p>The workflow could be in the following order:<br>
+<ol>
+    <li>We forward from <strong>1</strong> to subprocess activity <strong>2</strong>.</li>
+    <li>Now subprocess <strong>S1-2</strong> is started from subprocess activity 
+<strong>2</strong> of the main process.</li>
+    <li>Subprocess <strong>S2-2</strong> in the third process is started by subprocess 
+<strong>S1-2</strong>.</li>
+</ol>
+<p>Another option is to start subprocess <strong>S2-2</strong> 
+from activity <strong>4</strong> of the main process.</p>
+<p>If you want to relocate from activity <strong>1</strong> in the main process to the second
+activity (subprocess <strong>S2-2</strong>) of the second subprocess, there are
+several options:</p>
+<ul>
+    <li>from <strong>1</strong> to <strong>2</strong> to <strong>S1-2</strong> 
+    to <strong>S2-2</strong> (marked by the red lines). In that case, two 
+    process instances will be created.</li>
+    <li>from <strong>1</strong> to <strong>4</strong> to <strong>S2-2</strong>.
+    Here, only one process instance will be created.</li>
+</ul>
+
+<h2 id="api">API provided for Relocation</h2>
+<p>The WorkflowService provides methods for finding targets and performing the 
+transitions from the specified activity instance to the specified target.
+Refer to chapter 
+<a href="../../handbooks/programming/embed/wf-processing/pg-embed-relocation.html">Relocating Activities</a>
+in the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+for details.</p>
+
+<h2 id="datcopy">Data Copy Semantics</h2>
+<p>All data values get migrated if identical data exist in the new process definition
+version. Data with the same ID are copied in the following way:</p>
+<ul>
+   <li>Source type and target type are primitives and the types and values are 
+   compatible (e.g. Integer into Long): 1:1 copy.</li>
+   <li>Source type is structured data and target type is structured data or 
+   typed document: all data with the same XPath is copied 1:1 and the document 
+   content remains empty.</li>
+   <li>Source type is typed document and target type is structured data or 
+   typed document: all data with the same XPath is copied 1:1 and the document 
+   content is copied if target type is typed document. If the target type is 
+   structured data, the document content will be saved in process attachments.</li>
+   <li>Process attachments are copied 1:1.</li>
+   <li>Other data types will not be copied.</li>
+</ul>
+<h2 id="hist">Process History Migration</h2>
+<p>The process history is migrated as follows:</p>
+<ul>
+   <li>The migrated process instance is a combination of the original aborted
+   process instance and a newly started process instance.</li>
+   <li>The history of the original process instance is available indirectly via
+    the link feature</li>
+   <li>The history of the original process instance is available and identifiable
+   indirectly via the link feature</li>
+</ul>
+<h3>Restriction</h3>
+<p>Note that active activity instances are aborted and only one activity can be 
+defined to be the starting activity for the new process instance.</p>
+
+<!--
+Security
+
+Restriction
+between the source and target activity, all AND splits must converge 
+all branches must collected together-->
+
+<script language="JavaScript"
+	type="text/javascript"
+>
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

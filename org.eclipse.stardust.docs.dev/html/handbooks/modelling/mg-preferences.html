@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Setting Process Manager Preferences</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("The Development Perspective","","mg-modeler-views.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Setting Process Manager Preferences</h1>
+<p>The Stardust Process Workbench offers the ability to set Stardust
+specific preferences, which can be set in the Preferences dialog.</p>
+<h2 id="general">Setting General Process Manager Preferences</h2>
+<p>To open the Process Manager Preferences dialog:</p>
+<ul>
+	<li>In the main menu choose <strong>Windows</strong> &gt; <strong>Preferences...</strong></li>
+	<li>In the Preferences dialog tree select <strong>Process Manager</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-preferences.png"
+	alt="Preferences Dialog"><br>
+<strong>Figure:</strong> Open the Process Manager Preferences Dialog</p>
+<p>Now set your Stardust specific preferences, which comprise:</p>
+<ul>
+	<li><a href="#autoValidation">Enable Auto Validation</a></li>
+	<li><a href="#autoID">Enable Auto Id Generation</a></li>
+	<li><a href="#autoSub">Enable Auto Name Generation of
+	Subprocess Activities</a></li>
+	<li><a href="#focus">Focus for newly created model elements</a></li>
+	<li><a href="#autoSwitch">Automatically Switching to Manual
+	Activity</a></li>
+	<li><a href="#license">License</a></li>
+</ul>
+<h3 id="autoValidation">Enable Auto Validation</h3>
+<p>You can choose that a validation check on your workflow model is
+automatically performed in the <strong>Process Workbench</strong> after
+modifications. Enable or disable the <strong>Auto Validation</strong>
+option in the Preferences dialog. To get more information on validating
+a workflow model please refer to the chapter <a
+	href="models/model-validation.html">Workflow Model
+Validation</a>.</p>
+<h3 id="autoID">Enable Auto Id Generation</h3>
+<p>By default, an option is set for automatic Id generating. If you
+type in the name for your model element, the Id is generated
+automatically by using its name. To build the Id, the spaces of the name
+are left out. All non-supported characters are replaced by an underscore.
+Please refer to section
+<a href="../../concepts/workflow-basics/mg-basics-12.htm#restrict">ID Restrictions</a>
+of chapter
+<a href="../../concepts/workflow-basics/mg-basics-12.htm">Representation of Model Elements</a>
+for details on non-supported characters.</p>
+<p class="image"><img src="images/mg-auto-id-generation-1.png"
+	alt=""></p>
+<p>You can disable the default auto Id generation by deselecting
+this option. In case the <strong>Enable Auto Id Generation</strong> option is disabled, 
+the <strong>ID</strong> entry field is enabled in the element properties page and you can enter an
+arbitrary Id:</p>
+<p class="image"><img src="images/mg-auto-id-generation-2.png"
+	alt=""></p>
+<p>Please take care to use characters valid for Stardust element
+Ids, which is described in the section <a href="../../concepts/workflow-basics/mg-basics-12.htm#id">ID</a>
+of the chapter <a href="../../concepts/workflow-basics/mg-basics-12.htm">Representation of Model
+Elements</a>.</p>
+<h3 id="autoSub">Enable Auto Name Generation of Subprocess
+Activities</h3>
+<p>If you assign a process to a subprocess activity, you have the
+option:</p>
+<ul>
+	<li>keep the name of the activity or</li>
+	<li>to give the activity the name of this process.</li>
+</ul>
+<p>By default the automatic naming of the subprocess activity is
+enabled. Please refer to chapter
+ <a href="activities/mg-subprocesses.html">Configuring Subprocess Activities</a> 
+chapter for more detailed information.</p>
+<h3 id="focus">Focus for newly created model elements</h3>
+<p>Via this option you can determine how elements will be focused
+after they have been created. You have the choice between:</p>
+<ul>
+	<li><a href="#selectEle">Select element/symbol</a></li>
+	<li><a href="#propDialog">Open Property Dialog</a></li>
+	<li><a href="#editBox">Open Edit Box</a></li>
+</ul>
+<p class="image"><img src="images/focus-preference.png" alt=""></p>
+<h4 id="selectEle">Select element/symbol</h4>
+<p>The <strong>Select element/symbol</strong> option is the default
+behavior for newly created elements. When created in the diagram, the
+element or symbol will be selected there. In case the element is created
+in the Outline view, it will be selected in the Outline view.</p>
+<h4 id="propDialog">Open Property Dialog</h4>
+<p>The option <strong>Open Property Dialog</strong> will open the
+property dialog of a newly created element, so that you can edit its
+properties immediately.</p>
+<h4 id="editBox">Open Edit Box</h4>
+<p>The option <strong>Open Edit Box</strong> causes the newly
+created element to be selected in the Outline view with its name in edit
+mode. So optionally you can change the name immediately. If the tree
+containing the element is collapsed, it will be expanded to set the
+focus on the element.</p>
+<h3 id="autoSwitch">Automatically Switching to Manual Activity</h3>
+<p>You can choose, if the implementation of an activity should
+automatically switch to a manual activity after you assigned a
+performer. You have the options:</p>
+<ul>
+	<li><strong>Always</strong></li>
+	<li><strong>Never</strong></li>
+	<li><strong>Show warning</strong></li>
+</ul>
+<h3 id="license">License</h3>
+<p>Browse to the path where your license file resides.</p>
+<p>If you want to go back to the default settings, click <strong>Restore
+Defaults</strong>.</p>
+<h2 id="spec">Setting specific Preferences</h2>
+<p>Expand <strong>Process Manager</strong> to open the following options for setting specific
+Process Manager functionality preferences:</p>
+<ul>
+   <li><a href="#prefAuditTrail">AuditTrail Databases</a></li>
+   <li><a href="#deployment">Deployment</a></li>
+   <li><a href="#drawing">Drawing Preferences</a></li>
+   <li><a href="#multipackage">Multi Package Modeling Preferences</a></li>
+   <li><a href="#simulation">Simulation</a></li>
+   <li><a href="#prefWebPortals">Stardust Portal</a></li>
+</ul>
+
+<h3 id="prefAuditTrail">AuditTrail Databases</h3>
+<p>Add, reset or delete AuditTrail Databases.</p>
+<p class="image"><img src="images/mg-preferences-audittrail.png"
+	alt="Preferences - Audit Trail"> <br>
+<strong>Figure:</strong> Set AuditTrail Databases</p>
+<h3 id="deployment">Deployment</h3>
+<p>In the <strong>Deployment</strong> section, you can change the following
+predefined settings:</p>
+<ul>
+	<li>Checkbox <strong>Always deploy new version</strong>:<br>
+	You have the option to determine, if in case of model deployment,
+	always a new version should be deployed. In that case, no
+	model management dialog will open during model deployment.<br>&nbsp;</li>
+	<li>Credentials:<br>
+	In case the entry fields for <strong>ID</strong> and <strong>Password</strong>
+	are not empty, the login dialog during the deployment will be skipped
+	and those values as well as the values for 
+	<strong>Realm</strong>, <strong>Partition</strong> and <strong>ID</strong>
+	 are taken in case they exist. Default entries for <strong>ID</strong> and 
+	 <strong>Password</strong> are <tt>motu</tt>/<tt>motu</tt>.</li>
+</ul>
+<p class="image"><img src="images/mg-pref-deployment.png" alt=""> <br>
+<strong>Figure:</strong> Deployment Preferences</p>
+<h3 id="drawing">Drawing Preferences</h3>
+<p class="image"><img src="images/mg-preferences-drawing.png"
+	alt="Drawing Preferences"><br>
+<strong>Figure:</strong> Drawing Preferences</p>
+<ul>
+	<li><a href="#fork">View Fork on Traversal</a></li>
+	<li><a href="#snapGrid">Enable Snap To Grid</a></li>
+	<li><a href="#modelDirection">Default Modeling Direction</a></li>
+	<li><a href="#classicMode">Default Drawing Mode</a></li>
+	<li><a href="#autoDistribute">Auto Distribute</a></li>
+	<li><a href="#splitype">Default Split Type</a></li>
+	<li><a href="#jointype">Default Join Type</a></li>
+</ul>
+<h4 id="fork">View Fork on Traversal</h4>
+<p>You can enable this option to see how the Engine traverses during
+transition conditions. Please refer to the section 
+<a href="../../concepts/workflow-basics/mg-basics-13.htm#activityThread">Activity Thread</a> of the
+chapter <a href="../../concepts/workflow-basics/mg-basics-13.htm">Runtime Behavior</a> for detailed 
+information on the <strong>Fork on Traversal</strong>
+functionality.</p>
+
+<h4 id="snapGrid">Enable Snap To Grid</h4>
+<p>To facilitate the positioning of your elements in the diagram
+during modeling, you have the option to let your elements snap to a
+grid. In the <strong>Preferences</strong> dialog you can define the size
+of this grid and a factor for the grid to be visible in the following
+entry fields:</p>
+<ul>
+	<li><strong>Snap Grid in Pixel</strong></li>
+	<li><strong>Visible Grid Factor</strong></li>
+</ul>
+<p>In the <strong>Snap Grid in Pixel</strong> entry field enter a
+value for the size of the grid elements in your diagram. The default
+size is set to 5 pixel.</p>
+<p>You might want to have a more detailed grid for your elements to
+be snapped to than visible. Enter a factor in the <strong>Visible
+Grid Factor</strong> field for the grid to be displayed. Thus the size of the
+visible grid will be the size of the snap to grid times the specified
+factor. The default factor is <tt>4</tt>.</p>
+<p>Please refer to the section <a href="model-views/views-diagrams.html#gridOption">Grid
+Option</a> of the chapter <a href="model-views/views-diagrams.html">Working with
+Diagrams</a> for detailed information about this functionality.</p>
+
+<h4 id="modelDirection">Default Modeling Direction</h4>
+<p>You can choose a default modeling direction like <strong>Vertical</strong>
+or <strong>Horizontal</strong>. It is recommended to use the vertical
+modeling direction, which is set as default value.</p>
+<h4 id="classicMode">Default Drawing Mode</h4>
+<p>Choose whether you want to set the default drawing mode to <strong>Classic</strong>
+or <strong>BPMN</strong>. If you want to work with pools and lanes,
+choose the <strong>BPMN</strong> mode.</p>
+<h4 id="autoDistribute">Auto Distribute</h4>
+<p>With the <strong>Auto Distribute</strong> preference you choose
+the behavior of created symbols in your diagram. When working with a
+grid, you have the options:</p>
+<ul>
+	<li><strong>Snap the last selected symbol to grid</strong></li>
+	<li><strong>Snap all symbols to grid</strong></li>
+	<li><strong>Prompt</strong></li>
+</ul>
+
+<h4 id="splitype">Default Split Type</h4>
+<p>The default type value for newly created split gateway is configurable using the 
+<strong>Default Split Type</strong> option. </p>
+<p>The following options are provided to choose as default split type:</p>
+<ul>
+   <li>AND</li>
+   <li>XOR</li>
+   <li>OR</li>
+   <li>Prompt</li>
+</ul>
+<p>If <strong>Prompt</strong> is selected, upon creating a split, the user is 
+prompted to select the split behavior. It also prompts whether to use the same type 
+in the future actions. The default value for the split behavior is 
+XOR.</p>
+<p class="image"><img src="images/splitbehavior.png" alt="Select Split Behavior"></img>
+<br>
+<strong>Figure:</strong> Select Split Behavior</p>
+<p>Note if you click Cancel, the default split type gets applied.</p>
+
+<h4 id="jointype">Default Join Type</h4>
+<p>The default type value for newly created join gateway is configurable using the 
+<strong>Default Join Type</strong> option. </p>
+<p>The following options are provided to choose as default join type:</p>
+<ul>
+	<li>AND</li>
+	<li>XOR</li>
+   <li>OR</li>
+	<li>Prompt</li>
+</ul>
+<p>If AND join type is selected in the Drawing Preferences, by default, the
+AND join gets applied. Same is applicable for the XOR and OR join type.</p>
+<p>If <strong>Prompt</strong> is selected, upon creating a join, the user is 
+ prompted to select the join behavior. It also prompts whether to use the same type 
+ in the future actions. The default value for the join behavior is 
+ XOR.</p>
+<p class="image"><img src="images/joinbehavior.png" alt="Select Join Behavior"></img>
+<br>
+<strong>Figure:</strong> Select Join Behavior
+</p>
+<p>Note if you click Cancel, the default join type gets applied.</p>
+
+<h3 id="multipackage">Multi Package Modeling Preferences</h3>
+<p>This preference option can be used to mark elements as public or private. 
+It means that the applications, data types, data and participants are available for import by 
+reference if set to public. By default, the Public preference is selected. But
+if you have set it as private then it means that the applications, data types, data and participants 
+are not visible and available for any reference. In this case, if you want to reference it from other
+models you should set the
+preference as Public.  
+Note that though you can set the visibility of model elements here, 
+these settings can be overridden in the modeler.
+For more information, refer to the <a href="mg-defdesk-6.htm#prop">
+Properties</a> section of the chapter<a href="mg-defdesk-6.htm"> Specifying Applications</a>.
+Also, refer to the section 
+<a href="../modelling/data-integration/structured-data/struct-type-def.html#comp">
+Composite Type</a> of the chapter <a href="../modelling/data-integration/structured-data/struct-type-def.html">Defining Structured Types
+</a>.
+</p>
+<p class="image"><a href="images/mg-preferences-multipackage_orgSize.png" target="_blank"><img src="images/mg-preferences-multipackage.png"
+	alt="Preferences - Multi Package Modelling Preferences"></a><br>
+<strong>Figure:</strong> Multi Package Modeling Preferences</p>
+
+
+<h3 id="simulation">Simulation</h3>
+<p>Select <strong>Simulation &gt; Statistics Overlays</strong> to
+enable or disable the option to show statistics overlays for:</p>
+<ul>
+	<li>Participants</li>
+	<li>Applications</li>
+	<li>Activities</li>
+	<li>Transitions</li>
+</ul>
+<p class="image"><img src="images/mg-preferences-simulation.png"
+	alt="Preferences - Simulation"> <br>
+<strong>Figure:</strong> Set Simulation Preferences</p>
+<h3 id="prefWebPortals">Stardust Portal</h3>
+<p>Choose, whether you want to be warned on use of the internal Web
+browser.</p>
+<p class="image"><img src="images/mg-preferences-webportals.png"
+	alt="Preferences - Stardust Portal">
+<br><strong>Figure:</strong> Stardust Portal Option</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

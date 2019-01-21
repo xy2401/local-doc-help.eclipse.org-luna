@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Workflow Model Validation</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Importing and Exporting Models",
+        "model-props.html","model-import.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","model-preface.html","Working With Models");
+ -->
+</script>
+
+<h1>Workflow Model Validation</h1>
+<h2>Auto Validation</h2>
+<p>By default, a validation check on your workflow model is automatically
+performed by the <strong>Process Workbench</strong> after modifications. You can
+disable the auto validation by changing the enabling option in the Preferences
+dialog, as described in section <a href="../mg-preferences.html#autoValidation">Auto
+Validation</a> of chapter <a href="../mg-preferences.html">Setting Process Manager
+Preferences</a>.</p>
+<h2>Explicit Validation</h2>
+<p>To start a validation of your model by hand, right-click your model in
+the <a href="../model-views/views-outline.html">Outline View</a> and select <strong>Validate
+Model</strong> in the context menu.</p>
+<p class="image"><img src="images/mg-validate-model.png" alt=""> <br>
+<strong>Figure:</strong> Validation of a Model</p>
+<p>The errors and warnings are listed in the <a href="#problemsView">Problems
+view</a>. They are also indicated in the <a href="../model-views/views-outline.html">Outline
+view</a> with signs on the corresponding item symbols, like an exclamation mark for
+a warning or a cross for an error.</p>
+<p class="image"><img src="images/mg-error-icons.png" alt=""> <br>
+<strong>Figure:</strong> Icons to denote the Type of Problem</p>
+<h2 id="problemsView">The Problems View</h2>
+<p>If a validation is performed the errors and warnings will then be logged
+in the<strong> Problems</strong> view. If the <strong>Problems</strong> view is
+not already opened in your perspective, add it by clicking on <strong>Window</strong>
+&gt; <strong>Show View</strong> &gt; <strong>Other...</strong> &gt; <strong>Basic</strong>
+&gt; <strong>Problems</strong>.</p>
+<p class="image"><a href="images/mg-problems-view_orgSize.png"
+    target="_blank"><img src="images/mg-problems-view.png" alt=""></a> <br>
+<strong>Figure:</strong> The Problems View</p>
+<h3>Open the property page of the concerned element</h3>
+<p>In some cases you may like to edit the concerned model element directly. You can open the 
+property page of the concerned model element by double-clicking on the 
+according error or warning entry.</p>
+<p class="image"><img src="images/problems-view-open-dialog.png" alt=""> <br>
+<strong>Figure:</strong> Double-click an error entry to open the according element property dialog.</p>
+<h3>Using the Quick Fix functionality</h3>
+<p>Some errors provide a quick-fix functionality for quickly fixing
+the issue. To use this functionality, right-click the error 
+entry and select <strong>Quick Fix</strong> or simply use <strong>Crtl-1</strong>,
+ for example:</p>
+<p class="image"><img src="images/teamlead-error-quick-fix-1.png"
+    alt="Team Leader Connection Error"> <br>
+<strong>Figure:</strong> Select Quick Fix to fix the Error.</p>
+<p>The <strong>Quick Fix</strong> dialog opens, where you can fix the 
+according error, e.g.:</p>
+<p class="image"><img src="images/teamlead-error-quick-fix-2.png"
+    alt="Quick Fix Dialog"> <br>
+<strong>Figure:</strong> Quick Fix Dialog</p>
+<p>For detailed information on the <strong>Problems</strong> view itself, see the
+Workbench User Guide of the Eclipse Help.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Configuring SPI Implementations per Tenant</title>
+<link href="../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+   writeNavigation("Tutorial - Stardust SPI Programming",
+        "","pg-spi.htm",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "spi-toc.html","SPI");
+ -->
+</script>
+<h1>Configuring SPI Implementations per Tenant</h1>
+<p>To configure your custom Service Provider Interface implementations, include a file 
+with the name of the SPI in the folder <code>META-INF/services/</code> in a custom JAR. 
+The content of the file should be the fully qualified name of the implementing class.</p>
+<p>For example do the following to provide a custom login provider and publish it to
+the engine:</p>
+<ol>
+   <li>Place the file in your JAR under <code>META-INF/services/</code> with the name 
+   <code>org.eclipse.stardust.engine.core.spi.security.ExternalLoginProvider</code></li>
+   <li>Inside this file put the name of your custom implementation, e.g. 
+   <code>com.acme.test.MyLoginProvider</code></li>
+</ol>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?><!-- Copyright (c) 2011, 2014 SunGard CSA LLC and others. All rights reserved.    This program and the accompanying materials are made available under the    terms of the Eclipse Public License v1.0 which accompanies this distribution,    and is available at _http://www.eclipse.org/legal/epl-v10.html Contributors:    SunGard CSA LLC - initial API and implementation and/or initial documentation -->
+
+<toc label="Tutorials"
+   link_to="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/toc.xml#toctutorials">
+   <topic label="Tutorials" href="html/tutorial/tut-preface.htm">
+      <topic label="The Support Case Example"
+         href="html/tutorial/support-case/support-case-preface.htm">
+         <topic label="Setting the Scene"
+            href="html/tutorial/support-case/tut-main-1.htm" />
+         <topic label="Getting Started"
+            href="html/tutorial/support-case/tut-main-2.htm" />
+         <topic label="Creating a Process Definition"
+            href="html/tutorial/support-case/tut-main-3.htm" />
+         <topic label="Creating Structured Data Types"
+            href="html/tutorial/support-case/tut-struct-data.html" />
+         <topic label="Adding Activities to Process Definition"
+            href="html/tutorial/support-case/tut-main-4.htm" />
+         <topic label="Integrating Applications"
+            href="html/tutorial/support-case/tut-main-5.htm" />
+         <topic label="Handling Data in the Process"
+            href="html/tutorial/support-case/tut-main-6.htm" />
+         <topic label="Adding Process Data Paths"
+            href="html/tutorial/support-case/tut-main-data-path.html" />
+         <topic label="Control Flow - Join, Split and Loop"
+            href="html/tutorial/support-case/tut-main-7.htm" />
+         <topic label="Defining Roles and Organizations"
+            href="html/tutorial/support-case/tut-main-8.htm" />
+         <topic label="On Using Bookmarks"
+            href="html/tutorial/support-case/tut-main-9.htm" />
+         <topic label="Triggers"
+            href="html/tutorial/support-case/tut-main-10.htm" />
+         <topic label="Deploying a Workflow Model"
+            href="html/tutorial/support-case/tut-main-12.htm" />
+         <topic label="Executing Workflow"
+            href="html/tutorial/support-case/tut-main-13.htm" />
+         <topic label="Creating Correspondence"
+            href="html/tutorial/support-case/tut-correspondence.html" />
+      </topic>
+      <topic label="Mashing up Angular based UI into Stardust Portal"
+         href="html/tutorial/mashup/tut-ui-mashup.html" />
+      <topic
+         href="html/tutorial/scoped-participants/tut-scoped-main.html"
+         label="Scoped Participant Tutorials">
+         <topic
+            href="html/tutorial/scoped-participants/multi-scope-preface.htm"
+            label="The Scoped Participant Example">
+            <topic
+               href="html/tutorial/scoped-participants/multiscope-org-structure.htm"
+               label="Creating a Scoped Organization Structure and a Scoped Model" />
+            <topic
+               href="html/tutorial/scoped-participants/multiscope-deptstructure-in-portal.htm"
+               label="Creating Scoped Participants for the Scoped Organization" />
+            <topic
+               href="html/tutorial/scoped-participants/working-with-multi-scope-organization.htm"
+               label="Working with Scoped Organization Structure in Stardust Process Portal" />
+         </topic>
+         <topic label="Delegating to a User in Another Target Department"
+            href="html/tutorial/scoped-participants/delegation-scoped.html">
+            <topic label="Creating the Model and Organizational Structure"
+               href="html/tutorial/scoped-participants/delegation-scoped-model.html" />
+            <topic
+               label="Creating the Departments and Users in the Stardust Portal"
+               href="html/tutorial/scoped-participants/delegation-scoped-portal.html" />
+            <topic label="Delegating the Activity to the other Department"
+               href="html/tutorial/scoped-participants/delegation-scoped-run.html" />
+         </topic>
+      </topic>
+      <topic label="Defining and Running Reports"
+         href="html/tutorial/reports/tut-reports.html" >
+            <topic label="Creating a Simple Report Definition"
+               href="html/tutorial/reports/report-example.html" />
+            <topic label="Creating and Running a Report with Table Layout and a computed Column"
+               href="html/tutorial/reports/report-complex.html" />
+            <topic label="Creating a Composite Report"
+               href="html/tutorial/reports/report-composite.html" />
+      </topic>
+      <topic label="Using a Configuration Variable to Control a Process Flow"
+         href="html/tutorial/config-var/tut-config-var-prod.html" />
+      <topic label="Performing Quality Assurance on interactive Activities"
+         href="html/tutorial/quality-assurance/tut-quality-assurance.html">
+         <topic
+            href="html/tutorial/quality-assurance/tut-qa-model.html"
+            label="Creating the Model with an Activity marked for Quality Assurance" />
+         <topic
+            href="html/tutorial/quality-assurance/tut-qa-portal.html"
+            label="Checking Quality Assurance in the Portal" />
+      </topic>
+      <topic
+         href="html/tutorial/derived-procs/derive-procs-preface.html"
+         label="Managing Unstructured Workflows">
+         <topic
+            href="html/tutorial/derived-procs/spawn-tutorial.html"
+            label="Spawning Subprocesses" />
+         <topic
+            href="html/tutorial/derived-procs/extracting-pages.html"
+            label="Extracting Pages Tutorial" />
+         <topic
+            href="html/tutorial/derived-procs/abort-and-start-process.html"
+            label="Aborting and Starting Processes" />
+         <topic
+            href="html/tutorial/derived-procs/abort-and-join-process.html"
+            label="Aborting and Joining Processes" />
+      </topic>
+      <topic
+         href="html/tutorial/multi-model-env/create-multi-model-preface.html"
+         label="Creating multiple Models in one Audit Trail">
+         <topic
+            href="html/tutorial/multi-model-env/create-provider-model.html"
+            label="Creating a Provider Model" />
+         <topic
+            href="html/tutorial/multi-model-env/create-consumer-model.html"
+            label="Creating a Consumer Model" />
+      </topic>
+      <topic
+         href="html/tutorial/portal-configuration/filter-provider.html"
+         label="Creating a Worklist Filter" />
+      <topic href="html/tutorial/jms/jms-example.html"
+         label="Using JMS Application and JMS Trigger" />
+      <topic href="html/tutorial/process-interface-impl/proc-int-impl-ex.html"
+         label="Defining a Process Interface with dynamic Process Selection" />
+   </topic>
+</toc>

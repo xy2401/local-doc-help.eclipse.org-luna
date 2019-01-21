@@ -1,0 +1,277 @@
+<!doctype html PUBLIC "-//W3C//DTD html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>External Model Resources</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Deploying a Workflow Model",
+			"mg-defdesk-17.htm","mg-deploy-model.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>External Model Resources</h1>
+<p>The Model Element Repository integration provides you with the possibility to refer to any external 
+source for applications, services, data and business objects and process definitions.</p>
+<p>This chapter guides you through the following two registry type examples:</p>
+<ul>
+   <li><a href="#ext">Registry Type Extension Point</a></li>
+	<li><a href="#fileConn">Referencing Model Elements</a></li>
+   <li><a href="#file">Creating a File Connection</a></li>
+   <li><a href="#impref">Using Elements imported by Reference</a></li>
+   <li><a href="#manageref">Managing References to other Models</a></li>
+</ul>
+
+<h2 id="ext">Registry Type Extension Point</h2>
+<p>Stardust provides registry type extension points, e.g. for the <strong>Stardust
+Registry</strong>. Registry connections for a registry integration can be created for 
+Stardust Process Models. You can connect to an arbitrary number of Stardust registries.</p>
+<p>You have the option to implement your own repository connection extension points.
+Please refer to the chapter <a href="../programming/spi/pg-repository-extension.html">
+Implementing a Repository Connection Extension Point</a> for detailed information.</p>
+<h2 id="fileConn">Referencing Model Elements</h2>
+<p>You import model elements by reference. The following model elements are 
+available: </p>
+<ul>
+	<li>Structured Types</li>
+	<li>Data</li>
+	<li>Applications</li>
+	<li>Process Definitions</li>
+	<li>Participants</li>
+</ul>
+<p>Note that these elements are only referred in the referencing model and by any way they do not get copied 
+to the  model. For more information, please refer to the section <a href="#impref">Using 
+Elements Imported by Reference.</a> </p>
+
+<h2 id="file">Creating a File Connection</h2>
+
+<p>To provide stability of model references against changing file locations, 
+    absolute as well as relative path is supported. The following syntax is used for relative path:</p>
+<ol>
+	 
+	 <li>If referenced model is outside the current project but in same workspace: platform:/Model1.xpdl</li>
+	 <li>If referenced model is in same workspace but different project: platform:/project/Model1.xpdl</li>
+	 <li>If referenced model is in same project in same workspace: Model1.xpdl</li>
+	 
+	<li>Relative file paths entered manually are considered relative to the workspace, that is: Model1.xpdl</li>
+	<li>Absolute file paths are resolved relative to the machine file system root</li>
+
+</ol>
+
+<p>To create a file connection:</p>
+<ol>
+	<li>In the Outline view, right-click <strong>External Model Information</strong>.</li>
+	<li>Select <strong>File Connection</strong>.</li>
+	<li>In the <strong>File Connection Property Page</strong>, fill in ID 
+    and name of the file connection.</li>
+    <li>The <strong>Import by Reference</strong> checkbox is selected by default. Make sure that 
+    it is selected to copy it by reference.</li>
+	<li>Select the <strong>Browse</strong> button to browse to the source 
+    of the file to connect.</li>
+</ol>
+
+<p>Note if the Import by Reference checkbox is selected then the usage of elements from the imported
+models is done by reference in the referencing model. If not selected, elements are copied by value.
+For more information, please refer to the section,
+<a href="mg-copy-paste-elements.html#reference">Copying By Reference or By Value </a>of the chapter
+<a href="mg-copy-paste-elements.html">Copying and Pasting Modeled Elements</a>.</p>
+
+<p class="image"><img src="images/mg-file-connection.png" alt="Create a File Connection">
+<br><strong>Figure</strong>: Create a File Connection</p>
+
+<h3>Refreshing the File Connection</h3>
+<p>To refresh the file connection:</p>
+
+<ul>
+<li>In the outline view, right-click <strong>File Connection</strong></li>
+<li>Select <strong>Refresh</strong></li>
+</ul>
+<p class="image"><img src="images/mg-file-conn-refresh.png" alt="Refresh">
+<br><strong>Figure</strong>: Refresh File Connection</p>
+
+<p>If elements are changed in the provider model, the refresh 
+operation reflects the change in  consumer model.</p>
+
+<h3>Adding External Model References</h3>
+<p>You can also add a new external model reference using the Add External Model Reference option.
+This is just another way to add references under the External Model References node. For more information, please refer
+to the section <a href="#manageref">Managing References to Other Models</a>. Note that if the external
+model reference already exists then Add External Model References context menu is not available. </p>
+<p class="image"><img src="images/add-external-model-ref.png" alt="">
+<br><strong>Figure</strong>: File Connection - Add External Model References</p>
+
+<h3>Deleting the File Connection</h3>
+<p>To delete the file connection:</p>
+<ul>
+	<li>In the outline view, right-click <strong>File Connection</strong></li>
+	<li>Select <strong>Delete Element</strong></li>
+</ul>
+<p class="image"><img src="images/mg-file-conn-delete.png" alt="Delete Element">
+<br><strong>Figure</strong>: Delete Element</p>
+<p> The confirmation dialog box is displayed. If you click <strong>OK</strong> the file connection to 
+provider model gets deleted.</p>
+<p class="image"><img src="images/mg-file-conn-confirmdialog.png" alt="Confirmation Dialog">
+<br><strong>Figure</strong>: Delete Element - Confirmation Dialog</p>
+
+<h3>Searching in a File Connection</h3>
+<p>To use the search functionality on a file connection:</p>
+<ul>
+	<li>In the outline view, right-click <strong>File Connection</strong>.</li>
+	<li>Select <strong>Search</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-file-conn-search.png" alt="Search">
+<br><strong>Figure</strong>: Search on a File Connection</p>
+<p>This will invoke the <strong>Search</strong> dialog. Enter a search string and
+select <strong>Search</strong>. Note that no wildcards are supported here.</p>
+<p class="image"><img src="images/mg-file-search-dialog.png" alt="Search Dialog">
+<br><strong>Figure</strong>: Enter a Search Text.</p>
+<p>All elements containing the search text in their name are displayed in the
+<strong>Search Result</strong> tree.</p>
+<p class="image"><img src="images/mg-search-result.png" alt="The Search Result List">
+<br><strong>Figure</strong>: The Search Result List.</p>
+<h3>Properties</h3>
+<p>The Properties menu displays the same dialog box in which you can edit and view the file connection
+properties.</p>
+<h3>File Connection Errors</h3>
+<p>In case a connection pointing to a referenced model has been removed 
+or renamed, a validation error occurs, indicating that the connection to the referenced model 
+could not be established.</p>
+
+<p>Whenever a new file connection is created, a validation check is performed to detect 
+whether the new model references would create circular reference between the set of models in the same workspace.
+A Circular Dependency Detected warning is displayed.</p>
+
+<p>Dangling references may result, in case, file to be referenced is not found. Inconsistency error
+is displayed at the time of the deployment.</p>
+
+<h2 id="impref">Using Elements imported by Reference</h2>
+<p>Only after establishing the file connection with referenced model and selecting Imported by Reference check box
+the elements can be referenced. These elements cannot be used as local elements. Although they behave as local elements.
+ So if any changes are performed in the referenced model, the file connection should be refreshed.</p>
+
+ <h3 id="drag">Dragging and Dropping Referenced Elements</h3>
+ 
+ <p>To use an element imported by reference in the referencing model, perform the drag-and-drop operation.
+ </p>
+ 
+ <ol>
+   <li>Drag the element from the <strong>Outline view</strong> &gt; <strong>File Connection</strong> to the diagram canvas
+   <p class="image"><img src="images/dragelement.png" alt="Drag Referenced Element"></img>
+   <br><strong>Figure</strong>: Drag Referenced Element</p></li>
+ 	
+ 	<li>Once the element is dragged to the diagram canvas, it becomes part of the referencing model element.</li>
+ </ol>
+<p>Each element of the referenced model has the following semantics in the referencing model: </p>
+<ul>
+	<li>Process Definition: a subprocess is created with reference to the process definition</li>
+	<li>Structured Types: 
+   <ul>
+      <li>Composite Structured Types: a structured data is created with reference to this structured type definition</li>
+      <li>Enumeration Structured Types: a primitive data is created with reference to this Enumeration type definition</li>
+   </ul></li>
+	<li>Application: an application activity is created with reference to the application</li>
+	<li>Participant: a participant is created with reference to the participant 
+   <!-- TODO: clarify - connection is possible: 
+   You cannot associate the referenced participant as 
+	"Works For", "Manager Of" and "Part Of".--></li>
+	<li>Data: data is created with reference to the original data</li>
+ </ul>
+<!-- TODO: clarify - properties are editable in which parts -->
+<p>For details on dragging and dropping elements from the Outline View, please refer to the
+<a href="../modelling/model-views/views-outline.html"> Outline View</a> chapter.</p>
+
+<h3>Not Accessible Referenced Model Elements</h3>
+<p>Note that in case a referenced model element is not accessible due to rename or deletion,
+a validation error, indicating that the model element is not present in the referenced model
+is displayed in the Problems view.</p>
+<p>Also note that reference cannot be established to a model element of a referenced model
+if any reference to a model element of another version of the referenced model has already been created.
+In this case, you cannot drag and drop model element of a referenced model and the warning is displayed in the Problems view.</p>
+<p>Dangling references may result in case referenced model elements are not displayed. Inconsistency error
+is displayed at the time of the deployment.</p>
+<h2 id="manageref">Managing References to other Models</h2>
+<p>You can view the references to other models using External Model References node. An
+External Model References is a library which keeps track of the referenced models. For each 
+provider model used from the current model, it contains a sub-node with the name of the referenced model.
+Note that a file connection must exist prior to manage references action.</p>
+<p class="image"><img src="images/externalnode.png" alt="External Model References"></img>
+ 	<br><strong>Figure</strong>: External Model References</p>
+<p>If the reference is not added from File Connection menu context then you can add a new external model reference
+using this option. Right-click on External Model References node and select Add
+External Model Reference from the context menu. However note that references also get added
+when you drag and drop any referenced element into the consumer model. In that case,
+you do not need to explicitly add the reference using this option.</p>
+<p class="image"><img src="images/add-ext-ref.png" alt="Add External Model References"></img>
+ 	<br><strong>Figure</strong>: Add External Model References</p>
+<p>List of available file connections are displayed. Select file connection as the source to add new external model reference.</p>
+
+<p class="image"><img src="images/file-con-select.png" alt="File Connection"></img>
+ 	<br><strong>Figure</strong>: File Connection</p>
+<p>If the reference already exists in the model then the "Reference Exists" message is displayed and Add External
+ Model Reference operation is canceled. Else the reference of the provider model gets added under the External Model
+ Reference node.</p>
+ <p class="image"><img src="images/ref-exists.png" alt="Reference Exists"></img>
+ 	<br><strong>Figure</strong>: Reference Exists</p>
+<P>You can perform following operations on each external reference node:</P>
+<ul>
+	<li>Delete</li>
+	<li>Rename</li>
+	<li>References</li>
+	<li>Properties</li>
+</ul>
+ 	
+<h3>Delete</h3>
+<p>Deletes all usages of the provider model from the consumer model. </p>
+ <p class="image"><img src="images/delete-ext-reference.png" alt="Delete External Model Reference"></img>
+ 	<br><strong>Figure</strong>: Delete External Model Reference</p>
+<p>If you select the Delete option, the following
+warning is displayed.</p>
+
+<p class="image"><img src="images/delete-warning.png" alt="Delete External Model Reference - Warning"></img>
+ 	<br><strong>Figure</strong>: Delete External Model Reference - Warning</p>
+
+<h3>Rename</h3>
+<p>Select this option to rename the external model reference.</p> 	
+<p class="image"><img src="images/rename-external-ref.png" alt="Rename External Model Reference"></img>
+ 	<br><strong>Figure</strong>: Rename External Model Reference</p>
+ 	
+<h3>Reference</h3>
+<p>Displays a list of all usages of model elements from the provider model in the Search Results view.</p>
+<p class="image"><img src="images/reference-ext-model.png" alt=""></img>
+ 	<br><strong>Figure</strong>: References</p>
+ 	
+<h3>Properties</h3>
+<p>To view the properties, select Properties from the context menu.</p>
+<p class="image"><img src="images/properties-references.png" alt=""></img>
+ 	<br><strong>Figure</strong>: Properties</p>
+<p>Following properties of the selected external model reference get displayed.
+</p>
+<ol>
+	<li>File Connection - Displays the ID of the file connection corresponding to the reference.</li>
+	<li>Model File ID - A field that contains the Id of the model file that the corresponding file connection points to.</li>
+</ol>
+<p class="image"><img src="images/properties-ext-mod-ref.png" alt=""></img>
+ 	<br><strong>Figure</strong>: Properties of External Model Reference</p>
+
+<h3>Not Accessible Referenced Models</h3>
+<p>Note that in case a referenced model is not accessible due to deletion from file system or 
+moved to another location or renamed, a validation error, indicating that the model is not present 
+is displayed in the Problems view.</p>
+
+<p>Dangling references may result, in case referenced models are not found. An error of inconsistent model version
+is displayed at the time of the deployment.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

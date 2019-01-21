@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Structured Data Types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Integrating XML Data",
+    	"mg-integration-2.htm","mg-integration-3.htm",
+		"../../handbooks.htm","Developer Handbooks",
+		"../mg-preface.htm","The Modeling Guide",
+		"data-int-preface.html","Data Integration");
+ -->
+</script>
+<body>
+<h1>Structured Data Types</h1>
+<ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="structured-data/struct-type-def.html">Defining Structured Types</a></li>
+    <li><a href="structured-data/struct-proc-data.html">Using Structured Types in Process Data</a></li>
+    <li><a href="structured-data/struct-type-portal.html">Using Structured Types in the Stardust Portal</a></li>
+    <li><a href="structured-data/struct-field-level.html">Structured Data Annotation Properties</a></li>
+    <li><a href="structured-data/struct-type-xpdl.html">XPDL Representation of Structured Data</a></li>
+</ul>
+
+<h2 id="background">Background</h2>
+<p>The Stardust Workflow Execution Perspective supports a variety of data technologies such as</p>
+<ol>
+  <li>Primitive data,</li>
+  <li>Serializable Java classes,</li>
+  <li>Entity Beans,</li>
+  <li>Classes persisted via the Hibernate O/R mapper or</li>
+  <li>XML data.</li>
+</ol>
+<p>All the above are encapsulating &quot;dereferentiation behavior&quot; - how 
+  to obtain specific details from data represented in these technologies and also 
+  how these data are stored and loaded during the execution of business processes.</p>
+<p>To describe structured data - e.g. a person with a first name, a last name 
+  and an address, while the address has a street name, a number a city and a ZIP 
+  code -, a data technology out of 2. to 5. can be used. However all these technologies 
+  require additional programming skills in Java or XML.</p>
+<p>Structured data types provide mechanisms to define and work with structured 
+  data without programming skills in Stardust.</p>
+<p>Having defined such data types in the modeling environment of Stardust,
+ these can be used for data definitions and Stardust will take care of their 
+ persistence in and their efficient retrieval 
+  from the Audit Trail database.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

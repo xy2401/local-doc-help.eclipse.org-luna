@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Logging Custom Log Entries</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Retrieving Configuration Variables",
+	   "list-partitions.html","pg-embed-conf-var.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Logging Custom Log Entries</h1>
+<p>The Stardust <a href="../pg-embedded-3.htm#workflowservice">WorkflowService</a> and 
+<a href="../pg-embedded-3.htm#adminservice">AdministrationService</a> provide the possibility to
+customize the log entries. 
+The method <strong>writeLogEntry</strong> logs an audit trail event of type 
+<tt>LogCode.EXTERNAL</tt>, if you added the entry by the <tt>WorkflowService</tt> and
+of type <tt>LogCode.ADMINISTRATION</tt>, if you added it by the 
+<tt>AdministrationService</tt>.
+Please refer to the corresponding JavaDoc of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+and the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a> for detailed information on the usage of this method and
+its specific parameters.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

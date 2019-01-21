@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing Interfaces for Portal Configurations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+	"pg-portal-config.html","portal-config-assembly.html",
+   "../../../handbooks.htm","Developer Handbook",
+   "../../pg-preface.htm","Programming Guide",
+   "spi-toc.html","SPI",
+   "pg-portal-config.html","Portal Configurations");
+ -->
+</script>
+<h1>Implementing an Interface for Portal Delegation Configurations</h1>
+<p>To determine the list of possible users and roles in the delegation
+checkbox of the Stardust Portals, Stardust provides the following interface:</p>
+<pre>org.eclipse.stardust.ui.web.viewscommon.dialog.IDelegatesProvider</pre>
+<p>The method <tt>FindDelegates</tt> returns a list of all values, which should be 
+displayed during delegation. The parameters are the list of activity instances being
+about to be delegated and additional options further describing the domain
+of valid delegates. 
+<!--  Please refer to the according JavaDoc of the interface 
+<a href="../../../../reference/api/portals/org/eclipse/stardust/ui/web/viewscommon/dialog/IDelegatesProvider.html">
+IDelegatesProvider</a> for detailed information.--></p>
+<p>Unpack the <tt>ipp-portal-common.jar</tt> file, residing in the 
+<tt>add-ons/ipp-portal/lib</tt> folder of your 
+Stardust installation folder. Enter a delegation bean to the 
+<tt>ippPortalFramework-context.xml</tt> file, residing in the
+<tt>META-INF/spring</tt> folder, e.g.:</p>
+<pre>
+&lt;bean name="delegationBean" class="org.eclipse.stardust.ui.web.common.dialogs.DelegationBean" scope="session"&gt;
+    ...
+    &lt;managed-property&gt;
+        &lt;property-name&gt;delegatesProvider&lt;/property-name&gt;
+        &lt;property-class&gt;org.eclipse.stardust.ui.web.client.common.spi.IDelegatesProvider&lt;/property-class&gt;
+        &lt;value&gt;#{portalDelegationProvider}&lt;/value&gt;
+    &lt;/managed-property&gt; 
+    ...
+&lt;/bean&gt;
+</pre>
+
+<p>In case no custom implementation is provided, the following default implementation is
+used:</p>
+<pre>
+public class DefaultDelegatesProvider implements IDelegatesProvider, Serializable
+{      
+   private static final long serialVersionUID = 1L;
+   public static final DefaultDelegatesProvider INSTANCE = new DefaultDelegatesProvider();
+
+   public Map/*&lt;PerformerType, List&lt;Participant&gt;&gt;*/ findDelegates(
+         List/*&lt;ActivityInstance&gt;*/ activityInstances, Options options)
+   {
+      
+      Map result = CollectionUtils.newMap();      
+      QueryService service = getQueryService();
+
+      if ((null != service) &amp;&amp; (null != activityInstances))
+      {
+         // collect models
+         Set/*&lt;Integer&gt;*/ models = CollectionUtils.newSet();         
+         for (int i = 0; i &lt; activityInstances.size(); ++i)
+         {
+            ActivityInstance ai = (ActivityInstance) activityInstances.get(i);
+            if ( !models.contains(new Integer(ai.getModelOID())))
+            {
+               // collect all model oid's
+               models.add(new Integer(ai.getModelOID()));
+            }
+         }         
+         
+         // user filter
+         if (options.getPerformerTypes().contains(USER_TYPE))
+         {
+            // limited or not
+            UserQuery userQuery = options.isStrictSearch()
+                  ? buildStrictUserQuery(activityInstances)
+                  : UserQuery.findActive();
+                        
+            // get all from model
+            Collection/*&lt;Participant&gt;*/ candidateParticipants = getCommonParticipantsFromModels(models);
+            if(!candidateParticipants.isEmpty())
+            {
+               FilterOrTerm orParticipant = userQuery.getFilter().addOrTerm();                  
+               for (Iterator i = candidateParticipants.iterator(); i.hasNext();)
+               {
+                  Participant p = (Participant) i.next();
+                  if (options.getPerformerTypes().contains(DISABLE_ADMINISTRATOR_ROLE))
+                  {
+                     if(!p.getId().equals("Administrator")) //$NON-NLS-1$
+                     {
+                        orParticipant.add(ParticipantAssociationFilter.forModelParticipant(p.getId()));                                             
+                     }                     
+                  }
+                  else
+                  {
+                     orParticipant.add(ParticipantAssociationFilter.forModelParticipant(p.getId()));                     
+                  }
+               }  
+            }
+            
+            // filter for user names if selected
+            if ( !StringUtils.isEmpty(options.getNameFilter()))
+            {
+               String name = options.getNameFilter().replaceAll("&#92;&#92;*", "%");
+               FilterOrTerm or = userQuery.getFilter().addOrTerm();
+               or.add(UserQuery.LAST_NAME.like(name));
+               or.add(UserQuery.LAST_NAME.like(alternateFirstLetter(name)));
+            }
+            userQuery.orderBy(UserQuery.LAST_NAME)
+                  .and(UserQuery.FIRST_NAME)
+                  .and(UserQuery.ACCOUNT);
+
+            Users matchingUsers = service.getAllUsers(userQuery);            
+            // add result for type
+            result.put(PerformerType.User, matchingUsers);
+         }
+
+         // model participants (roles, organizations)
+         if (options.getPerformerTypes().contains(ROLE_TYPE)
+               || options.getPerformerTypes().contains(ORGANIZATION_TYPE))
+         {
+            Set defaultPerformerSet = CollectionUtils.newSet();
+            Set activityPerformerSet;
+            
+            for (int i = 0; i &lt; activityInstances.size(); ++i)
+            {
+               activityPerformerSet = CollectionUtils.newSet();
+               ActivityInstance ai = (ActivityInstance) activityInstances.get(i);
+
+               // limited search
+               if(options.isStrictSearch())
+               {
+                  ModelParticipant modelParticipant = ai.getActivity().getDefaultPerformer();                  
+                  if(modelParticipant instanceof ConditionalPerformer)
+                  {
+                     // resolve conditional performer
+                     ConditionalPerformer cp = (ConditionalPerformer)modelParticipant;
+                     Participant p = cp.getResolvedPerformer();
+                     modelParticipant = null;
+                     // user and user groups?
+                     if(p instanceof ModelParticipant)
+                     {
+                        modelParticipant = (ModelParticipant)p;
+                     }
+                  }
+                  // at the moment add all to defaultPerformerSet
+                  if(modelParticipant instanceof Role)
+                  {
+                     activityPerformerSet.add(modelParticipant.getId());
+                  }
+                  // resolve organization
+                  if(modelParticipant instanceof Organization)
+                  {
+                     Organization org = (Organization) modelParticipant;
+                     addOrganisations(org, activityPerformerSet);                     
+                  }   
+
+                  if(defaultPerformerSet.isEmpty())
+                  {
+                     if(!activityPerformerSet.isEmpty())
+                     {
+                        defaultPerformerSet.addAll(activityPerformerSet);                        
+                     }                     
+                  }
+                  else
+                  {
+                     // merge
+                     if(!activityPerformerSet.isEmpty())
+                     {
+                        Set tmpPerformerSet = CollectionUtils.newSet();
+                        for (Iterator api = activityPerformerSet.iterator(); api.hasNext();)
+                        {
+                           String performerId = (String) api.next();
+                           if(defaultPerformerSet.contains(performerId))
+                           {
+                              tmpPerformerSet.add(performerId);
+                           }
+                        }                     
+                        defaultPerformerSet.clear();
+                        if(!tmpPerformerSet.isEmpty())
+                        {
+                           defaultPerformerSet.addAll(tmpPerformerSet);
+                        }                        
+                     }
+                  }
+               }
+            }
+
+            // get all from model and select only the ones we have filtered
+            Collection/*&lt;Participant&gt;*/ candidateParticipants = getCommonParticipantsFromModels(models);
+            List roleIds = new ArrayList();
+            List orgIds = new ArrayList();
+            for (Iterator i = candidateParticipants.iterator(); i.hasNext();)
+            {
+               Participant p = (Participant) i.next();
+               if ( !options.isStrictSearch() || defaultPerformerSet.contains(p.getId()))
+               {
+                  if(p instanceof Organization)
+                  {
+                     if (options.getPerformerTypes().contains(ORGANIZATION_TYPE))
+                     {
+                        orgIds.add(p.getName());                                       
+                     }
+                  }
+                  else if(p instanceof Role)
+                  {
+                     if (options.getPerformerTypes().contains(ROLE_TYPE))
+                     {
+                        roleIds.add(p.getName());                                       
+                     }
+                  }                  
+               }
+            }
+            // sort, so we have all in order
+            Collections.sort(roleIds);
+            Collections.sort(orgIds);
+            roleIds.addAll(orgIds);            
+
+            String regex = !StringUtils.isEmpty(options.getNameFilter())
+                  ? options.getNameFilter().replaceAll("&#92;&#92;*", ".*")
+                  : null;
+
+            List matchingModelParticipants = CollectionUtils.newList();
+            // filter participants if we search for a string
+            for (Iterator i = roleIds.iterator(); i.hasNext();)
+            {
+               String name = (String) i.next();
+               if (StringUtils.isEmpty(regex) || name.matches(regex))
+               {
+                  addParticipantToSearchResult(matchingModelParticipants, name,
+                        candidateParticipants);
+               }
+            }
+            result.put(PerformerType.ModelParticipant, matchingModelParticipants);
+         }
+      }
+      
+      return result;
+   }
+
+   private void addOrganisations(Organization org, Set modelParticipants)
+   {
+      modelParticipants.add(org.getId());
+      Iterator iter = org.getAllSubRoles().iterator();
+      while (iter.hasNext())
+      {
+         Role role = (Role) iter.next();
+         modelParticipants.add(role.getId());
+      }
+      iter = org.getAllSubOrganizations().iterator();
+      while (iter.hasNext())
+      {
+         Organization suborg = (Organization) iter.next();
+         addOrganisations(suborg, modelParticipants);
+      }      
+   }
+
+   private static QueryService getQueryService()
+   {
+      SessionContext sessionContext = SessionContext.findSessionContext();
+      if (sessionContext != null &amp;&amp; sessionContext.isSessionInitialized())
+      {
+         return sessionContext.getServiceFactory().getQueryService();
+      }
+      return null;
+   }
+
+   private static String alternateFirstLetter(String field)
+   {
+      String firstLetter = field.substring(0, 1);
+      if (firstLetter.compareTo(field.substring(0, 1).toLowerCase()) == 0)
+      {
+         firstLetter = firstLetter.toUpperCase();
+      }
+      else
+      {
+         firstLetter = firstLetter.toLowerCase();
+      }
+      return firstLetter + field.substring(1);
+   }
+
+   // user filter
+   private static UserQuery buildStrictUserQuery(List ais)
+   {
+      UserQuery userQuery = UserQuery.findActive();
+
+      FilterAndTerm userAndTerm = userQuery.getFilter();
+      if ( !CollectionUtils.isEmpty(ais))
+      {
+         for (int i = 0; i &lt; ais.size(); ++i)
+         {
+            ActivityInstance ai = (ActivityInstance) ais.get(i);
+            if (ai.getState() != ActivityInstanceState.Completed
+                  &amp;&amp; ai.getState() != ActivityInstanceState.Aborted)
+            {
+               ModelParticipant defaultPerformer = ai.getActivity().getDefaultPerformer();
+               if(defaultPerformer instanceof ConditionalPerformer)
+               {
+                  ConditionalPerformer condPerf = (ConditionalPerformer) defaultPerformer;
+                  Participant participant = condPerf.getResolvedPerformer(); 
+                  if(participant instanceof ModelParticipant)
+                  {
+                     defaultPerformer = (ModelParticipant)participant;
+                  }
+               }
+               if(defaultPerformer instanceof Organization)
+               {
+                  FilterTerm orTerm = userAndTerm.addOrTerm();
+                  Organization org = (Organization) defaultPerformer;
+                  addOrganisations(org, orTerm);
+               }
+               else if(defaultPerformer != null)
+               {
+                  userAndTerm.and(ParticipantAssociationFilter
+                    .forModelParticipant(defaultPerformer.getId()));
+               }               
+            }
+         }
+      }
+      return userQuery;
+   }
+
+   private static void addOrganisations(Organization org, FilterTerm filter)
+   {
+      filter.add(ParticipantAssociationFilter
+            .forModelParticipant(org.getId()));
+      Iterator iter = org.getAllSubRoles().iterator();
+      while (iter.hasNext())
+      {
+         Role role = (Role) iter.next();
+         filter.add(ParticipantAssociationFilter
+                    .forModelParticipant(role.getId()));
+      }
+      iter = org.getAllSubOrganizations().iterator();
+      while (iter.hasNext())
+      {
+         Organization suborg = (Organization) iter.next();
+         addOrganisations(suborg, filter);
+      }      
+   }
+
+   // collect all participants
+   private static Collection/*&lt;Participant&gt;*/ getCommonParticipantsFromModels(Set/*&lt;Integer&gt;*/ models)
+   {
+      ModelCache modelCache = ModelCache.findModelCache();
+      Map/* &lt;String, Participant&gt; */participants = CollectionUtils.newMap();
+      List/* &lt;String&gt; */commonParticipants = CollectionUtils.newList();
+
+      List/* &lt;Participant&gt; */result = CollectionUtils.newList();
+
+      if (modelCache != null &amp;&amp; models != null)
+      {
+         Iterator/* &lt;Model&gt; */modelIter = modelCache.getAllModels().iterator();
+         while (modelIter.hasNext())
+         {
+            Model model = (Model) modelIter.next();
+            if (models.contains(new Integer(model.getModelOID())))
+            {
+               if (participants.isEmpty())
+               {
+                  for (Iterator pIter = model.getAllParticipants().iterator(); pIter
+                        .hasNext();)
+                  {
+                     Participant participant = (Participant) pIter.next();
+                     String participantId = participant.getId();
+                     
+                     if (participant instanceof Role ||
+                           participant instanceof Organization)
+                     {
+                        participants.put(participantId, participant);
+                        commonParticipants.add(participantId);
+                     }
+                  }
+               }
+               else
+               {
+                  List/*&lt;String&gt;*/ modelParticipants = CollectionUtils.newList();
+
+                  for (Iterator pIter = model.getAllParticipants().iterator(); pIter
+                        .hasNext();)
+                  {
+                     Participant participant = (Participant) pIter.next();
+                     modelParticipants.add(participant.getId());
+                  }
+                  commonParticipants.retainAll(modelParticipants);
+               }
+            }
+         }
+      }
+
+      for (Iterator pIter = participants.values().iterator(); pIter.hasNext();)
+      {
+         Participant participant = (Participant) pIter.next();
+         if (commonParticipants.contains(participant.getId()))
+         {
+            result.add(participant);
+         }
+      }
+
+      return result;
+   }
+
+   private void addParticipantToSearchResult(List searchResult, String name,
+         Collection/*&lt;Participant&gt;*/ candidateParticipants)
+   {
+      for (Iterator userGroupIter = candidateParticipants.iterator(); userGroupIter.hasNext();)
+      {
+         Participant p = (Participant) userGroupIter.next();
+         if (CompareHelper.areEqual(p.getName(), name))
+         {
+            searchResult.add(p);
+         }
+      }
+   }  
+}</pre>
+<p>You can use this default implementation as an example
+for your own implementation.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Working with Transitions</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Converting Gateways to a Business Modeler-compliant Format",
+		"activities/activities-preface.html","convert-gateways.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working with Transitions</h1>
+<p>Transitions determine the sequence of activities. A transition connects an
+activity with its successor activity. It also allows to set a condition - only if this
+condition is fulfilled at runtime the transition is processed and the next activity will
+be executed.</p>
+<ul>
+	<li><a href="#create">Creating Transitions</a></li>
+	<li><a href="#routing">Routing Options</a></li>
+	<li><a href="#cyclic">Cyclic Transitions</a></li>
+	<li><a href="#delete">Deleting Transitions and Transition Symbols</a></li>
+	<li><a href="#conditions">Setting Transition Conditions</a></li>
+</ul>
+<h2 id="create">Creating Transitions</h2>
+<p>To create a transition between two activities:</p>
+<ul>
+    <li>In the diagram toolbar palette select <strong>Connection</strong>.</li>
+    <li>Click the predecessor activity.</li>
+    <li>Click the subsequent activity.</li>
+</ul>
+<p class="image"><img src="images/mg-connect-transition.png" alt="Create Transition">
+<br>
+<strong>Figure:</strong> Creating a Transition between Activities</p>
+<p>You can also create a transition connection directly in the diagram canvas:</p>
+<ul>
+    <li>Right-click the predecessor activity.</li>
+    <li>Select the option <strong>Connect</strong> from the context menu.</li>
+    <li>Select the subsequent activity.</li>
+</ul>
+<p class="image"><img src="images/mg-connexion-context-menu.png" alt=""> <br>
+<strong>Figure:</strong> Creating a Transition in the Diagram<br />
+&nbsp;</p>
+<p>If you have created at least one link type with target and source type <tt>Activity</tt>,
+you have the choice to select between the custom link types and the standard transition.
+Please refer to chapter <a href="mg-defdesk-14.htm">Specifying Arbitrary Link Types</a>
+for information on custom link types.</p>
+<p class="image"><img src="images/mg-connexion-selection.png" alt=""> <br>
+<strong>Figure:</strong> Select the Type of Transition</p>
+<h2 id="routing">Routing Options</h2>
+<p>To draw a transition, you can choose the way it will connect an element to another.
+You have the following three options:</p>
+<ul>
+    <li><a href="#default">Default</a></li>
+    <li><a href="#shortest">Shortest Path</a></li>
+    <li><a href="#manhattan">Manhattan</a></li>
+    <li><a href="#explicit">Explicit</a></li>
+</ul>
+<p>To select the routing option:</p>
+<ul>
+    <li>Right-click the symbol of the transition.</li>
+    <li>Select <strong>Routing</strong>.</li>
+    <li>Choose the routing type in the provided list.</li>
+</ul>
+<p class="image"><img src="images/mg-select-routing.png" alt=""> <br>
+<strong>Figure:</strong> Select Routing Option</p>
+<h3 id="default">Default</h3>
+<p>The option <strong>Default</strong> sets the default value according to the type of
+transition.</p>
+<p><strong>Manhattan</strong> routing is set as default for transitions of the
+following elements:</p>
+<ul>
+    <li>Activity transitions</li>
+    <li>Trigger</li>
+</ul>
+<p>The <strong>Shortest Path</strong> routing option is set as default for transitions
+of the following elements:</p>
+<ul>
+    <li>Data</li>
+    <li>Applications</li>
+    <li>Participants</li>
+</ul>
+<h3 id="shortest">Shortest Path</h3>
+<p>This option draws the shortest path between two elements. If there is no element
+between these two elements this means a direct straight line.</p>
+<p class="image"><img src="images/mg-routing-shortest.png" alt=""> <br>
+<strong>Figure:</strong> Shortest Path with no Obstacle</p>
+<p>In case an element is between, the shortest path around this element is drawn to
+avoid overlapping.</p>
+<p class="image"><img src="images/mg-routing-shortest-2.png" alt=""> <br>
+<strong>Figure:</strong> Shortest Path with Obstacle</p>
+<h3 id="manhattan">Manhattan</h3>
+<p>The Manhattan routing option uses a combination of vertical and horizontal lines to
+connect the symbols.</p>
+<p class="image"><img src="images/mg-routing-manhattan.png" alt=""> <br>
+<strong>Figure:</strong> Transition with Manhattan Routing Option</p>
+<h3 id="explicit">Explicit</h3>
+<p>The Explicit Routing option gives the possibility to adjust the transition line.
+When you click the transition line, a dragging cross appears as bendpoint in the middle of
+the line. You can drag this bendpoint to another place on the canvas. While dragging a
+bendpoint, a new bendpoint is created for each of the two lines divided by this bendpoint.
+In this way you can create as many bendpoints you need.</p>
+<p class="image"><img src="images/mg-routing-explicit.png" alt=""> <br>
+<strong>Figure:</strong> Transition with Explicit Routing Option</p>
+<h4>Moving several bendpoints</h4>
+<p>You can select several bendpoints and move them synchronously:</p>
+<ul>
+    <li>Hold the Crtl key and click on the bendpoints to be included in the
+    selection.</li>
+    <li>The color of the selected bendpoints will change to red.</li>
+    <li>To deselect a bendpoint click it again (still holding the Crtl key). Its
+    color will change back to black.</li>
+    <li>To deselect the whole selection click somewhere on the canvas.</li>
+    <li>To move the selected bendpoints pick one of them and drag it to a desired
+    position.</li>
+</ul>
+<p class="image"><img src="images/mg-routing-explicit-move-bendpoints.png" alt="">
+<br>
+<strong>Figure:</strong> Move Bendpoints</p>
+<h2 id="cyclic">Cyclic Transitions</h2>
+<p>It is possible to create cyclic transitions. This means that an activity cycle
+involves repetitive execution of one or more activities until a condition is met.</p>
+<p>To create a cyclic transition between activities:</p>
+<ul>
+    <li>Open the activity properties dialog of the predecessor join activity.</li>
+    <li>Change to <strong>Control Flow</strong> in the properties menu and choose<strong>
+    XOR</strong> as split behavior.</li>
+    <li>Then open the properties dialog of the subsequent split activity and choose
+    <strong>XOR</strong> as join control flow behavior.</li>
+    <li>Right-click the split symbol of the predecessor activity.</li>
+    <li>Select <strong>Connect</strong> in the context-menu.</li>
+    <li>Click the join symbol of the subsequent activity.</li>
+</ul>
+<p class="image"><a href="images/mg-defdesk-cyclic_orgSize.png" target="_blank"> <img
+    src="images/mg-defdesk-cyclic.png" alt=""></a> <br>
+<strong>Figure:</strong> Cyclic Transition</p>
+<p>In this example the last activity <tt>Start_Campaign</tt> is only instantiated if
+the data <strong>Status</strong> has the value 1 (see also <a href="#transitionConditions">Specifying
+Transition Conditions</a> ) or else the process continues with <tt>Order Media</tt>.</p>
+<h2 id="delete">Deleting Transitions and Transition Symbols</h2>
+<p>To delete a transition, use the option <strong>Delete</strong> in the
+transition's pop-up menu.</p>
+<p>To remove a transition symbol from the diagram, choose the option <strong>Delete
+Symbol</strong> in the transition's context menu. After this operation the transition between the
+two activities will still exist in the model.</p>
+<h3>Restore Transition Symbols</h3>
+<p>Having removed transition symbols, you can always restore them in your diagram:</p>
+<ul>
+    <li>Right-click your diagram canvas.</li>
+    <li>Choose the <strong>Reload Connections</strong> option in the context menu.</li>
+    <li>In the upcoming <strong>Available Connections</strong> dialog select the
+    connections to restore.</li>
+</ul>
+<p class="image"><img src="images/mg-defdesk-75.png" alt="Reload Connections"> <br>
+<strong>Figure:</strong> Reload Connections</p>
+<h2 id="conditions">Setting Transition Conditions</h2>
+<p>The properties of a transition are accessible in its properties dialog. To open
+this dialog, right-click the transition symbol in a model diagram and select the option <strong>Properties</strong>.</p>
+<p>Besides name and id the general properties of a transition include a condition
+type option, a condition expression field and a description. The 
+<strong>Fork on traversal</strong> option of a transition controls
+the synchronism and concurrency behavior during the execution of the corresponding
+process instances. Please refer to the section 
+<a href="../../concepts/workflow-basics/mg-basics-13.htm#activityThread">Activity Thread</a> of the
+chapter <a href="../../concepts/workflow-basics/mg-basics-13.htm">Runtime Behavior</a> for detailed 
+information on the <strong>Fork on Traversal</strong>
+functionality.</p>
+<p>You can set the <tt>View Fork on Traversal</tt> flag on the  
+<a href="mg-preferences.html#drawing">Drawing Preferences</a> page
+to visualize how Stardust Engine traverses during transition conditions.</p> 
+<p>Please note if setting the ID, that IDs containing
+    hyphens, blanks or dots and IDs starting with digits are not supported.</p>
+<ul>
+	<li><a href="#type">Setting the Condition Type</a></li>
+	<li><a href="#transitionConditions">Specifying Transition Conditions</a></li>
+	<li><a href="#actinst">Using Information of an Activity Instance in the Condition</a></li>
+	<li><a href="#enum">Using Enumeration Types in the Condition</a></li>
+</ul>
+<h3 id="type">Setting the Condition Type</h3>
+<p>In the <strong>Condition Type</strong> field you can select the types
+<tt>OTHERWISE</tt> or <tt>CONDITION</tt>:</p>
+<p class="image"><img src="images/transition-condition-type.png"
+    alt="Select the Condition Type."> <br>
+<strong>Figure:</strong> Select the Condition Type.</p>
+<p>Please note that switching between those types will remove transition
+conditions already entered.</p>
+<h4>CONDITION</h4>
+<p>The condition type <tt>CONDITION</tt> enables entering code in the <strong>
+Condition Expression</strong> editor. The return value of this expression will be
+checked to be <tt>true</tt>.</p>
+<h4>OTHERWISE</h4>
+<p>If the condition type <tt>OTHERWISE</tt> is selected, the transition 
+is only evaluated to <tt>true</tt>, if all the other conditions on the split have
+the value <tt>false</tt>. The <strong>Condition Expression</strong> editor is
+disabled.</p>
+<h3 id="transitionConditions">Specifying Transition Conditions</h3>
+<p>In the <strong>Condition Expression</strong> field you can specify a condition. The transition
+is then only traversed and the next activity performed if this condition is fulfilled.</p>
+<p>Transition conditions are specified if the successor activity is only to be
+performed under particular circumstances. Please refer to the chapter <a
+    href="../../concepts/workflow-basics/mg-basics-6.htm#transcond">Transition Conditions</a> of the Basics <a
+    href="../../concepts/workflow-basics/mg-basics-6.htm">Control Flow</a> chapter for detailed information on the
+operators and variables that can be used in transition conditions.</p>
+<p>If the return value of a transition condition is <tt>true</tt>, the transition
+will always be traversed and the successor activity executed. To specify a transition
+condition, open the transition's properties dialog and enter a predicate in the 
+<strong>Condition Expression</strong> field:</p>
+<p class="image"><img src="images/mg-defdesk-transition-cond.png"
+    alt="Setting a Transition Condition"> <br>
+<strong>Figure:</strong> Setting a Transition Condition</p>
+<p>In this example it will be checked whether the state of the SupportCaseData is
+neither closed nor rejected. The value is referenced via the dereferentiation path 
+<tt>SupportCaseData.Product.State</tt>.</p>
+<p>A JavaScript based editor is provided, e.g. to add arithmetic, relational and
+logical operators as well as string matching operators.</p>
+<p>You can combine operators and values retrieved via dereferentiation paths with
+JavaScript language. Here are some examples for possible transition
+conditions:</p>
+<pre>Primitive.charAt(2)=="A"</pre>
+<pre>
+function toUpper(stringArg) {
+    return stringArg.toUpperCase();
+}
+
+Primitive == toUpper(SupportCaseData.Name)</pre>
+<pre>
+var id=0;
+for (var i = 0; i &lt; 10; i++) {
+    id = id*10 + i;
+}
+SupportCaseData.Id == id
+</pre>
+<p>Errors and warnings are indicated in a transition condition
+on the left side of the expression. A tooltip gives detailed information
+about the kind of error or warning.</p>
+<p class="image"><img src="images/trans-cond-error.png"
+    alt="Indicated Error in Transition Condition"> <br>
+<strong>Figure:</strong> Indicated Error in Transition Condition</p>
+<p>The following sections describe further issues
+concerning the transition condition editor usage:</p>
+<ul>
+    <li><a href="#proposal">Data proposal</a></li>
+    <li><a href="#completion">Code completion</a></li>
+    <li><a href="#errWarn">Errors and Warnings</a></li>
+    <li><a href="#errors">Not indicated errors</a></li>
+    <li><a href="#help">Help functions</a></li>
+    <li><a href="#undefined">Undefined return values</a></li>
+    <li><a href="#mapping">Mapping XSD types</a></li>
+    <li><a href="#restrictions">Restrictions on identifiers</a></li>
+</ul>
+<h4 id="proposal">Data proposal</h4>
+<p>Pressing <tt>Ctrl-Space</tt> in the transition condition editor
+provides you with a list to choose from all available
+data, e.g.:</p>
+<p class="image"><img src="images/tc-data-proposal.png"
+    alt="Default Proposals for Data."> <br>
+<strong>Figure:</strong> Default Proposals for Data.</p>
+<h4 id="completion">Code completion</h4>
+<p>While typing the expression, you can press <tt>Ctrl-Space</tt> to 
+show and choose from proposals for available methods or attributes:</p>
+<p class="image"><img src="images/tc-method-proposal.png"
+    alt="Default Proposals for Methods."> <br>
+<strong>Figure:</strong> Default Proposals for Methods.</p>
+<h4 id="errWarn">Errors and Warnings</h4>
+<p>Syntax and other errors in the condition expression editor are underlined in
+red and highlighted with a status symbol at the beginning of the mapping column:</p>
+<p class="image"><img src="images/trans-cond-expression-error.png" 
+alt="Error in Condition Expression"><br>
+<strong>Figure:</strong> Error in Condition Expression</p>
+<p>Tool tips for syntax problems are provided:</p>
+<p class="image"><img src="images/trans-cond-expression-error-tooltip.png" 
+alt="Error Tool Tip"><br>
+<strong>Figure:</strong> Error Tool Tip</p> 
+
+<h4 id="errors">Not indicated errors</h4>
+<p>Please be aware that no errors or warnings will be displayed in
+case you use an unsupported assignment to a Stardust variable, because
+the validation of the JavaScript code is correct. For
+example, if you enter <tt>SupportCaseData.Product.State="R"</tt>
+instead of <tt>SupportCaseData.Product.State=="R"</tt>, there will be no
+warning and during the process an assignment instead a comparison will 
+tried to be performed, which fails.</p>
+<h4 id="help">Help functions</h4>
+<p>Moving the mouse over a function, variable or field, will invoke a window
+with information derived from the Javadoc for functions and fields.</p>
+<p class="image"><img src="images/trans-cond-expression-help.png" 
+alt="Showing Information about a Function."><br>
+<strong>Figure:</strong> Showing JavaDoc Information.</p>
+
+<h4 id="undefined">Undefined return values</h4>
+<p>In case the return value of a transition condition is undefined, for example
+when all code is commented out, the transition condition will be evaluated
+as <tt>TRUE</tt> at runtime.</p>
+<h4 id="mapping">Mapping XSD types</h4>
+<p>Note that some XSD types specified in structured data will be converted
+to JavaScript types when used in transition conditions. Please refer to the section
+<a href="data-integration/structured-data/struct-proc-data.html#xsdMapping">Mapping XSD Types</a> of chapter
+<a href="data-integration/structured-data/struct-proc-data.html">Using Structured Types in Process Data</a> for detailed information
+on how this mapping is performed for specific XSD types.</p>
+<h4 id="decimal">Comparing Decimal XSD Types</h4>
+<p>Please note that decimal xsd types are mapped as String values and thus are compared
+like Strings in transition conditions. To avoid this, use a Number typecast,
+e.g.:</p>
+<pre>Number(<i>StructData1.decimal</i>)&nbsp;&gt;&nbsp;Number(<i>StructData2.decimal</i>)</pre>
+<p class="image"><img src="images/data-mapping-casting.png" alt=""></p>
+
+<h4 id="restrictions">Restrictions on identifiers</h4>
+<p>Note that some identifiers, which can be used in structured data types, are
+not supported in JavaScript. The following identifiers are not supported:</p>
+<ul>
+    <li>identifiers starting with digits (e.g. 1stData),</li>
+    <li>identifiers containing a hyphen or dot (e.g. first-data, first.name),</li>
+</ul>
+<p>whereby underscores, digits or dots not used as first character are supported 
+(e.g. first_data, data1, data.dot).</p>
+<p>In case you use identifiers containing hyphens or dots in JavaScript, you can set
+the identifier in square brackets and quotation marks as a workaround. For example
+as referencing a structured data via <tt>StructData.name.with.dot</tt> would cause an error,
+you could use <tt>StructData["name.with.dot"]</tt> instead. The following screenshot
+shows example expressions using brackets to access structured data containing a dot or a 
+hyphen:</p>
+<p class="image"><img src="images/trans-cond-dot-example.png" 
+alt="Data Type Message Mapping Example"><br>
+<strong>Figure:</strong> Identifier Workaround Mapping Example</p>
+<h3 id="enum">Using Enumeration Types in the Condition</h3>
+<p>The following scenarios are supported when using Enumeration types
+in the transition condition:</p>
+<ul>
+	<li><a href="#enum1">Enumeration defined as standalone Structured Type</a></li>
+   <li><a href="#enum3">Enumeration provided by Java class</a></li>
+	<li><a href="#enum2">Enumeration defined as part of another Structured Type</a></li>
+</ul>
+<h4 id="enum1">Enumeration defined as standalone Structured Type</h4>
+<p>This section describes the usage of enumeration, which is 
+defined in the modeler via 
+<strong>Structured Types &gt; New Enumeration</strong>.
+Afterwards the different values are 
+provided as values in the corresponding property page of the 
+created structured type.</p>
+<p class="image"><img src="images/tc-enum-struct.png"
+    alt="Example"> <br>
+<strong>Figure:</strong> Example Structured Data Enumeration</p>
+<p>In this scenario, the following possible example expressions would be 
+valid as part of a transition condition:</p>
+<pre>
+StructType.Color == PrimEnumColor.blue;
+StructType.Color == JavaEnumColor.blue;
+</pre>
+<p>Hereby, an interchange of the left hand side and the right hand side 
+is supported.</p>
+<p class="image"><img src="images/tc-enum-struct-editor.png"
+    alt="Example Expression"> <br>
+<strong>Figure:</strong> Example Condition Expression</p>
+<h4 id="enum3">Enumeration provided by Java class</h4>
+<p>This section describes the usage of Java-bound enumerations.</p>
+<p>An example Java class could look like the following:</p>
+<pre>
+public class EnumClass {
+   public enum Currency {
+
+      USD, EUR, CHF, INR, GBP
+   }
+   public enum Color {
+
+      red, blue, yellow, black, white
+   }
+}
+</pre>
+<p>In this example, the <tt>Currency</tt> and <tt>Color</tt> enumeration values can be 
+used to define Java-bound Enumeration Structured Types.</p>
+<p class="image"><img src="images/java-bound-enum.png" alt="Java Bound Enumeration Type"><br>
+<strong>Figure:</strong> Java-bound Enumeration Type</p>
+<p>In this scenario, the following possible example expressions would be 
+valid as part of a transition condition:</p>
+<pre>
+ColorResult == JavaEnumColor.white;
+</pre>
+<h4 id="enum2">Enumeration defined as part of another Structured Type</h4>
+<p>This section describes the usage of a structured type that is
+defined with several attributes. An additional attribute is defined,
+which refers to an already defined enumeration, e.g.:</p>
+<p class="image"><img src="images/tc-enum-struct-2.png"
+    alt="Example"> <br>
+<strong>Figure:</strong> Example Structured Data Enumeration</p>
+<p>In this scenario, the following possible example expressions would be 
+valid as part of a transition condition:</p>
+<ul>
+	<li>Referring to a primitive data of Enumeration structured type, e.g.:
+<pre>
+StructType.Color = PrimEnumColor.blue;
+</pre>
+	<p>Hereby, an interchange of the left hand side and the right hand side 
+	is supported.</p>
+	<p class="image"><img src="images/tc-enum-struct-editor-2.png"
+    alt="Example Expression"> <br>
+	<strong>Figure:</strong> Example Condition Expression</p></li>
+	<li>Referring to a primitive data with Java-based enumeration type, e.g.:
+<pre>
+StructType.Color = JavaEnumColor.black.toString();
+</pre>
+	<p>Hereby, an interchange of the left hand side and the right hand side 
+	is supported.</p>
+	<p class="image"><img src="images/tc-enum-struct-editor-java.png"
+    alt="Example Expression"> <br>
+	<strong>Figure:</strong> Example Condition Expression</p></li>
+</ul>
+
+<h3 id="actinst">Using Information of an Activity Instance in the Condition</h3>
+<p>In a transition condition, you can achieve information about an
+activity instance, from where the transition starts, by using the engine access
+point <tt>activityInstance</tt>. In the following example the state of the
+activity instance is achieved and used in the transition condition:</p>
+<p class="image"><img src="images/activity-instance-transition-condition.png"
+    alt="Activity Instance in Condition"> <br>
+<strong>Figure:</strong> Using the Activity Instance Information in the Condition.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

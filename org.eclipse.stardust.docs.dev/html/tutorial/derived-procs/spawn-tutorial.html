@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Spawning Sub-processes</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Extracting Pages Tutorial",
+        "","extracting-pages.html",
+		
+		"../tut-preface.htm","Tutorials",
+		"derive-procs-preface.html","Managing Unstructured Workflows");
+-->
+</script>
+
+<h1>Spawning Subprocesses</h1>
+<p>This tutorial describes how spawning of a root process instance
+creates a sub-process and copies data associated with it.</p>
+<p>Assuming a scenario where a company often receives scanned documents in the Stardust Portal. But
+the scan operator submits the scanned documents to wrong process definition. Thus the document enters 
+in the wrong workflow. Also, the company also needs a single document available to multiple processes.
+For details refer to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/spawn-usage-concept.html#pattern">Common Usage Pattern</a> 
+section of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/spawn-usage-concept.html">Spawning a Sub-process</a>
+chapter of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/key-concepts.html"> Concepts</a> handbook.</p>
+<p>This tutorial covers the following:</p>
+<ul>
+	<li><a href="#importModel">Importing the Example Model</a></li>
+	<li><a href="#deploy">Deploying and Running the Model</a></li>
+	<li><a href="#execute">Executing the Workflow</a></li>
+	<ul><li><a href="#spawn">Spawning the Process</a></li>
+		<ul><li><a href="#history">Viewing the Process History</a></li>
+	<li><a href="#data">Viewing the Data</a></li></ul></ul>
+</ul>
+<p>For details on the spawn subprocess functionality, refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/spawn-process-dialog.html">
+ Spawning Processes</a> chapter of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+
+<h2 id="importModel">Importing the Example Model</h2>
+
+<p>Use the <strong>ScanDemo</strong> example model which contains 
+several process definitions that allow process attachments.</p>
+
+<ol>
+	<li>Download the following ZIP file containing the example model
+   <p class="ind">
+   <a href="../../examples/tutorials/derive-procs/managing-unstructured-workflow.zip">managing-unstructured-workflow.zip</a>
+   <br></p></li>
+   <li>Create a dynamic Web project designed to deploy Stardust Process
+	Platform models to run in the Stardust Portal.
+	For detailed information on creating dynamic Web projects for usage with
+	the Stardust Portal, please refer to the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+	Rapid Application Development</a> guide.</li>
+	<li>Right-click the project and select 
+	<strong>Import &gt; Process Manager &gt; Process Model</strong>.
+	Click <strong>Next</strong> and browse to the location of the example
+	model extracted from the zip file.</li>
+</ol>
+<h2 id="deploy">Deploying and Running the Model</h2>
+<p>Perform the following steps to deploy your example model and run
+the project in the Stardust Portal:</p>
+<ol>
+	<li>Start your server and deploy the model. For details on how to
+	deploy a model, please refer to the chapter <a
+		href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a> of the <a
+		href="../support-case/support-case-preface.htm">Support Case Example</a>.</li>
+	<li>Start the Stardust Portal as described in the chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+	Logging in the Stardust Portal</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User
+	Handbook</a>. Login as administrator (<tt>motu/motu</tt>). You can use the
+	Shift-F8 short key.</li>
+	<li>Switch to the <strong>Participant Management View</strong> of the <strong>Administration Perspective</strong>.</li>
+	<li>Create a user and assign him to the roles <strong>Scan Operator</strong> and
+	<strong>Good Order Reviewer</strong>. For details on how to create a new user, refer to section <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html#createUser">
+	Creating a new User</a> of the chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+	Creating and Editing User Accounts</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">Stardust Portal</a> documentation.</li>
+	<li>Logout and login again as the new user.</li>
+</ol>
+<h2 id="execute">Executing the Workflow</h2>
+<p>Perform the following steps to execute the workflow and spawn a process:</p>
+<ol>
+	<li>Scan a document into the <strong>Loans</strong> process definition</li>
+	<li>Login to Stardust Portal with the credentials of <strong>Goods Order Reviewer</strong>
+	and locate the <strong>Loans</strong> process instance created in step 2</li>
+	<li>Activate an Activity in the newly created process instance and enter details</li>
+</ol>
+
+<h3	id="spawn">Spawning the Process</h3>
+<ol>	
+	<li>In the toolbar, click <strong>Spawn Process</strong> icon</li>
+	<p class="image"><img src="images/tut-spawn-icon.png" alt="Spawn Process icon"> <br>
+<strong>Figure:</strong> Spawn Process icon</p>
+	
+	<li>Select <strong>Brokerage</strong> and <strong>HELOC</strong> process to start from the Spawn Process dialog</li>
+	<p class="image"><img src="images/tut-broc-he.png" alt="Select processes to start"> <br>
+<strong>Figure:</strong> Select processes to start</p>
+	
+	<li>Review the newly started processes in the <strong>Spawn Process</strong> confirmation dialog</li>
+	<p class="image"><img src="images/tut-spawn-confirm.png" alt="Spawn Process Confirmation"> <br>
+<strong>Figure:</strong> Spawn Process Confirmation dialog</p>
+<li>Click <strong>Yes</strong> if you want to view the newly spawned process</li>
+</ol>	
+<h4 id="history">Viewing the Process History</h4>	
+<ol>	
+	<li><p>Expand the <strong>Process History</strong> panel of each newly started process and confirm 
+	that they are shown as sub-processes of the root process instance</li>
+	<p class="image"><img src="images/tut-spawn-history.png" alt="Process History"><br>
+<strong>Figure:</strong> Process History</p>
+	<li>In the <strong>Process History</strong> panel, click the <strong>Process Details</strong> icon of <strong>HELOC</strong> sub-process.
+	The HELOC process details get displayed.</li>
+	<p class="image"><img src="images/tut-he-prodetails.png" alt="Process Details of the Sub-process"><br>
+<strong>Figure:</strong> Process Details of the Sub-process </p>
+</ol>	
+<h4 id="data">Viewing the Data</h4>
+<ol>
+	<li>Expand the <strong>Process Documents</strong> panel of the HELOC sub-process. The copied documents get displayed under 
+	<strong>Process Attachments.</strong></li>
+	<p class="image"><img src="images/tut-attach-doc.png" alt="Copied Document"><br>
+<strong>Figure:</strong> Process Document - Copied Document
+	<li>Similarly, check the copied document for the Brokerage sub-process.</li>	
+</ol>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

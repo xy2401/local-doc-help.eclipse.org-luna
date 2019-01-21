@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Scoped Participants</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Configuration Variables",
+		"mg-basics-9.htm","mg-basics-config-vars.html",
+		"key-concepts.html","Concepts",
+        "mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Scoped Participants</h1>
+<p>Working with scoped participants provides the ability to filter
+roles with a target department. The benefit is the ability to map real
+world organizational structures to clean process models and reflect
+their way of cross-organizational work properly during process
+execution.  Stardust allows departments as
+runtime instances of organizations.</p>
+<ul>
+	<li><a href="#orgDep">Organizations and Departments</a></li>
+	<li><a href="#security">Declarative Security</a></li>
+	<li><a href="#versioning">Versioning</a></li>
+	<li><a href="#portal">Departments in the Stardust Portal</a></li>
+	<li><a href="#multiscope">Multi-scope Organizations</a></li>
+	<li><a href="#api">Interfaces for Department Structure
+	Management</a></li>
+</ul>
+<p>In the <strong>Tutorial Guide</strong>, you find a detailed use
+case to demonstrate the usage of departments in the Stardust Process
+Modeler and the Stardust Portal. Please refer to the section <a
+	href="../../tutorial/scoped-participants/multi-scope-preface.htm"
+> The Scoped Participant Example</a> of the <a
+	href="../../tutorial/tut-preface.htm"
+>Tutorial Guide</a>.</p>
+<h2 id="orgDep">Organizations and Departments</h2>
+<p>It is possible for organizations at modeling time to add a target
+department, which is evaluated at runtime. This target department is
+described as a data path to process data which returns a scope key to
+identify a department representing this target department. This could be
+for example a user group for a bank branch <strong>X</strong> or a fund
+<strong>Y</strong>. The following diagram illustrates this concept:</p>
+<p class="image"><img src="images/concept-demo.png" alt=""> <br>
+<strong>Figure:</strong> Example Organizational Structure</p>
+<p>The example organizational structure displayed in the figure
+above demonstrates the following relationships:</p>
+<ul>
+	<li><strong>Relationship 1</strong><br>
+	<br>
+	<img src="images/relationship-1.png" alt=""><br>
+	<p>When a department is created, it may be assigned to an
+	organization (as indicated as relationship (1) in the example
+	organizational structure above), which is a precondition to using this
+	department as a role scope.</p>
+	</li>
+	<li><strong>Relationship 2</strong><br>
+	<br>
+	<img src="images/relationship-2.png" alt=""><br>
+	<p>If a department is assigned to an organization, all departments
+	for the organizations, the organization of the current department is
+	part of, have to be specified (relationship (2)).</p>
+	</li>
+	<li><strong>Relationship 3 - Implicitly Scoped Roles</strong><br>
+	<br>
+	<img src="images/relationship-3.png" alt=""><br>
+	<p>Roles are implicitly scoped via the next scoped organization
+	above. In case a user is assigned to an implicitly scoped role, the
+	role (relationship (3)) and the departments for all organizations the
+	role has a "Works For" or "Is Manager Of" relation, have to be
+	specified. This relationship is marked as in the example organizational
+	structure above.</p>
+	</li>
+</ul>
+<p>This section covers the following issues:</p>
+<ul>
+	<li><a href="#orgScope">Organizational Hierarchies and Target
+	Departments</a></li>
+	<li><a href="#matrix">Matrix Organizations</a></li>
+	<li><a href="#props">Setting Departments in Organization
+	Properties</a></li>
+	<li><a href="#upwards">User Groups and Departments</a></li>
+	<li><a href="#cluster">Target Departments and Data Clusters</a></li>
+	<li><a href="#changes">Changes of the Department Data and
+	Target Departments</a></li>
+	<li><a href="#invalid">Handling Invalid Departments and NULL
+	Departments</a></li>
+</ul>
+<h3 id="orgScope">Organizational Hierarchies and Target Departments</h3>
+<p>All organizations and roles underneath a scoped organization
+inherit the target department of this organization. Hence, for every
+participant the relevant target department is the target department of
+the next scoped organization upwards the organizational hierarchy.</p>
+
+
+<h3 id="matrix">Matrix Organizations</h3>
+<p>Please note that only pure tree structures for organizational
+hierarchies are supported. Neither roles nor organizations may be
+assigned to more than one organization. Matrix structures can be mapped
+by disjoint organizational structures with possibly different target
+departments (e.g. branch vs. project), whereby users might be assigned
+to roles in both structures.</p>
+
+<h3>Explicitly Scoped Organization</h3>
+
+<p>When an organization gives you the ability to create departments under it in the Stardust
+Process Portal then that organization is called explicitly scoped organization in Stardust.
+The participants created under the explicitly scoped organization inherit the scope of that organization.</p>
+
+<h3>Implicitly Scoped Organization</h3>
+<p>
+An organization which has at least one organization in the upward hierarchy as explicitly scoped is said to be implicitly 
+scoped organization. This organization inherits the scope of all the organizations upwards in the hierarchy. However,
+ departments cannot be created for an implicitly scoped organization. 
+</p>
+
+<h3 id="props">Setting Departments in Organization Properties</h3>
+<p>You can determine that an organization is allowed to support
+departments and specify the data and data path for the according
+department OID in the property page of an organization. Please refer to
+the section <a href="../../handbooks/modelling/mg-defdesk-10.htm#binding">Department
+Binding</a> of the chapter <a href="../../handbooks/modelling/mg-defdesk-10.htm">Modeling
+the Organizational Structure</a> for detailed information.</p>
+<h3 id="upwards">User Groups and Departments</h3>
+<p>User Groups are independently of departments. The department
+concept is orthogonal to User Groups.</p>
+<h3 id="cluster">Target Departments and Data Clusters</h3>
+<p>Target department data paths are limited to direct access to
+primitive data or dereferencing paths to structured data which allows
+to use data clusters to optimize access to target departments. Other
+data types (e.g. Hibernate data) may be mapped to primitive data
+representing the target department IDs in data mappings on an auxiliary
+route activity. Please refer to the section <a
+	href="../../handbooks/operation/tuning/ag-tuning-3.htm#clusters"
+>Data Clusters</a> of the chapter <a
+	href="../../handbooks/operation/tuning/ag-tuning-3.htm#"
+>Tuning for Performance via Data Clusters</a> for information on using data clusters.</p>
+<h3 id="changes">Changes of the Department Data and Target
+Departments</h3>
+<p>In case during the execution of a process, the data, the target
+department is derived from, are changed and the target department
+returned by the data path is changed as well, new workitems will be
+assigned to the new target department, whereas old workitems remain in
+the corresponding worklist of the old target department. Preferably
+target department changes should be explicitly modeled out in the
+processes (e.g. a bank branch decides that another bank branch is in
+charge and redirects the process).</p>
+<h3 id="invalid">Handling Invalid Departments and NULL Departments</h3>
+<p>If a data path for a target department evaluates to a department
+ID, which does not exist, the activity is assigned to the un-scoped role
+or organization worklist (NULL target department). Hence, it might
+happen that one or more users are assigned to these roles without being
+scoped to do corresponding clearing work. These users may use
+an update data path on the process to set the target department ID
+correctly, suspend the work and the workitem will end up in the
+corrected scoped role or organization worklist. Alternatively, these
+users can create a corresponding department and then patch
+the target department ID. Or the users may just process the
+workitem as it would be in a target department.</p>
+
+<h2>Participant</h2>
+<p>Participants can be divided into two parts:</p>
+
+<ul>
+	<li>Model Participant - Roles and organizations that are part of the modeler are called model participants.</li>
+	<li>Runtime Participant - Roles, organizations, users, user groups and departments are considered as runtime participants.
+	The users, user groups and departments get associated with roles and organization in the Stardust Portal.</li>
+</ul>
+
+<h2 id="security">Declarative Security</h2>
+<p>All permissions available for activities or process definitions
+in the Stardust modeler can be assigned to scoped roles
+and organizations. Other permissions on model level, like the model
+itself or data, can only set declarative security to un-scoped
+participants. A grant "Delegation to other departments" is provided for
+activities, which allows the user to delegate work from one department
+to another.
+<!-- TODO clarify Please refer to section <a href="#delegate">Delegation
+between Target Departments</a> for details.-->
+Models are provided with the
+grants "Modify Departments" and "Read Departments" to allow a user to
+create, modify, delete or read departments.</p>
+<p>For detailed information on declarative security options for
+model elements, please refer to the chapter <a
+	href="../../handbooks/modelling/property-page-authorization.html"
+>Authorization</a> of the <a href="../../handbooks/modelling/mg-preface.htm">Modeling
+Guide</a>.</p>
+
+<h2 id="versioning">Versioning</h2>
+<p>Because departments do not have a model version scope, but may
+exist across process model versions, proper mapping between departments
+and organizations is ensured via organization ID mappings.</p>
+<p>The following changes are <strong>not</strong> supported and lead
+to deployment errors:</p>
+<ul>
+	<li>changes from an un-scoped organization to a scoped organization
+	with the same ID in two model versions</li>
+	<li>a change in the data dereferencing path for an organization
+	with the same ID in two model versions</li>
+</ul>
+<p>The deployment will be aborted in those cases. In case such
+changes are needed, a workaround is to use different IDs and this way
+interrupt the versioning history technically, but keep the semantics by
+using the organization with the changed ID in a different context.</p>
+<!--  <h2 id="evaluate">department Evaluation</h2>
+<h3>Loading Data Values for department Evaluation from Data Clusters</h3>
+<p>If data cluster tables exist containing one or more data values used for
+department evaluation then these will be used for faster data value loading.
+For data cluster selection the same rules will apply as for selection in 
+query framework.</p>
+<h3>General Rules for Evaluating departments from Data Values</h3>
+<p>Evaluation of departments is performed depending on the context of evaluation:</p>
+<ul>
+	<li><a href="#evIntAct">Context of Evaluation is an Interactive Activity Instance</a></li>
+	<li><a href="#evProc">Context of Evaluation is a Process Instance or a non interactive Activity</a></li>
+	<li><a href="#evalnn">Context of Evaluation is neither a Process nor an Activity Instance</a></li>
+</ul>
+<h4 id="evIntAct">Context of Evaluation is an Interactive Activity Instance</h4>
+<p>Evaluation of departments, where the context of evaluation is
+an interactive activity instance, is performed according to the following rules:</p>
+<p><strong>Input</strong>: the <i>target</i>-participant, whose department scope should be resolved<br>
+<strong>Output</strong>: the <i>target</i>-department</p>
+<ol>
+	<li>Determine the <i>target</i>-organization (the first scoped parent organization 
+	of the <i>target</i>-participant)</li>
+	<li>Determine the <i>reference</i>-department 
+	(the currentdepartment field of the Activity Instance)</li>
+	<li>Determine the <i>reference</i>-organization (he organization associated 
+	with the <i>reference</i>-department)</li>
+	<li>Depending on the relation between the <i>reference</i>-organization and 
+	the <i>target</i>-organization one of the following rules applies:
+	<ul>
+      	<li>reference- and <i>target</i>-organization are identical:
+      	<ol>
+			<li>The <i>target</i>-department is identical to the <i>reference</i>-department.</li>
+		</ol></li>
+      	<li>The <i>reference</i>-organization is a child of the <i>target</i>-organization
+      	<ol>
+			<li>The <i>target</i>-department is is the appropriate parent-department
+			 of the <i>reference</i>-department</li>
+			<li>Example: <i>target</i>-organization is Country, reference is Region&lt;DE, South&gt;,
+			 then the <i>target</i>-department is &lt;DE&gt;</li>
+			<li>In this case the current state of process variables is completely irrelevant.</li>
+		</ol></li>
+      	<li>The <i>reference</i>-organization is a parent to the <i>target</i>-organization
+      	<ol>
+			<li>Depending on the current state of process variables one of the 
+			following rules applies:
+			<ol>
+				<li>If the <i>reference</i>-department is identical to the 
+				department implied by the current state of relevant process 
+				variables, then the <i>target</i>-department is defined by 
+				the current state of process variables, too.
+				<ul>
+					<li>Example: <i>target</i>-organization is Region, reference is 
+					Country&lt;DE&gt;, the current value of relevant process 
+					variables is country=DE and region=South, then the 
+					<i>target</i>-department is &lt;DE, South&gt;</li>
+				</ul></li>
+				<li>If the <i>reference</i>-department is different then 
+				the department implied by the current state of relevant 
+				process variables, the <i>target</i>-department is the 
+				appropriate &lt;null&gt; child department of the 
+				<i>reference</i>-department
+				<ul>
+					<li>Example: <i>target</i>-organization is Region, reference 
+					is Country&lt;IT&gt;, the current value of relevant 
+					process variables is country=DE and region=South, 
+					then the <i>target</i>-department is &lt;IT, null&gt;
+					(contrary to &lt;IT, South&gt;)</li>
+				</ul></li>
+   			</ol></li>
+   		</ol></li>
+      	<li>reference- and <i>target</i>-organization do not share any ancestry:
+      	<ul>
+			<li>The <i>target</i>-department is implied by the current 
+			state of the according process variables.</li>
+			<li>Example: <i>target</i>-organization is EducationLevel, 
+			reference is Country&lt;DE&gt;, the current state of 
+			relevant process variables is country=DE and 
+			educationLevel=bachelor, then the <i>target</i>-department 
+			is &lt;bachelor&gt;</li>
+		</ul></li>
+	</ul></li>
+</ol>
+<h4 id="evProc">Context of Evaluation is a Process Instance or a non interactive Activity</h4>
+<p>Evaluation of departments, where the context of evaluation is
+a process instance, a non interactive activity or the reference department 
+is not defined, is performed according to the following rules:</p>
+<p><strong>Input</strong>: the <i>target</i>-participant, whose department scope should be resolved<br>
+<strong>Output</strong>: the <i>target</i>-department</p>
+<ol>
+	<li>Determine the <i>target</i>-organization (the first 
+	scoped parent organization of the <i>target</i>-participant).</li>
+	<li>The <i>target</i>-department is always implied by the current 
+	state of the according process variables.</li>
+</ol>
+
+<h4 id="evalnn">Context of Evaluation is neither a Process nor an Activity Instance</h4>
+<p>Evaluation of departments, where the context of evaluation is
+neither a process nor an activity instance, is performed according to the following rules:</p>
+<p><strong>Input</strong>: the <i>target</i>-participant, whose department scope should be resolved<br>
+<strong>Output</strong>: the <i>target</i>-department</p>
+<ol>
+	<li>Determine the <i>target</i>-organization 
+	(the first scoped parent organization of the <i>target</i>-participant).</li>
+	<li>The <i>target</i>-department is always the &lt;null&gt; department 
+	associated with the <i>target</i>-organization.</li>
+</ol>-->
+<h2 id="portal">Departments in the Stardust Portal</h2>
+<ul>
+	<li><a href="#admin">Departments in the Administration
+	Perspective</a></li>
+	<li><a href="#default">Default Departments</a></li>
+	<li><a href="#bcc">Viewing Departments in the Business
+	Control Center Perspective</a></li>
+	<li><a href="#worklist">Worklists in the Workflow Execution
+	Perspective</a></li>
+<!--  TODO	<li><a href="#delegate">Delegation between Target Departments</a></li>-->
+</ul>
+<h3 id="admin">Departments in the Administration Perspective</h3>
+<p>The <strong>Administration Perspective</strong> provides a <strong>Participant
+Management View</strong> to create, modify and delete departments as well as
+assigning users to the organizations and roles.</p>
+<p>Please refer to the chapter <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html"
+> Creating and Editing User Accounts</a> of the  <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html"
+> Stardust Portal</a> guide for detailed information.</p>
+<h3 id="default">Default Departments</h3>
+<p>For every distinct target department in an organizational hierarchy, there is a dedicated null department.
+In case no department is determined for a scoped organization, this default department is used.
+A scoped participant in its default department is granted to a user by granting his 
+default department that is given by granting the organization for the super department.</p>
+<h3 id="bcc">Viewing Departments in the Business Control Center
+Perspective</h3>
+<p>You can view departments, assigned users and their roles within
+the department in the <strong>User Manager Details View</strong> and <strong>Role
+Manager Details View</strong> of the <strong>Business Control Center
+Perspective</strong>.</p>
+<p>Please refer to the chapters <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/participants/bcc-user-manager-view.html"
+> Viewing and changing Role Assignments to a User</a> and <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/participants/bcc-role-manager-view.html"
+> Viewing and changing User Assignment to a Role</a> in the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html"
+> Stardust Portal</a> guide for detailed information.</p>
+<h3 id="worklist">Worklists in the Workflow Execution Perspective</h3>
+<p>When a workitem is created for a scoped role or organization, the
+department is evaluated from the data path. When a user retrieves his or
+her worklists it will be checked for a workitem, if the scoped role
+assigned to this user matches the dynamically obtained department and
+role or organization settings of the user. In that case, the workitem is
+displayed in the corresponding scoped role worklist(s).
+You can view your worklists in the launch panel of the Workflow Execution Perspective.</p>
+<p>Refer to section <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/perspectives/pp-launch-panels.html#workflow"
+>Using the Launch Panel in the Workflow Perspective</a> of chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/perspectives/pp-launch-panels.html">Using Launch Panels</a>
+in the 
+<a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html"
+> Stardust Portal</a> documentation for detailed information.</p>
+<h4>Delegating to another department</h4>
+<p>Activities can be delegated to users and organizations in
+other departments, if the according authorization is set. 
+Please refer to the section
+<a href="../executing-workflow/delegation-concept.html#deleDep">Delegation to Other Departments</a>
+of the concept chapter for
+<a href="../executing-workflow/delegation-concept.html">Delegation</a> for detailed 
+information on where delegation to other departments is 
+available.</p>
+<h4>Simultaneous change of scoped model participant and associated
+department</h4>
+<p>Simultaneous change of scoped model participant and associated
+department is not supported via the Delegation dialog. To perform this,
+use one of the following suggestions:</p>
+<ul>
+	<li>Change the model participant and not explicitly the
+	department. Thus use the "Delegate To Participant" functionality. In
+	this case, the department association will be reevaluated. The activity
+	instance is delegated as if it was assigned to a non-scoped participant
+	and the target department will be the current one (or the values given
+	in the process variables for the child departments in the case where
+	delegation is done to a sub-participant that declares explicit target
+	departments).</li>
+	<li>Leave the assigned model participant unchanged and change the
+	associated department.</li>
+</ul>
+
+<h2 id ="multiscope">Multi-scope Organizations</h2>
+
+<h3>Where multi-scoping can be used?</h3>
+<p>Hierarchical structure of an organization or the matrix structure of an organization may need the multi-scoping
+of participants. So if the organization has a hierarchical structure which further has departments at each level then it leads to multi-scoping.</p>
+
+<h3>Why do we need multi-scoping?</h3>
+<p>
+Multi-scoped organization allows distributing the workload between the resources rather than 
+moving human resources between the queues. For example, an organization has two office locations- US and UK.
+The manager can see the queue of US office Engineering department full of workitems. The multi-scope organization structure allows the 
+manager to distribute the workitems to the UK office Engineering department. 
+Also multi-scope organization restricts the visibility of workitems according to departments.</p>
+
+<h3>What is the difference between conditional performer and multi-scope organization?</h3>
+<p>
+The conditional performer is a way to assign a participant at runtime. Similarly for 
+user groups you need to create number of user groups. Also user groups do not have hierarchy.
+Here the multi-scoping surpasses the limitations of conditional performer and user groups.
+Multi-scoping provides the hierarchy of participants, runtime creation of departments and assignment of roles/users to those departments.</p>
+
+<h3>What are the benefits of multi-scoping?</h3>
+<ul>
+<li>Better workload management and distribution by providing the ability to filter roles with a scope</li>
+<li>Better map of organizational structure</li>
+<li>Ability to map their real world organizational structures to clean process models and reflect their way of 
+cross-organizational work properly during process execution.</li>
+</ul>
+
+<h2 id="api">Interfaces for Department Structure Management</h2>
+<p>Stardust provides interfaces for managing
+departments in the following way:</p>
+<ul>
+	<li>creating departments</li>
+	<li>retrieving departments</li>
+	<li>modifying departments</li>
+	<li>removing departments</li>
+	<li>manipulating grants for scoped participants</li>
+	<li>reflecting the department association</li>
+</ul>
+<p>Please refer to the chapter <a
+	href="../../handbooks/programming/embed/administration/pg-embed-department.html"
+>Managing Department Structures</a> of the <a
+	href="../../handbooks/programming/pg-preface.htm"
+>Programming Guide</a> for detailed information on the appropriate
+interfaces and their methods.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

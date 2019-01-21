@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Performance Considerations</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Message Driven Bean Tweaking",
+        "ag-tuning-4.htm","ag-tuning-msg-beans.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../ag-preface.htm","Operation Guide",
+        "ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Performance Considerations</h1>
+<p>This chapter presents performance considerations.</p>
+<ul>
+    <li><a href="#cost">Knowing the Cost of DataOrder</a></li>
+    <li><a href="#depPref">Tuning Dependent Object Prefetch</a></li>
+    <li><a href="#prefClust">Prefetching Descriptors with Data Clusters</a></li>
+    <li><a href="#index">Know your Index Needs</a></li>
+</ul>
+<h2 id="cost">Knowing the Cost of DataOrder</h2>
+<p>Every <tt>DataOrder </tt>criterion introduced will require application of one SQL
+outer join operator. Depending on your database implementation, efficiency of outer join
+evaluation may be reduced, i.e. as of inabilities to leverage indexes to avoid sorting.
+One known case is Oracle 8i due to query optimizer limitations regarding the
+Oracle-specific outer join syntax. If your configuration permits (means you use Oracle 9i
+or later), consider setting the server-side property</p>
+<pre>AuditTrailDatabase.Type=ORACLE</pre>
+<p>to allow for use of the better performing ANSI join syntax.</p>
+<p>It is highly advised to profile queries involving <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataOrder.html">DataOrder</a> usually by
+obtaining SQL execution plans, in order to find optimal database and index configurations.</p>
+<p>If tuning alone does not lead to sufficient query performance, consider
+optimizing queries involving multiple <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataOrder.html">DataOrder</a> criteria by
+introducing an artificial workflow data containing the length-padded concatenation of the
+data defining the requested order, thus effectively reducing the number of <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataFilter.html">DataFilter</a> criteria
+needed.</p>
+<h2 id="depPref">Tuning Dependent Object Prefetch</h2>
+<p>Dependent objects of queried items (i.e. data values used in <tt>Descriptors</tt>)
+are loaded in batches to reduce the number of SQL calls needed. The maximum batch size is
+set to 400 by default. Depending on your application you may increase this number to in
+case of few <tt>Descriptors</tt> but large result sets, or decrease this number in case of
+many <tt>Descriptors</tt> (yielding too complex SQL statement errors), by setting the
+server-side property:</p>
+<pre>Carnot.Engine.Tuning.Query.DescriptorPrefetchBatchSize</pre>
+<h2 id="prefClust">Prefetching Descriptors with Data Clusters</h2>
+<p>Data values for descriptors can be prefetched
+on existing data clusters to improve performance. To enable this prefetch functionality, set 
+the following property to <tt>true</tt>:</p>
+<pre>Infinity.Engine.Tuning.Query.DescriptorPrefetchUseDataCluster</pre>
+<p>The default value is <tt>false</tt>.</p>
+<h2 id="index">Know your Index Needs</h2>
+<p>The default Stardust audit trail contains a basic set of indexes, containing a
+compromise between batch processing and performance in interactive use. As added indexes
+always involve the tradeoff between increased search performance vs. increased maintenance
+costs there can't be a perfect set of stock indexes for every application. Thus it is
+highly recommended to make database and statement monitoring an integral development and
+deployment step in order to match your application's specific performance needs.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

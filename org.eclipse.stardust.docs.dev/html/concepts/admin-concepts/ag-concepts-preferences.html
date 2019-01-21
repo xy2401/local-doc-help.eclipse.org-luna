@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Preferences Storage</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+			"ag-concepts-doc-types.html","",
+		    "../key-concepts.html","Concepts",
+		    "ag-concepts-preface.htm","Administrative Concepts");
+ -->
+</script>
+<h1>Preferences Storage</h1>
+<p>Stardust uses preference store to store preferences 
+in a repository. 
+These preferences are kept in the audit trail 
+table <strong>Preferences</strong>.
+For details on this table and its entries, please refer to chapter
+<a href="../../handbooks/operation/audit-trail/ag-appendix-audittrail-1.htm">
+The Repository Model</a>.</p>
+<h2>Preference Scopes</h2>
+<p>The Preference Store supports different scopes to store and retrieve 
+preferences. A scope always has to be specified when accessing the preference store.</p>
+<p>The following scopes are available:</p>
+<ul>
+	<li><a href="#default">DEFAULT</a></li>
+	<li><a href="#partition">PARTITION</a></li>
+	<li><a href="#realm">REALM</a></li>
+	<li><a href="#user">USER</a></li>
+</ul>
+
+<h3 id="default">DEFAULT</h3>
+<p>The scope DEFAULT is read only. It is used to read default values 
+supplied by the <tt>IStaticConfigurationProvider</tt> SPI 
+implementing providers. Refer to chapter
+<a href="../../handbooks/programming/spi/pg-config-provider-spi.html">
+Implementing a Static Configuration Provider for Default Preferences</a>
+for details on the SPI provided by Stardust
+for default preferences.</p>
+<h3 id="partition">PARTITION</h3>
+<p>Scope PARTITION is readable and writable. It is used to 
+address preferences on partition level.
+Preferences with this scope are accessible for all users 
+on the same partition.</p>
+<h3 id="realm">REALM</h3>
+<p>Scope REALM is readable and writable. It is 
+used to address preferences on realm level.
+Preferences with this scope are saved per user realm.
+Only users on the same user realm can access the same set of 
+preferences.</p>
+<h3 id="user">USER</h3>
+<p>Scope USER is readable and writable. It is 
+used to address preferences on user level.
+Preferences with this scope are saved per user. No other users
+except administrators have access to them.</p>
+
+<h2>Hierarchical Access of Preferences</h2>
+<p>Preferences are stored for different views on the basis of per user, per realm or per 
+partition.
+If no user specific preferences exist, the preferences scopes are hierarchically 
+accessed to retrieve the currently valid preferences for a view. The scope hierarchy 
+of the preference retrieval is the following:<br>
+<tt>USER &gt; REALM &gt; PARTITION &gt; DEFAULT</tt>.</p>
+
+<h2>Storing Configuration Variables</h2>
+<p>During a model deployment or overwrite, configuration variables are
+evaluated for validation only. When the model is written to the audit trail,
+the configuration variables are kept. They are evaluated on model load 
+during runtime.</p>
+<p>All Configuration Variable values are stored in the table 
+<strong>Preferences</strong> using the <strong>moduleId</strong>
+<tt>configuration-variables</tt> on tenant level.
+The qualified model id is stored as <strong>preferencesId</strong>.
+The scope PARTITION is used to store tenant level preferences.
+Thus, the variables can be exported and imported between environments.</p>
+<h2>Scenario</h2>
+<p>An existing scenario is the storage of preferences for the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/instances-overview/bcc-views-gantt.html">
+Gantt Chart View</a>, used in the 
+<strong>Business Control Center</strong> perspective.
+Here, the <tt>moduleId</tt> entry of the <strong>Preferences</strong>
+table is "bcc" and the <tt>preferencesId</tt>
+entry is "gantt-chart", while the scope 
+is used to find the currently valid preferences for the logged-in user.</p>
+
+<h2>API</h2>
+<p>API is provided to retrieve and change preferences.
+Please refer to chapter
+<a href="../../handbooks/programming/embed/administration/pg-embed-preferences.html">Retrieving and Changing Preferences</a>
+in the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+for details.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

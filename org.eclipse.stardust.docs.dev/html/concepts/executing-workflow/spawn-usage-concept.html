@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Spawning a Sub-process</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"concept-relocation.html","extract-pages.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Spawning a Sub-process</h1>
+
+<p>The spawn process is a sub-process that is started ad-hoc in the scope of an active process instance 
+in runtime environment by users.
+These sub-processes cannot be specified at the time of workflow design.
+So a spawned sub-process behaves asynchronously with respect to execution 
+at the time of: </p>
+<ul>
+	<li>Abort</li>
+	<li>Recovery</li>
+	<li>Process Hierarchy</li>
+
+</ul>
+<p>For more information, please refer to the chapter <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/activities/mg-subprocesses.html">
+Configuring Sub-process Activities
+</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-preface.htm">Modeling Guide.</a></p>
+<p>Note that it is also allowed to spawn the same process definition and version of the 
+active process instance.</p>
+
+<h2 id="pattern">Common Usage Pattern</h2>
+<p>Stardust Process Portal is used to control and automate workflows in organizations. Previously,
+ workflows have to be described as structured process models, where the sequence of steps
+and possible alternative paths are modeled. Also, the workflow is controlled according to these models at system
+runtime for a possible large number of business cases following the same model structure. In short, organizations
+have to follow the structured workflows.</p>
+<p>However, for some organizations it is not feasible 
+due to complexity of workflow and dependence on the provided data and documents. To model all necessary steps,
+possible execution paths and involved organizations; it is required to define and change these for a concrete business
+case during work on the same.</p>
+
+
+<p>Stardust helps you to specify, manage and monitor ad-hoc work 
+in addition to structured business process execution. It allows teams to work on business cases collaboratively
+without having a predefined structure for this work. It helps to improve:</p>
+<ul>
+	<li>Operational efficiency</li>
+	<li>Auditing capabilities</li>
+</ul>
+
+<p>The following organization scenario explains how Stardust can help you create ad-hoc
+process instances. Thus, supports unstructured workflow.
+</p>
+
+<p>The SunBabel Corporation has recently implemented a Scan client to scan documents into 
+Stardust Process Portal and start process instances. The Scanning implementation is generally regarded 
+as a success but two issues have arisen that SunBabel has requested be addressed 
+with new features in Stardust Portal.</p>
+
+<h2>Business Case</h2>
+<p>
+This business case describes common usage pattern for the process instances that are spawned during the workflow processing.
+The spawning of a root process instance creates another sub-process of the same root process. The single document is 
+available to all the spawned process instances.</p>
+
+<h3>Goal</h3>
+
+<p>This use case explains how the spawning of the process can streamline the operation.</p>
+
+<h3>Business Scenario 1</h3>
+<p>
+With approximately 5% of scans, the scan operator selects the incorrect process in the Scan UI and the document 
+enters the workflow in the wrong process definition. When these errors are discovered these process instances 
+are aborted and the documents are rescanned into the correct process definitions. 
+This can be time-consuming and has resulted in multiple fines when the processing SLA's were missed. 
+SunBabel has requested enhancements to allow operators working in the Stardust Portal to
+ move these Process Instances (PIs) 
+directly to the correct process definitions. Also, any data associated with the documents should be moved to the new process instances.
+</p>
+
+<h3>Business Scenario 2</h3>
+<p>SunBabel often receives work that contains multiple requests for a single client. 
+Due to Auditing requirements, these documents must be scanned into Stardust as a single document 
+and any additional process instances needed to work the client's requests should be started 
+in the portal and referenced to this single document. SunBabel has requested enhancements 
+that would allow operators in Stardust to spawn a process instance for each of these requests 
+and have each process instance reference the original document. Additionally, these tasks should have a 
+linkage so that business units can track these requests as a single entity.
+</p>
+
+<h3>Example Usage</h3>
+
+<ul>
+	<li>Create process definitions called <strong>Loans</strong>, <strong>Brokerage</strong>, <strong>HELOC</strong> and <strong>IRA</strong></li>
+	<li>Scan a document into the <strong>Loans</strong> Process Definition using Stardust Scan application.</li>
+	<li>Log into Stardust Portal and locate the Loans process instance created in step 1.</li>
+	<li>Activate an Activity in the newly created Process Instance.</li>
+	<li>Click the <strong>Spawn Process</strong> icon to launch the <strong>Spawn Process</strong> dialog.</li>
+	<li>Use Spawn Process functionality to start a <strong>Brokerage</strong> and <strong>HELOC</strong>, process.</li>
+	<li>Review the newly started processes and confirm that the document/document data is linked to the source <strong>Loans</strong> process instance.</li>
+	<li>Review the process history of each newly started process and confirm that they are shown as sub-processes of the root process instance.</li>
+	
+</ul>
+<p>For detail instructions, please refer to the tutorial <a href="../../tutorial/derived-procs/spawn-tutorial.html">Spawning Sub-processes</a>
+of the <a href="../../toc.html"> Developers Handbook</a>.</p>
+
+<script language="JavaScript"
+	type="text/javascript"
+>
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>Checking Quality Assurance in the Portal</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+        "tut-qa-model.html","",
+		
+		"../tut-preface.htm","Tutorials",
+		"tut-quality-assurance.html","Quality Assurance");
+-->
+</script>
+<h1>Checking Quality Assurance in the Portal</h1>
+<p>This chapter describes how quality assurance is performed in the Stardust
+Portal.Start your server and deploy the model. For details on how to deploy a model,
+please refer to the chapter 
+<a href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a>
+of the <a href="../support-case/support-case-preface.htm">Support Case Example</a>.
+Proceed with the following sections:</p>
+<ul>
+    <li><a href="#users">Creating the Users</a></li>
+    <li><a href="#runact">Starting Activity Instances</a></li>
+    <li><a href="#check">Checking the Quality Assurance Operators Worklist</a></li>
+    <li><a href="#pass">Passing a Quality Assurance Activity Instance</a></li>
+    <li><a href="#fail">Failing a Quality Assurance Activity Instance</a></li>
+    <li><a href="#history">Viewing the Workflow in the Process History</a></li>
+</ul>
+<h2 id="users">Creating the Users</h2>
+<p>First we create two users, a performer of the activity and a performer of 
+the quality assurance.</p>
+<ol>
+    <li>Start the Stardust Portal as described in the chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+    Logging in the Stardust Portal</a> of the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.
+    Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</li>
+    <li>Switch to the <strong>Participant Management View</strong> of the 
+    <strong>Administration Perspective</strong>.</li>
+    <li>Create a user e.g. <strong>Robert Doodle</strong> and assign him to the 
+    role <strong>Accountant</strong>.</li>
+    <li>Create another user e.g. <strong>Frank Cityman</strong> and assign him 
+    to the role <strong>QA Operator</strong>.</li>
+</ol>
+<p>    For details on how to create users and assign them to roles, refer chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+    Creating and Editing User Accounts</a> of the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">Stardust Portal</a> documentation.</p>
+<p class="image"><img src="images/participants.png" alt=""><br>
+<strong>Figure:</strong> Create the users.</p>
+<h2 id="runact">Starting Activity Instances</h2>
+<ol>
+    <li>Logout and login again as user <strong>Robert Doodle</strong>.</li>
+    <li>In the <strong>Workflow Perspective</strong>, start the available process 
+    <strong>QAUseFormula</strong>.
+    <p><img src="images/start-process.png" alt=""></p></li>
+    <li>Enter a valid account number and account name.
+    <p><img src="images/enter-correct-values.png" alt=""></p></li>
+    <li>Complete the activity.</li>
+</ol>
+<p>Go back to the worklist view and start another process instance of
+<strong>QAUseFormula</strong>. Now enter an invalid entry for the account 
+number, e.g. <tt>123456</tt>, which has more than 4 digits and complete the
+activity.</p>
+<p class="image"><img src="images/enter-invalid-number.png" 
+    alt="Invalid Account Number"><br>
+<strong>Figure:</strong> Enter an invalid account number.</p>
+<p>Again start another process instance of
+<strong>QAUseFormula</strong>. Now enter an empty entry for the account 
+name and complete the activity.</p>
+<p class="image"><img src="images/enter-invalid-name.png" 
+    alt="Invalid Account Name"><br>
+<strong>Figure:</strong> Enter an invalid account name.</p>
+<h2 id="check">Checking the Quality Assurance Operators Worklist</h2>
+<p>Logout and login as user <strong>Frank Cityman</strong> having the 
+quality assurance operator role. Switch to the 
+<strong>Workflow Execution Perspective</strong>.</p>
+<p>In the <strong>My Assignments</strong> section, there are three items in the worklist.
+Click on the <strong>3 item(s)</strong> entry to open the worklist view.</p>
+<p class="image"><img src="images/qa-operator-worklist.png" 
+    alt="Open the Worklist View."><br>
+<strong>Figure:</strong> Open the Worklist View.</p>
+<p>In the worklist view, you see two activity instances marked with the
+icon <img src="images/in-qa-icon.png" alt="In QA"> for being in quality
+assurance, in our case awaiting to be reviewed. These are the activity instances, where an invalid name and an
+invalid number was entered. The quality assurance formula added in the 
+activity property page has checked these values and returned <tt>true</tt> as
+quality assurance is needed.</p>
+<p class="image"><img src="images/qa-op-worklist-view.png" alt="QA Activities"><br>
+<strong>Figure:</strong> Activities marked for quality assurance.</p>
+<h2 id="pass">Passing a Activity Instance</h2>
+<p>We activate the activity instance, where we entered an invalid account number.</p>
+<p class="image"><img src="images/activate-act-1.png" 
+    alt="Activate QA Activity 1"><br>
+<strong>Figure:</strong> Activate the first Quality Assurance Activity.</p>
+<p>The activity execution view opens. No we correct the number and pass the 
+activity:</p>
+<ol>
+    <li>Correct the number by using four digits, e.g. <tt>1234</tt>.</li>
+    <li>In the toolbar of the activity execution panel, click the 
+    <img src="images/pass-qa-icon.png" alt="Pass QA"> icon to pass quality
+    assurance.
+    <p><img src="images/pass-activity.png" alt="Pass QA"></p></li>
+    <li>The <strong>Pass Quality Assurance</strong> dialog opens.</li>
+    <li>Select <tt>Yes</tt> to confirm that corrections were made.
+    <p><img src="images/qa-pass-dialog-corr.png" alt="QA Dialog"></p></li>
+    <li>Click <strong>Pick From List</strong> to choose a predefined error code.
+    <p><img src="images/qa-pass-dialog-pick.png" alt="QA Dialog"></p></li>
+    <li>Select error <tt>ERR_101</tt> for invalid account number.
+    <p><img src="images/select-error-code.png" alt="QA Dialog Error Code"></p></li>
+    <li>Add a note, e.g. about the correction, in the <strong>Notes</strong> 
+    section.
+    <p><img src="images/qa-pass-dialog-note.png" alt="QA Dialog Note"></p></li>
+    <li>Click <strong>OK</strong>.</li>  
+</ol>
+<p>Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-qa.html">
+Executing Quality Assurance Activities</a> 
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>
+for details on the option to pass or fail quality assurance activities.</p>
+<p>In the worklist view, you can now see that the activity is passed and the
+activity following, <strong>Next Activity</strong>, is in the worklist.</p>
+<p class="image"><img src="images/worklist-passed-activity.png" 
+    alt="Worklist with passed activity."><br>
+<strong>Figure:</strong> Worklist with the passed activity.</p>
+<h2 id="fail">Failing a Quality Assurance Activity Instance</h2>
+<p>We activate the next activity instance awaiting quality assurance, where we 
+entered an empty account name.</p>
+<p class="image"><img src="images/activate-act-2.png" 
+    alt="Activate QA Activity 1"><br>
+<strong>Figure:</strong> Activate the first Quality Assurance Activity.</p>
+<p>The activity execution view opens. No we will not correct the name and fail the 
+activity quality assurance. The activity should be delegated back to the 
+original performer.</p>
+<ol>
+    <li>In the toolbar of the activity execution panel, click the 
+    <img src="images/fail-qa-icon.png" alt="Fail QA"> icon to fail quality
+    assurance.
+    <p><img src="images/fail-activity.png" alt="Fail QA"></p></li>
+    <li>The <strong>Fail Quality Assurance</strong> dialog opens.
+    <p><img src="images/qa-fail-dialog.png" alt="QA Fail Dialog"></p></li>
+    <li>Click <strong>Pick From List</strong> to choose a predefined error code.
+    <p><img src="images/qa-fail-dialog-pick.png" alt="QA Dialog"></p></li>
+    <li>Select error <tt>ERR_102</tt> for invalid account name.
+    <p><img src="images/select-error-code-fail.png" alt="QA Dialog Error Code"></p></li>
+    <li>Add a note, e.g. about the reason for the failure, in the 
+    <strong>Notes</strong> section.</li>
+    <li>Leave the <strong>Assign To Last Activity Performer</strong> option
+    selected.</li>
+    <li>Click <strong>OK</strong>.
+    <p><img src="images/qa-fail-dialog-note.png" alt="QA Dialog Note"></p></li>  
+</ol>
+<p>In the worklist view, you can now see that the activity instance, which has 
+been failed for quality assurance is removed from the worklist of the 
+<strong>QA Operator</strong> role..</p>
+<p class="image"><img src="images/worklist-failed-activity.png" 
+    alt="Worklist after failing activity."><br>
+<strong>Figure:</strong> Updated Worklist after failing quality assurance.</p>
+<h3 id="complete">Completing the Activity with correct Values</h3>
+<ol>
+    <li>Logout and login again as user <strong>Robert Doodle</strong>.</li>
+    <li>In the <strong>My Assignments</strong> section of the
+    <strong>Workflow Perspective</strong>, you can see one item.</li>
+    <li>Click on the entry to open the worklist view for this item.
+    <p><img src="images/start-qa-item.png" alt="See Worklist"></p></li>
+    <li>In the worklist, the activity instance is marked with the
+    icon <img src="images/failed-qa-icon.png" alt="Failed QA"> for failed quality
+    assurance.
+    <p><img src="images/worklist-returned-act.png" alt="Worklist"></p></li>
+    <li>Click on the <strong>Notes</strong> icon to open the 
+    <strong>Notes</strong> view.
+    <p><img src="images/click-notes.png" alt="Notes View"></p></li>
+    <li>The <strong>Notes Preview</strong> displays the note that was added 
+    during quality assurance failure.
+    <p><img src="images/error-notes.png" alt="Notes View"></p></li>
+</ol>
+<p>Now perform the activity again with correct entries.</p>
+<ol>
+    <li>Activate the activity marked for failed quality assurance.
+    <p><img src="images/reactivate.png" alt="Reactivate Activity"></p></li>
+    <li>In the toolbar of the activity execution pane, click on the error
+    code icon to view the error code for the failure:
+    <p><img src="images/display-error-code.png" alt="Display Error Code"></p></li>
+    <li>Enter valid entries and complete the activity.</li>
+</ol>
+
+<h2 id="history">Viewing the Workflow in the Process History</h2>
+<p>Let us open the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/context-explorer-view.html">
+Process Details</a> view to have a look at the
+ actions performed on the activity instance, for which we entered an invalid account name.</p>
+<ol>
+    <li>Open the <strong>Process Details</strong> view (e.g. from the 
+    <strong>Process Manager View</strong>).</li> 
+    <li>Switch to the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/process-details/proc-history-act.html">
+    Process History Activity Table</a>.</li>
+</ol>
+<p>For details on the table and how quality assurance states are displayed there,
+refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/process-details/proc-history-act.html">
+Viewing the Tree of Activities in a specific Process</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<p class="image"><a href="images/proc-history_orgSize.png" target="_blank">
+<img src="images/proc-history.png" alt="Process History"></a><br>
+<strong>Figure:</strong> Process History</p>
+<p>In this table, we can review the workflow cycle:</p>
+<ol>
+    <li><strong>Create Account</strong> was activated and completed by user
+    <strong>Robert Doodle</strong>.</li>
+    <li>A new activity instance was created for <strong>Create Account</strong>
+    as quality assurance activity. This is 
+    indicated with the overlay icon on the activity.</li>
+    <li>This quality assurance activity instance was assigned to user
+    <strong>Frank Cityman</strong> as he has the role, which was selected as
+    quality assurance performer.</li>
+    <li><strong>Frank Cityman</strong> activated the activity instance.</li>
+    <li>He added a note for the quality assurance failure reason.</li>
+    <li>After the quality assurance activity instance was completed by failing
+    the quality assurance, a new
+    activity instance is created and reassigned to the last
+    performer, who is <strong>Robert Doodle</strong>.</li>
+    <li>He activated and completed the activity with correct values.</li>
+    <li>Again, an activity instance is created for quality assurance and 
+    assigned to the quality assurance performer <strong>Frank Cityman</strong>.</li>
+    <li>He passes the quality assurance for the activity and the subsequent
+    activity is activated (suspended).</li>
+</ol>
+ 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>Message Parsing Application Type</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Message Serialization Application Type",
+    "message-processing.html","message-serialization-appl.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../mg-preface.htm","Modeling Guide",
+		"../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+<h1>Message Parsing Application Type</h1>
+<p>A Message Parsing application takes one or more input
+message data structures, performs the transformation specified for this application and 
+returns one or more output message data structures.
+The parsing enforces validation and formatting.</p> 
+<h2>Creating a Message Parsing Application Type</h2>
+<p>To create a Message Parsing Application, select <strong>Application</strong>
+in the diagram toolbar palette and choose <strong>Message Parsing Application</strong>:</p>
+<p class="image"><img src="images/create-parsing-appl.png"
+alt="Creating a Message Parsing Application"><br>
+<strong>Figure:</strong> Creating a Message Parsing Application</p>
+<h2>Properties</h2>
+<p>The following properties can be set for message parsing applications:</p>
+<ul>
+    <li>General - name, id and locale settings</li>
+    <li><a href="#retry">Retry</a></li>
+    <li>Simulation - specifying simulation configurations (see chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+        of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Simulation Guide</a>.)</li>
+    <li>Effort Planning - for detailed information on how to set properties for
+        effort planning please refer to the chapter
+        <a href="../../process-effort-calculation.html">Process Effort Calculation</a>.</li>
+    <li>Message Parsing specific properties, which will be discussed in the following
+        sections.</li>
+</ul>
+<p class="image"><a href="images/parsing-appl-props_orgSize.png" target="_blank">
+<img src="images/parsing-appl-props.png" alt="Properties of a Message Parsing 
+Application"></a><br>
+<strong>Figure:</strong> Properties of a Message Parsing Application.</p>
+<h3>Source Message Format</h3>
+<p>In the <strong>Source Message Format</strong> entry, you can choose between
+the following message formats:</p>
+<ul>
+    <li>XML</li>
+    <li>SWIFT</li>
+</ul>
+
+<p class="image"><img src="images/parsing-appl-select-source.png" 
+alt="Selecting the Source Message Type"><br>
+<strong>Figure:</strong> Selecting the Source Message Type.</p>
+<p>This is the format of the test input message file that will be passed to 
+the parser.</p>
+<h3>Target Message Type</h3>
+<p>In the <strong>Target Message Type</strong> entry select a target message
+type in the provided list. All structured types defined for the model will
+be provided.</p>
+<p class="image"><img src="images/parsing-appl-select-target.png" 
+alt="Selecting the Target Message Type"><br>
+<strong>Figure:</strong> Selecting the Target Message Type.</p>
+<h3>Testing and Debugging</h3>
+<p>In the <strong>Testing and Debugging</strong> section, 
+you can either <a href="#manage">manage</a> or <a href="#choose">select</a>
+ existing test configurations, or <a href="#create">create</a> new
+test configurations.</p>
+
+<h4 id="choose">Select a test configuration</h4>
+<p>To select a predefined test configuration click the drop-down
+menu for the <strong>Test Configurations</strong> entry. All previously created
+test configurations will be offered, where you can choose the one you want to
+use:</p>
+<p class="image"><img src="images/message-parsing-prop-testing-part-browse.png" 
+alt="Choose a Test Configuration"><br>
+<strong>Figure:</strong> Choose a Test Configuration</p>
+<h4 id="manage">Manage test configurations</h4>
+<p>Select <strong>Manage test configurations</strong> to edit existing test configurations
+in the <strong>Run Configuration</strong> dialog. Please refer to the section 
+<a href="launch-message-transformations.html#parsing">
+Parsing and Serialization Launch Configuration</a> of the chapter
+<a href="launch-message-transformations.html">Launching Message Transformations</a>
+for detailed information on launch configurations for message applications.</p>
+<h4 id="create">Create a new test configuration</h4>
+<p>Select <strong>Create</strong> to create a new test configuration matching
+the settings of the parsing configuration. A dialog opens where you have to
+select the file containing the test input message:</p>
+<p class="image"><img src="images/message-parsing-input-file.png" 
+alt="Select an Input File"><br>
+<strong>Figure:</strong> Select an Input File</p>
+<p>Please take care that you pass an input file matching the format you selected in the 
+<strong>Source Message Format</strong> entry and the input file is not empty, otherwise
+the parsing will fail.</p>
+<p>Now a test configuration is created with the name 
+<tt>"New Messaging Test&lt;numberOfConfiguration&gt;"</tt>, which is entered in
+the <strong>Test Configurations</strong> entry:</p>
+<p class="image"><img src="images/message-parsing-apply.png" 
+alt="New Test Configuration Entry"><br>
+<strong>Figure:</strong> New Test Configurations Entry</p>
+<p>The settings of the new configuration are created automatically:</p>
+<p class="image"><a href="images/message-parsing-example-config_orgSize.png" target="_blank">
+<img src="images/message-parsing-example-config.png" alt="New Test Configuration"></a><br>
+<strong>Figure:</strong> New Test Configuration</p>
+<p>Note that the structured type is supported for configuration. 
+To test the configuration, you have to enable the <strong>Test Serialization</strong>
+checkbox.</p>
+<p>Test configurations can also be created from the main menu's run configuration. 
+Please refer to the section 
+<a href="launch-message-transformations.html#parsing">
+Parsing and Serialization Launch Configuration</a> of the chapter
+<a href="launch-message-transformations.html">Launching Message Transformations</a>
+for detailed information on how to create a launch configuration for message 
+parsing applications from the main menu.</p>
+<h4>Screen Output</h4>
+<p>In case you enable the <strong>Screen Output</strong> checkbox, the resulting
+message will be displayed in the <strong>Console</strong> view. You can open this view
+by selecting <strong>Window &gt; Show View &gt; Console</strong>.</p>
+<p class="image"><img src="images/message-parsing-console.png" alt="Console View"><br>
+<strong>Figure:</strong> The parsed Message displayed in the Console View.</p>
+<h4>Output in a target message file</h4>
+<p>To save the result in a target message file, disable the <strong>Screen Output</strong> checkbox
+and enter a file or browse to an existing file in the <strong>Target Message File</strong> entry.</p>
+
+<h2 id="retry">Configuring Retry Mechanism</h2>
+
+<p> The configurable retry mechanism provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+<p>For more information, please refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+
+<p>For example, you have added an application to the model.
+In the Property page of the application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+
+<p class="image"><img src="images/msgparseretry.png" alt=""><br>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

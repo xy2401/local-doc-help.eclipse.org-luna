@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>Internationalization of Error Code</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<span class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Using Excelsheets to Facilitate Translation",
+    "i18n-prefmodel.html","PLUGINS_ROOT/com.infinity.bpm.docs.misc/html/i18n/using-excelbundle.html",
+   "../../handbooks.htm","Developer Handbook",
+   "../ag-preface.htm","Operation Guide",
+   "PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html","Internationalization");
+ -->
+</script></span>
+<span class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Identifying Property Keys using artificial Resource Bundles",
+    "i18n-prefmodel.html","artificial-keys.html",
+   "../../handbooks.htm","Developer Handbook",
+   "../ag-preface.htm","Operation Guide",
+   "PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html","Internationalization");
+ -->
+</script></span>
+
+<h1>Internationalization of Error Code</h1>
+<p>Error messages like login errors or authentication errors
+thrown by the engine, are also residing in locale specific property files.
+Extract the following property files:</p>
+<ul>
+	<li><tt>ipp-bpm-portal-errors_<i>locale</i>.properties</tt> -
+	extract from <tt>ipp-portal.war/WEB-INF/classes</tt>.</li>
+	<li><tt>ipp-bpm-runtime-errors_<i>locale</i>.properties</tt> -
+	extract from <tt>carnot-engine.jar</tt>, folder
+	<tt>org/eclipse/stardust/engine/api</tt>.</li>
+</ul>
+<p>In case property files for your language already exist, edit the files
+with your locale extension.
+Otherwise copy the default or the English language files and rename them using your 
+own locale.
+Edit the files and translate the error code accordingly.
+Chapter <a href="../../../reference/error-code.html">List of Error Codes</a> provides a general 
+overview over error code used for Stardust.</p>
+<p>Now simply copy these files to the <tt>ipp-resources</tt> folder of your Web project,
+e.g.:</p>
+<p class="image"><img src="../images/error-code-bundles.png" 
+alt="Localized Error Code Property Files"><br>
+<strong>Figure:</strong> Localized Error Code Property Files</p>
+<p>The translated code in these files are then used for displayed error messages 
+in the Portal.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

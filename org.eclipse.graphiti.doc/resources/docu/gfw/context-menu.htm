@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing a context menu</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing a Context Menu</h1>
+<h2>Enhancing the Tool Behavior Provider</h2>
+<p>Context menus are defined in the tool behavior provider.</p>
+<p>If you didn’t do so already you must <strong>first create a tool behavior provider 
+and add it to the diagram type provider as described </strong>
+<a href="tool-behavior-provider.htm"><strong>here</strong></a>.</p>
+<p>There is one method of the tool behavior provider to overwrite: </p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getContextMenu(org.eclipse.graphiti.features.context.ICustomContext)">
+	getContextMenu</a> has to return the context menu entries for the given context 
+	(which implement
+	<a href="../../../javadoc/org/eclipse/graphiti/tb/IContextMenuEntry.html">IContextMenuEntry</a>)</li>
+</ul>
+<p>The functionality of the context menu entries is always provided by features.
+</p>
+<p>It is possible to create a context menu entry with “children”, which build a 
+group of other context menu entries. Such a group can be shown in the context menu 
+either as a sub-menu or as a flat list separated by separator-lines. This behaviour 
+can be switched with a simple flag. You can also use the
+<a href="../../../javadoc/org/eclipse/graphiti/tb/DynamicContextMenuEntry.html">
+DynamicContextMenuEntry</a>, which will automatically create a sub-menu, if there 
+are more than a predefined number of children, and a flat list otherwise.</p>
+<p>In this example we want to create one context menu entry, which offers all available
+<a href="custom-feature.htm">custom features</a> as menu entries in a new sub-menu.&nbsp;
+</p>
+<p>You can see the complete implementation of the context menu here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> IContextMenuEntry[] 
+		getContextMenu(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create a sub-menu for all custom features</span><br>&nbsp;&nbsp;&nbsp; 
+		ContextMenuEntry subMenu = <span class="keyword">new</span> ContextMenuEntry(<span class="keyword">null</span>, 
+		context);<br>&nbsp;&nbsp;&nbsp; subMenu.setText(<span class="string">&quot;Custom&quot;</span>);<br>&nbsp;&nbsp;&nbsp; 
+		subMenu.setDescription(<span class="string">&quot;Custom features submenu&quot;</span>);<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// display sub-menu hierarchical or flat</span><br>&nbsp;&nbsp;&nbsp; 
+		subMenu.setSubmenu(<span class="keyword">true</span>);<br><br>&nbsp;&nbsp;
+		<span class="comment">&nbsp;// create a menu-entry in the sub-menu for each 
+		custom feature</span><br>&nbsp;&nbsp;&nbsp; ICustomFeature[] customFeatures 
+		= getFeatureProvider().getCustomFeatures(context);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">int</span> i = 0; 
+		i &lt; customFeatures.<span class="string">length</span>; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ICustomFeature customFeature = customFeatures[i];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (customFeature.isAvailable(context)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ContextMenuEntry menuEntry = <span class="keyword">new</span> ContextMenuEntry(customFeature, 
+		context);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		subMenu.add(menuEntry);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp;&nbsp; IContextMenuEntry 
+		ret[] =<span class="keyword"> new</span> IContextMenuEntry[] { subMenu };<br>&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> ret;<br>}</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Create a Connection by Drag &amp; Drop from a Context Button</h2>
+<p>Note that previously we implemented one &quot;<a href="custom-feature.htm">Rename 
+EClass&quot; feature</a> which allows renaming a EClass in a popup dialog.</p>
+<p>Now start the editor and test this new context menu:</p>
+<ol>
+	<li>Create or open a diagram and create a EClass in the diagram.</li>
+	<li>Open the context-menu on the diagram, and verify that the &quot;Rename EClass&quot; 
+	feature is available but disabled in the custom sub-menu.</li>
+	<li>Open the context-menu on the EClass, and verify that the &quot;Rename EClass&quot; 
+	feature is available and enabled in the custom sub-menu.</li>
+</ol>
+<p>Next you may change the hierarchical sub-menu to a flat sub-menu (change the 
+coding to <span class="inlinecode">subMenu.setSubmenu(false)</span>). Start the editor and repeat the 
+test to view the difference in the context-menu.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

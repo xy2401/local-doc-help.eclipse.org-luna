@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css"
+>
+<title>Stardust Database Access Tuning</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Performance Considerations", 
+			"ag-tuning-portal.html", "tuning-performance.html",
+			"../../handbooks.htm", "Developer Handbook", "../ag-preface.htm",
+			"Operation Guide", "ag-tuning-1.htm", "Tuning Tasks");
+//-->
+</script>
+<h1>Stardust Database Access Tuning</h1>
+<p>A general approach for Stardust database access tuning consists of
+the following tasks:</p>
+<ul>
+   <li><a href="#monitoring">Monitoring of the Database Resources</a>
+   <ul>
+      <li><a href="#exec">Analysis of the Execution Plan of Database
+      Queries</a></li>
+      <li><a href="#cluster">Cluster Definition and Indexing</a></li>
+      <li><a href="#deadlocks">Deadlocks</a></li>
+   </ul>
+   </li>
+   <li><a href="#archive">Archiving Audit Trail Contents</a></li>
+   <li><a href="#procclean">Cleaning up Process Instance Hierarchy Entries upon Process Termination</a></li>
+   <li><a href="#prepared">Using Prepared Statements</a></li>
+</ul>
+<h2 id="monitoring">Database Monitoring</h2>
+<p>First, you have to identify</p>
+<ul>
+   <li>query statements being launched by Stardust on the
+   Stardust Audit Trail Database and being executed with poor performance
+   and</li>
+   <li>possibly deadlocks on Stardust Audit Trail Database tables.</li>
+</ul>
+<p>The appropriate means for this task in general are database specific
+tools. Additionally, you may set the Stardust server property:</p>
+<p><tt>Carnot.Engine.Tuning.DB.slowStatementTracingThreshold = 500</tt>.</p>
+<p>This property sets the threshold duration in milliseconds for all
+database statements launched by Stardust . If the threshold is exceeded,
+the corresponding statement is logged in the Stardust log. with WARN
+priority, e.g.</p>
+<p><tt>[06.12.05 12:01:53:443] [ORB.thread.pool : 4] [ WARN] Slow
+query: 1085ms SELECT COUNT(*) FROM activity_instance o INNER JOIN
+process_instance PR_PI ON (o.processInstance = PR_PI.oid) INNER JOIN data_value
+PR_DV1 ON (PR_PI.rootProcessInstance = PR_DV1.processInstance AND PR_DV1.data =
+?) INNER JOIN ikr_dcluster_1 PR_DVCL1 ON (PR_PI.rootProcessInstance =</tt></p>
+<p><tt>PR_DVCL1.processInstance) WHERE (o.state IN (?, ?) AND
+(PR_DVCL1.tk_an_bereich_bs = ? AND PR_DVCL1.sval_an_bereich_bs IN (?, ?, ?, ?,
+?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+?, ?, ?, ?, ?, ?, ?, ?)) AND (PR_DV1.type_key = ? AND PR_DV1.string_value = ?)
+AND (PR_DVCL1.tk_an_rolle = ? AND PR_DVCL1.sval_an_rolle = ?) AND
+(o.currentUserPerformer = ? OR o.currentPerformer = ?))</tt></p>
+<p>A useful approach is to identify categories of critical statements with:</p>
+<p><tt>&lt;session-name&gt;.UsePreparedStatements = true</tt></p>
+<p>and to then deactivate prepared statement to obtain the concrete
+parameter values for critical queries (data IDs, process OIDs).</p>
+<h3 id="exec">Analysis of the Execution Plan of Database Queries</h3>
+<p>Execution plans for critical queries are obtained with the tools provided
+by the DBMS in use. You may consult your database administrator for further
+details.</p>
+<h3 id="cluster">Cluster Definition and Indexing</h3>
+<p>The obtained list of critical statements can be used in two ways:</p>
+<p>(A) A statement with multiple joins on the <tt>DATA_VALUE</tt> table -
+especially if launched very often - is a good candidate for a cluster slot.</p>
+<p>Data being used together in predicates</p>
+<p><tt>... WHERE ... Data1=? AND Data2=?</tt></p>
+<p>should reside in the same cluster.</p>
+<p>Additionally, indexes on these clusters might be considered according to
+the following principles:</p>
+<ul>
+   <li>slots with the highest selectivity should appear up front and</li>
+   <li>slots being used in OR or IN clauses should appear at the end</li>
+</ul>
+<p>of the index definition.</p>
+<p>(B) With or without clusters being defined, the execution path (table
+scans, index scans) has to be considered in detail and known database tuning
+mechanisms, like</p>
+<ul>
+   <li>creating additional indexes or</li>
+   <li>remove indexes</li>
+</ul>
+<p class="Stil1">on cluster and non-cluster tables have to be applied. To
+decide on the appropriate approach you have to obtain the <tt>UPDATE/SELECT</tt>
+ratio for the tables to be indexed. In any case, theses considerations are not
+Stardust -specific and can be recommended by your database administrator
+without further knowledge of the Stardust Process Engine.</p>
+<p><span class="Stil1">The steps described below can be performed
+repeatedly with successively reducing the threshold for critical statements</span>.</p>
+<h3 id="deadlocks">Deadlocks</h3>
+<p>UPDATE-Deadlocks on data clusters caused by parallel access of two
+different threads on disjoint cluster slots can be avoided by splitting up the
+cluster. Critical clusters can be obtained from the fields listed in the
+corresponding log.</p>
+<p>It might also be an approach to change the process model accordingly.</p>
+<p>Deadlocks on other Stardust tables can be avoided by specifying
+additional indexes on these tables. This approach is also a standard database
+administration task and does not require specific knowledge of the Stardust
+products. Hence, you might consult your database administrator for further
+recommendations.</p>
+<h3>Retrieving Generated Keys Directly</h3>
+<p>Per default, database generated keys are retrieved on non-sequence
+databases after the INSERT statement. To avoid this extra round trip, you can
+use the property <strong>AuditTrail.UseJdbcReturnGeneratedKeys</strong>. If you
+add this property to the <tt>carnot.properties</tt> file and set it to <tt>true</tt>,
+the support provided by JDBC 1.4 for retrieving database generated keys directly
+from the INSERT statement will be used instead.</p>
+<h2 id="archive">Archiving Audit Trail Contents</h2>
+<p>An audit trail database containing data for a large number of processes
+may reach a size, where the scalability limits of the used database system are
+reached. Usually, a high percentage of the process instances, whose data are
+stored in the audit trail database are already terminated. Hence, these process
+data can be exported to off line data sources and access only on demand.</p>
+<h2 id="procclean">Cleaning up Process Instance Hierarchy Entries upon Process Termination</h2>
+<p>To increase performance, you have the option to remove process instance 
+hierarchy entries upon process termination. If you set the server-side 
+property <strong>Carnot.Engine.Tuning.ProcessTerminationHierarchyCleanup</strong>
+in your <tt>carnot.properties</tt> file to <tt>true</tt>, process instance 
+hierarchy entries are removed from the table <tt>procinst_hierarchy</tt> 
+upon process termination. Per default this property is set to <tt>false</tt>. 
+For details on table <tt>procinst_hierarchy</tt>, refer to the
+<a href="../audit-trail/ag-appendix-audittrail-1.htm#procinst_hier">
+PROCINST_HIERARCHY TABLE</a> description in chapter 
+<a href="../audit-trail/ag-appendix-audittrail-1.htm">The Repository Model</a>.</p>
+<h2 id="prepared">Using Prepared Statements</h2>
+<p>To reduce the number of statements the database needs to parse and
+optimize you can use prepared statements. In general, any query that is meant to
+be used more than once should be a prepared statement.</p>
+<p>Using Prepared SQL Statements is usually estimated to raise performance
+by about 10%, no additional action needed. This has to be considered of special
+importance for complex queries like the ones issued from the Query API
+implementation. Now all queries and updates on the audit trail honor the session
+property to use Prepared SQL Statements:</p>
+<pre>&lt;session-name&gt;.UsePreparedStatements = false/true/mixed</pre>
+<p>It is recommended to use the <strong>mixed</strong> mode. For example, if
+querying for process instances states and activity instance states, the data can
+be "unbalanced". Mostly there are a lot of completed and only a few
+non-completed states. Regarding the performance, in case such data occur, it is
+helpful for the database query analyzer and data access path builder to have the
+real values for these unbalanced data and additionally the prepared statements
+for general business data.</p>
+<p>If prepared statements are used, the corresponding SQL queries will
+contain bound values like <tt>?</tt> characters instead of concrete values.</p>
+<h3>Restrictions on using Prepared Statements</h3>
+<p>Note that prepared statements are explicitly ignored for the following
+scenarios:</p>
+<ol>
+   <li>A query which uses the <tt>SQL LIKE</tt> operator and the
+   corresponding value starts with <tt>%</tt>.</li>
+   <li>In case a data cluster is configured, the data slot is configured with
+   <tt>ignorePreparedStatements=true</tt> and a query uses this slot.</li>
+   <li>If one of the following database fields are used in a query:
+   <ul>
+      <li><tt>daemon_log.type</tt></li>
+      <li><tt>daemon_log.code</tt></li>
+      <li><tt>daemon_log.state</tt></li>
+      <li><tt>activity_instance.state</tt></li>
+      <li><tt>activity_instance.currentUserPerformer</tt></li>
+      <li><tt>act_inst_history.state</tt></li>
+      <li><tt>act_inst_history.performerKind</tt></li>
+      <li><tt>act_inst_history.onBehalfOfKind</tt></li>
+      <li><tt>activity_inst_log.type</tt></li>
+      <li><tt>structured_data_value.type</tt></li>
+      <li><tt>participant.type</tt></li>
+      <li><tt>event_binding.type</tt></li>
+      <li><tt>log_entry.type</tt></li>
+      <li><tt>log_entry.code</tt></li>
+      <li><tt>process_instance.state</tt></li>
+      <li><tt>process_instance.priority</tt></li>
+      <li><tt>workitem.state</tt></li>
+      <li><tt>act_inst_property.type_key</tt></li>
+      <li><tt>proc_inst_property.type_key</tt></li>
+      <li><tt>usergroup_property.type_key</tt></li>
+      <li><tt>user_property.type_key </tt></li>
+   </ul></li>
+</ol>
+<script language="JavaScript" type="text/javascript"> 
+writeFooter(); 
+</script>
+</body>
+</html>

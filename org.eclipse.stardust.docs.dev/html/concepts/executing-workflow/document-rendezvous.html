@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
+  <title>Document Rendezvous</title>
+  <link href="../../styles/carnot.css" rel="stylesheet" title="Style" type="text/css" /><script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body><script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Document Triage",
+		"extract-pages.html","document-triage.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Document Rendezvous</h1>
+<p>Document Rendezvous can be used to suspend a work process until
+a document or documents matching the criteria specified in the wait node rules 
+enter the system.
+The work process is automatically resumed upon the receipt of the required document(s).</p>
+<h2>Common Use Cases</h2>
+<p>Document Rendezvous is a common requirement for practically all Business Processes that 
+are initiated by or otherwise rely on documents.</p>
+<h3>Use Cases</h3>
+<p>Use cases are for example:</p>
+<ul>
+   <li>A process always requires a request for documentation to
+      be sent out at a specific point in the process and the
+      documents received back in to the system before the process can
+      continue.
+   <li>A process may sometimes be missing documentation and a
+      request for the missing documentation must be sent out and the
+      document(s) received back in to the system before the process
+      can continue.</li>
+</ul>
+<h3>Business Use Case</h3>
+<p>The following workflow shows a typical Business use case scenario:</p>
+<ul>
+   <li>A Process Instance is initiated to fulfill a customer request.</li>
+   <li>The processor working the customer request in Stardust discovers
+   that one or more required documents are missing, and the request cannot proceed without them.</li>
+   <li>The customer is contacted to obtain the missing documents.</li>
+   <li>The customer sends back the missing documents.</li>
+   <li>The missing documents enter Stardust (typically via email or scan)
+   and must rendezvous with the original in-flight Process Instance.</li>
+   <li>After the documents rendezvous with the in-flight Process Instance
+   the request can continue.</li>
+</ul>
+<h2>Example Use Case</h2>
+<p>The following diagrams shows a Claims Processing workflow 
+using Document Rendezvous activities:</p>
+<p class="image"><a href="images/rendezvous-process_orgsize.png" target="_blank">
+<img src="images/rendezvous-process.png" alt="Claims Processing Example"></a><br>
+<strong>Figure:</strong> Claims Processing Example Workflow</p>
+<h3>Setting up the Route Activities</h3>
+<p>The Document Rendezvous activities have to be set up as follows:</p>
+<ol>
+   <li>Create a separate Route Activity (Task = None) for each document that is requiring rendezvous.</li>
+   <li>Begin the Activity ID of each Route Activity with the term <tt>DocumentRendezvous</tt>,
+   e.g. <tt>DocumentRendezvous_DisabilityCertificate</tt>. Do not include spaces in the ID!</li> 
+   <li>Mark each of these Activities as <strong>Hibernate Initially</strong></li>
+</ol>
+<p class="image"><img src="images/rendezvous-activity.png" alt="Route Activity Properties"><br>
+<strong>Figure:</strong> Route Activity configuration</p>
+<h3>Setting up the Workflow Pattern</h3>
+<ol>
+   <li>Set up an In/Out Mapping for the Specific Document that the Route Activity is waiting for.</li>
+   <li>Set up Gateways/Transitions to define the logic of which documents must be present before the Process Instance can continue.</li>
+   <li>Implement the Document Triage screen to provide an interface for rendezvousing 
+   incoming documents with existing in-flight Process Instances. Refer to chapter
+   <a href="document-triage.html">Document Triage</a> for details on the Document Triage concept.</li>  
+</ol>
+<p>Note that Process Attachments cannot be set up for rendezvous using the above pattern. Each rendezvous document must be a specific document.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script></body>
+</html>

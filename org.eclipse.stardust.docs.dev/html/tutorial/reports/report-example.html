@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Creating a Simple Report Definition</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Creating and Running a Report with Table Layout and a computed Column",
+      "","report-complex.html",
+      "../tut-preface.htm","Tutorials",
+      "tut-reports.html","Defining and Running Reports");
+-->
+</script>
+<h1>Creating a Simple Report Definition</h1>
+<p>In this tutorial we create a simple report definition which provides an 
+overview on the number of product items that have been sold in a process.
+Hereby we distinguish between active processes and already
+completed processes.</p>
+<ul>
+   <li><a href="#start">Preparing a Workflow and Data</a></li>
+   <li><a href="#create">Creating the Report Definition</a></li>
+   <li><a href="#dataset">Defining the Data Set</a></li>
+   <li><a href="#layout">Defining the Report Layout</a></li>
+   <li><a href="#preview">Previewing the Report</a></li>
+</ul>
+<h2 id="start">Preparing a Workflow and Data</h2>
+<p>Create a model containing an enumeration data with values for product names
+that can be sold.</p>
+<p>You can also import the completed 
+example model provided by Stardust. 
+Therefore download the following ZIP file containing the 
+model <strong>ProductSaleModel</strong> prepared for this example</p>
+<p class="ind"><a href="../../examples/tutorials/reports/reports.zip">
+reports.zip</a></p><p>This ZIP file also contains the completed
+example report, which you can import as well.</p>
+<p class="image"><img src="images/product-enumeration.png " alt="Enumeration Type"><br>
+<strong>Figure:</strong> Enumeration for Product Items</p>
+<p>Create a process, e.g. called <strong>Sales Process</strong>,
+which reads the product name in the enumeration data. This data will be made
+accessible as descriptor, e.g. <strong>Product</strong>.</p>
+<p class="image"><img src="images/product-descriptor.png" alt="Product Descriptor"><br>
+<strong>Figure:</strong> Product Descriptor</p>
+<p>Now deploy your model and start instances of this process. Select different
+product items and complete or suspend the process instances.</p>
+<p class="image"><img src="images/run-process.png" alt="Run Process"><br>
+<strong>Figure:</strong> Selecting different product item values</p>
+<h2 id="create">Creating the Report Definition</h2>
+<p>Switch to the <strong>Business Process Reporting</strong> perspective.
+Click the <strong>Create Ad hoc Report</strong> button to create the report
+definition.</p>
+<p class="image"><img src="images/create-report.png" alt="Creating a new Report"><br>
+<strong>Figure:</strong> Creating a new Report</p>
+<p>In the <strong>Data Source</strong> tab keep the default
+selection to retrieve data about process instances in the 
+<strong>Retrieve Data about</strong> drop-down list.</p>
+<p class="image"><img src="images/proc-data-source.png" alt="Data Source"><br>
+<strong>Figure:</strong> Retrieve data about process instances</p>
+<h2 id="dataset">Defining the Data Set</h2>
+<p>Switch to the <strong>Data Set</strong> tab and keep the default fact 
+<tt>Count</tt> selected in the <strong>Fact</strong> selection list.
+In the <strong>Dimension</strong> drop-down list select <tt>Product</tt>, which 
+you find in the <strong>Descriptors</strong> section.</p>
+<p class="image"><img src="images/dimension.png" alt="Select Fact and Dimension"><br>
+<strong>Figure:</strong> Select Fact and Dimension</p>
+<p>In the <strong>Filtering</strong> section we create a filter to filter for
+completed and alive processes:</p>
+<ol>
+   <li>Click the <strong>Add</strong> icon
+   <p><img src="images/add-filter.png" alt="Add Filter"></p></li>
+   <li>Select a filter for <tt>Process State</tt>
+   <p><img src="images/sel-filter.png" alt="Select Filter"></p></li>
+   <li>On the right side of the filter, all available process states are listed
+   now. Select <tt>Alive</tt> and <tt>Completed</tt> to filter for.
+   <p><img src="images/filter-procs.png" alt="Select Process State"></p></li>
+</ol>
+<p>Additionally we will group the data for process states. In the
+<strong>Grouping</strong> section <strong>Group by</strong> drop-down list
+select <tt>Process State</tt>.</p>
+<p class="image"><img src="images/set-grouping.png" alt="Select Grouping"><br>
+<strong>Figure:</strong> Select Grouping</p>
+<p>Our Data Set should now look like in the image below:</p>
+<p class="image"><img src="images/data-set.png" alt="Report Data Set Settings"><br>
+<strong>Figure:</strong> Report Data Set Settings</p>
+<h2 id="layout">Defining the Report Layout</h2>
+<p>Switch to the <strong>Layout</strong> tab to define how our report should
+be presented.</p>
+<ol>
+   <li>Enter a <strong>Report Title</strong></li>
+   <li>Select <strong>Layout Type</strong> <tt>Chart</tt> and <tt>Bar Chart</tt>.
+   <p><img src="images/select-bar-chart.png" alt="Select Layout Type"></p></li>
+   <li>Adjust the settings for <strong>X-Axis</strong> and 
+   <strong>Y-Axis</strong> to your favorite design.</li>
+</ol>
+<p>Now the settings for the report layout look similar as shown below:</p>
+<p class="image"><a href="images/layout_orgsize.png" target="_blank">
+<img src="images/layout.png" alt="Layout Settings"></a><br>
+<strong>Figure:</strong> Layout Settings</p>
+<h2 id="preview">Previewing the Report</h2>
+<p>Switch to the <strong>Preview</strong> tab to view a presentation of our
+report data.</p>
+<p class="image"><a href="images/bar-chart_orgsize.png" target="_blank">
+<img src="images/bar-chart.png" alt="Report Preview with Bar Chart Layout"></a><br>
+<strong>Figure:</strong> Report Preview with Bar Chart Layout</p>
+<h2 id="store">Storing the Report Definition</h2>
+<p>Now we like to store our report definition for the role who is assigned to
+the process mentioned above, e.g. <strong>Salesperson</strong>.</p>
+<ol>
+   <li>In the <strong>Save this report definition with name</strong> entry field
+   enter a name for the report definition.</li>
+   <li>Optionally enter a description</li>
+   <li>Enable the option for
+    <strong>Report Definition for Role/Organization</strong></li>
+   <li>Select <strong>Salesperson</strong> in the drop-down list
+   <p><img src="images/sel-role-save.png" alt="Select Filter"></p></li>
+</ol>
+<p>Now click the <strong>Save</strong> icon in the upper right corner of the 
+view to store the report definition.</p>
+<p class="image"><img src="images/save-to-role.png" alt="Storage Settings"><br>
+<strong>Figure:</strong> Storage Settings</p>
+<p>The stored report definition now is saved in a folder 
+<strong>Salesperson Report Definitions</strong>.</p>
+<p class="image"><img src="images/role-folder.png" alt="Stored Report Definition Location"><br>
+<strong>Figure:</strong> Stored Report Definition Location</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

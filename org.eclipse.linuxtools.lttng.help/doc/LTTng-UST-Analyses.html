@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>LTTng Plug-in User Guide - LTTng-UST Analyses</title>
+		<link type="text/css" rel="stylesheet" href="book.css"/>
+	</head>
+	<body>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<th style="width: 100%" align="center" colspan="3">LTTng-UST Analyses</th>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left">
+					<a href="LTTng-Kernel-Analysis.html" title="LTTng Kernel Analysis">
+						<img alt="Previous" border="0" src="images/prev.gif"/>
+					</a>
+				</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right">
+					<a href="Trace-synchronization.html" title="Trace synchronization">
+						<img alt="Next" border="0" src="images/next.gif"/>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top">LTTng Kernel Analysis</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">Trace synchronization</td>
+			</tr>
+		</table><hr/>
+		<h1 id="LTTng-UST_Analyses">LTTng-UST Analyses</h1>
+		<p>The Userspace traces are taken on an application level. With kernel traces, you know what events you will have as the domain is known and cloistered. Userspace traces can contain pretty much anything. Some analyses are offered if certain events are enabled.</p>
+		<h2 id="Call_Stack_View">Call Stack View</h2>
+		<p>The Call Stack view allows the user to visualize the call stack per thread over time, if the application and trace provide this information.</p>
+		<p>To open this view go in 
+			<b>Window</b> -&gt; 
+			<b>Show View</b> -&gt; 
+			<b>Other...</b> and select 
+			<b>Tracing/Call Stack</b> in the list. The view shows the call stack information for the currently selected trace. Conversely, you can select a trace and expand it in the 
+			<b>Project Explorer</b> then expand 
+			<b>LTTng-UST CallStack Analysis</b> (the trace must be loaded) and open 
+			<b>Call Stack</b>.
+		</p>
+		<p>The table on the left-hand side of the view shows the threads and call stack. The function name, depth, entry and exit time and duration are shown for the call stack at the selected time.</p>
+		<p>Double-clicking on a function entry in the table will zoom the time graph to the selected function's range of execution.</p>
+		<p>The time graph on the right-hand side of the view shows the call stack state graphically over time. The function name is visible on each call stack event if size permits. The color of each call stack event is randomly assigned based on the function name, allowing for easy identification of repeated calls to the same function.</p>
+		<p>Clicking on the time graph will set the current time and consequently update the table with the current call stack information.</p>
+		<p>Shift-clicking on the time graph will select a time range. When the selection is a time range, the begin time is used to update the stack information.</p>
+		<p>Double-clicking on a call stack event will zoom the time graph to the selected function's range of execution.</p>
+		<p>Clicking the 
+			<b>Select Next Event</b> or 
+			<b>Select Previous Event</b> or using the left and right arrows will navigate to the next or previous call stack event, and select the function currently at the top of the call stack.
+		</p>
+		<p>Clicking the 
+			<b>Import Mapping File</b> (
+			<img border="0" src="images/import.gif"/>) icon will open a file selection dialog, allowing you to import a text file containing mappings from function addresses to function names. If the callstack provider for the current trace type only provides function addresses, a mapping file will be required to get the function names in the view. See the following sections for an example with LTTng-UST traces.
+		</p>
+		<h3 id="Using_the_Callstack_View_with_LTTng-UST_traces">Using the Callstack View with LTTng-UST traces</h3>
+		<p>There is support in the LTTng-UST integration plugin to display the callstack of applications traced with the 
+			<i>liblttng-ust-cyg-profile.so</i> library (see the 
+			<i>liblttng-ust-cyg-profile</i> man page for additional information). To do so, you need to:
+		</p>
+		<ul>
+			<li>Recompile your application with "
+				<i>-g -finstrument-functions</i>".
+			</li>
+			<li>Add the 
+				<i>vtid</i> and 
+				<i>procname</i> contexts to your trace session. See the 
+				<a href="LTTng-Tracer-Control.html#Adding_Contexts_to_Channels_and_Events_of_a_Domain">Adding Contexts to Channels and Events of a Domain</a> section. Or if using the command-line:
+				<ul>
+					<li><pre>lttng add-context -u -t vtid -t procname</pre></li>
+				</ul>
+			</li>
+			<li>Preload the 
+				<i>liblttng-ust-cyg-profile</i> library when running your program:
+				<ul>
+					<li><pre>LD_PRELOAD=/usr/lib/liblttng-ust-cyg-profile.so ./myprogram</pre></li>
+				</ul>
+			</li>
+		</ul>
+		<p>Once you load the resulting trace, making sure it's set to the 
+			<i>Common Trace Format - LTTng UST Trace</i> type, the Callstack View should be populated with the relevant information. However, since GCC's cyg-profile instrumentation only provides function addresses, and not names, an additional step is required to get the function names showing in the view. The following section explains how to do so.
+		</p>
+		<h3 id="Importing_a_function_name_mapping_file_for_LTTng-UST_traces">Importing a function name mapping file for LTTng-UST traces</h3>
+		<p>If you followed the steps in the previous section, you should have a Callstack View populated with function entries and exits. However, the view will display the function addresses instead of names in the intervals, which are not very useful by themselves. To get the actual function names, you need to:</p>
+		<ul>
+			<li>Generate a mapping file from the binary, using:
+				<ul>
+					<li><pre>nm myprogram &gt; mapping.txt</pre></li>
+				</ul>
+			</li>
+			<li>Click the 
+				<b>Import Mapping File</b> (
+				<img border="0" src="images/import.gif"/>) button in the Callstack View, and select the 
+				<i>mapping.txt</i> file that was just created.
+			</li>
+		</ul>
+		<p>The view should now update to display the function names instead. Make sure the binary used for taking the trace is the one used for this step too (otherwise, there is a good chance of the addresses not being the same).</p>
+		<h2 id="Memory_Usage">Memory Usage</h2>
+		<p>The Memory Usage view allows the user to visualize the active memory usage per thread over time, if the application and trace provide this information.</p>
+		<p>The view shows the memory consumption for the currently selected trace.</p>
+		<p>The time chart plots heap memory usage graphically over time. There is one line per process, unassigned memory usage is mapped to "Other".</p>
+		<p>In this implementation, the user needs to trace while hooking the 
+			<i>liblttng-ust-libc-wrapper</i> by running  
+			<i>LD_PRELOAD=liblttng-ust-libc-wrapper.so</i> 
+			<b>&lt;exename&gt;</b>. This will add tracepoints to memory allocation and freeing to the heap, NOT shared memory or stack usage. If the contexts 
+			<b>vtid</b> and 
+			<b>procname</b> are enabled, then the view will associate the heap usage to processes. As detailed earlier, to enable the contexts, see the 
+			<a href="LTTng-Tracer-Control.html#Adding_Contexts_to_Channels_and_Events_of_a_Domain">Adding Contexts to Channels and Events of a Domain</a> section. Or if using the command-line:
+		</p>
+		<ul>
+			<li><pre>lttng add-context -u -t vtid -t procname</pre></li>
+		</ul>
+		<p>If thread information is available the view will look like this:</p>
+		<p>
+			<img border="0" src="images/memoryUsage/memory-usage-multithread.png"/>
+		</p>
+		<p>If thread information is not available it will look like this:</p>
+		<p>
+			<img border="0" src="images/memoryUsage/memory-usage-no-thread-info.png"/>
+		</p>
+		<p>The view allows selection of a specific time by left-clicking on a point in the chart. Left mouse dragging will select a time range. Right mouse dragging on the area will zoom in on that window. Middle mouse dragging will move the display window. Mouse wheel operations will zoom in and out also.</p>
+		<p>Please note this view will not show shared memory or stack memory usage.</p><hr/>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<td style="width: 20%" align="left">
+					<a href="LTTng-Kernel-Analysis.html" title="LTTng Kernel Analysis">
+						<img alt="Previous" border="0" src="images/prev.gif"/>
+					</a>
+				</td>
+				<td style="width: 60%" align="center">
+					<a href="User-Guide.html" title="LTTng Plug-in User Guide">
+						<img alt="LTTng Plug-in User Guide" border="0" src="images/home.gif"/>
+					</a>
+				</td>
+				<td style="width: 20%" align="right">
+					<a href="Trace-synchronization.html" title="Trace synchronization">
+						<img alt="Next" border="0" src="images/next.gif"/>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top">LTTng Kernel Analysis</td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">Trace synchronization</td>
+			</tr>
+		</table>
+	</body>
+</html>

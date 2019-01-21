@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Defining a Process Interface with dynamic Process Selection</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+         <!--
+            writeNavigation("", "../jms/jms-example.html", "", "../tut-preface.htm",
+                     "Tutorials");
+            -->
+         </script>
+   <h1>Defining a Process Interface with dynamic Process Selection</h1>
+   <p>Sometimes a need arises where a certain process needs to be implemented
+      differently depending on certain process data. For example, a regulatory process for
+      a company based in the US might require certain Sarbanes-Oxley ("SOX") compliance
+      activities while a company listed elsewhere might have to comply with other local
+      laws. Stardust provides the ability to support such scenarios by defining process
+      interfaces that can have multiple implementations. The implementation chosen at
+      runtime can be bound to certain process data and can thus be dynamically selected.
+      The example models referred to in this chapter can be downloaded from
+      the following link as a ZIP file:</p>
+   <ul>
+     <li><a href="../../examples/tutorials/process-interface-impl/process-interface-impl.zip">process-interface-impl.zip</a></li>
+   </ul>
+   <h2>Example</h2>
+   <p>
+      The example explained here is a fictional product purchase process. You find all
+      example models as well as a <tt>Customer_Data.xsd</tt> file in the zip file 
+      mentioned above. Please note that you need to add the xsd file to your classpath as
+      it provides the structured type <strong>Customer_Data</strong> used in the example 
+      models.</p>
+      <p>Please see
+      the example process from model <strong>ProductPurchaseModel.xpdl</strong> in the 
+      screenshot below. The process begins by accepting 
+      certain customer information. The user is then
+      prompted to select the follow-up process. The follow-up process is an example of a
+      Process Interface. This interface is defined in its own model
+      (<strong>CustDataInterfaceModel.xpdl</strong>), which also provides a default implementation (see
+      screenshot below). A reference to this interface is made in the <strong>Product Purchase Process</strong>. This
+      interface defines a single INOUT parameter of type <strong>Customer_Data</strong> and an instance
+      of this structured data type (<strong>CustData</strong>). The Product Purchase process imports this
+      data and binds it to the formal process interface parameter to exchange data with
+      the process interface implementation (<strong>CallFollowup Process</strong> activity) at runtime.
+   </p><br> 
+   <p class="image">
+      <img src="images/interface-dynamic-proc1.png" alt="Product Purchase Process">
+      <br>
+      <strong>Figure:</strong> Product Purchase Process
+   </p><br>
+   <p class="image">
+      <img src="images/interface-dynamic-proc2.png"
+         alt="CustData_Interface_Process Interface and Formal Parameter definition">
+      <br>
+      <strong>Figure:</strong> CustData_Interface_Process Interface and Formal Parameter
+      definition
+   </p>
+   <p>While the process interface defines a default implementation it is intended that
+   the process designer provides his own implementations that meet the actual business
+   need. In our example we provide two implementations for the follow-up
+   process (<strong>CustDataImplementationModel.xpdl</strong>).</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc3.png"
+         alt="3: Two Implementations of CustData_Interface_Process "> <br>
+      <strong>Figure:</strong> Two Implementations of CustData_Interface_Process
+   </p>
+   <p>The two implementations (<strong>CustData_Escalation_Process</strong> and <strong>CustData_Shipping_Process</strong>)
+   are both defined to implement <strong>CustData_Interface_Process</strong>.</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc4.png"
+         alt="Implementation Process Properties"> <br>
+      <strong>Figure:</strong> Implementation Process Properties
+   </p>
+   <p>Thus, it is expected that both these implementations will consume and return a
+   structured data of type <strong>Customer_Data</strong>. As discussed earlier these are precisely the
+   values that are passed to these processes from the Product Purchase process. We now
+   return to the Product Purchase process to discuss the process of runtime binding to a
+   process interface implementation. As shown in the product purchase process above, the set of possible
+   actions that can be selected by the user is picked from the data <strong>Followup</strong>. As shown
+   in the screenshot below, this data is a reference to the <strong>Followup</strong> structured data type
+   which consist of two parts - <strong>ActionSelected</strong> (an enumeration of type
+   <strong>Followup_Actions</strong>) and <strong>FollowupProcess</strong> (a string).</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc5.png" alt="Definition of the Data FollowUp">
+      <br>
+      <strong>Figure:</strong> Definition of the Data FollowUp
+   </p>
+   <h3 id="convert">Converting Follow-up Actions</h3>
+   <p>Now the options <strong>Ship</strong> or <strong>Escalate</strong> are presented as follow-up actions. The
+   subsequent activity <strong>Determine Followup Process</strong> is responsible for converting these
+   values into appropriate Process Implementation names. Note that the Stardust
+   convention <tt>{ModelId}{ProcessId}</tt> is used to uniquely identify the process.</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc6.png"
+         alt="ConvertingFollow-up action into Process Implementation name"> <br>
+      <strong>Figure:</strong> Converting Follow-up action into Process Implementation
+      name
+   </p>
+   <p>Finally, we define a sub process activity that dynamically invokes the process
+   implementation determined earlier. We declare that the sub process is
+   resolved at runtime and pass in the process data (<strong>Followup/FollowupProcess</strong>) that
+   identifies the Process Id of the desired implementation.</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc7.png"
+         alt="Runtime binding of Process Implementation"> <br>
+      <strong>Figure:</strong> Runtime binding of Process Implementation
+   </p>
+   <h2>Output</h2>
+   <p>We first deploy the interface, implementation and consumer models. The
+   Model Management view appears as shown below.</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc8.png"
+         alt="Deployingthe interface, implementation and consumer models"> <br>
+      <strong>Figure:</strong> Deploying the interface, implementation and consumer models
+   </p>
+   <p>Next, we kick off the Product Purchase process and enter some customer data.
+   We do no enter any value for the <strong>Final Outcome</strong> field since it is populated by the
+   runtime process implementation selected and displayed as the modified customer data in
+   the final step of the Product Purchase process.</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc9.png"
+         alt="Enter Customer Details activity"> <br>
+      <strong>Figure:</strong> Enter Customer Details activity
+   </p>
+   <p>In the next step, we select the follow-up action (in this case <strong>Escalate</strong>).
+   The <strong>Followup Process</strong> field is left blank since it is populated in the subsequent message transformation application
+   (see section <a href="#convert">Converting Follow-up Actions</a>).</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc10m.png"
+         alt="Select Followup Action activity"> <br>
+      <strong>Figure:</strong> Select Followup Action activity
+   </p>
+   <p>In the final step, the <strong>Display Final CustData</strong> activity, displays the
+   modified customer data. The <strong>Final Outcome</strong> field is populated with a value that
+   depends on the Process Implementation selected at runtime. In this particular case the
+   value <strong>Escalated</strong> is displayed since we chose the <strong>Escalate</strong> action in an earlier step
+   (see section <a href=""></a>).</p>
+   <p class="image">
+      <img src="images/interface-dynamic-proc11.png" alt="Display Final CustData">
+      <br>
+      <strong>Figure:</strong> Display Final CustData
+   </p>
+   <p>The Process History view displays the sequence of activities executed
+   during the process run. It also indicates that the <strong>CustData_Escalation_Process</strong> was
+   selected at runtime. This agrees with the input provided earlier and validates that our
+   processes have been designed correctly. We can run the process once more and choose the
+   other follow-up action, this time <strong>Ship</strong>, to test that the <strong>CustData_Shipping_Process</strong> is
+   executed for this value.</p><br>
+   <p class="image">
+      <img src="images/interface-dynamic-proc12.png"
+         alt="12: Process History and display of runtime Process Implementation information">
+      <br>
+      <strong>Figure:</strong> Process History and display of runtime Process
+      Implementation information
+   </p>
+   <script language="JavaScript" type="text/javascript">
+         <!--
+            writeFooter();
+            -->
+         </script>
+</body>
+</html>

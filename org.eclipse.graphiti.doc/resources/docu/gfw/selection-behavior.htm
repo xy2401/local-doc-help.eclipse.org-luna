@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Selection behavior</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Selection Behavior</h1>
+<h2>Introduction</h2>
+<p>In most cases a graphical figure is depicted by one outer ‘main’ graphics algorithm, 
+inside which several other graphics algorithms are located. The outer bounds of 
+this outer ‘main’ graphics algorithm also define the selection-behavior of the graphical 
+figure.</p>
+<p>But it is also possible to assemble a shape from overlapping or even distributed 
+graphics algorithms. In such a case it is not so clear anymore, which bounds define 
+the selection-behavior of the graphical figure.</p>
+<p>For a better understanding look at the following figure:</p>
+<p>&nbsp;</p>
+<p><img alt="" height="71" src="visio/rendering-area-1a.gif" width="111"></p>
+<p><strong>Figure: Graphical figure with distributed graphics algorithms (ellipse 
+and text)</strong></p>
+<p>&nbsp;</p>
+<p>This graphical figure consists of an ellipse and a text. For technical reasons 
+there is still an outer invisible rectangle, which contains the ellipse and text. 
+But in this example it would seem strange for the user, if this outer invisible 
+rectangle would define the selection-behavior, meaning that clicking on the invisible 
+rectangle would select it and show the selection-handles along the bounds of the 
+invisible rectangle.</p>
+<p>Instead the selection-behavior should work as can be seen in the following figure:</p>
+<p>&nbsp;</p>
+<p><img alt="" height="72" src="visio/rendering-area-1b.gif" width="111"></p>
+<p><strong>Figure: Selection area is smaller than complete graphical figure</strong></p>
+<p>&nbsp;</p>
+<p>The selection-handles appear only along the borders of the ellipse and not along 
+the borders of the larger invisible rectangle. It is possible to move or resize 
+the circle along these selection-handles (which will implicitly move or resize the 
+complete graphical figure).&nbsp; This makes the ellipse the ‘main’ graphics algorithm, 
+although the ellipse is technically not the outer graphics algorithm of the graphical 
+figure.</p>
+<p>Another aspect of the selection-behavior is that the graphical figure shall be 
+selected when the mouse clicks on either the ellipse or the text. When the mouse 
+clicks the text however, then the handle-bounds still appear around the ellipse 
+as described above, and not around the text. This means, that the selection-handles 
+can be shown around a different area, than the area which reacts on the mouse clicks 
+to select the graphical figure.</p>
+<h2>Creating an Extended Rendering Area</h2>
+<p>The following example bases on the <a href="anchors.htm">box relative anchor</a> 
+we created previously. As you can see the box relative anchor was located completely 
+inside the bounds of the rectangle depicting the EClass.</p>
+<p>&nbsp;</p>
+<p><img alt="" height="154" src="visio/rendering-area-2aa.png" width="205"></p>
+<p><strong>Figure: Box relative anchor inside bounds of graphical figure</strong></p>
+<p>&nbsp;</p>
+<p>Now we want to change the location of the box relative anchor, so that it exceeds 
+the bounds of the rectangle. This is actually quite typical, that box relative anchors 
+or fix point anchors exceed the bounds of the graphical figure it belongs to.</p>
+<p>&nbsp;</p>
+<p><img alt="" height="157" src="visio/rendering-area-2a.png" width="207"></p>
+<p><strong>Figure: Box relative anchor exceeds bounds of graphical figure</strong></p>
+<p>&nbsp;</p>
+<p>As already mentioned, for technical reasons a graphics algorithm can never be 
+painted outside the bounds of its parent graphics algorithm. Although it is possible 
+to set the bounds of a graphics algorithm to exceed the bounds of its parent graphics 
+algorithm, it will just be clipped when painting.</p>
+<p>You can try that out by changing the bounds of the <a href="anchors.htm">box 
+relative anchor</a> we created previously:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">gaService.<em>setLocationAndSize</em>(rectangle, -8, -4, 16, 
+		8); </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>As this doesn’t work, we have to change the structure of the graphics algorithms 
+for the EClass. The outer graphics algorithm shall be an invisible rectangle, which 
+contains the rectangle depicting the EClass. The size of the invisible rectangle 
+equals the size of the rectangle depicting the EClass, plus the space needed for 
+the box relative anchor at its right side. You can see the bounds of the invisible 
+rectangle when you select the graphical figure:</p>
+<p>&nbsp;</p>
+<p><img alt="" height="156" src="visio/rendering-area-2b.png" width="208"></p>
+<p><strong>Figure: Selection-handles around the invisible rectangle<br></strong>
+</p>
+<p>The invisible rectangle has to be created in the add method of the
+<a href="add-feature.htm">add feature</a>, as explained in the following code snippet. 
+Additionally the bounds of the box relative anchor have to be set differently. Note, 
+that the expanded width of the invisible rectangle is set in a static field, because 
+it also has to be used in calculations outside this class.</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="comment">// the additional size of the invisible 
+		rectangle at the right border<br>// (this also equals the half width of 
+		the anchor to paint there)</span><br><span class="keyword">public static 
+		final int</span> <span class="string"><em>INVISIBLE_RECT_RIGHT</em></span> 
+		= 6;<br>&nbsp;<br>&nbsp;<br><span class="keyword">public</span> PictogramElement 
+		add(IAddContext context) {<br>&nbsp;&nbsp;&nbsp; EClass addedClass = (EClass) 
+		context.getNewObject();<br>&nbsp;&nbsp;&nbsp; Diagram targetDiagram = (Diagram) 
+		context.getTargetContainer();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// CONTAINER SHAPE WITH ROUNDED RECTANGLE</span><br>&nbsp;&nbsp;&nbsp; 
+		IPeCreateService peCreateService = Graphiti.getPeCreateService();<br>&nbsp;&nbsp;&nbsp; 
+		ContainerShape containerShape =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		peCreateService.createContainerShape(targetDiagram,
+		<span class="keyword">true</span>);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// check whether the context has a size (e.g. from 
+		a create feature)<br>&nbsp;&nbsp;&nbsp; // otherwise define a default size 
+		for the shape</span><br>&nbsp;&nbsp;&nbsp; <span class="keyword">int</span> 
+		width = context.getWidth() &lt;= 0 ? 100 : context.getWidth();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">int</span> height = context.getHeight() &lt;= 0 ? 50 
+		: context.getHeight();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; RoundedRectangle 
+		roundedRectangle; <span class="comment">// need to access it later</span><br>&nbsp;&nbsp;&nbsp; 
+		IGaService gaService = Graphiti.getGaService();<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create invisible outer rectangle expanded by<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// the width needed for the anchor</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Rectangle invisibleRectangle =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.createInvisibleRectangle(containerShape);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.setLocationAndSize(invisibleRectangle,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		context.getX(), context.getY(), width + <span class="string"><em>INVISIBLE_RECT_RIGHT</em></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		height);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create and set visible rectangle inside invisible 
+		rectangle</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; roundedRectangle 
+		=<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.createRoundedRectangle(invisibleRectangle, 5, 5);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		roundedRectangle.setForeground(manageColor(<span class="string"><em>E_CLASS_FOREGROUND</em></span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		roundedRectangle.setBackground(manageColor(<span class="string"><em>E_CLASS_BACKGROUND</em></span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		roundedRectangle.setLineWidth(2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.setLocationAndSize(roundedRectangle, 0,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		0, width, height);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create link and wire it</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		link(containerShape, addedClass);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ... EXISTING CODING ...</span><br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add a chopbox anchor to the shape</span><br>&nbsp;&nbsp;&nbsp; 
+		peCreateService.createChopboxAnchor(containerShape);<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="comment">&nbsp;// create an additional box relative anchor 
+		at middle-right</span><br>&nbsp;&nbsp;&nbsp; BoxRelativeAnchor boxAnchor 
+		=<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peCreateService.createBoxRelativeAnchor(containerShape);<br><br>&nbsp;&nbsp;&nbsp; 
+		boxAnchor.setRelativeWidth(1.0);<br>&nbsp;&nbsp;&nbsp; 
+		boxAnchor.setRelativeHeight(0.38); <span class="comment">//use golden 
+		section<br></span><br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// anchor references visible rectangle instead of 
+		invisible rectangle</span><br>&nbsp;&nbsp;&nbsp; boxAnchor.setReferencedGraphicsAlgorithm(roundedRectangle);<br><br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// assign a graphics algorithm for the box relative 
+		anchor</span><br>&nbsp;&nbsp;&nbsp; Ellipse ellipse = 
+		gaService.createEllipse(boxAnchor);<br>&nbsp;&nbsp;&nbsp;&nbsp;ellipse.setForeground(manageColor(<span class="string"><em>E_CLASS_FOREGROUND</em></span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;ellipse.setBackground(manageColor(<span class="string"><em>E_CLASS_BACKGROUND</em></span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;ellipse.setLineWidth(2);<br><br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// anchor is located on the right border of the visible 
+		rectangle<br>&nbsp;&nbsp;&nbsp; // and touches the border of the invisible 
+		rectangle</span><br>&nbsp;&nbsp;&nbsp; <span class="keyword">int </span>
+		w = <span class="string"><em>INVISIBLE_RECT_RIGHT</em></span>;<br>&nbsp;&nbsp;&nbsp; 
+		gaService.setLocationAndSize(ellipse, -w, -w, 2 * w, 2 * w); <br>&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// call the layout feature</span><br>&nbsp;&nbsp;&nbsp; 
+		layoutPictogramElement(containerShape);<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;return</span> containerShape;<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Next we have to change the layout method of the <a href="layout-feature.htm">
+layout feature</a>. Previously it adjusted the size of the inner graphics algorithms 
+(line and text) in relation to the container graphics algorithm (visible rectangle). 
+Now it has to adjust the size of the inner graphics algorithms (visible rectangle, 
+line and text) in relation to the container graphics algorithm (invisible rectangle).</p>
+<p>The implementation can be seen in the following code-snippet:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">public boolean</span> layout(ILayoutContext 
+		context) {<br>&nbsp;&nbsp;&nbsp; <span class="keyword">boolean</span> anythingChanged 
+		= <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp; ContainerShape 
+		containerShape =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (ContainerShape) 
+		context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp; GraphicsAlgorithm containerGa 
+		= containerShape.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// the containerGa is the invisible rectangle<br>&nbsp;&nbsp;&nbsp; 
+		// containing the visible rectangle as its (first and only) child</span><br>&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm rectangle =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.getGraphicsAlgorithmChildren().get(0);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// height of invisible rectangle</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (containerGa.getHeight() &lt;
+		<span class="string"><em>MIN_HEIGH</em></span>T) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.setHeight(<span class="string"><em>MIN_HEIGHT</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// height of visible 
+		rectangle (same as invisible rectangle)</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (rectangle.getHeight() != containerGa.getHeight()) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle.setHeight(containerGa.getHeight());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// width of invisible 
+		rectangle</span><br>&nbsp;&nbsp;&nbsp; <span class="keyword">if</span> (containerGa.getWidth() 
+		&lt; <span class="string"><em>MIN_WIDTH</em></span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.setWidth(<span class="string"><em>MIN_WIDTH</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// width of visible 
+		rectangle (smaller than invisible rectangle)</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">int </span>rectangleWidth =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.getWidth()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		- TutorialAddEClassFeature.<span class="string"><em>INVISIBLE_RECT_RIGHT</em></span>;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (rectangle.getWidth() != rectangleWidth) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle.setWidth(rectangleWidth);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// width of text 
+		and line (same as visible rectangle)</span><br>&nbsp;&nbsp;&nbsp; 
+		Iterator&lt;Shape&gt; iter = containerShape.getChildren().iterator();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">while</span> (iter.hasNext()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Shape shape = iter.next();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm graphicsAlgorithm = shape.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IGaService gaService = Graphiti.getGaService();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IDimension size =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.calculateSize(graphicsAlgorithm);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (rectangleWidth != size.getWidth()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (graphicsAlgorithm <span class="keyword">
+		instanceof</span> Polyline) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Polyline polyline = (Polyline) graphicsAlgorithm;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Point secondPoint = polyline.getPoints().get(1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Point newSecondPoint =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.createPoint(rectangleWidth,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		secondPoint.getY());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		polyline.getPoints().set(1, newSecondPoint);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		} <span class="keyword">else </span>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.setWidth(graphicsAlgorithm,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		rectangleWidth);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return </span>anythingChanged;<br>
+		}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Create a EClass with Extended Rendering Area</h2>
+<p>Start the editor and create a new EClass. Verify that the EClass and its selection-handles 
+look similar to the figures above.</p>
+<h2>Adjusting the Selection Behavior</h2>
+<p>As you can see above the selection-handles of the EClass are around the invisible 
+rectangle.</p>
+<p>This is not a good selection-behavior, because the user considers the visible 
+rectangle as the ‘main’ graphics algorithm and doesn’t care about the extra space 
+needed to show the anchor. This also means that when resizing/moving the EClass, 
+this should be done on the visible rectangle and not the invisible rectangle.</p>
+<p>In the following we want to change the selection behavior in a way that the selection-handles 
+appear directly around the visible rectangle, as you can see in the following figure:</p>
+<p>&nbsp;</p>
+<p><img alt="" height="156" src="visio/rendering-area-2c.png" width="208"></p>
+<p><strong>Figure: Selection-handles around the visible rectangle</strong></p>
+<p>&nbsp;</p>
+<p>Additionally we want to define the visible rectangle as the selection-area, which 
+activates the selection when the mouse clicks into it. So a mouse click on the invisible 
+rectangle outside the visible rectangle will no longer activate the selection.
+</p>
+<p>&nbsp;</p>
+<p>Selection areas are defined in the tool behavior provider.</p>
+<p>If you didn’t do so already you must<strong> first create a tool behavior provider 
+and add it to the diagram type provider as described </strong>
+<a href="tool-behavior-provider.htm"><strong>here</strong></a>.</p>
+<p>The following methods of the tool behavior provider must be overwritten:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getSelectionBorder(org.eclipse.graphiti.mm.pictograms.PictogramElement)">
+	getSelectionBorder</a> has to return one graphics algorithm, which defines the 
+	selection-handle.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getClickArea(org.eclipse.graphiti.mm.pictograms.PictogramElement)">
+	getClickArea</a> has to return multiple graphics algorithms, which union defines 
+	the selection-area inside which mouse-clicks activate the selection.</li>
+</ul>
+<p>In this example we want to return the visible rectangle in both methods.</p>
+<p>You can see the complete implementation of the selection area here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> GraphicsAlgorithm[] 
+		getClickArea(PictogramElement pe) {<br>&nbsp;&nbsp;&nbsp; IFeatureProvider 
+		featureProvider = getFeatureProvider();<br>&nbsp;&nbsp;&nbsp; Object bo 
+		= featureProvider.getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GraphicsAlgorithm 
+		invisible = pe.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm rectangle =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		invisible.getGraphicsAlgorithmChildren().get(0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> GraphicsAlgorithm[] { rectangle 
+		};<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return 
+		super</span>.getClickArea(pe);<br>}<br><br>@Override<br>
+		<span class="keyword">public</span> GraphicsAlgorithm getSelectionBorder(PictogramElement 
+		pe) {<br>&nbsp;&nbsp;&nbsp; <span class="keyword">if</span> (pe
+		<span class="keyword">instanceof</span> ContainerShape) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm invisible = pe.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (!invisible.getLineVisible()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EList&lt;GraphicsAlgorithm&gt; graphicsAlgorithmChildren =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		invisible.getGraphicsAlgorithmChildren();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (!graphicsAlgorithmChildren.isEmpty()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> graphicsAlgorithmChildren.get(0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getSelectionBorder(pe);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Verify the Adjusted Selection Behavior</h2>
+<p>Note: This change is incompatible with diagrams created in earlier stages of 
+the tutorial. You will get an exception, when opening these diagrams.</p>
+<p>Start the editor and create a new EClass. Click on the visible rectangle and verify 
+that the selection-handles are only around the visible rectangle. Click slightly 
+right of the visible rectangle on the invisible rectangle and verify that the EClass 
+becomes deselected.</p>
+
+</body>
+
+</html>

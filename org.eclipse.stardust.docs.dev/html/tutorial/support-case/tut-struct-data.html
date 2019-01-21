@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Creating Structured Data Types</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Adding Activities to Process Definition",
+		"tut-main-3.htm","tut-main-4.htm",
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1>Creating Structured Data Types</h1>
+<p>We will use structured data types for our data definitions and their retrieval from 
+the Audit Trail database. Structured data types have to be defined as properties
+of the workflow model and can then be used as data types during modeling. Please 
+refer to the chapter
+<a href="../../handbooks/modelling/data-integration/struct-data-preface.html">Structured Data Types</a> of the
+<a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a> for detailed information on working with structured data types.</p>
+<h2>Create the New Structured Data Types</h2>
+<p>First we create new structured data types for the ACME Workflow Model:</p>
+<ol>
+    <li>In the Outline view right-click <strong>Structured Types</strong>.</li>
+    <li>Select <strong>New Composite</strong>.</li>
+</ol>
+<p class="image"><img src="images/tut-create-new-composite.png" alt="Select New Composite." >
+<br><strong>Figure:</strong> Select New Composite.</p>
+<h2 id="product">Define the Structured Data Type Product</h2>
+<p>Now the newly created composite type is visible in the <strong>Structured Types</strong>
+tree. Open the properties dialog of the new composite type:</p>
+<p class="image"><img src="images/tut-open-composite-props.png" alt="Open the Composite Properties." >
+<br><strong>Figure:</strong> Open the Composite Properties.</p>
+<p>Now we define the structured data type <strong>Product</strong>:</p>
+<ol>
+    <li>In the <strong>General</strong> part name the new structured type 
+    <strong>Product</strong>.</li>
+    <li>Go to the <strong>Structured Type Definition</strong>.</li>
+    <li>In the name entry of the table enter <strong>Name</strong>.</li>
+    <li>Click in the type entry and choose the proposed type <tt>string</tt>.</li>
+    <li>Leave the cardinality as <tt>Exactly one</tt>.</li>
+<!--    <li>Leave the <strong>Global</strong> entries for <strong>Persistence</strong> and
+    <strong>Indexing</strong> empty.</li> --> 
+    <li>In the same way enter the following composite types:<ul>
+        <li>with the name <tt>Synopsis</tt>, type <tt>string</tt> and cardinality <tt>Exactly one</tt></li>
+        <li>with the name <tt>State</tt>, type <tt>string</tt> and cardinality <tt>Exactly one</tt></li>
+        <li>with the name <tt>Analysis</tt>, type <tt>string</tt> and cardinality <tt>Exactly one</tt></li> 
+    </ul>  
+</ol>
+<p class="image">
+<img src="images/tut-struct-data-product.png" alt="Structured Data Type Product." >
+<br><strong>Figure:</strong> Create the Structured Data Type Product.</p>
+<h2 id="customer">Define the Structured Data Type Customer</h2>
+<p>To create the structured data type <strong>Customer</strong>, again create a 
+new composite type as described in the preceeding section and proceed as follows:</p>
+<ol>
+    <li>Name the new structured type <strong>Customer</strong>.</li>
+    <li>Add the following composite types:<ul>
+        <li>with the name <tt>Id</tt>, type <tt>int</tt> and cardinality <tt>Exactly one</tt></li>
+        <li>with the name <tt>Name</tt>, type <tt>string</tt> and cardinality <tt>Exactly one</tt></li>
+        <li>with the name <tt>Email</tt>, type <tt>string</tt> and cardinality <tt>Exactly one</tt></li> 
+        <li>with the name <tt>Product</tt>, type <tt>Product</tt> and cardinality <tt>Exactly one</tt></li> 
+    </ul>  
+</ol>
+<p class="image">
+<img src="images/tut-struct-data-customer.png" alt="Structured Data Type Customer." >
+<br><strong>Figure:</strong> Create the Structured Data Type Customer.</p>
+<p>Now the data type <strong>Customer</strong> can be used for the data in our
+ACME model.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

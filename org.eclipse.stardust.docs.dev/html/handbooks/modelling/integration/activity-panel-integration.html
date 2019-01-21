@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Using External Web Applications</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("",
+            "../mg-integration-jsp.html","",
+            "../../handbooks.htm","Developer Handbook",
+            "../mg-preface.htm","Modeling Guide",
+            "../mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<body>
+<h1>Using External Web Applications (Process-based UI Mashups)</h1>
+<p>Process-based UI Mashup Applications provide the option to integrate data and services provided
+by different sources and support interactions between them. For details on the concept
+of using UI Mashup Applications, please refer to chapter
+<a href="../../../concepts/integration/activity-panel-integration.html">Process-based UI Mashups</a>
+of the Stardust <a href="../../../concepts/key-concepts.html">Concepts</a>.</p>
+<ul>
+   <li><a href="#model">Using External Web Applications in Process Models</a></li>
+   <li><a href="#domain">Using External Web Applications in the same Domain</a></li>
+   <li><a href="#ex">Tutorial</a></li>
+</ul>
+
+<h2 id="model">Using External Web Applications in Process Models</h2>
+
+<p>To add an <strong>External Web Application</strong> to a model
+perform the following steps:</p>
+<ol>
+    <li>In the diagrams toolbar select <strong>Int. Applications</strong> &gt;
+    <strong>External Web Application</strong>.<br>(Alternatively, in the Outline view
+     right-click <strong>Applications</strong> and choose
+    <strong>New Interactive Application</strong> &gt; <strong>External Web Application</strong>.)
+    <p class="image"><img src="images/create-ext-web-app.png" 
+        alt="Create an External Web Application"><br>
+    <strong>Figure:</strong> Create an External Web Application.</p></li>
+    <li>Open the properties dialog.</li>
+    <li>Expand the <strong>Interactive</strong> tree in the left pane and
+    select <strong>External Web Application</strong>.
+    <p class="image"><img src="images/ext-web-app-props.png"
+        alt="External Web Application Properties"><br>
+    <strong>Figure:</strong> External Web Application Properties.</p></li>
+    <li>In the right pane enter an arbitrary URL for your application.</li>
+    <li>Select <strong>Typed Access Points</strong> in the <strong>Interactive</strong>
+    tree in the right pane.</li>
+    <li>In the <strong>Typed Access Points</strong> pane, you may define an arbitrary
+    list of access points for your application. Supported data types
+    are primitive (except of type <tt>char</tt> or <tt>Calendar</tt>) 
+    or structured data.</li>
+    <li>Note that if the <strong>Displays Imported Model Elements as Groups</strong> check box is selected, 
+    the access point list displays references for the referenced structured data. 
+    Selecting the check box also groups local and referenced elements.</li>
+</ol>
+<p class="image"><img src="images/ext-web-app-input.png"
+    alt="Add Input Source Parameters"><br>
+<strong>Figure:</strong> Add Input Source Parameters</p>
+
+<p class="image"><a href="images/ext-web-app-access-pts_orgSize.png" target="_blank">
+<img src="images/ext-web-app-access-pts.png" alt="Setting Typed Access Points"></a><br>
+<strong>Figure:</strong> Setting Typed Access Points.</p>
+<h3>Modifying the Typed Access Points</h3>
+<p>You can modify the specified source and target access points.</p>
+<ol>
+	<li>In the <strong>Typed Access Points</strong> pane, right-click
+		the root of access point and then select <strong>Modify</strong>
+      <p class="image">
+         <img src="images/modify-access.png" alt="Modify Typed Access Point"><br>
+         <strong>Figure:</strong> Modify Typed Access Point
+      </p>
+   </li>
+	<li>Specify the parameters in the <strong>Modify
+			Parameter</strong> dialog box and click <strong>OK</strong>
+      <p class="image">
+         <img src="images/modify-param.png" alt="Modify Typed Access Point"><br>
+         <strong>Figure:</strong> Modify Typed Access Point
+      </p>
+	</li>
+</ol>
+<h3>Deleting the Typed Access Point</h3>
+<p>You can delete the source and target access points.</p>
+<ol>
+	<li>In the <strong>Typed Access Points</strong> pane, right-click
+		the root of access point and then select <strong>Delete
+			Parameter</strong>
+		<p class="image">
+			<img src="images/access-del.png" alt="Delete Typed Access Point"><br>
+			<strong>Figure:</strong> Delete Typed Access Point
+		</p>
+		The <strong>Warning</strong> dialog box gets displayed.</li>
+	<li>Click <strong>OK</strong> to delete the access point
+		parameter
+		<p class="image">
+			<img src="images/warn-access.png" alt="Warning"><br> <strong>Figure:</strong>
+			Warning - Delete Typed Access Point
+		</p>
+	</li>
+</ol>
+
+<h3>Data Mappings</h3>
+<p>You can use access point path as well as data path
+in the data mapping. Per default, only the full value
+of a parameter is used. You can change this behavior 
+to either enter the name of declared 
+parameters or the data mapping IDs. To have both options, change the
+property <tt>Carnot.Compatibility.Interactions.SupportDataMappingIds</tt>,
+in your <tt>carnot.properties</tt> file to <tt>true</tt>.</p>
+<p>It is also possible to write an attribute 
+of a structured parameter to a primitive variable, e.g.:
+<p class="image"><img src="images/output-data-mapping.png" 
+ alt=""><br>
+<strong>Figure:</strong> Using a Structured Data Attribute in Out Data Mapping</p>
+<h3>Example External Web Application Usage</h3>
+<p>This is a small example to demonstrate the usage of an External Web Application
+associated with an application activity.</p>
+<p>In a dynamic Web project create a model as follows:</p>
+<ul>
+    <li>Create the following activities in a sequence:
+    <ol>
+        <li>manual trigger</li>
+        <li>manual activity</li>
+        <li>application activity</li>
+        <li>manual activity</li>
+    </ol></li>
+    <li>Create structured data types <strong>Address</strong> and 
+    <strong>Person</strong>, e.g.:
+    <p class="image"><img src="images/struct-type-address.png" 
+    alt="Structured Type Address"><br>
+    <strong>Figure:</strong> Structured Type Address<br><br>
+    <img src="images/struct-type-person.png" 
+    alt="Structured Type Person"><br>
+    <strong>Figure:</strong> Structured Type Person</li>
+    <li>Add structured data of each of these types.</li>
+    <li>Create an External Web Application.</li>
+    <li>In the properties page enter a URL for your application, 
+        e.g. <tt>http://www.wikipedia.com</tt>.</li>
+    <li>In the properties page <strong>Typed Access Points</strong> pane,
+        add the structured data of type <strong>Person</strong> as input and
+        the structured data of type <strong>Address</strong> as output resources:
+        <p class="image"><img src="images/typed-access-example.png" alt="Typed Access Points"> <br>
+        <strong>Figure:</strong> Add Typed Access Points </p></li>      
+    <li>Add an in and out data mapping from the structured data of type 
+        <strong>Person</strong> to the first manual activity.</li>
+    <li>Additionally create an in-data-mapping from this structured data to 
+        the External Web Application.</li>
+    <li>Create an out data mapping from the External Web Application to 
+    the structured data of type <strong>Address</strong>.</li>
+    <li>From both structured data create an out data mapping to the
+    last manual activity.</li>
+</ul>
+
+<p>Your model now looks similar to the model in the following figure:</p>
+<p class="image"><img src="images/ext-web-app-ex-model.png" 
+    alt="Example Model"><br>
+<strong>Figure:</strong> Example Model</p>
+<!--<p>In the External Web Application activities
+property page, you can see the in data mapping for the External Web Application
+with the context Id <strong>externalWebApp</strong>:</p>
+<p class="image"><img src="images/ext-web-app-data-map.png" 
+alt="In Data Mapping"><br>
+<strong>Figure:</strong> In Data Mapping for External Web Application.</p>-->
+<h4>Testing the example</h4>
+<p>Now start your server, deploy the model and run the activity associated with the
+External Web Application in the Stardust Portal.
+Your application should come up with the URL you entered in the properties page.</p>
+<p>For example, if you entered the URL <tt>http://www.wikipedia.com</tt>, the following
+page is coming up:</p>
+<p class="image"><a href="images/url-example_orgSize.png" target="_blank">
+<img src="images/url-example.png" alt="Example URL"></a><br>
+<strong>Figure:</strong> Example URL.</p>
+<p>Now you may inspect the interaction via its REST interface.</p>
+<p class="image"><img src="images/interaction-uri.png"
+        alt="Interaction URI"><br>
+    <strong>Figure:</strong> Interaction URI</p>
+<p>Selecting one of these options displays the according xml file. For example
+ <strong>Show In Data Values</strong> displays all the in-data values of
+the activity, which invoked the External Web Application:</p>
+<p class="image"><img src="images/interaction-uri-indata.png"
+        alt="Show In Data Values"><br>
+    <strong>Figure:</strong> Example - Show In Data Values</p>
+<p>entered in the entry fields for a structured data:</p>
+<p class="image"><img src="images/interaction-example.png"
+        alt="Show In Data Values"><br>
+    <strong>Figure:</strong> Example - Entered In Data Values.</p>
+<h2 id="domain">Using External Web Applications in the same Domain</h2>
+<p>If you like to use an External Web Application in your Web project domain,
+add your sources like JavaScript and HTML files to the <tt>Web-Content</tt> folder 
+of your Web project.</p>
+<p class="image"><img src="images/web-content-html.png" 
+ alt=""><br>
+<strong>Figure:</strong> Web-Content with HTML source</p>
+<p>In the External Web Application, enter the URL to your Web project domain
+accordingly.</p>
+<p class="image"><img src="images/ext-web-app-rad-url.png" 
+ alt=""><br>
+<strong>Figure:</strong> URL containing Web Project resource</p>
+<h3>Customizing the Close Panel Command for External Web Applications in the same Domain</h3>
+<p>You have the option to participate in the Close Panel command if you
+use External Web Applications in the same Domain. To adjust the command, define
+method <tt>performIppAiClosePanelCommand()</tt> in your resource.</p>
+<p>This allows for example to add a preprocessing command or even 
+to reject the processing of the close command.</p>
+<p>For example to add a preprocessing command use the following code:</p>
+<pre>
+&lt;script&gt;
+function performIppAiClosePanelCommand(commandId){
+   if (doPreprocessing()) {
+      parent.IppProcessPortalClient.confirmCloseCommandFromExternalWebApp(commandId);
+   }
+}
+
+function doPreprocessing(){
+   // Do Preprocessing, and if successful then return true
+}
+&lt;/script&gt;</pre>
+<h4>Example Close Panel Application</h4>
+<p>In this example we create an External Web Application in a RAD environment,
+which opens a confirmation dialog with an alert about the type of closing
+when an activity is closed or suspended and saved.</p>
+<ol>
+   <li>Create a dynamic Web project</li>
+   <li>In your <tt>Web-Content</tt> folder, create an HTML resource, 
+   e.g. called <tt>confirmClose.html</tt>.
+   <p class="image"><img src="images/web-content-html-ex.png" 
+    alt=""></p></li>
+   <li>Enter the following code:
+   <pre>
+&lt;html&gt;
+&lt;head&gt;
+   &lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt;
+   &lt;title&gt;Insert title here&lt;/title&gt;
+   &lt;script&gt;
+   function performIppAiClosePanelCommand(commandId){
+      alert("Confirming Close Panel Command for: "+commandId);
+      parent.IppProcessPortalClient.confirmCloseCommandFromExternalWebApp(commandId);
+   }
+   &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Welcome in Application using the Close Panel Command!
+&lt;/body&gt;
+&lt;/html&gt;</pre></li>
+   <li>Create a model with an application activity and an External Web Application</li>
+   <li>Open the property page of the External Web Application</li>
+   <li>Select <strong>Interactive &gt; External Web Application</strong> and
+   enter the URL according: 
+   <tt>http://&lt;hostname&gt;:&lt;portnumber&gt;/&lt;your project name&gt;/confirmClose.html</tt>
+   <p class="image"><img src="images/ext-web-app-url-ex.png" alt=""></p></li>
+   <li>Associate your application activity with the External Web Application</li>
+   <li>Save and deploy the model</li>
+   <li>Login the Portal and start your process containing the External Web Application</li>
+   <li>If you click the <strong>Complete</strong> button, the following
+   close confirmation dialog opens:
+   <p class="image"><img src="images/ext-web-app-confirm-compl.png" alt=""></p></li>
+   <li>In case you click the <strong>Suspend and Save</strong> button, the following
+   close confirmation dialog opens:
+   <p class="image"><img src="images/ext-web-app-confirm-susp.png" alt=""></p></li>
+</ol>
+
+<h2 id="ex">Tutorial</h2>
+<p>An example use case is to mashup angular based UI into the Stardust Portal.
+For details on the steps to perform such a mashup, please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/tutorial/mashup/tut-ui-mashup.html">
+Mashing up Angular based UI into Stardust Portal</a> in our
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/tutorial/tut-preface.htm">Tutorial Guide</a>.
+This tutorial guides you through the steps to mash up Angular based UI into the Stardust Portal.
+It describes how to ensure that data entered on the Angular UI is saved in the Stardust data
+and the Stardust data can be read and displayed in the Angular UI mashed up
+in the Stardust Portal.</p>
+<p>Note that the tutorial model is created in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeler</a>, but the usage concept is applying to the Eclipse modeler as well.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

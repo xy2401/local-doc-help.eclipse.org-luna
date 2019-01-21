@@ -1,0 +1,163 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: bipvUVb6uqgbAyNENWZ5rimlLjk=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: LbUPbt3ahSXHSj9FmtQjbb5ngA4=
+
+Name: common.css
+SHA1-Digest: lfzly2+5xW8sPSy1rGifRx+RIzI=
+
+Name: images/wsdleditor-finished-wsdl.jpg
+SHA1-Digest: j13ai4jDfu1pTVjgjpJwejWJZsc=
+
+Name: images/wsdleditor-complex-type.jpg
+SHA1-Digest: dcE4+qaVKqa4HD6lbrl7Ho6UcsQ=
+
+Name: images/xsdeditor-figure1.jpg
+SHA1-Digest: eBw4y9C2XFRXbLk842I9DMEuIv4=
+
+Name: images/xsdeditor-figure2.jpg
+SHA1-Digest: ZMskVBUPj/rr7lXwlCW8Dpp9DHM=
+
+Name: images/xsdeditor-figure3.jpg
+SHA1-Digest: E3q4PnV8p7f4bfulFE6c0/eXjPU=
+
+Name: images/SelectExistingServer.jpg
+SHA1-Digest: IWnZ1O2l7dHOiWVloHdsUUn3kkQ=
+
+Name: images/xsdeditor-figure4.jpg
+SHA1-Digest: 2Ds7gpgI+hC0PiGG3nnUVUv3/Lw=
+
+Name: images/imageLKF.jpg
+SHA1-Digest: /JYuNJdV4+jzZQy35r0YdPZauyE=
+
+Name: images/xsdeditor-figure5.jpg
+SHA1-Digest: ER0eahwtr8dVEdT8ATTOTdLE/oo=
+
+Name: images/xsdeditor-figure6.jpg
+SHA1-Digest: 3uNgyFkHq6Uwm1XVkSPUDEnYxkM=
+
+Name: images/xsdeditor-figure7.jpg
+SHA1-Digest: gpg5/IdyUhAdIpHFvgPLlLngNsw=
+
+Name: images/xsdeditor-figure8.jpg
+SHA1-Digest: vS2B54YnOCjYlrQpFXS9qcBhrVQ=
+
+Name: images/xsdeditor-figure9.jpg
+SHA1-Digest: XrWmftw+Bs2xWHW6KeyutFAPbrA=
+
+Name: images/image99L.jpg
+SHA1-Digest: J2pkjNGaAhhN7xXotgX1dBBF/vE=
+
+Name: notices.html
+SHA1-Digest: n5pD5F9Iojh5UfJrot66NG/Dd5s=
+
+Name: images/imageIAI.jpg
+SHA1-Digest: FzXQ5B1refkg53gFXdjVw0hi6b0=
+
+Name: images/SelectNewServer.jpg
+SHA1-Digest: 64LIoH4/eYOox4S4mI8GEvHogp4=
+
+Name: images/imageEJ9.jpg
+SHA1-Digest: X6aJwyYc1erHL0B87hp+pUaWPk4=
+
+Name: images/wsdleditor-new-operation.jpg
+SHA1-Digest: X9C+Uis8/j0A/Q0wpTfZCGf0Slk=
+
+Name: images/wsdleditor-settype-dialog.jpg
+SHA1-Digest: kaGNwoukl8J4+GEBp+0x5wCM8q4=
+
+Name: images/wsdleditor-new-skeleton.jpg
+SHA1-Digest: rV2TQwox9JVYIyjZkaEGBKpaaSk=
+
+Name: images/wsdl_main.gif
+SHA1-Digest: b+bAHBOnGJsVWUEtX/RcB9Zj90w=
+
+Name: commonrtl.css
+SHA1-Digest: 2V28JLCv7PblH0/US0P32/IQYqQ=
+
+Name: commonltr.css
+SHA1-Digest: JCAxe+v2R/tANWo3RWZzMGjh20w=
+
+Name: images/xsdeditor-backbutton.jpg
+SHA1-Digest: 5vx72VAsveDfyvY5panSdm+5xcw=
+
+Name: images/selectRootElementXSD.png
+SHA1-Digest: lVb/v7ke1JNPE4lZP56kOAQ2Aj8=
+
+Name: images/selectRootElementDTD.png
+SHA1-Digest: Uv+76NelYhiS0KFh4ux0K8EzegE=
+
+Name: images/wsdleditor-setelement-dialog.jpg
+SHA1-Digest: rAIgTwJkkTo1DpzBr6weqv1kz1I=
+
+Name: plugin.properties
+SHA1-Digest: Awrazkj7yLVagNhMA4aeyPSogeg=
+
+Name: images/wsdleditor-new-wizard.jpg
+SHA1-Digest: RW7d44253BhtVQLfolZQ5Z5IWgA=
+
+Name: topics/overview.html
+SHA1-Digest: UyyLcjGFtUihIK05yZO+xdnpZE0=
+
+Name: plugin.xml
+SHA1-Digest: teQVDUE/kcjrZXhona9w/ZrKNA4=
+
+Name: images/wsdleditor-smart-rename1.jpg
+SHA1-Digest: GAKEV1+AyDXsVpfpei5584D0keQ=
+
+Name: images/imageU71.jpg
+SHA1-Digest: 3UZZN2iWvOHQZzZI7oqItcXfsTY=
+
+Name: images/imageO78.jpg
+SHA1-Digest: OARRYYCD5SFrxwyJZ1WsCGTFFz0=
+
+Name: topics/limitations.html
+SHA1-Digest: yqr7aXfemQW671hCOoOrYDsADfg=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.doc.user/pom.properties
+SHA1-Digest: E7Yt1iI6Kw6IaXCUjh3sqxOBSGA=
+
+Name: images/XMLCatalog-Figure1.jpg
+SHA1-Digest: WNT819ZnxysUkqufBw2iHYQZ3gw=
+
+Name: about.html
+SHA1-Digest: XdWYUpvWLgRQc+alM8AJ7NKx16E=
+
+Name: images/XMLCatalog-Figure2.jpg
+SHA1-Digest: AxyUnrScoGtIU7NIk/yZFbOfRGs=
+
+Name: images/XMLCatalog-Figure3.jpg
+SHA1-Digest: rpBvKnn7NVbVpfws4G2lUaHdz+s=
+
+Name: images/XMLCatalog-Figure4.jpg
+SHA1-Digest: J5v22ajLisYvooRQVTWenyDXp/c=
+
+Name: images/XMLCatalog-Figure5.jpg
+SHA1-Digest: 29fUveAvB957z6vm0QBRpdj+pRU=
+
+Name: images/wsdleditor-backbutton.jpg
+SHA1-Digest: E+hKk+iNojZESIT66MFnla2WP6E=
+
+Name: toc.xml
+SHA1-Digest: 9KSaA6gdZF6wsvPoGzi4s/lmIy0=
+
+Name: images/wsdl.gif
+SHA1-Digest: UXngJmUd2Z17qBp1vfWJBQhkYFk=
+
+Name: images/wsdleditor-binding.jpg
+SHA1-Digest: JhqAU9URwdR36XMFKF8g25KIloE=
+
+Name: reference_toc.xml
+SHA1-Digest: 4ZoZp7+zcT+cy0VnL3HcSXNWFqc=
+
+Name: book.css
+SHA1-Digest: dJ3psxFCAbP91WLbX0cUvoozL6E=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.doc.user/pom.xml
+SHA1-Digest: njr/qi1Yfd50TgLLby+8tx2FqlE=
+
+Name: images/note.gif
+SHA1-Digest: QEXqj5U5ORbu5npcqi+HuxUGRDA=
+

@@ -1,0 +1,176 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.valgrind.doc;singleton:=tr
+ ue
+Require-Bundle: org.eclipse.help
+Bundle-Version: 1.0.0.201502180018
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %Bundle-Name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-ManifestVersion: 2
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MassifOptions.png
+SHA1-Digest: i9t0fHoEPrlKvYTF3KlmzszR1j8=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/ValgrindSegfault.
+ png
+SHA1-Digest: sh5T5em8zXWgL4zF4d/SApqsxog=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Installing.html
+SHA1-Digest: Uyt8CiZsKYxBT1liV3Zh1wMBxAA=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Hierarchy.gif
+SHA1-Digest: bxdYWff3Y+o0pesdQD6Ya8jO9I0=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Vg_config.png
+SHA1-Digest: NF2Im4xm9uWWT/NJPvrvQJNCnYA=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Updating-This-Document.h
+ tml
+SHA1-Digest: Y57lvLReYu8g6MGwjIFlvvvZT20=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Thread.gif
+SHA1-Digest: xRVlYSaHlPX6Ro8sBejtkj5VSZ4=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/SwitchMassif.png
+SHA1-Digest: 63VNpbNUh2M/MSsMfivtDyUrYAs=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/SwitchCachegrind.
+ png
+SHA1-Digest: FIXMdT+m7vMeltmyUXrJod+TTh8=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/General-Usage.html
+SHA1-Digest: IIwZ/Unv/TdfjVgAPb5w1ixRdQ0=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/SwitchCoreTool.pn
+ g
+SHA1-Digest: BtAcAFFo31RPTBMhxUJ/ZXMItoc=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Using-Cachegrind.html
+SHA1-Digest: m1Z3oTAD5XuAzWhnwQCzCpChfn4=
+
+Name: plugin.properties
+SHA1-Digest: 7sygz4nkwNaPZ7VvLjtb2vXyETs=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Remote-Valgrind.html
+SHA1-Digest: hKntb83BVTDzrfvLgo2bW/Ocmq4=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/ValgrindExportWiz
+ ard.png
+SHA1-Digest: 8ZW+rMi8xfpCZaGSodHqH2VjkKQ=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/CachegrindOutput.
+ png
+SHA1-Digest: 8ui8Zhmu2qXQ+6KzZuEGQZeFIno=
+
+Name: doc/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MemcheckOutput.pn
+ g
+SHA1-Digest: fBGvhuyUGe67ahTygwwZqQxgM7I=
+
+Name: META-INF/maven/org.eclipse.linuxtools.valgrind/org.eclipse.linux
+ tools.valgrind.doc/pom.xml
+SHA1-Digest: uRoW1QMA0za0XqP5wLAaEePaL3A=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Exportbuttonvalgr
+ indview.gif
+SHA1-Digest: lEPjZbSIwuMQyD6KAjd2yllIC4Y=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Using-Helgrind.html
+SHA1-Digest: bPQmHW4i+ij3umKUHF7c0+y7aOw=
+
+Name: plugin.xml
+SHA1-Digest: h78bR3vn/WsOjMD7NTJsLDlPG6I=
+
+Name: toc-doc.xml
+SHA1-Digest: W8n55CxnN/o6ofqeuaGr6AnXEFI=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MassifChartSelect
+ .png
+SHA1-Digest: osTzCuxQ9DYu1iyD1lM1LjgAdgA=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/HelgrindOutput2.p
+ ng
+SHA1-Digest: to1DgbabRZVUwYvVi7D0TmXg0bE=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/CachegrindOptions
+ .png
+SHA1-Digest: ZQB5xiFKPQWcMyZ3/YdwaYBnD/w=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Screenshot-main-r
+ emote-valgrind.png
+SHA1-Digest: kOdLjhOXvQODXBmvBKs81M8+U+g=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Vg_original_menu.
+ png
+SHA1-Digest: TFTbHwBCi4RDOoIB3Xh9AeEYZlE=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Screenshot-Profil
+ eConfigurations.png
+SHA1-Digest: ticlfTjaZtQzK1FwCkfLBwLOciw=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Shortcut.png
+SHA1-Digest: 262WVSgJzGKjmrCuDZfMsKMU4TI=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Using-Memcheck.html
+SHA1-Digest: gBUlil/C6Qe4AoE2TZjtZjKM0Ao=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Screenshot-Profil
+ eConfigurations-valgrind-options-tab.png
+SHA1-Digest: nKAntVW47yuSInXtTNR7/1um/6g=
+
+Name: META-INF/maven/org.eclipse.linuxtools.valgrind/org.eclipse.linux
+ tools.valgrind.doc/pom.properties
+SHA1-Digest: qpE2K3l47krge2xmmYX4cElbAtg=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Using-Massif.html
+SHA1-Digest: gHO9cienL7Rebczj2nbwUA25bl0=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/User-Guide.html
+SHA1-Digest: 7l/pYow9QyTHUsc3TxIYPTkobKw=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MassifTable.png
+SHA1-Digest: LZWvLvGKykFWjEqVW3Xq2dxTsJk=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MassifTree.png
+SHA1-Digest: WUp2sH6H2HinIpm4GzZ9b7hm9e4=
+
+Name: toc.xml
+SHA1-Digest: kXA68BUUInbNaCAPu4zt9DtCeMM=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/Special-Cases.html
+SHA1-Digest: 8Sw0fylEDa8yaDIEZjgp+asKnB8=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/HelgrindOptions2.
+ png
+SHA1-Digest: KJQxWdeq6DPoufaYgp3HlKO/OM4=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/Screenshot-Suppre
+ ssions.png
+SHA1-Digest: kxUlG7EYgILLeVGloV/idBjzYks=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/Valgrind/User_Guide/images/MemcheckOptions.p
+ ng
+SHA1-Digest: dM0dK4o9v1KWxHu2AMKea3E6S68=
+

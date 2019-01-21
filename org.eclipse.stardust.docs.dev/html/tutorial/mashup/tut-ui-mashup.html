@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>Mashing up Angular based UI into Stardust Portal</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Scoped Participants Tutorials",
+      "../support-case/support-case-preface.htm","../scoped-participants/tut-scoped-main.html",
+      "../tut-preface.htm","Tutorials");
+-->
+</script>
+<h1>Mashing up Angular based UI into Stardust Portal</h1>
+<p>This tutorial describes the steps to mash up Angular based UI into the Stardust
+Portal. It describes how to ensure that data entered on the Angular UI is saved in the
+Stardust data and the Stardust data can be read and displayed in the Angular UI
+mashed up in the Stardust Portal.</p>
+<ul>
+   <li><a href="#start">Getting Started</a></li>
+   <li><a href="#code">Creating JavaScript and HTML Sources</a></li>
+   <li><a href="#model">Creating the Stardust Model</a></li>
+   <li><a href="#run">Running the Example</a></li>
+</ul>
+<p>You can create the model and code by following the steps in this chapter
+or import the example model and code provided by Stardust.
+Therefore download the following ZIP file containing the
+UI Mashup example model as well as the required HTML and JavaScript code:</p>
+<p class="ind"><a href="../../examples/tutorials/mashup/mashup.zip">
+UI Mashup Example ZIP</a></p>
+<h2 id="start">Getting Started</h2>
+<p>To get started, we need to install <tt>node.js</tt> and download an example
+angular Web application.</p>
+<ol>
+   <li>Install <tt>node.js</tt> from <a href="http://nodejs.org/">http://nodejs.org/</a>.</li>
+   <li>Get a working application from
+   <a href="https://github.com/angular/angular-phonecat">https://github.com/angular/angular-phonecat</a>
+   and download it as zip. You find a <strong>Download ZIP</strong> button
+   on the lower right side of that page. Extract the zip file to a folder of your choice.
+   This is the folder where you will place your HTML and JavaScript files.</li>
+   <li>To learn more about angular go to <a href="http://docs.angularjs.org/tutorial/">http://docs.angularjs.org/tutorial/</a></li>
+   <li>If you do not have it already, download <tt>xml2js</tt> from any appropriate site</li>
+</ol>
+<h2 id="code">Creating JavaScript and HTML Sources</h2>
+<p>We create code to mash up angular UI that will exhibit the reading and writing of data to Stardust data.
+If there is already data present in an Stardust data element that the mashed up UI relates to,
+it will read that data from Stardust over a RESTFUL service, show it in itself and allows editing as well.
+Once the data is edited and the <strong>Save and Complete</strong> button is clicked,
+it will write the edited data back to the Stardust data element by calling
+another RESTFUL service of Stardust. Enter the code for <tt>showDispute.html</tt> and
+<tt>showDispute.js</tt> or use the files downloaded with your example zip file.</p>
+<p>Create <tt>showDispute.html</tt> and place it under the <tt>app</tt> folder of your
+<tt>angular-phone-master</tt> application folder. It provides entry fields for data and uses the
+<tt>showDispute.js</tt> script to save the edited data. The styling is provided in a way that
+in the input field the background color should change to light green in case the
+entry is valid and to pink if the entry is invalid.</p>
+   <pre>
+&lt;!doctype html&gt;
+&lt;html ng-app=&quot;newRESTClient&quot;&gt;
+   &lt;head&gt;
+      &lt;style&gt;
+      div.ex
+      {
+         width:640px;
+         padding:10px;
+         border:2px solid gray;
+         margin-left:10px;
+         border-style:outset;
+      }
+
+      .css-form input.ng-invalid.ng-dirty {
+         background-color: pink;
+      }
+
+      .css-form input.ng-pattern.ng-dirty {
+      background-color: blue;
+      }
+      .css-form input.ng-valid.ng-dirty {
+          background-color: lightgreen;
+      }
+      .fourBy20 {
+       width: 250px;
+       height: 35px;
+      }
+      &lt;/style&gt;
+      &lt;script src=&quot;lib/angular/angular.js&quot;&gt; &lt;/script&gt;
+      &lt;script src=&quot;lib/angular/angular-resource.js&quot;&gt; &lt;/script&gt;
+      &lt;script src=&quot;lib/misc/xml2js.js&quot;&gt; &lt;/script&gt;
+      &lt;script src=&quot;js/showDispute.js&quot;&gt; &lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body ng-controller=&quot;disputeCtrl&quot;&gt;
+      &lt;div&gt;
+       &lt;div ng-form name=&quot;masterForm&quot; class=&quot;css-form&quot;&gt;
+       &lt;div class=&quot;ex&quot;&gt;
+          Dispute ID &lt;input tpye=&quot;text&quot; ng-model=&quot;Dispute.disputeID&quot; ng-disabled=&quot;true&quot;&gt;
+          Dispute Description &lt;textarea ng-class=&quot;{fourBy20: true}&quot; ng-Model=&quot;Dispute.description&quot; name=&quot;remarks&quot; type=&quot;text&quot; ng-maxlength=&quot;50&quot;&gt;&lt;/textarea&gt;
+          &lt;button ng-click=&quot;saveDispute()&quot;&gt;Save and Submit&lt;/button&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>Create <tt>showDispute.js</tt> and place it under the <tt>app/js</tt> folder of your
+<tt>angular-phone-master</tt> application folder.</p>
+<pre>
+'use strict'
+var newRESTClient = angular.module('newRESTClient', ['ngResource']);
+function disputeCtrl($scope, $resource, $window){
+
+   $scope.$window = $window;
+
+   $scope.Dispute ={};
+   var x2j = new X2JS();
+   /* This method seraches and returns the desired query parameter (passed as arg) out of
+   window.location.href, which contains entire URL like:
+      http://localhost:8000/app/showDispute.html?
+      ippInteractionUri=http://localhost:&lt;port&gt;/DemoProject/services/rest/engine/interactions/MTA1fDEzNzU5NDIzNTE4ODY=
+      &amp;ippPortalBaseUri=http://localhost:&lt;port&gt;/DemoProject
+      &amp;ippServicesBaseUri=http://localhost:&lt;port&gt;/DemoProject/services/ */
+   $scope.urlParam = function(name){
+       var results = new RegExp('[&#92;&#92;?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+       if (!results)
+       {
+          return 0;
+       }
+       return results[1] || 0;
+   }
+
+   $scope.saveDispute = function(){
+      var disputeData = &quot;&lt;?xml version=&#92;&quot;1.0&#92;&quot; encoding=&#92;&quot;UTF-8&#92;&quot;?&gt;&lt;Dispute1&gt;&quot;+x2j.json2xml_str($scope.Dispute)+&quot;
+      &lt;/Dispute1&gt;&quot;;
+      console.debug(&quot;Dispute to Submit: &quot;+ disputeData);
+      var res1 = $resource($scope.callbackURL+'/outData/Dispute2', {params: '@disputeData'}, {'put': {method:
+      'PUT',  isArray: false, headers:{'Content-Type':'application/xml; charset=UTF-8'}}});
+      res1.put(disputeData,
+      function success() {console.debug(&quot;Success&quot;);}, function error() {console.debug(&quot;Failure&quot;);});
+      $scope.sleep(3000);
+      //*****Ensures that on button click IPP's activity that contains this UI gets completed and closed****
+      var mainIppFrame = parent;
+      //alert(mainIppFrame);
+
+      if (mainIppFrame)
+      {
+        if (mainIppFrame.InfinityBpm)
+        {
+       mainIppFrame.IppProcessPortalClient.completeActivity();
+
+        }
+      }
+   }
+   /**
+   * Delay for a number of milliseconds
+   */
+   $scope.sleep = function (delay)
+   {
+       var start = new Date().getTime();
+       while (new Date().getTime() &lt; start + delay);
+   }
+
+
+   $scope.sleep(1000);
+
+   $scope.callbackURL = $scope.urlParam(&quot;ippInteractionUri&quot;);
+      //To ensure that $resource maintains port no.
+      if($scope.callbackURL){
+      var newTemp = $scope.callbackURL.replace(/:/g, &quot;&#92;&#92;:&quot;);
+   }
+   $scope.callbackURL = newTemp;
+
+   /*This section of scripts fetches data from IPP and set it to $scope data*/
+   var res2 = $resource($scope.callbackURL+'/inData/Dispute1', {}, {'get': {method:
+   'GET', transformResponse: function(data) {
+      console.debug(&quot;Data is:&quot; + data);
+      var json = x2js.xml_str2json(data );
+      console.debug(&quot;JSON Data is:&quot; + json.Dispute.disputeID);
+      $scope.Dispute.disputeID = json.Dispute.disputeID;
+      $scope.Dispute.description = json.Dispute.description;
+   }, isArray: false}});
+   res2.get(function success(data) {console.debug(&quot;Success&quot;);}, function error() {console.debug(&quot;Failure&quot;);});
+ }</pre>
+<p>Create a folder <tt>misc</tt> in folder <tt>app/lib</tt> of your
+<tt>angular-phone-master</tt> application folder and add your
+<tt>xml2js.js</tt> file there.</p>
+<h2 id="model">Creating the Stardust Model</h2>
+<p>In the Web modeler, we will create a model containing the following:
+<ul>
+   <li>structured data used for input and output</li>
+   <li>a Message Transformation application to provide default data</li>
+   <li>a UI Mashup application to mashup angular UI with Stardust</li>
+   <li>a Manual Task to display the resulting data</li>
+   <li>a process with the according application tasks</li>
+</ul>
+<p>Refer to the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeling Handbook</a> for details on how to create and work
+with these elements.</p>
+<h3 id="structtype">Creating the Structured Data Type</h3>
+<p>Create a structured type with elements <strong>disputeID</strong> and <strong>description</strong>
+as shown in the following screenshot:</p>
+<p class="image"><img src="images/dispute-struct-type.png"
+alt="Structured Type for Dispute"> <br>
+<strong>Figure:</strong> Structured Type for Dispute</p>
+<p>Create a structured data <strong>Dispute</strong> with this structured type.</p>
+<h3 id="mashupappl">Creating the UI Mashup Application</h3>
+<p>Now create the UI Mashup application.</p>
+<p class="image"><img src="images/create-mashup-appl.png"
+alt="Create a UI Mashup Application"> <br>
+<strong>Figure:</strong> Create a UI Mashup Application</p>
+<p>Open the <strong>Parameters</strong> tab in the properties page of the UI Mashup
+application and enter a parameter <strong>Dispute</strong> with <tt>In/Out</tt> direction.
+Choose data type <tt>Structured Data</tt> and select <strong>Dispute</strong>.</p>
+<p class="image"><img src="images/mashup-params.png"
+alt="Add UI Mashup Parameters"> <br>
+<strong>Figure:</strong> Add UI Mashup Parameters</p>
+<p>Now go to the <strong>Configuration</strong> tab and enter
+URL <tt>http://localhost:8000/app/showDispute.html</tt>.</p>
+<p class="image"><img src="images/mashup-ui.png"
+alt="Enter URL"> <br>
+<strong>Figure:</strong> Enter URL</p>
+<h3 id="mta">Creating the Message Transformation</h3>
+<p>Create a Message Transformation Application to add default values to
+the <strong>Dispute</strong> data.</p>
+<p class="image"><img src="images/create-mta-appl.png"
+alt="Create a Message Transformation Application"> <br>
+<strong>Figure:</strong> Create a Message Transformation Application</p>
+<p>Open the <strong>Configuration</strong> tab in the property page of the Message Transformation.
+In the <strong>Target Message</strong> section, map default values to the Dispute elements
+as displayed in the following screenshot:</p>
+<p class="image"><img src="images/add-mta-values.png"
+alt="Enter mapping values"> <br>
+<strong>Figure:</strong> Enter mapping values</p>
+<p>Take care to add apostrophes to the values as these represent String values.</p>
+<h3 id="process">Adding the Process</h3>
+<p>Create a process and add the following elements:</p>
+<ol>
+   <li>Add a Start event</li>
+   <li>Drag and drop the Message Transformation application to the diagram canvas.
+   A Script task implementing the Message Transformation application is created accordingly.</li>
+   <li>Drag and drop the UI Mashup application to the diagram canvas.
+   A User task implementing the UI Mashup application is created accordingly.</li>
+   <li>Create a Manual task</li>
+   <li>Connect the Start event and tasks in the created sequence</li>
+   <li>Drag and drop the structured data <strong>Dispute</strong> to the diagram canvas</li>
+   <li>Create an Out-data mapping from the Message Transformation to the data</li>
+   <li>Select the data flow and select the Output Access Point from the Message Transformation.
+   <p class="image"><img src="images/data-flow-mta.png" alt="Output Access Point"></p></li>
+   <li>Create an In/Out-data mapping from the UI Mashup Application to the data</li>
+   <li>Select the data flow and select parameter <strong>Dispute</strong> as
+   Input as well as Output Access Point.
+   <p class="image"><img src="images/data-flow-mashup.png" alt="Input and Output Access Points"></p></li>
+   <li>Create an Out-data mapping from <strong>Dispute</strong> data to the manual task</li>
+</ol>
+<p>The process should now look similar to the one
+displayed in the following screenshot:</p>
+<p class="image"><img src="images/mashup-process.png"
+alt="Completed Process"> <br>
+<strong>Figure:</strong> Completed Process</p>
+<p>Save and deploy the model.</p>
+<h2 id="run">Running the Example</h2>
+<p>Now we will start both Web servers and check whether the Stardust
+UI Mashup application is able to mashup both UIs and read and write back
+data.</p>
+<h3 id="nodejs">Starting the Angular Application Server</h3>
+<p>Open the <tt>node.js</tt> command prompt, e.g. via the Start menu entry.
+Go to the directory where you have un-zipped the angular-phonecat application.
+Run <tt>node scripts/web-server.js</tt>.</p>
+<p class="image"><img src="images/run-nodejs.png"
+alt="Run script"> <br>
+<strong>Figure:</strong> Run script</p>
+<p>You can check if is running by accessing
+<a href="http://localhost:8000/app/showDispute.html">http://localhost:8000/app/showDispute.html</a>.
+The page should look similar to the following:</p>
+<p class="image"><img src="images/angular-dispute.png"
+alt="Angular UI Test"> <br>
+<strong>Figure:</strong> Angular UI Test</p>
+<h3 id="go">Starting the Stardust Process</h3>
+<p>Switch to the Workflow Execution perspective and start the process.</p>
+<p class="image"><img src="images/start-process.png"
+alt="Start the process"> <br>
+<strong>Figure:</strong> Start the process</p>
+<p>The mashed up Angular UI is displayed with the default values given by the
+Message Transformation application in the Stardust data, fetched
+over the Stardust RESTFUL service. Change a value and click the
+<strong>Save and Submit</strong> button.</p>
+<p class="image"><img src="images/edit-data.png"
+alt="Edit the data"> <br>
+<strong>Figure:</strong> Edit the data</p>
+<p>The Stardust RESTFUL service writes the data back to
+the Stardust data element. The activity completes and the
+manual task is opening displaying the edited data.</p>
+<p class="image"><img src="images/edited-result.png"
+alt="Manual Task displaying the edited data"> <br>
+<strong>Figure:</strong> Manual Task displaying the edited data</p>
+<p>Now we successfully read and wrote data from Angular based UI from and to Stardust!</p>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeFooter();
+-->
+</script>
+</body>
+</html>

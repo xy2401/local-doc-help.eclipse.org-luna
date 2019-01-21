@@ -1,0 +1,109 @@
+<!DOCtype html PUBLIC "-//W3C//DTD html 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css"
+>
+<title>Deploy on JBoss Application Server with Oracle Database</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("How to use the EJB3 Entity Data Type",
+		"","entity-data.html",
+      "../../handbooks.htm","Developer Handbooks",
+      "../howto.html","How To");
+ -->
+</script>
+<h1>Deploy on JBoss Application Server with Oracle Database</h1>
+<p>This chapter gives a step by step description on how to deploy a model
+manually on a JBoss application server with an Oracle database server.</p>
+
+<h2>How to Deploy a Model Manually on JBoss Application Server with Oracle
+Database Server</h2>
+<ol>
+   <li>Start the Oracle database and create a new user.</li>
+   <li>Create a Java Project and import or create a model and the
+   associated source files. For example, create a Java project called <tt>DelegateUserTest</tt>
+   and import the <tt>ACMEWorkflowModel</tt> as described in the <a
+      href="../../../tutorial/support-case/tut-main-2.htm"
+   >Getting Started</a> chapter of the <a
+      href="../../../tutorial/support-case/support-case-preface.htm"
+   >Support Case Example</a> tutorial.</li>
+   <li>Right-click your Java project and select <strong>Properties</strong>.</li>
+   <li>Click the <strong>BPM Support</strong> entry and enable the <strong>Enable
+   BPM Support</strong> option.</li>
+   <li>Click <strong>OK</strong>.</li>
+   <li>Create a <tt>work</tt> folder with the two sub-folders <tt>lib</tt>
+   and <tt>etc</tt>. Copy the <tt>ojdbc6.jar</tt>
+   under <tt>lib</tt>. Copy your <tt>carnot.properties</tt> file under <tt>etc</tt> and
+   modify it according to the settings of the local environment. Change license
+   file path, log directory path, audit trail type (Oracle), audit
+   trail driver class ( <tt>oracle.jdbc.driver.OracleDriver</tt> (<tt>oracle.jdbc.OracleDriver</tt>
+   in case of using an Oracle version 11g)), audit trail URL ( e.g.: <tt>jdbc:oracle:thin:@localhost:1521:xe</tt>
+   ), audit trail username and password ( created in step 1 ).</li>
+   <li>Run <tt>sysconsole createschema</tt>. Please refer to the chapter <a
+      href="../../operation/commandline/ag-commandline-2.htm"
+   >The Sysconsole Command</a> for information on the sysconsole command.</li>
+   <li>Now deploy your model:
+   <ul>
+      <li>In the Outline view right-click your model.</li>
+      <li>Select <strong>Deploy Model</strong>.</li>
+      <li>The <strong>Deploy Model</strong> dialog opens.</li>
+      <li>Click <strong>OK</strong>.
+      <li>The message <tt>Model
+      was deployed</tt> should appear. Please refer to the section <a
+         href="../../modelling/models/model-import.html#deploy"
+      >Deploying Stardust Models</a> of the <a
+         href="../../modelling/models/model-import.html"
+      >Importing and Exporting Models</a> chapter for detailed
+      information on how to deploy a process model.</li>
+   </ul>
+   </li>
+   <li class="ipp">Download the preconfigured deployment configuration <tt>ipp-archetype-jb62-eap-ipp-ear</tt>
+   to prepare the EAR deployment for JBoss EAP 6.2. For details refer to section <a
+      href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html#templates"
+   > Downloading Maven Archetype Templates</a> of chapter <a
+      href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html"
+   > Creating a Runtime Environment with Apache Maven</a>.</li>
+   <li>Extract the <tt>carnot.ear</tt> file. For details on how to receive a <tt>carnot.ear</tt> file,
+   refer to chapter <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html">
+   Creating a Stardust Runtime Environment with Apache Maven</a> in the 
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">Installation Guide</a>.</li>
+   <li>Extract the <tt><nobr>ipp-portal.war</nobr></tt> file.</li>
+   <li>Add <tt>ojdbc6.jar</tt> to <tt>ipp-portal/WEB-INF/lib</tt>.</li>
+   <li>Add <tt>carnot.properties</tt> under <tt>ipp-portal/WEB-INF/classes</tt>.
+   </li>
+   <li>Now repack <tt><nobr>ipp-portal.war</nobr></tt>.</li>
+   <li>See the following file as a sample <tt>carnot.properties</tt> file for the
+   Stardust Portal: <a href="carnot-example.properties" target="_blank">
+   carnot-example.properties</a>.</li>
+   <li>Edit it according to the local environment.</li>
+   <li>Add <tt>carnot.properties</tt> for engine under <tt><nobr>carnot-engine/</nobr></tt>
+   and repack <tt><nobr>carnot-engine.jar</nobr></tt>. <br>
+   See the following file as a sample <tt>carnot.properties</tt> file for the
+   engine: <a href="carnot-engine.properties" target="_blank">carnot-engine.properties</a>.
+   Edit it according to the local environment.</li>
+   <li>If there are custom applications to be included, add <tt>&lt;custom_application&gt;.jar</tt>
+   to <tt>carnot/</tt> and modify <tt>carnot/META-INF/application.xml</tt> to
+   include this jar.</li>
+   <li>Pack the <tt>carnot.ear</tt> again and copy it to the 
+   <tt>&lt;JBoss_Installation_Directory&gt;/server/default/deploy</tt>.</li>
+   <li>Follow the deployment tutorial for JBoss 
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/jboss.html">
+   JBoss</a> in the 
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+   Deployment Guide</a> and start the server.</li>
+</ol>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

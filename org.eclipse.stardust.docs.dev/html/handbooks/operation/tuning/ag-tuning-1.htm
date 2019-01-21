@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Tuning Tasks</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Securing the Stardust Engine",
+	"../commandline/ag-command-preface.htm","../ag-appendix-security-1.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide");
+ -->
+</script>
+<h1>Tuning</h1>
+<h2>Tuning Tasks</h2>
+<p>The Stardust Process Engine is designed to satisfy highest
+performance and concurrency requirements.</p>
+<p>Most of the operations performed with Stardust Process Engine
+do not have a significant impact on the performance and the concurrent
+throughput of the software systems embedding the Stardust Process
+Engine. However, some operations can be expensive in terms of execution
+time or concurrent access, e.g. extensive use of data values in worklist
+queries may have visible impact on the query execution time. For those
+operations Stardust provides powerful tuning facilities as described in
+this chapter.</p>
+<h3>Contents</h3>
+<p></p>
+<ul>
+   <li><a href="ag-tuning-2.htm">Tuning for Concurrency</a></li>
+   <li><a href="ag-tuning-3.htm">Tuning for Performance via Data
+   Clusters</a></li>
+   <li><a href="ag-tuning-fetch.html">Improving Performance via Eager Link Fetching</a></li>
+   <li><a href="tuning-memory-cache.html">Retrieving Entities from In-Memory Cache</a></li>
+   <li><a href="tuning-jcr-depl.html">Optimizing the Performance of secure JCR Deployments</a></li>
+   <li><a href="tuning-jdbc-timeout.html">Avoiding Query Timeouts in internal JDBC Queries</a></li>
+   <li><a href="tuning-transient-proc.html">Tuning for low Latency and high Throughput</a></li>
+   <li><a href="ag-tuning-portal.html">Stardust Portal Performance Tuning</a></li>
+   <li><a href="ag-tuning-4.htm">Database Access Tuning</a></li>
+   <li><a href="tuning-performance.html">Performance Considerations</a></li>
+   <li><a href="ag-tuning-msg-beans.html">Message Driven Bean Tweaking</a></li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: hDvZDaVYgq57mVuMEbPLH4qLbrE=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: vTyN/QknkDxIk8cTYbdR8DTXEaU=
+
+Name: html/editor/xsleditor_validation.html
+SHA1-Digest: yNFotgVQT7uNm09ulfrloUdnsIA=
+
+Name: html/images/launching/launchShortct.png
+SHA1-Digest: WaRLWiZuIyk1iBl4i7Jc5gh0t1Y=
+
+Name: html/preferences/xpathexport.html
+SHA1-Digest: iShH+w7h40tI7H4aHJcB6zk0NUI=
+
+Name: html/preferences/validation.html
+SHA1-Digest: rHUdXh2d/YV4r6dJ2+uoDeQAbEY=
+
+Name: html/images/general/xinclude.png
+SHA1-Digest: 5RT37E92ewRFkEpH6wQ+vknJfTE=
+
+Name: html/images/preferences/projectLevelValidation.png
+SHA1-Digest: 4YJx3+e1Y2kCEmLbVHq6cWldOfk=
+
+Name: html/editor/xsleditor_debugging.html
+SHA1-Digest: vXHMlnc/vE6FvrA7TwrGW2l1yIk=
+
+Name: html/images/preferences/xm_template_xslnewfile.png
+SHA1-Digest: Eof0EM3Xf0WORafZZgP3uGrDo3k=
+
+Name: html/editor/xsleditor_contentassist_include.html
+SHA1-Digest: 8H4284nLlsg9xNjk6lAL9StCVrc=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.xsl.doc/pom.xml
+SHA1-Digest: JPs81SvYFppJIbDld5JUOY/8TPc=
+
+Name: html/concepts/concepts.html
+SHA1-Digest: l5+94JB8YeGoVmz2REcW+/dpyHI=
+
+Name: html/launching/launching.html
+SHA1-Digest: jtpmbNxIQ8uu05FMsIeRpI6aqYo=
+
+Name: build.xml
+SHA1-Digest: GjL10b4PP0t5wafdnqbVtnAwDz8=
+
+Name: html/index.xml
+SHA1-Digest: 6UoPsViWmf+Ej/VpEQk6y/r2pfw=
+
+Name: html/editor/xsleditor.html
+SHA1-Digest: Stg9J6Jq5AtSV9fCM+qkNFQyxck=
+
+Name: html/samples/samples.html
+SHA1-Digest: Rvy7XzAkgNSWKzrVshe7SgHy8tQ=
+
+Name: html/editor/xsleditor_contentassist_exclude.html
+SHA1-Digest: fxGDkwT/jTWJ9rXcFbO5AqEE49k=
+
+Name: html/general/general.html
+SHA1-Digest: VteDnsbDjvbrMZ6q0xO58nsnAF8=
+
+Name: html/images/preferences/xsl_InstalledProcessors.png
+SHA1-Digest: o7ZtEcoZpUFIQz3mC0OQfZRUZGo=
+
+Name: html/editor/xsleditor_templates.html
+SHA1-Digest: lJ4NC6i85v3bzpGiqzRGixWDue0=
+
+Name: html/editor/xsleditor_markers.html
+SHA1-Digest: dJ6ZjFuJavn+PxiRAUK2Rh1YvUg=
+
+Name: html/reference/subtopic.html
+SHA1-Digest: u7l/M0qJN3ltUNKBTOkGZxuBYTc=
+
+Name: html/preferences/xpathtemplates.html
+SHA1-Digest: TDbs76JF33J003ra3bIdCmloaso=
+
+Name: html/legal.html
+SHA1-Digest: 2/bUiMztmjO9kcZtKrtmPCSxQxg=
+
+Name: html/editor/xsleditor_contentassist_calltemplate.html
+SHA1-Digest: TBVtzOmD5oo55xu9ruTM4QKF3kE=
+
+Name: html/reference/maintopic.html
+SHA1-Digest: mXRLu1y2KD5+QJvWnnmDucT0w2c=
+
+Name: html/introduction/gettingstarted.html
+SHA1-Digest: L2RdMjr4t6EG23wussz5CwwikqQ=
+
+Name: html/index.html
+SHA1-Digest: BSVUMIxwZSNnVHrj/OcNbL6F1ho=
+
+Name: html/editor/xsleditor_contentassist_selecttest.html
+SHA1-Digest: UsVcnh/4y5FpzKd9vlKc65rDZ64=
+
+Name: html/images/launching/resultView.png
+SHA1-Digest: GuS08U5QE1IDf2rbh0RrhDa3bfw=
+
+Name: html/editor/xsleditor_contentassist_modeassist.html
+SHA1-Digest: Co3LKTPBahhz63VRvZ8lJ41XTfE=
+
+Name: html/images/launching/XSLOutputTab.png
+SHA1-Digest: wlDOS8wWNT8vKW7l1l0wOqf0RGQ=
+
+Name: html/preferences/xpathimport.html
+SHA1-Digest: tTYFkfsqzCkGcRLkSHFPvXaIUpU=
+
+Name: html/preferences/xslpreferences.html
+SHA1-Digest: Hz9mSsvGXqezm1XXJFjP9WEEt7c=
+
+Name: html/reference/subtopic2.html
+SHA1-Digest: pGuV9cxGaE4IXAZ7g3XHxNgHZrA=
+
+Name: html/images/launching/XSLRunDebugConfigurations.png
+SHA1-Digest: PE3aGx/eb4CrovTUDUiUWzjFD0E=
+
+Name: html/images/editor/namedTemplate.png
+SHA1-Digest: 1vAfLcOBABskOIPNgGtFKoUIj5k=
+
+Name: html/preferences/xslprocessors.html
+SHA1-Digest: 07ArpmSlJ15kifcLBdR4XpX8ECw=
+
+Name: html/images/editor/calltemplate.png
+SHA1-Digest: NsNjqfeDAUv5kIivQwhTxozoA3s=
+
+Name: html/images/launching/nodesetVariable.png
+SHA1-Digest: 6UzqrLIWV/dYvXz4lb7vLnx2bzw=
+
+Name: html/images/preferences/xslSyntaxColoring.png
+SHA1-Digest: P4s+RjhJs6fYJc7N8p2UBd5XJXU=
+
+Name: html/images/launching/XSLDebugging.png
+SHA1-Digest: eSBHx/SMO2iZKJE9BXcWsCRfnqw=
+
+Name: html/images/editor/syntaxColoring.png
+SHA1-Digest: kog2NB3hPrTJ42SLho2YQyrp9VM=
+
+Name: html/images/preferences/xslpreferences.png
+SHA1-Digest: jHj0tGSbZwGIhWrvSCoYGqNx4vk=
+
+Name: plugin.properties
+SHA1-Digest: /O8PicmLCGpy3DDptQLi+S+Y4ro=
+
+Name: html/preferences/xsloutputproperties.html
+SHA1-Digest: xq33madykwu7ne9LJRoqzKgGCVk=
+
+Name: html/launching/debugging.html
+SHA1-Digest: 16eTWAYkkHzUQW08MI4wq7YaWlY=
+
+Name: html/about.html
+SHA1-Digest: vsDMGxduEfcqXhvu4f+BExVwcco=
+
+Name: html/images/editor/override1.png
+SHA1-Digest: 3RI2O3dLPX7iAtm4r/vgAcMi4wg=
+
+Name: html/images/editor/override2.png
+SHA1-Digest: t/NqWiBjcyTG8KFwv1xOZNgROFQ=
+
+Name: html/launching/debugging_variablesview.html
+SHA1-Digest: QS/HWEWYILvl3q9Wx4Aa60q1akw=
+
+Name: html/editor/xsleditor_contentassist.html
+SHA1-Digest: CapPv4DeZCG3hrjAWZHg1pT0dHM=
+
+Name: html/launching/debuglaunching.html
+SHA1-Digest: b2CkJ7b5+MXIGEo2Z+hWkgSof2g=
+
+Name: html/launching/debugging_common.html
+SHA1-Digest: MHu3JrJaYbya3UVRkaGvX2GSKRE=
+
+Name: html/editor/xsleditor_coloring.html
+SHA1-Digest: 0UEdIrz4jxVmhGjeTGv4AAC2VMo=
+
+Name: plugin.xml
+SHA1-Digest: UKglO2GXCWeb7Th+wtoPu5G+dvs=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.xsl.doc/pom.properties
+SHA1-Digest: QCbKdAGfsNjLD91UhBojXA+bf54=
+
+Name: html/images/preferences/XPathTemplates.png
+SHA1-Digest: +SiZmgQpC/lRAYoTSofL+/05FXc=
+
+Name: html/editor/xsleditor_contentassist_namedtemplate.html
+SHA1-Digest: DFFUU7E22tusJ1QQnjT4jB/A/Uw=
+
+Name: html/book.css
+SHA1-Digest: Zeta1UhCg1pGtsrrySMoP/O0Tqo=
+
+Name: html/launching/debugging_processors.html
+SHA1-Digest: WEZCV5VyMXujCin0bEDKQIwZsfQ=
+
+Name: html/images/editor/modeAssistance.png
+SHA1-Digest: FhfoddfB6Guz+f0wIG1pespcKDg=
+
+Name: html/images/preferences/xsl_outputproperties.png
+SHA1-Digest: R+JEO1LqeOIwl8a7XYa7PYmdP/o=
+
+Name: html/images/editor/templatesView.png
+SHA1-Digest: O9+GQlmuSTo5kgj4DUKcmt2eXao=
+
+Name: about.html
+SHA1-Digest: uiJRfz9x0SZWELI8a5uHYToQRw4=
+
+Name: html/images/editor/hrefAssistance.png
+SHA1-Digest: UkUHnljLQ2eTMaH2j4tVv+sijaw=
+
+Name: toc.xml
+SHA1-Digest: 89wZfSP375tzk55NlOQwgOc3nqk=
+
+Name: html/concepts/resources.html
+SHA1-Digest: TJ2DMrTGgp+/EyOhs2DPnUONVBA=
+
+Name: html/images/editor/ExcludeContentAssist1.png
+SHA1-Digest: RFxn23fChYlWu1zamYxMQ+r3Gu4=
+
+Name: html/images/editor/ExcludeContentAssist2.png
+SHA1-Digest: /ZEbl+hHB/fIr7+EfmurolpB1xM=
+
+Name: pom.xml
+SHA1-Digest: bNnNKLxJbQDHXTK4upOFdUOiLP4=
+
+Name: html/images/editor/xslproposals.png
+SHA1-Digest: kcmIRY1KXSi1BqBNZXe+ti5aSdk=
+
+Name: html/images/launching/XSLProcessorTab.png
+SHA1-Digest: /jCrN9RN3B4c3rahHTOy33JGSkw=
+
+Name: html/preferences/syntaxColoring.html
+SHA1-Digest: I/V1Grc7in/Vx4AVXb3DHrAOiWM=
+
+Name: html/images/preferences/xslfeatures.png
+SHA1-Digest: qj3ix41D7MVThrohicASa1xqIKE=
+

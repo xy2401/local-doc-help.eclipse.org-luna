@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Workflow Processing to Abort and Join Processes</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Workflow Processing for Cases",
+	        "pg-workflow-switch.htm","pg-embed-cases.html",
+	        "../../../handbooks.htm","Developer Handbook",
+	        "../../pg-preface.htm","Programming Guide",
+	        "../pg-embedded-preface.htm","Embedded Usage","wf-preface.html","Processing Workflow");
+ -->
+</script>
+<h1>Workflow Processing to Abort and Join Processes</h1>
+<p>
+To abort the process instance and join the data into specified target process instance, use <strong>joinProcessInstance</strong>
+ method of the WorkflowService.</p>
+ 
+ <pre>
+  /**
+    * Aborts the specified process instance and joins the data into the specified target process instance.
+    * Existing data values of the target process instance are not overwritten. Process attachments are merged.
+    *
+    * @param processInstanceOid The oid of the process instance which should be aborted and joined into the target process instance.
+    * @param targetProcessInstanceOid The oid of the process instance that should be the target of the join.
+    * @param comment Allows specifying a comment.
+    * @return The target process instance.
+    */
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.abortProcessInstances,
+         scope=ExecutionPermission.Scope.processDefinition,
+         defer=true)
+   public ProcessInstance joinProcessInstance(long processInstanceOid,
+         long targetProcessInstanceOid, String comment);
+ 
+ </pre>
+<p>The required permission to execute this method is <strong>joinProcessInstance</strong>.</p>	
+
+<p>Note that when using the API to abort and join a process, you may get <tt>ConcurrencyException</tt>. 
+In that case, wait for sometime and retry the API call.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

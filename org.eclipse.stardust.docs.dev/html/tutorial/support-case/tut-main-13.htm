@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Executing Workflow</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Creating Correspondence",
+		"tut-main-12.htm","tut-correspondence.html",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1> Executing Workflow</h1>
+
+<p>No workflow execution is possible without a properly configured audit
+trail database and a deployed model. Also, the users have to be defined
+and assigned to the roles we defined in the model before we can start
+our support case management process.</p>
+
+<h2 id="manageUsers">Managing Users</h2>
+
+<p>Users must be created in the Administration Perspective. They are
+not part of the model.</p>
+
+<p>
+We are going to create individual users and assign them to the created
+roles. While roles and organizations belong to the modeling
+environment, users belong to the runtime environment and are created,
+modified and assigned to their respective roles in Stardust 
+Administration Perspective.</p>
+
+<p>
+To create a user in this tutorial, you must first log on to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>.</p>
+
+<p>The start URL for the Support-Case Stardust Portal is:</p>
+<pre>http://hostname:port/Support-Case</pre>
+<p>and will lead you to the <strong>Stardust Portal</strong> login
+screen, whereby</p>
+
+<ul>
+  <li><tt><i>hostname</i></tt> is the
+name of the host running your application server (in this case <tt>localhost</tt>)
+and</li>
+
+  <li><tt><i>port</i> </tt>is the HTTP
+port of your application server (in this case <tt>8080</tt>)</li>
+
+  <li>Support-Case is the name of the Stardust Eclipse project in
+this tutorial. This name is case sensitive and must match the Eclipse
+project name exactly.</li>
+</ul>
+
+<p>So if the Tomcat settings are configured just as they were
+shown earlier in this tutorial, the browser URL to enter is <a href="http://localhost:8080/Support-Case">http://localhost:8080/Support-Case</a>.</p>
+
+<p> Log on with the default administrator's user ID and password:
+  <strong>motu/motu</strong> (master of the
+universe). You can use Shift-F8 to rapid type these credentials:</p>
+
+<p class="image"><img src="images/tut-main-login-pp.png" alt="Login Screen">
+<br><strong>Figure:</strong> Login Screen</p>
+<p>In the upper left corner of the portal, select <strong>Administration</strong>
+to switch to the <strong>Administration</strong> perspective.</p>
+<p class="image"><img src="images/user-management.png" alt=""><br>
+<strong>Figure:</strong> Switching to the Administration View</p>
+<p>In the Administration perspective <strong>Administrative Views</strong>
+section, choose <strong>Participant Management</strong>
+to open the <strong>Participant Management</strong> view.</p>
+<p class="image">
+<img src="images/tut-main-open-usermgnt.png" alt="">
+<br><strong>Figure:</strong> Open the Participant Management View</p>
+<p>Click the <strong>Create User</strong> button to create
+a new user. Please refer to chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+Creating and Editing User Accounts</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation for detailed information on creating users.</p>
+<p class="image">
+<img src="images/tut-main-create-user.png" alt="">
+<br><strong>Figure:</strong> Click Create User icon</p>
+<p>In the appearing dialog fill in the details about the new user:</p>
+<p class="image"><img src="images/create-user-details.png" alt="Create user details"><br>
+&nbsp;</p>
+<ol>
+  <li>Set the <strong>ID</strong>, <strong>Name</strong>
+and <strong>Password</strong> for the new user. We created
+a user called <strong>Beep Florek</strong>.</li>
+<li>Drag and drop the Beep Florek username to the role <strong>Callcenter Agent</strong>.
+<p class="image"><img src="images/drag-drop-participant.png" alt="Assign User"></p>
+For detailed information on assigning participants, refer to chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+Creating and Editing User Accounts</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation.</li>
+</ol>
+<p>Now add another user in the same way and assign it to role 
+<strong>Engineer</strong>. Both users should be displayed in the Participant
+tree.</p>
+<p class="image"><img src="images/tut-drag-drop-result.png" alt="Assign User"><br>
+<strong>Figure:</strong> Users displayed in the Participant Tree.</p>
+<p><strong><span class="tip">! </span>Tip:</strong> &nbsp;When the ACME organization was diagramed
+earlier, the Callcenter Agent and Engineer roles were shown to <strong>Work For </strong>ACME
+Headquarters. Stardust uses that relationship to
+define&nbsp;delegation rules among participants (supervisors and
+subordinates). For worklist visibility no explicit assignment to ACME Headquarters is needed 
+in the case of Beep Florek (or the other engineer user.) 
+ </p>
+<p>Logout off the Stardust Portal.</p>
+
+<h2 id="processing"> Processing a Worklist</h2>
+<p>
+ACME can now execute their support case management process. We will log
+in the Portal this time as <strong>Beep Florek</strong>,
+and
+perform the activity <strong>Enter Data</strong>.</p>
+<ul>
+    <li>Enter the ID and password of the newly created<strong> Beep
+    Florek</strong> and confirm with <strong>Login</strong>.</li>
+</ul>
+<p class="image"><img src="images/tut-main-login-user-pp.png" alt="">
+<br><strong>Figure:</strong> Logging on as another user</p>
+
+<h3 id="activityStart">Processing the First Activity</h3>
+<p>
+The logged on user&nbsp;can now perform activities belonging to the
+support
+case management process.</p>
+<ul>
+    <li>He starts the support management process
+    by&nbsp;clicking&nbsp; <strong>Support Case
+    Management</strong> under Startable Processes. This
+    prompt&nbsp;is available because the manual trigger in the process
+    map was made available to the Callcenter Agent role.
+    <p class="image"><img src="images/tut-start-process.png" alt=""></p></li>
+    <li>After the GUI panel assigned to this activity opens in the
+    area to the right, fill in the empty fields with appropriate
+    information.</li>
+    <li>Complete the activity.</li>
+</ul>
+<p class="image"><a href="images/enter-data_orgSize.png" target="_blank">
+<img src="images/enter-data.png" alt=""></a>
+<br><strong>Figure:</strong> Starting a Process (Support Case Management Example)</p>
+<p>Note that you can adjust the number of columns to display multiple
+cardinality data structures in the auto-generated manual activity panel. The 
+default value is <tt>3</tt>. Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/portal-config.html">
+Configuring Portal Settings</a> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> guide for details.</p>
+<p>The first activity of the process has been performed.&nbsp;</p>
+<h3 id="analyzeActivity">Performing the Activity Analyze To Solve</h3>
+<p>The next activity
+in the series,<strong> Analyze To Solve</strong> has been
+assigned to a different performer. A work item for this activity will
+be placed in the worklist of the user assigned to the role <strong>Engineer</strong>.
+For the next activity the user assigned to the role <strong>Engineer</strong>
+has to log in to the Stardust Portal.</p>
+<p>In contrast to a user performing an initial process activity,
+a user performing the second
+or later activity does not click the start process prompt. He just
+picks up a work
+item visible in his worklist by&nbsp;clicking on the work item
+symbol. Notice, there are no startable processes for the
+Engineer in ACME model, because the manual trigger was only assigned to
+the Callcenter role, not Engineer. Of course, other process
+definitions (in addition to Support Case Management) could be added in
+the future and those could be defined with manual triggers&nbsp;for
+the Engineer.</p>
+<ol>
+    <li>Click on the item for role <strong>Engineer</strong> in the
+    <strong>My Assignments</strong> section.
+    <p class="image"><img src="images/tut-click-engineer-item.png" alt=""></p></li>
+    <li>The worklist of pending items appears. The only available activity for
+    the Engineer is <strong>Analyze To Solve</strong>.</li>
+    <li>Click on the activity name.
+    <p class="image"><a href="images/tut-main-37_orgSize.png" target="_blank">
+    <img src="images/tut-main-37.png" alt=""></a></p></li>
+    <li>The work appears with the data from the previous activity in
+    view. The Output Data Mappings in the process definition added
+    two new output items for this activity. Remember the <strong>State</strong>
+    variable controls the flow of the process.
+    <p class="image"><img src="images/tut-state-c.png" alt=""></p></li>
+    <li>Depending on the state we enter, the workflow continues as follows:
+    <ul>
+        <li><tt>C</tt>: sends the item to the <strong>Deliver Patch</strong>
+        user activity (CLOSED path). In this case we like to notify
+        the customer by creating appropriate correspondence. Refer to the following
+        chapter <a href="tut-correspondence.html">Creating Correspondence</a> for details
+        on the required steps.</li>
+        <li><tt>R</tt>: sends the item to the application activity 
+        <strong>Notify Customer</strong> (REJECTED path), which prints a 
+        notification on your console.
+        <p class="image"><img src="images/tut-reject-notification.png" alt=""></p></li>
+        <li><tt>O</tt>: means that the state is still open and repeats the activity
+        <strong>Analyze To Solve</strong>.</li>
+    </ul>
+</ol>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

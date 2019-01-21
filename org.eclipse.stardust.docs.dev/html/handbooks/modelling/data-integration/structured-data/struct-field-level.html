@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Structured Data Annotation Properties</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("XPDL Representation of Structured Data",
+    	"struct-type-portal.html","struct-type-xpdl.html",
+		"../../../handbooks.htm","Developer Handbooks",
+		"../../mg-preface.htm","The Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../struct-data-preface.html","Structured Data Types");
+ -->
+</script>
+<body>
+<h1>Structured Data Annotation Properties</h1>
+<p>At the bottom of the Composite property page, a table tree view is available to
+modify predefined annotations for all elements of the type.</p>
+<ul>
+    <li><a href="#storage">Storage</a></li>
+    <li><a href="#uiprops">Defining Field Level Presentation for Structured Data</a></li>
+</ul>
+
+<h2 id="storage">Storage</h2>
+<p>In the <strong>Storage</strong> section, you can set and change the type how
+the data is stored.</p>
+<p>Optionally set the values for <strong>Indexing</strong>
+and <strong>Persistence</strong> in the <strong>Property</strong> column.
+By default all data fields in the structure are persisted and indexed.
+</p>
+<p><strong>Indexing</strong>: choose between <tt>Indexed</tt> and <tt>Not Indexed</tt>.</p>
+<p class="image"><img src="images/struct-data-indexing.png" alt="Indexing Property"></p>
+<p>A field being indexed results in the creation of a corresponding row for the
+field's value in the table <tt>STRUCTURED_DATA_VALUE</tt> in the audit trail database.
+By setting some fields to <tt>Not Indexed</tt> the
+size of the table can be kept effectively smaller. Thus, to keep the table size small, only fields
+that are the basis for descriptors or are
+candidates for <tt>DataFilters</tt> in queries should be indexed.</p>
+
+<p><strong>Persistence</strong>: choose between <tt>Persistent</tt> and <tt>Transient</tt>.
+</p>
+<p class="image"><img src="images/struct-data-persistence.png" alt="Persistence Property"></p>
+<p>Please note that setting <strong>Persistence</strong> to <tt>Transient</tt> overrules the 
+<strong>Indexing</strong> setting. A field that is transient is never indexed and never saved.
+It allows your 
+structured data to conform to existing XSDs while optimizing the footprint of the
+structure in the audit trail database.</p>
+ <p>To delete values set for <strong>Indexing</strong> or <strong>Persistence</strong>,
+right-click on the field and select <strong>Delete</strong>, as shown in the 
+following screenshot:</p>
+<p class="image"><img src="images/struct-data-pers-delete.png" 
+alt="Delete"><br>
+<strong>Figure:</strong> Clearing a Value.</p>
+<h3>Edit in Structure</h3>
+<p>To add an additional column <strong>Indexing</strong> in
+the structured table with indexing information to
+the attributes pane, enable the checkbox in the 
+<strong>Edit in Structure</strong> column
+as shown in the following screenshot:</p>
+<p class="image"><img src="images/edit-in-structure.png" 
+alt="Edit in Structure"><br>
+<strong>Figure:</strong> Enable Indexing for Edit in Structure.</p>
+<p>The additional column vanishes as soon as the checkbox is disabled
+or a field is selected which does not have the property set.</p>
+<p>To add an additional column <strong>Persistence</strong> in
+the structured table with persistence information to
+the attributes pane, enable the checkbox in the 
+<strong>Edit in Structure</strong> column
+as shown in the following screenshot:</p>
+<p class="image"><img src="images/edit-in-structure-2.png" 
+alt="Edit in Structure"><br>
+<strong>Figure:</strong> Enable Persistence for Edit in Structure.</p>
+<p>The additional column vanishes as soon as the checkbox is disabled
+or a field is selected which does not have the property set.</p>
+<h3>Change all</h3>
+<p>In case <strong>Change all</strong> is selected, changing one entry for
+<strong>Persistence</strong> or <strong>Indexing</strong>
+either in the <strong>Value</strong> column or in the according structured
+table columns, will change the value for all fields.</p>
+<p class="image"><img src="images/change-all.png" 
+alt="Change All"><br>
+<strong>Figure:</strong> Enable Change all to reflect value on all entries.</p>
+
+<h2 id="uiprops">Defining Field Level Presentation for Structured Data</h2>
+<p>You can define certain properties to control each field of structured data. These properties
+influence how the field is displayed or used in the Stardust Portal.
+<p>For details on structured data fields represented in the Portal, refer to section  
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-interactive.html#prop">
+Manual Activity Panel for Structured Data with Field Level Properties</a> of chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-interactive.html">
+Working with interactive Activity Panels</a> in the  
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Portal</a> documentation.</p>
+<p class="image"><img src="images/properties-struct-type.png" 
+alt="Structured Data - Field Level Properties"><br>
+<strong>Figure:</strong> Structured Data - Field Level Properties</p>
+<p>You can define the following field level properties for a structured data:</p>
+<table>
+	<tr>
+		<th>Property</th>
+		<th>Value</th>
+	</tr>
+	<tr>
+		<td>Show Structure Description</td>
+		<td>Yes / No</td>
+	</tr>
+	<tr>
+		<td>Read Only</td>
+		<td>Yes / No</td>
+	</tr>
+	<tr>
+		<td>Mandatory</td>
+		<td>Yes / No</td>
+	</tr>
+    <tr>
+        <td>Label</td>
+        <td>any string as label</td>
+    </tr>
+    <tr>
+        <td>Label Key</td>
+        <td>any string used as key for the label in the properties bundle</td>
+    </tr>
+	<tr>
+		<td>CSS Style</td>
+		<td>CSS style with value (&lt;css style&gt;:&lt;value&gt;)</td>
+	</tr>
+	<tr>
+		<td>CSS Style Class</td>
+		<td>the class name from the stylesheet file</td>
+	</tr>
+	<tr>
+		<td>Prefix I18N Key</td>
+		<td>any string used as key for the prefix in the properties bundle</td>
+	</tr>
+	<tr>
+		<td>Prefix</td>
+		<td>any string as prefix</td>
+	</tr>
+	<tr>
+		<td>Suffix I18N Key</td>
+		<td>any string used as key for the suffix in the properties bundle</td>
+	</tr>
+	<tr>
+		<td>Suffix</td>
+		<td>any string as suffix</td>
+	</tr>
+	<tr>
+		<td>String Input Type</td>
+		<td>Text Input or Text Area</td>
+	</tr>
+	<tr>
+		<td>Rows</td>
+		<td>number of rows to be displayed in the Stardust Portal</td>
+	</tr>
+	<tr>
+		<td>Columns</td>
+		<td>number of columns to be displayed in the Stardust Portal</td>
+	</tr>
+	<tr>
+		<td>Boolean Readonly Input Type</td>
+		<td>Checkbox or Text Output</td>
+	</tr>
+</table>
+<p>Refer to the following sections for details on these properties:</p>
+<ul>
+    <li><a href="#descript">Show Structure Description</a></li>
+    <li><a href="#readonly">Read Only</a></li>
+    <li><a href="#mand">Mandatory</a></li>
+    <li><a href="#label">Label</a></li>
+    <li><a href="#labelkey">Label Key</a></li>
+    <li><a href="#css">CSS Style</a></li>
+    <li><a href="#cssclass">CSS Style Class</a></li>
+    <li><a href="#prefsuff">Prefix and Suffix</a></li>
+    <li><a href="#prefsuffi18n">Prefix and Suffix I18N Keys</a></li>
+    <li><a href="#stringin">String Input Type</a></li>
+    <li><a href="#rows">Rows</a></li>
+    <li><a href="#columns">Columns</a></li>
+    <li><a href="#boolean">Boolean Readonly Input Type</a></li>
+</ul>
+<h3 id="descript">Show Structure Description</h3>
+<p>This property determines, if the description of the structured data should be displayed or not.</p>  
+<h3 id="readonly">Read Only</h3>  
+<p>If you select <tt>Yes</tt> for this property, the field becomes read-only.
+In case an In-Out data mapping is provided for this field,
+ it gets overridden and the field remains read-only.</p>
+<h3 id="mand">Mandatory</h3>
+<p>If you set this property to <tt>Yes</tt>, the activity cannot be completed until
+ you specify a value for that field.</p> 
+ 
+<h3 id="label">Label</h3>
+<p>The specified text entered as String is displayed as label in the Stardust Portal. 
+Note that if property <strong>Label Key</strong> is provided, <strong>Label</strong> is overridden.</p>
+<h4>Example</h4>
+<p>For example, enter <tt>Customername</tt> as value for the <strong>Label</strong>
+property for a structured type entry <strong>name</strong>, as shown below:</p>
+<p class="image"><img src="images/field-label-example.png" 
+alt="Label Property"><br>
+<strong>Figure:</strong> Setting a Label property</p>
+<p>In the Portal UI, the label for the <strong>name</strong> property of this
+structured type is displayed as <tt>Customername</tt> in a manual activity
+having this structured data type as input data mapping:</p>
+<p class="image"><img src="images/field-label-result.png" 
+alt="Example Label"><br>
+<strong>Figure:</strong> The customized label is displayed in the Portal</p>
+<h3 id="labelkey">Label Key</h3>
+<p>This property specifies a key, which is set in the according language bundle properties file. 
+The format is <tt>&lt;key string&gt; = &lt;specify value&gt;</tt>, e.g. 
+<tt>&lt;structured type&gt;.&lt;field&gt;.&lt;label&gt;.&lt;key&gt;</tt>.
+The value for the key will be read from the properties file and displayed in the 
+Stardust Portal in the specified language as label for the structured data field.</p>
+<h4>Example</h4>
+<p>For example, if you add <tt>Person.name.label.key</tt> as string for the <strong>Label Key</strong> as 
+shown in the following screenshot:</p>
+<p class="image"><img src="images/field-i18n-label-example.png" 
+alt="Label Key"><br>
+<strong>Figure:</strong> Setting a Label Key property</p>
+<p>Enter the following in the modeler language bundle properties file,
+in this example the German bundle, and save it:</p>
+<pre>Person.name.label.key=Kundenname</pre>
+<p>In the Portal UI, the label for the <strong>name</strong> property of this
+structured type is displayed as <tt>Kundenname</tt> in a manual activity
+having this structured data type as in/out data mapping, in case the Browser 
+language is set to <tt>German</tt>.</p>
+<p class="image"><img src="images/field-i18n-label-result.png" 
+alt="Internationalized Label"><br>
+<strong>Figure:</strong> Internationalized Label</p>
+<h3 id="css">CSS Style</h3>
+<p>This property specifies a specific style for the field. Enter the style and a value
+in the following format: <tt>&lt;css style&gt;:&lt;value&gt;</tt>.
+For example, if you specify 
+<tt>Color:Red</tt> for a field, the value for this field is taken in red color.</p>
+<p class="image"><img src="images/field-css-result.png"
+alt="Entry field with red color"><br>
+<strong>Figure:</strong> Entry field with red color</p>
+<h3 id="cssclass">CSS Style Class</h3>
+<p>If you have a stylesheet file you use in the Portal, you can
+reference a specific class in this stylesheet that you like to use in your entry field.
+The stylesheet file must be included in the skin selected for the Portal in the
+<strong>Configuration Panel</strong> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>.
+For details on how to create and use custom skins refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/portal-skins.html">
+Creating and Using Custom Skins</a> in the  
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Portal</a> documentation.</p>
+<p>For example if your stylesheet contains the following class:</p>
+<pre>
+.democlass {
+    font-family:    Geneva, Arial, Helvetica, sans-serif;
+    font-size:      13px;
+    color:          blue0;
+    font-style: normal;
+    line-height: 18px;
+    font-weight: normal;
+}</pre>
+<p>you can enter the value <tt>democlass</tt> for the property <strong>CSS Style Class</strong>
+to be used as reference. Then you can use a value from this class, e.g.
+<tt>fornt-weight</tt> and set it in <a href="#css">CSS Style</a>.
+In the following example, we like to have a bold font-weight in the
+entry field:</p>
+<p class="image"><img src="images/field-css-class-prop.png"
+alt="Style and Style Class"><br>
+<strong>Figure:</strong> Setting style and style class</p>
+<p>In the Portal, entered text in this entry field is displayed in bold now:</p>
+<p class="image"><img src="images/field-css-class-result.png"
+alt="Style Class Example"><br>
+<strong>Figure:</strong> Entry field text displayed in bold</p>
+<h3 id="prefsuff">Prefix and Suffix</h3>
+<h4>Prefix</h4>
+<p>The specified text entered as String for property <strong>Prefix</strong> is displayed as prefix in the Stardust Portal. 
+Note that if property <strong>Prefix I18N Key</strong> is provided, <strong>Prefix</strong> is overridden.</p>
+<h4>Suffix</h4>
+<p>The specified text entered as String for property <strong>Suffix</strong> is displayed as suffix in the Stardust Portal. 
+Note that if property <strong>Suffix I18N Key</strong> is provided, <strong>Suffix</strong> is overridden.</p>
+<h4>Example</h4>
+<p>For example, enter <tt>Department A</tt> as value for the <strong>Prefix</strong>
+property and <tt>Section 1</tt> as value for the <strong>Suffix</strong> property for a structured type 
+entry <strong>name</strong>, as shown below:</p>
+<p class="image"><img src="images/field-sufpre-example.png" 
+alt="Prefix and Suffix"><br>
+<strong>Figure:</strong> Enter a string for Prefix and Suffix</p>
+<p>In the Portal UI, a manual activity, having a data as in/output of the according structured data type,
+the <strong>name</strong> field is displayed with prefix <tt>Department A</tt> and 
+suffix <tt>Section 1</tt>:</p>
+<p class="image"><img src="images/field-sufpre-result.png" 
+alt="Prefix and Suffix Example"><br>
+<strong>Figure:</strong> Prefix and Suffix displayed in the Portal</p>
+<h3 id="prefsuffi18n">Prefix and Suffix I18N Keys</h3>
+<h4>Prefix I18N Key</h4>
+<p>This property specifies a key, which is set in the according language bundle properties file.
+The format is <tt>&lt;key string&gt; = &lt;specify value&gt;</tt>, e.g. <tt>&lt;structured type&gt;.&lt;field&gt;.&lt;prefix&gt;</tt>.
+The value for the key will be read from the properties file and displayed in the 
+Stardust Portal in the specified language as prefix for the structured data field.</p>
+<h4>Suffix I18N Key</h4>
+<p>This property specifies a key, which is set in the according language bundle properties file 
+The format is <tt>&lt;key string&gt; = &lt;specify value&gt;</tt>, e.g. <tt>&lt;structured type&gt;.&lt;field&gt;.&lt;suffix&gt;</tt>.
+The value for the key will be read from the properties file and displayed in the 
+Stardust Portal in the specified language as suffix for the structured data field.</p>
+<h4>Example</h4>
+<p>For example, add <tt>Person.name.prefix</tt> as string for the <strong>Prefix I18N Key</strong>
+and <tt>Person.name.suffix</tt> as string for the <strong>Suffix I18N Key</strong> as 
+shown in the following screenshot:</p>
+<p class="image"><img src="images/field-i18n-sufpre-example.png" 
+alt="Setting i18n prefix and suffix keys"><br>
+<strong>Figure:</strong> Setting I18N prefix and suffix keys</p>
+<p>Add the following keys to the modeler language bundle properties file,
+in this example the German bundle, and save it:</p>
+<pre>Person.name.prefix = Abteilung A
+Person.name.suffix = Sektion 1</pre>
+<p>In the Portal UI, the prefix for the <strong>name</strong> property of this
+structured type is displayed as <tt>Abteilung A</tt>, the suffix as
+<tt>Sektion 1</tt> in a manual activity
+having this structured data type as input data mapping, in case the Browser 
+language is set to <tt>German</tt>.</p>
+<p class="image"><img src="images/field-i18n-sufpre-result.png" 
+alt="I18n Prefix and Suffix Example"><br>
+<strong>Figure:</strong> Internationalized prefix and suffix displayed in the Portal</p>
+<h3 id="stringin">String Input Type</h3>
+<p>If <tt>Text Input</tt> is selected for the <strong>String Input Type</strong> property,
+the following fields <strong>Rows</strong> and 
+<strong>Columns</strong> become invalid. If <tt>Text Area</tt> is selected, you can specify 
+more characters. For example, you can specify the complete address of home and office.</p>
+<p class="image"><img src="images/field-area-result.png" 
+alt="Text Area"><br>
+<strong>Figure:</strong> Text Area as input field</p>
+<h3 id="rows">Rows</h3>
+<p>The <strong>Rows</strong> property specifies the number of rows to be displayed. 
+If property <strong>String Input Type</strong> is set to <tt>Text Area</tt>, only the 
+specified number of rows are displayed.</p> 
+<h3 id="columns">Columns</h3>
+<p>The <strong>Columns</strong> property specifies the number of columns to be displayed. 
+If property <strong>String Input Type</strong> is set to <tt>Text Area</tt>, only the 
+specified number of columns are displayed.</p> 
+<h3 id="boolean">Boolean Readonly Input Type</h3>
+<p>The type of the field should be <tt>xsd:boolean</tt>. If <tt>Checkbox</tt> is selected, 
+a checkbox appears next the field.</p> 
+<p class="image"><img src="images/field-boolean-result.png" 
+alt="Boolean"><br>
+<strong>Figure:</strong> Boolean field</p>
+<p>If <tt>Text Output</tt> is selected, the values <tt>True</tt> or <tt>False</tt> are displayed. 
+For <tt>Text Output</tt>, you need to provide an
+Out-data mapping for the first activity and an In-data mapping should be provided to the following activity.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

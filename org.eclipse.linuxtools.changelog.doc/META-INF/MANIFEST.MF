@@ -1,0 +1,118 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.changelog.doc;singleton:=t
+ rue
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 2.7.1.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/ChangeLog-Preferences.h
+ tml
+SHA1-Digest: JPAonqk/XFr7coGEEM129KuY9ho=
+
+Name: META-INF/maven/org.eclipse.linuxtools.changelog/org.eclipse.linu
+ xtools.changelog.doc/pom.properties
+SHA1-Digest: ePn3nggzhY++t/Ru1YzzUn8q8/0=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/LinuxtoolsChange
+ LogEditor.png
+SHA1-Digest: zNcwAWIo1oFcwBrm55ibWYqrnMM=
+
+Name: META-INF/maven/org.eclipse.linuxtools.changelog/org.eclipse.linu
+ xtools.changelog.doc/pom.xml
+SHA1-Digest: pDozzF1CB2Uf3rDXjqZqKGM4OYc=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/ChangeLog-Plug-in-Funct
+ ions.html
+SHA1-Digest: WuCFSPFsb1mMBbsjQdKjBFiLlB0=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Screenshot-Folde
+ rSelection_changelogplugin.png
+SHA1-Digest: YtEX81JKegwd8oFSbCfEGTr1SdQ=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Linuxtools-Chang
+ eLogPrefs.png
+SHA1-Digest: X/ODeD/1OFmNBV1vSHAXNHtosYk=
+
+Name: plugin.properties
+SHA1-Digest: atjyIWFJc8xRqvYhvjCX17RjgXM=
+
+Name: doc/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Linuxtools-Chang
+ eLogPreferences.png
+SHA1-Digest: VCjoV3dGk+P1oGqlywVGbhctJ+0=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Linuxtools-Chang
+ eLog-editor.png
+SHA1-Digest: S1ICf8GvdeERI9r0VsrydEwJWd8=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/User-Guide.html
+SHA1-Digest: V7Jc0sdENL98OM4Tl3QABgob9i4=
+
+Name: plugin.xml
+SHA1-Digest: g2h6WJ2RXxIpMPSUiiojPKdIHzg=
+
+Name: toc-doc.xml
+SHA1-Digest: IV5ieQY3Ko5ag9FXZOUwZUBKqEk=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/LinuxToolsChange
+ LogFolderSectionDialog.png
+SHA1-Digest: qeJ+pnd9D4NQjPCfnjAuVBNALwU=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/LinuxToolsInsert
+ ChangeLogMenu.png
+SHA1-Digest: hNg3GJS2jr6novtgjXBekGS0/3g=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/FormatChangeLog2
+ .png
+SHA1-Digest: Md7Yaz2ZnLoPWWAGyn6uKiO2szE=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Linuxtools-Chang
+ eLog-prepare-changelog-result.png
+SHA1-Digest: pNLf5ZU4gcOudp94kCoq6zS56uE=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/FormatChangeLog.
+ png
+SHA1-Digest: 3P58+NELeZNMAGZzjUtggAl7HT0=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/Linuxtools-Chang
+ eLog-insert-changelog.png
+SHA1-Digest: 575ZJWEJe26VZ/gkRGZQS55tQts=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/ChangeLog-Editor.html
+SHA1-Digest: LO+pipJAo4yepAFL7jQIemt9aGQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/Updating-This-Document.
+ html
+SHA1-Digest: v0Ax5YkU3Sgjshj9z2yeVH/JcYo=
+
+Name: toc.xml
+SHA1-Digest: 6B+P14kSP7+b3MmO40q+oAgfJ2M=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/ChangeLog/User_Guide/images/LinuxtoolsPrepar
+ eChangeLog.png
+SHA1-Digest: KU5kKQvc/oRULT5RMla4ZJeXew8=
+

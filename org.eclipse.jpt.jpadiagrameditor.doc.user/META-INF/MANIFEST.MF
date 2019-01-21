@@ -1,0 +1,106 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.jpt.jpadiagrameditor.doc.user; single
+ ton:=true
+Require-Bundle: org.eclipse.help;bundle-version="[3.3.100,4.0.0)"
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 1.2.101.v201501141513
+Bundle-ManifestVersion: 2
+
+Name: META-INF/maven/org.eclipse.webtools.dali/org.eclipse.jpt.jpadiag
+ rameditor.doc.user/pom.properties
+SHA1-Digest: 4w86/yxH7S9X/dlZVCrD5UEMBKk=
+
+Name: img/jpa_diagram_entity_operations.gif
+SHA1-Digest: irdbr1KsS5ozxnoCzDhzcmEgFs4=
+
+Name: html/task_manage_types.html
+SHA1-Digest: hzea3AeG67EGtvN1sRJczVSLjz8=
+
+Name: html/entity_inheritance.html
+SHA1-Digest: DXHtyBHDpjOxveSrzT0UYMPAxlo=
+
+Name: plugin.properties
+SHA1-Digest: eOmCSocmV12aJDmYf/ol/hjqVSg=
+
+Name: html/task_refactor_entities.html
+SHA1-Digest: 08dNZXMInVxF02GpU/tQNw9EsTI=
+
+Name: html/task_remove_entities.html
+SHA1-Digest: DBjURrCcxMWFgS5Zo2+gzyeaEaA=
+
+Name: html/element_collection.html
+SHA1-Digest: 30/RCIZzcBkyRS6gJVii7jI58PM=
+
+Name: html/task_open_miniature_view.html
+SHA1-Digest: 8gfBd20a/07tex75oLXmW5DKCSE=
+
+Name: html/embeddable_relationships.html
+SHA1-Digest: 1RwFyvkpuY6vYyxUn5OuKWumNK8=
+
+Name: html/task_configuring_editor.html
+SHA1-Digest: ibGAUk1mvvwPfDESndkANpGbMx4=
+
+Name: plugin.xml
+SHA1-Digest: 1/xk2mo67pIme6fjv42evu6tN7g=
+
+Name: img/jpaeditor_entity.gif
+SHA1-Digest: hgmx371FiAPhkQB/dweRwEYgRaM=
+
+Name: img/jpa_diagram_editor.gif
+SHA1-Digest: dypQSnroHLxaZBYtADnTflj6eqM=
+
+Name: html/task_open_diagram.html
+SHA1-Digest: uPQQb1Nm+rc1EjSyrtj7r7Peb6o=
+
+Name: META-INF/maven/org.eclipse.webtools.dali/org.eclipse.jpt.jpadiag
+ rameditor.doc.user/pom.xml
+SHA1-Digest: /1eX1LeEg0eHov5dzNXIhklcO8g=
+
+Name: img/jpa_miniature_view.gif
+SHA1-Digest: GtEWzVOjoJChbnkGt5ChB44FIao=
+
+Name: html/xml_entities.html
+SHA1-Digest: G0pt/w0XnulJum0cJ5qajBaQw8A=
+
+Name: html/reference_project_page.html
+SHA1-Digest: TQu9KB2tesZKlwSMnPuEAwNUBcU=
+
+Name: about.html
+SHA1-Digest: yPMWXoCNEPH9K5K27X5DcrMcS/E=
+
+Name: html/embeddables.html
+SHA1-Digest: gQZ5Drzrd2OoR2ZQMhrY/w9RHpI=
+
+Name: toc.xml
+SHA1-Digest: 4HS3CG98f5TKFdf5jhv8Y3YQiLo=
+
+Name: html/toc.html
+SHA1-Digest: qcj8kfoNPMxrhIajs/VTB7fn7eM=
+
+Name: html/task_20_support.html
+SHA1-Digest: tSDibLrivi2sb3FQfZ3LC6G9Kpw=
+
+Name: html/derived_identifiers.html
+SHA1-Digest: gs8m2/gDk+nrgGG1h1LmEPE62N0=
+
+Name: html/getting_started.html
+SHA1-Digest: XOyh7KxaKP5HhsMedJrSaq7AhTA=
+
+Name: pom.xml
+SHA1-Digest: /1eX1LeEg0eHov5dzNXIhklcO8g=
+
+Name: img/jpa_diagram_delete_attribute.gif
+SHA1-Digest: TSkEczlu+rcF2whAzKQbx854EjY=
+
+Name: img/jpaeditor_mapped_superclass.gif
+SHA1-Digest: C1baBV/x9xmyV/d2EJkKhOiVWRI=
+
+Name: img/jpaeditor_embeddable.gif
+SHA1-Digest: p0djMBppctANcRixuqnLxS2v9co=
+

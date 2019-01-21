@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Deploying a Workflow Model</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Executing Workflow",
+		"tut-main-10.htm","tut-main-13.htm",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1> Deploying a Workflow Model</h1>
+<p>To become productive a model must be deployed to the Stardust 
+runtime environment.
+Having finished your work creating the model you can deploy
+your model in the <strong>Stardust Process Workbench - Developer Edition</strong> Eclipse
+environment. For the purposes of this tutorial, the Stardust runtime
+environment will be limited to the Eclipse environment which
+includes a database for process audit trail. The audit trail contains
+all state changes relating to any workflow instance with a time stamp
+and a link to the resource that initiated the state change. So it
+stores for instance the information who executed which activity and
+when.</p>
+<p><strong><span class="tip">! </span>Tip:</strong> If you are deploying to a production environment outside
+of  Eclipse, use the console command <tt>deploy</tt> as described in
+chapter <a href="../../handbooks/operation/commandline/ag-commandline-3.htm">Using the Console Command</a> of the 
+Stardust <a href="../../handbooks/operation/commandline/ag-command-preface.htm">Command Line Tools</a>.</p>
+<h2 id="auditTrail"> Audit Trail Configuration</h2>
+<p>Before you configure the audit trail make sure that you set up the Apache Tomcat
+server as described 
+in the section <a href="tut-main-2.htm#setUpTomcat">Setting up Embedded Tomcat in Eclipse</a>
+of the <a href="tut-main-2.htm">Getting Started</a> chapter.</p>
+
+<p>To configure the audit trail:</p>
+<ul>
+  <li>Double-click <strong>Tomcat v x.x</strong> in the Servers View to open the configuration dialog for Tomcat.</li>
+</ul>
+<p><strong><span class="tip">! </span>Tip:</strong> If the HTTP port 8080 is already used on your computer you can change the value of HTTP in the Ports section to a new  port value.</p>
+<p class="image"><img alt="Tomcat params" src="images/tut-main-server-overview.png"></p>
+<ul>
+  <li>Select <strong>new AuditTrail database</strong></li>
+  <li>Enter the database name<strong>
+support-case</strong> (this name will be different for each process model).</li>
+	<li>Select <strong>OK</strong>.
+
+<p class="image"><img alt="Audit Trail Database Name" src="images/tut-audittrail-name.png"></li>
+
+  <li><strong>There will be a pause as Stardust creates the database!</strong></li>
+</ul>
+
+<p><strong><span class="tip">! </span>Tip:</strong> The <strong>Database to be used</strong> drop-down
+  box is used to select the audit trail matching the active
+  project. The <strong>Manage existing</strong> Audit trail databases link
+  allows you to add or delete databases as needed. If you do
+  not keep the Audit Trail database synchronized to the project you are
+  deploying, Stardust will warn you of inconsistencies later in
+deployment.</p>
+<h2 id="setTomcatProj"> Set the Current Tomcat project</h2>
+
+<p>
+To deploy a model proceed as follows:</p>
+<ul>
+  <li>Right-click <strong>Tomcat x.x</strong> in the Servers View</li>
+  <li><strong>Add and Remove Projects...</strong>
+
+<p class="image"><img alt="Add Project" src="images/tut-add-proj-server-1.png"></li>
+
+  <li>Select the <strong>Support-Case</strong> Project.
+
+<p class="image"><img alt="Add Project" src="images/add-project.png"></li>
+
+  <li>Click <strong>Add</strong> to move it to Configured Projects (this only needs to be done once
+	whenever the active project changes).
+
+<p class="image"><img alt="Add project to Tomcat" src="images/project-added.png"></li>
+
+  <li>Select <strong>Finish</strong>.</li>
+</ul>
+<h2 id="launchSetting">Setting the Server Launch Configuration</h2>
+<p>To avoid running out of PermGenSpace, we will increase the size of the permanent generation 
+memory by setting the <tt>-XX:MaxPermSize</tt> argument in the run configuration for the 
+server.</p>
+<p>To set the server configuration:</p>
+<ol>
+	<li>In the server view right-click your server and choose <strong>Open</strong>.</li>
+	<li>Select <strong>Open launch configuration</strong>.</li>
+</ol>
+<p class="image"><img src="images/open-server-launch.png"
+    alt="Server Launch" /> <br></p>
+<ol start="3">
+	<li>In the <strong>Edit launch configuration properties</strong> dialog
+	    switch to the <strong>Arguments</strong> tab.</li>
+	<li>In the <strong>VM arguments</strong> entry field enter
+		the memory arguments for your server.<br>For example for a Tomcat
+		server set: <tt>-Xms128m -Xmx1024m -XX:MaxPermSize=256m</tt></li>
+</ol>
+<p class="image"><img src="images/server-arguments.png"
+    alt="Server Arguments" /> <br>
+<strong>Figure:</strong> Setting Server Arguments for Tomcat</p>
+<p>Please note that you might increase the maximum perm size according to your requirements.</p>
+<h2 id="startTomcat">Starting the Tomcat Server</h2>
+<p>Note that the usage of Stardust Portal via the internal Web browser is currently not supported.
+Set the browser to be used to your default Web browser:</p>
+<ol>
+    <li>Select <strong>Window &gt; Preferences</strong> in the main menu</li>
+    <li>Select <strong>General &gt; Web Browser</strong></li>
+    <li>Enable <strong>Use external Web browser</strong></li>
+    <li>Click <strong>Apply</strong></li>
+</ol>
+<p class="image"><img src="images/ext-webbrowser.png" alt="Browser">
+<br><strong>Figure:</strong> Set to external Web Browser.</p>
+<p>To start the Tomcat server:</p>
+<ul>
+    <li>Right-click <strong>Tomcat x.x</strong> in the Servers View.</li>
+    <li>Click <strong>Start</strong>.
+    <p class="image"><img alt="Start Tomcat" src="images/tut-main-30f.png"></li>
+    <li>If you get a message asking you to save changes to your
+<strong>ACMEWorkflowModel.xpdl</strong> model, confirm (accept)&nbsp;those changes</li>
+  <li>The Tomcat <strong>Status</strong>
+should now be <strong>Started</strong>.</li>
+</ul>
+<div class="ipp">
+<h3 id="nolicense">Starting the Server without valid License</h3>
+<p>In case you have not set the license for Stardust as described in section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm#license">
+Setting the Stardust License</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm">
+Post-Installation Tasks</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+Installation Guide</a>, an according warning dialog opens.</p>
+<p class="image"><img src="images/server-no-license-warning.png"
+alt="No License Warning"><br>
+<strong>Figure:</strong> No License Warning Dialog</p>
+<p>To add a valid license in the preferences dialog, click <strong>Yes</strong>.
+The Process Manager preferences dialog opens, where you can browse to
+your valid license file.</p>
+<p class="image"><img src="images/server-set-license.png"
+alt="Browse to your valid License File"><br>
+<strong>Figure:</strong> Browse to your valid License File</p>
+<p>In case you choose <strong>No</strong>, the server starts without
+valid license. Note that no model deployment is possible in that case.</p>
+</div>
+
+<h2 id="deployProcess"> Deploying the Process Model</h2>
+
+<p>With Tomcat now running, the <strong>ACMEWorkflowModel</strong> process model can be
+deployed. Most of the time, you will leave Tomcat
+running as you develop and deploy process models. If Tomcat
+stops (this is expected after some operations), simply start Tomcat
+again as described in the previous section.</p>
+<ul>
+    <li>Right-click the model to be deployed in the <strong>Outline View</strong>.</li>
+    <li>Select <strong>Deploy</strong>.
+    <p class="image"><img src="images/tut-deploy.png" alt="Deploy"></p></li>
+    <li>The <strong>Deploy Model</strong> dialog opens. Select <strong>Deploy
+    Version</strong> and click <strong>OK</strong>.
+    <p class="image"><img src="images/tut-deploy-version.png" alt="Deploy"></p></li>
+</ul>
+<p>The Stardust Process engine
+prompts&nbsp;when a model is introduced or updated. In this initial
+deployment of the model only the first version is presented.
+On later deployments, you would have a choice to introduce a
+new version of the model or overwrite the older version. In
+most production situations, the update, (not the overwrite) is the
+appropriate choice.</p>
+<p>Note that you see an additional model called 
+<strong>Predefined Model</strong> in case you deploy more versions of the model.
+This technical model gets deployed automatically at the time of the first 
+deployment of any workflow model.
+For details on this model, refer to section
+<a href="../../concepts/executing-workflow/case-concept.html#tech">Predefined Model</a>
+of the 
+<a href="../../concepts/executing-workflow/case-concept.html">Case - Grouping Processes</a>
+chapter of the 
+<a href="../../concepts/key-concepts.html">Concepts</a> section.</p>
+<p>In case the deployment is successful, a notification dialog opens to confirm
+that the model was deployed.</p>
+<p>The <strong>ACMEWorkflowModel</strong> Process Model is now
+deployed and ready for use.</p>
+<p><strong><span class="tip">! </span>Tip:</strong> Stardust will test for
+model consistency when deployment occurs. You may get
+messages warning of model inconsistencies or mismatches to the current
+audit trail. In these cases, recheck your process model for
+any problems in the Problems View. Also, check the current
+audit Trail database to ensure it matches the XPDL process model you are deploying. </p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

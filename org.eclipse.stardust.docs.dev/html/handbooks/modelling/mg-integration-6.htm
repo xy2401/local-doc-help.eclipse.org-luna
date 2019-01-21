@@ -1,0 +1,540 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Integrating JMS</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using Mail Applications","mg-integration-5.htm",
+	"integration/mail-application-type.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating JMS</h1>
+<p>Messaging is a commonly used mechanism to communicate with
+various systems in an enterprise, e.g.:</p>
+<ul>
+	<li>Host systems,</li>
+	<li>Enterprise Application (EAI) systems like TIBCO, SeeBeyond and
+	WebMethods</li>
+	<li>Enterprise Resource Planning (ERP) Systems like SAP, Siebel
+	and PeopleSoft</li>
+</ul>
+<p>With its JMS application facility, the Stardust Process Engine
+provides a means to integrate with any kind of message-oriented system.</p>
+<p>For the remainder of this section, it is assumed that you are
+familiar with the JMS 1.1 specification.</p>
+<p>The following sections describe JMS applications and their usage:</p>
+<ul>
+	<li><a href="#sending">Sending and Receiving JMS Messages</a></li>
+	<li><a href="#applications">JMS Applications</a></li>
+	<li><a href="#receiver">Creating a Message Receiver</a></li>
+	<li><a href="#sender">Writing a JMS Sender</a></li>
+	<li><a href="#triggers">Starting Processes using JMS Triggers</a></li>
+</ul>
+<h2 id="sending">Sending and Receiving JMS Messages</h2>
+<p>Applications in process models are synchronous , procedural and
+- if possible - transactional operations. If a non-interactive
+application (e.g. a Session Bean method) is invoked, the workflow
+thread, in which the application is performed, is blocked until the
+application has been executed completely. Return values are retrieved
+from this application then.</p>
+<p>Sending a message via JMS is an asynchronous operation. An
+execution thread sending a JMS message is only blocked until the
+messaging system confirms the reception of the message. It is the
+responsibility of the messaging system to deliver the message to the
+addresses processing the message.</p>
+<p>Receiving a message via JMS requires the receiver to listen to
+a particular message queue.</p>
+<h3>Transactional Behavior</h3>
+<p>Sending a request message for a JMS application is controlled
+by the same transaction mechanisms as spawning a workflow thread for
+concurrent process topologies (see section <a
+	href="../../concepts/workflow-basics/mg-basics-1.htm#execution">Executing Process Instances</a> in
+chapter <a href="../../concepts/workflow-basics/mg-basics-1.htm">Modeling Basics</a>). The message is
+sent when the JTA transaction demarcated for the workflow thread is
+committed.</p>
+<p>If the JMS application specifies a response message, the JTA
+transaction (Java Transaction API) is committed immediately when the
+request message has been sent. If no response message has been
+specified, the workflow thread continues to execute and the JTA
+transaction is committed if the thread terminates or is asynchronously
+forked (see <a href="../../concepts/workflow-basics/mg-basics-1.htm#execution">Executing Process
+Instances</a> in chapter <a href="../../concepts/workflow-basics/mg-basics-1.htm">Modeling Basics</a>). If
+you intend to send the request message of a JMS application without a
+response message to be sent immediately, you need to set the <strong>Fork
+On Traversal</strong> flag for all outgoing transitions of the corresponding
+activity. Please refer to the section 
+ <a href="mg-defdesk-5.htm#conditions">Setting Transition Conditions</a>
+of the chapter
+ <a href="mg-defdesk-5.htm">Working with Transitions</a> for detailed information
+ on this flag.</p>
+<p>Receiving the response message and reactivating the workflow
+thread of the corresponding activity is executed in a JTA transaction
+context by the Stardust Process Engine. The transactional behavior of
+this workflow thread is the same as for any workflow thread started with
+the <tt>startProcess()</tt> or <tt>complete()</tt> methods of the
+Stardust Workflow Session.</p>
+
+<h2 id="applications">JMS Applications</h2>
+<p>Stardust allows you to specify JMS
+applications as a sequence of sending a request message and receiving a
+response message. Input parameters may be passed to the request message;
+output parameters are retrieved from the response message.</p>
+<p>A workflow thread executing a JMS application will send the
+request message and then immediately return to the control flow of the
+calling workflow thread. This thread will be suspended until the
+response message is received. Starting the application indicates the
+&quot;expectation&quot; to receive a response message in a similar way
+as the activation of an interactive activity indicates the expectation
+of a subsequent completion or abortion by a user:</p>
+<p class="image"><img src="images/mg-integration-9.jpg" alt=""></p>
+<p>You may either omit sending the request message or receive the
+response message.</p>
+<p>In the first case, the application will only send the request
+message and than immediately continue to execute the calling workflow
+thread:</p>
+<p class="image"><img src="images/mg-integration-10.jpg" alt=""></p>
+<p>In the latter case, the workflow thread executing the
+application will be immediately suspended until the response message is
+received:</p>
+<p class="image"><img src="images/mg-integration-11.jpg" alt="">
+
+</p>
+<ul>
+	<li><a href="#modeling">Modeling JMS Applications</a></li>
+	<li><a href="#request">Adding a JMS Request</a></li>
+	<li><a href="#response">Adding a JMS Response</a></li>
+	<li><a href="#queues">Queues and Queue Connection Factories</a></li>
+	<li><a href="#mProvider">Message Provider and Message Acceptor Classes</a></li>
+	<li><a href="#types">Messages Types and Parameters</a></li>
+	<li><a href="#headers">Message Headers</a></li>
+	<li><a href="#timeout">Time-out Scenario for Response Messages</a></li>
+</ul>
+<h3 id="modeling">Modeling JMS Applications</h3>
+<p>To define a JMS application in the Stardust modeler:</p>
+<ol>
+	<li>In the diagram toolbar palette click <strong>Applications</strong>
+	and select <strong>JMS Application</strong>.
+	<p class="image"><img src="images/create-jms-appl.png" alt=""></li>
+	<li>Open the property page of the newly created application.</li>
+	<li>Select <strong>Request</strong> or <strong>Response</strong>
+	as type.
+	<p class="image"><img src="images/jms-appl-props.png" alt=""></li>
+</ol>
+<p>Please refer to the section <a href="#request">Adding a JMS Request</a> and
+the section <a href="#response">Adding a JMS Response</a> respectively for 
+detailed information on the according properties.</p>
+
+<h3 id="request">Adding a JMS Request</h3>
+<p>To add a JMS request, select the <strong>Request</strong>
+ entry below the <strong>JMS Application</strong>
+entry on the left side of the property page. The request specific property entries
+are displayed in the right pane.</p>
+<p class="image"><img src="images/mg-integration-jms.png"
+	alt="JMS Application Properties"> <br>
+<strong>Figure:</strong> JMS Application Request Properties</p>
+<ul>
+	<li><strong>Connection Factory JNDI</strong> 
+	- JMS Queue Connection Factory. Please refer to the section 
+	<a href="#queues">Queues and Queue Connection Factories</a>
+	for detailed information.</li>
+	<li><strong>Queue JNDI</strong>
+	- corresponding JMS Queue. Please refer to the section 
+	<a href="#queues">Queues and Queue Connection Factories</a>
+	for detailed information.</li>
+	<li><strong>Message Provider</strong> 
+	- see <a href="#mProvider">Message Provider and Message Acceptor Classes</a></li>
+	<li><strong>Message Type</strong> -
+	see <a href="#types">Messages Types and Parameters</a>.</li>
+	<li><strong>Include OID header fields</strong>
+	- determines if OID header fields should be included. Pleaser refer
+	to section <a href="#headers">Message Headers</a> for detailed information
+	on message headers.</li>
+</ul>
+<p>Click the <strong>Add</strong> button to add an in access point for the JMS request.</p>
+<p class="image"><img src="images/jms-request-access.png"
+	alt="JMS Application Properties"> <br>
+<strong>Figure:</strong> Request In Access Point</p>
+<p>In the In Access Point section:</p>
+<ol>
+	<li>Choose between <tt>Body</tt>
+	or <tt>Header</tt> as location.</li>
+	<li>Add a name and id.</li>
+	<li>Browse to a class defining the type.</li>
+	<li>Optionally enter a default value.</li>
+</ol>
+<p>Click <strong>Add</strong> to create further in access points for 
+the request.</p>
+<h3 id="response">Adding a JMS Response</h3>
+<p>To add a JMS response, select the <strong>Response</strong> entry below the 
+<strong>JMS Application</strong>
+entry on the left side of the property page. The response specific property entries
+are displayed in the right pane.</p>
+<p class="image"><img src="images/jms-response.png"
+	alt="JMS Application Properties"> <br>
+<strong>Figure:</strong> JMS Application Response Properties</p>
+<ul>
+	<li><strong>Message Acceptor</strong> 
+	- see <a href="#mProvider">Message Provider and Message Acceptor Classes</a></li>
+	<li><strong>Message Type</strong> -
+	see <a href="#types">Messages Types and Parameters</a>.</li>
+</ul>
+<p>Click the <strong>Add</strong> button to add an out access point for the JMS response.</p>
+<p class="image"><img src="images/jms-response-access.png"
+	alt="JMS Application Properties"> <br>
+<strong>Figure:</strong> Response Out Access Point</p>
+<p>In the Out Access Point section:</p>
+<ol>
+	<li>Choose between <tt>Body</tt>
+	or <tt>Header</tt> as location.</li>
+	<li>Add a name and id.</li>
+	<li>Browse to a class defining the type.</li>
+</ol>
+<p>Click <strong>Add</strong> to create further out access points for 
+the response.</p>
+<h3 id="queues">Queues and Queue Connection Factories</h3>
+<p>For request messages you may specify any JMS Queue Connection
+Factory and corresponding JMS Queue from the resource environment of the
+<a href="../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">
+WorkflowService</a> performing your workflow model by providing
+their JNDI names in the <strong>JMS Application Properties</strong>
+dialog. The resource environment is specified in the EJB Deployment
+Descriptor of the Stardust Process Engine.</p>
+<h3 id="mProvider">Message Provider and Message Acceptor Classes</h3>
+<p>In some cases, you might desire to perform your own assembling
+and disassembling of message headers. Although Stardust currently only
+provides a default implementation, realizing the described message
+types, in a future release users may implement custom message provider
+and message acceptor classes.</p>
+<p>These classes have to be selected in the combo boxes <strong>Message
+Provider Type Class</strong> and <strong>Message Acceptor Type Class</strong> in
+the <strong>Application Properties</strong> dialog for the JMS
+application.</p>
+
+<h3 id="types">Messages Types and Parameters</h3>
+<p>Stardust supports the following types of
+JMS messages:</p>
+<ul>
+	<li>Map messages</li>
+	<li>Object messages</li>
+	<li>Text messages</li>
+	<li>Stream messages</li>
+</ul>
+<p>Depending on the type of message, different parameter sets can
+be specified for the body of the JMS Application in the Stardust Process
+Workbench:</p>
+<table id='id'>
+	<tr>
+		<th>Message Type</th>
+		<th>Parameter Set</th>
+	</tr>
+	<tr>
+		<td>Map Message</td>
+		<td>an arbitrary list of named Java
+		primitive types</td>
+	</tr>
+	<tr>
+		<td>Object Message</td>
+		<td>a single, unnamed serializable Java
+		object</td>
+	</tr>
+	<tr>
+		<td>Text Message</td>
+		<td>a single, unnamed object of type <code>java.lang.String</code>
+		</td>
+	</tr>
+	<tr>
+		<td>Stream Message</td>
+		<td>multiple, unnamed serializable Java
+		objects, identified by order</td>
+	</tr>
+</table>
+<p>These parameter sets may serve as application 
+<a href="../../concepts/workflow-basics/mg-basics-8.htm#accessPoints">access points</a> to
+define data mappings for corresponding activities.</p>
+
+<h3 id="headers">Message Headers</h3>
+<p>In addition to the data provided with the message body, it is
+possible to provide data as properties in the JMS message header of the
+request and the response message by specifying the Location option in
+the request or response parameters table.</p>
+<p>In addition to header properties specified by the modeler
+Stardust generates a tuple of message header properties for the request
+message and expects the response message to contain a set of specific
+message header properties by default.</p>
+<p>These properties are intended to specify the process context
+(e.g. process instance OID, activity ID) in which a request message is
+sent and a response message is intended to be received. They are not
+intended to be used for passing semantic business data accessed in the
+process invoking the corresponding JMS applications.</p>
+<p>The header of the request message contains the properties:</p>
+<ul>
+	<li><tt>processInstanceOID</tt> - the OID of the process instance
+	on whose behalf the request message has been sent</li>
+	<li><tt>activityInstanceOID</tt> - the OID of the activity
+	instance (implemented as a JMS application) the request message has
+	been sent from</li>
+	<li><tt>carnotPartitionID</tt> - optional, the ID of a partition
+	to be used for the model element ID resolution (if no explicit
+	partition ID is given, the statically default partition).</li>
+</ul>
+<p>The header of the response message is expected to contain the
+following properties:</p>
+<ul>
+	<li><tt>activityInstanceOID</tt> - the OID of the activity
+	instance (whose activity is implemented as a JMS application) the
+	request message has been sent from</li>
+	<li><tt>carnotPartitionID</tt> - optional, the ID of a partition
+	to be used for the model element ID resolution (if no explicit
+	partition ID is given, the statically default partition).</li>
+</ul>
+<p>or</p>
+<ul>
+	<li><tt>processInstanceOID</tt> - the OID of the process instance
+	on whose behalf the request message has been sent and</li>
+	<li><tt>activityID</tt> - the ID of the activity (implemented as a
+	JMS application) the request message has been sent from</li>
+	<li><tt>carnotPartitionID</tt> - optional, the ID of a partition
+	to be used for the model element ID resolution (if no explicit
+	partition ID is given, the statically default partition).</li>
+</ul>
+<p>or</p>
+<ul>
+	<li><tt>processID</tt> - the ID of the process definition
+	containing the activity implemented as a JMS application,</li>
+	<li><tt>activityID</tt> - the ID of the activity targeted by the
+	JMS message making up this response,</li>
+	<li><tt>dataID</tt> - the ID of a workflow data uniquely
+	identifying a process (e.g. an order ID for an order process) and</li>
+	<li><tt>carnotPartitionID</tt> - optional, the ID of a partition
+	to be used for the model element ID resolution (if no explicit
+	partition ID is given, the statically default partition).</li>
+	<li><tt>serializedDataValue</tt> - the serialized value of the
+	workflow data identified by <tt>dataID</tt>.</li>
+</ul>
+<p>In case the response message contains the latter tuple of
+properties, the value has to match exactly the type of the requested
+data. This tuple is intended to be used in scenarios where a JMS
+application only specifies a response message and the process context is
+to be retrieved via business data. An external system might, for
+example, send a response message with the header:</p>
+<ul>
+	<li><tt>processID</tt> = &quot;ORDER_PROCESSING&quot;</li>
+	<li><tt>activityID</tt> = &quot;CONFIRM_ORDER&quot;</li>
+	<li><tt>dataID</tt> = &quot;ORDER_ID&quot;</li>
+	<li><tt>serializedDataValue</tt> = &quot;4711&quot;</li>
+</ul>
+<p>to Stardust . This information is sufficient to identify the
+process instance, in which context the message should be received as
+well as the activity which has to be completed by receiving this
+message.</p>
+<p>This way, external systems can communicate with the Stardust 
+Process Engine without any knowledge about internal identifiers,
+regarding the corresponding business context.</p>
+<h3 id="timeout">Time-out Scenario for Response Messages</h3>
+<p>If a response message is specified for a JMS application and a
+corresponding message is not received after a certain time-out, error
+handling can be implemented with the same time-out mechanism used for
+interactive activities.</p>
+
+<h2 id="receiver">Creating a Message Receiver</h2>
+<p>The following example demonstrates how to write a JMS client to
+receive JMS messages sent from a Stardust Process Engine. A code
+fragment like this might be used to test your JMS application before you
+integrate with the target, non-JMS messaging system.</p>
+<ul>
+	<li><a href="#connectQueue">Connecting To The Message Queue</a></li>
+	<li><a href="#synch">Synchronous Mode</a></li>
+	<li><a href="#asynch">Asynchronous Mode</a></li>
+	<li><a href="#unpack">Unpacking the Message Header</a></li>
+	<li><a href="#unpackData">Unpacking the Message Data</a></li>
+</ul>
+<h3 id="connectQueue">Connecting To The Message Queue</h3>
+<p>To receive messages sent by JMS applications in the Stardust 
+Process Engine you need to connect to the message queues defined for
+these applications, e.g.:</p>
+<pre>...
+Context messaging = new InitialContext();<br>QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) <br>  messaging.lookup(&quot;Name of factory mapped to JNDI used in model&quot;);
+Queue queue = (Queue) messaging.lookup(&quot;Name of queue mapped to JNDI used in model&quot;);<br>QueueConnection queueConnection =    queueConnectionFactory.createQueueConnection();
+queueConnection.start();
+QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);<br>QueueReceiver receiver = queueSession.createReceiver(queue);
+...</pre>
+<h3 id="synch">Synchronous Mode</h3>
+<p>If you want to receive message in synchronous mode, you may
+simply call:</p>
+<pre>Message message = receiver.receive();</pre>
+
+<h3 id="asynch">Asynchronous Mode</h3>
+<p>Alternatively, if you want to receive message in asynchronous
+mode, you can create a message listener class, create an instance of
+this class and register it with the consumer:</p>
+<pre>public class MyListener implements MessageListener<br>{<br>  public void onMessage(Message message) <br>  {<br>  // Unpack and handle the messages received<br>  ....<br>  }<br>}
+
+MyListener myListener = new MyListener();<br>// Receiver is MessageConsumer object created above<br>receiver.setMessageListener(myListener);</pre>
+<p>A Message Driven Bean can be created in similar fashion as the
+listener.</p>
+
+<h3 id="unpack">Unpacking the Message Header</h3>
+<p>Unpacking the message header does not require prior knowledge
+of the message type, you can simply get all parameter names and values
+for the header as below:</p>
+<pre>Enumeration enum = message.getParameterNames();
+while (enum.hasMoreElements())<br>{<br> Object header1 = message.getObjectProperty (enum.nextElement());<br>}</pre>
+<p>Unpacking Stardust header message information as mentioned
+above can be performed via:</p>
+<pre>long processInstanceOID = message.getLongProperty(&quot;processInstanceOID&quot;);
+long activityInstanceOID = message.getLongProperty(&quot;activityInstanceOID&quot;);</pre>
+
+<h3 id="unpackData">Unpacking the Message Data</h3>
+<p>Unpacking the message data requires prior knowledge of the
+message and the JMS application that has been modeled. Depending on the
+type of message you have modeled for your application, you can cast the
+received message to the appropriate message specialization and obtain
+the data provided with message header and body.</p>
+<p>Unpacking a text message can be done with:</p>
+<pre>String data = ((TextMessage)message).getText();</pre>
+<p>Unpacking an object message can be done with:</p>
+<pre>Object data = ((ObjectMessage)message).getObject();</pre>
+<p>Unpacking a map message can be done with:</p>
+<pre>MapMessage message = (MapMessage)message;
+
+Object object1 = message.readObject(&quot;Parameter1&quot;);
+
+Object object2 = message.readObject(&quot;Parameter2&quot;);</pre>
+
+<p>assuming, that you have specified the parameter names
+Parameter1 and Parameter2 for the request message of your JMS
+application.</p>
+<p>Unpacking a stream message can be done as follows:</p>
+<pre>StreamMessage message = (Stream)message;
+
+Object object1 = message.readObject();
+
+Object object2 = message.readObject();</pre>
+
+<p>Note that in case of a stream message you will receive the
+objects in the order you have defined in the application of your
+Stardust workflow model.</p>
+<p>Instead of <tt>readObject()</tt>, you may also call <tt>readString()</tt>
+and other methods, if the object type is known in advance.</p>
+
+<h2 id="sender">Writing a JMS Sender</h2>
+<p>The following example demonstrates how to write a JMS sender to
+send JMS messages to a Stardust Process Engine. A code fragment like
+this might be used to test your JMS application before you integrate
+with the target, non-JMS messaging system.</p>
+<ul>
+	<li><a href="#createSender">Creating a Message Sender</a></li>
+	<li><a href="#populate">Populating the Message Header with an Activity Instance OID</a></li>
+	<li><a href="#popOID">Populating the Message Header with the Process Instance OID
+	and the Activity ID</a></li>
+	<li><a href="#pop3">Populating the Message Header with Process ID, Activity ID,
+	Data ID, CarnotPartition ID and Data Value</a></li>
+	<li><a href="#sendMess">Sending Messages</a></li>
+</ul>
+<h3 id="createSender">Creating a Message Sender</h3>
+<p>Message senders can be created in similar fashion as message
+consumers. However, you need to connect to the message queues defined in
+the EJB Deployment Descriptor of your Stardust Process Engine, e.g.:</p>
+<pre>
+...
+Context messaging = new InitialContext();
+QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) <br>  messaging.lookup(&quot;QueueConnectionFactory1&quot;);
+Queue queue = (Queue) messaging.lookup(&quot;Queue1&quot;);<br>QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
+queueConnection.start();&nbsp;
+QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);<br>QueueSender sender = queueSession.createSender(queue);
+...</pre>
+<p>to complete activities. The code fragment above assumes that
+you have specified the connection factory <tt>QueueConnectionFactory1</tt>
+and the queue <tt>Queue1</tt> in your EJB Deployment Descriptor for the
+Stardust Process Engine.</p>
+<p>The response message header can have different contents as
+described in the following subsections.</p>
+
+<h3 id="populate">Populating the Message Header with an Activity Instance OID</h3>
+<p>The activity instance is retrieved directly by the OID. The
+header has just one property with the name <tt>activityInstanceOID</tt>.
+</p>
+<pre>message.setLongProperty(&quot;activityInstanceOID&quot;, 4711);</pre>
+
+<h3 id="popOID">Populating the Message Header with the Process Instance OID
+and the Activity ID</h3>
+<p>The activity instance is retrieved using the process instance
+and the activity ID defined in the model. The header has two properties
+with the name <tt>processInstanceOID</tt> and <tt>activityID</tt>.</p>
+<pre>message.setLongProperty(&quot;processInstanceOID&quot;, 1234);
+message.setStringProperty(&quot;activityID&quot;, &quot;Activity1&quot;);</pre>
+
+
+<h3 id="pop3">Populating the Message Header with Process ID, Activity ID,
+Data ID, CarnotPartition ID and Data Value</h3>
+<p>The activity instance is retrieved using the model elements
+(process ID, activity ID, data ID and carnotPartition ID) and an
+existing data value. The header has five properties<tt> processID</tt>,
+<tt>activityID</tt>, <tt>dataID</tt>, <tt>carnotPartitionID</tt> and <tt>serializedDataValue</tt>.
+The first four determine the IDs of the model elements. The last
+property is the value of the data in order to determine the correct
+activity instance, which is using this data.</p>
+<pre>message.setStringProperty(&quot;processID&quot;, &quot;ProcessDefinition1&quot;);
+message.setStringProperty(&quot;activityID&quot;, &quot;Activity1&quot;);
+message.setStringProperty(&quot;dataID&quot;, &quot;Data1&quot;);
+message.setStringProperty(&quot;carnotPartitionID&quot;, &quot;Partition1&quot;);</pre>
+
+<p>This value has to be provided via:</p>
+<pre>message.setStringProperty(&quot;serializedDataValue&quot;, dataValue);</pre>
+<p>for all serializable data.</p>
+
+<h3 id="sendMess">Sending Messages</h3>
+<p>The message created above is sent by simply calling:</p>
+<pre>sender.sendMessage(message);</pre>
+
+<h2 id="triggers">Starting Processes using JMS Triggers</h2>
+<p>If you want to automatically start a process by sending a JMS
+message, you do it similar as with a JMS application. However, you should
+send the message to the queue to which the Message-Driven Beans ResponseHandler is bound.
+Additionally, specify the qualified ID of the process to be started and the ID of the partition
+the process belongs to,
+by giving the message the string properties <tt>processID</tt>
+and <tt>carnotPartitionID</tt> respectively:</p>
+<pre>message.setStringProperty(&quot;processID&quot;, &quot;{ModelX}ProcessDefinitionX&quot;);&nbsp;
+message.setStringProperty(&quot;carnotPartitionID&quot;, &quot;PartitionX&quot;);&nbsp;</pre>
+<p>In case no partition ID is specified, the default partition
+configured by the engine is used.</p>
+<p>Refer to chapter
+<a href="../../tutorial/jms/jms-example.html">Using JMS Application and JMS Trigger</a>
+of the
+<a href="../../tutorial/tut-preface.htm">Tutorial</a> guide for a demonstration on 
+how to start processes via a JMS trigger.</p>
+<h3>Determining the Trigger Thread Mode</h3>
+<p>As described above, JMS processes can be either started in a 
+synchronous or asynchronous manner. You can specify this behavior
+via properties in your server-side <tt>carnot.properties</tt> file.
+The following property determines the setting for all defined
+JMS triggers:</p>
+<pre>JMS.ProcessTrigger.ThreadMode = synchronous / asynchronous</pre>
+<p>To set this value per specific trigger, use:</p>
+<pre>ProcessEngine.TRIGGER_ID.ThreadMode = true / false</pre>
+<p>In case this property is set, it specifies if processes for 
+a trigger with id TRIGGER_ID should 
+be started in synchronous (true)
+or asynchronous (false) manner. If this property is not set,
+the model setting is used.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

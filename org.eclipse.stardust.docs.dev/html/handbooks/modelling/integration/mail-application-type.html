@@ -1,0 +1,355 @@
+<html>
+<head>
+<title>Using Mail Applications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Using Message Application Types",
+    "../mg-integration-6.htm","message-appl-preface.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<body>
+<h1>Using Mail Applications</h1>
+<ul>
+	<li><a href="#intro">Introduction</a></li>
+	<li><a href="#model">Using the Mail Application Type in Process Models</a></li>
+	<li><a href="#dataMap">Data Mappings</a></li>
+	<li><a href="#attach">Adding Attachments to the email</a></li>
+	<li><a href="#runtime">Runtime Component</a></li>
+</ul>
+<h2 id="intro">Introduction</h2>
+<p>The Mail Application Type supports the following scenario:</p>
+<ul>
+  <li>In a process step - execution of a process activity - a user or a group 
+    of users is notified by an e-mail about the process step to be performed as 
+    a decision of the addressees based on the e-mail content..</li>
+  <li>The content of the e-mail may be parameterized by process data (e.g. a customer 
+    name and an order amount).</li>
+  <li>The e-mail may contain Web links, the recipient(s) of the submitted may 
+    click to indicate a decision (e.g. the confirmation or rejection of an order). 
+  </li>
+  <li>Clicking on this link causes the corresponding process to continue; the 
+    decision may be mapped to a process data to control the subsequent process 
+    execution.</li>
+</ul>
+<p>This scenario supports quick decisions made by individuals based on a simple 
+  set of data using e-mail clients and no Workflow Execution Perspective or the like. E.g. with 
+  the following process model</p>
+<p class="image"><img src="images/sample-process.png"></p>
+<p align="left">the following communication/decision flow </p>
+<p class="image"><img src="images/communication-principle.png"></p>
+<p align="left">The mail is send by the Stardust Process Engine runtime via SMTP 
+  to the addressees specified as described below. The links in the mail will invoke 
+  servlets in the same Stardust Process Engine runtime environment. Note, that 
+  the servlets may be deployed on a different application server and on a different 
+  machine as long as they are accessing the same Stardust Audit Trail Database.</p>
+<h2 id="model">Using the Mail Application Type in Process Models</h2>
+<p>You can create a mail application by selecting the <strong>Mail Application</strong> 
+  option from the <strong>Application</strong> palette </p>
+<p class="image"><img src="images/application-palette.png" alt="Application Palette"></p>
+<p>or by selecting the <strong>Mail Application</strong> option in the <strong>New Application</strong> 
+  submenu of the popup menu for the <strong>Applications</strong> tree node in the process 
+  model outline.</p>
+<p class="image"><img src="images/outline-application-menu.png" alt="Application Menu Outline"></p>
+<p>Details of the mail application can be specified by editing the <strong>Mail Application</strong> 
+  property page of the application property dialog:</p>
+<p class="image"><a href="images/default-settings_orgSize.png" target="_blank">
+<img src="images/default-settings.png" alt="Default Settings"></a></p>
+<p align="left">The property page contains the following entries:</p>
+<ul>
+  <li>The <strong>Mail Server</strong> text entry specifies the mail server to be used to 
+    send the mail. The mail server can also be determined dynamically via an application 
+    access point (<i>see below</i>).</li>
+  <li>The <strong>JNDI Session</strong> field specifies the name of the JNDI to
+  retrieve the mail session from.</li>
+  <li>The <strong>URL Prefix</strong> specifies the prefix for the links in the confirmation 
+    mail (<i>see below</i>).</li>
+  <li>If the mail is intended to be send as a multipart MIME message including 
+    a plain text and a HTML part, the checkbox <strong>HTML</strong> has to be checked. 
+    Note that both templates - HTML and plain text (<i>see below</i>) - will be 
+    used then.</li>
+  <li>The create <strong>Process History Link</strong> specifies whether the mail to be 
+    send contains a link to obtain the process history of the process on whose 
+    behalf the mail is sent.</li>
+</ul>
+<h3>Default Mail Parameters</h3>
+<p align="left">A couple of default parameters for the mail to be send can be 
+  specified in the <strong>Default Settings</strong> tab.</p>
+<p></p>
+<ul>
+  <li>the <strong>Default &quot;From&quot; Address</strong> specifies the default sender 
+    mail address(es),</li>
+  <li>the <strong>Default &quot;To&quot; Address</strong> specifies the default receiver 
+    mail address(es),</li>
+  <li>the <strong>Default &quot;CC&quot; Address</strong> specifies the default copy receiver 
+    mail address(es),</li>
+  <li>the <strong>Default &quot;BCC&quot; Address</strong> specifies the default blind copy 
+    receiver mail address(es),</li>
+  <li>the <strong>Default Priority</strong> specifies the default priority,</li>
+  <li>the <strong>Default Subject</strong> specifies the standard subject to be displayed and</li>
+  <li>the <strong>Subject Include Unique Identified</strong> checkbox determines,
+  if the details (like process and activity OIDs and activity name) should be added
+	or not. Please refer to the section <a href="#subject">
+	Enhancing the subject line</a> for detailed information.</li>
+</ul>
+<p>of the mail to be send.</p>
+<p>Note, that semicolon-separated lists of mail addresses can be provided.</p>
+<p>All default settings can be overwritten by providing appropriate data mappings 
+  (<i>see below</i>). </p>
+<h4 id="subject">Enhancing the subject line</h4>
+<p>You have the option to determine if the subject line of
+the mail should be enhanced by process and activity OIDs as
+well as the activity name or not.
+In case the checkbox <strong>Subject Include Unique Identified</strong>
+ is disabled, the subject of the mail 
+will not be enhanced with additional information.
+If enabled, which is the default value,
+the subject of a mail will be extended,
+e.g:</p>
+<pre>7#14 test subject(Activity Application Activity 1)</pre>
+<p>Hereby the first number represents the process instance OID and 
+the second number represents the activity instance OID. The name of
+ the activity is appended in parentheses.</p>
+
+<p>In case the checkbox value is not saved during modeling,
+the property <tt>Mail.SubjectEnhancedWithDetails</tt> in your
+<tt>carnot.properties</tt> file is used. If this property is set 
+to <tt>false</tt>, the subject of the mail 
+will not be enhanced with additional information.
+If set to <tt>true</tt>, which is the default value,
+the subject of a mail will be extended as described above.
+Please note that this property is deprecated.</p>
+<h3>Using JNDI Sessions</h3>
+<p>To use a JNDI Session, enter the resource definition in 
+the <tt>context.xml</tt>,
+residing in the <tt>META-INF</tt> folder of your Web application.
+Use the JNDI Session name as resource name, for example 
+with <strong>JNDI Session</strong> set to <tt>mail/Session</tt>, enter:</p>
+<pre>
+&lt;Resource name="mail/Session"
+type="javax.mail.Session"
+auth="Container"
+mail.smtp.host="localhost"
+mail.smtp.auth="false"
+mail.port="25"
+mail.transport.protocol="smtp"
+mail.debug="true"/&gt;
+</pre>
+<p>In your <tt>web.xml</tt> file enter the following:</p>
+<pre>
+&lt;resource-ref&gt;
+&lt;description&gt;Resource reference to a factory for javax.mail.Session ...&lt;/description&gt;
+&lt;res-ref-name&gt;mail/Session&lt;/res-ref-name&gt;
+&lt;res-type&gt;javax.mail.Session&lt;/res-type&gt;
+&lt;res-auth&gt;Container&lt;/res-auth&gt;
+&lt;/resource-ref&gt; 
+</pre>
+<h4>JNDI sessions in RAD</h4>
+<p>In case you use JNDI sessions in a RAD environment, you need to provide
+the server with the <tt>mail.jar</tt>. If this jar already exists in your RAD environment, 
+move the existing jar, e.g. residing in folder
+<tt>&lt;your workspace&gt;/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/worklist/WEB-INF/lib</tt>
+to the <tt>lib</tt> folder of your server location.</p>
+<h3>HTML Template</h3>
+<p> In the tab <strong>HTML Template</strong> the template for the HTML part is specified 
+  then. The HTML part to be send consists of a header (<strong>HTML Header</strong> text 
+  entry), a body (<strong>HTML Text Template</strong> text entry) and a footer part (<strong>HTML 
+  Footer</strong> text entry).</p>
+<p class="image"><img src="images/html-template.png" alt=""></p>
+<p class="image">&nbsp;</p>
+<p></p>
+<p>Template variables for all three entries can be set by using a number in curly 
+  braces, e.g.</p>
+<pre>Dear {0} {1},
+
+
+{2} has placed an order of ${3} while their account limit is ${4}.</pre>
+<p>as in the <tt>java.text.</tt>. These variables will be available as input access 
+  points <strong>templateVariable<i>N</i></strong>, - where <i><strong>N</strong></i> is the value 
+  in curly braces - for data mappings (<i>see below</i>).</p>
+<p>The layout of the HTML mail will be</p>
+<ul>
+  <li>header</li>
+  <li>body</li>
+  <li>output links</li>
+  <li>footer</li>
+</ul>
+<h3>Plain Text Template</h3>
+<p>The <strong>Plain Text</strong> <strong>Template</strong> on the <strong>Plain Text Template</strong> tab 
+  works the same way as the HTML template and describes the content <tt>text/plain</tt> 
+  MIME type mail if the <strong>HTML</strong> checkbox is not checked. Template variables 
+  can be set the same way like in HTML templates.</p>
+<p class="image"><img src="images/plain-text-template.png" alt=""></p>
+<h3>Output Values</h3>
+<p>In the Output Values tab you will specify the possible response messages being 
+  listed as links between the body and the footer of the text and HTML mail content. 
+  The text of the link is specified in the <strong>Name</strong> column, the value being 
+  passed to the process continuation as the return value of the mail application 
+  is specified in the <strong>Value</strong> column.</p>
+<p>You may select and change the <strong>&lt;New Entry&gt;</strong> cell to create a new 
+  output value pair and the <strong>TAB</strong> keys to navigate between columns.</p>
+<p class="image"><img src="images/output-values.png" alt=""></p>
+<p align="left">The return value - assuming an appropriate data mapping (<i>see 
+  below</i>) for the data <strong>Decision</strong> - can be evaluated as follows:</p>
+<p class="image">
+<img src="images/output-value-evaluation.png" alt=""></p>
+<h2 id="dataMap">Data Mappings</h2>
+<p>The Mail Application Type can be connected to an application activity. In Data
+  Mappings to the activity can be used to pass data to the mail template, Out 
+  Data Mappings to return the value of the activated link in the mail.</p>
+<p>Input access points for mail applications are</p>
+<ul>
+  <li><strong>Attachments</strong> to configure the mail attachments dynamically (<a href="#attach">Adding Attachments to the email
+  </a>)</li>
+  <li><strong>bccAddress</strong> to configure BCC addressees dynamically</li>
+  <li><strong>ccAddress</strong> to configure CC addressees dynamically</li>
+  <li><strong>fromAddress</strong> to configure the sender dynamically</li>
+  <li><strong>jndiSession</strong> to configure the JNDI session dynamically</li>
+  <li><strong>mailPriority</strong> to configure the mail priority dynamically</li>
+  <li><strong>mailServer</strong> for the mail server to be contacted via SMTP</li>
+  <li><strong>subject</strong> for the subject of the mail</li>
+  <li>the variables in the HTML and plain Text templates (<strong>templateVariable0</strong>, 
+    ..., <strong>templateVariable<i>N</i></strong>)</li>
+  <li><strong>toAddress</strong> to configure the recipients dynamically</li>
+</ul>
+<p>All access point are of type <tt>java.lang.String</tt>. For the access point 
+  <strong>mailPriority</strong>, the following string values are valid: </p>
+<ul>
+  <li><tt>Highest</tt></li>
+  <li><tt>High</tt></li>
+  <li><tt>Normal</tt></li>
+  <li><tt>Low</tt></li>
+  <li><tt>Lowest</tt></li>
+</ul>
+<p class="image"><img src="images/input-data-mapping.png" alt=""></p>
+<p>The only output access point <strong>returnValue</strong> is the result of the decision 
+  submitted by the e-mail recipient via clicking on the links provided in the 
+  sent e-mail (<i>see above</i>).</p>
+<p class="image"></p>
+<p class="image"><img src="images/output-data-mapping.png" alt=""></p>
+<p>Data mappings can be specified for these access points.</p>
+<p class="image"></p>
+<h2 id="attach">Adding Attachments to the email</h2>
+ <p>The mail application has an additional in access point called <tt>Attachments</tt>
+ of Type List. This access point accepts a list. Every org.eclipse.stardust.engine.api.runtime.Document 
+ in the list will be appended as an attachment to the email message.</p>
+ <p>An example of such a list is the data PROCESS_ATTACHMENTS.</p>
+ <p>Here is code example on how to create such a list:</p>
+<pre>
+List attachmentList = new ArrayList();
+Document doc = (Document )DmsUtils.createDocumentInfo("abc.tif");
+doc.setContentType("image/tiff");
+doc.put("id", "abc");
+attachmentList.add(doc);
+</pre>
+<p>The mail application type fetches the documents from the <tt>DocumentManagementService</tt>.
+The documents referenced in the attachment list must exist in the DMS under 
+<tt>/docId</tt> (The docId should be provided in the Document object).</p>
+
+<h2 id="runtime">Runtime Component</h2>
+<h3>Response Web Pages</h3>
+<p>After submitting a decision request to the mail application servlet running 
+  in an arbitrary application server accessing the same Stardust Audit Trail Database 
+  as the one hosting the process engine submitting the mail, this servlet will 
+  respond with a success page, if the request has been successfully submitted 
+  and the process is continued - possibly with a submitted output value</p>
+<p class="image"><img src="images/mail-confirmation-success.png"></p>
+<p>or an error page, if problems with the submission occurred (e.g. a decision 
+  had already been submitted for this process).</p>
+<p class="image"><img src="images/mail-confirmation-error.png"></p>
+
+<p>In order to fetch the information needed to create the success page or error page 
+an user has to be configured in the <tt>web.xml</tt>. Default is the user <tt>motu</tt> with
+the password <tt>motu</tt>.</p>
+
+<pre>
+&lt;servlet&gt;
+   &lt;servlet-name&gt;MailConfirmationServlet&lt;/servlet-name&gt;
+   &lt;servlet-class&gt;org.eclipse.stardust.engine.extensions.mail.web.servlet.MailApplicationReceptionServlet&lt;/servlet-class&gt;
+   &lt;init-param&gt;
+      &lt;param-name&gt;user&lt;/param-name&gt;
+      &lt;param-value&gt;motu&lt;/param-value&gt;
+   &lt;/init-param&gt;
+   &lt;init-param&gt;
+      &lt;param-name&gt;password&lt;/param-name&gt;
+      &lt;param-value&gt;motu&lt;/param-value&gt;
+   &lt;/init-param&gt;
+&lt;/servlet&gt;
+</pre>
+
+<p>You may change these Web pages by modifying the <code>param-values</code> for
+<code>successPage</code> and <code>errorPage</code> for the servlet <code>MailConfirmationServlet</code></p>
+
+<pre>
+&lt;servlet&gt;
+   &lt;servlet-name&gt;MailConfirmationServlet&lt;/servlet-name&gt;
+   &lt;servlet-class&gt;org.eclipse.stardust.engine.extensions.mail.web.servlet.MailApplicationReceptionServlet&lt;/servlet-class&gt;
+   &lt;init-param&gt;
+      &lt;param-name&gt;successPage&lt;/param-name&gt;
+      &lt;param-value&gt;http://localhost:8080/demo/successpage.jsp&lt;/param-value&gt;
+   &lt;/init-param&gt;
+   &lt;init-param&gt;
+      &lt;param-name&gt;errorPage&lt;/param-name&gt;
+      &lt;param-value&gt;http://localhost:8080/demo/errorpage.jsp&lt;/param-value&gt;
+   &lt;/init-param&gt;
+&lt;/servlet&gt;
+</pre>
+
+
+<p>in the <tt>web.xml</tt> file.</p>
+
+<p>These pages will be provided with the following request parameters:</p>
+<ul>
+  <li><tt>process-name</tt> containing the name of the process definition of the 
+    process instance to be continued</li>
+  <li><tt>process-id</tt> containing the ID of the process definition of the process 
+    instance to be continued</li>
+  <li><tt>process-oid</tt> containing the OID of the process definition of the 
+    process instance to be continued</li>
+  <li><tt>output-value</tt> contains the value submitted as the return value for 
+    the process continuation. </li>
+</ul>
+<p>for the success page and in addition</p>
+<ul>
+  <li><tt>error-text </tt>containing the error text of the problem obtained during 
+    processing of the continuation request</li>
+</ul>
+<p>for the error page.</p>
+<p>The following code shows a simple custom JSP for the success page using these 
+  variables:</p>
+  
+<pre>
+&lt;!doctype html public "-//w3c//dtd html 4.0 transitional//en"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type='text/css'&gt;
+&lt;!--
+body { background-color:#DBDBDB; font-weight:normal; font-family:Verdana; font-size:12px; }
+--&gt;
+&lt;/style&gt;
+&lt;title&gt;Custom Mail Confirmation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;img src='images/logo.jpg'/&gt;
+&lt;h1&gt;Mail Confirmation&lt;/h1&gt;
+
+&lt;p&gt;You decided to proceed with &lt;b&gt;&lt;%= request.getParameter("activity-name") %&gt;&lt;/b&gt; with&lt;/p&gt;
+&lt;p&gt;outputValue: &lt;b&gt;&lt;%= request.getParameter("output-value") %&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Thank you for your feedback.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

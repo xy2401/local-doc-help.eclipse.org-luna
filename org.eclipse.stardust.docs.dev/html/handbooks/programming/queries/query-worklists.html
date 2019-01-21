@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Querying Worklist Details</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Querying for Worklist Users",
+    "query-proc-def.html","query-users.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Querying Worklist Details</h1>
+<p>This chapter demonstrates some use cases to retrieve worklist information.</p>
+<ul>
+  <li><a href="#relation">Retrieving Information on User and User Group Relations</a></li>
+  <li><a href="#ainumb">Retrieving the Number of Activity Instances in the Worklist of a specific User</a></li>
+  <li><a href="#time">Retrieving the Time required for an Activity Instance Execution</a></li>
+</ul>
+
+<h2 id="relation">Retrieving Information on User and User Group Relations</h2>
+<p>The following example API usage demonstrates how to retrieve user and user group related information, 
+precisely which users belong to which user groups.</p>
+<p>The following query API is used in this example:</p>
+<ul>
+  <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserQuery.html">UserQuery</a></li>
+  <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserGroupQuery.html">UserGroupQuery</a></li>
+</ul>
+<pre>
+UserQuery userQuery = new UserQuery();
+UserGroupQuery userGroupQuery = new UserGroupQuery();
+UserGroups usergroups = queryService.getAllUserGroups(userGroupQuery);
+ 
+for (UserGroup userGroup : usergroups) {
+   System.out.println("userGroup****** " + userGroup.getId());
+   UserQuery userQuery1 = userQuery.findAllForUserGroup(userGroup.getId());
+   Users existingusers = queryService.getAllUsers(userQuery1);
+   System.out.println("existingusers.getSize****** " + existingusers.getSize());
+ 
+   for (User user : existingusers) {
+        System.out.println("user" + user.getId());
+   }
+ 
+}
+</pre>
+<h2 id="ainumb">Retrieving the Number of Activity Instances in the Worklist of a specific User</h2>
+<p>The following example API usage demonstrates how to retrieve information 
+to find the number of activity instances that are currently in the worklist of a particular user.</p>
+<p>This example uses the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">ActivityInstanceQuery</a>.</p>
+<pre>
+ActivityInstanceQuery activityQuery = new ActivityInstanceQuery();
+ 
+FilterOrTerm orFilter = activityQuery.getFilter().addOrTerm();
+         orFilter.add(PerformingUserFilter.CURRENT_USER);
+ 
+ActivityInstances activeInstances = queryService.getAllActivityInstances(activityQuery);
+ 
+for (int y = 0; y &lt; activeInstances.getSize(); y++) {
+   ActivityInstance activity = (ActivityInstance) activeInstances.get(y);
+   System.out.println(y +") Activity OID: "+ activity.getOID() +" / Performer: "+ activity.getPerformedByName());
+}
+</pre>
+<h2 id="time">Retrieving the Time required for an Activity Instance Execution</h2>
+<p>The following example demonstrates how to retrieve the time required for an activity
+ instance execution.</p>
+<p>This example uses the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">ActivityInstanceQuery</a>.</p>
+<pre>
+ActivityInstanceQuery aiquery = ActivityInstanceQuery.findAlive("OrderProcessing");
+Date date = new Date();
+long timeInMS = date.getTime() - (3600 * 1000);
+ 
+date = new Date(timeInMS);
+ 
+aiquery.where(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime()));
+aiquery.orderBy(ActivityInstanceQuery.START_TIME);
+ActivityInstances activityInstances_1 = queryService.getAllActivityInstances(aiquery);
+System.out.println("Activity List ordered by start time ");
+ 
+for (ActivityInstance activityInstance : activityInstances_1) {
+ 
+   System.out.println("Activity Name: "+ activityInstance.getOID() + "Start Time: "+  activityInstance.getStartTime());
+}</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

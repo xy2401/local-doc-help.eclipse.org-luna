@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Retrieving Activity Quality Assurance Information</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working with Process Interfaces",
+        "pg-embed-criticality.html","pg-embed-proc-interfaces.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Retrieving Activity Quality Assurance Information</h1>
+<p>This chapter describes how to retrieve information on quality assurance for
+activity instances.</p>
+<ul>
+    <li><a href="#state">Retrieving the State regarding Quality Assurance</a></li>
+    <li><a href="#workflow">Retrieving Information on Quality Assurance 
+        Workflow</a></li>
+    <li><a href="#attr">Quality Assurance Attributes</a></li>
+</ul>
+<h2 id="state">Retrieving the State regarding Quality Assurance</h2>
+<p>To retrieve the state of a given activity instance regarding quality 
+assurance, use the following method of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">
+ActivityInstance</a> interface:</p>
+<pre>QualityAssuranceState getQualityAssuranceState();</pre>
+<p>The method returns an object of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QualityAssuranceUtils.QualityAssuranceState.html">
+QualityAssuranceState</a>.</p> 
+<p>The following quality assurance states are defined:</p>
+<ul>
+    <li>NO_QUALITY_ASSURANCE: The current instance is no quality assurance 
+    instance and is not part of the quality assurance cycle.</li>
+    <li>IS_QUALITY_ASSURANCE: The current instance is a quality assurance 
+    instance and is part of the quality assurance cycle.</li>
+    <li>QUALITY_ASSURANCE_TRIGGERED: The current instance triggered a quality 
+    assurance instance and is part of the quality assurance cycle.</li>
+    <li>IS_REVISED: The current instance is a workflow instance which is 
+    reworked and is part of the quality assurance cycle. The previous quality 
+    assurance instances was marked with "Fail".</li>
+</ul>
+<h2 id="workflow">Retrieving Information on Quality Assurance 
+        Workflow</h2>
+<p>The
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">
+ActivityInstance</a> interface provides the following method to get information 
+about the performed quality assurance workflow:</p>
+<pre>QualityAssuranceInfo getQualityAssuranceInfo();</pre>
+<p>It returns a 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/QualityAssuranceInfo.html">
+QualityAssuranceInfo</a> object with information on the quality assurance
+workflow. In case no quality assurance is enabled for the activity instance,
+the return value is null.</p>
+<h2 id="attr">Quality Assurance Attributes</h2>
+<p>The class 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ActivityInstanceAttributes.html">
+ActivityInstanceAttributes</a> contains attributes of an activity instance. To
+retrieve these attributes, use the method</p>
+<pre>ActivityInstanceAttributes getAttributes();</pre>
+<p>The method returns an instance of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ActivityInstanceAttributes.html">
+ActivityInstanceAttributes</a>.</p>
+<p>Call this method to get attributes for your activity instance, e.g.:</p>
+<pre>ActivityInstanceAttributes attr = ai.getAttributes();</pre>
+<p>The <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ActivityInstanceAttributes.html">
+ActivityInstanceAttributes</a> instance provides methods for:</p>
+<ul>
+    <li><a href="#results">Setting and Getting Quality Assurance Results</a></li>
+    <li><a href="#notes">Adding and Retrieving Notes</a></li>
+</ul>
+<p>To store attributes of an activity instance in the database, use:</p>
+<pre>void WorkflowService.setActivityInstanceAttributes(ActivityInstanceAttributes attributes)</pre>
+<p>For details on the this method, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">
+WorkflowService</a>.</p>
+<h3 id="results">Setting and Getting Quality Assurance Results</h3>
+<p>To set the quality assurance result attribute for the specific activity 
+instance, use method</p>
+<pre>void setQualityAssuranceResult(QualityAssuranceResult result);</pre>
+<p>To retrieve the quality assurance result attribute for the activity instance
+use:</p>
+<pre>QualityAssuranceResult getQualityAssuranceResult();</pre>
+<p>The return value will be null for non quality assurance activity instances or newly 
+created quality assurance instance.</p>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/QualityAssuranceResult.html">
+QualityAssuranceResult</a> contains getter and setter methods for the following:</p>
+<ul>
+    <li><a href="#qacode">Quality assurance code</a></li>
+    <li><a href="#qaresstate">Quality assurance result state</a></li>
+    <li><a href="#qaflag">Flag for assignment to last activity performer</a></li>
+</ul>
+
+<h4 id="qacode">Quality assurance code</h4>
+<p>The methods to set and get quality assurance code are:</p>
+<pre>void setQualityAssuranceCodes(Set&lt;QualityAssuranceCode&gt; codes);
+
+Set&lt;QualityAssuranceCode&gt; getQualityAssuranceCodes();</pre>
+<h4 id="qaresstate">Quality assurance result state</h4>
+<p>The methods to retrieve and set quality assurance result states are:</p>
+<pre>void setQualityAssuranceState(ResultState state);
+
+ResultState getQualityAssuranceState();</pre>
+<p>The following quality assurance result states are defined:</p>
+<ul>
+    <li>PASS_WITH_CORRECTION</li>
+    <li>PASS_NO_CORRECTION</li>
+    <li>FAILED</li>
+</ul>
+
+<h4 id="qaflag">Flag for assignment to last activity performer</h4>
+<p>The following methods can be used to set or retrieve the boolean flag to 
+determine if the quality assurance activity instance is
+ assigned to the last activity performer:</p>
+<pre>void setAssignToLastActivityPerformer(boolean assign);
+   
+boolean getAssignToLastActivityPerformer();</pre>
+<h3 id="notes">Adding and Retrieving Notes</h3>
+<h4>Adding notes</h4>
+<p>To add a new note to your activity instance, e.g. with the context of the quality
+assurance, use</p>
+<pre>Note addNote(String text);</pre>
+<p>Or, for a list of notes, use:</p>
+<pre>void setNotes(List&lt;Note&gt; notes);</pre>
+<p>Note that the added notes are not persisted! They are only added to the 
+attribute, but not yet saved in the database. In order to persist the added 
+notes, call:</p>
+<pre>void WorkflowService.setActivityInstanceAttributes(ActivityInstanceAttributes attributes)</pre>
+<h4>Retrieving notes</h4>
+<p>To retrieve a list of all notes set for the activity instance, e.g. for 
+quality assurance, use the
+following method:</p>
+<pre>List&lt;Note&gt; getNotes();</pre>  
+   
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

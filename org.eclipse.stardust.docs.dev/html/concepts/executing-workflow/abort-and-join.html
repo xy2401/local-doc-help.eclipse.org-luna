@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Aborting and Joining Processes</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Case - Grouping Processes",
+		"abort-and-start-usage.html","case-concept.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Aborting and Joining Processes</h1>
+<p>
+The Abort and Join functionality aborts an existing process instance and joins active process instance.
+The link is established between source root process instance and target process instance. 
+Similarly, data is copied between root
+process and  target process only. Sub-process data does not get copied.
+</p>
+<p>This chapter covers the following:</p>
+<ul>
+	<li><a href="#usage">Common Usage Pattern</a></li>
+	<li><a href="#semantics">Data Copy Semantics</a></li>
+    <li><a href="#procedure">Aborting and Joining Procedure</a></li>
+    <li><a href="#portal">Aborting and Joining Processes in the Portal</a></li>
+</ul>
+
+<h2 id="usage">Common Usage Pattern</h2>
+<p>Consider a scenario of an organization that has implemented Stardust Portal to manage
+several document-centric processes.
+Process instances are triggered when documents enter the system via scan, fax or email. Then
+specialists work on each request until completed. But in order to complete each process
+the customer are contacted frequently to send additional documents. The documents returned often
+enter into the system as a new process instance and they must be manually merged into existing process instances.
+This involves downloading the documents locally, uploading them to the appropriate process instances and aborting the
+existing process instances.</p>
+<p> 
+The organization has requested enhancements that would allow operators to join the 
+one or more process instances to another active process instances and abort the source process instance. 
+The documents from the source process
+instance should be copied to the target process instance. A link should be created between the affected process 
+instances so that business units can track each request. Additionally, they have requested an enhancement to 
+Related Process Search to streamline the discovery of potential target process instance to join to.
+</p>
+
+<h3>Example Usage</h3>
+
+<p>
+The workflow would be as follows:
+</p>
+<ul>
+	<li>Set <strong>Key Descriptors</strong> in modeler named TaxId and LastName</li>
+	<li>Log into the Stardust Portal</li>
+	<li>Start a process instance</li>
+	<li>Add TaxID and LastName</li>
+	<li>Upload a document to the process instance</li>
+	<li>Click <strong>Suspend and Save</strong></li>
+	<li>Activate an activity in the newly created process instance</li>
+	<li>Click the arrow next to the Abort icon and select <strong>Abort and Join</strong></li>
+	<li>Show that active process instances matching both TaxID and LastName appear in the list</li>
+	<li>Select a process instance in the table and click the <strong>Abort and Join</strong> button</li>
+	<li>Click <strong>OK</strong> on the Confirmation message to launch the Process Details for 
+	the newly joined process instance</li>
+	<li>Open the <strong>Process Documents</strong> panel and show that the document(s) from the source appear</li>
+	<li>Open the <strong>Process History</strong> panel and show that the source process instance is not shown</li>
+	<li>Open the <strong>Linked Processes</strong> panel and show the link to the source process instance</li>
+	<li>Click the link to launch Process History for the source process instance</li>
+	<li>Open the <strong>Process History</strong> panel and show that the target process instance is not shown</li>
+	<li>Open the <strong>Linked Processes</strong> panel and show the link to the target process instance</li>
+</ul>
+
+<p>For detail instructions, please refer to the tutorial 
+<a href="../../tutorial/derived-procs/abort-and-join-process.html">Aborting and Joining Processes</a>.</p>
+
+<h2 id="semantics">Data Copy Semantics</h2>
+<p>The data copy semantic for join functionality applies only for documents in process attachments 
+ and document data. All other data is not copied. To ensure that document data is 
+not overridden the document data gets only copied if the target document data is not 
+initialized already. In addition out data path should be specified for that data. 
+If document data cannot be copied, then the document gets appended to the Process Attachments.
+Process Attachments get merged by their Document ID if the target process 
+supports attachments. No document is overridden. 
+</p>
+
+<h3>Copy-without-Overriding Rule</h3>
+<p>Following rules are applied when a document is copied from source process instance to target process instance.</p>
+<h4>Document in Process Attachments of Source Process Instance</h4>
+<p>If target process instance supports process attachments then the document attached to
+to source process instance is copied.</p>
+
+<h4>Specific Typed Documents of Source Process</h4>
+<p>If the document data in target process instance is not initialized and
+has a plain out data path (no dereferences) for that data and has the same document type 
+defined (typeDeclarationId and Schema are the same) then the document and meta-data
+are copied to the target data.</p>
+
+<p>
+If the document data in target process instance is not initialized and
+has a plain out data path (no dereferences) for that data and
+has the same typeDeclarationId defined and schema differs (scenario after model versioning)
+   then the document is copied without meta-data
+else the document and meta-data is copied to the process attachments.
+</p>
+
+<h4>Specific Non-typed  Documents of Source Process</h4>
+<p>If the document data in target process instance is not initialized and
+has a plain out data path (no dereferences) for that data then 
+the document and meta-data is copied to the target data else
+the document and meta-data are copied to the process attachment.
+</p>
+<h2 id="procedure">Aborting and Joining Procedure</h2>
+<p>Aborting and joining a process is performed in the following sequence:</p>
+<ol>
+    <li>Aborting an existing active process instance.</li>
+    <li>Data is merged to another selected active process instance.</li>
+    <li>A link is created from the source root process instance to the target
+    process instance.</li>
+    <li>A link is created from the target process instance to the source root
+    process instance.</li>
+</ol>
+<h3>Linked Processes</h3>
+<p>The merged process is linked to the originating one. The link is an 
+additional property of a process instance but does not influence the process 
+hierarchy. API is provided to retrieve the linking information from an existing 
+process instance. Refer to chapter
+<a href="../../handbooks/programming/embed/wf-processing/pg-workflow-switch.htm">
+Workflow Processing to Abort and Start Subprocess</a> in the
+<a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+for details.</p> 
+<p>In case the target or the source process instance are subprocess instances,
+the linking is established from the root process instance to the target 
+process instance.</p>
+<p>The links created for each process instance will have the following Link Types
+depending on if they are the source process instance or target process instance:</p>
+<ul>
+    <li>Link type for source process instance is: <tt>Joined To</tt></li>
+    <li>Link type for target process instance is: <tt>Joined From</tt></li>
+</ul>
+
+<h2 id="portal">Aborting and Joining Processes in the Portal</h2>
+<p>The aborting action in the Stardust portal provides the option to abort
+and join a process. The process instance to join can be determined along with a
+link comment. For details refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/abort-and-join.html">
+Aborting and Joining Processes</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a>.</p>
+<p>Linked processes can be viewed in the Process Details view of the process
+instance. Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/process-details/proc-linked.html">
+Linked Processes</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a> for details.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

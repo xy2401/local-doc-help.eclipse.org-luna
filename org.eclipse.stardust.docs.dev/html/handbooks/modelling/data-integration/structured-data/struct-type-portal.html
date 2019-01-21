@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Using Structured Types in the Stardust Portal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Structured Data Annotation Properties",
+    	"struct-proc-data.html","struct-field-level.html",
+		"../../../handbooks.htm","Developer Handbooks",
+		"../../mg-preface.htm","The Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../struct-data-preface.html","Structured Data Types");
+ -->
+</script>
+<body>
+<h1>Using Structured Types in the Stardust Portal</h1>
+<ul>
+    <li><a href="#gui">GUI Generation for Manual Activities</a></li>
+</ul>
+
+<h2 id="gui">GUI Generation for Manual Activities</h2>
+<p>The Stardust Workflow Execution Perspective supports the automatic generation of GUI forms 
+  to display and modify data of structured data types.</p>
+<h3>Manual Activities in the Stardust Portal</h3>
+<p>If <a href="../../activities/manual-activities.html">Manual activities</a> are activated in the JSF-based 
+<strong>Workflow Execution Perspective</strong>> a 
+  form is created at runtime for all data mappings whose endpoints return</p>
+<ul>
+  <li>primitive</li>
+  <li>and structured </li>
+</ul>
+<p>data types. </p>
+<p>For the primitive and structured data the following mapping rules are used</p>
+<table width="100%" border="1" id='id_3'>
+  <tr> 
+    <th>Data Mapping Endpoint Type</th>
+    <th>GUI Element</th>
+  </tr>
+  <tr> 
+    <td>Integer, float or string type</td>
+    <td>Entry fields with corresponding validation rules. Readonly, when the data 
+      mapping is an IN path only.</td>
+  </tr>
+  <tr> 
+    <td>Boolean type</td>
+    <td>Checkbox. Readonly, when the data mapping is an IN path only.</td>
+  </tr>
+  <tr> 
+    <td>Enumeration type</td>
+    <td>Combo box with enumeration keys. Readonly, when the data mapping is an 
+      IN path only.</td>
+  </tr>
+  <tr> 
+    <td>Composite data type</td>
+    <td>Titled boxes with GUI elements for all fields of the composite type</td>
+  </tr>
+  <tr>
+    <td valign="top">List of the above</td>
+    <td> Tables displaying the corresponding GUI elements for all list entries 
+      and GUI controls to add and remove list elements as well as collapse and 
+      expand the displayed GUI elements according to the following list
+      <table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <tr>
+          <td width="2%"><img src="images/collapse.png"></td>
+          <td width="98%">collapse all list elements</td>
+        </tr>
+        <tr>
+          <td width="2%"><img src="images/expand.png"></td>
+          <td width="98%">expand all list elements</td>
+        </tr>
+        
+        <tr>
+          <td width="2%"><img src="images/new-element.png"></td>
+          <td width="98%">add new list element</td>
+        </tr>
+      </table>
+      The add and delete button are missing when the data mapping is an IN 
+      path only.</td>
+  </tr>
+</table>
+<p>For example, for the structure</p>
+<p class="image"><img src="images/person-data-structure.png" alt=""></p>
+<p>and the following data mapping</p>
+<p class="image"><img src="images/data-mapping.png" alt=""></p>
+<p>whereby customer is of structured type <strong>Person</strong>, the following GUI form is generated:</p>
+<p class="image"><img src="images/manual-activity-form.png" alt=""></p>
+ 
+<h4>Mapping of Enumerations</h4>
+<p>The combobox is created if direct mapping of enumeration is provided into activities 
+or enumeration field is inside a composite type.</p>
+<p class="image"><img src="images/enumeration-form.png" alt=""></p>
+<h3>Viewing Structured Data with XPATH in the Stardust Portal</h3>
+<p>When working with XPATH enabled structured data in the Stardust Portal, make sure that the correct input is provided in the field.
+If no value is provided or the XPATH is null or inappropriate, a warning message is displayed in the Stardust Portal
+after expanding the data at the time of instantiation of the process or activity. To expand the data, click on the 
+plus <img src="images/plus.png"></img> sign. </p>
+<p>The warning message looks like as shown in the following screenshot:</p>
+
+<p class="image"><img src="images/warning.png" alt="Stardust Portal - XPATH Warning"></img></p>
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Administrative Functionality</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("The Sysconsole Command","","ag-commandline-2.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-command-preface.htm","Command Line Tools");
+ -->
+</script>
+<h1>Administrative Functionality</h1>
+<p>Administrative tasks for a Stardust runtime environment can be
+performed either with the <strong>Administration Perspective</strong> in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> or with the Stardust command line tools like the <a
+    href="ag-commandline-2.htm">Sysconsole</a> and the <a
+    href="ag-commandline-3.htm">Console</a> command.</p>
+<h2>Administrative Tasks</h2>
+<p>Especially in the case of in-production scenarios where script-based
+performing is required, Stardust allows to perform these tasks on the command
+line. Such administrative tasks include</p>
+<ul>
+    <li>creation and upgrade of the audit trail database schema,</li>
+    <li>clean-up of the audit trail and model database,</li>
+    <li>starting, stopping and monitoring of daemons for process triggers
+    and event handling,</li>
+    <li>deployment of model versions and</li>
+    <li>recovery of the runtime environment.</li>
+</ul>
+<p>Whereas the Stardust Administration Perspective is a Web Application,
+command line tools are console applications and will be started from the command
+console.</p>
+<p>The Stardust command line tools are batch programs installed in the <tt>bin</tt>
+directory of your Stardust installation. There are two console utilities
+provided with the file suffix <tt>.bat</tt> for the MS Windows platform and the
+suffix <tt>.sh</tt> for UNIX systems, respectively</p>
+<ul>
+    <li><tt>sysconsole.bat</tt> / <tt>sysconsole.sh </tt>and</li>
+    <li><tt>console.bat</tt> / <tt>console.sh</tt>.</li>
+</ul>
+<p>For both tools help can be invoked to display a list of accepted
+commands and arguments.</p>
+<p>Each tool follows the same command pattern:</p>
+<p><tt>&gt; console [global-options] command [options]</tt></p>
+<p>One of the most important commands for first time users is help, which
+gives you the facility to get direct help to every command or option. The
+following table will give you an idea of the help functionality:</p>
+<table id='id'>
+    <tr>
+        <th width="300">Usage</th>
+        <th>Explanation</th>
+    </tr>
+    <tr>
+        <td><tt> sysconsole help</tt></td>
+        <td>Help for the application</td>
+    </tr>
+    <tr>
+        <td><tt> sysconsole help -s</tt></td>
+        <td>Gives a summary of all available
+        commands</td>
+    </tr>
+    <tr>
+        <td><tt> sysconsole help -o</tt></td>
+        <td>Gives a summary of all global options</td>
+    </tr>
+    <tr>
+        <td><tt> sysconsole help -c
+        [command]</tt></td>
+        <td>Help for a specific command including
+        all options of the command,<br>
+        e.g. sysconsole help -c dropschema.</td>
+    </tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

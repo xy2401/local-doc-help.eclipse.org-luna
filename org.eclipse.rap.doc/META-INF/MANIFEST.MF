@@ -1,0 +1,3310 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.rt.rap
+Bundle-SymbolicName: org.eclipse.rap.doc;singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/rap/or
+ g.eclipse.rap.tools.git;path="bundles/org.eclipse.rap.doc";commitId=1
+ a32732c1a5bc4b67b3a011142d8e1df9f0b48d5
+Require-Bundle: org.eclipse.help,org.eclipse.core.runtime,org.eclipse.
+ core.resources
+Bundle-Version: 2.3.2.20150119-1319
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/FileSe
+ ttingStoreFactory.html
+SHA1-Digest: gEb687lpu8/5/Gi1xlhLby5irRw=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Cursor.ht
+ ml
+SHA1-Digest: JPb4MndxpbMpzFqImSnFz6YLOz8=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Image.htm
+ l
+SHA1-Digest: kFdBDF9ZaTaZhwYVvonSLMO8NPk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Dialog
+ Callback.html
+SHA1-Digest: bSGzADAz+nZf0q+mEvCp9CFbKLQ=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/FocusListen
+ er.html
+SHA1-Digest: A+BcBQlHLKVsQtM6haQob6UpDsA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Link.html
+SHA1-Digest: CmZ4+JxeK7d2cFVbYwVzptlrh9c=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/Accessible.htm
+ l
+SHA1-Digest: 5hhdMElU/Ab6ewjeN4LkAr8Qtd8=
+
+Name: guide/images/war_product_editor_webxml.png
+SHA1-Digest: 8IqHf1sFANWnDguTK7908dLFPSQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/WidgetUtil.html
+SHA1-Digest: myIaeZ5zqEf5/w3wLB5+rFmKpOU=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseMoveListener.htm
+ l
+SHA1-Digest: gI8CnOshZ2xoDsT+dlMXWr+E7j8=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/FillLayout.
+ html
+SHA1-Digest: MtGWy+EgE+ZDt7P2nNY6kjvPNdo=
+
+Name: guide/reference/api/org/eclipse/swt/events/MenuDetectListener.ht
+ ml
+SHA1-Digest: eLNUxHmXQPSOCKlCjW4XJvTq4Kk=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/FontMetrics.html
+SHA1-Digest: k2dHJiKJ3S0k+o3GjqXWxdO65S8=
+
+Name: guide/reference/api/org/eclipse/rap/json/package-frame.html
+SHA1-Digest: XRrVHpgd1ZmQQlM0aL9+sLh5qHk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TreeItem.h
+ tml
+SHA1-Digest: obgCy2bDby7QCFTcWFl45FxtKu8=
+
+Name: guide/reference/theming/CoolBar.html
+SHA1-Digest: hQIj1dH1Zo7ORDBEvSDLXASYCCo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/FileUp
+ load.html
+SHA1-Digest: DtwQ8UYEuPLWKjTMVq2FVUsBcY0=
+
+Name: guide/reference/extension-points/org_eclipse_ui_viewActions.html
+SHA1-Digest: ACnujNu1G9bDrwZ5cP75XaEf4vs=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleListener.html
+SHA1-Digest: srq+5Q60g96jz877voOO+ZTIMVE=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ToolTip.html
+SHA1-Digest: 7/PvPVLXt2oRPHQ4tGtr23BQL5Q=
+
+Name: guide/reference/api/org/eclipse/swt/browser/Browser.html
+SHA1-Digest: mEk9Cvseq55MqxYQPk9st8qSKgo=
+
+Name: guide/articles/rwt-standalone.html
+SHA1-Digest: +w/XtkOk4C0yj9EjJLwM1tNb+VY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Widget.html
+SHA1-Digest: Q+TASlWf4EnthLb9zz/9GCohXh0=
+
+Name: guide/reference/extension-points/org_eclipse_ui_activities.html
+SHA1-Digest: yI40ARe43XggJJMgYkd+MgqrPwo=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleValu
+ eEvent.html
+SHA1-Digest: 4PsGo0GlG1Ls2pmcUSi2yl59UPM=
+
+Name: guide/reference/api/org/eclipse/swt/layout/RowData.html
+SHA1-Digest: SZDRgFiceSgdPOyaEooWmyZ1TtM=
+
+Name: guide/reference/api/org/eclipse/swt/browser/package-use.html
+SHA1-Digest: FvkFBqUah/XqeOrdI29mR8e7C34=
+
+Name: guide/reference/theming/Link.html
+SHA1-Digest: GjNZ7uTNFzDAkTqzZi0eTj28OjY=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/package-summary.htm
+ l
+SHA1-Digest: uK21jsuofCh1hoaawU4/6NLs3hc=
+
+Name: guide/reference/api/org/eclipse/swt/browser/StatusTextListener.h
+ tml
+SHA1-Digest: oN9jZT3m9ZguGBt+9kQfUKyc/pI=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_layouts.html
+SHA1-Digest: AnxVXVVNmiugYj7oMkR7kksi8bQ=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TaskItem.html
+SHA1-Digest: DdYX1t7jSvDn/WqhY6xH3Q6AmzY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Widg
+ etUtil.html
+SHA1-Digest: iDfoyvrHKM9hmotFnhqI6BbqgAU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Extern
+ alBrowser.html
+SHA1-Digest: gl/S5de/U75BmYkBQksYRZc1rEA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Canvas.htm
+ l
+SHA1-Digest: TDyiRNsFe7atyMUB/B0ZWMkSeFA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/ClusteredSynchro
+ nizer.html
+SHA1-Digest: Z4e7HuFbHC8rGoQwC0my+BRClhA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/package-tree.h
+ tml
+SHA1-Digest: Jga1MNFrAVVQ2pUQ30gaCJT2jqE=
+
+Name: guide/reference/api/org/eclipse/swt/custom/SashForm.html
+SHA1-Digest: 7d3kZVeaQeXcM1Mi5rN8wIaqSWw=
+
+Name: guide/articles/server-push.html
+SHA1-Digest: Fiq/dUG17wwH7ISHukL0Lylo4cs=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Event.html
+SHA1-Digest: 6X0x7/hMIYlyVxgCIYzCthul2Ao=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseAdapte
+ r.html
+SHA1-Digest: A6dg1TZRQ/Qxp+ccAYhbvi7L0K8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ResourceManager.
+ html
+SHA1-Digest: Fu4tHG9g2AG175SbQozpCaKCElY=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/FocusEvent.
+ html
+SHA1-Digest: Pkix1Ste56c2CHBK1pZttRVROYc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Settin
+ gStore.html
+SHA1-Digest: XeJglm/xfKzThenJQsTIXAcJCT4=
+
+Name: guide/reference/api/org/eclipse/swt/events/TouchEvent.html
+SHA1-Digest: EINcdRtf+P6W/TdH9rLMg9iTuOY=
+
+Name: guide/reference/jsdoc/symbols/Event.html
+SHA1-Digest: 6xZPcVZNgVOD8w8B35BPUVL5uCE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/UISessionListene
+ r.html
+SHA1-Digest: m9y3rrVR3QJxUs/qwejy+OGqhds=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ ExtendedListener.html
+SHA1-Digest: M3G41Trw2VwYZCLZVdHC5vBzTek=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/ByteArrayTrans
+ fer.html
+SHA1-Digest: PgHZs5ohPQZqpqrrrwL7eBkWclo=
+
+Name: guide/reference/extension-points/index.html
+SHA1-Digest: XYIuFthBjTOQtUTeJ5sia6yzW6M=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CCombo.html
+SHA1-Digest: ivNWFtbEpy6hw/buyTLiBUL9+g8=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ScrollBar.html
+SHA1-Digest: 0wE0y2FkiUWWcoKTSvloJBph6yI=
+
+Name: guide/reference/api/org/eclipse/swt/events/SelectionListener.htm
+ l
+SHA1-Digest: mKzPXOcMIugTYNgqx+JSGmakMS0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Display.ht
+ ml
+SHA1-Digest: xmoXm6ABl6LNYrw+nHhJg5A5Dq4=
+
+Name: guide/images/demo-app-run.png
+SHA1-Digest: 6Twp4XkrleenmX9aTTznDqv/A6I=
+
+Name: guide/reference/api/org/eclipse/swt/events/ShellAdapter.html
+SHA1-Digest: GoGhs+4xtso6neucwqJltGox+Mk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eAdapter.html
+SHA1-Digest: YCaJ2sHco8GhbmyldhSrw33Z4ig=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Cluste
+ redSynchronizer.html
+SHA1-Digest: O9TlwXM0GfRUZ4HHOJFihcpsPgQ=
+
+Name: guide/images/rowtemplate.png
+SHA1-Digest: 7fUUMwqOu19jiokY2keg5Z8OCcE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/IControlThemeAdapt
+ er.html
+SHA1-Digest: bAvCO40qFm3kNhNfcBeTu3gM/Qw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /BrowserNavigationEvent.html
+SHA1-Digest: u+1K2IqTq32jja1pLRkSHtkIMwQ=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/ImageLoader.html
+SHA1-Digest: 3+4TyhHenaQ5eRY2E2Bv4BStPSQ=
+
+Name: guide/reference/api/org/eclipse/rap/json/package-use.html
+SHA1-Digest: KF2nUNTK3mZU51ijWNG+8nVgkxs=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/HelpEvent.h
+ tml
+SHA1-Digest: Xl9ONUi76JLVrByMkl+8W01vJT8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/class-use/SingletonUtil.
+ html
+SHA1-Digest: +9sbnzORA+K4GNqDHSWK1jaFAj8=
+
+Name: guide/reference/api/org/eclipse/rap/json/JsonObject.html
+SHA1-Digest: ub79k1A5E3mvBuSYOJoSEkPKhYw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Sash.html
+SHA1-Digest: ebQOxTW7ZGIzmaS+PiGNhlG0dBs=
+
+Name: guide/reference/jsdoc/symbols/Button.html
+SHA1-Digest: Iy/cGahqg5y3zmtOqz7JZjWv5G0=
+
+Name: guide/reference/api/org/eclipse/swt/events/ExpandAdapter.html
+SHA1-Digest: HHZAPUk41O+Qskf1rkUZa8meGNM=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CTabFolder2Adapter.ht
+ ml
+SHA1-Digest: b3v35sqv11e979BN78mXuhZOvYU=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/StatusText
+ Event.html
+SHA1-Digest: MHoJs/MtYczQWhFxEU+vy8rJQPQ=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/BusyIndicat
+ or.html
+SHA1-Digest: c9DSSFkU9tU/krFnkwiP3FSzNAU=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Font.html
+SHA1-Digest: yIgggmLycYi0ECvF9VXhlIkv4tA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/package-summ
+ ary.html
+SHA1-Digest: 2/RRj5Ji6EpV0magrfyNbP8UaeQ=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CBanner.htm
+ l
+SHA1-Digest: N2bVepT3O/H4tm1KCyQdUQr8SKs=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TabItem.ht
+ ml
+SHA1-Digest: pM3OOFhtRLNre9V3jXPxU6QVxGY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/BrowserNa
+ vigation.html
+SHA1-Digest: Xr+ZTRAOdHiYiqdLEgE8J2C/jCo=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/RGB.html
+SHA1-Digest: Ba6HFzF8jF3OpNWXb6G4D1yus/I=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/ExitConfi
+ rmation.html
+SHA1-Digest: vceXc68iYIiDh9LMbuor8HYhp1Q=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Drawable.html
+SHA1-Digest: a1+Bmmob0hd7J5nUz4jOacY7dEc=
+
+Name: guide/reference/theming/Sash.html
+SHA1-Digest: D36wtgfAzIGHQEVtTunwnc8TWH8=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/PaletteDa
+ ta.html
+SHA1-Digest: aUs6MjE1V/9Eo7ClHmYcNU0OI7Q=
+
+Name: guide/reference/theming/CTabFolder.html
+SHA1-Digest: LvJnvxbG/syFS7pjY52jB2yVZWQ=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/RowLayout.h
+ tml
+SHA1-Digest: JJewpAXaxE1+v3ScCq7lX9w96wY=
+
+Name: guide/reference/api/org/eclipse/rap/json/class-use/JsonObject.ht
+ ml
+SHA1-Digest: QY373jraznSYKT6mb7QtU/y5/S8=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CTabFolderE
+ vent.html
+SHA1-Digest: Y7DMrMlrq6sHRjj2yDsOv8xds6U=
+
+Name: guide/reference/api/org/eclipse/swt/events/DisposeListener.html
+SHA1-Digest: qFu78kKUSQfXzrHjCKLEoRp/Cx0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/DateTime.html
+SHA1-Digest: ytVdOxSVdyUm1y3jlSqz9YJDWCU=
+
+Name: guide/articles/hello-world.html
+SHA1-Digest: 1pDiJLe2ZoAHjz6kSOr/GHHaU6w=
+
+Name: guide/reference/jsdoc/symbols/Text.html
+SHA1-Digest: 6pdJVVKOj2fUp9pnKFvTR4qvXEM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/SettingStore.htm
+ l
+SHA1-Digest: 20D3reIe4LEEJA/EH8X4n4rCC5o=
+
+Name: guide/reference/extension-points/org_eclipse_ui_actionSets.html
+SHA1-Digest: UTDZnZ6bYM8A8NpywwLYgg7uXcg=
+
+Name: guide/reference/api/org/eclipse/rap/json/class-use/ParseExceptio
+ n.html
+SHA1-Digest: W1SVIkL32OegBcgsXprecFY/L0s=
+
+Name: guide/reference/jsdoc/symbols/Control.html
+SHA1-Digest: Dc1Xx79EfnjgbZrZMvnqnVdrDYg=
+
+Name: guide/reference/jsdoc/symbols/RemoteObject.html
+SHA1-Digest: MRWM/l5Bxy6Cv+ypSxfvy829tTk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/class-use/SessionSinglet
+ onBase.html
+SHA1-Digest: eo8GqzVxnZvW+v3VZdp2MvNDBrU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/ISessi
+ onStore.html
+SHA1-Digest: zqkf7B2b53fEl+JyIJ2onkgPemQ=
+
+Name: guide/reference/jsdoc/symbols/Widget.html
+SHA1-Digest: GCuQAkUto4bSkc0lKj4Bfo9WxeU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/package-tree.ht
+ ml
+SHA1-Digest: LALnVlZu7HGpJE9LaPTZgdc+FwI=
+
+Name: guide/reference/api/org/eclipse/swt/events/MenuListener.html
+SHA1-Digest: Ld33RW+gCAp9dnTeeULqnd3IHmY=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleList
+ ener.html
+SHA1-Digest: 7gCPOHW+QtnXMBQQ15m2B0o1REc=
+
+Name: guide/reference/api/org/eclipse/swt/package-frame.html
+SHA1-Digest: gT7C/bG55+siPf8yEp+vQxKs4fc=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/GestureEven
+ t.html
+SHA1-Digest: YJ93mNgTtY3WNfOu/z8qooxh5Ac=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/ClientListener
+ .html
+SHA1-Digest: KarNqJf0rbtk72fl2d7aL8KWzTA=
+
+Name: guide/images/interactiondesign/newLook.png
+SHA1-Digest: VQmmq7REivsFU5F09pFlWq6FdhQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/package-tree.html
+SHA1-Digest: uMrxRKwabdIbTFkskL01Ozs+N00=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/DragDetectL
+ istener.html
+SHA1-Digest: u0Lpqg223xRjlwVXf59lrxAKkKE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eCellEvent.html
+SHA1-Digest: a/L3AUA12cp5kMqzxL3bk3W+sx8=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CTabFolder.
+ html
+SHA1-Digest: 5LVXnNeUMZXof91DTb0v0FBOEh4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/ClientSer
+ vice.html
+SHA1-Digest: ez+05MhShEtYDSJEtJzqi5GKHcU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/package-use.
+ html
+SHA1-Digest: NgyTZujXO0Ctt6ZCafMIdYf3r+Y=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/package-tree.html
+SHA1-Digest: CcCEPGYysgOWH/G0Fj4wWE/ML0c=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Combo.html
+SHA1-Digest: hHfxifiPc7jHWKyDgvMSVPeK/Mo=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableListener.html
+SHA1-Digest: w61pVDj7DkRwV94y+Kcd4/d4CUs=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ Adapter.html
+SHA1-Digest: cAEgdT2Yotnqp/TcezBOxniHuCI=
+
+Name: guide/reference/extension-points/org_eclipse_ui_statusHandlers.h
+ tml
+SHA1-Digest: 2mW3RkqSqcivYP13/dvVkm7VxsI=
+
+Name: guide/reference/api/org/eclipse/swt/events/TreeListener.html
+SHA1-Digest: eP4iqBMWwYGgzuQtdQyBtiiNNiE=
+
+Name: guide/images/war_product_wizard.png
+SHA1-Digest: W3GegmpGC8DOEj3TvaSm6qjG8O4=
+
+Name: guide/reference/api/package-list
+SHA1-Digest: TFp220I6hDWW2zuLML1AHYQ95hU=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/HTMLTransfer.h
+ tml
+SHA1-Digest: H961o9sVqY+AsTJLxm6s72gZiDE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ApplicationConte
+ xt.html
+SHA1-Digest: LGLM7/+c92bDxBcx/4s5IkzaEoQ=
+
+Name: guide/reference/jsdoc/symbols/SWT.html
+SHA1-Digest: cn4BD59aqvr2GZlPHHG4bzizk1U=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/package-frame.html
+SHA1-Digest: Pw4n3aXdtE/0xBKxmMVjWNC5PNM=
+
+Name: guide/reference/api/org/eclipse/swt/package-summary.html
+SHA1-Digest: +yz9g05bL7j1R4Zjaed1Tkk9OGU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/package-use.html
+SHA1-Digest: 9gP/r8fyWrV/4vvAB7KkOmOdonk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Cont
+ rolLCAUtil.html
+SHA1-Digest: c/kajEWWJ7F431NMDtPpYpLpDc8=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/DisposeList
+ ener.html
+SHA1-Digest: NVhGZd3HQyrel3MDYXvpHCGVdmU=
+
+Name: guide/images/hello-world-workbench.png
+SHA1-Digest: WR1zmJ5XRnNk8p7rPk3Mq/V6XU4=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ Event.html
+SHA1-Digest: vNu1JLawKHUzUDK+hpuATynufK4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Applic
+ ationContextListener.html
+SHA1-Digest: Q/P6MZL8ENqkb6n8yANXkIfU9Ks=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DragSourceListener.html
+SHA1-Digest: PBRO66DfwAPr1CY2TFTJ94GMp08=
+
+Name: META-INF/maven/org.eclipse.rap/org.eclipse.rap.doc/pom.xml
+SHA1-Digest: OLm/68oECcVuGk4IzqZyWljT38Y=
+
+Name: guide/reference/extension-points/org_eclipse_ui_propertiesView.h
+ tml
+SHA1-Digest: 8qEYhgCGN/tBijpirhUpHGodGWk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Settin
+ gStoreListener.html
+SHA1-Digest: wcsz8ThDkSvz4ijAzXV0EkAHnks=
+
+Name: guide/reference/api/org/eclipse/swt/custom/ViewForm.html
+SHA1-Digest: Kl3LyAcCkuQNDuO6bIhVa/RpUXo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/En
+ tryPoint.html
+SHA1-Digest: FRjIhTDh+eP8/CJcbYM4Uz6PeDM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /ClientFileUploader.html
+SHA1-Digest: qgl0fd0hi3AgdDeYJi3rcGH7bSA=
+
+Name: guide/reference/api/org/eclipse/swt/browser/package-frame.html
+SHA1-Digest: b8Tkntx4OXqijHUs7q+EZ4yaZ2Y=
+
+Name: guide/reference/extension-points/org_eclipse_ui_perspectiveExten
+ sions.html
+SHA1-Digest: tNZRm3Y8RhgOZqLeqP5GS63MufA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/IE
+ ntryPoint.html
+SHA1-Digest: fJcFZhyBd6MUoWdTXeHK0lgswpo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/package-frame.h
+ tml
+SHA1-Digest: Yoo5DIlX7h9TY/TlZpKdA61OlyM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /ClientService.html
+SHA1-Digest: h6z7kklZW1mgaqK/VUZnAfT3TaI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/package-use.ht
+ ml
+SHA1-Digest: 2r8cyviObUEFvDhGjLVlLR0U+Js=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Image.html
+SHA1-Digest: GYYJiNSSZKXnTypdzAFr16x7gxI=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/ByteArrayTransfer.html
+SHA1-Digest: 3vSAQNlCUYA8woIAUstVjy9Oe+I=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MenuEvent.h
+ tml
+SHA1-Digest: lQk+ZMoEWRu6rSdoIP0uIUiYXFI=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/Browser.ht
+ ml
+SHA1-Digest: sSeV/X47FSXhhLnoMx5A+huuKp8=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleAttributeAdapter.html
+SHA1-Digest: 6CdIQymhCsYHMwGu6+iUo5U9Vqk=
+
+Name: guide/articles/deployment.html
+SHA1-Digest: 40EvGh0rTLnOuELcEpWpKMFAcHs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/class-use/Clie
+ ntListener.html
+SHA1-Digest: 4llHpqLXzrPgKC67hy4wg2fpI2k=
+
+Name: guide/images/image-label.png
+SHA1-Digest: YQEzwZZs1h87gy+On2czhkEyLmY=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CTabFolder.html
+SHA1-Digest: LRJ3YCrFbI7muNyqldzvgIb7vsg=
+
+Name: guide/images/config.png
+SHA1-Digest: 0+B9H7EzKiXsXDpoAjbJ1xJSCv4=
+
+Name: guide/reference/extension-points/org_eclipse_ui_preferencePages.
+ html
+SHA1-Digest: xGzXVvevJD+NjkQSBAe2sg2pL4g=
+
+Name: guide/images/war_product_configuration.png
+SHA1-Digest: TL0PFyrrdMZZaME+fOLXMhaQ+Ys=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/JavaScrip
+ tLoader.html
+SHA1-Digest: BdG5kmmIH+TQWqK2WLnJfKSeO2U=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Item.html
+SHA1-Digest: PQdYQLxhuVco4o+F495IBqJXOPc=
+
+Name: guide/schema.css
+SHA1-Digest: 1GF7mL9i/mSAevOaxAVp6Dk9IIs=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DND.html
+SHA1-Digest: XgEYm0Z+EgApkQdgSoCKvF7wXzM=
+
+Name: guide/reference/api/org/eclipse/rap/json/package-summary.html
+SHA1-Digest: p0CBAQL7n1dIfCK1AQfTm3QnjJs=
+
+Name: guide/reference/api/resources/background.gif
+SHA1-Digest: GasMDXsNPOCyk0UziKX6+BCdopc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/IServi
+ ceHandler.html
+SHA1-Digest: R2CJYy/cFhagWX64fg5HnTlyZfE=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ShellAdapte
+ r.html
+SHA1-Digest: WFSTX3WwVxRKq5SHkjG0N318HKY=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DragSourceList
+ ener.html
+SHA1-Digest: CpjLmexRjnFSG5U7bDI6twJuuw4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/package-tree
+ .html
+SHA1-Digest: hpGxZrUndk2onImSlJz7M3Ho/yM=
+
+Name: guide/articles/launcher.html
+SHA1-Digest: OugQZlRF6V+jkiLYDsVw0dPFovE=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/FontData.
+ html
+SHA1-Digest: nOclIJvQTD0CktVapqTfqjL8+t0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Servic
+ eHandler.html
+SHA1-Digest: B6zgLK/y0EowdMBpOxS7YP7izWI=
+
+Name: guide/reference/api/org/eclipse/swt/layout/package-summary.html
+SHA1-Digest: lz6e22/reAuXDdyMrPi4j8RWoyY=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/ImageTransfer.
+ html
+SHA1-Digest: J9j/6TOQMSRSJILNllX1igYzwUk=
+
+Name: guide/reference/api/org/eclipse/swt/events/KeyEvent.html
+SHA1-Digest: bXsSRk6pw/j5fno8VmXVt+5pgAA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/SettingStoreFact
+ ory.html
+SHA1-Digest: SUnqaS/w6g4uDpl9fEW+eRcVcPw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Shell.html
+SHA1-Digest: 5AzEWzl70CvQx0XT9ePHN/ruJwg=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/LineAttributes.html
+SHA1-Digest: 7GnNmv86b/cnSwNjXnMCXABmAV4=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleActi
+ onEvent.html
+SHA1-Digest: nojZ1QBClPuhnboMJ37NOJZu9So=
+
+Name: guide/reference/jsdoc/symbols/Spinner.html
+SHA1-Digest: Dwg3U994rAsCJ8n4fRItMqLaBlY=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/ProgressEv
+ ent.html
+SHA1-Digest: W9DsZlhmCOf+vR81BbkkMqqtwuQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ab
+ stractEntryPoint.html
+SHA1-Digest: YOgKBG5v/3AYiG+Mdywz3LN9LqM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ToolItem.html
+SHA1-Digest: U9ZWDBMVPg7vj5lFt9nD6HPbk8g=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CCombo.html
+SHA1-Digest: YS1gXXuAPivrottdt4FsgAITxuA=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ExpandListe
+ ner.html
+SHA1-Digest: kF+pMcXZQYSsj3ysJSXuNJ1p7iU=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CTabItem.ht
+ ml
+SHA1-Digest: B76fYvfTP+Thu6yMQ30aykWpLWE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/package-tree.html
+SHA1-Digest: J8oKtwKWvicsCQ9Z/O5l/PtqX1o=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/BrowserCallback.
+ html
+SHA1-Digest: 2opT+VXgo5TzNRtmd6ZvMH2orMI=
+
+Name: guide/reference/api/org/eclipse/swt/events/TouchListener.html
+SHA1-Digest: +xSldDESPZ83Inoo2hNG1IgWmEg=
+
+Name: guide/reference/extension-points/org_eclipse_ui_intro.html
+SHA1-Digest: CD6NNDkieuDtESMZOWf4olQ0uU4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/DialogUtil.html
+SHA1-Digest: kQJVF6MeDrqeUoeG2/KsAqmmsIk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Canvas.html
+SHA1-Digest: ip8BpK/qJ/38Bs6vFlGXvO7M+ao=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/StackLayout
+ .html
+SHA1-Digest: jguDBFwB1gxyTbPH6pyDTTxy1xE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleValu
+ eAdapter.html
+SHA1-Digest: dB27eiG78y9XDGx3aSRbh9GTpGY=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MenuListene
+ r.html
+SHA1-Digest: aliCGK2X2Sqa55SDWFh/shPDppE=
+
+Name: guide/reference/theming/toc.xml
+SHA1-Digest: FdLDsv+5ZxpBHJJeswsJsOxlZ4s=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TrayItem.html
+SHA1-Digest: aAJHIXZnGveJtkayg5YWeifczUU=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleActionAdapter.html
+SHA1-Digest: DW/cB41GOXkXEdc3sbK4udq0pS0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Scrollable.html
+SHA1-Digest: gHxp8sRH8pgstXBH22GLDmeTqgI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/UISession.html
+SHA1-Digest: 0b5EjOUJ6IhwepoN3FcmjNXi9Eg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/package-tree.h
+ tml
+SHA1-Digest: L/Ls4Em752+02beZKk+QALJFYAQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/class-use/JsonMap
+ ping.html
+SHA1-Digest: CA3HXGhUyNZM2V0sq8lFD94csx0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/package-frame.html
+SHA1-Digest: 7TjHUcGx8P7JlLHJBddZEwmBK3A=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TreeListene
+ r.html
+SHA1-Digest: 3TY+rjQhCs/3HFyIyeXuDQM4mUU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TableItem.
+ html
+SHA1-Digest: 5beEckTQXCMfelC4w390c5SIMho=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/KeyAdapter.
+ html
+SHA1-Digest: 87wLwwb5l8E2cZYk5AfPf7v4R68=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Touch.html
+SHA1-Digest: PIICQU5xPjXaoA29hRUbSranWrI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Widg
+ etAdapter.html
+SHA1-Digest: KOHB6GHc8Pk9tqiZnk45GhX0izg=
+
+Name: guide/articles/setup-ide.html
+SHA1-Digest: IMkKBfxmSzpN+gt82dThol1cUIU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Resour
+ ceManager.html
+SHA1-Digest: 8Eakw8i4W3ycMxQ8RGFAretrPHY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Menu.html
+SHA1-Digest: 4Su7jHgXu1Np0+XAr6+nggdhD2M=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/class-use/Connect
+ ion.html
+SHA1-Digest: 93rhvOncpPdEkp2zYpOu6xNX3uM=
+
+Name: guide/reference/jsdoc/symbols/rap.html
+SHA1-Digest: Hg+mWTNHqda2WAlSOY/Jg/2t7P8=
+
+Name: guide/reference/api/org/eclipse/swt/layout/FormLayout.html
+SHA1-Digest: M/LeY266xTnpx0Q8cZTudhdfKl4=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Combo.html
+SHA1-Digest: m7IIROQDHlLFskB6Uyk86GSsxbw=
+
+Name: guide/reference/extension-points/org_eclipse_ui_workingSets.html
+SHA1-Digest: wmZoCkDBXLUxhLA3wqGCTwIC9GI=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleEvent.html
+SHA1-Digest: yb6GzgJBSe5u9VdRPFZowsaqgcc=
+
+Name: guide/articles/resources.html
+SHA1-Digest: WNiIYqcYZkifBkFnIoACb2OBXUI=
+
+Name: guide/images/extension.png
+SHA1-Digest: +5Ri9YDneSug39HuzpMF1k9vTeM=
+
+Name: guide/reference/jsdoc/symbols/Combo.html
+SHA1-Digest: 4w1RDm3z5fL06mNCzUio3+3K8z4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/package-frame.
+ html
+SHA1-Digest: sch+a4BkQfUZOG4HTVa+ZIrX3bA=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseListener.html
+SHA1-Digest: 1eGIdjmtkZlouT0VL78HYKJkQJY=
+
+Name: guide/reference/theming/Menu.html
+SHA1-Digest: nKQGW8Az6fiB4uCfjM+zAHSYOfg=
+
+Name: guide/reference/extension-points/org_eclipse_ui_propertyPages.ht
+ ml
+SHA1-Digest: v9DRtrAqjAs1kmPswNbcBCvScm0=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableCellEvent.html
+SHA1-Digest: +RIY/iPxGjX5wl8brSSIVtRChzw=
+
+Name: guide/reference/extension-points/org_eclipse_ui_themes.html
+SHA1-Digest: t1waT8OC6CrUM5LDi0DZmvlQGfw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/package-summar
+ y.html
+SHA1-Digest: 3jLLjqjqu+9VlXS2MdHNCSl3DLA=
+
+Name: guide/articles/related-technologies.html
+SHA1-Digest: jtnuQSte0aEqxVZTdbBVevtslqQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Resour
+ ceLoader.html
+SHA1-Digest: cF2ylIQJE5lnaXb2l0keVu5rjSg=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/VerifyListe
+ ner.html
+SHA1-Digest: CD8DxX7EUfsoQ9DO4StffJR/uHU=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/package-frame.html
+SHA1-Digest: heqCeQLM5e19QdvtsLbQVQU4HhE=
+
+Name: guide/reference/extension-points/org_eclipse_ui_presentationFact
+ ories.html
+SHA1-Digest: sEXajUIt6BiRCwMlG1Sv6RkdrUI=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleEdit
+ ableTextListener.html
+SHA1-Digest: 6VcDAaXwYgVSF2hO+B/k19YTmoY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/WidgetUtil.htm
+ l
+SHA1-Digest: Il5qEB7b8G3O18TE/wrPuj7g/Gg=
+
+Name: guide/reference/api/org/eclipse/rap/json/ParseException.html
+SHA1-Digest: BYBEvBYIv1mVqde1Z01HovB6hZA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TaskItem.h
+ tml
+SHA1-Digest: iIbPmqfzR7LGwXPvFUD0K9k+dYo=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleAttr
+ ibuteEvent.html
+SHA1-Digest: IJCyfnDZkP8JoIEj0MyPi/N8lRw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/class-use/Adaptable.html
+SHA1-Digest: 7qy3qCJw+LLlmrbIEiAQ/LwyTyo=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/ImageLoaderEvent.ht
+ ml
+SHA1-Digest: ZfF7rqVW8vHA5lrGk6OHYEW0Vxc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/class-use/ClientFile
+ Transfer.html
+SHA1-Digest: kzCb+jKpFDx44gzWXf2mc9bxQkg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/IServi
+ ceStore.html
+SHA1-Digest: zvC2YZ6Bjc04J2acG37Rzrk7hoE=
+
+Name: guide/reference/extension-points/org_eclipse_ui_services.html
+SHA1-Digest: faceVXVwTsMvBizEKaJ4Ea7mr4Y=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/CoolBar.ht
+ ml
+SHA1-Digest: zyO4wH+CX2A5sTic+cbGFuiQgo0=
+
+Name: guide/reference/api/org/eclipse/swt/events/ControlAdapter.html
+SHA1-Digest: gT/yYbWNHd21Yevtf9ccEMarhQU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/package-frame.html
+SHA1-Digest: iAUQdbZt9WO/xEV2Ax0OUuaZrGc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/class-use/RWT.html
+SHA1-Digest: JPOIaQegJLbtoPO/1gL01F5Bb2I=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DropTargetEffect.html
+SHA1-Digest: Obir+ywHBZmJsvUnk02DuI3gtMk=
+
+Name: guide/reference/jsdoc/symbols/Canvas.html
+SHA1-Digest: ypKh2IK1hl452FTz4te/NU46Hiw=
+
+Name: guide/reference/api/org/eclipse/swt/package-use.html
+SHA1-Digest: 0iBngjtpkOHLDDO6d39wCf1roqI=
+
+Name: guide/articles/application-setup.html
+SHA1-Digest: dS7jf57Ra930BwnUqmxnPHPbu+k=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/BrowserFun
+ ction.html
+SHA1-Digest: HhY1gueJdSOk6jBy7kQzy5t0+74=
+
+Name: guide/reference/extension-points/org_eclipse_ui_commands.html
+SHA1-Digest: 7kcpAdaq1wr0ecafGiNwVHlsvSo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/class-use/RWTServ
+ let.html
+SHA1-Digest: o7EvswWfrMAYRuBIYRSzINadgq4=
+
+Name: guide/reference/theming/CLabel.html
+SHA1-Digest: +FksVSjZY8e/6cydbhh5H1AAJhY=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_entrypoint.h
+ tml
+SHA1-Digest: 1am/RJDg9xt6ZJsDCFqsUxPh15w=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DragSourceAdap
+ ter.html
+SHA1-Digest: t7FSdnXTvLAfZo1wb3tTABcvRg8=
+
+Name: guide/images/script.png
+SHA1-Digest: 2c7jQRHzZ4O7W8IQsbs3Fb8tkTM=
+
+Name: guide/reference/api/org/eclipse/swt/events/ShellListener.html
+SHA1-Digest: WUfvFf5ddkpaLw70stJvdXD2Vfk=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/HTMLTransfer.html
+SHA1-Digest: ApsjZk71Zt7VsuNB5ajj+QoeNU4=
+
+Name: guide/reference/api/org/eclipse/swt/browser/ProgressEvent.html
+SHA1-Digest: J8Q4sKMVEVAL7gGjbWNELW4keyQ=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleHyperlinkListener.html
+SHA1-Digest: HImYDwa7F+g8Xo3RatCDKTuq0NE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleHype
+ rlinkListener.html
+SHA1-Digest: Wov0NeJrJAwBPBjdgvrAteKcbeE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Applic
+ ationContext.html
+SHA1-Digest: sP7FsvWbjAF9DP2gs1qqlEV20rc=
+
+Name: guide/reference/api/org/eclipse/swt/package-tree.html
+SHA1-Digest: h9X+DBbJn2dlIvx3t2Z5eBtAcVQ=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/package-summary.html
+SHA1-Digest: 0PeXGPE7ZxV9xRru2yzk+Fesnhc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eEvent.html
+SHA1-Digest: G02y6IeMA7mkxvndVJjSbOfSoR0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/MessageBox
+ .html
+SHA1-Digest: rc3kQDZuIh95sf8xLR9xXeGDJwA=
+
+Name: guide/articles/target-install.html
+SHA1-Digest: pJXF/12ViaIzWH2AofQe14DAxwo=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Slider.htm
+ l
+SHA1-Digest: yHArsh2DwuUfRCGhfH/OHlpUP64=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ArmListener
+ .html
+SHA1-Digest: GHTdyDvRd8rZf5HuKgzGL4w8ozg=
+
+Name: guide/reference/extension-points/org_eclipse_ui_keywords.html
+SHA1-Digest: 8ymmP8swoshVwgn35Hqtn1hW2+Q=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Widg
+ etLCAUtil.html
+SHA1-Digest: oqNYJcBJrsqSEv9RfKSSh1AdGCA=
+
+Name: guide/reference/api/org/eclipse/swt/layout/GridData.html
+SHA1-Digest: HeVQsUE8nLwynTpTnJdRGfbHwNg=
+
+Name: guide/reference/api/org/eclipse/rap/json/class-use/JsonValue.htm
+ l
+SHA1-Digest: 37B1WXlboH0KYP9o02tPRnUnyhw=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/PathData.
+ html
+SHA1-Digest: xvnwM+R2Y4MHi8uMd75b7dIrRs4=
+
+Name: guide/reference/theming/DropDown.html
+SHA1-Digest: K2b6/zPQASPEaWU2fLHdl7j7jtc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Tray.html
+SHA1-Digest: +usWrXWUeKy/ysT2av3skiGBAhY=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DropTarget.htm
+ l
+SHA1-Digest: wWfXFTvDZ8EkRYlJI+Q4syJZk3Q=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /BrowserNavigation.html
+SHA1-Digest: 5WKhg13IeHT1ntm+e16b+ljil1I=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Phas
+ eEvent.html
+SHA1-Digest: BCZVIlV583eOaOGByUcYafJrIcw=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eListener.html
+SHA1-Digest: UAz/1194snNIdx8CWE0sgGB7NMM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/EntryPoint.h
+ tml
+SHA1-Digest: k2FQ6+VCiiEpj59OQ5HftIczZUY=
+
+Name: guide/images/custom-widget/demo.png
+SHA1-Digest: ZyJcG5z77ll849z3mxLiLzrLbjY=
+
+Name: guide/reference/api/org/eclipse/swt/events/SelectionEvent.html
+SHA1-Digest: TQKx4CLl12Iz7UGQTh/utFSs080=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/package-summary.htm
+ l
+SHA1-Digest: sQmPCHs1divuhr3L9Fcpw6u1qlw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/UrlLaunch
+ er.html
+SHA1-Digest: d89vky5AttPfbj+oIQnAWhhMrVU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseListener.
+ html
+SHA1-Digest: vMuu8qNC7XWtKSi8ukKiRQVstEQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/BrowserUtil.html
+SHA1-Digest: EdrzOB+3pD1Hnz+QVoTOiua1k7g=
+
+Name: guide/toc.xml
+SHA1-Digest: 75+17sghO7W4PD4W+hpF6Qrnr1Y=
+
+Name: guide/reference/api/org/eclipse/rap/json/class-use/JsonArray.htm
+ l
+SHA1-Digest: +yW5w/K4ZZ+eokyjycdfwazNkD8=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CTabFolderEvent.html
+SHA1-Digest: 0vN6H0uA46QRL+w/Odvr+uGYTbE=
+
+Name: guide/reference/jsdoc/symbols/$.html
+SHA1-Digest: 3W96Q4Xy+Ar3MZWGGdp6iNMJmQM=
+
+Name: guide/reference/api/org/eclipse/swt/SWTError.html
+SHA1-Digest: 641muijs+KCX50dM/BUrHIlJRnw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Shell.html
+SHA1-Digest: Cnt9KYsSbq9372cbyJDtTt+ukRE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/IWidgetAdapter
+ .html
+SHA1-Digest: 1B7ntlIrdd/iKbC5EWgOY8DQBfU=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/GridLayout.
+ html
+SHA1-Digest: uGF2SNEj873VLbeF4uksa0Z5khk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/class-use/ControlT
+ hemeAdapter.html
+SHA1-Digest: hMN9Y1xI9r+IQFakXPzEK8RIEhA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/package-tree.htm
+ l
+SHA1-Digest: RzmHsjjCZePnSLJKf/6Iign2x1o=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssible.html
+SHA1-Digest: 14nEemeIj4j0L6t1MMfEsUSaQXM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/class-use/RWTServ
+ letContextListener.html
+SHA1-Digest: HkCdEzHVB9jm53DUDBk5e0h04Zo=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseTrackL
+ istener.html
+SHA1-Digest: iBgB36cb0w5W+ihkRhsF3tKiYXA=
+
+Name: guide/reference/api/deprecated-list.html
+SHA1-Digest: Vdn8GPjdR+lSv5wO4spWW3B3Ny0=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/VerifyEvent
+ .html
+SHA1-Digest: kaWlhgEdgChu9Fn5pxdIoIpMvv8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/package-frame.htm
+ l
+SHA1-Digest: W8Z+3DvUgxnNE9C2eDKCH+G+M04=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/package-use.html
+SHA1-Digest: DXAsmtBbsRa2aa3LTdUlUha+USA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ap
+ plication.OperationMode.html
+SHA1-Digest: kg5clHJONrXxwVzhQgIfT4TG/LI=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Group.html
+SHA1-Digest: vzfLjwRU6etJ/Cr2dCaN8rv8WMc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/package-summar
+ y.html
+SHA1-Digest: Lu8l7PSjdxApWuFbWoYDAqhvEfg=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/Transfer.html
+SHA1-Digest: 0hfckHo9tGoCob70CZuiowScd2s=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/List.html
+SHA1-Digest: ugRrVufyZd21+ygmeaaa6QDxqD0=
+
+Name: guide/reference/api/org/eclipse/swt/custom/ScrolledComposite.htm
+ l
+SHA1-Digest: 4+dbK8oGnS4D4uGtnB01BVWv3wk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ApplicationConte
+ xtListener.html
+SHA1-Digest: ki37M71zqhPzdybYToAkmmgkmSE=
+
+Name: guide/images/demo-app-sdk.png
+SHA1-Digest: rglks0WXTC/dayOKbRThMleaZ64=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/RWTServlet.html
+SHA1-Digest: fZ212Xt13333E7misj6JLxtoRTY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/DateTime.h
+ tml
+SHA1-Digest: SAZavEWYzHyyU1qXYmoagqwXUV4=
+
+Name: guide/images/build.png
+SHA1-Digest: LHF0w0zdsOTiF2k4jx2XmXe+UuA=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextAdapter.html
+SHA1-Digest: NRGZ7mWP5W+3qbL1k1A5ZJw6itw=
+
+Name: guide/articles/threads.html
+SHA1-Digest: i2An7WhPOqCi+Dh32qtijwcBhdo=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/TransferData.h
+ tml
+SHA1-Digest: u795PUtWzQPdjRNyQg69gw7tJC8=
+
+Name: guide/reference/api/org/eclipse/swt/events/TreeEvent.html
+SHA1-Digest: RpLCFWOjoqk34sGpw9G7lkcuZws=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/package-use.html
+SHA1-Digest: noUFBgFRXX5L+WD5vmlCSdtv/5g=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Display.html
+SHA1-Digest: Ztt/sNcDeB8E4qf1KIQgGD13V/U=
+
+Name: guide/reference/extension-points/org_eclipse_ui_editorActions.ht
+ ml
+SHA1-Digest: ULrbGSARwglP0l1V+i24fOfBJio=
+
+Name: guide/reference/theming/Control.html
+SHA1-Digest: rfB0RRDuwIdor7kSzEcb4gseM/o=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/class-use/Operati
+ onHandler.html
+SHA1-Digest: qPsqZxD4HKtI6yqd3sem9Ue0lXo=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/Transfer.html
+SHA1-Digest: ZME3fS3i0QBsw1ADLp2mih/b8fg=
+
+Name: guide/reference/api/org/eclipse/swt/events/FocusEvent.html
+SHA1-Digest: GbhpGGSX5ApyJshFQu9FF+1OJBs=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ ExtendedAdapter.html
+SHA1-Digest: H4k/gOJN6j7NzvkQakbATpGoLbQ=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CLabel.html
+SHA1-Digest: x4Wpkk4qNCDwBVv2SLWw9lY4BzA=
+
+Name: guide/articles/rwt.html
+SHA1-Digest: y9NQuSjYn8WN3fO27RA5lKfCfnA=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MenuDetectL
+ istener.html
+SHA1-Digest: DjyBPhJp1hNIVb0Q0OBb1luqNk8=
+
+Name: guide/reference/api/org/eclipse/swt/events/DragDetectEvent.html
+SHA1-Digest: 0UmVKkaFBCx02x84YJhUsbV7gfk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Text.html
+SHA1-Digest: hVowO+cqPgyvtJsWistpKOdGwvo=
+
+Name: guide/legal.html
+SHA1-Digest: MYJIz8LRPxTmuNZx8tvircYdR0I=
+
+Name: guide/reference/api/overview-tree.html
+SHA1-Digest: hvZh2zWA6oeSQa8mV2478YRPP5k=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Touch.html
+SHA1-Digest: i9bKRH9JaRbBIevO6hL9nJtT5bA=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/GC.html
+SHA1-Digest: tlIKHLm6tBYdpqcnYsmyzFGUej0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Monitor.ht
+ ml
+SHA1-Digest: nUU5VCSBQ+CBlyQmuGIgPeK+bUo=
+
+Name: guide/images/hello-world-dependencies.png
+SHA1-Digest: ZcY29IT+w4z57rea2urh5u+Eg54=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleValueEvent.html
+SHA1-Digest: BXo5LGQTNcqZNIt/Jn8QU1PUwVA=
+
+Name: guide/reference/api/org/eclipse/swt/events/PaintListener.html
+SHA1-Digest: DLlzC6+sntrQf+KHMIBWoJgEEVw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ap
+ plicationRunner.html
+SHA1-Digest: c+IDFoRG495/aNNffOyqGHPxHZo=
+
+Name: guide/reference/extension-points/org_eclipse_ui_preferenceTransf
+ er.html
+SHA1-Digest: JYtrXpuISthUhpjIhR5anafZfQc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/FontDialog.html
+SHA1-Digest: F93LVQxqeyklQucAGYSVWrY+UFk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableCellAdapter.html
+SHA1-Digest: ddXrHbftxn2lmSogkFiHJP8+vP8=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DragSourceEffe
+ ct.html
+SHA1-Digest: 7W99Tbgbd+SoCSf6BOQCA5HSnOE=
+
+Name: guide/reference/api/org/eclipse/rap/json/JsonValue.html
+SHA1-Digest: SR9j411uOYEhQbwF6UiQwSMcaJM=
+
+Name: guide/reference/theming/Table.html
+SHA1-Digest: YurO8OgdtgeBknTpTROld8SBKPg=
+
+Name: guide/reference/theming/Text.html
+SHA1-Digest: HwFnF+p8/qMIiZGia5wYiLtYtNc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ScrollBar.
+ html
+SHA1-Digest: iVA9x6/nAq0ZexSJpeU/ObvKRVY=
+
+Name: guide/reference/theming/Scale.html
+SHA1-Digest: zIrZgmQYVQ/pFwKHIJAARmcYP54=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TabItem.html
+SHA1-Digest: sRtr+5Sdar5rozMGo/x4Ed7eJeE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ap
+ plication.html
+SHA1-Digest: 84A2Z6HbdIxT3QrjYXgDfVUaxjg=
+
+Name: guide/reference/api/org/eclipse/swt/custom/package-tree.html
+SHA1-Digest: wWvYq8r4GQBVfNRlpUIxHfT3Z5Y=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/ProcessActionR
+ unner.html
+SHA1-Digest: Ob2Fa9GVQxzStILREqz0V9eA12c=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Browse
+ rUtil.html
+SHA1-Digest: JXh2vHAhzStX3Q8Q6liI1NpMej8=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TraverseLis
+ tener.html
+SHA1-Digest: XuqIEtevtVD4qJqCYLicaJNTydg=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/CoolItem.html
+SHA1-Digest: ODPOoEIz/9hZvlX8g43oX565PsE=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Tree.html
+SHA1-Digest: eSPZvuHaau7Q+e5YxklGTIa5yt4=
+
+Name: guide/reference/api/org/eclipse/rap/json/JsonArray.html
+SHA1-Digest: Ns6OQf7vqNnFTlfTRn27BmkhieI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/ClientFileTransfer.h
+ tml
+SHA1-Digest: 2uRGBJBRqWr/L2ltk20R8eWYXsk=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TraverseEve
+ nt.html
+SHA1-Digest: QyXLBX5HP44HUoO8p3UYwlTxWyQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/AbstractWidget
+ LCA.html
+SHA1-Digest: HhdE7IwtBJkFovgyfV2nBh1ZKYU=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/ImageLoad
+ erEvent.html
+SHA1-Digest: cSgQwCWc4jE0uTJu3F8N2yrHPPE=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/DragDetectE
+ vent.html
+SHA1-Digest: KCUvzjhwzD0fsW3qUJKa2bFvwQw=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DragSourceAdapter.html
+SHA1-Digest: h2pj2EieKWX0GDaM2jhSUbiYh2E=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/package-use.htm
+ l
+SHA1-Digest: qN5d4+z5oiLW0iKZVqeG+dNlO1M=
+
+Name: guide/images/hello-world/NewProject-4.png
+SHA1-Digest: xiBJE6URAbRn/2g4QCIOTT+gTD8=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_themeableWid
+ gets.html
+SHA1-Digest: sXcQUumXVIuDd15mXazrINGl4HM=
+
+Name: guide/reference/theming/Tree.html
+SHA1-Digest: JgOZQJ1sYlwp8VM4bvLnsdiruDs=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DragSourceEvent.html
+SHA1-Digest: 2sjsama/ibf2yS6JypxDUAgaHz8=
+
+Name: guide/articles/data-stores.html
+SHA1-Digest: UDxZ9+6JwpolzYEA0iZDqjunenI=
+
+Name: guide/reference/api/org/eclipse/swt/events/FocusAdapter.html
+SHA1-Digest: yZy6VCa70ztRiNreCBf8B6mjSvA=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleEditableTextAdapter.html
+SHA1-Digest: 4TUDm24megdGm6QDrLQmTGWc0XY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/ClientFil
+ eUploader.html
+SHA1-Digest: M75ZNZ1eGMMiflxTMGoyMbb3/50=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleActi
+ onAdapter.html
+SHA1-Digest: LJZCspIwgz84vrv6b9h0R53vXzs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/package-summary.h
+ tml
+SHA1-Digest: 8CdRAsxBQC/fHC9IDrgfwYsuAEs=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TypedListener.html
+SHA1-Digest: yP7343SeHxxx8A4C6ItYKP2J+yU=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleControlListener.html
+SHA1-Digest: 2MMDGbHUHZukZhl/wwo6WKGAhho=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/KeyListener
+ .html
+SHA1-Digest: RDoHHTuJr4VRxEN0VNxSfQbks5Y=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ExpandBar.html
+SHA1-Digest: WvRBc9Q3Gt4h50OouJU4glnNeys=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/package-t
+ ree.html
+SHA1-Digest: 9+MGOtcbqmGtJCLLIwT8BdU3Nsg=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Label.html
+SHA1-Digest: wqajX1+TMP1GlFDJR83OrjGy4BI=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Resource.html
+SHA1-Digest: ptiuFSHj4TdLPCOitks5seg9xiM=
+
+Name: guide/articles/navigation.html
+SHA1-Digest: zME5NKyZtyJYizXlJpTwkvr6l1Q=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Listener.html
+SHA1-Digest: HrtDH+2fhjmHQzOCXDpbdAL1dJE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleActionEvent.html
+SHA1-Digest: PlNYyblo6l+sKogKDXv4jM9vcdU=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleAttributeEvent.html
+SHA1-Digest: /rPZQPBam52iZ3XlbBunVh6vl+w=
+
+Name: guide/reference/api/org/eclipse/swt/browser/LocationListener.htm
+ l
+SHA1-Digest: OQIDwcuVJGMX1ObtKmfI88izZZs=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextExtendedListener.html
+SHA1-Digest: wyEiz8cqCDviIfdIhAdVHDHTa1Y=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DragSource.html
+SHA1-Digest: WvaX22mao1Bfv4kh3Kkc+zLXAEg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /ExitConfirmation.html
+SHA1-Digest: EApEscB1vfDURXOuI9E/cN+8XTc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/AbstractOperation
+ Handler.html
+SHA1-Digest: 40NvFoS8LlOFUtriIbeKG5K7N1Y=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/SingletonUtil.html
+SHA1-Digest: tmo9uo2VY4V6x4KcH9CmZrdlDXM=
+
+Name: guide/reference/api/overview-summary.html
+SHA1-Digest: /F4JrnaajUq+EeDHX6tqoHIzMwA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/package-use.html
+SHA1-Digest: xvxJnWzFjLvBdrYkgX9VMkpHIhQ=
+
+Name: guide/images/interactiondesign/stackPresentationExt.png
+SHA1-Digest: oMD+w1D6wJFpQfJ/t7yJl7xtcK8=
+
+Name: guide/reference/jsdoc/index.html
+SHA1-Digest: E0zWqX75XtGOsW1uw/7T7uz5YlM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/IEntryPoint.
+ html
+SHA1-Digest: E1TAer73ED13+mznpewJ/A4FY7A=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ISettingStoreFac
+ tory.html
+SHA1-Digest: l0Wct5qpOdfCuCuI5r5/rcTNIEI=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ExpandEvent
+ .html
+SHA1-Digest: GzlA0NZq8lzgw2JBjvguQK3hn90=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleHype
+ rlinkEvent.html
+SHA1-Digest: rPvDs85hjHc1J0vpAj6usLaaMyM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ExpandItem
+ .html
+SHA1-Digest: UaZnY9uFY8uDmqmaQynuxR4z+Nw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ToolItem.h
+ tml
+SHA1-Digest: XLunFLmGpqfZU0wAJPoWY5nfmnw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/package-use.html
+SHA1-Digest: UUopfREWyrRhyu0DvoaIAKYg7oQ=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ModifyListe
+ ner.html
+SHA1-Digest: 97bt4MQFL+51yRhVNCv9r5+5rg4=
+
+Name: guide/reference/api/constant-values.html
+SHA1-Digest: Dfvh3n5l/pweILDleE/PlVFDxPY=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/PaletteData.html
+SHA1-Digest: Qu7DStpoMvnKCHfjtGFSj+2Mh5M=
+
+Name: guide/reference/theming/FileUpload.html
+SHA1-Digest: yy6iPzYUjviElBZthukHLxdBxpw=
+
+Name: guide/reference/theming/ToolBar.html
+SHA1-Digest: lPm/v0vT8lYhwulq2bic73Qkj3w=
+
+Name: guide/reference/api/org/eclipse/swt/browser/package-summary.html
+SHA1-Digest: IPaxx2mBnkGnSFUwzJieNaIQ46c=
+
+Name: guide/reference/theming/Spinner.html
+SHA1-Digest: AA44+gbNM8D4it5+QvL2+ep+uWI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Applic
+ ationContextEvent.html
+SHA1-Digest: K8/hj5v4YlbbcJZxXWdGHRQqqv0=
+
+Name: guide/reference/api/org/eclipse/swt/class-use/SWT.html
+SHA1-Digest: KQPf7FDumYAuPwi4uAx7jr5OjD8=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/GridData.ht
+ ml
+SHA1-Digest: GiJXKFUr53bgBzzrcCVYdGM4EX4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/package-summary.ht
+ ml
+SHA1-Digest: WBmNv3fhlvrHKuaKO9pWoL/0DhY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ProgressBa
+ r.html
+SHA1-Digest: pOqvvvg1+At+4lmm2vv+n/QwsNY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Group.html
+SHA1-Digest: RsV4U+AMMU3tmlB4JT6bqqg2f4s=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TrayItem.h
+ tml
+SHA1-Digest: 93nZBPMpTXLlMQg4S7kkv+TksPQ=
+
+Name: guide/images/hello-world/NewProject-3.png
+SHA1-Digest: qWg+RZX2wFx6JBvqhWvsugMlXqA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Browse
+ rCallback.html
+SHA1-Digest: Nmrv1qoVDh/GS0bFAijQQ/TA51Y=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/package-use.html
+SHA1-Digest: G7tGdyludBMo7t86LUspsrdfDRY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/Application.
+ OperationMode.html
+SHA1-Digest: Y5zWhdyT8TqusamkdjNTCsNjVxY=
+
+Name: guide/reference/api/org/eclipse/swt/custom/package-summary.html
+SHA1-Digest: F9NI4JQITgkfNrXJH406vdFIld8=
+
+Name: guide/reference/api/org/eclipse/swt/events/TraverseListener.html
+SHA1-Digest: 0Mui1UQgrsSMlzXWn6yGj+BEJoY=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleHype
+ rlinkAdapter.html
+SHA1-Digest: slZ4EWGlKGEuyX9Wx+OTM53axdc=
+
+Name: guide/images/interactiondesign/brandingExt.png
+SHA1-Digest: /reDNvixRP5arA97ONkmUWBvxF4=
+
+Name: guide/reference/api/org/eclipse/swt/events/ArmListener.html
+SHA1-Digest: QUcAv7f5tv0JdFwQX11DPC5FCAA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/FileSettingStore
+ Factory.html
+SHA1-Digest: pQDsEBau6nEJlqnBt3nqVUivA1Q=
+
+Name: guide/reference/theming/ScrollBar.html
+SHA1-Digest: EE8IcowHph9gV8QxtA9HHU2DcDk=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ShellEvent.
+ html
+SHA1-Digest: XgKjz0Z/SgeDLNycDDvoHaqTtTg=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DropTargetAdap
+ ter.html
+SHA1-Digest: mfiFWTTdtyL0tvL34PdK5Fij0lM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Slider.html
+SHA1-Digest: p+mdLaUXP5JrMJvTaEzAFp5Ok6g=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/LocationAd
+ apter.html
+SHA1-Digest: vLlgAp7qcUT4VZ7FxOZSi5F1RWM=
+
+Name: guide/reference/api/org/eclipse/swt/layout/FillLayout.html
+SHA1-Digest: 3GS4c9XSW30AFtuVqGjyy6PzJ2o=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/ImageTransfer.html
+SHA1-Digest: jRpLpJuY0zgcAyDOcZb98YogdeU=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/package-summary.html
+SHA1-Digest: vYJuAyymJEat6Up8L6zGbnnpTEA=
+
+Name: guide/images/interactiondesign/layoutExt.png
+SHA1-Digest: pTNEgY+TWtmQtw6VdOqW+xyXLD0=
+
+Name: guide/reference/api/org/eclipse/swt/events/VerifyEvent.html
+SHA1-Digest: 5aEeYmDVstl4CjsOfiVbQNVT8tc=
+
+Name: guide/reference/theming/Browser.html
+SHA1-Digest: V1mvYVMea/8/VvPVD1H2ieyRvZ0=
+
+Name: guide/reference/api/org/eclipse/swt/browser/ProgressListener.htm
+ l
+SHA1-Digest: 5eFewDqxu7L4p+3QyXZ/CPECQKU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/package-tree.html
+SHA1-Digest: lYrJVevP9Y4PtZQTfw32DMeFlDs=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/KeyEvent.ht
+ ml
+SHA1-Digest: UK9N6WeML47brfTosGhbgDfX8XE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /JavaScriptLoader.html
+SHA1-Digest: Rw7oXnISWc1oJxzqvx5tJQIlRYM=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CLabel.html
+SHA1-Digest: O8t3MyN0umsp6OdRwxOwFcdWaDw=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseEvent.
+ html
+SHA1-Digest: QhhzQ2HnNIgsTJamM9zYiR9irHc=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Path.html
+SHA1-Digest: L+W0MFAITmyq49NvNiwgSgJ4EcI=
+
+Name: guide/images/war_product_editor.png
+SHA1-Digest: e9ndA+4p3b+2t5preWVUjEF77+E=
+
+Name: guide/reference/api/org/eclipse/swt/custom/package-frame.html
+SHA1-Digest: MIxEc4XC+TlC3xPztbaRBNoWyy0=
+
+Name: guide/reference/theming/ToolTip.html
+SHA1-Digest: gRa1XyMEJaNQnd1a+8a9dYD/zPg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/DropDown.html
+SHA1-Digest: Py/yUvS/2egrUXTRfBaUEnAHBWg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/package-fram
+ e.html
+SHA1-Digest: 4GUXvgKEq90DWXmYfz+8EY7j/dM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/class-use/Applicati
+ onLauncher.html
+SHA1-Digest: tc79Cu4EESMeJ6Fc19xkzjFCsz4=
+
+Name: guide/reference/extension-points/org_eclipse_ui_internalTweaklet
+ s.html
+SHA1-Digest: O9wZlEo4uY+yO9VeTk06bLuiVwQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/ISetti
+ ngStore.html
+SHA1-Digest: R4QQI9K/h24y9mNtIhkA144ZuUg=
+
+Name: guide/reference/theming/Button.html
+SHA1-Digest: b8LCqlxk2RUAcZZt8X2Waw3Gf+g=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Widget
+ Util.html
+SHA1-Digest: NqrC0vA+NUe5BsXtpXHfReCKTbo=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TreeColumn
+ .html
+SHA1-Digest: yvS/8vCVpxIpDU8D0mHDC/541oY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ISessionStore.ht
+ ml
+SHA1-Digest: dx5OqkzrBlfaFsQxV8m713HqlRM=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/FocusAdapte
+ r.html
+SHA1-Digest: GhHnwt/hxSnim6eW58dIudy6fL0=
+
+Name: guide/images/interactiondesign/presentationFactoryExt.png
+SHA1-Digest: BZqYCsG2l5BC1oChTD1GKGuHNCo=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/TransferData.html
+SHA1-Digest: GpBD2XYPT5V9HuK0ECFvRx2etAA=
+
+Name: guide/articles/singletons.html
+SHA1-Digest: xCVzMzOr1cOTDzgYkSQGW4NxRvQ=
+
+Name: guide/images/hello-world/NewProject-2.png
+SHA1-Digest: LR+slIUqtHNgjqtDH4IoqRxIUaA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/En
+ tryPointFactory.html
+SHA1-Digest: 5l6w241Zgzzw1HViUS2YoPFVbG0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /BrowserNavigationListener.html
+SHA1-Digest: vkqATTSzJloBKplHjFOEehkSDow=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ExpandAdapt
+ er.html
+SHA1-Digest: fw8y2nmGIHkfLsLRVUeDk5UjgbU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/class-use/Graph
+ ics.html
+SHA1-Digest: d9Xx6u5oxOaBWGWK7y2CnSvUMys=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ServiceManager.h
+ tml
+SHA1-Digest: yBHSniAd0kROsAfU4xHH3EgqFwE=
+
+Name: guide/articles/scripting.html
+SHA1-Digest: wJMGyJ42znDC9ZYi/DRNT/q1+Ks=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/ApplicationReferenc
+ e.html
+SHA1-Digest: 7z8IXhhQ8JP5rU3rBJXHwZ7q3PQ=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleValueListener.html
+SHA1-Digest: kolrubZwuv2kqaf7QG5PwozT7G0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/BrowserNa
+ vigationEvent.html
+SHA1-Digest: 3ARGQnOBO9qo3ORZf92l07dRj6w=
+
+Name: guide/images/theming-dialog.png
+SHA1-Digest: a+jtC52VM4SK98wht4phveKjI4g=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/class-use/IControl
+ ThemeAdapter.html
+SHA1-Digest: RjmoOqy/kN73l3jkNXMM0s8gzR8=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TableColum
+ n.html
+SHA1-Digest: ODif/FtoKnY8IRd3uAYZj6ro/2o=
+
+Name: guide/reference/api/org/eclipse/swt/events/KeyAdapter.html
+SHA1-Digest: IleEVbJqVAIaVHZkcW9l6UOYIgY=
+
+Name: guide/articles/theming.html
+SHA1-Digest: zTfcdOGGBA0KHUQKsnT/WmSvyio=
+
+Name: guide/articles/markup.html
+SHA1-Digest: rnHK6zLdvTz0/q1g3JlcGYgQ614=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Proc
+ essActionRunner.html
+SHA1-Digest: d8zRgdJCZyx4A9AYOX+IvlNlnsc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TabFolder.html
+SHA1-Digest: Q6E7dxVTrUmL1YFvuIGFFsZM+Yc=
+
+Name: guide/reference/theming/Widget.html
+SHA1-Digest: YlRT8Dm5oU8tbAHtRdln079fv10=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/class-use/RemoteO
+ bject.html
+SHA1-Digest: c6VEST3JJjde9yBqYZG4KLVHsZE=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/TableEditor
+ .html
+SHA1-Digest: zwBSxxRgVHvV+1b50mVtUvPOKNo=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/ImageLoaderListener
+ .html
+SHA1-Digest: EByzf/4DLH17wEjtBmXwFAFbwyY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Label.html
+SHA1-Digest: 8hGI7Hb/LbH156zmaX67GkGc9SI=
+
+Name: META-INF/maven/org.eclipse.rap/org.eclipse.rap.doc/pom.propertie
+ s
+SHA1-Digest: wMKJg3+vSPPJYAWEq5k00OC593Y=
+
+Name: guide/reference/theming/index.html
+SHA1-Digest: 0NdqBtGU59OaOiPv55nB0oZmzi0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseEvent.htm
+ l
+SHA1-Digest: yaEpH6LAcjxkwmJ7w2Rl367iDhw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/FileSe
+ ttingStore.html
+SHA1-Digest: nLrIYcvspFFcgQXqnUCbrgnbQ3U=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/IEntryPointF
+ actory.html
+SHA1-Digest: 7m8QK3Oh8AYdFTjLiL5rEuxg9Wg=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleControlEvent.html
+SHA1-Digest: eDp+i0GkO/xLBsfsFBQutgoWbLk=
+
+Name: guide/images/hello-world-run.png
+SHA1-Digest: 6Twp4XkrleenmX9aTTznDqv/A6I=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/FileUpload.html
+SHA1-Digest: /dIpJcdGnLXdM5zA7VcbHrbuUv0=
+
+Name: guide/reference/jsdoc/symbols/Label.html
+SHA1-Digest: soRveaF2YZxB7SivyPUjHGAc8Zw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ProgressBar.html
+SHA1-Digest: bcA/ane01DH8TIFVjU7nYzzx+r8=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/TreeEditor.
+ html
+SHA1-Digest: uQyLH9f9cZOTPQRBASXJsK1c1m8=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/package-tree.h
+ tml
+SHA1-Digest: X1Oy+3QBHedNSHyS01hh7h411GI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/ControlLCAUtil
+ .html
+SHA1-Digest: pko/a+99QDcbMKmKO91hfZQ/Swc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/package-use.ht
+ ml
+SHA1-Digest: e9pc0vEVhgvikU6b5S8yNH+gdpo=
+
+Name: guide/images/hello-world-view.png
+SHA1-Digest: VoWjYykzuGs7CLxl7+PxsevbOCQ=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TreeAdapter
+ .html
+SHA1-Digest: NgDBLg3EjyQerzVrmOUGyyPMD9s=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/WidgetLifeCycl
+ eAdapter.html
+SHA1-Digest: ZHR3wtUltInr0C4Ayv5uLC2DSj8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/scripting/package-summar
+ y.html
+SHA1-Digest: 7eEHstuE9zqrPjosAC3aaEuH210=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/package-frame.html
+SHA1-Digest: OOgxStphH26Z7lA8eMPv4X9J3BE=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TaskBar.ht
+ ml
+SHA1-Digest: Km8Hgr/WBwyBFWW1SlAqLFezuCE=
+
+Name: guide/reference/api/org/eclipse/swt/class-use/SWTError.html
+SHA1-Digest: vafpSIW/+ZzF2OWCPSLywJqQEJc=
+
+Name: guide/reference/extension-points/org_eclipse_ui_importWizards.ht
+ ml
+SHA1-Digest: Ylz2hK1b/b4eNfuT4z+Xk54Afsw=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/PaintEvent.
+ html
+SHA1-Digest: hHKdgnXzgy7ShcWJzx6KBHAqfg8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/SettingStoreList
+ ener.html
+SHA1-Digest: 2X70UdIikMUE0YjY/cFJRphb8PI=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/CoolBar.html
+SHA1-Digest: auyMaUoWxtRWzFfM27/POacBh5o=
+
+Name: guide/articles/look-and-feel.html
+SHA1-Digest: aOl6+dI17QCsWCl34/zx2dKHKcc=
+
+Name: guide/articles/client.html
+SHA1-Digest: I+Ya+FQCQdgk3vB0kfhzVPVWHvc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Phas
+ eId.html
+SHA1-Digest: 284HAYNhvmyQLSPh2xgw3uf8hAk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/Client.html
+SHA1-Digest: xOyIpvzNEHUISdGb7EZX3Z0DkvA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/class-use/Templ
+ ate.html
+SHA1-Digest: Pi4qUXQeS2h/jIb0/hx/f+QcidI=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/ImageLoad
+ erListener.html
+SHA1-Digest: T3u0zRGB9t+n/EF692+dLehxqoM=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DropTargetAdapter.html
+SHA1-Digest: /+6EhToygt4cm8nCwr/S8L4RwIw=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Device.html
+SHA1-Digest: W6znx8+vGQpw2Yul3WjcUtLmB+c=
+
+Name: guide/reference/api/org/eclipse/swt/events/KeyListener.html
+SHA1-Digest: 3GGF+9ORiTfNqBqlVfawbjqH1Rs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Settin
+ gStoreFactory.html
+SHA1-Digest: +KC2loKCkxU6VsDTo7xFIKI1v+o=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ap
+ plicationConfiguration.html
+SHA1-Digest: tUa2Wo/a9aRCfeuKp2Cv2Mp2M7E=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/RWTServletContext
+ Listener.html
+SHA1-Digest: laK3mTdC6kLyBB7k3NqNdgu/a+8=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Composite.html
+SHA1-Digest: yZpzMPJOKseON6SI/Kj6oHlTYlA=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleHyperlinkEvent.html
+SHA1-Digest: 7ljrKSPe7r55eabvD8CSIZDwmsc=
+
+Name: guide/images/hello-world/NewProject-1.png
+SHA1-Digest: UZf8fe+vf5tZOqZIZXk7S/Uk+X4=
+
+Name: guide/reference/api/resources/tab.gif
+SHA1-Digest: Q0Tj0Y92gAjDJhRoP6tYmz9Mb1A=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Drawable.
+ html
+SHA1-Digest: I42NvPObZOKlXcXp8Cl71vWFn+E=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/package-tree.ht
+ ml
+SHA1-Digest: 9RkLb0D4PhwqjsSehuTXBaGIE+k=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MenuAdapter
+ .html
+SHA1-Digest: nWYuvPo2Qfhk7E8O/DVeFJDMMTI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/DropDo
+ wn.html
+SHA1-Digest: euRrqA/QEsmZGG5RCJpRrDLvh2s=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/package-use.html
+SHA1-Digest: uT4yKUH95f2mtpeQI0w56xZ6lbk=
+
+Name: guide/reference/api/org/eclipse/swt/browser/StatusTextEvent.html
+SHA1-Digest: KziKFfMXqeFYxo73KrnWNUWvcc8=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseTrackA
+ dapter.html
+SHA1-Digest: U/mFhQxZMDDYoZGJOEXeq3Af/6U=
+
+Name: guide/reference/api/org/eclipse/swt/events/FocusListener.html
+SHA1-Digest: sdwCpsCCYytApU8+jIOgefQIN9g=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/SessionSingletonBase.htm
+ l
+SHA1-Digest: 2Dgb+TzQnENXUuEs+nToAF6sZa0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/package-frame.html
+SHA1-Digest: zucuXVvlW3ibbn9hf/d+1l99Pkg=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableCellListener.html
+SHA1-Digest: TY2+u1mITmjgxkE+y/9qtYZD5M4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/ILif
+ eCycle.html
+SHA1-Digest: G6wb6A1NSldj7vo0pxIKKHaqrlA=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eCellListener.html
+SHA1-Digest: +IhVWUpMdM3FDgjlg4QFq3dTiGQ=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Item.html
+SHA1-Digest: RdQda2jubbiYV9yW6FcHTBCbxxI=
+
+Name: guide/reference/api/org/eclipse/swt/custom/TreeEditor.html
+SHA1-Digest: TF3U9Rj1T4aOcY9a0Yv+fgvCzR8=
+
+Name: guide/reference/api/org/eclipse/swt/events/ExpandEvent.html
+SHA1-Digest: Hy6uPTlBdi7ti6SFhao9cDMdVw4=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TreeEvent.h
+ tml
+SHA1-Digest: scwxfPqQLpmECiKFGJOjPPe5itY=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/SashForm.ht
+ ml
+SHA1-Digest: njMGKi7xxTlEQ1xZMoUnUNKHSCU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/RWT.html
+SHA1-Digest: H32/xSTeB/Pgk9nCZd2GCiCiGc8=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Control.ht
+ ml
+SHA1-Digest: VEX0vgV1wbFZqBKKhZF1rsKGhLs=
+
+Name: guide/reference/api/serialized-form.html
+SHA1-Digest: ATCfuaFbiiEZaMs5Zk1NkiSniD0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/class-use/Abstrac
+ tOperationHandler.html
+SHA1-Digest: +FcqSnTKXYC1zbR7ZiEgYylcUUQ=
+
+Name: guide/reference/extension-points/org_eclipse_ui_elementFactories
+ .html
+SHA1-Digest: H68oaAwUD3jcVxmJ29Ib12R7q94=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Link.html
+SHA1-Digest: pimRHOYX11S7g4L4AjpwF89KKXs=
+
+Name: guide/images/custom-widget/newproject.png
+SHA1-Digest: iqRuTNHiQ7aR4zB61C7nzxbDynQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/package-summary.html
+SHA1-Digest: Pdp91tR4mNpINBubDEnTsZITiwc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/package-summary.h
+ tml
+SHA1-Digest: ry9DVrjbmuPqNzgp+y5K8DoAEUk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleAttr
+ ibuteAdapter.html
+SHA1-Digest: IGvN2C0ppV5tNb9Qc/pqOCo7BU4=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DropTargetEvent.html
+SHA1-Digest: oFKfww6nRcJAvFP2rvlJFS6mfv0=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleCont
+ rolAdapter.html
+SHA1-Digest: snmvnfD9tuD59Vjn/r26PI6BDyU=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_themes.html
+SHA1-Digest: UaDMDLnJUBBEqQD5hMXIkqYDK+c=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/CoolItem.h
+ tml
+SHA1-Digest: +WC1y47Ddsye5E6S4OA/b/IT0KA=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/package-frame.html
+SHA1-Digest: yIi3bvZY+4XSC1nd6lmABWh5EKE=
+
+Name: guide/reference/api/org/eclipse/swt/custom/StackLayout.html
+SHA1-Digest: dX6Msedu27+7RxgAMCx5l56EXn4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/package-s
+ ummary.html
+SHA1-Digest: 0tAUpiLMzhIbZIyyNXU7dazc2QU=
+
+Name: guide/reference/extension-points/org_eclipse_ui_perspectives.htm
+ l
+SHA1-Digest: +oCzMAzApObFVag3gb196PfEL0w=
+
+Name: guide/images/exitConfirmation.png
+SHA1-Digest: e/+scC+v6YDID6E0pcHTHe4vv6Y=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/URLTransfer.html
+SHA1-Digest: r8m472z0EndUp245F2wEEyxrCQA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TableColumn.html
+SHA1-Digest: O3gJrl4oJ2I+vRNE1JjShhf0nqA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/package-tree.html
+SHA1-Digest: oZUgdXDnPcF6Y01XQPjNRHFEuFg=
+
+Name: guide/reference/api/org/eclipse/swt/events/MenuDetectEvent.html
+SHA1-Digest: pIGXApbQXxr1/JmS7yqJqxhKbsM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/package-frame.ht
+ ml
+SHA1-Digest: EjoQkNThqIQbgsaKMKDuvpVHyZc=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/GC.html
+SHA1-Digest: 7klRtFMTpU4x0oVm5ZhYX0y41f0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/UISess
+ ion.html
+SHA1-Digest: AqNxFb0ZYkkW8paaBTpUGUpCTP8=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableEvent.html
+SHA1-Digest: UCI5N1En5r1M61hhnt95xFi0nNs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/package-use.htm
+ l
+SHA1-Digest: Gi8N7Vy2Tzytnh9eov3SWO92EYk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleEditableTextListener.html
+SHA1-Digest: KtoyNqwkQ3Z1i1DF6JwU+a61dYk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextListener.html
+SHA1-Digest: FgjyZZJm1Aawt2WnQ2ySOjgy4yc=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_branding.htm
+ l
+SHA1-Digest: YBdVy3Oxemvg6RKIyBW6Nq+82m4=
+
+Name: guide/reference/api/org/eclipse/swt/layout/FormAttachment.html
+SHA1-Digest: fL56vamHYocAo3Ho3F99rpyhZ5A=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Point.htm
+ l
+SHA1-Digest: OSYX7Nm8bjndvi+YMb2HWUUD8e4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/package-tree.htm
+ l
+SHA1-Digest: 2WB5RbubuQMqyTfP1tnWPIq81MM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/ClientInf
+ o.html
+SHA1-Digest: wweaTf1cvHJcghuA29D0Qdn9eSU=
+
+Name: guide/reference/api/org/eclipse/rap/json/JsonObject.Member.html
+SHA1-Digest: DYteXz2w13cgNgaVRfKj4P1mhOo=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/LocationEv
+ ent.html
+SHA1-Digest: 89VWrOXWq2mPu5njHNN7DlAOyiQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/UISessionEvent.h
+ tml
+SHA1-Digest: IEp4/cqobxleq1yWaWdoxJTT2q4=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TouchListen
+ er.html
+SHA1-Digest: 9tQmQPRv5F6DJLHFzhUfPuysEGE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/package-tree.html
+SHA1-Digest: 9QJRl8bt7c1RdL3rAG2jSFXJ2iw=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_phaselistene
+ r.html
+SHA1-Digest: VjFRJbHAKkAhCMzwt0qSME0Euo8=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Monitor.html
+SHA1-Digest: tEmU8VC3p24fNw1ZJqvnA+AHENY=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Device.ht
+ ml
+SHA1-Digest: 6XbOtrzOKfIEqVHi34fU4AnqFgY=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseMoveLi
+ stener.html
+SHA1-Digest: mRTiuwMqnRucX/bFqFWuqPn+muw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Listener.h
+ tml
+SHA1-Digest: 9RsF8TfkPIGTsGRGe8IRnyDbPc8=
+
+Name: guide/reference/theming/Combo.html
+SHA1-Digest: wWQoiqSXWb7t6aJ0VTev9wiEjcA=
+
+Name: guide/reference/api/org/eclipse/swt/browser/package-tree.html
+SHA1-Digest: irjvApC03wWQIYs3DKZ4ZQxvQ5o=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CTabFolder2
+ Listener.html
+SHA1-Digest: btg2yNeyhsYHqwbE22RwBp18S0c=
+
+Name: guide/reference/api/org/eclipse/swt/events/package-use.html
+SHA1-Digest: LKIHZkBAfRQeESS/x1G3dWN1bko=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CTabItem.html
+SHA1-Digest: ZrcmUXZo/7ESy2Ge7r8+nkfef7s=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/Application.
+ html
+SHA1-Digest: bIkrwCyvgrSfm5sXTAA2kahxRcE=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MenuDetectE
+ vent.html
+SHA1-Digest: KAlfmtEv66o0qMYzmCt6tJY2wlU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/MessageBox.html
+SHA1-Digest: ALXvubzpk2d1sP1RGbjStKBgvSw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Sash.html
+SHA1-Digest: 5EqA5vOHm52FXCQ6RBXONXn0t2A=
+
+Name: guide/reference/theming/DateTime.html
+SHA1-Digest: sL6Enc8ok1YepGyZX/+CWbVmkD0=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/CTabFolder2
+ Adapter.html
+SHA1-Digest: yycqNECVHNWpMp03MH89wjnCH18=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/SelectionAd
+ apter.html
+SHA1-Digest: 3FOd959BL7Pb/1nwe8SDaKLkw1w=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/class-use/Image
+ Cell.ScaleMode.html
+SHA1-Digest: WWQyo3J161EizGt1/8lc7a/Lcl4=
+
+Name: guide/reference/api/org/eclipse/swt/events/ArmEvent.html
+SHA1-Digest: Q2UJk4rIOSlodhg1SIcvhz3QWW0=
+
+Name: guide/reference/api/org/eclipse/swt/events/DisposeEvent.html
+SHA1-Digest: YC2hojBRpatzJYw+AMWmyLy/SME=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/package-use.ht
+ ml
+SHA1-Digest: uzcEX2Q82P6tPpbv+yezCU2OVEk=
+
+Name: guide/reference/api/org/eclipse/swt/events/package-frame.html
+SHA1-Digest: +Ub0hvmXcd/rJ2BEHYZdjwPt6jU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/package-summary
+ .html
+SHA1-Digest: WI/x9BqYxZs0zqXVmaSaXz+NBPU=
+
+Name: guide/images/import_rap_demo.png
+SHA1-Digest: nk3ZndDoY+7aH3GR2sNRHbSJaBA=
+
+Name: guide/articles/custom-widget.html
+SHA1-Digest: MCiMAY/tX0igQ4Q37Ae+tpWET20=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/ClientFile.html
+SHA1-Digest: K2QnVLDBQdRvTqtBtDrHUo/4OTc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/IServiceManager.
+ html
+SHA1-Digest: Li303S8uMwCnY2yFK0flO0UJrng=
+
+Name: guide/reference/extension-points/org_eclipse_ui_browserSupport.h
+ tml
+SHA1-Digest: EEZI1wk8MtQsmaPYC/A9HUYLV9M=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/class-use/Image
+ Cell.html
+SHA1-Digest: Hi7E3ZiAvxUcXVzUTA9H1ueK2ck=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_resources.ht
+ ml
+SHA1-Digest: xvkBAtUBIYndX9BcCCM1If1SkdQ=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/FontMetri
+ cs.html
+SHA1-Digest: XazjR5tW9UhNJ2hwRpPsE2O3Iy4=
+
+Name: guide/images/war_product_editor_configuration.png
+SHA1-Digest: j2l2BL25SWYm5PeUCGHDIpD8IPA=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CBanner.html
+SHA1-Digest: SK9GrNJumKryu3TL7cKRyDv+o8Q=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/IServiceStore.ht
+ ml
+SHA1-Digest: 0KZbJmV5l4arHEc6iHMg+w0ODz8=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/SelectionLi
+ stener.html
+SHA1-Digest: HFnDVgnNvgA29kUCJM/4I3EHAmU=
+
+Name: guide/reference/api/org/eclipse/swt/events/ExpandListener.html
+SHA1-Digest: 0XcVzoyKRnjQ1EYBz6gnKSpi62c=
+
+Name: guide/reference/api/index.html
+SHA1-Digest: BMALlqvT1EqqQsZRePc5Bh/ZKqA=
+
+Name: guide/reference/api/org/eclipse/swt/custom/CTabFolder2Listener.h
+ tml
+SHA1-Digest: NY68Jw7VJcKiA3l7Nwg/6SZKP6c=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/ViewForm.ht
+ ml
+SHA1-Digest: EETyqAdxiGM4dyY8P438hsMErRU=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TypedEvent.
+ html
+SHA1-Digest: Oi3MSNVXbN1EQ87dVgI0scpQlOE=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/MouseListen
+ er.html
+SHA1-Digest: amU6WkJXxh1jSFJdsFun/rglw30=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Phas
+ eListener.html
+SHA1-Digest: aXGRTPeF5R4tfihu/Py5qQn3ge4=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ToolBar.ht
+ ml
+SHA1-Digest: fOkr0DWrLVLaMKNxEK21n4dSTAk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Spinner.ht
+ ml
+SHA1-Digest: RileS+xPSO0aWB6eNPw2cZHxEWc=
+
+Name: guide/reference/extension-points/org_eclipse_ui_dropActions.html
+SHA1-Digest: q68l8Q5hqOO89vSJRLXuJTYQ5XI=
+
+Name: guide/reference/api/org/eclipse/swt/layout/RowLayout.html
+SHA1-Digest: QnsgdFckd2/wZk7ztdFx+coFJsw=
+
+Name: guide/images/hello-world-perspective.png
+SHA1-Digest: Ky1yWHz486mTIxJit88g9RYDeFY=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/package-use.html
+SHA1-Digest: AnytFgOp2Svgj2WrFQ9Y0V/5JXQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/IAppli
+ cationStore.html
+SHA1-Digest: sITBYoZZg5w5Jelskv0R2jFHwsg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/package-f
+ rame.html
+SHA1-Digest: wSWqIWhO+19kH3oXcI25lAju7k8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/class-use/Dialog
+ Util.html
+SHA1-Digest: AcExcM49/l+GM4FsL5E6ZXjUcFQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/package-use.html
+SHA1-Digest: +Chc36SOhKSiNq0JryHAkQCVSZQ=
+
+Name: guide/reference/api/allclasses-frame.html
+SHA1-Digest: n/L6Zz9n+aQoAcs+WcMdvtEbzKE=
+
+Name: guide/reference/extension-points/org_eclipse_ui_activitySupport.
+ html
+SHA1-Digest: VtgbLYTaSgy9YFesfvj0RgQ//Fo=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ModifyEvent
+ .html
+SHA1-Digest: cNiDPb5rlouUmO9VR6psY5UZadM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/UICa
+ llBack.html
+SHA1-Digest: nMMlnOfYme3zFPgvWz0YG5O1gyw=
+
+Name: guide/articles/key-and-mouse-events.html
+SHA1-Digest: CgcxTY2fnfgOwN/JUM1Ae0bW1Lk=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/FontData.html
+SHA1-Digest: M4Lj6R4vQBSTfhz6vQuynsFpaL0=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/ScrolledCom
+ posite.html
+SHA1-Digest: muZb1ZZyf+CwTSkbYDFNR203BMQ=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DragSourceEven
+ t.html
+SHA1-Digest: k9qBpBD2r2MvmvNRF5eXDImFYoc=
+
+Name: guide/images/launcher.png
+SHA1-Digest: vj4CN2hsNLTVmaLUlHMGPXgq56Y=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleAdap
+ ter.html
+SHA1-Digest: txnyH1+NlL4Gr0RNuMYPJ0a0e74=
+
+Name: guide/reference/api/org/eclipse/swt/events/TreeAdapter.html
+SHA1-Digest: hlcn6/vMcqluZHA9kpa07EY2KYU=
+
+Name: guide/reference/extension-points/org_eclipse_ui_contexts.html
+SHA1-Digest: y+I5vyckT5DRKGpSe8pVvuEBANw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/MenuItem.html
+SHA1-Digest: 9jBM0iqhxRsfDXsFd7fAbvGmt/M=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleValu
+ eListener.html
+SHA1-Digest: wS6V+IWHJYoY7ByAeKZvrmK6UIo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/class-use/RWT.NLS.html
+SHA1-Digest: Uk/Xz1iWCW6FiOdhq+CrdCjbYEE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/package-tree.html
+SHA1-Digest: LJfLZXE9RfnlVWXxTAgRDVyRos8=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DropTargetListener.html
+SHA1-Digest: XmRD8+Ms4cslfrKtpU88Wlu3mcU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Layout.htm
+ l
+SHA1-Digest: xPFlYCEnBp1yyMVnUd0qIWMt8Mc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ExpandBar.
+ html
+SHA1-Digest: Z8ilQs+jVyV5tG1R7Ef5jZeHFUk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/class-use/ClientF
+ ile.html
+SHA1-Digest: vMoJEzjl/87eRAfdPHR9uxmdv7I=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/DialogCallback.h
+ tml
+SHA1-Digest: jNMSjWoD2XUox2kg6QPXUL/WBUg=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DragSourceEffect.html
+SHA1-Digest: UUyvTud9iQ+fs3EmRSqnHJqbz28=
+
+Name: guide/reference/theming/Shell.html
+SHA1-Digest: RpWOxhsZfA7ENQ4YlHmE4g6iLpc=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ShellListen
+ er.html
+SHA1-Digest: 1whtJezH9btiaY/K9OdYtP7bZts=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/ImageLoad
+ er.html
+SHA1-Digest: eXcsMSV9s/HD6LsoCBVFyeLWF4U=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/ExceptionHan
+ dler.html
+SHA1-Digest: 8NEbXdftlS8A7TNf9m+m3xR3A4A=
+
+Name: guide/reference/api/org/eclipse/swt/events/GestureListener.html
+SHA1-Digest: w+sRG1Bfk7+yo93UN80V9Izdnec=
+
+Name: guide/reference/api/org/eclipse/swt/browser/LocationEvent.html
+SHA1-Digest: vGKfoQYJWo8xO+SBdK7bjhSxCoc=
+
+Name: guide/reference/api/org/eclipse/swt/custom/package-use.html
+SHA1-Digest: VqN+F9G9wHxQW4xhVzwO8icb7Ko=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextAttributeEvent.html
+SHA1-Digest: j9cSBWcGnZOCEzwC4T0ExZwRi7E=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleAdapter.html
+SHA1-Digest: PP9SsHGCdA1Ky5dm9cXJviD2y5o=
+
+Name: guide/reference/api/org/eclipse/swt/events/SelectionAdapter.html
+SHA1-Digest: QOPfs5DQymeReoGF/AhXbvAVQro=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/IResou
+ rceManager.html
+SHA1-Digest: EozzEOSdhea5wWV6qLtpVEptFGY=
+
+Name: guide/reference/api/org/eclipse/swt/events/MenuAdapter.html
+SHA1-Digest: ukd+V8PFrPaGxf0HrJ36ZDjmJEs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/class-use/TextC
+ ell.html
+SHA1-Digest: 3W4Mn4AmZ8IKwXh9VC05WkCAf5I=
+
+Name: guide/reference/api/resources/titlebar.gif
+SHA1-Digest: 4E7B5mioLrG2v8/BO+8OflOBGoQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /JavaScriptExecutor.html
+SHA1-Digest: aO8koglGkI4Jt67FPkBGAWjLcc8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/AbstractEntr
+ yPoint.html
+SHA1-Digest: uxXldhjO2Dwc7sehY6wLy5FoVbU=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/URLTransfer.ht
+ ml
+SHA1-Digest: lbYG1tz4Wz9LwIcHQuLDoR2L/pc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ToolTip.ht
+ ml
+SHA1-Digest: XKosn02b3nA26SETR27zTRyoYl0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /ClientInfo.html
+SHA1-Digest: BJc3eFyVd6FTb3o+ExIOnNidSjU=
+
+Name: guide/reference/api/org/eclipse/swt/events/VerifyListener.html
+SHA1-Digest: 8nJOvYPswofY1tcv2/5q8t5f+8Q=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleControlAdapter.html
+SHA1-Digest: w2cVaPxAzZErUsmcpwQgFPwsAO0=
+
+Name: guide/reference/extension-points/org_eclipse_ui_exportWizards.ht
+ ml
+SHA1-Digest: H+Y+8LTNjEqE3MZgwvzTmBcVHZM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/class-use
+ /UrlLauncher.html
+SHA1-Digest: XYnZyVptgF4GFBEGaZgbRh1h8uw=
+
+Name: guide/reference/extension-points/org_eclipse_ui_bindings.html
+SHA1-Digest: VtMpX1hFvIqZhcMSFttNZjqt4Lc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleActi
+ onListener.html
+SHA1-Digest: EcttMvoKrYGpZ3ilYO3VVPPopis=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextEvent.html
+SHA1-Digest: 6pEbDSYi7pmrJfW0KXROZk58IsI=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/List.html
+SHA1-Digest: vJIdOarEMEsBvEhqajtXO2jCGW0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Widg
+ etLifeCycleAdapter.html
+SHA1-Digest: h6jFgoVPj+zYCouKyHJay+hxPaY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Server
+ PushSession.html
+SHA1-Digest: j5HZggeat1dQa+XjEKn7/CD1L0w=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Font.html
+SHA1-Digest: K8lwiEoBhvZmMUryVGTuwu+TIv4=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/TouchEvent.
+ html
+SHA1-Digest: P/fKi7AN0zTqWZLFzReQQxIj1bA=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Point.html
+SHA1-Digest: mPUgXipNudh+wS3eWnzDlEZAOlU=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/GestureList
+ ener.html
+SHA1-Digest: 4SOC2vrDrtfQxWuBNbMtOS+WFNI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/class-use/Cell.
+ html
+SHA1-Digest: t8XjxF92wrS2Uvpz9ts9GF7vUPM=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/ACC.
+ html
+SHA1-Digest: 7quorks8QnVieFLx/sIlgYsNWp4=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DropTargetList
+ ener.html
+SHA1-Digest: Hy8aQs3KwL44yqxnV7N6vIohooI=
+
+Name: guide/reference/extension-points/org_eclipse_ui_menus.html
+SHA1-Digest: hsKMX1B9KzE2OxcAwhxABY1Hxg4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/Template.html
+SHA1-Digest: hENnEbD2nn30ihgJOeOOs9SeBJQ=
+
+Name: guide/reference/api/org/eclipse/swt/events/ShellEvent.html
+SHA1-Digest: rG0KN130ieS9qL4QiaEB6J2aqmQ=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/ImageData.html
+SHA1-Digest: dvb4QN7CyD+Ocjr1t5lFuFng9kE=
+
+Name: guide/reference/theming/List.html
+SHA1-Digest: uUmAnF9mJhx2BrLfRYlJAeIlIfQ=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/RTFTransfer.html
+SHA1-Digest: 6n+AK3dQJ/bIebCGNs5nkzq3Kso=
+
+Name: guide/reference/api/org/eclipse/swt/layout/GridLayout.html
+SHA1-Digest: PNRLrM0S8EZuTtL4XMMBqrUinAY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/FileSettingStore
+ .html
+SHA1-Digest: 6KE8CQy7oD5iNFIp1vWoa9Lo+6A=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/DisposeEven
+ t.html
+SHA1-Digest: iFR4smRwWE1jqQISauVI6UbcijE=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_settingstore
+ s.html
+SHA1-Digest: 5uXFpI2/KX5X5kMIAeYixHtRoAo=
+
+Name: guide/reference/api/org/eclipse/swt/events/HelpListener.html
+SHA1-Digest: L+v4LNWP7heshKW0+0IZZS97Z8g=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/Cell.html
+SHA1-Digest: 7Lz5Trs/eco8r54iFhKFHFuvEMg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Settin
+ gStoreEvent.html
+SHA1-Digest: W8ZsETPeDW0G6NifpObsu754Jcg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/Ex
+ ceptionHandler.html
+SHA1-Digest: tQYvAhu7NN+Vr/5O1pj4Eh/n8D4=
+
+Name: guide/reference/api/org/eclipse/swt/events/DragDetectListener.ht
+ ml
+SHA1-Digest: 1DLDBFi3+xdPUloIiMAYrWh6QZo=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ AttributeEvent.html
+SHA1-Digest: Yn+zFqT+bUxe0k4N6g0eAQI2zEw=
+
+Name: guide/reference/api/org/eclipse/swt/browser/BrowserFunction.html
+SHA1-Digest: JSwiD4FegWddl+fqpV4U08Gmnw0=
+
+Name: guide/reference/api/org/eclipse/swt/events/ControlListener.html
+SHA1-Digest: 9Q1LXl0t4kE4ZffQNcUnX7vP5Ho=
+
+Name: guide/reference/api/help-doc.html
+SHA1-Digest: SBRmtIPag36CjVo+lrcow7aeRLo=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/FormLayout.
+ html
+SHA1-Digest: f3tLli6oMNqIScRGBKxUGr4IQhs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/ExternalBrowser.
+ html
+SHA1-Digest: sAt2JQblHkOEE3I/uzS5AOH0rmA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TreeItem.html
+SHA1-Digest: DY+X7xYJoZRgKunAxQ5tM/hY8iw=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseEvent.html
+SHA1-Digest: P7Yc0HYtTglZuEOmDRv02UyB/dA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/class-use/WebClie
+ nt.html
+SHA1-Digest: 89XTq0ixRDdEq9GijKDRPGTSe/s=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ExpandItem.html
+SHA1-Digest: qQlKaYoggDtsi5f+IzmpvyafJsI=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ControlAdap
+ ter.html
+SHA1-Digest: oSy2iTyP4joHpeEGZVr0wH3NtP0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Dialog.htm
+ l
+SHA1-Digest: +69k9tMXzh82w5MC3fPz/oMA7S4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/RemoteObject.html
+SHA1-Digest: a8Mq87sYQc3dVfNYbq6O1PxS39w=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/class-use/Client.
+ html
+SHA1-Digest: fDA1Ft8aiTHdwplXX+noOr4YSSc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/OperationHandler.
+ html
+SHA1-Digest: JzHw8ycokbBZjyztDCSf8gqE4zQ=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/PaintListen
+ er.html
+SHA1-Digest: ik0SV8AYBeefzlAw+kYJ1wI4yys=
+
+Name: guide/reference/extension-points/org_eclipse_ui_newWizards.html
+SHA1-Digest: y3MbA5DkncI0yLngZbjegyb7CCQ=
+
+Name: guide/images/custom-widget/project.png
+SHA1-Digest: +TftHZiCSSt2Po7Okq8zyDuIxDc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTableAdapter.html
+SHA1-Digest: CXZ3U1in7FSFlh2DwltaLCBENgU=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleCont
+ rolEvent.html
+SHA1-Digest: GdYVRDamuSelYKNl4TePd66C1X4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/Adaptable.html
+SHA1-Digest: 5sxd1y4XTt6gy7YGcfYq/+500yY=
+
+Name: guide/reference/api/org/eclipse/swt/layout/package-tree.html
+SHA1-Digest: l73D1Xl4j7gZ23iryklim9nfUIE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleEdit
+ ableTextAdapter.html
+SHA1-Digest: fsAsOQ1MObTTcCbGKnUfaqtkODI=
+
+Name: guide/articles/examples.html
+SHA1-Digest: iAaM0g5pMpCRduH6A0uvJU87hFg=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/RGB.html
+SHA1-Digest: 6bsCIp2VZjSyPcZwjKRH7ZxhD34=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleEven
+ t.html
+SHA1-Digest: Pjxm/H0PHkIYAK5i5rQlEBn6bis=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TouchSourc
+ e.html
+SHA1-Digest: km0rckyqz5uiqr3rf5jU0Fs0SBM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Menu.html
+SHA1-Digest: gSOi92gyqLB2TtEcqyb3DIhjb7g=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ControlList
+ ener.html
+SHA1-Digest: EqKn1am4MmCZclX/7oGi4DfJN6E=
+
+Name: guide/reference/theming/ExpandBar.html
+SHA1-Digest: lxckTf8USIfSilJhhNv6wv6t2z4=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/PathData.html
+SHA1-Digest: Bt4/DMenoB4lhwQRgaxM5DOP0po=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleTabl
+ eCellAdapter.html
+SHA1-Digest: rWi81yy1ScQlC5l6I6bsI1Qsxnc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/ILifeCycle.htm
+ l
+SHA1-Digest: haZT3WDumYWOsTgcrikNC+IFjuE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/ControlThemeAdapte
+ r.html
+SHA1-Digest: faxD6OwvL+Up+bwjl0OkYNUNqeo=
+
+Name: guide/reference/extension-points/org_eclipse_ui_encodings.html
+SHA1-Digest: dtElYQmX9q4+C1QrM86k81hgtrU=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Path.html
+SHA1-Digest: CboD75RJUouGBZ566Dh2gWTL+0c=
+
+Name: guide/reference/api/stylesheet.css
+SHA1-Digest: lkSOwHhdPg6zTe1uBJVxu2P0958=
+
+Name: guide/reference/api/org/eclipse/swt/custom/ControlEditor.html
+SHA1-Digest: D4YKd3h1slpSqRlN1bhPOhfUcXM=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Rectangle.html
+SHA1-Digest: UdzP57yC2HVqfICOh6+e8GndRPQ=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/TextTransfer.h
+ tml
+SHA1-Digest: T+JlIioj5kbu58DptqDtxGQv/Zc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Decoration
+ s.html
+SHA1-Digest: x/dzWMIzMbWnNUMuCYD2oE4rqY0=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_stackPresent
+ ations.html
+SHA1-Digest: QmTfSdXNv4y0xpMoyfDWx80IMtI=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/SelectionEv
+ ent.html
+SHA1-Digest: QVKxf2e+kg5PcvOPamhWW78kdDU=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/ImageData
+ .html
+SHA1-Digest: VlnciPKl4vHwodvPRb+JyxJEmk8=
+
+Name: guide/reference/api/org/eclipse/swt/events/HelpEvent.html
+SHA1-Digest: DWt9LtIjEh8YJtugmcgtFGIEuEc=
+
+Name: guide/reference/extension-points/org_eclipse_ui_actionSetPartAss
+ ociations.html
+SHA1-Digest: IkRBm/A6FnXVjI3U0kVrA3S/C+0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Synchronizer.html
+SHA1-Digest: t1vQrPeXx/f0lGzconoyWYx8ZlY=
+
+Name: guide/reference/api/org/eclipse/swt/events/package-tree.html
+SHA1-Digest: buCxaNYXwfuKViurh3L1tky5Lc4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ServiceHandler.h
+ tml
+SHA1-Digest: 1pRsoRDzokl5fK6+6IdgA6qx02w=
+
+Name: guide/reference/api/index-all.html
+SHA1-Digest: a0DoKAWmRKPIe6YK3S4oS65SYuA=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/FileTransfer.h
+ tml
+SHA1-Digest: /gcgG5WBQiozvys7RxixZvBavmc=
+
+Name: guide/reference/api/org/eclipse/swt/layout/FormData.html
+SHA1-Digest: /L5adim/PMIySqKCXTC196U26gs=
+
+Name: guide/reference/theming/Properties.html
+SHA1-Digest: oRSDlDr4UF2UhigvVLzjqaodOk4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/UISess
+ ionListener.html
+SHA1-Digest: 8M1LzXg5PMsvu3QWLhuEc3Y3IDU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Table.html
+SHA1-Digest: RhJ3jVH4uuEQ83f9YtCajEwL9AY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TaskBar.html
+SHA1-Digest: Eu5cBUdcn3juafU6yVrV6DCKCH0=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Button.htm
+ l
+SHA1-Digest: +7WOUJO6b+R+5BWAZoF24QT1F88=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Scale.html
+SHA1-Digest: EC3VpXgmsNPPE6M1f6bKEAubIXQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/RWT.NLS.html
+SHA1-Digest: mRCUd0njuH2U7Ft3gYJE3HRm8ZE=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TabFolder.
+ html
+SHA1-Digest: zOj8uwXL92J96E4NEKf7Nq/De/g=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/package-frame.
+ html
+SHA1-Digest: BJ698xkJX+XB09cz75l8uVom8A0=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/RowData.htm
+ l
+SHA1-Digest: nuh5rHpDXRf0neDTp6bT6AkGg90=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DragSource.htm
+ l
+SHA1-Digest: bsCHXjLZabyWliT5dhw3C08qJVs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/package-summary.h
+ tml
+SHA1-Digest: QeNuu9IM2msRnI8y6PQFlZ58fkI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/package-frame.ht
+ ml
+SHA1-Digest: uH4eFBk9iPNotavETmnwg52s+zA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/package-summary
+ .html
+SHA1-Digest: /IG59gTHXIU3YXHvm2l1akcg+VA=
+
+Name: guide/reference/api/org/eclipse/swt/events/PaintEvent.html
+SHA1-Digest: z9u01gRtMRKfKO1CM8cRlf0hiVw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/ColorDialo
+ g.html
+SHA1-Digest: Lcf7g6q4/QUL7fs+78zOy/3OHtI=
+
+Name: guide/reference/api/org/eclipse/swt/events/ModifyEvent.html
+SHA1-Digest: UbmBp0TltHuGxgF78DpOYEY7ZVI=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Scrollable
+ .html
+SHA1-Digest: Z7ANlkuPZe0K7Krg2ZaLLeo6EJI=
+
+Name: guide/reference/theming/Group.html
+SHA1-Digest: yVHJMiJN8pAkrzTLHqHnXlD5+Oo=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Widget.htm
+ l
+SHA1-Digest: faXvrUnolCZfh3xmBEtx9m57Ww4=
+
+Name: guide/reference/extension-points/org_eclipse_ui_views.html
+SHA1-Digest: JP2850yuwSeKOxXi3LQ/eTNyrCs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/IServi
+ ceManager.html
+SHA1-Digest: jLfV8MYj4iA+XhyXYIISi4p9uE0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/WidgetAdapter.
+ html
+SHA1-Digest: HKdv9RlzWIfyjHTs4wb6Piu+0wY=
+
+Name: guide/images/css-label.png
+SHA1-Digest: vCvXXD4djzZRJYQWYRzKRZl2YIM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/package-summary.
+ html
+SHA1-Digest: zgAU1dzBTaJ4RXy6xVyQQzSdFKk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/package-frame.
+ html
+SHA1-Digest: Y/7A3FL9oCNPPn9KsHG3cFG/hNQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/ApplicationR
+ unner.html
+SHA1-Digest: RR/M3Y4JPji66DAvs7cMRl3k2fc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TreeColumn.html
+SHA1-Digest: b0o/4KF9vb0lqawtrcEb+Lvcstg=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/package-frame.htm
+ l
+SHA1-Digest: /hCiV7EoTQVkmry2eVLpwVOIT+s=
+
+Name: plugin.properties
+SHA1-Digest: kcDj+r+vCzVG2b9Z0f9mP7N2+NE=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/LocationLi
+ stener.html
+SHA1-Digest: diEsz/zj0jej3krYiNGrYliJ4sc=
+
+Name: guide/reference/api/org/eclipse/swt/events/package-summary.html
+SHA1-Digest: GPNv7BfOVAR/0bL8hoImFW98Fs8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/Graphics.html
+SHA1-Digest: s3eZqzqQdO/xDCIms5THdZJFIOw=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Control.html
+SHA1-Digest: NCNo9sECec3Y/wFg+6emNo8yGm0=
+
+Name: plugin.xml
+SHA1-Digest: BCVerc5txbYHiEYYk/WUaLo1Jpc=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Synchroniz
+ er.html
+SHA1-Digest: W7jEguvYvvrpg5t6A+As17Epm1k=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/Servic
+ eManager.html
+SHA1-Digest: ivndcT16acJqqz6UrqjUQLPb7eI=
+
+Name: guide/articles/branding.html
+SHA1-Digest: Bx+i1DdECIrBiQiXnj7vSLZDq3g=
+
+Name: guide/reference/extension-points/org_eclipse_ui_handlers.html
+SHA1-Digest: fEYBglzqwzv875STdMYxdbGKWTk=
+
+Name: guide/intro.html
+SHA1-Digest: /4y/u75VJzAUvU6fH4z8PSLS/NM=
+
+Name: guide/reference/api/org/eclipse/swt/events/ControlEvent.html
+SHA1-Digest: LBc022S7lVECyz0nwOL8vHVfefM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/class-use/Applicati
+ onReference.html
+SHA1-Digest: KjW+407tzEh/XJ9qzm5awWKfSrE=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ApplicationConte
+ xtEvent.html
+SHA1-Digest: w+19Vfx4bwDT23mxDMe7eX8X/VM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Tray.html
+SHA1-Digest: 0tQRjmJUOesUKvMReqnnJux3sQ0=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/DropTarget.html
+SHA1-Digest: EjlM1IkAjcvMBPmh93LUqfzm5dg=
+
+Name: guide/reference/api/allclasses-noframe.html
+SHA1-Digest: RtNSRon5z2fC2r5tpFa2y3w/Aas=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Composite.
+ html
+SHA1-Digest: GdsvSG4kaMWIdONH6MDIcZXwWCA=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Rectangle
+ .html
+SHA1-Digest: X7kqsKclq2zjrMryt/HY8+C8Vbs=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/HelpListene
+ r.html
+SHA1-Digest: DnFo6t0gQ2caK/OnATme0FVzT3M=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/WebClient.html
+SHA1-Digest: +RRek4gO47hbIm4xibYyXMwdsaQ=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Layout.html
+SHA1-Digest: DZnEXm1+Zx9TAAOwtpGNBPMXnlA=
+
+Name: guide/images/demo-app-params.png
+SHA1-Digest: rOdGK+v+Hwzi6WhQJ+Gf4s0DfrQ=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/engine/package-frame.htm
+ l
+SHA1-Digest: vG83aK5YvPVHsFFxpxEYUQzxsic=
+
+Name: guide/reference/theming/ProgressBar.html
+SHA1-Digest: T0BJubLsRMRdfq39AwGjHsbhg08=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/ACC.html
+SHA1-Digest: Noe2hFqUtKICoUbLnAaQ0VVj+0E=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Color.htm
+ l
+SHA1-Digest: knI6phR2bt9wrjda6jriUvKj8yY=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/RTFTransfer.ht
+ ml
+SHA1-Digest: 2iMmmvSgkqd1xfvDFsoR80DcF/o=
+
+Name: guide/reference/jsdoc/symbols/Composite.html
+SHA1-Digest: FMrzDSm+ZUq8qqOLDPlSuJCZPLg=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleActionListener.html
+SHA1-Digest: scujdXl0LNd/AgYyVdzRu3efMrE=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleText
+ Listener.html
+SHA1-Digest: jiE/X7j5LPi/yJ/S4Spfq4R5Bjw=
+
+Name: guide/reference/api/org/eclipse/swt/custom/BusyIndicator.html
+SHA1-Digest: pMbIX9amOtv7L9ixQ1OVHzJ50S0=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/StatusText
+ Listener.html
+SHA1-Digest: 6QCgn5XT7b68YiOGuxS1izBZJNw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/ApplicationC
+ onfiguration.html
+SHA1-Digest: Hsjo3dlAr4MkzY85Gfrq3EmLmGo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/package-summary.
+ html
+SHA1-Digest: eBRv9hbcZ/pDTFoPw+fcELmuq6w=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/IWid
+ getAdapter.html
+SHA1-Digest: xIvieL/CoPyrspM6/1Aecn0s/wc=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/Resource.
+ html
+SHA1-Digest: s3ENKZoTIi8PoQv+69fn0cxKO0s=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/class-use/LineAttri
+ butes.html
+SHA1-Digest: ai0lLy87oIqr1t50j1yKwQFd5xo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ResourceLoader.h
+ tml
+SHA1-Digest: 94gUmFOu/iRrVRCMGRP6kT4CZjY=
+
+Name: guide/reference/api/org/eclipse/swt/events/MenuEvent.html
+SHA1-Digest: TLwD3kIjTY5uYR1ZAXuSRCaW2mY=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/TypedListe
+ ner.html
+SHA1-Digest: u9DZRAqJ+XW1/lcu6P9bFz3mrOM=
+
+Name: guide/reference/extension-points/org_eclipse_ui_helpSupport.html
+SHA1-Digest: lDLeUaNAflxggW25RQsZqyCqckg=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TouchSource.html
+SHA1-Digest: zRX4ISyhdF3CFyUs+35VbDWiouY=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/Connection.html
+SHA1-Digest: LM8w7568RxfI7+KPCqOo5mbFh+8=
+
+Name: guide/reference/api/org/eclipse/swt/layout/package-use.html
+SHA1-Digest: pG8JNXIZ8Z7ILsFigO3X7fUVJng=
+
+Name: guide/images/run.png
+SHA1-Digest: FizzsPHKEzCbr6LO11OgdR/6I3I=
+
+Name: guide/articles/internationalization.html
+SHA1-Digest: pgI7hObztciDeP/qgJFbOhZWDms=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/osgi/ApplicationLauncher
+ .html
+SHA1-Digest: GlXllKaG71u8fuAX796Med4aDn0=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ISettingStore.ht
+ ml
+SHA1-Digest: wwTllWqw80ZhpD3TdyLnBMGQfXM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/IApplicationStor
+ e.html
+SHA1-Digest: EajrrV3Vsl4Wk644hEoar7EHlUo=
+
+Name: guide/reference/api/org/eclipse/swt/SWT.html
+SHA1-Digest: sZm3pbSWChYGt556gjXUzN+pID8=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/package-use.html
+SHA1-Digest: dTLF7wAGeDCfms0q/YlGmH+22lQ=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DND.html
+SHA1-Digest: X9rUdIlSKBu7RRA1Z9z4MCHPips=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DropTargetEven
+ t.html
+SHA1-Digest: Xr0JCjXnrpZMadIY/vslIO6hjKU=
+
+Name: guide/reference/api/org/eclipse/swt/events/ModifyListener.html
+SHA1-Digest: CUqjShMejXYPZVmbZj2fNa6RC7o=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Decorations.html
+SHA1-Digest: N6g7QNPaCZSEtOESDRTvP2eR6HU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/TableItem.html
+SHA1-Digest: g/kJJ7pNrL7/3fLBUbHU2Z1Xm8s=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/class-use/DropTargetEffe
+ ct.html
+SHA1-Digest: ZfzrtiuzwGmETJ0LoZVMm+Jda9I=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/BrowserNa
+ vigationListener.html
+SHA1-Digest: /P4ajhJQo7GtoY2PtfN6ij8MKJE=
+
+Name: guide/articles/tree-table.html
+SHA1-Digest: qaZ0QYQ+0b5i3XGP7iv0VfYB43w=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Event.html
+SHA1-Digest: tTWg1nT+3Vd/FI6M4QkXEoIKJx4=
+
+Name: guide/articles/application-configuration.html
+SHA1-Digest: AB47zUlvPeirG+PnKbwtgHqAXVs=
+
+Name: guide/reference/extension-points/org_eclipse_ui_popupMenus.html
+SHA1-Digest: r0HkqFQZAb2DmPa902jHrSN3NlI=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/WidgetLCAUtil.
+ html
+SHA1-Digest: j/kp1+vkQo682WfDgKlkpbDvstg=
+
+Name: guide/reference/extension-points/org_eclipse_ui_editors.html
+SHA1-Digest: JDiI5sycACxdPehRJXyfsSTFfHo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/ImageCell.html
+SHA1-Digest: /jFHtPBzn90OHqib5sHYyEkb8bo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/graphics/package-frame.h
+ tml
+SHA1-Digest: gXBjRgaupqx4vm6v0l+c+gM60G4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/UICallBack.htm
+ l
+SHA1-Digest: ZxI02nxSz2LfiG4uEQxj2Dto498=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Text.html
+SHA1-Digest: zli2X+66E21D9kCPayTDHxc3n4k=
+
+Name: guide/reference/extension-points/org_eclipse_ui_decorators.html
+SHA1-Digest: bwguU7+75uslLoP3Ioj0OVSxtKc=
+
+Name: guide/reference/theming/TabFolder.html
+SHA1-Digest: OpnS3y6Zzg9zWYy+v7VGMT5VhuY=
+
+Name: guide/reference/api/org/eclipse/swt/browser/class-use/ProgressLi
+ stener.html
+SHA1-Digest: ID0OKuOW4bm++ObEIYGpc48s1Uo=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseAdapter.html
+SHA1-Digest: 8xP36HDajzfBRkjhNFtMWg2cbuo=
+
+Name: guide/reference/api/org/eclipse/rap/json/package-tree.html
+SHA1-Digest: GhSJU/2Crp8cG4yaJmKi+ICH5L4=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Cursor.html
+SHA1-Digest: tBJhFXnuQWxTHewt4pFhHI7nWzA=
+
+Name: guide/reference/api/org/eclipse/swt/custom/TableEditor.html
+SHA1-Digest: 8lfhu3ybE0RUtc8mx9BGWMb8l9c=
+
+Name: guide/images/theming-dialog-new.png
+SHA1-Digest: t+kQZuRXULpxYE8JAjtleokYaLc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/TextCell.html
+SHA1-Digest: my1Lqp/ILY2XQ/Opqn0NwbjP6OM=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleTextExtendedAdapter.html
+SHA1-Digest: j3PNFHBJAq9yt2yjuvMP/Ly3xYk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleEditableTextEvent.html
+SHA1-Digest: nMWXmJRutN9AglAEoDDNCYaH0P4=
+
+Name: guide/reference/api/resources/titlebar_end.gif
+SHA1-Digest: fU25yFEdgb2gjuEgmgEF/dgcrSA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/class-use/Abst
+ ractWidgetLCA.html
+SHA1-Digest: pgBMKEirr8OAowJW46DaE/e0+6A=
+
+Name: guide/reference/theming/Label.html
+SHA1-Digest: WGkEn6Mb1dJ8xyLNE7rMGtw+6Kw=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/template/ImageCell.Scale
+ Mode.html
+SHA1-Digest: TCmnReCYXJ5OZMGgOBVdVFh1Wnk=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleEdit
+ ableTextEvent.html
+SHA1-Digest: dI6KeSDsFppvt1LjE4wPUnLGTYY=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleValueAdapter.html
+SHA1-Digest: x5QJ/X0ZPnt3aJ0YWnEjNzj1hVA=
+
+Name: guide/reference/api/org/eclipse/swt/events/TraverseEvent.html
+SHA1-Digest: O+xCyQWuIhleZQ1aR5qkUtj9iCk=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/package-use.html
+SHA1-Digest: SBKvhhPg6i77nAq0RLsJq1TGO8s=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/MenuItem.h
+ tml
+SHA1-Digest: BZ2uR2TFawMdID7g8wOPjiNoSSQ=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ColorDialog.html
+SHA1-Digest: O2ft4+sDbsk/AB/H+Ak8+bOefr0=
+
+Name: guide/images/markup-label.png
+SHA1-Digest: P3vSyjIkPXe8eAUt87Q7X89aCO0=
+
+Name: guide/reference/api/org/eclipse/rap/json/class-use/JsonObject.Me
+ mber.html
+SHA1-Digest: BR+5xWVhUWGeLLNUc4QkPoXFb2s=
+
+Name: guide/reference/api/org/eclipse/swt/layout/package-frame.html
+SHA1-Digest: 0syujKMQkPSbhlsKE204HTN1QO8=
+
+Name: guide/reference/api/org/eclipse/swt/SWTException.html
+SHA1-Digest: FL5xzzFN5upUbEGrIcCfLasfPnU=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Tree.html
+SHA1-Digest: 8JBT4Sm5dGozUOHx2lr6ts94Gq4=
+
+Name: guide/reference/jsdoc/symbols/ProgressBar.html
+SHA1-Digest: RpGFl5IJ585DR6KGzx9oSD9slnE=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/package-tree.html
+SHA1-Digest: dsiTTceUrAdoNUn3jPVJhx50HJ0=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ArmEvent.ht
+ ml
+SHA1-Digest: qjww20M0ZDXs8CAmnGWiwTd3Udk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Table.html
+SHA1-Digest: vm34BlVZhzVsp+XaYe8QUKBkvQY=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseTrackAdapter.htm
+ l
+SHA1-Digest: 60RinSZ4bWWm4v7uq2U7+qiJFRc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/package-u
+ se.html
+SHA1-Digest: lzg4jbhNX3q/KWJyfNPrLAn8Pc4=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/Scale.html
+SHA1-Digest: yHuTJ7x/dXLfh8E6y7sd8Fi8bec=
+
+Name: guide/reference/extension-points/org_eclipse_rap_ui_serviceHandl
+ er.html
+SHA1-Digest: y08hQvbpJeG8LCJtUyQJmfBYh/E=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Dialog.html
+SHA1-Digest: 1Hn54MNtqRpIrFql9vnJQ1n/Y/o=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseId.html
+SHA1-Digest: N1I5nxFit8fL6rBOqTDPorOpgu0=
+
+Name: guide/reference/theming/Slider.html
+SHA1-Digest: eHJOcyJMyO2D25YdEPi3uGGC9YQ=
+
+Name: guide/reference/jsdoc/symbols/Scale.html
+SHA1-Digest: 4htOMjT8j3FXIitCAlapt64LsT4=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/IResourceManager
+ .html
+SHA1-Digest: 73aUOPJTX/0e8Q7GP7uEgpNmPoA=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/ToolBar.html
+SHA1-Digest: UFoE9yY8i7xFM8aaV5j2HD6RnlM=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Spinner.html
+SHA1-Digest: BdgCCL/k4hTC9YNUwqIdSrRNZx8=
+
+Name: guide/reference/api/org/eclipse/swt/browser/LocationAdapter.html
+SHA1-Digest: tnVNguCSSm+xPoQ+BgLAZbOyOIA=
+
+Name: guide/reference/extension-points/org_eclipse_ui_commandImages.ht
+ ml
+SHA1-Digest: o8GGFX6muVdrM+d8bvo7M5okvuU=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/ServerPushSessio
+ n.html
+SHA1-Digest: xoAeh8+3ALQZR4avuT8QiZia0rQ=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/FormData.ht
+ ml
+SHA1-Digest: Wm1swat7hMDX2ZvqLKFqzBFzyPE=
+
+Name: guide/reference/api/org/eclipse/swt/events/TypedEvent.html
+SHA1-Digest: VW8qsHnllnmUu1yFFP8qEGgH8uc=
+
+Name: guide/reference/theming/Composite.html
+SHA1-Digest: 04ahixdUo0z8tsxhyn/JmU5CwG4=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleAttributeListener.html
+SHA1-Digest: zvyWkTUn0UptDmiWCM+clDfLiNM=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleAttr
+ ibuteListener.html
+SHA1-Digest: 7PX5qg78t7uy0icJFblaBy6ghyM=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/theme/package-tree.html
+SHA1-Digest: 2yhRow4tH2Vc5fUOflfx24iYiHs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/IServiceHandler.
+ html
+SHA1-Digest: KvHucjeqmPmc04hvHTpdk1R9XGI=
+
+Name: guide/reference/extension-points/org_eclipse_ui_systemSummarySec
+ tions.html
+SHA1-Digest: QQgWZ28bspFoydpmPMEOLSh2l9Y=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/widgets/package-use.html
+SHA1-Digest: pMUlRtS0MdJStxJmJt/2A+zqK7g=
+
+Name: guide/reference/api/org/eclipse/swt/events/MouseTrackListener.ht
+ ml
+SHA1-Digest: DLv/wrOH1IfvZa3fLbqVDvGg9SI=
+
+Name: guide/reference/api/org/eclipse/swt/events/class-use/ControlEven
+ t.html
+SHA1-Digest: 8B1L50+azJ2PDxzceX+gp/lhRGk=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/class-use/IE
+ ntryPointFactory.html
+SHA1-Digest: +S79QiPJZkjyPAxOrazPTlpo39k=
+
+Name: guide/reference/extension-points/org_eclipse_ui_startup.html
+SHA1-Digest: 6qV56wSxu4GPkIkqavUVt5mjeyQ=
+
+Name: guide/reference/theming/CCombo.html
+SHA1-Digest: nfLgtXdnIdl/QxeLxx+NLOgYgV8=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/TextTransfer.html
+SHA1-Digest: otbn8ZxxX9NOPECv5MQpfEaJ4tY=
+
+Name: guide/reference/api/org/eclipse/swt/layout/class-use/FormAttachm
+ ent.html
+SHA1-Digest: TssZQH6XgfnsPNvABSIJmjVj8T8=
+
+Name: guide/reference/api/org/eclipse/swt/events/GestureEvent.html
+SHA1-Digest: XQ+brAU1wjNQXk0bCirdoI5j/sY=
+
+Name: guide/reference/api/overview-frame.html
+SHA1-Digest: 9bZHEybOKp5AxT3QQ+q36QmpEGo=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/SettingStoreEven
+ t.html
+SHA1-Digest: B1eZXtB0RsZSxy0+DR1foyy588c=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/UISess
+ ionEvent.html
+SHA1-Digest: 4k+4thLIMeWgH2dYTHuiIkcaeTc=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/AccessibleCont
+ rolListener.html
+SHA1-Digest: ymg5C2SvyClXF28qfkq7XIToPiw=
+
+Name: guide/reference/api/org/eclipse/swt/accessibility/class-use/Acce
+ ssibleHyperlinkAdapter.html
+SHA1-Digest: fh2wCadoAJjAPNxrp5DXych3ObY=
+
+Name: guide/reference/api/org/eclipse/swt/dnd/FileTransfer.html
+SHA1-Digest: eDBM9t14oDiEIF2M+zlD2GxbnzQ=
+
+Name: guide/reference/api/org/eclipse/swt/class-use/SWTException.html
+SHA1-Digest: 1rmAmkr/f1ZDBeC54qCWspwY38g=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/service/class-use/ISetti
+ ngStoreFactory.html
+SHA1-Digest: +wtQBzZb1U6A0LXHcMsRH9tYshk=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/class-use/FontDialog
+ .html
+SHA1-Digest: jI11EOjucmlE7ZjQZa6xBGqhjXs=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/client/service/JavaScrip
+ tExecutor.html
+SHA1-Digest: nIK2e1gMTU/pStdKb5awC3Bc2ak=
+
+Name: guide/reference/api/org/eclipse/swt/widgets/Button.html
+SHA1-Digest: L+ranPfKbOxvNhBVwfRD9fseAoc=
+
+Name: guide/reference/api/org/eclipse/swt/custom/class-use/ControlEdit
+ or.html
+SHA1-Digest: QVJ51jmO/v0RJ7mixWz2MmXH6tA=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/package-tree.html
+SHA1-Digest: 7CJueXOlOGdAmMMG+mlGjaY0Soc=
+
+Name: guide/images/runtime.png
+SHA1-Digest: kXTARc+rCtyJPIEoEzrYUey68mc=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/remote/JsonMapping.html
+SHA1-Digest: 2RfVB8uzoNHBFBbf3iOeco0Zwic=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/application/EntryPointFa
+ ctory.html
+SHA1-Digest: tHfI6O4ultoOPaG4wfoGPuEdDNo=
+
+Name: guide/articles/web-embedding.html
+SHA1-Digest: I0iqe8cm9rm2tVXN3QZfBuA62h4=
+
+Name: guide/articles/scopes.html
+SHA1-Digest: CUK9cQ9j7+vSK9Z2EDflLCi5HkA=
+
+Name: guide/reference/api/org/eclipse/rap/rwt/dnd/package-summary.html
+SHA1-Digest: wIz/dlcDI6h4rOVGasIujhdiMAY=
+
+Name: guide/reference/api/org/eclipse/swt/graphics/Color.html
+SHA1-Digest: RXjjxNx4uBaldP33THbJ4cfIzc0=
+

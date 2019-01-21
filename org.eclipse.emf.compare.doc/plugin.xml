@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?eclipse version="3.2"?>
+
+<plugin>
+	<extension point="org.eclipse.help.toc">
+		<toc file="help/toc.xml" primary="true"/>
+	</extension>
+	<extension point="org.eclipse.help.toc">
+		<toc file="help/developer/toc-how-to-open-compare-dialog.xml"/>
+		<toc file="help/developer/toc-logical-model.xml"/>
+		<toc file="help/developer/toc-developer-guide.xml"/>
+		<toc file="help/tutorial/toc-tutorial.xml"/>
+		<toc file="help/toc-FAQ.xml"/>
+		<toc file="help/user/toc-sample-use-case.xml"/>
+		<toc file="help/user/toc-user-guide.xml"/>
+	</extension>
+</plugin>

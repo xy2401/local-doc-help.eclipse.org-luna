@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Integrating Plain Java Classes and Session Beans</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Integrating JMS","","mg-integration-6.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating Plain Java Classes and Session Beans</h1>
+<p>Both Plain Java applications and Session Bean applications are designed to
+execute Java code:</p>
+<ul>
+    <li><a href="integration/integration-plain-java.html">Plain Java applications</a> allow to instantiate any
+     Java class and execute a method on it.</li>
+    <li><a href="integration/integration-session-bean.html">Session Bean applications</a> allow to create a Session Bean and execute a
+    method on it.</li>
+</ul>
+<p>In both cases this method to be executed is called completion method.</p>
+<p>As already explained for Workflow Data, all IN data mappings are executed
+before the completion method and all OUT data mappings are executed after the completion
+method. For data mappings it is possible to use all getter and setter methods in the sense
+of section <a href="data-integration/mg-integration-2.htm">Working with Java Style Data Types</a> on the underlying
+object. This object will be the same for the whole life time of activity instance
+execution. Especially, it is guaranteed that for a stateful Session Bean application all
+data mappings and the completion method will operate on the same Session Bean instance.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

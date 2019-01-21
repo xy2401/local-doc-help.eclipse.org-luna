@@ -1,0 +1,116 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_27
+Bundle-Vendor: %Bundle-Vendor
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Name: %Bundle-Name
+Built-By: hudsonBuild
+Bundle-SymbolicName: org.eclipse.emf.facet.doc; singleton:=true
+Require-Bundle: org.apache.ant;bundle-version="1.7.1",org.eclipse.emf.
+ facet.util.emf.doc;bundle-version="0.2.0",org.eclipse.emf.facet.widge
+ ts.nattable.doc;bundle-version="0.2.0"
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 0.4.2.201412301440
+Bundle-ManifestVersion: 2
+
+Name: mediawiki/new_and_noteworthy-toc.xml
+SHA1-Digest: vqWpirPoXHJArCK07Bv+IOiBdVw=
+
+Name: mediawiki/new_and_noteworthy.mediawiki
+SHA1-Digest: kFIEaPOs8Pwc5HBrGujqUJHd1qU=
+
+Name: index.html
+SHA1-Digest: VfpqAqts+ysLUZO49IZTlTe938I=
+
+Name: mediawiki/API_Policy.html
+SHA1-Digest: YQ/6y/N9uRC64Ejcy67Q2QEPTUw=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA1-Digest: b4JaYM7RpVlYaub66poL23eotTw=
+
+Name: mediawiki/running_tests-toc.xml
+SHA1-Digest: 9aLzO+THmtKZAbOgY44dPo8vIjU=
+
+Name: mediawiki/retention_policy.html
+SHA1-Digest: Ajg/YHdS3axr6mDz9LO5HAi6Phk=
+
+Name: mediawiki/running_tests.mediawiki
+SHA1-Digest: 7zxwbR23VpZ5NKdXX8hHKjSjPzg=
+
+Name: META-INF/maven/org.eclipse.emft/org.eclipse.emf.facet.doc/pom.pr
+ operties
+SHA1-Digest: gkXcZqMt7m7fnntWvGeVa3dVHdE=
+
+Name: toc.html
+SHA1-Digest: HMb+LZP8pOPqlBhJShez0V17tus=
+
+Name: maintoc.xml
+SHA1-Digest: ID83uAJO8etnT7AZHlXSfkd2v28=
+
+Name: mediawiki/ramp_down-toc.xml
+SHA1-Digest: 9IdLRwd4675KyYf44KwAHYKwOVM=
+
+Name: META-INF/maven/org.eclipse.emft/org.eclipse.emf.facet.doc/pom.xm
+ l
+SHA1-Digest: AAhgMnPF2DSk84IYmXvJSxL3How=
+
+Name: mediawiki/ramp_down.mediawiki
+SHA1-Digest: PIof1KfbXYVxQetNHSvgm7fc0rY=
+
+Name: mediawiki/new_and_noteworthy.html
+SHA1-Digest: /98/o2jSElS/A0m/DySCTDYZcaI=
+
+Name: plugin.xml
+SHA1-Digest: /IKxBu+FDwD8KkjS3K2guhpA1LA=
+
+Name: toc-full.xml
+SHA1-Digest: Its0zts74rkgbfMsSevx0J3QTtg=
+
+Name: mediawiki/checking_BREE-toc.xml
+SHA1-Digest: fnV+uRseYQVG0uGon+sSsGO2MsY=
+
+Name: mediawiki/checking_BREE.html
+SHA1-Digest: VHFF4uCSEaWndSXiAzP0fWvIqso=
+
+Name: mediawiki/checking_BREE.mediawiki
+SHA1-Digest: gVGOtCVseXIDO2+9KF1+MG+aV1I=
+
+Name: img/EMFFacet_NatTable_QueryColumn.png
+SHA1-Digest: aLLnw+PtV6qbxBjbdb7lbd8nb5E=
+
+Name: mediawiki/ramp_down.html
+SHA1-Digest: nnBT4eOMOE2bP5gCPwYePdKXFB0=
+
+Name: mediawiki/capabilities.html
+SHA1-Digest: 2qtZXr4GAtJKvBCkkonVvzAh68Q=
+
+Name: img/EMFFacet_NatTable_CustomizationExample.png
+SHA1-Digest: YLLptteD3wP5MDUlP2wKTPuXQCo=
+
+Name: about.html
+SHA1-Digest: kaf9iEjTiKyydsw5hQDU/Gpw0PY=
+
+Name: mediawiki/retention_policy-toc.xml
+SHA1-Digest: 05ipIZjRSzALq/2DvfHyGLqF/zo=
+
+Name: mediawiki/running_tests.html
+SHA1-Digest: 3wLz6z+xrN6Rr2NbbyOLRWckU78=
+
+Name: org/eclipse/emf/facet/doc/tasks/GenerateApiJavadocTask.class
+SHA1-Digest: q4FVQA0dHyr/DjJoGvox3vlgbpE=
+
+Name: mediawiki/retention_policy.mediawiki
+SHA1-Digest: 8TAQn96wmnoLM553n2E8LXtn/ZY=
+
+Name: mediawiki/capabilities-toc.xml
+SHA1-Digest: 52zlabivLrM4FssyN8pzKW9znDw=
+
+Name: mediawiki/API_Policy-toc.xml
+SHA1-Digest: Icn8VLFAgKix0n687pHwH6+gDig=
+
+Name: mediawiki/capabilities.mediawiki
+SHA1-Digest: guItuc+04OU5thYTHrKP36DOk8E=
+
+Name: mediawiki/API_Policy.mediawiki
+SHA1-Digest: mhQlE/f52thjY45mpkB2vbXBpDA=
+

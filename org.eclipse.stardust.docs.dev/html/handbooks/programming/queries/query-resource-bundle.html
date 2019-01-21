@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Retrieving a Resource Bundle from a specific Module</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Querying Process Definition Details",
+    "query-documents.html","query-proc-def.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Retrieving a Resource Bundle from a specific Module</h1>
+<p>The Stardust 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+provides the following method to retrieve a resource bundle from a specific
+engine resource bundle module:</p>
+<pre>ResourceBundle getResourceBundle(String moduleId, String bundleName, Locale locale);</pre>
+<p>Hereby, parameter <strong>moduleId</strong> determines the Id that identifies
+the resource bundle provider. <strong>bundleName</strong> defines the name of the bundle and 
+<strong>locale</strong> is the locale to retrieve the resource bundle for.</p>
+<p>The method returns the resource bundle object 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ResourceBundle.html">
+ResourceBundle</a> containing the resources in form of a map and its related
+locale or <tt>null</tt> if no resource bundle was found.</p>
+<h2>Resource Bundle Properties</h2>
+<p>The following resource bundle properties can be used to </p>
+<table class="autoWidth">
+   <tr>
+      <th>Constant</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+   <tr>
+      <td>RepositoryResourceBundle.MODULE_ID</td>
+      <td>repository-provider</td>
+      <td>The fixed moduleId for RepositoryResourceBundles.
+   </tr>
+   <tr>
+      <td>IRepositoryProviderInfo#getProviderId()</td>
+      <td></td>
+      <td>The providerId of each provider is used as bundleName.</td>
+   </tr>
+   <tr>
+      <td>RepositoryResourceBundle.REPOSITORY_CONFIGURATION_NAME</td>
+      <td>RepositoryConfiguration.name</td>
+      <td>The property for keys in IRepositoryConfiguration#getAttributes()</td>
+   </tr>
+   <tr>
+      <td>RepositoryResourceBundle.REPOSITORY_CONFIGURATION_VALUE</td>
+      <td>RepositoryConfiguration.value</td>
+      <td>The property for values in IRepositoryConfiguration#getAttributes()</td>
+   </tr>
+</table>
+<h2>Example</h2>
+<pre>
+List&lt;IRepositoryProviderInfo&gt; providerInfos = getDms().getRepositoryProviderInfos();
+IRepositoryProviderInfo jcrVfsProviderInfo = getJcrVfs(providerInfos);
+IRepositoryConfiguration jcrVfsConfigurationTemplate = jcrVfsProviderInfo.getConfigurationTemplate();
+ 
+ResourceBundle resourceBundle = sf.getQueryService().getResourceBundle(
+      RepositoryResourceBundle.MODULE_ID,
+      jcrVfsProviderInfo.getProviderId(), Locale.ENGLISH);
+ 
+Assert.assertEquals(Locale.ENGLISH, resourceBundle.getLocale());
+ 
+Map&lt;String, Serializable&gt; resources = resourceBundle.getResources();
+Assert.assertFalse(resources.isEmpty());
+Map&lt;String, Serializable&gt; attributes = jcrVfsConfigurationTemplate.getAttributes();
+Assert.assertFalse(attributes.isEmpty());
+ 
+for (Map.Entry&lt;String,Serializable&gt; entry : attributes.entrySet())
+{
+   String name = (String) resources.get(RepositoryResourceBundle.REPOSITORY_CONFIGURATION_NAME
+         + entry.getKey());
+   String value = (String) resources.get(RepositoryResourceBundle.REPOSITORY_CONFIGURATION_VALUE
+         + entry.getKey());
+   Assert.assertNotNull(name);
+   Assert.assertNotNull(value);
+}
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

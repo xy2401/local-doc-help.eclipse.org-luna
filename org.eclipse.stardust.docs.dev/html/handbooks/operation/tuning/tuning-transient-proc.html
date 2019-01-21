@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css">
+<title>Tuning for low Latency and high Throughput</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Stardust Portal Performance Tuning",
+	"tuning-jdbc-timeout.html","ag-tuning-portal.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+   <h1>Tuning for low Latency and high Throughput</h1>
+   <p>You can achieve significant improvement of 
+   throughput and a high optimization of latency by using transient processes, as
+   almost no remote calls to the database are necessary and the amount of data stored 
+   in the database is reduced. Refer to chapter
+   <a href="../../../concepts/audit-trail/transient-procs.html">Transient Processes</a>
+   of the <a href="../../../concepts/key-concepts.html">Key Concepts</a> part
+for details on the concept of transient processes.</p>
+<h2>Using Transient Processes</h2>
+<p>To increase performance by using transient processes, you need to perform the
+following steps:</p>
+<ol>
+   <li><a href="#tag">Enable Transient Process Execution</a></li>
+   <li><a href="#configure">Configure your internal in-memory Storage</a></li>
+   <li><a href="#expose">Exposing the in-memory Storage</a></li>
+   <li><a href="#provider">Defining the Provider for Cluster safe Objects</a></li>
+   <li><a href="#seq">Configure fast caching sequence generators</a></li>
+</ol>
+<h3 id="tag">Enable Transient Process Execution</h3>
+<p>Enable transient process execution via one of the following two options:
+   <ol>
+      <li><strong>Eclipse modeler:</strong><br>Edit the process definition in your Stardust modeler to 
+      support transient process execution.
+      For details refer to section 
+      <a href="../../modelling/mg-defdesk-3.htm#trans">Audit Trail Persistence</a>
+      of chapter
+      <a href="../../modelling/mg-defdesk-3.htm">Working with Process Definitions</a>.
+      Make sure that transient 
+      process execution is not disabled globally.</li>
+      <li><strong>Global property:</strong><br>
+      Enable the execution of transient processes globally via the
+      property <tt>Carnot.Engine.Tuning.SupportTransientProcesses</tt>. Set this
+      property in your <tt>carnot.properties</tt> file to <tt>on</tt>.
+      For details refer to section
+      <a href="../properties/ag-appendix-properties-2.htm#tuning">Tuning</a>
+      of chapter
+      <a href="../properties/ag-appendix-properties-2.htm">Server Side Properties</a>.</li>
+   </ol>
+<h3 id="configure">Configure your internal in-memory Storage</h3>
+<p>Now configure your internal in-memory storage, e.g. Hazelcast.
+If you are using Hazelcast, refer to section
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/toc.html">
+   Application Server Setup</a> in the
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+   Deployment Guide</a> for details on how to set up Hazelcast for your requirements.
+   Choose the description for the application server you use or the
+   according chapter for Spring if you use Spring.</p>
+<h3 id="expose">Exposing the in-memory Storage</h3>
+<p>If there is no need for exposing the in-memory storage, you can set the property
+<strong>Carnot.Engine.Tuning.TransientProcesses.ExposeInMemStorage</strong> in
+your <tt>carnot.properties</tt> file to <tt>false</tt> to achieve a performance
+improvement due to internal optimizations.</p>
+<p>Per default, this property is set to <tt>true</tt> to ensure that during the
+execution of transient process instances the process instance in question and 
+all related persistents are accessible via API, e.g. via 
+<tt>WorkflowService#getProcessInstance(long)</tt> (for accesses not using any queries).</p>
+<h3 id="provider">Defining the Provider for Cluster safe Objects</h3>
+   <p>Per default, a cluster provider for Hazelcast is used in Stardust
+   (<tt>ClusteredEnvHazelcastObjectProvider</tt>).
+   You have the option to write your own provider, which you can set to be used 
+   via the following server-side property 
+   <tt>Carnot.Engine.Tuning.SupportTransientProcesses.ClusterSafeObjectProvider</tt>.</p>
+   <p>The default setting for this property in Stardust uses the 
+   cluster provider for Hazelcast mentioned above:</p>
+   <pre>Carnot.Engine.Tuning.SupportTransientProcesses.ClusterSafeObjectProvider =
+   org.eclipse.stardust.engine.core.persistence.jdbc.transientpi.ClusteredEnvHazelcastObjectProvider</pre>
+<p>See the provided implementation for Hazelcast as example:</p>
+   <pre>package org.eclipse.stardust.engine.core.persistence.jdbc.transientpi;
+
+import java.util.Map;
+
+import javax.resource.ResourceException;
+import javax.resource.cci.ConnectionFactory;
+
+import org.eclipse.stardust.common.config.ExtensionProviderUtils;
+import org.eclipse.stardust.common.error.PublicException;
+import org.eclipse.stardust.engine.core.runtime.beans.BpmRuntimeEnvironment;
+import org.eclipse.stardust.engine.core.runtime.beans.interceptors.PropertyLayerProviderInterceptor;
+import org.eclipse.stardust.engine.core.runtime.beans.removethis.KernelTweakingProperties;
+import org.eclipse.stardust.engine.core.spi.cluster.ClusterSafeObjectProvider;
+import org.eclipse.stardust.engine.core.spi.jca.HazelcastJcaConnectionFactoryProvider;
+
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.core.Transaction;
+
+public class ClusteredEnvHazelcastObjectProvider implements ClusterSafeObjectProvider
+{
+   private static final HazelcastJcaConnectionFactoryProvider CONNECTION_FACTORY_PROVIDER;
+   
+   static
+   {
+      CONNECTION_FACTORY_PROVIDER = ExtensionProviderUtils.getFirstExtensionProvider(HazelcastJcaConnectionFactoryProvider.class, KernelTweakingProperties.HZ_JCA_CONNECTION_FACTORY_PROVIDER);
+      if (CONNECTION_FACTORY_PROVIDER == null)
+      {
+         throw new IllegalStateException(&quot;No Hazelcast JCA connection factory provider could be found.&quot;);
+      }
+   }
+   
+   @Override
+   public &lt;K, V&gt; Map&lt;K, V&gt; clusterSafeMap(final String mapId)
+   {
+      if (mapId == null)
+      {
+         throw new NullPointerException(&quot;Map ID for Hazelcast map must not be null.&quot;);
+      }
+      
+      return Hazelcast.getMap(mapId);
+   }
+
+   @Override
+   public void beforeAccess()
+   {
+      final BpmRuntimeEnvironment rtEnv = PropertyLayerProviderInterceptor.getCurrent();
+      final ConnectionFactory connectionFactory = CONNECTION_FACTORY_PROVIDER.connectionFactory();
+      
+      try
+      {
+         /* Hazelcast can only cope with one transaction per thread */
+         if (Hazelcast.getTransaction().getStatus() != Transaction.TXN_STATUS_ACTIVE)
+         {
+            /* enlists Hazelcast objects in the current tx */
+            rtEnv.retrieveJcaConnection(connectionFactory);
+         }
+      }
+      catch (final ResourceException e)
+      {
+         throw new PublicException(&quot;Failed enlisting Hazelcast objects in the current transaction.&quot;, e);
+      }
+   }
+   
+   @Override
+   public void exception(final Exception ignored)
+   {
+      /* nothing to do */
+   }
+   
+   @Override
+   public void afterAccess()
+   {
+      /* nothing to do */
+   }
+}
+</pre>
+<p>The location from where the (Hazelcast) JCA connection factory can be 
+retrieved from can be defined via the SPI 
+<tt>org.eclipse.stardust.engine.core.spi.jca.HazelcastJcaConnectionFactoryProvider</tt>.
+Stardust provides the following implementations:
+<ul>
+   <li><tt>org.eclipse.stardust.engine.core.persistence.jca.JndiHazelcastJcaConnectionFactoryProvider</tt><br>
+    - for an environment in which the connection factory can be retrieved via JNDI. 
+    This is the default connection factory used.</li>
+   <li><tt>org.eclipse.stardust.engine.spring.integration.jca.SpringAppContextHazelcastJcaConnectionFactoryProvider</tt><br>
+   - for an environment in which the connection factory can be retrieved from the 
+   Spring application context (Spring deployment on Tomcat)</li>
+</ul>
+<p>Set the implementation to be used via the property
+<strong>Carnot.Engine.Hazelcast.JcaConnectionFactoryProvider</strong> in your 
+<tt>carnot.properties</tt> file, e.g.:</p>
+<pre>Carnot.Engine.Hazelcast.JcaConnectionFactoryProvider =
+   org.eclipse.stardust.engine.spring.integration.jca.SpringAppContextHazelcastJcaConnectionFactoryProvider</pre>
+<h3 id="seq">Configure fast caching sequence generators</h3>
+<p>Configure fast caching sequence generators to optimize database sequence 
+fetching and achieve less database communication. Set the following properties in 
+   your <tt>carnot.properties</tt> file:</p>
+   <ul>
+      <li><tt>Carnot.Engine.Tuning.SequenceBatchSize</tt></li>
+      <li><tt>AuditTrail.SequenceGenerator</tt></li>
+   </ul>
+<p>For example, set the following values:</p>
+   <pre>
+   Carnot.Engine.Tuning.SequenceBatchSize = 5000
+   AuditTrail.SequenceGenerator = org.eclipse.stardust.engine.core.persistence.jdbc.sequence.FastCachingSequenceGenerator</pre>
+<p>The <tt>FastCachingSequenceGenerator</tt> is used to retrieve sequence numbers
+   in a batch and cache the retrieved sequences separately for every entity type.</p>
+<p>Perform the following statements to obtain the according database schema changes:</p>
+<pre>
+ALTER SEQUENCE activity_instance_seq INCREMENT BY 5000;
+ALTER SEQUENCE activity_instance_log_seq INCREMENT BY 5000;
+ALTER SEQUENCE act_inst_property_seq INCREMENT BY 5000;
+ALTER SEQUENCE trans_inst_seq  INCREMENT BY 5000;
+ALTER SEQUENCE trans_token_seq INCREMENT BY 5000;
+ALTER SEQUENCE daemon_log_seq INCREMENT BY 5000;
+ALTER SEQUENCE data_value_seq INCREMENT BY 5000;
+ALTER SEQUENCE event_binding_seq INCREMENT BY 5000;
+ALTER SEQUENCE log_entry_seq INCREMENT BY 5000;
+ALTER SEQUENCE link_type_seq INCREMENT BY 5000;
+ALTER SEQUENCE model_dep_seq INCREMENT BY 5000;
+ALTER SEQUENCE property_seq INCREMENT BY 5000;
+ALTER SEQUENCE timer_log_seq INCREMENT BY 5000;
+ALTER SEQUENCE usergroup_seq INCREMENT BY 5000;
+ALTER SEQUENCE usergroup_property_seq INCREMENT BY 5000;
+ALTER SEQUENCE user_seq INCREMENT BY 5000;
+ALTER SEQUENCE user_property_seq INCREMENT BY 5000;
+ALTER SEQUENCE wfuser_session_seq INCREMENT BY 5000;
+ALTER SEQUENCE user_participant_seq INCREMENT BY 5000;
+ALTER SEQUENCE user_usergroup_seq INCREMENT BY 5000;
+ALTER SEQUENCE process_instance_seq INCREMENT BY 5000;
+ALTER SEQUENCE proc_inst_property_seq INCREMENT BY 5000;
+ALTER SEQUENCE structured_data_value_seq INCREMENT BY 5000;
+ALTER SEQUENCE domain_seq INCREMENT BY 5000;
+ALTER SEQUENCE domain_hierarchy_seq INCREMENT BY 5000;
+ALTER SEQUENCE wfuser_domain_seq INCREMENT BY 5000;
+ALTER SEQUENCE wfuser_realm_seq INCREMENT BY 5000;
+ALTER SEQUENCE clob_data_seq INCREMENT BY 5000;
+ALTER SEQUENCE model_seq INCREMENT BY 5000;
+ALTER SEQUENCE STRING_DATA_SEQ INCREMENT BY 5000;
+ALTER SEQUENCE partition_seq INCREMENT BY 5000;
+ALTER SEQUENCE department_seq INCREMENT BY 5000;
+COMMIT;
+</pre>
+<p class="note"><strong>Note</strong><br>
+Note that if you use MySQL, you need to prepare a MYSQL sequence
+support first as described in detail in section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/audittraildatabasesetup/mysql.html#sequence">
+MySQL Sequence Support (required for using Transient Processes)</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/audittraildatabasesetup/mysql.html">
+MySQL Audit Trail Database Setup</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a>.</p>
+   
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

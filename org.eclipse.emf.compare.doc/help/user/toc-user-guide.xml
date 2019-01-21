@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="help/user/user-guide.html#User_Guide" label="User Guide">
+	<topic href="help/user/user-guide.html#Getting_Started" label="Getting Started">
+		<topic href="help/user/user-guide.html#Installing_EMF_Compare" label="Installing EMF Compare">
+			<topic href="help/user/user-guide.html#Marketplace_Client" label="Marketplace Client"></topic>
+			<topic href="help/user/user-guide.html#Update_Site" label="Update Site"></topic>
+			<topic href="help/user/user-guide.html#Compatibility" label="Compatibility"></topic>
+		</topic>
+		<topic href="help/user/user-guide.html#User_Interface_Breakdown" label="User Interface Breakdown">
+			<topic href="help/user/user-guide.html#Toolbar" label="Toolbar"></topic>
+			<topic href="help/user/user-guide.html#Signification_of_icons_associated_with_differences" label="Signification of icons associated with differences"></topic>
+			<topic href="help/user/user-guide.html#After_merge" label="After merge"></topic>
+		</topic>
+	</topic>
+	<topic href="help/user/user-guide.html#Launch_Comparison" label="Launch Comparison">
+		<topic href="help/user/user-guide.html#Compare_with_local_models" label="Compare with local models">
+			<topic href="help/user/user-guide.html#Compare_with_each_other" label="Compare with each other"></topic>
+			<topic href="help/user/user-guide.html#Compare_with_local_history" label="Compare with local history"></topic>
+		</topic>
+		<topic href="help/user/user-guide.html#Compare_with_remote_models" label="Compare with remote models">
+			<topic href="help/user/user-guide.html#Compare_with_latest" label="Compare with latest"></topic>
+			<topic href="help/user/user-guide.html#Compare_two_differing_branches" label="Compare two differing branches"></topic>
+		</topic>
+	</topic>
+	<topic href="help/user/user-guide.html#Customization" label="Customization">
+		<topic href="help/user/user-guide.html#Engines" label="Engines">
+			<topic href="help/user/user-guide.html#Match_Engine" label="Match Engine">
+				<topic href="help/user/user-guide.html#Configure_registered_matching_engine" label="Configure registered matching engine">
+					<topic href="help/user/user-guide.html#Matching_strategy_for_default_match_engine" label="Matching strategy for default match engine"></topic>
+				</topic>
+				<topic href="help/user/user-guide.html#Enable.2FDisable_Match_Engines" label="Enable/Disable Match Engines"></topic>
+			</topic>
+			<topic href="help/user/user-guide.html#For_other_engines" label="For other engines">
+				<topic href="help/user/user-guide.html#Choose_the_default_engine" label="Choose the default engine"></topic>
+			</topic>
+		</topic>
+		<topic href="help/user/user-guide.html#Post_processors_customization" label="Post processors customization">
+			<topic href="help/user/user-guide.html#Model_Resolvers" label="Model Resolvers">
+				<topic href="help/user/user-guide.html#Disable_model_resolution" label="Disable model resolution"></topic>
+				<topic href="help/user/user-guide.html#Choose_a_strategy" label="Choose a strategy"></topic>
+			</topic>
+		</topic>
+		<topic href="help/user/user-guide.html#User_Interface_customization" label="User Interface customization">
+			<topic href="help/user/user-guide.html#Colors_Customization" label="Colors Customization"></topic>
+			<topic href="help/user/user-guide.html#Filters" label="Filters"></topic>
+			<topic href="help/user/user-guide.html#Groups" label="Groups"></topic>
+		</topic>
+	</topic>
+	<topic href="help/user/user-guide.html#Features" label="Features">
+		<topic href="help/user/user-guide.html#Grouping_Differences" label="Grouping Differences"></topic>
+		<topic href="help/user/user-guide.html#Filtering_Differences" label="Filtering Differences"></topic>
+		<topic href="help/user/user-guide.html#Handling_Conflicts" label="Handling Conflicts"></topic>
+		<topic href="help/user/user-guide.html#Text_Attribute_Comparison" label="Text Attribute Comparison"></topic>
+		<topic href="help/user/user-guide.html#Graphical_Comparison" label="Graphical Comparison"></topic>
+		<topic href="help/user/user-guide.html#Logical_Model" label="Logical Model"></topic>
+		<topic href="help/user/user-guide.html#UML_Specialization" label="UML Specialization"></topic>
+	</topic>
+	<topic href="help/user/user-guide.html#Known_Bugs_and_Limitations" label="Known Bugs and Limitations">
+		<topic href="help/user/user-guide.html#Project_names_and_location" label="Project names and location">
+			<topic href="help/user/user-guide.html#Cause" label="Cause"></topic>
+			<topic href="help/user/user-guide.html#Observed_Symptoms" label="Observed Symptoms"></topic>
+		</topic>
+		<topic href="help/user/user-guide.html#Models_out_of_the_workspace" label="Models out of the workspace">
+			<topic href="help/user/user-guide.html#Cause_2" label="Cause"></topic>
+			<topic href="help/user/user-guide.html#Observed_Symptoms_2" label="Observed Symptoms"></topic>
+		</topic>
+	</topic>
+	<topic href="help/user/user-guide.html#Other_Materials" label="Other Materials"></topic>
+</toc>

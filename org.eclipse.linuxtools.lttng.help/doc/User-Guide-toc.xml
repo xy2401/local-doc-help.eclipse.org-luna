@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="doc/User-Guide.html" label="LTTng Plug-in User Guide">
+	<topic href="doc/User-Guide.html" label="Overview">
+		<topic href="doc/User-Guide.html#About_Tracing" label="About Tracing"></topic>
+		<topic href="doc/User-Guide.html#LTTng_integration" label="LTTng integration"></topic>
+		<topic href="doc/User-Guide.html#Features" label="Features"></topic>
+	</topic>
+	<topic href="doc/Installation.html" label="Installation">
+		<topic href="doc/Installation.html#LTTng_Tracer" label="LTTng Tracer"></topic>
+		<topic href="doc/Installation.html#LTTng_Eclipse_Plug-ins" label="LTTng Eclipse Plug-ins"></topic>
+		<topic href="doc/Installation.html#LTTng_Eclipse_Dependencies" label="LTTng Eclipse Dependencies"></topic>
+		<topic href="doc/Installation.html#Installation_Verification" label="Installation Verification"></topic>
+	</topic>
+	<topic href="doc/LTTng.html" label="LTTng">
+		<topic href="doc/LTTng.html#Tracing_Perspective" label="Tracing Perspective"></topic>
+		<topic href="doc/LTTng.html#Project_View" label="Project View">
+			<topic href="doc/LTTng.html#Creating_a_Tracing_Project" label="Creating a Tracing Project"></topic>
+			<topic href="doc/LTTng.html#Importing_Traces_to_the_Project" label="Importing Traces to the Project">
+				<topic href="doc/LTTng.html#Opening_a_Trace" label="Opening a Trace"></topic>
+				<topic href="doc/LTTng.html#Importing" label="Importing"></topic>
+				<topic href="doc/LTTng.html#Drag_and_Drop" label="Drag and Drop"></topic>
+			</topic>
+			<topic href="doc/LTTng.html#Trace_Package_Exporting_and_Importing" label="Trace Package Exporting and Importing">
+				<topic href="doc/LTTng.html#Exporting" label="Exporting"></topic>
+				<topic href="doc/LTTng.html#Importing_2" label="Importing"></topic>
+			</topic>
+			<topic href="doc/LTTng.html#Selecting_a_Trace_Type" label="Selecting a Trace Type"></topic>
+			<topic href="doc/LTTng.html#Opening_a_Trace_or_Experiment" label="Opening a Trace or Experiment"></topic>
+			<topic href="doc/LTTng.html#Creating_a_Experiment" label="Creating a Experiment"></topic>
+			<topic href="doc/LTTng.html#Selecting_Traces_for_an_Experiment" label="Selecting Traces for an Experiment"></topic>
+			<topic href="doc/LTTng.html#Removing_Traces_from_an_Experiment" label="Removing Traces from an Experiment"></topic>
+			<topic href="doc/LTTng.html#Renaming_a_Trace_or_Experiment" label="Renaming a Trace or Experiment"></topic>
+			<topic href="doc/LTTng.html#Copying_a_Trace_or_Experiment" label="Copying a Trace or Experiment"></topic>
+			<topic href="doc/LTTng.html#Deleting_a_Trace_or_Experiment" label="Deleting a Trace or Experiment"></topic>
+			<topic href="doc/LTTng.html#Deleting_Supplementary_Files" label="Deleting Supplementary Files"></topic>
+			<topic href="doc/LTTng.html#Link_with_Editor" label="Link with Editor"></topic>
+		</topic>
+		<topic href="doc/LTTng.html#Events_Editor" label="Events Editor">
+			<topic href="doc/LTTng.html#Searching_and_Filtering" label="Searching and Filtering">
+				<topic href="doc/LTTng.html#Searching" label="Searching"></topic>
+				<topic href="doc/LTTng.html#Filtering" label="Filtering"></topic>
+				<topic href="doc/LTTng.html#Bookmarking" label="Bookmarking"></topic>
+			</topic>
+			<topic href="doc/LTTng.html#Event_Source_Lookup" label="Event Source Lookup">
+				<topic href="doc/LTTng.html#Source_Code" label="Source Code"></topic>
+				<topic href="doc/LTTng.html#EMF_Model" label="EMF Model"></topic>
+			</topic>
+			<topic href="doc/LTTng.html#Exporting_To_Text" label="Exporting To Text"></topic>
+			<topic href="doc/LTTng.html#Collapsing_of_Repetitive_Events" label="Collapsing of Repetitive Events"></topic>
+		</topic>
+		<topic href="doc/LTTng.html#Histogram_View" label="Histogram View"></topic>
+		<topic href="doc/LTTng.html#Statistics_View" label="Statistics View"></topic>
+		<topic href="doc/LTTng.html#Colors_View" label="Colors View"></topic>
+		<topic href="doc/LTTng.html#Filters_View" label="Filters View"></topic>
+		<topic href="doc/LTTng.html#Time_Chart_View" label="Time Chart View"></topic>
+		<topic href="doc/LTTng.html#State_System_Explorer_View" label="State System Explorer View"></topic>
+		<topic href="doc/LTTng.html#Custom_Parsers" label="Custom Parsers">
+			<topic href="doc/LTTng.html#Creating_a_custom_text_parser" label="Creating a custom text parser"></topic>
+			<topic href="doc/LTTng.html#Creating_a_custom_XML_parser" label="Creating a custom XML parser"></topic>
+			<topic href="doc/LTTng.html#Managing_custom_parsers" label="Managing custom parsers"></topic>
+			<topic href="doc/LTTng.html#Opening_a_trace_using_a_custom_parser" label="Opening a trace using a custom parser"></topic>
+		</topic>
+	</topic>
+	<topic href="doc/LTTng-Tracer-Control.html" label="LTTng Tracer Control">
+		<topic href="doc/LTTng-Tracer-Control.html#Control_View" label="Control View">
+			<topic href="doc/LTTng-Tracer-Control.html#Creating_a_New_Connection_to_a_Remote_Host" label="Creating a New Connection to a Remote Host"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Disconnecting_from_a_Remote_Host" label="Disconnecting from a Remote Host"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Connecting_to_a_Remote_Host" label="Connecting to a Remote Host"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Deleting_to_a_Remote_Host_Connection" label="Deleting to a Remote Host Connection"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Creating_a_Tracing_Session" label="Creating a Tracing Session"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Creating_a_Tracing_Session_With_Advanced_Options" label="Creating a Tracing Session With Advanced Options"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Creating_a_Snapshot_Tracing_Session" label="Creating a Snapshot Tracing Session"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Creating_a_Live_Tracing_Session_.3D" label="Creating a Live Tracing Session ="></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Channels_-_General" label="Enabling Channels - General"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Channels_On_Session_Level" label="Enabling Channels On Session Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Configuring_Trace_File_Rotation" label="Configuring Trace File Rotation"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Configuring_per_UID_and_per_PID_Buffers_.28UST_only.29" label="Configuring per UID and per PID Buffers (UST only)"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Configuring_Periodical_Flush_for_metadata_Channel" label="Configuring Periodical Flush for metadata Channel"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Channels_On_Domain_Level" label="Enabling Channels On Domain Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_and_Disabling_Channels" label="Enabling and Disabling Channels"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Events_-_General" label="Enabling Events - General"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Kernel_Events_On_Session_Level" label="Enabling Kernel Events On Session Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_UST_Events_On_Session_Level" label="Enabling UST Events On Session Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Events_On_Domain_Level" label="Enabling Events On Domain Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Events_On_Channel_Level" label="Enabling Events On Channel Level"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_and_Disabling_Events" label="Enabling and Disabling Events"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Enabling_Tracepoint_Events_From_Provider" label="Enabling Tracepoint Events From Provider"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Configuring_Filter_Expression_On_UST_Event_Fields" label="Configuring Filter Expression On UST Event Fields"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Adding_Contexts_to_Channels_and_Events_of_a_Domain" label="Adding Contexts to Channels and Events of a Domain"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Adding_Contexts_to_All_Events_of_a_Channel" label="Adding Contexts to All Events of a Channel"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Adding_Contexts_to_an_Event_of_a_Specific_Channel" label="Adding Contexts to an Event of a Specific Channel"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Start_Tracing" label="Start Tracing"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Recording_a_Snapshot" label="Recording a Snapshot"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Stop_Tracing" label="Stop Tracing"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Destroying_a_Tracing_Session" label="Destroying a Tracing Session"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Refreshing_the_Node_Information" label="Refreshing the Node Information"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Quantifing_LTTng_overhead_.28Calibrate.29" label="Quantifing LTTng overhead (Calibrate)"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Importing_Session_Traces_to_a_Tracing_Project" label="Importing Session Traces to a Tracing Project"></topic>
+			<topic href="doc/LTTng-Tracer-Control.html#Importing_Network_Traces_to_a_Tracing_Project" label="Importing Network Traces to a Tracing Project"></topic>
+		</topic>
+		<topic href="doc/LTTng-Tracer-Control.html#Properties_View" label="Properties View"></topic>
+		<topic href="doc/LTTng-Tracer-Control.html#LTTng_Tracer_Control_Preferences" label="LTTng Tracer Control Preferences"></topic>
+	</topic>
+	<topic href="doc/LTTng-Kernel-Analysis.html" label="LTTng Kernel Analysis">
+		<topic href="doc/LTTng-Kernel-Analysis.html#LTTng_Kernel_Perspective" label="LTTng Kernel Perspective"></topic>
+		<topic href="doc/LTTng-Kernel-Analysis.html#Control_Flow_View" label="Control Flow View">
+			<topic href="doc/LTTng-Kernel-Analysis.html#Process_tree_and_information" label="Process tree and information"></topic>
+			<topic href="doc/LTTng-Kernel-Analysis.html#Control_flow" label="Control flow">
+				<topic href="doc/LTTng-Kernel-Analysis.html#Using_the_mouse" label="Using the mouse"></topic>
+				<topic href="doc/LTTng-Kernel-Analysis.html#Incomplete_regions" label="Incomplete regions"></topic>
+				<topic href="doc/LTTng-Kernel-Analysis.html#Zoom_region" label="Zoom region"></topic>
+				<topic href="doc/LTTng-Kernel-Analysis.html#Tooltips" label="Tooltips"></topic>
+			</topic>
+			<topic href="doc/LTTng-Kernel-Analysis.html#Toolbar" label="Toolbar"></topic>
+		</topic>
+		<topic href="doc/LTTng-Kernel-Analysis.html#Resources_View" label="Resources View">
+			<topic href="doc/LTTng-Kernel-Analysis.html#Navigation" label="Navigation"></topic>
+			<topic href="doc/LTTng-Kernel-Analysis.html#Incomplete_regions_2" label="Incomplete regions"></topic>
+			<topic href="doc/LTTng-Kernel-Analysis.html#Toolbar_2" label="Toolbar"></topic>
+		</topic>
+		<topic href="doc/LTTng-Kernel-Analysis.html#LTTng_CPU_Usage_View" label="LTTng CPU Usage View">
+			<topic href="doc/LTTng-Kernel-Analysis.html#Process_Information" label="Process Information"></topic>
+			<topic href="doc/LTTng-Kernel-Analysis.html#CPU_Usage_Chart" label="CPU Usage Chart">
+				<topic href="doc/LTTng-Kernel-Analysis.html#Using_the_mouse_2" label="Using the mouse"></topic>
+				<topic href="doc/LTTng-Kernel-Analysis.html#Tooltips_2" label="Tooltips"></topic>
+			</topic>
+		</topic>
+		<topic href="doc/LTTng-Kernel-Analysis.html#LTTng_Kernel_Events_Editor" label="LTTng Kernel Events Editor"></topic>
+	</topic>
+	<topic href="doc/LTTng-UST-Analyses.html" label="LTTng-UST Analyses">
+		<topic href="doc/LTTng-UST-Analyses.html#Call_Stack_View" label="Call Stack View">
+			<topic href="doc/LTTng-UST-Analyses.html#Using_the_Callstack_View_with_LTTng-UST_traces" label="Using the Callstack View with LTTng-UST traces"></topic>
+			<topic href="doc/LTTng-UST-Analyses.html#Importing_a_function_name_mapping_file_for_LTTng-UST_traces" label="Importing a function name mapping file for LTTng-UST traces"></topic>
+		</topic>
+		<topic href="doc/LTTng-UST-Analyses.html#Memory_Usage" label="Memory Usage"></topic>
+	</topic>
+	<topic href="doc/Trace-synchronization.html" label="Trace synchronization">
+		<topic href="doc/Trace-synchronization.html#Obtain_synchronizable_traces" label="Obtain synchronizable traces">
+			<topic href="doc/Trace-synchronization.html#LTTng-module_network_tracepoint_with_complete_data" label="LTTng-module network tracepoint with complete data"></topic>
+			<topic href="doc/Trace-synchronization.html#LTTng-modules_addons_kernel_module_with_dynamic_tracepoints" label="LTTng-modules addons kernel module with dynamic tracepoints"></topic>
+		</topic>
+		<topic href="doc/Trace-synchronization.html#Synchronize_traces_in_TMF" label="Synchronize traces in TMF"></topic>
+	</topic>
+	<topic href="doc/Time-offsetting.html" label="Time offsetting">
+		<topic href="doc/Time-offsetting.html#Basic_mode" label="Basic mode"></topic>
+		<topic href="doc/Time-offsetting.html#Advanced_mode" label="Advanced mode"></topic>
+		<topic href="doc/Time-offsetting.html#Clearing_time_offset" label="Clearing time offset"></topic>
+	</topic>
+	<topic href="doc/Timestamp-formatting.html" label="Timestamp formatting"></topic>
+	<topic href="doc/Data-driven-analysis.html" label="Data driven analysis">
+		<topic href="doc/Data-driven-analysis.html#Importing_an_XML_file_containing_analysis" label="Importing an XML file containing analysis"></topic>
+		<topic href="doc/Data-driven-analysis.html#Defining_XML_components" label="Defining XML components"></topic>
+		<topic href="doc/Data-driven-analysis.html#Defining_an_XML_state_provider" label="Defining an XML state provider">
+			<topic href="doc/Data-driven-analysis.html#Definitions_and_example" label="Definitions and example"></topic>
+			<topic href="doc/Data-driven-analysis.html#Determining_the_state_system_structure" label="Determining the state system structure"></topic>
+			<topic href="doc/Data-driven-analysis.html#Writing_the_XML_state_provider" label="Writing the XML state provider"></topic>
+			<topic href="doc/Data-driven-analysis.html#Debugging_the_XML_state_provider" label="Debugging the XML state provider"></topic>
+		</topic>
+		<topic href="doc/Data-driven-analysis.html#Defining_an_XML_time_graph_view" label="Defining an XML time graph view"></topic>
+		<topic href="doc/Data-driven-analysis.html#Defining_an_XML_XY_chart" label="Defining an XML XY chart"></topic>
+	</topic>
+	<topic href="doc/Limitations.html" label="Limitations"></topic>
+	<topic href="doc/How-to-use-LTTng-to-diagnose-problems.html" label="How to use LTTng to diagnose problems">
+		<topic href="doc/How-to-use-LTTng-to-diagnose-problems.html#Random_stutters" label="Random stutters"></topic>
+		<topic href="doc/How-to-use-LTTng-to-diagnose-problems.html#Slow_I.2FO" label="Slow I/O"></topic>
+	</topic>
+	<topic href="doc/References.html" label="References"></topic>
+	<topic href="doc/Updating-This-Document.html" label="Updating This Document"></topic>
+	<anchor id="additions"/>
+</toc>

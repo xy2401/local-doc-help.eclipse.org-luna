@@ -1,0 +1,1333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Client Side Properties</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Server Side Properties",
+	"","ag-appendix-properties-2.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-properties.html","Stardust Properties");
+ -->
+</script>
+
+<h1>Client Side Properties</h1>
+<p>Client side properties are used for enabling the Stardust client
+tools. The <a href="#generalProps">General Properties</a> reside in a
+file with the name <tt>carnot.properties</tt> in the client class path.
+<a href="#portalProps">Portal Properties</a> reside in specific
+properties files e.g. in the <tt><nobr>ipp-resources</nobr></tt> folder
+of a dynamic Web project of in the <tt><nobr>WEB-INF/classes</nobr></tt>
+folder of the according portal WAR.</p>
+
+<h2 id="generalProps">General Properties</h2>
+<p>The general properties reside in the <tt>carnot.properties</tt>
+file:</p>
+<ul>
+	<li><a href="#audittrail">AuditTrail</a></li>
+	<li><a href="#jndi">JNDI</a></li>
+	<li><a href="#general">General Settings</a></li>
+	<li><a href="#repository">Repository</a></li>
+   <li><a href="#model">Model</a></li>
+	<li><a href="#logging">Logging</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#xml">XML Setup</a></li>
+	<li><a href="#security">Security</a></li>
+	<li><a href="#mail">Mail Settings</a></li>
+<!--	<li><a href="#gui">GUI Settings</a></li>-->
+	<li><a href="#document">Caching Configuration for JCR Sources</a></li>
+</ul>
+<h3 id="audittrail">AuditTrail</h3>
+<table id='id'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+		<th>Range</th>
+	</tr>
+	<tr id="auditType">
+	   <td>AuditTrail.Type</td>
+		<td>String</td>
+		<td> the type of the audit trail database used</td>
+		<td>ORACLE</td>
+		<td>local </td>
+	  <td> Range: 
+	  <ul>
+			<li>ORACLE - for Oracle</li>
+			<li>DB2 - for IBM DB2</li>
+			<li>MSSQL - for Microsoft SQL Server</li>
+			<li>MYSQL - for MySQL</li>
+		   <li>MYSQL_SEQ - for MySQL with sequences</li>
+			<li>DERBY - for Apache Derby</li>
+			<li>POSTGRESQL - for PostgreSQL</li>
+			<li>SYBASE - for Sybase</li>
+		</ul></td>	
+	</tr>
+	<tr><td>AuditTrail.FixAutoCommit</td>
+		<td>Boolean</td>
+		<td>determines if a correction should be performed for commit behavior<br>
+		<tt>false</tt>: no correction will be performed<br>
+		<tt>true</tt>: set the autocommit option for a new database connection
+			to <tt>false</tt>, in case it was <tt>true</tt>.
+		</td>
+		<td>false</td>
+		<td>local</td>
+		<td>true, false</td>
+	</tr>
+   <tr id="lockTbl">
+      <td>AuditTrail.UseLockTables</td>
+      <td>Boolean</td>
+      <td>Optionally use separate tables for pessimistic locking to
+      improve concurrency. The default value depends on the database that is used with
+      Stardust. It is set to blank and evaluated to TRUE for DB2, Sybase,
+      Derby and MS-SQL databases. For other databases (Oracle, Postgres and
+      MySQL), it is set to FALSE.</td>
+      <td></td>
+      <td>local</td>
+      <td></td>
+   </tr>
+   <tr>
+		<td>AuditTrail.DriverClass</td>
+		<td>String</td>
+		<td>the name of the JDBC driver class to connect to the audit
+		trail database</td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.URL</td>
+		<td>String</td>
+		<td>the JDBC URL of the audit trail database</td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.User</td>
+		<td>String</td>
+		<td>the database user to connect to the audit trail database</td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Password</td>
+		<td>String</td>
+		<td>the database password to connect to the audit trail database
+		</td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.XaDataSourceClass</td>
+		<td>String</td>
+		<td>the transaction datasource class of the database.</td>
+		<td></td>
+		<td>local</td>
+		<td>e.g.:
+		<ul>
+			<li>DB2: &nbsp;&nbsp;&nbsp;&nbsp;com.ibm.db2.jcc.DB2XADataSource</li>
+			<li>Oracle: &nbsp;oracle.jdbc.xa.OracleXADataSource</li>
+			<li>Derby: &nbsp;&nbsp;org.apache.derby.jdbc.ClientXADataSource</li>
+			<li>MySQL: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</li>
+			<li>Sybase: com.sybase.jdbc3.jdbc.SybXADataSource</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.DataSourceBean</td>
+		<td>String</td>
+		<td>the datasource bean class</td>
+		<td></td>
+		<td>local</td>
+		<td>Range:
+		<ul>
+			<li>carnotXaAuditTrailDataSourceLocal</li>
+			<li>carnotXaAuditTrailDataSourceLocalUrl</li>
+			<li>carnotXaAuditTrailDataSourceLocalSybase</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Instance</td>
+		<td>String</td>
+		<td></td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Port</td>
+		<td>String</td>
+		<td></td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Host</td>
+		<td>String</td>
+		<td></td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Schema</td>
+		<td>String</td>
+		<td>If this configuration property is set to a schema name, this specified
+      database schema is used instead of the default schema of the connecting user.
+      Note that in that case the user needs to have all access rights to the
+      tables and sequences in the specified schema.</td>
+		<td></td>
+		<td>local</td>
+		<td></td>
+	</tr>
+	<tr id="intercept">
+		<td>AuditTrail.InterceptJdbcCalls</td>
+		<td>Boolean</td>
+		<td>Determines JDBC exception handling. If set to <tt>true</tt>,
+		an exception will directly be caught during the creation of a data
+		value bean in the engine. It will be tried up to three times to load
+		the instance of an already existing data value bean, which has been
+		created meanwhile from a parallel thread.</td>
+		<td>false</td>
+		<td></td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.UsePreparedStatements</td>
+		<td>String</td>
+		<td>Optionally use prepared statements to improve performance.
+		<ul>
+			<li><tt>true</tt> - use prepared statements.</li>
+			<li><tt>false</tt> - do not use prepared statements.</li>
+			<li><tt>mixed</tt> - use prepared statements additionally.</li>
+		</ul></td>
+		<td></td>
+		<td>local</td>
+		<td>true,false,mixed</td>
+	</tr>
+</table>
+<h3 id="jndi">JNDI</h3>
+<table id='id_1'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Scope</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>JNDI.URL</td>
+		<td>String</td>
+		<td>the URL to connect to the application server</td>
+		<td>remote +</td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>JNDI.User</td>
+		<td>String</td>
+		<td>the user name used to get the remote initial context</td>
+		<td>remote +</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>JNDI.Password</td>
+		<td>String</td>
+		<td>the password used to get the remote initial context</td>
+		<td>remote +</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>JNDI.PackagePrefixes</td>
+		<td>String</td>
+		<td>a comma separated list of JNDI package prefixes</td>
+		<td>remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>JNDI.InitialContextFactory</td>
+		<td>String</td>
+		<td>the class name of the initial context factory used to connect
+		to the application server</td>
+		<td>remote +</td>
+		<td>
+      <ul>
+         <li>BES (for <tt>com.inprise.j2ee.jndi.CtxFactory</tt>)</li>
+         <li>JBOSS (for <tt>org.jnp.interfaces.NamingContextFactory</tt>)</li>
+         <li>NETWEAVER (for <tt>com.sap.engine.services.jndi.InitialContextFactoryImpl</tt>)</li>
+         <li>PRAMATI (for <tt>com.pramati.naming.client.PramatiClientContextFactory</tt>)</li>
+         <li>SAP (for <tt>com.sap.engine.services.jndi.InitialContextFactoryImpl</tt>)</li>
+         <li>SUN (for <tt>com.sun.appserv.naming.S1ASCtxFactory</tt>)</li>
+         <li>TRIFORK (for <tt>com.sun.jndi.cosnaming.CNCtxFactory</tt>)</li>
+         <li>WAS (for <tt>com.ibm.websphere.naming.WsnInitialContextFactory</tt>)</li>
+         <li>WEBLOGIC (for <tt>weblogic.jndi.WLInitialContextFactory</tt>)</li>
+      </ul>
+      </td>
+	</tr>
+</table>
+<h3 id="general">General Settings</h3>
+<table id='id_2'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+	</tr>
+	<tr>
+		<td>Dependent.Properties</td>
+		<td>String</td>
+		<td>comma-separated list of additional property files</td>
+		<td></td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>License.LicenseFilePath</td>
+		<td>String</td>
+		<td>the full path to the Stardust license file</td>
+		<td><tt>%CARNOT_HOME%/etc/carnot.license</tt></td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>XPath.StrictEvaluation</td>
+		<td>Boolean</td>
+		<td>Determines if strict Xpath evaluation is enabled or not in
+		XSD schemas.</td>
+		<td>true</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.Compatibility.Interactions.SupportDataMappingIds</td>
+		<td>Boolean</td>
+		<td>Determines if data mappings targeting the full parameter are supported as
+		well (for a transition period only).</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+</table>
+<h3 id="repository">Repository</h3>
+<table id='id_3'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+	</tr>
+
+	<tr>
+		<td>Model.RepositoryDirectoryPath</td>
+		<td>String</td>
+		<td>the path to the directory containing the model repository</td>
+		<td><tt>%CARNOT_WORK%/dat</tt></td>
+		<td>local and remote</td>
+	</tr>
+</table>
+<h3 id="model">Model</h3>
+<table id='tb_model'>
+   <tr>
+      <th>Parameters</th>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Default</th>
+      <th>Scope</th>
+   </tr>
+   <tr>
+      <td>carnot.engine.xml.encoding</td>
+      <td>String</td>
+      <td>Determines the encoding for model elements. Set this property to 
+      <tt>UTF-8</tt> in case you use non-ASCII characters in model elements.</td>
+      <td>ISO-8859-1</td>
+      <td><ul>
+         <li>ISO-8859-1</li>
+         <li>UTF-8</li>
+       </ul></td>
+   </tr>
+</table>
+<h3 id="logging">Logging</h3>
+<table id='id_4'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+		<th>Range</th>
+	</tr>
+
+	<tr>
+		<td>Logging.Directory</td>
+		<td>String</td>
+		<td>the path to the directory containing the log files</td>
+		<td><tt>%CARNOT_WORK%/log</tt></td>
+		<td>local and remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Logging.LogLevel</td>
+		<td>String</td>
+		<td>logging level. The logging system will only log messages with
+		a higher or equal log level.</td>
+		<td><tt>INFO</tt></td>
+		<td>local and remote</td>
+		<td>ERROR, WARN, INFO, DEBUG</td>
+	</tr>
+	<tr>
+		<td>Logging.Format</td>
+		<td>String</td>
+		<td>a log4j style output format pattern</td>
+		<td><tt>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%t] (%x) %c{2} -
+		%m%n</tt></td>
+		<td>local and remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Logging.MaxFileSize</td>
+		<td>String</td>
+		<td>maximum log file size in bytes</td>
+		<td></td>
+		<td>local and remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Logging.Filters</td>
+		<td>String</td>
+		<td>a comma separated list of package names or class names to
+		restrict logging output. Leaving this property empty will produce
+		output from all packages.</td>
+		<td></td>
+		<td>local and remote</td>
+		<td></td>
+	</tr>
+</table>
+<h3 id="service">Service</h3>
+<table id='id_5'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+		<th>Range</th>
+	</tr>
+
+	<tr>
+		<td>WorkflowService.JndiName</td>
+		<td>String</td>
+		<td>the JNDI name of the <tt>WorkflowService</tt></td>
+		<td></td>
+		<td>remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AdministrationService.JndiName</td>
+		<td>String</td>
+		<td>the JNDI name of the <tt>AdministrationService</tt></td>
+		<td></td>
+		<td>remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>UserService.JndiName</td>
+		<td>String</td>
+		<td>the JNDI name of the <tt>UserService</tt></td>
+		<td></td>
+		<td>remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td id="queryGuarded"><i>xxx</i>Service.Guarded<br>(e.g. QueryService.Guarded)</td>
+		<td>String</td>
+		<td>option to switch on and off the security check for
+		the service<br>
+      <p class="note"><strong>Note</strong><br>
+      It is not recommended to change this property.
+      Changing the value to <tt>false</tt> introduces a high risk of 
+      executing services without having a permission and 
+      hence might cause a severe security hole in the deployment!</td>
+		<td>true</td>
+		<td></td>
+		<td><tt>true</tt>: makes the grants set in the Stardust Process
+		Modeler active.<br>
+		<tt>false</tt>: makes access to all methods possible for all users
+		without checking.</td>
+
+	</tr>
+	<tr>
+		<td>QueryService.JndiName</td>
+		<td>String</td>
+		<td>The JNDI name of the <tt>QueryService</tt></td>
+		<td></td>
+		<td>remote</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Client.ServiceFactory</td>
+		<td>String</td>
+		<td>the service factory implementation used for retrieving
+		Stardust services with rich clients like Swing or Java applications.</td>
+		<td>SpringServiceFactory</td>
+		<td>local and remote</td>
+		<td><tt>org.eclipse.stardust.engine.api.spring.SpringServiceFactory</tt></td>
+	</tr>
+	<tr>
+		<td>Web.ServiceFactory</td>
+		<td>String</td>
+		<td>the service factory implementation used for retrieving
+		Stardust services in Web environments like the Stardust Portals.</td>
+		<td>SpringServiceFactory</td>
+		<td>local and remote</td>
+		<td><tt>org.eclipse.stardust.engine.api.spring.SpringServiceFactory</tt></td>
+	</tr>
+   <tr>
+      <td>Carnot.Spring.ApplicationContextFile</td>
+      <td>String</td>
+      <td>the Spring application context file</td>
+      <td><tt>carnot-spring-services-context.xml</tt></td>
+      <td></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Carnot.Spring.ApplicationContextClass</td>
+      <td>String</td>
+      <td>The Spring application context class to be used.</td>
+      <td><tt>org.springframework.context.support.ClassPathXmlApplicationContext</tt></td>
+      <td></td>
+      <td> E.g. for JBoss use
+      <tt>org.jboss.spring.vfs.context.VFSClassPathXmlApplicationContext</tt>.</td>
+   </tr>
+</table>
+<h3 id="xml">XML Setup</h3>
+
+<p>Note that if these properties are not set in <tt>carnot.properties</tt>
+or anywhere else, the default value is used. With the properties set to
+a fully qualified name of the implementation class, this class will be
+explicitly instantiated and tried to be used. If the properties are set
+to an empty value the JAXP-setup of the JRE will be applied.</p>
+<table id='id_6'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Default</th>
+	</tr>
+	<tr>
+		<td>Carnot.Xml.SAX.NonvalidatingParserFactory</td>
+		<td>String</td>
+		<td>&quot;Aelfred&quot;</td>
+	</tr>
+	<tr>
+		<td>Carnot.Xml.SAX.ValidatingParserFactory</td>
+		<td>String</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>Carnot.Xml.DOM.NonvalidatingDocumentBuilderFactory</td>
+		<td>String</td>
+		<td>&quot;Aelfred&quot;</td>
+	</tr>
+	<tr>
+		<td>Carnot.Xml.DOM.ValidatingDocumentBuilderFactory</td>
+		<td>String</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>Carnot.Xml.TrAX.TransformerFactory</td>
+		<td>String</td>
+		<td>&quot;&quot;</td>
+	</tr>
+</table>
+<h3 id="security">Security</h3>
+<table id='id_7'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Scope</th>
+	</tr>
+	<tr>
+		<td>Security.DefaultPartition</td>
+		<td>String</td>
+		<td>default value for target partition</td>
+		<td>"default"</td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.DefaultDomain</td>
+		<td>String</td>
+		<td>default value for target domain</td>
+		<td>"default"</td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.DefaultRealm</td>
+		<td>String</td>
+		<td>default value for user's realm</td>
+		<td>"carnot"</td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.DefaultUser</td>
+		<td>String</td>
+		<td>default value for user's ID</td>
+		<td></td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.PromptPartition</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for partition</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.PromptDomain</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for domain</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.PromptRealm</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for realm</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.LoginUsersWithoutTimestamp</td>
+		<td>String</td>
+		<td>[* | userList ]:
+		<ul>
+			<li>*: no login timestamp logging for any user</li>
+			<li>userList: comma separated list of either user IDs or user
+			OIDs.</li>
+		</ul>
+		Note: if a userList is parsed, any token is first tried to be parsed
+		as user OID, and only tested against the user ID if parsing as OID
+		fails. This has to be considered if user IDs are numeric.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.ResetPassword.TechnicalUser.Account</td>
+		<td>String</td>
+		<td>Account of the technical user.</td>
+		<td>motu</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.ResetPassword.TechnicalUser.Password</td>
+		<td>String</td>
+		<td>Password for the technical user.</td>
+		<td>motu</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.ResetPassword.TechnicalUser.Realm</td>
+		<td>String</td>
+		<td>Realm of the technical user credentials.</td>
+		<td>carnot</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.Session.NoSessionTracking</td>
+		<td>String</td>
+		<td>Contains a comma separated list of user IDs (Accounts) and
+		user OIDs, for which the session tracking is disabled for. Use <tt>*</tt>
+		to disable session tracking for all users.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.Session.ExpirationInterval</td>
+		<td>Integer</td>
+		<td>interval in minutes after a session is defined as expired.</td>
+		<td>60 minutes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.Session.UserActivityUpdateDelay</td>
+		<td>Integer</td>
+		<td>delay in seconds until cached changes on user session entries
+		are added to the database.</td>
+		<td>10 seconds</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Credential.Provider</td>
+		<td>String</td>
+		<td>contains the name of a class extending the <tt>org.eclipse.stardust.engine.api.runtime.CredentialProvider</tt>
+		class.</td>
+		<td></td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Secure.Session.Factory</td>
+		<td>String</td>
+		<td>determines the class implementing the 
+      <tt>org.eclipse.stardust.engine.api.ejb2.SecureSessionFactory</tt></td>
+		<td></td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.ConfigurationName</td>
+		<td>String</td>
+		<td>configuration name for authentication</td>
+		<td>"carnot"</td>
+		<td>local and remote</td>
+	</tr>
+	<tr>
+		<td>Security.PasswordEncryption.Mode</td>
+		<td>String</td>
+		<td>determines, if password encryption mode is enabled or disabled.</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.LoginUsersWithoutTimestamp</td>
+		<td>String</td>
+		<td>contains a comma separated list of user OIDs or accounts. For
+		users matching one of the entries no login timestamp is written to the
+		audit trail.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ContentRepository.User</td>
+		<td>String</td>
+		<td>user JCR credential for usage in EJB scenario.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ContentRepository.Password</td>
+		<td>String</td>
+		<td>password JCR credential for usage in EJB scenario.</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<h3 id="mail">Mail Settings</h3>
+<table id='id_8'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Mail.Sender</td>
+		<td>String</td>
+		<td>name of mail sender</td>
+	</tr>
+	<tr>
+		<td>Mail.Host</td>
+		<td>String</td>
+		<td>name of mail host</td>
+	</tr>
+</table>
+
+<h3 id="document">Caching Configuration for JCR Sources</h3>
+<table id='id_10'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Default</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Carnot.Configuration.ContentStreamingThreshold</td>
+		<td>Integer</td>
+		<td>500 KB</td>
+		<td>Configures if a content should be downloaded via the download
+		servlet. If the size of a document content is below this value, the
+		content will be cached. If the content size is higher, the content
+		download and upload is streamed using the <tt>dms-content</tt>
+		servlet.</td>
+	</tr>
+	<tr>
+		<td>Carnot.Configuration.CacheTTL</td>
+		<td>Integer</td>
+		<td>60000 ms</td>
+		<td>The maximum caching time - if this time is exceeded, the
+		least-recently-used JCR objects (cached in a fixed size map) will be
+		removed.</td>
+	</tr>
+	<tr>
+		<td>Carnot.Configuration.MaximumCacheItems</td>
+		<td>Integer</td>
+		<td>100</td>
+		<td>The maximum cache size - if this size is exceeded, the
+		least-recently-used JCR objects (cached in a fixed size map) will be
+		removed.</td>
+	</tr>
+</table>
+<h2 id="portalProps">Portal Properties</h2>
+<ul>
+	<li><a href="#portals">General Portal Properties</a></li>
+	<li><a href="#pp">Stardust Portal </a></li>
+<!--	<li><a href="#pp">Workflow Execution Perspective</a></li>-->
+<!-- TODO: uncomment until clarified
+	<li><a href="#admin">Administration Perspective</a></li>
+	<li><a href="#bcc">Business Control Center</a></li>-->
+</ul>
+<h3 id="portals">General Portal Properties</h3>
+<table id='id_11'>
+	<tr>
+		<th>Parameters</th>
+		<th>Default value</th>
+		<th>Range</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Carnot.DateFormatter</td>
+		<td>"dd.MM.yy HH:mm" (German language pack), or "MM/dd/yy hh:mm
+		a" (English language pack)</td>
+		<td>date format</td>
+		<td>the date format for Workflow Execution Perspective, Administration Perspective or
+		Business Control Center.</td>
+	</tr>
+	<tr>
+		<td>Carnot.Client.Search.CaseSensitive</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>Determines if the search functionality in filtering processes
+		are case sensitive or not.</td>
+	</tr>
+	<tr>
+		<td>Carnot.Configuration.UseDocumentRepository</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>If set to <tt>true</tt>, changed user preferences are stored 
+			for the next session and will not be deleted during a logout.<br>
+			If set to <tt>false</tt>, user preferences are not saved and the default 
+			Stardust Portal view preferences (like for example the page size)
+			are used.<br>
+			Please note that no user response is given while saving preferences 
+			in case this property is set to <tt>false</tt>.
+      </td>
+	 </tr>
+    <tr>
+        <td>Carnot.Login.Skin.StyleSheet</td>
+        <td>login.css</td>
+        <td></td>
+        <td>Determines the cascading style sheet to be used for the Portal login 
+        page.</td>
+    </tr>
+    <tr>
+        <td>Carnot.Client.Caching.ClientXPathMap.Enabled</td>
+        <td>true</td>
+        <td>true, false</td>
+        <td>Parameter to disable or enable XPathMap caching.</td>
+    </tr>
+    <tr>
+        <td>Carnot.Client.Caching.ProcessInstanceContext.Enabled</td>
+        <td>false</td>
+        <td>true, false</td>
+        <td>enables mechanism to cache 
+        process instances in the Stardust Portal.</td>
+    </tr>
+    <tr>
+        <td>Carnot.Client.Caching.ProcessInstanceContext.CacheSize</td>
+        <td></td>
+        <td>Integer</td>
+        <td>cache size for caching the process instances.</td>
+    </tr>
+    <tr>
+        <td>Carnot.Client.Caching.ProcessInstanceContext.CacheTTL</td>
+        <td></td>
+        <td>Integer</td>
+        <td>limit on the period of time for caching.</td>
+    </tr>
+</table>
+<h3 id="pp">Stardust Portal</h3>
+<table id='id_12'>
+	<tr>
+		<th>Parameters</th>
+		<th>Default value</th>
+		<th>Range</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Carnot.BpmClient.Features.AssemblyLineTaskAssignment</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>Determines, if assembly line mode is supported, in case it is
+		defined during modeling.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.AssemblyLineActivityProvider</td>
+		<td>DefaultAssemblyLineActivityProvider</td>
+		<td>Assembly line activity provider class</td>
+		<td>Implements the logic to decide which assembly line has to be
+		activated next. Has to implement the interface <tt>IAssemblyLineActivityProvider</tt>.
+		In case your <tt>act_inst_history</tt> table has a
+		complete history available for all necessary activity instances, you
+		can use the <tt>org.eclipse.stardust.engine.api.web.jsf.processportal.common.AiHistoryAwareAssemblyLineActivityProvider</tt>
+		to increase the performance.</td>
+	</tr>
+	<tr>
+    <td>Carnot.BpmClient.Features.AssemblyLinePushService</td>
+    <td>false</td>
+    <td>true, false</td>
+    <td>Enables option to immediately display next assembly line mode activity after completing previous activity.</td>
+</tr>
+<!--	<tr>
+		<td>Carnot.BpmClient.Features.AssemblyLinePushService</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Enables option to immediately display next assembly line mode
+		activity after completing previous activity.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.Worklist.DefaultChunksize</td>
+		<td>15</td>
+		<td>Integer</td>
+		<td>Determines how many entries per page are shown.</td>
+	</tr>-->
+	<tr>
+		<td>Carnot.ProcessPortal.FilterProviders</td>
+		<td></td>
+		<td>filters, comma-separated and equal to sign</td>
+		<td>Option to set global filters for the worklist table.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.FilterProvider.filtername</td>
+		<td></td>
+		<td>filter class</td>
+		<td>Has to implement the interface <tt>IFilterProvider</tt>.</td>
+	</tr>
+    <tr>
+        <td>GUI.eagerNextActivityActivation</td>
+        <td>Boolean</td>
+        <td>Indicates if the Stardust Portal should automatically launch follow up
+        activities when the current activity instance gets completed.</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>GUI.nextActivityPollIterations</td>
+        <td>Long</td>
+        <td>Number of poll attempts when no synchronous follow up activity instance is
+        available for launching.</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>GUI.nextActivityPollDelay</td>
+        <td>milliseconds</td>
+        <td>Specifies the time in milliseconds consecutive poll attempts are delayed.</td>
+        <td>300</td>
+    </tr>
+	<!--<tr>
+		<td>Carnot.ProcessPortal.Delegation.Mode</td>
+		<td>single</td>
+		<td>multiple, single, none</td>
+		<td>Option to set a mode for delegation.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.HideDelegateButton</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Controls the visibility of the delegate icon.<br>
+		Deprecated - same effect as <tt>Carnot.ProcessPortal.Delegation.Mode</tt>
+		with value "none".</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.HideUserGroupsInWorklist</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Controls the visibility of the worklist by roles.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.HideWorklistByProcesses</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Controls the visibility of the worklist by processes.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.HideWorklistIfActivityPanelIsVisible</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Controls the visibility of the worklist tree if the activity
+		panel is visible.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.Statusbar.Visible</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>flag to show or hide the status bar.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.Autorefresh.Mode</td>
+		<td>enabled</td>
+		<td>disabled, enabled, fixed</td>
+		<td>Option to enable, disable the Refresh drop-down box, or to
+		use the fixed value determined in the <tt>Carnot.ProcessPortal.Autorefresh.Interval</tt>
+		property.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.Autorefresh.Interval</td>
+		<td>-1</td>
+		<td>Integer</td>
+		<td>Update interval in ms.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.SuspendToOriginWorklist</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>provides possibility to set the origin worklist for the
+		activity.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.DescriptorFilter</td>
+		<td></td>
+		<td>implementation class</td>
+		<td>determines implementation of the interface <tt>IDescriptorFilter</tt>.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.DescriptorFilterFieldEnabled</td>
+		<td></td>
+		<td>true, false</td>
+		<td>determines visibility of filter entries in Worklist by Role
+		section.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.DescriptorFilter.ConsiderOnlyActiveModel</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>Determines if all model versions will be considered for
+		descriptors or only descriptors from the current model version will be
+		calculated.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.DescriptorFilter.ColumnDescriptorIds</td>
+		<td></td>
+		<td>DescriptorId_1,DecriptorId_2,..</td>
+		<td>Determines the descriptor columns that will be displayed in
+		the <strong>Pending Activity Table</strong> of the Workflow Execution Perspective out
+		of defined descriptors in the model process definition. By default all
+		the descriptors columns are displayed.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.SearchResultLinkEnabled</td>
+		<td></td>
+		<td>true, false</td>
+		<td>specifies visibility of "Search Results".</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessPortal.UpdateButtonEnabled</td>
+		<td></td>
+		<td>true, false</td>
+		<td>specifies if "Update Now" button is visible.</td>
+	</tr>
+	<tr>
+		<td>Carnot.Priority.Label.ResourceBundle</td>
+		<td></td>
+		<td>String</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.Priority.Label.Property</td>
+		<td></td>
+		<td>String</td>
+		<td></td>
+	</tr>-->
+</table>
+<!--
+<h3 id="admin">Administration Perspective</h3>
+<table id='id_14'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+	</tr>
+
+	<tr>
+		<td>Carnot.AdminPortal.DefaultChunksize</td>
+		<td>Integer</td>
+		<td>determines how many entries per page are shown.</td>
+		<td>15</td>
+	</tr>
+	<tr>
+		<td>Carnot.AdminPortal.Autorefresh.Mode</td>
+		<td>disabled, enabled, fixed</td>
+		<td>option to enable, disable the Refresh drop-down box, or to
+		use the fixed value determined in the <tt>Carnot.AdminPortal.Autorefresh.Interval</tt>
+		property.</td>
+		<td>enabled</td>
+	</tr>
+	<tr>
+		<td>Carnot.AdminPortal.Autorefresh.Interval</td>
+		<td>Integer</td>
+		<td>update interval in ms.</td>
+		<td>-1</td>
+	</tr>
+</table>
+
+<h3 id="bcc">Business Control Center</h3>
+<p>The properties to customize the Business Control Center are set
+in the <tt>businessControlCenter.properties</tt> file, residing in the <tt>WEB-INF/classes</tt>
+folder of your Business Control Center WAR of the <tt><nobr>ipp-resources</nobr></tt>
+folder of your dynamic Web project accordingly.</p>
+<table id='id_15'>
+	<tr>
+		<th>Parameters</th>
+		<th>Default value</th>
+		<th>Range</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Carnot.PropagatePriorityChangeToSubprocesses</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>option to propagate priority changes to subprocesses.</td>
+	</tr>
+	<tr>
+		<td>authorization.userGroup</td>
+		<td></td>
+		<td></td>
+		<td>defines the usergroup in Stardust , which has access to the
+		Business Control Center:</td>
+	</tr>
+	<tr>
+		<td>authorization.userGroup.readOnly</td>
+		<td></td>
+		<td></td>
+		<td>defines the usergroup in Stardust , which has only read access
+		to the Business Control Center.</td>
+	</tr>
+	<tr>
+		<td>live.diagrams.url</td>
+		<td></td>
+		<td></td>
+		<td>defines the live diagrams URL.</td>
+	</tr>
+	<tr>
+		<td>delegate.forceSuspend</td>
+		<td>true</td>
+		<td>Boolean</td>
+		<td>once an activity is activated it will be suspended before
+		delegation. (only for users with administrator role)</td>
+	</tr>
+	<tr>
+		<td>Carnot.BusinessRelevantProcessIds</td>
+		<td></td>
+		<td>comma-separated list of process ids</td>
+		<td>if this property contains a list of process ids, only these
+		process ids will be displayed.</td>
+	</tr>
+	<tr>
+		<td>Carnot.AddAndRevokeGrantsFromAllModels</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>if true, the roles of all models will be granted to or
+		deprived from the user. If set to false, only the roles of the active
+		model will be granted or deprived.</td>
+	</tr>
+	<tr>
+		<td>Carnot.ProcessingTimeThreshold</td>
+		<td>1.0</td>
+		<td></td>
+		<td>The percentage threshold for processing time, granulated in
+		yellow and red:
+		<ul>
+			<li>Carnot.ProcessingTimeThreshold.Yellow</li>
+			<li>Carnot.ProcessingTimeThreshold.Red</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Carnot.InstanceCostThreshold</td>
+		<td>1.0</td>
+		<td></td>
+		<td>The percentage threshold for processing time, granulated in
+		yellow and red:
+		<ul>
+			<li>Carnot.ProcessingTimeThreshold.Yellow</li>
+			<li>Carnot.ProcessingTimeThreshold.Red</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Carnot.WorkingHoursPerDay</td>
+		<td>24h:00m</td>
+		<td>h:m</td>
+		<td>denominator for working hours per day used for login times
+		calculation.</td>
+	</tr>
+</table>
+<h4>Traffic Light View</h4>
+<p>The properties to customize the Traffic Light view are set in the
+<tt>traffic-light-view.properties</tt> file, residing in the <tt><nobr>ipp-resources</nobr></tt> folder
+of your dynamic Web project or the <tt><nobr>WEB-INF/classes</nobr></tt> folder in the
+Business Control Center WAR file accordingly.</p>
+<table id='id_16'>
+	<tr>
+		<th>Parameters</th>
+		<th>Range/Default</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.ProcessDefinitionIds</td>
+		<td>String</td>
+		<td>process definition Ids of the processes the traffic lights
+		should be displayed for.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.ColumnActivityIds</td>
+		<td>String</td>
+		<td>specifies the activity Ids to be shown in the columns for the
+		view for the process definition.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.RowDataId</td>
+		<td>String</td>
+		<td>value of a specific process data to serve as a grouping
+		criterion.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.&lt;dataId&gt;.RowDataValues</td>
+		<td>String</td>
+		<td>specifies value set for <tt>RowDataId</tt> of specific
+		process definition.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.DisplayTotalRow</td>
+		<td>Boolean</td>
+		<td>specifies whether a total row should be displayed as a
+		summary.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.DescriptorFilter</td>
+		<td>default implementation is
+		com.sungard.infinity.bpm.bcc.impl.TrafficLightDescriptorFilterImpl</td>
+		<td>specifies the implementation of the
+		com.sungard.infinity.bpm.bcc.spi.TrafficLightDescriptorFilter
+		interface to get all descriptor columns in the correct order.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.StateCalculator</td>
+		<td>default is
+		com.sungard.infinity.bpm.bcc.impl.TerminationTimeBasedCalculator</td>
+		<td>specifies the service provider class which determines the
+		state calculation.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.TrafficLightView.&lt;processDefinitionId&gt;.ProcessingThreshold.&lt;activityId&gt;</td>
+		<td>time in format HHHH</td>
+		<td>indicates the planned termination time of a specific activity
+		instance.</td>
+	</tr>
+</table>
+<h4>Gantt Chart View</h4>
+<p>The properties to customize the Gantt Chart view are set
+in the <tt>gantt-diagram-view.properties</tt> file, residing in the <tt>ipp-resources</tt>
+folder of your dynamic Web project or the <tt><nobr>WEB-INF/classes</nobr></tt>
+folder in the Business Control Center WAR file accordingly.</p>
+<table id='id_17'>
+	<tr>
+		<th>Parameters</th>
+		<th>Default value</th>
+		<th>Range</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.ProcessDefinitionIds</td>
+		<td></td>
+		<td>String</td>
+		<td>selected process definition ids.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.plannedStartTimeHHHH</td>
+		<td></td>
+		<td>Integer</td>
+		<td>indicates the starting time of the process instance.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.plannedTerminationTimeHHHH</td>
+		<td></td>
+		<td>Integer</td>
+		<td>indicates the planned termination time of the process
+		instance</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.estimatedDurationSeconds</td>
+		<td></td>
+		<td>Long</td>
+		<td>indicates the estimated duration of the process in seconds.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.thresholdPercentage</td>
+		<td></td>
+		<td>Integer</td>
+		<td>threshold as percentage of the estimated duration.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.instance.descriptor.key</td>
+		<td></td>
+		<td>String</td>
+		<td>descriptor id to be filtered by.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.instance.descriptor.values</td>
+		<td></td>
+		<td>String</td>
+		<td>descriptor data values.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.&lt;value&gt;.successor</td>
+		<td></td>
+		<td>&lt;ProcessDefinitionIdx&gt;.&lt;valueX&gt;</td>
+		<td>successor value to derive dependency between processes.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.&lt;value&gt;.predecessor</td>
+		<td></td>
+		<td>&lt;ProcessDefinitionIdy&gt;.&lt;valueY&gt;</td>
+		<td>predecessor value to derive dependency between processes.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.&lt;ProcessDefinitionId&gt;.enableDiagram</td>
+		<td>false</td>
+		<td>true, false</td>
+		<td>option to enable or disable the appearance of the Gantt Chart
+		button for a specific process definition. Overwrites the setting of
+		the <tt>enableDiagramForAllProcessDefinitions</tt> property.</td>
+	</tr>
+	<tr>
+		<td>Infinity.Monitoring.GanttChartView.enableDiagramForAllProcessDefinitions</td>
+		<td>true</td>
+		<td>true, false</td>
+		<td>option to enable or disable the appearance of the Gantt Chart
+		button for all process definitions. Will be overwritten for concrete
+		process definitions by the <tt>enableDiagram</tt> property.</td>
+	</tr>
+</table>-->
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

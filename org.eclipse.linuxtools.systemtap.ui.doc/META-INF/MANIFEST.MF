@@ -1,0 +1,363 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.systemtap.ui.doc;singleton
+ :=true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 2.6.5.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Stop_obj.gif
+SHA1-Digest: kqo+0YlPPDIPH/JIX/czNHDae7Q=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Function.png
+SHA1-Digest: KmIipt9EQc1F1KswxHXvL1hooU4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/LineChartTooltip
+ .png
+SHA1-Digest: HA2lCkmvp7Q+fxwPKRuQV4b0fKw=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/SystemTap-Dashboard.htm
+ l
+SHA1-Digest: camWCr1tQHfs1euNizk2s/xdQ10=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Range.png
+SHA1-Digest: WOfpj+KVf20qqgX1+0MAreZMxCk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Preferencesbox1.
+ png
+SHA1-Digest: 1s339vZ+/o4bnixOpHM2gtc3rps=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Scatter.png
+SHA1-Digest: 3A885vCmrsm+6FpS0aeR6XQgikU=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SystemtapGraphVi
+ ew.png
+SHA1-Digest: P93XzkYKZFrEf0owlFEk+OUzTf8=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SystemTapRunConf
+ iguration.png
+SHA1-Digest: LP1DfOKAJpIX1dAn6MAU/RlV3z8=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Start_script.gif
+SHA1-Digest: zPBwCWJnMNCi/lTg+PpuMydhqFk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/Updating-This-Document.
+ html
+SHA1-Digest: XtUW/BtSONlJZBOEHSO+HrxUPVQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Run_chart.gif
+SHA1-Digest: QgdqSzg+N6LNxTVK+QJkhEV/vCg=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphingPerspect
+ ive.png
+SHA1-Digest: tSwmaGINzAwM4KhpIqlOGowwb50=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Import_wiz.gif
+SHA1-Digest: KBgRjdXon6FcAufJ9wYEAVQ3SNw=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/IDEOutput.png
+SHA1-Digest: FA3mdzWUXKHw0qsM3RmDnryF6+w=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Editor.png
+SHA1-Digest: t0nO4+iVQkgflf5mrpUSk2kTFqU=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Line.png
+SHA1-Digest: yEgOyASxqnkppK7yC9MA00Vi57I=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/IDEGraphics.png
+SHA1-Digest: s9dPl5BFb0lyLXBj6rND0LjrPbo=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Mod_obj.gif
+SHA1-Digest: ZALeabuUUGFTZau/m69me57Ijj8=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Export_wiz.gif
+SHA1-Digest: LQPT2QoQELD7YcZiJV2Viw4nKYo=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphWizard.png
+SHA1-Digest: WtmFwfNLqPUFCEpDT7bpvVSu7z4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/New_wiz.gif
+SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SmallGraph.png
+SHA1-Digest: ERaDM09AJF950Hgufke+AVeJ834=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Var_struct.gif
+SHA1-Digest: uVzG2UT0RozTrk2RpVFNq3QfrqU=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/DataSetImportOnl
+ y.png
+SHA1-Digest: fu+itIn2POxD6LEw4k9gdLtIyTQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Area.png
+SHA1-Digest: myGRg22yK5XURK3J0ivLITSQOvM=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Openbox1.png
+SHA1-Digest: O4OpxFheMybE1FNXOBRs1nEoCGY=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SaveStapGraphBut
+ ton.png
+SHA1-Digest: gPALRCMrCa7WNERBjH6NJeyVfmY=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Range2.png
+SHA1-Digest: rp0J5k4sykix3tq41Bew2MKLjQ0=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/RunningDashboard
+ .png
+SHA1-Digest: UYnR+2TnlbFCgPtWR2RGmMN9gns=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Run_exc.gif
+SHA1-Digest: 9nUFtkM1LiPz9RddB8tq+Zl7LlE=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Multiconfigs.png
+SHA1-Digest: 2A/pGYJVPN25l89nJ92FpdTt4DI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ContextAssist.pn
+ g
+SHA1-Digest: xELaV1GyI4+WvoCz3YPKdekghlM=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/SystemTap-Graphing.html
+SHA1-Digest: NIpIKDRJzLfMdGb+z0embKcqMB8=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ErrorLog.png
+SHA1-Digest: NCbcbdvuiqySY8j5kcaVQAKeVUw=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ImportDialogue.p
+ ng
+SHA1-Digest: +u/fgIE5K9YN+EkbZfUg/Hiit3o=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/RunConfigDropDow
+ n.png
+SHA1-Digest: 5e1979p1Qh6q2JGHoe2gDTez78Q=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ExportScript.png
+SHA1-Digest: n238zYl3POG16dsMBo0EiRqAQyM=
+
+Name: META-INF/maven/org.eclipse.linuxtools.systemtap/org.eclipse.linu
+ xtools.systemtap.ui.doc/pom.properties
+SHA1-Digest: MkNPnivBDlVs14J6XEer4ziXtHI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/StapDataFilters.
+ png
+SHA1-Digest: IywO+Dr4eO/tS6ws+lRX9llhCuw=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Import.png
+SHA1-Digest: M57BNHGgkHioo0oJS75xLPBDOo0=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Gotobox1.png
+SHA1-Digest: V60SMYDjoMZxM+hKpSrs2SXaq0E=
+
+Name: images/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Var_long.gif
+SHA1-Digest: MkMlhRtY7heha+3F2MjKaXzyTSQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/BarNavBefore.png
+SHA1-Digest: tTViMGKhZDoYBjdebh8B+Ieyatk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ModuleBrowser.pn
+ g
+SHA1-Digest: 9+uFFrsPyUkwldAvxrKMYfmeJII=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Newfile.png
+SHA1-Digest: G/k7dFFzfEztuuVA/adV0vlt3Tk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Consolebox1.png
+SHA1-Digest: fqnDmF0N4jnBbZaLL0UH98zKNNc=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ActiveModules.pn
+ g
+SHA1-Digest: ux6KNuDVkMePjnzGBfzohhTUtm4=
+
+Name: toc.xml
+SHA1-Digest: x7v3+Z0WjrqXcVv6FNjr3VdIT20=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Var_void.gif
+SHA1-Digest: 7YwrOSh6+RKr8ldjwRqXdX0xi2M=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Unique.png
+SHA1-Digest: Q9BIBCqPK54/8kiIVNFhAjDtQHI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Zoom.png
+SHA1-Digest: LqsNtowBJdAXftEROPpddtVuotk=
+
+Name: book.css
+SHA1-Digest: RfW9VP3BgtrR1lxkGmQI25AOLzI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Var_str.gif
+SHA1-Digest: uXEfil6UvX2LT2eYQDAIq0hS2mk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SystemtapNewRege
+ x.png
+SHA1-Digest: 1guiVUTIx5MrDtFfOJVlby2Cc88=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Match.png
+SHA1-Digest: khqww+v/6u7pCIvUGcYBDKHajmc=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Script_details.g
+ if
+SHA1-Digest: ydnSSYGcP9LVudMpsCoPNlQt/bc=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/CloseButton.png
+SHA1-Digest: fHe7C2ZGDhZl/FQHBqawda/+AbA=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Importbox1.png
+SHA1-Digest: yU6Hx6vtCRxbhEZCOn1CEGW+xbI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Viewbox1.png
+SHA1-Digest: CYDfZ+UgR/YHGerTu3rpyYDc1GE=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ExpandButton.png
+SHA1-Digest: htLoYleW6AAXZwJqsXbYGxd9PuQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Sort2.png
+SHA1-Digest: pmzXvZJZhIj5TANdGLg+O1yH8Rs=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Findbox1.png
+SHA1-Digest: JxX5TjxRw//DP/cXG+geGot026w=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ProbeAlias.png
+SHA1-Digest: aZRBffuYZ+M43hNGJR7sgc7WidI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/SystemTap-IDE.html
+SHA1-Digest: PB9bw+MAuE1k7LdNq0PhwwoIloY=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/ZoomX.png
+SHA1-Digest: 9ZkLj8d2shjlLkeQah39EebiLs4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Newbox1.png
+SHA1-Digest: CbbEoT5y4kb47IHtItM9Qgbj+wI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphNavAfter.pn
+ g
+SHA1-Digest: xViU6bsklB04z/fwqL0zq+tTz3Q=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/User-Guide.html
+SHA1-Digest: Xlejc7CXzArwFMj2k5RplM6pt/Q=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Match2.png
+SHA1-Digest: JBw5OV9RDl7+40Jf9Tc/JnOsF2g=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Open_wiz.gif
+SHA1-Digest: 5TF7ftfUsp4Z3KdTaSlgyQoFpuk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Dash.png
+SHA1-Digest: OFK2D+Nz5A6wzIZbWTIK/eBAg7c=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Var_unk.gif
+SHA1-Digest: VTQJS04ahuQbgb+uryKOlWsGLoM=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Filters.png
+SHA1-Digest: mYbY2tIsd3FPhtvFZe6yjw6qcoI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Sort.png
+SHA1-Digest: UTn2qAKZZNkvbW92fQ+53KgZz3Y=
+
+Name: plugin.properties
+SHA1-Digest: nc8r7+EmtpjfD6fXR6OKKvDMGr0=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/SystemtapGraphDa
+ taView.png
+SHA1-Digest: 72S0gqbnz7TLN6XlsL5oGGWwTuI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Pie.png
+SHA1-Digest: tvPoRej6IBCagqZtjMtUVw5x8qY=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/AddedModule.png
+SHA1-Digest: uxn3Zun/sTg3NciYWy/Ye159WEk=
+
+Name: plugin.xml
+SHA1-Digest: g2h6WJ2RXxIpMPSUiiojPKdIHzg=
+
+Name: toc-doc.xml
+SHA1-Digest: WNE8/RL1H2+QsPuXJGdsYtqGDrs=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Bar.png
+SHA1-Digest: IriPEuoSTyJvAjJsavkC7Eo1uCQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Export.png
+SHA1-Digest: SKII2HNG9kZ6ZOisB5SnkLxyUeA=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/KernelSource.png
+SHA1-Digest: VvLOf/n5EZQyEJQvzZt+F6FRFWs=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/AutoGraphAfter.p
+ ng
+SHA1-Digest: ig4C3OSYTP0tIli0dhwe4qKM3oY=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Saveoutput.png
+SHA1-Digest: w1YdVYnqLg5sA0UXLEZ9EXBQAo8=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphingTab.png
+SHA1-Digest: TDBWXESyUt+708G+y/Fk/aeQBAs=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Save_wiz.gif
+SHA1-Digest: U9r6zdvy60UCCQJytBcOUSp+Rbg=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Rightleft.png
+SHA1-Digest: FHEtwF06ZxnkHO+LNEzm4fWTNgk=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Chartbox1.png
+SHA1-Digest: gkdcH6M517T1kKthyMpciV61kLQ=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/IDEGraph.png
+SHA1-Digest: WhU0++lmrbuWJnOjdpcK6Wf89Ck=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphExpanded.pn
+ g
+SHA1-Digest: v/ZfZh8vFiCYshUlot9dZ3dlfpY=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/UnfilteredDatase
+ t.png
+SHA1-Digest: HkysrLAd6ZjV0E8oWoRjbryJKf4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Ide.png
+SHA1-Digest: gnYe6q/Uq/70YVINVApK1Brqf2g=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/BarNavAfter.png
+SHA1-Digest: SlqjZpPrDYhcJpBwKA2mYwibcR4=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/IDEConsole.png
+SHA1-Digest: ZjOPvAnki1u9fBym/qEwExA3D6Q=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/Copyright-Information.h
+ tml
+SHA1-Digest: 3KLg90AEo7YJCj3ouyEaVokC9uA=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Pause_script.gif
+SHA1-Digest: yM50mlbVGQLacDNklQol2+C/3t0=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/DataSetImportExp
+ ort.png
+SHA1-Digest: D0ITjBHjReKLaypbHUksyTNBKvo=
+
+Name: META-INF/maven/org.eclipse.linuxtools.systemtap/org.eclipse.linu
+ xtools.systemtap.ui.doc/pom.xml
+SHA1-Digest: ZA8Qbu0I7zvOBhshXd6vawo8HfI=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/GraphNavBefore.p
+ ng
+SHA1-Digest: i9tIsasK6eLeloeATmgfllYdI0U=
+
+Name: Linux_Tools_Project/Systemtap/User_Guide/images/Graphing.png
+SHA1-Digest: PDpXkYpZi7vYbi4dah2ur62iYu8=
+

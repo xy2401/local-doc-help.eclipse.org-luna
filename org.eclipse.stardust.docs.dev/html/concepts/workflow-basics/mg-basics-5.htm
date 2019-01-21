@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Activities</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Control Flow",
+		"mg-basics-4.htm","mg-basics-6.htm",
+		"../key-concepts.html","Concepts",
+		"mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Activities</h1>
+<p>The core elements of a process are activities which are created and
+executed as activity instances during process execution. An activity is an
+atomic piece of work forming one logical step, which contributes to the overall
+realization of the process.</p>
+<p>The chapter covers the following:</p>
+<ul>
+	<li><a href="#non">Interactive and Non-interactive Activities</a></li>
+	<li><a href="#types">Activity Implementation Types</a></li>
+	<li><a href="#instance">Activity Instances</a></li>
+	<li><a href="#abort">Aborting Activity Instances</a></li>
+	<li><a href="#critic">Activity Criticality</a></li>
+</ul>
+
+
+<h2 id="non">Interactive and Non-interactive Activities</h2>
+<p>Activities may be of different types. Some activities may be performed
+interactively (interactive activities) in contrast to automated activities
+(non-interactive activities).</p>
+<p>The differences in activity types are reflected in the implementation
+of these activities.</p>
+<p>Non-interactive activities are used to</p>
+<ul>
+    <li>invoke non-interactive applications (e.g. a Session Bean method,
+    a host transaction, a SAP call),</li>
+    <li>receive messages or other events from the environment,</li>
+    <li>invoke sub-processes or</li>
+    <li>serve as synchronization points for multiple activity threads.</li>
+</ul>
+<p>For each interactive activity a so-called participant is specified as a
+performer of this activity. A participant can be a role or an organization. At
+runtime, it is evaluated whether a particular user is assigned to this role or
+organization.</p>
+<p>For all activities - interactive and non-interactive - the way data is
+accessed by this activity also belongs to the activity definition.</p>
+<h2 id="types">Activity Implementation Types</h2>
+<p>Activities are also categorized by their implementation type as</p>
+<ul>
+    <li><a href="#root">Route Activity</a></li>
+    <li><a href="#appl">Application Activity</a></li>
+    <li><a href="#subproc">Sub-process Activity</a></li>
+    <li><a href="#manual">Manual Activity</a></li>
+</ul>
+<h3 id="root">Route Activity</h3>
+<p>Route activities are basically doing nothing. They are used for technical
+reasons, e.g. to join control flow. However, in the context of event handling
+they can serve as synchronization points for events and executing event actions.</p>
+<h3 id="appl">Application Activity</h3>
+<p>Application activities are executing application logic, which is
+specified in an associated application. This application can either be
+interactive or non-interactive.</p>
+<h3 id="subproc">Sub-process Activity - Synchronous/Asynchronous</h3>
+<p>Sub-process activities are associated with a process definition and are
+executing an instance of this process definition (sub-process) at runtime.
+Sub-processes are defined mainly for the purpose of cohesiveness and re-usability.
+There are three different types of sub-processes - synchronous with shared data,
+asynchronous and synchronous with separate data. The synchronous with shared
+data sub-process shares the same workflow data scope (shared data) at runtime.
+This is done by linking activity instances not only to the owning process
+instance but also to the scope process instance, which is on top of the process
+instance hierarchy defined by sub-process relationships. The asynchronous
+sub-process gets a copy of the data as separate data. Whereas the synchronous
+with separate data sub-process offers the option to determine, if the data should
+be handled as separate data or if the passing of data should be explicitly
+performed by the means of data mappings.</p>
+<h3 id="manual">Manual Activity</h3>
+<p>Manual activities are interactive activities with no associated
+application. They are used mainly in embedded programming where they provide an
+appropriate means to handle interactive activities from the point of view of
+embedded programming. See the <a href="../../handbooks/programming/pg-preface.htm">Programming
+Guide</a> for further details. Manual activities also serve the purpose of rapid
+prototyping because the <strong>Workflow Execution Perspective</strong>
+automatically generates default panels for manual
+applications.</p>
+<p>You have the option to convert a manual activity to a JSF application
+activity, like described in chapter <a href="../../handbooks/modelling/activities/mg-convert-activities.html">Converting
+Manual Activities to JSF Application Activities</a>.</p>
+<p>The following table summarizes the possible categorizations of
+activities:</p>
+<table id='id'>
+    <tr>
+        <th></th>
+        <th>interactive</th>
+        <th>non-interactive</th>
+    </tr>
+    <tr>
+        <td>Route</td>
+        <td>-</td>
+        <td>+</td>
+    </tr>
+    <tr>
+        <td>Application</td>
+        <td>+</td>
+        <td>+</td>
+    </tr>
+    <tr>
+        <td>Sub-process</td>
+        <td>-</td>
+        <td>+</td>
+    </tr>
+    <tr>
+        <td>Manual</td>
+        <td>+</td>
+        <td>-</td>
+    </tr>
+</table>
+<h3>Representation in the Modeler</h3>
+<p>An activity in Stardust is visualized by a red gear.</p>
+<p><img src="images/mg-basics-5.png" alt="">
+<p>In diagrams an activity is visualized as a gray rectangle overlaid by an icon according
+to the activity type.</p>
+<ul>
+	<li>Route Activity - gray rectangle containing
+	a router symbol overlaid by an activity icon:<br>&nbsp;<br>
+	<img src="images/mg-basics-6.jpg" alt=""></li>
+	<li>Application Activity - 
+	gray rectangle
+	containing an application symbol overlaid by an activity icon:<br>&nbsp;<br>
+	<img src="images/mg-basics-7.jpg" alt=""></li>
+	<li>Sub-process activities -
+	gray rectangle
+	containing a process definition icon:<br>&nbsp;<br>
+	<img src="images/mg-basics-8.jpg" alt="">
+	<li>Manual activities -
+	gray rectangle containing
+	a hand symbol overlaid by an activity icon:<br>&nbsp;<br>
+	<img src="images/mg-basics-9.jpg"  alt="">
+</ul>
+<h3>Categorization of Activities</h3>
+<p>To summarize an activity, it formally contains the following
+definitions:</p>
+<ul>
+    <li>Data mappings, defining data access</li>
+    <li>Event handlers</li>
+</ul>
+<p>As a model element an activity has the following properties:</p>
+<ul>
+    <li>An ID unique inside the enclosing process definition</li>
+    <li>A human readable name</li>
+    <li>A reference to an associated application, if any</li>
+    <li>The implementation type</li>
+    <li>For interactive activities: a reference to a performer</li>
+    <li>For sub-process activities: a reference to the sub-process</li>
+</ul>
+
+<h2 id="instance">Activity Instances</h2>
+<p>During process execution, activities are instantiated. An instance of
+an interactive activity represents a work item in the worklist of a user or user
+group according to the participant specified as performer of the activity in the
+process model.</p>
+<p>Activity instances have a persistent representation in the audit trail.</p>
+<h2>Activity Instance States</h2>
+<p>During its lifetime an activity instance undergoes several states. It
+is created in state created and turns to state application after it starts its
+work. When the activity instance is regularly finished it turns to state
+completed. There is the possibility for the execution of an activity instance to
+block its execution, which will result in being in hibernated state or in
+suspended state. This will happen in the following situations:</p>
+<ul>
+    <li>The activity was marked as <strong>initially hibernate</strong>
+    at modeling time. The activity instance will then go directly from the
+    created state to hibernated state.</li>
+    <li>The activity is interactive. The activity instance will then go
+    directly from the created state to suspended state.</li>
+    <li>The corresponding application is waiting asynchronously for an
+    external event to occur. In the meantime, the activity instance will be in
+    hibernated state.</li>
+</ul>
+<p>There are two special states for exceptional situations:</p>
+<ul>
+    <li>An activity instance is interrupted if there is a temporary
+    problem in its execution to be recovered.</li>
+    <li>An activity instance is aborted if it was not yet terminated and
+    an administrator or an authorized participant decided to abort 
+    the activity instance at the next possible commit points.</li>
+</ul>
+<p>The completed state and the aborted state for activity instances, which have the scope
+to start the abort from the root process, are final states. In those cases, the
+activity instance can never show any subsequent activity after going to one of
+these states. They are referred to
+as terminated activity instances. Initialization of abort may result in aborting state 
+    (an intermediate state) if the activity does not get aborted successfully or the time span is large before abort.
+    If it gets aborted successfully then it achieves the aborted state
+    else it remains in aborting state.</p>
+
+<p class="image"><img src="images/mg-basics-10.png" alt=""> <br>
+<strong>Figure:</strong> Possible Activity Instance State Changes</p>
+<h2 id="abort">Aborting Activity Instances</h2>
+<h3>Activity Instances Behavior after an Abort</h3>
+<p>Generally it has to be distinguished between an abort starting from
+the root hierarchy and an abort starting from the sub-process.</p>
+<h4>Abort starting from the root hierarchy</h4>
+<p>In case an abort is determined to start from the root hierarchy,
+an abortion will cause the denoted activity instance to be aborted at
+the next possible commit points,
+e.g. as soon as synchronous activity threads are terminated.
+If the denoted activity instance is a sub-process activity,
+the corresponding sub-process will be terminated likewise.</p>
+<h4>Abort starting from the sub-process</h4>
+<p>If the activity instance is determined to be aborted starting from the
+sub-process, the sub-process termination is performed similar to an abortion
+of a process instance. The difference is that the calling super process instance
+will continue to be processed normally after a sub-process abortion, like as if the
+sub-process activity had been completed regularly.
+Thus an abortion of the process instance will not propagate upwards in the process hierarchy.</p>
+<h3>Out Data Mapping Behavior of Aborted Activity Instances</h3>
+<p>Please note that Out data mappings of aborted activity instances will
+not be evaluated. The following activity instances using In data mappings from
+those data have to be aware that the data values may not be initialized or
+can contain incorrect data.</p>
+<h3 id="handle">Handling of Activities following an Aborted Activity Instance</h3>
+<p>You can handle activities following an aborted activity instance by
+using the engine access point <tt>activityInstance</tt> in a transition condition.
+Please refer to the section
+<a href="../../handbooks/modelling/mg-defdesk-5.htm#actinst">Using Information of an Activity Instance in the Condition</a>
+of the chapter <a href="../../handbooks/modelling/mg-defdesk-5.htm">Working with Transitions</a>
+for information on how to use this access point.</p>
+
+<h2 id="critic">Activity Criticality</h2>
+<p>You can set activity criticality on model level to prioritize the worklist 
+entries based on a JavaScript formula using process priority and other 
+possible parameters and variables.
+Refer to chapter 
+<a href="../activity-criticality.html">Activity Criticality</a> for details
+on the activity criticality concept.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

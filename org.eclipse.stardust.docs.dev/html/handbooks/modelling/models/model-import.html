@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Importing and Exporting Models</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Element References",
+		"model-validation.html","model-element-refs.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","model-preface.html","Working With Models");
+ -->
+</script>
+<h1>Importing and Exporting Models</h1>
+<p>This chapter comprises the following topics:</p>
+<ul>
+	<li><a href="#import">Importing Models</a>
+	<ul>
+		<li><a href="#importModel">Importing a File</a></li>
+		<li><a href="#importElements">Importing Model Elements</a></li>
+		<li><a href="#importAudit">Importing Models from Audit Trail</a></li>
+		<li><a href="#errorMess">Displaying XML Parsing Messages during Model Loading</a></li>
+      <li><a href="#importOther">Importing Models with incompatible Format</a></li>
+      <li><a href="#importbpm">Importing Models created in the Business Process Web Modeler</a></li>
+	</ul></li>
+	<li><a href="#export">Exporting Models</a>
+	<ul>
+		<li><a href="#exportDiagrams">Exporting Diagrams</a></li>
+		<li><a href="#deploy">Deploying Models</a></li>
+	</ul></li>
+</ul>
+
+<h2 id="import">Importing Models</h2>
+<p>When importing a model from an existing model definition in XML
+format, you can choose an existing model as your target model or create
+a new one containing exclusively the imported information. In the first
+case the new information will have to be merged with the information
+already existing in the model, whereas in the latter case a new model
+will automatically be created.</p>
+<h3 id="importModel">Importing a File</h3>
+<p>To import a file in a new
+model:</p>
+<ul>
+	<li>In the Package Explorer right-click the project and choose <strong>Import...</strong>.</li>
+	<li>Select <strong>Process Manager Wizards</strong> &gt; <strong>Process Model</strong>.</li>
+	<li>Click <strong>Next</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-import-model.png" alt="Import">
+<br>
+<strong>Figure:</strong> Import Process Model</p>
+<ul>
+	<li>Choose <strong>File</strong> as source.</li>
+</ul>
+<p class="image"><img src="images/import-model-dialog.png" alt=""> <br>
+<strong>Figure:</strong> Importing a Model</p>
+<ul>
+	<li>Supply the name of the file to be imported in the appearing
+	browser.</li>
+</ul>
+<p>Note that if the chosen file stores a model with an ID already
+present in the process modeling repository, the import will not be
+performed. Although you can open a model version with the same ID by
+importing model elements (see section <a href="#importElements">Importing
+Model Elements</a>), you will be prompted to commit or reject changes in the
+model during merging of model information performed at this point.</p>
+<h3 id="importElements">Importing Model Elements</h3>
+<p>Please note that it is important to save your target model before
+importing elements from another model as the changes will be lost
+otherwise.</p>
+<p>To import only parts of another model:</p>
+<ul>
+	<li>In the Package Explorer right-click your model and select <strong>Import...</strong>.</li>
+	<li>Select <strong>Process Manager Wizards &gt; Process Model Elements</strong>.</li>
+	<li>Select <strong>Next</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-import-model-elements.png"
+	alt=""> <br>
+<strong>Figure:</strong> Import Model Elements</p>
+<p>Then browse to the directory where you find the file containing
+the elements to import. It is your responsibility that the imported
+elements form a consistent constellation of model information.</p>
+<p class="image"><img src="images/model-elements-import-dialog.png" alt=""> <br>
+<strong>Figure:</strong> Importing Model Elements</p>
+<p>To start the merging operation the source model and the type of
+the model (<strong>File</strong> or <strong>Audit
+Trail Database</strong>) have to be chosen. After pressing the <strong>Next</strong>
+button, the comparison dialog will be opened.<br />
+&nbsp;</p>
+<p class="image"><img src="images/mg-import-elements.png"
+	alt="The Comparison Dialog"> <br>
+<strong>Figure:</strong> The Comparison Dialog</p>
+<p>The comparison dialog consists of three areas:</p>
+<ul>
+	<li>the <strong>Process Model Differences</strong> tree at the
+	top,</li>
+	<li>the elements of the <strong>Source Model</strong> to the left,</li>
+	<li>the elements of the <strong>Target Model</strong> to the
+	right.</li>
+</ul>
+<p>The <strong>Differences </strong>tree shows all differences of
+the two models. Elements that are in the <strong>Target Model</strong>
+but not in the <strong>Source Model </strong>are marked with a green
+plus sign. Elements that are not in the <strong>Target Model</strong>
+but exists in the <strong>Source Model</strong> are marked with a green
+minus sign. Changes will be displayed within the node name of the
+element. The details of a node will be shown in the two areas below if a
+difference node is selected. It is possible to filter the differences
+tree by showing only additive, subtractive or update changes.</p>
+<p align="left"><img src="images/all_changes.gif" alt="">&nbsp;Shows
+all differences.</p>
+<p align="left"><img src="images/additive_changes.gif" alt="">&nbsp;Shows
+all additional elements.</p>
+<p align="left"><img src="images/subtractive_changes.gif" alt="">&nbsp;Shows
+all missing elements.</p>
+<p align="left"><img src="images/update_changes.gif" alt="">&nbsp;Shows
+all changes.</p>
+<p>To transfer a difference from the <strong>Source Model</strong>
+to the <strong>Target Model</strong> it is necessary to select a node in
+the <strong>Differences</strong> tree and press the button:</p>
+<p align="left"><img src="images/mg-copy-nodes.gif" alt="">&nbsp;<strong>Copy
+Selected Nodes from Left to Right.</strong></p>
+<p>The node with all its child nodes (differences) will be
+transferred. By transferring a subtractive difference the selected
+element will be deleted out of the <strong>Target Model</strong>. The
+import of the elements is only accepted after pressing <strong>Commit</strong>.</p>
+<p>You can navigate through the changes by using:</p>
+<ul>
+	<li>the <img src="images/mg-next-change.gif" alt=""> <strong>Select
+	Next Change</strong> button or</li>
+	<li>the <img src="images/mg-previous-change.gif" alt=""> <strong>Select
+	Previous Change</strong> button.</li>
+</ul>
+<p>residing in the upper right corner.</p>
+<h4>Importing Structured Data Elements</h4>
+<p>Please note that if you import structured data elements, the corresponding structured
+data types definition will not be imported automatically. In this case preferably use
+the copy and paste mechanism of the modeler, where the structured types the data refers
+to, will be copied to the model as well.
+Please refer to the chapter
+<a href="../mg-copy-paste-elements.html">Copying and Pasting Modeled Elements</a>
+for detailed information on how to copy and paste model elements.</p>
+<p>Another alternative would be to export the structured data types as XSD file
+and then import it back to the same XSD file in the destination model.
+Please refer to the section 
+<a href="../data-integration/structured-data/struct-type-def.html#exportTypes">Exporting Types</a>
+of the <a href="../data-integration/structured-data/struct-type-def.html">Defining Structured Types</a>
+chapter for detailed information on how to export structured types.</p>
+<h3 id="importAudit">Import Model from Audit Trail</h3>
+<p>If you want to do re-engineering of a model deployed to the
+audit trail, from the model's pop-up menu, select <strong>Import...</strong>
+and choose <strong>Process Manager
+   Wizards &gt; Process Model</strong> from the list in the
+upcoming dialog. That can be useful if you lose model information. See
+also <a href="../mg-defdesk-17.htm">Loading Models from Audit Trail</a>.</p>
+<h3 id="errorMess">Displaying XML Parsing Messages during Model Loading</h3>
+<p>Per default, xml parsing messages during model loading are not displayed.
+In case you like to have these messages
+displayed, set the property <tt>carnot.log.load.filter</tt> 
+in your server-side <tt>carnot.properties</tt> file to <tt>true</tt>.</p>
+<h3 id="importOther">Importing Models with incompatible Format</h3>
+<p>In some cases you like to import a model that has an incompatible format, e.g. 
+in the following cases:</p>
+<ul>
+   <li>the model was created in an older Stardust version with significant differences in the format</li>
+   <li>the model was created with another modeler, e.g. the 
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+   Business Process Modeler</a></li>
+</ul>
+<p>A message is displayed asking you to update the model to the current specification:</p>
+<p class="image"><img src="images/import-model-dep-message.png" alt="incompatible">
+<br>
+<strong>Figure:</strong> Message Dialog for Importing Models with incompatible Format</p>
+<p>Click <strong>OK</strong> to update and import the model.</p>
+<h3 id="importbpm">Importing Models created in the Business Process Web Modeler</h3>
+<p>Some model elements created in the Business Process Modeler are not supported in the
+Eclipse modeler and vice versa. For details on the compatibility of models created in the
+Business Process modeler and models created in the Eclipse modeler, refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-modeler-compatibility.html">
+Compatibility and Analogy of Models</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeler</a> guide.
+<h4 id="rules">Rule Tasks</h4>
+<p>Rule Tasks are not supported in the Eclipse modeler. In case you import a model created
+in the Business Process modeler containing a Rule Task, an application activity with a
+generic application is created for the Rule Task in the XPDL file.</p>
+<p class="image"><img src="images/rules-application.png" alt="Rules Application">
+<br>
+<strong>Figure:</strong> Generic application created for imported Rules Task</p>
+<h2 id="export">Exporting Models</h2>
+<p>To export the information from your currently open model to a <tt>.xml</tt>
+or <tt>.xpdl</tt> file:</p>
+<ul>
+	<li>From the menu bar, choose the option <strong>File</strong>
+	&gt; <strong>Export...</strong>.</li>
+	<li>In the upcoming dialog choose <strong>Process Manager
+	Wizards</strong> &gt; <strong>Process Model</strong>.</li>
+	<li>Click <strong>Next</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-export-model.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting a Model</p>
+<p>Select the model or models to export from the list and the
+directory where they should be stored.</p>
+<p class="image"><img src="images/mg-defdesk-6c.png" alt=""> <br>
+<strong>Figure:</strong> Exporting Models</p>
+<p>For details on process model file formats please refer to chapter <a
+	href="../mg-xml-1.htm">The Model File Format</a>.</p>
+<h3 id="exportDiagrams">Exporting Diagrams</h3>
+<p>As a kind of export functionality you can generate reports.
+That means you can export diagrams to an external graphical
+representation, like a JPEG or PNG file.</p>
+<p>To export diagram in the main menu choose <strong>File
+&gt; Export... &gt; Process Manager Wizards &gt; Process Model Diagram</strong>.</p>
+<p class="image"><img src="images/mg-export-diagram-1.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting a Diagram</p>
+<p>In the upcoming dialog wizard select the model you want to export
+from.</p>
+<p class="image"><img src="images/mg-export-diagram-2.png" alt="">
+<br>
+<strong>Figure:</strong> The Exporting Dialog</p>
+<p>You can optionally browse a process definition to choose.</p>
+<p class="image"><img src="images/mg-export-diagram-3.png" alt="">
+<br>
+<strong>Figure:</strong> List of Process Definitions</p>
+<p>To choose the diagrams you want to export, select them from a
+list provided in a new dialog after pushing the corresponding browse
+button. If no process is selected, all the diagrams found in the model
+are listed. If a process is selected, only the diagrams of this process
+are listed.</p>
+<p class="image"><img src="images/mg-export-diagram-4.png" alt="">
+<br>
+<strong>Figure:</strong> List of Diagrams</p>
+<p>In the section <strong>To File</strong> browse to a file or
+directory, where you want your diagrams to be stored. If there are more
+than one diagram to export, the browser will asks you for a directory to
+write the image files in. It will use default names for the files, which
+are composed of the name of the model, followed by the name of the
+process and the diagram's name. If there is only one diagram selected,
+the browser prompts you for a filename. In the file format area choose
+the file format you want your diagrams to be saved as.</p>
+<p>There are also some possibilities to export your diagrams more
+quickly.</p>
+<p>In the Outline view:</p>
+<ul>
+	<li>calling <strong>Export All Diagrams</strong> directly for the
+	selected model.</li>
+</ul>
+<p class="image"><img src="images/mg-export-diagram-5.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting from Selected Model</p>
+<ul>
+	<li>calling <strong>Export All Diagrams</strong> directly for the
+	selected process.</li>
+</ul>
+<p class="image"><img src="images/mg-export-diagram-6.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting from Selected Process</p>
+<ul>
+	<li>calling <strong>Export All Diagrams</strong> directly for the
+	selected diagrams ( <strong>Export Diagram</strong> for one diagram).</li>
+</ul>
+<p class="image"><img src="images/mg-export-diagram-7.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting from Selected Diagram</p>
+
+<p>You can also export your diagram directly from the <a
+	href="../model-views/views-outline.html">Outline view</a> by
+right-clicking in the diagram area and selecting <strong>Export
+Diagram</strong> from the pop-up menu.</p>
+<p class="image"><img src="images/mg-export-diagram-8.png" alt="">
+<br>
+<strong>Figure:</strong> Exporting a Diagram</p>
+
+<h3 id="deploy">Deploying Models</h3>
+<p>After finishing all your modeling, you should deploy your model
+to the audit trail for process execution. Be sure that a database driver
+is in the classpath and you configured the connection parameters in the
+<tt>carnot.properties</tt> correctly.</p>
+<p>To deploy a model:</p>
+<ul>
+	<li>Right-click the model and select <strong>Export...</strong></li>
+	<li>In the <strong>Export</strong> dialog choose <strong>Process Manager
+	Wizards &gt; Deploy Process Model</strong>.</li>
+	<li>Select <strong>Next</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-deploy-model-export.png" alt="">
+<br>
+<strong>Figure:</strong> Deploy a Model</p>
+<p>In the <strong>Deploy Process Model Wizard</strong>
+select the model(s) to deploy.</p>
+<p class="image"><img src="images/mg-deploy-model.png"
+	alt="Deploying a Process Model"> <br>
+<strong>Figure:</strong> Deploying a Process Model</p>
+<p>Please refer to the chapter 
+<a href="../mg-deploy-model.html">Deploying a Workflow Model</a>
+for detailed information on model deployment.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

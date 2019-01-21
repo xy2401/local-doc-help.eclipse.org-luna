@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Serializable Data</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Entity Bean Data",
+		"primitive-data.html","entity-bean-data.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../mg-preface.htm","Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../mg-integration-2.htm","Working with Java Style Data Types");
+ -->
+</script>
+<h1>Serializable Data</h1>
+<p>Serializable data may have any Java serializable data type. They are not as
+efficient in storage as primitive data because always the serialized form of data values
+is stored - most often resulting in storing the full value in an overflow table. You
+should not use serializable data when they are needed in query predicates. See the <a
+    href="../../../programming/pg-preface.htm">Programming Guide</a> for more information about
+queries.</p>
+<p>To specify a serializable data:</p>
+<ul>
+    <li>Create a new serializable data model element as described in 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-defdesk-7.htm">Specifying Data</a>.</li>
+    <li>Open the data properties dialog and select the <strong>Serializable</strong>
+     entry in the data type combo box.</li>
+</ul>
+<p>Note that no implicit initialization is performed for serializable data. The data
+has to be created by applications. It can be retrieved as output (out data mapping) from
+an application activity.</p>
+<p class="image"><img src="images/mg-integration-3.png"
+    alt="Data Properties Dialog for Serializable Data"> <br>
+<strong>Figure:</strong> Data Properties Dialog for Serializable Data</p>
+<h2>Using Parameterized Variables</h2>
+<p>Since Java version 5, the usage of parameterized variables is provided. In case you
+have a class using raw types, e.g.:</p>
+<pre>
+package test;
+
+public class ATest&lt;T&gt;
+{
+    private T value;
+    
+    public T getValue()
+    {
+        return value;
+    }
+    
+    public void setValue(T newValue)
+    {
+        value = newValue;
+    }
+}
+</pre>
+<p>you have to specify parameters for this raw type:</p>
+<p class="image"><img src="images/mg-parametrized-variable-usage.png"
+    alt="Specify the Parameters for a raw Type"> <br>
+<strong>Figure:</strong> Specify the Parameters for a raw Type.</p>
+<p>The data mappings will use the same data path as for the specified type:</p>
+<p class="image"><img src="images/mg-serializable-data-path.png"
+    alt="Data Path for Specified Type"> <br>
+<strong>Figure:</strong> Data Path for Specified Type.</p>
+
+<h2 id="autoInstantiate">Automatic Instantiation of Serializable
+data type</h2>
+<p>There is a checkbox on the property page of serializable data - <tt>Instantiate
+using default constructor</tt>. If this option is checked, the data value
+will be automatically created with the default constructor on the first
+reference of the data. The main advantage of this option is that there
+is no need for a specialized application that creates a new instance of
+the data. The new instance is created by the Stardust engine.</p>
+<p class="image"><img src="images/mg-auto-instantiate.png"
+	alt="Automatic Instantiation of Serializable data type"> <br>
+<strong>Figure:</strong> Automatic Instantiation of Serializable data
+type.</p>
+<p>This checkbox is disabled for abstract classes or interfaces. It is enabled only for
+those classes that have a public default constructor or no constructor (a constructor without parameters).</p> 
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Configuration Variables</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Events",
+      "scoped-participants.html","mg-basics-11.htm",
+		"../key-concepts.html","Concepts",
+      "mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Configuration Variables</h1>
+<p>An Stardust Process Model contains a set of runtime parameter 
+settings which differ between various runtime environments, like
+for example Web Service endpoints, mail server and content settings,
+JSF or JSP URL roots or default values for process data.
+Using configuration variables for these parameters provides
+the option to change the values of these parameters during runtime
+without necessary model redeployment.</p>
+<h2>Usage</h2>
+<p>Configuration variables can be used in all model element properties 
+accessible as strings from the modeling environment.
+You find example use cases
+in the section <a href="#usecase">Common Use Cases</a>.</p>
+<p>Chapter
+<a href="../../handbooks/modelling/model-variables.html">Configuration Variables</a>
+in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>
+describes in detail how to add and reference these variables in the
+modeling environment.</p>
+<p>At runtime the parameter can be set once for the entire model by string replacement.
+The Stardust Portal provides a user interface, the Configuration Variables view,
+to do the changes globally and on per model fragment level.
+Please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-config-var.html">
+Viewing and Editing Configuration Variables</a>
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> guide for details on this view.</p>
+<h2>Runtime Storage</h2>
+<p>The runtime storage keeps the information about the parameters definitions 
+in the model separate from the current values. If a model is exported from an 
+Stardust runtime environment, the variable definitions are still 
+available. The variable values are kept in the preferences store globally and on per model
+fragment level. They can be exported and imported.
+Exporting and importing can be performed in the Portal Configuration Variables view
+mentioned in the previous section, or via API as described in chapter
+<a href="../../handbooks/programming/embed/administration/pg-embed-preferences.html">
+Retrieving and Changing Preferences</a> of the
+<a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>.</p>
+
+<h2>Management of Model Versions</h2>
+<p>The variable definitions are kept across versions. If a variable 
+is available for multiple model versions, the value is set for all 
+model versions at runtime. If distinct values are required between 
+model versions, different variable names have to be used.</p>
+<h2 id="usecase">Common Use Cases</h2>
+<ul>
+	<li><a href="#server">Referencing Server Addresses</a></li>
+	<li><a href="#modechange">Controlling Process Flow in Test and Production Mode</a></li>
+</ul>
+<h3 id="server">Referencing Server Addresses</h3>
+<p>Common use cases are the need to change a server address in WebServices endpoints,
+JSF URLs or Mail Server addresses dynamically during runtime. This can be achieved
+by using a configuration variable that can be referenced in the according applications,
+e.g. a variable with the name <strong>CentralServer</strong>.
+<p class="image"><img src="images/model-var-server-model.png"><br>
+<strong>Figure:</strong> Configuration Variable for Server Address</p>
+<p>This variable could be accessed in the applications by escaping the
+variable syntax in the following way:</p>
+<ul>
+	<li><strong>${CentralServer}/risk/webservices</strong> for a WS endpoint.
+	<p class="image"><img src="images/model-var-ws-example.png" alt=""></p></li>
+	<li><strong>${CentralServer}/risk/portal/portfolio-overview.jsf</strong> for a JSF URL.
+	<p class="image"><img src="images/model-var-jsf-example.png" alt=""></p></li>
+	<li><strong>${CentralServer}</strong> for a mail server.
+	<p class="image"><img src="images/model-var-server.png" alt=""></p></li>
+</ul>
+<p>The reference to the configuration variable is reflected in
+the model property page in the following way:</p>
+<p class="image"><img src="images/model-var-server-result.png"><br>
+<strong>Figure:</strong> References to Configuration Variable</p>
+<p>At runtime the server address can be set once for the entire model 
+by string replacement. In the Stardust Portal, the value of the server 
+address can be changed in the Configuration Variables view directly.</p>
+<h3 id="modechange">Controlling Process Flow in Test and Production Mode</h3>
+<h4>Problem Statement</h4>
+<p>Sometimes companies have a workflow, were they do not require a 
+specific step to be executed in a test environment, but they do want it 
+to be executed in production.</p>
+<h4>Goal</h4>
+<p>The aim is to automatically skip an activity without physically 
+changing the model for the different modes.</p>
+<h4>Solution</h4>
+<p>We will use a global configuration variable in a condition to decide 
+when a specific activity for production should be performed or skipped.</p>
+<p>The following steps demonstrate how this can be realized:</p>
+<ol>
+	<li>Create a model and add a configuration variable <tt>Environment</tt>. 
+	Please refer to chapter
+	<a href="../../handbooks/modelling/model-variables.html">Using Configuration Variables</a>
+	in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>
+	for details on adding variables to a model.</li>
+	<li>Give the variable a default value <tt>TEST</tt>.
+	<p class="image"><img src="images/model-var-prop-new.png" alt=""></p></li>
+	<li>Create a workflow having an activity, which is only performed
+	on a specific condition.
+	<p class="image"><img src="images/model-var-workflow.png" alt=""></p></li>
+	<li>Enter a condition so that the activity is only
+	performed if the variable has the value "PRODUCTION":
+	<pre>"${Environment}" == "PRODUCTION";</pre>
+	<p class="image"><img src="images/model-var-condition.png" alt=""></p></li>
+	<li>This reference to the variable is reflected in the Configuration Variables
+	section of the model property page:
+	<p class="image"><a href="images/model-var-prop_orgSize.png">
+	<img src="images/model-var-prop.png" alt=""></a></p></li>
+	<li>Deploy the model and start the Stardust Portal.</li>
+	<li>Per default, the model is run in test mode as the default
+	value of the configuration variable is "TEST" (or different to "PRODUCTION").</li>
+	<li>To run the model in the production mode,
+	simply change the value of the variable in the <strong>Configuration Variables</strong> view
+	to "PRODUCTION".
+	For details on this view, please refer to chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-config-var.html">
+	Viewing and Editing Configuration Variables</a> of the
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+	Stardust Portal</a> guide.
+	<p class="image"><img src="images/model-var-change.png" alt=""></p></li>
+	<li>The transition condition checks the value of the variable and
+	decides to run the activity foreseen for production.</li>
+	<li>The value of the variable is stored in later versions of this
+	process model. In case you want to run the model again in test mode and skip the activity
+	for production,	change the variable value to "TEST".</li>
+</ol>
+<p>You find a step by step guide of this use case in the
+<a href="../../tutorial/config-var/tut-config-var-prod.html">
+Using a Configuration Variable to Control a Process Flow</a> tutorial of the
+<a href="../../tutorial/tut-preface.htm">Tutorial Guide</a>.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

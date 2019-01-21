@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Programming Guide</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("The Deployment Guide",
+		"../operation/ag-preface.htm","PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html",
+		"../handbooks.htm","Developer Handbook");
+ -->
+</script>
+
+<h1>Programming Guide</h1>
+<p>The <strong>Programming Guide</strong> describes the basic
+concepts of the <a href="../../reference/api/toc.html">Stardust API</a> and its
+relationship to the general process modeling and runtime concepts.</p>
+
+<h2>Audience</h2>
+<p>This guide is
+intended for people who are using Stardust as a programmer.</p>
+
+<h2>Contents</h2>
+<p>This book is organized in the following topics:</p>
+<ul>
+	<li><a href="#embedded">Embedded Usage</a></li>
+	<li><a href="#query">Querying Workflow</a></li>
+   <li><a href="#spi">SPI Programming</a></li>
+	<li><a href="#other">Other Programming Topics</a></li>
+   <li><a href="#portalFrame">Extending the Portal Framework</a></li>
+</ul>
+<h3 id="embedded">Embedded Usage</h3>
+<p>Embedded usage of Stardust allows to workflow-enable your
+application by leveraging functionality provided by the Stardust APIs.
+This is described in the <a href="embed/pg-embedded-preface.htm">Embedded
+Usage</a>:</p>
+<ul>
+   <li class="expand" onclick="openClose(this, 'embed')"><a
+      href="embed/pg-embedded-preface.htm">Embedded Usage</a></li>
+   <li class="noicon" id="embed" style="display: none;">
+   <ul>
+      <li><a href="embed/pg-embedded-2.htm">Embedded Usage Concepts</a></li>
+      <li><a href="embed/pg-embedded-3.htm">Stardust Services</a></li>
+      <li><a href="embed/pg-webservice-api.html">Stardust Web Services</a></li>
+      <li><a href="embed/pg-declarative-security.html">
+      Declarative Security Usage in Stardust Services API</a></li>
+      <li><a href="embed/pg-state-changes.html">State Changes of Process and Activity Instances</a></li>
+      <li><a href="embed/pg-embed-model-states.html">Model States</a></li>
+      <li><a href="embed/pg-embed-objects.html">Objects and Model Elements</a></li>
+      <li><a href="embed/pg-embed-trans-procs.html">API Visibility of Transient Workflow Objects</a></li>
+      <li><a href="embed/pg-embed-filter.html">Filter Criteria</a></li>
+      <li><a href="embed/pg-embed-exceptions.html">Exceptions</a></li>
+      <li><a href="embed/pg-embed-transactional.html">Transactional Behavior</a></li>
+      <li><a href="embed/pg-embed-performance.html">Leveraging Query Evaluation Profiles</a></li>
+      <li><a href="embed/pg-embed-runtime-ext.html">Runtime Extension Management</a></li>
+      <li><a href="embed/administration/admin-preface.html">Administration</a>
+      <ul>
+         <li><a href="embed/administration/pg-embed-users.html">Managing Users and User Groups</a></li>
+         <li><a href="embed/administration/pg-embed-department.html">Managing Department Structures</a></li>
+         <li><a href="embed/administration/pg-embed-partitions.html">Managing Audit Trail Partitions</a></li>
+         <li><a href="embed/administration/list-partitions.html">Retrieving the Partitions in a multi-partition Audit Trail</a></li>
+         <li><a href="embed/administration/pg-embed-logging.html">Logging Custom Log Entries</a></li>
+         <li><a href="embed/administration/pg-embed-conf-var.html">Retrieving Configuration Variables</a></li>
+         <li><a href="embed/administration/pg-embed-daemons.html">Controlling Daemon Execution</a></li>
+         <li><a href="embed/administration/pg-embed-deployment-unit.html">Deployment Unit Support</a></li>
+         <li><a href="embed/administration/pg-embed-prio.html">Changing Process Instance Priorities</a></li>
+         <li><a href="embed/administration/pg-embed-rules.html">Configuring Password Rules</a></li>
+         <li><a href="embed/administration/pg-embed-runtime-perms.html">Setting and Retrieving Runtime Permissions</a></li>
+         <li><a href="embed/administration/pg-embed-preferences.html">Retrieving and Changing Preferences</a></li>
+      </ul></li>
+      <li><a href="embed/wf-processing/wf-preface.html">Processing Workflow</a>
+      <ul>
+         <li><a href="embed/wf-processing/pg-workflow-spawn.htm">Workflow Processing for Spawn Subprocess</a></li>
+         <li><a href="embed/wf-processing/pg-workflow-switch.htm">Workflow Processing to Abort and Start Subprocess</a></li>
+         <li><a href="embed/wf-processing/pg-workflow-join.htm">Workflow Processing to Abort and Join Processes</a></li>
+         <li><a href="embed/wf-processing/pg-embed-cases.html">Workflow Processing for Cases</a></li>
+         <li><a href="embed/wf-processing/pg-embed-relocation.html">Relocating Activities</a></li>
+      </ul></li>
+      <li><a href="embed/proc-act-inst/procs-preface.html">Managing Processes and Activities</a>
+      <ul>
+         <li><a href="embed/proc-act-inst/pg-embed-criticality.html">Querying and Recalculating Activity Criticality</a></li>
+         <li><a href="embed/proc-act-inst/pg-embed-qa.html">Retrieving Activity Quality Assurance Information</a></li>
+         <li><a href="embed/proc-act-inst/pg-embed-proc-interfaces.html">Working with Process Interfaces</a></li>
+         <li><a href="embed/proc-act-inst/pg-receive-par-oid.html">Receiving Parent Process Instance OID 
+             for Details Policy Option</a></li>
+         <li><a href="embed/proc-act-inst/pg-embed-next-act.html">Activating the Next Activity Instance</a></li>
+         <li><a href="embed/proc-act-inst/pg-embed-notes.html">Adding Notes to Process Instances</a></li>
+         <li><a href="embed/proc-act-inst/pg-embed-permission.html">Retrieving and Using Permission States</a></li>
+      </ul></li>
+      <li><a href="embed/pg-embed-cross-sdts.html">Using Cross-Model Type Declarations with custom Clients</a></li>
+      <li><a href="embed/documents/docs-preface.html">Document Management</a>
+      <ul>
+         <li><a href="embed/documents/pg-embed-doc-ops.html">Managing Documents and Folders</a></li>
+         <li><a href="embed/documents/pg-embed-doc-types.html">Managing Document Types</a></li>
+         <li><a href="embed/documents/pg-embed-documents.html">Changing Document Settings and Annotations</a></li>
+         <li><a href="embed/documents/pg-embed-repos.html">Managing Document Repositories</a></li>
+         <li><a href="embed/documents/pg-embed-migrate.html">Migrating Repository Resources</a></li>
+         <li><a href="embed/documents/docs-store-audit.html">Storing Document and Folder Meta Data into the Audit Trail</a></li>
+         <li><a href="embed/documents/documents-update.html">Updating a Document created by the DocumentManagementService</a></li>
+         <li><a href="embed/documents/documents-content.html">Retrieving Content of a Document Revision</a></li>
+         <li><a href="embed/documents/documents-versions.html">Creating a new Document Version and retrieving all Versions</a></li>
+      </ul></li>
+   </ul></li>
+</ul>
+<h3 id="query">Querying Workflow and Data</h3>
+<p>The sections of the following chapters help building queries of arbitrary
+   complexity:</p>
+<ul>
+   <li><a href="queries/query-build.html">Building Queries</a></li>
+   <li><a href="queries/pg-data-query.htm">Querying Data</a></li>
+   <li><a href="queries/query-documents.html">Filtering Documents</a></li>
+   <li><a href="queries/query-resource-bundle.html">Retrieving a Resource Bundle from a specific Module</a></li>
+   <li><a href="queries/query-proc-def.html">Querying Process
+         Definition Details</a></li>
+   <li><a href="queries/query-worklists.html">Querying Worklist
+         Details</a></li>
+   <li><a href="queries/query-users.html">Querying for Worklist
+         Users</a></li>
+   <li><a href="queries/query-user-act-inst.html">Filtering
+         Activity Instances for every User Role</a></li>
+   <li><a href="queries/query-proc-inst.html">Querying Process
+         Instance Details</a></li>
+   <li><a href="queries/query-model-version.html">Querying Model
+         Version Tree Information</a></li>
+   <li><a href="queries/pg-embed-runtime-info.html">Retrieving Runtime Environment Information</a></li>
+   <li><a href="queries/pg-embed-depl-model-descr.html">Retrieving Model Descriptions</a></li>  
+</ul>
+<h3 id="spi">SPI Programming</h3>
+<ul>
+   <li><a href="spi/pg-spi-tenant.html">Configuring SPI Implementations per
+         Tenant</a></li>
+   <li><a href="spi/pg-spi.htm">Tutorial - Stardust SPI Programming</a></li>
+   <li><a href="spi/pg-ldap.html">Tutorial - LDAP Synchronization Provider
+         Example</a></li>
+   <li><a href="spi/pg-worklist-monitoring.html">Monitoring Worklists</a></li>
+   <li><a href="spi/spi-act-instance-state.html">Monitoring Activity Instance State Changes</a></li>
+   <li><a href="spi/spi-proc-exe.html">Monitoring Process Execution</a></li>
+   <li><a href="spi/spi-runtime-envir.html">Monitoring Runtime Environment Events</a></li>
+   <li><a href="spi/pg-part-monitoring.html">Monitoring Model Deployment</a></li>
+   <li><a href="spi/spi-repository.html">Implementing a Provider for arbitrary Repository Technologies</a></li>
+   <li><a href="spi/pg-repository-extension.html">Implementing a Repository
+         Connection Extension Point</a></li>
+   <li><a href="spi/spi-queue-connection.html">Implementing a Provider to
+         enable Security on JMS Connection Factories</a></li>
+   <li><a href="spi/spi-credential-delivery.html">Implementing a Notification Strategy Provider for generated Token and Password</a></li>
+   <li><a href="spi/spi-principal-val.html">Implementing a Provider for 
+         validating the passed Principal</a></li>
+   <li><a href="spi/pg-config-provider-spi.html">Implementing a Static
+         Configuration Provider for Default Preferences</a></li>
+   <li><a href="spi/pg-config-props.html">Implementing a Provider to inject Configuration Properties</a></li>
+   <li><a href="spi/portal/pg-portal-config.html">Implementing Interfaces
+         for Portal Configurations</a></li>
+   <li><a href="spi/pg-security-1.htm">Integrating External User Repositories</a></li>        
+   <li><a href="spi/spi-resource-bundle.html">Providing localized Labels for a User Interface</a></li>        
+</ul>         
+<h3 id="other">Other Programming Topics</h3>
+<p>Additionally you find chapters with information on:</p>
+<ul>
+   <li><a href="diagram-retrieval.htm">Retrieving Diagrams</a></li>
+   <li><a href="pg-structured-data.html">Structured Data and Java Type
+         Applications</a></li>
+   <li><a href="pg-embed-entitlements.html">Changing Authorization of
+         Stardust Process Portal Elements</a></li>
+   <li><a href="pg-process-interface-invocation.htm"> Process Interface
+         - External Invocation Mechanism</a></li>
+</ul>
+<h3 id="portalFrame">Extending the Portal Framework</h3>
+<p>
+   Chapter <a
+      href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/programming/using-portal-framework.htm">
+      Extending the Stardust Portal Components</a> describes how to use the
+   Portal Framework provided with the Stardust Portal to modify and extend
+   the content of the Portal and add your own application components.
+</p>
+<h2>Related Documents</h2>
+<ul>
+   <li>The <a href="../operation/ag-preface.htm">Operation Guide</a> covers
+      all operational aspects of the Stardust runtime, including advanced
+      installation issues like deploying Stardust to an application server.
+   </li>
+   <li>The <a href="../modelling/mg-preface.htm">Modeling Guide</a> explains
+      the basic concepts behind the Stardust Process Engine and
+      describes the Stardust Process Workbench.
+   </li>
+</ul> 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeContact();
+writeFooter(); 
+-->
+</script>
+</body>
+</html>
+

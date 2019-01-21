@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Integrating XML Data</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+    	"struct-data-preface.html","",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"data-int-preface.html","Data Integration");
+ -->
+</script>
+<h1>Integrating XML Data</h1>
+<p>XML data may be integrated by using the XML data type <strong>XML
+Document</strong>. By default, it stores the XML stream stringified in the audit trail.</p>
+<h2>Support for XPath Expressions</h2>
+<p>The main feature of XML data integration is support for XPath
+expressions in data mappings and transition conditions. While without this
+support one would have to provide a custom application, extracting appropriate
+parts from an XML document and providing it in form of Java data, workflow
+designers can now use arbitrary XPath expressions directly.</p>
+<p class="note"><strong>Note</strong><br>
+Please note that only reading data via non-empty XPath expressions is
+supported. Applying an empty OUT path to an XML data will extract the
+stringified XML document content as stored in the audit trail. The whole
+document content can be replaced by applying an empty IN data path,
+accepting either the stringified XML document content in form of a <tt>java.lang.String</tt>,
+an <tt>org.w3c.dom.Document</tt> or an <tt>org.w3c.dom.Element</tt>.</p>
+
+<!--  <p>Please note that only reading data via non-empty XPath expressions is
+supported. Applying an empty OUT path to an XML data will extract the
+stringified XML document content as stored in the audit trail. The whole
+document content can be replaced by applying an empty IN data path, accepting
+either the stringified XML document content in form of a <tt>java.lang.String</tt>,
+an <tt>org.w3c.dom.Document</tt> or an <tt>org.w3c.dom.Element</tt>.</p>-->
+<p>Especially useful when combining XML and Java data sinks and sources is
+the existence of <tt>XPath number()</tt>, <tt>string()</tt> and <tt>boolean()</tt>
+cast functions, providing the result of the XPath expression as either a <tt>java.lang.Double</tt>,
+<tt>java.lang.String</tt> or <tt>java.lang.Boolean</tt> and thus allowing for
+type safe data mappings. For detailed conversion rules, please consult the XPath
+specification.</p>
+<p>The xml data type is defined as follows in the workflow model:</p>
+<pre>
+&lt;carnot:DataType Oid="10005" Id="plainXML" Name="XML Document" IsPredefined="true"&gt;
+&lt;carnot:Attributes&gt;
+&lt;carnot:Attribute Name="carnot:defdesk:accessPathEditor" Value="org.eclipse.stardust.engine.extensions.xml.data.XPathEditor"/&gt;
+&lt;carnot:Attribute Name="carnot:defdesk:icon" Value="/org/eclipse/stardust/engine/extensions/xml/data/icon.gif"/&gt;
+&lt;carnot:Attribute Name="carnot:engine:evaluator" Value="org.eclipse.stardust.engine.extensions.xml.data.XPathEvaluator"/&gt;
+&lt;carnot:Attribute Name="carnot:engine:validator" Value="org.eclipse.stardust.engine.extensions.xml.data.XMLValidator"/&gt;
+&lt;carnot:Attribute Name="carnot:engine:runtimeValidator" Value="org.eclipse.stardust.engine.extensions.xml.data.XMLValidator"/&gt;
+&lt;/carnot:Attributes&gt;
+&lt;/carnot:DataType&gt;
+</pre>
+<p>Because native storage of XML data varies widely the source code for
+the implementation of this simple data type is included in the Stardust 
+plugins. You can
+adapt it to your own storage needs. You find the example classes in the following 
+zipped file:</p>
+<p class="ind"><a href="../../../examples/spi/spi.zip">spi.zip</a></p>
+<p>Please refer to the <a href="../../programming/spi/pg-spi.htm">Tutorial - Stardust SPI Programming</a> chapter
+to guide you through the process of integrating or adapting custom applications.</p>
+
+<h2>Specifying XML Document Properties</h2>
+<p>To specify an XML document, first create a data as described in <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-defdesk-7.htm">Specifying Data</a> with type <tt>XML document</tt>,
+then open the data properties dialog and select the <strong>XML
+Document</strong> section. You can now choose the schema type from a list as:</p>
+<ul>
+    <li><tt>NONE</tt>,</li>
+    <li><tt>XSD</tt>,</li>
+    <li><tt>WSDL(XSD Envelope)</tt> or</li>
+    <li><tt>DTD</tt>.</li>
+</ul>
+<p>If the chosen schema type is <tt>NONE</tt> (the default case), no XML
+type checking occurs. No values for the <strong>Type Declaration URL</strong>
+will be stored in the model.</p>
+<p>In the next field fill in the <strong>Type Declaration URL</strong>,
+containing a reference to a <tt>XSD</tt>, <tt>WSDL</tt> or <tt>DTD</tt> file.
+With the <strong>Browse</strong> button open a list with corresponding element
+names to choose from the specified XSD or WSDL document.</p>
+<p class="image"><img src="images/mg-xmldata-1.png" alt=""> <br>
+<strong>Figure:</strong> The XML Document Properties Dialog</p>
+<h3>Passing XML Content</h3>
+<p>To read the content of an XML file and pass it into the XML Document data, you have 
+the following options:</p>
+<ul>
+	<li>Create a primitive data containing the whole XML file as default string value
+		and pass this primitive data via in data mapping access point to the
+		XML Document data. For example:
+		<p class="image"><a href="images/xml-data-primdata-string_orgSize.png"
+		target="_blank"><img src="images/xml-data-primdata-string.png" 
+			alt="Example String Value for XML Content."></a><br>
+		<strong>Figure:</strong> Example String Value for XML Content.</p></li>
+	<li>Another possibility is to create an application, e.g. a Plain Java Application,
+		pointing to a Java class which reads the content of the XML file.
+      	An out data mapping with XPath data path passes the XML content into the
+		XML document data.</li>
+</ul>
+<p>XPath expressions could be for example:</p>
+<ul>
+	<li><tt>fn:string(/Composite_1/f1)</tt>:<br>
+		obtains a string value of a node element and can be used
+		for an in data mapping.</li>
+	<li><tt>/Composite_1/f1</tt>: <br>navigates to the specified node element and
+		can be used for an out data mapping.</li>
+</ul>
+<h3>Using XPath Expressions in Transition Conditions</h3>
+<p>Due to the possibly very complex syntax of data path expressions in
+non-Java data types, the transition condition expression language syntax was
+slightly extended to support for data path quoting with a subscript-like
+construct. Especially for XPath data paths it is recommended (and sometimes the
+only choice) to use a transition condition syntax as of <tt>data[dataPath]</tt>
+instead of <tt>data.dataPath</tt>.</p>
+<p>To set up transition conditions with XPath expressions the Data ID has to
+be followed by squared brackets, in which the XPath expression is inserted
+starting with a leading slash, e.g.:</p>
+<pre>&lt;DataID&gt;["/&lt;element1&gt;/&lt;subelement1&gt;"] == &lt;value&gt;</pre>
+<p class="image"><img src="images/mg-xpathcond.png" alt=""> <br>
+<strong>Figure:</strong> Transition Condition using XPath Expression</p>
+<h3>Runtime Behavior</h3>
+<p>At runtime a validation of XML type conformance will occur during
+assignments, i.e. for data mappings or data path writes. If an XML type check
+fails at runtime, an <tt>InvalidValueException</tt> will be thrown.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

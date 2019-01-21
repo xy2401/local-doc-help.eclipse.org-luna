@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Changing Document Settings and Annotations</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Managing Document Repositories",
+        "pg-embed-doc-types.html","pg-embed-repos.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","docs-preface.html","Document Management");
+ -->
+</script>
+<h1>Changing Document Settings and Annotations</h1>
+<p>This chapter describes how you can change the following settings and annotations
+on a document:</p>
+<ul>
+	<li><a href="#bookmarks">Bookmarks</a></li>
+	<li><a href="#notes">Notes</a></li>
+	<li><a href="#high">Highlights</a></li>
+	<li><a href="#stamps">Stamps</a></li>
+	<li><a href="#orient">Page Orientation</a></li>
+	<li><a href="#sequ">Page Sequence</a></li>
+</ul>
+<h2 id="bookmarks">Bookmarks</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/PageBookmarkable.html">
+PageBookmarkable</a> provides the functionality to
+add, get or remove bookmarks.
+For details on type <strong>PageBookmark</strong>, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/PageBookmark.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.PageBookmark</a>.</p>
+<h3>Adding Bookmarks</h3>
+<p>Method</p>
+<pre>void addBookmark(PageBookmark bookmark);</pre>
+<p>adds a given bookmark to the document.</p>
+<h3>Retrieving Bookmarks</h3>
+<p>To get bookmarks of a document, you can either use the method</p>
+<pre>PageBookmark getBookmark(String id);</pre>
+<p>to retrieve a specific bookmark with a given id, or</p>
+<pre>Set&lt;PageBookmark&gt; getBookmarks();</pre>
+<p>to get all bookmarks as a set of bookmarks.</p>
+<h3>Retrieving the Default Bookmark</h3>
+<p>In case you like to get the default bookmark
+for a document, use the method:</p>
+<pre>PageBookmark getDefaultBookmark();</pre>
+<p>This returns the default bookmark of the document.</p>
+<h3>Moving Bookmarks</h3>
+<p>To move a bookmark, use the following method:</p>
+<pre>void moveBookmark(int sourceOrder, int targetOrder);</pre>
+<p>Hereby, the parameter <tt>sourceOrder</tt> determines the order
+to be replaced by the given <tt>targetOrder</tt> parameter.</p>
+<h3>Deleting Bookmarks</h3>
+<p>To remove a specific bookmark, use:</p>
+<pre>void removeBookmark(String id);</pre>
+<p>The bookmark with the given id is deleted.</p>
+<h3>Setting the Default Bookmark</h3>
+<p>To set the default bookmark, use:</p>
+<pre>void setDefaultBookmark(String id);</pre>
+<p>The bookmark with the given id is marked as default bookmark.</p>
+
+<h2 id="notes">Notes</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/NoteCapable.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.NoteCapable</a>
+provides methods for adding, retrieving and removing notes on
+a document.
+For details on type <strong>Note</strong>, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/Note.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.Note</a>.</p>
+<h3>Adding Notes</h3>
+<p>To add a note, use the method:</p>
+<pre>void addNote(Note note);</pre>
+<h3>Retrieving Notes</h3>
+<p>To get notes you can either use the method</p>
+<pre>Note getNote(String id);</pre>
+<p>to receive a note with a specific id, or</p>
+<pre>Set&lt;Note&gt; getNotes();</pre>
+<p>to get a set of all notes.</p>
+<h3>Deleting Notes</h3>
+<p>To delete a note with a specific id, use:</p>
+<pre>void removeNote(String id);</pre>
+
+<h2 id="high">Highlights</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/HighlightCapable.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.HighlightCapable</a>
+provides methods for adding, retrieving and removing highlights on
+a document.
+For details on type <strong>Highlight</strong>, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/Highlight.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.Highlight</a>.</p>
+<h3>Adding Highlights</h3>
+<p>To add a highlight to a document, use the method:</p>
+<pre>void addHighlight(Highlight highlight);</pre>
+<h3>Retrieving Highlights</h3>
+<p>To get highlights set on a document, you can either use the method</p>
+<pre>Highlight getHighlight(String id);</pre>
+<p>to retrieve the highlight with a specific id, or</p>
+<pre>Set&lt;Highlight&gt; getHighlights();</pre>
+<p>to get all highlights set on a document.</p>
+<h3>Deleting Highlights</h3>
+<p>Use method</p>
+<pre>void removeHighlight(String id);</pre>
+<p>to remove a highlight with a specific id.</p>
+
+<h2 id="stamps">Stamps</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/StampAware.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.StampAware</a>
+provides methods for adding, retrieving and removing stamps on
+a document.
+For details on type <strong>Stamp</strong>, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/Stamp.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.Stamp</a>.</p>
+<h3>Adding Stamps</h3>
+<p>To add a stamp to a document, use the following method:</p>
+<pre>void addStamp(Stamp stamp);</pre>
+<h3>Retrieving Stamps</h3>
+<p>To get a stamp added to a document, you can either use</p>
+<pre>Stamp getStamp(String id);</pre>
+<p>to receive a stamp with a specific id, or</p>
+<pre>Set&lt;Stamp&gt; getStamps();</pre>
+<p>to receive all stamps set on the document.</p>
+<h3>Deleting Stamps</h3>
+<p>Use</p>
+<pre>void removeStamp(String id);</pre>
+<p>to remove a stamp with a specific id.</p>
+
+<h2 id="orient">Page Orientation</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/PageOrientationAware.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.PageOrientationAware</a>
+provides methods for adding, retrieving and removing the page orientation of
+a document.
+For details on type <strong>PageOrientation</strong>, refer to the JavaDoc of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/PageOrientation.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.PageOrientation</a>.</p>
+<h3>Adding Page Orientation</h3>
+<p>To add a page orientation to a document, use the following method:</p>
+<pre>void addPageOrientation(PageOrientation pageOrientation);</pre>
+<h3>Retrieving Page Orientation</h3>
+<p>To get page orientation that is set on a document, you can either use</p>
+<pre>PageOrientation getPageOrientation(int pageNumber);</pre>
+<p>to receive a page orientation with a specific page number, or</p>
+<pre>Set&lt;PageOrientation&gt; getPageOrientations();</pre>
+<p>to receive all page orientations set on the document.</p>
+<h3>Deleting Page Orientation</h3>
+<p>Use</p>
+<pre>void removePageOrientation(int pageNumber);</pre>
+<p>to remove a page orientation with a specific page number from the document.</p>
+
+<h2 id="sequ">Page Sequence</h2>
+<p>The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/PageSequenceAware.html">
+org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument.PageSequenceAware</a>
+provides methods for adding, getting and moving page sequences on
+a document.</p>
+<h3>Getting Page Sequence</h3>
+<p>To get a list with the sequence of pages of a document, use
+the following method:</p>
+<pre>List&lt;Integer&gt; getPageSequence();</pre>
+<h3>Moving Page Sequence</h3>
+<p>You can move a single page in the page sequence by
+using method:</p>
+<pre>void movePage(int sourcePosition, int targetPosition);</pre>
+<p>Here, parameter <tt>sourcePosition</tt> determines the position of the page to move
+and <tt>targetPosition</tt> the position where it should be placed
+in the sequence.</p>
+<p>To move several pages, use:</p>
+<pre>void movePages(int pageCount, int sourcePosition, int targetPosition);</pre>
+<p>Parameter <tt>pageCount</tt> determines the number of pages to move in the
+sequence from <tt>sourcePosition</tt> to <tt>targetPosition</tt>.</p>
+<h3>Setting Page Sequence</h3>
+<p>To set a list with Integer values determining the sequence
+of pages, use:</p>
+<pre>void setPageSequence(List&lt;Integer&gt; pageSequence);</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

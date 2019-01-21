@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Integrating JSF Applications</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Using Camel Producer Applications",
+   "mg-integration-7.htm","integration/camel-application-type.html",
+      "../handbooks.htm","Developer Handbook",
+      "mg-preface.htm","Modeling Guide",
+      "mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating JSF Applications</h1>
+<p>The interactive application type <strong>JSF Application</strong>
+provides the possibility to integrate JSF panels implemented activities
+to be executed in the <strong>Stardust Workflow Execution Perspective</strong>.</p>
+<ul>
+    <li><a href="#modeler">Creating a JSF Application</a></li>
+    <li><a href="#props">Setting the Properties</a></li>
+</ul>
+<p>There are limitations when using JSF based backing beans. Refer to 
+section <a href="#backBean">Limitation on Using JSF Based Backing Beans</a>
+for details and for a workaround to bypass these JSF based limitations.</p>
+<h2 id="modeler">Creating a JSF Application</h2>
+<p>To specify a JSF application in the Process Workbench:</p>
+<ul>
+	<li>In the diagrams toolbar palette select <strong>Int.
+	Applications</strong> &gt; <strong>JSF Application</strong>.</li>
+	<li>Place the application symbol on the diagram canvas.</li>
+</ul>
+<p class="image"><img src="images/mg-create-jsf-appl.png"
+	alt="Creating a JSF Application"> <br>
+<strong>Figure:</strong> Creating a JSF Application</p>
+<p>Please refer to the chapter <a href="mg-defdesk-6.htm">Specifying
+Applications</a> for general questions about working with applications in
+the Process Workbench.</p>
+<h2 id="props">Setting the Properties</h2>
+<p>Double-click the application to open its properties dialog. On
+the right side of the panel click <strong>Interactive &gt; JSF
+Application</strong>. Now set the properties for your JSF application:</p>
+<ul>
+	<li><a href="#url">URL</a></li>
+	<li><a href="#beanName">Managed Bean Name</a></li>
+	<li><a href="#beanClass">Managed Bean Class</a></li>
+	<li><a href="#completion">Completion Method</a></li>
+</ul>
+<p class="image"><img src="images/mg-jsf-appl.png"
+	alt="Setting the JSF Applications Properties"> <br>
+<strong>Figure:</strong> Setting the JSF Applications Properties</p>
+<h3 id="url">URL</h3>
+<p>This property is the URL of the JSF page as generated based on
+your XML layout specification. The URL is specified relative to the Web
+context and depending on the faces servlet, which leads to the following
+base URL structure:</p>
+<pre>http://host:port/webcontext/faces</pre>
+<p>That means, that if you would specify a URL <tt>/xhtml/test.xhtml</tt>
+in the JSF application properties dialog, the resource will be expected
+to be located at the following URL:</p>
+<pre>http://host:port/webcontext/faces/xhtml/test.xhtml</pre>
+<h3 id="beanName">Managed Bean Name</h3>
+<p>The name of the managed bean to be used for this JSF page, as it
+can be defined in the <tt>faces-config.xml</tt> file, residing in the <tt><nobr>WEB-INF/config/ipp/jsf</nobr></tt>
+folder of your Web application.</p>
+<!-- For example:</p>
+
+&lt;faces-config&gt;
+    ...
+    &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;name of bean&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;fully qualified class name&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;session&lt;/managed-bean-scope&gt;
+    &lt;/managed-bean&gt;
+    ...
+&lt;/faces-config&gt;
+</pre>-->
+<p>The specified bean will be newly created in the JSF context, when
+the activity panel is opened. Henceforth the life cycle will depend on
+the scope defined in the faces configuration file. The bean usually will
+not be destroyed when the <tt>complete()</tt> method is called.</p>
+
+<h3 id="beanClass">Managed Bean Class</h3>
+<p>The fully qualified name of the bean implementation class.</p>
+<h3 id="completion">Completion Method</h3>
+<p>The method to be called upon completion of the application. If,
+for example due to incorrect values, etc., an error occurs, it can be
+handled in the following ways:</p>
+<ol>
+	<li>If a <tt>javax.faces.validator.ValidatorException</tt> is
+	thrown, the error message derived from the ValidatorException will be
+	displayed in the activity panel.</li>
+	<li>If a different type of exception is thrown, a general message
+	<tt>"Failed invoking completion method"</tt> will be displayed. The
+	corresponding message test is internationalized.</li>
+</ol>
+
+<h2 id="backBean">Limitation on Using JSF Based Backing Beans</h2>
+<p>In case pure JSF-based backing beans are used for JSF activities,
+backing beans and state are in session scope and stored in the same.
+This means that two activity panels displaying process data of activity
+instances of the same type sharing one backing bean and therefore the state.
+The last opened activity panel overwrites the state in the backing bean 
+set by the activity panel open prior. Due to this behavior,
+not more than one activity panel for an activity 
+instance of the same type at the same time should be opened.</p>
+<p>To bypass this JSF limitation, the Stardust 
+provides means to define a more
+fine grained scope for JSF backing beans,
+which assures that each activity panel uses a backing bean with its own state.
+To use this, it is required to expose the JSF-based backing beans as
+Spring beans and define the "portalTab" scope explicitly for each.</p>
+<!--<ul>
+    <li><a href="#jsfEx">JSF Example</a></li>
+    <li><a href="#springEx">Spring Example</a></li>
+</ul>
+<h3 id="jsfEx">JSF Example</h3>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; ?&gt;
+
+&lt;!DOCTYPE faces-config PUBLIC
+    &quot;-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN&quot;
+    &quot;http://java.sun.com/dtd/web-facesconfig_1_1.dtd&quot;&gt;
+
+&lt;faces-config&gt;
+    &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;DisplayDataBean&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;org.eclipse.stardust.engine.api.web.jsf.beans.DisplayDataBean&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;session&lt;/managed-bean-scope&gt;
+    &lt;/managed-bean&gt;
+&lt;/faces-config&gt;</pre>-->
+<h3 id="springEx">Spring Example</h3>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+      xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+      xmlns:ippui=&quot;http://infinity.com/bpm/ui/common/uiDefinition&quot;
+      xsi:schemaLocation=&quot;
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd&quot;&gt;
+      &lt;bean name=&quot;DisplayDataBean&quot; class=&quot;org.eclipse.stardust.engine.api.web.jsf.beans.DisplayDataBean&quot; scope=&quot;portalTab&quot; /&gt;
+&lt;/beans&gt;</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

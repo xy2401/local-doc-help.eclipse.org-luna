@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Retrieving Entities from In-Memory Cache</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Optimizing the Performance of secure JCR Deployments",
+	"ag-tuning-fetch.html","tuning-jcr-depl.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Retrieving Entities from In-Memory Cache</h1>
+<p>If no caching engine is provided, the Stardust engine 
+retrieves entities per request using a transaction bound memory cache.
+Some entities are not expected to be changed very often, but are frequently 
+retrieved. If a caching engine is provided, and the caching switch
+property is not set to <tt>false</tt>, these entities are stored and
+retrieved in cross transaction caches. These include the 
+following entities:</p> 
+<ul>
+    <li>User</li>
+    <li>User Realm</li>
+    <li>Grants for User</li>
+    <li>Departments</li>
+    <li>Partitions</li>
+    <li>User Groups</li>
+</ul>
+
+<h2>Disabling the Caching Mechanism</h2>
+<p>To turn off the use of caches, even if a caching engine is detected,
+add the property <tt>Infinity.Engine.Caching</tt>
+to your server-side <tt>carnot.properties</tt> file and set it to <tt>false</tt>.</p>
+<pre>Infinity.Engine.Caching = false</pre>
+<h2>Requirements</h2>
+<p>The cache engine is not part of the Stardust distribution,
+you have to install your own caching engine.
+The following caching engines are currently supported by Stardust:</p>
+<ul>
+    <li>Hazelcast (<a href="http://www.hazelcast.com/">http://www.hazelcast.com</a>)</li>
+</ul>
+
+<h2>Configuration</h2>
+<!-- TODO: implemented?
+There could be another flag to specify if a single cache will be used 
+for all cacheable entities or separate caches for each entity type.-->
+<p>The configuration required to connect to the client cache engine is to add the 
+corresponding adapter to the Stardust engine classpath, either in your
+<tt>carnot.ear</tt> file or
+in the global application server classpath.</p>
+<p>The actual configuration of the cache engine should be performed 
+according to the documentation of the respective caching engines
+installed in your environment.</p>
+<p class="note"><strong>Note</strong><br>
+Please note that the provider should be transaction aware.</p>
+
+<h2>Usage of Caches in Stardust</h2>
+<p>In case an installed cache engine is present in the client environment,
+Stardust detects it and uses it.
+If no cache engine is found or the installed cache engine is not supported,
+only the transaction bound memory cache is used.</p>
+<p>In case a cache engine is found, the modification pattern of the cacheable 
+entities is changed, in that all changes will be made not on the object 
+retrieved from the cache, 
+but on a different object, either freshly retrieved from the database or cloned 
+from the cached object. This new object will replace the old one in the cache.</p>
+<p>The retrieval of cacheable entities is directed to the respective 
+caches whenever possible.</p>
+
+<h2 id="exhazel">Using Hazelcast with Stardust</h2>
+<p>Per default, Stardust uses Hazelcast as in-memory cache. Hazelcast is a 
+clustering and scalable data distribution platform. 
+For the second level caching functionality Stardust
+leverages Hazelcast's distributed Map capabilities.
+For details on Hazelcast refer to
+<a href="http://www.hazelcast.com/product.jsp">http://www.hazelcast.com/product.jsp</a>.</p>
+<p>Refer to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/toc.html">
+Application Server Setup</a> section of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a> for details on the configuration for specific application
+server as well as for spring environments.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

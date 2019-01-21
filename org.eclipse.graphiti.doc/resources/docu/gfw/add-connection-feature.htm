@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing add connection functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Add Connection Functionality</h1>
+<p>In a previous chapter it was explained how an <a href="add-feature.htm">add feature</a> 
+is used to create graphical representations (in this case shapes with rectangles) 
+for existing business-objects (EClasses). </p>
+<p>In this chapter the same functionality shall be provided for connections. Concretely, 
+an add feature for connections shall be implemented, which creates graphical representations 
+(connections with polylines) for existing business objects (EReferences).</p>
+<p>An add connection feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IAddFeature.html">IAddFeature</a>. 
+Instead of implementing it directly it should extend one of the available base classes. 
+In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/AbstractAddFeature.html">
+AbstractAddFeature</a>.</p>
+<p>In this case we have to implement/overwrite two methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IAdd.html#canAdd(org.eclipse.graphiti.features.context.IAddContext)">
+	canAdd</a> has to check the given context and therefore it decides if a business 
+	object can be added.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IAdd.html#add(org.eclipse.graphiti.features.context.IAddContext)">
+	add</a> finally has to create the pictogram element (connection) and has to 
+	establish the linkage to the business object. Additionally we have to create 
+	the graphics algorithm (polyline). </li>
+</ul>
+<p>You can see the complete implementation of the add connection feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialAddEReferenceFeature
+		<span class="keyword">extends </span>AbstractAddFeature {<br><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private static final</span> IColorConstant
+		<span class="string"><em>E_REFERENCE_FOREGROUND</em></span> =
+		<span class="keyword">new</span> ColorConstant(98, 131, 167);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>TutorialAddEReferenceFeature (IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>PictogramElement add(IAddContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IAddConnectionContext addConContext 
+		= (IAddConnectionContext) context;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EReference addedEReference = (EReference) context.getNewObject();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IPeCreateService peCreateService = Graphiti.getPeCreateService();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		CONNECTION WITH POLYLINE</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Connection connection = peCreateService<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.createFreeFormConnection(getDiagram());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		connection.setStart(addConContext.getSourceAnchor());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		connection.setEnd(addConContext.getTargetAnchor());<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IGaService gaService = Graphiti.getGaService();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Polyline polyline = gaService.createPolyline(connection);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		polyline.setLineWidth(2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		polyline.setForeground(manageColor(<span class="string"><em>E_REFERENCE_FOREGROUND</em></span>));<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create link and wire it</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		link(connection, addedEReference);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>connection;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;public boolean</span> canAdd(IAddContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		return true if given business object is an EReference<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// note, that the context must be an instance of IAddConnectionContext</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (context <span class="keyword">instanceof
+		</span>IAddConnectionContext<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		&amp;&amp; context.getNewObject() <span class="keyword">instanceof </span>EReference) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">&nbsp;return 
+		false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature 
+(extend 
+the existing method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getAddFeature(org.eclipse.graphiti.features.context.IAddContext)">
+getAddFeature()</a> with the else-part below).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>IAddFeature 
+		getAddFeature(IAddContext context) {<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// is object for add request a EClass or EReference?</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(context.getNewObject()
+		<span class="keyword">instanceof </span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialAddEClassFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp; 
+		} <span class="keyword">else if</span> (context.getNewObject()
+		<span class="keyword">instanceof </span>EReference) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialAddEReferenceFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getAddFeature(context);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Before this new add connection feature can be tested, we have to
+<a href="create-connection-feature.htm">provide create connection functionality</a> 
+as described in the next chapter.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

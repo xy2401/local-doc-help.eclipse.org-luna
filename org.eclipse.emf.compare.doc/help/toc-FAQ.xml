@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="help/FAQ.html#FAQs" label="FAQs">
+	<topic href="help/FAQ.html#Users_FAQ" label="Users FAQ">
+		<topic href="help/FAQ.html#Which_files_should_be_compared_via_EMF_Compare_.3F" label="Which files should be compared via EMF Compare ?"></topic>
+		<topic href="help/FAQ.html#How_to_force_text_comparison.3F" label="How to force text comparison?"></topic>
+		<topic href="help/FAQ.html#EMF_Compare_compatibility_.3F" label="EMF Compare compatibility ?"></topic>
+		<topic href="help/FAQ.html#Where_can_I_find_EMF_Compare_.3F" label="Where can I find EMF Compare ?"></topic>
+	</topic>
+	<topic href="help/FAQ.html#Developers_FAQ" label="Developers FAQ">
+		<topic href="help/FAQ.html#How_can_I_programmatically_add_my_model_file_extension_in_EMF_Compare_so_that_it_is_called_automatically_.3F" label="How can I programmatically add my model file extension in EMF Compare so that it is called automatically ?"></topic>
+		<topic href="help/FAQ.html#How_can_I_use_EMF_Compare_programmatically_.3F" label="How can I use EMF Compare programmatically ?"></topic>
+		<topic href="help/FAQ.html#Can_EMF_Compare_be_used_standalone_.3F" label="Can EMF Compare be used standalone ?"></topic>
+		<topic href="help/FAQ.html#Custom_data_types_are_always_marked_as_modified_by_EMF_Compare" label="Custom data types are always marked as modified by EMF Compare"></topic>
+		<topic href="help/FAQ.html#Can_I_programmatically_open_a_comparison_editor_or_dialog_.3F" label="Can I programmatically open a comparison editor or dialog ?"></topic>
+		<topic href="help/FAQ.html#Can_I_use_custom_identifiers_for_my_objects_.3F" label="Can I use custom identifiers for my objects ?"></topic>
+		<topic href="help/FAQ.html#Can_I_ignore_differences_on_a_specific_reference.2C_or_ignore_ordering_differences_.3F" label="Can I ignore differences on a specific reference, or ignore ordering differences ?"></topic>
+	</topic>
+</toc>

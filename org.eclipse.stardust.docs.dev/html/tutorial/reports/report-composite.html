@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Creating a Composite Report</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+      "report-complex.html","",
+      "../tut-preface.htm","Tutorials",
+      "tut-reports.html","Defining and Running Reports");
+-->
+</script>
+<h1>Creating a Composite Report</h1>
+<p>This tutorial demonstrates how to create composite reports by
+embedding existing report definitions and listing specific record set entries.</p>
+<ul>
+   <li><a href="#embed">Embedding a Report Definition</a></li>
+   <li><a href="#recordset">Viewing specific Record Set Columns</a></li>
+   <li><a href="#param">Viewing Record Sets grouped by a Parameter</a></li>
+</ul>
+<h2 id="embed">Embedding a Report Definition</h2>
+<p>In this section demonstrates how to embed report 
+<strong>Product Order Report.bpmrptdesign</strong> which we created in chapter 
+<a href="report-complex.html">Creating and Running a Report with Table Layout and computed Column</a>.
+In case you do not already have this report present in your report folders, 
+you can import it from the following zip file:</p>
+<p class="ind"><a href="../../examples/tutorials/reports/reports.zip">
+reports.zip</a></p>
+<p>You find it in the <tt>reports/dat</tt> folder. In this location you also 
+find the two composite reports we will create in this tutorial, 
+<strong>Composite Report</strong> and <strong>ProductOrderParameterReport</strong></p>
+<p class="image"><img src="images/comp-upload.png" alt=""><br></p>
+<p>Click the <strong>Add</strong> <img class="noborder" src="images/add-icon.png" alt="">
+icon to create a new report. Configure the report as follows:</p>
+<ol>
+   <li>In the <strong>Data Set</strong> tab select <strong>Record Set</strong>
+   <p class="image"><img src="images/comp-embed-data-set.png" alt=""></p></li>
+   <li>In the <strong>Data Set - Available Columns</strong> tab select the 
+   descriptors <strong>CustomerId</strong>, <strong>CustomerName</strong> and <strong>OrderedItem</strong>.
+   <p class="image"><img src="images/comp-data-set-move.png" alt=""></p></li>
+   <li>Click the icon to move these columns into the <strong>Selected Columns</strong>
+   section.
+   <p class="image"><img src="images/comp-data-set.png" alt=""></p></li>
+   <li>In the <strong>Layout</strong> tab select <strong>Composite Report</strong>
+   <p class="image"><img src="images/comp-embed-sel-comp.png" alt=""></p></li>
+   <li>Click the <strong>Source</strong> button to switch to the source editor.
+   <p class="image"><img src="images/comp-switch-to-source.png" alt=""></p></li>
+   <li>In the <strong>My Reports</strong> tree click the <strong>Product Order Report</strong> and drag
+   it to the HTML source canvas.
+   <p class="image"><img src="images/comp-embed-drag.png" alt=""></p></li>
+   <li>Now the following code appears in the HTML source pane:
+   <p class="image"><a href="images/comp-embed-dragged_orgsize.png" target="_blank">
+   <img src="images/comp-embed-dragged.png" alt=""></a></p></li>
+   <li>Enter a heading for your embedded report.
+   <p class="image"><img src="images/comp-embed-source.png" alt=""></p></li>
+</ol>
+<p>If you go to the <strong>Preview</strong> tab, you can view the resulting
+embedded <strong>Product Order Report</strong> report.</p>
+<p class="image"><img src="images/comp-embed-result.png" alt="Resulting Composite Report"><br>
+<strong>Figure:</strong> Resulting Composite Report</p>
+<p>Go to the <strong>Storage</strong> tab and save the composite report created in 
+the preceding sections, e.g. as <strong>Composite Report</strong>.</p>
+<p class="image"><img src="images/comp-save-report.png" alt="Save the Report Definition"><br>
+<strong>Figure:</strong> Save the Report Definition</p>
+
+<h2 id="recordset">Displaying specific Record Set Columns</h2>
+<p>Now we add an overview on specified columns to our our composite report.
+For each record set we print the customer name, Id and ordered item.</p>
+<ol>
+   <li>In the <strong>Layout</strong> tab enter the following code:
+   <pre>
+&lt;h1&gt;Customer Record Sets&lt;/h1&gt;
+
+&lt;ul ng-repeat="record in recordSet"&gt;
+   &lt;li&gt;&lt;b&gt;Customer&lt;/b&gt;: {{record.CustomerName}} - {{record.CustomerId}}&lt;/li&gt;
+   &lt;li&gt;&lt;b&gt;Item ordered by Customer&lt;/b&gt;: {{record.OrderedItem}}&lt;/li&gt;
+&lt;/ul&gt;</pre>
+   <p class="image"><img src="images/comp-layout-records.png" alt=""></p></li>
+</ol>
+<p>Go to the <strong>Preview</strong> tab to view the result.
+On top we see the embedded report, followed by the list of the specified columns
+for each record set. Note that for large report definition previews you 
+need to scroll down to view the entire result.</p>
+<p class="image"><img src="images/comp-records-result.png" alt=""><br>
+<strong>Figure:</strong> Composite Report with record set items</p>
+<h2 id="param">Viewing Record Sets grouped by a Parameter</h2>
+<p>Now we like to group the record sets by the name of the customers.</p>
+<h3>Add a Parameter to the Report to embed</h3>
+<p>Before we can use the parameter for CustomerName, we need
+to add a parameter filter to the <strong>Product Order Report</strong>:</p>
+<ol>
+   <li>Click the <strong>Product Order Report</strong> in the <strong>My Reports</strong>
+   tree to open it</li>
+   <li>Switch to the <strong>Data Set</strong> tab</li>
+   <li>Click <img class="noborder" src="images/plus-filt.png" alt="Add Filter"> to add a filter</li>
+   <li>From the drop-down list select <strong>CustomerName</strong> in the 
+   <strong>Descriptors</strong> section
+   <p class="image"><img src="images/comp-set-filter.png" alt=""></p></li>
+   <li>Select operator <strong>Equals</strong></li>
+   <li>The filter needs to have a value so that it can be accessed as parameter
+    in a composite report. Enter any name.</li>
+   <li>Make the filter parameter by clicking the <strong>Add Parameter</strong> icon
+   <p class="image"><img src="images/comp-add-filter.png" alt=""></p></li>
+   <li>Go to the <strong>Storage</strong> tab and save the edited report,
+   e.g. as <strong>ProductOrderParameterReport</strong>
+   <p class="image"><img src="images/comp-save-param-report.png" alt=""></p></li>
+</ol>
+<h3>Filter the embedded Report in the Record Set</h3>
+<p>We add code to our composite report definition to print an embedded
+<strong>ProductOrderParameterReport</strong> for each customer.</p>
+<ol>
+   <li>Click the composite report definition we created in the previous section
+   in the <strong>My Reports</strong> tree to open it</li>
+   <li>In the <strong>Layout</strong> tab click the <strong>Source</strong>
+   button to open the source editor</li>
+   <li>Enter the following syntax:
+	<pre>
+&lt;h1&gt;Customer Record Sets&lt;/h1&gt;
+
+&lt;ul ng-repeat=&quot;record in recordSet | unique:'CustomerName,CustomerId'&quot;&gt;
+   &lt;li&gt;&lt;b&gt;Report for Customer&lt;/b&gt;: {{record.CustomerName}} - {{record.CustomerId}}&lt;br /&gt;
+   &lt;br /&gt;
+   &lt;sd-report-frame parameters=&quot;{{'CustomerName='+record.CustomerName}}&quot;
+      path=&quot;/realms/carnot/users/frank/documents/reports/designs/ProductOrderParameterReport.bpmrptdesign&quot;&gt;
+   &lt;/sd-report-frame&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+   <p class="image"><img src="images/comp-add-para-code.png" alt=""></p></li>
+</ol>
+<p>In the <strong>Preview</strong> tab view the result. For each customer, the 
+embedded report is displayed.</p>
+<p class="image"><img src="images/comp-param-result.png" alt="Embedded Report with Parameter"><br>
+<strong>Figure:</strong> Embedded Report with Parameter</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

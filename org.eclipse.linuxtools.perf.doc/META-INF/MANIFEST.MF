@@ -1,0 +1,174 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.perf.doc; singleton:=true
+Require-Bundle: org.eclipse.help
+Bundle-Version: 1.0.0.201502180018
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %Bundle-Name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_session
+ .gif
+SHA1-Digest: GLusgmDUGcF7YoeBLMwf+W0wCyM=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_event.g
+ if
+SHA1-Digest: VMOAhQ4bL9IHVeaRZBpKAqvqBMA=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_proj_prefs.png
+SHA1-Digest: /kAR3saa6d69VEXnyxTM582U21U=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_symbol.
+ gif
+SHA1-Digest: 5JOK79zhu3TCLXfOd9O1hYCW92o=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_disassembly_view
+ .png
+SHA1-Digest: lNE41hxPvzh67lUe13ri8ynSKVc=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Updating-This-Document.html
+SHA1-Digest: yVUU6b9qT+oz6tIqRCRNCtVQtyg=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Profiling-Configuration.html
+SHA1-Digest: g7RzIr5gh1leUy0sZEqtsZB5+Pc=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_global_prefs.png
+SHA1-Digest: I7OCOmRS+JjYtLyVRsxlfIpA7Rg=
+
+Name: doc/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: build-helper.xml
+SHA1-Digest: 1J2KRrqhvZmhFj3j1VLZptGaHVw=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_maintabremote.pn
+ g
+SHA1-Digest: eynuDXS+EL9QIkIZplskLUGQJz0=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_sample.
+ gif
+SHA1-Digest: hKWbPY9IGKI88i73fsZ8W60cNQs=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_view.png
+SHA1-Digest: M1DLa39mPPTFeA5/97V3GG0IBWI=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Perf-Views.html
+SHA1-Digest: F4cSMhqBnABcTQik97ZHvg7+bXg=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_original_submenu
+ .png
+SHA1-Digest: XYBHMgtUZx4siAEV33b7D1vlP48=
+
+Name: META-INF/maven/org.eclipse.linuxtools.perf-parent/org.eclipse.li
+ nuxtools.perf.doc/pom.xml
+SHA1-Digest: vz9e7mK59QV0LnE0vho8CY8PLCQ=
+
+Name: Linux_Tools_Project/PERF/User_Guide/User-Guide.html
+SHA1-Digest: 6cDHpYoK7YvX1+MIA+xVcKlPJdI=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Session_loc.png
+SHA1-Digest: 5ymvmQOAv7MXRMWo1k/g3JzBO34=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Save_prof.png
+SHA1-Digest: pDjp7XFY6hKETte8Qu5jkal+SVs=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Callgraph_timing_subm
+ enu.png
+SHA1-Digest: mwjQLmXyizgxctxtnGGZmYSLwek=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_stat_view.png
+SHA1-Digest: M/w0TsdbzogCoXufoPIisyx6QjY=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Save_stats.png
+SHA1-Digest: jFDNg/c2+CaSWmCyDO5pr0IdbaQ=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/File_select.png
+SHA1-Digest: kH0Xi/wwxvUm91YmdkoVquWoxSo=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Installing.html
+SHA1-Digest: u7Qwp24XTqYMS8JOBl6LrYxYWEk=
+
+Name: plugin.properties
+SHA1-Digest: T/Tgu45wPXIGtjmCeZYQni27fdE=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_image.g
+ if
+SHA1-Digest: Oh2bd/9lE739M5UGcCmr7C5Fshw=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_oneclicklaunch.p
+ ng
+SHA1-Digest: Z0vdvtmcvvYD08514vzVsR7Y3KU=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Sessions.html
+SHA1-Digest: PUQXs2j/sltF34c22lM44B4jcKw=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_events.png
+SHA1-Digest: wPTCCr7zboUsahQw6n3NGkNylSU=
+
+Name: toc-doc.xml
+SHA1-Digest: Lf4I7OrGu6/jFkcesSxjhvfHK4k=
+
+Name: plugin.xml
+SHA1-Digest: m9LKBwFiY2rvmXzjeEgEPaNvimU=
+
+Name: Linux_Tools_Project/PERF/User_Guide/Launching-a-Profile.html
+SHA1-Digest: REgUrgC9S0dYAhyG0GLbmb1N/zI=
+
+Name: html/subtopic.html
+SHA1-Digest: 6z8hk+VmREDSZBedKOS1kwqR5Pw=
+
+Name: html/maintopic.html
+SHA1-Digest: fbam6tBfR+kBTlWsmacTDX1u44c=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Quick_stat_diff.png
+SHA1-Digest: aYgF5F9Yv31BKfbAyKdL89glmCg=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_tab.png
+SHA1-Digest: 2GrKCB/boAgC88MnrlP/yc8Nhwg=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: toc.xml
+SHA1-Digest: ZfQdsgbQA9vp8vOH6Q7PvQOW0eM=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_eventstab.png
+SHA1-Digest: ra+1VvLtzKifH72rue4Q9scdGGE=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Icon-oprofile_depende
+ nt.gif
+SHA1-Digest: cDni1NFMK3LJE0ZZ5mAO/Fw6l0g=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Stat_diff_cmd.png
+SHA1-Digest: Hm0KnXfnH/3+deoMr2EMA8/Ac8I=
+
+Name: html/toc.html
+SHA1-Digest: z+FTd2dJUQZTY7/yIhsONGSK50s=
+
+Name: META-INF/maven/org.eclipse.linuxtools.perf-parent/org.eclipse.li
+ nuxtools.perf.doc/pom.properties
+SHA1-Digest: CV0KdBEo5f8R0dZ8aN8rA4AjlGs=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Perf_optionstab.png
+SHA1-Digest: QmIgMWeLNkQjrbZRwSCN+buq4KQ=
+
+Name: Linux_Tools_Project/PERF/User_Guide/images/Stat_diff.png
+SHA1-Digest: WIYJggdqApXHHnivqfpn/JNdB7A=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+

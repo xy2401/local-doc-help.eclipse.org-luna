@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Specifying Applications</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Specifying Data",
+        "convert-gateways.html","mg-defdesk-7.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Specifying Applications</h1>
+<p>Activities performed within the context of a business process may have
+to execute application logic. This application logic is defined by a concept
+called application. For more details on applications and their types please
+refer to the chapter <a href="../../concepts/workflow-basics/mg-basics-7.htm">Applications</a> of the <a
+    href="../../concepts/workflow-basics/mg-basics-preface.htm">Workflow Basics</a> concepts.</p>
+<p>This section will explain how to work with applications in the <strong>Process
+Workbench</strong>. In the sections <a href="mg-integration-preface.htm">System
+Integration</a> and <a href="data-integration/data-int-preface.html">Data Integration</a> 
+more details on working with concrete applications can be found.</p>
+<h2>Creating Applications</h2>
+<p>To create an application you can either:</p>
+<ul>
+    <li>In the diagram <a href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a>
+      select <strong>Applications</strong>
+    or <strong>Int. Applications</strong> under <strong>Items</strong> and from
+    the pop-up menu the type you want. The application is created by
+    subsequently clicking on the diagram canvas and appears also in the <strong>Outline</strong>
+    view.</li>
+</ul>
+<p class="image"><img src="images/mg-create-application.png" alt="">
+<br>
+<strong>Figure:</strong> Applications</p>
+<ul>
+    <li>Or in the <strong>Application</strong> section of the <a
+        href="model-views/views-outline.html">Outline view</a> area, choose <strong>New</strong>
+    or <strong>New Interactive Application</strong> and the wanted application
+    type from the pop-up menu. The created application will appear in the <strong>Outline</strong>
+    view.</li>
+</ul>
+
+
+<h3 id="prop">Properties</h3>
+<p>Open the application properties dialog e.g. by double-clicking on the <strong>New
+Application</strong> symbol. Choose an ID and a name for the application. 
+ Please note that IDs containing
+    hyphens, blanks or dots and IDs starting with digits are not supported. Using the Visibility Public option, 
+    you can
+    also specify whether you want to import applications by reference when referenced in another model. 
+    By default, this check box is selected. 
+   </p>
+   
+   <p class="image"><img src="images/visibility.png"
+    alt="General Properties of an application"> <br>
+<strong>Figure:</strong> General Properties</p>
+   <p> For more information, please refer to <a href="mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="mg-preferences.html">Setting Process Manager Preferences</a> chapter. 
+Edit the
+application type specific properties. For a detailed description of the
+configuration of the Stardust application types, see the sections <a
+    href="mg-integration-preface.htm">System Integration</a>
+    and <a href="data-integration/data-int-preface.html">Data Integration</a>.</p>
+<p class="image"><a href="images/mg-java-appl-prop_orgSize.png"
+    target="_blank"> <img src="images/mg-java-appl-prop.png"
+    alt="Plain Java Application Properties Dialog"></a> <br>
+<strong>Figure:</strong> Plain Java Application Properties Dialog</p>
+<h4>Controlling Parameters</h4>
+<p>An application provides the following controlling properties:</p>
+<ul>
+    <li><strong>Cost Center</strong></li>
+    <li><strong>Actual Cost Per Second</strong></li>
+</ul>
+<p class="image"><img src="images/appl-props-controlling.png" alt=""> <br>
+<strong>Figure:</strong> Controlling Properties of an Application</p>
+<h4>Simulation</h4>
+<p>In this section you can specify simulation configurations, as described
+detailed in the chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+Simulation Configurations</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+Stardust Simulation Guide</a>.)</p>
+<h4>Effort Planning</h4>
+<p>In this section you can set the following Process Effort properties:</p>
+<p class="image"><img src="images/application-effort-planning-props.png"
+    alt=""> <br>
+<strong>Figure:</strong> Effort Planning Properties of an Application</p>
+<p>Please refer to the chapter <a href="process-effort-calculation.html">Project
+Effort Calculation</a> for detailed information on this functionality.</p>
+<h3 id="browse">Browsing to Classes and Methods</h3>
+<p>To browse for a class or interface in an application properties dialog:</p>
+<ul>
+    <li>Click the provided <strong>Browse</strong> button.</li>
+    <li>In the <strong>Select entries</strong> field enter the first
+    letters of your class.</li>
+    <li>Classes matching will be displayed in the <strong>Matching
+    items</strong> list below.</li>
+    <li>Select the class and <strong>OK</strong> the dialog.</li>
+</ul>
+<p class="image"><img src="images/browse-to-appl-class.png"
+    alt="Browse to an application class"> <br>
+<strong>Figure:</strong> Browse for an Application Class.</p>
+<p>To browse for a method:</p>
+<ul>
+    <li>Select the provided<strong>Browse</strong> button.</li>
+    <li>A list of provided methods is displayed in a dialog.</li>
+    <li>Choose the method and <strong>OK</strong> the dialog.</li>
+</ul>
+<p class="image"><img src="images/browse-to-method.png"
+    alt="Browse for a Method"> <br>
+<strong>Figure:</strong> Browse for a Method.</p>
+<h2>Deleting Applications</h2>
+<p>To delete an application, use the option <strong>Delete </strong>in the
+application's pop-up menu in a diagram. In the <strong>Outline</strong> view,
+use the corresponding option <strong>Delete</strong>.</p>
+<p>To remove an application symbol from the diagram, choose the option <strong>Delete
+Symbol</strong> in the application's pop-up menu. After this operation the application
+will still be part of the model.</p>
+
+<h2 id="refApp">Working with Referenced Applications</h2>
+<p>Once the file connection is established, you can reference the application in the referencing model.
+
+</p>
+<p>To reference the application, drag and drop the application from <strong>Outline view > 
+External Model Information > File Connection</strong> on the diagram canvas.</p>
+<p class="image"> <img src="images/refapps.png" alt="Drag&drop Referred Application">
+<br>
+<strong>Figure:</strong> Drag and Drop Referred Application</p>
+
+<p>Open the <strong>Property</strong> page of the application and select <strong>Application</strong>. 
+The list of available application gets displayed.</p>
+<p class="image"> <img src="images/refappproperty.png" alt="Referred Application - Property Page">
+<br>
+<strong>Figure:</strong> Referred Application - Property Page</p>
+
+<p>If you select the <strong>Display Imported Model Elements as Groups</strong> check box, the references of the 
+application get displayed.</p>
+<p class="image"> <img src="images/refappcheckbox.png" alt="Referred Application - Display Imported Model Elements as Groups">
+<br>
+<strong>Figure:</strong> Referred Application - Display Imported Model Elements as Groups</p>
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

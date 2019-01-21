@@ -1,0 +1,690 @@
+<html>
+<head>
+<title>Message Transformation Application Type</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script>
+<!--
+	writeNavigation("XSL Message Transformation Application Type",
+    "message-serialization-appl.html","xsl-message-transformation-appl.html",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../mg-preface.htm","Modeling Guide",
+        "../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+<h1>Message Transformation Application Type</h1>
+<ul>
+    <li><a href="#createMTA">Creating a Message Transformation Application Type</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#mapMessages">Mapping Messages</a></li>
+    <li><a href="#serviceClasses">Adding and Removing Service Classes</a></li>
+    <li><a href="#retry">Configuring Retry Mechanism</a></li>
+</ul>
+<h2 id="createMTA">Creating a Message Transformation Application Type</h2>
+<p>To create a Message Transformation Application, select <strong>Application</strong>
+in the diagram toolbar palette and choose <strong>Message Transformation Application</strong>:</p>
+<p class="image"><img src="images/create-transformation-appl.png"
+alt="Creating a Message Transformation Application"><br>
+<strong>Figure:</strong> Creating a Message Transformation Application</p>
+<h2 id="properties">Properties</h2>
+<p>The following properties can be set for message transformation applications:</p>
+<ul>
+    <li><strong>General</strong> - name, id and locale settings</li>
+    <li><a href="#retry">Retry</a></li>
+    <li><strong>Simulation</strong> - specifying simulation configurations (see chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+        of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Simulation Guide</a>.)</li>
+    <li><strong>Effort Planning</strong> - for detailed information on how to set properties for
+        effort planning please refer to the chapter
+        <a href="../../process-effort-calculation.html">Process Effort Calculation</a>.</li>
+    <li><strong>Message Transformation</strong> specific properties, which will be discussed in the following
+        sections. Note that if the <strong>Displays Imported Model Elements as Groups</strong> check box is selected, 
+    the message transformation list displays references for the referenced data. 
+    Selecting the check box also groups local and referenced elements.</li>
+        
+</ul>
+<p>The properties pane for the Message Transformation application contains a
+source message and a target message tree, filter fields and buttons as well as
+the mapping expression panel.</p>
+<p class="image"><a href="images/transformation-appl-props_orgSize.png" target="_blank">
+<img src="images/transformation-appl-props.png" alt="Message Transformation Application Props"></a><br>
+<strong>Figure:</strong> Properties of a Message Transformation Application.</p>
+<p>The source and the target message tree contains the names of all messages
+selected as input and output messages as top level nodes.</p>
+<h3>Mapping XSD Types</h3>
+<p>Note that some XSD types specified in structured data will be converted
+to JavaScript types when used in Message Transformation applications. Please refer to the section
+<a href="../../data-integration/structured-data/struct-proc-data.html#xsdMapping">Mapping XSD Types</a> of chapter
+<a href="../../data-integration/structured-data/struct-proc-data.html">Using Structured Types in Process Data</a> for detailed information
+on how this mapping is performed for specific XSD types.</p>
+
+<h2>Adding Source and Target Messages</h2>
+<p>Multiple input and output messages can be specified. Please note that the mapping of 
+Primitive Data
+<a href="../../data-integration/structured-data/struct-type-def.html#enum">Enumeration Types</a> 
+is not possible.</p>
+
+<p>Above the filter entries of the source and target message tree you find an
+<strong>Add Input</strong> and <strong>Add Output</strong> button respectively.
+Selecting these buttons will open a dialog, where you can define the message to add.</p>
+<p class="image"><img src="images/props-message-input.png" 
+alt="Adding Input."><br>
+<strong>Figure:</strong> Adding Input.</p>
+<h3>Datatype</h3>
+<p>Choose the type of data in the <strong>Datatype</strong> entry field.
+Supported data types are:</p>
+<ul>
+    <li>Structured Data</li>
+    <li>Primitive Data</li>
+    <li>Serializable Data</li>
+</ul>
+<p class="image"><img src="images/transformation-appl-choose-type.png" 
+    alt="Choose the Data Type"/><br>
+<strong>Figure:</strong> Choose the Data Type.</p>
+<h3>Data Selection</h3>
+<p>Select the type specification for the data type selected in the 
+<strong>Datatype</strong> entry field.</p>
+<h4>Selecting Structured Data</h4>
+<p>In the <strong>Selection Structured Data</strong> section
+select a structured data type definition from the drop-down list
+providing all structured type definitions available in your model.</p>
+<p class="image"><img src="images/trans-appl-choose-data-struct.png" 
+    alt="Selecting Structured Data"/><br>
+<strong>Figure:</strong> Selecting Structured Data</p>
+<h4>Selecting Primitive Data</h4>
+<p>In the <strong>Selection Primitive Data</strong> section
+choose a concrete data type for your primitive data type in the
+drop-down list.</p>
+<p class="image"><img src="images/trans-appl-choose-data-prim.png" 
+    alt="Selecting Primitive Data"/><br>
+<strong>Figure:</strong> Selecting Primitive Data</p>
+<h4>Selecting Serializable Data</h4>
+<p>In the <strong>Selection Serializable Data</strong> section
+ click the <strong>Browse</strong> button to open a classloader dialog,
+where you can choose an application class provided in the list.</p>
+<p class="image"><img src="images/trans-appl-choose-data-ser.png" 
+    alt="Selecting Serializable Data"/><br>
+<strong>Figure:</strong> Selecting Serializable Data</p>
+<h3>Message Name</h3>
+<p>Optionally adapt the provided message name. A default name 
+    &lt;<i>data_type_name</i>&gt;<tt>n</tt> is suggested in the name entry. 
+    Whereby <tt>n</tt> represents the number of already defined source or target 
+    messages for the transformation.</p>
+
+<p>Arbitrary message names can be specified. If the message name is already in use,
+an error symbol is displayed in front of the entry and OK is disabled:</p>
+<p class="image"><img src="images/message-already-exists-error.png" 
+alt="Duplicate Message Name Error"><br>
+<strong>Figure:</strong> Duplicate Message Name Error</p>
+
+<h2>Messages Displayed in the Panel</h2>
+<p>The added messages are displayed in the <strong>Message Transformation</strong>
+panel according to their data types.</p>
+<ul>
+    <li><a href="#prim">Primitive Data Type</a></li>
+    <li><a href="#struct">Structured Data Type</a></li>
+    <li><a href="#ser">Serializable Data Type</a></li>
+</ul>
+<h3 id="prim">Primitive Data Type</h3>
+<p>Primitive Data type messages are displayed as primitive data icon
+with the message name and the according concrete type, as shown 
+in the following screenshot:</p>
+<p class="image"><img src="images/display-message-prim.png"
+alt="Primitive Data Type Message"><br>
+<strong>Figure:</strong> Primitive Data Type Message</p>
+<h3 id="struct">Structured Data Type</h3>
+<p>Structured Data Type messages are displayed as a tree having
+all available attributes listed beneath the structured type.</p>
+<p class="image"><img src="images/props-message-input-result.png" 
+alt="Structured Data Type Message"><br>
+<strong>Figure:</strong> Structured Data Type Message</p>
+<h3 id="ser">Serializable Data Type</h3>
+<p>For a serializable data type class, only those fields are displayed,
+ which have a public accessor method. For example if the selected class has the 
+ methods <tt>setFirstname(String FirstName)</tt> and <tt>getFirstname()</tt>, the 
+ field <strong>FirstName</strong> is displayed accordingly.</p>
+<p class="image"><img src="images/display-message-ser.png"
+alt="Serializable Data Type Message"><br>
+<strong>Figure:</strong> Serializable Data Type Message</p>
+<h2>Deleting Messages</h2>
+<p>To remove messages right-click the entry in the message tree node and choose 
+<strong>Delete Message</strong>:</p>
+<p class="image"><img src="images/props-message-input-del.png" 
+alt="Deleting a Message"><br>
+<strong>Figure:</strong> Deleting a Message</p>
+<p>A confirmation dialog opens to confirm the deletion:</p>
+<p class="image"><img src="images/delete-confirmation.png" 
+alt="Confirmation Dialog"><br>
+<strong>Figure:</strong> Confirmation Dialog for Deleting Messages</p>
+<!-- In case of use in data mappings these a single input and a single output message
+is predefined via the data mapping dereferentiation path. -->
+<h2 id="mapMessages">Mapping Messages</h2>
+<ul>
+    <li><a href="#options">Mapping Options</a></li>
+    <li><a href="#interact">Message Tree Interactions</a></li>
+    <li><a href="#dephigh">Dependency Highlighting</a></li>
+    <li><a href="#filter">Filter Field Options</a></li>
+    <li><a href="#structSerial">Mapping Serializable Data Types</a></li>
+    <li><a href="#expressionField">Mapping Expression Field</a></li>
+</ul>
+<h3 id="options">Mapping Options</h3>
+<p>Several mapping options are provided for the target message fields.</p>
+<p>To clear a message expression, right-click the message and select
+<strong>Clear Mapping Expression</strong>:</p>
+<p class="image"><img src="images/clear-mapping-expression.png" 
+alt="Clear Mapping Expression Option"><br>
+<strong>Figure:</strong> Clear Mapping Expression Option</p>
+<!-- <p class="image"><img src="images/clear-mapping-statement.png" 
+alt="Clear Mapping Statement Option"><br>
+<strong>Figure:</strong> Clear Mapping Statement Option</p> -->
+<p>To toggle a breakpoint of a message field, right-click and select
+<strong>Toggle Breakpoint</strong>. For detailed information on how to use
+breakpoints during debugging of message transformation please refer to the
+chapter <a href="debug-message-transformations.html">Debugging Message Transformations</a>.</p>
+<p class="image"><img src="images/toggle-breakpoint-option.png" 
+alt="Toggle Breakpoint Option"><br>
+<strong>Figure:</strong> Toggle Breakpoint Option</p>
+
+<h3 id="interact">Message Tree Interactions</h3>
+<p>The sources messages tree allows multiple selection via left mouse click and 
+CTRL + left mouse click on arbitrary fields. When selecting a field, all
+dependent fields in the other message tree will be marked as bold:</p>
+
+<p class="image"><a href="images/mapping-dependency-bold_orgSize.png" target="_blank">
+<img src="images/mapping-dependency-bold.png" alt="Dependency marked as bold"></a><br>
+<strong>Figure:</strong> Dependency marked as bold.</p>
+<p>If the selected 
+field in the target message is a leaf field, the corresponding JavaScript expression
+is displayed in the expression mapping field, as described in the section
+<a href="#expressionField">Mapping Expression Field</a>.</p>
+<p class="image"><a href="images/props-message-mapping-1_orgSize.png" target="_blank">
+<img src="images/props-message-mapping-1.png" alt="Message Transformation"></a><br>
+<strong>Figure:</strong> Message Transformation.</p>
+<p>The following drag and drop shortcuts are provided to support fast creation
+of mapping expressions:</p>
+<ul>
+    <li>If a single primitive source field is dragged on a primitive target field,
+     a 1:1 mapping expression is created. If the types do not map a type 
+     conversion is introduced.</li>
+</ul>
+<p class="image"><a href="images/message-trans-appl-single-mapping_orgSize.png" target="_blank">
+<img src="images/message-trans-appl-single-mapping.png" alt="Message Transformation"></a><br>
+<strong>Figure:</strong> Single Source Field Mapping</p>
+<ul>
+    <li>If a selection of multiple source fields is dragged on a primitive
+    target field, a mapping expression with the addition/concatenation of all
+    source fields is created, e.g.:</li>
+</ul>
+<p class="image"><a href="images/message-trans-appl-multiple-mapping_orgSize.png" target="_blank">
+<img src="images/message-trans-appl-multiple-mapping.png" alt="Message Transformation"></a><br>
+<strong>Figure:</strong> Multiple Source Field Mapping</p>
+<ul>
+    <li>If a complex source field is dragged on a complex target field, all
+    primitive fields in the complex source field are mapped to primitive fields
+    in the target field whose names are equal or similar to the names of the source
+    fields. The name of the source complex field is stored as a symbolic mapping.
+    This mechanism also applies to a top level message structure. Hence, an initial
+    "automatic mapping" of the entire source message can be created.<br>
+    Hereby, similarity means:
+    <ul>
+        <li>the case-insensitive versions are equal.</li>
+        <li>the first-3-letter substrings of the case-insensitive versions are equal.</li>
+    </ul></li>
+</ul>
+<p class="image"><a href="images/message-trans-appl-multiple-mapp-2_orgSize.png" target="_blank">
+<img src="images/message-trans-appl-multiple-mapp-2.png" alt="Message Transformation"></a><br>
+<strong>Figure:</strong> Multiple Source Field Mapping on equal Field Names</p>
+<ul>
+    <li>If a complex source field is dragged to a primitive target field, a mapping
+    with the addition or concatenation of all primitive fields in the source field
+    is created recursively.</li>
+</ul>
+
+<p class="image"><a href="images/message-trans-appl-mapp-3_orgSize.png" target="_blank">
+<img src="images/message-trans-appl-mapp-3.png" alt="Message Transformation"></a><br>
+<strong>Figure:</strong> Complex on Simple Field Mapping</p>
+<p>Before a drag and drop gesture overwrites the content of the corresponding
+mapping expression, a confirmation dialog opens:</p>
+<p class="image"><img src="images/overwrite-confirmation.png" alt="Overwriting Confirmation Dialog"><br>
+<strong>Figure:</strong> Overwriting Confirmation Dialog</p>
+<p>Note that the mapping on root nodes is not possible.</p>
+
+<h4 id="nestarraydnd">Drag and Drop into Nested Array Structures</h4>
+
+<p>In the Message Transformation application a source element can be dropped into a target field which is part of nested array structure.</p>
+
+<p class="image"><img src="images/mta.png" alt="Message Transformation Application with Nested Structured Data Array"><br>
+<strong>Figure:</strong> Message Transformation Application with Nested Structred Data Array</p>
+<p>Drag the source element <strong>typename</strong> and drop it into nested array of target field <strong>name</strong> in the location node.</p>
+<p>A dialog is displayed when a source element is dropped into nested array.</p>
+<p class="image"><img src="images/indexconfiguration.png" alt="Index Configuration"><br>
+<strong>Figure:</strong> Index Configuration</p>
+<p>The dialog consists of two tables which are located side-by-side from the In/Out Message pane within the Message Transformation Application property page. Note that the content of 
+ the table is reduced to one message per table. The source tree shows the input message and the target tree shows the 
+the message chosen as mapping destination for the selected source element. This means only the tree paths leading to the leave
+nodes that are involved into the corresponding mapping operation are displayed.</p>
+<p class="image"><img src="images/stmessage.png" alt="Index Configuration"><br>
+<strong>Figure:</strong> Leaves for Source and Target Message</p>
+<p>Note that the Source Message and Target Message tables consists of two columns:</p>
+<ol>
+	<li>Name </li>
+	<li>Index</li>
+</ol>
+<p>The row which contains an element of multiplicity n&gt;1, the index column has a text editor that enables the user to modify the 
+corresponding indices.</p>
+
+<p class="image"><img src="images/indexchange.png" alt="Location Index Configuration"><br>
+<strong>Figure:</strong> Location Index Cofiguration</p>
+
+<p>Once the index configuration is done the mapping expression is generated. </p>
+<p class="image"><img src="images/mapping.png" alt="Mapping Expression"><br>
+<strong>Figure:</strong> Mapping Expression</p>
+
+<h4 id = "addelementtoarray">Adding Elements to an Array of Same Data Structure</h4>
+
+<p>Adding a source element into target element which is an array of same data structure.
+Drag the <strong>Address1</strong> source element and drop it into the <strong>addresses</strong> array which has Address as a type defined.</p>
+
+<p class="image"><a href="images/datatype_orgSize.png" target="_blank">
+<img src="images/datatype.png" alt="Source to Target of Same Data Structure"></a><br>
+<strong>Figure:</strong> Source to Target of Same Data Structure</p>
+<p>The dialog gets displayed for Index Configuration.</p>
+<p class="image"><img src="images/indexconfig.png" alt="Index for Source to Target of Same Data Structure"><br>
+<strong>Figure:</strong> Index Configuration for Source to Target of Same Data Structure</p>
+
+<p>In this dialog, you can define the corresponding index settings. 
+Also the Mapping strategy can be defined using the following options:</p>
+
+<ul>
+	<li>Append Element</li>
+	<li>Overwrite Existing Element</li>
+
+</ul>
+
+<p>If <strong>Append element</strong> option is selected then at runtime the instance of the selected input messgae
+is added to the end of the already existing collection within the instance of the output message.
+Considering the Address1 and addresses drag-drop scenario an additional address is added to the address list
+of the Person1 type.
+
+The Mapping expression generated after selecting Append Element option:</p>
+<p class="image"><img src="images/appendelement.png" alt="Mapping Expression - Append Element"><br>
+<strong>Figure:</strong> Mapping Expression - Append Element</p>
+
+<p>If <strong>Overwrite existing elment</strong> option is selected then at runtime the instance of the selected input message
+is added to a specified index of the already existing collection within the instance of the output message. 
+
+The mapping expression generated after selecting Overwrite Existing Element option:</p>
+
+<p class="image"><img src="images/overwritexisting.png" alt="Mapping Expression - Overwrite Existing Element"><br>
+<strong>Figure:</strong> Mapping Expression - Overwrite Exising Element</p>
+
+<p>You can enter an index which refers to another source input message field. The modified mapping expression for overwritten element would look like:</p>
+ 
+<p class="image"><img src="images/overwrittenelment.png" alt="Mapping Expression - Overwritten Element"><br>
+<strong>Figure:</strong> Mapping Expression - Overwritten Element</p>
+
+
+<h4 id ="deepcopy">Deep Copy Operation</h4>
+<p>Assume you want addresses of source element Person2 into the target element Person1. The drag and drop of address attribute would help to get the address copied.
+  </p>
+  
+<p class="image"><a href="images/deepcopy_orgSize.png" target="_blank">
+<img src="images/deepcopy.png" alt="Deep Copy - Person2 address to Person1 addresses"></a><br>
+<strong>Figure:</strong> Deep Copy - Person2 address to Person1 addresses</p>
+
+<p>In the mapping expression the code generated copies all attributes and sub-attributes from left to right.</p>
+<p class="image"><img src="images/deepcopyexpression.png" alt="Deep Copy - Mapping Expression"><br>
+<strong>Figure:</strong> Deep Copy - Generated Code</p>
+
+<h3 id="dephigh">Dependency Highlighting</h3>
+<p>The dependencies between source and target messages fields are displayed by
+highlighting the corresponding fields in bold text:</p>
+<p class="image"><a href="images/props-message-mapping-highlight_orgSize.png" target="_blank">
+<img src="images/props-message-mapping-highlight.png" alt="Dependency Highlighting"></a><br>
+<strong>Figure:</strong> Dependency Highlighting</p>
+<!-- TODO: and CI red label)? CI ?-->
+<p>If the source messages tree has the focus, all fields in the target messages
+depending on the selected fields in the source messages are highlighted.</p>
+<p>If the target messages tree has the focus, all fields in the source messages
+contributing to the expressions of the selected fields in the target messages
+are highlighted.</p>
+<p>Highlighted nodes are always visible. 
+<!-- to clarify: If necessary the corresponding node
+hierarchies are expanded.-->
+The tree view is scrolled so that the first highlighted node is the first visible
+node in the scrollpane. Highlighting of leaf nodes always implies highlighting
+of the entire node hierarchy above.</p>
+<p>The selection of a composite field causes highlighting of all fields in
+the target message whose expressions contain fields in the composite source field
+or its child fields recursively. For example selecting an entire source message
+highlights all target field hierarchies using fields of this message.</p>
+<p class="image"><a href="images/highlight-messages-hierarchy_orgSize.png" target="_blank">
+<img src="images/highlight-messages-hierarchy.png" 
+    alt="Dependency Highlighting of Composite Fields"></a><br>
+<strong>Figure:</strong> Dependency Highlighting of Composite Fields</p>
+<h3 id="filter">Filter Field Options</h3>
+<p>All filters except the text filter can be switched on and off with icon select
+buttons grouped above the tree views for input and output messages.</p>
+<p>The filter buttons support the selection of:</p>
+<ul>
+    <li><a href="#highlight">Show highlighted fields only</a></li>
+    <li><a href="#expression">Show fields with mapping expression only</a></li>
+    <li><a href="#noExpression">Show fields with NO mapping expression only</a></li>
+    <li><a href="#invalid">Show fields whose mapping expression is invalid</a></li>
+</ul>
+<p>The top level tree nodes representing source and target messages are always 
+visible, as the filters apply to message fields only and not to the source or
+target messages themselves.</p>
+<h4>Text filter</h4>
+<p>You find the text filter for source and target messages as a text entry field
+to the right of the other filter buttons.</p>
+<p>The text filter  allows to enter space-separated
+filter strings. Entering filter strings initiates a case-insensitive OR-filtering
+of the names of all fields in all source or target messages for the containment
+of the specified strings. For example when entering "hello world", there will
+be a filter for the words "hello" and "world".
+Every change in the filter string entry except adding leading or trailing spaces
+initiates a new filtering.
+The retrieved fields are displayed and if necessary tree nodes are expanded.
+All other field tree nodes are omitted. The scrollpane of the tree is scrolled
+to the first retrieved entry. The retrieved fields are neither highlighted nor selected.
+The message names themselves are not filtered. The top level tree nodes
+representing messages are always kept visible.</p>
+<p class="image"><img src="images/message-filter-text.png" alt="Text Filter"><br>
+<strong>Figure:</strong> Filtering by the String "Name"</p>
+
+<h4 id="highlight">Show highlighted fields only</h4>
+<p>To display only the highlighted fields select the following icon:</p>
+<p class="image"><img src="images/show-highlighted-button.png" alt="Show Highlighted Button"></p>
+<p>Now the icon switches to a yellow color and only the highlighted fields are visible:</p>
+<p class="image"><a href="images/message-filter-highlight_orgSize.png" target="_blank">
+<img src="images/message-filter-highlight.png" alt="Filter Highlighted Fields"></a><br>
+<strong>Figure:</strong> Filter Highlighted Fields</p>
+
+<h4 id="expression">Show fields with mapping expression only</h4>
+<p>Select the following icon to display only the fields which have mapping expressions:</p>
+<p class="image"><img src="images/show-mapping-expr-button.png" alt="Filter Button with Mapping Expressions"></p>
+<p class="image"><img src="images/message-filter-expression.png"
+alt="Filter Fields with Mapping Expressions"><br>
+<strong>Figure:</strong> Filter Fields with Mapping Expressions</p>
+<h4 id="noExpression">Show fields with NO mapping expression only</h4>
+<p>Select the following icon to display only the fields which have no mapping expressions:</p>
+
+<p class="image"><img src="images/show-mapping-no-expr-button.png" alt="Filter Button with No Mapping Expressions"></p>
+<p class="image"><a href="images/message-filter-no-expression_orgSize.png" target="_blank">
+<img src="images/message-filter-no-expression.png" alt="Filter Fields with No Mapping Expressions"></a><br>
+<strong>Figure:</strong> Filter Fields with No Mapping Expressions</p>
+<h4 id="invalid">Show fields whose mapping expression is invalid</h4>
+<p>Select the following icon to display only the fields which have invalid mapping expressions:</p>
+<p class="image"><img src="images/show-invalid-button.png" alt="Invalid Button"></p>
+<p class="image"><a href="images/mapping-filter-invalid_orgSize.png" target="_blank">
+<img src="images/mapping-filter-invalid.png" alt="Filter Fields with Invalid Mapping Expressions"></a><br>
+<strong>Figure:</strong> Filter Fields with Invalid Mapping Expressions</p>
+
+<h3 id="structSerial">Mapping Serializable Data Types</h3>
+<p>When mapping serializable data, the mapping code in the expression field 
+automatically takes the getter and setter methods provided by the
+serializable class. For example, mapping a structured data attribute <tt>Person1.name</tt>
+to a serializable Data field <tt>Person2.Name</tt>, would result in an expression using
+the setter method of the according field (e.g. <tt>Person2.setName(Person1.name)</tt>).</p>
+
+<p class="image"><a href="images/map-struct-serial_orgSize.png" target="_blank">
+<img src="images/map-struct-serial.png" alt="Code Created for Serializable Data"></a><br>
+<strong>Figure:</strong> Code Created for Serializable Data</p>
+
+<h3 id="expressionField">Mapping Expression Field</h3>
+<p>Every mapping is performed as the evaluation of a JavaScript expression with
+preceding supporting statements or function definitions. 
+The mapping expression contains a single expression
+which describes the content of the corresponding field in the output message for
+which the mapping is defined.</p>
+<p>The mapping expression can be interpreted as an assignment, for example:</p>
+
+<pre>&lt;<i>output message field</i>&gt; = &lt;<i>user-defined function</i>&gt;(&lt;<i>input message field</i>&gt;) + 
+        &lt;<i>JavaScript function</i>&gt;(&lt;<i>input message field</i>&gt;);</pre>
+
+<p>Such an expression becomes an executable program, which can be executed by any JavaScript 
+interpreter and leaves the output message field initialized with the result of
+the expression in the expression editor.</p>
+<p>You can switch between <a href="#basic">Basic</a> and <a href="#advanced">Advanced</a>
+mapping expression by disabling or enablind the <strong>Advanced Mapping Mode</strong> 
+checkbox on the left upper side of the mapping field.</p>
+<p class="image"><img src="images/switch-mapping-mode.png" 
+alt="Switch Mapping Mode Button"><br>
+<strong>Figure:</strong> Switch Mapping Mode Button</p>
+<p>Refer to the following sections for detailed information on 
+the possible actions in the Mapping Expression editor:</p>
+<ul>
+	<li><a href="#basic">Basic Mapping Expression</a></li>
+	<li><a href="#advanced">Advanced Mapping Expression</a></li>
+    <li><a href="#mapSer">Mapping Serializable Types</a></li>
+	<li><a href="#restrictions">Restrictions on identifiers</a></li>
+	<li><a href="#hiddenType">Hidden type mismatch</a></li>
+	<li><a href="#highVar">Variable highlighting</a></li>
+	<li><a href="#completion">Auto completion</a></li>
+	<li><a href="#element">Element content access</a></li>
+	<li><a href="#attributes">Accessing attributes</a></li>
+	<li><a href="#errors">Errors and Warnings</a></li>
+	<li><a href="#help">Help functions</a></li>
+</ul>
+<h4 id="basic">Basic Mapping Expression</h4>
+<p>You can choose the basic mapping expression, if you like to return the
+value of the expression editor directly to the selected message. For example:</p>
+<p class="image"><img src="images/mapping-expression-example-basic.png" 
+alt="Basic Mapping Expression"><br>
+<strong>Figure:</strong> Example for Basic Mapping Expression</p>
+<p>The message field name of the selected message is added automatically on top
+of the mapping field. The value of the expression is returned to that message
+after evaluation.</p>
+<h4 id="advanced">Advanced Mapping Expression</h4>
+<p>The advanced mapping expression editor serves to create a more complex 
+and enter JavaScript code in the editor. For example:</p>
+<p class="image"><img src="images/mapping-expression-example.png" 
+alt="Advanced Mapping Expression"><br>
+<strong>Figure:</strong> Example for Advanced Mapping Expression</p>
+<!-- TODO: to be documented?  <h4>Syntax highlighting</h4>-->
+<h4 id="mapSer">Mapping Serializable Types</h4>
+<p>Perfoming a mapping from a serializable data type message generates 
+an advanced mapping which contains the getter/setter method pertaining to 
+the fieldname. For example:</p>
+<pre>AccountPKTarget.lastname = AccountPKTarget.setLastname(AccountPKSource.getLastname())</pre>
+<p class="image"><img src="images/mapping-ser-example.png" 
+alt="Serializable Data Type Message Mapping Example"><br>
+<strong>Figure:</strong> Serializable Data Type Message Mapping Example</p>
+<h4 id="restrictions">Restrictions on identifiers</h4>
+<p>Note that some identifiers, which can be used in structured data types, are
+not supported in JavaScript. The following identifiers are not supported:</p>
+<ul>
+    <li>identifiers starting with digits (e.g. 1stData),</li>
+    <li>identifiers containing a hyphen or dot (e.g. first-data, first.name),</li>
+</ul>
+<p>whereby underscores, digits or dots not used as first character are supported 
+(e.g. first_data, data1, data.dot).</p>
+<p>In case you use identifiers containing hyphens or dots in JavaScript, you can set
+the identifier in square brackets and quotation marks as a workaround. For example
+as referencing a structured data via <tt>StructData.name.with.dot</tt> would cause an error,
+you could use <tt>StructData["name.with.dot"]</tt> instead. The following screenshot
+shows example mappings using brackets to access structured data containing a dot or a 
+hyphen:</p>
+<p class="image"><img src="images/dot-example.png" 
+alt="Data Type Message Mapping Example"><br>
+<strong>Figure:</strong> Identifier Workaround Mapping Example</p>
+<h4 id="hiddenType">Hidden type mismatch</h4>
+<p>Mapping types, which are different, but which are both represented as <tt>Number</tt>
+in JavaScript, can cause a hidden type mismatch. This can be avoided by using
+the expression <tt>toFixed(0)</tt>.</p>
+<p>For example use the following expression, if you map a structured data 
+element with type <tt>int</tt> to an element with the type <tt>double</tt>:</p>
+<p class="image"><img src="images/type-mismatch-workaround.png" 
+alt="Type Mismatch Workaround"><br>
+<strong>Figure:</strong> Type Mismatch Workaround</p>
+<p>Please refer to the section
+<a href="../../data-integration/structured-data/struct-type-def.html#xsdMapping">Mapping XSD Types</a> of the chapter
+<a href="../../data-integration/structured-data/struct-type-def.html">Defining Structured Types</a> for
+detailed information on how specific XSD types are mapped to JavaScript types.</p>
+<h4 id="highVar">Variable highlighting</h4>
+<p>Selecting a variable will highlight all it occurrences:</p>
+<p>If the highlighted variable is a field of the input message, the corresponding
+tree node in the input message tree is selected without returning the focus to the tree
+and the highlighting of corresponding output message fields is applied. Input 
+message and output message trees are scrolled and expanded as needed.</p> 
+<!--
+<h4>Receiving Proposals for Message Sources</h4>
+<p>Pressing <tt>Ctrl-Space</tt> provides you with a list to choose from all available
+message data, e.g.:</p>
+<p class="image"><img src="images/data-proposal.png" 
+alt="Default Proposals Data"><br>
+<strong>Figure:</strong> Default Proposals for Data.</p>-->
+<h4 id="completion">Auto completion</h4>
+<p>The editor provides auto-completion for available methods as well as parameter definitions.
+Press <tt>Ctrl-Space</tt> to show according proposals.</p>
+<p class="image"><img src="images/code-completion.png" 
+alt="Default Proposals"><br>
+<strong>Figure:</strong> Default Proposals for Methods.</p>
+<p>Choose a function and select enter to add this to your code.</p>
+<h4 id="element">Element content access</h4>
+<p>There are different ways of accessing element content:</p>
+<ul>
+	<li>Directly, e.g.:
+	<pre>message2.header.field[i] = message1.header.field[i];</pre></li>
+	<li>Setting and getting via access with "@...", e.g.:
+	<pre>message2.header.field[i]["@tag"] = message1.header.field[i]["@name"]+"test";
+	message2.header.field[i]["@"] = i+"testcontent";</pre></li>
+	<li>Setting and getting content via setContent/getContent, e.g.:
+<pre>message2.header.field[i].setContent(message2.header.field[i].getContent()+"testcontent");</pre></li>
+</ul>
+<h4 id="attributes">Accessing attributes</h4>
+<p>To access attributes use the usual code completion or access via ["@attributename"], e.g.:</p>
+<pre>message2.trailer.field.attributename = "abc";
+message2.trailer.field["@attributename"] = "def";
+</pre>
+<p>Please note that in the JavaScript expressions, unlike the access paths, 
+the attribute name should not be prefixed with an <tt>@</tt> symbol 
+(except in the <tt>["@attributename"]</tt> form).</p> 
+<h4 id="errors">Errors and Warnings</h4>
+<p>Syntax and other errors in the mapping expression editor are underlined in
+red and highlighted with a status symbol at the beginning of the mapping column:</p>
+<p class="image"><img src="images/error-symbol.png" 
+alt="Error in Mapping Expression"><br>
+<strong>Figure:</strong> Error in Mapping Expression</p>
+<p>Tool tips for syntax problems are provided:</p>
+<p class="image"><img src="images/error-tooltip.png" 
+alt="Error Tool Tip"><br>
+<strong>Figure:</strong> Error Tool Tip</p>
+ 
+<h4 id="help">Help functions</h4>
+<p>Moving the mouse over a function, variable or field, will invoke a window
+with information derived from the Javadoc for functions and fields. Selecting
+<strong>F2</strong> will pin this window.<!-- TODO?? --></p>
+<p class="image"><img src="images/mapping-expression-help-funct.png" 
+alt="Showing Information about a Function."><br>
+<strong>Figure:</strong> Showing JavaDoc Information.</p>
+
+
+<h2 id="serviceClasses">Adding and Removing Service Classes</h2>
+<p>You have the option to add instances of classes, which reside 
+in the classpath, to the Message Transformation Application context.</p>
+
+<p>Beside the <strong>Advanced Mapping</strong> checkbox, you find a button 
+<strong>External Classes...</strong>. Click this button to add or 
+remove external classes.</p>
+<p class="image"><img src="images/configure-classes-button.png" 
+alt="Configure External Classes"><br>
+<strong>Figure:</strong> Configure External Classes</p>
+<p>A dialog opens showing all classes that are already added
+ and allows you to add and remove classes.</p>
+<p class="image"><img src="images/configure-dialog.png" 
+alt="Configure Dialog"><br>
+<strong>Figure:</strong> Configure External Classes Dialog</p>
+<p>The classes are displayed within a table. Each class is displayed in a row in two columns, 
+whereby the first column shows the name of the instance and
+ the second column shows the name of the class.</p>
+<p>To add a class, click the <strong>Add</strong> button. A dialog opens, where
+you can browse to your class.</p>
+<p class="image"><img src="images/browse-external-class.png" 
+alt="Browse to Class"><br>
+<strong>Figure:</strong> Browse to the class to add.</p>
+<p>A default name which derives from the class name is added in the
+<strong>Instance Name</strong> field. To change this name enter another
+name in this field. Please note that the name has to be unique. To avoid name clashes, the already
+defined In- and Out messages and already defined external classes are checked. In case
+the name is not unique, this is indicated with an error icon at the right side
+of the <strong>Instance Name</strong> entry.</p>
+<p class="image"><a href="images/error-name-not-unique_orgSize.png" target="_blank">
+<img src="images/error-name-not-unique.png" 
+alt="Naming Error"></a><br>
+<strong>Figure:</strong> Error indicating non-unique Name.</p>
+<p>To remove a class from context, select it in the table and click the <strong>Remove</strong> button.</p>
+<p class="image"><img src="images/remove-classes.png" 
+alt="Remove Classes"><br>
+<strong>Figure:</strong> Remove Classes from Context.</p>
+
+<h3>Validation</h3>
+<p>If a class or a jar file carrying one or more classes is removed from the class path, they disappear from
+the type system as well. That means that message transformations which are created based on the presence
+of such classes get invalid. This invalidity is reflected in the user interface within 
+the <strong>Problem View</strong>, which
+contains a corresponding warning entry, informing that the JavaScript used in a specific 
+Message Transformation Application is not valid.</p>
+<p class="image"><img src="images/validation-warning.png" 
+alt="Validation Warning"><br>
+<strong>Figure:</strong> Validation Warning</p>
+<p>To remove such warning do one of the following:</p>
+<ol>
+    <li>Making sure that the referenced classes appears in the classpath again.</li>
+    <li>Removing mapping expressions which make use of the missing classes.</li>
+</ol>
+<p><strong><span class="tip">! </span>Tip:</strong>
+To directly edit the property dialog of the according message transformation application,
+double-click on the warning entry.</p>
+
+<p>An error sign indicates a missing class reference for each class in 
+the <strong>Configure External Classes</strong> dialog. Additionally an error message is displayed in the
+lower part of the dialog, informing that at least one external reference is not 
+satisfied. It suggest to fix the classpath or to remove the reference.</p>
+<p class="image"><img src="images/missing-class-error.png" 
+alt="Error Message"><br>
+<strong>Figure:</strong> Error Message indicating Missing Classes.</p>
+
+<p>Now code completion is provided on those service classes. The message transformation 
+application type recognizes these classes and their methods.</p>
+
+<p class="image"><img src="images/classes-code-completion.png" 
+alt="Code Completion"><br>
+<strong>Figure:</strong> Available Code Completion</p>
+
+<h2 id="retry">Configuring Retry Mechanism</h2>
+
+<p> The configurable retry mechanism provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+
+<p>For more information, please refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+
+<p>For example, you have added an application to the model.
+In the Property page of the application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+
+<p class="image"><img src="images/transformretry.png" alt=""><br>
+
+
+<script>
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

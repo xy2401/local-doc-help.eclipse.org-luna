@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Retrieving Configuration Variables</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Controlling Daemon Execution",
+      "pg-embed-logging.html","pg-embed-daemons.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Retrieving Configuration Variables</h1>
+<p>This chapter contains the following subjects describing
+methods provided by the <strong>AdministrationService</strong>
+ to retrieve configuration variables and
+ save their changed values:</p>
+<ul>
+    <li><a href="#retrieveM">Retrieving Configuration Variables From a Given Model</a></li>
+    <li><a href="#retrieveI">Retrieving Merged Configuration Variables From Models</a></li>
+    <li><a href="#save">Saving Changes to Configuration Variables Values</a></li>
+</ul>
+<p>Please also refer to the section <a href="../pg-embedded-3.htm#adminservice">AdministrationService</a>
+of the chapter <a href="../pg-embedded-3.htm">Stardust Services</a> for information
+on this service and the according Javadoc of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a>
+for detailed information on its methods and their parameter usage.</p>
+<p>The <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/preferences/configurationvariables/ConfigurationVariables.html">
+ConfigurationVariables</a> data transfer object contains 
+the merged information from the preference store and the static model data like
+description or default value.</p>
+<h2 id="retrieveM">Retrieving Configuration Variables From a Given Model</h2>
+<p>To retrieve configuration variables from a given model without password type,
+use the following method:</p>
+<pre>ConfigurationVariables getConfigurationVariables(byte[] model);</pre>
+<p>Hereby, <tt>model</tt> describes the model XML representation in byte array form.
+The method returns a <tt>ConfigurationVariables</tt> object containing 
+only the configuration variables from the given model without password type.</p>
+<h2 id="retrieveI">Retrieving Merged Configuration Variables From Models</h2>
+<p>The following functionality is available to retrieve merged configuration
+variables:</p>
+<ul>
+   <li><a href="#obj">Retrieving an object of Merged Configuration Variables</a></li>
+   <li><a href="#objpwd">Retrieving an object of Merged Configuration Variables with Password Type</a></li>
+	<li><a href="#list">Retrieving a List of Merged Configuration Variables Objects</a></li>
+</ul>
+<h3 id="obj">Retrieving an object of Merged Configuration Variables</h3>
+<p>To retrieve an object of merged configuration variables from all models 
+matching a specified modelId without password type, use the method:</p>
+<pre>ConfigurationVariables getConfigurationVariables(String modelId, boolean all);  </pre>
+<p>The contained descriptions and default values are taken from the 
+newest model version the configuration variable exists in.</p>
+<p>The parameter <tt>modelId</tt> determines the model ID of the model(s) 
+to retrieve the configuration variables from. Parameter <tt>all</tt> indicates if 
+to fetch all configuration variables, including the password type.
+The method returns a <tt>ConfigurationVariables</tt> object containing 
+the merged configuration variables from all model versions.</p>
+<h3 id="objpwd">Retrieving an object of Merged Configuration Variables with Password Type</h3>
+<p>To retrieve an object of merged configuration variables from all models 
+matching a specified modelId without password type, use the method:</p>
+<pre>ConfigurationVariables getConfigurationVariables(String modelId);  </pre>
+<p>The contained descriptions and default values are taken from the 
+newest model version the configuration variable exists in.</p>
+<p>The parameter <tt>modelId</tt> determines the model ID of the model(s) 
+to retrieve the configuration variables from.
+The method returns a <tt>ConfigurationVariables</tt> object containing 
+the merged configuration variables from all model versions.</p>
+<h3 id="list">Retrieving a List of Merged Configuration Variables Objects</h3>
+<p>To retrieve a list of objects of merged configuration variables from 
+all models matching a list of specified modelIds (without password type), use the method:</p>
+<pre>List&lt;ConfigurationVariables&gt; getConfigurationVariables(List&lt;String&gt; modelId);  </pre>
+<p>The contained descriptions and default values are taken from the 
+newest model version the configuration variables exists in.</p>
+<p>The parameter <tt>modelId</tt> determines a list of model IDs of the models 
+to retrieve the configuration variables list from.
+The method returns a list of <tt>ConfigurationVariables</tt> objects containing 
+the merged configuration variables from all model versions.</p>
+<h2 id="save">Saving Changes to Configuration Variables Values</h2>
+<p>In case you like to save changes to configuration variables values,
+use:</p>
+<pre>void saveConfigurationVariables(ConfigurationVariables configurationVariables, boolean force);</pre>
+<p>The parameter <tt>configurationVariables</tt> declares the 
+configuration variables containing changed values. Via <tt>force</tt> you
+can determine if validation warnings should be ignored or not.
+The required permission to execute this method is 
+<strong>saveOwnPartitionScopePreferences</strong>.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

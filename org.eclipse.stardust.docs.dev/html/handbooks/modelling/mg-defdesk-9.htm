@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Working with Data Paths</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Modeling the Organizational Structure","mg-defdesk-8.htm","mg-defdesk-10.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working with Data Paths</h1>
+<p>Data paths are a way to define read and write accessors to workflow data of a process instance.
+You can use data paths programmatically during runtime via the provided
+<a href="../programming/embed/pg-embedded-3.htm#workflowservice">WorkflowService</a>. Please
+refer to the chapter <a href="../programming/embed/pg-embedded-3.htm">Stardust Services</a> for
+detailed information on the embedded usage of Stardust services.
+If defined as
+<a href="#descriptors">descriptors</a>, data paths can be also used to visualize
+process data in the Stardust Portals.
+Note that only data paths defined as descriptors are
+visible in the Stardust Portals.
+</p>
+<ul>
+   <li><a href="#create">Creating Data Paths for Process Definitions</a></li>
+   <li><a href="#descriptors">Setting Descriptors</a></li>
+   <li><a href="#key">Using Key Descriptors</a></li>
+</ul>
+<h2 id="create">Creating Data Paths for Process Definitions</h2>
+<p>To add a data path, select <strong>Data Path</strong> in the <strong>Overview</strong>
+tree on the left side of the properties dialog pertaining to the chosen process
+definition. In the right pane, click the <strong>Add</strong> button.</p>
+<p class="image"><img src="images/add-data-path-proc.png"
+    alt="Creation of a Data Path"><br>
+<strong>Figure:</strong> Adding a Data Path</p>
+<p>The Data Path property pane opens.</p>
+<p class="image"><img src="images/data-path-proc.png"
+    alt="Creation of a Data Path"><br>
+<strong>Figure:</strong> Adding a Data Path</p>
+<p>You can specify the following attributes:</p>
+<ul>
+    <li>An ID uniquely identifying the data path <br>
+        (Please note that IDs containing hyphens, blanks or dots and IDs starting
+        with digits are not supported.)</li>
+    <li>A human readable name</li>
+    <li>A direction - IN direction is for read access, OUT direction for
+    write access</li>
+    <li>Modeled as a <a href="#descriptors">descriptor</a> or not</li>
+    <li>The referenced workflow data</li>
+    <li>An access path to the data</li>
+</ul>
+<h2 id="descriptors">Setting Descriptors</h2>
+<p>To define a descriptor for a process definition, select the
+<strong>Descriptor</strong> radio button in the properties page.
+By default, <strong>Not a descriptor</strong> radio button is selected.
+Then select a data to use as the process data.
+Note that timestamp data types like <tt>datetime</tt>, <tt>date</tt> and <tt>time</tt>
+are currently not supported as descriptors. It is also recommended to avoid using
+Object types like Serialization, Entity Bean or Hibernate as this can lead to performance
+problems during queries.</p>
+<p class="image"><img src="images/mg-set-descriptor.png"
+    alt="Define a Data Path as Descriptor."><br>
+<strong>Figure:</strong> Define a Data Path as Descriptor.</p>
+<ul>
+   <li><a href="#sub">Descriptors and Subprocesses</a></li>
+   <li><a href="#use">Descriptor Use Cases</a></li>
+   <li><a href="#count">Providing the total Count of attached Documents as Descriptor</a></li>
+</ul>
+<h3 id="sub">Descriptors and Subprocesses</h3>
+<p>Process descriptors attached to a main process do not apply to its sub-processes.
+If you like to apply the same descriptor, you have to set it explicitly for the
+sub-process itself.</p>
+<h3 id="use">Descriptor Use Cases</h3>
+<p>A data path defined as descriptor can be used in the Stardust Portal
+to visualize data relevant for work items in a participant's worklist or to filter
+displayed entries by these values, for example:</p>
+<ul>
+    <li>In the 
+		<strong>Workflow Execution Perspective</strong> to visualize data or to
+        filter by data values.
+		<p class="image"><img src="images/mg-descriptor-pp-example.png"
+		alt=""><br>
+		<strong>Figure:</strong> Descriptors used as Filter in the Workflow Execution Perspective</p></li>
+	<li>In the 
+		<strong>Business Control Center Perspective</strong> to visualize data, filter process instances
+        by relevant data in the Process Search view, differentiate process instances
+        in the Gantt Chart view or group by data values in the Traffic Light view.
+		<p class="image"><img src="images/mg-descriptor-bcc-example.png"
+   		 alt="BCC - Process Search View"><br>
+		<strong>Figure:</strong> Descriptors used as Filter in the Process Search View</p></li>	  
+	    <li>In the 
+		<strong>Administration Perspective</strong> to visualize data or to
+        filter by data values.
+		<p class="image"><img src="images/descriptor-ap-example.png"
+    	alt="Administration Perspective"><br>
+		<strong>Figure:</strong> Descriptors indicated in the Administration Perspective</p></li>
+</ul>
+<h3 id="count">Providing the total Count of attached Documents as Descriptor</h3>
+<p>You have the option to provide the total count of attached documents for a
+process definition as descriptor. To make the number of attached documents
+available as descriptor perform the following steps:</p>
+<ol>
+   <li>Make sure the 
+   <strong>Process Supports Attachments</strong> option is selected for your process.
+   Please refer to section <a href="mg-defdesk-3.htm#attachments">Process Attachments</a> 
+   in chapter <a href="mg-defdesk-3.htm">Working with Process Definitions</a> for details
+   on how to support process attachments in your process.
+   <p class="image"><img src="images/sel-process-attach.png" alt=""></p></li>
+   <li>Add a new In-data path</li>
+   <li>Select <strong>Direction</strong> <tt>IN</tt></li>
+   <li>Select <strong>Descriptor</strong></li>
+   <li>In the <strong>Data</strong> drop-down list select 
+   <strong>Process Attachments</strong>
+   <p class="image"><img src="images/proc-attach-descriptor.png" alt=""></p></li>
+   <li>Click <strong>Browse</strong> to select the Data Path</li>
+   <li>In the Data Path dialog select the predefined access point 
+   <strong>documentCount</strong>
+   <p class="image"><img src="images/proc-attach-descriptor-path.png" alt=""></p></li>
+</ol>
+<p>Now the count of process attachments is displayed for processes in the 
+<strong>Descriptor</strong> columns in your Portal process tables, e.g.:</p>
+<p class="image"><img src="images/proc-attach-count-result.png" alt="Document count"><br>
+<strong>Figure:</strong> Document count displayed as descriptors in a Process Table</p>
+
+<h2 id="key">Using Key Descriptors</h2>
+<p>The key descriptor allows designating special descriptors which helps in searching 
+related processes with matching key descriptors.
+To define a key descriptor for the process definition, select the <strong>Key Descriptor</strong> radio button.
+</p>
+<p>
+For more information, please refer to the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/case-concept.html#cdesc">Case Descriptors </a>section of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/case-concept.html#cdesc">Case - Grouping Processes</a> chapter
+of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/key-concepts.html">
+Concepts</a> handbook.
+</p>
+ <p class="image"><img src="images/key-desc.png"
+    	alt="Key Descriptor"><br>
+		<strong>Figure:</strong> Defining Key Descriptor</p>
+<p>When defining key descriptors following rules are applied for IN data path as well as OUT data path:
+</p>
+<ul>
+	<li>the data used in descriptor should be of primitive type with no data path defined
+	<p>OR</p></li>
+	<li>the data used in descriptor should be structured data which is indexed. 
+	 It should have the data path defined which results into java primitive type.
+</li>
+</ul>
+<h3>Key Descriptors in the Stardust Portal - Use Cases</h3>
+<ul>
+	<li>The data path defined as key descriptor can be used in the Stardust Portal to search for related joined processes or
+	cases. For more information, please refer to chapter 
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/related-process-search.html">
+	Searching for related Processes or Cases</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook.</a></li>
+	<li>In case, you have defined <strong>LastName</strong> and <strong>TaxID</strong> as key descriptors for a process definition. 
+	In the <strong>Workflow Execution Perspective</strong> of that process definition, LastName and TaxID can be set as columns.
+   <p class="image"><img src="images/select-columns-keyde.png"
+    	alt="Key Descriptor"><br>
+		<strong>Figure:</strong> Select Columns - Key Descriptor</p></li>
+	<li>The value provided for the key descriptor gets displayed under the column LastName and TaxID.
+	<p class="image"><img src="images/key-desc-column.png"
+	    	alt="Key Descriptor Columns"><br>
+			<strong>Figure:</strong> Key Descriptor Columns - Last Name and TaxID</p></li>
+	<li>Similarly, in the <strong>Business Control Center Perspective</strong>, you can view the key descriptor 
+	value of the searched processes.</li>
+</ul>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

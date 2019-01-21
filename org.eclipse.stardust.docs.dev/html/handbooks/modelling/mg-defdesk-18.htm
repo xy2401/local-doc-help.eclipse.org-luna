@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Debugging Process Definitions</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Native Language Support",
+        "mg-deploy-model.html","mg-internationalization.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Debugging Process Definitions</h1>
+<p>Process definitions can be - even before they have been deployed -
+debugged in the modeling environment. To work with the debugger change to the
+debug perspective by choosing <strong>Window</strong> &gt; <strong>Open
+Perspective</strong> &gt; <strong>Other...</strong> and from the list select the 
+<strong>Test Perspective</strong> perspective.</p>
+<p>It is only possible to debug your model if it is consistent. A
+consistency check will be performed automatically with the start of the
+debugger. Note that the model should not be changed during debugging, because
+the engine will not notice a model change after the debugging started.</p>
+<h3>Debugging Spring Bean Applications</h3>
+<p>Please note that if you debug spring bean applications you need to set up
+an extra configuration file, as described in the chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/debugging.html"> Debugging
+Spring Bean Applications</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/toc.html"> Spring
+Integration Guide</a>.</p>
+<h2>Starting the Debugger</h2>
+<p>There are several possibilities to start the debugger:</p>
+<ul>
+    <li><a href="#d_config">from the main menu by setting up a
+    configuration</a></li>
+    <li><a href="#d_noconfig">from the main menu with the predefined
+    configuration</a></li>
+    <li><a href="#d_diagram">from the diagram</a></li>
+    <li><a href="#d_outline">from the outline view</a></li>
+</ul>
+<h4 id="d_config">Starting the Debugger by setting up a Configuration</h4>
+<p>In the main menu select the debug icon (the green bug) and choose <strong>Open
+Debug Dialog...</strong> from the pull-down menu.</p>
+<p class="image"><img src="images/debug-open-debug-dialog.png"
+    alt="Open the Debug Dialog"> <br>
+<strong>Figure:</strong> Open the Debug Dialog</p>
+<p>A dialog comes up in which you set the configurations for your debug
+application. To create a new debug configuration:</p>
+<ol>
+    <li>Select <strong>Process Model</strong> on the left side of
+    the dialog.</li>
+    <li>Click the new configuration icon <img
+        src="images/debug-config-icon.png" alt="">.</li>
+    <li>Choose the <strong>Main</strong> tab and fill in the name for the
+    debug configuration, the project name, the model name and the process you
+    want to debug.</li>
+    <li>Click <strong>Apply</strong>.</li>
+</ol>
+<p class="image"><a href="images/mg-debug-config_orgSize.png"
+    target="_blank"> <img src="images/mg-debug-config.png" alt=""></a> <br>
+<strong>Figure:</strong> Debugger Configurations</p>
+<p>Now press the <strong>Debug</strong> button.</p>
+<h4 id="d_noconfig">Starting the Debugger with the predefined
+Configuration</h4>
+<p>In the main menu select the debug icon and choose <strong>Debug
+As &gt; Debug Process Model</strong> from the pull-down menu.</p>
+<p class="image"><img src="images/mg-start-debug-1.png" alt=""> <br>
+<strong>Figure:</strong> Starting the Debugger with predefined Configuration</p>
+<h4 id="d_diagram">Starting the Debugger from the Diagram</h4>
+<p>In the open diagram of your process right-click the canvas and select <strong>Debug</strong>
+from the context menu.</p>
+<p class="image"><img src="images/mg-start-debug-2.png"
+    alt="Starting the Debugger from the Diagram"> <br>
+<strong>Figure:</strong> Starting the Debugger from the Diagram</p>
+<h4 id="d_outline">Starting the Debugger from the Outline View</h4>
+<p>In the Outline View right-click the process to debug and select <strong>Debug</strong>
+from the pop-up menu.</p>
+<p class="image"><img src="images/mg-debug.png"
+    alt="Starting the Debugger from the Outline View"> <br>
+<strong>Figure:</strong> Starting the Debugger from the Outline View</p>
+<h2>The Debug Perspective</h2>
+<p>The Debug Perspective is supplemented with several views to work with:</p>
+<ul>
+    <li>the <a href="#debugView">Debug view</a></li>
+    <li>the <a href="#worklist">Process Worklist view</a></li>
+    <li>the <a href="#breakpoints">Breakpoints view</a></li>
+    <li>the <a href="#variableView">Variables view</a></li>
+    <li>the <a href="#diagram">Diagram view</a></li>
+    <li>and a <a href="#sourceView">Source view</a></li>
+</ul>
+<p class="image"><a href="images/mg-defdesk-debug-1_orgSize.png"
+    target="_blank"> <img src="images/mg-defdesk-debug-1.png" alt=""></a>
+<br>
+<strong>Figure:</strong> The Debug Perspective</p>
+<h3 id="debugView">The Debug View</h3>
+<p>This view allows you to manage the debugging or running of a process of
+your workflow. It displays the stack frame for the suspended <a
+    href="../../concepts/workflow-basics/mg-basics-13.htm#activityThread">activity threads</a> for each target
+you are debugging. Each thread in your process appears as a node in the tree. If
+the thread is suspended, its stack frames are shown as child elements.</p>
+<p>To resume the execution of a suspended thread, select the thread or its
+stack frame. Click the <strong>Resume</strong> button (the green arrow) in the
+toolbar or press the F8 key. The thread resumes its execution, and stack frames
+are no longer displayed for the thread.</p>
+<p>For more detailed information on the <strong>Debug</strong> view, refer
+to the Eclipse Help.</p>
+<p class="image"><a href="images/mg-defdesk-debug-2_orgSize.png" target="_blank">
+<img src="images/mg-defdesk-debug-2.png" alt=""></a><br>
+<strong>Figure:</strong> The Debug View</p>
+<h3 id="worklist">The Process Worklist View</h3>
+<p>The <strong>Worklist</strong> view is grouped by the <a
+    href="../../concepts/workflow-basics/mg-basics-9.htm">participants and users</a>, who perform the
+interactive activity instances. When the debugger starts the process execution,
+activities are instantiated. If the execution of the process instance arrives at
+an interactive activity which is assigned to a performer - a role, an
+organization, a user or a user group - a work item representing an instance of
+this activity is added to the worklist tree of this performer.</p>
+<p>You can activate the current activity instance either by double-clicking
+on its symbol or by clicking on the red-gear icon in the toolbar. In the tree
+all the roles that already performed activities remain visible.</p>
+<p class="image"><img src="images/mg-defdesk-debug-3.png"
+    alt="The Process Worklist View"> <br>
+<strong>Figure:</strong> The Process Worklist View</p>
+<h3 id="breakpoints">The Breakpoints View</h3>
+<p>The Breakpoints view lists all the breakpoints you have set in the
+workbench projects. You can double-click a breakpoint to display its location in
+the editor. In this view, you can also enable or disable breakpoints, delete
+them, or add new ones. For more detailed information on working with breakpoints
+refer to the Eclipse Help.</p>
+<p class="image"><img src="images/mg-debug-breakpoints.png" alt=""> <br>
+<strong>Figure:</strong> The Breakpoints View</p>
+<h3 id="variableView">The Variable View</h3>
+<p>In the <strong>Variables</strong> view you can examine the contents of
+your process variables and data values. For more detailed information on
+debugging variables refer to the Eclipse Help.</p>
+<p class="image"><img src="images/mg-defdesk-debug-variables.png" alt="">
+<br>
+<strong>Figure:</strong> The Variables View</p>
+<h3 id="diagram">The Diagram View</h3>
+<p>In the <strong>Diagram</strong> view of the debugger you can visually
+follow the process of your debugging. Likewise, the <a
+    href="model-views/views-diagrams.html">diagrams</a> in the <strong>Workflow</strong>
+perspective a graph of activities and its connections is displayed. In this view
+the activities get different colors depending on their current state.</p>
+<p>When an activity is in suspended mode, its border is yellow. As soon as
+it is selected the border becomes blue.</p>
+<p class="image"><img src="images/mg-debug-activity-modes.png" alt="">
+<br>
+<strong>Figure:</strong> States of Activities shown in different Border Colors</p>
+<p>After the activity is completed, its border becomes green and the
+activity to be executed next becomes yellow bordered. Proceeding the next
+activity by pushing the green arrow button or double-clicking on it in the 
+<strong>Process Worklist</strong> will process the data and load the dialog 
+representing the successive interactive activity.</p>
+<p class="image"><img src="images/mg-debug-activity-modes-2.png" alt="">
+<br>
+<strong>Figure:</strong> A Completed and a Suspended Activity</p>
+<p></p>
+<h3 id="sourceView">The Source View</h3>
+<p>The <strong>Source</strong> view opens the source code of the class you
+are using in your process and where you have set breakpoints. You have the
+possibility to step through the code in this view. See section <a
+    href="#javaCodeStep">Debugging Java Code</a> for information about debugging
+your Java code.</p>
+<h3 id="javaCodeStep">Debugging Java Code</h3>
+<p>If you want to debug Java code you call for example in a Plain Java
+Application. You can set breakpoints in this code (see also the <a
+    href="#breakpoints">Breakpoint View</a>). The debugger will stop
+there and open the code in the <a href="#sourceView">Source View</a>, so that
+you can step through it. Thus, you have the possibility to view your process
+variables in the <a href="#variableView">Variable View</a>.</p>
+<p>For more detailed information on stepping through the execution of a Java
+program, refer to the Eclipse Help.</p>
+<p class="image"><a href="images/mg-debug-breakpoint-java_orgSize.png" target="_blank">
+<img src="images/mg-debug-breakpoint-java.png" alt=""></a>
+<br>
+<strong>Figure:</strong> Stepping through your Java Code</p>
+<p>Please notice that it is not recommended to suspend the VM, because the
+Stardust debugger works with internal communication breakpoints and by
+suspending you would stop all threads.</p>
+<h3>Starting and stopping the Debugger</h3>
+<p>To start the debugging you can either:</p>
+<ul>
+    <li>In the <a href="#debugView">Debug view</a>, select the activity
+    instance to start with and press the green arrow button in the toolbar.</li>
+    <li>In the <a href="#worklist">Process Worklist View</a> view, double-click the
+    activity in the tree.</li>
+</ul>
+<!-- TODO: to be clarified 
+<p>Having arrived at the last activity in process there remains a simulated
+workflow thread in the <a href="#debugView">Debug view</a> to make it possible
+to review your process variables. To complete the process, press the green <strong>Resume</strong>
+button in the toolbar. By using the red square button in the toolbar you can
+exit the Debugger any time.</p>-->
+<p>You can debug not only linear processes but also processes with splits
+and joins and even subprocesses.</p>
+<p>Be aware that it is only possible to debug one process.</p>
+<!-- to be clarified <p class="image"><img src="images/mg-debug-terminate.png" alt=""> <br>
+<strong>Figure:</strong> Exiting the Debugger</p>-->
+
+<h2 id="debug">Debugging in Multi-model Environment</h2>
+<p>You can debug models with provider and consumer 
+relationship.
+Once you start the debugger in the consumer model, the debugger traverse from consumer model
+to the provider model. Once the debugging of the provider model is over the debugger returns to the consumer model. 
+If a cross-model reference cannot be resolved during debugging, because the provider model 
+is not available, an error message is displayed. 
+The debugger also supports dynamic subprocess binding.</p>
+
+<p>In cases where several model versions apply for invocation in the debugger
+(for example, if there are several versions of the model implementing the process interface to be invoked), 
+the debugger proceeds as follows:</p>
+<ul>
+
+	<li>If exactly one model implementing a process interface to be invoked is opened in the editor, this model is used.</li>
+	<li>If several models implementing a process interface to be invoked is opened in the editor, 
+	the user is prompted to select among these.</li>
+	<li>If none of the model implementing a process interface to be invoked are opened in the editor, 
+	the user is prompted to select all models in the eclipse workspace that are providing implementations for the process interface.</li>
+</ul>
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

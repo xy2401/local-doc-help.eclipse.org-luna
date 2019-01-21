@@ -1,0 +1,91 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %provider
+Bundle-Localization: plugin
+Bundle-Name: %bundleName
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.profiling.docs;singleton:=
+ true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 1.0.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/User-Guide.html
+SHA1-Digest: ZiSi9afuvLdp1I5YdnHJzW3gQv0=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: META-INF/maven/org.eclipse.linuxtools.profiling/org.eclipse.linu
+ xtools.profiling.docs/pom.properties
+SHA1-Digest: ReAzWI/LBQBBPMImSqz8xHE5Sd0=
+
+Name: plugin.properties
+SHA1-Digest: sVdRBoIPVzvrnQS1hgA9tOHN9PA=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsProfil
+ ingProperties.png
+SHA1-Digest: gFyt2xiOo70g7QuJQLfV6UhFCLU=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsMemory
+ ProfilingTab.png
+SHA1-Digest: tNy4AoIvViM+n845bI+QWyU43rg=
+
+Name: toc.xml
+SHA1-Digest: LQEc02pyCyypnelcrNcLo3/hG8c=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsProfil
+ ingPreferences.png
+SHA1-Digest: oZ8gDVOEk8Fm9xb2gPyLf8YH4WM=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsProfil
+ ingNewIcon.png
+SHA1-Digest: VURxcNTpAsKVShazYVTQJh0KcgM=
+
+Name: contexts_PROFILING.xml
+SHA1-Digest: lcC5YN8Vk7u6iM2WkUkAOyiCqpc=
+
+Name: help.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsProfil
+ ingConfigurations.png
+SHA1-Digest: I97sArd64/6jwX+FGzMcu8HVKVg=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/images/LinuxToolsMultip
+ leProfilingConfigs.png
+SHA1-Digest: mjB3cGvzFq7xgwXAksPgE0hJNQ0=
+
+Name: META-INF/maven/org.eclipse.linuxtools.profiling/org.eclipse.linu
+ xtools.profiling.docs/pom.xml
+SHA1-Digest: /ZlhT9C7WzgyweKt7C0oF8PYswM=
+
+Name: plugin.xml
+SHA1-Digest: KaF3kMFMKXsbRv5CBflOvTQ/Sgk=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/Profiling-Configuration
+ s.html
+SHA1-Digest: qgsMETfRVMUjBKVCMGfXYfFi8JA=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/Updating-This-Document.
+ html
+SHA1-Digest: 7B+liRU86oPnEXZA6gBpbW/9xUo=
+
+Name: Linux_Tools_Project/Profiling/User_Guide/Profiling-Categories.ht
+ ml
+SHA1-Digest: mC4/Feyzd7I0MfPULbmokqyWRDU=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+

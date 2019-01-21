@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Common Usage Pattern</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Using Elements from Other Process Models",
+		"creating-ref-models.html","using-elements.html",
+		"../key-concepts.html","Concepts",
+		"multi-model.html","Multi Model Audit Trail Setups");
+ -->
+</script>
+<h1>Common Usage Pattern</h1>
+<p>With no option to deploy different models in one audit trail, you have the
+following restrictions:</p>
+<ul>
+   <li>Separate models are required to describe each business process flow</li>
+   <li>Using model elements from other models is only possible by copying the required model elements</li>
+</ul>
+<p>The concept of deploying several different models allows:</p>
+<ul>
+	<li>Maintaining the library of processes</li>
+	<li>Referencing and using the same process in multiple models (and at runtime the same can be invoked in other processes as sub-process)</li>
+	<li>Deploying multiple models with references to each other in one audit trail database</li>
+</ul>
+<p>The following organization scenario explains how Stardust can 
+help you reduce the efforts of modeling same process flows frequently.</p>
+
+<p>The Financial System organization caters to different needs of customers such as Opening Accounts,
+Issuing Credit Cards, Loans, Insurance etc.
+Different business process flows are defined for each of these segments.
+In each of the process flow, one process is common and that is taking customer information.</p> 
+
+<p>To avoid creation of the same process, the organization has decided to use the same process 
+in all the other processes where customer information is needed. Here is the twist. They had to either copy the process 
+in all the other process flows or create similar process in all other processes.
+Using Stardust, they can use the same process in all the other processes.</p>
+
+<p>To achieve this, the Financial System organization can have the following approach to create the models:</p>
+<ul>
+	<li><a href="#base">Base Libraries</a> - Base libraries with 
+	data structures, applications and 
+	process definitions.</li>
+	<li><a href="#skeleton">Process Skeletons</a> - Typical process 
+	skeletons, where parts like 
+	sub-process definitions or applications might be overwritten in a 
+	concrete deployment scenario.</li>
+	<li><a href="#subproc">Specific Implementations </a> - specific implementations for sub-processes used in process skeletons</li>
+	
+</ul>
+<h2 id="base">Business Case 1: Base Libraries</h2>
+<p>This section describes the common usage pattern for models serving as
+base libraries with structured types,
+applications and process definitions.</p>
+<h3>Goal</h3>
+
+<p>This use case identifies the structured types, applications and processes in the workflow 
+of Financial System that can be used and hence referenced from any different model. 
+The created model should act as the library of the structured type and processes of the Financial System.</p>
+<h3>Business Scenario</h3>
+<p>The Financial System has identified the common process used in all the other processes. This common process
+is Collect Customer Information. </p>
+<h3 id="eu1">Example Usage</h3>
+<p>To reference Collect Customer Information process from all the other processes, you need
+to create a provider model and define the process interface in it.</p>
+
+<ul>
+
+	<li>Define a structured data named Customer Information and Email Address</li>
+	<li>Define a process definition named Collect Customer Information</li>
+	<li>Define mail application named Send Notification Mail</li>
+	<li>For the Collect Customer Information process, define a process interface as Provides Process Interface with IN/OUT parameter 
+	for Customer Information data.</li>
+	
+</ul>
+
+<p>The provider model should look like as shown in the following screenshot:</p>
+<p class="image"><img src="images/usecaseprovider.png" alt=""> <br>
+<strong>Figure: Provider Model</strong> </p>
+<p>We have created only a library of structured type, process definition and application.</p>
+<p>For step-by-step instructions, please refer to the
+
+<a href="../../tutorial/multi-model-env/create-provider-model.html">Creating a Provider Model
+</a> tutorial.
+
+ </p>
+<h3>Summary</h3>
+<p>
+The created application, structured type and process definition can be referenced from other models. 
+Thus, the created model becomes provider for other models. The next use case describes how it works as a provider. 
+
+</p>
+
+<h2 id="skeleton">Business Case 2: Process Skeletons</h2>
+<p>This section describes the usage pattern for typical process 
+skeletons, where parts like	sub-process definitions or structured type 
+might be overwritten in a concrete deployment scenario.</p>
+
+<h3>Goal</h3>
+<p>This use case explains how an existing process - Bank Loans - uses already established process 
+definition defined in Financial System. In a way, references the process defined in another model.
+</p>
+<h3>Business Scenario</h3>
+<p>
+As the Financial System has identified the Collect Customer Information process, its another 
+business unit - Bank Loans - is ready to use it in their workflow process.   
+</p>
+<h3>Example Usage</h3>
+<p>In the Bank Loans 
+process flow, you have to reference the existing Collect Customer Information process and the Customer Information structured type.</p>
+<ul>
+
+	<li>From the Bank Loans process, create a file connection to the provider model which has Collect Customer Information process </li>
+	<li>Drag and drop the Collect Customer Information process and the Customer Information data in the Bank Loans process</li>
+	<li>Rename the Customer Information structured data to CustomerData</li>
+	<li>Provide the In and Out data mappings for the referenced sub-process - Collect Customer Information and CustomerData</li>
+	
+</ul>
+<p>The consumer model should look like as shown in the following screenshot:</p>
+<p class="image"><img src="images/usecaseconsumer.png" alt=""> <br>
+<strong>Figure: Consumer Model</strong> </p>
+<p>For step-by-step instructions, please refer to the
+
+<a href="../../tutorial/multi-model-env/create-consumer-model.html">Creating a Consumer Model
+</a> tutorial.
+
+ </p>
+<p> A file connection establishes the provider and consumer relationship
+between the base library model and the existing Bank Loans process.
+  
+Once the customer specifies the required loan amount, the Collect Customer Information process
+is triggered. This process is provided by the provider model and we have just referenced it in the consumer model.
+Thus, the Financial System could use the already defined process in another model.
+</p>
+
+<h3>Summary</h3>  
+<p>The referenced process from the provider model
+becomes the sub-process in the consumer model.</p>
+
+
+<h2 id="subproc">Business Case 3: Specific Implementations</h2>
+<p>In this section, specific implementations for sub-processes  
+used in process skeletons are described. To understand the concept, please refer to the <a href="multiple-impl.html#primary">Primary Implementation</a> 
+section of the chapter <a href="multiple-impl.html">Multiple Implementations</a>
+of the Concepts book.</p>
+<h3>Goal</h3>
+<p>
+This use case explains that due to certain new bank policies some modifications are required in
+the way customer information is collected. Currently, the Bank Loans process uses the process Collect Customer
+Information. The implementation of the Collect Customer Information process needs to be adjusted according to changed business
+ needs.</p>
+<h3>Business Scenario</h3>
+<p>
+As per new policy, while collecting the customer information the background of that customer should be verified.
+If the customer comes out clean in the background verification process then that customer is allowed to do any transaction in the bank.
+So instead of changing the implementation of the Collect Customer Information directly, the Bank Loans segment asked 
+ to provide another implementation of that interface. Therefore another implementation of the Collect Customer Information is used.
+</p>
+
+<h3>Example Usage</h3>
+<p>Creating another implementation does not require to create all the elements again. We can still refer some of the elements of the 
+already existing process definition.</p>
+<ul>
+	<li>Create new workflow model and rename the Process Definition 1 to Collect Customer Information for Verification </li>
+	<li>Create a new file connection and refer to the model which contains the Collect Customer Information process</li>
+	<li>Define a manual trigger</li>
+	<li>Create a manual activity named Get and Update Customer Info</li>
+	<li>Drag and drop the Customer Information structured type from the file connection and provide In and Out data mapping for the activity 
+	Get and Update Customer Info.</li>
+	<li>Create a primitive data named SSN and set it of integer type</li>
+	<li>Create a manual activity called Verify Criminal Background and connect it with Get and Update Customer Info activity</li>
+	
+	<li>Provide In data mapping between Verify Criminal Background and SSN data</li>
+	<li>Set the Process Interface property as Implements Process Interface and select the provider model from the list for the Collect Customer Information for Verification process definition.</li>
+	<li>Deploy this model.</li>
+	<li>Login to the portal and access the Administration Perspective.</li>
+	<li>In the Model Management view, change the implementation of the <a href="#eu1">process interface</a> to this newly created model which contains the Collect Customer Information for Verification process.</li>
+</ul>
+<p>For more information, please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/modelmgnt/model-mod-impl.html">
+Modifying Implementation</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation.</p>
+<p class="image"><img src="images/model-third-case.png" alt=""> <br>
+<strong>Figure:</strong> Example Model
+ </p>
+<h3>Summary</h3>
+<p>The new implementation of process Collect Customer Information is used at runtime. This change will affect across the Financial System
+organization. Business units that were using Collect Customer Information process, now have the implementation of new interface of Collect Customer Information for Verification. 
+</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

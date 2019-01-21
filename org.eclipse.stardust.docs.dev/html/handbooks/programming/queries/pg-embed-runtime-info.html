@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Retrieving Runtime Environment Information</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Retrieving Model Descriptions",
+        "query-model-version.html","pg-embed-depl-model-descr.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Retrieving Runtime Environment Information</h1>
+<p>To retrieve information about the deployed runtime environment, like
+version information, use the following method in the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">
+QueryService</a>:</p>
+<pre>
+RuntimeEnvironmentInfo getRuntimeEnvironmentInfo();
+</pre>
+<p>The method does not require any authentication and is not restricted 
+to any authorizations or grants.
+It returns a runtime environment information object of type
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/RuntimeEnvironmentInfo.html">
+RuntimeEnvironmentInfo</a>. This interface represents a snapshot about 
+information for the runtime environment.</p>
+<pre>
+import org.eclipse.stardust.common.config.Version;
+
+public interface RuntimeEnvironmentInfo extends Serializable
+{
+   public Version getVersion();
+}
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

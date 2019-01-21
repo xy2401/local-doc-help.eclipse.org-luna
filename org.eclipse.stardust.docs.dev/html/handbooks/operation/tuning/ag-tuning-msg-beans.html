@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css"
+>
+<title>Message Driven Bean Tweaking</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"tuning-performance.html","",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+        "ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Message Driven Bean Tweaking</h1>
+<p>Stardust leverages J2EE's asynchronous messaging capabilities both
+for integration of external applications and internal use, thus requiring three
+JMS queues in a default installation. The following table summarizes important
+aspects of these queues.</p>
+<table id='id'>
+   <tr>
+      <th>Default JNDI Name</th>
+      <th>MDB</th>
+      <th>Traffic</th>
+      <th>Lost Message Restore</th>
+   </tr>
+   <tr>
+      <td><code> CarnotSystemQueue </code></td>
+      <td><code> MessageListener </code></td>
+      <td>High</td>
+      <td>Automatically during Stardust
+      recovery .</td>
+   </tr>
+   <tr>
+      <td><code> CarnotDaemonQueue </code></td>
+      <td><code> DaemonListener </code></td>
+      <td>Low</td>
+      <td>Automatically during Stardust
+      recovery.</td>
+   </tr>
+   <tr>
+      <td><code> CarnotApplicationQueue </code></td>
+      <td><code> ResponseHandler </code></td>
+      <td>Application dependent</td>
+      <td>Hard, has to be provided by external
+      applications.</td>
+   </tr>
+</table>
+<p>To ease handling of errors occurring while processing messages from
+these queues the Stardust Process Engine provides several server-side
+runtime properties, which are described in the next section.</p>
+<p>The rationale behind this implementation lies in the asynchronous
+behavior of JMS messaging. Two frequent reasons for easily recoverable
+processing failures are subtle race conditions between concurrent threads of
+execution (esp. independent transactional resources) and locking conflicts on
+shared resources. By internalizing retry strategies into its standard
+asynchronous message processing the Stardust Process Engine frees users to
+focus on handling durable or application specific error conditions.</p>
+<p class="note"><strong>Note</strong><br>In order to enable message rollback behavior the appropriate
+MDB has to be deployed with a CMT attribute of <tt>required</tt>. This is the
+default for Stardust supplied EJB deployment descriptors.</p>
+
+<h2>Properties</h2>
+<p>The runtime properties provide controlling behavior independent of the 
+capabilities of the JMS implementation you use.
+The following properties are available, whereby <tt>???</tt> stands for one of the MDB
+names from the previous table:</p>
+<ul>
+   <li><a href="#retries">JMS.???.ProcessingFailure.Retries</a></li>
+   <li><a href="#mode">JMS.???.ProcessingFailure.Mode</a></li>
+   <li><a href="#pause">JMS.???.ProcessingFailure.Pause</a></li>
+</ul>
+<h3 id="retries">JMS.???.ProcessingFailure.Retries</h3>
+<p>This property specifies the number of retries in case the message could not be
+processed without errors. This means the number of delayed retries to be 
+attempted before giving up handling an incoming JMS message causing errors and 
+continuing as specified with the property 
+<tt>JMS.&lt;listener_name&gt;.ProcessingFailure.Mode</tt>.
+Possible values for <tt>&lt;listener_name&gt;</tt> are:</p> 
+<ul>
+   <li>ResponseHandler</li>
+   <li>DaemonListener</li>
+   <li>MessageListener</li>
+</ul>
+<p>Hereby, <tt>DaemonListener</tt> and <tt>MessageListener</tt> have a value of 
+<strong>forget</strong> recommended.</p>
+<h3 id="mode">JMS.???.ProcessingFailure.Mode</h3>
+<p>This property determines the strategy used to treat incoming JMS messages 
+causing processing errors.</p>
+<p>Possible values are:</p>
+<ul>
+   <li><strong>forget</strong> - the message will be removed from the 
+   queue disregarding the error,
+   pretending it was processed successfully.</li>
+   <li><strong>rollback</strong> - The message will be rolled back to the JMS 
+   queue, thus signaling a processing error. If and when this message will be 
+   delivered again depends on the capabilities and configuration of your JMS
+   implementation.</li>
+</ul>
+<p>Possible values for <tt>&lt;listener_name&gt;</tt> are:</p>
+<ul>
+   <li>ResponseHandler (having a value of <strong>rollback</strong> recommended)</li>
+   <li>DaemonListener (having a value of <strong>forget</strong> recommended)</li>
+   <li>MessageListener (having a value of <strong>forget</strong> recommended)</li>
+</ul>
+<h3 id="pause">JMS.???.ProcessingFailure.Pause</h3>
+<p>Specifies the number of milliseconds delay before retrying to handle an 
+incoming JMS message causing errors as specified with the property
+<tt>JMS.&lt;listener_name&gt;.ProcessingFailure.Retries</tt>.
+Possible values for &lt;listener_name&gt; are:</p>
+<ul>
+   <li>ResponseHandler</li>
+   <li>DaemonListener (having a value of forget recommended)</li>
+   <li>MessageListener (having a value of forget recommended)</li>
+</ul>
+
+<h3>Using Default Values</h3>
+<p>By not providing custom property values your application will stick to
+the following default values:</p>
+<table id='id_1'>
+   <tr>
+      <th>MDB</th>
+      <th>Retries</th>
+      <th>Pause</th>
+      <th>Mode</th>
+   </tr>
+   <tr>
+      <td><code> MessageListener </code></td>
+      <td>20</td>
+      <td>500</td>
+      <td>forget</td>
+   </tr>
+   <tr>
+      <td><code> DaemonListener </code></td>
+      <td>10</td>
+      <td>1000</td>
+      <td>forget</td>
+   </tr>
+   <tr>
+      <td><code> ResponseHandler </code></td>
+      <td>2</td>
+      <td>500</td>
+      <td>rollback</td>
+   </tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing direct editing functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Direct Editing Functionality</h1>
+<p>Direct editing means the possibility to change values directly in the diagram. 
+Technically the user clicks on a pictogram-element and an in-place edit field is shown, 
+where the user can change the values of this pictogram element.</p>
+<p>A typical use case is, that the user clicks on a text (either in a shape or a 
+connection decorator) and then the text is overlaid with a text-edit-field, where 
+the user can change the text value. To the user this actually looks as if the text 
+is replaced with the text-edit-field.</p>
+<p>&nbsp;</p>
+<p><img alt="" height="160" src="visio/direct-editing.png" width="259"></p>
+<p><strong>Figure: Direct editing of a text</strong></p>
+<h2>Creating a Direct Editing Feature</h2>
+<p>In this example we want to enable the users to edit the name of a EClass directly 
+in the diagram. Therefore we have to create a direct editing feature and make it 
+available in the feature provider. A direct editing feature has to implement the 
+interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IDirectEditingFeature.html">
+IDirectEditingFeature</a>. Instead of implementing it directly it should extend 
+one of the available base classes. In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/AbstractDirectEditingFeature.html">
+AbstractDirectEditingFeature</a>.</p>
+<p>&nbsp;</p>
+<p>In this case we have to implement/overwrite several methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IDirectEditing.html#getEditingType()">
+	getEditingType</a> has to return the editor type which shall be used to edit 
+	the value, in this example a text editor.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IDirectEditing.html#canDirectEdit(org.eclipse.graphiti.features.context.IDirectEditingContext)">
+	canDirectEdit</a> has to check the given context and therefore it decides if 
+	direct editing is supported.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IDirectEditing.html#getInitialValue(org.eclipse.graphiti.features.context.IDirectEditingContext)">
+	getInitialValue</a> has to return the initial value with which the editor is 
+	initialized, which is usually the currently displayed value.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IDirectEditing.html#checkValueValid(java.lang.String, org.eclipse.graphiti.features.context.IDirectEditingContext)">
+	checkValueValid</a> performs a check of the current editor value on each value 
+	change.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IDirectEditing.html#setValue(java.lang.String, org.eclipse.graphiti.features.context.IDirectEditingContext)">
+	setValue</a> has to set the edited value to the model at the end of the editing 
+	process.</li>
+</ul>
+<p>You can see the complete implementation of the direct editing feature here:</p>
+<p>&nbsp;</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialDirectEditEClassFeature
+		<span class="keyword">extends</span><br>&nbsp;&nbsp;&nbsp; AbstractDirectEditingFeature 
+		{<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>TutorialDirectEditEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public int</span> getEditingType() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// there are several possible editor-types supported:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// text-field, checkbox, color-chooser, combobox, ...</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string"><em>TYPE_TEXT</em></span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> canDirectEdit(IDirectEditingContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PictogramElement 
+		pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm ga = context.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// support direct editing, if it is a EClass, and 
+		the user clicked<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // directly 
+		on the text and not somewhere else in the rectangle</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof
+		</span>EClass &amp;&amp; ga <span class="keyword">instanceof </span>Text) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		direct editing not supported in all other cases</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;return false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>String getInitialValue(IDirectEditingContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// return the current name of the EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClass = (EClass) getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>eClass.getName();<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>String checkValueValid(String value, 
+		IDirectEditingContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (value.length() &lt; 1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Please enter any 
+		text as class name.&quot;</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (value.contains(<span class="string">&quot; &quot;</span>))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Spaces are not 
+		allowed in class names.&quot;</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (value.contains(<span class="string">&quot;\n&quot;</span>))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Line breakes are 
+		not allowed in class names.&quot;</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// null means, that the value is valid</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return null</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>void setValue(String value, IDirectEditingContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// set the new name for the EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClass = (EClass) getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eClass.setName(value);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// Explicitly update the shape to display the new 
+		value in the diagram<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Note, 
+		that this might not be necessary in future versions of Graphiti<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// (currently in discussion)</span><br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// we know, that pe is the Shape of the Text, so its 
+		container is the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // main shape 
+		of the EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updatePictogramElement(((Shape) 
+		pe).getContainer());<br>&nbsp;&nbsp;&nbsp; }<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getDirectEditingFeature(org.eclipse.graphiti.features.context.IDirectEditingContext)">
+getDirectEditingFeature</a>). This implementation can be seen here: </p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>IDirectEditingFeature 
+		getDirectEditingFeature(<br>&nbsp;&nbsp;&nbsp; IDirectEditingContext context) 
+		{<br>&nbsp;&nbsp;&nbsp; PictogramElement pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialDirectEditEClassFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getDirectEditingFeature(context);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<h2>Test: Edit the Name of a Class Directly In the Diagram</h2>
+<p>Now start the editor and test this new direct editing feature:</p>
+<ol>
+	<li>Create or open a&nbsp; diagram and create an EClass &quot;Address&quot;</li>
+	<li>Click on the class name and the value &quot;Address&quot; should become editable in 
+	the text-editor</li>
+	<li>Change the value to &quot;Customer Address&quot;. Now the editor should be highlighted 
+	and an error-message (&quot;no space allowed&quot;) should be displayed in the status-bar.</li>
+	<li>Change the value to &quot;CustomerAddress&quot;. The highlight and error-message should 
+	disappear. </li>
+	<li>Press return or make the editor loose focus otherwise to overtake the edited 
+	value, or press ESC to cancel the editing.</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

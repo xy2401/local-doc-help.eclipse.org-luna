@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Filtering Activity Instances for every User Role</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Querying Process Instance Details",
+    "query-users.html","query-proc-inst.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Filtering Activity Instances for every User Role</h1>
+<p>This chapter demonstrates how to filter activity instances for every role 
+(grant) the user is assigned to.</p>
+<h2>Example API</h2>
+<p>To provide a solution, you can use the following code snippets:</p>
+<ol>
+   <li>Use the 
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserQuery.html">
+   UserQuery</a> to retrieve the attribute account with a specific login name.
+   Get all users and create an activity query.
+   <pre>
+   UserQuery userQuery = new UserQuery();
+userQuery.getFilter().add(UserQuery.ACCOUNT.isEqual("&lt;username&gt;"));
+   </pre></li>
+   <li>Get the user:
+   <pre>
+Users users = queryService.getAllUsers(userQuery);
+User user = (User) users.get(0);</pre></li>
+   <li>Get user grants:
+<pre>List grants = user.getAllGrants();</pre></li>
+   <li>Use 
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+    ActivityInstanceQuery</a> to create the activity query:
+<pre>ActivityInstanceQuery activityQuery = new ActivityInstanceQuery();</pre></li>
+   <li>Add an <strong>OR</strong> filter to the activity query:
+<pre>FilterOrTerm orFilter = activityQuery.getFilter().addOrTerm();</pre></li>
+   <li>Extract single roles and build the query using the
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingParticipantFilter.html">
+   PerformingParticipantFilter</a>:
+<pre>for (int x = 0; x &lt; grants.size(); x++) {
+   String grant = ((Grant) grants.get(x)).getId();
+   PerformingParticipantFilter performerFilter = PerformingParticipantFilter.forModelParticipant(grant);
+   orFilter.or(performerFilter);
+}</pre></li>
+   <li>Find the activities for user roles:
+<pre>ActivityInstances activeInstances = queryService.getAllActivityInstances(activityQuery);</pre></li>
+   <li>Get single activity information:
+<pre>for (int y = 0; y &lt; activeInstances.getSize(); y++) {
+   ActivityInstance activity = (ActivityInstance) activeInstances.get(y);
+   System.out.println(y +") Activity OID: "+ activity.getOID() +" / Performer: "+ activity.getPerformedByName());
+}</pre></li>
+</ol>
+<h2>Alternative Solution</h2>
+<p>Another option is to use the following code:</p>
+<ol>
+   <li>Use the
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactoryLocator.html">
+   ServiceFactoryLocator</a> to create the query service:
+<pre>ServiceFactory serviceFactory = ServiceFactoryLocator.get(&quot;motu&quot;, &quot;motu&quot;);
+QueryService queryService = serviceFactory.getQueryService();</pre></li>
+   <li>Use 
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+    ActivityInstanceQuery</a> to create the activity query:
+<pre>ActivityInstanceQuery activityQuery = new ActivityInstanceQuery();</pre></li>
+   <li>Add an <strong>OR</strong> filter to the activity query using the
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingParticipantFilter.html">
+   PerformingParticipantFilter</a> and the
+   <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingUserFilter.html">
+   PerformingUserFilter</a>:
+<pre>FilterOrTerm orFilter = activityQuery.getFilter().addOrTerm();
+orFilter.add(PerformingParticipantFilter.ANY_FOR_USER);
+orFilter.add(PerformingUserFilter.CURRENT_USER);</pre></li>
+   <li>Find the activities for user roles:
+<pre>ActivityInstances activeInstances = queryService.getAllActivityInstances(activityQuery);</pre></li>
+   <li>Get single activity information:
+<pre>for (int y = 0; y &lt; activeInstances.getSize(); y++) {
+	ActivityInstance activity = (ActivityInstance) activeInstances.get(y);
+	System.out.println(y +&quot;) Activity OID: &quot;+ activity.getOID() +&quot; / Performer: &quot;+ activity.getPerformedByName());
+}</pre></li>
+</ol>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

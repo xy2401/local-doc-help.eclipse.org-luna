@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>The Stardust Process Engine</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Process Models",
+		"mg-basics-1.htm","mg-basics-3.htm",
+		"../key-concepts.html","Concepts",
+		"mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>The Stardust Process Engine</h1>
+<p>The Stardust Process Engine is a workflow system inspired by
+the concepts of the WfMC reference model - but in its capabilities it is
+going far beyond this model.</p>
+
+<h2>Technologies</h2>
+<p>Another unique feature of the Stardust Process Engine is that
+its implementation is based completely on Java and J2EE. There is no
+proprietary server process. Depending on your preferred system
+infrastructure it is just a couple of EJBs or a Web archive to deploy,
+or even a plain Java library interacting with the audit trail database.
+</p>
+<p>This way, the Stardust Process Engine is able to run inside
+virtually every supported J2EE Java EE compliant application server or
+even embedded in proprietary Java applications not based on J2EE. It is
+thoroughly tested to run inside the most common application servers.</p>
+<p>Based on its SQL abstraction layer it is possible to adapt the
+Stardust Process Engine to run on top of various RDBMS. Oracle and IBM
+DB2 are supported out of the box - as are the most common RDBMS.</p>
+<p>The security layer is completely pluggable, i.e. Stardust will
+integrate into arbitrary existing security infrastructures.</p>
+
+<h2>Modeling Environment</h2>
+<p>The process modeling environment consists of the Stardust 
+Process Workbench - a powerful graphical process modeler with all
+features to manage and deploy your models.</p>
+<p>The Stardust Process Workbench is described in detail later in
+this book, see the chapter <a href="../../handbooks/modelling/mg-modeler-preface.html">The
+Stardust Process Workbench</a>.</p>
+
+<h2>Runtime Environment</h2>
+<p>The &quot;server part&quot; of the Stardust runtime environment
+consists of the Stardust runtime classes, normally deployed to an
+application server as a set of Session Beans, and the audit trail
+database. It is not mandatory to deploy the Stardust runtime as a set of
+Session Beans, it can also be used as a library.</p>
+<p>Setup issues concerning the runtime environment are explained
+in the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">Installation Guide</a>.</p>
+<p>There is a wide variety of possible clients to the Stardust 
+runtime. You find a detailed list in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">Installation Guide</a>.</p>
+
+<h2>Embedded Usage</h2>
+<p>Often, you will write or adapt your own clients to interact
+with the Stardust runtime environment. The <a
+	href="../../handbooks/programming/pg-preface.htm">Programming Guide</a> addresses
+these issues.</p>
+
+<h2>System Integration and Extensibility</h2>
+<p>The Stardust Process Engine ships with a number of ready to use
+solutions to integrate the existing system infrastructure, which is
+directly exposed in the modeling environment, like:</p>
+<ul>
+	<li>using Entity Beans as data,</li>
+	<li>accessing XML documents,</li>
+	<li>using Session Beans as applications,</li>
+	<li>using JCA adapters as applications,</li>
+	<li>JMS integration or</li>
+	<li>integration into JSP Web applications.</li>
+</ul>
+<p>Please refer to the sections <a href="../../handbooks/modelling/mg-integration-preface.htm">System
+Integration</a> and <a href="../../handbooks/modelling/data-integration/data-int-preface.html">
+Data Integration</a> for more details.</p>
+<p>The list of these bundled solutions can easily be extended. The
+contracts for adding further integration facilities, extending both the
+modeling environment and the runtime environment, are exposed as the
+Stardust SPI (Service Provider Interface). The use of the Stardust SPI
+is described in the <a href="../../handbooks/programming/spi/pg-spi.htm">Tutorial
+Stardust SPI Programming</a> chapter of the <a
+	href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

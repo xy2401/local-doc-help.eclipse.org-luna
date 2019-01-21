@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Column Data Accessor</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Column Data Accessor</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.sqltools.data.core.columnDataAccessor<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>08/10/2005
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>The columnDataAccessor allows to contribute an IColumnDataAccessor object to be used with a particular vendor, version and datatype.
+The contributed object is then used to perform the data access in the table editor, allowing to implement  support for database-specific data types.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.accessor">accessor</a>)*&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.accessor">accessor</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST accessor</p>
+<p class="code SchemaDtdAttlist">vendor&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">version&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">dataType&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">class&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+This element specifies an IColumnDataAccessor to be used with a combination of vendor/version/data type.
+If several contributions matches a given column, the most specific contribution is used (the one that specifies the highest number of criteria).</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>vendor</b> - Vendor ID: 'product' attribute from the org.eclipse.wst.rdb.core.databaseDefinition extension.
+Ommit to match all vendors, or separate multiple vendors with commas.</li>
+<li><b>version</b> - Version ID: 'version' attribute from the org.eclipse.wst.rdb.core.databaseDefinition extension.
+Ommit to match all versions, or separate multiple versions with commas.</li>
+<li><b>dataType</b> - Data type ID: type name from the product xmi definition.
+Ommit to match all data types, or separate multiple data types with commas.</li>
+<li><b>class</b> - A class that implements IColumnDataAccessor.</li>
+</ul>
+<br><br>
+<p class="note SchemaCopyright">
+Copyright (c) 2001, 2004 IBM Corporation and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %Provider.name
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
+Bundle-SymbolicName: org.eclipse.qvtd.doc;singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help;bundle-version="[3.5.0,4.0.0)"
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Bundle-Version: 0.11.0.v20140524-1338
+Bundle-ManifestVersion: 2
+
+Name: toc.xml
+SHA1-Digest: Ue3kbBMso2ngzZfgI29ibkClfsY=
+
+Name: help/Overview.html
+SHA1-Digest: wsFW4w/P39Bj8zdjo7m1nEOgsc4=
+
+Name: about.ini
+SHA1-Digest: So6w3BOLjDxdL3xtKUBiKuOB/Gc=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: about.properties
+SHA1-Digest: efaIHA7Oy/sprPyCtEHhUJnjo8k=
+
+Name: topics_Reference.xml
+SHA1-Digest: sUaaJ6e1dJkC/5fnCKqWxK++ky8=
+
+Name: plugin.xml
+SHA1-Digest: r3p5gjKLurhPkh6zVuwQabuiR9E=
+
+Name: about.html
+SHA1-Digest: vWAsXILjKfPTzh/flzE7qdytznU=
+
+Name: plugin.properties
+SHA1-Digest: /ZxUljEFHPqZsgf8rd0Fm7Q5wQk=
+

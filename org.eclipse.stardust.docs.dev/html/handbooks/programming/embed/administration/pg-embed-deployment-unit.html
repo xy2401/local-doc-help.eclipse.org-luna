@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Deployment Unit Support</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Changing Process Instance Priorities",
+      "pg-embed-daemons.html","pg-embed-prio.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Deployment Unit Support</h1>
+<p>The following functionality is provided for deployment unit support:</p>
+<ul>
+	<li>Accept several models for deployments in one interaction and transaction.</li>
+	<li>Resolve links within the deployment unit.</li>
+	<li>Validate that only one version of each model is contained in 
+	the deployment unit.</li>
+	<li>Cumulated callbacks for all potential validation problems in all 
+	contained models.</li>
+</ul>
+<p>The method 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html#deployModel(java.util.List, org.eclipse.stardust.engine.api.runtime.DeploymentOptions)">
+deployModel</a> of the 
+<a href="../pg-embedded-3.htm#adminservice">AdministrationService</a>
+with parameters of types list of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeploymentElement.html">
+DeploymentElement</a>
+and 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeploymentOptions.html">
+DeploymentOptions</a>
+cumulates all the functionality mentioned above. This method takes a list 
+of deployment elements, each one having one model to be deployed. 
+The deployment options do apply to all units that are deployed within 
+this call.</p>
+<pre>
+List&lt;DeploymentInfo&gt; deployModel(List&lt;DeploymentElement&gt; deploymentElements, DeploymentOptions options)
+	throws DeploymentException;</pre>
+<p>The method returns a list of type 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeploymentInfo.html">DeploymentInfo</a>
+with all deployment information, including possible errors 
+and warnings.
+For each successful deploy operation, a corresponding entry is inserted into 
+the <strong>log_entry</strong> table. For detailed information on this table, refer to section
+<a href="../../../operation/audit-trail/ag-appendix-audittrail-1.htm#logentry">LOG_ENTRY TABLE</a>
+of the chapter
+<a href="../../../operation/audit-trail/ag-appendix-audittrail-1.htm">The Repository Model</a>.
+The required permission to execute this method is <strong>deployProcessModel</strong>.</p>
+<p>Note that it is possible to deploy an empty set of models. It is possible that
+this can also result in a change in the audit trail. 
+If the PredefinedModel is not already present in the audit trail, it will be 
+deployed in any case.</p>
+<p>Refer to the following sections for details on classes
+and interfaces with deployment details:</p>
+<ul>
+	<li><a href="#ele">Deployment Element</a></li>
+	<li><a href="#options">Deployment Options</a></li>
+	<li><a href="#deplDescr">Retrieving Information on Deployed Models</a></li>
+</ul>
+<h2 id="ele">Deployment Element</h2>
+<p>The deployment element contains the raw deployment data,
+for example the content of the model file to be deployed.</p>
+<pre>
+public class DeploymentElement implements Serializable
+{
+   private static final long serialVersionUID = 1L;
+
+   /**
+    * The byte array containing the model definition in XPDL format.
+    */
+   private byte[] content;
+   
+   /**
+    * Creates a new deployment element.
+    * 
+    * @param content the content of the deployment element in binary form.
+    */
+   public DeploymentElement(byte[] content)
+   {
+      this.content = content;
+   }
+
+   /**
+    * Retrieves the content of the deployment element.
+    * 
+    * @return the raw deployment data.
+    */
+   public byte[] getContent()
+   {
+      return content;
+   }
+}
+</pre>
+<h2 id="options">Deployment Options</h2>
+<p>The deployment options contains the following:</p>
+<ul>
+	<li>Deployment comment:<br>
+ 	<pre>private String comment;</pre>
+ 	Retrieving the deployment comment:
+	<pre>
+public String getComment()
+{
+    return comment;
+}</pre>
+   Setting the deployment comment:
+ <pre>
+public void setComment(String comment)
+{
+    this.comment = comment;
+}</pre></li>
+	<li>Validity start time for the model or null if unlimited:<br>
+		<pre>private Date validFrom;</pre>
+		Retrieving the moment from when the deployed models will be valid,
+		 or null if there are no validity restrictions:
+    <pre>
+public Date getValidFrom()
+{
+    return validFrom;
+}</pre>
+   Setting the validity start time:
+   <pre>
+public void setValidFrom(Date validFrom)
+{
+    this.validFrom = validFrom;
+}</pre></li>
+	<li>Flag to specify that the deployment should continue 
+		if only warnings were issued<br>
+		<pre>private boolean ignoreWarnings;</pre>
+		Retrieving flag to determine if the warnings should be 
+		ignored during deployment or treated like errors:
+		<pre>
+public boolean isIgnoreWarnings()
+{
+    return ignoreWarnings;
+}</pre>
+   		Setting flag that warnings should be ignored during deployment
+   		or be treated as errors:
+		<pre>
+public void setIgnoreWarnings(boolean ignoreWarnings)
+{
+    this.ignoreWarnings = ignoreWarnings;
+}</pre></li>
+</ul>
+
+<h2 id="deplDescr">Retrieving Information on Deployed Models</h2>
+<p>The interface 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModelDescription.html">
+DeployedModelDescription</a> provides the following methods to retrieve
+deployment information for a workflow model, like
+linked provider and consumer models and available implementation alternatives:</p>
+<ul>
+	<li><tt>List&lt;Long&gt; getProviderModels()</tt> -
+	lists the Model OIDs of all linked Provider Models.</li>
+	<li><tt>List&lt;Long&gt; getConsumerModels()</tt> -
+	lists the Model OIDs of all linked Consumer Models.</li>
+	<li><tt>Map&lt;String, List&lt;ImplementationDescription&gt;&gt; getImplementationProcesses()</tt> -
+	describes all available implementation alternatives and indicates 
+	which one is the <tt>Primary Implementation</tt>
+	per process interface ID.</li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

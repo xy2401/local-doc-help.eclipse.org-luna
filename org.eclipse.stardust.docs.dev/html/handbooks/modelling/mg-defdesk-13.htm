@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Working With Activity Event Handlers</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Specifying Arbitrary Link Types","mg-defdesk-12.htm","mg-defdesk-14.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working With Activity Event Handlers</h1>
+<p>Event handlers and -actions for activities are managed in the activity
+properties dialog. By selecting Event Handlers and respectively subordinate the
+handlers or actions in the overview tree on the left side, the corresponding
+pane opens on the right side.</p>
+<p class="image"><a href="images/mg-activity-event-handler_org.png" target="_blank">
+<img src="images/mg-activity-event-handler.png"
+    alt="Activity Event Handler Pane"></a><br>
+<strong>Figure:</strong> Structure of an Event Action Pane</p>
+<p>The overview tree groups handlers by type. Subordinate to the handlers
+the bind actions and event actions are listed.</p>
+<p class="image"><img src="images/mg-defdesk-57.jpg" alt=""> <br>
+<strong>Figure:</strong> The Overview Tree</p>
+<h2>Creating Event Handlers</h2>
+<p>To create an event handler:</p>
+<ol>
+    <li>In the event handlers pane, choose an event handler type.</li>
+    <li>Press the <strong>Add</strong> button.</li>
+    <li>In the corresponding pane of the new event handler, optionally change
+    the ID and name of the event handler. Please note that
+    IDs containing hyphens, blanks or dots and IDs starting with digits are not
+    supported. The name is used to display the handler in the overview tree.</li>
+</ol>
+<p class="image"><img src="images/mg-activity-define-event-handler.png" alt=""><br>
+<strong>Figure:</strong> Definition of an Event Handler</p>
+<p>Event handlers must have an ID uniquely identifying them in the scope
+of the associated activity and<strong> a probably human readable name</strong>.
+Additionally, event handlers may have some of the following general attributes:</p>
+<ul>
+    <li>A flag indicating the auto bind behavior. When <strong>Automatic
+    binding</strong> is selected the event handler is bound immediately after the
+    activity instance is created.</li>
+    <li>A flag specifying whether an occurrence of this event should be
+    logged to the audit trail or not. If <strong>Log handler</strong> is
+    enabled, an <tt>org.eclipse.stardust.engine.api.runtime.LogEntry</tt> record with log
+    code <tt>LogCode.EVENT</tt> will be written into the audit trail and
+    associated with the affected activity instance.</li>
+    <li>A flag stating whether an event accepted by the handler will be
+    consumed. If <strong>Consume on match</strong> is selected any logically
+    following handler accepting the same event will not be executed, thus
+    effectively terminates the processing of the current event.</li>
+</ul>
+<p>Please refer to <a href="../../concepts/workflow-basics/mg-basics-11.htm">Events</a> for basic
+informations.</p>
+<p>The following event handlers are provided for activities:</p>
+<ul>
+    <li><a href="#timer">Timer Event Handlers</a></li>
+    <li><a href="#stateChange">Activity State Change Event Handlers</a></li>
+    <li><a href="#exception">Exception Handlers</a></li>
+    <li><a href="#assignment">Assignment Event Handlers</a></li>
+</ul>
+<h3 id="timer">Timer Event Handlers</h3>
+<p>A timer event handler can be configured either through the handler
+dialog or through workflow data. While a modeling-time timer constant can only
+be of type <tt>org.eclipse.stardust.common.Period</tt> (specifying an offset to the event
+binding time), a timer derived from workflow data may either be of type<tt>
+java.util.Date, long</tt> or <tt>java.lang.Long</tt> (defining an absolute time) or <tt>org.eclipse.stardust.common.Period</tt>
+(again specifying an offset to the event binding time). Numeric timer values are
+considered to be milliseconds since January 1, 1970 0:0 GMT, according to the
+specification of method <tt>getTime()</tt> of class <tt>java.util.Date</tt>.</p>
+<p class="image"><a
+    href="images/mg-activity-handler-timer-action_orgSize.png" target="_blank">
+<img src="images/mg-activity-handler-timer-action.png" alt=""></a> <br>
+<strong>Figure:</strong> Timer Event Handler Properties</p>
+
+<p> When a primitive data (of type long) is associated with the timer event, 
+then the timeout time should be specified in milliseconds format. 
+So, if a user wants to enter the timeout time then he needs to specify 
+(current time in milliseconds + required timeout time in milliseconds).
+</p>
+<p>For example, the following java code returns date/time: 22-Sep-2011 T13:12 in milliseconds format:</p>
+<pre>
+Date  d = new Date(2011,9,22,13,12);  
+// Date: 22-Sep-2011 T13:12
+System.out.println("time in milliseconds format = " + d.getTime());  
+// Output: 61277413320000
+</pre>
+<p>So, lets assume that for a timer event user wants to enter timeout time as 
+10secs and current date/time is 22-Sep-2011 T 13:12.
+Then user needs to enter time (current time in milliseconds + required timeout time in milliseconds) 
+that is (61277413320000 + 10000 = 61277413330000)
+</p>
+<h4 id="resubmission">Timer Event Handlers for Resubmission</h4>
+<p>Resubmission of an activity means removing an interactive activity
+instance from a worklist and putting it back later, based on some criterion. To
+model resubmission for an activity, you have to create a timer event handler
+with specific settings in the following way:</p>
+<ul>
+    <li>Open the properties dialog of the activity.</li>
+    <li>Select <strong>Event Handling &gt; Timer</strong>.</li>
+    <li>Click <strong>Add</strong> to add a new timer event handler.</li>
+</ul>
+<p class="image"><img src="images/mg-add-timer-event-handler.png"
+    alt="Add a Timer Event Handler"> <br>
+<strong>Figure:</strong> Add a Timer Event Handler.</p>
+<ul>
+    <li>In the dialog for the event handler select name and id
+    "Resubmission".</li>
+    <li>Disable the <strong>Automatic Binding</strong> checkbox.</li>
+</ul>
+<p class="image"><a href="images/mg-add-resubmission_orgSize.png"
+    target="_blank"> <img src="images/mg-add-resubmission.png"
+    alt="Event Handler Properties"></a> <br>
+<strong>Figure:</strong> Set the Event Handler Properties.</p>
+<p class="note"><strong>Note</strong><br>
+Please do not change the Id for the timer event handler to something other than 
+<tt>Resubmission</tt> as in that case the event handler is not recognized as
+resubmission, e.g. in the Portal. Also take care when changing the name if option
+<strong>Enable Auto ID Generation</strong> is enabled in the Process Manager preferences.</p>
+<p>Now add a scheduled bind action with activity instance state hibernated:</p>
+<ul>
+    <li>Click <strong>Add Bind Action</strong>.</li>
+    <li>Select action type <strong>Schedule Activity</strong>.</li>
+    <li>Set the intended state change to <strong>Hibernated</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-add-resubmission-bind-action.png"
+    alt="Bind Action"> <br>
+<strong>Figure:</strong> Add a Bind Action.</p>
+<p>Now add a scheduled event action with activity instance state suspended:</p>
+<ul>
+    <li>Go back to the event handler pane of <strong>Resubmission</strong>
+    and click <strong>Add Event Action</strong>.</li>
+    <li>Select action type <strong>Schedule Activity</strong>.</li>
+    <li>Set the intended state change to <strong>Suspended</strong>.</li>
+    <li><strong>OK</strong> the dialog.</li>
+</ul>
+<p class="image"><img src="images/mg-add-resubmission-event-action.png"
+    alt="Event Action"> <br>
+<strong>Figure:</strong> Add an Event Action.</p>
+
+<h5>Sending activities to the default performers worklist</h5>
+<p>In case you don't like the activity to go back into the worklist of the
+user but to the default performer worklist, add an event action with
+the action type <strong>Delegate Activity</strong> and the option to send
+the activity to the default performer:</p>
+<p class="image"><a href="images/mg-activity-handler-default_orgSize.png" target="_blank">
+<img src="images/mg-activity-handler-default.png"
+    alt="Send an Activity to the Default Performer"></a><br>
+<strong>Figure:</strong> Option to send an Activity to the Default Performer</p>
+<h3 id="stateChange">Activity State Change Event Handlers</h3>
+<p>For an activity state change event handler you can specify the intended
+source state and target state you want to match.</p>
+<p class="image"><img src="images/mg-activity-event-handler.png"
+    alt="State Change Event Handler Properties"> <br>
+<strong>Figure:</strong> State Change Event Handler Properties</p>
+<p class="note"><strong>Note:</strong>
+Activity State Change Event handling is not supported with a source state <tt>N/A</tt>
+in combination with a target state <tt>created</tt>.</p>
+<h3 id="exception">Exception Handlers</h3>
+<p>For an exception event handler you can specify the exception type to be
+caught. The set of caught exceptions is aligned to Java <tt>try...catch</tt>
+rules as all instances of specializations of the specified exception type are
+caught as well.</p>
+<p class="image"><a href="images/mg-activity-event-handler-exception_orgSize.png"
+target="_blank"><img src="images/mg-activity-event-handler-exception.png"
+    alt="Activity Properties Dialog with the Exception Event Action"></a><br>
+<strong>Figure:</strong> Activity Properties Dialog with the Exception Event
+Action</p>
+<p>Catching exceptions will prevent the targeted activity instance from
+being interrupted. Any caught exception is available to event actions associated
+with the event handler through dereferentiation of an event access point.</p>
+<h3 id="assignment">Assignment Event Handlers</h3>
+<p>For event handler assignment nothing has to be configured.</p>
+<h2>Modifying Event Handlers</h2>
+<p>Event handlers can be modified by selecting them in the overview tree
+and then editing their properties in the details pane.</p>
+<h3>Changing the Order of Event Handlers</h3>
+<p>All engine event handlers are executed in the order specified in the
+corresponding properties dialogs, e.g. the activity properties dialog and the
+process definition dialog. Event handlers may be reordered by selecting an event
+handler in the event handlers pane of the corresponding properties dialog and
+then moving it by pressing the <strong>Move Up</strong> and <strong>Move
+Down</strong> buttons.</p>
+<h3>Deleting Event Handlers</h3>
+<p>An event handler can be deleted by selecting it in the event handlers
+pane of the properties dialog and then pressing the <strong>Delete</strong>
+button.</p>
+<h2>Creating Event Actions</h2>
+<p>To create an event action for an event handler:</p>
+<ol>
+    <li>In the <strong>Event Handling</strong> section of the overview
+    tree, select for example <strong>On Activity State Change</strong> to open
+    the event handlers pane.</li>
+    <li>In the event handlers pane, select the event handler and press
+    the <strong>Add Event Action</strong> button.</li>
+    <li>Optionally, change the ID and the name of the action.</li>
+</ol>
+<p class="image"><a href="images/mg-activity-handler-add-event-action_orgSize.png"
+target="_blank"><img src="images/mg-activity-handler-add-event-action.png"
+    alt="Apply an Event Action"></a><br>
+<strong>Figure:</strong> Apply an Event Action</p>
+<p>Bind actions are created in a similar manner. Click <strong>Add
+Bind Action</strong> or <strong>Add Unbind Action</strong> to add a bind or unbind
+action. See also <a href="../../concepts/workflow-basics/mg-basics-11.htm#eventBinding">Event Binding</a>.</p>
+<h2>Event Action Types</h2>
+<p>The following event action types are available depending
+on the event handler type:</p>
+<table class="autoWidth">
+<tr>
+    <th>Event Action Type</th>
+    <th>Activity Event Handler Types</th>
+</tr>
+<tr><td><a href="#abortProc">Abort Process</a></td><td>Timer, On Exception</td></tr>
+<tr><td><a href="#abortAct">Abort Activity</a></td><td>Timer, On Exception</td></tr>
+<tr><td><a href="#delegate">Delegate Activity</a></td><td>On Activity State Change, Timer, On Exception</td></tr>
+<tr><td><a href="#sendMail">Send Mail</a></td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td><a href="#triggerAct">Process Trigger</a></td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td><a href="#schedule">Schedule Activity Actions</a></td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td><a href="#setData">Set Data Actions</a></td><td>On Activity State Change, Timer, Exception</td></tr>
+<tr><td><a href="#activate">Activate Activity Actions</a></td><td>On Assignment</td></tr>
+<tr><td><a href="#complete">Complete Activity</a></td><td>Timer, On Exception</td></tr>
+<tr><td><a href="#excludeAct">Exclude User Action</a></td><td>On Assignment</td></tr>
+</table>
+<h3 id="abortProc">Abort Process Actions</h3>
+<p>Abort process actions implicitly target the process instance hosting
+the current activity instance, thus not needing to be configured.</p>
+<h3 id="abortAct">Abort Activity Actions</h3>
+<p>You have the option to choose whether the abortion is performed starting from
+the root process instance or starting from the subprocess.</p>
+<p class="image"><img src="images/timer-event-handler-abort.png"
+    alt="Abort Activity Options"> <br>
+<strong>Figure:</strong> Abort Activity Options</p>
+<h4>Abort starting from the root hierarchy</h4>
+<p>In case an activity instance has the scope <strong>RootHierarchy</strong>,
+an abortion will cause the denoted activity instance to be aborted at the next possible commit points,
+e.g. as soon as synchronous activity threads are terminated. If the denoted activity instance is a subprocess activity,
+ the corresponding subprocess will be terminated likewise.</p>
+<h4>Abort starting from the subprocess</h4>
+<p>If the activity instance has the scope <strong>SubHierarchy</strong>,
+the subprocess termination is performed similar to an abortion of a process instance. 
+The difference is that the calling superprocess instance will continue to be processed
+normally after a subprocess abortion, like as if the subprocess activity had been completed regularly.
+Thus an abortion of the process instance will not propagate upwards in the process hierarchy.</p>
+<h3 id="delegate">Delegate Activity Actions</h3>
+<p>In the <strong>Send to worklist of</strong> section select the
+participant to whose worklist the activity is delegated.</p>
+<p class="image"><img src="images/mg-activity-handler-delegate.png" alt=""><br>
+<strong>Figure:</strong> Delegate Activity Action</p>
+<h3 id="sendMail">Send Mail Actions</h3>
+<p>For send mail actions the following properties may be specified:</p>
+<ul>
+    <li>the <a href="#recipient">Recipient</a></li>
+    <li>the <a href="#subject">Mail Subject</a></li>
+    <li>the <a href="#content">Mail Content</a></li>
+</ul>
+<p class="image"><img src="images/mg-activity-send-mail-action.png"
+    alt=""> <br>
+<strong>Figure:</strong> Send Mail Action Properties</p>
+
+<h4 id="recipient">Recipient</h4>
+<p>In the <strong>Send Mail To</strong> section,
+choose a recipient:</p>
+<ul>
+	<li>from the model (<strong>Model Participant</strong>)
+	<p class="image"><img src="images/send-mail-model-participant.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Model Participant as Recipient.</p>
+	In this case, the receiver mail address from the users, who have this role, is
+	used.<br>&nbsp;</li>
+	<li>as a constant email address (<strong>Predefined Address</strong>)
+	<p class="image"><img src="images/send-mail-predefined-address.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Predefined Address as Recipient.</p></li>
+	<li>the user performer (<strong>User Performer</strong>)
+	<p class="image"><img src="images/send-mail-user-performer.png" alt=""><br>
+	<strong>Figure:</strong> Choose the User Performer as Recipient.</p>
+	In that case, the email id of the user, which was supplied during user 
+	creation (i.e. in the Administration Perspective or per command line tool), is used.</li>
+</ul>
+<p>The sender mail address is used from the <tt>Mail.Sender</tt> property, set 
+in the <tt>carnot.properties</tt> file.</p>
+<h4 id="subject">Mail Subject</h4>
+<p>In the <strong>Mail Subject</strong>
+entry field, you can enter a subject for the mail. The default
+value of the subject is "<tt>Stardust Notification Mail</tt>".</p>
+<h4 id="content">Mail Content</h4>
+<p>In the <strong>Runtime Defined Message</strong> section, add the
+email body text in one of the following ways:</p>
+<ul>
+	<li>as a constant text (<strong>Predefined Message</strong>)
+	<p class="image"><img src="images/predefined-mail-message.png" alt=""><br>
+	<strong>Figure:</strong> Enter Mail Content as Predefined Message</p></li>
+	<li>from a workflow data (<strong>Runtime Defined Message</strong>)
+	<p class="image"><img src="images/runtime-mail-message.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Runtime Defined Message</p></li>
+</ul>
+
+<h3 id="triggerAct">Trigger Process Actions</h3>
+<p>For trigger process actions you have to select the process to be
+triggered.</p>
+<p class="image"><img src="images/mg-activity-handler-select-process.png"
+    alt="Selecting the Trigger Process"> <br>
+<strong>Figure:</strong> Selecting the Trigger Process</p>
+<h3 id="schedule">Schedule Activity Actions</h3>
+<p>The activity will be put to rest by changing its state to either
+Suspended or Hibernated. The intended target state has to be defined by the
+user.</p>
+<p class="image"><img src="images/mg-activity-event-schedule-action.png"
+    alt="Schedule Activity Action"> <br>
+<strong>Figure:</strong> Schedule Activity Action</p>
+<p>Combining this action with a Delegate Activity Action or a Timer Event
+Handler allows for rich scheduling scenarios.</p>
+<h3 id="setData">Set Data Actions</h3>
+<p>Set data actions will set values retrieved from the event handler on
+workflow data similar to data mappings. To do this, every event handler offers a
+certain set of <a href="../../concepts/workflow-basics/mg-basics-8.htm#accessPoints">access points</a> (which
+may be empty). This way the following properties may be configured:</p>
+<ul>
+    <li>The OUT access point offered by the event handler</li>
+    <li>An access path to be applied to the access point resulting in a
+    bridge object value</li>
+    <li>An access path belonging to the workflow data (data path) to be
+    applied to the bridge object value and the workflow data</li>
+    <li>The workflow data</li>
+</ul>
+<p class="image"><img
+    src="images/mg-activity-event-handler-set-data-action.png" alt=""><br>
+<strong>Figure:</strong> Activity Properties Dialog</p>
+
+<h3 id="activate">Activate Activity Actions</h3>
+<p>Activity activation will be performed by starting an activity thread at
+the affected activity asynchronously, completing the activity instance and
+traversing all enabled out transitions. No extra configuration is needed.</p>
+<p>In consequence, the activity will not be immediately completed upon
+return from this action but after some background processing.</p>
+<h3 id="complete">Complete Activity Actions</h3>
+<p>Activity completion will be performed by starting an activity thread at
+the affected activity synchronously, completing the activity instance and
+traversing all enabled out transitions. No extra configuration is needed.</p>
+
+<h3 id="excludeAct">Exclude User Action</h3>
+<p>This action is especially designed to be used in combination with an <strong>On
+Assignment</strong> event handler. The action checks any user intended to be the
+performer of the target activity and prevents delegation if needed. A common
+application consists of enforcement of any four-eyes scenario.</p>
+<p>One of the following properties have to be specified:</p>
+<ul>
+    <li>A mandatory workflow data of type <strong>long</strong>, containing
+    the OID of the user to be excluded, or</li>
+    <li>an optional data path yielding the user OID.</li>
+</ul>
+<p>To add an <strong>Exclude User Action</strong>:</p>
+<ul>
+    <li>In the left pane select <strong>Event Handling</strong> &gt; <strong>On
+    Assignment</strong>.</li>
+    <li>Click <strong>Add</strong> and <strong>Add Event Action</strong>.</li>
+    <li>Choose action type <strong>Exclude User</strong>.</li>
+    <li>Now choose the workflow data containing the OID of the user to be
+    excluded.</li>
+</ul>
+<p class="image"><img src="images/mg-activity-event-exclude-user.png"
+    alt="Exclude User Action"> <br>
+<strong>Figure:</strong> Exclude User Action</p>
+<p>Queries exclude activity instances from their return list if they are executed 
+by a user who was set as excluded user in the activity.</p>
+
+<h2>Modifying Event Actions</h2>
+<p>An event action is modified by selecting it in the overview tree and
+then editing its properties in the details pane.</p>
+<p>Bind actions are modified similarly.</p>
+<h3>Changing the order of event actions</h3>
+<p>All event actions are executed in the order specified in the model.
+Event actions may be reordered by selecting an event action in the event
+handlers pane of the properties dialog and clicking on the <strong>Move
+Up</strong> and <strong>Move Down</strong> buttons. The same applies to bind actions.</p>
+<h3>Deleting Event Actions</h3>
+<p>An event action or bind action is deleted by selecting it in the event
+handlers pane and pressing the <strong>Delete </strong> button.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

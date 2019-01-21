@@ -1,0 +1,158 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.wst.xml.xpath2.processor.doc.user;sin
+ gleton:=true
+Require-Bundle: org.eclipse.core.runtime
+Bundle-Version: 2.0.0.v201209212251
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %vendorName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: html/ch02s03s08.html
+SHA1-Digest: aSDcngTobA37UWn/aajCphLFllc=
+
+Name: html/ch03s11s04.html
+SHA1-Digest: HDoRNZ1mnfOKpO01MJPra/y66E4=
+
+Name: html/ch03s08.html
+SHA1-Digest: 0hNV/6cGrPnJBzaa3+l0fWXUt38=
+
+Name: html/ch03s11s02.html
+SHA1-Digest: hq/lUBmtnGo8zIO2US3knPBBEJ0=
+
+Name: html/ch02s03s06.html
+SHA1-Digest: KDch0y5lKAyM9OFrGmRLppOrGRM=
+
+Name: html/ch04s08.html
+SHA1-Digest: xLiLGcSIILAe6xER47LRomd0RIU=
+
+Name: html/ch03s06.html
+SHA1-Digest: JkqDD2by+homRwwUoVCUPtI7Dis=
+
+Name: html/ch04s06.html
+SHA1-Digest: 9DJejeOA5VhaKSBbA4gYyf4lFTQ=
+
+Name: html/ch03.html
+SHA1-Digest: IvRP51EK3lPoUUdqAH30N0PhJFQ=
+
+Name: html/ch02s03s04.html
+SHA1-Digest: JWNV4sBCjSH4Lz6hh1yMt0pG+2U=
+
+Name: html/ch03s04.html
+SHA1-Digest: Klg4MSixaGDbcbotoayhA74spcw=
+
+Name: plugin.properties
+SHA1-Digest: dcQxR4M/RU6v7hWgZTg7GEFhKII=
+
+Name: html/ch01.html
+SHA1-Digest: 9+4w8EJtF41/6ujdCdXVm3XAn4s=
+
+Name: html/ch04s04.html
+SHA1-Digest: fJXmovlYPdn4c1e+2MXvpA4geH0=
+
+Name: html/ch02s03s02.html
+SHA1-Digest: H1ix6Uy7WDmIc9TUBuAanvZ7npA=
+
+Name: html/ch02s02.html
+SHA1-Digest: FaTopPkRasCnsIVvtvNe1wmQ/jA=
+
+Name: html/ch03s02.html
+SHA1-Digest: wCavgybIY14nbgIr3N99xnFQXiY=
+
+Name: html/ch04s02.html
+SHA1-Digest: 1EQFV1wi+4x3K3GbU5Zf+RbhwYI=
+
+Name: html/ch02s03s05s02.html
+SHA1-Digest: 8t5DtU1ITqLvNV4vMtno563QvNE=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.xml.xpath2.processor.doc.user/pom.xml
+SHA1-Digest: VqiHPvUPqydKrFHh56gDLknshnc=
+
+Name: html/ch02s03s10.html
+SHA1-Digest: /1FmKGynRH5s9TSkchmhEDnQwJE=
+
+Name: html/ch03s10.html
+SHA1-Digest: btRurFdOGi/LCkIfGC44EEmveJk=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.xml.xpath2.processor.doc.user/pom.properties
+SHA1-Digest: IdRPBUfWSGRLPxf5c1SiXXYYr2E=
+
+Name: plugin.xml
+SHA1-Digest: autY6lx2jeStrk3Dz43VIXZdCNE=
+
+Name: html/book.css
+SHA1-Digest: 2Onirh/lItP/nyWbLn8JlIaee0o=
+
+Name: html/ch02s03s09.html
+SHA1-Digest: JmNACFAadZZ+2XjlvBnbGSWL7z8=
+
+Name: html/ch03s09.html
+SHA1-Digest: dDIxrnmZQ1p1uKzL7uEbb0D7qFA=
+
+Name: html/ch04s09.html
+SHA1-Digest: teIdvbR4g5LX5zLcgsW4MEJ++NY=
+
+Name: html/ch02s03s07.html
+SHA1-Digest: bj4nCdKUcMJyARf07RSx3GvfwuI=
+
+Name: html/ch03s11s03.html
+SHA1-Digest: NLliPjsFuYwg6L/OnEpHOxVqf4A=
+
+Name: html/index.html
+SHA1-Digest: IsUWDgJfJsagbSuMYdijzo/ZXso=
+
+Name: html/ch03s07.html
+SHA1-Digest: BWGuNV9EmApgWPGHvVsq6iTyEPE=
+
+Name: html/ch04.html
+SHA1-Digest: KzDO/i/Q/T6nEFVQlNPtMIjS3ZM=
+
+Name: html/ch02s03s05.html
+SHA1-Digest: kPx9YtTD+iJY5Y2x1R5eY+O6hM8=
+
+Name: about.html
+SHA1-Digest: sgCJnk4QnR3NOCAPSHbXorGLiR8=
+
+Name: html/ch04s07.html
+SHA1-Digest: V7nv6OaGbYDTLBwyQoR2uKG5Tc0=
+
+Name: html/ch03s05.html
+SHA1-Digest: ixUGK4aot4tbvRSgaf/P4zVd4KI=
+
+Name: html/ch04s05.html
+SHA1-Digest: /gK6Hs32hQbaUvN+/GbCtXfufeI=
+
+Name: html/ch02.html
+SHA1-Digest: dRE8QYX/Qdz8aPu/zf5UrU3lyNI=
+
+Name: html/ch02s03.html
+SHA1-Digest: B5EtPevAnnO2IkAq38DSwswrNfE=
+
+Name: html/ch02s03s03.html
+SHA1-Digest: 1/D4TeYgsl0eEsT3moLGcxz9PXk=
+
+Name: html/ch03s03.html
+SHA1-Digest: oWYW9uvg2JsIV9ZRpwqr8EsBIWI=
+
+Name: html/ch02s03s05s03.html
+SHA1-Digest: FGfSf5Msv9c/0/57s/kwdwkIWvo=
+
+Name: html/ch04s03.html
+SHA1-Digest: yArcU5SxM5o6KnxmPjOwgsd4IGU=
+
+Name: html/ch02s03s11.html
+SHA1-Digest: gE9CRzgbwpxaARPKs9ABuX909MU=
+
+Name: toc.xml
+SHA1-Digest: pRyFD9dNSiu1yM0ynNaTgdO0Apw=
+
+Name: html/ch03s11.html
+SHA1-Digest: 4qmKk4f0JJSBgQ3miXgilrbxrkI=
+

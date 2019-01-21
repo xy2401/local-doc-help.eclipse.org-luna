@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<toc topic="help/index.html" label="EMF Compare Documentation">
+	<topic label="Developer">
+		<topic label="How to open compare dialog" href="help/developer/how-to-open-compare-dialog.html">
+			<link toc="help/developer/toc-how-to-open-compare-dialog.xml"></link>
+		</topic>
+		<topic label="Logical model" href="help/developer/logical-model.html">
+			<link toc="help/developer/toc-logical-model.xml"></link>
+		</topic>
+		<topic label="Developer guide" href="help/developer/developer-guide.html">
+			<link toc="help/developer/toc-developer-guide.xml"></link>
+		</topic>
+	</topic>
+	<topic label="Tutorial">
+		<topic label="Tutorial" href="help/tutorial/tutorial.html">
+			<link toc="help/tutorial/toc-tutorial.xml"></link>
+		</topic>
+	</topic>
+	<topic label="FAQ" href="help/FAQ.html">
+		<link toc="help/toc-FAQ.xml"></link>
+	</topic>
+	<topic label="User">
+		<topic label="Sample use case" href="help/user/sample-use-case.html">
+			<link toc="help/user/toc-sample-use-case.xml"></link>
+		</topic>
+		<topic label="User guide" href="help/user/user-guide.html">
+			<link toc="help/user/toc-user-guide.xml"></link>
+		</topic>
+	</topic>
+</toc>

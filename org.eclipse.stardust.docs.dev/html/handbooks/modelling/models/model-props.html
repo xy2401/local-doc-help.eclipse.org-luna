@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Model Properties</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Workflow Model Validation",
+        "model-handling.html","model-validation.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","model-preface.html","Working With Models");
+ -->
+</script>
+
+<h1 id="props">Model Properties</h1>
+<p>Model properties can be viewed or modified in the model properties
+dialog. The following model properties can be accessed via the properties dialog:</p>
+<ul>
+    <li><strong>General</strong>
+    <ul>
+        <li>Model OID - the identifier of the model. Please note that IDs containing
+         hyphens, blanks or dots and IDs starting with digits are not supported.</li>
+        <li>Name</li>
+        <li>ID</li>
+        <li>Validity period (optionally defined by date entry
+        specifying the beginning of the validity period)</li>
+        <li>Description - The description of the model is displayed as tooltip text in the Stardust Portal
+        when you hover the mouse over the model name.</li>
+    </ul>
+    </li>
+    <li><strong>Configuration Variables</strong> - contains an editable list of
+    all configuration variables defined in the model and their references. 
+	Chapter 
+    <a href="../model-variables.html">Using Configuration Variables</a> describes
+    this pane in detail.</li>
+    <li><strong>Activity Criticality</strong> - contains JavaScript editor to specify and modify the activity criticality formula.
+    For more information, please refer to the chapter <a href="../activity-criticality.html">Defining Activity Criticality</a>.</li>
+    <li><strong>Quality Assurance Codes</strong> - in this section you can add and modify
+    Quality Assurance codes that can be used to track the reasons for Quality Assurance failures. 
+    Refer to section
+    <a href="../activities/quality-assurance.html#qac">Quality Assurance Codes</a> of chapter
+        <a href="../activities/quality-assurance.html">Quality Assurance on interactive Activities</a>
+    for details.</li>
+    <li><strong>Simulation</strong> - helps you to specify simulation configurations (see chapter <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+    Simulation Configurations</a> of the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+    Simulation Guide</a>.)</li>
+    <li><strong>Effort Planning</strong> - for detailed information on how to set properties for
+        effort planning please refer to the chapter
+        <a href="../process-effort-calculation.html">Process Effort Calculation</a>.</li>
+    <li><strong>Language Bundles</strong> - settings for language bundles, see section <a
+        href="../mg-internationalization.html#model">Model</a> of the <a
+        href="../mg-internationalization.html">Native Language Support</a> chapter.</li>
+</ul>
+<h2>Editing Model Properties</h2>
+<p>You can edit and view model properties in the model properties dialog.
+To open this dialog, in the <strong>Outline</strong>
+tree view, right-click the model name and choose the option <strong>Properties</strong></p>
+<p class="image"><img src="images/mg-defdesk-open-model-dialog.png" alt="Model Properties">
+<br>
+<strong>Figure:</strong> Open the Model Properties Page</p>
+<p>The properties dialog opens:</p>
+<p class="image"><img src="images/mg-defdesk-6.png" alt="Model Properties">
+<br>
+<strong>Figure:</strong> Setting or Viewing Properties of a Model</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

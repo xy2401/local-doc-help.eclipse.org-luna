@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Retrieving Model Descriptions</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+        "pg-embed-runtime-info.html","",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Retrieving Model Descriptions</h1>
+<p>This chapter describes methods provided by Stardust
+to retrieve model descriptions on a deployed model.
+The class 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">
+QueryService</a> provides functionality to query the model repository.</p>
+<ul>
+	<li><a href="#descript">Retrieving Description of a Specified Model</a></li>
+	<li><a href="#criteria">Retrieving Model Descriptions Satisfying Specified Criteria</a></li>
+</ul>
+<h2 id="descript">Retrieving Description of a Specified Model</h2>
+<p>To retrieve the description of a specified
+model, use the following method:</p>
+<pre>DeployedModelDescription getModelDescription(long modelOID)</pre>
+<p>Parameter <strong>modelOID</strong> specifies the OID of the model to
+retrieve.
+<p>The method returns a  
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModelDescription.html">
+DeployedModelDescription</a> object.
+If no model with the specified OID exists, an ObjectNotFoundException
+is thrown. You need to have the permission
+to read model data to perform this method.</p>
+<h2 id="criteria">Retrieving Model Descriptions Satisfying Specified Criteria</h2>
+<p>The following method retrieves the model descriptions satisfying the 
+criteria specified in a provided query:</p>
+<pre>Models getModels(DeployedModelQuery query);</pre>
+<p>The method returns a list of 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModelDescription.html">
+DeployedModelDescription</a> objects (type
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Models.html">
+Models</a>).
+Parameter <strong>query</strong> defines the deployed model
+query of type
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DeployedModelQuery.html">
+DeployedModelQuery</a>. You need to have the permission
+to read model data to perform this method.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

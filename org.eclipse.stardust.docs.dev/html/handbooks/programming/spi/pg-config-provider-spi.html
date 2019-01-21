@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing a Static Configuration Provider for Default Preferences</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Implementing a Provider to inject Configuration Properties",
+	"spi-principal-val.html","pg-config-props.html",
+   "../../handbooks.htm","Developer Handbook",
+   "../pg-preface.htm","Programming Guide",
+   "spi-toc.html","SPI");
+-->
+</script>
+<h1>Implementing a Static Configuration Provider for Default Preferences</h1>
+<p>The Preference Store uses the default scope (PreferenceScope.DEFAULT) 
+to retrieve static preferences from an SPI.
+Default scoped preferences are looked up on the API before falling back to its own SPI.</p>
+<p>The following interfaces are available to
+be implemented to provide default preferences for one moduleId and
+multiple preferenceIds scoped by the moduleId:</p>
+<ul>
+	<li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/preferences/IStaticConfigurationProvider.html">
+	org.eclipse.stardust.engine.core.spi.preferences.IStaticConfigurationProvider</a>
+	- for the engine.</li>  
+	<li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/compatibility/ui/preferences/spi/IStaticConfigurationProvider.html">
+	org.eclipse.stardust.engine.core.compatibility.ui.preferences.spi.IStaticConfigurationProvider</a>
+	- for usage in user interface.</li>
+</ul>
+<h2>Using the IStaticConfigurationProvider</h2>
+<p>Create your own implementations for the interface depending on where the 
+default preferences should be available.
+For example, the Stardust Portal first looks up default preferences on 
+the engine and falls back to the own SPI lookup, if no preferences are found 
+in the engine.</p>
+<p>Refer to chapter
+<a href="pg-spi-tenant.html">Configuring SPI Implementations per Tenant</a> for details on
+how to configure custom Service Provider Interface implementations in general.</p>
+<ol>
+    <li>The following file needs to be created depending on the SPI to use:
+	<ul>
+    	<li>For the engine SPI, in any deployed jar in folder <tt>/META-INF/services</tt>:
+      <strong>org.eclipse.stardust.engine.core.spi.preferences.IStaticConfigurationProvider$Factory</strong></li>
+    	<li>For the UI side SPI, in any deployed jar in folder <tt>/META-INF/services</tt>):
+      <strong>org.eclipse.stardust.engine.core.compatibility.ui.preferences.spi.IStaticConfigurationProvider$Factory</strong></li>
+	</ul></li>
+    <li>Add the fully qualified class name of your implementations to the file 
+    named as the interface which the class implements.</li>
+</ol>
+<p>When a call on <tt>PreferenceScope.DEFAULT</tt> is performed,
+     all preferences provided by the SPI's implementors will be loaded into
+     the preferences cache.
+	Note that a new initialization for the SPI will only take place after 
+	the preference store caches are flushed.</p>
+<p>Find the code of the interface to be implemented in the public Javadoc of
+the according provider classes mentioned above or here:</p>
+<pre>
+/**
+ * An implementor of this interface can provide default preferences for one moduleId and
+ * multiple preferenceIds scoped by the moduleId.&lt;br&gt;
+ * &lt;br&gt;
+ * To publish an implementor to the engine a file named by the interface's factory has to be created in
+ * the '/META-INF/services' folder of the jar.&lt;br&gt;
+ * In this case: <strong>org.eclipse.stardust.engine.core.spi.preferences.IStaticConfigurationProvider$Factory</strong>&lt;br&gt;
+ * This file needs to contain the qualified class name of the implementor of the factory interface.&lt;br&gt;
+ * &lt;br&gt;
+ * This pattern follows the concept of the JDK6 ServiceLoader
+ *
+ */
+public interface IStaticConfigurationProvider
+{
+
+   /**
+    * @return the moduleId which the static preferences are provided for.
+    */
+   String getModuleId();
+
+   /**
+    * @return the preferenceIds for which the static configuration provider provides preferences for.
+    */
+   List/*&lt;String&gt;*/ getPreferenceIds();
+
+   /**
+    * @param preferencesId the preferencesId to lookup default preferences for.
+    * @return a map containing default preferences for the specified preferencesId.
+    */
+   Map/*&lt;String, Serializable&gt;*/ getPreferenceDefaults(String preferencesId);
+
+   /**
+    * The factory interface for IStaticConfigurationProvider
+    */
+   interface Factory
+   {
+      IStaticConfigurationProvider getProvider();
+   }
+
+}
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

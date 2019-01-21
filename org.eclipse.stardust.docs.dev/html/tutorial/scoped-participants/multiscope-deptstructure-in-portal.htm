@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Creating Scoped Participants for the Scoped Organization</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Working with Scoped Organization Structure in Stardust Process Portal",
+	        "multiscope-org-structure.htm","working-with-multi-scope-organization.htm",
+			
+			"../tut-preface.htm","Tutorials",
+			"tut-scoped-main.html","Scoped Participants Tutorials",
+			"multi-scope-preface.htm","The Scoped Participant Example");
+ -->
+</script>
+
+<h1>Creating Scoped Participants for the Scoped Organization</h1>
+
+<p>This chapter explains how the hierarchy of scoped organization looks like in the Stardust Process Portal 
+and how to work with scoped organizations.</p> 
+
+<h2>Creating Departments for scoped organization</h2>
+<p>Now let's create departments for the scoped organization. You can create departments for all the explicitly scoped organization.
+As you go on creating departments for each explicitly scoped organization, the organization hierarchy is revealed.
+First of all, create departments India and Germany under explicitly scoped organization O21. Once the India and
+Germany departments are created the next hierarchy of the organization gets displayed. However the scenario under consideration
+demands that we create a department called Berlin under the O43 organization whose parent department is Germany.</p>  
+<p>To achieve this:</p>
+<ol>
+
+	<li>Use the following start URL: http://localhost:8080/multiscopexample to access the login page of Stardust Process Portal</li> 
+	<li>Log in with the default administrator user ID and password: motu/motu (master of the universe). You can use Shift-F8 to rapidly type these credentials. When you login to the Stardust Process Portal the default view is of the Workflow Execution.</li> 
+	<li>Hover the mouse over <strong>Workflow Execution</strong> displayed in the upper-left corner of the browser and select <strong>Administration</strong></li>
+	<li>In the <strong>Administration Views</strong> pane, click <strong>Participant Management</strong> option. The Participant Management view gets displayed. 
+	The list of Active Users is displayed in the upper table and the <strong>Participant Tree</strong> is displayed in the following pane.
+	<p class="image"><img src="images/participantmgmtmtscoped.png"></img><br><strong>Figure:</strong> Participant Management</p></li>
+	<li>Right-click on the explicitly scoped organization <strong>O21</strong>. The <strong>Create Department</strong> option gets displayed.
+	<p class="image"><img src="images/mutiscopecreatedept.png"></img><br><strong>Figure:</strong> Participant Tree - Create Department</p></li>
+	<li>Create the department <strong>Germany</strong> and <strong>India</strong> under the explicitly scoped organization O21
+	<p class="image"><img src="images/germanyandindia.png"></img><br><strong>Figure:</strong> Departments - Germany and India</p></li>
+	<li>Expand the O32 organization</li>
+	<li>Right-click on the explicitly scoped organization <strong>O43</strong>. The Create Department option gets displayed.
+	<p class="image"><img src="images/berlindept.png"></img><br><strong>Figure:</strong> O43 - Create Department</p></li>
+	<li>Create the department <strong>Berlin</strong> under O43 organization
+	<p class="image"><img src="images/berlin.png"></img><br><strong>Figure:</strong> Berlin</p></li>
+	<li>Make sure that the organization hierarchy looks like as shown in the following screenshot.
+	<p class="image"><img src="images/orghierachy.png"></img><br><strong>Figure:</strong> Organization Hierarchy</p></li>
+	
+			
+</ol>	
+	
+<h2>Creating Users</h2>
+
+<p>The next step is to create users as each user should be assigned to each department.  To achieve this, the administrator needs to create 
+different users with different grants (assigned roles and departments).</p>
+<p> Let's create four users:</p>
+
+<ol>
+	<li>In the <strong>Administration Views</strong> pane, click the <strong>User Management</strong> option</li>
+	<li>Create the user <strong>Croft Lara</strong> whose account is <strong>Croft</strong></li>
+	<li>Click <strong>Apply</strong>. For detail information on how to create the new user, please refer to section
+	 <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html#createUser">Creating a New User</a> 
+	of chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">Creating and Editing User Accounts</a> 
+	of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</li>
+	
+	<li>Similarly, create the user <strong>City Frankman</strong>, <strong>Robert Dawson</strong> and <strong>Alvin Winchester</strong></li>
+
+</ol>
+<p class="image"><img src="images/all-users.png"><br>
+<strong>Figure:</strong> Added Users</p>
+
+<h2>Associating Users with the Departments</h2>
+<p>Once all the users are created, you need to associate each user to the department of explicitly or implicitly scoped organization.
+</p>
+<p>Drag-and-drop the user on the organization or department:</p>
+
+<ol>
+	<li>Drag <strong>City Frankman</strong> and drop it on the department <strong>Germany</strong> of the O21 organization
+	
+	<p class="image"><img src ="images/cityfrank.png"></img><br><strong>Figure:</strong> Associate City Frankman with Germany</p></li>
+	<li>Associate <strong>Dawson Robert</strong> with the organization O32
+	<p class="image"><img src ="images/dawson.png"></img><br><strong>Figure:</strong> Associate Dawson Robert with organization O32</p></li>
+	<li>Associate <strong>Winchester Alvin</strong> with the Berlin department of the organization O43
+	<p class="image"><img src ="images/winchester.png"></img><br><strong>Figure:</strong> Associate Winchester Alvin with Berlin Department</p></li>
+	<li>Associate <strong>Croft Lara</strong> with Role 1
+	<p class="image"><img src="images/lara.png"></img><br><strong>Figure:</strong> Associate Croft Lara with Role 1</p></li>
+</ol>
+<p>Once you assign the users to the departments the Participant Tree looks like as shown:</p>
+<p class="image"><img src ="images/participanttree.png"></img><br><strong>Figure:</strong> Participant Tree</p>
+ <p>Note the user drag-drop functionality gives grants to the user for departments.</p> 
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

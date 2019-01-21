@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Retrieving and Using Permission States</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+        "pg-embed-notes.html","",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Retrieving and Using Permission States</h1>
+<p>This chapter describes methods provided by Stardust
+to retrieve permission states as well as the usage of the class PermissionHelper.</p>
+<ul>
+    <li><a href="#retrieve">Retrieving Permission States</a></li>
+    <li><a href="#using">Using the PermissionHelper Class</a>
+    <ul>
+        <li><a href="#check">Checking for Permissions to invoke service specific methods on a given
+        element</a></li>
+        <li><a href="#access">Retrieving all elements the user has access to</a></li>
+        <li><a href="#cache">Caching and usage</a></li>
+    </ul></li>        
+</ul>
+<p>For an overview over existing permissions and their usage refer to chapter
+<a href="../pg-declarative-security.html">Declarative Security Usage in Stardust Services API</a>.</p>
+<h2 id="retrieve">Retrieving Permission States</h2>
+<p>The client-side <tt>ActivityInstance</tt> and <tt>ProcessInstance</tt>
+objects provide a method <tt>IntKey getPermission(String
+permissionId)</tt> for retrieving information about the permission state of
+the given permission Id for the current user.</p>
+<p>The return value is of one of the following values:</p>
+<ul>
+    <li><strong>UNKNOWN</strong> - the permission state is unknown.</li>
+    <li><strong>GRANTED</strong> - the permission is granted to the
+    current user.</li>
+    <li><strong>DENIED</strong>- the permission is denied to the
+    current user.</li>
+</ul>
+<p>Please note that momentarily only the following <tt>permissionId</tt>s,
+giving the permission to abort activity and process instances
+respectively, are supported as parameters for the <tt>getPermission</tt>
+method:</p>
+<ul>
+    <li><tt>authorization:activity.abortActivityInstances</tt></li>
+    <li><tt>authorization:processDefinition.abortProcessInstances</tt></li>
+</ul>
+<p>For the time being all other permissions will result in the
+return value <tt>UNKNOWN</tt>.</p>
+<!--  <p>The <tt>permissionId</tt> parameter can be a participant ID pertaining to
+the process model or one of the following predefined types:</p>
+<ul>
+	<li><strong>ALL</strong> - permission is given to all participants.</li>
+	<li><strong>OWNER</strong> - permission is given to the participant associated 
+	with the activity and the administrator.</li>
+</ul>-->
+<p>Please refer to the JavaDoc of <a
+    href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html"
+> org.eclipse.stardust.engine.api.runtime.ActivityInstance</a> and <a
+    href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ProcessInstance.html"
+> org.eclipse.stardust.engine.api.runtime.ProcessInstance</a> respectively for details.</p>
+<h2 id="using">Using the PermissionHelper Class</h2>
+<p>This section describes the usage of the <strong>PermissionHelper</strong>
+class in the following cases:</p>
+<ul>
+    <li><a href="#check">Checking for Permissions to invoke service specific methods on a given
+    element</a></li>
+    <li><a href="#access">Retrieving all elements the user has access to</a></li>
+    <li><a href="#cache">Caching and usage</a></li>
+</ul>
+<p>Please refer to the  
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/utils/PermissionHelper.html">
+PermissionHelper</a> description in the 
+<a href="../../../../reference/api/toc.html">Stardust API</a> reference for
+more information on this class.</p>
+<h3 id="check">Checking for Permissions to invoke service specific methods on a given
+element</h3>
+<p>To check, whether the user is allowed to invoke a method on the
+service argument that requires the given permission that is defined on a
+given element, the <tt>PermissionHelper</tt> class provides the following method:</p>
+<pre>boolean hasPermission(Service service, String permissionId, &lt;model element&gt; element)</pre>
+<p>The parameter model element can be an Activity, a
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessDefinitionFilter.html">
+ProcessDefinition</a> or a 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModelDescription.html">
+DeployedModelDescription</a> object. Please note that
+when using a DeployedModelDescription you must use the active model
+description.</p>
+<p>Only instances of WorkflowService,
+AdministrationService or QueryService are accepted as service argument.</p>
+<p>This method uses the service method <tt>&lt;service&gt;.getPermissions()</tt>,
+which is described in the section <a href="#retrieve">Retrieving Permission States</a>,
+according to the given service to retrieve the user permissions for that
+service.</p>
+<p>For information on the specific services provided by Stardust, refer to chapter
+<a href="../pg-embedded-3.htm">Stardust Services</a>.</p>
+<h3 id="access">Retrieving all elements the user has access to</h3>
+<p>To get a list of all elements, to which the user has access to
+(e.g. processes the user is allowed to view as he has the permission to
+"Read Process Instance" for or he participates in), use the <tt>filterXXXAccess</tt>
+method:</p>
+<pre>List&lt;xxx&gt; filterXXXAccess(WorkflowService service, List&lt;xxx&gt; elements)</pre>
+<p>Here, the &lt;xxx&gt; could be either a process definition or an
+activity. The filter method takes the raw list of elements to filter from.</p>
+<pre>public List&lt;Activity&gt; filterActivityAccess(WorkflowService service, List&lt;Activity&gt; activities)
+public List&lt;ProcessDefinition&gt; filterProcessAccess(WorkflowService service, List&lt;ProcessDefinition&gt; processes)</pre>
+<h3 id="cache">Caching and Usage</h3>
+<p>The <tt>PermissionHelper</tt> class is designed to work in 
+the following two modes:</p>
+<ol>
+    <li>without caching: Each time the information
+    needed that is not present in the method arguments will be retrieved
+    from the engine.</li>
+    <li>in caching mode: The information will be retrieved
+    only once and then stored in the instance variables. For the caching
+    mode, it is required that each user must use it's own instance of the
+    <tt>PermissionHelper</tt> (per client login), otherwise mixing the
+    <tt>PermissionHelper</tt> for different users will produce incorrect results.</li>
+</ol>
+<p>The default constructor assumes that caching is enabled and no information
+is yet available, so caches are created on demand, depending on
+usage. Once a method is invoked, the corresponding cache will be created
+Thus, subsequent invocations of the same method (with the same service
+object) will be significantly faster.</p>
+
+<p>Another constructor accepts a boolean value.</p>
+<pre>public PermissionHelper(boolean useCaches)</pre>
+<p>If this value is false, then caching is
+completely disabled and information will always be freshly retrieved
+from the engine.</p>
+<p>The arguments of the third constructor are a User object and a
+set of strings containing the IDs of the startable processes.</p>
+<pre> public PermissionHelper(User user, Set&lt;String&gt; startableProcesses)</pre>
+<p>These
+objects are stored in the instance and used in <tt>filterXXXAccess</tt>
+methods. Both of them are optional. If the IDs of the startable
+processes are null, the <tt>PermissionHelper</tt> may issue a
+<tt>WorkflowService.getStartableProcessDefinitions()</tt> to get the IDs, 
+if needed, only once, and cache the result. If the IDs are provided, then the helper
+will use the provided IDs and never request them from the engine.</p>
+<p>The User object however is not cached. If the <tt>PermissionHelper</tt> is not
+constructed with a User object, then the User will be retrieved from the
+engine each time the <tt>filterXXXAccess</tt> is invoked.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

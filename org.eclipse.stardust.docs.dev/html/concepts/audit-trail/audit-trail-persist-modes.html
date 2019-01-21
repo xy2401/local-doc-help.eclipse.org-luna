@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Audit Trail Persistence Modes</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+   title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Transient Processes",
+		"audit-trail-persist.html","transient-procs.html",
+	   "../key-concepts.html","Concepts",
+       "audit-trail-persist.html","Audit Trail Persistence");
+ -->
+</script>
+   <h1>Audit Trail Persistence Modes</h1>
+   <p>Stardust provides an audit-trail persistence mode concept
+      which allows to execute process instances with varying approaches
+      regarding persistence. A general configuration option is provided allowing
+      to explicitly turning on the feature of transient processes, which is
+      turned off per default. Process definitions can be flagged as transient
+      candidates. Certain conditions in the model design lead to a switch from a
+      transient processing to a normal processing.</p>
+   <ul>
+      <li><a href="#pmodes">Provided Persistence Modes</a>
+      </li>
+      <li><a href="#config">Configuration Options</a>
+      </li>
+   </ul>
+   <h2 id="pmodes">Provided Persistence Modes</h2>
+   <p>The following persistence modes are provided:</p>
+   <table>
+      <tbody>
+         <tr>
+            <th>Persistence Mode</th>
+            <th>Key Properties</th>
+         </tr>
+         <tr>
+            <td><strong>Transient</strong>
+            </td>
+            <td>The process and potentially all its sub-processes will be
+               executed transiently and audit trail data will only be kept in an
+               in-memory cache for the time until the process instance
+               completes. Upon completion of the process hierarchy, all audit
+               trail data will be discarded for this process instance and no
+               audit trail will be persisted to the database. Refer to chapter <a
+               href="transient-procs.html">Transient Processes</a> for details.</td>
+         </tr>
+         <tr>
+            <td><strong>Deferred</strong>
+            </td>
+            <td>The process and all its sub-processes will be executed
+               transiently and audit trail data will only be kept in an
+               in-memory cache for the time until the process instance
+               completes. Upon process completion the data will be stored to the
+               audit trail data base. Refer to section <a href="#deferred">Deferred</a>
+               for details.</td>
+         </tr>
+         <tr>
+            <td><strong>Immediate</strong>
+            </td>
+            <td>The audit trail will be persisted to the audit trail
+               database directly and synchronously along with activity thread
+               processing. Refer to section <a href="#immediate">Immediate</a>
+               for details.</td>
+         </tr>
+      </tbody>
+   </table>
+   <p>Refer to the following sections for details on the different
+      persistence modes.</p>
+   <h3 id="transient">Transient</h3>
+<p>Transient processes keep instances of the process in-memory only during the
+course of execution. No audit trail is persisted at all during or after the
+execution of the process instance. The corresponding objects are created during 
+process execution and are available in the context of the activity threads 
+running for that process instance. Refer to chapter 
+<a href="transient-procs.html">Transient Processes</a> for details on 
+transient processes.</p>
+    <h3 id="deferred">Deferred</h3>
+   <p>
+      All execution aspects of persistence mode <strong>Deferred</strong> are
+      identical to the case <strong>Transient</strong> described in chapter <a
+         href="transient-procs.html">Transient Processes</a> with one exception:
+   </p>
+   <p>
+      When a process hierarchy executed in persistence mode <strong>Deferred</strong>
+      is completed, the audit trail data kept in the transient cache for that
+      process hierarchy will not be discarded but will be persisted to the audit
+      trail database. The audit trail data will only be kept in an in-memory
+      cache for the time until the process instance completes. Upon process
+      completion the data will be stored to the audit trail data base.
+   </p>
+   <h3 id="immediate">Immediate</h3>
+   <p>
+      In audit trail persistence mode <strong>Immediate</strong>, the audit
+      trail data are synchronously inserted or updated in the database as the
+      activity threads belonging to the process instance in question create or
+      modify activities, data values and related objects during process
+      execution. This is the default mode.
+   </p>
+   <p>All database operations are performed synchronously and in
+      transactional isolation as an activity thread progresses. When an activity
+      thread terminates, all database changes are persisted.</p>
+   <h2 id="config">Configuration Options</h2>
+   <p>The persistence mode can be set via one of the following options:</p>
+   <ul>
+      <li><a href="#modeler">Process Definition Property in the Modeler</a>
+      </li>
+      <li><a href="#property">Global server-side Property</a></li>
+   </ul>
+   <h3 id="modeler">Defining the Persistence Mode for Processes in the
+      Modeler</h3>
+   <p>
+      The property page of process definitions in the Stardust modeler
+      provides you with a checkbox to choose one of the persistence modes
+      described in section <a href="#pmodes">Persistence Modes</a>. For details
+      on the modeler settings refer to section <a
+         href="../../handbooks/modelling/mg-defdesk-3.htm#trans">Audit Trail Persistence</a>
+      of chapter <a href="../../handbooks/modelling/mg-defdesk-3.htm">Working with
+         Process Definitions</a>.
+   </p>
+   <h3 id="property">Global server-side Property</h3>
+   <p>
+      The global server-side property
+      <tt>Carnot.Engine.Tuning.SupportTransientProcesses</tt>
+      is provided to determine whether transient processing is available at all
+      and how the corresponding model properties are handled. The following four
+      values are possible:
+   </p>
+   <ul>
+      <li><tt>on</tt> - is the prerequisite for executing process instances
+         transiently. The process definition modeling property determines how it
+         is executed.</li>
+      <li><tt>alwaysTransient</tt> - all process instances will be executed
+         transiently, if allowed by the process definition's' topology. This
+         does not depend on the corresponding modeling property of the
+         underlying process definition.</li>
+      <li><tt>alwaysDeferred</tt> - all process instances will be executed
+         with deferred persistence. The process instance will not be persisted
+         until it has been completed, if allowed by the process definition's'
+         topology. This does not depend on the corresponding modeling property
+         of the underlying process definition.</li>
+      <li><tt>off</tt> - disables the Transient Process Instance
+         functionality globally and the process definition modeling property as
+         well as the process instance runtime property are meaningless.</li>
+   </ul>
+   <script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

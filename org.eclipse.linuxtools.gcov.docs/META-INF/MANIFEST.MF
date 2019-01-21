@@ -1,0 +1,115 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %provider
+Bundle-Localization: plugin
+Bundle-Name: %bundleName
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.gcov.docs;singleton:=true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 1.0.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/LinuxToolsGcovView.pn
+ g
+SHA1-Digest: 2y0s8muuaVm04Fi/Iq/AaRxiUUc=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gcov-project-explorer
+ .png
+SHA1-Digest: qnAOjRn14raN8Uvvckz9qobY2wE=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gcov/org.eclipse.linuxtool
+ s.gcov.docs/pom.properties
+SHA1-Digest: ULjQibbfN2s6wIHCJ6gRLsRrUWI=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Opening-gcov-result.html
+SHA1-Digest: +G7Ki9tFVQFY9awP+Az0ltUQEgc=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Installation-and-Set-Up.html
+SHA1-Digest: 1gRwhnEMOChqnjDYCv+lu+AsTu0=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/LinuxToolsGcovAnnotat
+ edSource.png
+SHA1-Digest: QGg7LlU6+gUy6BWhErjTTIub//M=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gprof-sort-per-file.g
+ if
+SHA1-Digest: 8EN57qBdogi8HBR8XgeuVbiZeTk=
+
+Name: plugin.properties
+SHA1-Digest: 1YeMtdgABCNDeKDY8lMBJN8LnQI=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gcov-binary-file.png
+SHA1-Digest: 9GGIQkGMqk1Rix1UL5Zqw8Ho8MM=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gcov-sort-per-folder.
+ gif
+SHA1-Digest: DMMrc2Eefabgj8tNZ6vWn5Qvxro=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/GcovAnnotatedSource.p
+ ng
+SHA1-Digest: Cm8UxIg91GRG2JkawXOws6LadGk=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/GcovView.png
+SHA1-Digest: rNFIvXYHh8/kP/kQSVYKFGxr65o=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/LinuxToolsProfileAsGc
+ ov.png
+SHA1-Digest: drNjoprpU3ZNvUH606lFlWuVI3I=
+
+Name: plugin.xml
+SHA1-Digest: TGFq8XjXd/IbiLUVLYrzbgNQ95o=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Troubleshooting.html
+SHA1-Digest: /9/zIbhbdWOmPZnTPR616WWETdw=
+
+Name: Linux_Tools_Project/GCov/User_Guide/User-Guide.html
+SHA1-Digest: +8ezws61zxmOgDiMVhQnOxjvYcc=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gcov/org.eclipse.linuxtool
+ s.gcov.docs/pom.xml
+SHA1-Digest: Ih/NLdTy7mZJAeVtVOmLPHvF14Q=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gprof-sort-per-functi
+ on.gif
+SHA1-Digest: 8wJOF3CiXtGj/rE7FwlZDm/1bOs=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Gcov-main-view.html
+SHA1-Digest: 7YMIbtBOIRDgr0usMTmHeEXZ/PI=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: toc.xml
+SHA1-Digest: i61cen91VO4S0vnEi/ZNZ0K3J9k=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/LinuxToolsGcovProfili
+ ngTools.png
+SHA1-Digest: omaDAay6AzvSqm0FEjX+t7OFItE=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gprof-birt-chart.gif
+SHA1-Digest: vwP1y2HXCgICJIn0n87jkpo8jpg=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Updating-This-Document.html
+SHA1-Digest: fXwzP77H97HHpHqcYK0gEGi/gzI=
+
+Name: Linux_Tools_Project/GCov/User_Guide/Profiling-Code-Coverage.html
+SHA1-Digest: QzlFgm90Zj/M8jqeIVcUA5LqDAM=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/GCov/User_Guide/images/Gprof-export-to-csv.g
+ if
+SHA1-Digest: LQPT2QoQELD7YcZiJV2Viw4nKYo=
+

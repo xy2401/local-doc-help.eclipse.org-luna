@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Deploying Different Models into One Runtime</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Multiple Implementations",
+		"using-elements.html","multiple-impl.html",
+		"../key-concepts.html","Concepts",
+		"multi-model.html","Multi Model Audit Trail Setups");
+ -->
+</script>
+<h1>Deploying Different Models into One Runtime</h1>
+<p> Stardust allows to deploy different models into one runtime.
+In case a model is being deployed, all models that the model to be deployed is using
+have to be deployed already, otherwise deployment errors occur.</p>
+<ul>
+	<li><a href="#vhandl">Versioning Handling</a></li>
+	<li><a href="#restr">Restrictions</a></li>
+	<li><a href="#units">Deployment Units</a></li>
+</ul>
+
+<h2 id="vhandl">Versioning Handling</h2>
+<p>Stardust allows maintaining multiple revisions 
+of a process model as model versions.
+For information on handling multiple versions at runtime in general,
+please refer to the chapter
+<a href="../admin-concepts/multiversion.html">
+Working with Multiple Versions</a>.</p>
+
+<p>Versioning at deployment time occurs on deployment level.
+Successor versions of a model can always be deployed into the runtime 
+regardless of whether they implement all elements exposed by its 
+predecessor versions or the shared model elements referenced by other models
+in the runtime. A warning occurs nevertheless at deployment time if the model 
+does not implement all of the model elements exposed by its predecessor version 
+and currently referenced by other models deployed.</p>
+
+<ul>
+	<li><a href="#leaves">Building Version Spheres from Leaves</a></li>
+	<li><a href="#link">Deployment in Case of Multiple Provider Versions</a></li>
+	<li><a href="#example">Scenarios</a></li>
+	<li><a href="#running">Handling of Running Instances Upon Version Deployment</a></li>	
+</ul>
+<h3 id="leaves">Building Version Spheres from Leaves</h3>
+<p><p>In case a new version of a provider model is deployed, 
+a new version of the consumer model is created to reference to this
+new version. This is illustrated in the following figure:</p>
+<p class="image"><img src="images/version-from-leaves.png" alt=""> <br>
+<strong>Figure:</strong> Build Version Sphere from Leaves</p>
+<h3 id="link">Deployment in Case of Multiple Provider Versions</h3>
+<p>In case of multiple provider versions, the following procedure
+is used during the deployment of a consumer model:</p>
+<ol>
+	<li>It is checked for the last deployed and active provider model.</li>
+	<li>A check is performed whether the <tt>validFrom</tt> date 
+	of the provider model is before or equal to the model to be deployed.
+	<ul>
+		<li>If yes, this version is linked.</li>
+		<li>Otherwise, a deployment exception is thrown.</li>
+	</ul></li>
+	<li>These checks are repeated for all referenced provider models.</li>
+</ol>
+
+<h3 id="example">Scenarios</h3>
+<p>It will be determined which version of referenced process models
+ a version of a model is referring to. The following scenarios apply:</p>
+<!-- <ul>
+	<li><a href="#"</li>
+</ul> -->
+<h4 id="">Scenario 1</h4>
+<p>In the following scenario, the successor version of the referencing model 
+V2 is deployed first. Later, a new version of the library is deployed. 
+The reference remains attached to <tt>Version 1</tt> of the 
+referenced library (default case):</p>
+<p class="image"><img src="images/versioning-case-1.png" 
+	alt="Versioning Scenario"> <br>
+<strong>Figure:</strong> Versioning Scenario</p>
+<h4 id="">Scenario 2</h4>
+<p>In this scenario, version <tt>V2</tt> of the referenced model 
+<tt>M1</tt> is deployed. Then a successor version <tt>V2</tt> of 
+the referencing model <tt>M3</tt> is deployed. Reference is bound 
+to version <tt>V2</tt> of <tt>M3</tt>:</p>
+<p class="image"><img src="images/versioning-case-3.png" 
+	alt="Versioning Scenario"> <br>
+<strong>Figure:</strong> Versioning Scenario</p>
+<h4 id="">Scenario 3</h4>
+<p>In the last scenario, the successor version of both models
+ is deployed in one deployment unit and references are created 
+ between these:</p>
+<p class="image"><img src="images/versioning-case-4.png" 
+	alt="Versioning Scenario"> <br>
+<strong>Figure:</strong> Versioning Scenario</p>
+<h3 id="running">Handling of Running Instances Upon Version Deployment</h3>
+<p>Changing a process interface primary implementation on running 
+process instances can be handled by ignoring the changed primary
+implementations.</p>
+<p>Instances of process hierarchies already running at the time of 
+rebinding will continue to run in the model version tree that existed when
+the root process instance was started. This is the default behavior for 
+rebinding of references. The following figure illustrates this
+handling:</p>
+<p class="image"><img src="images/deploy-link-version.png" 
+	alt="Deploy Link Version"> <br>
+<strong>Figure:</strong> Handling of Running Instances</p>
+
+<h2 id="restr">Restrictions</h2>
+<p>Note that the following deployment cases are not supported
+for multi model:</p>
+<ul>
+	<li><a href="#cycl">Cyclical References</a></li>
+	<li><a href="#crossPart">Cross-Partition Deployment</a></li>
+</ul>
+<h3 id="cycl">Cyclical References</h3>
+<p>Cyclical references are not allowed between models, 
+even not within one deployment unit. This means that a model using model elements
+from another model cannot be also referenced by the other model.</p>
+<p>Cyclical references are for example a model using</p>
+<h3 id="crossPart">Cross-Partition Deployment</h3>
+<p>Cross-partition deployment and model references across partitions are not supported.</p>
+<h2 id="units">Deployment Units</h2>
+<p>You have the option to select multiple models to be deployed at a time.</p>
+<p>Multiple deployments of different models are possible unless they result
+in dangling or circular model references.
+Different model files with identical model IDs are considered versions 
+of the same model. They can be deployed as new versions of the model already 
+deployed.</p>
+<p>Multiple models can be displayed in one single deployment step, as
+illustrated in the figure below:</p> 
+<p class="image"><img src="images/deployment-steps.png" alt=""> <br>
+<strong>Figure:</strong> Deploying multiple models in a single 
+deployment step.</p>
+
+<h3>Read-only Deployment</h3>
+<p>Models can be deployed in read-only state to support the delivery 
+of base library models or models having process skeletons into 
+customer deployments and to ensure, 
+that the customer is not overwriting these.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

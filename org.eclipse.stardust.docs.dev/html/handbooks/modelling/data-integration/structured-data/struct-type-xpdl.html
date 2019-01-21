@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>XPDL Representation of Structured Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("",
+    	"struct-field-level.html","",
+		"../../../handbooks.htm","Developer Handbooks",
+		"../../mg-preface.htm","The Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../struct-data-preface.html","Structured Data Types");
+ -->
+</script>
+<body>
+<h1>XPDL Representation of Structured Data</h1>
+<p>Structured data are stored in the <tt>TypeDeclarations</tt> section of an XPDL 
+  file according to the XPDL standard. </p>
+<pre>
+&lt;xpdl:TypeDeclaration Id="Address" Name="Address"&gt;
+   &lt;xpdl:SchemaType&gt;
+        &lt;xsd:schema xmlns:Cou="http://www.infinity.com/bpm/model/NewWorkflowModel/Country"
+            xmlns:tns="http://www.infinity.com/bpm/model/NewWorkflowModel/Address" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://www.infinity.com/bpm/model/NewWorkflowModel/Address"&gt;
+            &lt;xsd:complexType name="Address"&gt;
+                &lt;xsd:sequence&gt;
+                    &lt;xsd:element name="Street" type="xsd:string"/&gt;
+                    &lt;xsd:element name="Number" type="xsd:string"/&gt;
+                    &lt;xsd:element name="City" type="xsd:string"/&gt;
+                    &lt;xsd:element name="Country" type="xsd:string"/&gt;
+                &lt;/xsd:sequence&gt;
+            &lt;/xsd:complexType&gt;
+            &lt;xsd:element name="Address" type="tns:Address"/&gt;
+        &lt;/xsd:schema&gt;
+    &lt;/xpdl:SchemaType&gt;
+&lt;/xpdl:TypeDeclaration&gt;
+</pre>
+<ul>
+    <li><a href="#xsdValidation">XSD Schema Validation</a></li>
+    <li><a href="#repr">XPDL/XSD Representation of Annotations</a></li>
+    <li><a href="#ext">Adding Annotations and Categories via Extension Points</a></li>
+</ul>
+
+<h2 id="xsdValidation">XSD Schema Validation</h2>
+<p>Per default, a strict xpath validation will be performed on XSD schemas. To change
+the validation behavior, you can set 
+the property <tt>XPath.StrictEvaluation</tt> in your <tt>carnot.properties</tt> file.</p>
+<p>If this property is set to <tt>true</tt>, which is the default value, strict XPath
+evaluation will be performed.
+Set to <tt>false</tt>, dereferentiation paths on structured data are invoked, even if the XSD schema
+has changed, provided the path is still compatible with the new schema. Otherwise invocation
+fails.</p>
+<h2 id="repr">XPDL/XSD Representation of Annotations</h2>
+<p>Global annotations are stored as XSD annotations in the following structure:</p>
+<pre>
+&lt;xsd:schema xmlns:xsd=http://www.w3.org/2001/XMLSchema xmlns:infinity="..."&gt;
+   &lt;xsd:element name="customer" type="Customer"&gt; &lt;xsd:annotation&gt;
+   &lt;xsd:complexType&gt;
+    &lt;xsd:sequence minOccurs="0"&gt;
+     &lt;xsd:element name="someString" type="xsd:string" maxOccurs="unbounded"&gt;
+      &lt;xsd:annotation&gt;
+       &lt;xsd:appinfo&gt;
+        &lt;infinity:storage&gt;
+         &lt;infinity:indexed&gt;false&lt;/infinity:indexed&gt;
+         &lt;infinity:persistent&gt;false&lt;/infinity:persistent&gt;
+        &lt;/infinity:storage&gt;
+       &lt;/xsd:appinfo&gt;
+      &lt;/xsd:annotation&gt;
+     &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+   &lt;/xsd:complexType&gt;
+  &lt;/xsd:element&gt;
+&lt;/xsd:schema&gt;
+</pre>
+<p>Other formats may specify how to store their annotations in a corresponding 
+<!-- commented out not yet existing link
+ XSD structure in the implementation of the <a href="">Message Format extension point</a>. -->
+XSD structure in the implementation of the Message Format extension point. 
+For example combining upcoming SWIFT standards and global annotations from the
+Process Workbench, an XSD representation of a data structure definition would look like:</p>
+<pre>
+&lt;xs:annotation&gt;
+   &lt;xs:appinfo&gt;
+      &lt;info:FinFormat value="16c"/&gt;
+   &lt;/xs:appinfo&gt;
+&lt;/xs:annotation&gt;
+
+&lt;xsd:schema xmlns:xsd=http://www.w3.org/2001/XMLSchema xmlns:infinity="http://www.carnot.ag/xpdl/3.1"&gt;
+   &lt;xsd:element name="customer" type="Customer"&gt;
+   &lt;xsd:complexType&gt;
+    &lt;xsd:sequence minOccurs="0"&gt;
+     &lt;xsd:element name="someString" type="xsd:string" maxOccurs="unbounded"&gt;
+      &lt;xsd:annotation&gt;
+       &lt;xsd:appinfo&gt;
+
+     &lt;!--Stardust global annotations--&gt;
+        &lt;infinity:storage&gt; 
+         &lt;infinity:indexed&gt;false&lt;/infinity:indexed&gt;
+         &lt;infinity:persistent&gt;false&lt;/infinity:persistent&gt;
+        &lt;/infinity:storage&gt;
+       &lt;/xsd:appinfo&gt;
+      &lt;/xsd:annotation&gt;
+     &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+   &lt;/xsd:complexType&gt;
+  &lt;/xsd:element&gt;
+&lt;/xsd:schema&gt;
+</pre>
+<h3>&lt;infinity:indexed&gt;false&lt;/infinity:indexed&gt;</h3>
+<p>Indexed fields store a separate copy of data that is used by the query 
+API to perform filtering/sorting/grouping based on these fields.
+If the structure type element is marked as non-index (Index=False), 
+then the data value row in database table does not get added.</p>
+<h3>&lt;infinity:persistent&gt;false&lt;/infinity:persistent&gt;</h3>
+<p>The persistent property allows you to select which fields you want to store and which not. 
+If Persistence is True then the data value persist in process instance event if it 
+is not indexed in database.
+If False, data value does not persist with data.</p>
+<h2 id="ext">Adding Annotations and Categories via Extension Points</h2>
+<p>Annotations and categories can be dynamically added to the modeling environment
+with an Eclipse extension point, which:</p>
+<ul>
+    <li>defines a category for the annotation editor (e.g. SWIFT),</li>
+    <li>parses annotations for all relevant nodes of an XSD tree 
+    and creates annotation objects for the internal data structure model.</li>
+    <li>generates annotations for all relevant nodes of an XSD
+    tree based on the internal data structure model.</li>
+    <li>defines label providers and optionally in-place editors for all 
+    annotations in the category specified by the extension type.</li>
+</ul>
+<!--<p>Select the following link to view the schema description of the 
+<strong>applicationInfo</strong> extension 
+point:
+<a href="../../../reference/extensions/ag_carnot_bpm_modeling_data_structured_applicationInfo.html">
+    applicationInfo schema</a></p>-->
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

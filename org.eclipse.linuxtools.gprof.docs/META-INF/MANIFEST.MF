@@ -1,0 +1,150 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.gprof.docs;singleton:=true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 1.0.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-birt-chart.gif
+SHA1-Digest: vwP1y2HXCgICJIn0n87jkpo8jpg=
+
+Name: build-doc.xml
+SHA1-Digest: 53ec0lFYnzkAX28zD4vk5BUFc1A=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Updating-This-Document.html
+SHA1-Digest: wGB9McdIu1iN/kPH4AEr782LBlk=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Opening-gmon-out.html
+SHA1-Digest: WXnGqZrZbPHUMn0vFwtHctNd8GE=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gprof/org.eclipse.linuxtoo
+ ls.gprof.docs/pom.properties
+SHA1-Digest: cBZr5oBYm/qDvhjXNuOaN8hHrm0=
+
+Name: plugin.properties
+SHA1-Digest: 8tJdspWDh4JDcE4NhaugaUbcsyw=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Supported-format.html
+SHA1-Digest: gCPkdSuadHBmy7UYweN/7rvAuiU=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-export-to-csv.
+ gif
+SHA1-Digest: LQPT2QoQELD7YcZiJV2Viw4nKYo=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-binary-file.pn
+ g
+SHA1-Digest: V76NFB+GUxqcsD9YAkxrl3iw9Aw=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsGprofView.
+ png
+SHA1-Digest: bdeTHHMqOzpDIcpUXNoRCq6IC/4=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-display-call-g
+ raph.png
+SHA1-Digest: tIrmBPPbkyTZFS3ypNsAjv/MgUs=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-sort-per-line.
+ gif
+SHA1-Digest: gZe5sbRkpJUpmHb+Tnx2GilcAFM=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsTimingPref
+ erencesGprof.png
+SHA1-Digest: U70If6is3+XLUlShp/iuNbGVT54=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxtoolsGprofBuild
+ Console.png
+SHA1-Digest: UZewPLQiuZEg0VUvXlF1FuAz9Bw=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gprof/org.eclipse.linuxtoo
+ ls.gprof.docs/pom.xml
+SHA1-Digest: VRBuPL7ueU2HGVEbCXuFTYsHWNg=
+
+Name: plugin.xml
+SHA1-Digest: TGFq8XjXd/IbiLUVLYrzbgNQ95o=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Profiling-Using-GProf.html
+SHA1-Digest: InzWpfbfXvNLbIWnP4fuVmF1zzQ=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Installation-and-Set-Up.htm
+ l
+SHA1-Digest: v/fPgmmRoD2wcTN6DzVlJmIXiQc=
+
+Name: notices.html
+SHA1-Digest: zn407HQEXEEeNqA/T9iV2mMJ91c=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-sort-per-file.
+ gif
+SHA1-Digest: 8EN57qBdogi8HBR8XgeuVbiZeTk=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-view.jpg
+SHA1-Digest: llGfzh8b04tbvYb/DEjKPm+Jzao=
+
+Name: Linux_Tools_Project/GProf/User_Guide/User-Guide.html
+SHA1-Digest: W+mNZO3kunAijT10Da8jxphYba4=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsProfileLoc
+ alGprof.png
+SHA1-Digest: kFXVx3RyywWXGY7KYxCm4hzB55k=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsGprofGmonO
+ ut.png
+SHA1-Digest: q5HluePTTDRKJdZXeiw5aWqAwr8=
+
+Name: toc.xml
+SHA1-Digest: bwHa+KP4eZFzBBsJUwtgE+kofY4=
+
+Name: Linux_Tools_Project/GProf/User_Guide/Troubleshooting.html
+SHA1-Digest: KHFdHXcH1jjrG1dHFkvSwyqgyeU=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-compile-step.p
+ ng
+SHA1-Digest: YzcidF/NAgrQfterGfmmDEnKwhU=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsTimingProp
+ ertiesGprof.png
+SHA1-Digest: hfS1JZLTmgtNWQsHQaXlOQB2B68=
+
+Name: Linux_Tools_Project/GProf/User_Guide/GProf-View.html
+SHA1-Digest: VUY1FmqhdyrqYMjyEIsVCU2N6Sw=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-sample-time.gi
+ f
+SHA1-Digest: hqGn8BItBgmMm+eO9V7D7mt/W8I=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsGprofDialo
+ g.png
+SHA1-Digest: MgEfJLB0kN/UlWJEtrXonr8kggA=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/LinuxToolsGprofTimin
+ g.png
+SHA1-Digest: JWxOhK89qomP7/egWUMaNHCL9+s=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-sort-per-funct
+ ion.gif
+SHA1-Digest: 8wJOF3CiXtGj/rE7FwlZDm/1bOs=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/GProf/User_Guide/images/Gprof-project-explor
+ er.png
+SHA1-Digest: v7mWH/qB5jawdIr6NVVBvVsIh3Q=
+

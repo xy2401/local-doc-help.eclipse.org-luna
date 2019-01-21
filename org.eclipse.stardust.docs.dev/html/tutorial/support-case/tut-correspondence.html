@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Creating Correspondence</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("",
+		"tut-main-13.htm","",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1>Creating Correspondence</h1>
+
+<p>We like to notify the customer by creating appropriate correspondence.
+Stardust provides a prepared correspondence template, which we will upload
+to use as template for our correspondence. For details on creating
+correspondence in the Stardust portal refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/context-portal-correspondence.html">
+Creating Correspondence</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<p>If you have not already done so, download the zipped example sources for 
+the Support Case example as described in section
+<a href="support-case-preface.htm#examples">Example Sources</a> of the main chapter
+<a href="support-case-preface.htm">The Support Case Example</a>.
+Unzip the zip folder to a location of your choice. In folder <tt>dat</tt> you
+find the template <tt>Acceptance.html</tt>.</p>
+<h2>Uploading the Example Correspondence Template</h2>
+<p>To upload the template <tt>Acceptance.html</tt> to our
+<tt>correspondence-templates</tt> folder:</p>
+<ol>
+    <li>In the <strong>Documents</strong> section click 
+    <strong>My Documents</strong> to switch to the <strong>My Documents</strong>
+    view. Refer to chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/my-documents.html">
+    Organizing Process Documents</a> of the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>
+    for details on this view.
+    <p class="image"><img src="images/tut-my-documents.png" alt=""></p></li>
+    <li>In this view, right-click <strong>correspondence-templates</strong>
+    folder and select <strong>Upload File</strong>.
+    <p class="image"><img src="images/tut-upload-template.png" alt=""></p></li>
+</ol>
+<p>The template opens with its content in the HTML document viewer. For details
+on viewing documents, refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/viewing-documents.html">
+Viewing and Editing Documents</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<p>You see the following tags marked with <tt>#{}</tt> that should be replaced
+with our process data when added to our process:</p>
+<ul>
+    <li>CustomerName</li>
+    <li>ProductName</li>
+</ul>
+<p><strong>CustomerName</strong> and <strong>ProductName</strong> are the
+IN data mapping IDs we created for process <strong>Support Case Management</strong>
+with the according access paths for <strong>SupportCaseData.Name</strong> and 
+<strong>SupportCaseData.Product.Name</strong> respectively.</p>
+<p class="image"><img src="images/tut-template.png" alt=""><br>
+<strong>Figure:</strong> Correspondence Template Content</p>
+<p>Switch back to the <strong>My Documents</strong> view. Here you see the uploaded
+template under the <strong>correspondence-template</strong> folder.</p>
+<p class="image"><img src="images/tut-template-in-tree.png" alt=""><br>
+<strong>Figure:</strong> Uploaded correspondence template</p>
+<h2>Creating the Correspondence</h2>
+<p>Now we will use this template to create the correspondence. To create the
+correspondence:</p>
+<ol>
+    <li>Go back to the <strong>Deliver Patch</strong> activity.</li>
+    <li>Click the <strong>Correspondence</strong> icon in the toolbar.
+    <p class="image"><img src="images/tut-create-correspondence.png" alt=""></p></li>
+    <li>In the <strong>To</strong> field enter the email displayed in the 
+    out data mapping field of the <strong>Deliver Patch</strong> activity.</li>
+    <li>Click the <strong>Use Templates</strong> option.
+    <p class="image"><img src="images/tut-use-template.png" alt=""></p></li>
+    <li>In the <strong>Select Templates/Paragraphs</strong> dialog, select the
+    <tt>Acceptance.html</tt> template.
+    <p class="image"><img src="images/tut-select-template.png" alt=""></p></li>
+    <li>Click <strong>Close</strong>.</li>
+    <li>The template is added to the templates editor. You see that the tags
+    are replaced with data that were added during the process.
+    <p class="image"><img src="images/tut-template-with-data.png" alt=""></p></li>
+    <li>Now you can adjust the correspondence and send or print it as you 
+    desire.</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Congratulations ! You have completed the Stardust Developers Support Case Tutorial.</strong></p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

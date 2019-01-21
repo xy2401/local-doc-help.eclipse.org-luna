@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css"
+>
+<title>Logging</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Audit Trail Model",
+	"../ag-appendix-security-1.htm","../audit-trail/ag-appendix-audittrail.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide");
+ -->
+</script>
+<h1>Logging in Stardust</h1>
+<p>An elaborate logging feature has been implemented in Stardust
+characterized by:</p>
+<ul>
+   <li>a rich logging output,</li>
+   <li>adapting to existing logging configurations in application servers,</li>
+   <li>additional writing of log entries to the audit trail database,</li>
+   <li>an API for logging in embedded usage,</li>
+   <li>a ready to use default configuration.</li>
+</ul>
+<p>The standard Stardust logger is implemented as a wrapper which can
+adapt to a number of existing logging implementations including for instance
+log4j. Which logger is used is a matter of configuration. Please include the <tt>log4j.jar</tt>
+file in your classpath to enable the creation of a <tt>carnot.log</tt> file for
+the client and server side.</p>
+<p>A separate audit trail logger writes log entries to the audit trail.</p>
+<ul>
+   <li><a href="#config">Configuration</a></li>
+   <li><a href="#daemon">Enabling detailed Monitoring for Daemon Activities</a></li>
+   <li><a href="#login">Disabling Logging Log Entries for specific Users</a></li>
+</ul>
+<h2 id="config">Configuration</h2>
+<p>The configuration for the logging differs for client and server mode.
+Spring local mode is classified as client mode. For the client, log4j is always
+used and explicit logger bootstrapping is done, whereas for the server
+Stardust tries to use the existing application server logging
+implementation. In this case, configuration is a matter of application server
+configuration.</p>
+<h3>Client Side</h3>
+<p>Stardust clients always use the provided log4j logger. It is
+configured by the following properties in the <tt>carnot.properties</tt> file.</p>
+<table id='id'>
+   <tr>
+      <th width="340">Property Name</th>
+      <th>Semantics and Defaults</th>
+   </tr>
+   <tr>
+      <td><tt>Logging.Directory</tt></td>
+      <td>Specifies where the log file resides.</td>
+   </tr>
+   <tr>
+      <td><span class="ind">e.g. <tt>%Stardust
+      Installation%/ipp-tools/etc/log </tt></span></td>
+      <td>Default directory where log files are written to. Can be changed
+      arbitrarily.</td>
+   </tr>
+   <tr>
+      <td><tt>Logging.ConsoleOutput</tt></td>
+      <td>Determines whether logging information is written to console
+      output.</td>
+   </tr>
+   <tr>
+      <td><span class="ind"> <tt>true</tt></span></td>
+      <td>Logging information is redirected to console output.</td>
+   </tr>
+   <tr>
+      <td><span class="ind"> <tt>false</tt></span></td>
+      <td>Default value. Logging information is not written to console
+      output.</td>
+   </tr>
+   <tr>
+      <td><tt>Logging.LogLevel</tt></td>
+      <td>Determines the amount of information being logged.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind">INFO</tt></td>
+      <td>Basic level of logging. (Default value)</td>
+   </tr>
+   <tr>
+      <td><tt class="ind">DEBUG </tt></td>
+      <td>Detailed level of logging.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind">WARN </tt></td>
+      <td>Warn level of logging.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind">ERROR</tt></td>
+      <td>Error level of logging.</td>
+   </tr>
+   <tr>
+      <td><tt>Logging.Format </tt></td>
+      <td>Describes logging format.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind"> %d{yyyy-MM-dd HH:mm:ss,SSS}<br>
+      <span class="ind"> %-5p [%t] (%x) %c{2} - %m%n</span> </tt></td>
+      <td>Default value. Can be adjusted if necessary (use the log4j
+      pattern).</td>
+   </tr>
+   <tr>
+      <td><tt>Logging.MaxFileSize</tt></td>
+      <td>Specifies a maximum size in bytes of the log file stored on your
+      system.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind">4194304</tt></td>
+      <td>The maximum size is 4194304 bytes.</td>
+   </tr>
+   <tr>
+      <td><tt>Logging.Filters</tt></td>
+      <td>Class names and packages of which the system out are to be
+      displayed.</td>
+   </tr>
+   <tr>
+      <td><tt class="ind"> e.g. org.eclipse.stardust.WorkflowSession </tt></td>
+      <td>Output produced by this class or package will be displayed. If
+      not specified, everything will be logged.</td>
+   </tr>
+</table>
+<p>Every client has a name and writes to a log file of the same name with
+the extension <tt>.log</tt>. The log files are filled up to the provided maximum
+file size and are then archived by appending a timestamp to the file name.</p>
+<p>If the provided configuration possibilities don't meet your needs, you
+can provide your own log4j configuration as described in the log4j
+documentation. In that case you have to set the property</p>
+<p><tt>Logging.Configuration.client-name</tt></p>
+<p>to the path of your configuration file.</p>
+<p>For more information on how to enable logging on transaction management
+for Spring managed Stardust runtime, please refer to the section <a
+   href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/runtimesetup.html#tranmgr"
+> Transaction Management</a> of the <a
+   href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/runtimesetup.html"
+>Runtime Setup</a> chapter of the Spring Integration guide.</p>
+<h3>Server Side</h3>
+<p>A <tt>carnot.log</tt> file is generated in the folder in which the server
+has been started. After installing Tomcat, you have to copy the <tt>log4j-1.2.15.jar</tt>
+file, residing in the <tt>lib</tt> folder of your Stardust installation, to
+your <tt>TOMCAT_HOME/common/lib</tt> folder. If you like the log file to be
+created in another folder, change the property <tt>log4j.appender.default.File</tt>
+in the <tt>log4j.properties</tt> accordingly.</p>
+<p>The logger on the server side implements a wrapper around the logger
+implementation used by the server. This means that the logger configuration is
+done by the application server administrator. If no match is found the logger
+output is written to <tt>stdout</tt>.</p>
+<p>At the moment the following application servers are explicitly supported:</p>
+<ul>
+   <li>WebLogic (native logger)</li>
+   <li>JBoss (log4j)</li>
+</ul>
+<p>For more information on how to configure log4j on WebLogic, please refer
+to the <a
+   href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/weblogic.html#logj"
+>Configuring log4j.properties</a> section of the <a
+   href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/weblogic.html"
+>WebLogic</a> chapter.</p>
+<p>To prevent the automatic choice of a logging implementation you can force
+an implementation choice together with a configuration file by providing the
+following system properties with the -D option of the Java virtual machine:</p>
+<table id='id_1'>
+   <tr>
+      <th>Property Name</th>
+      <th>Semantics</th>
+   </tr>
+   <tr>
+      <td><tt> carnot.log.type </tt></td>
+      <td>The type of the logger to instantiate. Supported types are log4j,
+      weblogic, stdout and noop.</td>
+   </tr>
+   <tr>
+      <td><tt> carnot.log.config </tt></td>
+      <td>The path to a configuration file (log4j only). If no
+      configuration file is provided this way log4j bootstraps itself from the
+      application's class-path.</td>
+   </tr>
+   <tr>
+   </tr>
+</table>
+<p>There is another system property to turn on debugging on specific
+categories for all non log4j loggers:</p>
+<table id='id_2'>
+   <tr>
+      <th>Property Name</th>
+      <th>Semantics</th>
+   </tr>
+   <tr>
+      <td><tt>carnot.log.debug.filter </tt></td>
+      <td>A list of category names on which debugging is turned on (only
+      for non log4j loggers)</td>
+   </tr>
+</table>
+<p>Example:</p>
+<p><tt>carnot.log.debug.filter =
+org.eclipse.stardust.engine.api,org.eclipse.stardust.common</tt></p>
+<p>If you don't provide the <tt>carnot.log.debug.filter</tt> system
+property, or if it is empty, the debug logging is disabled. If you want to
+enable the debug logging for all classes (no filtering) then set the value to <tt>org.eclipse.stardust</tt>.</p>
+<h2 id="daemon">Enabling detailed Monitoring for Daemon Activities</h2>
+<p>To enable detailed monitoring for logging of daemon activities, add the
+following logger to the <tt>log4j</tt> configuration:</p>
+<pre>log4j.logger.org.eclipse.stardust.engine.core.runtime.logging.Daemon=INFO</pre>
+<p>The following example shows an entry with detailed information:</p>
+<pre>15:19:43 INFO [Thread-12 ] Daemon - Event Daemon, process event 'Event: [objectOID = 7, type = 1, handlerOID = 1]'.</pre>
+<h2 id="login">Disabling Logging Log Entries for specific Users</h2>
+<p>You have the option to disable logging in login log entry tables for a
+given list of users. You can specify a list of user IDs or user OIDs via the
+server side property <strong>Security.LoginUsersWithoutLoginLogging</strong>.
+The possible values are:</p>
+<ul>
+   <li>empty: logging is enabled for all users</li>
+   <li><strong>*</strong> : logging on login is disabled for all users</li>
+   <li><strong>list of user OIDs</strong>: logging on login is disabled for
+   specific users with OIDs mentioned in list</li>
+   <li><strong>list of user IDs</strong>: logging on login is disabled for
+   specific users with IDs mentioned in list</li>
+</ul>
+<p>Per default, the list is empty and logging on login is enabled for all
+users.</p>
+<h3>Examples</h3>
+<p>To disable logging on login for all users:</p>
+<pre>Security.LoginUsersWithoutLoginLogging=*</pre>
+<p>To disable logging on login for users with OIDs 102,103,104:</p>
+<pre>Security.LoginUsersWithoutLoginLogging=102,103,104</pre>
+<p>To disable loggin on login for users with IDs user1, smith and miller:</p>
+<pre>Security.LoginUsersWithoutLoginLogging=user1,smith,miller</pre>
+<p>To enable logging on login for all users, leave the string empty:</p>
+<pre>Security.LoginUsersWithoutLoginLogging=</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

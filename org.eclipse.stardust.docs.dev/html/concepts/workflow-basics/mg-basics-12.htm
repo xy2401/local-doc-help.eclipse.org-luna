@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Representation of Model Elements</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Runtime Behavior","mg-basics-11.htm","mg-basics-13.htm",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Representation of Model Elements</h1>
+<p>Model versions can be edited in the Stardust Process Workbench. An
+administrator or previously defined modeler can create, modify or delete model
+versions.</p>
+<h2>Model Element Identifiers</h2>
+<p>Persistent model elements have IDs and OIDs as unique object
+identifiers so that they can be accessed and referenced through these
+identifiers. The ID of a model element is exposed to the user in the Stardust 
+Process Workbench, whereas the OID is not.</p>
+<h3>OID</h3>
+<p>The element's internal object identifier (OID) identifies objects
+located anywhere in the context of Stardust . An OID is 32 bits long and is
+globally unique inside a model. OIDs are not visible in Stardust 's GUI, but they
+are included in the XML-export files that can be generated using the Stardust 
+Process Workbench.</p>
+<h3 id="id">ID</h3>
+<p>An ID of a model element is an arbitrary string, assigned to the
+element by the modeler. The element's
+ID must be unique within its scope. A model itself also has an ID which will be
+the same for different
+versions of the same model and allows comparisons of such versions.</p>
+<p>IDs are used to refer to elements of a process model (e.g. a process)
+while using the programming API of Stardust (see chapter <a
+    href="../../handbooks/programming/embed/pg-embedded-preface.htm">Embedded Usage</a> in the <a
+    href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>).</p>
+<h4 id="restrict">ID Restrictions</h4>
+<p>The valid characters used for IDs or OIDs are restricted for the
+following model elements:</p>
+<ul>
+    <li>structured data type definitions</li>
+    <li>data types</li>
+    <li>access points</li>
+</ul>
+<p>Valid characters for IDs of these elements are letters ([<tt>a...z</tt>][<tt>A...Z</tt>]),
+numeric characters [<tt>0...9</tt>], dollar signs (<tt>$</tt>) and underscores (<tt>_</tt>).</p>
+<p>In case you try to enter an invalid ID for data types or access points,
+a warning indicates that the identifier is not valid. The data type or access point
+can be used, but problems will occur when using JavaScript.</p>
+<p class="image"><img src="images/id-warning-data.png" alt="Warning Dialog"><br>
+<strong>Figure:</strong> Warning indicating an invalid ID.</p>
+<p>In case you try to enter an invalid ID for a structured data type definition,
+an error indicates that the ID is not a valid identifier and you have to change it
+before applying is possible.</p>
+<p class="image"><img src="images/id-warning-struct-data.png" alt="Warning Dialog 2"><br>
+<strong>Figure:</strong> Error indicating an invalid ID.</p>
+<p>For invalid characters, an underscore is created. Blanks are removed.</p>
+<h3>Name</h3>
+<p>A name of a model element is an arbitrary string, assigned to the
+element by the modeler. In general, no restrictions are imposed on characters used, any
+printable characters and blanks can be used in the name. There is an exception in case
+you use non-ASCII characters. If you use non-ASCII characters in model element
+names, you have to add the property <strong>carnot.engine.xml.encoding</strong> to your
+<tt>carnot.properties</tt> file and set it to <tt>UTF-8</tt>:</p>
+<pre>carnot.engine.xml.encoding=UTF-8</pre>
+<h2>Name Scopes</h2>
+<p>Each element's ID has to be unique within a particular scope. Except
+from activities, all model elements are valid within the model scope. This
+means, if you create a role named VP Marketing it will be visible in the entire
+model. It also implies that the ID of each role must be unique within a model.</p>
+<p>Activities must be identified by IDs unique only within the scope of
+the process they belong to. Different activities described by the same name and
+ID can be used in different processes.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

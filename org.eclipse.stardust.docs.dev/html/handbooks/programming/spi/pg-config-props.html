@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing a Provider to inject Configuration Properties</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Implementing Interfaces for Portal Configurations",
+	"pg-config-provider-spi.html","portal/pg-portal-config.html",
+   "../../handbooks.htm","Developer Handbook",
+   "../pg-preface.htm","Programming Guide",
+   "spi-toc.html","SPI");
+-->
+</script>
+<h1>Implementing a Provider to inject Configuration Properties</h1>
+<p>In some cases you might like to inject configuration properties during engine
+bootstrap. The 
+<a href="../../../reference/api/common/org/eclipse/stardust/common/config/GlobalParametersProviderFactory.html">
+GlobalParametersProviderFactory</a> provides the option to implement a provider
+to meet this requirement.</p>
+<p>The 
+<a href="../../../reference/api/common/org/eclipse/stardust/common/config/GlobalParametersProviderFactory.html">
+GlobalParametersProviderFactory</a>
+allows to contribute configuration properties from different sources, like a 
+database, other property files from the classpath or even computed values like 
+random hashes. The most prominent source of configuration properties is the
+<code>carnot.properties</code> file. You can also set a priority to guarantee a 
+relative order of property retrieval.</p>
+<h2 id="prov">The GlobalParametersProviderFactory</h2>
+<p>The 
+<a href="../../../reference/api/common/org/eclipse/stardust/common/config/GlobalParametersProviderFactory.html">
+GlobalParametersProviderFactory</a> works in the way that while (re-)initializing
+the engine, all provider factories are
+discovered and sorted with increasing priority. The resulting list
+of factories is then traversed to obtain one provider per factory.
+Each provider, in turn, will be asked for its set of properties,
+which will all be merged into global parameters.</p>
+<p>Providers with higher priority may overwrite values from
+previous providers by either yielding a new value for a given key
+or by yielding a <tt>null</tt> value to remove a property.</p>
+<pre>
+@SPI(status = Status.Stable, useRestriction = UseRestriction.Public)
+public interface GlobalParametersProviderFactory
+{
+   int getPriority();
+
+   PropertyProvider getPropertyProvider();
+}
+</pre>
+<ul>
+   <li><code>getPriority()</code> returns the priority of the associated 
+   provider. Providers are consulted in increasing order, thus a provider with 
+   priority 10 might override values yielded by another provider with priority 1.
+   Properties from <code>carnot.properties</code> will be fetched with priority 
+   1.</li>
+   <li><code>getPropertyProvider()</code> returns the associated property provider.
+   It is up to the factory to decide if it instantiates a new provider instance per
+   request or uses some kind of caching or singleton.</li>
+</ul>
+<h2>Example Use Case - Using Stardust Properties from a custom Provider</h2>
+<p>In this example, we like to use properties from a custom provider that should
+overwrite properties with the same key in <code>carnot.properties</code>.
+In this specific case we like to change the default technical user (motu).</p>
+<ul>
+   <li><a href="#custprop">Implementing a custom Properties Provider</a></li>
+   <li><a href="#globpar">Implementing the Global Parameters Provider Factory</a></li>
+</ul>
+<h3 id="custprop">Implementing a custom Properties Provider</h3>
+<p>We start by implementing a custom property provider. The 
+<a href="../../../reference/api/common/org/eclipse/stardust/common/config/PropertyProvider.html">
+PropertyProvider</a> allows to set or even overwrite properties derived from any
+source you would like to. Our custom property provider reads the properties from
+the custom property file and sets them into the properties map returned by the
+method with the property keys known by Stardust:</p> 
+<pre>
+package org.eclipse.stardust.example;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.stardust.common.config.PropertyProvider;
+
+public class CustomPropertiesProvider implements PropertyProvider {
+
+   public Map&lt;String, Object&gt; getProperties() {
+
+      Map&lt;String, Object&gt; properties = new HashMap&lt;String, Object&gt;();
+      properties.put("Security.ResetPassword.TechnicalUser.Account", "xyz");
+      properties.put("Security.ResetPassword.TechnicalUser.Password", "xyz");
+      properties.put("Security.ResetPassword.TechnicalUser.Realm", "carnot");
+
+      return properties;
+   }
+
+}
+</pre>
+<h3 id="globpar">Implementing the Global Parameters Provider Factory</h3>
+<p>Now implement a 
+<a href="../../../reference/api/common/org/eclipse/stardust/common/config/GlobalParametersProviderFactory.html">
+GlobalParametersProviderFactory</a> to inject our custom properties.
+We use a high priority value to guarantee that our custom properties are fetched 
+before any extension.</p>
+<pre>
+package org.eclipse.stardust.example;
+
+import org.eclipse.stardust.common.config.GlobalParametersProviderFactory;
+import org.eclipse.stardust.common.config.PropertyProvider;
+
+public class CustomParametersProviderFactory implements GlobalParametersProviderFactory {
+
+   public int getPriority() {
+      return 9;
+   }
+
+   public PropertyProvider getPropertyProvider() {
+
+      return new CustomPropertiesProvider();
+   }
+   
+}</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

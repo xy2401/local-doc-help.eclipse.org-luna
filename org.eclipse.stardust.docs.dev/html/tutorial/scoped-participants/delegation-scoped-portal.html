@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Creating the Departments and Users in the Stardust Portal</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Delegating the Activity to the other Department",
+        "delegation-scoped-model.html","delegation-scoped-run.html",
+		
+		"../tut-preface.htm","Tutorials",
+		"tut-scoped-main.html","Scoped Participants Tutorials",
+		"delegation-scoped.html","Delegating to a User in Another Target Department");
+ -->
+</script>
+<h1>Creating the Departments and Users in the Stardust Portal</h1>
+<p>This chapter guides you through the following steps to prepare 
+the delegation scenario:</p>
+<ul>
+	<li><a href="#login">Starting the Portal</a></li>
+	<li><a href="#users">Creating the Users</a></li>
+	<li><a href="#createDep">Creating the Departments</a></li>
+	<li><a href="#assign">Associating the Users</a></li>
+</ul>
+<h2 id="login">Starting the Portal</h2>
+<p>To be able to perform the delegation scenario in the Stardust Portal,
+start your server and deploy the model. For information on how to deploy a model,
+please refer to the chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploy-model.html">Deploying a Workflow Model</a>
+of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">Deployment</a> guide.</p>
+<p>Start the Stardust Portal as described in the chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+Logging in the Stardust Portal</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.
+Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</p>
+<h2 id="users">Creating the Users</h2>
+<p>First create the users, who will be assigned to the performing 
+roles or organizations in different departments:</p>
+<ol>
+
+	<li>Switch to the <strong>Administration Perspective</strong>.</li>
+	<li>In the <strong>All Users</strong> part of the
+	<strong>Participant Management</strong> view create the following users:
+	<ul>
+		<li><strong>Hans Smith</strong></li>
+		<li><strong>Frank Cityman</strong></li>
+		<li><strong>Daisy Duck</strong></li>
+		<li><strong>Robert Doodle</strong></li>
+	</ul>Choose passwords and accounts as you like.</li>
+</ol>
+<p class="image"><img src="images/delegation-users.png"
+    alt="Create new Users." /> <br>
+<strong>Figure:</strong> Create new Users.</p>
+<h2 id="createDep">Creating the Departments</h2>
+<p>Now create two departments, where the activity will be delegated from and to:</p>
+<ol>
+	<li>In the <strong>Participant Tree</strong>, right-click 
+	<strong>NationDivision</strong> and choose
+	<strong>Create Department</strong>.</li>
+	<li>Enter a department with name and ID <strong>India</strong>.
+	<p class="image"><img src="images/delegation-create-deps.png"
+    alt="Create departments" /></p></li>
+	<li>In the same way create a department <strong>USA</strong>.</li>
+</ol>
+<h2 id="assign">Associating the Users</h2>
+<p>Now associate the users with roles and organizations in the different departments:</p>
+<ul>
+<!--    <li>Associate user <strong>Donald Johnson</strong> with organization
+    <strong>HeadOffice</strong>.</li>-->
+	<li>Associate user <strong>Smith, Hans</strong> with department <strong>India</strong>
+	and the team leader <strong>NationalDirector</strong> in this department.</li>
+	<li>Associate user <strong>Doodle, Robert</strong> with the role
+	 <strong>Engineer</strong> in department <strong>India</strong>.</li>
+	<li>Associate user <strong>Cityman, Frank</strong> with department <strong>USA</strong>
+	and the team leader <strong>NationalDirector</strong> in this department.</li>
+	<li>Associate user <strong>Duck, Daisy</strong> with the role
+	 <strong>Engineer</strong> in department <strong>USA</strong>.</li>
+</ul>
+<p>The structure in the participant tree should now look like the following:</p>
+<p class="image"><img src="images/delegation-departments.png"
+    alt="Departments and Associated Users." /> <br>
+<strong>Figure:</strong> Departments and Associated Users.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

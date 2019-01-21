@@ -1,0 +1,71 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Diagram Types</title>
+<link href="../book.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1 style="text-align: center">Diagram Types</h1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>
+org.eclipse.graphiti.ui.diagramTypes<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>
+0.7.0
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>
+Customers of Graphiti can use this extension point to register their own diagram 
+types.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.diagramType">diagramType</a>*)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point CDATA #REQUIRED</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp; CDATA #IMPLIED</p>
+<p class="code SchemaDtdAttlist">name&nbsp; CDATA #IMPLIED</p>
+<p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.diagramType">diagramType</a> 
+EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST diagramType</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CDATA #REQUIRED</p>
+<p class="code SchemaDtdAttlist">type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CDATA #REQUIRED</p>
+<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CDATA #REQUIRED</p>
+<p class="code SchemaDtdAttlist">description CDATA #IMPLIED</p>
+&gt;<p></p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+	<li><b>id</b> - a unique name in the NWDS environment that will be used to 
+	identify this diagram type</li>
+	<li><b>type</b> - a unique type (e.g. &quot;GalaxyTriggernetDiagram&quot;, 
+	&quot;sample.mof&quot;). Stored diagrams must always contain a valid type.</li>
+	<li><b>name</b> - the name of this diagram type that will be used in the UI</li>
+	<li><b>description</b> - an optional description of this diagram type that 
+	will be used in the UI</li>
+</ul>
+<br>
+<h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>
+<p></p>
+<pre class="Example"><span class="code SchemaTag">
+   &lt;extension
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.graphiti.ui.diagramTypes&quot;</span><span class="code SchemaTag">&gt;
+      &lt;diagramType
+            description=</span><span class="code SchemaCstring">&quot;diagram type for demo examples&quot;</span><span class="code SchemaTag">
+            id=</span><span class="code SchemaCstring">&quot;org.eclipse.graphiti.examples.ecore.EcoreDiagramType&quot;</span><span class="code SchemaTag">
+            name=</span><span class="code SchemaCstring">&quot;Sample Ecore DT&quot;</span><span class="code SchemaTag">
+            type=</span><span class="code SchemaCstring">&quot;sample.ecore&quot;</span><span class="code SchemaTag">&gt;
+      &lt;/diagramType&gt;
+   &lt;/extension&gt;  
+</span>
+</pre>
+</body>
+
+</html>

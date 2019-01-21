@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Managing Department Structures</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Managing Audit Trail Partitions",
+        "pg-embed-users.html","pg-embed-partitions.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Managing Department Structures</h1>
+<p>This chapter contains the following subjects describing
+functionality to manage department structures:</p>
+<ul>
+    <li><a href="#department">Department Interface</a></li>
+    <li><a href="#manage">Managing Departments</a></li>
+    <li><a href="#search">Searching for Departments</a></li>
+    <li><a href="#auth">Creating Departments in mixed Mode (external / internal Authentication)</a></li>
+    <li><a href="#grants">Manipulating Grants for Scoped Participants</a></li>
+    <li><a href="#asso">Reflecting the Department Association</a></li>
+    <li><a href="#getInfo">Distinguishing Between Scoped and Unscoped Participants</a></li>
+</ul>
+<p>For information on service operations provided by Stardust for predefined
+permissions concerning departments, please refer to the section
+<a href="../../../operation/ag-appendix-security-1.htm#applPermission">Setting Application Permissions</a>
+of the chapter
+<a href="../../../operation/ag-appendix-security-1.htm">Securing the Stardust Engine</a>
+in the <a href="../../../operation/ag-preface.htm">Operation Guide</a>.</p>
+<h2 id="department">Department Interface</h2>
+<p>Stardust provides an interface <strong>Department</strong> to describe  
+departments via the following methods:</p>
+<ul>
+	<li><tt>getDescription()</tt>: returns the description of this department.</li>
+	<li><tt>getParentDepartment()</tt>: gets the parent department bound to this department.</li>	
+	<li><tt>getOrganization()</tt>: gets the organization bound to this department.</li>	
+	<li><tt>getScopedParticipant(ModelParticipant participant)</tt>: creates a client 
+	side model participant bound to this department.</li>	
+</ul>
+<p>The <tt>getScopedParticipant</tt> method throws an <tt>InvalidArgumentException</tt>
+if the participant argument is not compatible with the organization to which it belongs.
+Compatible means that it is either the same organization or a direct member
+of the organization.</p>
+<h2 id="manage">Managing Departments</h2>
+<p>The <strong>AdministrationService</strong> provides
+the following methods for managing departments:</p>
+<ul>
+    <li><a href="#createDep">Create Departments</a></li>
+    <li><a href="#getDep">Retrieve Departments</a></li>
+    <li><a href="#modDep">Modify Departments</a></li>
+    <li><a href="#delDep">Remove Departments</a></li>
+    <li><a href="#cleanUp">Delete all existing Departments</a></li>
+    <li><a href="#synch">Creating a new or updating an existing Department in Audit Trail on Synchronization</a></li>
+</ul>
+<p>Please also refer to the section <a href="../pg-embedded-3.htm#adminservice">AdministrationService</a>
+of the chapter <a href="../pg-embedded-3.htm">Stardust Services</a> for information
+on this service and the according Javadoc of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a>
+for detailed information on its methods and their parameter usage.</p>
+<h3 id="createDep">Create Departments</h3>
+<p>The method <tt>createDepartment</tt> creates a new department with the given id,
+in the scope of the parent department and assigned to the specified organization.
+The method has the following restrictions:</p>
+<ul>
+    <li>The id and the name must not be null or empty and must be unique in the parent scope.</li>
+    <li>The department IDs are compared as Strings, without additional processing.</li>
+    <li>The parent may be null. If it's null, it means it is a top level department,
+    otherwise it must resolve (by OID) to an existing department.</li>
+    <li>The organization must not be null and must resolve to an existing model 
+    participant organization. Resolving can be performer either by <tt>runtimeOid</tt> or by Id.</li>
+ </ul>
+<p>Exceptions are thrown in the following cases:</p>
+<ul>
+    <li><strong>DepartmentExistsException</strong>:<br>
+    <ul>
+        <li>A department with the same Id already exists in the parent scope.</li>
+    </ul></li>
+    <li><strong>ObjectNotFoundException</strong>:<br>
+    <ul>
+        <li>Either the parent or the organization could not be resolved.</li>
+    </ul></li>
+    <li><strong>InvalidArgumentException</strong>:<br>
+    <ul>
+        <li>Either the Id or the name is null or an empty string.</li>
+        <li>The organization is null.</li>
+        <li>The organization does not resolve to an actual organization in the model
+       (i.e. resolves to a role or conditional performer).</li>
+        <li>The organization is not directly part of the organization
+         to which the parent department is assigned (invalid hierarchy).</li>
+    </ul></li>
+</ul>
+<h3 id="getDep">Retrieve Departments</h3>
+<p>The method <tt>getDepartment</tt> retrieves the department with the given OID.
+An <tt>ObjectNotFoundException</tt> is thrown in case no department with the
+given OID exists.</p>
+<h3 id="modDep">Modify Departments</h3>
+<p>The method <tt>modifyDepartment</tt> changes the name and the description of a department.
+An <tt>ObjectNotFoundException</tt> is thrown in case no department having the
+specified OID exists. If the name is null or contains an empty string, an
+<tt>InvalidArgumentException</tt> is thrown.</p>
+
+<h3 id="delDep">Remove Departments</h3>
+<p>The method <tt>removeDepartment</tt>removes the department having the specified OID,
+all his children and all user grants associated with the department.
+An <tt>InvalidArgumentException</tt> is thrown 
+if there are non-terminated or terminated work items that are associated with either the given department
+or with any of its direct children. An <tt>ObjectNotFoundException</tt>
+is thrown in case no department with the specified OID exists. So the instance any activity gets associated with the department, 
+it cannot be deleted. Because the audit trail maintains either ActivityInstance entries or ActivityInstanceHistory entries
+that references the department which has any activity associated with it. An ActivityInstanceHistory objects can be removed
+only by archiving the audit trail. <!-- However, the facility to invalidate the department is provided, if it is not required anymore. --></p>
+
+<h3 id="cleanUp">Delete all existing Departments</h3>
+<p>To delete all existing departments, you can use the <tt>cleanupRuntimeAndModels</tt>
+method or the method <tt>cleanupRuntime(boolean keepUsers)</tt>.
+In the <tt>cleanupRuntime(boolean keepUsers)</tt> set the parameter <tt>keepUsers</tt>,
+which is a flag to specify if the users should be deleted or not, to <tt>false</tt>.</p>
+<h3 id="synch">Creating a new or updating an existing Department in Audit Trail on Synchronization</h3>
+<p>The method <tt>QueryServiceImpl.findDepartment()</tt> creates a new department in the audit trail.</p>
+<pre>QueryServiceImpl.findDepartment()</pre> 
+<p>On synchronization with external repository the specified department
+is created in the audit trail if it is not already present there but exists in
+an external repository. In case the department exists in the audit trail it will be 
+updated on synchronization if there are any changes.</p>
+<h2 id="search">Searching for Departments</h2>
+<h3>Searching for Department with specific ID</h3>
+<p>Method <tt>findDepartment</tt> of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a> searches
+for a department having a specified Id in the scope defined by the parent
+department. On synchronization with external repository the specified department
+will be created in the audit trail in case it is not already present there but exists in
+the external repository. If the department exists in the audit trail it will be updated on
+synchronization in case of any changes.</p>
+<pre>
+Department findDepartment(DepartmentInfo parent, String id, OrganizationInfo info)
+   throws ObjectNotFoundException;
+</pre>
+<p>Parameter <strong>parent</strong> of type 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DepartmentInfo.html">DepartmentInfo</a>
+determines the search scope. It can be null, in which case the search scope is the top level.
+Parameter <strong>info</strong> of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/model/OrganizationInfo.html">OrganizationInfo</a>
+represents the organization to which the retrieved departments are assigned.</p>
+<p>An <strong>ObjectNotFoundException</strong> is thrown in the following cases:</p>
+<ul>
+   <li>the parent could not be resolved</li>
+   <li>the specified Id is null</li>
+   <li>there is no department with the specified Id in the parent scope</li>
+</ul>
+<p>A permission to read departments is required for this method.</p>
+<h3>Finding all departments satisfying a specific search criteria</h3>
+<p>The method <tt>findAllDepartments(DepartmentInfo parent, OrganizationInfo organization)</tt> of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+interface, retrieves a list containing all the departments
+satisfying the search criteria. The search is performed as follows:</p>
+<ul>
+    <li>If both, <tt>parent</tt> and <tt>organization</tt>, are null, the result contains all
+    top level departments, regardless of the organization to which they are assigned.</li>
+    <li>If <tt>parent</tt> is not null but the <tt>organization</tt> is null, 
+    result contains all direct children of the parent department, regardless of the organization 
+    to which they are assigned.</li>
+    <li>If <tt>parent</tt> is null, but <tt>organization</tt> is not null, 
+    the result contains all departments assigned to the organization, 
+    regardless of their parent department.</li>
+    <li>If both, <tt>parent</tt> and <tt>organization</tt>, are not null, the result 
+    contains all departments assigned to the organization, that have as direct parent
+    the specified department.</li>
+</ul>
+<p>Whereby parameter <strong>parent</strong> of type 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DepartmentInfo.html">DepartmentInfo</a>
+determines the parent department.
+Parameter <strong>organization</strong> of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/model/OrganizationInfo.html">OrganizationInfo</a>
+represents the organization to which the retrieved departments are assigned.</p>
+
+<p>On synchronization departments will be updated if they exist in the audit trail and
+have any changes. If a department does not exist in the audit trail but is present in
+an external repository, the department will not be created in the audit trail on
+synchronization with external repository.</p>
+<p>The resulting list can be empty if no departments are matching the search criteria.
+An <tt>ObjectNotFoundException</tt> is thrown if one of the following cases applies:</p>
+<ul>
+    <li>Neither the parent nor the organization can be resolved</li>
+    <li>The specified Id is null or empty</li>
+    <li>There is no department with the specified Id in the parent scope</li>
+</ul>
+<h2 id="auth">Creating Departments in mixed Mode (external / internal Authentication)</h2>
+<p>To be able to create departments in mixed mode, you need to set the following
+combination of properties in your <tt>carnot.properties</tt> file:</p>
+<pre>
+Security.Authorization.SynchronizationStrategy = <i>your authorization synchronization strategy class</i>
+Security.Authorization.SynchronizationProvider = <i>your synchronization provider</i>
+Security.Authorization.Mode = internal</pre>
+<p>Now you are able to create departments and use the API provided for managing departments.</p>
+<p>In case you do not set <tt>Security.Authorization.Mode = internal</tt>, departments are
+imported and you are not able to create, modify or delete them via API.</p>
+<h2 id="grants">Manipulating Grants for Scoped Participants</h2>
+<p>With the interface <strong>User</strong>, you can manage grants for scoped participants,
+as described in detail in section
+<a href="../pg-declarative-security.html#grants">Adding and Removing Grants</a>
+of chapter
+<a href="../pg-declarative-security.html">
+Declarative Security Usage in Stardust Services API</a>.
+<h3 id="default">Adding grants for scoped participants in their default department(s)</h3>
+<p>For every distinct scope in an organizational hierarchy, there is a dedicated null department.
+A scoped participant in its default department is granted to a user by granting 
+his null department given by granting the organization for the parent department.</p>
+<h3>Declarative Security effecting Scoped Participants</h3>
+<ul>
+	<li><a href="#dataL">On Data, Model and Partition Level</a></li>
+	<li><a href="#actL">On Activity Level</a></li>
+	<li><a href="#processL">On Process Level</a></li>
+</ul>
+<h4 id="dataL">On Data, Model and Partition Level</h4>
+<p>If a grant is given to a scoped participant (explicitly or implicitly)
+on data, model or participant level,
+then all users assigned to this participant do have execution permission. 
+The department is not taken into account.</p>
+<h4 id="actL">On Activity Level</h4>
+<p>On Activity Level each activity instance stores the department information. 
+Thus, it depends on the concrete activity instance, if a user has execution 
+permission. In that case, the grant including the department has to match the 
+grant permission and the department of the activity instance.</p>
+<h4 id="processL">On Process Level</h4>
+<p>Department information is not stored in the process instance. 
+Instead, the relevant process data defining the department
+is evaluated on demand.</p>
+<p>For example, a process definition permission is granted to a 
+role <strong>Role 1</strong>. This role is a scoped role with scope data 
+<strong>Data 1</strong> defining the department. If the value of 
+<strong>Data 1</strong> is
+executed for a specific process instance, the department required to
+get the execution permission is evaluated.</p>
+
+<h2 id="asso">Reflecting the Department Association</h2>
+<p>The method <tt>getDepartment</tt> of the interface <strong>Grant</strong>, provides
+the option to retrieve the department with which this grant is associated.
+In case the grant has no department association, the method returns <tt>null</tt>.
+Please also refer to the Javadoc of the interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Grant.html">Grant</a> 
+for detailed information on this interface and its methods.</p>
+<h2 id="getInfo">Distinguishing Between Scoped and Unscoped Participants</h2>
+<p>To distinguish between scoped and unscoped organizations and roles,
+use the method <tt>isDepartmentScoped()</tt> of the interface
+<tt>ModelParticipantInfo</tt>. It returns whether the role or organization 
+is modeled to support the creation of its own departments.</p>
+<p>The method <tt>definesDepartmentScope()</tt> returns <tt>true</tt>,
+if this particular organization defines a department scope.</p>
+<p>Please refer to the Javadoc of the interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ModelParticipantInfo.html">
+org.eclipse.stardust.engine.api.model.ModelParticipantInfo</a> for detailed information
+on these methods.</p>
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

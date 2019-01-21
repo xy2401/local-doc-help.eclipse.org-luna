@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Process-based UI Mashups</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("",
+      "../concepts-integration.html","",
+      "../key-concepts.html","Concepts",
+      "../concepts-integration.html","System Integration");
+ -->
+</script>
+
+<h1>Process-based UI Mashups</h1>
+<p>UI Mashups provide the option to combine workflow data and functionality with processes or
+services in other applications. Stardust supports the integration
+of other Web applications via UI Mashup applications to be able to
+merge information from multiple sources and use and
+display Web-based data efficiently. Using these UI Mashup applications makes it
+possible to combine services from different Web sites into
+the Stardust Portal.</p>
+<ul>
+    <li><a href="#back">Background</a></li>
+    <li><a href="#common">Common Use Cases</a></li>
+    <li><a href="#uiCases">User Interface Use Cases</a></li>
+    <li><a href="#technology">Mashup Technology</a></li>
+    <li><a href="#modeler">Modeling UI Mashup Applications</a></li>
+</ul>
+<h2 id="back">Background</h2>
+<p>Stardust supports the integration of Web-based UIs
+for business process management activities into its Stardust Portal.
+Using process-driven UI mashups is based on several assumptions:</p>
+<ul>
+    <li>The Stardust Portal and the integrated Web user interface (UI)
+     share one HTTP session.</li>
+    <li>The Stardust Portal and the integrated Web UI are deployed
+    in co-location, which enables Stardust to manipulate
+    implementation artifacts like model classes.</li>
+</ul>
+
+<p>Web UI integration is introduced by Stardust to offer:</p>
+<ul>
+    <li><a href="#firstClass">First class support for non-Java based
+    Web UIs</a></li>
+    <li><a href="#nonColo">Support for non-colocated deployment of Stardust
+    and integrated Web UIs</a></li>
+</ul>
+<h3 id="firstClass">First class support for non-Java (or rather non-JVM)
+based Web UIs</h3>
+<p>Web UI development proves to be a quickly changing environment offering a
+rapidly changing variety of tools. Most of those tools are script-based. Thus
+the productivity of Web developers can be increased by using non-Java (or rather
+non-JVM) based Web user interfaces.</p>
+<h3 id="nonColo">Support for non-colocated deployment of Stardust and integrated
+Web UIs</h3>
+<p>The support for non-colocated deployment of Stardust
+and integrated Web user interfaces, provides the following advantages:</p>
+<ul>
+    <li>Due to the current state of Java modularity there are several
+    limitations in how one can mix and match Java libraries inside the same
+    deployment unit. Being able to package Stardust and the
+    Web user interface to be integrated into separate deployment units allows
+    both, managing dependencies separately thus giving freedom to the project,
+    while still providing good portability for Stardust
+    itself.</li>
+    <li>Being able to deploy Stardust-based process and corresponding Web user
+    interfaces separately, gives additional freedom to manage the lifecycle of
+    both more independently, for example to update the visual aspect of user interfaces
+    more frequently, but still expose a stable and well-defined interface towards
+    Stardust.</li>
+</ul>
+<h2 id="common">Common Use Cases</h2>
+<p>The most common use case are mapping mashups.
+Data sets that contain location data
+can be presented graphically by using maps.
+For example, many mashups apply information to Google Maps.
+Google Maps provides API allowing Web developers to mash data onto maps.
+Such mapping mashup API allows users to use maps, which they enrich
+by adding information via process data like location and description.</p>
+<p>A classic example is the integration of business addresses and online
+maps so that you can quickly find the location in your neighborhood.</p>
+<p>A company renting apartments could use such a mashup to apply their
+information by location.
+The customers can see the locations they are interested in and which they
+selected in a list on an interactive map. In that case the location data
+could be used together with photos and other information on the object.</p>
+<p>Other common use cases for UI mashups are:</p>
+<ul>
+   <li>News mashups - aggregating and combining news feeds</li>
+   <li>Video and photo mashups</li>
+   <li>Search and shopping mashups</li>
+   <li>Music mashups</li>
+</ul>
+<p>Often these mashup types occur in combined versions.</p>
+<h2 id="uiCases">User Interface Use Cases</h2>
+<ul>
+   <li><a href="#gwt">Embedding a GWT Web Application</a></li>
+   <li><a href="#angular">Mashing up Angular based UI into Stardust Portal</a></li>
+   <li><a href="#acci"></a></li>
+</ul>
+<h3 id="gwt">Embedding a GWT Web Application</h3>
+<p>Being browser-based, there is no server side session that could be used
+to share state between Stardust and the
+<a href="http://www.gwtproject.org">GWT</a> (Google Web Toolkit) application.</p>
+<p>Thus, Stardust provides specific APIs, which are described in the section <a
+    href="#api">JavaScript API</a> and <a href="#soap">SOAP Web Service API</a>
+respectively. A GWT application might be integrated as follows:</p>
+<ul>
+    <li>When invoking the GWT application, Stardust
+    appends the following query parameter to the URI:
+    <pre>ippInteractionUri=http://...</pre></li>
+    <li>In its <tt>onModuleLoad()</tt> method, the GWT application extracts
+    the Interaction URI via the following code: <pre>Location.getParameter("ippInteractionUri")</pre>
+    and stores it as a field for example.</li>
+    <li>Using this URI, the application uses the <tt>HTTP GET</tt> method one or
+    several requests to retrieve input parameters for the application
+    <ul>
+        <li>assuming the input parameters consist of just primitive or
+        structured data, the recommended technique is requesting a
+        <a href="../../glossary.html#json">JSON</a>
+        representation of the parameters.</li>
+        <li>using overlay classes the application will be able to work with
+        the values returned without any additional parsing being required, just
+        casting the JSON response to the expected overlay type.</li>
+    </ul>
+    </li>
+    <li>The form will display the retrieved values as required, provide
+    additional information and means to input or edit data.</li>
+    <li>Once the user indicates editing is done, the application uses HTTP
+    PUT requests to write output values into the Interaction Resource.</li>
+    <li>After successfully writing all output parameters, the application
+    uses a JSNI (JavaScript Native Interface) callout to trigger a close
+    operation on the embedding iframe.</li>
+</ul>
+<p>For detailed information on the usage of GWT applications, please refer
+to the <a href="http://code.google.com/webtoolkit/">Google Web Toolkit
+</a> documentation site.</p>
+<h3 id="angular">Mashing up Angular based UI into Stardust Portal</h3>
+<p>Another example use case is to mashup angular based UI into the Stardust Portal.
+We provide a detailed tutorial, which guides you through the steps to perform such a mash up.
+It describes how to ensure that data entered on the Angular UI is saved in the Stardust data
+and the Stardust data can be read and displayed in the Angular UI mashed up
+in the Stardust Portal.
+You find this tutorial in chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/tutorial/mashup/tut-ui-mashup.html">
+Mashing up Angular based UI into Stardust Portal</a> in our
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/tutorial/tut-preface.htm">Tutorial Guide</a>.</p>
+<h3 id="acci"></h3>
+<h2 id="technology">Mashup Technology</h2>
+<ul>
+	<li><a href="#tech">Provided Techniques by Stardust</a></li>
+	<li><a href="#concepts">Concepts</a></li>
+	<li><a href="#message">Message Exchange</a></li>
+	<li><a href="#soap">SOAP Web Service API</a></li>
+	<li><a href="#api">JavaScript API</a></li>
+	<li><a href="#termination">Termination of the current interaction</a></li>
+	<li><a href="#sessionBased">Using Session Based Web Applications</a></li>
+   <li><a href="#balance">Using External Web Applications in Cluster / Load Balancer Scenarios</a></li>
+</ul>
+<h3 id="tech">Provided Techniques by Stardust</h3>
+<p>Stardust provides techniques for lightweight and implementation
+technology neutral Web mashups as follows:</p>
+<ul>
+    <li>using HTML <tt>iframe</tt> to embed self-contained, externally
+    generated Web pages into the Stardust Portal user interface.</li>
+    <li>using HTTP based <a href="../../glossary.html#rest">REST</a>
+    (Representational State Transfer) for data exchange between Stardust and Web UIs.</li>
+    <li>alternatively using a <a href="../../glossary.html#soap">SOAP</a>
+    Web Service for data exchange between
+    Stardust and Web UIs.</li>
+    <li>a clean and simple JavaScript API for passing messages from the Web
+    user interface to the embedding Stardust Portal.</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<h4>Interaction Resource</h4>
+<p>To enable REST based interaction with an interactive activity instance,
+Stardust provides the concept of an <tt>Interaction Resource</tt>. This resource
+provides means to perform the following interactions according to REST
+principles:</p>
+<ul>
+    <li>Inspect the definition of the associated activity instance by retrieving:
+    <ul>
+        <li>general information about the activity like its name and
+        description, as stated in the process model</li>
+        <li>the list of input parameters for the activity including name
+        and data type</li>
+        <li>the list of output parameters for the activity including name
+        and data type</li>
+    </ul>
+    </li>
+    <li>Inspect information about the owner of the interaction (the current
+    user performer of the activity instance) like name, user ID and associated Stardust partition.</li>
+    <li>Retrieve the value of input parameters (either in batch for all
+    parameters or for just one parameter).</li>
+    <li>Write values for output parameters (either in batch for all
+    parameters or for just one single parameter).</li>
+    <li>Set the current interaction status to be able to control the set of
+    valid state transitions for the associated activity instance.</li>
+</ul>
+<p>An HTTP binding of the WADL endpoint is typically be provided at </p>
+<pre>${ippServicesBaseUri}/rest/application.wadl</pre>
+
+<p>Find an example WADL (Web Application Description Language) description
+at the
+<a href="http://www.w3.org/Submission/wadl/">Web Application Description Language</a>
+site of W3C.</p>
+<h4>Interaction Lifecycle</h4>
+<p>The lifecycle of any interaction resource is associated with the duration
+of the associated activity instance in state <tt>Application</tt>.</p>
+<ul>
+    <li>An Interaction resource comes into life as soon as the associated
+    activity instance is activated inside the Stardust Portal.</li>
+    <li>As soon as the associated activity instance transitions into another state (i.e.
+    gets suspended) or is passed to a different user (the owner of the
+    Interaction changes), an associated Interaction resource will cease to
+    exist.</li>
+    <li>External code can manipulate the Interaction resource freely during
+    its lifespan.</li>
+</ul>
+<p>No manipulation to the Interaction resource will immediately cause a
+state change on the associated activity instance. Such state change will only occur under
+orchestration from the embedding Stardust Portal.</p>
+<h4>Supported Media Types for input and output parameters</h4>
+<p>Depending on the data type being used for input and output parameters for
+interactions, various media types can be produced and consumed. The following
+list describes the primary media type per data type and possible alternative
+representations:</p>
+<ul>
+    <li><strong>primitive data</strong>:
+    <ul>
+        <li>are natively represented as text/plain.</li>
+        <li>alternatively an application/
+        <a href="../../glossary.html#json">JSON</a> representation can be
+        provided.</li>
+    </ul>
+    </li>
+    <li><strong>structured data</strong>:
+    <ul>
+        <li>are natively represented as application/xml</li>
+        <li>alternatively an application/JSON representation can be
+        provided although some limitations remain (i.e. as XML namespaces are
+        dropped from element and attribute names i.e XML containing sub elements
+        with identical local names but different namespaces cannot be mapped to
+        a JSON representation without loss of data).</li>
+    </ul>
+    </li>
+</ul>
+
+<h4>Batch read / write</h4>
+<p>As batch operations need to encode multiple parameters in one data
+structure, there is no means of providing the same kind of flexibility in media
+type support as with single parameter read / writes. The representation for
+batch reads and writes is <tt>application/xml</tt>. The values for parameters are
+included in the XML message in their primary representation.</p>
+<h3 id="message">Message Exchange</h3>
+<p>The following sequence diagram depicts the message flow between all
+participants:</p>
+<p class="image"><a href="images/liberation-message-flow_orgSize.png"
+    target="_blank"> <img src="images/liberation-message-flow.png"
+    alt="Sequence Diagram"></a><br>
+<strong>Figure:</strong> Sequence Diagram describing Message Flow</p>
+<h3 id="soap">SOAP Web Service API</h3>
+<p>An additional <a href="../../glossary.html#soap">SOAP</a>
+API equivalent to the previously described REST API is provided. The mapping
+between SOAP operations and REST requests is as follows:</p>
+<ul>
+    <li><tt>getDefinition</tt> maps to <tt>GET &lt;&lt;interactionUri&gt;&gt;/definition</tt></li>
+    <li><tt>getOwner</tt> maps to <tt>GET &lt;&lt;interactionUri&gt;&gt;/owner</tt></li>
+    <li><tt>getInputParameters</tt> maps to <tt>GET &lt;&lt;interactionUri&gt;&gt;/inParams</tt></li>
+    <li><tt>setOutputParameters</tt> maps to <tt>PUT &lt;&lt;interactionUri&gt;&gt;/outParams</tt></li>
+</ul>
+<h4>Binding to a SOAP Endpoint</h4>
+<p>An HTTP binding of the SOAP endpoint is typically be provided at </p>
+<pre>$\{ippServicesBaseUri\}/soap/BpmInteractionsService</pre>
+<p>A WSDL contract can be obtained from</p>
+<pre>${ippServicesBaseUri\}/soap/BpmInteractionsService?wsdl</pre>
+<p>To simplify Web UI development, the base location of the calling Stardust Portal
+services endpoints is provided by an additional query parameter named
+<tt>ippServicesBaseUri</tt>, for example:</p>
+<pre>ippServicesBaseUri=http://localhost:9090/dev/services</pre>
+<p>This query parameter can be used to transparently bind to a SOAP endpoint
+implementation of the invoking Stardust Portal.</p>
+<h3 id="api">JavaScript API</h3>
+<p>Embedded Web UIs are provided with a JavaScript API supporting
+in-browser interactions with the embedding Stardust Portal. The API is
+provided in form of a JavaScript source file, which you find in the
+folder <tt>META-INF/xhtml/processportal</tt> of the
+<tt>ipp-workflow-perspective.jar</tt>, residing in the <tt>ipp-portal.war</tt>.</p>
+
+<p>This file needs to be included as follows:</p>
+<pre>&lt;script type="text/javascript" src="${ippPortalBaseUri}/plugins/processportal/IppProcessPortalClient.js"&gt;&lt;/script&gt;</pre>
+<p>If this path is not accessible, then copy the <tt> IppProcessPortalClient.js</tt> from the
+<tt>ipp-workflow-perspective.jar</tt> file and specify the location of the copied file.</p>
+
+<p>After inclusion, a new module <tt>IppProcessPortalClient</tt> will be available. Any
+of the following operations is exposed as a function defined in the <tt>IppProcessPortalClient</tt>
+module.</p>
+<p>The <tt>IppProcessPortalClient</tt> provides the following methods:
+<table class="autoWidth">
+<tr>
+    <th>JavaScript-Call</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>IppProcessPortalClient.completeActivity()</td>
+    <td>Completes the current activity instance</td>
+</tr>
+<tr>
+    <td>IppProcessPortalClient.suspendActivity()</td>
+    <td>Suspends the current activity instance</td>
+</tr>
+<tr>
+    <td>IppProcessPortalClient.abortActivity()</td>
+    <td>Aborts the current activity</td>
+</tr>
+<tr>
+    <td>IppProcessPortalClient.qaPassActivity()</td>
+    <td>Passes quality assurance for the activity. If using this function, make sure
+that the activity is in Review state.</td>
+</tr>
+<tr>
+    <td>IppProcessPortalClient.qaFailActivity()</td>
+    <td>Fails quality assurance for the activity. If using this function, make sure
+that the activity is in Review state.</td>
+</tr>
+</table>
+
+<h4>Example Usage</h4>
+<p>You can use such code in your custom pages, which are shown via the
+External Web application application type. You can leverage the
+activity-instance buttons of the Stardust Portal toolbar right
+away in your own page by the JavaScript methods mentioned above.</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="${ippPortalBaseUri}/plugins/processportal/IppProcessPortalClient.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button onclick="IppProcessPortalClient.completeActivity()"&gt;Complete your activity instance now&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4>Query parameter ippPortalBaseUri</h4>
+<p>To simplify Web UI development, the base location of the calling Stardust Portal is
+provided by an additional query parameter named <tt>ippPortalBaseUri</tt>, for example:</p>
+<pre>ippPortalBaseUri=http://localhost:9090/dev</pre>
+<p>This query parameter can be used to transparently bind to a JavaScript implementation
+of the invoking Stardust Portal.</p>
+<h3 id="termination">Termination of the current interaction</h3>
+<p>To allow embedded panel to actively terminate the current interaction and
+allow the user to work on different activities, the functions <tt>completeActivity</tt>,
+<tt>suspendActivity(boolean)</tt> and <tt>abortActivity</tt> are provided. Both functions will cause
+an equivalent side effect as explicitly clicking on the appropriate button in
+the activity panel toolbar. The following example shows how to invoke this API
+from a <a href="../../glossary.html#grails">Grails</a> submit button,
+triggering a <tt>Suspend and Save</tt>:</p>
+<pre>&lt;g:submitToRemote class="save" value="Save and Close" action="ajaxPost"
+        onComplete="IppProcessPortalClient.suspendActivity(true)&gt;</pre>
+<p>Successful termination of a Web UI interaction will require a previous
+write of output parameters via either a REST operation against the Interaction
+Resource or an equivalent invocation of the appropriate Web Service API.</p>
+<h3 id="sessionBased">Using Session Based Web Applications</h3>
+<p>When using external panels that are session-based, launching multiple
+ICEfaces or Trinidad activity panels via URI query
+parameters can break the initialization of the embedded panels. Thus, if external panels
+are session based, please make sure the state management is considering
+the interaction ID in addition of using session scope.
+Please note that Trinidad and ICEfaces panels embedded sharing the portal session
+can be adjusted by using <strong>portalTab</strong> scope beans instead of
+<strong>session</strong> scope beans.</p>
+<h3 id="balance">Using External Web Applications in Cluster / Load Balancer Scenarios</h3>
+<p>In case you use External Web Applications in cluster or load balancer scenarios,
+it is recommended to configure additional patterns in the Web context parameters
+<strong>servicesBaseUri</strong> and <strong>portalBaseUri</strong> in your <tt>web.xml</tt>
+file to point to the local host and port.</p>
+<p>The default settings for these patterns are the following:</p>
+<ul>
+   <li><pre>
+&lt;context-param&gt;
+   &lt;param-name&gt;InfinityBpm.PortalBaseUri&lt;/param-name&gt;
+   &lt;param-value&gt;${request.scheme}://${request.serverName}:${request.serverPort}/${request.contextPath}&lt;param-value&gt;
+&lt;/context-param&gt;
+</pre></li>
+   <li>for interaction URI only:<pre>
+&lt;context-param&gt;
+   &lt;param-name&gt;InfinityBpm.ServicesBaseUri&lt;/param-name&gt;
+   &lt;param-value&gt;${request.scheme}://${request.serverName}:${request.serverPort}/${request.contextPath}/services/&lt;/param-value&gt;
+&lt;/context-param&gt;
+</pre></li>
+</ul>
+<p>You can overwrite some of these pattern or replace <tt>serverName</tt> with
+<tt>serverLocalName</tt> to influence the creation of the URL.</p>
+<p>For example if you like to use <tt>https:</tt> as protocol and use a fixed port and
+<tt>serverLocalName</tt>, you could set the following:</p>
+<pre>
+&lt;context-param&gt;
+   &lt;param-name&gt;InfinityBpm.ServicesBaseUri&lt;/param-name&gt;
+   &lt;param-value&gt;https://${request.serverLocalName}:44556/${request.contextPath}/services/&lt;/param-value&gt;
+&lt;/context-param&gt;
+</pre>
+<h2 id="modeler">Modeling UI Mashup Applications</h2>
+<p>UI Mashup applications can be modeled in the Eclipse modeler as well as in the
+Business Process Modeler. Refer to chapters
+<a href="../../handbooks/modelling/integration/activity-panel-integration.html">Using External Web Applications</a>
+and
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/applications/pep-application-ui.htm">
+UI Mashup Application</a> respectively.</p>
+<p>For a tutorial guiding you through a use case example refer to chapter
+<a href="../../tutorial/mashup/tut-ui-mashup.html">Mashing up Angular based UI into Stardust Portal</a>
+in the
+<a href="../../tutorial/tut-preface.htm">Tutorial Guide</a>.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+writeFooter();
+-->
+</script>
+</body>
+</html>

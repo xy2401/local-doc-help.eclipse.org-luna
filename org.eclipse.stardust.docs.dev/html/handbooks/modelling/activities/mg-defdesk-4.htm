@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Specifying Activities</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Specifying Activity Control Flow",
+        "activities-preface.html","act-control-flow.html",
+      "../../handbooks.htm","Developer Handbook",
+      "../mg-preface.htm","Modeling Guide",
+      "../mg-modeler-preface.html","The Process Workbench","activities-preface.html","Working with Activities");
+ -->
+</script>
+
+<h1>Specifying Activities</h1>
+<p>As explained in the concept chapter for 
+<a href="../../../concepts/workflow-basics/mg-basics-5.htm">Activities</a>, a
+series of activities connected with one another by transitions constitutes the
+core of the process.</p>
+<p>An activity is represented in the <strong>Process Workbench</strong> in
+two different ways. In the <strong>Outline</strong> view it is represented by a
+small gear pictogram. In diagrams you will see an activity depicted as a box
+possibly with transition symbols related to other symbols representing its
+performer, its data and the application invoked by this activity.</p>
+<p class="image"><img src="images/mg-defdesk-17.png" alt=""> <br>
+<strong>Figure:</strong> A Representation of an Activity</p>
+<h2>Creating and Deleting Activities</h2>
+<p>To create an activity you can either:</p>
+<ul>
+    <li>In the diagram toolbar:
+    <ol>
+        <li>Select <strong>Activities</strong> under <strong>Items</strong>.</li>
+        <li>From the pop-up menu, select the type of activity.</li>
+        <li>Click the diagram canvas to place the activity symbol.</li>
+    </ol>The created activity will also appear
+    in the tree view under the process definition symbol in the <strong>Outline</strong>
+    view.</li>
+    <li>In the <strong>Outline</strong> view:
+    <ol>
+        <li>Right-click the target process definition.</li>
+        <li>Choose <strong>New Activity</strong> and the type of activity you want.</li>
+    </ol> The
+    created activity will appear in the tree view under the process definition
+    symbol. Subsequently, you can drag the activity symbol onto the diagram
+    canvas to create an activity symbol there.</li>
+</ul>
+<p>When deleting activities, you must make a distinction between deleting
+an activity from the model information or only deleting a symbol from a diagram.
+To do the first - delete an activity from a model - you proceed as follows:</p>
+<ul>
+    <li>Having selected the symbol of the activity in the <strong>Outline</strong>
+    view, choose the option <strong>Delete </strong> in the pop-up menu of this
+    process definition.</li>
+    <li>Having selected the symbol of the activity in a process
+    definition diagram, choose the option <strong>Delete</strong> in the pop-up
+    menu of this activity.</li>
+</ul>
+<p>The option <strong>Delete Symbol </strong> in the pop-up menu called
+from within the diagram canvas will only remove the activity symbol from the
+diagram.</p>
+<h2 id="actProperties">Modifying Activity Properties</h2>
+<p>The properties of an activity are accessible in its properties dialog.
+To open this dialog, right-click the activity symbol - in the <strong>Outline</strong>
+view or diagram - and select the option <strong>Properties</strong>.
+Double-clicking on the activity symbol will open this dialog as well.</p>
+<p>Activity characteristics are bundled into the following categories,
+each represented in an own pane:</p>
+<ul>
+    <li><a href="#auth">Authorization</a></li>
+    <li><a href="#general">General</a></li>
+    <li><a href="#display">Display</a></li>
+    <li><a href="#control">Control Flow</a></li>
+    <li><a href="#event">Event Handling</a></li>
+    <li><a href="#indata">In Data Mappings</a></li>
+    <li><a href="#outdata">Out Data Mappings</a></li>
+    <li><a href="#controlling">Controlling Parameters</a></li>
+    <li><a href="#implementation">Implementation specific</a></li>
+    <li><a href="#qa">Quality Assurance</a></li>
+    <li><a href="#qacode">Quality Assurance Codes</a></li>
+    <li><a href="#simulation">Simulation</a></li>
+    <li><a href="#effort">Effort Planning</a></li>
+</ul>
+<p>Section <a href="#implementation">Implementation specific</a>
+describes implementation specific settings, like the participant
+of a manual activity.</p>
+
+<h3 id="auth">Authorization</h3>
+<p>In the <strong>Authorization</strong> section, you can set specific 
+permissions for activities. Refer to section
+<a href="../property-page-authorization.html#activities">
+Authorization for Activities</a> of chapter
+<a href="../property-page-authorization.html">Authorization</a>
+for details.</p>
+<h3 id="general">General</h3>
+<p>Next to a name, an ID and a description, general properties of an
+activity comprise the following checkbox options:</p>
+<ul>
+    <li><strong>Allows Abort by Participant</strong><br><br>
+    Determines whether the assigned participant may abort instances of this 
+	activity in the Stardust Portal.<br>
+	Note that only the activity itself is aborted, not the root process hierarchy. 
+	The process instances will continue as if this activity had been completed.<br>
+	This option affects the Process Portal activity operations only. It does not 
+	influence the Stardust API usage.<br><br></li>
+    <li><strong>Hibernate Initially</strong> (Hibernate On Creation)<br><br>
+    Determines whether the activity instance should directly change its state to
+    hibernated after creation - thus ending the synchronous flow here.<br><br></li>
+    <li><strong>Supports relocation</strong><br><br>
+    Determines if relocation is supported for this activity and it can
+    be used as starting point for the relocation. This checkbox is enabled for 
+    manual activities and application activities only. For
+    details on relocation, refer to chapter 
+    <a href="../../../concepts/executing-workflow/concept-relocation.html">Relocation of Activities</a>
+    in the <a href="../../../concepts/key-concepts.html">Concepts</a> 
+    section.<br><br></li>
+    <li><strong>Is relocation target</strong><br><br>Determines if the activity
+    is allowed as target point of a relocation. For
+    details on relocation, refer to chapter 
+    <a href="../../../concepts/executing-workflow/concept-relocation.html">Relocation of Activities</a>
+    in the <a href="../../../concepts/key-concepts.html">Concepts</a> 
+    section.</li>
+</ul>
+<p class="image"><img src="images/mg-defdesk-18.png"
+    alt="General Activity Properties"> <br>
+<strong>Figure:</strong> General Activity Properties</p>
+<p>Please note that IDs containing
+         hyphens, blanks or dots and IDs starting with digits are not supported.</p>
+<p>The description of the activity is displayed as tooltip text in the Stardust Portal
+        when you hover the mouse over the activity name.</p>         
+         
+<p>In the <strong>Internationalization</strong> part you can set a locale specific name for
+the activity, as described in detail in chapter <a
+    href="../mg-internationalization.html">Native Language Support</a>.</p>
+<h3 id="display">Display</h3>
+<p>For this property a checkbox is provided to mark activities as auxiliary
+from a business perspective. This option is disabled by default, except for the route activities.
+Auxiliary activities marked as <strong>Is Auxiliary Activity</strong>
+will be treated equivalent to route activities in the process history.</p>
+<p class="image"><img src="images/activity-props-display.png"
+    alt="Display Option"> <br>
+<strong>Figure:</strong> Is Auxiliary Activity Option</p>
+<p>For route activities, this option 
+is set to <strong>Is Auxiliary Activity</strong> per default.</p> 
+<h4>Auxiliary subprocess activities</h4>
+<p>Please note that if a subprocess activity is defined as an auxiliary activity, a disabled
+<strong>Show/Hide auxiliary activities</strong> filter button in the Stardust Portals
+process history also hides all following activities in this subprocess.</p>
+
+<h3 id="control">Control Flow</h3>
+<p>Control flow options define the split, join and loop behavior around
+the activity. Refer to chapter 
+<a href="act-control-flow.html">Specifying Activity Control Flow</a> for details.</p>
+<p class="image"><img src="images/mg-defdesk-19.png"
+    alt="Control Flow Options"> <br>
+<strong>Figure:</strong> Control Flow Options</p>
+<h3 id="event">Event Handling</h3>
+<p>For details on event handling refer to chapter 
+<a href="../mg-defdesk-13.htm">Working With Activity Event Handlers</a>.</p>
+<h3 id="indata">In Data Mappings</h3>
+<p>The activity properties dialog allows you to add and remove data
+mappings belonging to this activity. The In data mapping maps workflow data to
+the input of the activity. The mapping is interpreted depending on the activity
+implementation type. In comparison to the data mappings properties dialog you
+will find here all data mapped to this activity. Refer to <a
+    href="../mg-defdesk-8.htm">Specifying Data Mappings</a> for more information on mapping
+data to applications via an activity.</p>
+<h3 id="outdata">Out Data Mappings</h3>
+<p>The activity properties dialog allows you to add and remove data
+mappings belonging to this activity. The Out data mapping maps workflow data to
+the output of the activity. The mapping is interpreted depending on the activity
+implementation type. In comparison to the data mappings properties dialog you
+will find here all data mapped to this activity. Refer to <a
+    href="../mg-defdesk-8.htm">Specifying Data Mappings</a> for more information on mapping
+data to applications via an activity.</p>
+<h3 id="controlling">Controlling Parameters</h3>
+<p>The following controlling parameters are available for activities:</p>
+<ul>
+    <li><strong>Measure</strong></li>
+    <li><strong>Target Measure Quantity</strong></li>
+    <li><strong>Difficulty</strong></li>
+    <li><strong>Target Processing Time</strong></li>
+    <li><strong>Target Execution Time</strong></li>
+    <li><strong>Target Idle Time</strong></li>
+    <li><strong>Target Waiting Time</strong></li>
+    <li><strong>Target Queue Depth</strong></li>
+    <li><strong>Target Cost Per Execution</strong></li>
+    <li><strong>Target Cost Per Second</strong></li>
+    <li><strong>Resource Performance Calculation</strong></li>
+</ul>
+<p class="image"><img src="images/act-prop-controlling.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance</p>
+<h4 id="resource">Resource Performance Calculation</h4>
+<p>This property has the default
+value <tt>include</tt> for interactive activities and <tt>not include</tt> for 
+non-interactive activities. It is used in the Business Control Center view 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/view-resources/bcc-views-resource.html">
+Resource Performance</a> view,
+where all activities having this controlling property set to <tt>include</tt> are
+included into the calculation.</p>
+
+<h3 id="qa">Quality Assurance</h3>
+<p>In case you choose to mark the activity for quality assurance,
+select the checkbox for <strong>Quality Assurance Activity</strong>.
+Note that activities having a conditional performer as default performer
+are not supported to be marked for quality assurance.
+In case the default performer of the activity is a conditional performer,
+selecting the checkbox results in an inconsistency error.
+The following fields become available:</p>
+<ul>
+    <li><strong>QA Participant:</strong> In the drop-down list choose the 
+    participant for quality assurance. All scoped and unscoped roles and
+    organizations are available except conditional
+    performers.</li>
+    <li><strong>Default Probability:</strong> Enter the
+    default probability as an Integer value between 0 and 100.
+    The default value is 100%.</li>
+    <li><strong>Formula:</strong> In this JavaScript editor,
+    you can enter a formula that will be evaluated during runtime to check
+    specific criteria if this activity needs quality assurance. The default 
+    value is <tt>true</tt>.</li>
+</ul>
+<p class="image"><img src="images/act-prop-qa.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance</p>
+<p>For details on how probability value and formula are used to
+determine quality assurance,
+refer to chapter <a href="../../../concepts/quality-assurance.html">Quality Assurance</a>
+in the <a href="../../../concepts/key-concepts.html">Concepts</a>
+section for Stardust .</p>
+<h3 id="qacode">Quality Assurance Codes</h3>
+<p>The <strong>Quality Assurance Codes</strong> panel 
+contains a table of all Quality Assurance codes defined in the
+model properties dialog. Refer to section
+<a href="quality-assurance.html#qac">Quality Assurance Codes</a> 
+of chapter
+<a href="quality-assurance.html">Quality Assurance on interactive Activities</a> 
+for details
+on setting or editing these codes.</p>
+<ul>
+    <li><strong>Code:</strong> Code values (non editable)</li>
+    <li><strong>Description:</strong> Description of the kind of failure.</li>
+    <li><strong>Use:</strong> Editable checkboxes
+    indicating whether the corresponding Quality Assurance code
+    should be applicable for the activity.</li>
+</ul>
+<p>Per default, all codes defined for the model are deselected.
+To add codes to the list of applicable Quality Assurance codes, select a 
+subset of the Quality Assurance codes.</p>
+<p class="image"><img src="images/act-prop-qa-code.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance Codes</p>
+<h3 id="simulation">Simulation</h3>
+<p>In this section you can specify simulation configurations, as described
+ in chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+Simulation Configurations</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+Stardust Simulation Guide</a>.</p>
+<h3 id="effort">Effort Planning</h3>
+<p>In this section you can specify the subprocess refinement required.</p>
+<p class="image"><img src="images/activitiy-prop-effort.png"
+    alt="Effort Planning Prop"> <br>
+<strong>Figure:</strong> Setting the Subprocess Refinement Required.</p>
+<p>Pease refer to the chapter <a href="../process-effort-calculation.html">Project
+Effort Calculation</a> for detailed information on Project Effort calculations.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Activities in the Stardust Process Workbench can be of the following types:</p>
+<ul>
+    <li><a href="#root">Route activities</a></li>
+    <li><a href="#manual">Manual activities</a></li>
+    <li><a href="#appl">Application activities</a></li>
+    <li><a href="#subprocess">Subprocess activities</a></li>
+</ul>
+<p>Chapter <a href="../../../concepts/workflow-basics/mg-basics-5.htm">Activities</a>
+of the <a href="../../../concepts/workflow-basics/mg-basics-preface.htm">Workflow Basics</a>
+concepts part describes the concepts of these implementations.</p>
+<p>The type of activity and related details are set in the
+implementation section of the activity properties. To set the type to manual
+activity or route activity, a selection of the type and providing the parameters
+in the implementation section is sufficient.</p>
+<h3 id="root">Route Activities</h3>
+<p>There is no special implementation setting for route activities, as they
+mainly serve as routers.</p>
+<h3 id="manual">Manual Activities</h3>
+<p>The implementation setting for manual activities is the participant to
+perform this activity. Select a performer in the provided list or via a
+role-assignment in the diagram.</p>
+<p>You have the option to convert manual activities to JSF application
+activities. Please refer to chapter <a href="mg-convert-activities.html">Converting
+Manual Activities to JSF Application Activities</a> for more information on this
+issue.</p>
+<h3 id="appl">Application Activities</h3>
+<p>In the case of the application type, an application has to be created in
+the model. It can be linked to the activity by selecting it from the provided
+list or by an executed-by connection in the diagram. All execution parameters
+for the application are set in the properties dialog pertaining to the
+application.</p>
+<h3 id="subprocess">Subprocess Activities</h3>
+<p>To define an activity as a subprocess, select <strong>Subprocess</strong>
+as the type of the activity. In the properties dialog, select the desired process from
+list of existing process definitions.<br />
+&nbsp;</p>
+<p class="image"><img src="images/mg-defdesk-21.png"
+    alt="Configuring a Subprocess"> <br>
+<strong>Figure:</strong> Configuring a Subprocess</p>
+<p>For details on working with subprocesses, refer to chapter
+<a href="mg-subprocesses.html">Configuring Subprocess Activities</a>.</p>
+<h3>Changing the Implementation Type</h3>
+<p>You determine the type of implementation while you create the specific activity.
+To change the implementation type, right-click the activity in the diagram and select
+<strong>Implementation</strong>. Choose the implementation type you like to change your
+activity to.</p>
+<p class="image"><img src="images/change-impl-type.png" alt=""><br>
+<strong>Figure:</strong> Changing the Implementation type of an Activity</p>
+<p>In case you like to convert your activity to and JSF application activity,
+choose <strong>Convert to JSF Application Activity</strong>. Refer to chapter
+<a href="mg-convert-activities.html">Converting Manual Activities to JSF Application Activities</a>
+for details on this conversion.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

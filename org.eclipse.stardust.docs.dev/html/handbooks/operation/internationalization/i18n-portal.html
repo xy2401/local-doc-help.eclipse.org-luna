@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>Internationalization of the Portal</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Internationalization of the Predefined Model",
+    "i18n-modeler.html","i18n-prefmodel.html",
+	"../../handbooks.htm","Developer Handbook",
+	"../ag-preface.htm","Operation Guide",
+	"PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html","Internationalization");
+ -->
+</script>
+
+<h1>Internationalization of the Portal</h1>
+<p>Internationalization can be achieved by providing translations of
+the following text elements:</p>
+<ul>
+    <li>labels</li>
+    <li>content of combo boxes</li>
+    <li>messages</li>
+</ul>
+<p>Elements of the Stardust Portal views are identified via entries
+in their according resource bundles. The resource bundle which is used
+depends on the preferred language set for your browser.</p>
+<h2 id="bundles">Resource Bundles</h2>
+<p>Resource bundles for languages are supplied for the Stardust
+Portal. They reside in the <!-- <tt><nobr>ipp-resources</nobr></tt>
+folder of your dynamic Web project or the <tt><nobr>WEB-INF/classes</nobr></tt>
+folder in the Stardust Portal WAR file accordingly, named <tt>CommonMessages_locale.properties</tt>.-->
+according portal JAR files, <span class="ipp">either in the <tt>add-ons/ipp-portal/lib</tt>
+folder of your Stardust installation, in case you set up your 
+working environment as described in chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-installer.htm">
+Installing Stardust Features</a>,
+or </span>in the <tt>lib</tt> folder of the <tt>org.eclipse.stardust.ide.wst.facet.portal_xxx</tt>
+plugin:</p>
+<ul>
+    <li><tt>ipp-business-control-center.jar</tt> - for the Stardust Portal
+    <strong>Business Control Center Perspective</strong>.</li>
+    <li><tt>ipp-administration-perpective.jar</tt> - for the Stardust Portal
+    <strong>Administration Perspective</strong>.</li>
+    <li><tt>ipp-workflow-perspective.jar</tt> - for the Stardust Portal
+    <strong>Workflow Perspective</strong>.</li>
+    <li><tt>stardust-web-modeler.jar</tt> - for the Stardust Portal
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+    Business Process Modeler</a>.</li>
+    <li><tt>ipp-views-common.jar</tt> - for the Stardust Portal
+    common views messages.</li>
+    <li><tt>ipp-portal-common.jar</tt> - for the Stardust Portal
+    common portal messages.</li>
+    <li><tt>ipp-web-ui-common.jar</tt> - for the Stardust Portal
+    Web UI common portal messages.</li>
+</ul>
+<p>Unzip the according portal JAR file, copy the existing resource
+bundles and add the according language locale to the name (e.g. "_de").
+E.g. for adapting messages displayed in the Business Control Center
+perspective:</p>
+<ol>
+    <li>Unzip the <tt>ipp-business-control-center.jar</tt> file.</li>
+    <li>Copy the <tt>business-control-center-messages.properties</tt>
+    file and rename the copy to <tt>business-control-center-messages_<i>locale</i>.properties</tt>,
+    whereby <i>locale</i> is the locale for the language you like to
+    use. (Translated resource bundles are already provided for Chinese
+    and German.)</li>
+    <li>Edit the <tt>business-control-center-messages_<i>locale</i>.properties</tt>
+    and translate the entries accordingly.</li>
+    <li>Save the resource bundle and add it to the <tt>ipp-business-control-center.jar</tt>
+    file.</li>
+</ol>
+<p>Determine the locale to use for your Stardust Portal by setting
+the preferred language used for your browser.</p>
+<!--<p>In your <tt>faces-config.xml</tt> file, residing in the <tt><nobr>WEB-INF/config/ipp/jsf</nobr></tt>
+folder of your Business Control Center WAR or the <tt><nobr>WebContent/WEB-INF/config/ipp/jsf</nobr></tt>
+folder in your dynamic Web project accordingly, set the supported and
+default locales, for example:</p>
+<pre>
+    &lt;application&gt;
+        &lt;message-bundle&gt;CommonMessages&lt;/message-bundle&gt;
+        &lt;locale-config&gt;
+            &lt;default-locale&gt;en&lt;/default-locale&gt;
+            &lt;supported-locale&gt;de&lt;/supported-locale&gt;
+        &lt;/locale-config&gt;
+        ...
+    &lt;/application&gt;
+</pre>-->
+<h3>Retrieving predefined Resource Bundles as JAR from the Artifactory</h3>
+<p>The Stardust artifactory provides a <tt>stardust-product-nls.jar</tt> file, which 
+contains all available specific languages bundles for the different components. You can 
+download this file from the following location:</p>
+<pre>https://infinity.sungard.com/repository/ipp-releases/com/infinity/bpm/</pre>
+<div class="ipp"><p>File <tt>ipp-product-nls.jar</tt> additionally provides
+Japanese translations.</p></div>
+<p>You can modify all containing property files and add these either as a new 
+JAR file to the <tt>WEB-INF/lib</tt> folder or into <tt>WEB-INF/classes</tt> 
+folder of your Web project if you like to overwrite an existing language. 
+Putting the JAR file to
+the <tt>WEB-INF/classes</tt> folder ensures that the property files are loaded 
+first, before the JAR files are scanned for the corresponding property files.</p>
+<h2>Using Languages with Multibyte Character Sets</h2>
+<p>In case you like to display your Stardust Portal in a language
+using multibyte character sets, like Chinese or Japanese, you have to
+perform some additional steps.</p>
+<p>For example in case you like the Portal to be displayed in
+Chinese language code, perform the following steps:</p>
+<ol>
+    <li>Unzip the files from your according portal JAR file.</li>
+    <li>Translate the properties from the <tt><i>xxx</i>.properties</tt>
+    file to Chinese and add them to a new properties file called <tt><i>xxx</i>_cn_source.properties</tt>.</li>
+    <li>Execute the following command: <pre>native2ascii -encoding gb2312 
+    <i>xxx</i>_cn_source.properties BusinessControlCenterMessages_cn.properties</pre></li>
+    <!-- TODO: clarify
+    <li>In the <tt>faces-config.xml</tt> file of your Web application,
+    set the <tt>default-locale</tt> to <tt>cn</tt>: <pre>
+&lt;application&gt;
+    &lt;message-bundle&gt;CommonMessages&lt;/message-bundle&gt;
+    &lt;locale-config&gt;
+        &lt;default-locale&gt;cn&lt;/default-locale&gt;
+        &lt;supported-locale&gt;en&lt;/supported-locale&gt;
+    &lt;/locale-config&gt;
+    ...
+&lt;/application&gt;</pre></li>
+    <li>In the xml header of all <tt>*.jspx</tt> files, residing in
+    the <tt>ipp</tt> folder of your Web application, replace the encoding <tt>iso-8859-1</tt>
+    with <tt>utf-8</tt>. Thus change the following line: <pre>&lt;?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?&gt;</pre>
+    to: <pre>&lt;?xml version="1.0" encoding="utf-8" standalone="yes" ?&gt;</pre></li>-->
+</ol>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

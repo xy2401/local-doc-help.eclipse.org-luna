@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Monitoring Runtime Environment Events</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Monitoring Model Deployment",
+   	"spi-proc-exe.html","pg-part-monitoring.html",
+      "../../handbooks.htm","Developer Handbook",
+      "../pg-preface.htm","Programming Guide",
+      "spi-toc.html","SPI");
+ -->
+</script>
+<h1>Monitoring Runtime Environment Events</h1>
+<p>The Infinity Process Platform provides the Service Provider Interface <tt>IRuntimeEnvironmentMonitor</tt>
+to monitor process execution.
+Please refer to the according JavaDoc
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/monitoring/IRuntimeEnvironmentMonitor.html">
+IRuntimeEnvironmentMonitor</a> for detailed information on the interface.</p>
+<pre>
+import org.eclipse.stardust.common.annotations.SPI;
+import org.eclipse.stardust.common.annotations.Status;
+import org.eclipse.stardust.common.annotations.UseRestriction;
+import org.eclipse.stardust.engine.core.runtime.beans.IAuditTrailPartition;
+
+@SPI(useRestriction = UseRestriction.Public, status = Status.Stable)
+public interface IRuntimeEnvironmentMonitor
+{
+
+   /**
+    * Propagate creation of a new audittrail partition.
+    *
+    * @param partition The new partition.
+    */
+   void partitionCreated(IAuditTrailPartition partition);
+
+   /**
+    * Propagate deletion of an audittrail partition.
+    *
+    * @param partition The deleted partition.
+    */
+   void partitionDropped(IAuditTrailPartition partition);
+
+}
+</pre>
+<p>The interface has several methods for propagating runtime environment events:</p>
+<ul>
+   <li><tt>partitionCreated</tt> - propagates that a new audit trail partition was created</li>
+   <li><tt>partitionDropped</tt> - propagates that a specific audit trail partition was deleted</li>
+</ul>
+<h2>Creating a custom Implementation</h2>
+<p>To implement the 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/monitoring/IRuntimeEnvironmentMonitor.html">IRuntimeEnvironmentMonitor</a>
+interface and publish the implementation to the engine, a file named by the interface's 
+factory has to be created in the <tt>/META-INF/services</tt> folder of the jar.
+Perform the following steps:</p>
+<ol>
+   <li>Implement the interface as shown below</li>
+   <li>Create a text file named <tt>org.eclipse.stardust.engine.core.spi.monitoring.IRuntimeEnvironmentMonitor</tt>.
+    The file contents needs to be the fully qualified name of your implementation class, 
+    e.g. <tt>org.eclipse.stardust.example.RuntimeEnvironmentMonitorImpl</tt>.</li>
+   <li>Place the file into the <tt>META-INF/services</tt> folder of the jar that will contain your implementation class</li>
+</ol>
+<pre>
+package org.eclipse.stardust.example;
+
+import org.eclipse.stardust.engine.core.runtime.beans.IAuditTrailPartition;
+import org.eclipse.stardust.engine.core.spi.monitoring.IRuntimeEnvironmentMonitor;
+
+public class RuntimeEnvironmentMonitorImpl implements IRuntimeEnvironmentMonitor {
+
+   @Override
+   void partitionCreated(IAuditTrailPartition partition) {
+   }
+   
+   @Override
+   void partitionDropped(IAuditTrailPartition partition) {
+   }
+   
+}
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

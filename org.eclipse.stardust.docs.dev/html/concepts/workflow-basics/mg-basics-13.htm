@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Runtime Behavior</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","mg-basics-12.htm","",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Runtime Behavior</h1>
+<p>The process definitions of a workflow model specified with the process modeling
+environment may be executed in the Stardust runtime environment.</p>
+<p>a Stardust runtime environment consists of</p>
+<ul>
+    <li>a single audit trail database containing the data of the workflow model as
+    well as the data required during process execution and</li>
+    <li>a set of EJB servers hosting the Stardust Process Engine code and
+    interpreting the workflow model.</li>
+</ul>
+<p>Details concerning the deployment of a model to a Stardust runtime environment
+can be found in the chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploy-model.html"> Deploying a
+Workflow Model</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a>.</p>
+<h2>Process Start and Continuation</h2>
+<p>To start a process, an instance based on the process definition has to be
+created. Process instances can be created by using</p>
+<ul>
+    <li>triggers or by using</li>
+    <li>the programming interface as described in the 
+    <a href="../../handbooks/programming/embed/pg-embedded-preface.htm">Embedded Usage</a> chapters
+     of the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>.</li>
+</ul>
+<p>Once a process is started, its instance is executed on one or more EJB servers
+with respect to the clustering facilities of your runtime environment. During execution,
+all non-interactive activities (e.g. Session Beans) are performed independently from user
+operations. The corresponding applications are invoked by the Stardust Process Engine.</p>
+<p>If the execution of the process instance arrives at an interactive activity,
+which is assigned to a performer - a role, an organization, a user or a user group - a
+work item representing an instance of this activity is put in the worklist of this
+performer. The execution of the process instance is then interrupted until this work item
+is activated from the worklist and completed. After completion of the activity, execution
+of the process instance is continued.</p>
+
+<h2>Asynchronous and Synchronous Execution</h2>
+<p>Whenever a process is started or continued in a Stardust Process Engine, the
+starter (e.g. a program using the programming interfaces of Stardust ) may want to wait
+until</p>
+<ul>
+    <li>either the entire process has been completed or</li>
+    <li>at least all non-interactive activities have been performed and the
+    interactive activities have been added to the worklists.</li>
+</ul>
+<h3>Synchronous Execution</h3>
+<p>Such a solution is called synchronous execution. The synchronous execution is
+suitable for a scenario, where it is expected that</p>
+<ul>
+    <li>either all the steps above are performed without substantial intermissions
+    or</li>
+    <li>it is accepted that the starting or continuing request may take a certain
+    amount of time.</li>
+</ul>
+<p>In interactive scenarios where a process is started by a manual trigger the
+advantage of synchronous execution is that the first interactive activity may be
+synchronously presented to the user after starting the process.</p>
+
+<h3>Asynchronous Execution</h3>
+
+<p>Alternatively to synchronous execution it might be desired only to guarantee to
+the invoking client that the process is started or continued. This scenario is referred to
+as asynchronous execution. The asynchronous execution is achieved by the same mechanism as
+multi-threaded execution, which is described below.</p>
+
+<h3>Visualizing the Engine Behavior during Transition Conditions</h3>
+<p>You can set the <tt>View Fork on Traversal</tt> flag on the  
+<a href="../../handbooks/modelling/mg-preferences.html#drawing">Drawing Preferences</a> page
+to visualize how Stardust Engine traverses during transition conditions.</p> 
+
+<h2>Multi-Threading, Concurrency and Messaging</h2>
+<p>Normally, a process definition consists of a non-linear sequence of activities
+connected by transitions, thus forming a network containing split and joins of activity
+sequences.</p>
+<p>The general topology of a process definition network is a directed graph of
+activities connected by transitions.</p>
+
+<h3 id="activityThread">Activity Thread</h3>
+<p>A linear chain of activities in such a graph is called an activity thread.</p>
+<p>a Stardust Process Engine performs activity threads concurrently. Activities in
+different activity threads are instantiated and executed in parallel. While one activity
+thread is waiting for an interactive activity pending in a worklist of a user to be
+continued, other activity threads of this process instance may be executed.</p>
+<p>If arbitrary data (business and/or workflow data) are accessed in the activities
+of two concurrently executed activity threads, all policies of concurrent access apply
+(isolation, locking etc.).</p>
+<p>Because the functionality of the Stardust Process Engine is provided as a set of
+EJBs and it is not allowed to use Java multi-threading in EJBs, the required functionality
+is achieved by using the Java Messaging Service (JMS). Whenever the control flow in a
+process definition arrives at an AND-split, JMS messages are sent for each outgoing
+transition and additional activity threads are executed parallel to the existing activity
+threads.</p>
+<p>The detailed threading behavior can be controlled by the Fork on Traversal flag
+of the transitions involved.</p>
+<p>Assume the following process definition:</p>
+<div>
+<p class="image"><img src="images/mg-basics-37.png" alt=""> <br>
+<strong>Figure:</strong> Sample Process Definition with Multiple Activity Threads</p>
+
+<p>If the default forking behavior for the outgoing transitions of Activity2 is
+specified the execution control flow for an instance of this process will be as follows:</p>
+<p class="image"><img src="images/mg-basics-38.jpg" alt=""> <br>
+<strong>Figure:</strong> Default Control Flow</p>
+
+<p>If both outgoing transitions of Activity2 are specified to fork on traversal the
+control flow will change:</p>
+<p class="image"><img src="images/mg-basics-39.jpg" alt=""> <br>
+<strong>Figure:</strong> Changed Control Flow if Forking on Traversal is specified</p>
+<h2>Transactions</h2>
+<p>A transaction is a set of modifications, which is applied against a data source
+or a set of data sources and appears to be atomic - the modifications apply as a whole or
+not at all. If multiple data sources are involved, applying changes against one data
+source may succeed while modifications against another data source may fail. To guarantee
+atomicity in these cases the so-called two-phase commit protocol is used. Two-phase commit
+is provided by all application servers compliant to the supported J2EE or Java EE specification.</p>
+<p>The execution of a process in Stardust may likely involve modifications on
+multiple data sources, because it causes Stardust 's audit trail database to be changed as
+well as sources of business data (e.g. a customer database). Hence, it is required to
+perform a two-phase commit protocol, which is performed transparently by Stardust and the
+EJB server/container hosting the Stardust EJBs.</p>
+<p>It is relevant for the execution of a process to specify where a transaction
+starts and where it is committed. Specification of where a transaction begins and where it
+is committed is referred to as transaction demarcation.</p>
+<p>Transaction demarcation in Stardust is done implicitly and compliant with the
+mechanisms of the EJB standard:</p>
+<p>Normally, each call to start or continue a process demarcates the boundaries of a
+transaction. A two-phase commit is performed against all involved data sources after this
+call returns. If the client submitting this call has already demarcated a transaction, the
+commit may even be postponed until that point.</p>
+<p>For a process definition containing multiple activity threads to be executed
+concurrently, the situation is more complicated:</p>
+<p>If JMS messages are sent to spawn the control flow of a process instance, these
+messages are finally submitted as part of the two-phase commit protocol - the JMS message
+queue is considered as a transactional resource. Submitting the JMS messages earlier would
+prohibit to provide transparent and implicit transaction demarcation.</p>
+<p>As a consequence, if forking on traversal for the transitions involved in the
+multi-threading is specified improperly, execution of concurrent activity threads may be
+delayed for a long time. Hence, a consequent review of the forking behavior is a vital
+part of process definitions. In the figure below the JMS message which starts
+ActivityThread2 is finally sent after Activity9 and the subsequent (implicit) commits have
+been performed.</p>
+
+<p class="image"><img src="images/mg-basics-40.jpg" alt=""> <br>
+<strong>Figure:</strong> Transaction Demarcation with Multi-Threaded Process Execution</p>
+
+<p>If performing Activity3 to Activity9 takes a long time, unnecessary serialization
+of potentially concurrent control flow is forced and it is recommended to specify the
+transition between Activity2 and Activity3 to be forked on traversal.</p>
+
+</div>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

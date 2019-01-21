@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing remove and delete functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Remove and Delete Functionality</h1>
+<h2>Difference Between Remove and Delete</h2>
+<p>A remove feature only eliminates pictogram elements from the pictograms model 
+but the underlying business object (domain model elements) remains in existence. 
+It is basically the opposite of the add feature, which creates a pictogram element 
+for an existing business object.</p>
+<p>A delete feature additionally eliminates the corresponding business object (domain 
+model elements). It is basically the opposite of the create feature, which creates 
+a business object and the corresponding pictogram element.</p>
+<p>A delete feature typically calls the remove feature to delete the pictogram element 
+and then deletes the corresponding business object. This is similar to the create 
+feature, which typically creates the business object and then calls the add feature 
+to create the corresponding pictogram element.</p>
+<h2>Creating a Remove Feature</h2>
+<p>A remove feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IRemoveFeature.html">IRemoveFeature</a>. 
+Instead of implementing this directly you should extend the available default implementation
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/DefaultRemoveFeature.html">
+DefaultRemoveFeature</a>.</p>
+<p>Own implementations of remove features have to be provided by the corresponding 
+feature provider through its
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getRemoveFeature(org.eclipse.graphiti.features.context.IRemoveContext)">
+getRemoveFeature</a> method. Note, that in most cases it is not necessary to provide 
+an own implementation of the remove feature, because the graphics framework has 
+enough knowledge to provide a good default implementation.</p>
+<p>To enable the remove of not selectable, so called inner elements, you have to
+<a href="custom-feature.htm">provide custom features</a>. </p>
+<h2>Creating a Delete Feature</h2>
+<p>A delete feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IDeleteFeature.html">IDeleteFeature</a>. 
+Instead of implementing this directly you should extend the available default implementation
+<a href="../../../javadoc/org/eclipse/graphiti/ui/features/DefaultDeleteFeature.html">
+</a>.</p>
+<p>Own implementations of delete features have to be provided by the corresponding 
+feature provider through its
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getDeleteFeature(org.eclipse.graphiti.features.context.IDeleteContext)">
+getDeleteFeature</a> method. Note, that in most cases it is not necessary to provide 
+an own implementation of the delete feature, because the graphics framework has 
+enough knowledge to provide a good default implementation.</p>
+<p>To enable the deletion of not selectable, so called inner elements, you have 
+to <a href="custom-feature.htm">provide custom features</a>.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

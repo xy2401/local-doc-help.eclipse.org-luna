@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Using Camel Producer Applications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../../styles/carnot.css"
+	TITLE="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Integrating Synchronous Web Services",
+			 "../mg-integration-jsf.html",
+			"../mg-integration-8.htm", "../../handbooks.htm",
+			"Developer Handbook", "../mg-preface.htm", "Modeling Guide",
+			"../mg-integration-preface.htm", "System Integration");
+//-->
+</script>
+<body>
+<h1>Using Camel Producer Applications</h1>
+<p>The Camel Producer Application Type allows you to specify
+arbitrary Camel Routes to be invoked from activities in Process Models
+at runtime and ensure connectivity via
+simple XML configurations leveraging the connectivity capabilities of
+Apache Camel.</p>
+<ul>
+	<li><a href="#create">Creating a Camel Producer Application</a></li>
+	<li><a href="#props">Properties</a>
+	<ul>
+		<li><a href="#context">CamelContextID</a></li>
+		<li><a href="#pattern">Endpoint Pattern</a></li>
+		<li><a href="#route">Route Definitions</a></li>
+		<li><a href="#bean">Additional Spring Bean Definitions</a></li>
+	</ul>
+	</li>
+</ul>
+<h2 id="create">Creating a Camel Producer Application</h2>
+<p>To create a Creating Camel Producer Application, select <strong>Applications
+&gt; Camel Producer Application</strong> in the diagram toolbar.</p>
+<p class="image"><img src="images/create-camel-appl.png"
+	alt="Create Camel Producer Application"><br>
+<strong>Figure:</strong> Create a Camel Producer Application</p>
+<p>Click on the diagram to place the symbol for the Camel Producer Application there.</p>
+<p class="image"><img src="images/camel-application.png"
+   alt="Camel Producer Application"><br>
+<strong>Figure:</strong> Camel Producer Application</p>
+<h2 id="props">Properties</h2>
+<p>Double-click the application symbol to open the properties page.</p>
+<p class="image"><img src="images/camel-appl-props.png"
+	alt="Camel Producer Application Properties Page"><br>
+<strong>Figure:</strong> Camel Producer Application Properties Page</p>
+<p>In the <strong>Endpoint Properties</strong> section, you can set
+properties for the following:</p>
+<ul>
+	<li><a href="#context">CamelContextID</a></li>
+	<li><a href="#pattern">Endpoint Pattern</a></li>
+	<li><a href="#route">Route Definitions</a></li>
+	<li><a href="#bean">Additional Spring Bean Definitions</a></li>
+</ul>
+<h3 id="context">CamelContextID</h3>
+<p>The <strong>CamelContextID</strong> defines the ID of the
+CamelContext object, which represents the Camel runtime system.</p>
+<h3 id="pattern">Endpoint Pattern</h3>
+<p>Endpoints represent the end of a channel through which a system
+can send or receive messages. Endpoints are usually referred to via
+their URIs.</p>
+<p>With the <strong>Endpoint Pattern</strong> you may specify
+whether the Camel Producer Application is only supposed to send or also
+receive Message Exchange data.</p>
+<p class="image"><img src="images/camel-end-point.png"
+	alt="Set Endpoint Pattern"><br>
+<strong>Figure:</strong> Set Endpoint Pattern</p>
+<h3 id="route">Route Definitions</h3>
+<p>In the <strong>Route</strong> section you can define
+arbitrary Camel Routes to be invoked from activities in the Process Model
+at runtime, like:</p>
+<p class="image"><img src="images/camel-appl-route.png" 
+   alt="Simple Route example"><br>
+<strong>Figure:</strong> Simple Route example</p>
+<p>or more complex cases like</p>
+<p class="image"><img src="images/camel-appl-route-complex.png"
+	alt="Complex Route example"><br>
+<strong>Figure:</strong> Complex Route example</p>
+<p>In all cases, you need to ensure that the Camel Components used
+in the tags are part of your Runtime Environment setup.</p>
+<h3 id="bean">Additional Spring Bean Definitions</h3>
+<p>You may use references to Spring Beans in your routes. These
+Spring Beans are either expected to be defined externally in your
+runtime environment or can be defined in the <strong>Additional
+Spring Bean Definitions</strong> text area:</p>
+<p class="image"><img src="images/camel-appl-bean.png" 
+   alt="Spring Bean Definition"><br>
+<strong>Figure:</strong> Spring Bean Definition</p>
+<p>Hereby, the byte code of <tt>com.siriussuper.order.OrderCache</tt>
+is expected to be available in your runtime deployment, e.g. by adding a
+Utility JAR file with this byte code to your Solution Release.</p>
+<script language="JavaScript">
+	writeFooter();
+</script>
+</body>
+</html>

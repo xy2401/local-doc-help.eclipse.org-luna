@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="mediawiki/new_and_noteworthy.html" label="new_and_noteworthy">
+	<topic href="mediawiki/new_and_noteworthy.html" label="0.9">
+		<topic href="mediawiki/new_and_noteworthy.html#Discovery_manager" label="Discovery manager"></topic>
+		<topic href="mediawiki/new_and_noteworthy.html#Model_Browser" label="Model Browser"></topic>
+		<topic href="mediawiki/new_and_noteworthy.html#Query_Manager" label="Query Manager"></topic>
+		<topic href="mediawiki/new_and_noteworthy.html#Workflow" label="Workflow"></topic>
+		<topic href="mediawiki/new_and_noteworthy.html#Java" label="Java">
+			<topic href="mediawiki/new_and_noteworthy.html#New_Java_Discoverer_conforming_to_new_Discovery_framework" label="New Java Discoverer conforming to new Discovery framework"></topic>
+			<topic href="mediawiki/new_and_noteworthy.html#Java_Discoverer_API" label="Java Discoverer API"></topic>
+			<topic href="mediawiki/new_and_noteworthy.html#Java_Generation_API" label="Java Generation API"></topic>
+			<topic href="mediawiki/new_and_noteworthy.html#Java_to_KDM_discoverer" label="Java to KDM discoverer"></topic>
+			<topic href="mediawiki/new_and_noteworthy.html#Java_Discovery_filters" label="Java Discovery filters"></topic>
+		</topic>
+		<topic href="mediawiki/new_and_noteworthy.html#Composition" label="Composition"></topic>
+	</topic>
+	<topic href="mediawiki/0-8.html" label="0.8">
+		<topic href="mediawiki/0-8.html#Discovery_manager_2" label="Discovery manager"></topic>
+		<topic href="mediawiki/0-8.html#Facet_Manager" label="Facet Manager"></topic>
+		<topic href="mediawiki/0-8.html#Model_Browser_2" label="Model Browser">
+			<topic href="mediawiki/0-8.html#Customization" label="Customization"></topic>
+			<topic href="mediawiki/0-8.html#New_options" label="New options"></topic>
+			<topic href="mediawiki/0-8.html#Internationalization" label="Internationalization"></topic>
+			<topic href="mediawiki/0-8.html#New_Look" label="New Look"></topic>
+			<topic href="mediawiki/0-8.html#Linked_resources" label="Linked resources"></topic>
+		</topic>
+		<topic href="mediawiki/0-8.html#Query_Manager_2" label="Query Manager"></topic>
+		<topic href="mediawiki/0-8.html#Workflow_2" label="Workflow"></topic>
+		<topic href="mediawiki/0-8.html#Java_2" label="Java">
+			<topic href="mediawiki/0-8.html#Java_generation" label="Java generation"></topic>
+			<topic href="mediawiki/0-8.html#Java_discovery_filters" label="Java discovery filters"></topic>
+		</topic>
+	</topic>
+	<topic href="mediawiki/0-7.html" label="0.7"></topic>
+</toc>

@@ -1,0 +1,6 @@
+org.eclipse.stardust.common
+org.eclipse.stardust.common.config
+org.eclipse.stardust.common.error
+org.eclipse.stardust.common.log
+org.eclipse.stardust.common.security
+org.eclipse.stardust.common.security.authentication

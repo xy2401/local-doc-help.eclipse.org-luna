@@ -1,0 +1,731 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.doc; singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help;bundle-version="[3.4.0,4.0.0)"
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Bundle-Version: 2.7.0.v20150123-0452
+Bundle-ManifestVersion: 2
+
+Name: tutorials/clibmod/BookCategory.java
+SHA1-Digest: myHpMyHVhAKKWsTn52KQXJ52Pto=
+
+Name: references/overview/images/EMF.Edit/image008.gif
+SHA1-Digest: 3LRUmjxGRntcfqfRfQWxOGi3MqQ=
+
+Name: tutorials/slibmod/images/img131.gif
+SHA1-Digest: mAIUgrKI34qOHsA0bcAsiZG0DoY=
+
+Name: about.ini
+SHA1-Digest: KQMVTFcyVja5dvVmIh2o+qDsslY=
+
+Name: references/overview/images/EMF/image011.gif
+SHA1-Digest: b6Ad2AfNpuv5txyUKC7oEE/RZfg=
+
+Name: tutorials/clibmod/java5/BookCategory.java
+SHA1-Digest: uZwlRKprcAB/AOF4/j9Ik0Uf24U=
+
+Name: tutorials/jet1/jet_tutorial1.html
+SHA1-Digest: 4RLHLftTjTPih8jxi2FN2ipsTig=
+
+Name: css/book.css
+SHA1-Digest: UAc3KjnqY9BznLR7eiBiGbUTgSQ=
+
+Name: tutorials/clibmod/images/img101.gif
+SHA1-Digest: m9HF3Z+Z0twdQZJdvri93tqC2Dc=
+
+Name: tutorials/clibmod/images/img302.gif
+SHA1-Digest: H9ErtRjuDMRA3hGo18y6CWaFA5I=
+
+Name: tutorials/clibmod/images/img105.gif
+SHA1-Digest: mTJhiYjraDMgYoHoKaF6Y0cQhr8=
+
+Name: index/indexed_contributions
+SHA1-Digest: GR0MWIwUZZMOonJAJoTYHcHCu9w=
+
+Name: tutorials/clibmod/images/img306.gif
+SHA1-Digest: UYWJYEcf5NjDTan7Z/9RzUi0Vng=
+
+Name: tutorials/slibmod/SchoolBook.java
+SHA1-Digest: oX0w+8znfNfmP4QnNdcWB3BH4c8=
+
+Name: index/segments.gen
+SHA1-Digest: hu6fBAUFuy+a0BRyv8bD8Q9vAJE=
+
+Name: tutorials/rosepkg/images/rp02.gif
+SHA1-Digest: lDmus21dqvw76ndfJyNbRuE2dvA=
+
+Name: tutorials/slibmod/images/img101.gif
+SHA1-Digest: f+VKptpCA4SOn6Q7SW3vhb8GH1g=
+
+Name: tutorials/rosepkg/images/rp06.gif
+SHA1-Digest: zMAhEvgWryhVVtZ7SUlgQibr8RI=
+
+Name: tutorials/slibmod/images/img302.gif
+SHA1-Digest: 0BOxy6iWbYk/ZyptnUx1oRDJ7Bc=
+
+Name: references/overview/The Eclipse Modeling Framework Overview_0403
+ 01.doc
+SHA1-Digest: Uqlpb9PXQsKatYSG86dx1WgFi4o=
+
+Name: tutorials/jet2/images/jetemitter.gif
+SHA1-Digest: c/Z9N6D3pxR5UgPZj1eCj6AuG3o=
+
+Name: tutorials/slibmod/images/img105.gif
+SHA1-Digest: iPjEyjCLs4/yZmTzmxXK3p2OdZU=
+
+Name: tutorials/slibmod/images/img503.gif
+SHA1-Digest: IRdC1M93tVGCs9qXj7H7JWfQUmk=
+
+Name: tutorials/slibmod/images/img306.gif
+SHA1-Digest: br/lgGOL+p603Z40hlihWg6gHYo=
+
+Name: tutorials/jet2/images/tag_4.gif
+SHA1-Digest: CmUWlWF8szscrcukKWSrKs34W5E=
+
+Name: tutorials/jet2/images/enum_gui_page1.gif
+SHA1-Digest: YEbgxHByHxCWjOkqXpN6HBIzIaw=
+
+Name: about.properties
+SHA1-Digest: 4hFruuk7BxBett62eVV4TO7rPTY=
+
+Name: tutorials/slibmod/library.zip
+SHA1-Digest: tP0gdMgo07GleSEeoEHbZOshTVw=
+
+Name: css/emf-book.css
+SHA1-Digest: Q60UUDNxJOzZxO3mvkk4vUySlP0=
+
+Name: tutorials/jet1/images/img001.gif
+SHA1-Digest: qHKAqCptfDrjYuRJydEXtIljLE0=
+
+Name: tutorials/slibmod/images/model.gif
+SHA1-Digest: nGg/iWjBAsI0q/J3xfwo8IV4vFs=
+
+Name: tutorials/jet1/images/img005.gif
+SHA1-Digest: WbVF3iqwGJt8VrvH6RP1nVuCM6E=
+
+Name: tutorials/jet1/images/img009.gif
+SHA1-Digest: xB2My2CBJjhInTH0gv+NQF2d6sQ=
+
+Name: tutorials/jet2/images/new_creation_wizard.gif
+SHA1-Digest: kTpaZEGqC7YmTAteoQoTZf9q+AY=
+
+Name: tutorials/slibmod/images/img123b.gif
+SHA1-Digest: zhQ7dwUhnSG8FwIegaYNkMYJ2gE=
+
+Name: tutorials/clibmod/images/model.gif
+SHA1-Digest: cQHIQKxS0U77kOnzXVxIE93Ie6k=
+
+Name: tutorials/clibmod/images/img002.gif
+SHA1-Digest: 403WfiEoB/wZ4Gpd85U/xKHlW20=
+
+Name: images/faq.gif
+SHA1-Digest: 1VxR/mra9OzdnrfdHjIVLMk+tow=
+
+Name: tutorials/clibmod/images/img203.gif
+SHA1-Digest: AQvzKleHP2dTVkddJ9yI1XN7lRw=
+
+Name: tutorials/clibmod/images/img127.gif
+SHA1-Digest: LkIFPy0XCx7/MH0clQYKCctj3JU=
+
+Name: tutorials/clibmod/java5/Writer.java
+SHA1-Digest: 5pqaVlPShVLypL07ZQT1DC5Ov/g=
+
+Name: tutorials/clibmod/images/img404.gif
+SHA1-Digest: ZU6QXSEn2y/+KAqtrWgPnCdkAvE=
+
+Name: tutorials/jet2/jetc-task.jar
+SHA1-Digest: BwjiBP2mmtbAFhyH1oF+MvCBxgQ=
+
+Name: tutorials/clibmod/images/img408.gif
+SHA1-Digest: TZBvCoWpgSygW/eTcb1DATkjmJI=
+
+Name: tutorials/clibmod/Book.java
+SHA1-Digest: Fs42OpAVJz04t8b8C1T/I8CPiI8=
+
+Name: tutorials/jet1/images/img012.gif
+SHA1-Digest: ym0kzjb4259XyxVzc73gEaXh3Ic=
+
+Name: tutorials/slibmod/slibmod.html
+SHA1-Digest: MybDOoz6I6xsVEidycinCsuzQrY=
+
+Name: tutorials/slibmod/images/img123.gif
+SHA1-Digest: Svf3f0PGQ7xKORwometgLRe80JE=
+
+Name: tutorials/slibmod/images/img203.gif
+SHA1-Digest: PWrolR1qPY5gE1bNOg+NToiyV+0=
+
+Name: references/overview/images/EMF/image003.gif
+SHA1-Digest: HuGCJz9qJli/1UsBz3h56SLCzFE=
+
+Name: tutorials/slibmod/images/img127.gif
+SHA1-Digest: cakhtrIeqE2CV0WMbGTUSOhWHKU=
+
+Name: tutorials/xlibmod/images/img201.gif
+SHA1-Digest: +iiz7PogMlZ0BdPPFKf6I7v3RXA=
+
+Name: tutorials/slibmod/images/img404.gif
+SHA1-Digest: v18qm2nwObTqMmFd3AVAdCwubk4=
+
+Name: references/overview/images/EMF/image007.gif
+SHA1-Digest: 175bzmSdrTXaH8rWdv7/btfnHJc=
+
+Name: references/overview/images/EMF.Validation/image003.gif
+SHA1-Digest: Cx5T6btUQ3e07JsGSD7lCfHviP0=
+
+Name: tutorials/xlibmod/images/img205.gif
+SHA1-Digest: zaoDF1DEKeZNuFiOzuQULTCy4IE=
+
+Name: tutorials/slibmod/images/img408.gif
+SHA1-Digest: utBBYjy6K8uSro2FseDMosFzQAs=
+
+Name: tutorials/clibmod/images/img130.gif
+SHA1-Digest: 1oq72PkqGO/ruCH4pvsRJH5LcpU=
+
+Name: toc.xml
+SHA1-Digest: VkmSm2ALZI7I5Qh7fvqJ5uq+mBY=
+
+Name: tutorials/clibmod/images/img134.gif
+SHA1-Digest: eXi02/KeidbNP+mu9CQuJSy/g/k=
+
+Name: tutorials/clibmod/images/img411.gif
+SHA1-Digest: KN/mQukeWUlKnZI+uv5tqYC5KTk=
+
+Name: tutorials/clibmod/images/img415.gif
+SHA1-Digest: G4ojx3k0DEXaDrZFM4uiC5Z3niA=
+
+Name: references/overview/images/EMF.Edit/image003.gif
+SHA1-Digest: 0b2pSiscQ8XXbcnoVuTcCPOkWM4=
+
+Name: references/overview/images/EMF.Edit/image007.gif
+SHA1-Digest: SGfYoXRGsRlLO7gyZAjne6KSFrQ=
+
+Name: tutorials/slibmod/images/img130.gif
+SHA1-Digest: lQ2Uhlzji7pll9+qtZWJk320yBI=
+
+Name: tutorials/clibmod/clibmod.html
+SHA1-Digest: 5BS2ttcaGGk+1UY+HVsBXEWs9HI=
+
+Name: tutorials/slibmod/SchoolLibrary.java
+SHA1-Digest: igSdrUVepfQcxeYKLktcJZpjbBo=
+
+Name: references/overview/images/EMF/image010.gif
+SHA1-Digest: VJ+ijg9kqXJZchlM1KG+N3LLSBg=
+
+Name: tutorials/slibmod/images/img411.gif
+SHA1-Digest: YcAe9zLMgxIXcomKIkkOOoZfQKI=
+
+Name: tutorials/rosepkg/rosepkg.html
+SHA1-Digest: 12W6JUeFNPYye5NXLBjh8gJ43kw=
+
+Name: tutorials/jet1/images/tag_3.gif
+SHA1-Digest: bDsCNm38FsbBwpZIdEKXcf+I8no=
+
+Name: index/_0.cfs
+SHA1-Digest: F9VLNbNnDGhrFwOgYcii352G0gY=
+
+Name: tutorials/clibmod/images/img100.gif
+SHA1-Digest: 9zDWClYmsrgTSv3ffN+V3mS8YKg=
+
+Name: tutorials/clibmod/images/img301.gif
+SHA1-Digest: DTw8sVSFWHZjGe/XwBrzV5lOUh8=
+
+Name: index/_0.cfx
+SHA1-Digest: AtOSqqjs7Hxsj+hNRh80QS+tAtQ=
+
+Name: tutorials/clibmod/images/img104.gif
+SHA1-Digest: OzImbsDJ9IBuMrr1pifWp9wP1us=
+
+Name: tutorials/clibmod/images/img305.gif
+SHA1-Digest: Id+UsEMpkUdGm51wJklsEebI+T0=
+
+Name: tutorials/clibmod/images/img108.gif
+SHA1-Digest: iYfxvf11u7uCPrpaiFiY1BCc0bE=
+
+Name: images/cvs.gif
+SHA1-Digest: 2MfsIqZKjSSqyoOekAbXOXazVd8=
+
+Name: tutorials/rosepkg/images/rp01.gif
+SHA1-Digest: C48aU1difnU7pXo32pqOEWDsd54=
+
+Name: tutorials/xlibmod/library.xsd
+SHA1-Digest: yCrShyrqaZiX9b2Ygxk1xh8He0c=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: +AdFp1Zakj/5YbyNwx0M/HAMlYI=
+
+Name: tutorials/rosepkg/images/rp05.gif
+SHA1-Digest: kCusfmDECSelZ4q1uhBqd+ICts4=
+
+Name: tutorials/slibmod/images/img301.gif
+SHA1-Digest: 2ZLQO8gVbPxDVSxc/LHeR6Maimw=
+
+Name: about.mappings
+SHA1-Digest: IF/rGQTzUIqiqD4QIGlMaIQ5j7U=
+
+Name: tutorials/slibmod/images/img104.gif
+SHA1-Digest: byyWh1OUjl2PHOU3EGJBhzgV7UA=
+
+Name: tutorials/slibmod/images/img502.gif
+SHA1-Digest: PSBdrtXNYq8AZsHthQiijxdvaPw=
+
+Name: tutorials/xlibmod/images/img102.gif
+SHA1-Digest: 2GdbR1kQMfoIsgfdAqBxeNp2Dos=
+
+Name: tutorials/slibmod/images/img305.gif
+SHA1-Digest: w/NfMCSnRmdcFx6KB6ZjKY5yUu8=
+
+Name: tutorials/jet2/images/tag_3.gif
+SHA1-Digest: bDsCNm38FsbBwpZIdEKXcf+I8no=
+
+Name: tutorials/xlibmod/images/img303.gif
+SHA1-Digest: No+X3MVIzrGQqMxeEPxYsbiplT4=
+
+Name: tutorials/xlibmod/images/img106.gif
+SHA1-Digest: MU2jPkoQm89g4BpsWbxyI7pQOCY=
+
+Name: tutorials/slibmod/images/img309.gif
+SHA1-Digest: QZQwf7mGbWXF2V/6Gno1WICE6JQ=
+
+Name: index/segments_2
+SHA1-Digest: F1JV9KCCcpXA7oBbt1PMM1G9rcE=
+
+Name: tutorials/clibmod/library.mdl
+SHA1-Digest: iQO1ML7QO9/6jfDZDlqfAObJyy4=
+
+Name: tutorials/jet1/images/img004.gif
+SHA1-Digest: 73jQ4H71//5I6fo0Dzj018hqQ5U=
+
+Name: images/mail.gif
+SHA1-Digest: eQZMhyw7aDkS18/RuiT0lQwq9AE=
+
+Name: tutorials/slibmod/images/img312.gif
+SHA1-Digest: bF0HYZiCAs4pU3a2mFVgkmFfCU8=
+
+Name: tutorials/jet1/images/img008.gif
+SHA1-Digest: 2a6b2SEiIpcP2pVC11MUWvsW77s=
+
+Name: tutorials/jet2/images/default_style.css
+SHA1-Digest: Z4F0o7FEYQ+CZ6bZsaoOcUZ29Ig=
+
+Name: plugin.properties
+SHA1-Digest: y1s0pLqkduioXt5hb76fb8Qkziw=
+
+Name: tutorials/clibmod/images/img122.gif
+SHA1-Digest: t3+GQUqUkyrGDGBVWQ6CIbqF45A=
+
+Name: tutorials/clibmod/images/img001.gif
+SHA1-Digest: Yw+BCsqxeEtlwrDq3jcBE1mP4/0=
+
+Name: index/indexed_dependencies
+SHA1-Digest: JndO/pY8jnZRUXlC6mUYNMNkX18=
+
+Name: tutorials/clibmod/images/img202.gif
+SHA1-Digest: a5iYvy4J0mqBJamnI3Wxt5gvJe8=
+
+Name: tutorials/clibmod/images/img126.gif
+SHA1-Digest: wDDkqLPh/NjWaZErv1j9MgCD5+Q=
+
+Name: tutorials/rosepkg/library.mdl
+SHA1-Digest: a0qF+XNPGQaWDIrPqFvhan9xP7I=
+
+Name: tutorials/clibmod/images/img403.gif
+SHA1-Digest: pAn7kJRaE5YtgaBuVoqxLDrfHiY=
+
+Name: tutorials/slibmod/Asset.java
+SHA1-Digest: rQCPjsH6CZyZKMmFeGHmcfoMTQM=
+
+Name: plugin.xml
+SHA1-Digest: 2TX/WNXk75nIO0Is+1+Va4EiycI=
+
+Name: tutorials/clibmod/images/img407.gif
+SHA1-Digest: rLEu0Sc3xQYjj4HSrxujDG/LMYw=
+
+Name: tutorials/jet1/images/img011.gif
+SHA1-Digest: FDJvt92QgfFnKOZ9K0HrnVdc4jc=
+
+Name: tutorials/slibmod/images/img001.gif
+SHA1-Digest: Tx55Seq6xpLl/yorXh10RM+gL0U=
+
+Name: tutorials/slibmod/images/img122.gif
+SHA1-Digest: MPPKTrzVE8s1rfoaEUssEYUSa1g=
+
+Name: tutorials/slibmod/images/img202.gif
+SHA1-Digest: VfKXoE7I+OP8shRvIq1HJMTgH/E=
+
+Name: index/indexed_docs
+SHA1-Digest: dm2dJjgtHt8sm6KcN7pd2iMRhKM=
+
+Name: references/overview/images/EMF/image002.gif
+SHA1-Digest: b7qxEsMs92OnnFYpgHuLWhJtQFA=
+
+Name: tutorials/slibmod/images/img126.gif
+SHA1-Digest: bLqMhO/i3me4WvhPNNLXZggCz7o=
+
+Name: tutorials/slibmod/images/img403.gif
+SHA1-Digest: Qo9Uban1xZAlCuO9TAVREfGoj+E=
+
+Name: references/overview/images/EMF/image006.gif
+SHA1-Digest: N7b4Hl+k96A8x1PF2a32NtdsvsI=
+
+Name: references/overview/images/EMF.Validation/image002.gif
+SHA1-Digest: Dp1TMfs6YZ0H+Gu8G5BRaPk3RFk=
+
+Name: tutorials/xlibmod/images/img204.gif
+SHA1-Digest: SYEQ0ld70XdU/YAMPds5dmgCqj8=
+
+Name: tutorials/slibmod/images/img407.gif
+SHA1-Digest: 6wMsXPGbJ0BnYFI0cc0s1Xxa794=
+
+Name: references/overview/EMF.Edit.html
+SHA1-Digest: 07AUymABxbya42oHG6c2T8JOkTY=
+
+Name: tutorials/clibmod/images/img133.gif
+SHA1-Digest: e8JkYhndcgBxSvdiRDAxjtJ6olo=
+
+Name: tutorials/clibmod/images/img410.gif
+SHA1-Digest: cttEH8TZtWbDEe0FDg8Ay7iDNW4=
+
+Name: tutorials/jet2/images/new_toolbar.gif
+SHA1-Digest: 2C0Mr9dFjKGeBvoDwQQtp9rBIH8=
+
+Name: tutorials/clibmod/images/img414.gif
+SHA1-Digest: aR4oVB8PVktSeVkcQdLUceejvdk=
+
+Name: references/overview/images/EMF.Edit/image002.gif
+SHA1-Digest: GxyTH9ZaNBAAuXi+IIGkhl4N92A=
+
+Name: references/overview/images/EMF.Edit/image006.gif
+SHA1-Digest: NSZdZwzwwUaajioIsz/YdBpt1RI=
+
+Name: references/overview/The EMF Edit Framework Overview_040301.doc
+SHA1-Digest: iKqhuo4OmVkLMOjv/m+nGXtCeiA=
+
+Name: tutorials/slibmod/schoollibrary.zip
+SHA1-Digest: Cjw/ylvh2bsOd1xeQffbkiY1hi4=
+
+Name: tutorials/slibmod/images/img410.gif
+SHA1-Digest: ASUiQQOGhKgAC9IaEoSmpf/t2Q4=
+
+Name: tutorials/jet2/jet_tutorial2.html
+SHA1-Digest: PoNXXqMnxdFH8El3+FmlqFi453M=
+
+Name: tutorials/jet1/images/tag_2.gif
+SHA1-Digest: 6Lo6LMc3Lri6FMMVGPJQx/gA7I4=
+
+Name: references/overview/EMF.html
+SHA1-Digest: +xtTkPGiyOsinBZ6UWa1QguCmOI=
+
+Name: tutorials/clibmod/images/img103.gif
+SHA1-Digest: HPqATV/I5ZSe9rXqZ0py9PoqWzM=
+
+Name: tutorials/xlibmod/xlibmod.html
+SHA1-Digest: dx1jQ2YPGPcrK4VLtqaWLSv8Fls=
+
+Name: tutorials/clibmod/images/img304.gif
+SHA1-Digest: 43/PesFwVclzgFAnhic7M8uhRRQ=
+
+Name: tutorials/clibmod/images/img107.gif
+SHA1-Digest: lGXQxLFuOiifD4379urVaIBQkb8=
+
+Name: references/overview/EMF.Validation.html
+SHA1-Digest: cxxpdr+HRTenobOUT80ePlM8A+k=
+
+Name: tutorials/rosepkg/images/rp04.gif
+SHA1-Digest: ZiqzmFjxfRiRejnvYRKn+h9AOGI=
+
+Name: tutorials/slibmod/images/img103.gif
+SHA1-Digest: aaO48whLACdTGtSPg8W/fES5dOE=
+
+Name: tutorials/slibmod/images/img501.gif
+SHA1-Digest: TyviGser7glbaW1kGLzCvb1ZthA=
+
+Name: tutorials/xlibmod/images/img101.gif
+SHA1-Digest: JBw9w9NiMeL8ttHOvzOZZvopk7I=
+
+Name: tutorials/slibmod/images/img304.gif
+SHA1-Digest: aBjApcl76qIgcvbYq5yBCTWkh4Y=
+
+Name: tutorials/jet2/images/tag_2.gif
+SHA1-Digest: 6Lo6LMc3Lri6FMMVGPJQx/gA7I4=
+
+Name: references/faq.html
+SHA1-Digest: Z6rwo698G5Y9tZpg2ZJUATKJ0NM=
+
+Name: tutorials/xlibmod/images/img302.gif
+SHA1-Digest: VsREs+Rfk7ak3zkKOzp85Gy1glg=
+
+Name: tutorials/xlibmod/images/img105.gif
+SHA1-Digest: yNZgZ4K4oLXeQYhty8a14VgTNRU=
+
+Name: tutorials/slibmod/images/img308.gif
+SHA1-Digest: lVyeTL/uBBuNqzqT+b0BfjZYlqo=
+
+Name: tutorials/jet2/images/enum_gui_page3.gif
+SHA1-Digest: NudqQm6sqWBOi3q2GRaikho07Eg=
+
+Name: tutorials/clibmod/java5/Library.java
+SHA1-Digest: q1NGA7cPNHu4RdlJBOSOIaSjso4=
+
+Name: tutorials/jet1/images/img003.gif
+SHA1-Digest: Zs1ytw1CUVFUBd90wUYdkph5vaI=
+
+Name: tutorials/slibmod/images/img311.gif
+SHA1-Digest: z58wzubihbLj813IkupTw7WOAAY=
+
+Name: tutorials/jet1/images/img007.gif
+SHA1-Digest: GDtWNjOAEy/BW68+zncN7BZ2mJ0=
+
+Name: images/reference.gif
+SHA1-Digest: ax5Eu9wjazUkzQXyQfxFGNDzRKM=
+
+Name: tutorials/clibmod/images/img121.gif
+SHA1-Digest: ShKqOfelsyCicxYOZv8HqLPBB6w=
+
+Name: tutorials/clibmod/images/img201.gif
+SHA1-Digest: ENGBniAclrITsnBKJAidtvjMmcs=
+
+Name: tutorials/clibmod/Writer.java
+SHA1-Digest: czmQBRV8pBaDvxD+pzGHATH1cLQ=
+
+Name: tutorials/clibmod/images/img125.gif
+SHA1-Digest: GZ41ehnGLEEaLh3koDOKZJ7HmQE=
+
+Name: tutorials/clibmod/images/img402.gif
+SHA1-Digest: gOt42ro1IwAFZ2OZSGlLeByh8fo=
+
+Name: tutorials/jet1/images/tip.gif
+SHA1-Digest: PASZUuKj27hlTjLK065lFaEeYGg=
+
+Name: tutorials/clibmod/images/img205.gif
+SHA1-Digest: 3P4+IbDMgf/VaEZ0MePN/liLSn4=
+
+Name: tutorials/clibmod/images/img129.gif
+SHA1-Digest: j5rkMP5uotTNDel66drX+8/SNR0=
+
+Name: tutorials/clibmod/images/img406.gif
+SHA1-Digest: U0Q56hdEicmwHmvJWmK48Vfekag=
+
+Name: tutorials/jet1/images/img010.gif
+SHA1-Digest: vc3Fz13CCtcpK3N58IXjYibOPLc=
+
+Name: tutorials/rosepkg/ecore.pty
+SHA1-Digest: +CrWIcl3Q5nLaFW24QLfKujYRdA=
+
+Name: tutorials/jet1/images/img014.gif
+SHA1-Digest: 5iYKH816vzSY7I8qF9PsrLP3UmE=
+
+Name: tutorials/jet2/images/win_only.gif
+SHA1-Digest: WxXt2AkGrscaYbaUKaxcBo9qsdE=
+
+Name: tutorials/slibmod/images/img121.gif
+SHA1-Digest: FMDWlDYKR62LCYwFwX+k8eSJ6U4=
+
+Name: tutorials/slibmod/images/img201.gif
+SHA1-Digest: aqSe8DX7PEJSIG7Fv01aNSGn/I8=
+
+Name: references/overview/images/EMF/image001.gif
+SHA1-Digest: EG3CHtcXoSbWsjVUY+USN0x+vYY=
+
+Name: tutorials/slibmod/images/img125.gif
+SHA1-Digest: U7rUXOJsF6BoWCCnzo7c14ofMoM=
+
+Name: tutorials/slibmod/images/img402.gif
+SHA1-Digest: C9232JrXJeZ4Jc9eAEGVkSLlSQc=
+
+Name: references/overview/images/EMF/image005.gif
+SHA1-Digest: U1U4JTaoFWinlfa1hfbMUkzh5rU=
+
+Name: tutorials/slibmod/images/img129.gif
+SHA1-Digest: aTdRv9i1lZtdkWB2Xt+BJ9g0bC0=
+
+Name: references/overview/images/EMF.Validation/image001.gif
+SHA1-Digest: PPGN/aMnWPpO+UIEmX2l9kvhAlI=
+
+Name: tutorials/xlibmod/images/img203.gif
+SHA1-Digest: giDmW1tSMpNWGyIUnTFvkbjFJvY=
+
+Name: tutorials/slibmod/images/img406.gif
+SHA1-Digest: 3fLh1O1FchDvjK+SROVDRatE0bw=
+
+Name: images/bugzilla.gif
+SHA1-Digest: W/Vy88hQuiv6wVKT90Z+0+dqZb4=
+
+Name: about.html
+SHA1-Digest: m//+sZd+LYcO5OY/bjEiZVm0dk0=
+
+Name: references/overview/images/EMF/image009.gif
+SHA1-Digest: pU6u4GOuh6xUjRLC4Zp9gDv4NwE=
+
+Name: modeling32.png
+SHA1-Digest: ADlLWFV0eQ74YnLvHnPFkYLeLrs=
+
+Name: tutorials/clibmod/images/img136.gif
+SHA1-Digest: tMIcY8qsywCkt8m5csY0j8nKyV0=
+
+Name: tutorials/clibmod/images/img413.gif
+SHA1-Digest: Cg7IKPbDgRS3nF4Tgvp4CCajQFk=
+
+Name: references/overview/images/EMF.Edit/image001.gif
+SHA1-Digest: uXb5n2qyyzixhTbIqgB+AIO1FZg=
+
+Name: tutorials/clibmod/images/img417.gif
+SHA1-Digest: g5uC8UkUKuuKAMkkoemHphGl08U=
+
+Name: references/overview/images/EMF.Edit/image005.gif
+SHA1-Digest: Imwek/OYFlfvHQxq0s2Nt7XTID0=
+
+Name: references/overview/images/EMF.Edit/image009.gif
+SHA1-Digest: FgwHD/ccdLRwp+/ipvDbzPvp9AQ=
+
+Name: tutorials/slibmod/images/img132.gif
+SHA1-Digest: pI9zNNROh9AQBHys3Sf7aEijwS4=
+
+Name: tutorials/jet1/images/tag_1.gif
+SHA1-Digest: MYsVBXOLdlDC3k73O427kYGBxw4=
+
+Name: tutorials/clibmod/images/img102.gif
+SHA1-Digest: JC9xvGqdzIazlsoEn2GWa4fsI14=
+
+Name: tutorials/slibmod/schoollibrary.mdl
+SHA1-Digest: CEQZxpq5pmyKmUzVgytHeM8gzC0=
+
+Name: images/download.gif
+SHA1-Digest: BCSWHd6tCaOEopi/c2Sa4qHxtKc=
+
+Name: tutorials/clibmod/images/img303.gif
+SHA1-Digest: jiUlgMspTjrHpnnhzWuET/ywrwE=
+
+Name: tutorials/clibmod/images/img106.gif
+SHA1-Digest: 8M2TWCBhGtqn0q4PwUoS/HM5O6U=
+
+Name: tutorials/clibmod/images/img307.gif
+SHA1-Digest: jjRp8sDNDLaXd05RhRTi+aIdML0=
+
+Name: tutorials/rosepkg/images/rp03.gif
+SHA1-Digest: pTAPF+SCKuA6t/zjKuaYRDgbotY=
+
+Name: tutorials/slibmod/images/img102.gif
+SHA1-Digest: j4lAbenJeiP/mFr91kCCq7wPpGo=
+
+Name: tutorials/jet2/org.eclipse.emf.examples.jet.article2_2.3.0.zip
+SHA1-Digest: +wlSyUxsbJQNz/SZkm6dMIlcoJY=
+
+Name: tutorials/rosepkg/images/rp07.gif
+SHA1-Digest: /WoxE8WgAS7hZ7Z8HjmN2185O5o=
+
+Name: tutorials/slibmod/images/img303.gif
+SHA1-Digest: l82se12vRXWgiUENwLocqnxm9I8=
+
+Name: tutorials/jet2/images/tag_1.gif
+SHA1-Digest: MYsVBXOLdlDC3k73O427kYGBxw4=
+
+Name: tutorials/slibmod/images/img106.gif
+SHA1-Digest: q1JgecsFckhahfHQkN17AourhZg=
+
+Name: tutorials/xlibmod/images/img301.gif
+SHA1-Digest: wGvS97q+6JHssI7VjI//npkKUXw=
+
+Name: tutorials/xlibmod/images/img104.gif
+SHA1-Digest: NVqIddbS3H18Ko2XJxiJEPeC9wI=
+
+Name: tutorials/slibmod/images/img307.gif
+SHA1-Digest: wlslpVYadxhGp9k9YX3pi9KeWnY=
+
+Name: tutorials/jet2/images/enum_gui_page2.gif
+SHA1-Digest: l68r8xbhcKeHPVZml9sLv3orE40=
+
+Name: tutorials/clibmod/Library.java
+SHA1-Digest: o+zQ+yuaSFAXJn/niA2oR2oaA2U=
+
+Name: tutorials/jet1/images/img002.gif
+SHA1-Digest: XgetsUpRSZ4eyZTgGN7CMWahH4c=
+
+Name: tutorials/slibmod/images/img310.gif
+SHA1-Digest: NBYEaZ+7yiqo075H5g8AXeLMCEo=
+
+Name: tutorials/jet1/images/img006.gif
+SHA1-Digest: eVe6DDSi8z3NjifOTFpii4AYzYA=
+
+Name: tutorials/jet2/JETCTask.java
+SHA1-Digest: G6NRBsF9l6mnksESGqPUs1SeiMo=
+
+Name: tutorials/clibmod/images/img124.gif
+SHA1-Digest: XiJStU/ViH4CiImQ1g0QyAnj4p4=
+
+Name: tutorials/clibmod/images/img003.gif
+SHA1-Digest: 09AA5xupaV50HyMSDUi3Kv/THJM=
+
+Name: tutorials/clibmod/images/img401.gif
+SHA1-Digest: /ZY4ODLietnh5i6DQQ283hgYKQk=
+
+Name: tutorials/clibmod/images/img204.gif
+SHA1-Digest: SmDv2gk8sr76lKODTjiSHyn9qLo=
+
+Name: tutorials/clibmod/images/img128.gif
+SHA1-Digest: GcElK7ydd9sCXpjCsioFrIhw3LY=
+
+Name: tutorials/clibmod/images/img405.gif
+SHA1-Digest: wl/fr487lv4iXMb9MCOn2Dkw8/A=
+
+Name: tutorials/clibmod/images/img409.gif
+SHA1-Digest: ST9l6ZEImkVJ2gx77dSYLQmVybE=
+
+Name: tutorials/jet1/images/img013.gif
+SHA1-Digest: j8nKfM5FuzfCJabVllXmpnbf868=
+
+Name: images/news.gif
+SHA1-Digest: uWk7XuU1V5MQP3VDzTOV/9j6fKU=
+
+Name: tutorials/jet1/images/tryit.gif
+SHA1-Digest: 2w3Wky/wXOJczaMCJksQLYcY9FA=
+
+Name: tutorials/jet2/images/Idea.jpe
+SHA1-Digest: PcZMQGjryL3/ltXVmAwr6TCbFW0=
+
+Name: tutorials/slibmod/images/img124.gif
+SHA1-Digest: 1gMz1fyO40Z+SxWUnOyAG49S4gg=
+
+Name: tutorials/slibmod/images/img401.gif
+SHA1-Digest: lraqt014URHJBz7ztimdXhdGGIk=
+
+Name: tutorials/xlibmod/images/img001.gif
+SHA1-Digest: 3YKPH14sjxdJuTG3/H9kywHZxQQ=
+
+Name: references/overview/images/EMF/image004.gif
+SHA1-Digest: BJ26G+B1rb0p2KtJwmwkeVUQgQs=
+
+Name: tutorials/slibmod/images/img128.gif
+SHA1-Digest: x1DHhptMJ4lmVl4QvdmSB8o/+CA=
+
+Name: tutorials/slibmod/images/img405.gif
+SHA1-Digest: q161ThYxU6W+JH2O6tfoVtlfZ/s=
+
+Name: references/overview/images/EMF/image008.gif
+SHA1-Digest: dYIHJwPF30Hc6Ue5F2qMzkerzrU=
+
+Name: references/overview/images/EMF.Validation/image004.gif
+SHA1-Digest: v49lMykgDh8t83UdgFc4pnBQnZ8=
+
+Name: tutorials/slibmod/images/img409.gif
+SHA1-Digest: PbppyLm4X0RNNXJgAgXRDOHTce8=
+
+Name: tutorials/clibmod/images/img131.gif
+SHA1-Digest: yaLu1Vpw9OjtE1yiEzcmmRXDA68=
+
+Name: tutorials/clibmod/images/img135.gif
+SHA1-Digest: lGXQxLFuOiifD4379urVaIBQkb8=
+
+Name: tutorials/clibmod/images/img412.gif
+SHA1-Digest: e63R07ZRribWhOBvbVBlACrlX3w=
+
+Name: tutorials/clibmod/images/img416.gif
+SHA1-Digest: JeI+7myTD9D9qOijxYjLVVA5XPg=
+
+Name: references/overview/images/EMF.Edit/image004.gif
+SHA1-Digest: oP/UnVM5wUzH1DG0rxhk8FjFKDw=
+

@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Working with Diagrams</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Cheat Sheet View",
+        "views-outline.html","views-cheat.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench",
+		"../mg-modeler-views.html","Development Perspective - Views");
+ -->
+</script>
+<h1>Working with Diagrams</h1>
+<p>Diagrams may contain a single process definition (including activities,
+activity performers, data, applications and resources) or definitions of
+hierarchies describing subprocess dependencies or relations between
+organizations/sub-organizations and their members. An arbitrary number of
+diagrams - or at least one diagram - may be associated to a process definition.
+With each newly created process definition, a default diagram for this
+definition is created.</p>
+<p>Each model contains a <strong>Default Diagram</strong>, which can be
+seen and opened in the <strong>Outline</strong> view. Also, each process
+definition contains a <strong>Default Diagram</strong>, created automatically
+when a new process definition is added to a model. We will refer to the first
+type of diagrams as model diagrams and process definition diagrams or simply
+diagrams to the other type.</p>
+<p class="image"><img src="images/mg-defdesk-8.png" alt=""> <br>
+<strong>Figure:</strong> Two Types of Diagrams</p>
+<ul>
+   <li><a href="#create">Creating and Deleting Diagrams</a></li>
+   <li><a href="#drawingMode">Setting the Drawing Mode</a></li>
+   <li><a href="#orientation">Specifying the Orientation</a></li>
+   <li><a href="#alignment">Setting Alignment Options</a></li>
+   <li><a href="#toolbarPalette">Using the Toolbar Palette</a></li>
+   <li><a href="#behavior">Properties and Behavior Common to All Symbols</a></li>
+   <li><a href="#symbolSize">Changing the Symbol Size</a></li>
+   <li><a href="#copyPaste">Copying and Pasting Symbols</a></li>
+   <li><a href="#copyPasteElements">Copying, Cutting and Pasting Elements</a></li>
+   <li><a href="#deleteElem">Deleting Elements</a></li>
+   <li><a href="#highlight">Highlighting Elements of selected Symbols in the Outline View</a></li>
+   <li><a href="#diagramRename">Renaming Elements in Diagrams</a></li>
+   <li><a href="#simplify">Simplifying Diagrams</a></li>
+   <li><a href="#hier">Creating Organization Hierarchies from Model Information</a></li>
+   <li><a href="#trgraphs">Creating an Activity Graph from Model Information</a></li>
+   <li><a href="#keyboard">Using Keyboard Shortcuts</a></li>
+</ul>
+<h2 id="create">Creating and Deleting Diagrams</h2>
+<p>New model diagrams can be created using the option <strong>New
+Diagram</strong> in the pop-up menu of the model element. This refers only to the model
+element in the <strong>Model </strong>section of the <strong>Outline</strong>
+view. Model diagrams which visualize organizational hierarchies or hierarchies
+of processes/subprocesses are created this way. They serve primarily for
+visualization purposes. Whereas hierarchies of roles and organizations provide a
+semantically complete information on the relationships between the elements of
+the diagram, the hierarchy of processes only states which processes are used as
+subprocesses. The information &quot;how&quot; they are embedded in the
+super-process (e.g. within which activity) has to be defined in a corresponding
+process definition diagram.</p>
+<p>Likewise, new diagrams containing process definitions can be added
+using the same option in the process definition pop-up menu.</p>
+<p>Deleting a diagram is done by selecting a diagram in the <strong>Outline</strong>
+view and choosing <strong>Delete </strong> in the diagram's pop-up menu.</p>
+<h2 id="drawingMode">Setting the Drawing Mode</h2>
+<p>To work with pools and lanes, you have to choose a special drawing mode,
+the <strong>BPMN</strong> mode. There is a default drawing mode setting for your
+workspace, which you can change in the preferences settings, as described in the
+section <a href="../mg-preferences.html#classicMode">Default Drawing Mode</a> of
+the <a href="../mg-preferences.html">Setting Process Manager Preferences</a> chapter.</p>
+<p>To enable or disable the drawing mode for a process diagram:</p>
+<ul>
+    <li>Right-click in the process diagram.</li>
+    <li>Select <strong>Drawing Mode</strong>.</li>
+    <li>Choose one of the options <strong>Classic</strong> or <strong>BPMN</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-classic-mode.png"
+    alt="Drawing Mode Option" /> <br>
+<strong>Figure:</strong> Drawing Mode Option</p>
+<p>Note, that this is only possible before creating the first lane
+in your diagram.</p>
+<h2 id="orientation">Specifying the Orientation</h2>
+<p>Before you start to model you can choose the preferred direction of
+modeling:</p>
+<ul>
+    <li>Right-click directly on the diagram canvas or right-click the
+    diagram in the Outline view.</li>
+    <li>Select <strong>Orientation</strong>.</li>
+    <li>Choose one the modeling directions <strong>Vertical</strong> or <strong>Horizontal</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-orientation.png"
+    alt="Modeling Direction" /></p>
+<p>The default modeling direction is "vertical". You can change the default
+value in the Preferences dialog (see chapter <a href="../mg-preferences.html">Setting
+Process Manager Preferences</a>).</p>
+<p>Note that changing the modeling orientation is only possible if:</p>
+<ul>
+    <li>model diagrams: not more than one element exists in the diagram.</li>
+    <li>process diagrams: no elements exist and the mode has not been set to
+        <strong>BPMN</strong> mode yet.</li>
+</ul>
+<h2 id="alignment">Setting Alignment Options</h2>
+<p>For comfortable modeling you can choose some alignment option:</p>
+<ul>
+    <li>Right-click in the diagram.</li>
+    <li>Select <strong>Align</strong>.</li>
+    <li>Now you can
+    <ul>
+        <li>enable or disable the <strong>Snap to Geometry</strong> option
+        and</li>
+        <li>enable or disable the <strong>Grid</strong> option.</li>
+    </ul>
+    </li>
+</ul>
+<p class="image"><img src="images/mg-snap-to-geometry.png"
+    alt="Alignment Options"> <br>
+<strong>Figure:</strong> Alignment Options</p>
+<h2>Snap to Geometry Option</h2>
+<p>With the <strong>Snap to Geometry</strong> option enabled, the elements
+are aligned relative to other elements when you are dragging them on the canvas.
+Blue horizontal or vertical lines will appear then, while dragging an element
+near another, as displayed in the following screenshot:</p>
+<p class="image"><img src="images/mg-snap-blue-line.png"
+    alt="Snap to Geometry"> <br>
+<strong>Figure:</strong> Snap to Geometry</p>
+<h2 id="gridOption">Grid Option</h2>
+<p>To facilitate the positioning of your elements in the diagram during
+modeling, you have the option to let your elements snap to a grid. The <strong>Align
+&gt; Grid</strong> option enables this functionality.</p>
+<p>A grid will be displayed by small gray crosses. Elements are snapped to
+the grid when they are created or dragged. In the <strong>Preferences</strong>
+dialog you can define the <a href="#snapGridPixel">size</a> of this grid and a <a
+    href="#factor">factor</a> for the grid to be visible. Please refer to the
+chapter <a href="../mg-preferences.html"> Setting Process Manager Preferences</a> to get
+information on how to set these options.</p>
+<h3 id="snapGridPixel">Snap Grid Size</h3>
+<p>This is the size in pixel of the grid elements, where the elements are
+snapped to in your diagram. The default size is set to 5 pixel.</p>
+<p>Note that the grid size should be set before adding elements to a
+diagram. If you change the grid size during a modeling process the existing
+elements will not consistently follow the snap rules anymore.</p>
+<h3 id="factor">Visible Grid Factor</h3>
+<p>You might want to have a more detailed grid for your elements to be
+snapped to than visible. For that reason you can set the grid factor. The size
+of the visible grid will be the size of the snap to grid times the specified
+factor. For example if you like to use a grid of size 30 to be snapped to, but
+only grids of size 90 to be displayed, enter the grid size <tt>30</tt> and the
+factor <tt>3</tt>. Then the grid will be displayed as in the following
+screenshot:</p>
+<p class="image"><img src="images/mg-preferences-snapgrid.png"
+    alt="Preferences - Snap To Grid"> <br>
+<strong>Figure:</strong> Example with Grid Size 30 and Factor 3.</p>
+<h2 id="toolbarPalette">Using the Toolbar Palette</h2>
+<p>Toolbars are provided for process diagrams and model diagrams.</p>
+<h3 id="toolbarProcess">Process Diagram Toolbar Palette</h3>
+<p>The diagram also has a tool palette from which you can build lanes, add
+annotations and connections, as well as create new items like <strong>Activities</strong>,
+<strong>Data</strong>, <strong>Applications</strong>, <strong>Triggers</strong>
+and <strong>Participants</strong>.</p>
+<p class="image"><img src="images/mg-toolbar-palette.png"
+    alt="Toolbar Palette"> <br>
+<strong>Figure:</strong> Diagram Toolbar Palette</p>
+<h3 id="toolbarDiagram">Model Diagram Toolbar Palette</h3>
+<p>From the toolbar palette of the model's diagram you can add
+annotations and connections or create new items like <strong>Process
+Definitions</strong>, <strong>Data</strong>, <strong>Applications</strong> and <strong>Participants</strong>.</p>
+<p class="image"><img src="images/mg-toolbar-palette-2.png"
+    alt="Toolbar Palette"> <br>
+<strong>Figure:</strong> Model Diagram Toolbar Palette</p>
+<h2 id="behavior">Properties and Behavior Common to All Symbols</h2>
+<p>All symbols have a set of properties and behaviors in common. This can
+be summarized in the following rules:</p>
+<ul>
+    <li>The most common operations, which can be performed on a model
+    element are accessible through the element's pop-up menu.</li>
+    <li>Right-clicking an element's symbol brings up its context menu.</li>
+    <li>Double-clicking an element's symbol brings up its properties
+    dialog.</li>
+    <li>Each model element (a process definition, an activity, a
+    participant, a data) has its set of properties. A name and ID belong to the
+    basic properties.</li>
+    <li>IDs of model elements must be unique within the element's scope.</li>
+    <li>Properties dialogs serve to view or modify the element's
+    properties and are accessible from the element's pop-up menu.
+    Double-clicking superordinate elements, as we may call them since they may
+    contain further elements (e.g. models, process definitions, diagrams,
+    organizations, views) displays their contents in the respective area.</li>
+</ul>
+<h2 id="symbolSize">Changing the Symbol Size</h2>
+<h3>Resizing Symbols</h3>
+<p>To change the size of a symbol select it and drag on the provided handles
+to the desired size:</p>
+<p class="image"><img src="images/resize-symbol.png" alt="Resize a Symbol">
+<br>
+<strong>Figure:</strong> Resize a Symbol</p>
+<h3>Set Default Size</h3>
+<p>Once you changed the size of a symbol, you can reset the size to the default symbol size.
+This option is only available, if the alignment <a href="#gridOption">Grid Option</a> is disabled
+and/or the <a href="../mg-preferences.html">Process Manager Preferences</a> 
+option <a href="../mg-preferences.html#snapGrid">Enable Snap to Grid</a> is disabled.</p>
+<p>To reset the symbol to its origin size:</p>
+<ul>
+    <li>Right-click the symbol.</li>
+    <li>Select <strong>Set Default Size</strong>.</li>
+</ul>
+<p class="image"><img src="images/set-default-symbol-size.png"
+    alt="Set Default Size"> <br>
+<strong>Figure:</strong> Set Default Size</p>
+<h2 id="copyPaste">Copying and Pasting Symbols</h2>
+<p>To copy a symbol in the diagram view right-click the symbol and select <strong>Copy
+Symbol</strong> from the context menu.<br>
+&nbsp;</p>
+<p class="image"><img src="images/mg-copy-symbol.png" alt="Copy Symbol">
+<br>
+<strong>Figure:</strong> Copy a Symbol</p>
+<p>To copy more than one symbol press the <strong>Ctrl</strong>
+button to select all symbols to copy. Then right-click and choose
+<strong>Copy Symbol</strong>.</p>
+<p class="image"><img src="images/mg-copy-symbols.png" alt="Copy more Symbols">
+<br>
+<strong>Figure:</strong> Copying more than one Symbol.</p>
+<p>Paste the symbol or symbols to the diagram canvas by right-clicking
+in the diagram and selecting <strong>Paste Symbol</strong>.<br>
+&nbsp;</p>
+<p class="image"><img src="images/mg-paste-symbol.png" alt="Paste Symbol">
+<br>
+<strong>Figure:</strong> Paste the Symbol</p>
+<p>You can copy and paste symbols between diagrams belonging to the
+same process definition.</p>
+<h2 id="copyPasteElements">Copying, Cutting and Pasting Elements</h2>
+<p>You have the option to copy, paste and cut elements in the diagram.
+Right-click one or more elements and select one of the following options:</p>
+<ul>
+    <li><strong>Copy Element</strong></li>
+    <li><strong>Cut Element</strong></li>
+</ul>
+<p class="image"><img src="images/cp-copy-element-in-diagram.png"
+    alt="Copy an Element in the Diagram"> <br>
+<strong>Figure:</strong> Copy an Element in the Diagram</p>
+<p>To paste the element(s) right-click on the diagram canvas and select <strong>Paste
+Element</strong>.</p>
+<p class="image"><img src="images/mg-paste-element.png"
+    alt="Paste an Element to the Diagram"> <br>
+<strong>Figure:</strong> Paste an Element to the Diagram</p>
+<p>Please refer to the chapter <a href="../mg-copy-paste-elements.html">Copying
+and Pasting Modeled Elements</a> for detailed information on copying and pasting
+model elements.</p>
+<h2 id="deleteElem">Deleting Elements</h2>
+<p>When deleting model elements you must make a distinction between
+deleting an element from the model information or only deleting a symbol from a
+diagram. To do the first - delete an element from model - you proceed as
+follows:</p>
+<ul>
+    <li>Having selected the symbol of the element in the <strong>Outline</strong>
+    view, choose the option <strong>Delete</strong> in the pop-up menu of this
+    process definition.</li>
+    <li>Having selected the symbol of the element in a process definition
+    diagram, choose the option <strong>Delete </strong>in the pop-up menu of
+    this element.</li>
+    <li>The option <strong>Delete Symbol</strong> in the pop-up menu
+    called from within the diagram canvas will only remove the element symbol
+    from the diagram.</li>
+</ul>
+<h2 id="highlight">Highlighting Elements of selected Symbols in the Outline View</h2>
+<p>You have the option to highlight the element of a symbol, which you 
+select in the diagram, in the Outline view.
+Right-click the symbol and choose <strong>Show in Outline</strong>.</p>
+<p class="image"><img src="images/show-in-outline.png" alt="Select Show in Outline"> <br>
+<strong>Figure:</strong> Select the Option "Show in Outline".</p>
+<p>The selected element will then be also selected in the Outline
+view:</p>
+<p class="image"><img src="images/show-in-outline-selected.png" alt="Show in Outline"> <br>
+<strong>Figure:</strong> Show in Outline</p>
+<h2 id="diagramRename">Renaming Elements in Diagrams</h2>
+<p>To rename elements displayed in the diagram canvas, select an element
+and enter the <strong>F2</strong> key. The entry field is changed to editing
+mode then, where you can change the name of the element.</p>
+<p class="image"><img src="images/rename-in-diagram.png" alt="Rename an Element"> <br>
+<strong>Figure:</strong> Rename an Element</p>
+<p>You can also rename an element via right-click and choosing <strong>Rename</strong>.</p>
+<p class="image"><img src="images/rename-in-diagram-2.png" alt="Rename via Context Menu"> <br>
+<strong>Figure:</strong> Rename via Context Menu</p>
+<p>Please note that it is not possible to rename predefined data.</p>
+<h2 id="simplify">Simplifying Diagrams</h2>
+<p>Duplicate connection symbols used in a large model may cause the performance to
+suffer. In case duplicate connection symbols are used in a diagram, an option is provided
+to simplify the diagram. Right-click on the diagram canvas and choose <strong>Simplify Diagram</strong>,
+as shown in the following figure:</p>
+<p class="image"><img src="images/simplify-diagram-option.png" alt="Simplify Diagram Option"><br>
+<strong>Figure:</strong> Simplify Diagram Option</p>
+<p>In the following simple example, the connection from the first activity to
+the <strong>Data</strong> symbol is duplicate. Thus, in the diagram
+context menu, the option <strong>Simplify Diagram</strong> is provided:</p>
+<p class="image"><img src="images/simplify-diagram-1.png" alt="Simplify Diagram Option"><br>
+<strong>Figure:</strong> Simplify Diagram Option</p>
+<p>After selecting this option, the duplicate connection is removed from
+the diagram:</p>
+<p class="image"><img src="images/simplify-diagram-2.png" alt="Simplify Diagram Option"><br>
+<strong>Figure:</strong> Simplify Diagram Option</p>
+<h2 id="hier">Creating Organization Hierarchies from Model Information</h2>
+<p>You have the option to construct hierarchies in a diagram to visualize the 
+organizational structures defined in the model. Select 
+<strong>Create Organization Hierarchy</strong> in the diagram context menu.</p>
+<p class="image"><img src="../images/create-org-hier.png" alt=""> <br>
+<strong>Figure:</strong> Creating an Organization Hierarchy</p>
+<p>For details please refer to section
+<a href="../mg-defdesk-16.htm#hier">Creating Organization Hierarchies</a>
+of chapter
+<a href="../mg-defdesk-16.htm">Retrieving Diagrams from Model Information</a>.</p>
+<h2 id="trgraphs">Creating an Activity Graph from Model Information</h2>
+<p>You have the option to construct an activity graph in a diagram to visualize 
+the series of activities defined in the model. Select 
+<strong>Create Activity Graph</strong> in the diagram context menu.</p>
+<p class="image"><img src="../images/mg-create-activity-graph.png" alt=""> <br>
+<strong>Figure:</strong> Creating an Activity Graph</p>
+<p>For details please refer to section
+<a href="../mg-defdesk-16.htm#trgraphs">Creating Activity/Transition Graphs</a>
+of chapter
+<a href="../mg-defdesk-16.htm">Retrieving Diagrams from Model Information</a>.</p>
+<h2 id="keyboard">Using Keyboard Shortcuts</h2>
+<p>Some people prefer keyboard over the mouse for small tasks, for a quick
+action. Stardust provides a shortcut key to resize or move a symbol in the
+diagram, using only keyboard. After selecting a symbol in the diagram, press <strong>"."</strong>
+(The <strong>DOT</strong> key), which displays handles around the selected
+symbol. Then you can use the arrow keys on the keyboard to resize or move the
+selected symbols. If you press the <strong>"."</strong> key multiple times, the
+handles will change their position in sequence, and you can choose the direction
+to move or change the size of the symbol. Press <strong>Enter</strong>key to
+accept the changes.</p>
+<p>You can even select many symbols using either mouse or keyboard, and use
+the <strong>"."</strong> key to resize or move all of them together. Please see
+the figures below.</p>
+<p class="image"><img src="images/move-one.png" alt=""> <br>
+<strong>Figure:</strong> Moving one symbol</p>
+<p class="image"><img src="images/move-many.png" alt=""> <br>
+<strong>Figure:</strong> Moving many symbols</p>
+<p class="image"><img src="images/resize-one.png" alt=""> <br>
+<strong>Figure:</strong> Resizing one symbol</p>
+<p class="image"><img src="images/resize-many.png" alt=""> <br>
+<strong>Figure:</strong> Resizing many symbols</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

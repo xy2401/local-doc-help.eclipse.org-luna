@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Eclipse Stardust
+Implementation-Title: Process Engine API
+Implementation-Version: 2.1.1
+Built-By: genie.soa.stardust
+Build-Jdk: 1.6.0_45
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+

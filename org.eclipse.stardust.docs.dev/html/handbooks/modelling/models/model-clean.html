@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+
+<title>Cleaning Up Models</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript">
+    </script>
+</head>
+
+<body>
+<script language="JavaScript" type="text/javascript">
+    <!--
+        writeNavigation("",
+        		"model-element-refs.html","",
+        		"../../handbooks.htm","Developer Handbook",
+        		"../mg-preface.htm","Modeling Guide",
+        		"../mg-modeler-preface.html","The Process Workbench",
+        		"model-preface.html","Working With Models");
+    -->
+</script>
+
+<h1>Cleaning up Models</h1>
+
+<ul>
+	<li><a href="#Intro">Introduction</a></li>
+	<li><a href="#Why">Why to Cleanup the Model</a></li>
+	<li><a href="#cleaup">What happens during the Cleanup Process</a></li>
+	<li><a href="#Example">Example of a Model before and after the
+	Cleanup</a></li>
+	<li><a href="#Steps">Step by step Cleanup Process</a></li>
+</ul>
+
+<h2 id="Intro">Introduction</h2>
+<p>As models become older, the changes from version to version often
+leave behind a lot of garbage in the form of old data objects or
+applications that are not used anymore. Usually they are kept, because
+nobody finds the time to verify if they can be deleted safely.</p>
+<h2 id="Why">Why to Cleanup the Model</h2>
+<p>Although the unused elements won't crash the Eclipse, they may
+carry other overload like java classes, configuration data, strings and
+other data types associated with them. By cleaning up, you will increase
+the overall speed and efficiency of the model. It would also mean that
+you are viewing the most recent version of the model excluding the old
+garbage.</p>
+<h2 id="cleaup">What happens during the Cleanup Process</h2>
+<p>The cleanup process searches for type declarations, data,
+participants and applications that are unused. It doesn't check if that
+model element has symbols or not. It verifies that every element has a
+reference. It also doesn't check for administrator and predefined data
+(It is always retained).</p>
+
+<h2 id="Example">Example of a Model before and after the Cleanup</h2>
+<ul>
+<li>Model you want to cleanup.
+<p class="image"><a href="images/cleanup1_org.png" target="_blank"><img
+	src="images/cleanup1.png" alt=""></a><br>
+<strong>Figure:</strong> Original Model with unused Elements</p>
+</li>
+<li>The model after cleanup.
+<p class="image"><a href="images/cleanup5_org.png" target="_blank"><img
+	src="images/cleanup5.png" alt=""></a><br>
+<strong>Figure:</strong> The Model after Cleanup</p>
+</li>
+</ul>
+<h2 id="Steps">Step by step Cleanup Process</h2>
+<ul>
+	<li>Open the model you want to cleanup.
+	<p class="image"><a href="images/cleanup1_org.png" target="_blank"><img
+		src="images/cleanup1.png" alt=""></a><br>
+	<strong>Figure:</strong> Original Model with unused Elements</p>
+	</li>
+	<li>Right click on the model in Outline view, click on <strong>Cleanup
+	Model</strong>
+	<p class="image"><img src="images/cleanup2.png" alt=""><br>
+	<strong>Figure:</strong> Select Cleanup Option</p>
+	</li>
+
+	<li>You will see a list of elements in search window. Select the
+	elements that you want to clean, and click on delete.
+	<p class="image"><img src="images/cleanup3.png" alt=""><br>
+	<strong>Figure:</strong> Select Cleanup Option</p>
+	</li>
+
+	<li>You will see a confirmation dialog box as shown below. Click
+	the OK button.
+
+	<p class="image"><img src="images/cleanup4.png" alt=""><br>
+	<strong>Figure:</strong> Confirm Cleanup Option</p>
+	</li>
+
+	<li>You will see the model after cleanup.
+	<p class="image"><a href="images/cleanup5_org.png" target="_blank"><img
+		src="images/cleanup5.png" alt=""></a><br>
+	<strong>Figure:</strong> The Model after Cleanup</p>
+	</li>
+</ul>
+	<script language="JavaScript" type="text/javascript">
+    <!-- 
+    writeFooter(); 
+    -->
+    </script>
+</body>
+</html>

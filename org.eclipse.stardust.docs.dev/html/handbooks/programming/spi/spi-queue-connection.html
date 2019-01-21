@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing a Provider to enable Security on JMS Connection Factories</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Implementing a Notification Strategy Provider for generated Token and Password",
+	"pg-repository-extension.html","spi-credential-delivery.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"spi-toc.html","SPI");
+ -->
+</script>
+<h1>Implementing a Provider to enable Security on JMS Connection Factories</h1>
+<p>The interface
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/jms/IQueueConnectionProvider.html">
+   org.eclipse.stardust.engine.core.spi.jms.IQueueConnectionProvider</a>
+provides the option to enable security on JMS connection factories.
+If you can implement this interface with a mechanism of your choice to provide credentials.
+The default implementation creates the current queue connection without credentials.</p>
+<p>Find the code of the interface to be implemented in the public Javadoc of the according provider 
+class mentioned above or here:</p>
+<pre>
+package org.eclipse.stardust.engine.core.spi.jms;
+
+import javax.jms.JMSException;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+
+import org.eclipse.stardust.common.annotations.SPI;
+import org.eclipse.stardust.common.annotations.Status;
+import org.eclipse.stardust.common.annotations.UseRestriction;
+
+@SPI(useRestriction = UseRestriction.Public, status = Status.Experimental)
+public interface IQueueConnectionProvider
+   /**
+    * 
+    * @param factory {@link QueueConnectionFactory}
+    * @return {@link QueueConnection}
+    * @throws JMSException
+    */
+{
+   QueueConnection createQueueConnection(QueueConnectionFactory factory)
+         throws JMSException;
+}</pre>
+<h2>Example Implementation</h2>
+<p>The following code shows an example implementation of the IQueueConnectionProvider:</p>
+<pre>
+public class SecureQueueConnectionProvider implements IQueueConnectionProvider
+{
+
+   @Override
+   public QueueConnection createQueueConnection(QueueConnectionFactory factory)
+         throws JMSException
+   {
+      String jmsUser = System.getProperty("jmsur", "echjms");
+      String jmsPwd = System.getProperty("jmsps");
+
+      if (null != jmsPwd)
+      {
+         return factory.createQueueConnection(jmsUser, jmsPwd);
+      }
+      
+      return null;
+   }
+}
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

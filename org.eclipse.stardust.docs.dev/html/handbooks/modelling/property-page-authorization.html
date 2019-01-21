@@ -1,0 +1,591 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Authorization</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Project Effort Calculation",
+	"mg-copy-paste-elements.html","process-effort-calculation.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Authorization</h1>
+<ul>
+	<li><a href="#intro">Declarative Authorization via Model
+	Elements and Roles</a></li>
+	<li><a href="#relation">Influence of Organizational Relations
+	on Declarative Security</a></li>
+	<li><a href="#scoped">Declarative Security in a Scoped Environment</a></li>
+	<li><a href="#prop">Setting Authorization in Model Element Property
+	Pages</a></li>
+	<li><a href="#permissions">Permissions - Runtime</a></li>
+	<li><a href="#security">Overwriting Default Values of
+	Declarative Security Grants</a></li>
+</ul>
+<h2 id="intro">Declarative Authorization via Model Elements and
+Roles</h2>
+<p>In addition to implicit permissions like:</p>
+<ul>
+	<li>permission to start a process via manual trigger</li>
+	<li>permission to activate and complete an activity via performer
+	assignment</li>
+	<li>general administrative permissions for the Administrator role</li>
+</ul>
+<p>for the runtime other permissions are specified on model elements
+and assigned to a role or organization.</p>
+<p>These permissions are evaluated for runtime instances of the
+model elements. Furthermore, read and modification permissions can be
+specified for model elements themselves. All permissions, even those to
+access model elements in the modeling environment, can be controlled by
+assigning users to appropriate roles through the directory service (e.g.
+LDAP, MS Active Directory, Stardust internal user database). Note, that
+permissions cannot be assigned to conditional performers.</p>
+<p>To get an overview over permissions used in the Stardust Services
+API, refer to the chapter <a
+	href="../programming/embed/pg-declarative-security.html"> Declarative
+Security Usage in Stardust Services API</a> of the <a
+	href="../programming/pg-preface.htm">Programming Guide</a>.</p>
+<h3>Enable Security Check</h3>
+<p>To make declarative security effective, make sure that the
+according service guarded property (<a
+	href="../operation/properties/ag-appendix-properties-1.htm#queryGuarded"><i>xxx</i>Service.Guarded</a>)
+is set to <tt>true</tt> (default value).</p>
+<p class="note"><strong>Note</strong><br>
+It is not recommended to change this property.
+Changing the value to <tt>false</tt> introduces a high risk of 
+executing services without having a permission and 
+hence might cause a severe security hole in the deployment!</p>
+<h2 id="relation">Influence of Organizational Relations on
+Declarative Security</h2>
+<p>In case a declarative security grant is modeled for an
+organization, it is implicitly granted for all users having grants for
+one or more roles or organizations with the following properties:</p>
+<ul>
+	<li>an organization is a direct or indirect "Part Of" this
+	organization.</li>
+	<li>a role has a "Works For" association to a role being a direct
+	or indirect "Part Of" this organization.</li>
+	<li>a role has a "Manager Of" association to a role being a direct
+	or indirect "Part Of" this organization.</li>
+</ul>
+<h3>Example</h3>
+<p>For example in the following organizational structure, whenever a
+declarative security grant is modeled for the organization <strong>O1</strong>,
+it will implicitly be granted for all users having grants for
+organization <strong>O3</strong>, <strong>O2</strong> and the roles <strong>Role
+2</strong> and <strong>R1</strong>.</p>
+<p class="image"><img src="images/declarative-security-example.png"
+	alt="Organizational Structure"> <br>
+<strong>Figure:</strong> Example Organizational Structure</p>
+<h2 id="scoped">Declarative Security in a Scoped Environment</h2>
+<p>The effect of authorization set for scoped participants
+depends on the model element:</p>
+<ul>
+	<li><a href="#dataL">Data</a></li>
+	<li><a href="#actL">Activities</a></li>
+	<li><a href="#process">Process Definitions</a></li>
+</ul>
+<h4 id="dataL">Data</h4>
+<p>If a grant is given to a scoped participant for a data element,
+then all users assigned to this participant do have execution permission. 
+The department is not taken into account.</p>
+<h4 id="actL">Activities</h4>
+<p>Each activity instance stores the department information. 
+Thus, it depends on the concrete activity instance, if a user has execution 
+permission. In that case, the grant including the department has to match the 
+grant permission and the department of the activity instance.</p>
+<h4 id="processL">Process Definitions</h4>
+<p>Department information is not stored in the process instance. 
+Instead, the relevant process data defining the department
+is evaluated on demand.</p>
+<p>For example, a process definition permission is granted to a 
+role <strong>Role 1</strong>. This role is a scoped role with scope data 
+<strong>Data 1</strong> defining the department. If the value of 
+<strong>Data 1</strong> is
+executed for a specific process instance, the department required to
+get the execution permission is evaluated.</p>
+
+<h2 id="prop">Setting Authorization in Model Element Property Pages</h2>
+<p>You can set authorization in the property dialogs of the
+following model elements:</p>
+<ul>
+<!-- 	<li><a href="#data">data</a></li> -->
+	<li><a href="#process">process definitions</a></li>
+	<li><a href="#activities">activities</a></li>
+</ul>
+<p>In the <strong>Permission</strong> part, all permissions possible
+for the element are listed. Beneath this list, the possible participants
+for a selected permission are displayed with checkboxes. Possible
+participants are all roles, organizations, the administrator and the
+participant pertaining to an activity (<strong>Owner</strong>).
+Additionally the <strong>All</strong> option is provided to give grant
+to everyone. Grants like <strong>Owner</strong> and <strong>All</strong>,
+not pertaining to specific participants, are displayed cursive.</p>
+<p>The permission set by default, is also enabled per default in the
+dialog. It is marked as <tt>default</tt> in brackets after the grant
+name.</p>
+<p>To remove permission from all participants, deselect all provided
+entries.</p>
+<p class="note"><strong>Note</strong><br>
+Be aware that if disabling all permissions and closing the dialog, the
+permission is reset to the default permission and persisted again. After
+reopening the dialog you notice the default permission selected again.</p>
+<p>Please also refer to the section <a href="#security">Overwriting
+default Values of Declarative Security Grants</a> for details on overwriting
+default values.</p>
+<h3>Setting Authorization Properties</h3>
+<p>To set the authorization in the properties dialog of an element:</p>
+<ul>
+	<li>In the property page select <strong>Authorization</strong>.</li>
+	<li>In the <strong>Authorization</strong> pane you see a list with
+	the permissions possible for the element.</li>
+	<li>Beneath this list, the possible participants for a selected
+	permission are displayed with checkboxes. Enable the checkbox for the
+	participant to give the permission to.</li>
+</ul>
+<p>If no participant is selected, the permission is given to the
+default participant provided for this action. The administrator is
+always granted, regardless of the grants set for the authorization
+property.</p>
+<p class="image"><img src="images/bc-authorization-property.png"
+	alt="Property Page - Authorization"> <br>
+<strong>Figure:</strong> Setting the Authorization in the Property Page.</p>
+<!--  <h3 id="model">Authorization for Models</h3>
+<p>The model property pages provide the following permissions:</p>
+<table>
+	<tr>
+		<th width="270">Permission</th>
+		<th>Default Participant</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Deploy and Modify Process Model</td>
+		<td>Administrator</td>
+		<td>Gives permission to deploy and specify the parameters for the
+		model deployment at runtime from the Administration perspective.</td>
+	</tr>
+	<tr>
+		<td>Force Suspend to Default Performer</td>
+		<td>Administrator</td>
+		<td>Gives permission to force activity instances to be suspended
+		and added to the worklist of the default performer declared for the
+		corresponding activity (API -
+		AdministrationService#forceSuspendToDefaultPerformer() and
+		AdministrationService#setProcessInstancePriority() ).</td>
+	</tr>
+	<tr>
+		<td>Modify Audit Trail Content</td>
+		<td>Administrator</td>
+		<td>Gives permission to modify users, grants and models through
+		APIs and the console command.</td>
+	</tr>
+	<tr>
+		<td>Run Recovery</td>
+		<td>Administrator</td>
+		<td>Gives permission to recover the database from the
+		Administration perspective, through APIs and console command.</td>
+	</tr>
+	<tr>
+		<td>Manage Daemons</td>
+		<td>Administrator</td>
+		<td>Gives permission to trigger the daemons from the
+		Administration perspective, through APIs and console command.</td>
+	</tr>
+	<tr>
+		<td>Control Process Engine</td>
+		<td>Administrator</td>
+		<td>Gives permission to perform engine operations such as suspend
+		and restart. The user can perform these operations through engine
+		APIs.</td>
+	</tr>
+	<tr>
+		<td>Obtain Audit Trail Statistics</td>
+		<td>Administrator</td>
+		<td>Gives permission to get audit trail health report, log
+		entries and its count. The user can perform these operation through
+		engine APIs and console commands.
+		</td>
+	</tr>
+	<tr>
+		<td>Obtain User Data</td>
+		<td>All</td>
+		<td>Gives permission to get details about user groups and all the
+		users from Administration perspective and through APIs.</td>
+	</tr>
+	<tr>
+		<td>Modify User Data</td>
+		<td>Administrator</td>
+		<td>Gives permission to modify user name, account, email address
+		and other details. The user can perform these operations through
+		Administration perspective, engine APIs and console commands.</td>
+	</tr>
+	<tr>
+		<td>Manage Authorization</td>
+		<td>Administrator</td>
+		<td>Gives permission to assign or revoke roles and organizations
+		as well as to add and remove user groups to or from a given user
+		(Stardust Portal User and Role assignment views and API).</td>
+	</tr>
+	<tr>
+		<td>Obtain Model Data</td>
+		<td>All</td>
+		<td>Gives permission to get information about model description,
+		process details, participant details through APIs and console
+		commands.
+		</td>
+	</tr>
+	<tr>
+		<td>Read Departments</td>
+		<td>All</td>
+		<td>Gives permission to read department details. The user can
+		perform these operations through Administration perspective, engine
+		APIs and console commands.</td>
+	</tr>
+	<tr>
+		<td>Modify Departments</td>
+		<td>Administrator</td>
+		<td>Gives permission to modify department details such as
+		department name and description. The user can perform these operations
+		through Administration perspective, engine APIs and console commands.
+		</td>
+	</tr>
+
+	<tr>
+		<td>Reset User Password</td>
+		<td>All</td>
+		<td>Gives permission to reset the password in case you have
+		forgotten the password. The user can perform these operations through
+		login page of the Stardust Portal, engine APIs and console commands.</td>
+	</tr>
+</table>
+<p class="image"><img src="images/bc-authorization-model.png"
+	alt="Authorization - Model"> <br>
+<strong>Figure:</strong> Setting the Authorization for a Model.</p>-->
+<!-- <h3 id="data">Authorization for Data</h3> -->
+<!-- <p>The data property pages provide the following permissions:</p> -->
+<!-- <table> -->
+<!-- 	<tr> -->
+<!-- 		<th width="270">Permission</th> -->
+<!-- 		<th>Default Participant</th> -->
+<!-- 		<th>Description</th> -->
+<!-- 	</tr> -->
+<!-- 	<tr> -->
+<!-- 		<td>Read Data Values</td> -->
+<!-- 		<td>All</td> -->
+<!-- 		<td>Gives permission to get direct data access used in the -->
+<!-- 		Reporting runtime Data Value View.</td> -->
+<!-- 	</tr> -->
+<!-- 	<!-- not implemented yet  -->
+<!--     <tr> -->
+<!--     <td>Modify Data Values</td> -->
+<!--     <td>All</td> -->
+<!--     <td>Gives permission to modify data values using APIs.</td> -->
+          
+<!--     </tr>--> -->
+<!-- </table> -->
+<!-- <p class="image"><img src="images/bc-authorization-data.png" -->
+<!-- 	alt="Authorization - Data"> <br> -->
+<!-- <strong>Figure:</strong> Setting the Authorization for Data.</p> -->
+<!-- <p>Please note that this permission is momentarily only implemented -->
+<!-- for direct data access used in Reporting runtime views.</p> -->
+<h3 id="process">Authorization for Process Definitions</h3>
+<p>The process definition property pages provide the following
+permissions:</p>
+<table>
+	<tr>
+		<th width="270">Permission</th>
+		<th>Default Participant</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Abort Process Instances</td>
+		<td>Administrator</td>
+		<td>Gives permission to abort the process instance through
+		Administration perspective and APIs.</td>
+	</tr>
+	<tr>
+		<td>Modify Process Instances</td>
+		<td>Administrator</td>
+		<td>Gives permission to modify processes (e.g. priorities)
+		through Business Control Center perspective and APIs.</td>
+	</tr>
+	<tr>
+		<td>Delete Process Instances</td>
+		<td>Administrator</td>
+		<td>Gives permission to delete processes through Administration
+		perspective and APIs.</td>
+	</tr>
+	<tr>
+		<td id="readPI">Read Process Instance Data</td>
+		<td>All</td>
+		<td>
+		<ul>
+			<li>Gives permission to to get all the processes the user is
+			authorized to read, find first process and get process instance count
+			through APIs.</li>
+			<li>Allows viewing of processes for which the user has this
+			authorization in the following Portal components:
+			<ul>
+				<li>Business Control Center Perspective - Process Manager View
+				(Selected Processes)</li>
+				<li>Business Control Center Perspective - Process Search View
+				(Activities Search)</li>
+				<li>Process Details View - Process History</li>
+				<li>Workflow Execution Perspective - Activity Search</li>
+			</ul>
+			</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Manage Event Handlers</td>
+		<td>Administrator</td>
+		<td>Gives permission to manipulate and trigger processes through
+		Administration perspective and APIs.</td>
+	</tr>
+</table>
+<p class="image"><img src="images/bc-authorization-process.png"
+	alt="Authorization - Process"> <br>
+<strong>Figure:</strong> Setting the Authorization for a Process
+Definition.</p>
+<h3 id="activities">Authorization for Activities</h3>
+<h4>Non-interactive activities</h4>
+<p>The activity property pages provide the following permissions:</p>
+<table>
+	<tr>
+		<th width="270">Permission</th>
+		<th>Default Participant</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Delegation to other users</td>
+		<td>All</td>
+		<td>Gives permission to delegate to participant, default
+		performer and user. It also gives permission to suspend an activity
+		through Stardust Portal and APIs.</td>
+	</tr>
+	<tr>
+		<td>Delegation to other departments</td>
+		<td>Administrator</td>
+		<td>Gives permission to delegate an activity to other departments
+		through Stardust Portal and APIs.</td>
+	</tr>
+	<tr>
+		<td>Manage Event Handlers</td>
+		<td>All</td>
+		<td>Gives permission to manipulate and trigger the event handler.</td>
+	</tr>
+	<tr>
+		<td>Read Activity Instance Data</td>
+		<td>All</td>
+		<td>
+		<ul>
+			<li>Gives permission to read first activity instance, get all
+			activity instances the user is authorized to read and its count
+			through APIs.</li>
+			<li>Allows viewing of activities for which the user has this
+			authorization plus the authorization <tt>Read
+			Process Instance Data</tt> in the following Portal components:
+			<ul>
+				<li>Business Control Center Perspective - Process Manager View
+				(Selected Activities)</li>
+				<li>Business Control Center Perspective - Process Search View
+				(Activities Search)</li>
+				<li>Process Details View - Process History</li>
+				<li>Workflow Execution Perspective - Activity Search</li>
+			</ul>
+			</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Abort Activity Instances</td>
+		<td>Administrator</td>
+		<td>Gives permission to abort an activity instance through
+		Stardust Portal and APIs.</td>
+	</tr>
+</table>
+<p>Please note that additionally to the participant given the
+permission for aborting activity instances, the administrator always has
+the right to abort.</p>
+<p class="image"><img src="images/bc-authorization-activity.png"
+	alt="Authorization - Activities"> <br>
+<strong>Figure:</strong> Setting the Authorization for a non-interactive
+Activity.</p>
+<h4>Delegation to other departments</h4>
+<p>The entitlement <strong>Delegation to other departments</strong>
+allows the user to delegate work from one department to another.</p>
+<h4>Delegation to other users vs. Delegation to other departments</h4>
+<p>To determine if an activity delegation succeeds with the
+"Delegation to other users" permission, or requires the "Delegation to
+other departments" permission, depends on the following cases. In case
+the input for delegation is:</p>
+<ol>
+	<li>the source participant, represented by a source participant
+	and a source department</li>
+	<li>the target participant, represented by a target participant
+	and a target department</li>
+	<li>the default performer of the activity, represented by a
+	participant</li>
+</ol>
+<p>then the delegation permissions needed are:</p>
+<ul>
+	<li>Delegation is only allowed if both, the source and target
+	participant are children of the default participant.</li>
+	<li>In case the source and target department share the same parent
+	department at default participant level, the delegation only requires
+	the "Delegation to other users" permission.</li>
+	<li>If the source and target department do not share the same
+	parent department at default participant level, the delegation requires
+	the "Delegation to other departments" permission.</li>
+</ul>
+
+<h4 id="interactive">Interactive activities</h4>
+<p>Interactive activities additionally can have the grant <strong>Owner</strong>,
+which represents the participant associated with the activity. This is
+useful for example to restrict the abort functionality for subprocess
+activities. Thus it can be avoided that subprocess activities are
+aborted and as a consequence the whole process is terminated.</p>
+<p>If the activity instance is in the participant worklist of a
+scoped participant, the <strong>Owner</strong> grant is extended to the
+worklist visibilities. The participant and department of the activity
+will then have to match with the logged-in user in order to allow the
+action.</p>
+
+<p>The property pages for interactive activities provide the
+following permissions and default participant settings:</p>
+<table>
+	<tr>
+		<th width="270">Permission</th>
+		<th>Default Participant</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Delegation to other users</td>
+		<td>All</td>
+		<td>Gives permission to delegate to participant, default
+		performer and user. It also gives permission to suspend an activity
+		through Stardust Portal and APIs.</td>
+	</tr>
+	<tr>
+		<td>Delegation to other departments</td>
+		<td>Administrator</td>
+		<td>Gives permission to delegate an activity to other departments
+		through Stardust Portal and APIs.</td>
+	</tr>
+	<tr>
+		<td>Manage Event Handlers</td>
+		<td>All</td>
+		<td>Gives permission to manipulate and trigger the event handler.</td>
+	</tr>
+	<tr>
+		<td>Read Activity Instance Data</td>
+		<td>All</td>
+		<td>
+		<ul>
+			<li>Gives permission to read first activity instance, get all
+			activity instances the user is authorized to read and its count
+			through APIs.</li>
+			<li>Allows viewing of activities for which the user has this
+			authorization plus the authorization <tt>Read
+			Process Instance Data</tt> in the following Portal components:
+			<ul>
+				<li>Business Control Center Perspective - Process Manager View
+				(Selected Activities)</li>
+				<li>Business Control Center Perspective - Process Search View
+				(Activities Search)</li>
+				<li>Process Details View - Process History</li>
+				<li>Workflow Execution Perspective - Activity Search</li>
+			</ul>
+			</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Abort Activity Instances</td>
+		<td>Owner</td>
+		<td>Gives permission to abort an activity instance through
+		Stardust Portal and APIs.</td>
+	</tr>
+</table>
+<p>Please note that additionally to the participant given the
+permission for aborting activity instances, the administrator always has
+the right to abort.</p>
+<p class="image"><img src="images/bc-authorization-int-act.png"
+	alt="Authorization - Activities"> <br>
+<strong>Figure:</strong> Setting the Authorization for an interactive
+Activity.</p>
+<h2 id="permissions">Permissions - Runtime</h2>
+<ul>
+	<li><a href="#prePerm">Predefined Permissions</a></li>
+	<li><a href="#permEv">Permission Evaluation</a></li>
+	<li><a href="#permissionRet">Permission Retrieval</a></li>
+</ul>
+<h3 id="prePerm">Predefined Permissions</h3>
+<p>Please refer to chapter <a
+	href="../operation/ag-appendix-security-1.htm#applPermission">Setting
+Application Permissions</a> of chapter <a
+	href="../operation/ag-appendix-security-1.htm">Securing the
+Stardust Engine</a> in the <a href="../operation/ag-preface.htm">Operation
+Guide</a> for information on how to use service operations provided by
+Stardust to set permissions.</p>
+<h3 id="permEv">Permission Evaluation</h3>
+<p>The permissions will be evaluated at modeling and runtime and
+will be granted or rejected according to the following two categories:</p>
+<ul>
+	<li>For single operations a permission is rejected, an exception
+	is thrown to be the invoked service (e.g. model deployment)</li>
+	<li>For operations obtaining data requiring permission (e.g.
+	retrieving a list of activity instances) the permission is evaluated
+	and applied against the returned value set which may be empty because
+	of restricted permission of the logged-in user. No exception is thrown
+	for this category.</li>
+</ul>
+<h3 id="permissionRet">Permission Retrieval</h3>
+<p>Permissions for logged-in users can be retrieved at runtime for
+all services via the following specific service operation:</p>
+<pre>List getPermissions()</pre>
+<p>These permissions might be used to control for example enabling
+or disabling of GUI controls. Please refer to the chapter <a
+	href="../programming/embed/proc-act-inst/pg-embed-permission.html">Retrieving and Using
+Permission States</a> of the <a href="../programming/pg-preface.htm">Programming
+Guide</a> for detailed information on permission retrieval via API.</p>
+<h2 id="security">Overwriting Default Values of Declarative
+Security Grants</h2>
+<p>Declarative grant default values are configurable at runtime by
+setting the following configuration parameters in your server-side <tt>carnot.properties</tt>
+file:</p>
+<ul>
+	<li>StardustBpm.Engine.Authorization.DefaultPermissions.ActivityInstance.Abort</li>
+	<li>StardustBpm.Engine.Authorization.DefaultPermissions.ProcessInstance.Abort</li>
+</ul>
+<p>This allows to overwrite the default values (empty value, <strong>OWNER</strong>)
+of the declarative grants for activity instance abortion and process
+instance abortion respectively. As values you can set the ID of a role
+or organization pertaining to the process model or a predefined meta
+role like <strong>ALL</strong> or <strong>OWNER</strong>. The value can
+contain a comma-separated list. Note that no whitespaces like spaces or
+tabs are allowed between the listed items.</p>
+<p>For example, setting</p>
+<pre>StardustBpm.Engine.Authorization.DefaultPermissions.ActivityInstance.Abort = Engineer,Developer</pre>
+<p>will change the grant of the <strong>Abort Activity
+Instance</strong> to the roles with ID <tt>Engineer</tt> and <tt>Developer</tt>.</p>
+<p>Setting</p>
+<pre>StardustBpm.Engine.Authorization.DefaultPermissions.ProcessInstance.Abort = ALL</pre>
+<p>would change the grant of <strong>Abort Process Instance</strong>
+to all model roles and organizations.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+	writeFooter(); 
+--></script>
+</body>
+</html>

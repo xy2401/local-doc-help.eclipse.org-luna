@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Changing Process Instance Priorities</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Configuring Password Rules",
+      "pg-embed-deployment-unit.html","pg-embed-rules.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Changing Process Instance Priorities</h1>
+<p>The priority of a process instance can be changed via the
+following method <tt>setProcessInstancePriority</tt>:</p>
+<pre>
+ProcessInstance setProcessInstancePriority(long oid, int priority)
+      throws ObjectNotFoundException;
+
+ProcessInstance setProcessInstancePriority(long oid, int priority, boolean propagateToSubProcesses)
+      throws ObjectNotFoundException;
+</pre>
+<p>respectively in the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a>.</p>
+<p>You need to have the permission to modify process instances to be able to use one 
+of these methods. Please refer to the section 
+<a href="../pg-declarative-security.html#perm">Permissions</a>
+in the chapter
+<a href="../pg-declarative-security.html">Declarative Security Usage in Stardust Services API</a>
+for detailed information on this permission.</p>
+<p>Parameters are the oid of the process instance and the new priority,
+which should be set for the process instance.
+Optional you can use the Boolean parameter <tt>propagateToSubProcesses</tt>,
+which determines, if the priority will be propagated to all subprocesses 
+(<tt>true</tt>) or not (<tt>false</tt>).
+The return value is the process instance that was changed.
+In case no process instance with the given OID is found,
+an <strong>ObjectNotFoundException</strong> is thrown.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

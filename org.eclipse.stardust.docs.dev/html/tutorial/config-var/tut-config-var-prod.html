@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Using a Configuration Variable to Control a Process Flow</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Performing Quality Assurance on interactive Activities",
+        "../reports/tut-reports.html","../quality-assurance/tut-quality-assurance.html",
+		"../tut-preface.htm","Tutorials");
+-->
+</script>
+<h1>Using a Configuration Variable to Control a Process Flow</h1>
+<p>In this example, we demonstrate how a workflow can be adjusted 
+during runtime with the help of a configuration variable value.</p>
+<p>Assuming a company has a workflow, 
+where they do not require a specific activity to be executed in a test 
+environment, but they do want it to be executed in production.
+To achieve such a behavior, we create a model having a configuration variable.
+If this variable is set to a specific value, the activity foreseen for
+production only is executed, otherwise skipped. The variable
+is checked via a transition condition in the model. Testing the example is 
+done in the Stardust Portal, where we change the variable in
+the Configuration Variables view.</p>
+<p>You can create the model as described in the following section,
+or import the completed example model provided by Stardust. 
+Therefore download the following ZIP file containing the 
+configuration variables
+example model:</p>
+<p class="ind"><a href="../../examples/tutorials/config-variables/config-variables.zip">
+config-variables.zip</a></p>
+<h2 id="createModel">Creating the Model</h2>
+<p>In a dynamic Web project designed to deploy Stardust
+ models to run in the Stardust Portal,
+create a model, e.g. <strong>ProductionOrTestVarDemo</strong>.
+For detailed information on creating dynamic Web projects
+for usage with the Stardust Portal,
+please refer to the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+Rapid Application Development</a> guide.</p>
+
+<p>Proceed as follows:</p>
+<ul>
+	<li><a href="#add">Adding the Configuration Variable</a></li>
+	<li><a href="#workflow">Creating the Workflow</a></li>
+</ul>
+<h3 id="add">Adding the Configuration Variable</h3>
+<p>To add the configuration variable:</p>
+<ol>
+	<li>Open the model properties page.</li>
+	<li>Click on <strong>Configuration Variables</strong>.</li>
+	<li>Click <strong>Add</strong>.</li>
+	<li>Click in the <strong>Name</strong> column and enter 
+	the variable name <tt>Environment</tt>.</li>
+	<li>Enter <tt>TEST</tt> as default value in the <strong>Default Value</strong>
+	column entry field.</li>
+	<li>Optionally add a description.</li>
+</ol>
+<p class="image"><img src="images/tut-add-var.png" 
+    alt="Add variable Environment."><br>
+<strong>Figure:</strong> Add variable Environment.</p>
+<p>Please refer to chapter
+<a href="../../handbooks/modelling/model-variables.html">Using Configuration Variables</a>
+in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>
+for details on adding variables to a model.</p>
+<h3 id="workflow">Creating the Workflow</h3>
+<ol>
+	<li>Create a manual trigger followed by a manual activity
+	<strong>Starting Activity</strong>.</li>
+	<li>Right-click the activity and select 
+	<strong>Split Behavior &gt; XOR</strong>.
+	<p class="image"><img src="images/tut-split-joint.png" alt=""></p></li>
+	<li>Create an activity named <strong>Activity Production Only</strong>.
+	This will be the activity to be performed in production mode only.</li>
+	<li>Create another activity <strong>Continue</strong>
+	to be performed after the production activity or from the starting 
+	activity directly.</li>
+	<li>Add a role to the model and assign it as performer of
+	all activities and the manual trigger.
+	For detailed information on how to add roles and assign them,
+	please refer to chapter
+	<a href="../support-case/tut-main-8.htm">Defining Roles and Organizations</a>
+	of the <a href="../support-case/support-case-preface.htm">Support Case Example</a>.</li>
+	<li>Create a connection from the split joint of activity
+	<strong>Starting Activity</strong> to activity
+	<strong>Activity Production Only</strong> and one to activity
+	<strong>Continue</strong>, as illustrated in the following
+	screenshot:
+	<p class="image"><img src="images/tut-var-workflow.png" alt=""></p></li>
+	<li>Enter a condition transition to the transition
+	from the split joint to <strong>Activity Production Only</strong>
+	by double-clicking the transition line in the diagram.</li>
+	<li>In the transition condition property page dialog, enter
+	the following Condition Expression:
+	<pre>"${Environment}" == "PRODUCTION";</pre>
+	To refer to the value of the variable, the variable name is escaped
+	as <tt>$"Environment"</tt>.
+	<p class="image"><img src="images/model-var-condition.png" alt=""></p></li>
+</ol>
+<p>This reference to the variable via the transition condition
+is reflected in the Configuration Variables	section of the model property page.
+Open the model property page and switch to the <strong>Configuration
+Variable</strong> section. In the <strong>References</strong> part,
+the transition and its condition referencing to our <strong>Environment</strong>
+variable are displayed.</p>
+<p class="image"><a href="images/model-var-prop_orgSize.png">
+<img src="images/model-var-prop.png" alt=""></a></p>
+<h2 id="run">Running the Workflow with Different Variable Values</h2>
+<p>Now we will test our workflow in the Stardust Portal
+with different values of the configuration variable.</p>
+<ul>
+	<li><a href="#runTest">Running the Workflow in Test Mode</a></li>
+	<li><a href="#prod">Switching to Production Mode</a></li>
+</ul>
+<h3 id="runTest">Running the Workflow in Test Mode</h3>
+<p>First we run the model workflow with the default value <tt>TEST</tt>.</p>
+<ol>
+	<li>Start your server and deploy the model. For details on how to deploy a model,
+	please refer to the chapter 
+	<a href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a>
+	of the <a href="../support-case/support-case-preface.htm">Support Case Example</a>.</li>
+	<li>Start the Stardust Portal as described in the chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+	Logging to the Stardust Portal</a> of the
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.
+	Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</li>
+	<li>Switch to the 
+	<strong>Participant Management View</strong> of the 
+	<strong>Administration Perspective</strong>.</li>
+	<li>Create a user and assign him to the role we added to the model. 
+	For details on how to create a new user, refer to section
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html#createUser">
+	Creating a new User</a> of chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+	Creating and Editing User Accounts</a> of the 
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+	Stardust Portal</a> documentation.</li>
+	<li>Logout and login again as the new user.</li>
+	<li>In the  
+	<strong>Workflow Perspective</strong>, start the available process.</li>
+	<li>Complete activity <strong>Starting Activity</strong>.
+	<p class="image"><img src="images/tut-var-start.png" alt=""></p></li>
+	<li>Per default, the model is run in test mode as the default
+	value of the configuration variable is "TEST" (or different to "PRODUCTION").
+	Thus, the activity <strong>Activity Production Only</strong> is skipped
+	and activity <strong>Continue</strong> is opened.
+	<!--<p class="image"><img src="images/tut-var-continue.png" alt=""></p>--></li>
+</ol>
+<h3 id="prod">Switching to Production Mode</h3>
+<p>To run the model workflow in production mode, we change the value
+of our configuration variable to <tt>PRODUCTION</tt>.
+Therefore we need to perform the following steps:</p>
+<ol>
+	<li>Switch to the <strong>Configuration Variables</strong> view
+	in the <strong>Administration Perspective</strong>.
+	<p class="image"><img src="images/tut-goto-confview.png" alt=""></p>
+	For details on this view, please refer to chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-config-var.html">
+	Viewing and Editing Configuration Variables</a> of the
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+	Stardust Portal</a> guide.</li>
+	<li>In the <strong>Value</strong> column, change the value of the variable to
+	"PRODUCTION".
+	<p class="image"><img src="images/tut-var-change.png" alt=""></p></li>
+	<li>A red little star in the upper right corner of the <strong>Value</strong>
+	entry field indicates that the variable has been changed but not saved.
+	Click the <strong>Change</strong> button in the upper-right corner to
+	save the new configuration variable value:
+	<p class="image"><img src="images/tut-var-save-change.png" alt=""></p>
+	The red star now disappears
+ 	<p class="image"><img src="images/tut-var-saved.png" alt=""></p></li>
+	<li>Now start the process again.</li>
+	<li>Complete activity <strong>Starting Activity</strong>.</li>
+	<li>The transition condition checks the value of the variable and
+	decides to run the activity foreseen for production. Thus, the next
+	activity opening is <strong>Activity Production Only</strong>.
+ 	<!--<p class="image"><img src="images/tut-var-act-production.png" alt=""></p>--></li>
+	<li>Completing this activity results in continuing with activity 
+	<strong>Continue</strong>.</li>
+</ol>
+<p>The value of the variable is stored in later versions of this
+process model. In case you want to run the model again in test mode and skip the activity
+for production,	change the variable value to "TEST" accordingly.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

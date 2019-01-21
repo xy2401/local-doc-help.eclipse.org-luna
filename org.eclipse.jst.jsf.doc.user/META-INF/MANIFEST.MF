@@ -1,0 +1,774 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.jst.jsf.doc.user; singleton:=true
+Require-Bundle: org.eclipse.help;bundle-version="[3.2.0,4.0.0)"
+Bundle-Version: 1.5.0.v201309172352
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %plugin.provider
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %plugin.name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: html/gettingstarted/tutorial/images/validate-managedbean-error.p
+ ng
+SHA1-Digest: md/QzH8+xyEgcLv5XeBS8KDd4IA=
+
+Name: html/gettingstarted/tutorial/images/navigation.png
+SHA1-Digest: b+hqGtSkWnwXpx+TW4SbGAbJ2Ws=
+
+Name: html/gettingstarted/tutorial/images/jsf-library-new.png
+SHA1-Digest: 6+OdiJyhEPv0g1HYiIUhL7673X4=
+
+Name: html/gettingstarted/tutorial/images/jsf-new-library.png
+SHA1-Digest: iBXwTs+po8Sx4aUOEbmjEeOh58k=
+
+Name: html/gettingstarted/tutorial/images/run-facelets.png
+SHA1-Digest: ODnrUiPafhIL6pIAvTitleZg/KU=
+
+Name: html/tasks/images/addprojectfacet.png
+SHA1-Digest: 0766WvoHcuSCb2OmE3EX5HAPwyg=
+
+Name: images/whats_new/3_2/tags-ca.png
+SHA1-Digest: 5KNSo9KXoMypOs6wrfuAilL9tIU=
+
+Name: html/gettingstarted/wpe/images/wpe_editor_selection.png
+SHA1-Digest: VefxjvdNETrNyRA3eRGXEomIRaM=
+
+Name: images/whats_new/3_2/jsf-download-library_20.png
+SHA1-Digest: twizK2HU9Ed5eaEuSNDlZaXzGyk=
+
+Name: html/gettingstarted/tutorial/images/facelets-tagattr-contentassi
+ st.png
+SHA1-Digest: 2rnu0+6dma+UKBeKAG6C0L16SAI=
+
+Name: images/whats_new/1_0/jsf-layout.png
+SHA1-Digest: SSVluamL63DTVsxkQRAXUCw+OuM=
+
+Name: html/tasks/create_jsf_app.html
+SHA1-Digest: AcH7e+tootg2iprNdelZ01vlVM8=
+
+Name: html/gettingstarted/tutorial/images/login-final.png
+SHA1-Digest: AJFb/MWYZrKKXhTUVG3z+xCbupA=
+
+Name: html/reference/images/DTSkinningUI_WPE_ContextMenu.png
+SHA1-Digest: kvKfy+bwhbk/lVqCoPcWchz3ugo=
+
+Name: html/whats_new.htm
+SHA1-Digest: 8jAPzSCjezlWuqVTk3PBS7P7MWU=
+
+Name: html/reference/images/jsfimplmakedefault.png
+SHA1-Digest: 31ytkIW8rFD9tmm9XpSntNpG1h8=
+
+Name: html/gettingstarted/tutorial/images/loginbean.png
+SHA1-Digest: Y30JXf+bkNjqoBo+CxNS4dQ1mok=
+
+Name: html/gettingstarted/tutorial/images/jsf-capabilities-library.png
+SHA1-Digest: ynFcoJvUYr964NIdj3vMFdW534g=
+
+Name: html/tasks/add_jsf_facet.html
+SHA1-Digest: JAUJToQ3PBeVN8IkWQ7C+Fo5cKc=
+
+Name: html/tasks/facesconfig_ui/add_action_listener.html
+SHA1-Digest: w8MlwYNjyIoD3iwOQhOc+yuQ8VU=
+
+Name: html/reference/jsf-h.html
+SHA1-Digest: x97ZiKrl1ZAiO1adkNAU0MsuLMc=
+
+Name: html/concepts/jsf_tag_registry.html
+SHA1-Digest: MnW7Iw6oHe4waDRUQfX2rSvjl10=
+
+Name: html/tasks/facesconfig_ui/add_property_resolver.html
+SHA1-Digest: /tCpy4ZiKZZmAHDa3Dy7At8kSaQ=
+
+Name: html/gettingstarted/tutorial/images/facelets_user_library.png
+SHA1-Digest: oq7K3aAl1v/64zH9SXuaNja/0YU=
+
+Name: html/gettingstarted/tutorial/images/fce-managedbean-class.png
+SHA1-Digest: VmCK3N/tP5n6jFxMfolzywg1xfQ=
+
+Name: html/tasks/facesconfig_ui/add_messagebundle.html
+SHA1-Digest: aSswwrbUggUuoLoEdpbk1zF9Sv8=
+
+Name: html/gettingstarted/tutorial/images/Idea.jpg
+SHA1-Digest: PcZMQGjryL3/ltXVmAwr6TCbFW0=
+
+Name: html/gettingstarted/wpe/images/wpe.png
+SHA1-Digest: KFxZ+nSrHrXMq2G1+gsk3Hhrp38=
+
+Name: html/gettingstarted/wpe/images/wpe_properties.png
+SHA1-Digest: /ev4O69Qir34BP1NQh0ka16aldw=
+
+Name: html/gettingstarted/wpe/images/wpe_editor_inspection.png
+SHA1-Digest: ez2pQNG1Nb3R16Xw4LJzv7NKnnA=
+
+Name: images/whats_new/1_0/jsf-versions.png
+SHA1-Digest: IXn1Ew4sIALTwoEGbmlcsZcPgUo=
+
+Name: html/gettingstarted/wpe/images/wpe_preview.png
+SHA1-Digest: +8j+A+5xO/Jjdq9E1L0eOspJhEQ=
+
+Name: html/reference/jsf_design_time_skinning.html
+SHA1-Digest: pG0jq3Rl43Wm5/TBKD1NW6JEfTs=
+
+Name: html/about.html
+SHA1-Digest: A98GAemEjTGdRn3wWbIacigasjM=
+
+Name: html/gettingstarted/tutorial/images/new-jsf-facelets-page.png
+SHA1-Digest: kIB0G2ePw13oMU3SxyKzv5hiuik=
+
+Name: html/tasks/facesconfig_ui/add_validator.html
+SHA1-Digest: b0McgGSV23qAqKiABq8fdGKBBkA=
+
+Name: html/gettingstarted/tutorial/images/facesconfig-editor-bean-face
+ lets.png
+SHA1-Digest: DMJywZwvm8cWJFRdcjCnl4qVplc=
+
+Name: images/whats_new/1_0/jsf-web-page-editor.png
+SHA1-Digest: GtD2GPqBFDR1fG4sVfhoUm95WEY=
+
+Name: html/gettingstarted/tutorial/images/navigation-03.png
+SHA1-Digest: 4YIxNSGxelFV9ZmEplfsFX6jdLY=
+
+Name: images/ngrelr.png
+SHA1-Digest: OzguzM/OK663iNL85kw/xEyPpdw=
+
+Name: html/tasks/create_managedbean.html
+SHA1-Digest: hQLYsp+roFl7Wh8mH0zh2pcq/8E=
+
+Name: html/concepts/jsf_libs.html
+SHA1-Digest: pc7mF8TzGou0tvxbIqWx9beG6EU=
+
+Name: html/concepts/images/val_multi_problems.png
+SHA1-Digest: /1TO613t//jNGAOGgAxJsLyiTN0=
+
+Name: html/gettingstarted/trinidad/images/trinidad_initialsetupguide_J
+ SFCapabilities.png
+SHA1-Digest: ig/b1AJtLf9i9xOMR962BiMnAv8=
+
+Name: images/whats_new/1_0/Fig2.png
+SHA1-Digest: 0fjYaLiqmFlBheeFb4Pf3w60L3M=
+
+Name: html/tasks/images/migration_jsflib_step2.png
+SHA1-Digest: Urm36kPL/S3OaM08HQXB7qWVWQM=
+
+Name: html/reference/images/DTSkinningUI_ToolbarButton.png
+SHA1-Digest: 8zI/isN3QrKTMptJNzM2HjPbLYw=
+
+Name: images/whats_new/1_0/Fig6.png
+SHA1-Digest: TI/htX6c+L8D88gpEcyLFlae1+0=
+
+Name: toc.xml
+SHA1-Digest: dWEUBvY9J7jWzbQp9ul4oARD3YU=
+
+Name: html/tasks/images/jsflibref_j2eemoddeps.png
+SHA1-Digest: hLq2boQpZBzpsbdIlWYuh7lU/IQ=
+
+Name: html/gettingstarted/trinidad/trinidad_initialsetupguide.html
+SHA1-Digest: QzedNbtoLqGwfZFHdbg45Anz+UA=
+
+Name: html/gettingstarted/tutorial/images/wpe-add-cmd.png
+SHA1-Digest: cnDP0CQJKS2bIepf1cEaQsxtPhI=
+
+Name: pom.xml
+SHA1-Digest: zFG05rsM+nl+2ksajCAmhXIRHcw=
+
+Name: html/gettingstarted/tutorial/images/el-ca-define-loadbundle.png
+SHA1-Digest: 1FFUrmeYmCqbGyMvQdmnj7+Swlg=
+
+Name: html/tasks/define_navigations.html
+SHA1-Digest: hseADNK6IyT5LQWuD1FactjF6ec=
+
+Name: html/tasks/facesconfig_ui/add_view_handler.html
+SHA1-Digest: cIRCBHRokaHHLFHuFTsO0A+1xOY=
+
+Name: html/gettingstarted/wpe/images/wpe_toolbar.png
+SHA1-Digest: CJwClSmPhEzKSOrqm/brhicYAmc=
+
+Name: html/tasks/images/create_jsf_app1.png
+SHA1-Digest: 4V2S+kYSu9z77M89O3i1fLQa7iA=
+
+Name: html/gettingstarted/tutorial/images/wpe-add-panel.png
+SHA1-Digest: TGvb/cpJYADlciPBOmAQIeU/dfA=
+
+Name: html/tasks/images/validationprefs.png
+SHA1-Digest: rS3RqG71tZy0oiXssntwsH2/2Wc=
+
+Name: html/gettingstarted/tutorial/default_style.css
+SHA1-Digest: PWXR8l7A66QDx+Cz9PBS0Dy9Bvk=
+
+Name: html/tasks/images/jsflibref_javabuildpath.png
+SHA1-Digest: BKbIkXb+QudwsRN9FAxUb+3RmkU=
+
+Name: images/whats_new/3_2/composite-tags-ca.png
+SHA1-Digest: piDLGNjZkM9JXC7lQpWIGxdPBEg=
+
+Name: images/whats_new/1_0/DataTableVariableSupport.png
+SHA1-Digest: BvWGumr+SCPdvm09LyCVkXYqF2g=
+
+Name: html/gettingstarted/trinidad/images/trinidad_initialsetupguide_C
+ onfiguration.png
+SHA1-Digest: ppmIhvRdzEhc4PtHGEAk8FgJ1jE=
+
+Name: html/gettingstarted/tutorial/images/new-xhtml-file-templates.png
+SHA1-Digest: 0Kq5yn3ZtiVCKh5I1hrK3YD96nI=
+
+Name: images/whats_new/2_0/TagRegistry.png
+SHA1-Digest: 7sC5f0ksXplC12eujOzSWr3Lcps=
+
+Name: html/gettingstarted/tutorial/images/jsf-libraries.png
+SHA1-Digest: WpvOyiBL9+mNyxckN6E7Elfj6bE=
+
+Name: html/tasks/test_linked_pages.html
+SHA1-Digest: pD4gbTm+dt9z+3TaCz4Q7CEgDnw=
+
+Name: html/concepts/jsf_facets_uninstall.html
+SHA1-Digest: nyfkIFTIbYqo8b55Vf/R7g9AS6U=
+
+Name: html/tasks/jsf_validation.html
+SHA1-Digest: /hsM/+4DOBPG8QGNlebTfaF93go=
+
+Name: html/concepts/jsf_facets.html
+SHA1-Digest: ZvGVgqRfxuvUW+9y2gB0GQ+p2JA=
+
+Name: META-INF/maven/org.eclipse.webtools.jsf/org.eclipse.jst.jsf.doc.
+ user/pom.xml
+SHA1-Digest: zFG05rsM+nl+2ksajCAmhXIRHcw=
+
+Name: html/tasks/facesconfig_ui/add_variable_resolver.html
+SHA1-Digest: 06CFElDZbQ4TZD/nvQ/84RHyAjU=
+
+Name: html/gettingstarted/tutorial/images/facelets-login.png
+SHA1-Digest: g8LSM4ZBBqNdrHsqmLLR7Uc3zCA=
+
+Name: html/gettingstarted/tutorial/images/jsf-download-library-jsf20.p
+ ng
+SHA1-Digest: L/VEztigKZ0qmv61wF4hAzNjMVo=
+
+Name: html/reference/images/DTSkinningUI_ToolbarButton_Menu.png
+SHA1-Digest: oY/u6c8B7Gb/e9XvTO1fy4UPSyI=
+
+Name: images/whats_new/2_0/trinidad_in_wpe.png
+SHA1-Digest: GGVnrBGNa1InKSqaw8HRkXP26Tg=
+
+Name: html/tasks/facesconfig_ui/add_default_renderkitid.html
+SHA1-Digest: yjwxxgkjmvSnybYyt62seqjDWzs=
+
+Name: html/reference/images/jsfimpl.png
+SHA1-Digest: zZeZ1qjA8oKIpbJA9zrnq1UaiV8=
+
+Name: tocreference.xml
+SHA1-Digest: KfiZQHodBZyqx7V01+abqnxMMvM=
+
+Name: images/whats_new/2_0/trinidad_codeassist.png
+SHA1-Digest: VeJZoOrh30ws1DpVgZfiDyO+Om0=
+
+Name: html/mainpage.html
+SHA1-Digest: YjlgCv5iwegH4Dry/lgYPBvWbUQ=
+
+Name: html/gettingstarted/tutorial/images/faces-config-validator.png
+SHA1-Digest: CbujZN49YVU6qKMkzPbthbCq0Jw=
+
+Name: tocgettingstarted.xml
+SHA1-Digest: Rpt1DR2bQI7nrm7p7MarP0LW7Bg=
+
+Name: html/gettingstarted/tutorial/images/jsf-app1.png
+SHA1-Digest: cqR6nMrEGf1oxN4f2s/XgtNRZUE=
+
+Name: html/tasks/images/newjsfpage3.png
+SHA1-Digest: RRdfQKZQ2tbibICGUKk9h80SRSk=
+
+Name: html/gettingstarted/tutorial/images/facelets-template.png
+SHA1-Digest: FWt2GmHPr8XpRempEqtrRsB7XCU=
+
+Name: images/whats_new/2_0/wpe-hyperlink.png
+SHA1-Digest: h6wkQaac1hS+0RmEUBZMwDjqpDo=
+
+Name: html/tasks/images/palette.gif
+SHA1-Digest: nODaBGVWAjtGJoRFC0x49RSdJzc=
+
+Name: html/tasks/facesconfig_ui/add_navigation_rule.html
+SHA1-Digest: BiuGU+5Nj4ZwWuJjWg1ay/ziU8s=
+
+Name: html/gettingstarted/tutorial/images/project-facets.png
+SHA1-Digest: R/pHhjRalJYf54DW8Q/0jso9Q7M=
+
+Name: html/gettingstarted/tutorial/images/ca-valid-lov.png
+SHA1-Digest: eXgwJ6eupT9DugHHI8EfEl2XNf8=
+
+Name: html/gettingstarted/tutorial/images/jsp-page.png
+SHA1-Digest: K+2gnJJFJ3XnSOZeSVx/yZbN37g=
+
+Name: html/tasks/facesconfig_ui/add_converter.html
+SHA1-Digest: lnww6dIhv2BGtndNGtaMpZNG0yQ=
+
+Name: html/reference/jsf_library_management.html
+SHA1-Digest: 0/U5ABYRkK6AqjjnOh+M8IJIgnQ=
+
+Name: html/legal.htm
+SHA1-Digest: JGwhzg39yyJqG1soGe0GxtXhj4o=
+
+Name: images/whats_new/2_0/trinidad_properties.png
+SHA1-Digest: /AmHwgDkCmKPjThkikgAQOKa97s=
+
+Name: plugin.properties
+SHA1-Digest: 092G8t1WyGeH0sVOuPAaBAMa2h4=
+
+Name: html/gettingstarted/tutorial/images/el-ca-messages-properties.pn
+ g
+SHA1-Digest: tI5CJnUabfcz0UckB5msK3slZWo=
+
+Name: html/gettingstarted/jsf_requirements.html
+SHA1-Digest: TNJC88JZBjqDMnZ9YjXkBsAya0k=
+
+Name: plugin.xml
+SHA1-Digest: tXeccwu9RebhHSoGg1WOVpQcwzc=
+
+Name: html/gettingstarted/tutorial/JSFTools_tutorial.html
+SHA1-Digest: 3Vp9H7SckRAKS+wjXsRccpC/WQo=
+
+Name: html/tasks/define_link_properties.html
+SHA1-Digest: 93JJfFDN+CatLP+/J1A6DMFUMlc=
+
+Name: html/gettingstarted/tutorial/images/ca-converterId-lov.png
+SHA1-Digest: 7ItY46nhyPiawuLK8h5tGAW6ffw=
+
+Name: html/gettingstarted/tutorial/images/navigation-02.png
+SHA1-Digest: lYXeocJo2aSwDu8+YJT3Y+e8IiQ=
+
+Name: html/tasks/facesconfig_ui/add_renderkit.html
+SHA1-Digest: 4QltmtDgGWxToKTEmX68i36S+AY=
+
+Name: images/whats_new/1_0/Fig1.png
+SHA1-Digest: FqPuIcQe0EWz61Hk/9PMEuaAvDc=
+
+Name: html/tasks/images/migration_jsflib_step1.png
+SHA1-Digest: GKRJyZM034WKL9WU58/FsngbSRU=
+
+Name: images/whats_new/1_0/Fig5.png
+SHA1-Digest: 4VW0p2982oSvHUCyK4q6rqycxXQ=
+
+Name: images/whats_new/2_0/wpe-hover-help.png
+SHA1-Digest: hcLEnhQIk8Y24CS2nPnKuIBeOxM=
+
+Name: html/tasks/create_jsf_jsp_page.html
+SHA1-Digest: udu0JmswXDAjoZxwWPnEvx2/+Yc=
+
+Name: html/concepts/images/ca_el_vb.png
+SHA1-Digest: HTmLY77NTnix6LiNcPGqQsNRr6g=
+
+Name: html/gettingstarted/tutorial/images/jsp-editor-validate.png
+SHA1-Digest: 4zKbq+pSszzodaB6P5UNegRyWYI=
+
+Name: html/tasks/images/elvalidationprefs.png
+SHA1-Digest: IHs7P31b3PrUC7RKamjcnFS+ru4=
+
+Name: html/reference/images/jsf_library_configuration.png
+SHA1-Digest: qHDWju6KYNAWUZNDlqLgWqf9TG4=
+
+Name: html/reference/images/jsf_library_jeemodule.png
+SHA1-Digest: iu+jVUcZHYde93T5kK2FZkW/OcU=
+
+Name: html/tasks/jsf_elvalidation_prefs.html
+SHA1-Digest: sVa9NOadD+AZr2TVUuZRyT1AW14=
+
+Name: images/whats_new/3_2/tag-attr-ca.png
+SHA1-Digest: ibE6AnYbPPN1oOgHp4QbcK6sjzk=
+
+Name: html/tasks/images/dotbox.gif
+SHA1-Digest: XHl3EGcQmz8cVPRMQJ6O8zx5XfU=
+
+Name: html/gettingstarted/tutorial/images/el-ca-bean-properties-nested
+ .png
+SHA1-Digest: WgAsNUtWPILjsZvr0bAYTS5xC7k=
+
+Name: META-INF/maven/org.eclipse.webtools.jsf/org.eclipse.jst.jsf.doc.
+ user/pom.properties
+SHA1-Digest: TME+MrRvuNzYQ6FJeFpdTVQvIlc=
+
+Name: html/reference/jsf-c.html
+SHA1-Digest: UQpvUxLDiTx/aytWRrO+EhlgzU4=
+
+Name: html/tasks/tasks.html
+SHA1-Digest: eIZ0BXPb6VYc4HU/IVW8D32so8I=
+
+Name: html/gettingstarted/tutorial/images/facelets-header-footer.png
+SHA1-Digest: I38Bz/t/uyGFWkWS5Ntw23D14m4=
+
+Name: html/gettingstarted/tutorial/images/jsf-capabilities-library-fac
+ elets.png
+SHA1-Digest: rMQvtUTBSOH8qoX1wfvfAdaZYB0=
+
+Name: html/tasks/jsf_library_migration.html
+SHA1-Digest: pJ4mU1Zlld6LiBj0qp/Ie7w2O2M=
+
+Name: html/concepts/jsf_component_tree.html
+SHA1-Digest: MNLxGhO/azEKKKZWcsM/5kQxYi4=
+
+Name: html/gettingstarted/tutorial/images/jsf-app.png
+SHA1-Digest: Ol6n0Kg4+RhlTdaW3w5cPAbyGc4=
+
+Name: html/reference/images/jsf_library_legacy.png
+SHA1-Digest: essaTZ847NQmQB5JpwczRqZDlzQ=
+
+Name: html/gettingstarted/tutorial/images/jsf-add-jstl-library.png
+SHA1-Digest: IB4mA8AJW1nbV5xEdOqJIEYk0Wo=
+
+Name: html/gettingstarted/tutorial/images/ca-enum-lov.png
+SHA1-Digest: kmUirpZnE347FrvtsftHpWnnSeo=
+
+Name: html/reference/images/jsf_validate_library.png
+SHA1-Digest: fATsWLZ7M8uF1FxQfFC0ToM3qH8=
+
+Name: html/gettingstarted/tutorial/images/facelets-template-final.png
+SHA1-Digest: sQZ3CML/cFJC1ZPYogAy4TGzy9o=
+
+Name: html/gettingstarted/wpe/images/wpe_outlinemenu.png
+SHA1-Digest: RfZHOma/+w60IGwbLmIzTxawMTo=
+
+Name: html/tasks/use_facesconfig_editor.html
+SHA1-Digest: nJBtA3peYWKQXqAgqvtSlngwiFs=
+
+Name: html/gettingstarted/tutorial/images/validate-bean-properties.png
+SHA1-Digest: yrnFsV1m8SvAn3bQXizGeQ4khqw=
+
+Name: html/reference/references.html
+SHA1-Digest: hia0xdV3gJVVFDu0GsIxJMpg+30=
+
+Name: html/gettingstarted/tutorial/images/new-managedbean.png
+SHA1-Digest: o0mmrLUS08+Mx9ZZVKALs14wXmE=
+
+Name: images/whats_new/2_0/ImprovedHoverHelp.png
+SHA1-Digest: OxkFw1nXRMAd8dbYJJqjh08Srvs=
+
+Name: html/gettingstarted/tutorial/images/jsf20-facet.png
+SHA1-Digest: n69k6nuluErMc3C5WtAeucUd0zI=
+
+Name: html/tasks/images/newjsfpage2.png
+SHA1-Digest: PKDl9joYKhh9uHsao0Yht3KItVI=
+
+Name: html/gettingstarted/tutorial/images/jsf-config-facelets.png
+SHA1-Digest: VDvrwOk4HY+pJd+jnaGpyKGCNic=
+
+Name: html/gettingstarted/tutorial/JSFTools_tutorial_JSF20.html
+SHA1-Digest: DPOXoqpN2mSpp9/Out77mSx5YDU=
+
+Name: images/whats_new/2_0/DecorativeResolver.png
+SHA1-Digest: lDFQ+Sio5fAFq0Om7FG6OPvoeaw=
+
+Name: html/gettingstarted/trinidad/images/trinidad_initialsetupguide_J
+ SFLibs.png
+SHA1-Digest: 3tUPko1aJ21XOwr1Ye0KCQ/D/os=
+
+Name: html/gettingstarted/tutorial/images/validate-attribute-value-typ
+ e.png
+SHA1-Digest: AZjs0hwOand7M9j44E+uCPh+kro=
+
+Name: html/tasks/facesconfig_ui/add_state_manager.html
+SHA1-Digest: oodPszh/n7l7i8pQmOrgumuO9Uw=
+
+Name: html/gettingstarted/tutorial/images/jsf-libraries-facelets.png
+SHA1-Digest: Jjmt03qli+ccaPi8UpwX2L4iomM=
+
+Name: html/gettingstarted/tutorial/images/select-project-facets.png
+SHA1-Digest: QbVgjKYImCvHisg/ijhYCrsuzHs=
+
+Name: html/gettingstarted/tutorial/images/jsf-capabilities-library-2.p
+ ng
+SHA1-Digest: vUAzc5DMIelGefIXiVfCqX1m0aA=
+
+Name: html/tasks/images/jsffacetsettings.png
+SHA1-Digest: oCmd5ix5DA982zQCm7zWBv+FKAA=
+
+Name: html/gettingstarted/wpe/images/wpe_editor_childcomps2.png
+SHA1-Digest: dhZUZNLChqb4o7IEA94s/YKGySE=
+
+Name: images/whats_new/2_0/ImprovedContentAssist.png
+SHA1-Digest: 9QyJ5xfUUY3ICrz6ESJMeBeHLMU=
+
+Name: html/gettingstarted/wpe/images/wpe_editor_contextmenu.png
+SHA1-Digest: /ciu0OosSHwsgMjGrY7pJ0aMNPM=
+
+Name: html/tasks/facesconfig_ui/add_lifecycle_factory.html
+SHA1-Digest: lsLn5SKfI4PMwtVhACF25GihTc0=
+
+Name: html/concepts/images/ca_nonel_validators.png
+SHA1-Digest: d8gC+TsJ/MpOpoQuU6dBY+jQfg8=
+
+Name: html/gettingstarted/tutorial/images/facesconfig-editor.png
+SHA1-Digest: SS41kmPI2IKd834DSiLGBcejUek=
+
+Name: images/whats_new/2_0/ComponentTree.png
+SHA1-Digest: 2erCu0uyMgaZu5aX2SrBBU0GRS4=
+
+Name: images/whats_new/2_0/NewELValidationPreferences.png
+SHA1-Digest: mWsXHnkUT4lJVesxQ8G4WUjHcFw=
+
+Name: html/tasks/images/addjsftaglibs.png
+SHA1-Digest: c9s0EgRcky6ZAAVlx5s1CE8UuDU=
+
+Name: html/tasks/images/migration_jsflib_step11.png
+SHA1-Digest: Sxg9vcDUY+KOk2nXWb4gckSEZx8=
+
+Name: html/tasks/images/jsflibref_addlibrary.png
+SHA1-Digest: MrVUpkxQyOr6Q8UHh0OkwaMSBBY=
+
+Name: images/whats_new/3_2/namespace_ca.png
+SHA1-Digest: NZA8dX8Itqj4IpykZFglMVP7x2I=
+
+Name: html/concepts/images/ca_el_mb.png
+SHA1-Digest: 2u5JgBUY70nEP/HfFjWEa+apd3Y=
+
+Name: html/gettingstarted/tutorial/images/navigation-01.png
+SHA1-Digest: F71H164qm/50aunZnluZbdr3wJ8=
+
+Name: html/gettingstarted/tutorial/images/run-jsf.PNG
+SHA1-Digest: EO2+UmzWQWplSQ8WpH1TGuglmms=
+
+Name: html/tasks/images/jsflibs_prefs.png
+SHA1-Digest: gfgc5Z73Uk9vWSptspnRJ0tmUi4=
+
+Name: html/reference/images/jsf_disable_library_configuration.png
+SHA1-Digest: pFoYyFmatDGSRXIYlgJEn8QSlUM=
+
+Name: images/ngrelt.png
+SHA1-Digest: T/aObgW4iyz6C+UTnzXp4mA1cV4=
+
+Name: images/whats_new/1_0/jsf-faces-config-editor.png
+SHA1-Digest: csxS5GFyWRTLkJElHINwf7SI/Mo=
+
+Name: html/gettingstarted/tutorial/images/welcome.png
+SHA1-Digest: fclx20wPSSp0iF3pOpds/fEbJMc=
+
+Name: about.html
+SHA1-Digest: tmeloJNA7gMcLfuUfqd5bJ8qmPI=
+
+Name: html/gettingstarted/tutorial/images/new-dynamic-web-project-face
+ lets.png
+SHA1-Digest: cQuSvJqkJthufHTuz1UTpSHWbw8=
+
+Name: images/whats_new/1_0/Fig4.png
+SHA1-Digest: xVH2/dLUYhVm0ct+k1XPHh7Qkbs=
+
+Name: html/gettingstarted/tutorial/images/el-ca-bean-properties.png
+SHA1-Digest: fJv+CLsCwwpuuNGdb72Dvz/5SWk=
+
+Name: toctasks.xml
+SHA1-Digest: 1PN2DnvM+q6iJ1wQwCo2NBDUaaA=
+
+Name: images/whats_new/3_2/namespace-composite-ca.png
+SHA1-Digest: CyW782yFb/johPXQfYgTf+bGVRM=
+
+Name: html/gettingstarted/tutorial/images/ca-bean-properties.png
+SHA1-Digest: QT6Jtj8xLkoNi6j4XvnQd7j5A3Y=
+
+Name: html/tasks/images/newjsflib.png
+SHA1-Digest: rhtNyXQjiSXlv9yTHzy9+pHK1rk=
+
+Name: html/tasks/facesconfig_ui/add_phase_listener.html
+SHA1-Digest: JJA1duoiQDNyHwm+EFBcx+1ADD0=
+
+Name: html/gettingstarted/wpe/wpe_getting_started.html
+SHA1-Digest: DJrDizVACNUyX3g54EQ+TfHP5zc=
+
+Name: html/gettingstarted/tutorial/images/web-page-editor.png
+SHA1-Digest: 0yVyfzUI2jOB+61rpFOUrWnjK/g=
+
+Name: html/tasks/images/migration_jsflib_step22.png
+SHA1-Digest: 3XJZITMraoVNdbHb+fbh6FYu3nQ=
+
+Name: html/gettingstarted/tutorial/images/note.gif
+SHA1-Digest: BIDRdvMEPAhKvIrHjNssbzMK8ys=
+
+Name: html/gettingstarted/wpe/images/wpe_palette.png
+SHA1-Digest: 4LfM5eWzknmixAE6DtvLgTGbdL0=
+
+Name: book.css
+SHA1-Digest: sa2PWN8/TjBcwqtmOQdmFj4QTNs=
+
+Name: html/tasks/facesconfig_ui/add_locale_config.html
+SHA1-Digest: NaHamh/yuut2DVQlwNvYyQd81rY=
+
+Name: html/concepts/images/tagRegistryView.png
+SHA1-Digest: EidgGiFeolpwILhl+WOY28A6HlE=
+
+Name: html/gettingstarted/tutorial/images/jsf_add_libraries.png
+SHA1-Digest: 4/FZxbb1lrLpFkrpLq1PKMgV/38=
+
+Name: html/concepts/images/componentTreeView.png
+SHA1-Digest: uJWT56/o+HFgvQMVA/+5Je8Xm7U=
+
+Name: html/tasks/facesconfig_ui/add_component.html
+SHA1-Digest: 0CbSOphE/cGT+LG+66iMR/buMz0=
+
+Name: html/tasks/images/jsflibsmissingjarsedit.png
+SHA1-Digest: 1YMGKixu/08I8WkOLmixFF8d5sQ=
+
+Name: html/gettingstarted/tutorial/images/facesconfig-register-validat
+ or.png
+SHA1-Digest: eneI6i7W9qd0I5bjP4aSKBWtP3Q=
+
+Name: html/gettingstarted/tutorial/images/syntax-error.png
+SHA1-Digest: hvQZLWvTtw+EYWRcWs9C7FmmTs4=
+
+Name: html/tasks/images/jsflibref_addlibrary_2.png
+SHA1-Digest: V5nlc4ovM+ZEz5XTzxoHg5OBudg=
+
+Name: html/concepts/concepts.html
+SHA1-Digest: riIWIpVhA3MtIhn8GR6By6KFFNQ=
+
+Name: html/reference/images/jsf_download_library.png
+SHA1-Digest: jaueD5cbWzkS1CDOy6tSLr1nnII=
+
+Name: images/wtplogosmall.jpg
+SHA1-Digest: MHmNZdnieNeDtQYgZ/RbMgSMmU0=
+
+Name: html/gettingstarted/tutorial/images/validate-converterId.png
+SHA1-Digest: bri+UMTNOvj2ILU1emxmb5fmFPA=
+
+Name: html/gettingstarted/tutorial/images/el-ca-msg-properties.png
+SHA1-Digest: 6LkdJtqZyBTGpQnCC70U55KIb6o=
+
+Name: html/gettingstarted/tutorial/images/ca-validator-lov.png
+SHA1-Digest: fHvoANP8rRseprWGuZzqV0fgcG4=
+
+Name: html/reference/images/jsf_validate_library,png.png
+SHA1-Digest: EjPAFTbG3v6EAx8aAftNs66rU+I=
+
+Name: html/gettingstarted/tutorial/images/el-ca-all.png
+SHA1-Digest: 3XGUM+S2L7pe4Vynk8Vdc70b5as=
+
+Name: html/gettingstarted/tutorial/images/validate-action-attribute.pn
+ g
+SHA1-Digest: sVfMNh55dsLcp93e0V1F8Y/YICY=
+
+Name: html/tasks/facesconfig_ui/add_facescontext_factory.html
+SHA1-Digest: GqD5EljQ2uYcu947XQRlHKhY4B0=
+
+Name: html/concepts/images/ca_nonel_strings.png
+SHA1-Digest: YP/NX7Nhicv/WfAnYJsALuxtakA=
+
+Name: html/tasks/facesconfig_ui/add_rederkit_factory.html
+SHA1-Digest: dQWl6Wodt8kdZvOGCSk9rBOz1gA=
+
+Name: images/whats_new/3_2/project-facets.png
+SHA1-Digest: fIRP17K/mJktPHhzXl8PciFOyoE=
+
+Name: html/gettingstarted/tutorial/images/facelets-configuration.png
+SHA1-Digest: 3XzxOh1hIynyu7n+LaBo7bHQx7k=
+
+Name: html/tasks/images/newjsfpage1.png
+SHA1-Digest: /Oj8nKdAzU2d9EGjWv7FE75tCyY=
+
+Name: html/gettingstarted/tutorial/images/ca-boolean-lov.png
+SHA1-Digest: 0DV4VKPUQBBRYTusUr54n1HQbKI=
+
+Name: html/gettingstarted/tutorial/images/syntax-error-no-bracket.png
+SHA1-Digest: bCz8P3uR6Y7NHX9Oy0xgU2twNaY=
+
+Name: images/whats_new/3_2/composite-components.png
+SHA1-Digest: WgDQZm+Z/Yj/fr2OFIJHzOA0bEU=
+
+Name: html/gettingstarted/tutorial/images/jsf-capabilities-library-2-j
+ sf20.png
+SHA1-Digest: ZgB97adUThpc3yZPIecnDzenUVU=
+
+Name: images/whats_new/3_2/new-xhtml-file-templates.png
+SHA1-Digest: hQuxEPLmB3TYAqWTNMypaUCivu0=
+
+Name: html/gettingstarted/tutorial/images/facelets-tagattr-validation.
+ png
+SHA1-Digest: LPiYsVVcwo4MofHJYhMvzNQkFyA=
+
+Name: html/reference/taglibsupport.html
+SHA1-Digest: uQps6z8tD7bL/j+E74THlAnqw6g=
+
+Name: html/gettingstarted/tutorial/images/tip.gif
+SHA1-Digest: PASZUuKj27hlTjLK065lFaEeYGg=
+
+Name: html/concepts/jsf_facets_install.html
+SHA1-Digest: xVDMt897vBo3vCk0SOt0BsWBtiU=
+
+Name: html/gettingstarted/getting_started.html
+SHA1-Digest: YjC/PUrc8TKE/8ZHSkDn8FsLMLw=
+
+Name: html/gettingstarted/tutorial/images/facesconfig-editor-bean.png
+SHA1-Digest: sPd0sLKlRpquFDNuqPzdKz4Q6ho=
+
+Name: html/concepts/jsf_source_editing.html
+SHA1-Digest: QqbexqUCQKDP9qoq6eLcXYXJl4U=
+
+Name: html/gettingstarted/wpe/images/wpe_editor_childcomps1.png
+SHA1-Digest: DgDvPQ6uBQg9Q8Jef8tgfvy0wXU=
+
+Name: html/reference/images/DTSkinningUI_ProjectProps.png
+SHA1-Digest: XheFZaoLkyLL8FhCG9R57DXo+AU=
+
+Name: images/whats_new/3_2/el-implicit-variables-ca.png
+SHA1-Digest: s1kdhfidQv7pCNb+k3g0rL+wnCo=
+
+Name: html/concepts/jsf_library_management.html
+SHA1-Digest: tn+htZerg5PKlcdiFPhyDZZ2K2s=
+
+Name: facesconfig_ui_contexts.xml
+SHA1-Digest: OwbEkxJN2dG4YWYbr7gYsZESwvQ=
+
+Name: html/gettingstarted/tutorial/images/new-jsp-page.png
+SHA1-Digest: bQNLAIz2LDwC6kMRpkSKf8L68j8=
+
+Name: html/gettingstarted/wpe/images/wpe_elementnavigation.png
+SHA1-Digest: VQh+QFxIcfKgu16QZMCPRmaEkxo=
+
+Name: images/ngrelc.png
+SHA1-Digest: AtrS4kkJDBiPeN+v4oUlyJqqi/M=
+
+Name: html/gettingstarted/tutorial/images/el-ca-loadbundle-var.png
+SHA1-Digest: JC2aOrujJVy0nXwY2fye6eSHkYc=
+
+Name: html/concepts/jsf_app_config_mgr.html
+SHA1-Digest: 7R5uGVR0gLjIfbhpefeSUjIIJEk=
+
+Name: html/tasks/images/taglibassist.png
+SHA1-Digest: zuntSZndegAnebqrWtIlPWPk5hA=
+
+Name: html/gettingstarted/tutorial/images/project-explorer.png
+SHA1-Digest: 5Rf6GKa26lVFY9kSawpZZoaBdLg=
+
+Name: html/gettingstarted/tutorial/images/navigation-04.png
+SHA1-Digest: wE5ZcUkhRxbLebZOc1kDc6PcRoY=
+
+Name: html/gettingstarted/tutorial/images/custom-validator.png
+SHA1-Digest: LZWjS5km36pueE/qw5H9lvTyMx4=
+
+Name: html/tasks/facesconfig_ui/add_application_factory.html
+SHA1-Digest: UrBV63EmB5sQmgN37vC1dwkjreU=
+
+Name: html/gettingstarted/tutorial/images/new-dynamic-web-project.png
+SHA1-Digest: PzHW+gZFBWYgElgg5PYT01f2WuY=
+
+Name: images/whats_new/1_0/Fig3.png
+SHA1-Digest: LaYCUNWVBF5GyzaeeZTKNSl8XeQ=
+
+Name: images/whats_new/1_0/Fig7.png
+SHA1-Digest: WRMniosiMOQMNW81G97ayRXp2DA=
+
+Name: html/gettingstarted/tutorial/images/jsf-download-library.png
+SHA1-Digest: OElm6OOlOgffjf0Drg3W+9GHjqs=
+
+Name: html/tasks/images/migration_jsflib_step21.png
+SHA1-Digest: 8rXQZoGAj+0x8P4ns+wWk2Uq+m4=
+
+Name: tocconcepts.xml
+SHA1-Digest: 7yg2g4zSdxMDTkyLGbOXVfIux7Y=
+
+Name: html/reference/images/jsflibsmissingjars.png
+SHA1-Digest: qrLf01zInChJIQfyTI9KnTkv+WA=
+
+Name: html/gettingstarted/tutorial/images/ca-bean-methodbinding.png
+SHA1-Digest: IlKasAagPVsGgsIygDaEMN4B+Zc=
+
+Name: html/gettingstarted/tutorial/images/run-facelets-02.png
+SHA1-Digest: +nKLgx3JwbowofPFegDT4VqQRUA=
+

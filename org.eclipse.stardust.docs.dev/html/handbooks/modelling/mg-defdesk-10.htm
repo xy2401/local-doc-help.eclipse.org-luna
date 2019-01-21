@@ -1,0 +1,631 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Modeling the Organizational Structure</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working with Triggers",
+        "mg-defdesk-9.htm","mg-defdesk-11.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Modeling the Organizational Structure</h1>
+<p>Interactive Activities are assigned to participants - roles or organizations.
+Users assigned to these roles or organizations perform the work represented by an activity
+instance. Being assigned one or more activity instances, a user can perform these
+activities by completing the work items in his worklist.</p>
+<p>Hence, there is a distinction between</p>
+<ul>
+    <li>roles and organizations, which are visible both in the modeling as well as
+    in the runtime environment,</li>
+    <li>users who are visible only in the runtime environment and</li>
+    <li>model elements that are visible only in the modeling environment.</li>
+</ul>
+<p>Consequently, in your modeling environment you use roles and organizations.
+Individual human performers are created and assigned to these roles in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> or console administration tools or via embedding application.</p>
+<p>The following sections describe the usage of participants in
+the Process workbench:</p>
+<ul>
+    <li><a href="#rep">Representation in the Process Workbench</a></li>
+    <li><a href="#org">Organizations</a></li>
+    <li><a href="#role">Roles</a></li>
+    <li><a href="#condPerformers">Conditional Performers</a></li>
+    <li><a href="#associate">Establishing Associations between Organizational Elements</a></li>
+    <li><a href="#refpart">Working with Referenced Participants</a></li>
+</ul>
+
+<h3>Participant IDs</h3>
+<p>Please note that IDs containing hyphens, blanks or dots and IDs starting with 
+digits are not supported.</p>
+<p>IDs for participants have to be unique within all model participants like roles, organizations
+or conditional performer. When trying to add a duplicate ID, this is indicated in
+the participant properties page:</p>
+<p class="image"><img src="images/error-duplicate-id-prop.png" alt=""> <br>
+<strong>Figure:</strong> Duplicate ID indicated in Properties Page</p>
+<p>The <strong>Problems View</strong> also shows the following error entry:</p>
+<p class="image"><img src="images/error-duplicate-id-org.png" alt=""> <br>
+<strong>Figure:</strong> Duplicate ID indicated in Problems View.</p>
+
+<h2 id="rep">Representation in the Process Workbench</h2>
+<p>In the <strong>Process Workbench</strong>, a participant may be represented,
+depending on the type of resource, by one of the symbols:</p>
+<ul>
+    <li><img class="noborder" src="images/role-icon.png" alt=""> - Role</li>
+    <li><img class="noborder" src="images/cond-perf-icon.png" alt=""> - Conditional Performer</li>
+    <li><img class="noborder" src="images/organization-icon.png" alt=""> - Organization</li>
+</ul>
+<p>Participants are represented in the Outline view as in the following 
+figure:</p>
+<p class="image"><img src="images/participants-outline.png" alt=""> <br>
+<strong>Figure:</strong> Representations of Participants in the Outline View</p>
+<p>In diagram, participants are represented as displayed in the following 
+figure:</p>
+<p class="image"><img src="images/participants-diagram.png" alt=""> <br>
+<strong>Figure:</strong> Participants represented in a Diagram.</p>
+
+<!--
+<p>One more symbol is used in the figure above, the symbol representing <tt>motu</tt>.
+This symbol is used to represent a modeler, who has access to models created with the <strong>Process
+Workbench</strong>. Modelers are not participants, which means they cannot start or execute
+processes. They are a pure modeling concept with no semantic meaning at runtime.</p>-->
+
+<!-- participant Modeler might be reimplemented in a later release
+<h2  >
+    Creating and Deleting Modelers</h2>
+<P  >
+Modelers are users who have the permission to work on the model. They must be created by the administrator in the <strong>Process Workbench</strong>. A modeler must authorize himself with a modeler ID and password before he is permitted to create or modify a version of the model.</P>
+<P  >
+To create a modeler, you have to open the model as an administrator. </P>
+<UL>
+<LI  >
+In the <strong>Participant</strong> section of the <strong>Outline</strong> view area, select the model element and open its pop-up menu by right-clicking on it.</LI>
+<LI  >
+Choose the option  <strong>New Participant &gt; New Modeler</strong>.
+</LI>
+</UL>
+<P  >&nbsp;</P>
+ 
+<p class="image"><img src="images/mg-defdesk-33.png">
+<br><strong>Figure:</strong>	Creation of a New Modeler</p>
+   <P  >
+A new symbol <strong>Modeler 1</strong> will appear in the <strong>Outline</strong> view under the <strong>Participants</strong> tree. To configure the modeler, double-click the symbol and change the modeler's properties.</P>
+   <P  >
+To delete a modeler, select its symbol in the tree view and use the option 
+<strong>Delete </strong> in its pop-up menu.</P>
+ -->
+
+<h2 id="org">Organizations</h2>
+<p>An organization element represents a group of resources. For example, a department or any organizational unit. 
+This section describes which properties are provided and how to work with organization elements in the modeler.</p>
+<h3>General Properties</h3>
+<p>The <strong>General</strong> properties entry contains:</p>
+<ul>
+    <li><strong>Element OID</strong> - An auto generated ID of the element</li>
+    <li><strong>Name</strong></li>
+    <li><strong>ID</strong> - please note that the ID has to be unique within all model participants. IDs containing
+    hyphens, blanks or dots and IDs starting with digits are not supported.</li>
+    <li><strong>Visibility Public</strong> - If you select the Visibility Public check box, the organization becomes visible and 
+    available for reference from any other model. For more information, please refer to <a href="mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="mg-preferences.html">Setting Process Manager 
+   Preferences</a> chapter. By default, this check box is selected.</li>
+   <li><strong>Description</strong> - You can add description for the organization.</li>
+</ul>
+
+<h3>Creating and Deleting Organizations</h3>
+<p>To create an organization you can either:</p>
+<ul>
+    <li>Select <strong>Participants</strong> in the diagram <a
+        href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a> and from the
+    pop-up menu <strong>Organization</strong>. Then move the cursor to the diagram canvas
+    to place the organization symbol there. The organization is created by subsequently
+    clicking on the canvas.</li>
+    <li>In the <strong>Participants</strong> section of the <a
+        href="model-views/views-outline.html">Outline view</a> area, select <strong>New
+    &gt; New Organization</strong> from the pop-up menu. The created organization will appear in
+    the tree view.</li>
+    <li>Or in the <strong>Outline</strong> view, select the model and from its pop-up
+    menu <strong>New Participant &gt; New Organization</strong>.</li>
+</ul>
+<p>When deleting organizations, you must make a distinction between deleting an
+organization from the model information or only deleting a symbol from a diagram. To do
+the first - delete an organization from the model - you proceed as follows:</p>
+<ul>
+    <li>Having selected the symbol of the organization in the <strong>Participants</strong>
+    tree of the <strong>Outline</strong> view, choose the option <strong>Delete</strong>
+    in the pop-up menu of this organization.</li>
+    <li>Having selected the symbol of the organization in a diagram, choose the
+    option <strong>Delete </strong> in the pop-up menu of this organization.</li>
+</ul>
+<p>The option <strong>Delete Symbol</strong> in the pop-up menu called from within
+the diagram canvas will only remove the organization symbol from the diagram.</p>
+
+<h3 id="binding">Department Binding</h3>
+<p>It is possible for organizations to add a department scope which is 
+evaluated at runtime. This department scope is described as a data path
+ to process data which returns a scope key to identify a department representing 
+ this scope.</p>
+<p>In the <strong>Department Binding</strong> section you can determine
+that the organization is allowed to support departments by enabling the checkbox
+<strong>Organization supports departments.</strong>.</p>
+<p class="image"><img src="images/mg-org-prop-binding.png" alt="Runtime Binding">
+<br>
+<strong>Figure:</strong> Department Binding</p>
+<p>Once the checkbox is enabled, a new field opens, where you can enter
+data for the department OID. It is possible to select one of the following
+two data types:</p>
+<ul>
+    <li>a primitive data of type <tt>String</tt> without access path.
+    <p class="image"><img src="images/mg-org-prop-depart-2.png" alt=""></p></li>
+    <li>a structured data and an access path evaluating to String.
+    <p class="note"><strong>Note</strong><br>
+    the data path should be an element (type String) of the structured data and not be using
+    methods as dereferentiation path.</p>
+    <p class="image"><img src="images/mg-org-prop-depart-1.png" alt=""></p></li>
+</ul>
+<h3 id="orgcontr">Controlling Parameter for Organizations</h3>
+<p>You can set a <strong>Cost Center</strong> controlling parameter
+for organizations.</p>
+<p class="image"><img src="images/org-props-controlling.png" alt="Controlling">
+<br>
+<strong>Figure:</strong> Controlling Parameter for Organizations<br />
+<h3 id="task">Task Assignment</h3>
+<p>In the properties dialog of the organization you can choose how the task assignment
+is performed:</p>
+<ul>
+    <li>Select <strong>Task Assignment</strong> in the properties dialog.</li>
+    <li>Choose the mode for task assignment. You have the choice 
+    to treat the participant by automatic
+    assignment (<tt>Assign Automatically</tt>) or by worklist selection (<tt>Choose
+    Assignment</tt>).</li>
+</ul>
+<p class="image"><img src="images/mg-task-assignment-org.png" alt="Task Assignment">
+<br>
+<strong>Figure:</strong> Task Assignment of an Organization<br />
+&nbsp;</p>
+<h3>Simulation</h3>
+<p>In this section you can specify simulation configurations, as described detailed in the chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Stardust Simulation Guide</a>.)</p>
+<h3>Effort Planning</h3>
+<p>In this section you can set the organization complexity for project effort calculation:</p>
+<p class="image"><img src="images/organization-prop-effort.png" alt=""> <br>
+<strong>Figure:</strong> Effort Planning Property of an Organization</p>
+<p>Please refer to the chapter <a href="process-effort-calculation.html">Project Effort Calculation</a> for
+detailed information on this functionality.</p>
+<h2 id="role">Roles</h2>
+
+<p>A role denotes the responsibility assigned to the participants. Following
+sections provide information on how to work with roles.</p>
+
+<h3>General Properties</h3>
+<p>The <strong>General</strong> properties entry contains:</p>
+<ul>
+    <li><strong>Element OID</strong> - An auto generated ID of the element</li>
+    <li><strong>Name</strong></li>
+    <li><strong>ID</strong> - please note that the ID has to be unique within all model participants. IDs containing
+    hyphens, blanks or dots and IDs starting with digits are not supported.</li>
+    <li><strong>Visibility Public</strong> - If you select the Visibility Public check box, the participant becomes visible and 
+    available for reference from any other model. For more information, please refer to <a href="mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="mg-preferences.html">Setting Process Manager  
+   Preferences</a> chapter.  
+    By default, this check box is selected.</li>
+    <li><a href ="#cardinality">Cardinality</a></li>
+    <li><strong>Description</strong> - You can add description for the role.</li>
+</ul>
+
+<h3>Creating and Deleting Roles</h3>
+<p>To create a role you can either:</p>
+<ul>
+    <li>Select <strong>Participants</strong> in the diagram <a
+        href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a> and from the
+    pop-up menu <strong>Role</strong>. Then move the cursor to the diagram canvas to place
+    the role symbol there. The role is created by subsequently clicking on the canvas.</li>
+    <li>In the <strong>Participants</strong> section of the <a
+        href="model-views/views-outline.html">Outline view</a> area, select <strong>New
+    &gt; New Role</strong> from the pop-up menu. The created role will appear in the tree view.</li>
+    <li>Or in the <strong>Outline</strong> view, select the model and from its pop-up
+    menu <strong>New Participant &gt; New Role</strong>.</li>
+</ul>
+<p>When deleting roles you must make a distinction between deleting a role from the
+model information or only deleting a symbol from a diagram. To do the first - delete a
+role from the model - you proceed as follows:</p>
+<ul>
+    <li>Having selected the symbol of the role in the <strong>Participants</strong>
+    tree of the Outline view, choose the option <strong>Delete </strong> in the pop-up
+    menu of this role.</li>
+    <li>Having selected the symbol of the role in a diagram, choose the option <strong>Delete
+    </strong> in the pop-up menu of this role.</li>
+</ul>
+<p>The option <strong>Delete Symbol </strong> in the pop-up menu called from within
+the diagram canvas will only remove the role symbol from the diagram.</p>
+
+<h4 id="cardinality">Cardinality</h4>
+<p>You can define the cardinality of roles in the properties dialog. Type in the
+maximum users that can be assigned to this role in the <strong>Cardinality</strong> entry
+field.</p>
+<p class="image"><img src="images/mg-role-cardinality.png" alt="Cardinality"> <br>
+<strong>Figure:</strong> Setting the Cardinality<br /></p>
+<h3>Controlling Parameters for Roles</h3>
+<p>The following controlling parameters are provided for roles:</p>
+<ul> 
+    <li><strong>Working Weeks Per Year:</strong> number of working weeks per year.</li>
+    <li><strong>Actual Cost Per Minute:</strong> actual cost per minute.
+    This property is used for calculation of the average costs displayed in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/bcc-views-costs.html">
+       Cost and Controlling View</a> in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+       Stardust Portal</a>.</li>
+    <li><strong>Target (System) Worktime Per Day:</strong> target system worktime 
+    per day in minutes.</li>
+    <li><strong>Target Worktime Per Week:</strong> target worktime per week in 
+    hours.</li>
+    <li><strong>Target Queue Depth</strong></li>
+</ul>
+<p class="image"><img src="images/role-props-controlling.png" alt="Controlling">
+<br>
+<strong>Figure:</strong> Controlling Parameters for Roles<br />
+<h3>Task Assignment</h3>
+<p>In the properties dialog of the role you can choose how the task assignment is
+performed:</p>
+<ul>
+    <li>Select <strong>Task Assignment</strong> in the properties dialog.</li>
+    <li>Choose the mode for task assignment. You have the choice of <tt>Choose
+    Assignment</tt> or <tt>Assign Automatically</tt>.</li>
+</ul>
+<p class="image"><img src="images/mg-task-assignment.png" alt="Task Assignment">
+<br>
+<strong>Figure:</strong> Task Assignment of a Role<br />
+&nbsp;</p>
+
+<h3>Simulation</h3>
+<p>In this section you can specify simulation configurations, as described detailed in the chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Stardust Simulation Guide</a>.)</p>
+<h3>Effort Planning</h3>
+<p>In this section you can set the role complexity for project effort calculation:</p>
+<p class="image"><img src="images/role-prop-effort.png" alt=""> <br>
+<strong>Figure:</strong> Effort Planning Property of a Role</p>
+<p>Please refer to the chapter <a href="process-effort-calculation.html">Project Effort Calculation</a> for
+detailed information on this functionality.</p>
+<h2 id="condPerformers">Conditional Performers</h2>
+<p>The conditional performer is evaluated at runtime and it determines the identity of the actual performer.
+The following sections help you to work with conditional performers.</p> 
+<h3>Creating and Deleting Conditional Performers</h3>
+<p>To create a conditional performer you can either:</p>
+<ul>
+    <li>Select <strong>Participants</strong> in the diagram <a
+        href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a> and from the
+    pop-up menu <strong>Conditional Performer</strong>. Then move the cursor to the
+    diagram canvas to place the symbol for the conditional performer there. The
+    conditional performer is created by subsequently clicking on the canvas.</li>
+    <li>In the Participants section of the <a
+        href="model-views/views-outline.html">Outline view</a> area, select <strong>New
+    &gt; New Conditional Performer </strong>from the pop-up menu. The created conditional performer
+    will appear in the tree view.</li>
+    <li>Or in the Outline view, select the model and from its pop-up menu <strong>New
+    Participant &gt; New Conditional Performer.</strong></li>
+</ul>
+<p>As described in the chapter <a href="../../concepts/workflow-basics/mg-basics-9.htm">Participants and Users</a>,
+the <a href="../../glossary.html#oid">OID</a> or respectively 
+<a href="../../glossary.html#id">ID</a> of the performer assigned dynamically at runtime is passed to
+the Stardust resource.</p>
+<h3>General Properties</h3>
+<p>Following are the General properties of conditional performer:</p>
+<ul>
+	<li>Element OID - Auto generted OID of the element</li>
+	<li>Name</li>
+	<li>ID - please note that the ID has to be unique within all model participants. IDs containing hyphens, blanks or dots and IDs starting with digits are not supported.
+	</li>
+	<li>Visibilty Public - If you select the Visibility Public check box, the conditional performer becomes visible and 
+    available for reference from any other model. For more information, please refer to <a href="mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="mg-preferences.html">Setting Process Manager
+   Preferences</a> chapter. By default, this check box is selected.</li>
+</ul>
+<p class="image"><img
+    src="images/conditional-general.png" alt=""><br>
+<strong>Figure:</strong> Conditional Performer - General Properties</p>
+
+<h3>Runtime Binding</h3>
+<p>Among the conditional performer's properties, there is also the distinction
+between an individual user of the runtime environment and a performer defined in the
+modeling environment (corresponding to a role or organization) used as a conditional
+performer. This distinction has to be made in the same properties dialog. Click <strong>Runtime
+Binding</strong> to define the performer as a user, organization/role or user group and choose the
+data and optional data path to provide the performer's identity.</p>
+<p>In the <strong>Kind</strong> drop-down list, define the performer as one
+of the following:</p>
+<ul>
+    <li>User</li>
+    <li>Organization/Role</li>
+    <li>User Group</li>
+    <li>Organization/Role or User Group</li>
+</ul>
+<p class="image"><img
+    src="images/mg-performer-props.png" alt=""><br>
+<strong>Figure:</strong> Specifying a Conditional Performer</p>
+<h4>Oid/Id</h4>
+<p>In the <strong>OID/Id</strong> section, choose the data and data path providing 
+the performer identity.</p>
+<p class="image"><img src="images/mg-org-cond-perf-oid.png" 
+    alt="Conditional Performer Properties"><br>
+<strong>Figure:</strong> Conditional Performer</p>
+
+<p class="note"><strong>Note</strong><br>In case the data is of type <strong>Long</strong>, the value is used to identify the
+OID of the performer, as thus it refers to a user. If the data is of type <strong>String</strong>,
+the value is used to identify the Id of the performer, as this has to be a role in that case.</p>
+<h4>User Realm</h4>
+<p>If the conditional performer is defined as a user, an additional field appears to
+fill in the users <a href="../../concepts/admin-concepts/ag-multipartition.htm#realm">realm</a>
+data. <br>
+&nbsp;</p>
+<p class="image"><img src="images/mg-performer-props-realm.png" alt=""><br>
+<strong>Figure:</strong> Specifying a Conditional Performer as User</p>
+<h4>Using the Last Activity Performer data</h4>
+<p>The <strong>Last Activity Performer</strong> data usage determines that the
+performer is used as a computed value. The algorithm for a specific process
+instance is as follows:</p>
+<ol>
+    <li>Select all <tt>COMPLETED</tt> activity instances belonging
+    to the specific process instance, ordered descending by the last modification time.</li>
+    <li>Traverse the result and select the first interactive activity instance.</li>
+    <li>Return the user of that activity.</li>
+</ol>
+<p class="note"><strong>Note</strong><br>
+Please note that in case the activity is the first activity in the work flow,
+there would be no <strong>Last Activity Performer</strong>.
+If an activity other than the first one is unable to retrieve
+the last activity performer due to the transaction isolation level <tt>COMMITMENT</tt>,
+set in the database, enable the <strong>Fork on traversal</strong> flag in the
+transition between the current and the last activities.
+Please refer to the section <a href="../../concepts/workflow-basics/mg-basics-13.htm#activityThread">Activity Thread</a> of the
+chapter <a href="../../concepts/workflow-basics/mg-basics-13.htm">Runtime Behavior</a> for detailed 
+information on the <strong>Fork on Traversal</strong>
+functionality.</p>
+<h3>Simulation</h3>
+<p>In this section you can specify simulation configurations, as described detailed in the chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Stardust Simulation Guide</a>.</p>
+<h3>Effort Planning</h3>
+<p>In this section you can set the performer complexity for project effort calculation:</p>
+<p class="image"><img src="images/performer-prop-effort.png" alt=""> <br>
+<strong>Figure:</strong> Effort Planning Property of a Conditional Performer</p>
+<p>Please refer to the chapter <a href="process-effort-calculation.html">Project Effort Calculation</a> for
+detailed information on this functionality.</p>
+<h3>Deleting Conditional Performers</h3>
+<p>When deleting conditional performers, you must make a distinction between deleting
+a conditional performer from the model information or only deleting a symbol from a
+diagram. To do the first - delete a conditional performer from the model - you proceed as
+follows:</p>
+<ul>
+    <li>Having selected the symbol of the conditional performer in the <strong>Participants</strong>
+    tree of the <a href="model-views/views-outline.html">Outline view</a>, choose the
+    option <strong>Delete </strong> in the pop-up menu of this conditional performer.</li>
+    <li>Having selected the symbol of the conditional performer in a diagram, 
+    choose the option <strong>Delete</strong> in the pop-up menu of this
+    conditional performer.</li>
+</ul>
+<p>The option <strong>Delete Symbol </strong> in the pop-up menu called from within
+the diagram canvas will only remove the symbol for the conditional performer from the
+diagram.</p>
+<h2 id="associate">Establishing Associations between Organizational Elements</h2>
+<p>Organizations are groups of human resources. Consequently, they may contain
+individual roles or subordinate organizations. Like process definitions, organizational
+hierarchies can be modeled in the Stardust Process Workbench with the help of diagrams.</p>
+<p>To model your organizations, use either diagrams bound to a process definition or
+model diagrams. A prerequisite for establishing relationships between an organization and
+its members is the existence of these elements: an organization and all its members (roles
+or smaller organizational units). Proceed as follows:</p>
+<ul>
+    <li>Place the organization symbol and the symbol representing a member of this
+    organization (e.g. a role or another organization) in a diagram.</li>
+    <li>Right-click the symbol representing a member.</li>
+    <li>Select <strong>Connect</strong> in the context menu.</li>
+    <li>Click the organization the member is going to belong to.</li>
+</ul>
+<p class="image"><img src="images/mg-connect-organizations.png" alt=""> <br>
+<strong>Figure:</strong> Making an Organization Part of Another</p>
+<p>To add further members to the organization, repeat these operations for each
+member. An example of an organizational hierarchy diagram is shown below.</p>
+<p class="image"><img src="images/organizational-diagram.png" alt=""> <br>
+<strong>Figure:</strong> A Sample Organizational Diagram</p>
+<h3>Restrictions on Associations</h3>
+<p>The following sections describe the restrictions on associations between organizational elements.</p>
+<h4>Only one relationship to other participants supported</h4>
+<p>Please note that a model participant can only have one relationship like
+<strong>Work For</strong> or <strong>Manager of</strong> to other
+participants. Otherwise the model validation fails and the 
+following error message appears in the <strong>Problems</strong> 
+view:</p>
+<p class="image"><img src="images/work-for-error-problem-view.png" alt="Problems View"> <br>
+<strong>Figure:</strong> Error indicated in Problems View</p>
+<h4>Only one relationship to other organizations supported</h4>
+<p>An organization should not be part of more than one other organization. Otherwise 
+the model validation fails and the 
+following error message appears in the <strong>Problems</strong> 
+view:</p>
+<p class="image"><img src="images/part-of-error-problem-view.png" alt="Problems View"> <br>
+<strong>Figure:</strong> Error indicated in Problems View</p>
+
+<h3 id="scope">Behavior of Scoped Organizations</h3>
+<p>Stardust supports scoping of roles, organizations and departments.
+The following sections describe what happens when the organizations are scoped.</p>
+
+<ul>
+    <li><a href="#implicit">Implicitly Scoped Roles</a></li>
+    <li><a href="#hierScop">Organizational Hierarchies and Target Departments</a></li>
+    <li><a href="#matrix">Matrix Organizations</a></li>
+    <li><a href="#deploy">Deployment Restrictions</a></li>
+</ul>
+<h4 id="implicit">Implicitly Scoped Roles</h4>
+<p>Roles are implicitly scoped via the next scoped Organization above.</p> 
+<p>When a User is assigned to an (implicitly) scoped Role, the Role 
+and the departments for all organizations, the Role has a "Works For" or "Is Manager Of" 
+relationship, have to be specified.</p>
+<h4 id="hierScop">Organizational Hierarchies and Target Departments</h4>
+<p>All Organizations and Roles underneath a scoped Organization inherit 
+the target departments of this Organization, as long as the sub-organization does not define
+a new target department. Hence, for every participant the relevant target department is the scope of the
+next scoped Organization upwards the organizational hierarchy.</p>
+<h4 id="matrix">Matrix Organizations</h4>
+<p>Stardust only allows pure tree structures for
+organizational hierarchies. Neither Roles nor Organizations may be assigned
+to more than one Organization. Matrix structures can be mapped by disjoint
+organizational structures with possibly different scopes (e.g. branch vs. project),
+whereby users might be assigned to Roles in both structures.</p>
+
+<h4>Matrix Organization - Example</h4>
+<p>
+Stardust supports the matrix organization structure at runtime. While modeling, you cannot model
+the matrix structure completely. 
+The matrix organization structure can be achieved at runtime using the process portals. You need to create
+departments in the Administration perspective to make a complete matrix structure.</p> 
+<p>The following diagram displays the sample structure created at the modeler level.
+In the organization structure diagram, we have four organizations - M1 Project Orga, M2 Project Leader Orga, M1 Test Orga and M1 Development Orga.
+Each of these organizations has roles defined. The <strong>M1 Project Manager</strong> is the manager of <strong>M1 Project Organization</strong>. 
+The <strong>M3 Project Member</strong> works for <strong>M2 Project Leaders Organization</strong>.
+These two organizations - the <strong>M1 Project Organization</strong> and <strong>M2 Project Leaders organizations</strong> are connected. The <strong>M2 Test Engineer Organization</strong> 
+works for <strong>M1 Test organization</strong> and <strong>M1 Test Manager</strong> is the manager of the <strong>M1 Test Organization</strong>. 
+
+We cannot connect one role to multiple organizations directly. That's why we need to create departments and assign users to roles. 
+To achieve the same scenario, three red arrows are used to indicate that you need to create department <strong>Project A</strong> in the <strong>M1 Test organization</strong> and department 
+<strong>Project A and Project B</strong> in the <strong>M2 Leaders Organization</strong>.</p>
+
+<p class="image"><img src="images/SamsaModel_MatrixOrgaStructure.png" alt="Sample Matrix Model">
+<br>
+<strong>Figure:</strong> Sample Model for Matrix Organization</p>
+<h4 id="deploy">Deployment Restrictions</h4>
+<p>Note that restrictions exist for deploying a model
+with changes in the department association for existing roles or organizations,
+to a succeeding model version.
+Please refer to the section 
+<a href="mg-deploy-model.html#structure">Changes in the organizational structure</a>
+of the
+<a href="mg-deploy-model.html#consistency">Consistency Checks</a>
+part in the chapter
+<a href="mg-deploy-model.html">Deploying a Workflow Model</a>
+for detailed information on which changes are supported and which will lead to
+a consistency error.</p>
+<h3 id="teamLeader">The Team Leader Role</h3>
+<p>A role can be assigned as team leader to an organization. Please refer to the 
+section <a href="../../concepts/workflow-basics/mg-basics-9.htm#teams">Teams</a> of the chapter
+<a href="../../concepts/workflow-basics/mg-basics-9.htm">Participants and Users</a> for
+a detailed description on the definition of a team.</p>
+<p>There can only be one
+team leader per organization. In case no team leader is associated to an organization
+yet, you are offered the following two types of connection:</p>
+<ul>
+    <li>Works For</li>
+    <li>Manager Of</li>
+</ul>
+<p>The <strong>Works For</strong> connection is a simple assignment of a role to an
+organization, whereas the <strong>Manager Of</strong> connection defines the role to be the
+organizations team leader.</p>
+<p class="image"><img src="images/mg-connect-teamleader.png"
+    alt="Team Leader Connection"> <br>
+<strong>Figure:</strong> Connecting a Role as Team Leader</p>
+<p>The connect transition between a team leader and an organization is displayed as a
+dashed line.</p>
+<p class="image"><img src="images/mg-teamleader-transition.png"
+    alt="Team Leader Connection"> <br>
+<strong>Figure:</strong> Connect Transition between Team Leader and Organization</p>
+<p>In the
+<strong>Business Control Center Perspective</strong> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>,
+the team leader has an overview over the activities
+of all users belonging to the same organization the team leader belongs to.</p>
+<h4>Invalid Teamlead connection</h4>
+<p>In case an organization has an invalid teamlead connection, e.g. it
+has a teamlead connection, but the team leader is not set in the model file,
+an error indicates this in the <strong>Problems View</strong>.</p>
+<p class="image"><img src="images/teamlead-error.png"
+    alt="Team Leader Connection Error"> <br>
+<strong>Figure:</strong> Connection Error displayed in the Problems View.</p>
+<p>You have the option to use the provided <strong>Quick Fix</strong>
+functionality for quickly fixing this error. Right-click the error entry and 
+choose the <strong>Quick Fix</strong> option in the drop-down menu.</p>
+<p class="image"><img src="images/teamlead-error-quick-fix-1.png"
+    alt="Team Leader Connection Error"> <br>
+<strong>Figure:</strong> Select Quick Fix to fix the Error.</p>
+<p>The <strong>Quick Fix</strong> dialog opens, where you can fix the 
+teamlead connection for the organization.</p>
+<p class="image"><img src="images/teamlead-error-quick-fix-2.png"
+    alt="Quick Fix Dialog"> <br>
+<strong>Figure:</strong> Quick Fix Dialog</p>
+<h2>Assigning Processes Restricted by Role and Organization</h2>
+<p>In case you want the admin user to view all the processes in the model whereas the other user/role
+should start only a specific process. For example, you have a model which contains four
+processes P1, P2, P3 and P4. The process P1 and P2 display the data whereas P3 and P4 update of data.
+The model has two participants that are Admin and Teller.</p>
+<p>Suppose you want the Admin user to start all the four processes and the Teller user to start only two processes
+that are P1 and P2.</p>
+<p>To achieve this, define an organization A and make the roles Admin and Teller Works for organization A. Then
+assign the manual start trigger of P1 and P2 process to organization and manual start trigger of P3 and
+P4 to Admin role.</p>
+
+<h2 id="refpart">Working with Referenced Participants</h2>
+<p>When the provider-consumer relationship is established between two models, the participants 
+of the provider model can be referenced in the consumer model. To reference the participants, 
+perform the following steps:</p>
+
+<ol>
+	<li>From the <strong>Outline View</strong> of the consumer model, drag the referenced participant from the <strong>File Connection</strong> node
+   <p class="image"><img src="images/refparticipant.png"
+    alt="Participant Available for Reference"> <br>
+   <strong>Figure:</strong> Participant Available for Reference</p></li>
+	<li>Drop the referenced participant to the diagram canvas</li>
+	<li>Assign manual trigger or activity to the participant</li>
+</ol>
+<p>When you drag-and-drop the referenced participant the reference is created and the referenced model participant
+appears in the locally defined model participant.
+
+<p class="image"><img src="images/outline-participant.png"
+    alt="Participant Available for Reference"> <br>
+<strong>Figure:</strong> Participant Available for Reference</p>
+<p>For more information, please refer to the section <a href="mg-registry.html#fileConn">Referencing Model Elements</a> of the 
+<a href="mg-registry.html">External Model Resources</a> chapter.</p>
+
+<p>Note that if the participant with identical ID already exists in the consumer or referencing 
+model then you cannot refer the participant of the provider or referenced model. Similarly, you cannot
+create a participant in the consumer model, if the participant with identical ID is in use as a 
+reference from a provider model. In such a case, a model validation error is displayed.</p>
+<p>For more information, please refer to the section <a href="mg-deploy-model.html#consistency">Consistency Checks</a> 
+of the <a href="mg-deploy-model.html">Deploying a Workflow Model</a> chapter.
+</p>
+<p>Also, the following dialog is displayed in case the referenced participant ID 
+is identical with the consumer participant and you try to drag and drop the referenced participant. 
+If you click Ok, only the selected element is imported by reference. 
+If the organization has sub-organizations, then those sub-organizations do not get imported by reference. </p>
+
+<p class="image"><img src="images/conflict-replace.png"
+    alt="Conflict - Replace"> <br>
+<strong>Figure:</strong> Conflict - Replace</p>
+
+	
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

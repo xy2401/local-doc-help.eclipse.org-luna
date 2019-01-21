@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Entity Bean Data</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"serializable-data.html","",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../mg-preface.htm","Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../mg-integration-2.htm","Working with Java Style Data Types");
+ -->
+</script>
+<h1>Entity Bean Data</h1>
+<p>While using a separate data store for the actual data, Entity Beans have to use
+the audit trail to store their primary key value in the <tt>data_value</tt> table for
+later dereferentiation of the Entity Bean.</p>
+<p>To specify an Entity Bean data:</p>
+<ul>
+    <li>Create a new entity bean data model element as described in 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/modelling/mg-defdesk-7.htm">Specifying Data</a>.</li>
+    <li>Open the data properties dialog and select the <strong>Entity Bean</strong>
+     entry in the data type combo box.</li>
+    <li>Select the EJB mode (<a href="#ejb2">EJB 2.x</a> or <a href="#ejb3">EJB 3.x</a>).</li>
+</ul>
+<h2 id="ejb2">EJB 2.x</h2>
+<p>Set the following properties:</p>
+<ul>
+    <li>Remote Interface Class</li>
+    <li>Home Interface Class</li>
+    <li>Primary Key Class</li>
+    <li>JNDI Path</li>
+</ul>
+
+<p class="image"><img src="images/mg-integration-4.png" alt=""><br>
+<strong>Figure:</strong> Data Properties Dialog for Entity Bean Data</p>
+<h3>Local Binding</h3>
+<p>To test a local class as a mock Entity Bean, check the <strong>Local
+binding</strong> check box. The implementation has to implement a dummy home class implementation
+with a <tt>create()</tt> and a <tt>findByPrimaryKey()</tt>implementation.</p>
+<h2 id="ejb3">EJB 3.x</h2>
+<p>The EJB 3.0 mode allows to select a bean class from the Eclipse class browser,
+satisfying the requirements for an JPA entity bean class.</p>
+<p>Access points of the data type are derived from the union of all methods of 
+the business interfaces of this bean class.</p>
+<p class="image"><img src="images/entity-bean-data-ejb3.png" alt="Entity Bean Data EJB 3.x"> <br>
+<strong>Figure:</strong> Data Properties Dialog for Entity Bean Data EJB 3.x</p>
+<p>The following fields are filled if you select an JPA class with information 
+from the annotations:</p>
+<ul>
+    <li>PrimaryKey Type</li>
+    <li>PrimaryKey Class</li>
+    <li>PrimaryKey Elements</li>
+</ul>
+<p>These fields are read only. Please refer to the section 
+<a href="#primKeys">Primary Key Examples</a> for detailed examples about the information
+provided in these fields.</p>
+<p>For a demonstration on how to use this data type, refer to chapter
+<a href="../../../others/howto/entity-data.html">How to use the EJB3 Entity Data Type</a>.</p>
+<h3>Bean Class</h3>
+<p>Enter the bean class with the Eclipse class browser entry. Arbitrary classes 
+can selected.</p>
+<p>Note that if the selected class does not satisfy the JPA entity requirements
+an error status is displayed.</p><!-- TODO: example -->
+<h4>Compliance Rules</h4>
+<p>The following compliance rules for <a href="../../../../glossary.html#jpa">JPA</a>
+classes are applied to the validation:</p>
+<ul>
+    <li>The entity class must have a no-argument constructor. The entity class may have
+        other constructors as well.</li>
+    <li>The no-argument constructor must be public or protected.</li>
+    <li>The entity class must be a top-level class. An enum or interface should 
+        not be designated as an entity.</li>
+    <li>The entity class must not be final. No methods or persistent instance 
+        variables of the entity class may be final.</li>
+    <li>If an entity instance is to be passed by value as a detached object 
+        (e.g., through a remote interface), the entity class must implement the 
+        Serializable interface.</li>
+    <li>Entities support inheritance, polymorphic associations, and polymorphic queries.</li>
+    <li>Both abstract and concrete classes can be entities. Entities may extend 
+        non-entity classes as well as entity classes, and non-entity classes may
+        extend entity classes.</li>
+</ul>
+<h3>Entity Manager</h3>
+<p>The Entity Manager is the main runtime class of the JPA runtime API. The following
+options are provided to create the Entity Manager:</p>
+<ul>
+    <li><a href="#jndi">JNDI</a></li>
+    <li><a href="#factory">FactoryJNDI</a></li>
+    <li><a href="#unit">UnitName</a></li>
+</ul>
+<p class="image"><img src="images/int-entity-manager-choice.png" alt="Entity Manager Field"> <br>
+<strong>Figure:</strong> Entity Manager Field</p>
+<p>Per default the JNDI lookup is used.</p>
+<p class="note"><strong>Note</strong> that
+currently only JNDI is supported to look up the entity manager.</p>
+<h4>Restrictions</h4>
+<p>Momentarily the usage of JPA is supported 
+only on JBoss, as for other application servers, e.g. WebLogic, the EntityManagers and
+EntityManagerFactories cannot be bound in the global JNDI.</p>
+<p>In JBoss, the EntityManager and EntityManagerFactories can be bound
+in the global JNDI by setting appropriate properties in the
+<tt>persistence.xml</tt> file, as described in the section <a href="#factory">Factory JNDI</a>.</p>
+<h4 id="jndi">JNDI</h4>
+<p>If you choose <strong>JNDI</strong>, the Entity Manager is looked up in the JNDI path.
+Use the JNDI name specified in the persistence-unit part in the
+<tt>persistence.xml</tt> file, residing in the <tt><nobr>WEB-INF</nobr></tt> folder of your
+Web application. For example:</p>
+<pre>
+    &lt;persistence-unit name="DemoProject"&gt;
+    ...
+    &lt;properties&gt;
+        &lt;property name="jboss.entity.manager.jndi.name" value="java:/DemoProject_JPA" /&gt; 
+        ...
+    &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+</pre>
+<p class="image"><img src="images/entity-bean-data-jndi.png" alt="JNDI"> <br>
+<strong>Figure:</strong> Setting JNDI Properties</p>
+
+<h4 id="factory">Factory JNDI</h4>
+<p>In case you choose <strong>FactoryJNDI</strong>, the Entity Manager is accessed
+from an Entity Manager factory. The name of the factory is specified in the
+<tt>persistence.xml</tt> file, e.g.:</p>
+<pre>
+&lt;persistence-unit name="DemoProject_JPA"&gt;
+    ...
+    &lt;properties&gt;
+        &lt;property name="jboss.entity.manager.jndi.name" value="java:/DemoProject_JPA" /&gt; 
+        &lt;property name="jboss.entity.manager.factory.jndi.name" value="java:/DemoProject_JPA_factory" /&gt; 
+        ...
+    &lt;/properties&gt;
+&lt;/persistence-unit&gt;
+</pre>
+<p class="image"><img src="images/entity-bean-data-jndifactory.png" alt="FactoryJNDI"> <br>
+<strong>Figure:</strong> Setting FactoryJNDI Properties</p>
+
+<h4 id="unit">Unit Name</h4>
+<p>If you choose <strong>UnitName</strong>, the Entity Manager will be created 
+from the unit name specified in the <tt>persistence.xml</tt> file, residing in 
+the <tt><nobr>WEB-INF</nobr></tt> folder of your Web application.
+The entry field name <strong>JNDI Path</strong> changes automatically to 
+<strong>Unit Name</strong>. For example:</p>
+<pre>
+&lt;persistence-unit name="DemoProject_JPA"&gt;
+    ...
+&lt;/persistence-unit&gt;
+</pre>
+<p class="image"><img src="images/entity-bean-data-unitname.png" alt="UnitName"> <br>
+<strong>Figure:</strong> Setting Unit Name Properties</p>
+<h3 id="primKeys">Primary Key Examples</h3>
+<h4>Simple Id Annotation on a Field</h4>
+<p>This example uses a bean <tt>CustomerBean</tt> to demonstrate the simple Id 
+annotation on a field:</p>
+<pre>
+@Entity
+public class CustomerBean
+{
+    @Id
+    private Long id;
+    
+    private String name;
+    
+    public Long getId()
+    {
+        return id;
+    }
+    
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+    ...
+}
+</pre>
+<p>The fields are filled with the following information:</p>
+<p class="image"><img src="images/int-simple-id-annotation.png" alt="Simple Id Annotation on a Field"> <br>
+<strong>Figure:</strong> Simple Id Annotation on a Field</p>
+<h4>Simple Id Annotation on a Property</h4>
+<p>This example uses a bean <tt>ProductBean</tt> to demonstrate the simple Id 
+annotation on a property:</p>
+<pre>
+@Entity
+public class ProductBean
+{
+    private Long id;
+    
+    private String name;
+    
+    private Double price;
+    
+    @Id
+    public Long getId()
+    {
+        return id;
+    }
+    
+    public void setId(Long id)
+    {
+        this.id = id;
+    }    
+    ...
+}
+</pre>
+<p>The fields are filled with the following information:</p>
+<p class="image"><img src="images/int-simple-id-annotation-prop.png" alt="Simple Id Annotation on a Property"> <br>
+<strong>Figure:</strong> Simple Id Annotation on a Property</p>
+<h4>Composite Primary Key on Multiple Fields (IdClass)</h4>
+<p>This example uses a bean <tt>OrderBean</tt> to demonstrate the composite primary
+key on multiple fields (IdClass):</p>
+<pre>
+@IdClass(OrderPK.class)
+@Entity
+public class OrderBean
+{
+    @Id
+    private Long customerId;
+    
+    @Id
+    private Long productId;
+    
+    private Long amount;
+
+    public Long getCustomerId()
+    {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId)
+    {
+        this.customerId = customerId;
+    }
+    ...
+}
+</pre>
+<p>The fields are filled with the following information:</p>
+<p class="image"><img src="images/int-composite-key.png" alt="Composite Primary Key on Multiple Fields"> <br>
+<strong>Figure:</strong> Composite Primary Key on Multiple Fields</p>
+<h4>Composite Primary Key on a Single Field (EmbeddedId)</h4>
+<p>This example uses a bean <tt>OrderBean2</tt> to demonstrate the composite primary
+key on multiple fields (IdClass):</p>
+<pre>
+@Entity
+public class OrderBean2
+{
+    @EmbeddedId
+    private OrderPK pk;
+    
+    private Long amount;
+
+    public OrderPK getPk()
+    {
+        return pk;
+    }
+
+    public void setPk(OrderPK pk)
+    {
+        this.pk = pk;
+    }
+    ...
+}
+</pre>
+<p>The fields are filled with the following information:</p>
+<p class="image"><img src="images/int-composite-single.png" alt="Composite Primary Key on a Single Field"> <br>
+<strong>Figure:</strong> Composite Primary Key on a Single Field</p>
+
+<h2>Instantiating Entity Bean Data Type</h2>
+<p>Stardust supports instantiation of the entity bean via a bean method
+creation defined in a session bean application before it can be used as the data type in the process.
+In the following example, the complete method of the session bean is set to createBmpEntity and 
+then the return value; the created entity bean is set via out data mapping to the entity bean data
+defined in the model.</p>  
+<pre>public BmpEntity createBmpEntity(String aString) throws RemoteException
+   {
+      InitialContext ic = null;
+      Object obj = null;
+      BmpEntity bmpEntity = null;
+      try
+      {
+         ic = new InitialContext();
+         obj = ic.lookup("com.example.hydra.entitybean.bmp.BmpEntity");
+
+         BmpEntityHome home = (BmpEntityHome) PortableRemoteObject.narrow(obj,
+               BmpEntityHome.class);
+         bmpEntity = home.create(aString);
+      }
+      catch (Exception ex)
+      {
+         System.out.println(ex.getMessage());
+      }
+      return bmpEntity;
+   }
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

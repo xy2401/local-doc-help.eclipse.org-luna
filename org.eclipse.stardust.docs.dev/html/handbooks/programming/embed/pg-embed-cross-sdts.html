@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Using Cross-Model Type Declarations with custom Clients</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Document Management",
+        "proc-act-inst/procs-preface.html","documents/docs-preface.html",
+      "../../handbooks.htm","Developer Handbook",
+      "../pg-preface.htm","Programming Guide",
+      "pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Using Cross-Model Type Declarations with custom Clients</h1>
+<p>If a local type declaration with a schema defined directly in the model, is declaring an 
+element with the type defined in another model as an external reference, 
+the client using that type declaration ( via <tt>((SchemaType) typeDeclaration.getXpdlType()).getSchema())</tt>
+must ensure that the client side schema is properly resolved.</p>
+<p>This can be achieved by installing a custom schema resolver in the corresponding model
+before the type declaration is obtained.</p>
+<h2>Example</h2>
+<p>The following code shows an example installing a custom schema resolver in a model:</p>
+<pre>
+if (model instanceof ModelDetails)
+{
+   ((ModelDetails) model).setSchemaLocatorAdapter(new ModelDetails.SchemaLocatorAdapter()
+   {
+      protected Model getModel(long oid)
+      {
+         return ... the model corresponding to the oid argument ...;
+      }
+   });
+}
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

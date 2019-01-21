@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing context buttons</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Context Buttons</h1>
+<p>Context buttons allow adding actions as small, automatically appearing icons 
+for each pictogram element in the diagram.</p>
+<p>They are shown along the borders of a pictogram element when the mouse is positioned 
+on that pictogram element. They are hidden again when the mouse is positioned outside 
+the area built by the pictogram element and the context buttons.</p>
+<p>Context buttons can provide the same functionality as a
+<a href="context-menu.htm">context menu</a>, but in a nicer and quicker way: the 
+context buttons are shown immediately. Another advantage of context buttons over 
+context menus is, that each context button can have several drag and drop features, 
+which get activated when the user drags from a context button and drops onto the 
+canvas or another object.</p>
+<h2>Enhancing the Tool Behavior Provider</h2>
+<p>Context buttons are defined in the tool behavior provider.</p>
+<p>If you didn’t do so already you must <b>first create a tool behavior provider 
+and add it to the diagram type provider as described
+<a href="tool-behavior-provider.htm">here</a>.</b></p>
+<p>There is one method of the tool behavior provider to overwrite: </p>
+<p>The method
+<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getContextButtonPad(org.eclipse.graphiti.features.context.IPictogramElementContext)">
+getContextButtonPad</a> has to return the context buttons for the given context 
+(which implement
+<a href="../../../javadoc/org/eclipse/graphiti/tb/IContextButtonEntry.html">IContextButtonEntry</a>).
+</p>
+<p>There are different groups of context buttons:</p>
+<ul>
+	<li><em>Generic context buttons</em>: their look and behaviour is standardized 
+	for all tools (e.g. &quot;delete&quot;, &quot;remove&quot; and &quot;update&quot;). They are shown at the 
+	top of the pictogram element in a predefined order. A specific tool can only 
+	choose which of the generic context buttons to switch on/off.</li>
+	<li><em>Domain specific context buttons</em>: they are specific for each tool 
+	(e.g. &quot;create sub-class&quot; in a class diagram). They are shown at the right (and 
+	if necessary also bottom) of the pictogram element. A specific tool must define 
+	the look and behaviour for all domain specific context buttons. </li>
+	<li><em>Collapse context button</em>: the look and position for the collapse 
+	context button is standardized for all tools. A specific tool must define the 
+	behavior of the collapse context button by defining the feature to call (see
+	<a href="../../../javadoc/org/eclipse/graphiti/tb/ContextEntryHelper.html#createCollapseContextButton(boolean, org.eclipse.graphiti.features.IFeature, org.eclipse.graphiti.features.context.IContext)">
+	createCollapseContextButton</a>).</li>
+</ul>
+<p>The following restrictions are defined by usability engineers of SAP AG (but 
+currently not checked technically): there can be 0-3 generic context buttons, 0-5 
+domain specific context buttons and 0-1 collapse context button.</p>
+<p>The functionality of context buttons is always provided by features. </p>
+<p>Each context button can have one click-feature, which is executed when clicking 
+the context-button, and/or several drag &amp; drop features, which are executed when 
+the user starts dragging a connection from the context button. If several drag &amp; 
+drop features are available, a context-menu will be offered to the user when he 
+drops the connection, and he can choose the feature to execute.</p>
+<p>In this example we want to create one context button, which offers all available
+<a href="create-connection-feature.htm">create connection features</a> as drag &amp; 
+drop features, but has no click-feature. Additionally, we implement a collapse context 
+button, which will pop up a message, that it has not a final implementation.</p>
+<p>&nbsp;</p>
+<p><img alt="" height="155" src="visio/context-buttons-click.png" width="458"></p>
+<p><strong>Figure: A context button, which the user can click or start drag &amp; drop 
+from it</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Figure: The user started dragging from the context button</strong></p>
+<p>&nbsp;</p>
+<p>
+<img alt="" height="161" src="visio/context-buttons-collapse.png" width="459"></p>
+<p><strong>Figure: A context button, which the user can click</strong></p>
+<p>&nbsp;</p>
+<p>You can see the complete implementation of the context and collapse buttons here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> IContextButtonPadData 
+		getContextButtonPad(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IPictogramElementContext context) {<br>&nbsp;&nbsp;&nbsp; IContextButtonPadData 
+		data = super.getContextButtonPad(context);<br>&nbsp;&nbsp;&nbsp; PictogramElement 
+		pe = context.getPictogramElement();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// 1. set the generic context buttons</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// note, that we do not add &#39;remove&#39; (just as an example)</span><br>&nbsp;&nbsp;&nbsp; 
+		setGenericContextButtons(data, pe, <span class="string"><em>CONTEXT_BUTTON_DELETE</em></span> 
+		| <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string"><em>CONTEXT_BUTTON_UPDATE</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="comment">// 2. set the collapse button
+		<br>&nbsp;&nbsp;&nbsp; // simply use a dummy custom feature (senseless example)</span><br>&nbsp;&nbsp;&nbsp; 
+		CustomContext cc = <span class="keyword">new</span> CustomContext(<span class="keyword">new</span> 
+		PictogramElement[] { pe });<br>&nbsp;&nbsp;&nbsp; ICustomFeature[] cf = 
+		getFeatureProvider().getCustomFeatures(cc);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">int</span> i = 0; 
+		i &lt; cf.<span class="string"><em>length</em></span>; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ICustomFeature iCustomFeature = cf[i];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (iCustomFeature <span class="keyword">instanceof</span> 
+		TutorialCollapseDummyFeature) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IContextButtonEntry collapseButton = ContextEntryHelper.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		createCollapseContextButton(<span class="keyword">true</span>, iCustomFeature, 
+		cc);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.setCollapseContextButton(collapseButton);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">break</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="comment">// 3. add one domain specific 
+		context-button, which offers all <br>&nbsp;&nbsp;&nbsp; // available connection-features 
+		as drag&amp;drop features...<br></span>&nbsp;<span class="comment"><br>&nbsp;&nbsp;&nbsp; 
+		// 3.a. create new CreateConnectionContext</span><br>&nbsp;&nbsp;&nbsp; 
+		CreateConnectionContext ccc = <span class="keyword">new</span> CreateConnectionContext();<br>&nbsp;&nbsp;&nbsp; 
+		ccc.setSourcePictogramElement(pe);<br>&nbsp;&nbsp;&nbsp; Anchor anchor =
+		<span class="keyword">null</span>;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pe instanceof Anchor) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anchor = (Anchor) pe;<br>&nbsp;&nbsp;&nbsp; } <span class="keyword">else 
+		if</span> (pe <span class="keyword">instanceof</span> AnchorContainer) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// assume, that our shapes always have chopbox anchors</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anchor = Graphiti.getPeService()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getChopboxAnchor((AnchorContainer) pe);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; 
+		ccc.setSourceAnchor(anchor);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="comment">// 3.b. create context button 
+		and add all applicable features</span><br>&nbsp;&nbsp;&nbsp; ContextButtonEntry 
+		button = <span class="keyword">new</span> ContextButtonEntry(<span class="keyword">null</span>, 
+		context);<br>&nbsp;&nbsp;&nbsp; button.setText(<span class="string">&quot;Create 
+		connection&quot;</span>);<br>&nbsp;&nbsp;&nbsp; button.setIconId(MyTutorialImageProvider.<span class="string"><em>IMG_EREFERENCE</em></span>);<br>&nbsp;&nbsp;&nbsp; 
+		ICreateConnectionFeature[] features =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		getFeatureProvider().getCreateConnectionFeatures();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (ICreateConnectionFeature feature : features) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">if</span> 
+		(feature.isAvailable(ccc) &amp;&amp; feature.canStartConnection(ccc))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		button.addDragAndDropFeature(feature);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// 3.c. add context button, if it contains at least 
+		one feature</span><br>&nbsp;&nbsp;&nbsp; <span class="keyword">if</span> 
+		(button.getDragAndDropFeatures().size() &gt; 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.getDomainSpecificContextButtons().add(button);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; <span class="keyword">return</span> 
+		data;<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>&nbsp;</p>
+<p>The implementation of <span class="inlinecode">MyTutorialImageProvider</span> 
+can be found <a href="images.htm">here</a>. The implementation of the
+<span class="inlinecode">TutorialCollapseDummyFeature</span> can be found at
+<a href="#Implementation_of_the_Tutorial_Collapse_Dummy_Feature">the end of this 
+page</a>.</p>
+<p>The context button entries contain information about icon, display text and tooltip 
+description.</p>
+<p>The positioning of the context buttons can be influenced by changing the rectangle 
+around which the context buttons are placed (see
+<a href="../../../javadoc/org/eclipse/graphiti/tb/IContextButtonPadData.html#getPadLocation()">
+getPadLocation</a>). By default the selection area is used (see
+<a href="selection-behavior.htm">selection behavior</a>) if defined, or otherwise 
+the bounds of the pictogram elements main graphics algorithm are used.</p>
+<h2>Test: Create a Connection by Drag &amp; Drop from a Context Button</h2>
+<p>Note that previously we implemented one
+<a href="create-connection-feature.htm">create connection feature</a> which allows 
+creating an association between two EClasses.</p>
+<p>Now start the editor and test this new context button:</p>
+<ol>
+	<li>Create or open a diagram and create two EClasses in the diagram.</li>
+	<li>Position the mouse on top of the first EClass and the context button should 
+	appear in the south-east of the shape.</li>
+	<li>Start dragging with the mouse from the context-button.</li>
+	<li>Drop the connection onto the second EClass, which will result in one of 
+	the following possibilities:<ol>
+		<li>If only one create connection feature for the EClass exists, then the 
+		association will be created immediately.</li>
+		<li>If several create connection features for the EClass exist, then a context-menu 
+		will be shown to the user, where he can choose the feature to execute. Tip: 
+		if you have only one create connection feature you can try this behaviour 
+		by simply duplicating the line &quot;<span class="inlinecode">button.addDragAndDropFeature(feature);</span>&quot;</li>
+	</ol>
+	</li>
+</ol>
+<p>Note, that our implementation of the create connection feature does not allow 
+a connection, if the source and target business object are identical. If you have 
+two different shapes associated with the same business object (e.g. via copy &amp; paste), 
+then creating a connection between them is not possible.</p>
+<h2><a name="Implementation_of_the_Tutorial_Collapse_Dummy_Feature">Implementation 
+of the Tutorial Collapse Dummy Feature</a></h2>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialCollapseDummyFeature
+		<span class="keyword">extends</span> AbstractCustomFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public</span> TutorialCollapseDummyFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> canExecute(ICustomContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;boolean</span> ret = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pes != <span class="keyword">null</span> 
+		&amp;&amp; pes.<span class="string"><em>length</em></span> == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pes[0]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> ret;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public</span> String getName() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> <span class="string">&quot;Collapse&quot;</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public</span> String getDescription() {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> <span class="string">&quot;Collapse Figure&quot;</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public</span> String getImageId() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> IPlatformImageConstants.<span class="string"><em>IMG_EDIT_COLLAPSE</em></span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> isAvailable(IContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public void</span> execute(ICustomContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		MessageDialog.openInformation(PlatformUI.getWorkbench()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getActiveWorkbenchWindow().getShell(), <span class="string">&quot;Information&quot;</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&quot;The &#39;Collapse Feature&#39; is intentionally not implemented 
+		yet.&quot;</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>}&nbsp; </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Finally the feature provider has to deliver our newly created custom feature 
+(overwrite the method <span class="inlinecode">getCustomFeatures(..)</span><a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getCustomFeatures(org.eclipse.graphiti.features.context.ICustomContext)"></a>).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> ICustomFeature[] 
+		getCustomFeatures(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> ICustomFeature[] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		{ <span class="keyword">new</span> TutorialRenameEClassFeature(<span class="keyword">this</span>),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> TutorialDrillDownEClassFeature(<span class="keyword">this</span>),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> TutorialAssociateDiagramEClassFeature(<span class="keyword">this</span>),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> TutorialCollapseDummyFeature(<span class="keyword">this</span>)};<br>
+		} </p>
+	</div>
+</div>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>&nbsp;</p>
+<p>
+<img alt="" height="354" src="visio/context-buttons-collapse-2.png" width="605"></p>
+<p><strong>Figure: Clicking the collapse button</strong></p>
+
+</body>
+
+</html>

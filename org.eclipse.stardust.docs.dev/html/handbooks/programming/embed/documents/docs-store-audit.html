@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+	<meta content="text/css" http-equiv="Content-Style-Type" />
+	<link href="../../../../styles/carnot.css" rel="STYLESHEET" type="text/css" />
+	<title>Storing Document and Folder Meta Data into the Audit Trail</title>
+	<script src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body><script type="text/javascript">
+<!--
+	writeNavigation("Updating a Document created by the DocumentManagementService",
+		"pg-embed-migrate.html","documents-update.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage",
+		"docs-preface.html","Document Management");
+-->
+</script>
+<h1>Storing Document and Folder Meta Data into the Audit Trail</h1>
+
+<p>In some cases, e.g. a repository provider does not support meta data read and write, document meta data should be transparently saved and retrieved for each document or folder using the audit trail.</p>
+
+<p>Class <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/RepositoryAuditTrailUtils.html">RepositoryAuditTrailUtils</a> provides functionality to store, retrieve and delete document and folder beans as CLOB data bean in the audit trail using a JSON format. The entries are stored uniquely by document Id, revision Id and folder Id.</p>
+
+<ul>
+	<li><a href="#storedoc">Storing a Document in the Audit Trail</a></li>
+	<li><a href="#getdoc">Retrieving a Document from the Audit Trail</a></li>
+	<li><a href="#deldoc">Deleting&nbsp;an Audit Trail Entry for a Document</a></li>
+	<li><a href="#storefold">Storing a Folder in the Audit Trail</a></li>
+	<li><a href="#getfold">Retrieving a Folder from the Audit Trail</a></li>
+	<li><a href="#delfold">Deleting an Audit Trail Entry for a Folder</a></li>
+</ul>
+
+<h2><a id="storedoc" name="storedoc"></a>Storing a Document in the Audit Trail</h2>
+<p>To store a document in the audit trail, e.g. to supply repository providers in the
+audit trail that do not support write meta data,
+use method <code>storeDocument(Document document)</code>. 
+It stores the given document of type <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Document.html">Document</a> by its Id and, in case it exists and the document is not unversioned, its&nbsp;revision Id.</p>
+
+<pre>
+   public static void storeDocument(Document document)
+   {
+      if (document != null)
+      {
+         storeResource(document.getId(), document, DmsDocumentBean.class);
+
+         // store entry for revision
+         if (document.getRevisionId() != null
+               &amp;&amp; !RepositoryConstants.VERSION_UNVERSIONED.equals(document.getRevisionId()))
+         {
+            storeResource(document.getRevisionId(), document, DmsDocumentBean.class);
+         }
+      }
+   }</pre>
+<!-- <h3>Example Usage</h3> -->
+<!-- <pre> -->
+<!-- Document document; -->
+<!-- ... -->
+<!-- RepositoryAuditTrailUtils.storeDocument(document); -->
+<!-- </pre> -->
+<h2 id="getdoc">Retrieving a Document from the Audit Trail</h2>
+
+<p>Use method <code>retrieveDocument(String documentId)</code> to fetch a document from the audit trail. Use the document Id or document revision Id as parameter to look up the document for.</p>
+
+<pre>
+&nbsp;&nbsp; public static Document retrieveDocument(String documentId)
+&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Map legoMap = retrieveResource(documentId, DmsDocumentBean.class);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DmsDocumentBean dmsDocumentBean = legoMap == null ? null : new DmsDocumentBean(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; legoMap);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return dmsDocumentBean;
+&nbsp;&nbsp; }
+</pre>
+<h3>Example Usage</h3>
+<pre>
+Document document;
+...
+Document retrievedDoc = RepositoryAuditTrailUtils.retrieveDocument(document.getId());
+</pre>
+<h2><a name="deldoc">Deleting&nbsp;an Audit Trail Entry for a Document</a></h2>
+
+<p>Method <code>removeDocument(String documentId)</code> provides functionality to&nbsp;delete an entry for a document by a given document Id from the audit trail, in case it exists.</p>
+
+<pre>
+&nbsp;&nbsp; public static void removeDocument(String documentId)
+&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; removeResource(documentId, DmsDocumentBean.class);
+&nbsp;&nbsp; }
+</pre>
+<h3>Example Usage</h3>
+<p>The following example demonstrates how to remove a document entry from the audit trail by its revision Id:</p>
+<pre>
+   public void removeDocumentVersion(String documentId, String documentRevisionId)
+         throws DocumentManagementServiceException
+   {
+      service.removeDocumentVersion(documentId, documentRevisionId);
+      Document document = service.getDocument(documentId);
+
+      if (document != null &amp;&amp; !isMetaDataSupported(document.getRepositoryId()))
+      {
+         // update data for head
+         storeMetaDataToAuditTrail(document);
+         // remove data for revision
+         RepositoryAuditTrailUtils.removeDocument(documentRevisionId);
+      }
+
+   }
+</pre>
+
+<h2><a name="storefold">Storing a Folder in the Audit Trail</a></h2>
+
+<p>To store a given folder in the audit trail, use method <code>storeFolder(Folder folder)</code>.</p>
+
+<pre>
+&nbsp;&nbsp; public static void storeFolder(Folder folder)
+&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (folder != null)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; storeResource(folder.getId(), folder, DmsFolderBean.class);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; }</pre>
+<!-- <h3>Example Usage</h3> -->
+<!-- <pre> -->
+<!-- RepositoryAuditTrailUtils.storeFolder(folder); -->
+<!-- </pre> -->
+<h2><a id="getfold" name="getfold">Retrieving a Folder from the Audit Trail</a></h2>
+
+<p>Use method <code>retrieveFolder(String folderId)</code> to fetch a folder with a given folder Id from the audit trail.</p>
+
+<pre>
+&nbsp;&nbsp; public static Folder retrieveFolder(String folderId)
+&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Map legoMap = retrieveResource(folderId, DmsFolderBean.class);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DmsFolderBean dmsFolderBean = new DmsFolderBean(legoMap);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return dmsFolderBean;
+&nbsp;&nbsp; }</pre>
+
+<h2><a id="delfold" name="delfold">Deleting an Audit Trail Entry for a Folder</a></h2>
+
+<p>Method <code>removeFolder(String folderId)</code> deletes an entry for a folder with a given Id from the audit trail.</p>
+
+<pre>
+&nbsp;&nbsp; public static void removeFolder(String folderId)
+&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; removeResource(folderId, DmsFolderBean.class);
+&nbsp;&nbsp; }
+</pre>
+<!-- <h3>Example Usage</h3> -->
+<!-- <pre> -->
+<!-- RepositoryAuditTrailUtils.removeFolder(folderId); -->
+<!-- </pre> -->
+<p>&nbsp;</p>
+</body>
+</html>

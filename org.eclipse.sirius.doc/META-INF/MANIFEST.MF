@@ -1,0 +1,1875 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.modeling.sirius
+Bundle-SymbolicName: org.eclipse.sirius.doc; singleton:=true
+Eclipse-SourceReferences: scm:git:http://git.eclipse.org/gitroot/siriu
+ s/org.eclipse.sirius.git;path="plugins/org.eclipse.sirius.doc";commit
+ Id=3404182c70c931911b315918d93f3e54122fe8c6
+Require-Bundle: org.eclipse.ui.cheatsheets;bundle-version="3.4.200",or
+ g.eclipse.help;bundle-version="3.6.0"
+Bundle-Version: 1.0.2.201501270932
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: doc/specifier/general/images/styles/mini_Node_Square_Color_Value
+ .jpg
+SHA1-Digest: m1MthgUm1Uv4+qz0mGqe+bk26Nc=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_label_1.pn
+ g
+SHA1-Digest: iu1irYty250PuLtbLXAxWs1eP/c=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Workspace_Im
+ age_Label_Border.jpg
+SHA1-Digest: 1934PYcWoC+EGFxglAG3Yte8ZeE=
+
+Name: doc/user/general/images/create_representation4.png
+SHA1-Digest: dJ8gXlCj0Vh8TY7MwRs+tbyVAzI=
+
+Name: doc/user/diagrams/images/diagram_editor_pin03.png
+SHA1-Digest: p4scIiqHvO3OkzKxEIcYpFzYDkM=
+
+Name: doc/user/general/images/collaborative_features12.png
+SHA1-Digest: uypoZFpUckzToFYOAwkYjzr2Zos=
+
+Name: doc/user/general/images/collaborative_features6.png
+SHA1-Digest: WAcJNK2hunGcifmZuVNGlShW5eM=
+
+Name: doc/specifier/sequences/images/orderings.png
+SHA1-Digest: B5ZiboB+nHWh+3l9PlI428j9P2U=
+
+Name: doc/specifier/diagrams/images/styles/Edge_Style_Manhattan.png
+SHA1-Digest: MEZkvUaaJVZGuaXwfDcrIq/e4KU=
+
+Name: doc/user/general/images/collaborative_features19a.png
+SHA1-Digest: q84bZiwQEfbG5YWvfx53b49FvmI=
+
+Name: doc/user/diagrams/images/diagram_editor_pin_toolbar_activated.pn
+ g
+SHA1-Digest: o+K3dc64aW2T2iJ5CZdg8t4SZgo=
+
+Name: doc/user/diagrams/images/diagram_editor_dnd03a.png
+SHA1-Digest: HsQisVkYl9Esh/J0kzPp9zQUoSs=
+
+Name: doc/user/diagrams/images/synchronized_diagram3.png
+SHA1-Digest: q9KS+elTSU7tJ7VciYo6NyEEtjM=
+
+Name: doc/specifier/general/images/nn46/palette.png
+SHA1-Digest: UQ0xScZnDe6pv1Wt8dd3Ck0IPD0=
+
+Name: doc/specifier/general/images/nn45/testsupport.png
+SHA1-Digest: eJsBWTqNmyaf+QMeBIsOHTg76GE=
+
+Name: doc/specifier/diagrams/images/styles/Container_Style_Gradient.pn
+ g
+SHA1-Digest: hPGsgJkVTPSCxwliBDsAq9JqeUs=
+
+Name: doc/user/diagrams/images/tabbar_font_controls.png
+SHA1-Digest: ghdhMjgzG7WGLwTtAvaxQm9W2ew=
+
+Name: doc/specifier/trees/images/tree_description_editor.png
+SHA1-Digest: kvl598sTGn+uEDC5Thg860iedjo=
+
+Name: doc/user/diagrams/images/diagram_editor_show_hide_dialog1.png
+SHA1-Digest: sOwpJNlbGdgksX1St7PO1T4x7D4=
+
+Name: doc/specifier/tables/images/questionMarque.png
+SHA1-Digest: 3QqoOF8mRsmtfcas84oJ31APPPY=
+
+Name: doc/specifier/general/images/nn60/completion_empty_expression.pn
+ g
+SHA1-Digest: h1hzIorn4UcKEzTjNFNsWUOU/zk=
+
+Name: doc/user/tables/images/table_sort_by1.png
+SHA1-Digest: /cd1yH50ygAKNwhiYSFhXKhsbJI=
+
+Name: doc/specifier/diagrams/images/styles/Containers_on_diagram_or_an
+ other_container.png
+SHA1-Digest: 7EIDwWtvCkrVI36wfvvItpc8Rx8=
+
+Name: doc/user/diagrams/images/diagram_sample1.png
+SHA1-Digest: lvAUTpWerIiMV4s2fEc0AszJiek=
+
+Name: doc/specifier/sequences/images/basic_message_mapping_visual3.png
+SHA1-Digest: 2ug9XqN9qedZNLmTTtKuTbTXXDQ=
+
+Name: doc/specifier/general/images/nn47/.directory
+SHA1-Digest: okl4FusOo/Cv5ENr+ylen4uf67Q=
+
+Name: doc/user/general/images/models_content1.png
+SHA1-Digest: ANVIj7aRBTGE4s9OIqDF6TbT4Mc=
+
+Name: doc/user/Sirius User Manual.html
+SHA1-Digest: jlr0WYdg/HDU+bHXjESDTpCR3mo=
+
+Name: doc/specifier/general/images/styles/mini_Node_Bundled_Image_Stro
+ ke.jpg
+SHA1-Digest: HpkoUwgZCymztwXc34MUOt5eZI8=
+
+Name: doc/specifier/sequences/images/new_instance_role_reorder_tool.pn
+ g
+SHA1-Digest: oHIQAXbKCzJIHoLVWGEo44bT//g=
+
+Name: doc/specifier/general/images/nn46/popupbarsdiagram.png
+SHA1-Digest: j0MoXLYEzsHscLiyLZauyPSxzO4=
+
+Name: doc/user/diagrams/Diagrams.textile
+SHA1-Digest: CXSOQ8SV2pS1DmQt5sWQ6aHhU2o=
+
+Name: doc/user/general/images/remove_dependencies1.png
+SHA1-Digest: pHLKFmsVhqmLmi62D2eKQmRTD9g=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Ellipse.png
+SHA1-Digest: 10K/semU74wxn0CnpizZzBbaieg=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram_printing.
+ png
+SHA1-Digest: rDyPzbuvPV0fSK2VohJrNRGVXLg=
+
+Name: doc/specifier/sequences/images/execution_mapping_properties1.png
+SHA1-Digest: wc/HdGsk1v9MBNYOIcJJ7o4Fea8=
+
+Name: doc/user/general/images/collaborative_features22dOther.png
+SHA1-Digest: 8GYHkDtK5j4kd9rvBnGSGjvCrpE=
+
+Name: doc/specifier/sequences/images/lifeline_creation_tool.png
+SHA1-Digest: Sx9Fk7e9QRMDqsoM8ERl0DE4+Jg=
+
+Name: doc/specifier/general/images/styles/mini_Container_Conditional.j
+ pg
+SHA1-Digest: rvFrnYJjyl3npm7GMvIobNtX8UE=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Square.jp
+ g
+SHA1-Digest: cqWNTyOZTE4ze7ounE8LhYtcrYA=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Bundled_Image_Str
+ oke.jpg
+SHA1-Digest: HpkoUwgZCymztwXc34MUOt5eZI8=
+
+Name: doc/user/diagrams/images/diagram_sample_annotated.png
+SHA1-Digest: Ay0o4dzVdkV+EtKvPi/6qsZPZI0=
+
+Name: doc/resources/bootstrap.css
+SHA1-Digest: 4rKoZ016idIaXVbye3uEOWNw1nk=
+
+Name: doc/user/diagrams/images/diagram_editor5.png
+SHA1-Digest: wK9K1ucWcyOHqe2XKVyRio8PBIk=
+
+Name: doc/specifier/general/images/standard_colors.png
+SHA1-Digest: ZqSycXHKo0tIuBxCaP9PT1icHNo=
+
+Name: doc/user/diagrams/images/diagram_export_history.png
+SHA1-Digest: oSJnVYibrh4r0br7t9/InZ6jYno=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Gauge.png
+SHA1-Digest: bK3fjSSKrkKr1iKj9ijQqCmmjzM=
+
+Name: doc/user/tables/images/tables_representations1.png
+SHA1-Digest: 08yOuT3PB/PDlxmFbBoOC3MDu38=
+
+Name: doc/user/diagrams/images/diagram_editor11.png
+SHA1-Digest: fe4PyrXDTtMkCIX32TV6PfhAoTQ=
+
+Name: doc/specifier/general/images/nn46/panedbasedselection.png
+SHA1-Digest: C58j0PoT23KdIRYLraBLTOoQ+hY=
+
+Name: doc/user/trees/images/tree_representation1.png
+SHA1-Digest: FUA30QeFs+ragm6M2zmvM2x1zMY=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Conditional.
+ jpg
+SHA1-Digest: rvFrnYJjyl3npm7GMvIobNtX8UE=
+
+Name: doc/user/diagrams/images/diagram_editor19.png
+SHA1-Digest: awXxRTZM2D9xzNFAjkg1IFwsDkk=
+
+Name: doc/user/general/images/project_dependencies1.png
+SHA1-Digest: sTJUESbX22kdIaIWoRnq2AYuazA=
+
+Name: doc/specifier/sequences/images/instance_role_reorder_tool_visual
+ 1.png
+SHA1-Digest: WJa0+jYDRY/sSf3UbB2jXnNfQzg=
+
+Name: doc/specifier/general/images/nn47/layerEndUserDoc.png
+SHA1-Digest: h4naOD4tv9wfUsSw7AulyeoSZds=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ Example2_2.png
+SHA1-Digest: USRlZddrI2kFxMJ7gCCSN4Abrh4=
+
+Name: doc/specifier/general/images/styles/mini_Node_Square_Color_Custo
+ m_TODO.jpg
+SHA1-Digest: SS5xma8AKlvPXKPu9VKkookyd5A=
+
+Name: doc/user/sequences/images/iu_states.png
+SHA1-Digest: MvR08PrSifsDj1Uq8puSS3xUYiU=
+
+Name: doc/user/general/images/convert_to_modeling_project2.png
+SHA1-Digest: x7HVxe0IXouDm90urzUIqv9T1jw=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Basic_Dot.png
+SHA1-Digest: NeN3uFUG3terbcYoOszRgXflsIk=
+
+Name: doc/user/tables/images/table_multiline_edit_windows.png
+SHA1-Digest: byl4gY/KBL2erfbhAi+rSc2OfQE=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram_rulers_gr
+ id.png
+SHA1-Digest: 0K3jxA4xXHFca0EB+HJyBfvm41E=
+
+Name: doc/specifier/sequences/images/message_creation_precondition.png
+SHA1-Digest: 6mLlOJG2oUv9a08C6XtKyVR5pyI=
+
+Name: doc/specifier/general/images/styles/mini_Node_Workspace_Image.jp
+ g
+SHA1-Digest: Fg7dJcZ5VrnfeBvRrUHUznObAEU=
+
+Name: doc/specifier/general/images/styles/mini_Container_Flat_Color_Na
+ med.jpg
+SHA1-Digest: QKatCtVjepXTz/pswj/BO3Oswls=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Bundled_
+ Image_Triangle.jpg
+SHA1-Digest: sojdn8UFq8pIaMjyItMLfUSAbTw=
+
+Name: doc/user/general/images/groupItems_1.png
+SHA1-Digest: rnw1jHmbYmQESazlhjtQpm6TvRQ=
+
+Name: doc/user/general/images/legacy_mode2.png
+SHA1-Digest: T5/jRKB0lV63Mn+1Y2fYmJ34HG8=
+
+Name: doc/user/diagrams/images/tabbar_cancel_custom_style.png
+SHA1-Digest: Gyo4MYPpu3HrPdiTIVcNyN2de5A=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Square_Color_Cust
+ om_TODO.jpg
+SHA1-Digest: SS5xma8AKlvPXKPu9VKkookyd5A=
+
+Name: doc/specifier/general/images/nn45/ecore_relationsdiag.png
+SHA1-Digest: VyOuJyRijaPjdnzZAWLCVNn3ugs=
+
+Name: doc/user/general/images/collaborative_features22aCurrent.png
+SHA1-Digest: MbGWEQ1BXqv59RFjxJlMSIUO3oE=
+
+Name: doc/index.html
+SHA1-Digest: +I1IzhvCYjfOhjl+Db5bTvRquGA=
+
+Name: doc/user/diagrams/images/tabbar_auto_size.png
+SHA1-Digest: Ntx7A+HKKu+oUVum0tVDDyBCyN4=
+
+Name: doc/user/general/images/create_representation3.png
+SHA1-Digest: DpaWrox6ISeOX5C/Et+ek9R9R3g=
+
+Name: doc/user/diagrams/images/diagram_editor_pin02.png
+SHA1-Digest: 7oVYWIqQ2oYE0T6MYDU3eUakC6c=
+
+Name: doc/specifier/general/images/nn60/eef_live_validation.png
+SHA1-Digest: Um1KAriLmAl871QRvcfQvMvhmM4=
+
+Name: doc/specifier/sequences/Sequence Diagrams.textile
+SHA1-Digest: Yi2TaIVaZMUjD0z3yXaWvbOsMOg=
+
+Name: doc/user/general/images/collaborative_features11.png
+SHA1-Digest: BHUePyI9jbkO3bdbpw1UdRtVj1U=
+
+Name: doc/user/general/images/collaborative_features5.png
+SHA1-Digest: ARmCc7IVJAWBCWxrVRBrBhDc5Tc=
+
+Name: doc/specifier/general/images/styles/mini_Node_Bundled_Image_Squa
+ re.jpg
+SHA1-Digest: j4AwyRJGUNsCEjyyw81RHaFbm5c=
+
+Name: doc/specifier/general/images/nn45/session_new.png
+SHA1-Digest: fFVeZHpl1RCR9KZugW+nhpO+oGg=
+
+Name: doc/specifier/sequences/images/new_basic_message_mapping.png
+SHA1-Digest: mB8SkBd2KkNr3ucXoezcIwui6qA=
+
+Name: doc/user/sequences/images/executions_move_expansion_result.png
+SHA1-Digest: luoBapN01iGX/8xByJgkKngnCb0=
+
+Name: doc/user/diagrams/images/synchronized_diagram2.png
+SHA1-Digest: i7Fxvd5WDSZzegTAoaoPBVAjAUo=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Dot.jpg
+SHA1-Digest: iOj+3ldtkXr6tHwDdWJ5xT2KBhs=
+
+Name: doc/user/general/images/migration_information.png
+SHA1-Digest: XhjefrJdMyUXf+VwzPdqr9WGiJA=
+
+Name: doc/user/general/images/collaborative_features22dCurrent.png
+SHA1-Digest: Ohg3jlMTjBG/XdfScQDXePN/3YM=
+
+Name: doc/toc.xml
+SHA1-Digest: rWt0k5b8PYFIf2NQPKKySW/K0Y8=
+
+Name: doc/specifier/general/images/nn60/completion_interpreter_view.pn
+ g
+SHA1-Digest: dt7wfNqv+OhszqbuVDESTOYlI4U=
+
+Name: doc/specifier/general/images/nn45/newspecwizard.png
+SHA1-Digest: j/Xob1BArEy001XlsC0HvSdVV60=
+
+Name: doc/specifier/general/images/nn60/layoutingMode_forbidden_dnd.pn
+ g
+SHA1-Digest: FxfSgAYdXaFwr368PZUGJOzw1c4=
+
+Name: doc/user/diagrams/images/tabbar_pin_unpin.png
+SHA1-Digest: hg+K6kErYbrdeE58Z1H+80WqVt8=
+
+Name: doc/specifier/sequences/images/basic_message_mapping_visual2.png
+SHA1-Digest: nFnUBzbz4Vap4dWrkWzxZHYxZyg=
+
+Name: doc/user/diagrams/images/tabbar_copy_layout.png
+SHA1-Digest: 4jwZT970eOLhZ7gQ/QMnPFKa30Y=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Bundled_Image_Squ
+ are.jpg
+SHA1-Digest: j4AwyRJGUNsCEjyyw81RHaFbm5c=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Gauge_Ve
+ rtical.jpg
+SHA1-Digest: aJ1gE5tsTb27oaO2/yRRNdGJVHk=
+
+Name: doc/resources/custom.css
+SHA1-Digest: a0gNGGtsvFXSQG0RLYxDlJIa7hA=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Flat_Color_R
+ GB.jpg
+SHA1-Digest: 8yH7G17voZjvU2aqozKIQoCg38c=
+
+Name: doc/user/diagrams/images/tabbar_arrange_selection.png
+SHA1-Digest: B7Vwg4oMY0Bsf66biRtx5cNBf90=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Dot.jpg
+SHA1-Digest: iOj+3ldtkXr6tHwDdWJ5xT2KBhs=
+
+Name: doc/user/diagrams/images/palette_tool_group.png
+SHA1-Digest: qJYa5PbCjbaBiselAuC+WKk1Qz8=
+
+Name: doc/specifier/diagrams/images/styles/Graphical_Vocabulary_Contai
+ ner.png
+SHA1-Digest: A4mA/NszSRyEb3i4D6MjYJStK0w=
+
+Name: doc/specifier/general/images/nn52/roundedCorners_OD_5.0.png
+SHA1-Digest: vy6WEvFL2NfeTtYr7SlMz1KZsak=
+
+Name: doc/specifier/general/images/nn47/tabbarDiagram.png
+SHA1-Digest: 59vwgiLF4PMmhcOpsvTLDJtkA0g=
+
+Name: doc/user/general/images/collaborative_features22hOther.png
+SHA1-Digest: 8pOOTogre0FPm3FgwZ0g+Xb4Jgk=
+
+Name: doc/specifier/general/images/nn52/roundedCorners_OD_5.0_adapted.
+ png
+SHA1-Digest: 4cwQ5qUEY7xfcZmyG1GokrG2XAY=
+
+Name: doc/user/general/images/requesting1.png
+SHA1-Digest: WPaYfI7fN6p8GSB8sfWv6ocrMqo=
+
+Name: doc/user/general/images/collaborative_features22gCurrent.png
+SHA1-Digest: AWs/bov3w5Q45HjZrwNYpef8SHA=
+
+Name: doc/specifier/general/images/styles/mini_Container_Workspace_Ima
+ ge_Label_Node.png
+SHA1-Digest: G8cruXyZ4omQCfsrCDDK/HpmoF8=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_pin_dialog2.png
+SHA1-Digest: 4SWFPLmGjjXnkF0b3oZ3hqDAZbo=
+
+Name: doc/user/general/images/diagram_editor14.png
+SHA1-Digest: q0fJs4iZTvD6ZdPjn5bcGvD5EOg=
+
+Name: doc/user/sequences/images/cfc_cfo.png
+SHA1-Digest: YXt32TZSaKfR6uNa/VoS1UhSrck=
+
+Name: doc/user/diagrams/images/noteAttachmentTool.png
+SHA1-Digest: O3JORkBsf022bhGnqylDawKvCUo=
+
+Name: doc/specifier/general/images/styles/mini_Node_Note.jpg
+SHA1-Digest: +5d4FtMCd5aS6qn6FDRO/QKgCMA=
+
+Name: doc/user/diagrams/images/diagram_editor4.png
+SHA1-Digest: UFXSsTxTfLoACPQHWge+ql9HwLs=
+
+Name: doc/specifier/general/images/nn53/edge_multiple_labels_vsm.png
+SHA1-Digest: t6DR709X/IRyLDrRgUM3shgUEBo=
+
+Name: doc/specifier/sequences/images/interaction_use.png
+SHA1-Digest: nuSSuBU1rgRcQ9y3IsxRQ9ECPno=
+
+Name: doc/Glossary.html
+SHA1-Digest: Eh2GT7EgwrwOWm9C10TxTqorhPU=
+
+Name: doc/user/general/images/diagram_editor_filter_toolbar_activated.
+ png
+SHA1-Digest: cOM1MbRwTc2+vw9QHuH18FRxQYg=
+
+Name: doc/specifier/Sirius Specifier Manual.html
+SHA1-Digest: 3aHPB9Re/6A0hy8cWdudW8iHeZI=
+
+Name: doc/user/sequences/Sequence Diagrams.html
+SHA1-Digest: q9qzX5AWQ+nHbqOUaHns+suuA6A=
+
+Name: doc/user/diagrams/images/diagram_editor_dnd01.png
+SHA1-Digest: NPaME7LSPDsvEXoZtYCiKOwHvJ0=
+
+Name: doc/specifier/general/images/styles/mini_Container_Flat_Color_Cu
+ stom_TODO.jpg
+SHA1-Digest: HkIWVMaBcXmgAxo2GbYukZWFIGE=
+
+Name: doc/specifier/general/images/nn60/layouting_mode_tabbar_activate
+ .png
+SHA1-Digest: 3Mdapm7FNvkBTcgnk7Gpj/7+8dA=
+
+Name: doc/user/diagrams/images/diagram_editor10.png
+SHA1-Digest: cFT7VZ36Ji1jGQwPw/WhYODr8HQ=
+
+Name: doc/specifier/general/images/nn60/acceleo3_interpreter_tool_comp
+ letion.png
+SHA1-Digest: Xrl4eYeopMqDG5ATgcwVB9635BY=
+
+Name: doc/specifier/sequences/images/event_ends.png
+SHA1-Digest: bzpnLgd5CBdWz1MkoQLGAq/094o=
+
+Name: doc/specifier/diagrams/images/styles/Graphical_Vocabulary_Node.p
+ ng
+SHA1-Digest: GkOMyhFPREWrWNy/Zq0AS4p19Pg=
+
+Name: doc/user/diagrams/images/layouting_mode_tabbar_activate.png
+SHA1-Digest: KwdjPuwWIkEEJqf+r19BFFtCasE=
+
+Name: doc/user/diagrams/images/diagram_editor18.png
+SHA1-Digest: lwFTJ1jnKew89sNi8knEAKM/x2Q=
+
+Name: doc/specifier/sequences/images/instance_role_mapping_properties.
+ png
+SHA1-Digest: k9+9Gma5AnRgnXaVQxE/BAvJBDQ=
+
+Name: doc/specifier/tables/images/table_description_editor.png
+SHA1-Digest: ZEXfjKXVRfpD3jsdfYAQrPzudVw=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Dot.png
+SHA1-Digest: A4Z4QfaBufrxuR3hJzz3wanbM0g=
+
+Name: doc/user/general/images/video.png
+SHA1-Digest: mbWt2rTOr89PH9P1zs/U2SqjXic=
+
+Name: doc/user/general/images/collaborative_features22aOther.png
+SHA1-Digest: LLVJsF/UuObg8dp6Bd57iiley4U=
+
+Name: doc/resources/images/screenshot.png
+SHA1-Digest: gGhi7nJGqrWSHN1s1g7nqqEVKgk=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Note.jpg
+SHA1-Digest: +5d4FtMCd5aS6qn6FDRO/QKgCMA=
+
+Name: doc/user/general/images/viewpoint_selection2.png
+SHA1-Digest: /fvqnLdUC7VEjteTrrlSsS7tGNg=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ Example2_1.png
+SHA1-Digest: d2Jhw+4eCxJrCmr0HvmojqvPJmQ=
+
+Name: doc/user/diagrams/images/tabbar_paste_layout.png
+SHA1-Digest: AEDJRsh2+wSfdJNtJr5+lI6WTL0=
+
+Name: doc/user/general/images/convert_to_modeling_project1.png
+SHA1-Digest: qKN8j/HujE78dv2Pnxm1VADdnfA=
+
+Name: doc/user/sequences/images/constraints.png
+SHA1-Digest: 0s7+ArOsqAruodE/Gn1BOH/EIbM=
+
+Name: doc/user/diagrams/images/diagram_editor21.png
+SHA1-Digest: NeGkr3l0JhWZ5vJsl4RMjVyBLDw=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Gauge_Hor
+ izontal.jpg
+SHA1-Digest: HV3HzkJB5Oxk833Nim481V6+p70=
+
+Name: doc/specifier/general/images/nn46/lock.png
+SHA1-Digest: zLp41eBCY37FVlJWWsILSgHnPiI=
+
+Name: doc/specifier/general/images/nn46/sequencediag.png
+SHA1-Digest: n3pKa0cpDuV5wV72EKmNIeHno0Q=
+
+Name: doc/user/general/Modeling Project.textile
+SHA1-Digest: oYul3Gow2++8KoumCQxGMfhA6hY=
+
+Name: doc/user/general/images/decorated_model1.png
+SHA1-Digest: 1RVDYQuAm71ftWXDYMwd8SALr9E=
+
+Name: doc/specifier/tables/images/tricks.png
+SHA1-Digest: wUvqEXCu5ICYZg3Qf7F2EGOyiyc=
+
+Name: doc/specifier/general/images/nn52/migrate_aird.png
+SHA1-Digest: +HM4UI47PA55Y0hUKt7im1Gr3yM=
+
+Name: doc/user/sequences/images/header.png
+SHA1-Digest: chOEZo1a2qR7wsVvV9HhmnOJCZ8=
+
+Name: doc/user/general/images/legacy_mode1.png
+SHA1-Digest: IgcAF1MBAPzpnKbeuyFiLX/e0FU=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Bundled_Image_Rin
+ g.jpg
+SHA1-Digest: J13/ovpoFeXC8daN3tI0KyhVd6Q=
+
+Name: doc/user/Sirius User Manual.textile
+SHA1-Digest: kSkOhIXpVnFPAOLlJQohwJE2MJg=
+
+Name: doc/specifier/sequences/images/basic_message_mapping_properties.
+ png
+SHA1-Digest: A5X8PEwhMbvmCWIE19ZmqLdPecI=
+
+Name: doc/user/general/images/create_representation2.png
+SHA1-Digest: yT0BaO0YkXZA2Twx1y6Pa6QnfIA=
+
+Name: doc/user/diagrams/images/diagram_editor_pin01.png
+SHA1-Digest: ES/cAIG30fF4/SEsM3Q9/MYw6L4=
+
+Name: doc/user/diagrams/images/note.png
+SHA1-Digest: CmGHgZ2VRCoGsXyVn27ZRT9ako8=
+
+Name: doc/user/general/images/collaborative_features10.png
+SHA1-Digest: /cI7UWFM9cYKf6palpin3erXiGs=
+
+Name: doc/specifier/general/images/nn47/layersManagement.png
+SHA1-Digest: 2hGkoIAyv0ZVLb5iZicWaglDKFY=
+
+Name: doc/user/general/images/collaborative_features4.png
+SHA1-Digest: 9wD6s4e4BWbP+zMYBECAaXkuLVY=
+
+Name: doc/user/diagrams/images/synchronized_diagram1.png
+SHA1-Digest: ka1ofVQSMdnURe9dm1NMvRu5vOI=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Bundled_I
+ mage_Dot.jpg
+SHA1-Digest: 8LLTjCkjjuABl9kZdP7vPNEBJJw=
+
+Name: doc/user/diagrams/images/tabbar_apply_style.png
+SHA1-Digest: 7XKtuVv/t9n472qXwWr2fN8CgzM=
+
+Name: doc/user/general/Modeling Project.html
+SHA1-Digest: YwQpEJF1ceoewkoGWCPVKmYiKZM=
+
+Name: doc/user/diagrams/images/diagram_editor_hide_label_1.png
+SHA1-Digest: blcaETylfuZLmwAGPFfEUzOvLy0=
+
+Name: doc/specifier/general/images/styles/mini_Node_Gauge_Horizontal.j
+ pg
+SHA1-Digest: LhB6GuRAmVia81sXTAQGtJ2cPjY=
+
+Name: doc/specifier/general/images/styles/mini_Container_Workspace_Ima
+ ge_Label_Border.jpg
+SHA1-Digest: 1934PYcWoC+EGFxglAG3Yte8ZeE=
+
+Name: doc/specifier/general/images/nn47/label_border_style_2.png
+SHA1-Digest: yehFCm/5FSNNTRsUvIkcjuL0Lq4=
+
+Name: doc/specifier/sequences/images/execution_mappings_visual.png
+SHA1-Digest: 0FlhanDyhLZz34rLQlXRvzMWdrs=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ Example1_2.png
+SHA1-Digest: fkLUMBM5UOcaUIWEl65nKMUzzQw=
+
+Name: doc/specifier/general/images/domain_class.png
+SHA1-Digest: 0BNDzzvzJJxgPbyrb3XbgugAJnY=
+
+Name: doc/specifier/sequences/images/basic_message_mapping_visual1.png
+SHA1-Digest: h5aMOpUNwV1ePlkl5gUTgMarYw8=
+
+Name: doc/specifier/sequences/images/description_properties.png
+SHA1-Digest: HZVdlOjfGpBrNN1hNKYRNqbJJZw=
+
+Name: doc/user/general/images/collaborative_features21.png
+SHA1-Digest: NIOIvARkB/3NCG2fZEP0kDSL9s0=
+
+Name: doc/specifier/sequences/images/ends_ordering.png
+SHA1-Digest: Xum1ibSHVqdqVZhexVpFYvOihHI=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Square.j
+ pg
+SHA1-Digest: cqWNTyOZTE4ze7ounE8LhYtcrYA=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Basic_Ring.png
+SHA1-Digest: ym160dLAFIROY21uOXD1EApfDSE=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Shape.jpg
+SHA1-Digest: sCXB5+OfDdCTmGNKO+7IcWeI6I0=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Gauge_Horizontal.
+ jpg
+SHA1-Digest: LhB6GuRAmVia81sXTAQGtJ2cPjY=
+
+Name: doc/user/diagrams/images/tabbar_make_same_size.png
+SHA1-Digest: 1CaLgH2xrZf8pJiID52tswa/v9o=
+
+Name: doc/user/general/images/aird_unfolded1.png
+SHA1-Digest: BF74Mry6Va+cx78PXNJxQQ9RtvQ=
+
+Name: doc/specifier/sequences/images/mappings.png
+SHA1-Digest: SZTNxGQ8OdyNnB4MXH/0nQewUQg=
+
+Name: doc/specifier/general/images/nn60/acceleo3_interpreter_mapping.p
+ ng
+SHA1-Digest: s2drG0yp6bB9f4zqRBHlz+oNErA=
+
+Name: doc/user/general/images/collaborative_features_server01.png
+SHA1-Digest: hOUxM5bcycQIZAJnqk2p4IAzADw=
+
+Name: doc/specifier/general/images/nn52/roundedCorners_OD_4.6.1.png
+SHA1-Digest: Y2u9874iJEtA2USv93/psecDHik=
+
+Name: doc/specifier/general/images/styles/mini_Node_Bundled_Image_Tria
+ ngle.jpg
+SHA1-Digest: ODVGV6WnmlLmOYeuHL3gm+t2eBU=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_pin_dialog1.png
+SHA1-Digest: S3KVxPXUAV8h7GcqrlZEfOpOL6w=
+
+Name: doc/user/diagrams/images/diagram_export_error.png
+SHA1-Digest: PxZsrO2ul6252pUNBr/dibJN3po=
+
+Name: doc/user/diagrams/images/diagram_editor3.png
+SHA1-Digest: 0DWNHEKP7YH2BIvviq5aHv45qw0=
+
+Name: doc/user/diagrams/images/palette_folding.png
+SHA1-Digest: uA3s/NWiuJ3Ey/kWV/brfbcO2Vw=
+
+Name: doc/user/sequences/images/executions.png
+SHA1-Digest: jnUDBHVfAji5vrSCTpW+gs8eoFM=
+
+Name: doc/specifier/diagrams/images/styles/List_container_with_items.p
+ ng
+SHA1-Digest: wCkCIbHVE947i+KPma3rLeQJo+U=
+
+Name: doc/specifier/general/images/migrateodesign.png
+SHA1-Digest: JyFdsr9K3b3aAnjHpIDkjpYzTn8=
+
+Name: doc/specifier/general/images/specifier-guide/validate_model.png
+SHA1-Digest: 3kvHW0CiVW3CBmRxJw9tlVr+vG0=
+
+Name: doc/specifier/sequences/images/new_description.png
+SHA1-Digest: N59aaz4bgcws6nu6jE8kRXbxP6A=
+
+Name: doc/user/diagrams/images/diagram_export_image_tabbar.png
+SHA1-Digest: szMt/IqkGrBzYX4Vj9HGJ2vMJcc=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Gauge_Sq
+ uare.jpg
+SHA1-Digest: Bl3k1x0MnFjTcNTdx0q1k2LxwGQ=
+
+Name: doc/specifier/sequences/images/new_message_creation_tool.png
+SHA1-Digest: 9KEA0A4W6f3oSv6KJi5Q11/3xyo=
+
+Name: doc/specifier/sequences/images/instance_role_mapping_style.png
+SHA1-Digest: v9EwiUREtIA4Zl78OmGnY+Gt6p4=
+
+Name: doc/specifier/general/images/nn60/validation_error_display.png
+SHA1-Digest: jSwE7SES2mD2o4OiPRw9tytC/PU=
+
+Name: doc/user/diagrams/images/diagram_editor17.png
+SHA1-Digest: 6/8FZgQZnyICk/iYzvmoweRMS1A=
+
+Name: doc/user/general/images/collaborative_features22eOther.png
+SHA1-Digest: NK12/qzkAelMsa187ECXzUumOOc=
+
+Name: doc/specifier/diagrams/images/styles/Container_Style_Parallelogr
+ am.png
+SHA1-Digest: eF8jCtf+h3qUWJHk8GQOz6zAeCI=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Workspace_Image.j
+ pg
+SHA1-Digest: Fg7dJcZ5VrnfeBvRrUHUznObAEU=
+
+Name: doc/specifier/general/images/nn46/edgemappingmultiples.png
+SHA1-Digest: YcOsKZii27Hv6Q/hchq6NDz5L50=
+
+Name: doc/user/general/images/viewpoint_selection1.png
+SHA1-Digest: GLtIG8sHpmc53+t4sPCM0yUjHsI=
+
+Name: doc/specifier/general/images/viewpoint_interpreter.png
+SHA1-Digest: +31xr4Aj2/URyoU/OHOnWMWyxkM=
+
+Name: doc/user/diagrams/images/diagram_export_wrong_extension.png
+SHA1-Digest: DUkZFk9ElU8TkhRlD4qtrJ+OUvw=
+
+Name: doc/specifier/sequences/images/new_message_mapping.png
+SHA1-Digest: mB8SkBd2KkNr3ucXoezcIwui6qA=
+
+Name: doc/user/diagrams/images/port_selection_handles4.png
+SHA1-Digest: TPFnkO+dR1dg17VCODDg0ihAeMk=
+
+Name: doc/user/diagrams/images/palette_moving.png
+SHA1-Digest: 4cbeHrjb42WaJUJaEeEunRlt6XQ=
+
+Name: doc/user/diagrams/images/diagram_editor20.png
+SHA1-Digest: 2s27w2dBrMj/Pwr8emJ/3lxPGog=
+
+Name: doc/specifier/sequences/images/new_reorder_tool.png
+SHA1-Digest: cOcrZAWxLTIy/AvIs7KAGq8rBtM=
+
+Name: doc/user/diagrams/images/diagram_editor_copy_layout4.png
+SHA1-Digest: wv3kaf39XCx7MC9EGVCJMWAcRXQ=
+
+Name: doc/specifier/sequences/images/message_creation_tool_visual.png
+SHA1-Digest: te+oySh765A+Zh+hqgIRWnR/eZg=
+
+Name: about.html
+SHA1-Digest: Nxb4GsV9LRkHeP/iVRrZRRlLYTw=
+
+Name: doc/specifier/general/images/nn46/colors.png
+SHA1-Digest: h8JxPQr34s1QPqWVn6Me9kt0uRU=
+
+Name: doc/user/general/images/new_local_session6.png
+SHA1-Digest: dVdgQztRz8ZMQEGu7otemfgKe7A=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Basic_Stroke.png
+SHA1-Digest: VSoY1/EJhtCfihklHZWfYfgCl1E=
+
+Name: doc/user/diagrams/images/diagram_export_one_image.png
+SHA1-Digest: y9fUs6oj4aC8486R8DQcb+U3ul0=
+
+Name: doc/user/diagrams/images/tabbar4x02.png
+SHA1-Digest: ijQCGLVWhZo9jkjUQgwWg2nP624=
+
+Name: doc/specifier/general/images/nn60/eef_sexy_properties.png
+SHA1-Digest: umvHzxzRksMxGi2I+euhBatPfCs=
+
+Name: doc/specifier/general/images/nn47/label_color_on_style_descripti
+ on.png
+SHA1-Digest: W0dJrX14ma8eTYBBWRFCm1CN40I=
+
+Name: doc/user/general/images/new_project3.png
+SHA1-Digest: O9zVUFDGU+7/qYdHrkHVekQS4PU=
+
+Name: doc/user/general/images/create_representation1.png
+SHA1-Digest: bFHTsyteLNaiX+YlJQnmMX9nmtk=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Gauge_Vertical.jp
+ g
+SHA1-Digest: gBUE9yhL7e0g69NsbZj4YlC78Vk=
+
+Name: doc/specifier/sequences/images/execution.png
+SHA1-Digest: tnhOCeXLUPhV2BhZV5uJraufvPY=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Basic_Triangle.p
+ ng
+SHA1-Digest: JIlvUx6PS+w5AVvsSQH5zOEFsoQ=
+
+Name: doc/user/general/images/collaborative_features3.png
+SHA1-Digest: lpBTGpA7TYLi3JiFJPg8icaLz6I=
+
+Name: doc/specifier/general/images/nn47/tabbarDiagramElement.png
+SHA1-Digest: P6MQk+1ayysLUZKb6S4UfI4sNHI=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Bundled_Image_Dot
+ .jpg
+SHA1-Digest: CbqHCwPkN4XrsSabtabNPzcvQ40=
+
+Name: doc/user/general/images/collaborative_features17.png
+SHA1-Digest: d3PtQjl/Qjm3DIw8VOqUS0rb+Pk=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Flat_Color_V
+ alue.jpg
+SHA1-Digest: HvCHb377Z0DkSCenCWrpl3274kU=
+
+Name: doc/specifier/general/images/styles/mini_Node_Gauge_Square.jpg
+SHA1-Digest: LVWgabjE4Mpd8SIY0ZGRVyov3O4=
+
+Name: doc/specifier/general/images/styles/mini_Node_Custom_Style.jpg
+SHA1-Digest: ZGct8972HvajpLxu2iYcTLHFYDk=
+
+Name: doc/specifier/general/images/nn47/quickoutline.png
+SHA1-Digest: aNLQ9Hq+Y7LMrKU7xzisrepZz3Y=
+
+Name: doc/specifier/general/images/nn47/viewpointEndUserDoc.png
+SHA1-Digest: xFA4kEzCkDBhY4agup9IQSyqz5k=
+
+Name: doc/user/diagrams/images/layoutingMode_forbidden_dnd.png
+SHA1-Digest: yav3TV+v0itzJiG10h+X5wxi3x0=
+
+Name: doc/specifier/diagrams/images/styles/Edge_Style_bracketStyle.png
+SHA1-Digest: VsbVajsMMMJhCwKgrd/+ybpAj0c=
+
+Name: doc/user/general/images/diagram_editor_hide_edge_label_1.png
+SHA1-Digest: cVDN53x4PWhxGzsnTZjpui8CSKg=
+
+Name: doc/specifier/general/images/nn47/label_border_style_1.png
+SHA1-Digest: PNMqXuU2jwHnakG5EfarmX8RJ4s=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ Example1_1.png
+SHA1-Digest: kcTTBGZPClnqXnO2ZixagR4aNUw=
+
+Name: doc/specifier/sequences/images/sequence_elements.png
+SHA1-Digest: WHTR44jDIoTmg015Ap1okdXgljE=
+
+Name: doc/specifier/general/images/nn47/representationEndUserDoc.png
+SHA1-Digest: L9t8B1vIzczYPmopbkbl5BwLVJY=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Workspace_Im
+ age_Label_Node.png
+SHA1-Digest: G8cruXyZ4omQCfsrCDDK/HpmoF8=
+
+Name: doc/user/general/images/collaborative_features20.png
+SHA1-Digest: LLVJsF/UuObg8dp6Bd57iiley4U=
+
+Name: doc/user/general/images/managing_representation1.png
+SHA1-Digest: 3S9Bnejn4E7sO/rikv7yn9ySKsE=
+
+Name: doc/specifier/general/images/nn45/doc_api.png
+SHA1-Digest: +j8gHMAMbNTpDuvFz0ANRFByoOo=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Gauge_Square.jpg
+SHA1-Digest: LVWgabjE4Mpd8SIY0ZGRVyov3O4=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Custom_Style.jpg
+SHA1-Digest: ZGct8972HvajpLxu2iYcTLHFYDk=
+
+Name: doc/specifier/general/images/nn46/palettespecification.png
+SHA1-Digest: emnGDC9JOHt8E52R/mZGVqfzEm0=
+
+Name: doc/user/diagrams/images/diagram_editor_pin_dialog2.png
+SHA1-Digest: jd0ppHHJRuC/YSdaUmX5sIPRvFE=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Flat_Color_C
+ ustom_TODO.jpg
+SHA1-Digest: HkIWVMaBcXmgAxo2GbYukZWFIGE=
+
+Name: doc/specifier/general/images/warning.png
+SHA1-Digest: 76z8RIEa6PBefo+ZkNdUD73BTYw=
+
+Name: doc/specifier/sequences/images/combined_fragment.png
+SHA1-Digest: sHMibKy+EaybvSw+TEfCnNBSdFM=
+
+Name: doc/user/tables/images/table_show_hide2.png
+SHA1-Digest: BGaRQniGmcBclcq4R8HGhhp9aZY=
+
+Name: doc/user/tables/Tables.html
+SHA1-Digest: ovtXGqrdfp1RaxbpWlCKYnxurlo=
+
+Name: doc/user/tables/images/table_refresh1.png
+SHA1-Digest: B8IbzKWUSMj+T96+Ni43PQTWMbM=
+
+Name: doc/user/tables/images/table_sort_ascending.png
+SHA1-Digest: 1ztdI8L7IGdsxiaWvPQrtF1TdPo=
+
+Name: doc/user/diagrams/images/diagram_editor2.png
+SHA1-Digest: 27kvnktNpWyzZfgkQI/E48A+wBk=
+
+Name: doc/user/diagrams/images/tabbar_delete_from_diagram.png
+SHA1-Digest: cI8gFXoOR16i7Du3i00jFvhkFiQ=
+
+Name: doc/specifier/diagrams/images/styles/Graphical_Vocabulary_Border
+ ed_Node.png
+SHA1-Digest: ImVyFoS9pGvrMRVMQLsLviYpDy0=
+
+Name: doc/user/diagrams/images/palette_resizing.png
+SHA1-Digest: Utticct7bVqAwcDiWOpzm7aRW1c=
+
+Name: doc/specifier/general/images/emptyExpressionCursor.jpg
+SHA1-Digest: qmnhkolRFLmX3Uq0xqodyEWY/z0=
+
+Name: doc/specifier/general/images/styles/mini_Container_List_Node_Wor
+ kspace_Image.jpg
+SHA1-Digest: CR19ZXK/R3RGE1vwaSD5D+WmLgQ=
+
+Name: doc/specifier/general/images/styles/mini_Node_Square_Color_Named
+ .jpg
+SHA1-Digest: Gv/KJ2QUhFOQt/fBomjzeqow2MA=
+
+Name: doc/user/tables/Tables.textile
+SHA1-Digest: GfPxMBPtm9zctOoS8z3v4dIVUHM=
+
+Name: doc/user/diagrams/images/tabbar_hide.png
+SHA1-Digest: 3Z+xDb1kJ6sd3/olcYuFYo5YPko=
+
+Name: doc/specifier/diagrams/images/styles/Graphical_Vocabulary_List_C
+ ontainer.png
+SHA1-Digest: dNLm2+RuxinRHjY/RA8QcwPsC2Y=
+
+Name: doc/user/diagrams/images/diagram_editor16.png
+SHA1-Digest: NfQutgVCXHIzlzUGiiXYmRGUTc4=
+
+Name: doc/specifier/diagrams/images/styles/standard_colors.png
+SHA1-Digest: ZqSycXHKo0tIuBxCaP9PT1icHNo=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ After.png
+SHA1-Digest: 292qYdyGksyhshFXsNodwy8TZ0E=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_pin_regexp_with
+ -question-mark.png
+SHA1-Digest: XPciRsLJsRNtXvGMrJuQEBi5K8c=
+
+Name: doc/user/diagrams/images/tabbar_delete_from_model.png
+SHA1-Digest: z5JJFyn+SovFv/WmJ+tUP7p4C4k=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Basic_Square.png
+SHA1-Digest: MBaXvmp5Sa8CDBMZmLfd6QWpJCk=
+
+Name: doc/specifier/general/images/emptyExpressionAutoCompletion.jpg
+SHA1-Digest: HPPYrrl0iGs+xgLWn16jnzulmxA=
+
+Name: doc/user/general/images/collaborative_features22bCurrent.png
+SHA1-Digest: 56Zh1jF7PHke2h6/ZOWP+3Oyx5U=
+
+Name: doc/specifier/sequences/images/reorder_tool_visual2.png
+SHA1-Digest: NyqZb+8CfiNNASR1gWLfMTri2og=
+
+Name: doc/user/diagrams/images/port_selection_handles3.png
+SHA1-Digest: +xFqFLay3ogVlyjJjTy1vy8JRYA=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Bundled_
+ Image_Stroke.jpg
+SHA1-Digest: xQ+ns2MGdRlrwC3f0fKiLrQmflQ=
+
+Name: doc/specifier/general/images/nn60/edgeONedge.png
+SHA1-Digest: YGgLoNnRXQ/3Y+dVeWajozfzfrs=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Lozenge.j
+ pg
+SHA1-Digest: L/k1f8D12SrSI/7nTzbpq7Y0UIY=
+
+Name: doc/user/tables/images/table_sort_unsorted.png
+SHA1-Digest: Z05YD9TyiCsDz+k80PK6B42e+zI=
+
+Name: doc/user/general/images/model_content_view4.png
+SHA1-Digest: S0SHB5fIihG1qbiNGpf9wcKllSo=
+
+Name: doc/user/diagrams/images/diagram_editor_copy_layout3.png
+SHA1-Digest: izuZkdYeLIswxAgvHrsuHhgnB94=
+
+Name: doc/user/general/images/new_local_session5.png
+SHA1-Digest: ijwU1Kh3pnBccQesyZIkFfymXnE=
+
+Name: doc/specifier/general/images/nn45/ecore_tagtable.png
+SHA1-Digest: 2+DD8uqAUFpl1ynVjDB2C6Kup50=
+
+Name: doc/user/diagrams/images/diagram_editor20b.png
+SHA1-Digest: NGdqYytW0Tgo9379pUZFD9yXLaw=
+
+Name: doc/user/general/images/collaborative_features22bOther.png
+SHA1-Digest: 2BSOW6oWdTRAF0bD+n/GMUtpAfQ=
+
+Name: doc/user/diagrams/images/tabbar4x01.png
+SHA1-Digest: CxMx/VLVLT32kuGYy/Vj1Apq7UQ=
+
+Name: doc/user/general/images/new_project2.png
+SHA1-Digest: m+g2W+VMWv0y6fiVxdsuR1B6DNM=
+
+Name: doc/specifier/general/images/styles/mini_Node_Lozenge.jpg
+SHA1-Digest: 8elb1PcrN/RRU1k5xC7R1Gd1G/4=
+
+Name: doc/user/general/images/collaborative_features22eCurrent.png
+SHA1-Digest: Lob82RJFcu6byiLHB6MRaS/2eXs=
+
+Name: doc/specifier/general/images/specifier-guide/complete_task.png
+SHA1-Digest: gQg7KDLS4SIiUFMMjilVdoOpWn0=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Lozenge.
+ jpg
+SHA1-Digest: L/k1f8D12SrSI/7nTzbpq7Y0UIY=
+
+Name: doc/specifier/sequences/Sequence Diagrams.html
+SHA1-Digest: YaCAWsVpX+KhPDEo7nn+/i35dJw=
+
+Name: about.ini
+SHA1-Digest: FdINPAMC/oviw3vkT9SzMxe9DmE=
+
+Name: doc/user/general/images/collaborative_features2.png
+SHA1-Digest: rt9xvvIGqL2VnMJXNi9/N6A4vK0=
+
+Name: doc/specifier/sequences/images/full_sequence_example.png
+SHA1-Digest: pDFsDVWWL5Ik8WHZ8YmuWVxkcZQ=
+
+Name: doc/user/sequences/images/creation_destruction_messages.png
+SHA1-Digest: rstgsFR9Xx9C/GWsjdLWi800kCI=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Square_Color_RGB_
+ Label_Border.jpg
+SHA1-Digest: HVpe87xZqt2dkpXh+YQ04m8yby8=
+
+Name: doc/user/general/images/collaborative_features16.png
+SHA1-Digest: ghMG4bAwL2IK0L212o0THLX+VPM=
+
+Name: doc/specifier/diagrams/images/styles/Container_Style_Image.png
+SHA1-Digest: C60ZNmlHmBLVLHLcjWTNtAb23WU=
+
+Name: doc/specifier/sequences/images/ends_ordering_visual.png
+SHA1-Digest: fnlpr/u1fs4lQQrG0zixE7iZq78=
+
+Name: doc/specifier/general/images/nn45/ecore_doctable.png
+SHA1-Digest: tOuAzOV72mqEi94ph/FvhXrZBZY=
+
+Name: doc/specifier/general/images/nn60/interpreter_error_display.png
+SHA1-Digest: 5rZt43VNK0GUoByMId3QwS2TZII=
+
+Name: doc/user/general/images/collaborative_features22hCurrent.png
+SHA1-Digest: eL6EpUI43jKE15ozdmxVcvy5zaA=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Square_Color_Valu
+ e.jpg
+SHA1-Digest: m1MthgUm1Uv4+qz0mGqe+bk26Nc=
+
+Name: doc/specifier/general/images/migrateaird.png
+SHA1-Digest: Z//RD22a0yFFY7VnXbft2DH7QyA=
+
+Name: doc/specifier/general/images/nn47/interpolated_color_diagram.png
+SHA1-Digest: ssxvhNWVe18A0dcBRZF9I/oH6Fc=
+
+Name: doc/specifier/general/images/nn47/computed_color_vsm.png
+SHA1-Digest: TmaIuh7mWsUwiGjMM2v6TTWPhc4=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_edge_label
+ _4.png
+SHA1-Digest: 2D9hqNNwiNumdZrThq9kFdWoJTk=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Bundled_
+ Image_square.jpg
+SHA1-Digest: SZYCAnzlRFADmYy0KtYsno6RSIE=
+
+Name: doc/specifier/general/Writing_Queries.html
+SHA1-Digest: vbt2QokCmoHssCo4LVEBDq8raPo=
+
+Name: doc/specifier/sequences/images/new_creation_tool_section.png
+SHA1-Digest: HsOrXNUCQCAq2Eh4jEnKL5MmOc4=
+
+Name: doc/user/diagrams/images/diagram_editor_pin_dialog1.png
+SHA1-Digest: zrMBr9bRXYleO5tcagnYycRh9iQ=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Bundled_I
+ mage_Ring.jpg
+SHA1-Digest: bKLGHiPY6Tmbue6CgsJq6R8jqYg=
+
+Name: doc/specifier/general/images/nn47/transienteditorjava.png
+SHA1-Digest: KPOTCQVlKwod2tpguRAWbr4S+YM=
+
+Name: doc/specifier/tables/Tables.html
+SHA1-Digest: 4tQAQ19gG155CniOX5QcIZiZa2c=
+
+Name: doc/user/tables/images/table_show_hide1.png
+SHA1-Digest: pRotMHGpSUENNnjNjNEcV1Ayr1A=
+
+Name: doc/specifier/general/images/nn47/filtersManagement.png
+SHA1-Digest: d7CGfEgYF6ZBakm6rnDs4X9dk0U=
+
+Name: doc/specifier/general/images/styles/mini_Node_Square_Color_RGB_L
+ abel_Node.jpg
+SHA1-Digest: oM5WZgK6VM9AgB5WdpCiTBWau94=
+
+Name: doc/user/diagrams/images/tabbar_pin_unpin_02.png
+SHA1-Digest: JhZ3o801UuyD4TZsi7GnXRHooiY=
+
+Name: doc/user/sequences/images/executions_move_expansion_feedback.png
+SHA1-Digest: yPJymUxI2CbkkVBXpo/HuV0OHH8=
+
+Name: doc/specifier/general/Colors.html
+SHA1-Digest: hmC/sTSsOGQSGF6GLg3K6x4nJGo=
+
+Name: doc/user/general/images/conformance3.png
+SHA1-Digest: eNMsigM+2GMow7oSpDREv8lPiqk=
+
+Name: doc/user/diagrams/images/diagram_editor1.png
+SHA1-Digest: pkTXseoMgdCd8pc56kB9a4BjI4Q=
+
+Name: doc/specifier/general/images/nn46/printtable.png
+SHA1-Digest: 4ihUPp5AqblvvCf1opcBRGDjcfM=
+
+Name: doc/user/diagrams/images/diagram_editor9.png
+SHA1-Digest: svb/VbZj4jYtYlNM+p4KBO72j/g=
+
+Name: doc/specifier/general/images/nn45/validationviewpoint.png
+SHA1-Digest: 8o1PpEnnHVFnLb5LIfhS3jL0u4s=
+
+Name: doc/user/diagrams/images/diagram_editor15.png
+SHA1-Digest: QTcoi6updXKxAm9hAMC0HghvLoU=
+
+Name: doc/specifier/diagrams/Diagrams.html
+SHA1-Digest: WcAacxYI/UmkvrcggV+EOeaMbI8=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Workspace
+ _Image.jpg
+SHA1-Digest: IVSDOxlGiE0plVWkbYAOe9Edq3Y=
+
+Name: doc/specifier/sequences/images/new_execution_creation_tool.png
+SHA1-Digest: 7ui/tixeQREy2oiOS8svUKMnz6Q=
+
+Name: doc/specifier/sequences/images/reorder_tool_visual1.png
+SHA1-Digest: ObITRPS6TNUrjwE7i7uG5V3MKfo=
+
+Name: doc/user/diagrams/images/port_selection_handles2.png
+SHA1-Digest: w35N5kmYakH6kKI7zal0K5Yho1g=
+
+Name: doc/specifier/general/images/styles/mini_Node_Conditional.jpg
+SHA1-Digest: 4ZShPOxcBikhCARPHt5wmgKA3G0=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Gauge_Squ
+ are.jpg
+SHA1-Digest: Bl3k1x0MnFjTcNTdx0q1k2LxwGQ=
+
+Name: doc/specifier/general/Colors.textile
+SHA1-Digest: jYFvLugiV48eFKXRfuK22u7hbYM=
+
+Name: doc/user/general/images/model_content_view3.png
+SHA1-Digest: WJ98k6QFd5cigWo/YfkCPrb7v4o=
+
+Name: doc/user/diagrams/images/diagram_editor_copy_layout2.png
+SHA1-Digest: wXKqV/QefcK5AQiBYmpzRaMqGAw=
+
+Name: doc/user/general/images/collaborative_features18c.png
+SHA1-Digest: 0IuXv68NKtljrGeto1V3Ohnxg1k=
+
+Name: doc/specifier/general/images/nn52/migrate_vsm.png
+SHA1-Digest: d0oB1seK3Uqqljguw4X4kgvcDJc=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_hide_label_icon
+ _2.png
+SHA1-Digest: //Gp4uWzb6xqdrL1S8eSQLvyqh0=
+
+Name: doc/user/general/images/new_local_session4.png
+SHA1-Digest: aJzMUFltLuXjWrVyYAI9G0eJV+Y=
+
+Name: doc/user/general/images/collaborative_features22fOther.png
+SHA1-Digest: W7WbEk/q0mif9Oqzef+9/xtQDII=
+
+Name: doc/user/diagrams/images/tabbar02.png
+SHA1-Digest: S7zanrLQfIq4kFlo3wlm24aDfN4=
+
+Name: doc/specifier/sequences/images/message.png
+SHA1-Digest: FsBZZVJSGjNPokFC709UC3ilJ88=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Workspac
+ e_Image.jpg
+SHA1-Digest: IVSDOxlGiE0plVWkbYAOe9Edq3Y=
+
+Name: doc/user/sequences/images/lifelines.png
+SHA1-Digest: lEZaG64E7tfIgVa5lqvBLoQWh00=
+
+Name: doc/user/diagrams/images/diagram_editor_filter_toolbar_activated
+ .png
+SHA1-Digest: sai6LDUxCazw2oy2/rqld5i5PTo=
+
+Name: doc/user/general/images/new_project1.png
+SHA1-Digest: OHORLpuNGrb2/3afv7tN8JdZcBs=
+
+Name: doc/specifier/general/images/references/group/ToolGroupDemo.png
+SHA1-Digest: vR8plcX1bYaQp49enNQy4Sey4ug=
+
+Name: doc/specifier/trees/images/questionMarque.png
+SHA1-Digest: 3QqoOF8mRsmtfcas84oJ31APPPY=
+
+Name: doc/specifier/sequences/images/new_instance_role_mapping.png
+SHA1-Digest: 9aW6NyNRsC1xuZbyZlAUlsQ6gYQ=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Note.jpg
+SHA1-Digest: MHGKAJUInO+nXpV66xkbh61x6LA=
+
+Name: doc/specifier/trees/Trees.textile
+SHA1-Digest: RcPSr19yq+DH8NbpNHh60v6fKa8=
+
+Name: doc/specifier/general/images/nn45/ecore_classdiag.png
+SHA1-Digest: CdxS1MDwSMu2quD9UzJBkSJIB5s=
+
+Name: doc/specifier/general/images/nn45/editor_childs.png
+SHA1-Digest: T8YeqC5QwDiC/C0gJ4JoaggPFzk=
+
+Name: doc/user/general/images/collaborative_features1.png
+SHA1-Digest: mcu2zzCgVb6JokfLahLEww6DMgQ=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_label_4.pn
+ g
+SHA1-Digest: DolulD96TgeaFG36bqzrgs4Fe4Q=
+
+Name: doc/user/general/images/collaborative_features15.png
+SHA1-Digest: oWdeHkZwwNbDklNPMqqnU/PiM+E=
+
+Name: doc/user/general/images/collaborative_features9.png
+SHA1-Digest: trxIwHQnXbivWhFf4iVCQQIlCKI=
+
+Name: doc/specifier/cheatsheets/CreatingViewpointSpecification.xml
+SHA1-Digest: OWK+9GStz8gjLidj2sY5WnLPUe8=
+
+Name: doc/user/sequences/images/full_sequence_example.png
+SHA1-Digest: pDFsDVWWL5Ik8WHZ8YmuWVxkcZQ=
+
+Name: doc/release_notes_vp.textile
+SHA1-Digest: Fpm21bnFodebElC7hoH6jsPH7oo=
+
+Name: doc/specifier/general/images/nn47/transienteditor.png
+SHA1-Digest: 0FET/GE6iiLrA1wWpbV8d5pdRGI=
+
+Name: doc/user/diagrams/images/tabbar_layouting_mode.png
+SHA1-Digest: kUFGMj3PyLCvIdVjznjHLH0n4gg=
+
+Name: doc/user/diagrams/images/tabbar_export_image.png
+SHA1-Digest: jZ0D0bEH7trlPnHBvl3/z9VR9h0=
+
+Name: doc/user/general/images/migrating_older_version1.png
+SHA1-Digest: tR25tw+DsZiWwjprVq7umObz4nY=
+
+Name: doc/specifier/diagrams/images/styles/styleCustomization.png
+SHA1-Digest: bicmO66D1/A9i/wdVoq+FjSy15w=
+
+Name: doc/specifier/general/images/nn46/ecoreincolor.png
+SHA1-Digest: bVyaN2WE26Z7XZZ/mHhKQcmlm+k=
+
+Name: doc/specifier/general/Writing_Queries.textile
+SHA1-Digest: 3mCH9nR1rD37l4eX1QzNFRYvl8g=
+
+Name: doc/specifier/general/images/nn45/doc_quickstart.png
+SHA1-Digest: XEEZ/cUhIw/gjA03fT7sLb8BUWQ=
+
+Name: doc/user/diagrams/images/diagram_editor_hide_label_icon_2.png
+SHA1-Digest: YA4sl8P57BPtwe4uWFfV1g05Nug=
+
+Name: doc/specifier/general/images/styles/mini_Node_Bundled_Image_Dot.
+ jpg
+SHA1-Digest: CbqHCwPkN4XrsSabtabNPzcvQ40=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_edge_label
+ _3.png
+SHA1-Digest: NV53IBnoli467XZI5/hdyvXBY/8=
+
+Name: doc/specifier/general/images/nn45/validation_quickfix.png
+SHA1-Digest: DslMRvcqYya5//1WMpuCvNol5vE=
+
+Name: doc/specifier/general/images/styles/mini_Container_Flat_Color_Va
+ lue.jpg
+SHA1-Digest: HvCHb377Z0DkSCenCWrpl3274kU=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Ellipse.j
+ pg
+SHA1-Digest: zOO6TrOvd56Kjw4eNkV0RSsaDOg=
+
+Name: doc/specifier/trees/Trees.html
+SHA1-Digest: tBUtvSlkWVjGG0Wp5g7D48DNLms=
+
+Name: doc/specifier/general/images/nn47/domain_based_property_view.png
+SHA1-Digest: aRD8q9CMeq9JedG8u6Ls2k8Mzb8=
+
+Name: doc/specifier/general/images/nn46/colorswitchmodelingassistant.p
+ ng
+SHA1-Digest: zMTJmUAdWpi4j6mkErgNk4X4+TE=
+
+Name: doc/user/general/images/diagram_editor14-terce.png
+SHA1-Digest: XtsFG8ea1i8QEWECsmoES3WvQCE=
+
+Name: doc/specifier/general/images/nn60/edgeONedge_VSM.PNG
+SHA1-Digest: 5yHjYrNedGaf1MMXRV6YgqILycY=
+
+Name: doc/specifier/general/images/styles/mini_Node_Ellipse.jpg
+SHA1-Digest: kmPvwKnlB5QsAqGJqOiExyA3hsI=
+
+Name: doc/user/diagrams/images/tabbar_filters_selection.png
+SHA1-Digest: vmoEE6RxW4DyNGVrARoDOXAAVtc=
+
+Name: doc/specifier/diagrams/images/references/reconnect/ReconnectTool
+ _After.png
+SHA1-Digest: 292qYdyGksyhshFXsNodwy8TZ0E=
+
+Name: doc/specifier/general/images/nn45/ecore_hierarchydiag.png
+SHA1-Digest: sF94vxyqGz+fB31Lmcc97bhec5U=
+
+Name: doc/user/general/images/conformance2.png
+SHA1-Digest: SYYJapngVllbxQjuhSvQSo1I0X8=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Ellipse.
+ jpg
+SHA1-Digest: zOO6TrOvd56Kjw4eNkV0RSsaDOg=
+
+Name: doc/user/general/images/groupItems.png
+SHA1-Digest: Me7EzfLrIJVVq2hI8EIrvoDr8gU=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_show_hide_regex
+ p_with-question-mark.png
+SHA1-Digest: rW9OYcn4ng58LWSMHG5hnPAltHc=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Import.jp
+ g
+SHA1-Digest: xpqFiXQNnTUg0D+Q7Fj3ajI484o=
+
+Name: doc/user/diagrams/images/diagram_editor8.png
+SHA1-Digest: f0Fddg+lwshkRyLpIJj59tiUZoc=
+
+Name: doc/specifier/general/images/nn45/errorreporting.png
+SHA1-Digest: stwzEHHup50T/pYIjqWfGQlyNPs=
+
+Name: doc/specifier/general/Model_Operations.html
+SHA1-Digest: 3aK0DecHZ/qWIgHRNr4r7HvqHm0=
+
+Name: doc/user/diagrams/images/tabbar_refresh.png
+SHA1-Digest: NZon5XaClOoNLgvpr6BylKBRkzM=
+
+Name: plugin.properties
+SHA1-Digest: SFT+XEhimpwGNJdTmNov/9XQg0k=
+
+Name: doc/user/trees/images/tree_representation4.png
+SHA1-Digest: jO73pajFiK9N0NSxAoJCZwzF/qM=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram_pathmaps.
+ png
+SHA1-Digest: DR2w7E8c/s7bHJVZteVd7/rsm2o=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_List_Node_Sq
+ uare.jpg
+SHA1-Digest: CR19ZXK/R3RGE1vwaSD5D+WmLgQ=
+
+Name: doc/user/diagrams/images/tabbar_layers_selection.png
+SHA1-Digest: vKYCxthm1MnUsYnHb7QB6GqY1n8=
+
+Name: doc/user/diagrams/images/tabbar_selection_tools.png
+SHA1-Digest: +GFvORTssvUaS8cq989ENQqLhvk=
+
+Name: plugin.xml
+SHA1-Digest: DsoXuG4kj2apur7xl7xIXNYxgr4=
+
+Name: doc/user/diagrams/images/port_selection_handles1.png
+SHA1-Digest: 4iQWhM0ohwRAZroCw0RZhJDG7OU=
+
+Name: doc/specifier/general/images/styles/mini_Node_Bundled_Image_Ring
+ .jpg
+SHA1-Digest: J13/ovpoFeXC8daN3tI0KyhVd6Q=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Lozenge.jpg
+SHA1-Digest: 8elb1PcrN/RRU1k5xC7R1Gd1G/4=
+
+Name: doc/specifier/general/images/tricks.png
+SHA1-Digest: wUvqEXCu5ICYZg3Qf7F2EGOyiyc=
+
+Name: doc/specifier/sequences/images/java_service.png
+SHA1-Digest: HOFstzm4pG72txk8HsmCuolzZEk=
+
+Name: doc/Release Notes.html
+SHA1-Digest: XVRWD+a/deI3hdfsITxGZ+Xi4lQ=
+
+Name: doc/specifier/general/images/styles/standard_colors.png
+SHA1-Digest: ZqSycXHKo0tIuBxCaP9PT1icHNo=
+
+Name: doc/user/general/images/model_content_view2.png
+SHA1-Digest: y3fxCWcFNKFIMXLgyfMiB5k92T8=
+
+Name: doc/user/diagrams/images/diagram_editor_copy_layout1.png
+SHA1-Digest: r/VItKA0Tq5WP6qGRFlpAfzd39o=
+
+Name: doc/specifier/general/images/nn47/ui_user_preferences_pages.png
+SHA1-Digest: CzIKUqccAt1IKDMectFPyQxCFww=
+
+Name: doc/user/general/images/collaborative_features18b.png
+SHA1-Digest: zxElqauUIc9hJAfb9gA4YjXPd0M=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_hide_label_icon
+ _1.png
+SHA1-Digest: 0aBW21akeeH8d7yPm0db4DOyoWc=
+
+Name: doc/user/general/images/new_local_session3.png
+SHA1-Digest: 6ozwP3omB7bPZpMTOdvA62Q01cQ=
+
+Name: doc/user/diagrams/images/tabbar01.png
+SHA1-Digest: 0V9UOpXcOX/tIzK143IqtWhl3Kk=
+
+Name: doc/user/diagrams/images/tabbar_alignment_control.png
+SHA1-Digest: qOzTDCqU8FfS5IzeizzZ7hRt340=
+
+Name: doc/user/diagrams/images/diagram_editor_dnd02b.png
+SHA1-Digest: VP5xJkoYlbSjIoJvOdJTA2p/PUU=
+
+Name: doc/Release Notes.textile
+SHA1-Digest: TjjexbRpcnB/NJRcJjLhpbrFGLE=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Bundled_I
+ mage_Stroke.jpg
+SHA1-Digest: xQ+ns2MGdRlrwC3f0fKiLrQmflQ=
+
+Name: doc/specifier/sequences/images/execution_creation_tool_visual.pn
+ g
+SHA1-Digest: A98wToA2bi49uNnYBA/bfrzL1wg=
+
+Name: doc/specifier/general/FullFamily features.html
+SHA1-Digest: ZbSt1ZJEwxB6gPaNdqxBKoFbvv8=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_label_3.pn
+ g
+SHA1-Digest: owTm13gldhu9qB1KHLTG0aPUR7s=
+
+Name: doc/user/tables/images/table_create_item2.png
+SHA1-Digest: X6xV1/G0K151AxBeaYzgLNlFdLo=
+
+Name: doc/specifier/general/images/nn45/editor_completion.png
+SHA1-Digest: jGQtrWpH4xz4ojMgb0Yahvav9yc=
+
+Name: doc/user/diagrams/images/diagram_editor_pin05.png
+SHA1-Digest: 7jhaVsRdj+s0lk9JawZZ0jd8YyM=
+
+Name: doc/user/general/images/collaborative_features14.png
+SHA1-Digest: yYzRvfQlKxm2wct2iotVPTPot8s=
+
+Name: doc/user/general/images/collaborative_features8.png
+SHA1-Digest: KMTD5vjdPPtAEfSapV6FD1Wr1p4=
+
+Name: doc/user/diagrams/images/diagram_editor_layer_toolbar_activated.
+ png
+SHA1-Digest: 9E7VFY2z3JSfAPXdmhpeZVxQ2sw=
+
+Name: doc/user/general/images/collaborative_features19c.png
+SHA1-Digest: /l45kQvUpiDQM0AZ8zdWpCLEQy8=
+
+Name: doc/specifier/general/images/questionMarque.png
+SHA1-Digest: 3QqoOF8mRsmtfcas84oJ31APPPY=
+
+Name: doc/user/general/images/collaborative_features22cOther.png
+SHA1-Digest: Fw6GsDN2jBCWlBAYVXVY7dwaZdc=
+
+Name: doc/release_notes_vp.html
+SHA1-Digest: ybswSXSgOWU++db6vMVXKM6qqWk=
+
+Name: doc/user/diagrams/images/synchronized_diagram5.png
+SHA1-Digest: rRpBIorZkeBa+MT6bimAPyLAU2M=
+
+Name: doc/specifier/general/images/emptyFieldAutoCompletion.jpg
+SHA1-Digest: 8i62Dtkq660FJ/Lm6kqYEyEE8SM=
+
+Name: doc/specifier/general/images/styles/mini_Container_Shape.jpg
+SHA1-Digest: sCXB5+OfDdCTmGNKO+7IcWeI6I0=
+
+Name: doc/user/general/images/modeling_perspective.png
+SHA1-Digest: TTHqFQ4o3EHdZ6uL/TBcdh3TSdE=
+
+Name: doc/specifier/general/images/nn52/tree_dndtool.png
+SHA1-Digest: 4SIhJIh/Wzq/Hw/69ycsx6sAfbI=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Bundled_
+ Image_Ring.jpg
+SHA1-Digest: bKLGHiPY6Tmbue6CgsJq6R8jqYg=
+
+Name: doc/specifier/general/Model_Operations.textile
+SHA1-Digest: B9gjzTlNMz6JveKLuKW8sU6Vl5g=
+
+Name: doc/resources/images/logo.png
+SHA1-Digest: 1glwe0BlwwYoFAiDqrTNzdI/ZKc=
+
+Name: doc/user/diagrams/images/diagram_editor_hide_label_icon_1.png
+SHA1-Digest: 7d4YcHxATSNFu/p97AGJB+WB+/Y=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram.png
+SHA1-Digest: pCP8Kwbl4iPciqEW5QM6KAEl6a8=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Square_Color_RGB_
+ Label_Node.jpg
+SHA1-Digest: oM5WZgK6VM9AgB5WdpCiTBWau94=
+
+Name: doc/specifier/general/images/styles/mini_Node_Square_Color_RGB_L
+ abel_Border.jpg
+SHA1-Digest: HVpe87xZqt2dkpXh+YQ04m8yby8=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_edge_label
+ _2.png
+SHA1-Digest: b1YPaph00VS3cW+Z6zE7ScGMlqk=
+
+Name: doc/user/sequences/images/complex_messages.png
+SHA1-Digest: Bjsk9AGPQbjsPMhE3LO5Iv3rMHU=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Bundled_
+ Image_Dot.jpg
+SHA1-Digest: 8LLTjCkjjuABl9kZdP7vPNEBJJw=
+
+Name: doc/specifier/general/images/nn52/tree_creationtool.png
+SHA1-Digest: KbaMyqHNSDudk1Zbi3SWfQ0bKfA=
+
+Name: doc/resources/bootstrap.js
+SHA1-Digest: hoZYUWOShMXgzSwNL1XBz1SKRKo=
+
+Name: doc/specifier/general/images/nn45/request_completion.png
+SHA1-Digest: EWxy0dLiH2eMpLCCth4KFBPPSGQ=
+
+Name: doc/specifier/sequences/images/new_execution_mapping.png
+SHA1-Digest: pjeWNYin9y+tgGVzNa5Lilob+OM=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram_connectio
+ ns.png
+SHA1-Digest: duF6w/sR6dj9PM9hQq+ijx+w9j8=
+
+Name: doc/specifier/general/images/nn47/interpolated_color_odesign.png
+SHA1-Digest: 38tp6pelPMfMiT5ru0R/E5wEH6Q=
+
+Name: doc/user/general/images/conformance1.png
+SHA1-Digest: v0oC2cQxgepEQtc7VRZucQFDLk4=
+
+Name: doc/user/diagrams/images/noteTool.png
+SHA1-Digest: Y0zQDwW3tfoPed3Qks1U7lEdi8s=
+
+Name: doc/user/general/images/collaborative_features22cCurrent.png
+SHA1-Digest: 1711vBYdzyFoY1+ZLKXH8EFvwvs=
+
+Name: doc/specifier/sequences/images/lifeline.png
+SHA1-Digest: cnnPhB4Wd4yr7jf/8RmvOwJjyoQ=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Bundled_I
+ mage_square.jpg
+SHA1-Digest: SZYCAnzlRFADmYy0KtYsno6RSIE=
+
+Name: doc/user/diagrams/images/diagram_editor7.png
+SHA1-Digest: Eey/qGmgM7Yna0vsIql2SBZd9eo=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Conditional.jpg
+SHA1-Digest: 4ZShPOxcBikhCARPHt5wmgKA3G0=
+
+Name: doc/user/diagrams/images/diagram_editor13.png
+SHA1-Digest: pxgewlUfZkUZGQJrWx0gpMT8QxY=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Condition
+ al.jpg
+SHA1-Digest: MbV6LRqX8su/TYSAF4VeSi3eUxA=
+
+Name: doc/specifier/diagrams/Diagrams.textile
+SHA1-Digest: bblygJ6O9eqavNEARgpAblsl1qY=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Bundled_Image_Tri
+ angle.jpg
+SHA1-Digest: ODVGV6WnmlLmOYeuHL3gm+t2eBU=
+
+Name: doc/specifier/trees/images/tricks.png
+SHA1-Digest: wUvqEXCu5ICYZg3Qf7F2EGOyiyc=
+
+Name: doc/user/trees/images/tree_representation3.png
+SHA1-Digest: Os9xC3ezleSmhYeSx20McbndWkc=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_Flat_Color_N
+ amed.jpg
+SHA1-Digest: QKatCtVjepXTz/pswj/BO3Oswls=
+
+Name: doc/specifier/sequences/images/execution_mapping_reused.png
+SHA1-Digest: NNwWcIFQOm9kY/cP7MdZbNmRKUA=
+
+Name: doc/user/diagrams/Diagrams.html
+SHA1-Digest: 3oA9XOlftgG1OTTkxrb/K2rj//4=
+
+Name: doc/user/general/images/collaborative_features22fCurrent.png
+SHA1-Digest: uw1FQcOicJoH6d8yWyZaLExnLX0=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Note.png
+SHA1-Digest: nXPGWYYO+evdHP3nIDBeviMRP0Y=
+
+Name: doc/user/general/images/project_dependencies3.png
+SHA1-Digest: Y1NWc/EXd5MSR3lATUcadAFEuM0=
+
+Name: doc/specifier/general/images/references/interpretedExpression/te
+ xtArea.png
+SHA1-Digest: ZPTjTQeqR/Aw57npmpYeMS7Wsg8=
+
+Name: doc/specifier/general/images/nn61/font_bold_italic.png
+SHA1-Digest: VuW0QEvcizSC22HQhXCSx84zZbY=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Conditio
+ nal.jpg
+SHA1-Digest: MbV6LRqX8su/TYSAF4VeSi3eUxA=
+
+Name: doc/user/diagrams/images/tabbar_color_style_controls.png
+SHA1-Digest: Y5nijrB7pDZVdN8ATRzmNtdqsuQ=
+
+Name: doc/user/general/images/model_content_view1.png
+SHA1-Digest: A1VpB4um2tZTzP58ilzkrVzdu0s=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_show_hide_dialo
+ g2.png
+SHA1-Digest: IS4bzcShUcjwWyLRgVlCRDPvrzY=
+
+Name: doc/user/general/images/create_representation1_alt.png
+SHA1-Digest: YsuFRh7vD2C7+hrN3zpZjmj7I9I=
+
+Name: doc/specifier/general/images/styles/mini_Node_Gauge_Vertical.jpg
+SHA1-Digest: gBUE9yhL7e0g69NsbZj4YlC78Vk=
+
+Name: doc/user/general/images/collaborative_features18a.png
+SHA1-Digest: htfzRMEj84c/p9X9qy1gqh84P9w=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Lozenge.png
+SHA1-Digest: joneNcHhi/cDEkX6MkOWmLfpryE=
+
+Name: doc/user/trees/Trees.html
+SHA1-Digest: doOOtJ3f0F3qTas6FWNahlMDgOI=
+
+Name: doc/user/diagrams/images/diagram_editor_note_pin_configuration01
+ .png
+SHA1-Digest: VUUGmYHamqGZyKJTyAJmehW9Il8=
+
+Name: doc/user/general/images/new_local_session2.png
+SHA1-Digest: uCqdLJOLdjfX8sToa5ggPspn9oE=
+
+Name: doc/specifier/tables/Tables.textile
+SHA1-Digest: mDeIpgFzjZXL/4NaC9h0PBvod2Y=
+
+Name: doc/user/diagrams/images/diagram_editor_dnd02a.png
+SHA1-Digest: LygMVPVWIte3u+2nRD+Zos7pMJI=
+
+Name: doc/specifier/general/images/nn45/control.png
+SHA1-Digest: OkCg0yqobj90Mb1LUwUV36uRs8c=
+
+Name: doc/user/general/images/groupItems_3.png
+SHA1-Digest: iG8eqXEqQ3j2kb47eV2v8T62nos=
+
+Name: modeling32.png
+SHA1-Digest: ADlLWFV0eQ74YnLvHnPFkYLeLrs=
+
+Name: doc/specifier/general/images/nn60/acceleo3_interpreter_view.png
+SHA1-Digest: x474rO0rfM1LtcqtuF8SwDo2e5E=
+
+Name: doc/user/general/images/diagram_editor14-bis.png
+SHA1-Digest: OF26YrTHV7cVcX7h+Dy8B8PCx5o=
+
+Name: doc/user/diagrams/images/palette_tool_drawer.png
+SHA1-Digest: HSRszgbCw891a5Po0Jks2hp7NWY=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_label_2.pn
+ g
+SHA1-Digest: AxV3A6rB9+JdePOKoGXPHVi15OA=
+
+Name: doc/user/tables/images/table_create_item1.png
+SHA1-Digest: dm+zKwy3iczO9m/1EAj3Y3+DBdY=
+
+Name: doc/specifier/sequences/images/execution_mapping_style.png
+SHA1-Digest: 9kl80ptSv38moh7Z1z0frJmYyjc=
+
+Name: doc/user/general/images/create_representation5.png
+SHA1-Digest: Zh2qbeQGXbh7AlBjUU4E931QhlI=
+
+Name: doc/user/diagrams/images/diagram_editor_pin04.png
+SHA1-Digest: w6Ctr3ko/u3vf6nDOkWdeC73tC0=
+
+Name: doc/specifier/general/images/nn52/tree_popup_menu.png
+SHA1-Digest: PGlHDRfD+Hfd1eiVvuweNAylhYs=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Square.png
+SHA1-Digest: BF27cjEdJpuCqlbri/6C4dmWcPc=
+
+Name: doc/user/diagrams/images/popup_bar.png
+SHA1-Digest: 1BZU1aIRvEHzLICX6IJ4ib9vbCk=
+
+Name: doc/user/general/images/collaborative_features13.png
+SHA1-Digest: NoTXkGpNPuAvXCtxdfG56FjrZrs=
+
+Name: doc/user/general/images/collaborative_features7.png
+SHA1-Digest: /gF2sZmP8rU7zStCMzPU//wo0rA=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Bundled_I
+ mage_Triangle.jpg
+SHA1-Digest: sojdn8UFq8pIaMjyItMLfUSAbTw=
+
+Name: doc/user/general/images/collaborative_features19b.png
+SHA1-Digest: aFw7EakbU82PMaI7rcbIqJBv+Mk=
+
+Name: doc/user/general/images/collaborative_features22gOther.png
+SHA1-Digest: udWyFJQ1J5d+duoBtwJmV7VMmps=
+
+Name: doc/user/diagrams/images/diagram_editor_dnd03b.png
+SHA1-Digest: Q2vKb+gJxul0iBwTM34GmYJe69Y=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Note.jpg
+SHA1-Digest: MHGKAJUInO+nXpV66xkbh61x6LA=
+
+Name: doc/user/diagrams/images/synchronized_diagram4.png
+SHA1-Digest: zoFBTxd4F7rhpL+KW/q/XviTdQc=
+
+Name: doc/user/trees/Trees.textile
+SHA1-Digest: XO8fIJw9ul23DMFNYXcjwvfU+aI=
+
+Name: doc/user/diagrams/images/diagram_editor_show_hide_dialog2.png
+SHA1-Digest: q/y62tsrAaVS7+yIeRCLN8oZRaw=
+
+Name: doc/specifier/general/images/interpreted_expressions.png
+SHA1-Digest: onTztY1EH0LETSxYPK+//QBwDJc=
+
+Name: doc/specifier/Sirius Specifier Manual.textile
+SHA1-Digest: cVKZ2TlhkbNc62ySuL6NYwl37UY=
+
+Name: doc/user/sequences/Sequence Diagrams.textile
+SHA1-Digest: KyoDVlglrN8tB7FUYy8wI5wku8k=
+
+Name: doc/user/diagrams/images/palette_tools.png
+SHA1-Digest: R9rspdCPb07z7EyuiZx7V3s5LJo=
+
+Name: doc/specifier/general/images/nn46/opendefinition.png
+SHA1-Digest: 0PfTtPhbveanBXwBMGV5Dl2FciE=
+
+Name: doc/user/general/images/migrating_confirmation_changed.png
+SHA1-Digest: sehjD3C7cvOa8dTdzoXo8hufbZU=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Ellipse.jpg
+SHA1-Digest: kmPvwKnlB5QsAqGJqOiExyA3hsI=
+
+Name: doc/specifier/sequences/images/found_lost_ends.png
+SHA1-Digest: OdKBdsskSAtgmGZvC/LRbIKqu5U=
+
+Name: doc/specifier/general/images/nn52/diagram_editor_hide_edge_label
+ _1.png
+SHA1-Digest: cVDN53x4PWhxGzsnTZjpui8CSKg=
+
+Name: doc/user/diagrams/images/tabbar_automatic_layout_tools.png
+SHA1-Digest: 03b7UUImDclz9UxC0GQyjtfstoE=
+
+Name: doc/specifier/general/images/references/reconnect/ReconnectTool_
+ Before.png
+SHA1-Digest: 9DJdUUx0I4CTX7ZwVFdhahP4+ck=
+
+Name: doc/specifier/general/Specifying_Viewpoints.html
+SHA1-Digest: GS+1aLALSV7m4qQ7NTuFFEOsgfg=
+
+Name: doc/specifier/diagrams/images/styles/Selection_Tool.png
+SHA1-Digest: L1EfXQ29vlJ3f+vM0J5Ap1WqDEA=
+
+Name: doc/user/sequences/images/basic_messages.png
+SHA1-Digest: pScIgeeMlL5Ocg6Z9QREvDh7VQE=
+
+Name: doc/user/general/images/model_explorer_view.png
+SHA1-Digest: Jc9ChGFqnhfHocc5BpGPb8Wyjdk=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Image.png
+SHA1-Digest: sZUITSHr5BmAo+Q8IgrKw1DANI8=
+
+Name: doc/user/general/images/migrating_confirmation.png
+SHA1-Digest: lj+Burc8FfIzggnuTa5SubDQMLQ=
+
+Name: doc/specifier/general/images/nn47/new_edge_mapping_menu.png
+SHA1-Digest: tUa15CncgF/jB2Kyvva9ijzW0vY=
+
+Name: doc/user/diagrams/images/diagram_editor_hide_edge_label_1.png
+SHA1-Digest: ieRPm/nhFUe4aUfLZxCEzEGLhvs=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Import.j
+ pg
+SHA1-Digest: xpqFiXQNnTUg0D+Q7Fj3ajI484o=
+
+Name: doc/specifier/general/images/nn46/panedbasedselectionspecificati
+ on.png
+SHA1-Digest: 6igWdWdfj7GtxLtOlP3DClf+sSU=
+
+Name: doc/specifier/sequences/images/execution_mapping_properties2.png
+SHA1-Digest: yMCzy0s92+L5UufRVsqWwzcXslw=
+
+Name: doc/user/diagrams/images/tabbar_show_hide.png
+SHA1-Digest: fVS/p3BM6uNAboG9VdwlWUBEMn0=
+
+Name: doc/user/diagrams/images/diagram_editor_pin_configuration01.png
+SHA1-Digest: gNppjjrLWF4CERPtWULNtsTWRv8=
+
+Name: doc/specifier/diagrams/images/references/reconnect/ReconnectTool
+ _Before.png
+SHA1-Digest: 9DJdUUx0I4CTX7ZwVFdhahP4+ck=
+
+Name: doc/specifier/general/images/styles/mini_Bordered_Node_Gauge_Ver
+ tical.jpg
+SHA1-Digest: aJ1gE5tsTb27oaO2/yRRNdGJVHk=
+
+Name: doc/specifier/sequences/images/default_layer.png
+SHA1-Digest: W4yxvJ+Nf0O6BiSg0tL9v8eIkhc=
+
+Name: doc/specifier/general/images/nn46/externaleclass.png
+SHA1-Digest: H0nwGBes7vYJHLl5tnHv+UrYGSw=
+
+Name: doc/specifier/general/images/styles/mini_Container_Flat_Color_RG
+ B.jpg
+SHA1-Digest: 8yH7G17voZjvU2aqozKIQoCg38c=
+
+Name: doc/specifier/general/images/nn46/popupbars.png
+SHA1-Digest: +Yf14UQedTps4b+hHP0hwMkQW5s=
+
+Name: doc/user/diagrams/images/diagram_editor6.png
+SHA1-Digest: Hdz1Z+bwm+yVMte0i64RqXDbDVs=
+
+Name: doc/specifier/general/images/nn53/edge_multiple_labels_diagram.p
+ ng
+SHA1-Digest: tB72nZNVgqld4lmCjSqx1yCYgk4=
+
+Name: doc/specifier/diagrams/images/styles/Edge_Style_Straight.png
+SHA1-Digest: Sqo9gXR6Ilo0L4V4phISQ/rqCQM=
+
+Name: doc/specifier/general/images/nn45/doc_specifier_guide.png
+SHA1-Digest: hs/4Yenpt4r9bG1bxty4yPsPabw=
+
+Name: doc/user/tables/images/table_sort_descending.png
+SHA1-Digest: oKBg8TybbrElSagmrjZ6QOwKEC8=
+
+Name: doc/user/diagrams/images/diagram_editor12.png
+SHA1-Digest: bF7b2DPRhgyINQCN7GDF3DwqQbg=
+
+Name: doc/user/trees/images/tree_representation2.png
+SHA1-Digest: 8NiVFu7i3C1KGwy2Z7LI3g2tP+4=
+
+Name: doc/specifier/diagrams/images/styles/mini_Bordered_Node_Gauge_Ho
+ rizontal.jpg
+SHA1-Digest: HV3HzkJB5Oxk833Nim481V6+p70=
+
+Name: doc/specifier/general/images/nn47/node_border_label.png
+SHA1-Digest: 7ATFI4mJAAWF6WDHh/DB3nf5FDk=
+
+Name: doc/user/diagrams/images/tabbar_zoom.png
+SHA1-Digest: X89aQFo7C3n5uImh9jr//icklx0=
+
+Name: doc/specifier/diagrams/images/styles/Pane-Based_Selection_Tool.p
+ ng
+SHA1-Digest: oiLfGBEd4+b/EsHSnzN76Kr4lpI=
+
+Name: doc/specifier/diagrams/images/styles/Node_Style_Custom.png
+SHA1-Digest: 2DJ2e2IWYq6akJEGsOEcsNyC+LA=
+
+Name: doc/user/general/images/project_dependencies2.png
+SHA1-Digest: lZkjmFUy+snu5XoAB8N8XdetdrY=
+
+Name: doc/specifier/general/images/nn45/doc_userguide.png
+SHA1-Digest: mUpLhBBJK7Ppedy9472Iw+wyOVA=
+
+Name: doc/specifier/diagrams/images/styles/mini_Container_List_Node_Wo
+ rkspace_Image.jpg
+SHA1-Digest: CR19ZXK/R3RGE1vwaSD5D+WmLgQ=
+
+Name: doc/specifier/diagrams/images/styles/mini_Node_Square_Color_Name
+ d.jpg
+SHA1-Digest: Gv/KJ2QUhFOQt/fBomjzeqow2MA=
+
+Name: doc/user/sequences/images/found_lost_ends.png
+SHA1-Digest: OdKBdsskSAtgmGZvC/LRbIKqu5U=
+
+Name: doc/specifier/general/images/nn47/diagram_editor_show_hide_dialo
+ g1.png
+SHA1-Digest: 7lQ3o/IHnkNaIZ6Ugx3sVUtCwJg=
+
+Name: doc/specifier/general/images/styles/mini_Node_Dot.png
+SHA1-Digest: A4Z4QfaBufrxuR3hJzz3wanbM0g=
+
+Name: doc/user/general/images/new_local_session1.png
+SHA1-Digest: +EwqaZdvRUORtA2SuDB2r+55g/A=
+
+Name: doc/specifier/diagrams/images/styles/Edge_Style_Tree.png
+SHA1-Digest: h0ZnJyc2T1pjL6ZF2JaJ3nzxNMY=
+
+Name: doc/specifier/general/images/nn46/cheatsheet.png
+SHA1-Digest: y15eYDvv06x6wHkF7zzW2Tfy05M=
+
+Name: doc/specifier/general/images/styles/mini_Container_List_Node_Squ
+ are.jpg
+SHA1-Digest: CR19ZXK/R3RGE1vwaSD5D+WmLgQ=
+
+Name: doc/user/general/images/groupItems_2.png
+SHA1-Digest: j57ZNtS7rDh1W5pYcPZ28+sWJco=
+
+Name: doc/user/general/images/img-info.png
+SHA1-Digest: bvqC5574pTRsA0aoZwL//tgr884=
+
+Name: doc/user/diagrams/images/preferences_viewpoint_diagram_appearanc
+ e.png
+SHA1-Digest: 0K0AUl2IQkcZbxdgvwqqYgAkijU=
+
+Name: doc/specifier/sequences/images/interaction.png
+SHA1-Digest: p4t1tvDNr/xEMpGYFd4VY8yF/SA=
+
+Name: doc/specifier/general/Specifying_Viewpoints.textile
+SHA1-Digest: MNmm6TgGOrxPgCwrVL2SvWMC7Og=
+

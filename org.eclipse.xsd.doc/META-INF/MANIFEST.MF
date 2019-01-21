@@ -1,0 +1,749 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.xsd.doc; singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help;bundle-version="[3.4.0,4.0.0)"
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Bundle-Version: 2.7.0.v20150123-0452
+Bundle-ManifestVersion: 2
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/more.png
+SHA1-Digest: ftRbr7Vn7ii/jb5GVCSt9k19M3s=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img9.html
+SHA1-Digest: dG1VbvP1RFx07shvkPy970FcV1w=
+
+Name: about.ini
+SHA1-Digest: KQMVTFcyVja5dvVmIh2o+qDsslY=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/text0.html
+SHA1-Digest: ncds1umZcD7c2uzVnPgXh+gbJfY=
+
+Name: references/diagrams/images/xsd-diagram-ct01/next0.png
+SHA1-Digest: j3Ths1Yg3VdsfgRZmlSQ9qHaw8o=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img3.png
+SHA1-Digest: 0uIN4iS1f5pXP7rXGmBkWTY2eRc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img7.png
+SHA1-Digest: k0o+rEHTHD06NuJnOuIg75rM0HI=
+
+Name: references/diagrams/images/xsd-diagram-import-include/more.png
+SHA1-Digest: ftRbr7Vn7ii/jb5GVCSt9k19M3s=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img3.jpg
+SHA1-Digest: s5OUpxR8WJjvrvKIseBxY3r5B2g=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text4.html
+SHA1-Digest: 4TgYb8PKXT3CIJtvSCIHBD+JUwg=
+
+Name: references/diagrams/images/xsd-diagram-import-include/next1.png
+SHA1-Digest: EVSCvaJ0mvrFgM4YpAS+zvW+wac=
+
+Name: references/diagrams/images/xsd-diagram-ct03.gif
+SHA1-Digest: K4DZPv3hlQvVsvo/VQbYbIOTmFM=
+
+Name: index/indexed_contributions
+SHA1-Digest: ownSp6fwADClxGaB6MO0PXKLJuA=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img3.html
+SHA1-Digest: 0L++dbV8Nsv+yF3M1+5UqsWBTvA=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/outline1.html
+SHA1-Digest: Be6cq4Jf2lt9+9nxN+QaCWwgneo=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text7.html
+SHA1-Digest: 5emWFpimksYwkz4KS3DLhie3ocU=
+
+Name: index/segments.gen
+SHA1-Digest: hu6fBAUFuy+a0BRyv8bD8Q9vAJE=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text6.html
+SHA1-Digest: rwl0CGlT5k6u9v2rfkoUl/pExi0=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img6.html
+SHA1-Digest: yg4xK1O8rn0p/E0QK+MfyQMf4to=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations.ppt
+SHA1-Digest: Y4ib5jO9MxULWTNeG0eUbr6ZVaM=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/last1.png
+SHA1-Digest: C7sxhUSqfxsHSBlgncwxmSEsX8s=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/first1.png
+SHA1-Digest: gYK6o6oMdTUuJLol2Z+nFeOjjJM=
+
+Name: about.properties
+SHA1-Digest: Wf4MBcUl0Gw3RguEmV0qFVIBoRM=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img9.html
+SHA1-Digest: PvKZgpmO7K5eGUsexv16PumcWS4=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text1.html
+SHA1-Digest: cF141/JG8PsbPDUQbo1rvmIZCR4=
+
+Name: references/diagrams/images/xsd-diagram-import-include/navbar4.ht
+ ml
+SHA1-Digest: olRouH4DrlWRhxUVdf6oM/3av74=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text.png
+SHA1-Digest: KjOO4eiJNOb4dX3vZkqZcAQy0sg=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img0.html
+SHA1-Digest: cmUKG7h1K88l1vrRBcnXDE/rDss=
+
+Name: references/diagrams/images/xsd-diagram-import-include/first0.png
+SHA1-Digest: 8oVRrVLkE1rwDeEIHB6foc0GV3E=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text4.html
+SHA1-Digest: TWm0cygNmbE3lNrjcloL+xN6Nb4=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text3.html
+SHA1-Digest: 71nPX+SMga7f5aWhvMhaqONiYDc=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/less.png
+SHA1-Digest: Jzh1UfEb2wj0uCEYVVRgzNCHMUw=
+
+Name: references/diagrams/images/xsd-diagram-ct01/last0.png
+SHA1-Digest: asbKqmeL+rByG5yNbeeP/RbdVkY=
+
+Name: references/diagrams/images/xsd-diagram-ct01/navbar2.html
+SHA1-Digest: IhgP9qZutBoPRdLn4Qu3s9i7QdI=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img3.html
+SHA1-Digest: GRpHLvE0uMBgQ79NlRyjcYAo3Qk=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text12.htm
+ l
+SHA1-Digest: 5Rl4gO+RgilTXRgFduC//V7VEWE=
+
+Name: references/diagrams/images/xsd-diagram-ct01/prev1.png
+SHA1-Digest: MJ6xAeem7vFmiGCAG7SMoeKPAM0=
+
+Name: references/diagrams/images/xsd-diagram-ct02/next1.png
+SHA1-Digest: EVSCvaJ0mvrFgM4YpAS+zvW+wac=
+
+Name: references/diagrams/images/xsd-diagram-import-include/last1.png
+SHA1-Digest: C7sxhUSqfxsHSBlgncwxmSEsX8s=
+
+Name: images/faq.gif
+SHA1-Digest: 1VxR/mra9OzdnrfdHjIVLMk+tow=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations.sxi
+SHA1-Digest: /J3DPgeJRxJ0efgw8N2TZt9RDiw=
+
+Name: references/diagrams/images/xsd-diagram-import-include/less.png
+SHA1-Digest: Jzh1UfEb2wj0uCEYVVRgzNCHMUw=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img6.html
+SHA1-Digest: XRPyU8K/EhjajF5SNizeiZmgFGs=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img4.html
+SHA1-Digest: 6AO7fkkcZE0FMMNA/VI9VkT5g1o=
+
+Name: references/diagrams/images/xsd-diagram-import-include/navbar1.ht
+ ml
+SHA1-Digest: sFJdt7cIKX3MQoIfNIg5+AT+As4=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img3.png
+SHA1-Digest: Hn/mY8ro5y/Z5pV6Its76xDCGns=
+
+Name: references/diagrams/images/xsd-diagram-ct01/more.png
+SHA1-Digest: ftRbr7Vn7ii/jb5GVCSt9k19M3s=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text1.html
+SHA1-Digest: Az5cvcYtnbITTILPmkPWBq7SDrA=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text0.html
+SHA1-Digest: EgU7EmNnKrrJMKvMQG8UR6b0sm0=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/next0.png
+SHA1-Digest: j3Ths1Yg3VdsfgRZmlSQ9qHaw8o=
+
+Name: references/diagrams/images/xsd-diagram-ct02/first0.png
+SHA1-Digest: 8oVRrVLkE1rwDeEIHB6foc0GV3E=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img0.html
+SHA1-Digest: kGvVEdPLzF3tQRvlsdTpQormRUk=
+
+Name: toc.xml
+SHA1-Digest: gGCKynIWDuJfjnF5/kXhmRBfQ3M=
+
+Name: references/diagrams/diagrams.html
+SHA1-Digest: ehKt8VxKeHkSD1GIACgl7bLQvdY=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img1.png
+SHA1-Digest: Ijtvjrwkas7YeRKGStZfLCno0Xo=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img10.html
+SHA1-Digest: /mdY/3bIWcSqlPpU2t6TL3pB4Xg=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img3.html
+SHA1-Digest: 6iBt4sSZp7QF6NGafUXOr10WlzQ=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img2.png
+SHA1-Digest: 9c2yTA3E0c+RPHoCpJXQWgl5rc0=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img1.html
+SHA1-Digest: Xz6r6kjzY6Bm+1+guDE0nHHUnSA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img5.png
+SHA1-Digest: 07bJlgi4SQP/Xf5/m9AWI+ig48U=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img9.png
+SHA1-Digest: A06GK+4xvoqogx5R/+6wD7CcNmg=
+
+Name: references/diagrams/images/xsd-diagram-ct02/navbar3.html
+SHA1-Digest: ibWB4hq0nxNDarneAky9sWS/iAs=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/navbar3.html
+SHA1-Digest: PfOmA10T+PUpMXR83B7Ve1/8vZQ=
+
+Name: references/diagrams/images/xsd-diagram-ct02/last1.png
+SHA1-Digest: C7sxhUSqfxsHSBlgncwxmSEsX8s=
+
+Name: references/diagrams/images/xsd-diagram-ct01/first1.png
+SHA1-Digest: gYK6o6oMdTUuJLol2Z+nFeOjjJM=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img2.png
+SHA1-Digest: XrFhXu0yMrspA0gnfblg9YvIirc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text8.html
+SHA1-Digest: uD20qLhBmWEbU5ZCcYvosiOamYY=
+
+Name: index/_0.cfs
+SHA1-Digest: EZWTRrZbGKx7sDbQ5hJKhVb9vgs=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img6.png
+SHA1-Digest: Uzqc94RgTm+eqlo2WXRXqKNNjWE=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img2.jpg
+SHA1-Digest: 6KJaXVNMKjhXicqQeMpK3w0t9lM=
+
+Name: index/_0.cfx
+SHA1-Digest: LrL9XXJYmtQwSkS4h6t2XneClRA=
+
+Name: references/diagrams/images/xsd-diagram-import-include/next0.png
+SHA1-Digest: j3Ths1Yg3VdsfgRZmlSQ9qHaw8o=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img6.jpg
+SHA1-Digest: URVOsD6k+Es6YEVTyTt8XwxJlok=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img0.html
+SHA1-Digest: 7oj4CmVc7LWaqVuYzl/vd9B/Fuo=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img12.png
+SHA1-Digest: 5yqERLRE0D7mnHpoFOKa7hNVnGk=
+
+Name: images/cvs.gif
+SHA1-Digest: 2MfsIqZKjSSqyoOekAbXOXazVd8=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: references/diagrams/images/xsd-diagram-ct01/less.png
+SHA1-Digest: Jzh1UfEb2wj0uCEYVVRgzNCHMUw=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/last0.png
+SHA1-Digest: asbKqmeL+rByG5yNbeeP/RbdVkY=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/text1.html
+SHA1-Digest: cFe0h3XtY1zOXSRHbD3tae77TK0=
+
+Name: about.mappings
+SHA1-Digest: IF/rGQTzUIqiqD4QIGlMaIQ5j7U=
+
+Name: references/diagrams/images/xsd-diagram-ct02/navbar0.html
+SHA1-Digest: fapIHUY1Vm2/sgd3xBPOSsq/HJc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/outline0.h
+ tml
+SHA1-Digest: tlepXVxv3aSj8BMNv8oRybTW0GI=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/navbar0.html
+SHA1-Digest: IC4ZWogJKHg+KjL1MCBm9g5fCt0=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/prev1.png
+SHA1-Digest: MJ6xAeem7vFmiGCAG7SMoeKPAM0=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/first0.png
+SHA1-Digest: 8oVRrVLkE1rwDeEIHB6foc0GV3E=
+
+Name: index/segments_2
+SHA1-Digest: 0zuSrrkHGXQPU+o2yU3tuFxjW5o=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text5.html
+SHA1-Digest: 5sTxRm6Wq5kjaWcuL9zolbrsUoI=
+
+Name: references/diagrams/images/xsd-diagram-ct01/index.png
+SHA1-Digest: hWp8i0flqtPpZt3OKeGuhV+7ehA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text8.html
+SHA1-Digest: hKn+fSyUCJUkO3J8uN+td/Ac/NA=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img7.html
+SHA1-Digest: LmMJ0EZAl1DXaGkkoTW3+ON53V8=
+
+Name: images/mail.gif
+SHA1-Digest: eQZMhyw7aDkS18/RuiT0lQwq9AE=
+
+Name: references/articles/dwtip1-scpw/index.html
+SHA1-Digest: qfOA/CDktHA3yuw7Nviei6Kij/w=
+
+Name: references/diagrams/images/xsd-diagram-ct01/prev0.png
+SHA1-Digest: ItoO2lO1Z2DRDYb7G98Gdc4fNzU=
+
+Name: references/diagrams/images/xsd-diagram-import-include/index.html
+SHA1-Digest: 25pv4zMZTWfepxjE1JFLoOuLna4=
+
+Name: images/XMLSchemaInfosetModel.jpg
+SHA1-Digest: hR2wC0L9Y4sq6bhr/GWcKSlDC6I=
+
+Name: references/diagrams/images/xsd-diagram-ct02/next0.png
+SHA1-Digest: j3Ths1Yg3VdsfgRZmlSQ9qHaw8o=
+
+Name: references/diagrams/images/c.gif
+SHA1-Digest: VtRfihf1B4ogr5liyZLKRnhFB2U=
+
+Name: plugin.properties
+SHA1-Digest: 5LbBajNKmvmccVzGL90eJ3inBug=
+
+Name: references/diagrams/images/xsd-diagram-import-include/last0.png
+SHA1-Digest: asbKqmeL+rByG5yNbeeP/RbdVkY=
+
+Name: references/diagrams/images/xsd-diagram-import-include.ppt
+SHA1-Digest: FygcuTwR52hKJ61e9iXF5bl5fuE=
+
+Name: index/indexed_dependencies
+SHA1-Digest: zhcinXnN0QeNXq2g+lmfV/W+K8A=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text2.html
+SHA1-Digest: kbt1y6JzcPr75XWW50YBOnxaApU=
+
+Name: references/diagrams/images/xsd-diagram-import-include/prev1.png
+SHA1-Digest: MJ6xAeem7vFmiGCAG7SMoeKPAM0=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img2.png
+SHA1-Digest: EewIeOB16iOdyd1u/hVfHu7Ehm0=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img1.html
+SHA1-Digest: wKgdSeVfFOBauqxJKZ/bZOdbqJk=
+
+Name: plugin.xml
+SHA1-Digest: /sb6w0QNlAMzc2j5oorzLNMCLM8=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img6.png
+SHA1-Digest: KTtixPFwBP5lpb6c6DAReybxoAM=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text5.html
+SHA1-Digest: EC9SRBy73E4NmgU+M7H1y4pybI8=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text4.html
+SHA1-Digest: UiUAUqno79NBo93y/7jI317npHg=
+
+Name: references/diagrams/images/xsd-diagram-ct01/navbar3.html
+SHA1-Digest: mbNYaAnv+1tfJITvCw/B6a+Hk80=
+
+Name: index/indexed_docs
+SHA1-Digest: UyVX3f+nE4apLbZEmKWsy3l9nTU=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img4.html
+SHA1-Digest: qqSPLMKSSplR+cInkb4+3td8Gx4=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img7.html
+SHA1-Digest: EcafvBNDDkH4DdS5Gf+Mgx4JSRs=
+
+Name: references/diagrams/images/xsd-diagram-ct02/index.html
+SHA1-Digest: jaIu9UtFggddTS2BrCst++YoiQA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img0.png
+SHA1-Digest: utI07g6IZinIAP8npeOmA1YR0nE=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img5.html
+SHA1-Digest: nqPG/YQ4Fl+uhcrKR73udD6f52c=
+
+Name: references/diagrams/images/xsd-diagram-import-include/navbar2.ht
+ ml
+SHA1-Digest: WnK5k0IGMX+I2taNBmaEXIFfHQk=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img1.png
+SHA1-Digest: gTD8hf9G9x/Qos2HalB3umHTSng=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img4.png
+SHA1-Digest: lZRm61jafAInh0NPgeVKsBwXA04=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img8.png
+SHA1-Digest: j3LHne83a6YfbNtL9gb2ksT4dEA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text2.html
+SHA1-Digest: 9x3iID2gLGa0duRJnkw5JnYbeTM=
+
+Name: references/diagrams/images/xsd-diagram-import-include.sxi
+SHA1-Digest: 8eGyoMKu6WfOu6ADcMjWUJk8sXM=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text1.html
+SHA1-Digest: W+dcMzMhbr2YUNHU7fxvJ8ErzNY=
+
+Name: references/diagrams/images/xsd-diagram-ct02/last0.png
+SHA1-Digest: asbKqmeL+rByG5yNbeeP/RbdVkY=
+
+Name: references/diagrams/images/xsd-diagram-ct01/navbar0.html
+SHA1-Digest: jgwaf0b8o+YGS6UbvFqThcU2OOI=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img1.html
+SHA1-Digest: s2uAAFwv+BOHqL41atg1WRa/Qk4=
+
+Name: references/diagrams/images/xsd-diagram-ct02/prev1.png
+SHA1-Digest: MJ6xAeem7vFmiGCAG7SMoeKPAM0=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text10.htm
+ l
+SHA1-Digest: dxu/1Y9rNaxgTdFssTwo27ClTgw=
+
+Name: references/diagrams/images/xsd-diagram-ct01/first0.png
+SHA1-Digest: 8oVRrVLkE1rwDeEIHB6foc0GV3E=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img1.png
+SHA1-Digest: WbzBwyIESX4uiD84Xv8x5hPf//o=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img5.png
+SHA1-Digest: 3JSLABARZPjNaxnrRWIjdBxwPCI=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img1.jpg
+SHA1-Digest: yXJarDf5AzEWRVdiv11PxJXqTaE=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img9.png
+SHA1-Digest: LD6RQOA0paXN0+MsIKDwzh9rIC4=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img5.jpg
+SHA1-Digest: hOdJJ2nOw0IFXA4aBJo8CdMt7bk=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img11.html
+SHA1-Digest: oYtQOij2nGeb/7ohz52RdsRFFyw=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img4.html
+SHA1-Digest: V+9LEb1fUStMqa3iS+SyUeR2WLs=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img2.html
+SHA1-Digest: Wbg9H3bv7l1OII5rs8Jb8sS1Nwg=
+
+Name: references/diagrams/images/xsd-diagram-import-include/siframes.h
+ tml
+SHA1-Digest: lgbuOlEso67ptmXv0/arlq26Qbc=
+
+Name: references/diagrams/images/xsd-diagram-ct01/outline0.html
+SHA1-Digest: s+guJfGxfQPv8P8BoBcAaOMsQZM=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img11.png
+SHA1-Digest: SaY+FcCd9by/z/BBTzHQtLFHljs=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/index.png
+SHA1-Digest: hWp8i0flqtPpZt3OKeGuhV+7ehA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/navbar4.html
+SHA1-Digest: U69w6V0MW6+hHd1waaW48I+MlaI=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/navbar4.html
+SHA1-Digest: Jlm/18L1zCYPJY2RYO/1L2MoHs8=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/prev0.png
+SHA1-Digest: ItoO2lO1Z2DRDYb7G98Gdc4fNzU=
+
+Name: references/faq.html
+SHA1-Digest: oLYu3aGpPQOtPq6uUSupPRb36Y0=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text9.html
+SHA1-Digest: T7ODb70o6QQa87xoeJbKCEugcDQ=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/index.html
+SHA1-Digest: Vu1G0dNOZPT6NaFrwlGWlead6DQ=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img1.html
+SHA1-Digest: Xz6r6kjzY6Bm+1+guDE0nHHUnSA=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/text2.html
+SHA1-Digest: JzjQ0NuVdfFKsiY3WpHZBCqJ/yw=
+
+Name: references/diagrams/images/xsd-diagram-ct02.ppt
+SHA1-Digest: GgJf0N3jDP+3Za3OhGLzE5MiPwI=
+
+Name: references/diagrams/images/xsd-diagram-ct02/navbar1.html
+SHA1-Digest: 3zCzGh7mUcJP1ehe//fVKASS9Bk=
+
+Name: references/diagrams/images/xsd-diagram-import-include/outline1.h
+ tml
+SHA1-Digest: QAWWAnd/aDzTL0KjbkMkTPZr8Jo=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/navbar1.html
+SHA1-Digest: tgzZHLb3Phl9r8fLPL+sqNaH+ik=
+
+Name: images/reference.gif
+SHA1-Digest: ax5Eu9wjazUkzQXyQfxFGNDzRKM=
+
+Name: references/diagrams/images/xsd-diagram-import-include/index.png
+SHA1-Digest: hWp8i0flqtPpZt3OKeGuhV+7ehA=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text6.html
+SHA1-Digest: RA8PuWsg0uKx2DRMdFuYNrJAO2k=
+
+Name: references/diagrams/images/xsd-diagram-import-include/prev0.png
+SHA1-Digest: ItoO2lO1Z2DRDYb7G98Gdc4fNzU=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text.png
+SHA1-Digest: KjOO4eiJNOb4dX3vZkqZcAQy0sg=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img1.png
+SHA1-Digest: XZ06R92wwEcFqhIp6wVBmjCRhgg=
+
+Name: references/diagrams/images/xsd-diagram-ct02/outline0.html
+SHA1-Digest: EmXlsXTYkIsofvgfsLRGPRWJ1uE=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text9.html
+SHA1-Digest: utoYmYmHarLCwM1dOPLNLlsMUeY=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img5.png
+SHA1-Digest: E0GyqWkWg9WvKiQ114qN+nuBGq8=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img8.html
+SHA1-Digest: oCC1Q4KeEYiO778ycO0NFq6l2+8=
+
+Name: images/bugzilla.gif
+SHA1-Digest: W/Vy88hQuiv6wVKT90Z+0+dqZb4=
+
+Name: about.html
+SHA1-Digest: m//+sZd+LYcO5OY/bjEiZVm0dk0=
+
+Name: modeling32.png
+SHA1-Digest: ADlLWFV0eQ74YnLvHnPFkYLeLrs=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text3.html
+SHA1-Digest: V/3fVtpsgOdBcey+ZqS/YGSIkmA=
+
+Name: references/diagrams/images/xsd-diagram-ct02.sxi
+SHA1-Digest: EZiVF5E2f7uIRrMDWx5rJGLyxso=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img0.png
+SHA1-Digest: OqfjVeEzE4I0rhmFTEOHwpjZAzk=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img3.png
+SHA1-Digest: aCiOr4/eH4Kuo4EbhC8tl5AgUqk=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img2.html
+SHA1-Digest: ikU1Y298rqJTmFrTjXj2ZRRKRs4=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/outline0.html
+SHA1-Digest: p5dPGXBs08lJapobKeEMTtLA+pQ=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img7.png
+SHA1-Digest: 7i6FcJuySYE5e66FBhcbo4TilCA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/index.png
+SHA1-Digest: hWp8i0flqtPpZt3OKeGuhV+7ehA=
+
+Name: references/diagrams/images/xsd-diagram-ct02/more.png
+SHA1-Digest: ftRbr7Vn7ii/jb5GVCSt9k19M3s=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text6.html
+SHA1-Digest: CgsbiFJuo3JZxIMbcQKKlDxjyyg=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text5.html
+SHA1-Digest: YTBq5We7xfj+E5JUSnb6ZY98688=
+
+Name: references/diagrams/images/xsd-diagram-ct01/navbar4.html
+SHA1-Digest: +9kt3fVHULLuJSUdpSfRVnkwKSs=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img5.html
+SHA1-Digest: rVbiUs4KcNoEaifw14NhqDp5dKg=
+
+Name: references/diagrams/images/xsd-diagram-ct01/next1.png
+SHA1-Digest: EVSCvaJ0mvrFgM4YpAS+zvW+wac=
+
+Name: references/diagrams/images/xsd-diagram-ct02/prev0.png
+SHA1-Digest: ItoO2lO1Z2DRDYb7G98Gdc4fNzU=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img0.png
+SHA1-Digest: JQKjbBt+67hQ0HMho29lz6uoH2M=
+
+Name: references/diagrams/images/xsd-diagram-ct01/siframes.html
+SHA1-Digest: 6RR3ZKAOLVf+APXtRyZdte1mgsc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img4.png
+SHA1-Digest: kDB68tidd78RtF16Lc66K2gTkHQ=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img0.jpg
+SHA1-Digest: Htz9MubwMd63i9eJMq7u+2A6bcA=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img8.png
+SHA1-Digest: zXBzfZRjYIJrDMzqmq7wI96MsHM=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img4.jpg
+SHA1-Digest: p87O6bYN72Q9X+31Mp+oLA0sEZw=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img8.html
+SHA1-Digest: 5XAhgglx5dt7afSNB4miOQznu3w=
+
+Name: images/download.gif
+SHA1-Digest: BCSWHd6tCaOEopi/c2Sa4qHxtKc=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img6.html
+SHA1-Digest: wBjbDzbL/mBp4gzKHB5ef1BURJo=
+
+Name: references/diagrams/images/xsd-diagram-ct01/index.html
+SHA1-Digest: Qekap4wS854vEVwPxInLjgWc4Vg=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text0.html
+SHA1-Digest: i93KhzQcLcAiUXZbNDj9058rCCM=
+
+Name: references/diagrams/images/xsd-diagram-import-include/navbar3.ht
+ ml
+SHA1-Digest: yxDboy31qjwI2BRy91buNRPQ2GU=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img10.png
+SHA1-Digest: hgjE/9nHM110H3hnaVfTm/edLa8=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text3.html
+SHA1-Digest: VgIWwQkhQkGaQ0dc5ClJph86TwU=
+
+Name: references/diagrams/images/xsd-diagram-ct01/text2.html
+SHA1-Digest: yIRm/S1LCNbqN9OoxXTF2utSCyQ=
+
+Name: references/diagrams/images/xsd-diagram-ct01/navbar1.html
+SHA1-Digest: I4C5ncMsamwxGaquNPJE5mhxlXc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img2.html
+SHA1-Digest: bavXic25FyPzHw749h7fWjARHUc=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text11.htm
+ l
+SHA1-Digest: wNM0SZNnuV6OgqnNQq75DBSwRrs=
+
+Name: references/diagrams/images/xsd-diagram-import-include/img12.html
+SHA1-Digest: mIv8ZsNuZZ9Q1SmIPPWHELDIXjo=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img5.html
+SHA1-Digest: 01L8KOzoguWMmlLQjXvf6sN5KnY=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img3.html
+SHA1-Digest: nNvWUzg57xuBPx7xkb+8qXW4Tz8=
+
+Name: references/diagrams/images/xsd-diagram-ct01/outline1.html
+SHA1-Digest: fZYi2LBer6Q6wqRJ/kTYAFoofAM=
+
+Name: references/diagrams/images/xsd-diagram-import-include/navbar0.ht
+ ml
+SHA1-Digest: cgYLFvrQlHPVFUQebX9JoGgDT7E=
+
+Name: references/diagrams/images/xsd-diagram-import-include/first1.png
+SHA1-Digest: gYK6o6oMdTUuJLol2Z+nFeOjjJM=
+
+Name: references/diagrams/images/xsd-diagram-ct02/less.png
+SHA1-Digest: Jzh1UfEb2wj0uCEYVVRgzNCHMUw=
+
+Name: references/diagrams/images/xsd-diagram-ct01.ppt
+SHA1-Digest: Ba9Eh0+/yX5eTC93wvk1hwHdK3c=
+
+Name: references/diagrams/images/xsd-diagram-ct02/text0.html
+SHA1-Digest: 3/6GK6WecWi31hzWo9GupzSA+dw=
+
+Name: references/diagrams/images/xsd-diagram-ct01/last1.png
+SHA1-Digest: C7sxhUSqfxsHSBlgncwxmSEsX8s=
+
+Name: references/diagrams/images/xsd-diagram-ct02/siframes.html
+SHA1-Digest: idSv1b4uD5yJzw/CopsjlVen1/A=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img0.png
+SHA1-Digest: XAg8bsAHDgb1JGOGla6tobXlRlw=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/text.png
+SHA1-Digest: KjOO4eiJNOb4dX3vZkqZcAQy0sg=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img2.html
+SHA1-Digest: tETuKpumXq+TMjeu2+4p4OMoJkU=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img0.html
+SHA1-Digest: u0v3Pldfl3oqUN7FnntUTh6lcgU=
+
+Name: references/diagrams/images/xsd-diagram-ct01/img4.png
+SHA1-Digest: FgUhUYUp3ouAf66LBNya6lBiq8g=
+
+Name: images/news.gif
+SHA1-Digest: uWk7XuU1V5MQP3VDzTOV/9j6fKU=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/text3.html
+SHA1-Digest: 08bGdnXNw0OALMAFktAloQZbvJs=
+
+Name: references/diagrams/images/xsd-diagram-ct02/navbar2.html
+SHA1-Digest: 3KQ8FDhjEMG+CpT8ukewFXi4ISs=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/navbar2.html
+SHA1-Digest: Cq6nG1DjdxF+X05uJLpdpGNVhnY=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/next1.png
+SHA1-Digest: EVSCvaJ0mvrFgM4YpAS+zvW+wac=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text.png
+SHA1-Digest: KjOO4eiJNOb4dX3vZkqZcAQy0sg=
+
+Name: references/diagrams/images/xsd-diagram-ct02/first1.png
+SHA1-Digest: gYK6o6oMdTUuJLol2Z+nFeOjjJM=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/siframes.html
+SHA1-Digest: Oz/gOEIU+pkhfZtSpkmuXXzBIVk=
+
+Name: references/diagrams/images/xsd-diagram-import-include/text7.html
+SHA1-Digest: /Zx24K9JPD3W6kzuAUDQQovgvtA=
+
+Name: references/diagrams/images/xsd-diagram-ct01.sxi
+SHA1-Digest: k4hY5s+WoTSuxnp6zPdi0qntb6o=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img2.png
+SHA1-Digest: +AaRFJGxne+TeNfwrELxuikVIu0=
+
+Name: references/diagrams/images/xsd-diagram-ct02/outline1.html
+SHA1-Digest: JNfG1M3T1k44Il1cxHQ+x0WYGcs=
+
+Name: references/diagrams/images/xsd-diagram-import-include-getElement
+ Declarations/img3.png
+SHA1-Digest: 1cWF1UqylCQzk8eQAlxrZD1mwx4=
+
+Name: references/diagrams/images/xsd-diagram-ct02/img6.png
+SHA1-Digest: F8qifALX3H3ctMLWnqBFbX6Ll6M=
+

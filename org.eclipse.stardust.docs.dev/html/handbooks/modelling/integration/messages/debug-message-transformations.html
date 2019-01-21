@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>Debugging Message Transformations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("",
+    "launch-message-transformations.html","",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../mg-preface.htm","Modeling Guide",
+        "../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+<h1>Debugging Message Transformations</h1>
+<!--  <p>In debug mode a launch configuration may specify additional aspects relevant
+for debugging. A message transformation launch configuration specifies:</p>
+<ul>
+    <li>a message transformation application (process model and application)</li>
+    <li>parsing launch configurations for all input messages specified for the
+        transformation</li>
+</ul>-->
+<ul>
+	<li><a href="#config">Creating a Debug Configuration</a></li>
+	<li><a href="#view">The Message Transformation Debug View</a></li>
+	<li><a href="#variableWatch">The Variable Watch View</a></li>
+	<li><a href="#expressions">The Expressions View</a></li>
+	<li><a href="#breakpoints">The Breakpoint View</a></li>
+	<li><a href="#stack">The Stack View</a></li>
+	<li><a href="#execution">Controlling Execution</a></li>
+</ul>
+<h2 id="config">Creating a Debug Configuration</h2>
+<p>To create a new debug configuration:</p>
+<ol>
+    <li>In the main menu select <strong>Open Debug Dialog</strong>.</li>
+</ol>
+<p class="image"><img src="images/open-debug-dialog.png"></p>
+<ol start="2">
+    <li>In the debug dialog set the configurations for 
+    <strong>Message Processing Test</strong> and 
+    <strong>Message Transformation Test</strong> as described in
+    the preceeding chapter 
+    <a href="launch-message-transformations.html">Launching Message Transformations</a>.</li>
+    <li>Select <strong>Debug</strong> to start the debug process.</li>
+</ol>
+
+<p class="image"><a href="images/debug-config-start_orgSize.png">
+<img src="images/debug-config-start.png" alt="Starting the Debugger"></a><br>
+<strong>Figure:</strong> Starting the Debugger</p>
+<p>To work in the debugger, switch to the <strong>Debug</strong> perspective:</p>
+<ol>
+	<li>In the main menu select <strong>Window &gt; Open Perspective &gt; Other</strong>.</li>
+	<li>Select <strong>Debug</strong> and <strong>OK</strong> the dialog.</li>
+</ol>
+<p class="image"><img src="images/open-debug-perspective.png" 
+alt="Open the Debug Perspective."><br>
+<strong>Figure:</strong> Open the Debug Perspective.</p>
+<h2 id="view">The Message Transformation Debug View</h2>
+<p>In the <strong>Message Transformation Debug View</strong> you can set or delete
+breakpoints and follow the debugging process in the Mapping Expression editor.</p>
+
+<!-- separate Debug perspective for message transformation not implemented yet 
+<p>Starting debugging for a message transformation causes the Message Transformation
+property page to be displayed as an Eclipse View:</p>-->
+<p class="image"><a href="images/transformation-debug-view_orgSize.png">
+<img src="images/transformation-debug-view.png"
+alt="The Message Transformation Debug View"></a><br>
+<strong>Figure:</strong> The Message Transformation Debug View</p><!-- TODO: an extra view will be implemented -->
+<h3 id="setting">Setting and Clearing Breakpoints</h3>
+<p>Breakpoints can be set at the following locations:</p>
+
+<ol>
+    <li><a href="#composite">on a composite field</a></li>
+    <li><a href="#leaf">on a leaf field</a></li>
+ <!--     <li><a href="#inEditor">in the mapping expression editor</a></li> -->
+</ol>
+<h4 id="composite">Setting Breakpoints on a Composite Field</h4>
+<p>If breakpoints are set on a composite field of the target message, this will
+cause the debugger to stop at the first mapping statement (if defined) or the 
+mapping expression of all (recursive) leaf fields of the composite field.</p>
+<p class="image"><img src="images/debug-set-breakpoint-composite.png" 
+            alt="Setting a Breakpoint in a Composite Field"><br>
+<strong>Figure:</strong> Setting a Breakpoint in a Composite Field</p>
+<h4 id="leaf">Setting Breakpoints on a Leaf Field</h4>
+<p>Setting breakpoints on a leaf field will cause the debugger to stop at the 
+first mapping statement (if defined) or the mapping expression of the leaf field.</p>
+<p class="image"><img src="images/debug-set-breakpoint-leaf.png" 
+    alt="Setting a Breakpoint in a Composite Field"><br>
+<strong>Figure:</strong> Setting a Breakpoint in a Composite Field</p>
+<!-- TODO: not implemented yet 
+<h4 id="inEditor">Setting Breakpoints in the Mapping Expression Editor</h4>
+<p>Breakpoints can also be set on lines in the mapping statements or mapping 
+expression for a concrete leaf field. This will cause the debugger to stop in 
+these lines.</p>
+<p>Breakpoints are positioned by clicking at the appropriate position in
+the column of the JavaScript editors or the output messages tree:</p>
+<p class="image"><img src="images/" alt="..."><br>
+<strong>Figure:</strong> Breakpoints in the JavaScript Editor.</p>
+<p>A breakpoint symbol will then also be displayed at the leaf field
+in the tree view.</p>
+<p class="image"><img src="images/debug-set-breakpoint-.png" 
+    alt="..."><br>
+<strong>Figure:</strong> Breakpoints in the Expression Editor displayed in the Message Tree.</p>
+<p>To clear a breakpoint, click on its symbol.</p>-->
+
+<h2 id="variableWatch">The Variable Watch View</h2>
+<p>The <strong>Variable Watch</strong> view contains a tree table which displays
+ the properties of all available variables and other tree entries showing the 
+ local variables.</p>
+
+<h3>The This Entry</h3>
+<p>The properties of the current object are displayed in the <strong>this</strong>
+tree entry. If a property is itself a JavaScript object, the property may be expanded
+to show its sub-properties. The entries in the <strong>this</strong> tree are
+ updated each time control returns to the debugger or when you change the stack 
+ location in the Stack view.</p>
+ <p class="image">
+<img src="images/debug-this-table.png" alt="This Table"><br>
+<strong>Figure:</strong> The this Variable Entry</p>
+<h3>Local Variables</h3>
+<p>The local variables of the current function are displayed in the 
+other nodes in the variables view. If a variable is itself a JavaScript object, the
+variable may be expanded to show its sub-properties. The entries are
+updated each time control returns to the debugger or when changing the stack
+location in the Stack view.</p>
+ <p class="image">
+<img src="images/local-variables-table.png" alt="Local Variables"><br>
+<strong>Figure:</strong> Local Variables Entry</p>
+<h2 id="expressions">The Expressions View</h2>
+<p>The Expressions view provides the possibility to watch and evaluate variables
+and expression.</p>
+<h3>Watching</h3>
+<p>Arbitrary JavaScript expressions may be entered in the <strong>Expressions</strong>
+view. The expressions you enter
+are re-evaluated in the current scope and their current values are displayed each
+time when control returns to the debugger or when changing the stack location in the
+Stack view.</p> 
+<p class="image"><img src="images/debug-expressions-view-add.png"
+alt="Add a Watch Expression"><br>
+<strong>Figure:</strong> Add a Watch Expression</p>
+<p class="image"><img src="images/debug-expressions-view-enter.png"
+alt="Enter an Expression."><br>
+<strong>Figure:</strong> Enter an Expression.</p>
+
+<h3>Evaluating</h3> 
+<p>The Expressions view contains an editable command line where you may enter
+arbitrary JavaScript code. The code is evaluated in the context of the current
+stack frame. The view maintains a history of the commands you have entered.
+You may move backward or forward through the history by pressing the 
+<strong>Up</strong> or <strong>Down</strong> arrow keys on the keyboard.</p>
+
+<h2 id="breakpoints">The Breakpoint View</h2>
+<p>The breakpoint view displays the breakpoints set for fields and expressions:</p>
+<p class="image"><img src="images/breakpoint-view.png"
+alt="The breakpoint View"><br>
+<strong>Figure:</strong> The breakpoint View</p>
+<p>With the checkbox on the left side you can enable or disable a breakpoint.</p>
+<p>Java exception breakpoints can be set for specific exceptions:</p>
+<p class="image"><img src="images/debug-add-exception-breakpoint.png"
+alt="Add Java Exception Breakpoint"><br>
+<strong>Figure:</strong> Choose a Java Exception to set as Breakpoint.</p>
+<h2 id="stack">The Stack View</h2>
+<p>The <strong>Stack</strong> view displays the current JavaScript call stack.</p>
+<p class="image"><img src="images/debug-stack-view.png"
+alt="The Stack View"><br>
+<strong>Figure:</strong> The Stack View</p>
+<h2 id="execution">Controlling Execution</h2>
+<p>The debugger provides the following facilities to control the execution of
+scripts during debugging:</p>
+<ul>
+    <li><a href="#stepInto">Stepping Into</a></li>
+    <li><a href="#stepOver">Stepping Over </a></li>
+    <li><a href="#stepOut">Stepping Out</a></li>
+    <li><a href="#go">Resume</a></li>
+    <li><a href="#break">Suspend</a></li>
+    <li><a href="#stop">Terminate</a></li>
+    <li><a href="#breakException">Suspend on Exceptions</a></li>
+<!-- not implemented yet 
+    <li><a href="#breakFunctionEnter">Suspend on Function Enter</a></li>
+    <li><a href="#breakFunctionExit">Suspend on Function Exit</a></li>
+    <li><a href="#moving">Moving up and down the Stack</a></li>-->
+</ul>
+<h3 id="stepInto">Stepping Into</h3>
+<p>To single step entering any function calls, you may do any of the following:</p>
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Step Into</strong>.</li>
+    <li>In the toolbar, select the <strong>Step Into</strong> button
+        <img src="images/debug-step-into-button.png" alt="">.</li>
+    <li>Press the <strong>F5</strong> key on the keyboard.</li>
+</ul>
+<p>Execution will resume. If the current line in the script contains a function
+call, control will return to the debugger upon entry into the function. Otherwise
+control will return to the debugger at the next line in the current function.</p>
+<p class="image"><img src="images/debug-step-into.png"
+alt="Stepping into a Function"><br>
+<strong>Figure:</strong> Stepping into a Function</p>
+
+<h3 id="stepOver">Stepping Over </h3>
+<p>To single step to the next line in the current function, you may do any of
+the following: </p>
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Step Over</strong>.</li>
+    <li>In the toolbar, select the <strong>Step Over</strong> button
+        <img src="images/debug-step-over-button.png" alt="">.</li>
+    <li>Press the <strong>F6</strong> key on the keyboard.</li>
+</ul>
+<p>Execution will resume but control will return to the debugger at the next
+line in the current function or top-level script.</p>
+
+<h3 id="stepOut">Stepping Out</h3>
+<p>To continue execution until the current function returns you may do any of
+the following:</p>
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Step Return</strong>.</li>
+    <li>In the toolbar, select the <strong>Step Return</strong> button
+        <img src="images/debug-step-return-button.png" alt=""></li>
+    <li>Press the <strong>F7</strong> key on the keyboard.</li>
+</ul>
+<p>Execution will resume until the current function returns or a breakpoint is hit.</p>
+
+<h3 id="go">Resume</h3>
+<p>To resume execution of a script you may do any of the following:</p> 
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Resume</strong>.</li>
+    <li>In the toolbar, select the <strong>Resume</strong> button
+        <img src="images/debug-run-button.png" alt=""></li>
+    <li>Press the <strong>F8</strong> key on the keyboard.</li>
+</ul>
+<p>Execution will resume until a breakpoint is hit or the script completes.</p>
+
+<h3 id="break">Suspend</h3>
+<p>To stop all running scripts and give control to the debugger you may do any
+of the following:</p> 
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Suspend</strong>.</li>
+    <li>In the toolbar, select the <strong>Suspend</strong> button
+        <img src="images/debug-suspend-button.png" alt=""></li>
+</ul>
+
+<h3 id="stop">Terminate</h3>
+<p>To terminate the debugging process you may do any
+of the following:</p> 
+<ul> 
+    <li>In the menu bar select <strong>Run &gt; Terminate</strong>.</li>
+    <li>In the toolbar, select the <strong>Terminate</strong> button&nbsp;
+        <img src="images/debug-stop-button.png" alt=""></li>
+    <li>Press the <strong>Ctrl-F2</strong> key on the keyboard.</li>
+</ul>
+<p class="image"><img src="images/debug-stack-terminated.png"
+alt="Terminated Process in the Stack View"><br>
+<strong>Figure:</strong> Terminated Process in the Stack View</p>
+<h3 id="breakException">Suspend on Exceptions</h3>
+<p>To give control to the debugger whenever a JavaScript is exception is thrown,
+select the <strong>Run &gt; Suspend on exceptions</strong> option from the menu
+bar. Whenever a JavaScript exception is thrown by a script a message dialog will
+be displayed and control will be given to the debugger at the location the exception
+is raised.</p>
+<p>Right-click in the stack view and select <strong>Suspend on exceptions</strong>
+in the context-menu.</p>
+<p class="image"><img src="images/debug-suspend-on-exception.png"
+alt=""><br>
+<strong>Figure:</strong> Suspend on Exceptions</p>
+
+<!-- is done in the stack view....<h3 id="moving">Moving up and down the Stack</h3>
+<p>The lower-left pane in the debugger main window contains a combo-box 
+<strong>Context</strong> which displays the current stack of the executing script.
+You may move up and down the stack by selecting an entry in the combo-box.
+When you select a stack frame the variables and watch windows are updated to
+reflect the names and values of the variables visible at that scope.</p>
+ -->
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

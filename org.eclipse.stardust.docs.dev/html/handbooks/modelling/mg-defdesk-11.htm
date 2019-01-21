@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Working with Triggers</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using Configuration Variables",
+        "mg-defdesk-10.htm","model-variables.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working with Triggers</h1>
+<p>Triggers are start events that allow an external event to initiate the process start.
+For details on the concept of start event refer to section
+<a href="../../concepts/workflow-basics/mg-basics-6.htm#start">Start Events</a> 
+of chapter
+<a href="../../concepts/workflow-basics/mg-basics-6.htm">Control Flow</a>
+in the 
+<a href="../../concepts/key-concepts.html">Key Concepts</a>.</p>
+<p>Depending on the type of a trigger, different parameters have to be defined for
+each trigger.</p>
+<ul>
+   <li><a href="#add">Adding Triggers</a></li>
+   <li><a href="#del">Deleting Triggers</a></li>
+   <li><a href="#edit">Modifying Triggers</a></li>
+   <li><a href="#types">Trigger Types</a></li>
+</ul>
+<h2 id="add">Adding Triggers</h2>
+<p>To add a trigger you can either:</p>
+<ul>
+    <li>In the <a href="model-views/views-outline.html">Outline view</a> select
+    the process. From its pop-up menu choose <strong>New Trigger</strong> and the trigger
+    type you want.</li>
+    <li>In the diagram <a
+        href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a>,
+    click <strong>Lifecycle</strong> and choose the trigger type from the pop-up menu.</li>
+</ul>
+<p>In both cases the new trigger appears under the process tree in the <strong>Outline</strong>
+view and in the diagram. Optionally, you can change the automatically generated ID and name in the properties
+dialog of the trigger. In the trigger type specific panel of the dialog you can edit the
+type specific properties.</p>
+<p class="image"><img src="images/mg-create-trigger.png" alt=""> <br>
+<strong>Figure:</strong> Adding a Manual Trigger</p>
+<h2 id="del">Deleting Triggers</h2>
+<p>To delete a trigger, select it in the <a href="model-views/views-diagrams.html">diagram</a>
+or in the process tree from the <a href="model-views/views-outline.html">Outline
+view</a> and choose <strong>Delete</strong> from the pop-up menu. If you want to delete only
+the symbol from the diagram, choose <strong>Delete Symbol</strong> from its pop-up menu.</p>
+<h2 id="edit">Modifying Triggers</h2>
+<p>To modify a trigger, double-click it in the <a
+    href="model-views/views-outline.html">Outline view</a> or in the <a
+    href="model-views/views-diagrams.html">diagram</a> to open the properties dialog, where
+you can edit its properties.</p>
+
+<h2 id="types">Available Trigger Types</h2>
+<p>Depending on the trigger type the trigger message may be parameterized with
+additional data. Such trigger parameters are provided at runtime in form of 
+<a href="../../concepts/workflow-basics/mg-basics-8.htm#accessPoints">access points</a>
+allowing for parameter mappings. Parameter mappings may be used to initialize workflow
+data of the triggered process instance and are configured in the <strong>Parameter
+Mapping</strong> panel of the triggers properties dialog. Please refer to the specific trigger type
+section in this chapter to obtain a detailed description on how to set up the parameter
+mappings accordingly.</p>
+<ul>
+    <li><a href="#camel">Camel Trigger</a></li>
+    <li><a href="#jms">JMS Trigger</a></li>
+    <li><a href="#mail">Mail Trigger</a></li>
+    <li><a href="#manual">Manual Trigger</a></li>
+    <li><a href="#scan">Scan Trigger</a></li>
+    <li><a href="#timer">Timer Based Trigger</a></li>
+</ul>
+
+<h3 id="camel">Camel Trigger</h3>
+<img src="images/camel-trigger-icon.png" alt="">
+<p>A Camel Trigger allows to start a process by receiving messages from an arbitrary 
+Camel endpoint and passing these into the process the Trigger is defined for.</p>
+<p class="image"><img src="images/camel-trigger-props.png" 
+   alt="Camel Trigger Properties"><br>
+<strong>Figure:</strong> Camel Trigger Properties</p>
+<p>In the <strong>Endpoint Settings</strong> section, you can
+specify the <strong>Camel Context ID</strong> and choose the <strong>Endpoint Type</strong>.</p>
+<h4>Camel Context ID</h4>
+<p>The <strong>CamelContextID</strong> defines the ID of the 
+CamelContext object, which represents the Camel runtime system.</p>
+<h4>Endpoint Type</h4>
+<p>The following Endpoint types are available:</p>
+<ul>
+   <li>File - uri="file:..."</li>
+   <li>Generic Endpoint - arbitrary URIs</li>
+</ul>
+<h4>Route</h4>
+<p>In the <strong>Route</strong> section you can define additional Camel Route specifications.</p>
+<h3 id="jms">JMS Trigger</h3>
+<img src="images/mg-jms-trigger-icon.png" alt="">
+<p>An incoming message starts a process passing all the information contained in the
+body of the message as input data.</p>
+<p>To change the specific properties of a JMS trigger, open its properties dialog,
+where you can - among other options -choose the type of message and add parameters of the
+JMS message.</p>
+<p class="image"><a href="images/mg-jms-trigger-props_orgSize.png" target="_blank"><img
+    src="images/mg-jms-trigger-props.png" alt="JMS Trigger Properties"></a> <br>
+<strong>Figure:</strong> JMS Trigger Properties</p>
+<p>In this example we receive a map message. Please refer to <a
+    href="mg-integration-6.htm">Integrating JMS</a> for details on the different message
+types. <!-- TODO: to be clarified: outdated?? The next picture shows a JMS application that should <span class="Stil1">send the map message</span> expected by the defined trigger. This message contains two additional parameters - status and incident id - and the processID in its header.</P>
+<P  >&nbsp;</P>
+<p class="image"><IMG SRC="images/mg-defdesk-39.jpg">
+<br><strong>Figure:</strong> JMS Application that triggers the Process IncidentProcessing</p>
+<P  >
+It is also possible to send messages from other external systems.--></p>
+<p>After this configuration we can map the defined parameters to data in our process
+definition. Select <strong>Parameter Mapping</strong> and push the <strong>Add</strong>
+button to set up a new parameter mapping. A new dialog appears, where you fill in the
+following parameters:</p>
+<ul>
+    <li><strong>Data</strong>: select from a list of valid data, mandatory.</li>
+    <li><strong>Parameter</strong>: select from a list of parameters, mandatory.</li>
+    <li><strong>Access Path</strong>: select a valid dereferentiation path for the
+    parameter type via access path browser, not mandatory.</li>
+</ul>
+<p class="image"><a href="images/mg-defdesk-40_orgSize.png" target="_blank"><img
+    src="images/mg-defdesk-40.png" alt=""></a> <br>
+<strong>Figure:</strong> Parameter Mappings of a JMS Trigger</p>
+
+<h3 id="mail">Mail Trigger</h3>
+<img src="images/mg-mail-trigger-icon.png" alt="">
+<p>An incoming email starts a process passing all the information contained in the
+email as input data. To change the properties of the mail trigger, open its properties
+dialog.</p>
+<p class="image"><img src="images/mg-defdesk-42.png" alt="Mail Trigger Configuration">
+<br>
+<strong>Figure:</strong> Mail Trigger Configuration</p>
+<h4>Server Settings</h4>
+<p>The following server settings are provided:</p>
+<ul>
+    <li><strong>Protocol</strong>: Choose between <strong>POP3</strong> or <strong>IMAP4</strong></li>
+    <li><strong>Server</strong>: <tt>POP3</tt> (or <tt>IMAP</tt>) server name</li>
+    <li><strong>User</strong>: Account name of the mail box</li>
+    <li><strong>Password</strong>: Matching password to the mail box account</li>
+</ul>
+<h4>Mail Settings</h4>
+<p>The following entry fields are provided to specify mail settings
+to filter for:</p>
+<ul>
+    <li><strong>Candidate Mails:</strong><br> filter to specify the mails 
+    to be observed. Options are:
+    <ul>
+    	<li><strong>All existing Mails</strong></li>
+    	<li><strong>Mails not marked as seen</strong></li>
+    	<li><strong>New mails since last fetch</strong></li>
+    </ul><br></li>
+    <li><strong>Predicates:</strong><br> Only the mails are accepted containing the pattern set in the
+    according predicate entry. Please refer to the documentation on the <a
+        href="http://docs.oracle.com/javaee/7/api/javax/mail/search/package-summary.html"
+        target="_blank">javax.mail.search</a> classes, for more detailed information about
+    the string comparison. You can set the following predicates:
+    <ul>
+        <li><strong>Sender Predicate</strong>: compares the string with the "From
+        Address" header (see <tt>javax.mail.search.FromStringTerm</tt>). Note, that the
+        string comparison is case-sensitive.</li>
+        <li><strong>Subject Predicate</strong>: compares the string with the "Message
+        Subject" header (see <tt>javax.mail.search.SubjectTerm</tt>). Note, that the
+        string comparison is case-insensitive.</li>
+        <li><strong>Body Predicate</strong>: searches on message body (see <tt>javax.mail.search.BodyTerm</tt>).</li>
+    </ul>
+    If you leave all three predicates empty, all mails matching the option set for 
+    <strong>Candidate Mails</strong> are searched for.<br>&nbsp;</li>
+    <li><strong>Mailbox actions:</strong><br> this means the action after mails are
+    received. Options are:
+    <ul>
+    	<li><strong>Leave mail as is</strong></li>
+    	<li><strong>Mark mail as seen</strong></li>
+    	<li><strong>Remove mail from server</strong></li>
+    </ul></li>
+</ul>
+<h4>Parameter Mapping</h4>
+<p>Select <strong>Parameter Mapping</strong> on the left side of the <strong>Properties</strong>
+dialog to configure the <strong>Parameter Mapping</strong>. In this case you can map
+parameters of a mail object to a data modeled in the process. In the figure below you find
+an example on how to access the string content of a received mail.</p>
+<p class="image"><img src="images/mg-defdesk-43.jpg" alt=""> <br>
+<strong>Figure:</strong> Mail Parameter Mapping</p>
+
+<h3 id="manual">Manual Trigger</h3>
+<img src="images/mg-manual-trigger-icon.png" alt="">
+<p>Open the <strong>Properties</strong> dialog of a created <strong>Manual
+Trigger</strong> to change its properties. There you can choose a participant from the list of the
+<strong>Manual Trigger</strong> pane.</p>
+<p class="image"><img src="images/mg-manual-trigger-props.png" alt="Properties of a Manual Trigger"><br>
+<strong>Figure:</strong> Properties of a Manual Trigger</p>
+<p>Another possibility to assign a participant to a manual trigger is to connect
+the participant via transition to the trigger in the diagram:</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Connect</strong>.</li>
+    <li>Select the participant.</li>
+    <li>Select the manual trigger.</li>
+</ol>
+<p class="image"><img src="images/mg-manual-trigger-connect.png" alt="Manual Trigger"><br>
+<strong>Figure:</strong> Assign a Participant to a Manual Trigger.</p>
+<p>Now the participant is entered in the <strong>Manual Trigger</strong>
+<strong>Participants</strong> section in the triggers model property page.</p>
+<h4>Assigning Scoped Participants</h4>
+<p>In case you assign a participant pertaining to a department,
+the manual trigger in the Stardust Portal opens 
+open a dialog, where the user who started the manual trigger
+can select a department from a list of departments he belongs to.</p>
+
+<h3 id="scan">Scan Trigger</h3>
+<img src="images/mg-scan-trigger-icon.png" alt="">
+<p>The Scan Trigger can be used to manage the triggering and starting
+of Process Instances via a Scan tool. 
+Scan Triggers are non-exclusive, which means that it is possible
+to have both in one process definition, a Manual Trigger and a Scan 
+Trigger, to allow process instances to be started manually and 
+via a Scan tool.</p>
+<p>Via Scan triggers you can create a parameter and define a mapping 
+of this parameter to an existing process variable of data type 
+<tt>Document</tt> or <tt>Document List</tt>.
+For details on using DMS data types, refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-data-types.html">DMS Data Types</a>
+of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/toc.html">
+Document Service Integration Guide</a>.</p>
+<p>In the properties page of the Scan trigger,
+you have two specific sections:</p>
+<ul>
+	<li><strong>Participants</strong>:<br>
+	select the participant, who
+	should start the scanning. If you like to deselect the participant choice and clear, 
+	click <strong>None</strong>.
+	<p class="image"><img src="images/mg-scan-trigger-props.png" alt="">
+	<br><br></li>
+	<li><strong>Scan Trigger</strong>:<br>
+	The <strong>Data</strong> entry provides a list of all defined data types 
+	<tt>Document</tt> or <tt>Document List</tt> and process attachments. Select the data the parameter should be mapped to.
+	The name of the parameter of the scan trigger is derived from the name of the data.
+	The Meta Type of the selected document type is displayed in a non editable text field.
+	<p class="image"><img src="images/mg-scan-trigger-data.png" alt=""><br>
+	If you do not specify data for the scan trigger, then the following validation message is displayed in
+	 the Problems view of the Modeler.<br>
+		 <p class="image"><img src="images/scandata.png" alt=""><br>
+	 You need to specify either process attachment or document data for the scan trigger.
+	 
+	</li>
+</ul>
+
+<h3 id="timer">Timer Based Trigger</h3>
+<img src="images/mg-timer-trigger-icon.png" alt="">
+<p>A process can be started at some point in time (<strong>Start Timestamp</strong>),
+whereby multiple instances of the process can be created, depending on the defined
+periodicity. Additionally, a <strong>Stop Timestamp</strong> can be configured if the
+periodicity should end at a certain point in time.</p>
+<p>In the <strong>Properties</strong> dialog of the timer based trigger you can
+change its specific properties.</p>
+<p class="image"><a href="images/mg-defdesk-47_orgSize.jpg" target="_blank"><img
+    src="images/mg-defdesk-47.jpg" alt=""></a> <br>
+<strong>Figure:</strong> Properties of a Timer Trigger</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

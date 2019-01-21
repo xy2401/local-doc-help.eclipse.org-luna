@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Configuring Password Rules</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Setting and Retrieving Runtime Permissions",
+      "pg-embed-prio.html","pg-embed-runtime-perms.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Configuring Password Rules</h1>
+<p>The interface <tt>PasswordRules</tt> provides functionality to
+determine and get password rules.</p>
+<ul>
+	<li><a href="#expire">Configuring Password Expiration Periods</a></li>
+	<li><a href="#strength">Configuring Password Strength Rules</a></li>
+	<li><a href="#previous">Configuring the Number of Previous User Passwords to Remember</a></li>
+	<li><a href="#unique">Setting a Flag for Unique Password Requirement</a></li>
+	<li><a href="#notify">Sending Notification Mails</a></li>
+	<li><a href="#strong">Enable or Disable Password Validation</a></li>
+	<li><a href="#force">Setting a Flag for Forcing a Password Change</a></li>
+	<li><a href="#deact">Determine Time to Deactivate User IDs</a></li>
+</ul>
+<p>Please also refer to the Javadoc of
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/PasswordRules.html">
+org.eclipse.stardust.engine.api.runtime.PasswordRules</a> for detailed information
+on the according methods.</p>
+<h2 id="expire">Configuring Password Expiration Periods</h2>
+<p>To determine the period a password is valid,
+use the method</p>
+<pre>void setExpirationTime(int days)</pre>
+<p>The method</p>
+<pre>int getExpirationTime()</pre>
+<p>returns the number of days a password is valid.</p>
+<h2 id="strength">Configuring Password Strength Rules</h2>
+<p>The following password strength rules can be set and get
+by using the according methods:</p>
+<ul>
+	<li>Minimum password length:
+	<pre>void setMinimalPasswordLength(int length) / int getMinimalPasswordLength()</pre></li>
+	<li>Minimum number of letters:
+	<pre>void setLetters(int length) / int getLetters()</pre></li>
+	<li>Minimum number of digits:
+	<pre>void setDigits(int length) / int getDigits()</pre></li>
+	<li>Minimum number of punctuation characters ('!"$%&amp;#()=?+/*): 
+	<pre>void setPunctuation(int length) / int getPunctuation()</pre></li>
+	<li>Minimum required lowercase (a-z) and uppercase (A-Z) characters:
+	<pre>void setMixedCase(int length) / int getMixedCase()</pre></li>
+	<li>Number of minimum different characters in the new password compared to 
+	previous passwords:
+	<pre>void setDifferentCharacters(int length) / int getDifferentCharacters()</pre></li>
+</ul>
+
+<h2 id="previous">Configuring the Number of Previous User Passwords to Remember</h2>
+<p>The method</p>
+<pre> void setPasswordTracking(int number)</pre>
+<p>sets the number of old passwords to store.
+If the value is greater than 0, the password tracking is enabled
+and a number of previous passwords is stored.
+The new password should not have the same value as one of the stored 
+previous passwords.</p>
+<p>To check if password tracking is enabled, use the method</p>
+<pre>int getPasswordTracking()</pre>
+<p>It return the number of passwords to track.</p>
+<h2 id="unique">Setting a Flag for Unique Password Requirement</h2>
+<p>You can set a flag for using unique passwords, so that 
+new passwords should be compared with previous passwords, via the following
+method:</p>
+<pre>void setUniquePassword(boolean uniquePassword);</pre>
+<p>To check, if this flag is set, use:</p>
+<pre>boolean isUniquePassword();</pre>
+<h2 id="notify">Sending Notification Mails</h2>
+<p>Via the method </p>
+<pre>void setNotificationMails(int days)</pre>
+<p>you can determine that a notification mail should be send 
+out before the password expires. The parameter is the number of days
+the notification mail should be sent before the password
+expires. In case no notification mail should be sent, set the
+parameter to <tt>0</tt>.</p>
+<p>Use the method</p>
+<pre>int getNotificationMails();</pre>
+<p>to check if notification mails should be send. The return
+value is the number of days the mail should go out
+before the password expires. If the value is 0, no notification should
+be sent.</p>
+<h2 id="force">Setting a Flag for Forcing a Password Change</h2>
+<p>To force a password change, use the method</p>
+<pre>void setForcePasswordChange(boolean forcePasswordChange);</pre>
+<p>You can check if the force password change flag is set via:</p>
+<pre>boolean isForcePasswordChange();</pre>
+<h2 id="strong">Enable or Disable Password Validation</h2>
+<p>To determine if all password rules should be validated, use the
+method:</p>
+<pre>void setStrongPassword(boolean strongPassword);</pre>
+<p>To check if the strong password is set, use:</p>
+<pre>boolean isStrongPassword();</pre>
+<h2 id="deact">Determine Time to Deactivate User IDs</h2>
+<p>To set the number of days a user ID will be disabled after the password
+ expired, use the method:</p>
+<pre>void setDisableUserTime(int days)</pre>
+<p>The method</p>
+<pre>int getDisableUserTime()</pre>
+<p>returns the number of days a user ID will be disabled after the password
+ expired.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

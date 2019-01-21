@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Using Structured Types in Process Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Using Structured Types in the Stardust Portal",
+    	"struct-type-def.html","struct-type-portal.html",
+		"../../../handbooks.htm","Developer Handbooks",
+		"../../mg-preface.htm","The Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../struct-data-preface.html","Structured Data Types");
+ -->
+</script>
+<body>
+<h1>Using Structured Types in Process Data</h1>
+<ul>
+    <li><a href="#processData">Defining Structured Data Elements</a></li>
+    <li><a href="#copy">Copying Structured Data Types</a></li>
+    <li><a href="#del">Deleting Structured Types</a></li>
+    <li><a href="#datamappings">Data Mappings for Structured Data</a></li>
+    <li><a href="#webservice">Using Structured Data in WebService Applications</a></li>
+    <li><a href="#javaAppl">Structured Data and Java Type Applications</a></li>
+    <li><a href="#descriptors">Using Structured Data as Descriptors</a></li>
+    <li><a href="#storage">Structured Data Storage</a></li>
+    <li><a href="#transition">Setting Up Transition Conditions for Structured Data</a></li>
+    <li><a href="#xsdMapping">Mapping XSD Types</a></li>
+</ul>
+
+<h2 id="processData">Defining Structured Data Elements</h2>
+<p>Select <strong>Structured Data</strong> as the data type for process data from 
+  the modeler palette or from the New Data option for the pop-up menu for the 
+  model node in the outline and select one of the structured data types defined 
+  for the process model as described above on the <strong>Structured Data Definition</strong> 
+  property page.</p>
+<p class="image"><img src="images/struct-data-create.png" 
+alt="Create a Data with Type Structured Data."><br>
+<strong>Figure:</strong> Create a Data with Type Structured Data.</p>
+<p class="image"><img src="images/data-property-page.png" 
+alt="Property Page of Data Type Structured Data."><br>
+<strong>Figure:</strong> Property Page of Data Type Structured Data.</p>
+<h2 id="copy">Copying Structured Data Types</h2>
+<p>When copying a structured data to another model or project,
+the structured type is created automatically. In case a structured type with this
+name already exists, a dialog opens to enter a new name:</p>
+<!-- TODO: example -->
+<!-- <p>To create a new composite or enumeration type based on an existing type, press 
+  the <strong>Copy</strong> button.</p> -->
+<p class="image"><img src="images/copy-struct-data-new-name.png" 
+alt="Enter a New Name"><br>
+<strong>Figure:</strong> Enter a New Name</p>
+<h3>Copying structured data with imported XSD files</h3>
+<p>Note that in case you copy structured data types, which use an imported XSD file,
+between different projects, you have to
+copy the according XSD file to the target project first.
+Otherwise a warning dialog opens to remind you to copy this file, e.g.:</p>
+<p class="image"><img src="images/copy-struct-xsd-warning.png" 
+alt="XSD Copy Warning Dialog"><br>
+<strong>Figure:</strong> XSD Copy Warning Dialog</p>
+  
+<h2 id="del">Deleting Structured Types</h2>
+<p>To delete a type, right-click it in the Outline view and select
+ <strong>Delete Element</strong>.
+When a structured data type is deleted, which is used in process data, appropriate
+validation warnings are created, but entries concerning the type are left unchanged.</p>
+
+<h2 id="datamappings">Data Mappings for Structured Data</h2>
+<p>Data in process data of structured type can be obtained or modified via XPath-like 
+dereferentiation paths. However, defining such dereferentiation paths does 
+not require any XPath skills.</p>
+<ul>
+	<li><a href="#dataMap">Defining the Data Mappings</a></li>
+	<li><a href="#XOM-DOM">Transforming Structured Data to DOM object</a></li>
+	<li><a href="#mapBeh">Behavior for IN and OUT Data Mappings</a></li>
+</ul>
+<h3 id="dataMap">Defining the Data Mappings</h3>
+<p>Create IN/OUT data mappings between an activity and a data of structured 
+type as described in chapter
+<a href="../../mg-defdesk-8.htm">Specifying Data Mappings</a>:</p>
+<p class="image"><img src="images/data-mapping.png" alt=""></p>
+<p>After opening the data mapping dialog</p>
+<p class="image"><img src="images/data-mapping-dialog.png" alt=""></p>
+<p>and selecting the <strong>Browse</strong> button, the data path browser will open and 
+  show the top level of the data structure, e.g.</p>
+<p class="image"><img src="images/path-brower-start.png" alt=""></p>
+<p>By selecting one cell in the <strong>Next Element</strong> column, you navigate to this 
+  element:</p>
+<p class="image"><img src="images/path-browser-structure.png" alt=""></p>
+<p>until you have reached an atomic data as shown in the following figure: </p>
+<p>Please refer to the section
+<a href="#XOM-DOM">Transforming Structured Data to DOM Objects</a>
+for a detailed description of the <tt>DOM</tt> option 
+visible in the above screenshot.</p>
+<p class="image"><img src="images/path-browser-field.png" alt=""></p>
+<p>If the selected field has a list type, you need to specify, whether you intend 
+  to retrieve the entire list, e.g.:</p>
+<p class="image"><img src="images/path-browser-list-all.png" alt=""></p>
+<p>or a single element, e.g.:</p>
+<p class="image"><img src="images/path-browser-list-index.png" alt=""></p>
+<p>Note, that you can access lists of lists as results of the dereferentiation 
+  this way.</p>
+<p>The <strong>Back</strong> and <strong>Next</strong> buttons allow you to step back and forth in 
+  the dereferentiation path. </p>
+<p>The path created in the path browser can be stored in the data mapping via 
+  the <strong>Finish</strong> button.</p>
+<p class="image"><img src="images/data-mapping-dialog-populated.png" alt=""></p>
+<h3 id="XOM-DOM">Transform Structured Data to DOM object</h3>
+<p>The <tt>DOM</tt> options, which you can set in the data path dialog, allow you to
+transform the structured data type to <tt>DOM</tt> objects.  
+Using <tt>DOM()</tt> converts the Structured Data into a data of type
+<tt>org.w3c.dom.Element</tt>.</p>
+<p>If you have an activity and you have connected a data of type structured 
+data to it, you can set these options in the <tt>Access path browser</tt> on the corresponding 
+property page of the activity (datamappings). For application activities,
+take care to add the correct
+return type to your application class methods depending on the used object. 
+The following application class gives an example class,
+which is called in an application activity using <tt>DOM()</tt> in a data path:</p>
+<pre>
+import org.w3c.dom.Element;
+
+public class DOMApplication {
+
+	private Element myElement;
+	
+	public Element complete(Element aEle) {
+		System.out.println(aEle);
+		return aEle;
+	}
+
+	public void setMyElement(Element myElement) {
+		this.myElement = myElement;
+	}
+
+	public Element getMyElement() {
+		return myElement;
+	}
+	
+</pre>
+<p>In the application, you can use the methods from this class in
+as access points. E.g.:</p>
+<p class="image"><img src="images/dom-example.png" alt=""><br>
+<strong>Figure:</strong> Using DOM in data path</p>
+
+<h3 id="mapBeh">Behavior for IN and OUT Data Mappings</h3>
+<p>The semantics of IN and OUT data mappings defined on structured data differ 
+  for different dereferentiation paths. The following table describes possible 
+  IN- and OUT- data mapping expressions for example schema:</p>
+<table width="100%" border="1" id='id_1'>
+  <tr> 
+    <th width="7%">Direction</th>
+    <th width="17%">Purpose</th>
+    <th width="22%">Example(s)</th>
+    <th width="9%">Java Type</th>
+    <th width="45%">Value contents</th>
+  </tr>
+  <tr> 
+    <td width="7%">READ + WRITE</td>
+    <td width="17%">Retrieve/set a value of primitive type</td>
+    <td width="22%"><tt>order[1]/qty</tt></td>
+    <td width="9%"><tt>int</tt></td>
+    <td width="45%">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="7%">READ + WRITE</td>
+    <td width="17%">&nbsp;</td>
+    <td width="22%"><tt>date</tt></td>
+    <td width="9%"><tt>java.util.Date</tt></td>
+    <td width="45%">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="7%">READ + WRITE</td>
+    <td width="17%">retrieve/set the complete complexType </td>
+    <td width="22%"><tt>order[2], order[2]/customer/address[1] </tt></td>
+    <td width="9%"><tt>java.util.Map </tt></td>
+    <td width="45%">Contains all fields of order[2], incl. subelements like customer, 
+      map key is always the field name. For subelements allowing multiple instances, 
+      map value is java.util.List </td>
+  </tr>
+  <tr> 
+    <td width="7%">READ + WRITE </td>
+    <td width="17%">retrieve a list of complexTypes </td>
+    <td width="22%"><tt>order, order[1]/customer/address </tt></td>
+    <td width="9%"><tt>java.util.List </tt></td>
+    <td width="45%">Contains all hits satisfying the expression (all orders/all 
+      addresses of the customer from the first order), List elements are instances 
+      of java.util.Map. Only the last component of the XPath expression is allowed 
+      to have multiple occurrences (maxOccurs&gt;1) </td>
+  </tr> 
+  <tr> 
+    <td width="7%">READ only </td>
+    <td width="17%">retrieve a list of arbitrary complexTypes </td>
+    <td width="22%"><tt>order/customer/address<br>
+      </tt> other complex expressions allowed </td>
+    <td width="9%"><tt>java.util.List </tt></td>
+    <td width="45%">Contains all hits satisfying the expression (all addresses 
+      of the customer from all orders), List elements are instances of java.util.Map. 
+      Only the last component of the XPath expression is allowed to have multiple 
+      occurrences (maxOccurs&gt;1) </td>
+  </tr>
+</table>
+<p> Note, that the rule to decide if <tt>java.util.List</tt> or <tt>java.util.Map</tt> 
+  should be used: if all XPath parts can only return one element, <tt>java.util.Map</tt> 
+  will be used as Java type, otherwise <tt>java.util.List</tt>. The term &quot;can 
+  only return one element&quot; is true, if the element per definition has a maxOccurs=1 
+  or a unique index is used ([last()], ([first()], [NUMBER]).</p>
+<h2 id="webservice">Using Structured Data in WebService Applications</h2>
+<p>To use structured data as input or output for WebService Applications, please refer
+to the section <a href="../../mg-integration-8.htm#struct">Structured Data as Input and Output</a>
+of the chapter <a href="../../mg-integration-8.htm">Integrating Synchronous Web Services</a>
+for detailed information.</p>
+<h2 id="javaAppl">Structured Data and Java Type Applications</h2>
+<p>Details on how to use structured data types with Java application types (Java 
+  classes, Session Beans) can be obtained from the chapter
+  <a href="../../../programming/pg-structured-data.html">Structured Data and Java Type Applications</a> of the
+  <a href="../../../programming/pg-preface.htm">Programming Guide</a>.</p>
+
+<h2 id="descriptors">Using Structured Data as Descriptors</h2>
+<p>Primitive data retrieved from structured data can be used as 
+descriptors for process definitions:</p>
+<p class="image"><img src="images/descriptor-page.png" alt=""></p>
+<p>with the same dereferentiation path mechanisms as for <a href="#datamappings">Data Mappings 
+of Structured Data</a>: </p>
+<p class="image"><img src="images/descriptor-path.png" alt=""></p>
+<p>Please refer to the section
+<a href="../../../modelling/mg-defdesk-9.htm#descriptors">Descriptors</a>
+of the chapter
+<a href="../../../modelling/mg-defdesk-9.htm">Working with Data Paths</a>
+for general information on the usage of descriptors.</p>
+<h2 id="storage">Structured Data Storage</h2>
+<p>Process data of structured type are stored in the tables in the Stardust Audit 
+  Trail Database. The storage layout is optimized for efficient access in queries. 
+</p>
+<h3></h3>
+<p>See details about structured data storage in the chapter
+<a href="../../../operation/audit-trail/ag-struct-data.html">Structured Data Storage</a> of the
+<a href="../../../operation/ag-preface.htm">Operation Guide</a>.</p>
+
+<h2 id="transition">Setting Up Transition Conditions for Structured Data</h2>
+<p>To set up transition conditions with structured data expressions the Data ID has to be followed 
+the XPATH expression. For example:</p>
+<pre>&lt;DataID&gt;.a.b.c == &lt;value&gt;</pre>
+<p>references the element denoted by XPath "a.b.c" in data "DataID".</p>
+<pre>&lt;DataID&gt;.a.b.c[1] == &lt;value&gt;</pre>
+<p>references the fist element of the list denoted by XPath "a.b.c" in data "DataID".</p>
+<p class="image"><img src="images/struct-data-transition-condition.png" alt="Transition Condition"></p>
+<p>For detailed information on setting transition conditions please refer to the
+section <a href="../../mg-defdesk-5.htm#conditions">Setting Transition Conditions</a>
+in the chapter <a href="../../mg-defdesk-5.htm">Working with Transitions</a>.</p>
+<h2 id="xsdMapping">Mapping XSD Types</h2>
+<p>Some XSD types specified in structured data will be converted
+to JavaScript types when used for 
+<a href="../../integration/messages/message-transformation-appl.html">Message Transformation applications</a>
+or in <a href="#transition">transition conditions</a>. For Java representations like Map, List or Object,
+they have to be converted to Java types. The following table displays the mapping performed
+for the XSD types:</p>
+
+<table class="autoWidth" id='id'>
+<tr><th>XSD Type</th><th>Java type</th><th>JavaScript type</th></tr>
+<tr><td>anySimpleType</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>anyURI</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>anyType</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>base64Binary</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>boolean</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>byte</td><td>java.lang.Byte</td><td>Number</td></tr>
+<tr><td>date</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>dateTime</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>decimal</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>double</td><td>java.lang.Double</td><td>Number</td></tr>
+<tr><td>duration</td><td>org.eclipse.stardust.common.Period</td><td>String</td></tr>
+<tr><td>ENTITIES</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>ENTITY</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>float</td><td>java.lang.Float</td><td>Number</td></tr>
+<tr><td>gDay</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>gMonth</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>gMonthDay</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>gYear</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>gYearMonth</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>hexBinary</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>ID</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>IDREF</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>IDREFS</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>int</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>integer</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>language</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>long</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>Name</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>NCName</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>negativeInteger</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>NMTOKEN</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>NMTOKENS</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>nonNegativeInteger</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>nonPositiveInteger</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>normalizedString</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>NOTATION</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>positiveInteger</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>QName</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>short</td><td>java.lang.Short</td><td>Number</td></tr>
+<tr><td>string</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>time</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>token</td><td>java.lang.String</td><td>String</td></tr>
+<tr><td>unsignedByte</td><td>java.lang.Byte</td><td>Number</td></tr>
+<tr><td>unsignedInt</td><td>java.lang.Integer</td><td>Number</td></tr>
+<tr><td>unsignedLong</td><td>java.lang.Long</td><td>Number</td></tr>
+<tr><td>unsignedShort</td><td>java.lang.Short</td><td>Number</td></tr>
+</table>
+
+<h3>XSD:anyType</h3>
+
+<p>When the actual type is not defined for any element or attribute, 
+the xsd:anyType is the default type for that. The values for elements or attributes of 
+type xsd:anyType are persisted with the Java type String. If the value of an xsd:anyType 
+element is another element, the persisted value is the corresponding xml fragment as String. For example,
+&lt;some_element&gt;...content (can be mixed - complex element)...&lt;/some_element&gt;.
+ Serialization of a structured data containing xsd:anyType elements 
+ via MessageSerializationApplication creates a valid xml with the xml 
+ fragment correctly embedded in the document.
+</p>
+
+<h3>Behavior of XSD:date Field</h3>
+<p>The <tt>XSD:date</tt> fields are not localized. Because the 
+Server Time Zone and Client Time Zone may not match.  It means, if you map the <tt>XSD:date</tt> field and
+ try to view it in Stardust Portal, the date value is displayed irrespective of Client Time Zone.
+ To view date and time, use <tt>XSD:dateTime</tt> field.
+ </p>
+
+<h3>Comparing Decimal XSD Types</h3> 
+<p>Please note that decimal xsd types are mapped as String values and thus are compared
+like Strings in transition conditions. To avoid this, use a Number typecast,
+e.g.:</p>
+<pre>Number(<i>StructData1.decimal</i>)&nbsp;&gt;&nbsp;Number(<i>StructData2.decimal</i>)</pre>
+<p class="image"><img src="images/data-mapping-casting.png" alt=""></p>
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

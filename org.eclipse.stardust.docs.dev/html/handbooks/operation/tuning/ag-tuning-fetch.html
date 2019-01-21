@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Improving Performance via Eager Link Fetching</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Retrieving Entities from In-Memory Cache",
+		"ag-tuning-3.htm","tuning-memory-cache.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Improving Performance via Eager Link Fetching</h1>
+<p>The Stardust Process Engine uses an implementation of an
+object-relational mapping facility to provide Java object persistence
+based on SQL database systems. In default mode traversal of links
+between persisted objects usually requires one separate SQL call per
+traversal:</p>
+<p>Assume object N with attributes <tt>n1</tt>,<tt> ..</tt>, <tt>n4</tt>,
+and link <tt>n_m</tt> leading to an instance <tt>M</tt>, needs to be
+fetched. <tt>M</tt> itself contains attributes <tt>m1</tt>,<tt> ..</tt>,
+<tt>m3</tt>. The SQL statement:</p>
+<p><tt>SELECT n1, .., n4, n_m FROM N ... </tt></p>
+<p>will be executed, followed by a separate SQL call:</p>
+<p><tt>SELECT m1, .., m3 FROM M WHERE m1=n_m.</tt></p>
+<p>Eager link fetching will result in one SQL call as follows:</p>
+<p><tt>SELECT n1, .., n4, n_m, m1, .., m3 FROM N [INNER|LEFT
+OUTER] JOIN M ON (N.n_m = M.m1). </tt></p>
+<p>The engine will instantiate N as before. Additionally M can be
+instantiated (if it is not already in cache), too, thus not requiring
+the previous second SQL call in case of the link between N and M gets
+traversed. As currently instances of M are only instantiated once during
+a transaction, any following request will get served from the in-memory
+cache.</p>
+<p>By providing optional eager link fetching the number of SQL
+calls needed can be effectively reduced.</p>
+<p>Eager Link Fetching is activated via the session property:</p>
+<p><tt>&lt;session-name&gt;.EagerLinkFetching = false/true.</tt></p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

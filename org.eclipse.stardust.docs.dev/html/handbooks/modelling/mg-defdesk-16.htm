@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Retrieving Diagrams from Model Information</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Loading Models from Audit Trail",
+		"pattern-support.html","mg-defdesk-17.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Retrieving Diagrams from Model Information</h1>
+<p>Stardust offers several reverse-engineering
+facilities which allow the modeler to retrieve information from the
+model and have <a href="model-views/views-diagrams.html">diagrams</a> -
+or their parts - reconstructed in new diagrams in an automated way.</p>
+<ul>
+   <li><a href="#drag">Dragging Elements from the Tree Views</a></li>
+   <li><a href="#hier">Creating Organization Hierarchies</a></li>
+   <li><a href="#trgraphs">Creating Activity/Transition Graphs</a></li>
+   <li><a href="#trav">Traversing a Model</a></li>
+   <li><a href="#restore">Restoring Connections from Model</a></li>
+</ul>
+<h2 id="drag">Dragging Elements from the Tree Views</h2>
+<p>The easiest way to use already defined elements of a model is to
+drag an individual component (an activity, a participant, an
+application, etc.) from the <strong>Outline</strong> view area to the
+diagram canvas and drop it there.</p>
+<p class="image"><img src="images/mg-drag-elements.png"
+	alt="Drag and Drop"> <br>
+<strong>Figure:</strong> Drag-and-Drop Functionality</p>
+<p>After you have dragged a symbol to the diagram canvas, all the
+connections to other symbols present in this diagram will be retrieved
+from the model repository and restored automatically.</p>
+
+<h2 id="hier">Creating Organization Hierarchies</h2>
+<p>Entire hierarchies or their branches can be reconstructed in a
+diagram to visualize the organizational structures defined in the model.
+To have a diagram of an organization hierarchy generated:</p>
+<ul>
+	<li>Right-click a white area in the diagram and select <strong>Create
+	Organization Hierarchy</strong>.</li>
+	<li>Select the organization you wish to be the top of your
+	hierarchy in the appearing dialog.</li>
+	<li>Close the dialog by clicking <strong>OK</strong>.</li>
+</ul>
+<p class="image"><img src="images/create-org-hier.png" alt=""> <br>
+<strong>Figure:</strong> Generating a Diagram visualizing an
+Organization Hierarchy</p>
+
+<p>If there are more than one organizations in the diagram, you see
+a list of organizations to choose from, as shown below:</p>
+<p class="image"><img src="images/create-org-hier-n.png" alt="">
+<br> 
+<strong>Figure:</strong>Organization Hierarchy for more than one
+organizations</p>
+
+<h2 id="trgraphs">Creating Activity/Transition Graphs</h2>
+<p>Entire activity/transition graphs can be reconstructed in a
+diagram to visualize the series of activities defined in the model. To
+have a diagram with an activity graph generated:</p>
+<ul>
+	<li>Right-click a white area in the diagram of a process
+	definition to bring up a pop-up menu.</li>
+	<li>Choose the option <strong>Create Activity Graph</strong><em>.</em>
+	</li>
+	<li>Select the activity you wish to be the starting point of your
+	activity graph in the appearing dialog.</li>
+	<li>Click <strong>OK</strong> to close the dialog.</li>
+</ul>
+<p class="image"><img src="images/mg-create-activity-graph.png"
+	alt="Generating a Diagram visualizing an Activity/Transition Graph">
+<br>
+<strong>Figure:</strong> Generating a Diagram visualizing an
+Activity/Transition Graph</p>
+<h3>Restrictions in Lanes and Pools</h3>
+<p>Note, that in a lane or pool the creation of activity graphs is
+only possible if the lane or pool does not contain sublanes and is not
+collapsed.</p>
+<h2 id="trav">Traversing a Model</h2>
+<p>The model traversal allows to traverse a path (a linear
+structure) starting from a selected element in a diagram or the <strong>Outline
+</strong>view.</p>
+<p>The <a href="model-views/views-traversal.html">Process
+Model Traversal View</a> updates its content each time you perform one step
+forward in your traversal path by double-clicking a selected element in
+the list of <strong>Linked Objects</strong>. To return to your previous
+position, push the <strong>Pop</strong> button in the view. When your
+traversal path has been determined, select the elements and click the
+diagram canvas to place them in the diagram one by one.</p>
+<p class="image"><img src="images/mg-model-traversal.png"
+	alt="Generating a Traversal Path Diagram"> <br>
+<strong>Figure:</strong> Generating a Traversal Path Diagram</p>
+<!--    <h2  >
+  Retrieving a Single Symbol</h2>
+<P  >
+Another reverse engineering feature allows you to browse through available symbols and pick up one to be built in your diagram. This option can be accessed by <span class="Stil2">choosing 
+Symbol for model element</span> in the pop-up menu pertaining to the diagram canvas.</P>
+<P  >
+Symbols which cannot be used in the current scope - in the current diagram - will not be displayed in the dialog and may not be selected.</P>
+-->
+<h2 id="restore">Restoring Connections from Model</h2>
+<p>Each time a symbol is dragged into the diagram canvas, a check is
+performed on the base of the current model information to find out
+whether there are connections which have not yet been drawn between this
+symbol and any of the symbols visible in this diagram.</p>
+<p>An explicit reload of all connections may, however, prove to be
+necessary. Use the option <strong>Reload Connections</strong> available
+in the diagram canvas pop-up menu. In the upcoming dialog, you can
+choose which connections should be drawn.</p>
+<p class="image"><img src="images/mg-defdesk-75.png" alt=""> <br>
+<strong>Figure:</strong> Reloading Connections from Model</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.gdbtrace.help;singleton:=t
+ rue
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 3.1.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: doc/Visualizing-Tracepoint-Data.html
+SHA1-Digest: /AUAJyeSzPB1H4emmYJMWGXTIp0=
+
+Name: doc/GDB-Trace-Perspective.html
+SHA1-Digest: QHCZSV/n/NnY7piSFG+lRD5cKJA=
+
+Name: doc/User-Guide.html
+SHA1-Digest: MhbrxsX6YYdYeGjedtuQldtt/78=
+
+Name: doc/images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: doc/images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: doc/Collecting-Tracepoint-Data.html
+SHA1-Digest: AAVNvjb05/72Y73itNYos0t2xtQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: plugin.properties
+SHA1-Digest: viShWVlOpUCts/ez4wi+xasXo1U=
+
+Name: doc/images/gdb_icon16.png
+SHA1-Digest: hmBopII7IusFTh/fYECYSVFZyMg=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gdbtrace/org.eclipse.linux
+ tools.gdbtrace.help/pom.xml
+SHA1-Digest: Kx3BYzNUQ0pGa6zx0r/oggBLYhg=
+
+Name: doc/Importing-Tracepoint-Data.html
+SHA1-Digest: wP6Q8Fhvl69yJ8wq12JzCo6V9Lg=
+
+Name: doc/User-Guide-toc.xml
+SHA1-Digest: o+kjWGb9peJpJflZU8PhxIUC5Ns=
+
+Name: doc/images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: META-INF/maven/org.eclipse.linuxtools.gdbtrace/org.eclipse.linux
+ tools.gdbtrace.help/pom.properties
+SHA1-Digest: wZTzVHK4E9eXma00eg2abph9lJE=
+
+Name: doc/User-Guide.mediawiki
+SHA1-Digest: yz1Y+G05+iUsISZdFmt/xUrPhjA=
+
+Name: doc/images/GDBTracePerspective.png
+SHA1-Digest: O78hyPZKmwMJN6oJ7ptvWjSk17k=
+
+Name: doc/Getting-Started.html
+SHA1-Digest: I24mKHZjATB4Shfug602CCaUEBM=
+
+Name: doc/References.html
+SHA1-Digest: MNWl2yxSO/3wV8EpI6j6j3Gm1uU=
+
+Name: plugin.xml
+SHA1-Digest: 5YYjwUniNxaLhOiLqb5tAcncs+k=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: doc/Updating-This-Document.html
+SHA1-Digest: pdy4NqWxnH4mdGkmaomGVysmHRg=
+

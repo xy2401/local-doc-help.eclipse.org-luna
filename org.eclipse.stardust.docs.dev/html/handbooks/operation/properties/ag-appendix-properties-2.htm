@@ -1,0 +1,1772 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Server Side Properties</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","ag-appendix-properties-1.htm","",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-properties.html","Stardust Properties");
+ -->
+</script>
+<h1>Server Side Properties</h1>
+<p>The server side properties, residing in a file <tt>carnot.properties</tt>
+in the classpath have to be available in the Stardust runtime
+environment. You will find this file in the root directory of the <tt><nobr>carnot-engine.jar</nobr></tt>
+that is included within the <tt>carnot.ear</tt> file.</p>
+<p>In case of Spring local mode, both Stardust property files (<tt>client</tt>
+and <tt>server</tt>) have to be merged.</p>
+<ul>
+	<li><a href="#ejb">EJB</a></li>
+	<li><a href="#model">Model Settings</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#audittrail">AuditTrail / Schema</a></li>
+	<li><a href="#jms">JMS</a></li>
+	<li><a href="#mail">Mail Settings</a></li>
+	<li><a href="#concurrency">Concurrency</a></li>
+	<li><a href="#daemon">Daemon</a></li>
+	<li><a href="#security">Security</a></li>
+	<li><a href="#engine">Engine</a></li>
+	<li><a href="#webContainer"> Required Resources in a Web
+	Container</a></li>
+	<li><a href="#ejbContainer"> Required Resources in an EJB
+	Container</a></li>
+	<li><a href="#tuning">Tuning</a></li>
+	<li><a href="#ldap">LDAP</a></li>
+	<li><a href="#lookup">Service Lookup</a></li>
+    <li><a href="#document">Document Management</a></li>
+</ul>
+<h3 id="ejb">EJB</h3>
+<table id='id'>
+	<tr>
+		<th>Parameters</th>
+		<th>Description</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>EJB.ServerVendor</td>
+		<td>the vendor of the EJB container.</td>
+		<td>BES, JBOSS, PRAMATI, SUN, TRIFORK, WAS, WEBLOGIC</td>
+	</tr>
+</table>
+<h3 id="model">Model Settings</h3>
+<table title="Model Setting Properties" id="modelprops">
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>carnot.log.load.filter</td>
+		<td>Boolean</td>
+		<td>If the value is set to <tt>true</tt>, XML
+		parsing messages during model loading will be displayed. If the
+		property is not set or the value is <tt>false</tt>, the
+		error messages will not be displayed.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+   <tr>
+      <td>Model.Watcher</td>
+      <td>String</td>
+      <td>Class to be used to bootstrap the model manager and receive process 
+      model information during process execution.</td>
+      <td></td>
+      <td></td>
+   </tr>
+</table>
+<h3 id="service">Service</h3>
+<table id='id_1'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>Web.ServiceFactory</td>
+		<td>String</td>
+		<td>the service factory implementation used for retrieving
+		Stardust services.</td>
+		<td><tt>org.eclipse.stardust.engine.api.spring.SpringServiceFactory</tt></td>
+		<td><tt>org.eclipse.stardust.engine.api.spring.SpringServiceFactory</tt></td>
+	</tr>
+	<tr>
+		<td id="queryGuarded"><i>xxx</i>Service.Guarded<br>
+		(e.g. QueryService.Guarded)</td>
+		<td>String</td>
+		<td>option to switch on and off the security check for the
+		service
+      <p class="note"><strong>Note</strong><br>
+      It is not recommended to change this property.
+      Changing the value to <tt>false</tt> introduces a high risk of 
+      executing services without having a permission and 
+      hence might cause a severe security hole in the deployment!</td>
+		<td>true</td>
+		<td><tt>true</tt>: makes the grants set in the
+		Stardust Process Modeler active.<br>
+		<tt>false</tt>: makes access to all methods possible for
+		all users without checking.</td>
+	</tr>
+	<tr id="sesstimeout">
+		<td>Carnot.WebService.SessionCache.Timeout</td>
+		<td>Integer</td>
+		<td> integer representing seconds until the entry expires </td>
+		<td>300 seconds</td>
+		<td>One second upwards. Value should be specified only in seconds.</td>
+	</tr>
+	<tr id="sessrenew">
+		<td>Carnot.WebService.SessionCache.RenewOnAccess</td>
+		<td>true</td>
+		<td>Specifies if access will renew the entry timestamp </td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+   <tr>
+      <td>Carnot.WebService.SessionCache.ReAuthenticationInterval</td>
+      <td>Integer</td>
+      <td>Determines if re-authentication is enabled
+      <ul>
+         <li>0: re-authentication properties are transferred</li>
+         <li>-1: no re-authentication properties are added</li>
+      </ul>
+      Note that this property can only be transferred in EJB tunneling and Spring deployments!</td>
+      <td>-1</td>
+      <td></td>
+   </tr>
+</table>
+<h3 id="audittrail">AuditTrail / Schema</h3>
+<table id='id_2'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.ActivityInstanceHistory.Enabled</td>
+		<td>Boolean</td>
+		<td>Configures if the activity instance history logging is
+		enabled at all.<br>Is required to be enabled if using the
+		<tt>PerformingOnBehalfOfFilter</tt>.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.ActivityInstanceHistory.ImplementationTypeFilter</td>
+		<td>String</td>
+		<td>Configures which types of activity instances are logging.</td>
+		<td>Manual, Application</td>
+		<td>comma separated list of ImplementationType keys</td>
+	</tr>
+   <tr id="auditType">
+      <td>AuditTrail.EnforceUnicode</td>
+      <td>Boolean</td>
+      <td>If <tt>true</tt>, all text columns will be created as <tt>NVARCHAR / NTEXT</tt>
+       instead of <tt>VARCHAR / TEXT</tt>. Also all DML uses syntax <tt>N<i>&lt;some text&gt;</i></tt>
+        instead of <tt><i>&lt;some text&gt;</i></tt>.<br>
+        Note that this is currently only be evaluated for MSSQL! Also note that 
+        the property has an effect on newly created schemas only.</td>
+      <td>false</td>
+     <td>true, false</td>
+   </tr> 
+	<tr>
+		<td>AuditTrail.Type</td>
+		<td>String</td>
+		<td>the type of the audit trail database used</td>
+		<td>ORACLE</td>
+		<td>
+		<ul>
+			<li>ORACLE - for Oracle</li>
+			<li>DB2_UDB - for IBM DB2 UDB</li>
+			<li>MSSQL - for Microsoft SQL Server 2000</li>
+			<li>MYSQL - for MySQL Server</li>
+         <li>MYSQL_SEQ - for MySQL Server with sequences</li>
+			<li>DERBY - for Apache Derby</li>
+			<li>POSTGRESQL - for PostgreSQL ORDBMS</li>
+			<li>SYBASE - for Sybase</li>
+		</ul>
+		</td>
+	</tr>
+   <tr>
+      <td>AuditTrail.SequenceGenerator</td>
+      <td>String</td>
+      <td>determines the way how database calls are performed concerning sequence values </td>
+      <td></td>
+      <td>The following sequence generators are provided by Stardust: 
+      <ul>
+         <li><tt>org.eclipse.stardust.engine.core.persistence.jdbc.sequence.NonCachingSequenceGenerator</tt><br>
+          - one database call per sequence value, and one sequence call per sequence value</li>
+         <li><tt>org.eclipse.stardust.engine.core.persistence.jdbc.sequence.CachingSequenceGenerator</tt><br>
+         - one database call for more than one sequence value, but one sequence call per sequence value</li>
+       <li><tt>org.eclipse.stardust.engine.core.persistence.jdbc.sequence.FastCachingSequenceGenerator</tt><br>
+         - one database call for more than one sequence value, and only one sequence call for more than one sequence value</li>
+     </ul></td>
+   </tr>
+   <tr>
+		<td>AuditTrail.UseJdbcReturnGeneratedKeys</td>
+		<td>Boolean</td>
+		<td>If set to <tt>true</tt>, the default extra round trip 
+		to retrieve the database generated keys on non-sequence 
+		databases (after the INSERT statement), will be avoided.
+		The support provided by JDBC 1.4 for retrieving database generated keys directly 
+		from the INSERT statement will be used instead.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.FixAutoCommit</td>
+		<td>Boolean</td>
+		<td>determines if a correction should be performed for commit
+		behavior<br>
+		<tt>false</tt>: no correction will be performed<br>
+		<tt>true</tt>: set the auto commit option for a new
+		database connection to <tt>false</tt>, in case it was 
+		<tt>true</tt>.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.Schema</td>
+		<td>String</td>
+		<td>the database schema to use</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AuditTrail.InterceptJdbcCalls</td>
+		<td>Boolean</td>
+		<td>Determines JDBC exception handling. If set to <tt>true</tt>, 
+		an exception will directly be caught during the creation of a
+		data value bean in the engine. It will be tried up to three times to
+		load the instance of an already existing data value bean, which has
+		been created meanwhile from a parallel thread.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.UsePreparedStatements</td>
+		<td>String</td>
+		<td>Optionally use prepared statements to improve performance.
+		<ul>
+			<li><tt>true</tt> - use prepared statements.</li>
+			<li><tt>false</tt> - do not use prepared statements.</li>
+			<li><tt>mixed</tt> - use prepared statements additionally.</li>
+		</ul></td>
+		<td></td>
+		<td>true,false,mixed</td>
+	</tr>
+	<tr>
+		<td>AuditTrail.AssertReadCommitted</td>
+		<td>Boolean</td>
+		<td>if set to false, the check on <tt>READ_COMMITTED</tt>
+		will be ignored.</td>
+		<td>true</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Infinity.Preferences.Store</td>
+		<td>String</td>
+		<td>Determines if preferences are read from AuditTrail or DMS.</td>
+		<td>AuditTrail</td>
+		<td><ul>
+			<li><tt>DMS_READ_ONLY</tt>: preferences are read from DMS.</li>
+			<li><tt>AuditTrail</tt>: preferences are read from audit trail (default).</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<td>XPath.StrictEvaluation</td>
+		<td>Boolean</td>
+		<td>Determines if strict XPath evaluation is enabled or not in
+		XSD schemas. For details refer to section 
+		<a href="../../modelling/data-integration/structured-data/struct-type-xpdl.html#xsdValidation">XSD Schema Validation</a>
+		of chapter <a href="../../modelling/data-integration/structured-data/struct-type-xpdl.html">XPDL Representation of Structured Data</a>.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+</table>
+<h3 id="jms">JMS</h3>
+<table id='id_3'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>JMS.ProcessTrigger.ThreadMode</td>
+		<td>String</td>
+		<td>Determines if processes should be started in a synchronous 
+		or asynchronous manner; valid for all triggers.</td>
+		<td>asynchronous</td>
+		<td>asynchronous, synchronous (the option <tt>ProcessEngine.TRIGGER_ID.ThreadMode</tt>
+		will not be evaluated)</td>
+	</tr>
+	<tr>
+		<td>ProcessEngine.TRIGGER_ID.ThreadMode</td>
+		<td>Boolean</td>
+		<td>In case the property is set, it determines if processes for 
+		a trigger with id TRIGGER_ID should 
+		be started in synchronous (true)
+		or asynchronous (false) manner. If not specified,
+	    the model setting is used.</td>
+		<td>not specified</td>
+		<td> true, false</td>
+	</tr>
+	<tr>
+		<td>JMS.&lt;listener_name&gt;.ProcessingFailure.Mode</td>
+		<td></td>
+		<td>the strategy used to treat incoming JMS messages causing
+		processing errors. A value of 'rollback' will cause the message to be
+		put back into the JMS queue, causing vendor specific re-delivery
+		behavior. A value of <tt>forget</tt> will remove the
+		message from the queue disregarding the error.<br>
+		Possible values for <tt>&lt;listener_name&gt;</tt> are 
+		<tt>ResponseHandler</tt> (having a value of <tt>rollback</tt>
+		recommended), <tt>DaemonListener</tt> and 
+		<tt>MessageListener</tt> (both having a value of <tt>forget</tt>
+		recommended).</td>
+		<td></td>
+		<td>rollback, forget (defaults to 'forget')</td>
+	</tr>
+	<tr>
+		<td>JMS.&lt;listener_name&gt;.ProcessingFailure.Retries</td>
+		<td>Integer (defaults to 20)</td>
+		<td>The number of delayed retries to be attempted before giving
+		up handling an incoming JMS message causing errors and continuing as
+		specified with the property <tt>JMS.&lt;listener_name&gt;.ProcessingFailure.Mode</tt>.<br>
+		Possible values for <tt>&lt;listener_name&gt;</tt> are 
+		<tt>ResponseHandler</tt>, <tt>DaemonListener</tt> and
+		<tt>MessageListener</tt> (both having a value of <tt>forget</tt>
+		recommended).</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>JMS.&lt;listener_name&gt;.ProcessingFailure.Pause</td>
+		<td>Integer (defaults to 500)</td>
+		<td>the number of milliseconds delay before retrying to handle an
+		incoming JMS message causing errors as specified with the property<br>
+		<tt>JMS.&lt;listener_name&gt;.ProcessingFailure.Retries</tt>.<br>
+		Possible values for <tt>&lt;listener_name&gt;</tt> are 
+		<tt>ResponseHandler</tt>, <tt>DaemonListener</tt> and 
+		<tt>MessageListener</tt>'(both having a value of <tt>forget</tt>
+		recommended).</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<h3 id="mail">Mail Settings</h3>
+<table id="Mail Setting Properties">
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+	</tr>
+	<tr>
+		<td>Mail.Sender</td>
+		<td>String</td>
+		<td>name of mail sender</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Mail.Host</td>
+		<td>String</td>
+		<td>name of mail host</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Mail.SubjectEnhancedWithDetails (deprecated)</td>
+		<td>Boolean</td>
+		<td><tt>true</tt>:<br>
+		The subject of a mail is enhanced by process and activity OIDs and the
+		activity name, e.g: <tt>7#14 test subject(Activity
+		Application Activity 1)</tt>. Whereby the first number represents the
+		process instance OID and the second number represents the activity
+		instance OID. The name of the activity is appended in parentheses.<br>
+		<tt>false</tt>:<br>
+		The subject of the mail will not be enhanced with additional
+		information.</td>
+		<td>true</td>
+	</tr>
+</table>
+<h3 id="concurrency">Concurrency</h3>
+<table id='id_5'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>ProcessEngine.Recovery.ThreadMode</td>
+		<td>String</td>
+		<td>recovery thread mode</td>
+		<td></td>
+		<td>synchronous, asynchronous</td>
+	</tr>
+	<tr>
+		<td>ProcessEngine.ProcessTermination.ThreadMode</td>
+		<td>String</td>
+		<td>process termination thread mode</td>
+		<td></td>
+		<td>synchronous, asynchronous</td>
+	</tr>
+	<tr>
+		<td>ProcessEngine.Notification.ThreadMode</td>
+		<td>String</td>
+		<td>notification thread mode</td>
+		<td></td>
+		<td>synchronous, asynchronous</td>
+	</tr>
+<!--  this configuration does not work
+	<tr>
+		<td>ProcessEngine.Triggers.ThreadMode</td>
+		<td>String</td>
+		<td>trigger thread mode</td>
+		<td>synchronous</td>
+		<td>synchronous, asynchronous</td>
+	</tr>
+	<tr>
+		<td>ProcessEngine.Trigger.TRIGGER_ID.ThreadMode</td>
+		<td>String</td>
+		<td>trigger-specific thread mode (overrides configuration for all
+		triggers)</td>
+		<td></td>
+		<td>synchronous, asynchronous</td>
+	</tr>-->
+</table>
+<h3 id="daemon">Daemon</h3>
+<table id='id_6'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+	</tr>
+   <tr id="peri">
+		<td>&lt;daemon_name&gt;.Periodicity</td>
+		<td>Integer</td>
+		<td>the execution period of the daemon in seconds.
+        The <tt>&lt;daemon_name&gt;</tt> can be one of
+      the following: 
+      <ul>
+         <li>mail.trigger</li>
+         <li>timer.trigger</li>
+         <li>event.daemon</li>
+         <li>system.daemon</li>
+         <li>criticality.daemon</li>
+      </ul></td>
+		<td>5</td>
+	</tr>
+   <tr>
+      <td>reporting.daemon.Periodicity</td>
+      <td>Integer</td>
+      <td>has the same functionality as the general 
+      <a href="#peri">&lt;daemon_name&gt;.Periodicity</a> property except for 
+      the default value</td>
+      <td>60</td>
+   </tr>
+	<tr>
+		<td>event.daemon.DisabledDaysOfWeek</td>
+		<td>Integer</td>
+		<td>option to disable the event daemon at specific days. Specify
+		the days of the week by using the numbers 1 to 7 (comma-separated).
+		Please take care of the fact, that the week starts on Sunday. (Note
+		that this mechanism only delays the escalation timestamp. It does not
+		exclude these days out of the calculation of this timestamp.)</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>event.daemon.BatchSize</td>
+		<td>Long</td>
+		<td>batch size for event daemon execution. Please choose an
+		appropriate value. If the batch size is too small, you may not get the
+		desired performance, whereas values too large could cause the batch to
+		get rolled back and lead to timeout.</td>
+		<td>Long.MAX_VALUE</td>
+	</tr>
+	<tr>
+		<td>system.daemon.PasswordNotifier.Periodicity</td>
+		<td>Integer</td>
+		<td>configures the daemon action. Number of days - next loop
+		starts in the given number of days after last pass.</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>&lt;daemon_name&gt;.AckRetries</td>
+		<td>Integer</td>
+  		<td>the number of retries to get a daemon operation acknowledgment.</td>
+		<td>10</td>
+  	</tr>
+   <tr>
+      <td>&lt;daemon_name&gt;.AckWait</td>
+      <td>Integer</td>
+      <td>the number of seconds to wait between two daemon operation acknowledgments.</td>
+      <td>2 seconds</td>
+   </tr> 
+   <tr>
+      <td>Stardust.Engine.Daemon.Acknowledge.Retry</td>
+      <td>Integer</td>
+      <td>the number of daemon retries</td>
+      <td>3</td>
+   </tr> 
+   <tr>
+      <td>Stardust.Engine.Daemon.Acknowledge.Delay</td>
+      <td>Integer</td>
+      <td>the time delay between the daemon retries</td>
+      <td>500 ms</td>
+   </tr> 
+</table>
+<h3 id="security">Security</h3>
+<table id='id_7'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>Security.DefaultPartition</td>
+		<td>String</td>
+		<td>default value for target partition</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.DefaultDomain</td>
+		<td>String</td>
+		<td>default value for target domain</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.DefaultRealm</td>
+		<td>String</td>
+		<td>default value for user's realm</td>
+		<td>carnot</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.DefaultUser</td>
+		<td>String</td>
+		<td>default value for user name</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Password.Encryption</td>
+		<td>String</td>
+		<td>determines, if password encryption is enabled or disabled. If
+		set to <tt>true</tt>, all passwords will be
+		automatically encrypted. This process takes place when the user tries
+		to login and the engine identifies that the password of the AuditTrail
+		is not encrypted.</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+   <tr>
+      <td>Security.Password.LoginDialogUrl</td>
+      <td>String</td>
+      <td>the URL of the portal (login page). If this URL is provided
+      as property, it will be included in
+      the password notification email, which the user receives after a new 
+      password is generated. If not provided, the notification email
+      does not contain a URL.</td>
+      <td></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Security.Password.ResetServletUrl</td>
+      <td>String</td>
+      <td>the URL of the reset servlet. If this URL is provided
+      as property, it will be included in
+      the password token generation notification e-mail, which the user receives
+      when he used the <strong>Forgot Password</strong> option in the Portal to
+      change his password. If not provided, the notification e-mail
+      does not contain a URL.</td>
+      <td></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Security.Principal.Secret</td>
+      <td>String</td>
+      <td>used in the kernel to generate a signature for authenticated principals.<br>
+      Principals with invalid signatures will be denied.
+      If this property is not set, a randomized value will be generated.
+      Note that this value needs to be set in cluster mode to prevent that each
+      node will generate its own value which is incompatible with the other nodes.</td>
+      <td></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Security.Principal.Validator</td>
+      <td>String</td>
+      <td>Specifies the fully qualified class name of the principal validator class to be used
+      for validating the passed principal on the server side.</td>
+      <td>org.eclipse.stardust.engine.core.spi.security.AlwaysValidPrincipalValidator</td>
+      <td></td>
+   </tr>
+	<tr>
+		<td>Security.PromptPartition</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for partition</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.PromptDomain</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for domain</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.PromptRealm</td>
+		<td>Boolean</td>
+		<td>flag to provide the login screen with additional input field
+		for realm</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Domain</td>
+		<td>String</td>
+		<td>value for target domain</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Realm</td>
+		<td>String</td>
+		<td>value for user's realm</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Partition</td>
+		<td>String</td>
+		<td>value for target partition</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.User</td>
+		<td>String</td>
+		<td>value for user name</td>
+		<td></td>
+		<td></td>
+	</tr>
+    <tr>
+        <td>Security.LoginUsersWithoutLoginLogging</td>
+        <td>String</td>
+        <td>Determines a list of users by IDs or OIDs 
+        for which logging in log entry table is disabled on login.
+        <ul class="table">
+            <li>empty: logging is enabled for all users</li>
+            <li><strong>*</strong> : logging on login is disabled for all users</li>
+            <li><strong>list of user OIDs</strong>: logging on login is disabled for specific users with OIDs mentioned in list</li>
+            <li><strong>list of user IDs</strong>: logging on login is disabled for specific users with IDs mentioned in list</li>
+        </ul>
+        </td>
+        <td>empty string</td>
+        <td></td>
+    </tr>
+	<tr>
+		<td>Security.LoginUsersWithoutTimestamp</td>
+		<td>String</td>
+		<td>[* | userList ]:
+		<ul>
+			<li>*: no login timestamp logging for any user</li>
+			<li>userList: comma separated list of either user IDs or user
+			OIDs.</li>
+		</ul>
+		Note: if a userList is parsed, any token is first tried to be parsed
+		as user OID, and only tested against the user ID if parsing as OID
+		fails. This has to be considered if user IDs are numeric.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.AuditTrail.Session.NoSessionTracking</td>
+		<td>String</td>
+		<td>Contains a comma separated list of user IDs (Accounts) and
+		user OIDs, for which the session tracking is disabled for. Use 
+		<tt>*</tt> to disable session tracking for all users.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.Mode</td>
+		<td>String</td>
+		<td>mode of authentication</td>
+		<td></td>
+		<td>internal, principal, jaas</td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.ConfigurationName</td>
+		<td>String</td>
+		<td>configuration name</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.PrincipalClass</td>
+		<td>String</td>
+		<td>The class to filter out as the principal used.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.MaximumNumberLoginRetries</td>
+		<td>Integer</td>
+		<td>name of the option for the maximum number of login retries
+		option</td>
+		<td>3</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.InvalidationTimeInMinutes</td>
+		<td>Integer</td>
+		<td>name of the option for the invalidation time in minutes
+		option</td>
+		<td>1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authentication.LoginService</td>
+		<td>String</td>
+		<td>authentication service</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.Mode</td>
+		<td>String</td>
+		<td>allows configuring of external authentication/internal
+		authorization</td>
+		<td></td>
+		<td>internal, external</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizationProvider</td>
+		<td>String</td>
+		<td>synchronization provider</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizationStrategy</td>
+		<td>String</td>
+		<td>authorization synchronization strategy class property</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizeOnAdministrationSession</td>
+		<td>Boolean</td>
+		<td>If set to <tt>true</tt>, it is allowed to
+		import (or create if it does not already exist) a user on calling the
+		service method <tt>UserService.getUser(String
+		account [, String realm])</tt>.<br>
+		If set to <tt>false</tt> and it needs to be imported, an
+		<tt>ObjectNotFoundException</tt> with ErrorCode
+		"AUTHx00548" is thrown.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizeOnLoad</td>
+		<td>Boolean</td>
+		<td>Enables or disables user loader synchronizing. Thus
+		determines if objects will be synchronized when loaded from database,
+		e.g. on query. This affects:
+		<ul>
+			<li>User</li>
+			<li>UserGroup</li>
+			<li>Departments</li>
+		</ul>
+		</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizeOnLogin</td>
+		<td>Boolean</td>
+		<td>If set to <tt>true</tt>, it is allowed to
+		import (or create if it does not already exist) a user on login.<br>
+		If set to <tt>false</tt> and it needs to be imported, an
+		<tt>ObjectNotFoundException</tt> with ErrorCode
+		"AUTHx00548" is thrown.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.TraceSynchronization</td>
+		<td>Boolean</td>
+		<td>Enables tracing for user/userGroup synchronization with
+		external registry.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.InvalidateNonexistingParticipants</td>
+		<td>Boolean</td>
+		<td>Sets the validTo property of an user/userGroup to current
+		date (invalidates it) in case that it does not exist in external
+		registry.</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.SynchronizeConditionalPerformer</td>
+		<td>Boolean</td>
+		<td>If set to <tt>true</tt>, it is allowed to
+		import (or create if it does not already exist) a user, if a
+		conditional performer is evaluated to a concrete performer.<br>
+		If set to <tt>false</tt> and it needs to be imported,
+		the returned user is set to <tt>null</tt>.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.TimebasedSynchronizationStrategy.UserSyncTimeout</td>
+		<td>Long</td>
+		<td>user synchronization timeout</td>
+		<td>10</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Security.Authorization.TimebasedSynchronizationStrategy.UserGroupSyncTimeout</td>
+		<td>Long</td>
+		<td>user group synchronization timeout</td>
+		<td>10</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>DefaultJAASAuthenticatedBeanFactory.ImplicitClientIdentity</td>
+		<td>Boolean</td>
+		<td>determines implicit client identity.</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>InfinityBpm.Engine.Authorization.DefaultPermissions.ActivityInstance.Abort</td>
+		<td>String</td>
+		<td>Overwrites the default values of the declarative grant (empty
+		value, <strong>OWNER</strong>) for activity instance abortion.</td>
+		<td></td>
+		<td>role or organization ID or internal meta role like <strong>ALL</strong>
+		or <strong>OWNER</strong>.</td>
+	</tr>
+   <tr>
+      <td>InfinityBpm.Engine.Authorization.DefaultPermissions.ProcessInstance.Abort</td>
+      <td>String</td>
+      <td>Overwrites the default values of the declarative grant (empty
+      value, <strong>OWNER</strong>) for process instance abortion.</td>
+      <td></td>
+      <td>role or organization ID or internal meta role like <strong>ALL</strong>
+      or <strong>OWNER</strong>.</td>
+   </tr>
+   <tr>
+      <td>org.eclipse.stardust.ui.web.feature.mashupCredentialsPropagation</td>
+      <td>String</td>
+      <td>Configures the way the feature for passing session tokens to mashups is used.</td>
+      <td>withSessionTokens</td>
+      <td>Possible values:
+      <ul>
+         <li><tt>never</tt><br>completely ignore the feature, thus not pass any session 
+         tokens to the mashup</li>
+         <li><tt>withSessionTokens</tt><br>use the feature whenever there are any entries
+         in the session's token map</li>
+         <li><tt>always</tt><br>always use the feature, even if there are no entries in 
+         the session's token map (the authentication proxy page will be used 
+         although no cookies will be created)</li>
+      </ul></td>
+   </tr>
+</table>
+<h3 id="engine">Engine</h3>
+<table id='id_8'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Classloading.UseContextClassloader</td>
+		<td>Boolean</td>
+		<td>enables the usage of ContextClassLoader when loading classes
+		by reflection.</td>
+		<td>false</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.OverridableTimeStamps</td>
+		<td>Boolean</td>
+		<td>option if time stamps are overridable</td>
+		<td>false</td>
+		<td></td>
+	</tr>
+	<tr id="excptProp">
+		<td>Carnot.Engine.ErrorHandling.ApplicationExceptionPropagation</td>
+		<td></td>
+		<td>affects how the engine handles exceptions raised by invoked
+		applications/services. Please refer to the chapter <a
+			href="../../programming/embed/pg-embed-exceptions.html"
+		> Exceptions</a> for a detailed description on the usage of this
+		property.</td>
+		<td>never</td>
+		<td>
+		<ul>
+			<li><strong>never</strong> - The exception is consumed by the engine and not
+			propagated to the client. The engine sets both, the activity instance
+			and the process instance, to interrupted state and logs the exception
+			to the audit trail. After that, the engine attempts to commit the
+			transaction and stops the execution of the process. The activity (and
+			process) execution may be resumed after running the process instance
+			recovery.<br>Please note that the engine does not check
+			the status of the transaction, and therefore if the transaction is
+			already set to rollback then all the actions performed in this
+			transaction will be lost.</li>
+			<li><strong>onRollback</strong> - The behavior depends on the status of the
+			current transaction. If the transaction is set to RollbackOnly,
+			similarly with "always", the engine attempts to log the original
+			exception to the audit trail in a separate transaction and after that,
+			the exception is propagated to the client (re-thrown).<br>
+			If the transaction is not set to RollbackOnly, then it will behave
+			like "never" and it will attempt to interrupt the activity instance
+			and the process instance.</li>
+			<li><strong>always</strong> - The engine is automatically rolling back the
+			transaction. The engine attempts to log the original exception to the
+			audit trail in a separate transaction. After that, the exception is
+			propagated to the client (re-thrown).</li>
+		</ul>
+		</td>
+	</tr>
+   <tr>
+      <td>carnot.engine.xml.encoding</td>
+      <td>String</td>
+      <td>Determines the encoding for model elements. Set this property to 
+      <tt>UTF-8</tt> in case you use non-ASCII characters in model elements.</td>
+      <td>ISO-8859-1</td>
+      <td><ul>
+         <li>ISO-8859-1</li>
+         <li>UTF-8</li>
+       </ul></td>
+   </tr>
+   <tr>
+      <td>Infinity.Engine.Activity.AssignToInvalidUser</td>
+      <td>Boolean</td>
+      <td>Value <tt>true</tt> enables to assign activities to worklists
+      of disabled users per partition via API.</td>
+      <td>false</td>
+      <td>true, false</td>
+   </tr>
+	<tr>
+		<td>Infinity.Engine.ProcessAbortion.Failure.RetryCount</td>
+		<td></td>
+		<td>Number of retries. If this number is exceeded, a warning is
+		written to the log file. Recovery will be necessary then.</td>
+		<td>10</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Infinity.Engine.ProcessAbortion.Failure.RetryPause</td>
+		<td></td>
+		<td>Number of milliseconds before the next try is started.</td>
+		<td>500</td>
+		<td>ms</td>
+	</tr>
+	<tr>
+		<td>Infinity.Engine.Process.SortActivitiesInTransitionOrder</td>
+		<td>Boolean</td>
+		<td>determines if the sorting order of processes in the Business
+		Control Center is in traversal order.</td>
+		<td>true</td>
+		<td>true, false</td>
+	</tr>
+    <tr>
+        <td>Infinity.Engine.Caching</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>true</td>
+        <td>true, false</td>
+    </tr>
+    <tr>
+        <td>Infinity.Engine.Caching.CacheFactory</td>
+        <td>String</td>
+        <td>Caching factory to be used.</td>
+        <td></td>
+        <td>org.eclipse.stardust.engine.core.cache.hazelcast.HazelcastCacheFactory</td>
+    </tr>
+    <tr>
+        <td>Infinity.Engine.Caching.Hazelcast.TxMode</td>
+        <td>String</td>
+        <td>Transaction mode for Hazelcast caching engine.</td>
+        <td></td>
+        <td>"none","w","rw"</td>
+    </tr>
+    <tr>
+        <td>Infinity.Engine.Caching.Hazelcast.ConnectionFactoryJndiName</td>
+        <td>String</td>
+        <td>Connection factory JNDI name used for Hazelcast caching engine.</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Infinity.Engine.Caching.Hazelcast.GlobalCacheName</td>
+        <td>String</td>
+        <td>Global cache name used for Hazelcast caching engine.</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Stardust.Engine.Extension.Drools.MaximumRuleExecutions</td>
+        <td>Long</td>
+        <td>Determines the maximum count of rules that are executed until an exception occurs.</td>
+        <td>100000</td>
+        <td></td>
+    </tr>
+</table>
+<h3 id="webContainer">Required Resources in a Web Container</h3>
+<table id='id_9'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>jdbc/AuditTrail.DataSource</td>
+		<td>javax.sql.DataSource</td>
+		<td>the datasource to connect to the audit trail. Only needed in
+		Spring local mode</td>
+	</tr>
+</table>
+<h3 id="ejbContainer">Required Resources in an EJB Container</h3>
+<table id='id_10'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>jdbc/AuditTrail.DataSource</td>
+		<td>javax.sql.DataSource</td>
+		<td>the datasource to connect to the audit trail</td>
+	</tr>
+	<tr>
+		<td>jms/CarnotXAConnectionFactory</td>
+		<td>javax.jms.QueueConnectionFactory</td>
+		<td>the queue connection factory used to create JMS connections</td>
+	</tr>
+	<tr>
+		<td>jms/CarnotSystemQueue</td>
+		<td>javax.jms.Queue</td>
+		<td>the JMS queue used internally by Stardust Process Engine</td>
+	</tr>
+	<tr>
+		<td>jms/CarnotApplicationQueue</td>
+		<td>javax.jms.Queue</td>
+		<td>the JMS queue used by the JMS applications</td>
+	</tr>
+	<tr>
+		<td>jms/CarnotDaemonQueue</td>
+		<td>javax.jms.Queue</td>
+		<td>the JMS queue used by the Stardust daemon</td>
+	</tr>
+</table>
+<h3 id="tuning">Tuning</h3>
+<table id='tuning_table'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+	</tr>
+	<tr>
+		<td>
+		Carnot.Db.ColumnLength.&lt;table_name&gt;.&lt;column_name&gt;=&lt;int
+		value&gt;</td>
+		<td>String</td>
+		<td>with this property the column length for string columns can
+		be configured. <br>
+		<strong>Please note that this property has to be set before
+		schema creation.</strong></td>
+		<td>128</td>
+	</tr>
+   <tr id="rollbk">
+      <td>Carnot.Engine.RollbackOnError</td>
+      <td>String</td>
+      <td>option to force rollback. Specifies the transaction behavior
+      in the case of exceptions during execution. Possible values are: <strong>always</strong>,
+      <strong>lenient</strong>, <strong>never</strong>.
+      <ul>
+         <li><strong>always</strong>:<br>
+         transactions will be automatically rolled back when exceptions
+         occurs</li>
+         <li><strong>never</strong>:<br>
+         transactions are no longer rolled back automatically</li>
+         <li><strong>lenient</strong>:<br>
+         behavior depends on service and method invoked</li>
+      </ul></td>
+      <td>always</td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Ejb.RollbackOnError</td>
+      <td>String</td>
+      <td>superseded by <a href="#rollbk">Carnot.Engine.RollbackOnError</a><br>
+      Note that EJB deployments still consider this property first and 
+      only fall back to use the <code>Carnot.Engine.RollbackOnError</code> 
+      property if <code>Carnot.Engine.Ejb.RollbackOnError</code> was not set.</td>
+      <td>always</td>
+   </tr>
+	<tr>
+		<td>Carnot.Engine.Threading.AsyncProcessCompletion</td>
+		<td>Boolean</td>
+		<td>Specifies if the process instances should be completed
+		asynchronous in a separate thread than the normal execution thread.</td>
+		<td>false</td>
+	</tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.ActivityThread.Pause</td>
+      <td>Integer</td>
+      <td>Time of the delay between retries in milliseconds.</td>
+      <td>100</td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.ActivityThread.Retries</td>
+      <td>Integer</td>
+      <td>Number of retries before the engine gives up. 
+      Per default the retry mechanism is disabled. In order to enable the
+      retry mechanism the property must have a value greater than <tt>0</tt>.</td>
+      <td>0</td>
+   </tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.ProcessCompletionTokenCleanup</td>
+		<td>Boolean</td>
+		<td>Specifies if the transition tokens should be automatically
+		deleted on process completion.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.ProcessCompletionTokenCountTimeout</td>
+		<td>Integer</td>
+		<td>Specifies the time (in seconds) after which the query to
+		fetch the transition tokens will timeout. The default value is the
+		minimum possible. A value of 0 (no timeout) is not recommended since
+		it might lead to deadlocks.</td>
+		<td>1</td>
+	</tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.DB.clobReadBufferSize</td>
+      <td>Long</td>
+      <td>Property to tweak the buffer size used to extract CLOB values.
+      A positive value indicates the size of the char[] used to read from the CLOB,
+      whereas a value less than <tt>0</tt> indicates to use 
+      <tt>CLOB#getSubString(1, CLOB#length())</tt>.</td>
+      <td>2000</td>
+   </tr>
+ 	<tr>
+		<td>Carnot.Engine.Tuning.DB.slowStatementTracingThreshold</td>
+		<td>Long</td>
+		<td>If the value is set (in milliseconds) and the query execution
+		time is greater than this value, then a warning entry will be written
+		in the log.</td>
+		<td>Long.MAX_VALUE</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.DB.dataFilterHint</td>
+		<td>String</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.DB.singlePartition</td>
+		<td>Boolean</td>
+		<td>option to tell the engine that only one partition exists.<br>
+		<strong>Please note that using this property in
+		multi partition audit trails will result in exceptions when the query
+		API is used.</strong></td>
+		<td>false</td>
+	</tr>
+	<tr>
+	   <td>Carnot.Engine.Tuning.ProcessTerminationHierarchyCleanup</td>
+	   <td>Boolean</td>
+       <td>option to remove process instance hierarchy entries from table
+       procinst_hierarchy upon process termination.</td>
+       <td>false</td>
+   </tr>
+ 	<tr>
+		<td>Carnot.Engine.Tuning.Query.EvaluationProfile</td>
+		<td>String</td>
+		<td>defines the evaluation profile, whereby
+		<ul>
+         <li><strong>default</strong>:<br>
+         use default setting</li>
+         <li><strong>inlined</strong>:<br>
+			inlined evaluation profile is the default value, it is used in case
+			the property is not set or set to inlined or default.</li>
+			<li><strong>dataClusters</strong>:<br>
+			Data cluster evaluation profile.</li>
+			<li class="ipp"><strong>legacy</strong><br>
+			former (Stardust releases 5.1 and earlier) default
+			evaluation profile.</li>
+		</ul>
+		Note that if a query contains DataFilter on big data (string &gt; 128
+		characters, serializable), the <tt>legacy</tt> evaluation profile is
+		used.</td>
+		<td>inlined</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.ProcessPrefetchNParallelInstances</td>
+		<td>Integer</td>
+		<td>The property does not affect process instance queries 
+      (<tt>ProcessInstanceQuery</tt>). It specifies how 
+      many process instances will be prefetched in a
+		single query like an activity instance query (<tt>ActivityInstanceQuery</tt>)
+       (IN-list). Otherwise multiple 
+      queries are used to fetch the process instances.</td>
+		<td>DescriptorPrefetchBatchSize value</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.UserPrefetchNParallelInstances</td>
+		<td>Integer</td>
+		<td>Specifies how many starting users will be prefetched in a single
+		query.<br>To see the log output, a <tt>log4j.properties</tt> file should be 
+       added to the classpath using log level <tt>debug</tt>. The
+      log file displays the following:<br>
+      <tt>Prefetching &lt;userprefetch-value&gt; user(s)</tt>.<br>
+      The users 
+      are fetched but the userprefetch value must not be exceeded. For example
+       if the value is <tt>3</tt> then three users can be fetched at maximum.</td>
+		<td>DescriptorPrefetchBatchSize value</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.DescriptorPrefetchNParallelInstances</td>
+		<td>Integer</td>
+		<td>This property specifies how many process instance queries are handled 
+      in one query (IN-list) while fetching the data values for descriptors. 
+      This applies on data-cluster and non-data-cluster data values. Otherwise 
+      multiple queries are used. This property is applied together with 
+      <a href="#despredat">DescriptorPrefetchNParallelData</a></td>
+		<td>DescriptorPrefetchBatchSize value</td>
+	</tr>
+	<tr id="despredat">
+		<td>Carnot.Engine.Tuning.Query.DescriptorPrefetchNParallelData</td>
+		<td>Integer</td>
+		<td>Specifies how many data values not in the data cluster used for 
+      descriptors are fetched in one query (IN-list). Otherwise multiple queries
+      are used. Applies only if <a href="#despreth">DescriptorPrefetchDataDiscriminationThreshold</a>
+      is big enough.</td>
+		<td>4</td>
+	</tr>
+	<tr id="despreth">
+		<td>Carnot.Engine.Tuning.Query.DescriptorPrefetchDataDiscriminationThreshold</td>
+		<td>Double</td>
+		<td>Fetches all data values from the audit trail if the ratio between the 
+      actual used number of data to the total data objects defined in the model 
+      is less or equal to this value. Otherwise just those non-clustered data 
+      values are fetched which are required for the descriptors in question.</td>
+		<td>1.0</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.DescriptorPrefetchBatchSize</td>
+		<td>Integer</td>
+		<td>This is the default for all other <strong>*PrefetchNParallel</strong>
+       settings and is not used dedicated for any query type.</td>
+		<td>400</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.InlineProcessOidThreshold</td>
+		<td>Long</td>
+		<td>Some queries needs to perform a preprocessing step to
+		determine the list of process instances for which the query result is
+		filtered. If the number of determined process instances is smaller
+		than the configured value, then the list of OIDs will be inlined in
+		the where clause of the query, otherwise the filtering will be
+		performed in a post processing step.</td>
+		<td>100</td>
+	</tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.Query.DescriptorPrefetchStructIndex</td>
+      <td>Long</td>
+      <td>Configuration switch to determine if indexed XPaths should be prefetched for descriptors.</td>
+      <td>false</td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.Query.DescriptorPrefetchStructXml</td>
+      <td>Long</td>
+      <td>Configuration switch to determine if structured data XML should be prefetched
+      for descriptors from table <tt>clob_data</tt>. Operations on 
+      <tt>clob_data</tt> are performed using prepared statement only.</td>
+      <td>true</td>
+   </tr>
+  	<tr>
+		<td>Carnot.Engine.OverridableTimeStamps</td>
+		<td>Boolean</td>
+		<td>optionally taking timestamp override into account</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.FindDaemonLogQueryTimeout</td>
+		<td>Integer</td>
+		<td>timeout period in seconds (0 means no timeout)</td>
+		<td>5 s</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.SingleNodeDeployment</td>
+		<td>Boolean</td>
+		<td>option to enable or disable caching and context propagation
+		mechanisms.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.DeleteProcessInstances.StatementBatchSize</td>
+		<td>Integer</td>
+		<td>option to set a limit for the size of the used in-predicate.</td>
+		<td>100</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.ServiceCallTracingThreshold</td>
+		<td>Long</td>
+		<td>Defines a threshold in milliseconds. If this threshold is
+		crossed then a log is written for trace method duration including SQL
+		calls.</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.Query.SubsetPolicy.OptimizeCountOnly</td>
+		<td>Boolean</td>
+		<td>This property is used in <tt>WorkflowService.getWorklist(WorklistQuery)</tt>.
+		If set to <tt>true</tt> and the subset policies for each
+		<tt>WorklistQuery.Contribution</tt> equals 
+		<tt>SubsetPolicy(0, true)</tt>, then the count of worklist entries is
+		evaluated with a query optimized for speed.</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>Infinity.Engine.Tuning.Query.ActivateNextActivityInstance.Retries</td>
+		<td>Integer</td>
+		<td>Determines the number of retries until receiving an activity instance
+		defined by the query.</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>Carnot.Engine.Tuning.GetCountDefaultTimeout</td>
+		<td>Long</td>
+		<td>Determines the timeout value in seconds for getCount() method
+		call to avoid a query timeout resulting in a rollback of the complete 
+      transaction. This property is used for internal JDBC queries.<br>
+      Try to use a property value as low as possible and as high as necessary:<br>
+      The higher the value the longer an implicit JDBC count will wait for the 
+      correct result. On the other hand this might result in slow responses in 
+      case that the count cannot be executed in a reasonable time.<br>
+      Note that this value should not to be mistaken with the timeout value which
+      can be set for queries in general by the TimeoutPolicy!</td>
+		<td>5 s</td>
+	</tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.SequenceBatchSize</td>
+      <td>Integer</td>
+      <td>Determines the number of sequences loaded as a batch.</td>
+      <td>100</td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Hazelcast.JcaConnectionFactoryProvider</td>
+      <td>String</td>
+      <td>The JCA connection factory provider class to be used for Hazelcast.
+      Values can be custom implementation or one of the following provided implementations:
+      <ul>
+         <li><tt>org.eclipse.stardust.engine.core.persistence.jca.JndiHazelcastJcaConnectionFactoryProvider</tt><br>
+         - for an environment in which the connection factory can be retrieved via JNDI.</li>
+         <li><tt>org.eclipse.stardust.engine.spring.integration.jca.SpringAppContextHazelcastJcaConnectionFactoryProvider</tt><br>
+         - for an environment in which the connection factory can be retrieved from the 
+         Spring application context</li>
+      </ul></td>
+      <td><tt>org.eclipse.stardust.engine.core.persistence.jca.JndiHazelcastJcaConnectionFactoryProvider</tt></td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.SupportTransientProcesses</td>
+      <td>String</td>
+      <td>The following values determine 
+      whether transient processing is available at all
+      and how the corresponding model properties are handled:
+      <ul>
+         <li><tt>on</tt> - is the prerequisite for executing process instances 
+         transiently. The process definition modeling property determines how it is executed.</li>
+         <li><tt>alwaysTransient</tt> - all process instances will be executed 
+         transiently, if they are applicable for transient process 
+         execution.
+         This does not depend on the corresponding modeling property of the 
+         underlying process definition.</li>
+         <li><tt>alwaysDeferred</tt> - all process instances will be executed 
+         with deferred persistence. The process instance will not be persisted 
+         until it has been completed, if applicable to the process definition
+         topology. This does not depend on the corresponding modeling property 
+         of the underlying process definition.</li>
+         <li><tt>off</tt> - disables the Transient Process Instance functionality 
+         globally and the process definition modeling property as well as the
+         process instance runtime property have no effect.</li>
+      </ul>
+      </td>
+      <td>off</td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.SupportTransientProcesses.ClusterSafeObjectProvider</td>
+      <td>String</td>
+      <td>The provider class to be used for cluster safe objects in order to 
+      cope with transient process instances.</td>
+      <td><tt>org.eclipse.stardust.engine.core.persistence.jdbc.transientpi.ClusteredEnvHazelcastObjectProvider</tt></td>
+   </tr>
+   <tr>
+      <td>Carnot.Engine.Tuning.TransientProcesses.ExposeInMemStorage</td>
+      <td>Boolean</td>
+      <td>Determines whether in-memory storage should be exposed or not.
+      <ul>
+         <li><tt>true:</tt> ensures that during the execution of transient process instances the 
+      process instance in question and all related persistents are accessible 
+      via API (e.g. via <tt>WorkflowService#getProcessInstance(long)</tt>)</li>
+         <li><tt>false:</tt> in-memory storage is not exposed. Thus a significant
+         performance improvement can be achieved 
+         due to internal optimizations, which can be done only if there's no 
+         need for exposing the in-memory storage.</li>
+      </ul></td>
+      <td>true</td>
+   </tr>
+   <tr id="excludeu">
+      <td>Stardust.Engine.Tuning.Query.ExcludeUser.Evaluation</td>
+      <td>Boolean</td>
+      <td>determines if the exclude user evaluation is performed in queries.</td>
+      <td>false</td>
+   </tr>
+   <tr>
+      <td>Stardust.Engine.Tuning.Query.ExcludeUser.MaximumWorklistCount</td>
+      <td>Long</td>
+      <td>The maximum number of worklist items to be counted precisely will be set to 
+      the value specified with this property, in case the following conditions apply:
+      <ul>
+         <li>property <a href="#excludeu">Stardust.Engine.Tuning.Query.ExcludeUser.Evaluation</a> is set to 
+         <tt>true</tt></li>
+         <li>one or more models are deployed that contain an exclude user event handler in the partition of the logged in user</li>
+      </ul></td>
+      <td>100</td>
+   </tr>
+   <tr>
+        <td>Infinity.Engine.Tuning.Query.DescriptorPrefetchReuseFilterJoins (deprecated)</td>
+        <td>Boolean</td>
+        <td>Note that this property is deprecated, please use 
+        <a href="#tuneDataClust">Infinity.Engine.Tuning.Query.DescriptorPrefetchUseDataCluster</a>
+        instead.</td>
+        <td>false</td>
+    </tr>
+    <tr id="tuneDataClust">
+        <td>Infinity.Engine.Tuning.Query.DescriptorPrefetchUseDataCluster</td>
+        <td>Boolean</td>
+        <td>Performs prefetch of data values using existing data cluster tables.
+        Note that this property should be used mutually exclusive!</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Infinity.Engine.Tuning.Query.LockTimeout</td>
+        <td>Integer</td>
+        <td>Defines the query timeout for lock queries in seconds. 
+        The following databases are affected by this property:
+        <ul>
+         <li>DB2</li>
+         <li>MSSQL</li>
+         <li>MYSQL</li>
+         <li>DERBY</li>
+         <li>SYBASE</li>    
+        </ul></td>
+        <td>1</td>
+</table>
+<h3 id="ldap">LDAP</h3>
+<table id='id_12'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+		<th>Default</th>
+		<th>Range</th>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.ServerName</td>
+		<td>String</td>
+		<td>The name of the property that specifies the DNS name or IP
+		address of the LDAP server</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.ServerPort</td>
+		<td>Integer</td>
+		<td>The name of the property that specifies the port on which the
+		server software is listening for incoming connections.</td>
+		<td>389</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.RootDN</td>
+		<td>String</td>
+		<td>The name of the property that specifies the root DN to which
+		the InitialDirContext will be created in an LDAPConnection.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.BindMode</td>
+		<td>String</td>
+		<td>The name of the property that specifies the LDAP data
+		retrieval mode.</td>
+		<td>anonymous</td>
+		<td>anonymous, dedicated</td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.BindUserDN</td>
+		<td>String</td>
+		<td>The name of the property that specifies the distinguished
+		name of the user account that will be used for the data retrieval
+		connection.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.BindPassword</td>
+		<td>String</td>
+		<td>The name of the property that specifies the password of the
+		user account that will be used for the data retrieval connection.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.ParticipantFilter</td>
+		<td>String</td>
+		<td>The search filter to get the participants for a principal
+		name. The wildcard %v is used to include the principal name.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserFilter</td>
+		<td>String</td>
+		<td>The search filter to get user information for a principal
+		name. The wildcard %v is used to include the principal name.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.SearchTimeLimit</td>
+		<td>Integer</td>
+		<td>The time limit for searches in milliseconds</td>
+		<td>0</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.ParticipantNamingAttribute</td>
+		<td>String</td>
+		<td>The attribute name for getting the Stardust participant ID
+		from a found participant.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserBaseDN</td>
+		<td>String</td>
+		<td>The name of the property that specifies the root used for
+		querying for users relative to the base DN.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.GroupBaseDN</td>
+		<td>String</td>
+		<td>The name of the property that specifies the root used for
+		querying for groups (participants) relative to the base DN.</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserQueryScope</td>
+		<td>Integer</td>
+		<td>The query scope used for the user query as int value.</td>
+		<td>2</td>
+		<td>
+		<ul>
+			<li>0: object scope</li>
+			<li>1: one level scope</li>
+			<li>2: subtree scope</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.GroupQueryScope</td>
+		<td>Integer</td>
+		<td>The query scope used for the group query as int value.</td>
+		<td>2</td>
+		<td>
+		<ul>
+			<li>0: object scope</li>
+			<li>1: one level scope</li>
+			<li>2: subtree scope</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.ParticipantIDAttribute</td>
+		<td>String</td>
+		<td>The LDAP attribute that contains to the id of the process
+		model role.</td>
+		<td>cn</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserAccountAttribute</td>
+		<td>String</td>
+		<td>The LDAP attribute that contains the account of the user.</td>
+		<td>cn</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserLastnameAttribute</td>
+		<td>String</td>
+		<td>The LDAP attribute that contains the last name of the user.</td>
+		<td>sn</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserFirstnameAttribute</td>
+		<td>String</td>
+		<td>The LDAP attribute that contains the first name of the user.</td>
+		<td>given name</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserDescriptionAttribute</td>
+		<td>String</td>
+		<td>The LDAP attribute that contains the description of the user.</td>
+		<td>description</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserEmailAttribute</td>
+		<td></td>
+		<td>The LDAP attribute that contains the email of the user.</td>
+		<td>mail</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LDAPSynchronization.UserAdditionalAttributes</td>
+		<td>String</td>
+		<td>A comma separated list of attributes that will be copied from
+		the LDAP and stored as Stardust user properties.</td>
+		<td>is empty</td>
+		<td></td>
+	</tr>
+</table>
+<h3 id="lookup">Service Lookup</h3>
+<table id='id_13'>
+	<tr>
+		<th>Parameters</th>
+		<th>Property</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>&lt;fully.qualified.InterfaceName&gt;.ResolvedExtensionProviders</td>
+		<td>String</td>
+		<td>A comma separated list of implementation classes. This may be
+		used to resolve providers which:
+		<ul>
+			<li>do not have a valid <tt>META-INF/services/&lt;fully.qualified.InterfaceName&gt;</tt>
+			descriptor, or whose descriptor cannot be found during classpath
+			introspection.</li>
+			<li>should be resolved in a guaranteed order. Classpath
+			introspection does not guarantee any order multiple providers get
+			resolved.</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>&lt;fully.qualified.InterfaceName&gt;.BlacklistedProviders</td>
+		<td>String</td>
+		<td>A comma separated list of implementation classes which should
+		be removed from the list of resolved providers.</td>
+	</tr>
+	<tr>
+		<td>&lt;fully.qualified.InterfaceName&gt;.ResolvedExtensionProviders</td>
+		<td>String</td>
+		<td>A comma separated list of implementation classes which should
+		be removed from the list of resolved providers.</td>
+	</tr>
+</table>
+<h3 id="document">Document Management</h3>
+<table id="Document Management Properties">
+    <tr>
+        <th>Parameters</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Default</th>
+    </tr>
+    <tr>
+        <td>DocumentManagement.ReadAllowed.PathPattern</td>
+        <td>String</td>
+        <td>Paths matching the specified expression are allowed for ID
+        based access of documents and folders even outside of the predefined 
+        Stardust partition path 
+        (<tt>/ipp-repository/partitions/&lt;partitionId&gt;)</tt>.<br>
+        The specified pattern allows ID based access on read only methods like:
+        <tt>getDocument, getFolder</tt> etc.<br>
+        Example pattern:
+        <tt>(/{PARTITION_ID}/reports/.*)|(/{PARTITION_ID}/designs/.*)</tt></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>DocumentManagement.WriteAllowed.PathPattern</td>
+        <td>String</td>
+        <td>Paths matching the specified expression are allowed for ID
+        based access of documents and folders even outside of the predefined 
+        Stardust partition path 
+        (<tt>/ipp-repository/partitions/&lt;partitionId&gt;)</tt>.<br>
+        Defines the access of methods modifying data like: 
+        <tt>updateDocument, updateFolder, versionDocument, removeDocument, removeFolder</tt>
+        etc.<br>
+        Example pattern:
+        <tt>(/{PARTITION_ID}/reports/.*)|(/{PARTITION_ID}/uploads/.*)</tt></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Stardust.DocumentManagement.Resource.Create.inNestedTx</td>
+        <td>Boolean</td>
+        <td>Determines if Documents or Folders should be created in a new nested transaction.</td>
+        <td>false</td>
+   </tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

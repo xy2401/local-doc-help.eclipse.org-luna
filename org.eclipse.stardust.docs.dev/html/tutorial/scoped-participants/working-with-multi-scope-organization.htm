@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Working with Scoped Organization Structure in Stardust Process Portal</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("",
+	        "multiscope-deptstructure-in-portal.htm","",
+			
+			"../tut-preface.htm","Tutorials",
+			"tut-scoped-main.html","Scoped Participants Tutorials",
+			"multi-scope-preface.htm","The Scoped Participant Example");
+ -->
+</script>
+<h1>Working with Scoped Organization Structure in Stardust Process Portal</h1>
+
+<p>Once the departments are created and the users are associated with those departments, you can trigger the activities
+and start working on the activities.
+The first step is to initialize the process. In the ScopedOrganizationModel, the Role 1 has the right to
+trigger the process which is assigned to Croft Lara.
+Remember that the scenario is - the activity should flow from unscoped organization O1 to explicitly scoped organization O21
+to implicitly scoped organization O32 to explicitly scoped organization O43.</p>
+<p>So, let's begin:</p>
+
+<ol>
+	<li>Login to Stardust Process Portal using the credentials of <strong>Croft Lara</strong>. The <strong>Workflow Execution</strong> view is displayed.</li>
+	<li>Click on the <strong>Scoped Process</strong> displayed under the <strong>My Startable Processes</strong>. The <strong>My Assignments</strong> panel displays one item for the user Croft Lara.
+	<p class="image"><img src="images/ma.png"></img><br><strong>Figure:</strong> My Assignments</p></li>
+	<li>Select the <strong>Show empty Worklists</strong> checkbox if you want to see the organization and role worklist also. The following screenshot displays the My Assignments view:
+	<p class="image"><img src="images/showhidemyassign.png"></img><br><strong>Figure:</strong> My Assignments</p></li>
+	<li>Click on the work item count of Croft Lara. The work item details get displayed. 
+	 <p class="image"><a href="images/laraworkfirstitem_orgSize.png" target="_blank">
+    <img src="images/laraworkfirstitem.png"></a><br><strong>Figure:</strong> Worklist of Croft Lara</p>  </li>
+	<li>Enter <strong>Germany</strong> in the <strong>Nation_scope</strong> text box and click the <strong>Complete</strong> icon. The following screenshot displays the details:
+	<p class="image"><img src="images/nationgermany.png"></img><br><strong>Figure:</strong> Complete Activity - Enter Scope Data</p>
+	<p>Note that you need to enter the correct department name. If not entered correctly, the activity goes to the default department of the organization.</p></li>
+	<li>Login with the credentials of <strong>City Frankman</strong>. Note the <strong>My Assignments</strong> panel as shown in the following screenshot. 
+	<p class="image"><img src="images/cityassign.png"></img><br><strong>Figure:</strong> My Assignments</p></li>
+	<li>Complete the activity. As City Frankman is associated with the department Germany which is under the organization O21, he can see and perform those activities.</li>
+	<li>Login with the credentials of <strong>Robert Dawson</strong>. Note the My Assignments panel as shown in the following screenshot:
+	<p class="image"><img src="images/robert.png"></img><br><strong>Figure:</strong> My Assignments</p></li>
+	<li>Click on the work item count of O32 - Germany.</li>
+	<li>Click on the activity. The details of the activity are displayed.</li>
+	<li>Enter <strong>Berlin</strong> in the <strong>State_scope</strong> text box. The following screenshot displays the details: 
+	<p class="image"><img src="images/dawsonrobert.png"></img><br><strong>Figure:</strong> Complete Activity - Enter Scope Data</p></li>
+	<li>Complete the activity. The activity should go to the department <strong>Berlin</strong>. 
+	Alvin Winchester is associated with the <strong>Berlin</strong> department of organization O43.</li>
+	<li>Login with the credentials of <strong>Alvin Winchester</strong>. Note the My Assignments panel 
+	as shown in the following screenshot: <p class="image"><img src="images/alvin.png"></img><br><strong>
+	Figure:</strong> My Assignments</p></li>
+	<li>Click on the activity and complete the activity</li>
+			
+</ol>
+ 
+<p>Note: similarly you can work for the department India.</p>
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

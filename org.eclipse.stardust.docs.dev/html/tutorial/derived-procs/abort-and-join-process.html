@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Aborting and Joining Processes</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+      "abort-and-start-process.html","",
+		"../tut-preface.htm","Tutorials",
+		"derive-procs-preface.html","Managing Unstructured Workflows");
+-->
+</script>
+
+<h1>Aborting and Joining Processes</h1>
+<p>This tutorial describes how to abort existing process instance and join it to the active process instance.
+ Also, check whether the documents attached to the source process instance are copied in the target process instance.
+ 
+ </p>
+<p>In an organization process instances are document-centric. To complete each process instance, operators have 
+to merge documents from one process instance to another process instance. 
+This involves downloading the documents locally, uploading them to the appropriate 
+process instances and aborting the existing process instances. So, the organization has requested
+an enhancement to the existing functionality.
+For detail scenario refer to the 
+<a href="../../concepts/executing-workflow/abort-and-join.html#usage">Common Usage Pattern</a>
+section of the 
+<a href="../../concepts/executing-workflow/abort-and-join.html">Aborting and Joining Processes
+</a> 
+chapter of the 
+<a href="../../concepts/key-concepts.html">Concepts</a> handbook.</p>
+
+<p>For details on the abort and join functionality, refer to 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/detail-views/abort-and-join.html">
+Aborting and Joining Processes</a> chapter of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<p>This tutorial covers the following:</p>
+<ul>
+	<li><a href="#import">Importing the Example Model</a></li>
+	<li><a href="#deploy">Deploying and Running the Model</a></li>
+	<li><a href="#workflow">Executing the Workflow</a>
+	<ul>	
+	   <li><a href="#join">Aborting and Joining Processes</a>
+      <ul>
+         <li><a href="#link">Viewing the Linking between Processes</a></li>
+	     <li><a href="#data">Viewing the Data</a></li>
+	     <li><a href="#history">Viewing the Process History</a></li>
+      </ul></li>
+   </ul></li>
+</ul>
+<p>So, let's abort Verification Check - 1 process and join it to another process instance. Also, we need to check
+that newly joined process instance contains the document and the linking is established after the abort and join operation. </p>
+
+<h2 id="import">Importing the Example Model</h2>
+<p>Use the provided <strong>AbortJoin</strong> example model which contains key descriptors 
+named TaxID, LastName and Name, appropriate declarative security to abort the process instance and its processes also
+support attachments.</p> 
+<ol>	
+	<li>Download the following ZIP file which contains the example model:
+	<p class="ind">
+   <a href="../../examples/tutorials/derive-procs/managing-unstructured-workflow.zip">managing-unstructured-workflow.zip</a>
+   <br></p></li>
+	<li>Create a dynamic Web project designed to deploy Stardust
+	 models to run in the Stardust Portal.
+	For detailed information on creating dynamic Web projects for usage with
+	the Stardust Portal, please refer to the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+	Rapid Application Development</a> guide.</li>
+	<li>Right-click the project and select 
+	<strong>Import &gt; Process Manager Wizards &gt; Process Model</strong>.
+	Click <strong>Next</strong> and browse to the location of the example
+	model extracted from the zip file.</li>
+	<li class="stardust">Create a model with a process 
+   <strong>Verification Check - 1</strong>.</li>
+	<li>Open the <strong>Properties</strong> dialog box of the process <strong>Verification Check - 1</strong>.
+	It contains the key descriptors named <strong>TaxID</strong> and <strong>LastName</strong>.
+	<p class="image"><img src="images/key-desc.png" alt="Key Descriptor"> <br>
+	<strong>Figure:</strong> Key Descriptor of process Verification Check - 1</p>
+	<p>
+For more information on key descriptors, please refer to the
+<a href="../../handbooks/modelling/mg-defdesk-9.htm#key">
+Key Descriptors</a> section of the 
+<a href="../../handbooks/modelling/mg-defdesk-9.htm">
+Working with Data Paths</a>
+chapter of the <a href="../../handbooks/modelling/mg-preface.htm">
+Modeling Guide</a>.</p></li>
+	<li>Also, make sure that all the processes support attachments</li>
+</ol>
+
+<h2 id="deploy">Deploying and Running the Model</h2>
+<p>Perform the following steps to deploy the model and run
+the project in the Stardust Portal:</p>
+<ol>
+	<li>Start the server and deploy the model. For details on how to
+	deploy a model, please refer to the chapter <a
+		href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a> of the <a
+		href="../support-case/support-case-preface.htm">Support Case Example</a>.</li>
+	<li>Start the Stardust Portal as described in the chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+	Logging in to the Stardust Portal</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User
+	Handbook</a>. Login as administrator (<tt>motu/motu</tt>). You can use the
+	Shift-F8 shortcut key.</li>
+	
+</ol>
+<h2 id="workflow">Executing the Workflow</h2>
+<ol>
+		<li>In the <strong>Workflow Perspective</strong>, start the process <strong>Verification Check - 1</strong></li>
+	<li>Specify Tax ID and Last Name
+	<p class="image"><img src="images/enter-dts.png" alt="Enter Tax ID and Name"> <br>
+	<strong>Figure:</strong> Enter Tax ID and Name</p></li>
+	<li>In the toolbar, click <strong>Process Documents</strong> icon and choose <strong>Upload Document</strong>
+	<p class="image"><img src="images/upload-doc.png" alt="Upload Document"> <br>
+	<strong>Figure:</strong> Upload Document</p></li>
+	<li>In the <strong>Upload File</strong> dialog, browse to the location of 
+	the document and click <strong>Upload</strong></li>
+	<li>In the toolbar, click the <strong>Suspend and Save</strong> icon
+		<p class="image"><img src="images/suspendsave.png" alt="Suspend and Save"> <br>
+	<strong>Figure:</strong> Suspend and Save</p></li>
+	<li>Activate another instance of <strong>Verification Check - 1</strong> process</li>
+	<li>Specify same Tax ID and Last Name</li>
+	<li>In the toolbar, click the <strong>Suspend and Save</strong> icon</li>
+	<li>Activate another instance of <strong>Verification Check - 1</strong> process</li>
+	<li>Specify any other Tax ID and Last Name</li>
+	<li>In the toolbar, click the <strong>Suspend and Save</strong> icon</li>
+</ol>
+	
+<h3 id="join">Aborting and Joining Processes</h3>
+<ol>	
+	<li>Open the Worklist of the user Administrator</li>
+	<li>Activate the activity of which the Tax ID and Last Name matches with the another process
+	<p class="image"><img src="images/worklist-taxid.png" alt="Suspend and Save"> <br>
+	<strong>Figure:</strong> Worklist - Activate Activity with Same Tax ID and Last Name </p></li>
+	<li>In the toolbar, click the down-arrow icon displayed next to the Abort icon and choose 
+	<strong>Abort Process and Join</strong> option.
+	<p class="image"><img src="images/abort-join-option.png" alt="Suspend and Save"> <br>
+	<strong>Figure:</strong> Abort and Join </p></li>
+	<li><p>The active process instances with matching key descriptors are displayed in the search.</p>
+	 <p class="image"><img src="images/matchall.png" alt="Active Processes Matching All Key Descriptors"> <br>
+	<strong>Figure:</strong> Active Processes Matching All Key Descriptors</p></li>
+	<li>Select the process instance and specify appropriate link comment
+	<p class="image"><img src="images/abort-join.png" alt="Abort and Join"> <br>
+	<strong>Figure:</strong> Abort and Join</p></li>
+	<li>If you want to view the newly joined process, click <strong>Yes</strong> in the Confirmation dialog.
+	<p class="image"><img src="images/confirmation.png" alt="Abort and Join - Confirmation Dialog"> <br>
+	<strong>Figure:</strong> Abort and Join - Confirmation Dialog</p>
+	<p>The process details of the joined process instance get displayed.</p>
+	<p class="image"><img src="images/joined-pd.png" alt="Process Details of Joined Process"> <br>
+	<strong>Figure:</strong> Process Details of Joined Process</p></li>
+</ol>
+<h4 id="link">Viewing the Linking between Processes</h4>
+
+<ol>
+	<li>Expand the <strong>Linked Processes</strong> panel of the target process.
+	<p class="image"><img src="images/linked-join.png" alt="Process Details of Joined Process"> <br>
+	<strong>Figure:</strong> Linked Process</p></li>
+	<li><p>The link to the source process instance gets displayed.</p>
+	<p class="image"><img src="images/linked-join-target.png" alt="Linked Process - Source Process"> <br>
+	<strong>Figure:</strong> Linked Process - Source Process</p></li>
+	<li>In the <strong>Linked Processes</strong> panel of the source process, click the process name in the
+	<strong>Process Column</strong>. The target process details get displayed.</li>
+	<li>Expand the <strong>Linked Processes</strong> panel of the source process. The link to the target process gets displayed.  
+	<p class="image"><img src="images/join-target.png" alt="Linked Process - Target Process"> <br>
+	<strong>Figure:</strong> Linked Process - Target Process</p></li>
+</ol>
+<h4 id="data">Viewing the Data</h4>
+<p>Expand the <strong>Process Documents</strong> panel of the newly joined target process. </p>
+
+<p class="image"><img src="images/datacopy.png" alt="Process Document - Target Process"> <br>
+	<strong>Figure:</strong> Process Document - Target Process</p>
+
+<p>The document from the source process instance gets copied to the target process instance. 
+For more information, please refer to
+ the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/abort-and-join.html#semantics">
+ Data Copy Semantics</a> section of the 
+ <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/abort-and-join.html">Aborting and Joining Processes
+ </a> chapter of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/key-concepts.html">Concepts</a> handbook.</p>
+ 
+ <p class="image"><img src="images/datacopy-attachment.png" alt="Process Document - Target Process"> <br>
+	<strong>Figure:</strong> Attached Document to Target Process</p>
+
+<h4 id="history">Viewing the Process History</h4>
+<p>Expand the <strong>Process History</strong> panel of the newly joined target process.</p>
+<p class="image"><img src="images/process-history-join.png" alt="Process History - Target Process"> <br>
+	<strong>Figure:</strong> Process History - Target Process</p>
+<p>Note that in the process history of the target process, details of the source process are not displayed.</p>	
+	<p class="image"><img src="images/process-his-target.png" alt="Target Process History"> <br>
+	<strong>Figure:</strong> Target Process History</p>
+<p>Similarly, if you open the process history of the source process, 
+the process history of the target process is not shown.
+</p>
+	
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

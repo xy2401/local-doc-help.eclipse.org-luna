@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Multiple Implementations</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+		"model-deployment.html","",
+		"../key-concepts.html","Concepts",
+		"multi-model.html","Multi Model Audit Trail Setups");
+ -->
+</script>
+<h1>Multiple Implementations</h1>
+<p>The implementing process definition to invoke at runtime can be defined either 
+statically as an administrative action or determined from process data via Dynamic Sub-process Binding.</p>
+<ul>
+	<li><a href="#primary">Primary Implementation</a></li>
+	<li><a href="#alternative">Selecting Alternative Process Interface 
+		Implementations</a></li>
+	<li><a href="#dynBind">Dynamic Binding</a></li>
+</ul>
+
+<h2 id="primary">Primary Implementation</h2>
+<p>Per deployment of a provider model, for each defined Process
+Interface, a <strong>Primary Implementation</strong> can be specified.
+The Primary Implementation is identified by the model ID of the consumer
+model the Implementation is defined in. If not otherwise specified, the
+Default Implementation of the Process Interface is considered as Primary
+Implementation. Please refer to section
+<a href="creating-ref-models.html#implement">Implementing Process Interfaces</a> 
+of chapter <a href="creating-ref-models.html">Creating Models With Cross References</a>
+for details on process interfaces.</p>
+<p>At runtime, if not otherwise specified (see below), whenever a
+Sub-process Activity associated with a Process Interface gets executed,
+the Primary Implementation of that Process Interface gets actually
+executed.</p>
+<p>Primary Implementations can be freely redefined over time. If the
+uses link contributing a Primary Implementation ceases to exist, the
+Default Implementation associated with the Process Interface will be
+considered the Primary Implementation again.</p>
+
+<h2 id="alternative">Selecting Alternative Process Interface Implementations</h2>
+<p>If a runtime environment contains several implementations for a given 
+process interface, it is possible to select the primary implementation
+ to be invoked at runtime. The implementing process definition can 
+ be selected per process interface. Hence different implementations 
+ for the process interfaces defined in one model can be distributed 
+ over different models.</p>
+ <p>The following figure illustrates a model (<tt>Model I</tt>) having 
+ process interfaces
+ defined with different implementations (using <tt>Model M</tt>), which are distributed over
+ the different models (<tt>Model N, Model O, Model P</tt>).</p>
+ <p class="image"><img src="images/proc-inst-alternative.png" alt=""> <br>
+<strong>Figure:</strong> Distributing Implementations.</p>
+<p>Selecting an implementing process definition at runtime is
+not supported during model deployment, but can only be done in a 
+subsequent administrative gesture.</p>
+<h3>Example</h3>
+<p>The following scenario describes this issue:<br>
+All models <tt>M1, M2</tt> and <tt>M3</tt> are already deployed in 
+the system. Now an administrator configures process definition <tt>P'</tt>
+ defined in model <tt>M2</tt> as the primary implementation of interface 
+ <tt>I</tt> as shown in the following figure:</p>
+<p class="image"><img src="images/proc-inst-alt-scen.png" alt=""> <br>
+<strong>Figure:</strong> Selecting Alternative Process Interface Implementations</p>
+
+<h2 id="dynBind">Dynamic Binding</h2>
+
+<p>Sub-process activities invoking a process with a Process Interface
+may be marked to be resolved at runtime. In this case a data path can be
+defined to pass the Id of model providing the implementation for 
+the process interface to be invoked at runtime.
+Please refer to the section
+<a href="../../handbooks/modelling/mg-process-interface.htm#dynamic">Dynamic Binding of Sub-process Implementation
+</a> of the chapter <a href="../../handbooks/modelling/mg-process-interface.htm">Working with Process Interface
+</a> in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>.
+for detailed information on marking a process interface to be resolved
+at runtime.</p>
+<p>In case the process variable
+cannot be resolved properly or one of the requirements listed in section
+<a href="#require">Requirements</a> is not fulfilled, the process
+instance is put in interrupted state.</p>
+<p>Using data-bound runtime binding allows scenarios like the
+following:</p>
+<ul>
+	<li>Using configuration variables. For details on configuration
+	variables refer to chapter <a
+		href="../workflow-basics/mg-basics-config-vars.html">Using
+	Configuration Variables</a> .</li>
+	<li>Passing appropriate data to API calls. Please refer
+	to the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+	for details on using the Stardust API.</li>
+</ul>
+<h3 id="require">Requirements</h3>
+<p>Dynamic binding is only allowed if one of the following cases applies:</p>
+<ol>
+	<li>The target model also
+	implements the process interface to be used for dynamic binding.</li>
+	<li>The target model is marked as an alternative implementation of
+	the process interface that is dynamically bound, which
+	means that the process interface could be rebound to the target model.</li>
+</ol>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

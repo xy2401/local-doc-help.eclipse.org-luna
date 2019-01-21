@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Creating a Scoped Organization Structure and a Scoped Model</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Creating Scoped Participants for the Scoped Organization",
+	        "","multiscope-deptstructure-in-portal.htm",
+			
+			"../tut-preface.htm","Tutorials",
+			"tut-scoped-main.html","Scoped Participants Tutorials",
+			"multi-scope-preface.htm","The Scoped Participant Example");
+ -->
+</script>
+<h1>Creating a Scoped Organization Structure and a Scoped Model</h1>
+
+<p>Stardust helps you to model the scoped organization hierarchy and its departments.
+Based on the assigned scope, the workitems are visible to the participants. Perhaps before you take this 
+tutorial, it is important to understand the concept of scoped organization structure, explicitly scoped 
+and implicitly scoped organization structure. For more information, please refer to the chapter
+<a href="../../concepts/workflow-basics/scoped-participants.html">Scoped Participants</a> in the
+<a href="../../concepts/key-concepts.html">Concepts</a> part. Once you are
+familiar with key concepts, you can set to take this tutorial.</p>
+
+<p>The use case example helps you to understand:</p> 
+<ul>
+	 
+	<li>how to create scoped organization</li>
+	<li>how department structure of scoped organization gets displayed in the Stardust Process Portal</li> 
+	<li>how to provide the accurate process data for each activity to complete successfully</li>
+	<li>how the work item traverse through the departments of the scoped organization</li>
+	<li>how the create and delete operations affect the work list items</li>
+	<li>the role work list view</li> 
+	<li>the user work list view</li>
+	
+
+</ul>
+
+<p>So, let's create an organization structure which departments have defined scope.</p>
+
+<h2 id= "createmultiscope">Creating Scoped Organizational Structure</h2>
+<p>
+The ScopedOrganizationModel is modeled to explain four specific scenarios of the real world organization.
+The hierarchy in the organization has parent-child relationship that is maintained using the
+explicitly scoped and implicitly scoped department binding.</p>
+
+<p>The parent-child relationship should be established among all the organizations.</p>
+<ul>
+	<li>Organization O1 has O21 and O22 as child organizations</li>
+	<li>O21 has O31 and O32 as child organizations</li>
+	<li>O31 has O41 and O42 as child organizations</li>
+	<li>O32 has O43 as child organizations</li>
+</ul>
+
+
+<p>The following screenshot displays the ScopedOrganizationModel which is used to explain the use
+case.</p>
+
+<p class="image"><img src="images/multiscopeorgdiagram.png"></img><br><strong>Figure:</strong> ScopedOrganizationModel Use Case Example</p>
+
+<h3>Defining Scope of Organizations</h3>
+
+<p>
+
+Once all the organizations are connected, define the scope for each organization.</p>
+<p>To define the scope:</p>
+<ul>
+	<li>Create primitive data <strong>State_scope</strong>, <strong>Region_scope</strong>, <strong>Continent_scope</strong> and <strong>Nation_scope</strong></li>
+	<li>Right-click the <strong>O21</strong> organization and select <strong>Properties</strong> </li>
+	<li>Select <strong>Department Binding</strong></li>
+	<li>Select <strong>Organization supports departments</strong> check box. The <strong>Department ID</strong> pane is enabled.</li>
+	<li>Select <strong>Nation_scope</strong> from the Data drop-down list</li>
+	<li>Similarly, for the organization O22, set the scope as <strong>Continent_scope</strong> </li>
+	<li>For O31 set the scope as <strong>Region_scope</strong></li>
+	<li>For O41 set the scope as <strong>State_scope</strong></li>
+	<li>For O43 set the scope as <strong>State_scope</strong></li>
+
+</ul>
+
+
+<p>So note that at the apex, O1 organization is an un-scoped organization which is connected to explicitly scoped O21.
+Explicitly scoped organization O21 and O22 are at second level in the hierarchy.
+Explicitly scoped organization O31 and implicitly scoped O32 are at third level in the hierarchy.
+Explicitly scoped organization O41, implicitly scoped O42 and explicitly scoped O43 are at fourth level in the hierarchy.</p> 
+
+<p>Once the hierarchy and scope is defined for each organization, the following four scenarios get created:</p>
+<ul>
+	<li>Explicitly scoped to Explicitly scoped to Explicitly scoped child organization O41</li>
+	<li>Explicitly scoped to explicitly scoped to implicitly scoped child organization O42</li>
+	<li>Explicitly scoped to implicitly scoped to explicitly scoped child organization O43</li>
+	<li>Default departments</li>
+</ul>
+
+
+<p>These four scenarios are taken into consideration to show how hierarchy of any organization can fit into 
+one of these scenarios. </p>
+
+<h2 id ="createmodel">Creating an Activity Flow for Scoped Organization</h2>
+
+<p>Let's create a process to understand the third scenario that is 
+explicitly scoped to implicitly scoped to explicitly scoped child organization O43. In this scenario, the workitem
+would traverse through organization O1 to explicitly scoped O21 to implicitly scoped O32 to explicitly scoped O43.</p>
+<p>To start with:</p>
+
+<ol>
+	<li>Setup a dynamic Web project named <strong>multiscopexample</strong>. For detail instructions, please refer to the section 
+<a href="../support-case/tut-main-2.htm#createProj">Creating an Eclipse Project with Process Manager Facets</a> from the <a href="../support-case/tut-main-2.htm">Getting Started</a> 
+chapter of the <a href="../support-case/support-case-preface.htm">Support Case</a> tutorial.</li>
+
+	<li>Once the multiscopexample project is created, we need to create a model named <strong>ScopedOrganizationModel</strong>.</li>
+	<li>Create the process flow named <strong>Scoped Process</strong> as shown in the following diagram:</li>
+</ol>
+
+<p class="image"><img src ="images/ExImplicitlyscoped.png"></img><br><strong>Figure:</strong> Explicitly 
+and Implicitly Scoped Process</p>
+
+<p>
+The model should be created in a way that each workitem should traverse through the specified organization department. 
+In this model, Role 1 has the right to trigger the first activity. So, the user who has rights of the Role 1, enters the nation data. 
+The scope data <strong>Nation_Scope</strong> is created and connected to the activity called <strong>Role 1 to enter nation</strong>. Once the Role 1 specifies the nation,
+the activity should be in the bucket of explicitly scoped organization O21. Once O21 passes the activity, it should go to the implicitly
+scoped organization O32. Here the activity is connected with the scope data <strong>State_scope</strong>. Because the participant of the activity is
+O32, which is implicitly scoped activity, the correct process data should be entered. Else the activity would go to the default department.
+If the correct data is entered the activity goes to explicitly scoped organization O43. 
+
+</p>
+
+<h3>Defining Participants</h3>
+
+<p>Once the model is created, you need to define participants for each activity.</p> 
+<p>To define the participants:</p>
+
+<ol>
+	<li>Double-click the Manual Trigger. The Properties for manual trigger gets displayed. </li>
+	<li>Select Manual Trigger from the left pane. The participant list gets displayed.</li>
+	<li>Select <strong>Role 1</strong> from the <strong>Participant</strong> list and click <strong>OK</strong></li>
+	<li>Double-click <strong>Role 1 to enter nation</strong> activity and select <strong>Participant</strong> from the left pane</li>
+	<li>Select <strong>Role 1</strong> from the <strong>Participant</strong> list and click <strong>OK</strong></li>
+	<li>Similarly, define <strong>O21</strong> as the participant for the <strong>Verify O21 is able to complete</strong> activity</li>
+	<li>Define <strong>O32</strong> as the participant for the <strong>To be completed by O32</strong> activity</li>
+	<li>Define <strong>O43</strong> as the participant for the <strong>O43_Verify activity goes to Nation_State</strong> activity</li>
+	
+</ol>
+
+<h2>Deploying the Model</h2>
+<p>Deploy the <strong>ScopedOrganizationModel.xpdl</strong>. For more information on model deployment, please refer to the chapter <a href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a> from the <a href = "../support-case/support-case-preface.htm">Support Case</a> tutorial.
+Once the model is deployed, you can view and create new departments and users in the Participant Management view. For detailed information, refer to
+chapter <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+Creating and Editing User Accounts</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook.</a>
+</p> 
+<h4>Importing the example model</h4>
+<p>If you want to omit the modeling phase and set up the scenario in minimum of time, 
+you can import the model <strong>ScopedOrganizationModel.xpdl</strong>
+provided by Stardust by extracting it from the <tt>scopedParticipants/dat</tt> folder
+residing in the following ZIP file:</p>
+<p class="ind"><a href="../../examples/tutorials/scopedParticipants/scopedParticipants.zip">
+scopedParticipants.zip</a>.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

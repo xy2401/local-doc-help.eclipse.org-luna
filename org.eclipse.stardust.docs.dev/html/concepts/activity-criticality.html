@@ -1,0 +1,568 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Activity Criticality</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+   title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+<div class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Quality Assurance",
+      "business-objects.html","quality-assurance.html",
+      "key-concepts.html","Concepts");
+ -->
+</script>
+</div>
+<div class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Quality Assurance",
+      "multi-instance.html","quality-assurance.html",
+      "key-concepts.html","Concepts");
+ -->
+</script>
+</div>
+   <h1>Activity Criticality</h1>
+   <p>Real-life production installations of BPM systems typically handle
+      many thousands of process and activity instances per day. The processing
+      order of all these instances should always be optimized with regard to
+      leveraging the company workforce most efficiently and ensuring that
+      processing time requirements such as service level agreements (SLAs) are
+      met. This implies that all interactive activity instances need to be
+      presented and processed in the order of their overall relevance for
+      supporting the most important and most urgent business processes.
+      Importance and urgency will usually depend on many parameters such as for
+      example:</p>
+   <ul>
+      <li>The process definition that a process or activity instance
+         belongs to</li>
+      <li>Business data identifying key entities such as customers,
+         business case types, etc.</li>
+      <li>The total time elapsed since the creation of an activity or
+         process instance in relation to the corresponding target times or SLAs.</li>
+   </ul>
+   <p>Time dependency is one of the most important and at the same time most
+      challenging factors when determining which process and activity instances
+      deserve the biggest attention. For example an approaching SLA deadline may
+      dramatically increase the importance of a certain activity or process
+      instance, as missing SLA deadlines may result in impaired customer
+      relationships, lost money and many other issues.</p>
+   <p>In order to handle these potential issues before they become critical,
+      it will be required to optimize the processing order of activity instances
+      dynamically as a function of time.  Stardust provides
+      the concept of Activity Criticality to address this requirement. Activity
+      Criticality is a numerical measure for the overall urgency of an activity.
+      Formulas can be specified to model how this criticality value changes over
+      time as a function of the parameters listed above. Once these formulas are
+      specified,  Stardust will recalculate the activity
+      criticality periodically and present interactive work items to the users
+      in the order of criticality.</p>
+   <ul>
+      <li><a href="#diff">Process Priority and Activity Criticality</a>
+      </li>
+      <li><a href="#calc">Calculation of Criticality</a>
+         <ul>
+            <li><a href="#js">JavaScript Formula</a>
+            </li>
+            <li><a href="#standard">Standard JavaScript Formula</a>
+            </li>
+            <li><a href="#calcact">Calculation and Recalculation During
+                  Activity Processing</a>
+            </li>
+            <li><a href="#control">Controlling Recalculation Behavior
+                  via API</a>
+            </li>
+         </ul></li>
+      <li><a href="#daemon">Prioritization Daemon</a>
+      </li>
+      <li><a href="#ass">Assembly Line Provider for Criticality</a>
+      </li>
+      <li><a href="#portal">Criticality used in Stardust Portals</a>
+      </li>
+      <li><a href="#invalid">Handling of incorrect Result Values</a>
+      </li>
+   </ul>
+   <h2 id="diff">Process Priority and Activity Criticality</h2>
+   <p>The relevance and urgency of work can be determined for process
+      instances or for the individual activities that need to be completed in
+      order to perform a business process. The urgency of process instances is
+      determined via its priority. The priority can take three values (low,
+      medium high). The priority value for any given process instance is not
+      inherently time dependent and only changes in response to discrete
+      processing events or human interaction with the system. Activity
+      instances, on the other hand are continuously re-prioritized via their
+      criticality value. The process engine automatically recalculates the
+      criticality of activity instances as a function of time, process priority,
+      business data and potentially other parameters.</p>
+   <p>The following table gives an overview of the differences between the
+      process priority and activity criticality:</p>
+   <table id="criticality">
+      <tr>
+         <th>Classic Priority</th>
+         <th>Criticality</th>
+      </tr>
+      <tr>
+         <td>Per process instance</td>
+         <td>Per activity instance</td>
+      </tr>
+      <tr>
+         <td>Value range [-1,0,1]</td>
+         <td>Float value in interval [0; 1]</td>
+      </tr>
+      <tr>
+         <td>Static, no automatic aging</td>
+         <td>Automatic aging (Daemon, JavaScript calculation formula)</td>
+      </tr>
+      <tr>
+         <td>User modifiable.</td>
+         <td>Read only for users. Administrator can configure the formula
+            (in modeler or portal).</td>
+      </tr>
+      <tr>
+         <td>Labels are configurable for portal.</td>
+         <td>Configurable value intervals, labels, icons in portal.</td>
+      </tr>
+      <tr>
+         <td>Usage:
+            <ul>
+               <li>Process instance lists</li>
+               <li>Process grouping in Business Control Center perspective.</li>
+            </ul></td>
+         <td>Usage:
+            <ul>
+               <li>Activity instance lists</li>
+               <li>Assembly line provider</li>
+            </ul></td>
+      </tr>
+   </table>
+   <h2 id="calc">Calculation of Criticality</h2>
+   <p>Calculation of criticality is performed in the following cases:</p>
+   <ul>
+      <li>For all non-terminated Activity Instances.</li>
+      <li>Initially upon activity instance creation.</li>
+      <li>Periodically via the prioritization daemon. Refer to section <a
+         href="admin-concepts/ag-concepts-2.htm#prior">Prioritization
+            Daemon</a> of chapter <a href="admin-concepts/ag-concepts-2.htm">Daemons</a>
+         for details.</li>
+      <li>When changing the corresponding process priority.</li>
+      <li>When invoking <tt>suspendAndSave()</tt> for the corresponding
+         activity instance.</li>
+      <li>Different recalculation events can be switched on and off
+         separately.</li>
+   </ul>
+   <p>You can add arbitrary JavaScript statements to be executed
+      sequentially when calculating the criticality in order to evaluate and
+      assign parameter values as a function of activity or process properties,
+      workflow data, etc. The return value of the last statement specified in
+      the JavaScript editor is assigned to the criticality of the activity
+      instance.</p>
+   <p>
+      You can also use any configuration variable defined for the model as
+      described in chapter <a href="../handbooks/modelling/model-variables.html">Using
+         Configuration Variables</a> in the <a href="../handbooks/modelling/mg-preface.htm">Modeling
+         Guide</a> in any place of the criticality formula.
+   </p>
+   <p>A standard formula is created during initial creation of the model.
+      Configuration variables used in the formula are created automatically with
+      default values when creating a new model.</p>
+   <ul>
+      <li><a href="#js">JavaScript Formula</a>
+      </li>
+      <li><a href="#standard">Standard JavaScript Formula</a>
+      </li>
+      <li><a href="#calcact">Calculation and Recalculation During
+            Activity Processing</a>
+      </li>
+      <li><a href="#control">Controlling Recalculation Behavior via API</a>
+      </li>
+   </ul>
+   <h3 id="js">JavaScript Formula</h3>
+   <p>The calculation of criticality is done by a JavaScript code fragment.
+      The JavaScript formula is able to use:</p>
+   <ul>
+      <li>The predefined <tt>PROCESS_PRIORITY</tt> primitive data.</li>
+      <li>Workflow data</li>
+      <li>All activity controlling parameters defined on the activity, e.g.
+         the <strong>Target Execution Time</strong>. Accessor methods for
+         parameters with time semantics return the corresponding time interval
+         in seconds.</li>
+      <li>JavaScript syntax, for example: <pre>activityInstance.getActivity().getTargetExecutionTime()</pre>
+      </li>
+      <li>The start time of the activity: <pre>activityInstance.getStartTime()</pre>
+      </li>
+      <li>JavaScript method <tt>activityInstance.getAge()</tt>, returning
+         the result of <tt>new Date()</tt> - <tt>activityInstance.getStartTime()</tt>
+         in milliseconds.</li>
+   </ul>
+   <h3 id="standard">Standard JavaScript Formula</h3>
+   <p>If no JavaScript formula is found in the model that the current
+      activity instance belongs to, a default formula is used.</p>
+   <ul>
+      <li><a href="#params">Parameters and variables</a>
+      </li>
+      <li><a href="#defaultVar">Default configuration variables</a>
+      </li>
+      <li><a href="#dformula">Standard Formula</a>
+      </li>
+      <li><a href="#jscode">Standard JavaScript code</a>
+      </li>
+      <li><a href="#examples">Examples</a>
+      </li>
+   </ul>
+   <h4 id="params">Parameters and variables</h4>
+   <p>The standard formula is a linear function using the following
+      parameters and variables:</p>
+   <table id="linearfunctions">
+      <tr>
+         <th>Variable / Parameter</th>
+         <th>Description</th>
+      </tr>
+      <tr>
+         <td>t</td>
+         <td>Time in seconds passed since the creation of an activity
+            instance. Independent variable that the criticality depends on.</td>
+      </tr>
+      <tr>
+         <td>T</td>
+         <td>Target execution time, which can be a fixed parameter or set
+            as controlling property in the modeler. It also can be a default
+            value used if the target execution time is not used or not set.</td>
+      </tr>
+      <tr>
+         <td>P</td>
+         <td>Priority of the corresponding process instance.</td>
+      </tr>
+      <tr>
+         <td>Mp</td>
+         <td>Multiple of target execution time after which the activity
+            should age no further, depending on the process priority.</td>
+      </tr>
+      <tr>
+         <td>Cp</td>
+         <td>Initial criticality that an activity instance is created with,
+            depending on the process priority.</td>
+      </tr>
+   </table>
+   <p>The standard formula can be changed:</p>
+   <ul>
+      <li>In the process modeler in the model property page. Refer to
+         chapter <a href="../handbooks/modelling/activity-criticality.html">Defining
+            Activity Criticality</a> in the <a href="../handbooks/modelling/mg-preface.htm">Modeling
+            Guide</a> for details.</li>
+      <li>In the Stardust Portal <strong>Criticality
+            Configuration View</strong>. For details refer to chapter <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-criticality.html">
+            Configuring Criticality Settings</a> of the <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">
+            End User Handbook</a>.</li>
+   </ul>
+   <h4 id="defaultVar">Default configuration variables</h4>
+   <p>The following configuration variables to be used in the standard
+      formula are created with according default values when creating a new
+      model:</p>
+   <table id="standardconfig">
+      <tr>
+         <th>Variable Name</th>
+         <th>Default Value</th>
+         <th>Description</th>
+      </tr>
+      <tr>
+         <td>CLow</td>
+         <td>0</td>
+         <td>Initial criticality (Low)</td>
+      </tr>
+      <tr>
+         <td>CMed</td>
+         <td>0.33</td>
+         <td>Initial criticality (Medium)</td>
+      </tr>
+      <tr>
+         <td>CHigh</td>
+         <td>0.66</td>
+         <td>Initial criticality (High)</td>
+      </tr>
+      <tr>
+         <td>MLow</td>
+         <td>10</td>
+         <td>Multiple of target execution time (Low)</td>
+      </tr>
+      <tr>
+         <td>MMed</td>
+         <td>10</td>
+         <td>Multiple of target execution time (Medium)</td>
+      </tr>
+      <tr>
+         <td>MHigh</td>
+         <td>10</td>
+         <td>Multiple of target execution time (High)</td>
+      </tr>
+      <tr>
+         <td>TDefault</td>
+         <td>86400 (number of seconds in 3 days)</td>
+         <td>Value for target execution time to be used for activity
+            instances where this controlling parameter is not set.</td>
+      </tr>
+   </table>
+   <p>
+      You can see these configuration variable in the model property page <strong>Configuration
+         Variables</strong> section.
+   </p>
+   <p class="image">
+      <img src="images/config-variables-default.png" alt="">
+   </p>
+   <h4 id="dformula">Standard Formula</h4>
+   <p>
+      The standard formula for Criticality
+      <tt>C</tt>
+      as a function of
+      <tt>t</tt>
+      uses these parameters in the following way:
+   </p>
+   <pre>C(t) = Cp + (1- Cp) * t/(Mp * T)</pre>
+   <h4 id="jscode">Standard JavaScript code</h4>
+   <p>The following code is used in the standard JavaScript to determine the
+      variables needed for the formula:</p>
+   <ul>
+      <li>Retrieving the target execution time: <pre>
+if(activityInstance.getActivity().getTargetExecutionTime() == 0) 
+{
+   T = ${TDefault};
+} 
+else 
+{
+   T = activityInstance.getActivity().getTargetExecutionTime();
+}
+    </pre>
+      </li>
+      <li>Retrieving the initial criticality and multiple of target
+         execution time depending on the process priority: <pre>
+if(PROCESS_PRIORITY == -1)
+{
+   Cp = ${CLow};
+   Mp = ${MLow};
+}
+if(PROCESS_PRIORITY == 0)
+{
+   Cp = ${CMed};
+   Mp = ${MLow};
+}
+if(PROCESS_PRIORITY == 1)
+{
+   Cp = ${CHigh};
+   Mp = ${MHigh};
+}
+    </pre>
+      </li>
+      <li>Retrieving the time passed since the creation of the activity
+         instance: <pre>t = activityInstance.getAge() / 1000;</pre>
+      </li>
+   </ul>
+   <p>
+      The standard formula using default values set during model creation then
+      looks like the following in the model property page <strong>Formula</strong>
+      field:
+   </p>
+   <p class="image">
+      <img src="images/ac-default-formula.png" alt="">
+   </p>
+   <h4 id="examples">Examples</h4>
+   <p>
+      The following examples illustrate using different parameterizations of the
+      standard formula, whereby the x-axis shows
+      <tt>t</tt>
+      in multiples of
+      <tt>T</tt>
+      .
+   </p>
+   <ul>
+      <li>Default formula with <strong>M</strong> constant for different
+         priorities <strong>P</strong>:
+         <ul>
+            <li>CLow (C-1) = 0; CMed (C0) = 1/3; CHigh (C1) = 2/3;</li>
+            <li>MLow = MMed = MHigh = 10 for all priorities</li>
+         </ul>
+         <p>
+            <img src="images/default-formula-graphic-1.png" alt="">
+         </p></li>
+      <li>Using the standard formula with variable <strong>M</strong>
+         parameter:
+         <ul>
+            <li>CLow (C-1) = 0; CMed (C0) = 1/3; CHigh (C1) = 2/3;</li>
+            <li>MLow = 15; MMed = 10; MHigh = 5</li>
+         </ul>
+         <p>
+            <img src="images/default-formula-graphic-2.png" alt="">
+         </p></li>
+   </ul>
+   <p>The first variant shown above corresponds to the default
+      parameterization that is used, whereas the second shows an alternative
+      that would more aggressively age activity instance with higher priorities.</p>
+   <!-- similar option is planned per preferences 
+
+ <h3 id="customDef">Configuring a custom Default Formula</h3>
+
+<p>The default formula to be used can be configured by
+setting the following configuration variable to a string containing the
+default formula to be used:</p>
+<pre>CriticalityEvaluationAction.DEFAULT_PREF_CRITICALITY_FORMULA ("Criticality.Formula.Default")</pre>
+<p>Note that in this case configuration variables as well as any
+kind of pre-runtime syntax validation is not supported.</p>-->
+   <h3 id="calcact">Calculation and Recalculation During Activity
+      Processing</h3>
+   <ul>
+      <li><a href="#actcreate">Activity creation</a>
+      </li>
+      <li><a href="#priochange">Changing process priority</a>
+      </li>
+      <li><a href="#moddata">Modifying process data via suspend</a>
+      </li>
+   </ul>
+   <h4 id="actcreate">Activity creation</h4>
+   <p>Upon activity creation, the initial activity criticality value is
+      calculated using the JavaScript formula for the model containing the
+      current activity and the algorithm described in the previous sections.</p>
+   <h4 id="priochange">Changing process priority</h4>
+   <p>Activity criticality is recalculated and stored analogously whenever
+      the priority is changed for the process instance containing the current
+      activity. The following methods to change process priority result in
+      reevaluation of dependent activity criticalities:</p>
+   <ul>
+      <li>via the <a
+         href="../handbooks/programming/embed/pg-embedded-3.htm#workflowservice">
+            WorkflowService</a> methods:
+         <ul>
+            <li><tt>ProcessInstance setProcessInstancePriority(long
+                  oid, int priority)</tt>
+            </li>
+            <li><tt>ProcessInstance setProcessInstancePriority(long
+                  oid, int priority, boolean propagateToSubProcesses)</tt>
+            </li>
+         </ul></li>
+      <li>via out-data-mappings to the pseudo-data <tt>PROCESS_PRIORITY</tt>.</li>
+      <li>via modification of pseudo-data <tt>PROCESS_PRIORITY</tt> via set
+         data event actions.</li>
+   </ul>
+   <h4 id="moddata">Modifying process data via suspend</h4>
+   <p>
+      Activity criticality is recalculated whenever any of the following
+      <tt>suspend()</tt>
+      -methods is called:
+   </p>
+   <ul>
+      <li><tt>suspend()</tt>
+      </li>
+      <li><tt>suspendToDefaultPerformer()</tt>
+      </li>
+      <li><tt>suspendToParticipant()</tt>
+      </li>
+      <li><tt>suspendToUser()</tt>
+      </li>
+   </ul>
+   <h3 id="control">Controlling Recalculation Behavior via API</h3>
+   <p>
+      Using the Stardust API allows you to controll the recalculation
+      behavior of activity criticality. For details refer to chapter <a
+         href="../handbooks/programming/embed/proc-act-inst/pg-embed-criticality.html"> Querying and
+         Recalculating Activity Criticality</a>. That chapter additionally describes
+      how to retrieve criticality of an activity instance, query for criticality
+      and the recalculation process.
+   </p>
+   <h2 id="daemon">Prioritization Daemon</h2>
+   <p>A prioritization daemon exists to handle criticality recalculation and
+      other functionality in the area of dynamical workload prioritization,
+      like:</p>
+   <ul>
+      <li>loading pending activity instances in chunks.</li>
+      <li>recalculating criticality according to JavaScript formula
+         applicable for the model the activity belongs to.</li>
+      <li>storing recalculated criticality.</li>
+   </ul>
+   <p>
+      Refer to chapter <a href="admin-concepts/ag-concepts-2.htm">Daemons</a>
+      for details on this daemon.
+   </p>
+   <h2 id="ass">Assembly Line Provider for Criticality</h2>
+   <p>
+      The Assembly line provider
+      <tt>CriticalityAwareAssemblyLineActivityProvider</tt>
+      introduced for criticality is able to use full precision of Double value
+      for determining the most critical activity. To order worklists, the
+      Assembly line provider uses the following criteria in the order:
+   </p>
+   <ol>
+      <li>Descending activity criticality.</li>
+      <li>Descending priority of corresponding process.</li>
+      <li>Descending time passed since activity creation.</li>
+   </ol>
+   <p>
+      To use the assembly line provider for criticality, set the assembly line
+      provider property in your
+      <tt>carnot.properties</tt>
+      file to the criticality provider:
+   </p>
+   <pre>Carnot.ProcessPortal.AssemblyLineActivityProvider=
+    org.eclipse.stardust.ui.web.processportal.common.CriticalityAwareAssemblyLineActivityProvider</pre>
+   <p>
+      Refer to chapter <a href="../handbooks/programming/spi/portal/portal-config-assembly.html">
+         Implementing an Assembly Line Activity Provider</a> in the <a
+         href="../handbooks/programming/pg-preface.htm">Programming Guide</a> for details
+      on how to implement the default assembly line provider in general.
+   </p>
+   <h2 id="portal">Criticality used in Stardust Portals</h2>
+   <p>
+      The Stardust portals visualize criticality as colored flags to
+      describe Integer values between
+      <tt>0</tt>
+      and
+      <tt>1000</tt>
+      . Criticality is displayed in all activity tables.
+   </p>
+   <p>
+      The <strong>Criticality Configuration View</strong> provides the option
+      to:
+   </p>
+   <ul>
+      <li>Adding or editing a JavaScript formula to be used to calculate
+         criticality.</li>
+      <li>Adding and editing categories for criticality.</li>
+      <li>Determining recalculation events.</li>
+   </ul>
+   <p>
+      For details refer to chapter <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-criticality.html">
+         Configuring Criticality Settings</a> of the <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">
+         End User Handbook</a>.
+   </p>
+   <h2 id="invalid">Handling of incorrect Result Values</h2>
+   <p>
+      The result returned by the JavaScript criticality formula is assigned to
+      the activity instance criticality as floating point number in the interval
+      <tt>[0;1]</tt>
+      .
+   </p>
+   <p>Incorrect result values are handled in the following way:</p>
+   <ul>
+      <li>JavaScript formula result is not a number: the criticality
+         returned and persisted in the audit trail for that instance is <tt>-1</tt>.
+         A log message is logged to the engine log files with a warning level.
+         On the Stardust Portal, the criticality is displayed as Undefined.</li>
+      <li>JavaScript formula result is a number smaller than <tt>0</tt>:
+         the criticality is set to <tt>0</tt> and a log message is logged to the
+         engine log files with <tt>Warn</tt> level.</li>
+      <li>JavaScript formula result is a number larger than <tt>1</tt>, the
+         criticality is set to <tt>1</tt> and a log message is logged to the
+         engine log files with <tt>Warn</tt> level.</li>
+   </ul>
+   <script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

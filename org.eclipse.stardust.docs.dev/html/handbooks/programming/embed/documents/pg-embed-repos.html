@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Managing Document Repositories</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Migrating Repository Resources",
+		"pg-embed-documents.html","pg-embed-migrate.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage",
+		"docs-preface.html","Document Management");
+-->
+</script>
+<h1>Managing Document Repositories</h1>
+<p>Stardust allows to use federated document repositories as described in chapter
+<a href="../../../../concepts/repository-storage.html">Federated Document Repositories</a>
+in the <a href="../../../../concepts/key-concepts.html">Concepts</a> part.
+You can manage these repositories via the provided 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+DocumentManagementService</a> API. The following sections describe how to use this API,
+e.g. for binding and unbinding repositories or 
+retrieving information on all available repository providers.</p>
+<ul>
+   <li><a href="#bind">Binding a new Repository Instance</a></li>
+   <li><a href="#unbind">Unbinding a previously Bound Repository</a></li>
+   <li><a href="#infobound">Retrieving Information about all bound Repositories</a></li>
+   <li><a href="#info">Retrieving Information about all available Repository Providers</a></li>
+   <li><a href="#setbr">Setting a bound Repository as default Repository</a></li>
+   <li><a href="#identify">Identifying the currently set default Repository</a></li>
+   <li><a href="#example">Example Use Case</a></li>
+</ul>
+<h2 id="bind">Binding a new Repository Instance</h2>
+<p>Method</p>
+<pre>void bindRepository(IRepositoryConfiguration configuration)</pre>
+<p>allows to bind a new repository instance. The usage of this method is restricted to administrators.
+In case the user is not an administrator, the following
+exception is thrown:</p>
+<pre>DocumentManagementServiceException(BpmRuntimeError.DMS_SECURITY_ERROR_ADMIN_REQUIRED.raise());</pre>
+<p>The parameter of this method defines the configuration 
+of type 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryConfiguration.html">
+IRepositoryConfiguration</a> for the repository to bind.</p>
+<p>The repository id supplied via this configuration can be
+freely chosen, but has to differ from currently bound repository Ids.
+The provider Id supplied via the configuration has to match a registered 
+repository provider.</p>
+<p>You can retrieve a template configuration from
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProviderInfo.html#getConfigurationTemplate()">
+IRepositoryProviderInfo#getConfigurationTemplate()</a>.
+This template contains keys and template values that are required for the
+configuration of an new repository instance.</p>
+<p>For details on how to create a custom repository configuration provider refer
+to chapter
+<a href="../../spi/spi-repository.html">Implementing a Provider for arbitrary Repository Technologies</a>.</p>
+<h2 id="unbind">Unbinding a previously Bound Repository</h2>
+<p>The following method unbinds a previously bound repository:</p>
+<pre>void unbindRepository(String repositoryId)</pre>
+<p>The usage of this method is restricted to administrators.
+In case the user is not an administrator, the following
+exception is thrown:</p>
+<pre>DocumentManagementServiceException(BpmRuntimeError.DMS_SECURITY_ERROR_ADMIN_REQUIRED.raise());</pre>
+<p>Parameter is the Id of the repository instance to unbind.</p>
+<h2 id="infobound">Retrieving Information about all bound Repositories</h2>
+<p>In case you like to retrieve information about all bound repositories,
+use the following method:</p>
+<pre>List&lt;IRepositoryInstanceInfo&gt; getRepositoryInstanceInfos();</pre>
+<p>It returns a list of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryInstanceInfo.html">
+IRepositoryInstanceInfo</a>.</p>
+<h2 id="info">Retrieving Information about all available Repository Providers</h2>
+<p>Method</p>
+<pre>List&lt;IRepositoryProviderInfo&gt; getRepositoryProviderInfos();</pre>
+<p>retrieves information about all available repository providers.
+It returns a list of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/IRepositoryProviderInfo.html">
+IRepositoryProviderInfo</a>.</p>
+<h2 id="setbr">Setting a bound Repository as default Repository</h2>
+<p>The following method bounds a repository as default repository:</p>
+<pre>void setDefaultRepository(String repositoryId);</pre>
+<p>The usage of this method is restricted to administrators.
+In case the user is not an administrator, the following
+exception is thrown:</p>
+<pre>DocumentManagementServiceException(BpmRuntimeError.DMS_SECURITY_ERROR_ADMIN_REQUIRED.raise());</pre>
+<p>The given parameter is the Id of the repository instance.
+Path based access targets the default repository, whereas
+Id based access targets the repository contained in the id. An id provided by the
+system is always prefixed with a repository id. If the id is not provided by the
+system and is not prefixed with a repository id, the default repository is targeted.</p>
+<h2 id="identify">Identifying the currently set default Repository</h2>
+<p>To identify the currently set default repository, you can use the following
+method:</p>
+<pre>String getDefaultRepository();</pre>
+<p>It returns the Id of the currently set default repository.</p>
+<h2 id="example">Example Use Case</h2>
+
+<script language="JavaScript" type="text/javascript"> 
+writeFooter(); 
+</script>
+</body>
+</html>

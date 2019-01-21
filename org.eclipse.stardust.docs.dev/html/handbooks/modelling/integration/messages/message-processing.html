@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Message Processing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel ="stylesheet" type="text/css" href="../../../../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+    writeNavigation("Message Parsing Application Type",
+    "","message-parsing-appl.html",
+        "../../../handbooks.htm","Developer Handbook",
+        "../../mg-preface.htm","Modeling Guide",
+        "../../mg-integration-preface.htm","System Integration",
+        "../message-appl-preface.html","Message Application Types");
+ -->
+</script>
+<body>
+<h1>Message Processing</h1>
+<p>The following diagram describes the process of a message processing solution:</p>
+<p class="image"><img src="images/message-processing-diagram.png" 
+alt="Messaging Process"><br>
+<strong>Figure:</strong> Messaging Process</p>
+<p>A messaging process is performed with the following steps:</p>
+<ol>
+    <li>Messages of a specific format enter the flow as a streaming buffer.</li>
+    <li>These messages are parsed to a data structure.</li>
+    <li>The messages go through some validation.</li>
+    <li>The messages are manipulated, either enriched with additional information or
+        transformed to other messages of specific formats.</li>
+    <li>The flow evolves based on some conditions evaluated on the message content and then 
+        the messages are either distributed via applications or network,
+         or/and archived to a database.</li>
+</ol>
+<p>To describe a message processing environment, you need to define:</p>
+<ul>
+    <li>the message data structures</li>
+    <li>the message format to be able to parse messages from and serialize them
+        to streaming buffers</li>
+    <li>the processing flow</li>
+</ul>
+<p>Messages in the Stardust Workflow Execution Perspective are represented as structured data.
+Please refer to the chapter 
+<a href="../../data-integration/struct-data-preface.html">Structured Data Types</a>
+for detailed information on this data type.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

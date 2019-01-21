@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Data Integration</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","","",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide");
+ -->
+</script>
+<h1>Data Integration</h1>
+<p>Stardust supports the following data types that
+allow the integration within a process:</p>
+<ul>
+	<li><a href="mg-integration-2.htm">Working with Java Style Data Types</a>
+	<ul>
+    	<li><a href="java-style-data/primitive-data.html">Primitive Data</a></li>
+    	<li><a href="java-style-data/serializable-data.html">Serializable Data</a></li>
+    	<li><a href="java-style-data/entity-bean-data.html">Entity Bean Data</a></li>
+	</ul></li>
+	<li><a href="struct-data-preface.html">Structured Data Types</a>
+		<ul>
+		    <li><a href="structured-data/struct-type-def.html">Defining Structured Types</a></li>
+		    <li><a href="structured-data/struct-proc-data.html">Using Structured Types in Process Data</a></li>
+		    <li><a href="structured-data/struct-type-portal.html">Using Structured Types in the Stardust Portal</a></li>
+		    <li><a href="structured-data/struct-field-level.html">Structured Data Annotation Properties</a></li>
+            <li><a href="structured-data/struct-type-xpdl.html">XPDL Representation of Structured Data</a></li>
+		</ul>
+	</li>
+	<li><a href="mg-integration-3.htm">XML Data</a></li>
+	<li><a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-data-types.html">
+	Document Management Systems Data Types</a></li>
+</ul>
+<h2>Object Data Types</h2>
+<h3>Java Style Data Types</h3>
+<p>Serializable data types and Entity Bean data types are Java style data 
+types. They both
+ have their pros and cons. Serialization is a
+quick method to use objects for your process data. Stardust serializes
+these objects as whole in the Audit Trail. The disadvantages using
+serialization are clear. You have to care of different class versions
+and Stardust have to de-serialize all objects of a type to search for an
+attribute you have for example defined as descriptor. The Entity Bean
+Data Type stores only the primary key in the Audit Trail. Stardust does
+not care of how to persist the object. The EJB container (cmp) or rather
+yourself (bmp) is responsible to persist the object. But the use of
+Entity Beans means also the use of a heavyweight persistence framework.</p>
+<h3>Restrictions</h3>
+<p>All of these approaches suffer when it comes to queries on the process
+instance data (as for example if used as descriptors). The engine has to
+de-serialize/load all entities to evaluate them. So it is not recommended
+(but possible) to create descriptors on these data types. It is
+recommended to save descriptor values in primitive or structured data so
+access to these data is quite fast and efficient. Please also note that
+sorting is not supported on descriptor values on these data types.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

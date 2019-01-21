@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Using user-defined properties</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Using User-Defined Properties</h1>
+<p>You may have already noticed that in Graphiti it is sometimes difficult to unambiguously 
+identify a pictogram element.</p>
+<p>For example many features of this tutorial work on the shapes depicting EClasses. 
+In the <span class="inlinecode">canExecute()</span> methods of those features we 
+always received the current pictogram element and checked, if the associated business 
+object is a EClass. In that case we assumed that this is the container shape, which 
+was created in the <a href="add-feature.htm">add feature</a>.</p>
+<p>But what happens, if there are several pictogram elements which have a EClass 
+as associated business object? This might happen, because there are several graphical 
+representations for a EClass. In that case we need a means to distinguish the shapes 
+independent from the associated business object.</p>
+<p>All pictogram elements provide the possibility to attach user-defined properties 
+to them (key-value pairs).</p>
+<p>In our example we want to use this, to attach an identifier to the shapes we 
+create, e.g. &quot;shape-id = e-class&quot;. Using this identifier the shapes can later be 
+clearly identified.</p>
+<p>You can imagine another example if we would enhance the tutorial and show the 
+attributes of a EClass in the shape below the class name. Each attribute might be 
+displayed as an own shape, but all attribute shapes would associate the same business 
+object: the EClass. So to differentiate the attribute shapes, it would be useful 
+to add the attribute name as a property, e.g. &quot;attribute-name = city&quot;.</p>
+<h2>Creating a Property Utility Class</h2>
+<p>In this example we want to set a user-defined property to the shape of a EClass, 
+which we create in our <a href="add-feature.htm">add feature</a>. Later in the
+<a href="layout-feature.htm">layout feature</a> we check this user-defined property 
+to find out, if this is the shape the layout feature expects to (remember, that 
+the layout feature very strongly depends on the shape structure created in the add 
+feature. For simplicity reasons we only change the layout feature and not all the 
+other features.</p>
+<p>Note, that sometimes it is still correct to only check the business object. For 
+example in our <i>TutorialRenameEClassFeature</i> the shape doesn’t really matter, 
+only the associated EClass.</p>
+<p>We start by implementing a utility class for the handling of the user-defined 
+properties of our tool.</p>
+<p>Note the helper-methods
+<a href="../../../javadoc/org/eclipse/graphiti/services/IPeService.html#setPropertyValue(org.eclipse.graphiti.mm.PropertyContainer, java.lang.String, java.lang.String)">
+setPropertyValue</a> and
+<a href="../../../javadoc/org/eclipse/graphiti/services/IPeService.html#getPropertyValue(org.eclipse.graphiti.mm.PropertyContainer, java.lang.String)">
+getPropertyValue</a>, which allow to easily access the property values.</p>
+<p>You can see the complete implementation of the user-defined property utility 
+class here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial;<br>&nbsp;<br>
+		<span class="keyword">public class</span> PropertyUtil {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public static final</span> String
+		<span class="string"><em>SHAPE_KEY</em></span> = <span class="string">&quot;shape-id&quot;</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public static final</span> String
+		<span class="string"><em>SHAPE_VALUE_E_CLASS</em></span> =
+		<span class="string">&quot;e-class&quot;</span>;<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;public static final void</span> setEClassShape(PictogramElement 
+		pe) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphiti.getPeService().setPropertyValue(pe,
+		<span class="string"><em>SHAPE_KEY</em></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string"><em>SHAPE_VALUE_E_CLASS</em></span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public static boolean</span> 
+		isEClassShape(PictogramElement pe) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		return <span class="string"><em>SHAPE_VALUE_E_CLASS</em></span>.equals(Graphiti.getPeService()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getPropertyValue(pe, <span class="string"><em>SHAPE_KEY</em></span>));<br>&nbsp;&nbsp;&nbsp; 
+		}<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Next we have to set the user-defined property to the shape of the EClass in the 
+add method of the<span class="inlinecode">TutorialAddEClassFeature</span>.</p>
+<p>You can see<span class="inlinecode">add</span> method in the following code snippet:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">public</span> PictogramElement add(IAddContext 
+		context) {<br>&nbsp;&nbsp;&nbsp; EClass addedClass = (EClass) context.getNewObject();<br>&nbsp;&nbsp;&nbsp; 
+		Diagram targetDiagram = (Diagram) context.getTargetContainer();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// CONTAINER SHAPE WITH ROUNDED RECTANGLE</span><br>&nbsp;&nbsp;&nbsp; 
+		IPeCreateService peCreateService = Graphiti.getPeCreateService();<br>&nbsp;&nbsp;&nbsp; 
+		ContainerShape containerShape =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		peCreateService.createContainerShape(targetDiagram,
+		<span class="keyword">true</span>);<br>&nbsp;&nbsp;&nbsp; PropertyUtil.setEClassShape(containerShape);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ... EXISTING CODING ...</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return</span> containerShape;<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Finally we change the <span class="inlinecode">canLayout</span> method of the
+<span class="inlinecode">TutorialLayoutEClassFeature</span>, so that it now compares 
+the user-defined property of the shape and no longer the business object associated 
+with the shape.</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">public boolean</span> canLayout(ILayoutContext 
+		context) {<br>&nbsp;&nbsp;&nbsp; <span class="comment">// return true, if 
+		pictogram element is a EClass shape</span><br>&nbsp;&nbsp;&nbsp; PictogramElement 
+		pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> PropertyUtil.isEClassShape(pe);<br>}
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Verify Layout of EClass</h2>
+<p>Now start the editor and test that the layout feature still works correctly:</p>
+<ol>
+	<li>create or open a new diagram</li>
+	<li>create a new EClass</li>
+	<li>resize the EClass, and verify that the layout still works correctly (size 
+	of all graphics algorithms changes)</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Plain Java Applications</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Session Bean Applications","","integration-session-bean.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Plain Java Applications</h1>
+<p>Plain Java applications allow to instantiate any Java class with at least one
+public constructor and execute a method on it. To achieve this, at modeling time you have
+to specify</p>
+<ul>
+    <li>the Java class,</li>
+    <li>a public constructor of the class and</li>
+    <li>a public method - the completion method.</li>
+</ul>
+<p>These settings are accessed in Plain Java application types
+in the Process Workbench.</p>
+<ul>
+    <li><a href="#createJava">Creating a Plain Java Application</a></li>
+    <li><a href="#params">Parameters as Access Points</a></li>
+    <li><a href="#retryJava">Configuring Retry Mechanism</a></li>
+</ul>
+<h2 id="createJava">Creating a Plain Java Application</h2>
+<p>To specify a plain Java application in the Process
+Workbench:</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Applications &gt;
+    Plain Java Application</strong></li>
+    <li>Open the application properties dialog with a double-click.</li>
+    <li>In the details panel, choose the correct values for the implementation
+    class, the constructor and the completion method. Note that for accomplishing this
+    step it is necessary to have the implementation class in the class path of the Process
+    Workbench.</li>
+</ol>
+<p>Please refer to chapter <a href="../mg-defdesk-6.htm">Specifying Applications</a> for
+general questions on working with applications in the Process Workbench.</p>
+<p class="image"><img src="images/mg-integration-plainjava.png"
+    alt="Specifying a Plain Java Application"> <br>
+<strong>Figure:</strong> Specifying a Plain Java Application</p>
+<p>Detailed information on integrating Java applications can be found
+in the <a href="../mg-integration-preface.htm">System Integration</a> part.</p>
+<h2 id="params">Parameters as Access Points</h2>
+<p>The return value of the completion method, if any, will be exposed as an
+OUT access point <tt>returnValue : &lt;type&gt;</tt>.</p>
+<p class="image"><img src="images/java-access-point-return.png"
+    alt="Access Point return value"> <br>
+<strong>Figure:</strong> Return Value Access Point</p>
+<p>The constructor and completion method parameters will be exposed 
+by the arguments of the methods in the format <tt>&lt;argument&gt; : &lt;type&gt;</tt>.</p>
+<p>For example using the following completion method with parameters <tt>arg1</tt> and
+<tt>arg2</tt>:</p>
+<pre>
+public class TestAppl
+{
+
+   public TestAppl()
+   {
+   }
+   
+   public void notifyCustomer(int arg1, String arg2)
+   {
+   }
+}
+</pre>
+<p>would result in the provided access points <tt>arg1 : int</tt> and <tt>arg2 : String</tt>.</p>
+<p class="image"><img src="images/java-access-point-arg.png"
+    alt="Access Point "> <br>
+<strong>Figure:</strong> Access Points for completion method</p>
+
+<p>When connecting a data to an application activity, the data mapping is created 
+automatically. Please refer to the section 
+<a href="../mg-defdesk-8.htm#automatic">Automatic Completion of Data Mappings</a> of
+the chapter <a href="../mg-defdesk-8.htm">Specifying Data Mappings</a> for detailed
+information on the preset of parameters for automatic completed data mappings.</p>
+<h3>Retrieving access points using annotations</h3>
+<p>Stardust provides the following two annotations that can be used to retrieve
+access points via parameter names:</p>
+<ul>
+   <li><strong>&#64;ParameterName</strong> - can be set on the actual parameter (currently only supported in the 
+   Stardust Web modeler)</li>
+   <li><strong>&#64;ParameterNames</strong> - has as value an array of <strong>&#64;ParameterName</strong>
+    and can be set on the method</li>
+</ul>
+<pre>
+@ParameterNames ({@ParameterName("count"), @ParameterName("name"), ...})
+public int method(int arg1, String arg2);
+</pre>
+<p>For example, if you set the following annotations for your completion method:</p>
+<pre>
+import org.eclipse.stardust.common.annotations.ParameterName;
+import org.eclipse.stardust.common.annotations.ParameterNames;
+
+public class TestAppl
+{
+
+   public TestAppl()
+   {
+   }
+   
+   @ParameterNames({@ParameterName("Element Count"), @ParameterName("Customer Name")})
+   public void notifyCustomer(int arg1, String arg2)
+   {
+   }
+}
+</pre>
+<p>instead of the arguments, you see the annotation settings for ParameterNames in
+the list of access points:</p>
+<p class="image"><img src="images/java-access-point-name.png"
+    alt="Access Points with Annotation Usage"> <br>
+<strong>Figure:</strong> Access Points with Annotation Usage</p>
+<p>For an application that you like to import in the Web modeler, you can also
+use the <strong>&#64;ParameterName</strong> in the parameter list directly, as 
+in the following example:</p>
+<pre>
+import org.eclipse.stardust.common.annotations.ParameterName;
+
+public class TestAppl
+{
+
+   public TestAppl()
+   {
+   }
+   
+   public void notifyCustomer(@ParameterName("Element Count") int arg1, @ParameterName("Customer Name") String arg2)
+   {
+   }
+}
+</pre>
+<h4 id="custom">Using custom annotation parameter classes</h4>
+<p>Instead of importing the predefined classes 
+<tt>org.eclipse.stardust.common.annotations.ParameterName</tt> and
+<tt>org.eclipse.stardust.common.annotations.ParameterNames</tt>, you have the option to
+create your own custom classes and import them. These classes should follow the pattern
+below:</p>
+<pre>
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.PARAMETER)
+public @interface ParameterName
+{
+   String value();
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface ParameterNames
+{
+   ParameterName[] value();
+}
+</pre>
+<p>The following example class imports the interfaces from a class <tt>CustomAnnotations</tt>,
+which follows the pattern mentioned above:</p>
+<pre>
+import test.annotation.CustomAnnotations.ParameterName;
+import test.annotation.CustomAnnotations.ParameterNames;
+
+public class AnnotationExample {
+
+   public String uploadTrade(@ParameterName(value = "Enter Author Name") String tradeAuthort, @ParameterName(value = "Enter Your Comments")String tradeComments,
+         @ParameterName(value = "Enter Date")String tradeDate, @ParameterName(value = "Enter Revision")int tradeRevision) {
+      return "From Upload Trade Method";
+   }
+
+   @ParameterNames(value = {@ParameterName("Element Count"), @ParameterName("Customer Name")})
+   public String uploadTradeParaMeterNames(String count,
+         String name){
+      return "Returned From Upload Trade Parameters Names Method";
+   }
+
+}</pre>
+<p>You can set the <tt>uploadTrade</tt> as completion method for a Plain Java Application.</p>
+<p class="image"><img src="images/annotation-custom-appl.png"
+    alt="Plain Java Application using Annotation Classes"> <br>
+<strong>Figure:</strong> Plain Java Application using Annotation Classes</p>
+<p>Then the following access points using the custom annotations are provided:</p>
+<p class="image"><img src="images/annotation-custom-map.png"
+    alt="Access Points provided with custom Annotation Usage"> <br>
+<strong>Figure:</strong> Access Points provided with custom Annotation Usage</p>
+<p>Or, when using <tt>uploadTradeParaMeterNames</tt> as completion method for a Plain Java
+Application, the following access points are provided:</p>
+<p class="image"><img src="images/annotation-custom-2.png"
+    alt="Access Points provided with custom ParameterNames  Usage"> <br>
+<strong>Figure:</strong> Access Points provided with custom ParameterNames Usage</p>
+
+<h2 id="retryJava">Configuring Retry Mechanism</h2>
+<p> The configurable retry mechanism provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+<p>For more information, please refer to 
+<a href="../../../concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="../../../concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+<p>For example, you have added a synchronous application to the model.
+In the Property page of the application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+<p class="image"><img src="images/plainretry.png" alt=""><br></p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Stardust Environment</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Document Types",
+			"ag-concepts-3.htm","ag-concepts-doc-types.html",
+		    "../key-concepts.html","Concepts",
+		    "ag-concepts-preface.htm","Administrative Concepts");
+ -->
+</script>
+<h1>Stardust Environment</h1>
+<p>The Stardust runtime engine is configured by a set of
+parameters. Those parameters can be specified in several ways, depending
+on the operating mode.</p>
+<p>When operating in Spring local mode (direct connection of the
+client with the database), the runtime properties are obtained from two
+distinct places: <tt>carnot.properties</tt> and the Java system
+properties. Stardust runtime is always searching for the <tt>carnot.properties</tt>
+file in the JVM classpath. The Java system properties can be specified
+using the <tt>-D</tt> option of the Java virtual machine.</p>
+<p>When operating inside an application server, in addition to the
+previous configuration mechanisms, the Stardust runtime is using the EJB
+or the Web environment to get the necessary properties. In the current
+implementation, the EJB/Web environment has precedence over the
+properties specified in <tt>carnot.properties</tt> or system properties.
+The EJB environment is specified in the deployment descriptors of the
+Stardust Enterprise Beans or in the deployment descriptor (<tt>web.xml</tt>)
+of your Web application. You can manually edit the descriptors, which
+are located in the <tt><nobr>carnot-engine.jar</nobr></tt> module, or
+you can use the administrative tools of your application server.</p>
+<p>The client configuration always uses <tt>carnot.properties</tt>
+and the Java system properties.</p>
+<h2>Client and Server Side Properties</h2>
+<p>The <a href="../../handbooks/operation/properties/ag-appendix-properties-1.htm">client
+side properties</a> are used for enabling the Stardust client tools. They
+include in the first instance parameters for security, audit trail,
+JNDI, license and logging settings. For instance security parameters
+entail authenticating the client on the server side. These properties
+reside in the <tt>carnot.properties</tt> file, which is by default
+located in the <tt>/etc</tt> folder of your work directory, but the user
+can specify alternative search locations.</p>
+<p>The <a href="../../handbooks/operation/properties/ag-appendix-properties-2.htm">server
+side properties</a> have to be available in the Stardust runtime
+environment. They include among others parameters for security, audit
+trail, concurrency and daemon settings. The server side <tt>carnot.properties</tt>
+file is located in the root directory of the <tt><nobr>engine.jar</nobr></tt>
+that is included within the <tt>carnot.ear</tt> file.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

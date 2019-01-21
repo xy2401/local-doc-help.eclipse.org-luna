@@ -1,0 +1,83 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.m2m.qvt.oml.doc;singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/mmt/or
+ g.eclipse.qvto.git
+Require-Bundle: org.eclipse.help;bundle-version="[3.4.0,4.0.0)"
+Created-By: 1.6.0_21-b06 (Sun Microsystems Inc.)
+Bundle-Version: 3.4.0.v20150201-1444
+Bundle-ManifestVersion: 2
+
+Name: about.ini
+SHA1-Digest: KQMVTFcyVja5dvVmIh2o+qDsslY=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: about.mappings
+SHA1-Digest: v02aMwbQAAZ0V/b3CFzmY1o9JL0=
+
+Name: references/doc.css
+SHA1-Digest: ML6EHTvp67zo6Vc8TrmjfA2myR4=
+
+Name: references/breakingChangesInQVTOImplementation.html
+SHA1-Digest: jPan/1gu34QJTsi06YWNY9cO0xE=
+
+Name: references/blackboxing.html
+SHA1-Digest: Jt9E0T/g49VNP6EiAdBH33jwD7s=
+
+Name: references/anttasks.html
+SHA1-Digest: FQe+AbPVvnzNlUSYuIjcKgYctpk=
+
+Name: about.html
+SHA1-Digest: ulgHLYWZUbScqF4zrMs2DTTuWsE=
+
+Name: plugin.properties
+SHA1-Digest: xl+CRlRqQ4fI97R/pcc2g80iGUQ=
+
+Name: references/M2M-QVTO.pdf
+SHA1-Digest: 3mfLxEI0yXAqWqlJfkK5vTOmluE=
+
+Name: toc.xml
+SHA1-Digest: txebdbE112RqzlTF9Oo+Qy5FW7g=
+
+Name: modeling32.png
+SHA1-Digest: ADlLWFV0eQ74YnLvHnPFkYLeLrs=
+
+Name: about.properties
+SHA1-Digest: NFpVo9w5ZYWfC4ba2s4y1Lu/L1k=
+
+Name: references/reference.html
+SHA1-Digest: b1miiZwZVAyH+m9snOjRqydEZZ4=
+
+Name: schema.css
+SHA1-Digest: ClroylzCOsso8nNzRRW4Z4MG3bA=
+
+Name: topics_Reference.xml
+SHA1-Digest: HH6k88G3usq2Dx18TdT3APTrdro=
+
+Name: references/overview.html
+SHA1-Digest: b29d6a0ps+jrldCcE6XbsQj6XzY=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_javaBlackbox
+ Units.html
+SHA1-Digest: JYvr9CbQi7mtAkvknGIfv/9X+uU=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_blackboxProv
+ ider.html
+SHA1-Digest: 1tGDYAVDbEN57UekJ0nv6MGdSRM=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_unitResolver
+ Factory.html
+SHA1-Digest: Z7cG6zYHCTvcMEGwZCFpIgUAnZw=
+
+Name: plugin.xml
+SHA1-Digest: NtBCL468SGMOV3NHwjk+beTSd+w=
+
+Name: book.css
+SHA1-Digest: kvGJAYWLgQEfAU05klpaFKLBUG0=
+

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Contributing to the property sheet</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Contributing to the Property Sheet</h1>
+<h2>Prerequisite</h2>
+	<p>
+		Contributing to the property sheet is done using the standard Eclipse
+		extension point for registering tabbed property sheets. Add a
+		dependency to the plugin <em>org.eclipse.ui.views.properties.tabbed</em>
+		in the <em>plugin.xml</em> resp. <em>manifest.mf</em>, which contains
+		eclipse functionality for property sheets.
+	</p>
+	<p class="Note">
+		Note: It is also possible to use the standard Eclipse property sheets.
+		In order to enable that you need to provide a
+		<span class="inlinecode">
+		<code>org.eclipse.ui.views.properties.PropertySheetPage</code></span>
+		instead of the default
+		<code><span class="inlinecode">org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage(ITabbedPropertySheetPageContributor</span>)</code>
+		in the <code class="inlinecode">getAdapter()</code> method of 
+		<code class="inlinecode">DiagramEditor</code>.
+	</p>
+<h2>Contributing to the Property Sheet</h2>
+<p>Contributing to the property sheet is easy if you are familiar with the Eclipse 
+property sheet concept. If not please read the following
+<a href="http://www.eclipse.org/articles/Article-Tabbed-Properties/tabbed_properties_view.html">
+article</a>.</p>
+<p>First you have to add some declarations to your plugin.xml.</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">&nbsp;<span class="string">&lt;extension</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="string">point=</span><span class="comment">&quot;org.eclipse.ui.views.properties.tabbed.propertyContributor&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="string">&lt;propertyContributor contributorId=</span><span class="comment">&quot;mytutorial.PropertyContributor&quot;</span><span class="string">&gt;</span>
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="string">&lt;propertyCategory 
+		category=</span><span class="comment">&quot;Graphiti&quot;</span><span class="string">&gt;
+		</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&lt;/propertyCategory&gt; <br>&nbsp;&nbsp;&nbsp; &lt;/propertyContributor&gt;
+		<br>&lt;/extension&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		&lt;extension<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		point=</span><span class="comment">&quot;org.eclipse.ui.views.properties.tabbed.propertyTabs&quot;</span><span class="string">&gt;<br>
+		&nbsp;&nbsp;
+		&lt;propertyTabs<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; contributorId=</span><span class="comment">&quot;mytutorial.PropertyContributor&quot;</span><span class="string">&gt;<br>
+		&nbsp;&nbsp;
+		&lt;propertyTab<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; category=</span><span class="comment">&quot;Graphiti&quot;</span><span class="string"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; id=</span><span class="comment">&quot;graphiti.main.tab&quot;</span><span class="string"><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		label=</span><span class="comment">&quot;Main&quot;</span><span class="string">&gt;<br>&nbsp;&nbsp;&nbsp; &lt;/propertyTab&gt;<br>&nbsp;&nbsp; &lt;/propertyTabs&gt;<br>&lt;/extension&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		&lt;extension<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; point=</span><span class="comment">&quot;org.eclipse.ui.views.properties.tabbed.propertySections&quot;</span><span class="string">&gt;<br>&nbsp;&nbsp;&nbsp; 
+		&lt;propertySections<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		contributorId=</span><span class="comment">&quot;mytutorial.PropertyContributor&quot;</span><span class="string">&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		&lt;propertySection<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		class=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.property<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.MyTutorialEClassSection&quot;</span><span class="string"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		filter=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.property<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.MyTutorialEClassFilter&quot;</span><span class="string"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		id=</span><span class="comment">&quot;graphiti.main.tab.emfclass&quot;</span><span class="string"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		tab=</span><span class="comment">&quot;graphiti.main.tab&quot;</span><span class="string">&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		&lt;/propertySection&gt;<br>&nbsp;&nbsp;&nbsp; &lt;/propertySections&gt;<br>
+		&lt;/extension&gt;</span><br>
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>The first extension creates a <strong>category</strong> with the id
+<span class="inlinecode">&quot;Graphiti&quot;</span>. Categories are used to group tabs.</p>
+<p>The second extension creates a <strong>tab</strong> with the label
+<span class="inlinecode">&quot;Main&quot;</span> in the previously created category. </p>
+<p>The third extension creates a <strong>section</strong> for the previously defined 
+tab. Sections are the UI blocks of which a tab consists.</p>
+<p>It is very important, that the contributorId in the plugin.xml is the same, which 
+is determined internally in Graphiti. The contributorId is calculated from the diagram-type-id 
+by the formula: <span class="inlinecode">Diagram.getDiagramTypeId() + &quot;.PropertyContributor&quot;</span>.</p>
+<p>In our example this results in <span class="inlinecode">contributorId=&quot;mytutorial.PropertyContributor&quot;</span>.</p>
+<p>Note that the category “Graphiti” and the identifiers “graphiti.main.tab” and 
+“graphiti.main.tab.emfclass” can be chosen freely, as long as they are kept consistent 
+over all occurrences.</p>
+<p>In our example the section should be shown if the selected element represents 
+a EClass. Therefore we have to implement a property filter class by extending
+<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/AbstractPropertySectionFilter.html">
+AbstractPropertySectionFilter</a> and overwriting the method
+<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/AbstractPropertySectionFilter.html#accept(org.eclipse.graphiti.mm.pictograms.PictogramElement)">
+accept</a>.</p>
+<p>You can see the complete implementation of the property filter here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial.property;<br>&nbsp;<br>
+		<span class="keyword">public class</span> MyTutorialEClassFilter
+		<span class="keyword">extends</span> AbstractPropertySectionFilter {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">protected boolean</span> 
+		accept(PictogramElement pe) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EObject eObject =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Graphiti.getLinkService()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getBusinessObjectForLinkedPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (eObject <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">return 
+		false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Finally we have to implement a property section class which creates the UI shown 
+in the tab using standard SWT controls (refer to the
+<a href="http://www.eclipse.org/articles/Article-Tabbed-Properties/tabbed_properties_view.html">
+article</a> mentioned above). This class should extend
+<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/GFPropertySection.html">
+GFPropertySection</a>, which offers some convenience methods to retrieve the selected 
+Pictogram Element or execute Features.</p>
+<p>In this example we create a simple UI, which allows displaying and changing the 
+name of a EClass.</p>
+<p>You can see a very simple implementation of the property section here: </p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial.property;<br>&nbsp;<br>
+		<span class="keyword">public class</span> MyTutorialEClassSection
+		<span class="keyword">extends</span> GFPropertySection
+		<span class="keyword">implements</span><br>&nbsp;&nbsp;&nbsp; ITabbedPropertyConstants 
+		{<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">private</span> Text
+		<span class="string">nameText</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;public void</span> createControls(Composite 
+		parent,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TabbedPropertySheetPage 
+		tabbedPropertySheetPage) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>.createControls(parent, tabbedPropertySheetPage);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		TabbedPropertySheetWidgetFactory factory = getWidgetFactory();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Composite composite = factory.createFlatFormComposite(parent);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		FormData data;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">nameText</span> = factory.createText(composite,
+		<span class="string">&quot;&quot;</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data = <span class="keyword">new</span> FormData();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.<span class="string">left</span> = <span class="keyword">new</span> 
+		FormAttachment(0, <span class="string"><em>STANDARD_LABEL_WIDTH</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.<span class="string">right</span> = <span class="keyword">new</span> 
+		FormAttachment(100, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.<span class="string">top</span> 
+		= <span class="keyword">new</span> FormAttachment(0,
+		<span class="string"><em>VSPACE</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">nameText</span>.setLayoutData(data);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		CLabel valueLabel = factory.createCLabel(composite, <span class="string">
+		&quot;Name:&quot;</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data =
+		<span class="keyword">new</span> FormData();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.<span class="string">left</span> = <span class="keyword">new</span> 
+		FormAttachment(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.<span class="string">right</span> 
+		= <span class="keyword">new</span> FormAttachment(nameText, -<span class="string"><em>HSPACE</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		data.<span class="string">top</span> = <span class="keyword">new</span> 
+		FormAttachment(nameText, 0, SWT.<span class="string"><em>CENTER</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		valueLabel.setLayoutData(data);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public void</span> 
+		refresh() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PictogramElement 
+		pe = getSelectedPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pe != <span class="keyword">null</span>) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = Graphiti.getLinkService()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getBusinessObjectForLinkedPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// the filter assured, that it is a EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo == <span class="keyword">null</span>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String name = ((EClass) bo).getName();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">nameText</span>.setText(name ==
+		<span class="keyword">null</span> ? <span class="string">&quot;&quot;</span> : name);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; }<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Verify the Property Sheet for the EClass</h2>
+<p>Now start the editor and create a new EClass. Open the properties view and select 
+the EClass.</p>
+<p>Verify that the property sheet tab “Main” is shown, and that the class name is 
+correctly displayed.</p>
+<p>There is currently no synchronization between the graphical editor and the property 
+sheet. If the name of the EClass is changed in the editor, the change is not visible 
+in the property sheet. The same happens vice versa. </p>
+<p>The event handling can be implemented as an exercise.</p>
+
+
+	<h2>Embedding a Standard Table Property Sheet</h2>
+	<p>
+		Eclipse also allows to embed a standard (table format) property sheet
+		section into the tabbeb property sheet. This can be done by
+		referencing a <em>org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection</em>
+		instead of the <em>GFPropertySection</em>-based section in the
+		property section definition in plugin.xml. Addionally you will need to
+		define an Eclipse adapter factory extension to map from the edit part
+		selected in the diagram editor to an <em>IPropertySource</em> object
+		defining what the properties are and how they shall be edited. An
+		example how to embed such a property section is shown in the tutorial
+		plugin. Have a look into the following extensions:
+	</p>
+	<ul>
+		<li>The property tab with id "graphiti.table.tab"</li>
+		<li>The property section with id "graphiti.main.tab.emfreference.table"</li>
+		<li>The "org.eclipse.core.runtime.adapters" adapter</li>
+	</ul>
+<p>&nbsp;</p>
+</body>
+
+</html>

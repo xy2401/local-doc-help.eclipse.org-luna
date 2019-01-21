@@ -1,0 +1,804 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Technical Requirements to the Database Schema</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Audit Trail Archive",
+	"ag-appendix-audittrail-1.htm","ag-archiving.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-audittrail.html","Audit Trail Model");
+ -->
+</script>
+
+<!--  TODO: fill in values  -->
+<h1>Technical Requirements to the Database Schema</h1>
+<p>The following tables are to support database administrators during the definition
+of the relevant configuration parameters and the creation of the Stardust audit trail
+database schema. The tables provide size information as well as scalability factors and
+update behaviors which should help the administrator with the optimization of the database
+performance.</p>
+<h2>Overview of Technical Requirements</h2>
+<table id='id'>
+    <tr>
+        <th>Table</th>
+        <th>No. of Records</th>
+        <th>Scales to</th>
+        <th>Record size</th>
+    </tr>
+    <tr>
+        <td>ACT_INST_HISTORY</td>
+        <td>&#126; a * p * 4</td>
+        <td>p</td>
+        <td>13 * n</td>
+    </tr>
+    <tr>
+        <td>ACT_INST_PROPERTY</td>
+        <td>M * P * A * ae * ap</td>
+        <td>-</td>
+        <td>6 * n + 428 * c</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY</td>
+        <td>M * P * A</td>
+        <td>-</td>
+        <td>3 * n + 4150 * c</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY_INST_LOG</td>
+        <td>&#126; a * p * 4</td>
+        <td>p</td>
+        <td>7 * n</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY_INSTANCE</td>
+        <td>a * p</td>
+        <td>p</td>
+        <td>11 * n</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY_INSTANCE_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>CLOB_DATA</td>
+        <td>&#126; p * S * s</td>
+        <td>p</td>
+        <td>2 * n + (s+32) * c</td>
+    </tr>
+    <tr>
+        <td>DAEMON_LOG</td>
+        <td>2 * d</td>
+        <td>-</td>
+        <td>5 * n + 100 * c</td>
+    </tr>
+    <tr>
+        <td>DATA</td>
+        <td>M * D</td>
+        <td>-</td>
+        <td>2 * n + 4150 * c</td>
+    </tr>
+    <tr>
+        <td>DATA_VALUE</td>
+        <td>D * r</td>
+        <td>p</td>
+        <td>6 * n + 128 * c</td>
+    </tr>
+    <tr>
+        <td>DATA_VALUE_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>DEPARTMENT</td>
+        <td>M * SR * dp</td>
+        <td>-</td>
+        <td>4 * n + 4200 * c</td>
+    </tr>
+    <tr>
+        <td>DEPARTMENT_HIERARCHY</td>
+        <td></td>
+        <td>M * SR * dp</td>
+        <td>2 * n</td>
+    </tr>
+    <tr>
+        <td>DOMAIN</td>
+        <td>PA</td>
+        <td>-</td>
+        <td>3 * n + 4050 * c</td>
+    </tr>
+    <tr>
+        <td>DOMAIN_HIERARCHY</td>
+        <td>PA</td>
+        <td>-</td>
+        <td>2 * n</td>
+    </tr>
+    <tr>
+        <td>EVENT_BINDING</td>
+        <td>&nbsp;</td>
+        <td>-</td>
+        <td>8 * n</td>
+    </tr>
+    <tr>
+        <td>EVENT_HANDLER</td>
+        <td></td>
+        <td>-</td>
+        <td>4 * n + 150 * c</td>
+    </tr>
+    <tr>
+        <td>LOG_ENTRY</td>
+        <td>l</td>
+        <td>l</td>
+        <td>8 * n + 300 * c</td>
+    </tr>
+    <tr>
+        <td>LINK_TYPE</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>MODEL</td>
+        <td>M</td>
+        <td>-</td>
+        <td>8 * n + 950 * c</td>
+    </tr>
+    <tr>
+        <td>MODEL_DEP</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>MODEL_DEP_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>MODEL_REF</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PARTICIPANT</td>
+        <td>M * R</td>
+        <td>-</td>
+        <td>4 * n + 4150 * c</td>
+    </tr>
+    <tr>
+        <td>PARTITION</td>
+        <td>PA</td>
+        <td>-</td>
+        <td>1 * n + 4050 * c</td>
+    </tr>
+    <tr>
+        <td>PROC_INST_PROPERTY</td>
+        <td>M * P * pe * pp</td>
+        <td>-</td>
+        <td>6 * n + 428 * c</td>
+    </tr>
+    <tr>
+        <td>PROCINST_LINK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PROCESS_DEFINITION</td>
+        <td>M * P</td>
+        <td>-</td>
+        <td>2 * n + 4150 * c</td>
+    </tr>
+    <tr>
+        <td>PREFERENCES</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PROCESS_INSTANCE</td>
+        <td>p</td>
+        <td>p</td>
+        <td>13 * n</td>
+    </tr>
+    <tr>
+        <td>PROCESS_INSTANCE_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>PROCESS_TRIGGER</td>
+        <td>TR</td>
+        <td>-</td>
+        <td>3 * n + 150 * c</td>
+    </tr>
+    <tr>
+        <td>PROCINST_HIERARCHY</td>
+        <td></td>
+        <td>p</td>
+        <td>2 * n</td>
+    </tr>
+    <tr>
+        <td>PROCINST_SCOPE</td>
+        <td>p</td>
+        <td>p</td>
+        <td>3 * n</td>
+    </tr>
+    <tr>
+        <td>PROPERTY</td>
+        <td>&lt; 100</td>
+        <td>-</td>
+        <td>3 * n + 1100 * c</td>
+    </tr>
+    <tr>
+        <td>STRING_DATA</td>
+        <td>&#126; p * E * (e / 1000)</td>
+        <td>p</td>
+        <td>2 * n + 4032 * c</td>
+    </tr>
+    <tr>
+        <td>STRUCTURED_DATA</td>
+        <td>M * SD * SDX</td>
+        <td>-</td>
+        <td>3 * n + 200 * c</td>
+    </tr>
+    <tr>
+        <td>STRUCTURED_DATA_VALUE</td>
+        <td>SD * SDX * r</td>
+        <td>p</td>
+        <td>6 * n + 178 * c</td>
+    </tr>
+    <tr>
+        <td>STRUCTURED_DATA_VALUE_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>TIMER_LOG</td>
+        <td>TTR</td>
+        <td>-</td>
+        <td>4 * n</td>
+    </tr>
+    <tr>
+        <td>TRANS_INST</td>
+        <td>&#126; a * p</td>
+        <td>p</td>
+        <td>6 * n</td>
+    </tr>
+    <tr>
+        <td>TRANS_TOKEN</td>
+        <td>t</td>
+        <td>-</td>
+        <td>7 * n</td>
+    </tr>
+    <tr>
+        <td>TRANS_TOKEN_LCK</td>
+        <td></td>
+        <td>p</td>
+        <td>1 * n</td>
+    </tr>
+    <tr>
+        <td>TRANSITION</td>
+        <td>T * M</td>
+        <td>-</td>
+        <td>5 * n + 250 * c</td>
+    </tr>
+    <tr>
+        <td>USER_PARTICIPANT</td>
+        <td>u * ur</td>
+        <td>u</td>
+        <td>5 * n</td>
+    </tr>
+    <tr>
+        <td>USER_PROPERTY</td>
+        <td>u * up</td>
+        <td>u</td>
+        <td>5 * n + 428 * c</td>
+    </tr>
+    <tr>
+        <td>USER_USERGROUP</td>
+        <td>u * ug</td>
+        <td>u</td>
+        <td>3 * n</td>
+    </tr>
+    <tr>
+        <td>USERGROUP</td>
+        <td>ug</td>
+        <td>ug</td>
+        <td>4 * n + 500 * n</td>
+    </tr>
+    <tr>
+        <td>USERGROUP_PROPERTY</td>
+        <td>ug * ugp</td>
+        <td>ug</td>
+        <td>6 * n + 428 * c</td>
+    </tr>
+    <tr>
+        <td>WFUSER_DOMAIN</td>
+        <td>0</td>
+        <td>-</td>
+        <td>5 * n</td>
+    </tr>
+    <tr>
+        <td>WFUSER_REALM</td>
+        <td>re</td>
+        <td>-</td>
+        <td>2 * n + 4150 * c</td>
+    </tr>
+    <tr>
+        <td>WFUSER_SESSION</td>
+        <td>-</td>
+        <td>u</td>
+        <td>5 * n + 300 * n</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>u</td>
+        <td>u</td>
+        <td>7 * n + 1100 * n</td>
+    </tr>
+    <tr>
+        <td>WORKITEM</td>
+        <td>wa * p</td>
+        <td>p</td>
+        <td>13 * n</td>
+    </tr>
+</table>
+
+<p>No. of records legend:</p>
+<ul>
+    <li>M - number of deployed model versions</li>
+    <li>P - average number of process definitions per model</li>
+    <li>A - average number of activities per process definition</li>
+    <li>R - average number of participants per model</li>
+    <li>SR - average number of scoped participants per model</li>
+    <li>D - average number of data objects per model</li>
+    <li>SD - average number of structured data objects per model</li>
+    <li>SDX - average number of xpaths per structured data</li>
+    <li>E - average number of big data objects per model</li>
+    <li>S - average number of structured data values per process instance</li>
+    <li>T - average number of transitions per model</li>
+    <li>TR - number of timer based triggers</li>
+    <li>TTR - number of timer based triggers</li>
+    <li>PA - number of partitions</li>
+    <li>p - number of process instances</li>
+    <li>r - number of root process instances</li>
+    <li>a - average number of activity instances per process instance</li>
+    <li>wa - average number of active / suspended activity instances per process instance</li>
+    <li>t - average number of equally waiting transition instances of all process
+    instances</li>
+    <li>d - number of daemons</li>
+    <li>l - number of log events</li>
+    <li>e - average size of the big data objects</li>
+    <li>u - number of users</li>
+    <li>ug - number of user groups</li>
+    <li>re - number of user realms</li>
+    <li>ur - average number of participants per user (roles and organizations and departments)</li>
+    <li>up - average number of properties per user</li>
+    <li>ugp - average number of properties per user group</li>
+    <li>ae - average number of activity event handlers per activity</li>
+    <li>ap - average number of properties per activity event handler</li>
+    <li>pe - average number of process event handlers per process</li>
+    <li>pp - average number of properties per process event handler</li>
+    <li>s - average size of structured data values</li>
+    <li>dp - average number of departments per scoped participant</li>
+</ul>
+<p>Scales to legend:</p>
+<ul>
+    <li>p - number of process instances</li>
+    <li>l - number of log events</li>
+    <li>u - number of users</li>
+</ul>
+<p>Record size legend:</p>
+<ul>
+    <li>c - database size of a character</li>
+    <li>n - database size of a number (<tt>NUMBER</tt> or <tt>INTEGER</tt>)</li>
+</ul>
+<table id='id_1'>
+    <tr>
+        <th>Table</th>
+        <th>Update behavior</th>
+        <th>Updates</th>
+        <th>Inserts</th>
+        <th>Deletes</th>
+    </tr>
+    <tr>
+        <td>ACT_INST_HISTORY</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    <tr>
+        <td>ACT_INST_PROPERTY</td>
+        <td>v</td>
+        <td>Event handling</td>
+        <td>Event binding</td>
+        <td>Event handling</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY_INST_LOG</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ACTIVITY_INSTANCE</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+<!--    <tr>
+        <td>ACTIVITY_INSTANCE_LCK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>-->
+    <tr>
+        <td>CLOB_DATA</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>DAEMON_LOG</td>
+        <td>v</td>
+        <td>Daemon execution</td>
+        <td>Bootstrapping</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>DATA</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>DATA_VALUE</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+<!--    <tr>
+        <td>DATA_VALUE_LCK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>-->
+    <tr>
+        <td>DEPARTMENT</td>
+        <td>v</td>
+        <td>Department change/sync</td>
+        <td>Department change/sync, Login</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>DEPARTMENT_HIERARCHY</td>
+        <td>v</td>
+        <td>Department change/sync</td>
+        <td>Department change/sync, Login</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>DOMAIN</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Partition creation</td>
+        <td>Partition deletion</td>
+    </tr>
+    <tr>
+        <td>DOMAIN_HIERARCHY</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Partition creation</td>
+        <td>Partition deletion</td>
+    </tr>
+    <tr>
+        <td>EVENT_BINDING</td>
+        <td>v</td>
+        <td>Event handling</td>
+        <td>Event binding</td>
+        <td>Event handling</td>
+    </tr>
+    <tr>
+        <td>EVENT_HANDLER</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>LINK_TYPE</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>LOG_ENTRY</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Log event</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>MODEL</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>MODEL_DEP</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>MODEL_REF</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PARTICIPANT</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>PARTITION</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Partition creation</td>
+        <td>Partition deletion</td>
+    </tr>
+    <tr>
+        <td>PREFERENCES</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PROC_INST_PROPERTY</td>
+        <td>v</td>
+        <td>Event handling</td>
+        <td>Event binding</td>
+        <td>Event handling</td>
+    </tr>
+    <tr>
+        <td>PROCINST_LINK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>PROCESS_DEFINITION</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>PROCESS_INSTANCE</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Process start</td>
+        <td>-</td>
+    </tr>
+<!--    <tr>
+        <td>PROCESS_INSTANCE_LCK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>-->
+    <tr>
+        <td>PROCESS_TRIGGER</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>PROCINST_HIERARCHY</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Process start</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>PROCINST_SCOPE</td>
+        <td>sa</td>
+        <td>-</td>
+        <td>Process start</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>PROPERTY</td>
+        <td>v</td>
+        <td>Administrative operations</td>
+        <td>Administrative operations</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>STRING_DATA</td>
+        <td>a</td>
+        <td>Workflow step / Model overwrite</td>
+        <td>Workflow step / Model deployment</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>STRUCTURED_DATA</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>STRUCTURED_DATA_VALUE</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+<!--    <tr>
+        <td>STRUCTURED_DATA_VALUE_LCK</td>
+        <td>a</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>-->
+    <tr>
+        <td>TIMER_LOG</td>
+        <td>v</td>
+        <td>Timer Based Trigger Execution</td>
+        <td>Bootstrapping</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>TRANS_INST</td>
+        <td>a</td>
+        <td>-</td>
+        <td>Workflow step</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>TRANS_TOKEN</td>
+        <td>v</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+        <td>Workflow step</td>
+    </tr>
+<!--    <tr>
+        <td>TRANS_TOKEN_LCK</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>-->
+    <tr>
+        <td>TRANSITION</td>
+        <td>-</td>
+        <td>Model overwrite</td>
+        <td>Model deployment</td>
+        <td>Model overwrite</td>
+    </tr>
+    <tr>
+        <td>USER_PARTICIPANT</td>
+        <td>v</td>
+        <td>User change/sync</td>
+        <td>User change/sync, Model deployment</td>
+        <td>User change/sync</td>
+    </tr>
+    <tr>
+        <td>USER_PROPERTY</td>
+        <td>v</td>
+        <td>User change/sync</td>
+        <td>User change/sync</td>
+        <td>User change/sync</td>
+    </tr>
+    <tr>
+        <td>USER_USERGROUP</td>
+        <td>v</td>
+        <td>User group change/sync</td>
+        <td>User group change/sync, Model deployment</td>
+        <td>User group change/sync</td>
+    </tr>
+    <tr>
+        <td>USERGROUP</td>
+        <td>v</td>
+        <td>User group change/sync</td>
+        <td>User group change/sync, Login</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>USERGROUP_PROPERTY</td>
+        <td>v</td>
+        <td>User group change/sync</td>
+        <td>User group change/sync</td>
+        <td>User group change/sync</td>
+    </tr>
+    <tr>
+        <td>WFUSER_DOMAIN</td>
+        <td></td>
+        <td>never</td>
+        <td>never</td>
+        <td>never</td>
+    </tr>
+    <tr>
+        <td>WFUSER_REALM</td>
+        <td>a</td>
+        <td>User change / synch</td>
+        <td>User change / synch</td>
+        <td>User change / synch</td>
+    </tr>
+    <tr>
+        <td>WFUSER_SESSION</td>
+        <td>a</td>
+        <td>Service calls</td>
+        <td>First service call</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>WORKFLOWUSER</td>
+        <td>v</td>
+        <td>User change/sync</td>
+        <td>User change/sync, Login</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>WORKITEM</td>
+        <td>v</td>
+        <td>Activity instance suspend / delegation / activation</td>
+        <td>Activity instance suspend / delegation / activation</td>
+        <td>Activity instance completion / hibernation / abortion</td>
+    </tr>
+</table>
+<p>Update behavior legend:</p>
+<ul>
+    <li>a - additive (update operations only for active process instances)</li>
+    <li>sa - strict additive (no update operations)</li>
+    <li>v - volatile (includes deletes)</li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

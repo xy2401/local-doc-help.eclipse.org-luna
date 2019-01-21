@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Relocating Activities</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+      "pg-embed-cases.html","",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","wf-preface.html","Processing Workflow");
+ -->
+</script>
+<h1>Relocating Activities</h1>
+<p>The Stardust <a href="../pg-embedded-3.htm#workflowservice">WorkflowService</a>
+provides two methods to perform relocation of activities. One for finding the 
+target activity and one to perform the transition.</p>
+<ul>
+    <li><a href="#find">Finding the Target Activity</a></li>
+    <li><a href="#perform">Performing the Transition</a></li>
+    <li><a href="#relswitch">Relocating and Switching to a new Version</a></li>
+</ul>
+<h2 id="find">Finding the Target Activity</h2>
+<p>Method <tt>getAdHocTransitionTargets</tt> retrieves the possible targets for 
+forward transitions starting from the specified activity instance.</p>
+<pre>
+List&lt;TransitionTarget&gt; getAdHocTransitionTargets(long activityInstanceOid, TransitionOptions options, ScanDirection direction)
+    throws ObjectNotFoundException;</pre>
+<p>The method returns a list of possible transition targets. Parameters are the 
+following:</p>
+<ul>
+    <li>activityInstanceOid: the OID of the activity instance from where the 
+    transition will be performed.</li>
+    <li>options: options for searching possible targets for 
+    relocation transitions. The options are described in section 
+    <a href="#options">Transition Options</a>.</li>
+    <li>direction: the scanning direction, see <a href="#direction">Scan Direction</a>.</li>
+</ul>
+<p>An ObjectNotFoundException is thrown in case 
+there is no activity instance with the specified OID.</p>
+<h3 id="options">Transition Options</h3>
+<p>The transition options are a combination of Boolean values to determine if
+relocation transitions inside sub processes and out of them is allowed.</p>
+<ul>
+    <li>allowTransitionOutOfSubprocesses: allows relocation transition out of subprocesses.</li>
+    <li>allowTransitionIntoSubprocesses: allows relocation transitions inside subprocesses.</li>
+    <li>allowLoops: allows relocation transitions in loops.</li>
+</ul>
+<p>For details on these options refer to
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/TransitionOptions.html">
+TransitionOptions</a>. In case no options are specified (null),  
+<tt>TransitionOptions.DEFAULT</tt> will be used, which means <tt>false</tt> 
+values for all three options. </p>
+<h3 id="direction">Scan Direction</h3>
+<p>Possible scan directions are:</p>
+<ul>
+    <li><a href="#forward">FORWARD</a></li>
+    <li><a href="#backward">BACKWARD</a></li>
+    <li><a href="#both">BOTH</a></li>
+</ul>
+<p>For more details on the <tt>ScanDirection</tt> enumeration type refer to 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ScanDirection.html">
+ScanDirection</a>.</p>
+<h4 id="forward">FORWARD</h4>
+<p>The order of the transition targets in the list is based on the flow
+of activity graph.</p>
+<h4 id="backward">BACKWARD</h4>
+<p>In case the scan direction is <tt>BACKWARD</tt>, the search is performed in
+the following way:</p>
+<ul>
+   <li>If the process is the root process, the search ends here.</li>
+   <li>If the process is a subprocess, go to subprocess activity in the parent 
+   process that started the subprocess and do backward searching from that activity.</li>
+</ul>
+<p>The order of the transition targets in the list is based on the reversed flow
+of activity graph.</p>
+<h4 id="both">BOTH</h4>
+<p>If the scan direction is <tt>BOTH</tt>, the search order is to search for
+transition targets for <tt>ScanDirection.FORWARD</tt> first, then for 
+<tt>ScanDirection.BACKWARD</tt> next.
+<h3>Search Rules</h3>
+<p>The following rules apply to the search mechanism apart from the given 
+transition directions:</p>
+<ol>
+   <li>When encountering a subprocess activity, the method searches transition 
+   targets into the subprocess first, for example a recursive search.</li>
+   <li>When encountering the end of a process with <tt>ScanDirection.FORWARD</tt>:
+   <ul>
+      <li>If the process is the root process, the search ends here.</li>
+      <li>If the process is a subprocess, the search goes to the subprocess 
+      activity in the parent process that started the subprocess and does 
+      forward searching from that activity.</li>
+   </ul></li>
+   <li>When encountering the start of a process with <tt>ScanDirection.BACKWARD</tt>:
+   <ul>
+      <li>If the process is the root process, the search ends here.</li>
+      <li>If the process is a subprocess, the search goes to the subprocess 
+      activity in the parent process that started the subprocess and does 
+      backward searching from that activity.</li>
+   </ul></li>
+   <li>When encountering an <strong>XOR</strong> Split/Join gateway:
+   <ol>
+      <li>The method searches the path with the activity whose activity ID is 
+      ordered first alphabetically and searches targets along that path.</li>
+      <li>After that, it searches targets for the second path with the second 
+      (alphabetically ordered) activity.</li>
+      <li>After all paths are searched and if an XOR Join gateway exists, searching 
+      targets form the activity right after the XOR Join gateway are resumed.</li>
+    </ol></li>
+</ol>
+<!--<h3>Example Usage</h3>
+<p>Jump with a single call of <tt>spawnPeerProcessInstance</tt> from manual activity
+<strong>M2</strong> in process definition <strong>PD1</strong> with version <strong>1</strong>
+to manual activity <strong>M2</strong> in process definition <strong>PD1</strong>
+with version <strong>2</strong>.
+reloc-version-example-1.png
+Start subprocess, then jump from source activity in sub process to root process
+<pre>
+...
+   ServiceFactory servicefactoryofrole1 = getServiceFactoryForUser("role1", "pwd",Mypartition);
+...
+   public void jumpBackFromSubprocess()
+   {
+      WorkflowService workflow1 = servicefactoryofrole1.getWorkflowService();
+      ProcessInstance processInstance =workflow1.startProcess("Linear", null, true);
+
+      ActivityInstance  activityM222=completeTill("Process3", "M222", servicefactoryofrole1);
+
+      //expectActivityInstance(processInstance.getOID(),"Process3",ActivityInstanceState.Application);
+      
+      TransitionOptions option = new TransitionOptions(true,true,false); // look in to current, super and sub process
+</pre>
+<p>Now we get the transition targets with transition direction <tt>BACKWARD</tt>,
+thus the order of the target list is based on the reversed flow of the 
+activity graph.
+   
+
+<pre>         
+      List<TransitionTarget> listOfTargets = workflow1.getAdHocTransitionTargets(activityM222.getOID(),option,ScanDirection.BACKWARD);
+      
+      TransitionTarget mytarget = getMyTarget(listOfTargets, "WorkflowRelocation", "Linear", "M1", 1);
+      workflow1.activate(activityM222.getOID());
+      activityM222 = workflow1.performAdHocTransition(activityM222.getOID(), mytarget, true);
+
+      assertEquals(ActivityInstanceState.Completed, checkActivityInstance(activityM222.getOID()));
+      ProcessInstance subprocess = getProcessInstance("Process3",ProcessInstanceState.Completed);
+      
+      //check target
+      ActivityInstance aiM1 =getActivityInstance(processInstance.getOID(),"M1",ActivityInstanceState.Suspended);
+      
+      expectActivityInstance(processInstance.getOID(),"Process3",ActivityInstanceState.Completed,Mypartition);
+      
+      assertEquals(ProcessInstanceState.Active, checkProcessInstance(processInstance.getOID()));
+      assertEquals(ProcessInstanceState.Completed, checkProcessInstance(subprocess.getOID()));
+      
+      // just to make sure that some unexpected is not happening
+      assertEquals(6, checkExpectedActivities(null));
+      assertEquals(1, checkExpectedActivities(ActivityInstanceState.Suspended)); // target
+      assertEquals(5, checkExpectedActivities(ActivityInstanceState.Completed)); // All activities till M222
+      assertEquals(0, checkExpectedActivities(ActivityInstanceState.Application)); // 
+      assertEquals(0, checkExpectedActivities(ActivityInstanceState.Aborted));
+      assertEquals(1, checkExpectedProcesses(ProcessInstanceState.Completed)); // priorly started subprocess 
+      assertEquals(1, checkExpectedProcesses(ProcessInstanceState.Active)); // root process
+      
+   }
+       /**
+       * 
+       * Completes all activities in the flow up to activity under consideration and return that activity in suspended state     
+       */
+      private ActivityInstance completeTill(String processId, String activityId,ServiceFactory servicefactory)
+      {
+      ...
+      }
+</pre>-->
+<h2 id="perform">Performing the Transition</h2>
+<p>Method <tt>performAdHocTransition</tt> performs the transition from the 
+specified activity instance to the specified target.</p>
+<pre>
+ActivityInstance performAdHocTransition(long activityInstanceOid, TransitionTarget target, boolean complete)
+    throws IllegalOperationException, ObjectNotFoundException, AccessForbiddenException;</pre>
+<p>The method returns the activity instance from which the transition was performed.
+Parameters are the following:</p>
+<ul>
+    <li>activityInstanceOid: the OID of the activity instance from where the 
+    transition will be performed.</li>
+    <li>target: the transition target of type 
+    <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/TransitionTarget.html">
+    TransitionTarget</a>.</li>
+    <li>complete: determines if the activity instance should be completed or aborted.
+   <ul>
+      <li><tt>true</tt>: the activity instance specified should be completed.
+      <ul>
+         <li>the operation is similar with <tt>WorkflowService.complete()</tt></li>
+         <li>activity will be aborted, as well as all involved subprocesses</li>
+         <li>modeled transitions are not followed. Instead the execution 
+            continues with the specified target as if a transition between the
+            source and the target was modeled.</li>           
+         <li>if the target is in a different process, the current subprocess
+             must be in a state to be able for completion.</li>
+         <li>if the transition involves multiple levels of subprocesses, all
+               of them must be in a state to be able for completion.</li>
+      </ul></li>
+      <li><tt>false</tt>: the activity as well as all involved subprocesses
+        should be aborted. The operation is similar with 
+        <tt>WorkflowService.abort()</tt>.</li>
+   </ul></li>
+</ul>
+<p>An IllegalOperationException occurs if the transition could not be performed
+because of one of the following reasons:</p>
+<ul>
+    <li>the specified TransitionTarget does not originate from the specified activity instance</li>
+    <li>the activity instance was already terminated</li>
+    <li>the process instance containing the activity instance has more than one 
+    active activity instance.</li>
+</ul>
+<p>An ObjectNotFoundException is thrown in case there is no activity instance with 
+the specified OID.</p>
+<h3>Security</h3>
+<p>To use this method, you need the permission to perform this activity, otherwise
+an AccessForbiddenException occurs. Additionally, the following security restrictions
+apply:</p>
+<ul>
+   <li>If parameter <strong>complete</strong> is <tt>true</tt>:
+   <ul>
+      <li>the user must qualify as OWNER of the source activity</li>
+      <li>if the source activity is interactive, the state must be either 
+      application or hibernated</li>
+      <li>an administrator is allowed to relocate from a suspended interactive 
+      activity</li>
+      <li>if the activity is non-interactive, the user must be an administrator 
+      and the state must be either hibernated or interrupted</li>
+   </ul></li>
+   <li>If parameter <strong>complete</strong> is <tt>false</tt>, the
+   user must have the right to abort the top most activity instance involved in
+   the transition.</li>
+</ul>
+
+<h2 id="relswitch">Relocating and Switching to a new Version</h2>
+<p>To switch between versions of a process definition and perform relocation in
+the same step, you can use the generalized implementation of the
+<tt>spawnPeerProcessInstance</tt> method, which is described in section
+<a href="pg-workflow-switch.htm#switch">Aborting and Starting a Process</a> of
+chapter <a href="pg-workflow-switch.htm">Workflow Processing to Abort and Start
+ Subprocess</a>. In that case, use the method with specified spawn options:</p>
+<pre>
+   public ProcessInstance spawnPeerProcessInstance(long processInstanceOid,
+         String spawnProcessID, SpawnOptions options) throws IllegalOperationException,
+         ObjectNotFoundException, InvalidArgumentException;
+
+</pre>  
+<p>Hereby the <tt>SpawnOptions</tt> parameter specifies options that controls 
+how the spawning operation has to be performed. Refer to the JavaDoc of
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/SpawnOptions.html">
+SpawnOptions</a> for details.</p>
+<p>The spawn options contain the following parameters:</p>
+<ul>
+    <li><tt>startActivity</tt> - the activity from which the spawned process instance should start.
+    If <tt>null</tt>, the spawned process instance will start from the default start activity.</li>
+    <li><tt>abortProcessInstance</tt> - The processing behavior of the originating 
+    process instance. Value <tt>true</tt> determines to abort the originating 
+    process instance. Currently only a value of <tt>true</tt> is accepted 
+    for processing.</li>
+    <li><tt>comment</tt> - comment describing the operation. May be <tt>null</tt>.</li>
+    <li><tt>dataCopyOptions</tt> - instructions on how the data should be transferred
+    from the originating process instance to the spawned process instance. If <tt>null</tt>, then
+    the DataCopyOptions with the default values are used (<tt>true</tt>, 
+    <tt>null</tt>, <tt>null</tt>, <tt>true</tt>).
+    For details on the DataCopyOptions type refer to the 
+    <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DataCopyOptions.html">
+    DataCopyOptions</a> class JavaDoc. Data copy options are the following:
+    <ul>
+        <li><tt>copyAllData</tt> - if <tt>true</tt>, it will attempt to copy
+        all data from the source process instance to the target process instance.</li>
+        <li><tt>dataTranslationTable</tt> - a Map indicating that the 
+        values for the specified data should be taken from another data 
+        object. The keys are the IDs of the 
+        target data and the values are the IDs of the source data objects.</li>
+        <li><tt>replacementTable</tt> - a Map that specifies concrete values
+        for target data. The keys are the IDs of the target data.</li>
+        <li><tt>useHeuristics</tt> - if <tt>true</tt>, the engine will 
+        attempt to auto determine which
+        data must be copied by investigating the data mappings and data
+        paths of the target process instance.</li>
+    </ul></li>
+</ul>
+<h3>Data Copy Restrictions</h3>
+<p>Using the method described above, the following restricted data copying functionality
+applies:</p>
+<ol>
+   <li>Primitives with the same Id and compatible types have to be there from 
+   the existing switch functionality.</li>
+   <li>A deep copy of structured data (standalone or as document metadata) is
+   performed. Deep copy copies all fields with matching XPaths and types.</li>
+   <li>No copy of Java type data is performed.</li>
+</ol>
+<p>For details on the data copy semantics for relocating activities, refer to
+section 
+<a href="../../../../concepts/executing-workflow/concept-relocation.html#datcopy">Data Copy Semantics</a>
+of chapter
+<a href="../../../../concepts/executing-workflow/concept-relocation.html">Relocation of Activities</a>.</p>
+<h3>Example Use Cases</h3>
+<p>The following examples demonstrate when to use the 
+<tt>spawnPeerProcessInstance</tt> method and in which cases a <tt>performTransition</tt>
+call is needed additionally.</p>
+<h4>Relocating an activity by aborting and starting</h4>
+<p>In this example we have a process definition <strong>PD1</strong> with a manual
+activity <strong>M2</strong>, which we like to abort and start in a new process
+instance version of <strong>PD1</strong>.</p>
+<p class="image"><img src="images/reloc-version-example-1.png" alt=""><br>
+<strong>Figure:</strong> Relocation by Spawning Example</p>
+<p>To jump from manual activity
+<strong>M2</strong> in process definition <strong>PD1</strong> with version <strong>1</strong>
+to manual activity <strong>M2</strong> in process definition <strong>PD1</strong>
+with version <strong>2</strong>, you need a single call of the 
+<tt>spawnPeerProcessInstance</tt> method.</p>
+<pre>
+   ProcessInstance orgProcess = ws.startProcess("PD1", null, true);
+
+   // Spawn process instance (Spawned process starts from activity M2)
+   DataCopyOptions copyOption = new DataCopyOptions(true, null, null, false);
+      
+   SpawnOptions options = new SpawnOptions("M2", true, "No comment", copyOption);
+      
+   ProcessInstance spawnedProcInst
+      = wfService.spawnPeerProcessInstance(orgProcess.getOID(), "PD1", options);
+</pre>
+<h4>Relocating an activity by aborting and starting to a process instance with 
+XOR split and join</h4>
+<p>The following example has a process definition <strong>PD1</strong> with a manual
+activity <strong>M2</strong>, which we like to abort and start in a new process
+instance version of <strong>PD1</strong>, where an XOR split and join transition
+is used.</p>
+<p class="image"><img src="images/reloc-version-example-2.png" alt=""><br>
+<strong>Figure:</strong> Relocation by Spawning Example</p>
+<p>To jump from manual activity
+<strong>M2</strong> in process definition <strong>PD1</strong> with version <strong>1</strong>
+to manual activity <strong>M2</strong> in process definition <strong>PD1</strong>
+with version <strong>2</strong>, you also need a single call of the 
+<tt>spawnPeerProcessInstance</tt> method. Note that in this case, only root 
+process instances can be aborted and destination activities must only be on root
+processes.</p>
+
+<h4>Relocating an activity by aborting and starting from a process instance with 
+XOR split and join</h4>
+<p>If the source activity <strong>M3</strong> is in process definition
+ <strong>PD1</strong> with version <strong>1</strong> inside an XOR transition,
+and we like to jump to target activity <strong>M2</strong> in process instance
+of <strong>PD1</strong> with version <strong>2</strong>, having no XOR transition,
+this is also possible with a single call of the 
+<tt>spawnPeerProcessInstance</tt> method.</p>
+<p class="image"><img src="images/reloc-version-example-3.png" alt=""><br>
+<strong>Figure:</strong> Relocation by Spawning Example</p>
+
+<h4>Relocating an activity by aborting and starting to a subprocess activity in
+another process instance version</h4>
+<p class="image"><img src="images/reloc-version-example-4.png" alt=""><br>
+<strong>Figure:</strong> Relocation by Spawning Example</p>
+<p>In this case, two API calls are needed:</p>
+<ol>
+   <li>A call to <tt>spawnPeerProcessInstance</tt> to jump from manual activity
+   <strong>M1</strong> in process definition <strong>PD1</strong> version 
+   <strong>1</strong> to manual activity <strong>M1</strong> in process 
+   definition <strong>PD1</strong> version <strong>2</strong>.</li>
+   <li>A <tt>performTransition</tt> call to jump from manual activity 
+   <strong>M1</strong> in process definition <strong>PD1</strong> version 
+   <strong>2</strong> to <strong>M22</strong> in subprocess <strong>PD2</strong>
+   version <strong>2</strong>.</li>
+</ol>
+<h4>Relocating an activity from a subprocess by aborting and starting to an activity in
+another process instance version</h4>
+<p class="image"><img src="images/reloc-version-example-5.png" alt=""><br>
+<strong>Figure:</strong> Relocation by Spawning Example</p>
+<p>Two API calls are also needed in this case:</p>
+<ol>
+   <li>A <tt>performTransition</tt> call to jump from manual activity 
+   <strong>M21</strong> in subprocess <strong>PD2</strong> version 
+   <strong>1</strong> to manual activity <strong>M3</strong> in process 
+   <strong>PD1</strong> version <strong>1</strong>.</li>
+   <li>A call to <tt>spawnPeerProcessInstance</tt> to jump from manual activity
+   <strong>M3</strong> in process definition <strong>PD1</strong> version 
+   <strong>1</strong> to manual activity <strong>M3</strong> in process 
+   definition <strong>PD1</strong> version <strong>2</strong>.</li>
+</ol>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

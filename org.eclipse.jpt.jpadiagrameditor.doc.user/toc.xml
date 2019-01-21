@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="JPA Diagram Editor Project User Guide">
+
+	<topic label="Getting Started" href="html/getting_started.html"/>
+	
+    <topic label="Tasks">
+    	<topic href="PLUGINS_ROOT/org.eclipse.jpt.doc.user/getting_started003.htm" label="Create new JPA project">
+    	</topic>
+     	<topic href="html/task_configuring_editor.html" label="Configuring the JPA Diagram Editor">
+    	</topic>
+    	<topic href="html/task_open_diagram.html" label="Creating and Displaying Persistent Types">
+    	</topic>
+    	<topic href="html/entity_inheritance.html" label="Managing Entity Inheritance">
+    	</topic>
+    	<topic href="html/task_remove_entities.html" label="Defining and Removing Relationships between Entities">
+    	</topic>
+    	<topic href="html/task_manage_types.html" label="Managing Persistent Types">
+    	</topic>
+    	<topic href="html/task_refactor_entities.html" label="Refactoring, Configuring and Removing Persistent Types">
+    	</topic>
+    	<topic href="html/task_open_miniature_view.html" label="Opening the Miniature View and the JPA Details View">
+    	</topic>
+    	<topic href="html/xml_entities.html" label="Defining Persistent Types in orm.xml">
+    	</topic>
+    	<topic href="html/task_20_support.html" label="JPA Diagram Editor Support for JPA 2.0">
+    		<topic href="html/embeddables.html" label="Embedding an Embeddable"/>
+    		<topic href="html/element_collection.html" label="Adding Attribute of Type element-collection"/>
+    		<topic href="html/embeddable_relationships.html" label="Defining and Removing Relationships between Embeddables	and Entities"/>
+    		<topic href="html/derived_identifiers.html" label="Derived Identifiers"/>
+    	</topic>
+ 	</topic>
+    <topic label="Reference">
+       <topic href="html/reference_project_page.html" label="Property Page - JPA Diagram Editor Options">
+       </topic>
+    </topic> 
+
+</toc>

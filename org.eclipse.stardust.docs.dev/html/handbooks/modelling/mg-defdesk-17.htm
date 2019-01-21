@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Loading Models from Audit Trail</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("External Model Resources","mg-defdesk-16.htm","mg-registry.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Loading Models from Audit Trail</h1>
+<p>A reverse-engineering option which allows the modeler to retrieve
+information from the model is to load the entire model from the audit trail.
+This means, if the audit trail contains model versions which have been deployed
+to the runtime environment prior to this point, the modeler can load any of
+these model versions into the modeling environment again. The diagram
+information in the models loaded from the audit trail is not available, so you
+can visualize the model information using the reverse-engineering options
+described in <a href="mg-defdesk-16.htm">Retrieving Diagrams from Model
+Information.</a></p>
+<h2>Loading a Model from the Audit Trail</h2>
+<p>To load a model from the audit trail:</p>
+<ul>
+    <li>In the Package Explorer right-click the project and choose <strong>Import...</strong>.</li>
+    <li>Select <strong>Process Manager</strong> &gt; 
+    <strong>Process Model</strong> from the <strong>Import</strong> list of the upcoming dialog.</li>
+    <li>Click <strong>Next</strong>.</li>
+    <li>In the upcoming dialog choose <strong>Audit Trail Database</strong>
+   in the <strong>Source</strong> list.</li>
+</ul>
+<p class="image"><img src="images/mg-model-import-audittrail.png" alt="">
+<br>
+<strong>Figure:</strong> Loading a Model from the Audit Trail</p>
+<h4>Retrieving Diagrams</h4>
+<p>A model loaded into the <a href="mg-modeler-preface.html">Process
+Workbench</a> in this way does not have any diagrams. To visualize or edit the model
+information, you start with a creation of a new diagram pertaining to a selected
+process. Refer to <a href="mg-defdesk-16.htm">Retrieving Diagrams from Model
+Information</a> for information on how to use reverse engineering options to have
+your diagrams generated.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

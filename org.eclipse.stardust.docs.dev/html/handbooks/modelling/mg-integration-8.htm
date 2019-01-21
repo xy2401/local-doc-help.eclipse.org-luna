@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Integrating Synchronous Web Services</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("Integrating Web via JSPs",
+   "integration/camel-application-type.html","mg-integration-jsp.html",
+      "../handbooks.htm","Developer Handbook",
+      "mg-preface.htm","Modeling Guide",
+      "mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating Synchronous Web Services</h1>
+<p>Web Services provide a standardized way to call remote services
+via HTTP communication. Stardust allows you to use Web Services as an
+application type for applications invoked by arbitrary activities in a
+process. Data can be passed to and retrieved from Web Services as
+parameters via the access point concept. For the remainder of this
+section, it is assumed that you are familiar with Web Service Technology
+and the relevant specifications (especially WSDL 1.1).</p>
+<p>This section is exclusively dealing with synchronous Web
+Services.</p>
+<ul>
+	<li><a href="#props">Specifying Web Service Applications</a></li>
+	<li><a href="#params">Parameter Handling</a></li>
+	<li><a href="#partTempl">Specifying Type Mappings and Message Part Templates</a></li>
+	<li><a href="#runtime">Runtime Behavior</a></li>
+	<li><a href="#classes">Generating Classes</a></li>
+	<li><a href="#retry">Configuring Retry Mechanism for Synchronous Application</a></li>
+</ul>
+
+<h2 id="props">Specifying Web Service Applications</h2>
+<p>A Web Service Application is specified in the application
+properties dialog by means of a specific panel.</p>
+<p class="image"><a
+	href="images/mg-integration-webservice_orgSize.png" target="_blank">
+<img src="images/mg-integration-webservice.png" alt=""></a> <br>
+<strong>Figure:</strong> Web Service Application</p>
+<p>Details of the different parameters specified in this dialog are
+described in the following sections.</p>
+<h3>Operation-specific parameters</h3>
+<p>All parameters needed to specify a certain Web Service operation
+and its call parameters are specified on the entry field <strong>Operation</strong>.
+The value in this entry will determine which fields and contents are
+displayed in the dialog.</p>
+<p class="image"><img src="images/mg-integration-wsdl-2.png" alt="">
+<br>
+<strong>Figure:</strong> Web Service Application with Operation-specific
+Parameters</p>
+
+<h3>WSDL URL</h3>
+<p>The location of the WSDL specification containing a description
+of the Web Service to be invoked. Reloading the WSDL specification or
+loading a different WSDL specification will invalidate any chosen
+service. The WSDL URL can be specified in the form of any URL including
+file URLs. Furthermore, you can load a WSDL file as a resource from the
+application classpath by specifying a WSDL URL without any protocol. For
+example you would specify a URL <tt>com/bpm/example/ExampleService.wsdl</tt>
+if you want to load a file <tt>ExampleService.wsdl</tt> located in a
+package <tt>com/bpm/example</tt> within the application classpath.</p>
+<p class="note"><strong>Note:</strong>
+The WSDL URL is also used at runtime to prepare Web Service
+invocations. You need to ensure that this URL is available also from
+your runtime application server environment.</p>
+
+<h3>Service</h3>
+<p>Selects the service to be invoked from the services listed in the
+previously loaded WSDL specification.</p>
+<p>Modifying the service selection will invalidate any selected
+port.</p>
+<h3>Port</h3>
+<p>Selects the port to be invoked from the ports provided by the
+previously selected service.</p>
+<p>Modifying the port selection will invalidate any selected
+operation.</p>
+<p>According to the 1 to 1 relationship between ports and port
+bindings, selecting a port will implicitly select a port binding as
+well.</p>
+<h3>Operation</h3>
+<p>Selects the operation to be invoked from all operations provided
+by the previously selected port.</p>
+<p>Modifying the operation will imply changes to the style, use and
+parameter configuration as well.</p>
+<p>Due to the 1 to 1 relationship between operation bindings and
+operations, selecting an operation will implicitly select an operation
+binding as well.</p>
+<h3>Style</h3>
+<p>Indicates the encoding style used for the chosen operation.</p>
+<h3>Use</h3>
+<p>Indicates the message used for the chosen operation.</p>
+<h3>Include WS-Addressing Endpoint Reference</h3>
+<p>This checkbox allows to specify that at runtime a WS-Addressing
+Endpoint Reference will be included into the request message. Using
+WS-Addressing allows to specify the invoked SOAP endpoint. If this
+feature is selected, a special access point named <strong>WS-Addressing
+Endpoint Reference</strong> is generated for the activity. By creating data
+mappings to this access point you can specify the authentication
+credentials to be set at runtime. 
+</p>
+<h3>Authentication</h3>
+<p>This checkbox allows to specify whether at runtime any standard
+caller authentication information is included into the request message.
+Currently the following authentication mechanisms are supported:</p>
+<ul>
+   <li><tt>HTTP Basic Authentication</tt> - Username / Password</li>
+   <li><tt>WS-Security</tt>:
+   <ul>
+      <li>Username / Password</li> 
+      <li>Username / Password Digest</li> 
+   </ul></li>
+</ul>
+<p class="image"><img src="images/ws-appl-authentication.png" alt="Authentication"><br>
+<strong>Figure:</strong> Authentication</p>
+<p>If this feature is selected, a special access point named <strong>Authentication</strong>
+is generated for the activity. By creating data mappings to this access
+point you can specify the authentication credentials to be set at
+runtime.</p>
+<h4 id="auth">Using HTTP Basic Authentication</h4> 
+<p>In case you define a Web service application that uses http basic
+authentication and pass it as In-data mapping to an application activity, 
+an access point <strong>Authentication</strong> is provided 
+in the application context, as described above.</p>
+<p class="image"><img src="images/web-service-appl-auth.png" alt="Access Point Authentication"><br>
+<strong>Figure:</strong> An Access Point Authentication is provided.</p>
+<p>To pass in the credentials you can use the <strong>Access Point Path</strong>
+to browse to the setters for the individual values (e.g. <tt>setUsername(String),
+setPassword(String)</tt>).</p>
+<p class="image"><img src="images/web-service-auth-access.png" alt=""><br>
+<strong>Figure:</strong> Choose a Setter Class as Access Point Path</p>
+<p class="image"><img src="images/web-service-auth-context.png" alt=""><br>
+<strong>Figure:</strong> The resulting Application Context</p>
+<h2 id="params">Parameter Handling</h2>
+<p>Web Service invocation parameters basically map to message parts.
+The tab <strong>Parts</strong> of the <strong>Web Service</strong> <strong>Application</strong>
+properties panel lists all message parts for the currently selected
+operation.</p>
+<p class="image"><img src="images/webservice-props-parts.png" alt=""><br>
+<strong>Figure:</strong> Parameter Handling</p>
+<p>The list contains the name of the part and its XML type. For
+every message part the table also contains a checkbox <strong>Mapped</strong>
+specifying whether the part should be exposed as a mapped Java type or
+in the form of native XML.</p>
+<p>If a message part is marked to be mapped, a type mapping has to
+be specified on the tab <strong>Mappings/Templates</strong>. If the
+underlying toolkit finds a default mapping for the XML type of a
+message part (e.g. in the case of primitive types), the checkbox <strong>Mapped</strong>
+is automatically checked and the default mapping is added. Otherwise the
+default value is <strong>unchecked</strong>.</p>
+<h2 id="partTempl">Specifying Type Mappings and Message Part Templates</h2>
+<p>Select <strong>Web Service Application &gt; Parts</strong> to
+specify the way message parts are exposed in more detail. For every
+message part either a Type Mapping (for message parts that have a Java
+type mapping) or an XML template (for parts exposed as an XML access
+point) can be specified.</p>
+<p class="image"><img src="images/mg-integration-17.png" alt="">
+<br>
+<strong>Figure:</strong> Type Mappings</p>
+
+<h3>Java Bean Type Mappings</h3>
+<p>Arbitrary XML types can be mapped to appropriate Java Beans. The
+type to be mapped can either be entered in text form or selected from
+the loaded classes via the class browser. Default mappings are displayed
+in the table where available. Like any other type mapping, these
+defaults can be modified by the modeler if necessary.</p>
+<p>For every type-mapped message part an access point of the
+corresponding Java type is created for the application. Based on this
+access point you can model the desired runtime data flow by defining
+data mappings to and from workflow data. At runtime, the XML part will
+be transparently converted to the mapped Java type. If the conversion
+from a XML message part to a Java object fails because of incompatible
+data structures, activity execution will be interrupted and audit trial
+logs describing the problem will be written.</p>
+<h3>Template-Based IN Parameters</h3>
+<p>Arbitrary XML IN Parts can be constructed with a template
+mechanism. For any IN Part that is not mapped to a Java type, a template
+of the Part's XML fragment can be specified in the <strong>Template</strong>
+entry field.</p>
+<p>To specify the template directly at modeling time, add the XML
+template to the field <strong>Default Value</strong> in the table <strong>XML
+Templates</strong>. This is most easily done by opening the context menu <strong>Edit</strong>
+on the corresponding field and typing or pasting the XML template into
+the displayed dialog.</p>
+<p class="image"><img src="images/mg-integration-18.png" alt="">
+<br>
+<strong>Figure:</strong> Passing a XML Template</p>
+<p>If you prefer to set the template value at runtime you can do so
+by modeling an In-data mapping with empty access path to the
+corresponding XML access point.</p>
+<p>At runtime, this template XML is used to create the actual Part
+value. Before it is passed to a Web Service, the template XML is
+subjected to all In-data mappings modeled for the XML Part's access
+point. This allows you to set the node values of the template XML via
+modifying XPath statements.</p>
+<p>An example for this is given in the picture below.</p>
+<p class="image"><img src="images/mg-integration-19.png" alt="">
+<br>
+<strong>Figure:</strong> Data Mapping for Setting a XML Template at
+Runtime</p>
+<p>The data mappings defined in this example will do the following:</p>
+<ul>
+	<li>The first mapping in the table gets a template XML String from
+	the String data <tt>templateXML</tt> and sets it for the XML Part <tt>in6</tt>.
+	Note that mappings are always executed in the order specified in the
+	data mappings table. Therefore data mappings used to set a template XML
+	String need to be at the topmost position.</li>
+	<li>The second data mapping sets the value of the XML node <tt>address/city</tt>
+	in the namespace <tt>http://echo.embedded.wfxml.utils.hydra.carnot.ag</tt>
+	to the value contained in the String data <tt>CityParis</tt>. As any
+	XPath expression is allowed, you can also use expressions like <tt>//*[local-name()='city']</tt>
+	in order to avoid the complexity of namespace declarations.</li>
+</ul>
+<p>Hint: Please note that the declaring top-level element of an XML
+Part must not be included in the access path used.</p>
+<p>Example: You would use the XPath expression <tt>address/city</tt>
+to access the node <tt>city</tt> in an XML Part of the form:</p>
+<pre>&lt;in6 xmlns=&quot;http://echo.embedded.wfxml.utils.hydra.carnot.ag&quot;&gt;<br>   &lt;address&gt;<br>      &lt;city&gt;Frankfurt&lt;/city&gt;<br>      &lt;country&gt;Germany&lt;/country&gt;<br>      &lt;postcode&gt;60598&lt;/postcode&gt;<br>   &lt;/address&gt;<br>&lt;/in6&gt;</pre>
+<h3 id="struct">Structured Data as Input and Output</h3>
+<p>Stardust supports using Structured Data as 
+input and output in the Web Service Applications. In case the Web Service has structured types 
+defined that exactly match parts of the input or output message (having same name and 
+same namespace), an additional access point 
+will be created, so that structured data (with that structured type assigned) can be used as 
+input or output by the Web Service call.</p>  
+
+<h2 id="runtime">Runtime Behavior</h2>
+<p>The WSDL specification chosen from the <strong>Web
+Service Application</strong> panel is stored by reference - not by value - with
+the corresponding model element. Hence, this WSDL resource has to be
+available to the Stardust runtime at process execution time. Failing Web
+Service invocations will be treated like failing J2EE Session Bean
+invocations, causing the activity thread to be interrupted at the
+invoking activity.</p>
+<p>Most probable sources of errors are:</p>
+<ul>
+	<li>Web Service endpoint is not available.</li>
+	<li>Performing data mappings causes an <tt>InvalidValueException</tt>
+	to be thrown.</li>
+	<li>The Web Service invocation results in a fault, which is not
+	explicitly handled.</li>
+</ul>
+<h2 id="classes">Generating Classes</h2>
+<p>You have the option to automatically generate classes for the 
+wrapper elements. A button <strong>Generate classes</strong> is provided in the 
+<strong>Parts</strong> section that allows to
+generate classes based on the currently selected wsdl document.
+All the classes needed to invoke the service, including the WS client stubs
+are created. The generated stubs are JAX-WS 2.1 compatible. </p>
+<p class="image"><img src="images/webservice-generate-classes.png" alt="">
+<br>
+<strong>Figure:</strong> Click to generate classes.</p>
+<p>The Java source classes are created in the first Java source folder of
+the project containing the model. The parts are correspondingly
+mapped to the newly generated classes.</p>
+<p>The following picture shows the property page entries after
+generating the classes:</p>
+<p class="image"><img src="images/webservice_properties1.png" alt=""><br>
+<strong>Figure:</strong> Property Page with Generated Classes.</p>
+<p>The parts are automatically mapped to the generated classes as
+shown in the following figure:</p>
+<p class="image"><img src="images/webservice_properties2.png" alt=""><br>
+<strong>Figure:</strong> Mapped Parts</p>
+<p>The generator creates annotated classes for all elements in the
+wsdl file in the current project:</p>
+<p class="image"><img src="images/webservice_properties3.png" alt=""><br>
+<strong>Figure:</strong> Structure with Annotated Classes.</p>
+
+<h2 id="retry">Configuring Retry Mechanism for Synchronous Application</h2>
+
+<p> The configurable retry mechanism for synchronous application provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+
+<p>For more information, please refer to 
+<a href="../../concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="../../concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+
+<p>For example, you have added a synchronous application that is a Web service application to the model.
+In the Property page of the Web service application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+<p class="image"><img src="images/retry.png" alt=""><br>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script></p>
+</body>
+</html>

@@ -1,0 +1,143 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: ZH+zPkdMoozFmg8mDlh5ha9QYRg=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: 9nwcQOatVO71GsCcWBA0coN7yXM=
+
+Name: intro/css/images/ecf_intro.gif
+SHA1-Digest: OomQwFJeakqB55LkvSFIRuUCpLk=
+
+Name: topics_Tutorials.xml
+SHA1-Digest: 5yENHPatPXDGGCG1QPtDD8zNYaQ=
+
+Name: html/reference/extension-points/org_eclipse_ecf_server_generic_c
+ onfiguration.html
+SHA1-Digest: 5YhwmPykEmbgh2+JHGV9jbawwsI=
+
+Name: schema.xml
+SHA1-Digest: b7zJzxeRjIO8Tmq/0vVFjydBP+Q=
+
+Name: plugin.properties
+SHA1-Digest: cA30qSIH7VTlSMhtfrX1gpxBKok=
+
+Name: html/reference/extension-points/org_eclipse_ecf_ui_connectWizard
+ s.html
+SHA1-Digest: 0QiEwhEeFh+SH8ja0ptHbgPpJOs=
+
+Name: intro/css/images/ecf_intro_hov.gif
+SHA1-Digest: nGeUFEw27tPPNABwNmzHHFR11q8=
+
+Name: topics_Extpoint.xml
+SHA1-Digest: zlvoKUBxdnS7vI/PCL04BFRBdss=
+
+Name: html/reference/extension-points/org_eclipse_ecf_provider_filetra
+ nsfer_retrieveFileTransferProtocolFactory.html
+SHA1-Digest: e29yWQDTNa6nSsxErUHqV2HNGUU=
+
+Name: html/reference/extension-points/org_eclipse_ecf_presence_ui_rost
+ erViewerDropTarget.html
+SHA1-Digest: BacyKzXPN9hsf4srk/V84xTiCzg=
+
+Name: intro/whatsnewExtensionContent.xml
+SHA1-Digest: AAeWYmw4Oz54VU0HIqemm1pqiNQ=
+
+Name: topics_Reference_RemoteServices.xml
+SHA1-Digest: 84HDiDSxdImjFVdKgooyHBTDJIE=
+
+Name: plugin.xml
+SHA1-Digest: iy+YGDT7CHZ54aF5Lt3syiZiTgY=
+
+Name: html/reference/extension-points/org_eclipse_ecf_ui_configuration
+ Wizards.html
+SHA1-Digest: E3HuGSbRIBePG4Kr2iPGUN8tyTI=
+
+Name: intro/css/overview.css
+SHA1-Digest: ir8rmju2ImY4L96KdjGnNMLB05Q=
+
+Name: notices.html
+SHA1-Digest: mRk/WmtXWRvqUb2RqJvrKmAtB2k=
+
+Name: html/reference/extension-points/org_eclipse_ecf_presence_bot_cha
+ tRoomRobot.html
+SHA1-Digest: TugZ2b8ZXzZqWaRcjEK9/vhUF+I=
+
+Name: html/reference/extension-points/org_eclipse_ecf_provider_filetra
+ nsfer_sendFileTransferProtocolFactory.html
+SHA1-Digest: mKiOojDWvhoERTeMg0lAUe1eQ4w=
+
+Name: topics_GettingStarted.xml
+SHA1-Digest: nS9gaBhbTYKOgpa/VTNmBWLh/RE=
+
+Name: html/reference/extension-points/org_eclipse_ecf_provider_filetra
+ nsfer_browseFileTransferProtocolFactory.html
+SHA1-Digest: pmqVh+i0lgxrHsLA2krxG53rRNU=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: html/reference/extension-points/org_eclipse_ecf_presence_bot_cha
+ tRoomMessageHandler.html
+SHA1-Digest: 5F6tZIq5bizGRLx3n+RX7TlVrgE=
+
+Name: intro/samplesExtensionContent.xml
+SHA1-Digest: XV0RbjxWXDA8E3mHG2hGIwmG4J0=
+
+Name: about.html
+SHA1-Digest: iNWxM6jy8QeiF5+ti/F31diQ6JI=
+
+Name: html/reference/extension-points/org_eclipse_ecf_discovery_ui_ser
+ viceAccessHandler.html
+SHA1-Digest: JzdKJQNCACT5bC970/hHgxZcTZg=
+
+Name: html/reference/extension-points/org_eclipse_ecf_sharedobject_sha
+ redObjectFactory.html
+SHA1-Digest: QQg8RTgutNb7CTY05YTqtqds4c4=
+
+Name: intro/css/samples.css
+SHA1-Digest: APsiM0BUhSwfCH/PmpAOIvIc6jI=
+
+Name: html/reference/extension-points/org_eclipse_ecf_presence_bot_imR
+ obot.html
+SHA1-Digest: So4alEoxXjdwqTm3E3CiIUXedkk=
+
+Name: html/reference/extension-points/org_eclipse_ecf_containerFactory
+ .html
+SHA1-Digest: gY1CYOI+fgLyhUPmOYF++BAvcwk=
+
+Name: toc.xml
+SHA1-Digest: Oj3G5jSR7UTpyYHqShBSJ1nvmFY=
+
+Name: intro/css/whatsnew.css
+SHA1-Digest: GTHo22JRTeC2tp3rRTycpCeiX+A=
+
+Name: intro/tutorialsExtensionContent.xml
+SHA1-Digest: 8JObk2Z24whZu+y81m+ZfnexAio=
+
+Name: html/reference/extension-points/org_eclipse_ecf_presence_bot_imM
+ essageHandler.html
+SHA1-Digest: QMZNp0VxgSOUlm3KeqWYuS2IVE4=
+
+Name: html/reference/extension-points/org_eclipse_ecf_start.html
+SHA1-Digest: 90/DONC42Kcw0apwH8Tjs1cuJnc=
+
+Name: topics_Samples.xml
+SHA1-Digest: k0EvuNCfCl/LlPYV0A7nKPljfYs=
+
+Name: html/reference/extension-points/org_eclipse_ecf_container.html
+SHA1-Digest: nzJOJTCwA+3hyB/yWpC/vcUCpys=
+
+Name: topics_Reference.xml
+SHA1-Digest: AMxK0ZMgMl9IKFmk68poaZfGsYI=
+
+Name: intro/css/tutorials.css
+SHA1-Digest: 5Nh2PwIGiuvQgEvIOAhSQMERQFE=
+
+Name: tocapi.xml
+SHA1-Digest: +EDQ4ldrFcjI5RzmKinOeSq+nbQ=
+
+Name: html/reference/extension-points/org_eclipse_ecf_identity_namespa
+ ce.html
+SHA1-Digest: Cay0jvesyQhNQzL8HmrZmtvPw3U=
+
+Name: intro/overviewExtensionContent.xml
+SHA1-Digest: nDtQl7v43niODCpyTr+1X5LD3Uw=
+

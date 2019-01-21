@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Configuration Variables</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Defining Activity Criticality",
+        "mg-defdesk-11.htm","activity-criticality.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+
+<h1>Using Configuration Variables</h1>
+<p>Stardust provides the possibility to use variables 
+to allow runtime configuration of process models without a necessary redeployment.
+<!--  <p>Variables can be used in all string-typed properties of a model, for example
+to reference a server address in 
+Web Services endpoints, JSF URLs or Mail Server addresses.
+ e.g. via:
+<ul>
+	<li><tt>${Central Server}/risk/webservices</tt> for the Web Services endpoint.</li>
+	<li><tt>${Central Server}/risk/portal/portfolio-overview.jsf</tt> for a JSF URL.</li>
+	<li><tt>${Central Server}</tt> for the mail server.</li>
+</ul>-->
+Variables can be used in all model element properties accessible as strings
+from the modeling environment and where no validation of the entry field would 
+prohibit to enter the variable syntax.</p>
+<!--  Usage of the variable syntax can be escaped if such strings 
+are intended to be used literally.-->
+<p>At runtime the parameter can be set once for the entire model by string replacement.
+A user interface in the Stardust Portal is provided to do the changes 
+globally and on per model fragment level. Please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-config-var.html">
+Viewing and Editing Configuration Variables</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> guide for details.</p>
+<p>You find a tutorial guiding you through an example in chapter
+<a href="../../tutorial/config-var/tut-config-var-prod.html">
+Using a Configuration Variable to Control a Process Flow</a> in the
+<a href="../../tutorial/tut-preface.htm">Tutorial</a> guide.</p>
+<ul>
+    <li><a href="#proppage">Configuration Variables in Model Property Pages</a></li>
+    <li><a href="#secure">Defining Configuration Variable Type for Security Information</a></li>
+    <li><a href="#elemens">Defining Variables in Model Elements</a></li>
+    <li><a href="#validation">Variable Validation</a></li>
+    <li><a href="#storage">Configuration Variables Storage in Model File</a></li>
+</ul>
+<h2 id="proppage">Configuration Variables in Model Property Pages</h2>
+<p>The model properties page provides a Configuration Variables pane,
+which contains a table listing all configuration
+variables defined in the model with the following columns:</p>
+<ul>
+	<li>Name</li>
+	<li>Default Value</li>
+	<li>Description</li>
+</ul>
+<p>All columns are editable. When the dialog opens,
+all already defined variables and their references are refreshed and listed.</p>
+<p class="image"><a href="images/model-var-props_orgSize.png" target="_blank">
+<img src="images/model-var-props.png" alt="Configuration Variables"></a>
+<br>
+<strong>Figure:</strong> Configuration Variables</p>
+<p>Please note that variables obtained in previous refreshes will be kept and stored with 
+the model on saving even if they do not occur in the model anymore.</p>
+<ul>
+    <li><a href="#add">Adding Variables</a></li>
+    <li><a href="#del">Deleting Variables</a></li>
+    <li><a href="#rename">Renaming Variables</a></li>
+    <li><a href="#ref">References</a></li>
+    <li><a href="#predef">Default Variables for Criticality</a></li>
+</ul>
+<h3 id="add">Adding Variables</h3>
+<p>To add a new configuration variable click the <strong>Add</strong>
+button in the upper right corner of the dialog. A new entry is added to
+the <strong>Variables</strong> table, where the name, default value
+and description can be entered.</p>
+<p class="image"><img src="images/model-var-add.png" 
+alt="Adding Variable"><br>
+<strong>Figure:</strong> Add a new variable.</p>
+<h3 id="del">Deleting Variables</h3>
+<p>Variables can be deleted explicitly by selecting and clicking the 
+<strong>Delete</strong> button.
+A dialog opens with the following options how the deletion should be
+performed:</p>
+<ul>
+	<li>Substitute all occurrences of the variable to be removed with 
+	an empty literal.</li>
+ 	<li>Substitute all occurrences of the variable with the default
+ 	 value of the variable to be removed.</li>
+	<li>Substitute all occurrences of the variable with a literal
+	 to be defined by the user.</li>
+</ul>
+<p>Decide for one of these options by selecting the appropriate
+radio button.
+The last option additionally offers
+a text field to provide the literal the variable to be substituted with.</p>
+<p class="image"><img src="images/model-var-delete-dialog.png" 
+alt="Delete Dialog"><br>
+<strong>Figure:</strong> Variables Delete Confirmation Dialog</p>
+<h3 id="rename">Renaming Variables</h3>
+<p>To rename a variable, you can simply edit its entry in
+the <strong>Name</strong> column of the <strong>Variables</strong>
+table. With this operation, all occurrences of the variable are 
+substituted by the new variable name. Note that the 
+<strong>References</strong> section is refreshed and displaying the
+new name in the <strong>Value</strong> column after the model is saved.</p>
+<h3 id="ref">References</h3>
+<p>In the <strong>References</strong> table, all model elements a variable that
+is selected in the <strong>Variables</strong> part is used in, are displayed.
+The corresponding table has the following three columns:</p>
+<ul>
+	<li>Model Element - shows the model elements which refer to the selected variable.</li>
+	<li>Attribute - shows the concrete attribute within the model element 
+		which contains the selected variable.</li>
+	<li>Value - shows the attribute value within the model element 
+		which contains the selected variable.</li>
+</ul>
+<p class="image"><img src="images/model-var-references.png" 
+alt="References Table"><br>
+<strong>Figure:</strong> References Table</p>
+<!-- <h3>Refresh</h3>
+<p>Save the model to evaluate the used configuration variables set or edited
+in the model.</p> -->
+<h3 id="predef">Default Variables for Criticality</h3>
+<p>When creating a new model, predefined configuration variables are created 
+for this model, which are used for activity criticality. For details on 
+the default configuration variables defined for activity criticality, refer to 
+section <a href="../../concepts/activity-criticality.html#defaultVar">
+    Default configuration variables</a> of chapter
+<a href="../../concepts/activity-criticality.html">Activity Criticality</a> in the
+<a href="../../concepts/key-concepts.html">Concepts</a> section.</p>
+<p class="image"><img src="images/default-config-vars.png" 
+alt="Default Configuration Variables"><br>
+<strong>Figure:</strong> Default Configuration Variables</p>
+<h2 id="secure">Defining Configuration Variable Type for Security Information</h2>
+<p>You can define data type for cofiguration variable which allows a type validation of default values
+respectively actual values given via API or from within configuration variable administration view.
+This allows runtime configuration of arbitrary server-side security-relevant data at required places 
+in the model.</p>
+<p>So, following two types are supported for configuration variables:</p>
+<ul>
+   <li>String(default type)</li>
+   <li>Password</li>
+</ul>
+<p>To create a configuration variable of Password type, perform the following steps:</p>
+
+<ol>
+   <li>Specify default value of the element as ${name:type}. For example,
+   ${token:Password}. Note that the type must be specified as Password.
+   <p class="image"><img src="images/def-type.png" 
+   alt="Default Value as Password Type"><br>
+   <strong>Figure:</strong> Default Value as Password Type 
+   </p></li>
+   <li>Open the property page of the model and view the configuration variable panel. Note 
+   that for variable named token, the type is displayed as Password.
+
+      <p class="image"><img src="images/pass.png" 
+   alt="Configuration Variable of Password Type">
+   <br>
+   <strong>Figure:</strong> Configuration Variable of Password Type
+   </p></li>
+</ol>
+
+<h2 id="elemens">Defining Variables in Model Elements</h2>
+<p>Variables can be defined in all model element properties
+that are accessible via String properties from the modeling environment
+by using the following syntax:</p>
+<pre>${variable name}</pre>
+<p>This also includes properties being introduced via extension point 
+implementations and hence allows to use variables also in custom extensions,
+e.g. application types.</p>
+<h3>Restrictions</h3>
+<p>Using configuration variables is not supported in the following
+cases:</p>
+<ul>
+	<li>Configuration variables are not supported within the ID
+	of a model element. An according error is displayed in the Problems View, as
+	described in section <a href="#valErrors">Errors</a>.</li>
+	<li>It is not supported to use configuration variables 
+	in internationalized values for internationalizable model element properties.</li>
+	<li>The variable name must not contain invalid characters like "/ $ { } *".</li>
+	<li>The usage of configuration variables in the <strong>Description</strong>
+	field for model element	properties is not supported. An according error is 
+	displayed in the Problems View, as
+	described in section <a href="#valErrors">Errors</a>.</li>
+	<li>Using configuration variables in Enumeration and Structured Type
+	declarations is not supported. An according error is 
+	displayed in the Problems View. Please see section 
+	<a href="#valErrors">Errors</a> for details.</li>
+</ul>
+<h4>Invalid variable names</h4>
+<p>The variable name must not contain invalid characters like "/ $ { } *". In case
+the name contains such characters, it is not possible to save the property page changes.
+However, it is possible to define an invalid variable within a model element,
+but a corresponding validation warning is displayed in the problems view,
+as described in section <a href="#validation">Variable Validation</a>.
+Such a variable is listed in the configuration panel, but flagged as invalid.</p>
+<p>Invalid variable names are flagged in the Configuration Variables
+property page pane in the following way:</p>
+<ul>
+	<li>Invalid variable (usage of invalid characters in its name)
+	<p class="image"><img src="images/model-var-invalid-char.png" 
+	alt=""></p></li>
+	<li>Duplicate variable names
+	<p class="image"><img src="images/model-var-dupl-var.png" 
+	alt=""></p></li>
+	<li>New variables still carrying the predefined placeholder name "&lt;new&gt;"
+	<p class="image"><img src="images/model-var-invalid-new.png" 
+	alt=""></p></li>
+</ul>
+<h3>Examples</h3>
+<p>For example, to create a variable <tt>MailServer</tt> in
+a primitive data element, enter the default value
+<tt>${MailServer}</tt>.</p>
+<p class="image"><img src="images/model-var-define.png" 
+alt="Defining a Variable"><br>
+<strong>Figure:</strong> Defining a Variable in a Primitive Data</p>
+<p>To create the variable <tt>MailServer</tt> in
+the property page of a mail application element, enter
+<tt>${MailServer}</tt> in the <strong>Mail Server</strong>
+entry field.</p>
+<p class="image"><img src="images/model-var-define-2.png" 
+alt="Defining a Variable"><br>
+<strong>Figure:</strong> Defining a Variable in a Mail Server Application</p>
+<h3>Escaping Syntax</h3>
+<p>In case strings of the form <tt>${...}</tt>
+are used literally in model element properties, 
+escape the corresponding string by a "&#92;":</p>
+<pre>&#92;${...}</pre>
+<p>Using the escape, the <tt>${...}</tt> construct is taken as plain text
+instead of a variable.</p>
+
+<h2 id="validation">Variable Validation</h2>
+<p>Validation warnings and errors are displayed in the <strong>Problem View</strong>
+after saving the model and 
+selecting the <strong>Validate</strong> option from the model context
+menu. Please refer to the chapter
+<a href="models/model-validation.html">Model Validation</a> for details.
+Additionally you can see in the Outline view if validation errors or 
+warnings are present. Model elements are marked with an error or
+warning overlay icon accordingly.</p>
+<h3>Warnings</h3>
+<p>Validation warnings on configuration variables occur in the
+following cases:</p>
+<ul>
+	<li>The configuration variable &lt;VariableName&gt; is never used.</li>
+	<li>The configuration variable &lt;VariableName&gt; has no default value defined.
+	<p class="image"><img src="images/model-var-valid.png" 
+	alt="Variable Validation Warning"></p></li>
+	<li>&lt;VariableName&gt; is not a valid model variable.
+	 <p class="image"><img src="images/model-var-problem-view.png" alt=""></p></li>
+</ul>
+<h3 id="valErrors">Errors</h3>
+<p>Validation errors on configuration variables might 
+occur in the following cases:</p>
+<ul>
+	<li>Configuration variables are are used in the ID of a
+	model element.
+	<p class="image"><img src="images/model-var-valid-id.png" 
+	alt="Variable Validation ID Error"></p></li>
+	<li>Configuration variables are used in the description type
+	of a model element.
+	<p class="image"><img src="images/model-var-valid-descr.png" 
+	alt="Variable Validation Description Error"></p></li>
+	<li>Configuration variables are used in an Enumeration or Structured 
+	Type declaration.
+	<p class="image"><img src="images/model-var-valid-struct.png" 
+	alt="Variable Validation Structured Type Error"></p></li>
+</ul>
+
+<h2 id="storage">Configuration Variables Storage in Model File</h2>
+<p>Configuration variables, their values and their descriptions are stored in
+the model file as extended attributes, e.g.:</p>
+<pre>
+&lt;carnot:Attribute Name="ipp:variables[0]:name" Value="MailServer" Type="String"/&gt;
+&lt;carnot:Attribute Name="ipp:variables[0]:defaultValue" Value=" smpt.sungard.com" Type="String"/&gt;
+&lt;carnot:Attribute Name="ipp:variables[0]:description" Value="The Mail Server. " Type="String"/&gt;
+&lt;carnot:Attribute Name="ipp:variables[1]:name" Value="ServiceURL" Type="String"/&gt;
+&lt;carnot:Attribute Name="ipp:variables[1]:defaultValue" Value=" http://www.sungard.com/service" Type="String"/&gt;
+&lt;carnot:Attribute Name="ipp:variables[1]:description" Value="The service URL. " Type="String"/&gt;
+</pre>
+<p>Note that you have to save the model to see the
+updated entries.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

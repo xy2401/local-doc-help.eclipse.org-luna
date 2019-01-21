@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>External Filter for Table Editor</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">External Filter for Table Editor</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.sqltools.data.core.tableEditorResultFilter<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point allows users to set a filter for the columns and/or the where clause to use when the table editor cells are constructed.  Generally, all columns of all rows are displayed in the table editor.  This extension point allows users to restrict the columns/rows to be edited.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.editorFilter">editorFilter</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.editorFilter">editorFilter</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST editorFilter</p>
+<p class="code SchemaDtdAttlist">vendor&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">class&nbsp;&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Element specifies an external filter is to be used to filter the results sets used by the table editor</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>vendor</b> - Vendor: String as returned by org.eclipse.datatools.modelbase.sql.schema.Database.getVendor().
+Ommit to match all vendors.</li>
+<li><b>class</b> - Class name: Fully qualified name of the Class that is to be used to filter the results used by the table editor. The class must implement the org.eclipse.datatools.sqltools.data.internal.ui.editor.ITableEditorResultFilter interface.  If the method isUseExternalFilterDialog() returns false then the external filter will not be used, instead the default results will be used by the editor.  If isUseExternalFilterDialog() returns true then the external filter will be used.  This mechanism is used so that a preference can be used to determine by default whether or not to use external filter.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>[Enter extension point usage example here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>[Enter API information here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+</p>
+</BODY>
+</HTML>

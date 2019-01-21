@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Rules Management</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+         <!--
+            writeNavigation("Security Propagation for Web Applications", 
+            		"quality-assurance.html", "security.html", 
+            		"key-concepts.html",
+                     "Concepts");
+            -->
+         </script>
+   <h1>Rules Management</h1>
+   <p> Stardust provides Business Rules Management for defining rules
+   to maintain business logic separately from application code. A business rule defines 
+   actions that are performed when certain conditions are satisfied in the input data.
+   Using rules enhances process efficiency in terms of validation, completeness and 
+   readiness. Business analyst can easily define and change such rules.</p>
+   <ul>
+      <li><a href="#pattern">Common Usage Pattern</a></li>
+      <li><a href="#use">Benefits of using Rules</a></li>
+      <li><a href="#bpm">Managing Rules in the Business Process Modeler</a></li>
+      <li><a href="#example">Example Use Case for a Pre-Approval Scenario</a></li>
+   </ul>
+<h2 id="pattern">Common Usage Pattern</h2>
+   <p>Common use cases for business rules could be simple scenarios like validating user 
+   input and creating corresponding error messages as well as more complex business processes
+   like:</p>
+   <ul>
+      <li>Credit and loan approvals</li>
+      <li>Customer relationship management</li>
+      <li>Risk management</li>
+      <li>Insurance processing</li>
+   </ul>
+   <p>and many more.</p>
+   <p>In a Stardust process modeling scenario rules can be used where a set of 
+   rules may contain complex process data such as:</p>
+   <ul>
+      <li>Trade</li>
+      <li>Loan</li>
+      <li>Customer</li>
+      <li>Order</li>
+      <li>Payment</li>
+      <li>Plan</li>
+   </ul>
+   <p>These could be business rules like one of the following:</p>
+   <ul>
+      <li>"If the list of insured persons contains one or more person with an age
+         greater than 70, increase the risk by 10%."</li>
+      <li>"If the participants date of birth is after the plan date add an error
+         message."</li>
+   </ul>
+   <p>These rules may result in changes on the same or other process data such as</p>
+   <ul>
+      <li>Credit Risk</li>
+   </ul>
+   <p>The results may drive further execution of the process.</p>
+
+   <h2 id="use">Benefits of using Rules</h2>
+<p>Rules are usually used when the business analyst is not focusing on one big transformation, but likes
+      to add rules successively based on changed or enhanced business requirements or
+      defining decision. This provides separation of concerns and allows
+      to extract business logic from the workflow.</p>
+     <p>Using Stardust rules you have the option to:</p>
+   <ul>
+      <li>decompose complex decisions into smaller pieces, which provides a better overview</li>
+      <li>allow functionality to be re-used via components</li>
+      <li>encapsulate business logic in shared, re-usable components
+      <li>reduce code complexity
+      <li>use smaller units of encapsulated functionality</li>
+      <li>concentrate on the application's specific validation rule logic</li>
+   </ul>
+<p>Solutions to difficult problems can easily be provided and 
+   consequently be verified. Rules are easier to read than code and thus more 
+   understandable by non-technical users like business analysts as the impact on the rest
+   of the application is easier to overlook for rules than for a complete program.</p>
+
+<h3 id="mta">Comparison with Message Transformations</h3>
+   <p>
+      Rules execution differs from Message Transformations in Message Transformations are
+      executed by performing all mappings between input and output data in a strict order,
+      whereas rules are executed based on data content and priority. 
+<h2 id="bpm">Managing Rules in the Stardust Portal</h2>
+   <p>
+      The Stardust Portal Rules Management perspective allows to define and
+      manage business rules as decision tables or rules composition. It provides the 
+      ability to:</p>
+<ul> 
+   <li>create Rule Sets with a user-friendly UI for the most typical use cases via Decision Tables and a Rules Editor
+   to create free form rules</li>
+   <li>share a common type system of structured and primitive data between Rules definition and process models</li>
+   <li>use the defined Rule Sets to execute Rule Tasks</li>
+   <li>deploy the defined rules into a common runtime environment together with process models using these Rules</li>
+</ul>
+<p>Refer to section <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules.html">
+         Managing Business Rules</a> in the <a
+         href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+         Stardust Portal</a> documentation for details.
+   </p>
+   <ul>
+      <li><a href="#sets">Rules Sets</a></li>
+      <li><a href="#tables">Rules Decision Tables</a></li>
+      <li><a href="#techn">Technical Rules Support</a></li>
+      <li><a href="#task">Rule Task Type</a></li>
+   </ul>
+   <h3 id="sets">Rules Sets</h3>
+<p>Stardust rules management provides the option to assemble technical rules and 
+decision tables in Rule Sets. In these Rule Sets data can be specified as parameters 
+for in- and output in the contained rules and decision tables.</p>
+   <h4 id="data">Rules Set Data</h4>
+   <p>The type system of all Structured Data Types specified on Stardust Process 
+   Models as well as primitive data can be specified for the Rules Set Data.</p>
+   <p>The set of Input and Output data is explicitly defined applying to the following concept:</p>
+   <ul>
+      <li>Each Input and Output Data has a name and a type</li>
+      <li>Conditions are evaluated against all Input Data of a specified type</li>
+      <li>Actions are likewise evaluated against all Output Data of a specified type</li>
+   </ul>
+   <h3 id="tables">Rules Decision Tables</h3>
+   <p>The Rules Management Perspective supports easy creation of Decision Tables. The 
+   Decision Table format is intuitive for business analysts and consists of:</p>
+<ul>
+   <li>Condition columns to define conditions on properties of objects in the Rules Data Set. 
+   A condition column evaluates to a boolean value.</li>
+   <li>Action columns to define actions on properties of objects in the Rules Data Set based on the output of the conditions
+   </li>
+   <li>Rows for Rules specifying values for the properties specified above</li>
+</ul>
+<h3 id="techn">Technical Rules Support</h3>
+<p>You can add more technical or complex rules to a rule set, which you can edit in a
+Rule editor. This editor is based on the <a href="http://ace.c9.io/#nav=about">Ace</a> editor and provides the following
+   functionality for creating and editing technical rules:
+</p>
+<ul>
+   <li>themes</li>
+   <li>syntax highlighting</li>
+   <li>comments, keywords, and literals support</li>
+   <li>auto-completion</li>
+   <li>search and replace functionality</li>
+   <li>cut, copy, and paste functionality</li>
+</ul>
+<h3 id="task">Rule Task Type</h3>
+<p>The <strong>Business Process Modeler</strong> provides a Rule Task type that can 
+implement rule sets defined in the <strong>Rule Manager</strong> perspective.
+The Rule Task invokes the rules and decision tables pertaining to the rule set. 
+It computes values in the underlying data set.
+Its result can also be used in subsequent gateways for making decisions.
+For details
+on this task type refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html#ruletask">
+Rule task implementation</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html">
+Specifying Activity Properties</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">Business Process Modeler</a>
+handbook.</p>
+<p class="note"><strong>Note</strong><br>
+You need a lifecycle management environment to be able to run and test a Rule Task. 
+Please contact our <a href="mailto:SalesSupport@sungard.com">Sales Support Team</a> for details.</p>
+
+<h2 id="example">Example Use Case for a Pre-Approval Scenario</h2>
+<p>The following example demonstrates a use case where rules are required for a pre-approval 
+scenario and how they can be specified in a Stardust environment.</p>
+<p>A bank wants to implement automated rules to pre-approve unsecured loans. These rules
+are:</p>
+<ol>
+   <li>Loans can be pre-approved for a maximum amount of $50,000 based on a customer's net 
+   monthly income, credit score, and whether the applicant is an existing bank customer.</li>
+   <li>The maximum pre-approved loan amount of the loan amount is calculated by multiplying 
+   the applicant's net monthly income by 10, 6, or 3 as determined by the credit score,
+   as illustrated in the following table:<br><br>
+   <table class="autoWidth">
+      <tr>
+         <th>Credit Score</th>
+         <th>Multiplier</th>
+      </tr>
+      <tr>
+         <td>Excellent (&gt;760)</td>
+         <td>x10</td>
+      </tr>
+      <tr>
+         <td>Good (700-759)</td>
+         <td>x6</td>
+      </tr>
+      <tr>
+         <td>Fair (640 - 699)</td>
+         <td>x3</td>
+      </tr>
+   </table><br></li>
+   <li>An extra bonus of $1,000 to $5,000 is added for existing customers.</li>
+   <li>Applicants must have credit score of 640 or better and net income of $1,000 or more to
+   be pre-approved for a loan.</li>
+</ol>
+<h3>Setting up the Rules in the Stardust Portal</h3>
+<p>To create such a scenario in the Stardust Portal, we use a rule set with a 
+decision table.
+For details on creating rule sets and adding rule set parameters, refer to chapters
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules/my-rule-sets.html">
+Managing Rule Sets</a> and 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules/rule-sets-props.html">
+Editing Rule Sets Properties</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> guide.</p>
+
+<h4>Preparing structured types for In and Out parameter usage</h4>
+<p>Rules conditions and actions used in Decision tables are based on data parameters.
+To specify types for input data to be used as
+rules conditions and output data to write the result to in the action column, we prepare 
+a model providing the according structured data types.</p>
+<ol>
+   <li><strong>CustomerInfo</strong> - a structured type with the following structure:
+   <p class="image"><img src="images/in-struct-type.png" alt="Structured Type"></p></li>
+   <li><strong>MaxLoanAmount</strong> - the maximum loan amount of type 
+   <strong>Money Amount</strong>
+      <p class="image"><img src="images/out-struct-type.png" alt="Structured Type"></p></li>
+</ol>
+<p>In the Rules Management perspective, we create a Rule set using the structured data types
+as In and Out parameters:</p>
+<p class="image"><img src="images/rules-params.png" alt="Rules Parameters"><br>
+<strong>Figure:</strong> Rules Parameters</p>
+<h4>Creating a decision table</h4>
+<p>Now we create a decision table to apply the rules for the pre-approval scenario.
+For details on creating decision tables refer chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules/decision-tables.html">
+Creating and Managing Decision Tables</a>.</p>
+
+<p>As condition columns we select all In data that is needed to set up our rules:</p>
+<ol>
+   <li>Two <strong>NetMonthlyIncome</strong> columns to define the range of the
+   monthly income</li>
+   <li>An <strong>ExistingCustomer</strong> column to determine if the applicant is an 
+   existing bank customer</li>
+   <li>Two <strong>CreditScore</strong> columns define the range of the credit score</li>
+</ol>
+ <p class="image"><img src="images/sel-conditions.png" alt="Select conditions"><br>
+<strong>Figure:</strong> Select conditions</p>
+
+<p>As action column, we choose <strong>MaxLoanAmount</strong> to write the calculated 
+result to.</p>
+<p class="image"><img src="images/sel-action.png" alt="Select action"><br>
+<strong>Figure:</strong> Select action</p>
+<p>To specify the ranges for the <strong>NetMonthlyIncome</strong> and 
+<strong>CreditScore</strong> columns, we set operators 
+<img class="noborder" src="images/op-gt-or-equal.png" alt="&gt;="> and 
+<img class="noborder" src="images/op-lt-or-equal.png" alt="&lt;="> accordingly.
+For details refer to section 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules/decision-tables.html#ops">
+Setting Operators in the Table Header</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/rules/decision-tables.html">
+Creating and Managing Decision Tables</a>.</p>
+<p>Now enter values in the table cells of the <strong>Condition</strong> columns and the
+resulting value according to the rules in the <strong>Action</strong> column. The 
+following Decision table shows an example with possible values:</p>
+<p class="image"><img src="images/decision-table.png" alt="Decision Table"><br>
+<strong>Figure:</strong> Decision Table</p>
+<h4>Using the Rule Set in a process</h4>
+<p>To use the specified Rule Set in a process, add a Rule Task that implements the Rule Set.
+For details on working with Rule Tasks, refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html#ruletask">
+Rule task implementation</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-activity-props.html">
+Specifying Activity Properties</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">Business Process Modeler</a>
+handbook.</p>
+<p>A Structured Data of type <strong>CustomerInfo</strong> can be used to enter the 
+required customer data in a manual activity and transfer them to the Rule Task using
+the specified rule set. The Rule Task determines the value for <strong>MaxLoanAmount</strong>
+as output.</p>
+<p class="image"><img src="images/rule-process.png" alt="Rule Process"><br>
+<strong>Figure:</strong> Process with Rule Task</p>
+<p>Note that, as already mentioned above, you need a lifecycle management environment to 
+be able to run and test a Rule Task. 
+Please contact our <a href="mailto:SalesSupport@sungard.com">Sales Support Team</a> for details.</p>
+
+   <script language="JavaScript" type="text/javascript">
+         <!--
+            writeFooter();
+            -->
+         </script>
+</body>
+</html>

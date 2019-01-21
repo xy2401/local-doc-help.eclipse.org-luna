@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc link_to="toc.xml#tocapi" label="Stardust Engine API">
+  <topic label="Stardust Engine API" href="html/reference/api/engine/index.html">
+    <topic label="Overview" href="html/reference/api/engine/overview-summary.html">
+      <topic label="org.eclipse.stardust.engine.api.dto Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/dto/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.ejb2 Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/ejb2/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.model Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/model/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.pojo Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/pojo/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.query Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/query/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.runtime Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/runtime/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.web.dms Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/web/dms/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.web Package" href="html/reference/api/engine/org/eclipse/stardust/engine/api/web/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.cli.security.authentication Package" href="html/reference/api/engine/org/eclipse/stardust/engine/cli/security/authentication/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.compatibility.gui.security Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/compatibility/gui/security/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.compatibility.spi.security Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/compatibility/spi/security/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.compatibility.ui.preferences.spi Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/compatibility/ui/preferences/spi/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.persistence Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/persistence/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.preferences.configurationvariables Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/preferences/configurationvariables/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.preferences Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/preferences/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.preferences.permissions Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/preferences/permissions/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.runtime.beans Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/runtime/beans/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.runtime.command.impl Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/runtime/command/impl/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.runtime.command Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/runtime/command/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.runtime.utils Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/runtime/utils/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.cluster Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/cluster/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.dms Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/dms/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.extensions.model Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/extensions/model/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.extensions.runtime Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/extensions/runtime/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.jms Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/jms/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.monitoring Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/monitoring/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.preferences Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/preferences/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.resources Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/resources/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.core.spi.security Package" href="html/reference/api/engine/org/eclipse/stardust/engine/core/spi/security/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.extensions.dms.data.annotations.printdocument Package" href="html/reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/annotations/printdocument/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.extensions.dms.data Package" href="html/reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/package-summary.html"/>
+    </topic>
+  </topic>
+</toc>

@@ -1,0 +1,4641 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: .
+Ant-Version: Apache Ant 1.8.3
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.graphiti.doc;singleton:=true
+Require-Bundle: org.eclipse.help;bundle-version="[3.5.0,4.0.0)"
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Bundle-Version: 0.11.2.v20150204-0954
+Bundle-ManifestVersion: 2
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/StructureMappingSin
+ gle.html
+SHA1-Digest: Q49FIrLX96F6lgi/kwLxpCF24jw=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/package-use.html
+SHA1-Digest: ex1y2NbVMUu4Uedb7wEbXV0tIYg=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/AdvancedAnc
+ hor.html
+SHA1-Digest: OclXr2f/eDiOb8fXdIPFQIB4Bv4=
+
+Name: javadoc/org/eclipse/graphiti/tb/DefaultContextButtonPadData.html
+SHA1-Digest: BGdqpoa+NC9o0Z8eNwdtadsArz4=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/AbstractDecorator.html
+SHA1-Digest: ZrS6tqASei7M0/qPh9RTeg5T4oo=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/package-frame.html
+SHA1-Digest: n3R0lysuMnuA4aV0zqFD7CT20Dc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/ICustomUndoablePattern.html
+SHA1-Digest: Qd0ClyYVHd9AN9okKMdz8TvJQNo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Styl
+ esPackage.html
+SHA1-Digest: bw4pHOa8pblqJwtsF4LHwCDuuYw=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/FixPointAnc
+ hor.html
+SHA1-Digest: GI/t/m/tL8y7zlWPIF95BhMG9m0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Colo
+ r.html
+SHA1-Digest: 8m18F3RIaitvTYuDYFrgUaj7/aI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/FreeFormCon
+ nection.html
+SHA1-Digest: 4uQzSPjpEDBi/Pmw/ATVLTGTccw=
+
+Name: javadoc/index-files/index-10.html
+SHA1-Digest: /zJnFK27gS4aKE1bDLnbmWWCel4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/LayoutFeatureForP
+ attern.html
+SHA1-Digest: uhWo3JKcUuQx3DIy1mIgDebd6v8=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/package-tree.html
+SHA1-Digest: gb8jbfq5GOJ7RxseWP1IlynqY1s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Line
+ Style.html
+SHA1-Digest: MUcSLKU1jVt4C6uvtz0VmeZ90mU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/FixPoi
+ ntAnchorImpl.html
+SHA1-Digest: nklVgcEz92OoE2gitr9BCKASVQM=
+
+Name: resources/docu/advanced/Patterns.htm
+SHA1-Digest: QwozT5LGP7DMCEbwd0dmVxJf8GQ=
+
+Name: javadoc/org/eclipse/graphiti/func/IDirectEditing.html
+SHA1-Digest: Ct685NHDc69ET4+hPcbBmnhGXTA=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IVisualStateH
+ older.html
+SHA1-Digest: iAhuEvWmGQAn6DJt1KIadgHKKgM=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/IDiagramEditor.h
+ tml
+SHA1-Digest: FSa2IJdxieK24cZrlYs4nVXBA3M=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultMove
+ AnchorFeature.html
+SHA1-Digest: wCTW7xKLCcKY5xUaPMi1m3fz8IY=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultMove
+ ShapeFeature.html
+SHA1-Digest: d2GVQ4W+ome74quny9ku9N94/PE=
+
+Name: javadoc/org/eclipse/graphiti/platform/package-summary.html
+SHA1-Digest: XV7+C6Mj3j45ojYDvvnQJffPltU=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IResizeFeature.h
+ tml
+SHA1-Digest: XE94AwY53jKiO3ILPjRxbh1KH1k=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/TextStyle
+ Impl.html
+SHA1-Digest: qt4t2r/nVVhlUaVsni2cSFAU2XM=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/ICreateConnection.ht
+ ml
+SHA1-Digest: 5vvR3p6xejPCdnp+3tNhsp0Q950=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/LocationType.h
+ tml
+SHA1-Digest: Ze01uWsBs8QILzA4bQtRkD8xN+Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ConnectionDecora
+ torImpl.html
+SHA1-Digest: txyinkiBtY/YKRCy53QhiBq/tFI=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/PlatformImage
+ Provider.html
+SHA1-Digest: Jtz+0cILUU2jDk7tZmThCJ/nIRg=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IAnchorSelectionInfo.h
+ tml
+SHA1-Digest: pH3Sg7tPvN6bm5pDW5VLthuUTeA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/PlatformGra
+ phicsAlgorithm.html
+SHA1-Digest: S6OeDD95UhyW+BmFbx7l6ISttu8=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Spl
+ itConnectionContext.html
+SHA1-Digest: jntqSCM6lUJG+rp4m6gRoCvPR1o=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/Precision
+ PointImpl.html
+SHA1-Digest: nuV6fhq3qzjbk6HOhucg495VhPs=
+
+Name: resources/docu/gfw/visio/direct-editing.png
+SHA1-Digest: 4iWuyUGBaPYfGF1/+7J/ALwg/Yo=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/IColorConfiguration.
+ html
+SHA1-Digest: ct4XE05VrT/0O1d+T+NjDKY8teE=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/GdiFont.html
+SHA1-Digest: vJli4XRqL9lnjP0y5hwB18RXDAY=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ILayoutContext.htm
+ l
+SHA1-Digest: BIcYjIfqLEsllW4P0d+KhFNV5CA=
+
+Name: resources/docu/whats-new.html
+SHA1-Digest: sFCLXG3/x+G3gyDq7foEd72fXgo=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractLayoutFeature
+ .html
+SHA1-Digest: 426JOwD3IL0mZ4GIoQ3kdK3O8vg=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IPropertyBag.html
+SHA1-Digest: PUFuPdm7QfD/y8/7jgph7Rno4Yc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IUpdateC
+ ontext.html
+SHA1-Digest: kYplxWCpvbe1In2DxfRfQx6q4xs=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/AnchorContainerI
+ mpl.html
+SHA1-Digest: 9aI44h+qWwH0bd/YRYoYCk3kZo0=
+
+Name: resources/docu/NaNimages/CallbacksConnection.png
+SHA1-Digest: FfOZ96GGljAgyLDuuwzONs+Bi4k=
+
+Name: resources/docu/gfw/add-connection-feature.htm
+SHA1-Digest: A+dxgQYCoF05GlYGS0G/LaMJQOc=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/package-summary.html
+SHA1-Digest: J6oG7pveJcmEz4DFryZcDQH/5Eg=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/IDimension.html
+SHA1-Digest: mleVJRGmE4fAxODapyWfxQZ7+2w=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/package-use.ht
+ ml
+SHA1-Digest: YYeGHeB4SO7pLKtSjDVSBLpNfBU=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/class-use/IPrintPreference
+ s.html
+SHA1-Digest: hDNxyxvkcSs/le1lrMHEZtFQ3Vc=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IRendererCont
+ ext.html
+SHA1-Digest: 86Nd/sJaN2gNbFwET2yIrkQwaxk=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureChecker.
+ html
+SHA1-Digest: YswkYDos4FvUfLMkqN0LNizT5lE=
+
+Name: resources/docu/gfw/visio/palette-stack-2.png
+SHA1-Digest: aBxzc4/CxyuJ/9B5EY4ezrDrzfU=
+
+Name: resources/docu/gfw/example-projects.htm
+SHA1-Digest: TytD1K0l6Ue/NMphihPOREzXH2U=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractAdd
+ ShapeFeature.html
+SHA1-Digest: rGjARwZUXlqtTEmLxAIXrGqcJF4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IConnect
+ ionContext.html
+SHA1-Digest: Fs+FdoGhDPJQifRn3tud+9vAXUc=
+
+Name: resources/docu/gfw/visio/architecture.png
+SHA1-Digest: 6eC9d9rtb+YX3Gcqu2CiLO6CiRQ=
+
+Name: javadoc/org/eclipse/graphiti/features/package-use.html
+SHA1-Digest: EhjsETpJKtKlQXQV8Q3/DWiGZfw=
+
+Name: javadoc/org/eclipse/graphiti/func/IMoveShape.html
+SHA1-Digest: TffJslWZqRcgZWUcv8un6SKNZLc=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/ICreateInfo.html
+SHA1-Digest: u2/r5VNLKA7AW09nXMlw4wf09qs=
+
+Name: javadoc/org/eclipse/graphiti/func/package-tree.html
+SHA1-Digest: i7Zea41FV2nqhlaTtt0fFHnTecg=
+
+Name: javadoc/org/eclipse/graphiti/tb/IImageDecorator.html
+SHA1-Digest: aloPwQlma/gC1TMWI5yzycdkxAE=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractPrintFeature.
+ html
+SHA1-Digest: KMf60O8Fh7/3R0Ic1FJ6RwhZuG8=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/class-use/IEmfService.h
+ tml
+SHA1-Digest: XzU/6YPET7ZJ7cdA9lwNB/SeEfQ=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IContextButtonPadData.
+ html
+SHA1-Digest: ikduAwxx5LwhuYLeDwLzjxgmJD0=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/ICellEditorPr
+ ovider.html
+SHA1-Digest: JdMmZcqfCoH2UrYyP2E4w4hElxI=
+
+Name: resources/docu/gfw/visio/rendering-area-2c.png
+SHA1-Digest: 5oclcb9oeenUNZXXOtNpBccVT1I=
+
+Name: javadoc/org/eclipse/graphiti/features/IAddBendpointFeature.html
+SHA1-Digest: 9GE8duJB9FUJuphltPeypk8rayk=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /TextStyleImpl.html
+SHA1-Digest: ShfeDkLUQxp+tVYCuzjZFg1kByw=
+
+Name: javadoc/org/eclipse/graphiti/tb/IShapeSelectionInfo.html
+SHA1-Digest: h3tQ1Dk9KF4Q9X1zUS+ClRL/sf4=
+
+Name: javadoc/org/eclipse/graphiti/tb/IColorDecorator.html
+SHA1-Digest: mTravgxmOU9G7Hd4E1pmK7a5AuI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/package-use.h
+ tml
+SHA1-Digest: dVyll3FFAwmk9YlGv5a/GeWe3ns=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/ICreate.html
+SHA1-Digest: o+NECsjjczRvLCglv+QyPOSVw0c=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/package-summary.html
+SHA1-Digest: XASV9lGH6VUU3pA7vcbbmV5oX00=
+
+Name: javadoc/org/eclipse/graphiti/dt/IDiagramTypeProviderHolder.html
+SHA1-Digest: BtZLLkGrX0ZIe+BvuShFLO0XNic=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ICreateFeature.h
+ tml
+SHA1-Digest: bW23y+490hfp465vUz/Tqcl05rg=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/EditorInputAdapter.html
+SHA1-Digest: a3uaY7gHyTy5M3AE0FnSwT2IY9Y=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IReadOnlyProvider.html
+SHA1-Digest: agN6Ezcz8HNlT46RT6SwtGBbvDE=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/ICreateService.h
+ tml
+SHA1-Digest: k2eLGAG9FKi9ZiIBIwVgtkFI47Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/TextIm
+ pl.html
+SHA1-Digest: FM5EA+X6WekQGvWJAYy/qtH+yKU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/FreeFormConnection.ht
+ ml
+SHA1-Digest: 9OOyGdBoXvxBCkGV8MzvOMrP5Q4=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/package-frame.html
+SHA1-Digest: UsQg8/B9P0xdLdlZGR05T8+6B7U=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureProvider.html
+SHA1-Digest: TvKS9qLgz7rr6b7Zo+yrNqp8RBw=
+
+Name: resources/docu/gfw/visio/class-editor.gif
+SHA1-Digest: FlzUsgQEUgvKV8SQETJsgSiE63Q=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractMoveShapeFeat
+ ure.html
+SHA1-Digest: NrOMO5f6kVsfMBZJsbilABmTEB4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/AlgorithmsFactory.htm
+ l
+SHA1-Digest: NxQQqK3fYHZ92SdKoHGYlKdlaog=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/RoundedRectangle.html
+SHA1-Digest: jIu0QYtKe8KyRyUlWIS+FS8/xs4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/Anchor.html
+SHA1-Digest: PrCX0NSnG9dvLzQS1UjkyZ0yTRQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Loca
+ tionType.html
+SHA1-Digest: V+g+3YqO1C8TwfWsGuZpWD6qbG8=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/CompositeConnection.h
+ tml
+SHA1-Digest: e/MKb9w7QpkNEdMzsK3DrrWrWGo=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IGaLayoutService
+ .html
+SHA1-Digest: x0qLKroWvnOD76vexZyFQjSyrws=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Diagra
+ mImpl.html
+SHA1-Digest: YkHG24wYm67jbXSBdunRZaXIa+Y=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IContextEntry.html
+SHA1-Digest: e+UwsYjbj4Uc5VJN1fyahYC6VWA=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultUpda
+ teDiagramFeature.html
+SHA1-Digest: 12nPuJ+fRTA/5Adv5s5nxUmmR+0=
+
+Name: javadoc/org/eclipse/graphiti/tb/IContextEntry.html
+SHA1-Digest: tz6HaNo+QTioumjRHprjJ2Ofvn8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /FontImpl.html
+SHA1-Digest: n2krOjhvIHN6H1DU5Mmt8TepvbE=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/AbstractDrillDownFeatur
+ e.DiagramLabelProvider.html
+SHA1-Digest: lWGBEDLqf9kLKZf/0haTm2lkCS4=
+
+Name: javadoc/org/eclipse/graphiti/util/IPredefinedRenderingStyle.html
+SHA1-Digest: Mk+e0QgnlLqoyzSXl66udW+8HUo=
+
+Name: resources/docu/examples/images/FilesystemModel.png
+SHA1-Digest: UDZQWupv4AJ/JCGmNPtuQMOLwK4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Upd
+ ateContext.html
+SHA1-Digest: Sx4X2YJNRf7Ont0F6YMoqGV2J6M=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IVisualStateChangeListe
+ ner.html
+SHA1-Digest: aPwVuRscX1XHWQvKj480lt1AL54=
+
+Name: javadoc/org/eclipse/graphiti/IReadOnly.html
+SHA1-Digest: sDaSm8q1moWA26pujUhfn20v9d0=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/package-use.html
+SHA1-Digest: 7kWMDQO1aoNluCp+8vfDa/31VLg=
+
+Name: resources/docu/advanced/IssueAnalysis.htm
+SHA1-Digest: TVjI2G+H7sknY1zY+Q+iq2xi6/U=
+
+Name: javadoc/org/eclipse/graphiti/func/IRemove.html
+SHA1-Digest: xqZ8PMtn/yDoJZ3f17o4Wf+f+Zs=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultRemoveBendpoin
+ tFeature.html
+SHA1-Digest: 004g+idOH1VNzG9hkYgy6mw0eGA=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ICopyFeature.htm
+ l
+SHA1-Digest: 5md0TN2Aov8fyPBgRqs4iOWdzk0=
+
+Name: javadoc/org/eclipse/graphiti/package-frame.html
+SHA1-Digest: SPAWyhV0Caud9r/FKmXZW1YcdEo=
+
+Name: javadoc/overview-frame.html
+SHA1-Digest: ak0sZccZZzURoOx302BzsV3ZKfs=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/ColorImpl
+ .html
+SHA1-Digest: j0c9vAnVw/iFAR7XJjfRrpWWbiA=
+
+Name: javadoc/org/eclipse/graphiti/pattern/CreateConnectionFeatureForP
+ attern.html
+SHA1-Digest: o/3wG8FCJUfFoduFTgszdJY8p54=
+
+Name: resources/docu/gfw/visio/palette-stack.png
+SHA1-Digest: ONQLamI7MGC9Sx2Fe2P4sgHfKlM=
+
+Name: resources/docu/gfw/graphiti-introduction.htm
+SHA1-Digest: w06lI8rNLnuoVwV+NTe+7BkvHoI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/RoundedRect
+ angle.html
+SHA1-Digest: ZGiUf7jw4Gx1lcQC6UYUGxGJfGQ=
+
+Name: resources/docu/gfw/palette.htm
+SHA1-Digest: JJlaRBuJyIsjw70Y63v65kdXC8M=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/AnchorImpl.html
+SHA1-Digest: 408Xdh0WjYfUuCz3WfLJ+dRYxag=
+
+Name: javadoc/index-files/index-11.html
+SHA1-Digest: FalaWOb/gDCdC30lnzzx4MBTidk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/IFeatureForPattern.html
+SHA1-Digest: F3Aqc7I4ouXSI2hCBiFTsBgdb30=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/RendererConte
+ xt.html
+SHA1-Digest: FQQUuKJ690OS7GePQVA//I34m4U=
+
+Name: javadoc/org/eclipse/graphiti/func/IReconnection.html
+SHA1-Digest: 5FH0TUpAFvn06gQhuPTgXec7Aak=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractLay
+ outFeature.html
+SHA1-Digest: wvH+QFrCCUTNfhor9NxXmVd1gUU=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IUpdate.html
+SHA1-Digest: XnOC+YM2tXSsJseg6CNB2Bx3S2s=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ICustomUndoableF
+ eature.html
+SHA1-Digest: 4Xp+46FKqqWjEfoBM07FpUWdzP8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/class-use/Algori
+ thmsAdapterFactory.html
+SHA1-Digest: w6aLmFLMeVc16RSuLuiuaUVF/Uw=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditorContextMenuP
+ rovider.html
+SHA1-Digest: DDAPnodP//foRfHQSgcocB4stz4=
+
+Name: resources/docu/gfw/move-feature.htm
+SHA1-Digest: uEhMqBA6H5JLcAW+y7LPIfLEBKw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IPasteCo
+ ntext.html
+SHA1-Digest: rW6wfnd5RQA0yEpptDE3MNnn2fY=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/VisualState.html
+SHA1-Digest: 07U8l8Bgyqq6edikqwxfubBbtkU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /StyleImpl.html
+SHA1-Digest: Yp8IpiFV/6LtXfJLRMRQRGvYXio=
+
+Name: javadoc/org/eclipse/graphiti/PropertyBag.html
+SHA1-Digest: kFEnfjldrAWM//HE6lDnPQg7PgU=
+
+Name: javadoc/org/eclipse/graphiti/features/IReconnectionFeature.html
+SHA1-Digest: aETROiTsejpyjn3VFHgUXABoSXc=
+
+Name: resources/docu/gfw/visio/rendering-area-2b.png
+SHA1-Digest: oYRbay69iFDy0MIp4dzPoJ5gchU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Compos
+ iteConnectionImpl.html
+SHA1-Digest: AAx3j8JzoSvebF0JyL/UouUQDcw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMoveContext.html
+SHA1-Digest: MPk8Pcw+4y3Y0lSOJ/W6Q0OIT/Y=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/MoveConnectio
+ nDecoratorContext.html
+SHA1-Digest: cwdP8eXwyo2ss2U4K+7zVwPykxg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/AreaContext.h
+ tml
+SHA1-Digest: 4Ed1DMlo6MZWrxs99mPHKR608O8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Ellipse.html
+SHA1-Digest: q+Y2EtrPwN0AyRLAUDDJZ6rjb6U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/package-use.html
+SHA1-Digest: wC9jdrBVsMiOENVt4Wedx/fVzl0=
+
+Name: resources/docu/gfw/create-connection-feature.htm
+SHA1-Digest: q10uBnjNaaLh1HV7FlOTWDWqPoA=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/class-use/IdUpdateContex
+ t.html
+SHA1-Digest: bVxEp2nmCqTADNO/eXtrZESZ4HI=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/package-summary.html
+SHA1-Digest: OH5H5/5NqrvylL9a18g8XfIvOLA=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IProposalSupport.htm
+ l
+SHA1-Digest: +kyoWbyaHoZKwXMbVZChzhnNIvs=
+
+Name: javadoc/org/eclipse/graphiti/services/package-frame.html
+SHA1-Digest: EmFeUDJXq6WJDImV+ZsYJFPs8hM=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IPeLayoutService
+ .html
+SHA1-Digest: BlsrWDbv+hVy0qKGv6syuo4N86M=
+
+Name: javadoc/org/eclipse/graphiti/tb/ShapeSelectionInfoImpl.html
+SHA1-Digest: u2J8l2oC9/w1j9n2pjKfKQfmng0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IConnectionContext
+ .html
+SHA1-Digest: X9xWFtLR2Cm0t/40IDs1RWr834I=
+
+Name: javadoc/org/eclipse/graphiti/func/package-summary.html
+SHA1-Digest: sXGCA9LWiGEGXEKHj2ohhd++/jM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IPictogramElements
+ Context.html
+SHA1-Digest: m8DkCL3aTHoZFwKVb2OohuE7Mto=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/GraphicsAlgorith
+ mImpl.html
+SHA1-Digest: HwX7FK153vc0YOd9pFrhBpAPWQ0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/PlatformGraphicsAlgor
+ ithm.html
+SHA1-Digest: hMHdcJXK8ANdICCliqKhWL4+Enc=
+
+Name: resources/docu/gfw/property-sheet.htm
+SHA1-Digest: xn55AGxqHyTthlhDAm5INB8UnIM=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/package-frame.html
+SHA1-Digest: A8FSPV3sQc3WZ38s389MnZ3wqAU=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/AbstractContextEntry.h
+ tml
+SHA1-Digest: RSxzbzU3TcetLW0dN+Ob4zH8Cho=
+
+Name: javadoc/org/eclipse/graphiti/features/IMoveShapeFeature.html
+SHA1-Digest: yec4DI8fIDvRZzYPPF0T7Gs30Wg=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Image.html
+SHA1-Digest: KGyS/Za99ZZKUqxiRiv/n72j7RM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Polygon.html
+SHA1-Digest: w1nuKzkLGb5tb7kmlF0nD9soDjM=
+
+Name: javadoc/org/eclipse/graphiti/dt/class-use/IDiagramTypeProviderHo
+ lder.html
+SHA1-Digest: b6RSp4MPMnCtQe9UVTAmPIPOUmY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/package-frame.
+ html
+SHA1-Digest: qv2EzfP+5N5BPv94nhb/EeMXIrM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/SplitConnecti
+ onContext.html
+SHA1-Digest: xRFXr3+A1yhKHq+0GOfr5S4hTb8=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/GraphicsToGraphics2DAd
+ aptor.html
+SHA1-Digest: THqTocQ5mJZwZlvm5n1VFEcggEo=
+
+Name: javadoc/org/eclipse/graphiti/services/package-summary.html
+SHA1-Digest: bAvJr/CpPRGdDA8mxuc4VPDR+y8=
+
+Name: javadoc/org/eclipse/graphiti/pattern/DeleteFeatureForPattern.htm
+ l
+SHA1-Digest: 7DoW8dhU71UphVRNHuvATABch4w=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IDelete.html
+SHA1-Digest: MSUWuwk4r0hChfKb5+u5Dj8uzaU=
+
+Name: javadoc/org/eclipse/graphiti/pattern/IConnectionPattern.html
+SHA1-Digest: 6XRr+8p0Uoicq5G79NquGH1eSjI=
+
+Name: javadoc/org/eclipse/graphiti/util/IGradientType.html
+SHA1-Digest: JdC+SMMn2ZyWxJ/ySSnedoJLd/o=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/Imag
+ eDataMapping.html
+SHA1-Digest: QuRr/kL03V29UPHgCl7Nzfi47hY=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ILayoutC
+ ontext.html
+SHA1-Digest: ZhsQiZNm/g5vMN4/oCM1rZJ48C4=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/ConnectionCreationTool
+ Entry.html
+SHA1-Digest: sAAjtgOfmPIccTFqEpqSnhHxAmw=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/ILook.html
+SHA1-Digest: 5gwfMRxll3WMaRqOoeU3gCp5k/8=
+
+Name: resources/docu/gfw/visio/process-editor.gif
+SHA1-Digest: ZvjoJD6nVyx19emLbtU4jq+mZuc=
+
+Name: javadoc/org/eclipse/graphiti/services/IGaService.html
+SHA1-Digest: HM5JkKUF1zrssrvTKAf0qWNH71k=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/package-summary.html
+SHA1-Digest: FzGtsm5wXFCpplLNIypaRQhcdNM=
+
+Name: resources/docu/gfw/visio/blue-white-gloss.jpg
+SHA1-Digest: WiHh5ilJiIE20rKt0ERiVHFv8GU=
+
+Name: javadoc/org/eclipse/graphiti/IReadOnlyProvider.html
+SHA1-Digest: jSbvQ2lPPQSNnMt8rmbjLiiDF9A=
+
+Name: javadoc/help-doc.html
+SHA1-Digest: +LDXQ95x3qujPaoqmJa70CTZz5o=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/Util.html
+SHA1-Digest: n2WQn29azVH5B0NPi25pSDrcccM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IDoubleClickContex
+ t.html
+SHA1-Digest: y2DhWDQhLbc9CEY2ssfPi73fRBI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Ellips
+ eImpl.html
+SHA1-Digest: TLq0CUtuQ8TosUo/rNcim1Xuu0E=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/package-summar
+ y.html
+SHA1-Digest: ICTcNH3LqtPnq6qkKX1VkSUwLQ8=
+
+Name: javadoc/org/eclipse/graphiti/func/IResizeShape.html
+SHA1-Digest: h5KuhkLBRttZL9WIc2rxMTnX/oI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/ImageDataMappi
+ ng.html
+SHA1-Digest: lFSgo3mCF+ffOxJD7Qc6VtWdCNs=
+
+Name: javadoc/org/eclipse/graphiti/dt/package-frame.html
+SHA1-Digest: PjjqjTC5k/AqV4GC0Jx+CVq0iLo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IDeleteContext.htm
+ l
+SHA1-Digest: We0xewUbALJUYxUa6NQOH9Uv1W4=
+
+Name: resources/docu/gfw/visio/autolayout-before.gif
+SHA1-Digest: xEogijZcvWQq/CYfHg/Lm9mD1zg=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/package-frame.html
+SHA1-Digest: 0vfA/xCzPX0MhgdZ85JXWOc5Yms=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/class-use/IRectangle.html
+SHA1-Digest: MxUoH4bZ5KZ8p8A9dcc4x3CyOKc=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IPaletteCompartme
+ ntEntry.html
+SHA1-Digest: zbYpgrmH+V1FhAgKyPUHINQKkK0=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/IColorConstant.html
+SHA1-Digest: OqV3GaO07BLVyRM6/+Onuyc2700=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IVisualStateC
+ hangeListener.html
+SHA1-Digest: 7AI/hnib7Eo79b0hia8tD/KOgog=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IAreaCon
+ text.html
+SHA1-Digest: MY/IIIOV98+dM4in+jVeK2VAPIE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Abst
+ ractStyle.html
+SHA1-Digest: 5HZ2qzVqvj2KJTuB7RWJhCb55Ao=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMoveShapeFeatur
+ e.html
+SHA1-Digest: p/OWqcGavRs2efnagrkGxzq8h7Q=
+
+Name: javadoc/org/eclipse/graphiti/util/ILocationInfo.html
+SHA1-Digest: wdqJAoT0N+dKSu18ESubZJZIwjs=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/DefaultContextButtonPa
+ dData.html
+SHA1-Digest: VOjmek4keVr3+8Jw3HdP9XipGZI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ShapeImpl.html
+SHA1-Digest: L/I8H0N7iqXFRn/L4S2mPs1sUu8=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/package-summary.
+ html
+SHA1-Digest: gBne4GGs0ujyou/wjMtKM4J36DI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Image.html
+SHA1-Digest: FtRmr25nPvMUGEL4eIzbrcH5ZmI=
+
+Name: javadoc/index-files/index-12.html
+SHA1-Digest: f8zw64VPIRCRO9Ah5ha2ojhmlGk=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Pictog
+ ramLinkImpl.html
+SHA1-Digest: OOInZlzrEPS7HcO7e5pgWfN/7ys=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/BorderDecorator.html
+SHA1-Digest: KSmULRydEObrSkoWwGcNeszYDMc=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/class-use/MmSwitch.html
+SHA1-Digest: D2TyGCtt5aF+80JbngUAfJ0MbS0=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/ConnectionDecorator.h
+ tml
+SHA1-Digest: ajbo02+bt3838d7DgEwnemPq0HU=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IGraphicsAlgorithmRende
+ rerFactory.html
+SHA1-Digest: ZMcWtE+gz/ggs01Fy3AOxxGDDak=
+
+Name: javadoc/org/eclipse/graphiti/pattern/MoveShapeFeatureForPattern.
+ html
+SHA1-Digest: jQXrKBsZMYiU7ws1i88FBFVibrw=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/ChopboxAnchor.html
+SHA1-Digest: OUtjI8MtOxfPVQ1iBHBQujJ+dt4=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/package-frame.html
+SHA1-Digest: XRBj2oi5XfF+ORoKUDcp7QVn5iY=
+
+Name: javadoc/org/eclipse/graphiti/notification/DefaultNotificationSer
+ vice.html
+SHA1-Digest: dOLtrwQRcusJrnIYkGy4npXOC5s=
+
+Name: javadoc/org/eclipse/graphiti/palette/package-use.html
+SHA1-Digest: yxOxBKkK8OwZ8OAG2q1LKuVcZZQ=
+
+Name: resources/docu/gfw/visio/rendering-area-2a.png
+SHA1-Digest: stZkmSEohj5GzlpqApy1xmcFcJE=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IMigrationServic
+ e.html
+SHA1-Digest: B9vEQsiyoTV9VZKFoS+ojqci3Yo=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IResizeConfigura
+ tion.html
+SHA1-Digest: imRWDWa3XSateo3pSrEjPFynuiw=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/BoxRelative
+ Anchor.html
+SHA1-Digest: OmWhVyT7qj5jixJ1f3LVWEp9rhk=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/package-u
+ se.html
+SHA1-Digest: ykR+BgMHE0/l6pJxHvYTV2zlK2E=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMoveCon
+ nectionDecoratorContext.html
+SHA1-Digest: e6o6NRPnYxSgwRTb7FuDBS6APoU=
+
+Name: javadoc/org/eclipse/graphiti/func/IAdd.html
+SHA1-Digest: dd94gh1YpIyQxdVy9fDjXPFTkLM=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/BoxRelativeAnchor.htm
+ l
+SHA1-Digest: xSEGN1kdB5zWreYO8lxP1YiOr9Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Grad
+ ientColoredLocation.html
+SHA1-Digest: jA6ystNBkZjEiip0I7bW0zY/Lhk=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/package-summary.html
+SHA1-Digest: n2eMLQXh7s06JgZQ8jRV7C+dBwA=
+
+Name: resources/docu/gfw/resize-feature.htm
+SHA1-Digest: 2mX3MpujehSOXFD7DFzaBz95BXo=
+
+Name: resources/docu/gfw/direct-editing-feature.htm
+SHA1-Digest: 5gsSyiQRc8qJf651pzci17Bh7dE=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditorInputFactory
+ .html
+SHA1-Digest: o7zkHJi+qMR3KQDFdM/IjGxcV4I=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditorActionBarCon
+ tributor.html
+SHA1-Digest: g/DmFTj98+6UBkDhj+YkFr+iSho=
+
+Name: javadoc/org/eclipse/graphiti/class-use/DiagramScrollingBehavior.
+ html
+SHA1-Digest: nXOSFiGU5BJqkrUS/TyYATaWAD0=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/PredefinedColoredAre
+ as.html
+SHA1-Digest: hHkv9p3tt4/Rt+MT5dUS+eneD1E=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/package-tree.html
+SHA1-Digest: d9ij5f+NIZmrlKhBxAiPa7/JJ6w=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/RendererContext.html
+SHA1-Digest: fTHI/WpTL7IkL0vyal+8vt83VIk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/MoveShapeFeatureF
+ orPattern.html
+SHA1-Digest: xtKJI2Bnf/l//TIAkj9rgVQ+cY0=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/PictogramLink.html
+SHA1-Digest: A2F1YQ3+kPDKAB+Vk+UJDj/NMEI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/BoxRelativeAncho
+ rImpl.html
+SHA1-Digest: H1LY1bzKNye2OrVSo32jLhoA0Vk=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/class-use/Pictog
+ ramsSwitch.html
+SHA1-Digest: bY5zCUl8lId+HgoNbxXryiy0lHs=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Lay
+ outContext.html
+SHA1-Digest: IYkKTi4ihabFVVD51rOSp1D8sa4=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/IUiLayoutService.html
+SHA1-Digest: RndLE2hi8Or7YKKzE/hp7Gi7ZlM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Mov
+ eBendpointContext.html
+SHA1-Digest: jlI0g6vlMb+gjN74gzP35+KGx5s=
+
+Name: resources/docu/gfw/selection-behavior.htm
+SHA1-Digest: OuyFwd76OSd2u6JZAK9uSg2WbTI=
+
+Name: javadoc/org/eclipse/graphiti/palette/IStackToolEntry.html
+SHA1-Digest: R0JRzN0N5MHCM0A1JK829N0Wjcs=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/Style.html
+SHA1-Digest: sb8WETTu6+1VLsWlge3aHOf9uls=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/PictogramElement
+ Impl.html
+SHA1-Digest: oIRRDCZpzRy2v5pcYhOzjBYwmqg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Pri
+ ntContext.html
+SHA1-Digest: 7m9/e0PfVF/sLigNOIEALVMEbvQ=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultAddB
+ endpointFeature.html
+SHA1-Digest: F6K0DWPWTgY48LKrgJkY/oPxF7E=
+
+Name: javadoc/org/eclipse/graphiti/func/IProposalSupport.html
+SHA1-Digest: 2JLSderyV1HXgkT+3yYmGCnt1vA=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/MmAdapterFactory.html
+SHA1-Digest: CDZsxCBNbGnZiDyVsMFnnXbMXNA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ICreateConnectionC
+ ontext.html
+SHA1-Digest: 8BXlXCfblpsO72om3guxBz1gCDo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IPictogramElementC
+ ontext.html
+SHA1-Digest: 97w/GhLrsgR36+RrcVuBCSiTMHY=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/AbstractDrill
+ DownFeature.DiagramLabelProvider.html
+SHA1-Digest: SewxDN9jYbpn3kpQSeRrL4jncTQ=
+
+Name: javadoc/org/eclipse/graphiti/IPropertyBag.html
+SHA1-Digest: KZn6m6y3aEVr9D71/08XXqrBu7k=
+
+Name: javadoc/org/eclipse/graphiti/func/ICreateInfo.html
+SHA1-Digest: ttYB0oHiYhCce36y53SEf/TbZsw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Text.html
+SHA1-Digest: RKbXR4kaw8zyoodSBkTyhpUrfJo=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/ICellEditorProvider.htm
+ l
+SHA1-Digest: KPAtHCJ7CP4BWLoWQYqtOWw/T7A=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Are
+ aContext.html
+SHA1-Digest: vI7qGvSt/FdHUuHE4yQWPNgw2fU=
+
+Name: javadoc/org/eclipse/graphiti/features/IMappingProvider.html
+SHA1-Digest: Z3kTDBxSWovaLJRQ6mSkFaBgm2A=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/AnchorConta
+ iner.html
+SHA1-Digest: KzY3oC4nrHZIc12j8RqG3YTuZOw=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IVisualState.
+ html
+SHA1-Digest: BhVASq9rjBFWsfriSQKJtHfDq4Q=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/MmFactory.html
+SHA1-Digest: J98sUmHIdTSHTt7gFc7H68iWI/M=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/GraphicsAlgorithmContainerI
+ mpl.html
+SHA1-Digest: 8+wvj4nYdBgVu9+H5uOrbxH4/6E=
+
+Name: javadoc/org/eclipse/graphiti/pattern/CreateFeatureForPattern.htm
+ l
+SHA1-Digest: ZiCilOcij5UmClQrcp7AAMtAMR4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/package-use.html
+SHA1-Digest: jHgSRldmJXB0n/c/CjtrPApcbjE=
+
+Name: javadoc/org/eclipse/graphiti/mm/StyleContainer.html
+SHA1-Digest: U6lXZ9J9kLGv6T6hVLWP4Brv9V0=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/package-frame.html
+SHA1-Digest: 1bLdhm5luERYzKw1NAdwh87/OCM=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/ICustomUndoablePa
+ ttern.html
+SHA1-Digest: 89mZzLMQ5yLytXsNZhk4HTbu3QI=
+
+Name: javadoc/org/eclipse/graphiti/services/IGaLayoutService.html
+SHA1-Digest: sYYODBXu3NqoppNyLI7N0vkfUd4=
+
+Name: javadoc/org/eclipse/graphiti/platform/IDiagramBehavior.html
+SHA1-Digest: xXhzHIQN3KmKMsVsGwwPxy2ONYM=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/ManhattanCo
+ nnection.html
+SHA1-Digest: bykruaxPrMcYfPr6FYM4v3+wAGQ=
+
+Name: resources/docu/gfw/visio/rendering-area-2aa.png
+SHA1-Digest: fvhDCzmWbYT0IY6swzCQSOyA80Q=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultRefreshB
+ ehavior.html
+SHA1-Digest: 3E0bsHVD2ljwP9mt9qYYghC2LhA=
+
+Name: resources/docu/gfw/create-feature.htm
+SHA1-Digest: kUKrJU2W049J45n+tkWpKHn5CzA=
+
+Name: javadoc/org/eclipse/graphiti/pattern/UpdateFeatureForPattern.htm
+ l
+SHA1-Digest: UCAyTEfxN0sHul1H4WBJPSt56zU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/package-use.html
+SHA1-Digest: H3glwfkQZQsLR9jDvZXkV8aWZ2c=
+
+Name: javadoc/org/eclipse/graphiti/tb/IDecorator.html
+SHA1-Digest: Wv814qnHM+u+/lKjBRuFnVICrW0=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/IImageDataMapp
+ ing.html
+SHA1-Digest: GEOdR5TlDHWUcfWVf5zUL+LPUB8=
+
+Name: javadoc/org/eclipse/graphiti/tb/ContextButtonEntry.html
+SHA1-Digest: a0fQHiWZvnVrpB0wML0CNGDmh1c=
+
+Name: javadoc/org/eclipse/graphiti/palette/package-frame.html
+SHA1-Digest: oLaho+4zgFtLMSK1zJr/Rl1rkaE=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultPersistencyBehavio
+ r.html
+SHA1-Digest: i7KBjsWJULpv14Ye2ePd2T1SCGE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Sav
+ eImageContext.html
+SHA1-Digest: JC5zzJ6tkDDaQMZRv5Kta06CI2o=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/package-tree.html
+SHA1-Digest: duUOb0raqfo27nxyguTCQRtwUFo=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/package-use.html
+SHA1-Digest: EhPcrMUASqEVxE9eYac9ZPTbDV8=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/MmFactoryImpl.html
+SHA1-Digest: WFv/mffTR66NpNmYLrxuRTn+K9E=
+
+Name: javadoc/org/eclipse/graphiti/services/IPeService.html
+SHA1-Digest: NtqwllrEm+5HYrRnXEPUlDwRM+Y=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ILocationContext.h
+ tml
+SHA1-Digest: CeDbKbdsW6F9aBJwYGwyAr9i5WE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/MoveShapeCont
+ ext.html
+SHA1-Digest: rbzYi6chxk3PzubTURWS0jndOI0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/CustomContext
+ .html
+SHA1-Digest: qIss6ij51C4KKeuIl+Yu6aRlgg4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Manhat
+ tanConnectionImpl.html
+SHA1-Digest: aCqMXVAcKteiLN2TAKpGcl8JWz0=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ImageDecorator.html
+SHA1-Digest: jmRjlkcrxi6sOskyZK5RiVxvCS8=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/class-use/IdLayoutContex
+ t.html
+SHA1-Digest: GHcsb8NPSh6FGHG8pvzI6pBWK6I=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/AddFeatureForPatt
+ ern.html
+SHA1-Digest: Dh7yLKw3cqetcrYdIXk6MNeVQ/E=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/IPrintPreferences.html
+SHA1-Digest: OI+a5/7TjTv5eekWzF2+ovxDB20=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/ILab
+ elDataMapping.html
+SHA1-Digest: F2el6hrVbrJkGx6ynoSO9wtRFNo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/StylesFactory.
+ html
+SHA1-Digest: 79F8DOIlLKy5EhEG7tx8aaJfWrE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Font
+ .html
+SHA1-Digest: e+bAyOdkVsQOwA947hCZ/U8CTf4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/package-tree.html
+SHA1-Digest: S619Ld9xRBFA9MeUyV3SFzRXusI=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IName.html
+SHA1-Digest: 1KUtZ2hKauuQ1ZfYO6LWBJb1kPE=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ColorDecorator.html
+SHA1-Digest: 2WlRpkofJDTHAcCDqBV6f/kkbmM=
+
+Name: javadoc/org/eclipse/graphiti/class-use/PropertyBag.html
+SHA1-Digest: 2+aMuSBg6NUgzLopv99cBO2QPGo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/GradientColore
+ dArea.html
+SHA1-Digest: GmEWRk/bA4afkClUqEzzPTeH/ns=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/AbstractS
+ tyleImpl.html
+SHA1-Digest: B4z/EzGxTpvfGZV1KiWuvMWtJ88=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultUpdateDiagramF
+ eature.html
+SHA1-Digest: A2J2An23+yFr26b+Q1Bu/OD0H7M=
+
+Name: javadoc/org/eclipse/graphiti/features/IMoveBendpointFeature.html
+SHA1-Digest: xwUfKk/h6E/dWP038VYkRfzlMwg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IAddConnectionCont
+ ext.html
+SHA1-Digest: pDRtVKP6uRC1gdwgS7c/MMQR8ys=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/package-tree.html
+SHA1-Digest: zP0m2bJu898ktw3aL0IYmV+G2P8=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/ConnectionCr
+ eationToolEntry.html
+SHA1-Digest: mLfmfwByYNBu3CESdvEpfEt4EtU=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IVisualState.
+ Type.html
+SHA1-Digest: yakt03fX+RA/eFRzI6hA5yVsJOU=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/package-summary.html
+SHA1-Digest: R8k5+269hGMENZ5oczpA5b4uV1c=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/package-frame.ht
+ ml
+SHA1-Digest: E3J9t8cmBCoPXLQ0Dr+pWiAamJQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/package-frame.
+ html
+SHA1-Digest: 2IZkijNIvAYcXEgStgFh6YT5/Ss=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/package-tree.html
+SHA1-Digest: lYQ3RPbYOVbkzCOVMOlQOWx9r3c=
+
+Name: javadoc/org/eclipse/graphiti/services/Graphiti.html
+SHA1-Digest: 1PK/SlYDqLAcWpkmaMoibHxFnPc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Rem
+ oveBendpointContext.html
+SHA1-Digest: Rcl4QGkIJHQxm4o+NmxZ5hQ2ghw=
+
+Name: javadoc/index-files/index-13.html
+SHA1-Digest: FOSuWt36DdLZue/gH3kzH3x7jbY=
+
+Name: resources/docu/gfw/visio/polygon-rounded-explained.gif
+SHA1-Digest: 92ttqQWKcrcy0VZjhKgHZljRQGQ=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMultiDeleteInfo.h
+ tml
+SHA1-Digest: vxvWfhON+tBaBforNhd/qDcFYjI=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditorAc
+ tionBarContributor.html
+SHA1-Digest: fDhzGa61NPRUhQDzNhnZ3rhYarA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/AdaptedGr
+ adientColoredAreasImpl.html
+SHA1-Digest: hLkLPM9is0VuoXst/OPLKPr8dcc=
+
+Name: javadoc/org/eclipse/graphiti/services/package-tree.html
+SHA1-Digest: ZyrAhQxBotSg83WJniHuO5Yo/tk=
+
+Name: javadoc/org/eclipse/graphiti/services/ILayoutService.html
+SHA1-Digest: 9aH+TmJndmUkv8Zb9ZpgDMrPjVs=
+
+Name: resources/docu/examples/images/DiagramView.png
+SHA1-Digest: awtdD+xPiL2mplgJUFsp4kWCj7c=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/AbstractText.html
+SHA1-Digest: FoXyAuBD7URx2PwSWHQ9PKcPYC0=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/ObjectCreati
+ onToolEntry.html
+SHA1-Digest: 75oyrR/UGRY2cPJuApnOTfNMdFU=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IResizeShapeFeat
+ ure.html
+SHA1-Digest: LF1s97flm82tejf8nHBgLH8Z8Vk=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractFeatureProvid
+ er.html
+SHA1-Digest: wi0y/emQoxRITDadoqLynxjQHf8=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/MmPackageImpl.html
+SHA1-Digest: ne/AmKoXEtmyiVc+P2rzQ0aFGj0=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultReco
+ nnectionFeature.html
+SHA1-Digest: 5Nzwhxhm8f1koOt2Y8CVVLBF/Xg=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/DefaultFeatur
+ eProvider.html
+SHA1-Digest: 9bSAiKebwbIFvgiaaq131bDn6D0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Prec
+ isionPoint.html
+SHA1-Digest: fgfL4Y8KiuDOVATwL1ClB1UAs8c=
+
+Name: javadoc/org/eclipse/graphiti/services/IPeLayoutService.html
+SHA1-Digest: 2e1YwIrXy/cytN/hcvaQHMLBTQc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/Structure
+ Mapping.html
+SHA1-Digest: sHXSHgdiibiFVxKKaLAo19Q6pAk=
+
+Name: resources/docu/gfw/features.htm
+SHA1-Digest: v9pXvkS1eMjxnpETXY7Dd5NlSZI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Text
+ Style.html
+SHA1-Digest: cgYUpPWqe7lUoqIGmUfuPaHlrj4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/class-use
+ /StylesAdapterFactory.html
+SHA1-Digest: 7KmpHdqi3NdSONhhXftIUrKdhR8=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IPasteContext.html
+SHA1-Digest: A1Mmn+axcTVsB5XW/RaiNd0+EOI=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultPaletteB
+ ehavior.html
+SHA1-Digest: Ohyx9cfcV3TyHvX3j6QvMsjhJ3Q=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/PictogramLinkImp
+ l.html
+SHA1-Digest: eKLhGIPtkSpOcFpfkhO0Ezvl8MY=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/DefaultPrintFeature.htm
+ l
+SHA1-Digest: wafO6NA5qkIutUo1FH7GqNFQnN4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/StyleImpl
+ .html
+SHA1-Digest: wfjPsPzlK+9c6pH3XLnK4izd1Zc=
+
+Name: javadoc/org/eclipse/graphiti/util/package-tree.html
+SHA1-Digest: pyZS6zA/JearCnno3ljHFc0hlvs=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/IGradientType.html
+SHA1-Digest: 3uYbUjrwh4ItwyxM3BeNHKGZUU0=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/AnchorSelectionInfoImp
+ l.html
+SHA1-Digest: /r56R45iy4CO5BZ7R35gwlSsSa4=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/AbstractImage
+ Provider.html
+SHA1-Digest: pVGDSkz86kjiL2yAMwbFjV+5nt4=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IResizeShape.html
+SHA1-Digest: Mv251f1EGP3iG4i5WF7+Vc9I934=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IDeleteC
+ ontext.html
+SHA1-Digest: D2OhUGlexT6xkb7qGrWQO+gRFVM=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/AbstractPrope
+ rtySectionFilter.html
+SHA1-Digest: jjfFi890Rcjv1xWONlyZL39aIFY=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/class-use/IUiLayoutServ
+ ice.html
+SHA1-Digest: 7g8DevmrgDpcKDsi8WDG/5w4spA=
+
+Name: javadoc/org/eclipse/graphiti/tb/ImageDecorator.html
+SHA1-Digest: 2tVHSd+25zmSZ45Jpv75dMM4P+Y=
+
+Name: resources/docu/gfw/visio/rendering-decorator.png
+SHA1-Digest: ckm2QtCRHsLd85z7zBZ7GB4NLnA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/StylesPackage.
+ Literals.html
+SHA1-Digest: gFXa/ESdOixnnXMRdGvPKXpENT4=
+
+Name: javadoc/index-files/index-1.html
+SHA1-Digest: MJ9loeQTCu7sERDqnvVALGNoshw=
+
+Name: javadoc/org/eclipse/graphiti/func/Proposal.html
+SHA1-Digest: ayBaNrShiY20Sa8bto12kszqEzY=
+
+Name: javadoc/org/eclipse/graphiti/tb/ColorDecorator.html
+SHA1-Digest: Pi7kD98WEc+h78TW5/1sgYuiATQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/class-use/IColorConf
+ iguration.html
+SHA1-Digest: FfkpBFUx7w8BEOTjWkCyXi+E0a8=
+
+Name: resources/docu/gfw/visio/reconnection-2.png
+SHA1-Digest: 7pm5mYxPaRQiRhJ74utBi5AADLw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Rectangle.html
+SHA1-Digest: eUvfBGLF8g3tnrfEnk/7xpJ+Kt8=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/class-use/IImageService
+ .html
+SHA1-Digest: qrdtSib15F4so/iXaTipXj/4VTE=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/package-frame.html
+SHA1-Digest: FofHEpwc8s9rC2sjuSEUqV7pLgk=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/BoxRel
+ ativeAnchorImpl.html
+SHA1-Digest: psQssmSahMn3buiZCVsFtCi2Kkc=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IPaletteEntry.htm
+ l
+SHA1-Digest: g2moY7RrDUJvuiicV3Iz7aRIxds=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Add
+ Context.html
+SHA1-Digest: J0zfpDZHMjKDIarP1+9ZRBQovUk=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/ILocationInfo.html
+SHA1-Digest: cUrOweFTUobjEeFtBARDIe8bsQM=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/GraphicalCompos
+ ite.ActionIDList.html
+SHA1-Digest: TkCxfkcL2ivZz0TsHObqfnGhsos=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/package-tree.html
+SHA1-Digest: Xz1XyKDVTDttd8xQrSoI5fORDoY=
+
+Name: javadoc/org/eclipse/graphiti/features/IContextHolder.html
+SHA1-Digest: WUnxf0uweQvBSw5Cjj1ifi+05WE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Dir
+ ectEditingContext.html
+SHA1-Digest: uYkjOqonuC028fSXaVJSxqiUThU=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/package-summary.htm
+ l
+SHA1-Digest: R/ioXysl1X2ijbxXEwWQB4JmDzg=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/class-use/IPrintConfigurat
+ ion.html
+SHA1-Digest: rbsE9l6/SWjndJwuw0ZNzWtw8Bc=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/GraphicalCompos
+ ite.html
+SHA1-Digest: v/qpUgPrXpSUGGIPc9GzTlteB/I=
+
+Name: resources/docu/examples/Tutorial.htm
+SHA1-Digest: 6/G8abUo9dzWJUAyq5umcQ8NfoI=
+
+Name: resources/docu/gfw/visio/new-graphiti-project-2.png
+SHA1-Digest: QBzNlEt1GvITasbSoWUWyUHeOEQ=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/IDiagramBehavio
+ rUI.html
+SHA1-Digest: LNh5i42SyN9/W9Xl885DnhRGRiQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/package-summary.html
+SHA1-Digest: LAX1prBAdza236MNZpLJP7bZvFQ=
+
+Name: javadoc/org/eclipse/graphiti/services/package-use.html
+SHA1-Digest: 9jfs1Ub+/6z9pp2cxZjOqM9Skjs=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/IDiagramBehavior
+ .html
+SHA1-Digest: aBsFcsBVrQqDkDoeL67IQbq3oJE=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/package-tree.html
+SHA1-Digest: UM8eCpQ1wF9kRBsIVqDTatA8Gnc=
+
+Name: javadoc/org/eclipse/graphiti/features/IAddFeature.html
+SHA1-Digest: FxL+xCZNHlwxaUNxuP4/AtES0eo=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/IDiagramEditorI
+ nput.html
+SHA1-Digest: VeFsVT50UUFM7g+0H+RO8f0FK58=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/IStructur
+ eMappingSingle.html
+SHA1-Digest: C/FAieNIJngz7h41EL9LVncyM4U=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/ContainerShape.html
+SHA1-Digest: uCDw6k4fNlZQVks6ID8eSmPr7e0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/RemoveContext
+ .html
+SHA1-Digest: 64ECFMvU3o2Fj2pOwguEXbr9Kxg=
+
+Name: resources/schema.css
+SHA1-Digest: ClroylzCOsso8nNzRRW4Z4MG3bA=
+
+Name: javadoc/org/eclipse/graphiti/tb/AnchorSelectionInfoImpl.html
+SHA1-Digest: oCuHoW1n9FSPHyOZmmvtZtcY2jI=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/DefaultFeatureProvider.
+ html
+SHA1-Digest: QnIh9gZImpjg1MMwMZsA1ksxEe0=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ITextDecorator.html
+SHA1-Digest: 1rq+a8SqRvLpgJVtO1KsIoCWxcw=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultUpdateBe
+ havior.DefaultUpdateAdapter.html
+SHA1-Digest: jZoM47tfEwXSnqKx0qugALInQvw=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramComposite.html
+SHA1-Digest: az+nqJIj6aODmBrGU3Bd+kqoOy8=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/IPatternContainer
+ .html
+SHA1-Digest: Ob9dgZOEW8UCUg4lUCWgs8PFxe8=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/ILocation.html
+SHA1-Digest: +RJG9LmzTIc3lmUFK2LmXTbAO60=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Curved
+ ConnectionImpl.html
+SHA1-Digest: iVHnaapMU4jj3FA1E+JTWbzPorM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/package-use.ht
+ ml
+SHA1-Digest: yNdvEbAXSpI32XL77j8awIzqjeY=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/GraphitiConnectionEditP
+ art.html
+SHA1-Digest: B6SYIsB5DuC8gOx4HXLpQsURh5U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/ResizeShapeFeatur
+ eForPattern.html
+SHA1-Digest: r/gjhJF8EJD/nSPjM7w6g/gkw5g=
+
+Name: javadoc/org/eclipse/graphiti/palette/IObjectCreationToolEntry.ht
+ ml
+SHA1-Digest: mWmrQPLxlovmi+CwmJChVSrxovw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/package-tree.h
+ tml
+SHA1-Digest: Ns11sOA4CgwaFNJ6mKu9j630FdI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Del
+ eteContext.html
+SHA1-Digest: hm8b+pdOqTeN8UmuzkJxB3fmnyg=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/Connection.
+ html
+SHA1-Digest: //3Goyvnz8A1+ZhiCh8rjRO2Amw=
+
+Name: javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html
+SHA1-Digest: rUEDS84hk8bvv4hctkDsJJ6ef28=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/package-frame
+ .html
+SHA1-Digest: 3ouKNiDrZPp1E3tiKmeEGA+ZMkE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Styl
+ e.html
+SHA1-Digest: F49WVFw66l+mcB6YGvf5/ryq/8g=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/GradientC
+ oloredLocationImpl.html
+SHA1-Digest: e0HyhaszJ1YvRixzF6bFljyUjLk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/package-frame.html
+SHA1-Digest: g2PFA1WdR7bYzObvIpO5SUOz2cE=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/Reason.html
+SHA1-Digest: 7lo1o9jf1mWlLaE2A7kR9bD9ss4=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/package-frame.html
+SHA1-Digest: cddRthGHKyclk3SGw050Yo1gVT4=
+
+Name: resources/docu/examples/images/DiagramPopup.png
+SHA1-Digest: H7+WaMJkSl4G+9x6QWNUeufnmEw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/StructureMappingMul
+ ti.html
+SHA1-Digest: WMDGrRkZ4zZBLTINvYl1prEDmFA=
+
+Name: javadoc/index-files/index-14.html
+SHA1-Digest: O3Gxc58ncSQXbEOjP1ynrX6/NrU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/package-use.html
+SHA1-Digest: 6wOvSlxSayTMUiVaZCDQSffHa5o=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IPaletteSeparator
+ Entry.html
+SHA1-Digest: xYTqXrrjUTpQtgW3NpJOLfaCn6M=
+
+Name: resources/docu/NaNimages/Decorators.png
+SHA1-Digest: xtODp4fjJcim2a0UiRulrhZgqpU=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/package-summary.htm
+ l
+SHA1-Digest: 0XfVUUiFO9B0IBlspivrWoZzn1I=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/FreeFo
+ rmConnectionImpl.html
+SHA1-Digest: on+8J00U1VZcmu027oThQj9CKew=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ISingleC
+ lickContext.html
+SHA1-Digest: 5pfwuqUDWfsAbBBTW3WleNdwWHM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/PolygonImpl.html
+SHA1-Digest: 5fe234KQwXzG5CB01EHQN43rxxI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/PictogramsF
+ actory.html
+SHA1-Digest: OU2cHaldBJRoYu4zBWh83vbDPz0=
+
+Name: javadoc/org/eclipse/graphiti/util/IColorConstant.html
+SHA1-Digest: 57bxqye9O3NKs+kK6d5vsyHFcpk=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/AbstractCopyF
+ eature.html
+SHA1-Digest: OS1+cTBvru8I9fXqDEYiLGiKR+M=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureHolder.html
+SHA1-Digest: oj83sAbBf2qjnm0sgBr9ZIk2ptY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/PictogramsFactory.htm
+ l
+SHA1-Digest: pVBiggKQzYEkTQMOlkaN3ryTUfo=
+
+Name: resources/docu/book.css
+SHA1-Digest: JttIcsmdJWjqDboOZpkeRjn7V/0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/PrintContext.
+ html
+SHA1-Digest: BOwo5AVvEhObTYzRpzo/dRxnqIw=
+
+Name: resources/docu/gfw/visio/polygon-rounded.gif
+SHA1-Digest: 4VwZPK3eOeZ1Q5RkeG6oSTg+YoA=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/class-use/IExtensionMan
+ ager.html
+SHA1-Digest: TNX5djGOQW+CWyAqxA0mvhLAWQw=
+
+Name: javadoc/org/eclipse/graphiti/features/IDirectEditingFeature.html
+SHA1-Digest: ONK6JAhoFoobr/WfDcVCPZl63R4=
+
+Name: javadoc/org/eclipse/graphiti/platform/IDiagramContainer.html
+SHA1-Digest: Yl856lKUOKtC/weWFFaMXbUKRLA=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/class-use/ISaveAsIma
+ geConfiguration.html
+SHA1-Digest: Y2W2RqDd+hDKnG0TMg8CrO7w/co=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/Text
+ DataMapping.html
+SHA1-Digest: XodrTsmA5ZEpphUfmOrGRIsH9qc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ICreateC
+ onnectionContext.html
+SHA1-Digest: 6FBSe7dRaxOyBU7K7mpAgli/6Qg=
+
+Name: javadoc/org/eclipse/graphiti/features/package-frame.html
+SHA1-Digest: 0K7PV3TJoqwIIeF2HhKGasRpGtA=
+
+Name: javadoc/org/eclipse/graphiti/palette/IPaletteSeparatorEntry.html
+SHA1-Digest: IKaYHtnPYZvv4+f837TE5VeMvTw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IPictogr
+ amElementContext.html
+SHA1-Digest: deJAk2mgD2wOWaFfm28i2zUTRns=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/ImageConvert
+ er.html
+SHA1-Digest: BAuSxyMyJA6Meqt38e4teqbiMyg=
+
+Name: resources/docu/gfw/visio/reconnection-1.png
+SHA1-Digest: 10xAC+Sx1YXpKS0kNNAzz1E9PZI=
+
+Name: javadoc/org/eclipse/graphiti/platform/IDiagramEditor.html
+SHA1-Digest: 7RqjFAEtK3BCHOr97YDPeSrPveE=
+
+Name: resources/docu/gfw/direct-editing-activation.htm
+SHA1-Digest: gIyoWyXjbZgvh0HMTwRRZzdAFDQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/IStructur
+ eMapping.html
+SHA1-Digest: VbruhJKYO1sArBTG4v+sAu55ytA=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/ObjectCreationToolEntr
+ y.html
+SHA1-Digest: lWIvCCVSmfplzeDl6ZoCCW3ZeMI=
+
+Name: resources/docu/gfw/visio/autolayout-after.gif
+SHA1-Digest: ukB/pwRgDPWUqc71nCT1u5199LA=
+
+Name: javadoc/org/eclipse/graphiti/tb/ITextDecorator.html
+SHA1-Digest: vN5s/jBTfwRn7S0WFMAbowyRptU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/AlgorithmsPackage.htm
+ l
+SHA1-Digest: EifnzijlsatkqmvJxaKzyTUVIjU=
+
+Name: javadoc/org/eclipse/graphiti/notification/INotificationService.h
+ tml
+SHA1-Digest: 453Fhx0NofcGUudMqaDxrjwn3bE=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/StackEntry.html
+SHA1-Digest: cb1+sDkzk9H6OOkbmKObS2d30X0=
+
+Name: javadoc/org/eclipse/graphiti/tb/package-summary.html
+SHA1-Digest: Md5gA/o76fNm3bZ6Mue/9fUJjz0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IResizeContext.htm
+ l
+SHA1-Digest: B0Fu2XfDW1n6trznfyD5BdbYg2o=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ContextMenuEntry.html
+SHA1-Digest: +DUDvfobHELrpB12VeBemT+Vpxg=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/CurvedConnection.html
+SHA1-Digest: ZiSpA95maLosvgNMM2jjXKi/TZM=
+
+Name: javadoc/org/eclipse/graphiti/tb/ConnectionSelectionInfoImpl.html
+SHA1-Digest: x20CUdEu8DWVwEbOrmt7yt+pYyU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/RemoveBendpoi
+ ntContext.html
+SHA1-Digest: O7+yX89d/xA+/rQ+ZwdFtgU8B18=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/package-summary.html
+SHA1-Digest: SlbrHHEudUcvV33GIz+FxOhLxEM=
+
+Name: javadoc/index-files/index-2.html
+SHA1-Digest: Zl9ScUXxGkhCSXgc/hZVYZ8C/9s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Styl
+ esPackage.Literals.html
+SHA1-Digest: syoxK4nPKP/4f/MVKjrAojs5x+k=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/StyleContainer.html
+SHA1-Digest: MAlpVh1U5xqREq5nfUxnySSlDq0=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/IIndependenceSolver.h
+ tml
+SHA1-Digest: C0M6PJGM20w7+wBOgIpAGDIUZCA=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/GraphitiShape
+ EditPart.html
+SHA1-Digest: p9Nk1JdQmmkTUdlDUbFgI5qkF4o=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IDecorator.html
+SHA1-Digest: g7Y4kqVXsomI/2RkrEZO30zH25U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/DirectEditingFeat
+ ureForPattern.html
+SHA1-Digest: VPNDnxmnlGx7Vemho+hm3ZLmUBA=
+
+Name: javadoc/org/eclipse/graphiti/features/ICustomUndoableFeature.htm
+ l
+SHA1-Digest: FLZ3JokT/wQHU7mPxeqIf+XnMhg=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/LocationInfo.html
+SHA1-Digest: yGjCqaENxsf+FsOeBQKyLQCy+1w=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/package-frame.html
+SHA1-Digest: LZgdY98rW/mh1moRV9OhOWE7bdw=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/IEmfService.html
+SHA1-Digest: rA3LpbD5N32UAkUpfbswa9YrXUU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultMoveShapeFeatu
+ re.html
+SHA1-Digest: DPtDyRWV3YAS+wglweZKzQHn5F4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/StylesFac
+ toryImpl.html
+SHA1-Digest: aSAyOp8i2YPBwW+STTIJW5TTBuw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/Data
+ Mapping.html
+SHA1-Digest: YiTpF53Q0342cRsJFhJIhNJGG9o=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractMov
+ eShapeFeature.html
+SHA1-Digest: YPgbzfV59D36ANackDAE6T9HHfc=
+
+Name: resources/docu/gfw/visio/package-shape.gif
+SHA1-Digest: fowV8t1ooCFfVKsoRtzzeU+NNxE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/package-use.html
+SHA1-Digest: AFZgDiPTL3oorEmnbYPcZ5zCWEY=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ITargetC
+ onnectionDecoratorContext.html
+SHA1-Digest: YeWI9U2YsNxiqnPwn6IxuInRbn0=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/AbstractProposalSupp
+ ort.html
+SHA1-Digest: 6+3fbVyCdvC46ouuBMVd2vyxoGk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/TextDataMappin
+ g.html
+SHA1-Digest: wXYGkY1qnUCPgSmykzOLrB83YPk=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/FontImpl.
+ html
+SHA1-Digest: zHcNanc3ZuvmcbGmIgeGSDybUrA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/package-summary.
+ html
+SHA1-Digest: SZUurbHwa3p4YFwbuD/zYA2d9w4=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/ILayout.html
+SHA1-Digest: sSbQzXbeDVS33YrPdvnh2MAhdvE=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMoveFeature.htm
+ l
+SHA1-Digest: B4ngEcZa3FkqopMvo3VX894bgew=
+
+Name: javadoc/org/eclipse/graphiti/features/ICopyFeature.html
+SHA1-Digest: RQznrZ+2IcrLT1pO/ihgi+C4tkY=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IStackToolEntry.h
+ tml
+SHA1-Digest: mCjaim7hvqViBOYue1qNGyZyam4=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IAddBendpointFea
+ ture.html
+SHA1-Digest: 16Dq1049ApJ3RxVKLgdHTxxN7wk=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/IConfigurationProvider.
+ html
+SHA1-Digest: LBxhlyVAYGtoO+WhwIFX7J1hvmA=
+
+Name: javadoc/org/eclipse/graphiti/dt/AbstractDiagramTypeProvider.html
+SHA1-Digest: VttQL8sDg5ooGiR24E2HRA8Nhu8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/AbstractTextImpl
+ .html
+SHA1-Digest: QkTUt1gWJk8dsGi8v+zJQMOvSLU=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/IAdvancedDimension.html
+SHA1-Digest: /pVcaYevSDR2e+fSRuvbTzk6mqw=
+
+Name: javadoc/org/eclipse/graphiti/util/ColorConstant.html
+SHA1-Digest: sPEM4N7HYij9Ui2/mbRbqDmZBm8=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractSaveImageFeat
+ ure.html
+SHA1-Digest: ycUR1wXvqYDOqtLvCl6Yz+yjh9U=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeature.html
+SHA1-Digest: lN0IcfyiwqIS7VKjll0EXJZGEUg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ICreateContext.htm
+ l
+SHA1-Digest: pInEWHAv8mWFzN8qp1K+7jz3o50=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractCreateFeature
+ .html
+SHA1-Digest: zVRIhA7udipH9gM3PYmOU1vHOCk=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Cre
+ ateConnectionContext.html
+SHA1-Digest: vnAhhRSvOSjULdBKcClR0Cpdk3Y=
+
+Name: javadoc/org/eclipse/graphiti/features/IRemoveFeature.html
+SHA1-Digest: hXBGpV0VA9T55ZmQFolk23OgMVg=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractAddShapeFeatu
+ re.html
+SHA1-Digest: m6n4tTZg96mDFA5QwpmJr0S9MgQ=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ISelectionInfo.html
+SHA1-Digest: N9Y2yfaOHKM8ga65ctOwQAQcAys=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/IDiagramEditorInput.html
+SHA1-Digest: TwtVluf8YN4RcJ8gpHsSz1VPni4=
+
+Name: javadoc/index.html
+SHA1-Digest: hmlpGzdd8E/UL43XCYH2/1WC4nI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/UpdateContext
+ .html
+SHA1-Digest: bQ01guF+TbyTWg/Z48Wo9DtMaLQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/package-tree.html
+SHA1-Digest: Qkk2l0V0AjW1p6FELvM4HhQigvk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/CreateConnectionF
+ eatureForPattern.html
+SHA1-Digest: +B9azPVhSCldJCT0vFMlP0k+l9c=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/StylesPac
+ kageImpl.html
+SHA1-Digest: mBiU2zbTTsbJkgantVOmoVgqg8s=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ContainerShapeIm
+ pl.html
+SHA1-Digest: aKArHgzTEQITMbKwjUcRkO6lTqE=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/UpdateNoBoF
+ eature.html
+SHA1-Digest: 3JFKuphT2G/ya5S5i14IB68oK58=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/package-use.html
+SHA1-Digest: kvP7wkOzlc2TONkKRaOBKT/PZxw=
+
+Name: javadoc/org/eclipse/graphiti/util/ILook.html
+SHA1-Digest: nEjWIW2KlkEVP1nOkWp7OYSeOYE=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IContextHolder.h
+ tml
+SHA1-Digest: tSz/zV39j3JVtFcTkf8BwMpWusU=
+
+Name: javadoc/org/eclipse/graphiti/func/ICreate.html
+SHA1-Digest: Z8P7+SZfhjiuirVdvqukJtAeYUY=
+
+Name: javadoc/index-files/index-15.html
+SHA1-Digest: 23EOVff7md3JwiHSDAsaza4YqZw=
+
+Name: javadoc/org/eclipse/graphiti/func/ICreateConnection.html
+SHA1-Digest: p3S+33TMyTKEh1WISJbKRgBEQmg=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/AdvancedAnchorIm
+ pl.html
+SHA1-Digest: 5+79Aawog0J3iczR2WsAHNm+M6g=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Chopbo
+ xAnchorImpl.html
+SHA1-Digest: ZvduJMVs4QY0R6pYsOh/OB1Efwo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/AddBendpointC
+ ontext.html
+SHA1-Digest: vbzsaSDMbS2vjlSS5kk9IuL0YAs=
+
+Name: javadoc/org/eclipse/graphiti/pattern/RemoveFeatureForPattern.htm
+ l
+SHA1-Digest: gzaO2Tp/LSwTegCOxz5jNDZoBEM=
+
+Name: javadoc/org/eclipse/graphiti/func/IProposal.html
+SHA1-Digest: fQzeVgEYyk/UZthlrZvSn0aXm3U=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultUpdateBehavior.htm
+ l
+SHA1-Digest: txNGErpLkDVU3o7hMcwS0agt2Sk=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditorIn
+ put.html
+SHA1-Digest: pPsuwkWzwslC3WMpOOnjySPmaac=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/package-tree.html
+SHA1-Digest: M411P4qIqJvTsfTKKXjetquZOs8=
+
+Name: resources/docu/gfw/visio/diagram-type-agent-new.png
+SHA1-Digest: DIrwTLdeRe07POOU8Ja5zgvBt60=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/Diagram.html
+SHA1-Digest: hD8HT5+X332bVqDUX31DMMu0SjQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Platfo
+ rmGraphicsAlgorithmImpl.html
+SHA1-Digest: i0V971/eVVeDp/V7BN7XQpkTbcw=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/DefaultDelete
+ Feature.html
+SHA1-Digest: 35ZBomHNT0E+O8PGTYjyBFaoNNw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/Structure
+ MappingMulti.html
+SHA1-Digest: r3nXHnlALjQHiOpHcMRtCGpigNc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/IDataMapping.h
+ tml
+SHA1-Digest: ULUYmHF1aMa741oNDge/BedApcA=
+
+Name: javadoc/org/eclipse/graphiti/package-use.html
+SHA1-Digest: GlncM5c1NabInzjUoQ+qaDGOWkg=
+
+Name: resources/docu/NaNimages/CompositeConnections.png
+SHA1-Digest: bqmt/lZf25cRXaf3hBYuP7V7n80=
+
+Name: javadoc/overview-summary.html
+SHA1-Digest: cDcJSmd9IDqzXd202EMmbVWPWMg=
+
+Name: toc_graphiti.xml
+SHA1-Digest: GgktsTBt17AysbCCP8peMJrTcxk=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMoveShapeContext.
+ html
+SHA1-Digest: pxHxPqYocoMWhShoUpOXSHP+zrM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Algori
+ thmsFactoryImpl.html
+SHA1-Digest: zWZMPYUjbG2aNsxc4BSyUytfeuM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/MultiTextImpl.ht
+ ml
+SHA1-Digest: yj5iYsSDh/Kgvpbm/8c8Hjgdz2s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/package-frame.ht
+ ml
+SHA1-Digest: 1T8AC5nn0yKsQqbF+i1M0ZGUGSg=
+
+Name: javadoc/index-files/index-20.html
+SHA1-Digest: Ol6WkHHUiWM7k4U0op6Lz4wxnlM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/package-tree.htm
+ l
+SHA1-Digest: K2IIt4Ogx0HmCC9rwtrFSbZroD4=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/TextDecorator.html
+SHA1-Digest: oEY86ajye0DvrbQjr6AYpMThdb4=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IGraphicsAlgo
+ rithmRendererFactory.html
+SHA1-Digest: iQpgwPnQjdsIOKz2C0cMMDbjJpQ=
+
+Name: javadoc/org/eclipse/graphiti/tb/TextDecorator.html
+SHA1-Digest: 3IldQP26y00T4DPiPA/wGtiJVPE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/AddConnection
+ Context.html
+SHA1-Digest: 6efcvyNoAh9iuBABoCoRWDrvo3Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/class-use/Pictog
+ ramsAdapterFactory.html
+SHA1-Digest: Yq7W5OziLodVmTMvMH77JdV/7Jg=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/PictogramsP
+ ackage.Literals.html
+SHA1-Digest: QfZWwB3+IL2C+ufojcNPuteuZAg=
+
+Name: resources/docu/gfw/double-click.htm
+SHA1-Digest: 27Whou5A9oy7vzjt0/IwwN/9BBo=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/PictogramEl
+ ement.html
+SHA1-Digest: uLwNstOMPAAG/cmpDWci6tfOKrg=
+
+Name: javadoc/org/eclipse/graphiti/pattern/TypedPattern.html
+SHA1-Digest: flLAKOQwwnbdlLv6/9ySuppYkK8=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/AbstractExtensio
+ n.html
+SHA1-Digest: 8NTLUUepqv2UUyL9g5Zu5JvxU/M=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultMarkerBe
+ havior.html
+SHA1-Digest: f3m6YEIBjcw7ztxsLvcuACB/w8c=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/package-frame.html
+SHA1-Digest: 5GMg5tTsb/oj2BBlKoKwRAsakGQ=
+
+Name: resources/docu/gfw/remove-and-delete-feature.htm
+SHA1-Digest: H6nqyWnFulyh5s5LoQDh0OK99Y4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/CompositeConnect
+ ionImpl.html
+SHA1-Digest: MflAbhNWsUzy6yqfoPHhNbrsd6Q=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IGaCreateService
+ .html
+SHA1-Digest: MSYfQYp83gmi/theAKgJXT1j0rU=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IDirectEditingIn
+ fo.html
+SHA1-Digest: eJCo1QVijKuV1leKRsLFZQCBDDc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/AddFeatureForPattern.html
+SHA1-Digest: DGo2U8jnBx/5+Cvg+cNhHr2Tnew=
+
+Name: javadoc/index-files/index-3.html
+SHA1-Digest: ovp2FY3yMZU3nllEfTpP6Q1Gt+0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/StylesAda
+ pterFactory.html
+SHA1-Digest: Rk+N225tayH/ZeWMs+9/bZOQzPc=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/class-use/IAdvancedDimens
+ ion.html
+SHA1-Digest: B9r1VfK7lxIWw/dE1cNpWmh7MvI=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/GraphicsToGraphics2DAd
+ aptor.State.html
+SHA1-Digest: gjHFXpNTaECv81lwqbpvtLUruq4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Rectangle.h
+ tml
+SHA1-Digest: ie2T4KerYAP5EK+jiOSqcbRjS80=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/RenderingStyle
+ .html
+SHA1-Digest: CWl/F7NqRe86WlExzaklxXOJdxY=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/StyleContainerImpl.html
+SHA1-Digest: +MMYWA24+TgsqSakSBoeuVm8m00=
+
+Name: javadoc/org/eclipse/graphiti/tb/ISelectionInfo.html
+SHA1-Digest: imre6ZgR+F/WG3UxFKPzEnJBRyM=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Rounde
+ dRectangleImpl.html
+SHA1-Digest: 4sYfN3kakSJQZP7lKGOhUlg8/tw=
+
+Name: javadoc/org/eclipse/graphiti/func/IUpdate.html
+SHA1-Digest: 8GKtmQOXAkqiMwjLi5iViBv1EXk=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/Diagram.htm
+ l
+SHA1-Digest: hEgOq/JuLYdlWM0gJiuJMySGm1g=
+
+Name: javadoc/overview-tree.html
+SHA1-Digest: v/iKPHUW1GfkINB+/hjSGrGCUk0=
+
+Name: javadoc/org/eclipse/graphiti/pattern/IFeatureProviderWithPattern
+ s.html
+SHA1-Digest: UtVAatJscKpOyHDetkPoNli09ig=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/ContainerSh
+ ape.html
+SHA1-Digest: 2vRaQ2rpXPVnj8ACltUxrLu/a+s=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IReconnectionFea
+ ture.html
+SHA1-Digest: tYw0QeZ7j7IdDVec74SF9wN4d+A=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/package-summary.html
+SHA1-Digest: SKdh+mI/fkSlvF1I3iTpYloZRXU=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/package-tree.html
+SHA1-Digest: vNUqvJqEs7u8sKWhtk7KtfP/3NY=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/GraphicsAlgorithmConta
+ iner.html
+SHA1-Digest: lpHg95quUPYTAIhVB7ZkQTTYffo=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureHolder.h
+ tml
+SHA1-Digest: xefMXjq3RUyMIMRpDK9hfCLQp9A=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IToolEntry.html
+SHA1-Digest: ongH8Ufx4ict5GTUPIWnKAbXp/o=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/package-tree.html
+SHA1-Digest: yjs5gioLVV3zR7+X5UwTC9Y5dkc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/IStructureMapping.h
+ tml
+SHA1-Digest: 2OoZgH+nYYE7zw4ypDHy4S135ZY=
+
+Name: resources/docu/gfw/visio/pictogram-model.vsd
+SHA1-Digest: SkX5cP4W21sW8i/KVR41iPBGWPY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Contai
+ nerShapeImpl.html
+SHA1-Digest: I1qpjGvV5wIVPmiBp7oI5oUQ1Zs=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/package-summary.html
+SHA1-Digest: xvnTjK3HgOeU30U3Dj6Idm20XB0=
+
+Name: javadoc/org/eclipse/graphiti/features/IReason.html
+SHA1-Digest: zxlJuU9Tw4eqUCfwVz4CZgC5R6E=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMoveSha
+ peContext.html
+SHA1-Digest: CsSj6JdBc1C83fC7w+oTfg8OKDU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractCre
+ ateFeature.html
+SHA1-Digest: T8r4dGKQpOPCIKzbCs1eyNr6BMI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Advanc
+ edAnchorImpl.html
+SHA1-Digest: v6KVTOJL+Yg1PeAWrGhmA5rMcUo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Algori
+ thmsPackageImpl.html
+SHA1-Digest: Bz8ezodNzQpxi9+iCErHAhJaJGQ=
+
+Name: javadoc/org/eclipse/graphiti/features/ISaveImageFeature.html
+SHA1-Digest: wDri6ezYR5QUsCHyiDJ5S7OvLJ0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/RoundedRectangle
+ Impl.html
+SHA1-Digest: mXknwaFKAe+9auSEg5gkNuCa6wE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /AbstractStyleImpl.html
+SHA1-Digest: GmULXBTE5dMADaHjSwdcl5Kp8fw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/ImageI
+ mpl.html
+SHA1-Digest: KWDGD2TkUPbg87eGr7pghwzTZqs=
+
+Name: resources/docu/examples/Filesystem.htm
+SHA1-Digest: faD1biG34I8Za462Mkn7WwpoXwE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IAddConn
+ ectionContext.html
+SHA1-Digest: TR27GEPxg3Q5FTwe8RtMNmLjcMY=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMoveBendpointFe
+ ature.html
+SHA1-Digest: NuCt36bNLI1NiDwPNFD/zITqDYs=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/AbstractTex
+ t.html
+SHA1-Digest: Ju3W20T61MrxcFm5Xb0LpRo+mYw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/ImageImpl.html
+SHA1-Digest: VunuiN2OhOMRFLjNFlrozCRxEmY=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IAreaContext.html
+SHA1-Digest: 9hedQiZqxSElu6grAYaqPnzX3b8=
+
+Name: javadoc/org/eclipse/graphiti/palette/package-summary.html
+SHA1-Digest: scL3aSAgqo0HJNnSgKb5qMqsC44=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IPrintFeature.ht
+ ml
+SHA1-Digest: 4UIkSZxp0bFn62YuQxMuf3pH+SA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/package-t
+ ree.html
+SHA1-Digest: 7OKvylF+Z5Yc0T8u9SohNynBcao=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/GraphicsAlgorithm.htm
+ l
+SHA1-Digest: tccc3oyOffd8lE5ykKW8yiviHsA=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/AbstractPropertySection
+ Filter.html
+SHA1-Digest: u3tsBPsbVoPR3+8i3FZb66cG4Co=
+
+Name: resources/docu/code.css
+SHA1-Digest: Im5FL+FvN1NthGPjERyzGa23xAA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/ReconnectionC
+ ontext.html
+SHA1-Digest: B3YyueQ8lHFu946z0qLhWTaP4IA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IResizeC
+ ontext.html
+SHA1-Digest: Rjgf6nTUH6/evQcKCX0PdnwydBw=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/class-use/IDimension.html
+SHA1-Digest: KNL2XkQ/A+ywFNCOD1MR3DSbtfk=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/VisualStateChangedEvent
+ .html
+SHA1-Digest: hSsGwihtP4pg/lZjzIKdegXTOy8=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/SVGExporter.
+ html
+SHA1-Digest: j/u0rl39QnMbXFfYOwWUqT3UgcE=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/AbstractDrillDownFeatur
+ e.html
+SHA1-Digest: Vkyw6m6hTZKbigaDGAcD9DdHQBE=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/MmSwitch.html
+SHA1-Digest: LMH+YA2oJ9EvxkAlWjpokRhMK9w=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/UnderlineStyle
+ .html
+SHA1-Digest: VIgAUSGWS8iJrtre7VvcNtFwNUE=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/PictogramsAdapte
+ rFactory.html
+SHA1-Digest: fCIE92MI/sIBB3Tg158oAFFL6OA=
+
+Name: resources/docu/NaNimages/CurvedConnections.png
+SHA1-Digest: aU61hitAdWqYHQw+GpG/E21hH6Y=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/AbstractConnectio
+ nPattern.html
+SHA1-Digest: mxG+6+50o6wGngZmYwC/+3/YVX8=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/FreeFormConnecti
+ onImpl.html
+SHA1-Digest: bWkxyONJK6c3gMnA2M1oiNaGQ4c=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultRemo
+ veFeature.html
+SHA1-Digest: 2WZa3cp/vm/+r+xiGiUPX7sSNDE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/package-summary.html
+SHA1-Digest: qdAQLMrE/dbVQ9DZ/1yGwlNbFEI=
+
+Name: resources/docu/extension-points/index.html
+SHA1-Digest: yZ86tRU/3/oc0kVHjf6D57vCXfM=
+
+Name: javadoc/org/eclipse/graphiti/IGraphicsAlgorithmHolder.html
+SHA1-Digest: M7SpCC9qlpj7bHjq7E0QMHl04fE=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IPeCreateService
+ .html
+SHA1-Digest: IkruZGXdZibDTkbo1XX6tMI+xnY=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/class-use/IdPattern.html
+SHA1-Digest: xgY3Ly6bQcWvBg2U0NjOP9lvczE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/PlatformGraphics
+ AlgorithmImpl.html
+SHA1-Digest: ioh6Gpb6HvecTiepVyXix2WY38I=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Polyline.html
+SHA1-Digest: AL6by6hdL9NxK6mcYoi/Z/VeOqE=
+
+Name: javadoc/org/eclipse/graphiti/tb/SelectionInfoImpl.html
+SHA1-Digest: Qll5HeyVL30q0o7F75LhcU9x4d0=
+
+Name: javadoc/index-files/index-16.html
+SHA1-Digest: ZnBpsVccQf2lYhtE3RGkJfs9Zpw=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/Graphiti.html
+SHA1-Digest: tRd6UPr8MgRvGAp1PyAm4lrz1a0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/CopyContext.h
+ tml
+SHA1-Digest: 3hRVcW8aCikAWS77cMQEM4D/998=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/ResourceSetUpda
+ teAdapter.html
+SHA1-Digest: a+1Hp3TWE+26Ovhwb0FvHcfgjng=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractAddFeature.ht
+ ml
+SHA1-Digest: 1cT0UitpqmGaSrySgGyf2qNoFhg=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/GraphicsToGr
+ aphics2DAdaptor.html
+SHA1-Digest: Mx7HfcHaH+FF69Eyya7OX7NOOgo=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ISaveImageFeatur
+ e.html
+SHA1-Digest: coZLiwCmAg+fKzJGWlbIg2pvlyo=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/ElementDeleteLi
+ stener.html
+SHA1-Digest: yxAJMqoVyrptjcw+xBrJbPwoztc=
+
+Name: javadoc/org/eclipse/graphiti/features/ConfigurableFeatureProvide
+ rWrapper.html
+SHA1-Digest: 2N8mI+KCKJin9ZqfNZK1gP0gh1A=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/IFeatureForPatter
+ n.html
+SHA1-Digest: iYEXWel1PcfjBBM85VXCzS4dhng=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/DeleteFeatureForP
+ attern.html
+SHA1-Digest: BiU89+mwRlW8/AvQG0zoK4x3tvI=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IDescription.html
+SHA1-Digest: gDrUnZckWQTjJCktu3ydNBgB314=
+
+Name: javadoc/org/eclipse/graphiti/features/IUpdateFeature.html
+SHA1-Digest: 4Gp/jOOlmMfc7aATFezDrE144vY=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMoveAnchorFeatu
+ re.html
+SHA1-Digest: Letjw0g9k9J6EM0+tfvetI65evA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /GradientColoredAreasImpl.html
+SHA1-Digest: dyiwLi3k34l9qDWBjnD7zuMYpfU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /PointImpl.html
+SHA1-Digest: tStII3TN0kBt0t5MiWxDLPgUGSE=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/StyleContainerImp
+ l.html
+SHA1-Digest: 2Cgpi3ud4bIpEOrsLstpglIGuos=
+
+Name: resources/docu/gfw/visio/connection-routing.png
+SHA1-Digest: w37JX4v2gp+iWKV+GC4R+PFiCjA=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/package-summary.html
+SHA1-Digest: H80bnUXVYal6ftxf4NW3LHSBcVk=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/GFPropertySection.html
+SHA1-Digest: o13MZj08s1NFBy+G95logxfgHuE=
+
+Name: javadoc/org/eclipse/graphiti/func/IDelete.html
+SHA1-Digest: yc48BQnNeC31b7WnerDYo1Z/3XI=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultPersiste
+ ncyBehavior.html
+SHA1-Digest: 5DAQI4+lBDyaBUGlI5FmwmcFu3A=
+
+Name: javadoc/org/eclipse/graphiti/palette/IConnectionCreationToolEntr
+ y.html
+SHA1-Digest: 8ktuac+ldrhqVxJzOKZ1nIh4vVE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/IPattern.html
+SHA1-Digest: joVIrrxybOLKKnElkqsDc3bI9Nw=
+
+Name: resources/docu/gfw/visio/linked-objects.png
+SHA1-Digest: mpayY5ttb0QxvrQs/G0uLGZdH+0=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/package-frame.html
+SHA1-Digest: ZEosRQXNRCfCM1B0BIZJtlazE9E=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/IEclipseImageDescriptor.h
+ tml
+SHA1-Digest: bAO0+icx9LJAO3IbHQxu4iwqba0=
+
+Name: javadoc/org/eclipse/graphiti/services/IMigrationService.html
+SHA1-Digest: RUtMhx/v+UKJKduBL0Ne+r2VTYQ=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/DefaultFeaturePr
+ oviderWrapper.html
+SHA1-Digest: WcZq2F5B/C0qDC/jMU0MHcvWNmo=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultAddBendpointFe
+ ature.html
+SHA1-Digest: X2SjEe5iAMBuD5esMNiNmoDMY0M=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IAddBendpointConte
+ xt.html
+SHA1-Digest: rJfPpBQAUkRD72TwyoJigncEA8I=
+
+Name: javadoc/org/eclipse/graphiti/notification/class-use/INotificatio
+ nService.html
+SHA1-Digest: RKM6KIY9W42KItVWnQQ53ADoxEw=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/MmPackage.html
+SHA1-Digest: QXbkVdAw5foWkUCxsekX7E8cuAc=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeature.html
+SHA1-Digest: smldJo/xSHC4nqkpRFoiEhdNECs=
+
+Name: resources/docu/gfw/visio/anchor-chopbox.png
+SHA1-Digest: oca6UPzB4h8o/EMYzcjrRzEzpiU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractAddPictogramE
+ lementFeature.html
+SHA1-Digest: UF2Wrq+cxwTYqp8tPTrzhtmIfXI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ChopboxAnchorImp
+ l.html
+SHA1-Digest: ON4gI4AcRl+wzdmP8fyIxcr5lhM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ICreateC
+ ontext.html
+SHA1-Digest: FGCpCRr6M5yyakcyDozBSKwKTk4=
+
+Name: javadoc/index-files/index-21.html
+SHA1-Digest: VTecK4np9bC+f4ptcW17djnPcC4=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IRemoveFeature.h
+ tml
+SHA1-Digest: QYG6z3Is5PkzyoF0fDy+GvsXa4U=
+
+Name: resources/docu/gfw/visio/diagram-type-mytutorial.png
+SHA1-Digest: 03/J3xkIh8CGeQ28WdWHqCbnLa8=
+
+Name: javadoc/deprecated-list.html
+SHA1-Digest: 1d0yHVfKy5edNdfAA5eVNGiNQvY=
+
+Name: resources/docu/gfw/polygon-and-polyline.htm
+SHA1-Digest: ERpngCwRPABOlkYLDN4wMd7igjc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/DefaultFeaturePro
+ viderWithPatterns.html
+SHA1-Digest: flIS1MT2jGOMMeZ+Z4xfzQ3gmnE=
+
+Name: resources/docu/extension-points/imageProviders.html
+SHA1-Digest: 7SubAFTrUikllhLOyved1QQIo2w=
+
+Name: resources/docu/extension-points/diagramTypes.html
+SHA1-Digest: VjrW3dvBl2yb29xDzK7QPd4zrJU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /GradientColoredLocationImpl.html
+SHA1-Digest: LBtacNbxGmYQ1oe+VS8mN2vYIF4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/MultiText.html
+SHA1-Digest: YsMpU/qx8p2uj21qngjcc7E0joI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/LayoutContext
+ .html
+SHA1-Digest: zm8/0O9VHsk31hUOhm2PlR+LZdY=
+
+Name: javadoc/org/eclipse/graphiti/features/IDirectEditingInfo.html
+SHA1-Digest: 7dXBh4wAcVK0j6OM01MD8vKg0d4=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/DefaultSaveIm
+ ageFeature.html
+SHA1-Digest: O6y8IU6yw+QnrjpreTiXJeDBJ5g=
+
+Name: javadoc/org/eclipse/graphiti/tb/package-use.html
+SHA1-Digest: lsZ0BKNfzLeMLtOD7VFPlkWE27E=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ConnectionSelectionInf
+ oImpl.html
+SHA1-Digest: MLlub9F4SGmrKwkC1Y1LcF5VQXU=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IReason.html
+SHA1-Digest: WZ9Prbxb/zd7snLHOZVUVrK8SII=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/ColorConstant.html
+SHA1-Digest: GXLzqRBs+uJDitdrvYNotl/4A6Q=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IRemoveBendpoint
+ Feature.html
+SHA1-Digest: yrNj8LVw6X7mCBJG05QmzMc8q6M=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/package-tree.html
+SHA1-Digest: 1aEpr1HkM+GLGc0RUuAhJdiU7DI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/package-use.html
+SHA1-Digest: hWQA54+0HrQt+SzGYOPUrCSwQBA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Res
+ izeContext.html
+SHA1-Digest: pcnhRVrmKStuXyULGFHe3MT3K38=
+
+Name: javadoc/index-files/index-4.html
+SHA1-Digest: rEdo2SGBjqbRTd7+dctf+O433L0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/TextImpl.html
+SHA1-Digest: 3MJftRKlCvKwgulkyuVhOyPS6IY=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/AbstractPaste
+ Feature.html
+SHA1-Digest: rIo+IEMlIxw/C9lsIYVQkbgkX/4=
+
+Name: javadoc/org/eclipse/graphiti/palette/package-tree.html
+SHA1-Digest: Q3nWX0DQOuptErAWUMDQ637UFc0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/LocationConte
+ xt.html
+SHA1-Digest: G91oYk7F9m53i5Zhxwi/HZRhink=
+
+Name: javadoc/org/eclipse/graphiti/features/context/package-frame.html
+SHA1-Digest: qf0PhjFKvwBi2HVNDlayBTkgiGA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/StylesPackage.
+ html
+SHA1-Digest: 0jbPvtxb6/x93J2CvWLaofh0X18=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Anchor
+ Impl.html
+SHA1-Digest: jNib/N2cSC6QZXnFS7jMfQcM0ME=
+
+Name: javadoc/org/eclipse/graphiti/features/package-tree.html
+SHA1-Digest: ZLRD2waqWybQOdnbWWwWz6i2F9Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Grad
+ ientColoredArea.html
+SHA1-Digest: MX1Uf21R2WHxZHOVHKFOy0jN/qI=
+
+Name: resources/docu/gfw/visio/file-new-project.png
+SHA1-Digest: yN2jNPjHDyPDdoEfS0NY0mLYKfE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/LinkCreat
+ ionInfo.html
+SHA1-Digest: FNfAodsHRNkck8nUptj4uKwA9io=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultRemo
+ veBendpointFeature.html
+SHA1-Digest: h9jTxj31oRBjf2ziPvv1aB7gTkM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ITargetContext.htm
+ l
+SHA1-Digest: UoNr89cHrHfpYbZt6jxR9kQqCPg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMoveBendpointCont
+ ext.html
+SHA1-Digest: bcLcua6p1z5NCMNyAkiKMPPq51U=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /GradientColoredAreaImpl.html
+SHA1-Digest: uyZm890CyYOPgz2Hyzkdr2vuM6o=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ConnectionImpl.h
+ tml
+SHA1-Digest: dZ7lR/laCOyvTGKjxTn39igkJR4=
+
+Name: resources/docu/gfw/visio/user-defined-gradient.png
+SHA1-Digest: I+F+7aOGN7mJAljJ7JDXNospqXw=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/UpdateNoBoFeature.htm
+ l
+SHA1-Digest: aRpjhOugu+8F+bfBedSO1NjMpqs=
+
+Name: resources/docu/gfw/plugin-structure.htm
+SHA1-Digest: mcp+c7iGwLKTbImYpTIsmX+frns=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/GradientC
+ oloredAreaImpl.html
+SHA1-Digest: eobgmjuf7CglTv/SqMqKbPT2jtw=
+
+Name: javadoc/org/eclipse/graphiti/notification/package-summary.html
+SHA1-Digest: yBpwdgoRkpYSu8TXudvu9yQcgXc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ICopyCon
+ text.html
+SHA1-Digest: f/QQGo0dKuSzfPIuOD0bEkcJekg=
+
+Name: resources/docu/gfw/visio/outdated-shape-update.png
+SHA1-Digest: VEGiWPYFpss0a8iUs+yW9+nNSig=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IPictogr
+ amElementsContext.html
+SHA1-Digest: xbFdMzwP0EXvxrBxcJMXUWY3gnk=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/class-use/MmAdapterFactory.
+ html
+SHA1-Digest: JXiRIzacuhLhQ6U5zxVmyaMtov4=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/AbstractPaletteToolEnt
+ ry.html
+SHA1-Digest: wVF7Sfw+kUdCi9n7x1TVpG67b98=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/package-frame.html
+SHA1-Digest: mcLJtP7q0PW7irFUa7HAbGrunkE=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IReconnection.html
+SHA1-Digest: mshawnQ+3n3EpoZxRWC5L4lvOmI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/GradientC
+ oloredAreasImpl.html
+SHA1-Digest: giReXrA4A3jmm8ufqyxindWj4d4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/Shape.html
+SHA1-Digest: UMJENJrY3afl4dnrOnO+4mylzx0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/MultiDeleteIn
+ fo.html
+SHA1-Digest: 86fGm/R7G+xo2Pe12HOvQxQsXR0=
+
+Name: javadoc/org/eclipse/graphiti/pattern/DirectEditingFeatureForPatt
+ ern.html
+SHA1-Digest: lwBBVQVrt3S4OECZiXPuEsJDM24=
+
+Name: javadoc/org/eclipse/graphiti/pattern/AbstractConnectionPattern.h
+ tml
+SHA1-Digest: RFHVwJp6d205xHXJANvF2TMs+VQ=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/DefaultResizeCon
+ figuration.html
+SHA1-Digest: lfNFbmerBmZ1GTBHzospFfHHJrY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Anchor
+ ContainerImpl.html
+SHA1-Digest: O4k1nB46zFeRVkmTaMFTPCDbdJ4=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IDirectEditing.html
+SHA1-Digest: LpmAiQwKbQuiEzmfPd02ANtuh8Q=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/IConnectionPatter
+ n.html
+SHA1-Digest: Qacjx1n2TkeOd5qRtse+Nyulnys=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractPri
+ ntFeature.html
+SHA1-Digest: UTjqgWWG/CkOb9woUarBcW41iOQ=
+
+Name: javadoc/org/eclipse/graphiti/notification/class-use/DefaultNotif
+ icationService.html
+SHA1-Digest: oe9pnIupuZJY5nJtMNJPphjcdP4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/StructureMappingGri
+ d.html
+SHA1-Digest: zTCstqIZriNYkwXCjLD8PBrP9fQ=
+
+Name: resources/docu/gfw/connection-visualization.htm
+SHA1-Digest: ARqgJHxhGFWQGxBv8FHMtch7bEo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IResizeS
+ hapeContext.html
+SHA1-Digest: R0njixacu7bDKW7GUFw0G+RQ4Pg=
+
+Name: toc_concepts.xml
+SHA1-Digest: CnegKz1wgFA9wynGDBcf2Co8PFc=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/package-s
+ ummary.html
+SHA1-Digest: qbDCHFjrnnSyti+HcK38ktEAb0k=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramComposit
+ e.html
+SHA1-Digest: u8I9tMprsg5qHmHTv82rMvBVKRA=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/ManhattanConnect
+ ionImpl.html
+SHA1-Digest: B5ltmcsU7m8tYxSX3Gx8dpkaz44=
+
+Name: resources/docu/gfw/visio/ui-spec-blue-white-gloss.png
+SHA1-Digest: ZjSDjUz9dJfnXZZQ29sCpAYAmMw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /TextStyleRegionImpl.html
+SHA1-Digest: ZfZfmCqmJDT8kLuwhGwXc+8tZIM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Cre
+ ateContext.html
+SHA1-Digest: v8TOc5BnxA9vuYSa7D9D8HJBPbQ=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IAddFeature.html
+SHA1-Digest: gQH9W7B5quMPt091Nr6ykKFicpk=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/package-use.html
+SHA1-Digest: YuCh5nLKUoFmAXdD7D34qgrF9q8=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/SaveImageCont
+ ext.html
+SHA1-Digest: Z91dlV/VQsaS/5yvrC84Pu4Tre0=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/package-tree.html
+SHA1-Digest: ljImPZfQt9/9kWjNlaGKcKmjGsI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/IStructureMappingGr
+ id.html
+SHA1-Digest: mb6kv86Uu0rhfWId3HZHeuAd9Rc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ITargetConnectionC
+ ontext.html
+SHA1-Digest: kjiY/blfMvVvksjCvzr7KZ/VjEw=
+
+Name: resources/docu/advanced/BeyondEditors.htm
+SHA1-Digest: qCOWxnFd5sbr/32pQXi4F6kIjrY=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultReconnectionFe
+ ature.html
+SHA1-Digest: 5xwJrdZ6I6vggDOcJnN/kJl9TjA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IReconnectionConte
+ xt.html
+SHA1-Digest: diqxcT9Y7cz8fCy8xddFPfkJqwI=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IDirectEditingFe
+ ature.html
+SHA1-Digest: xRmZV7TvPYnfa7xu518Xywxj1ck=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/CreateFeatureForP
+ attern.html
+SHA1-Digest: zz32ZjIsMH7Z0L2Zp8xZhZrO9aE=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/Anchor.html
+SHA1-Digest: obR1GI9en6T+JHDKw34OiGLCPFI=
+
+Name: resources/docu/gfw/visio/tool-tip.png
+SHA1-Digest: o/xWUjbtq74UVQ987Jej271FLyQ=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/StackEntry.h
+ tml
+SHA1-Digest: 04RpttoDfKV79ZlIp0UXR3xBezY=
+
+Name: resources/docu/gfw/visio/pictogram-model.png
+SHA1-Digest: 62147fHASl8xUTHeNdQmyVuFhmU=
+
+Name: resources/docu/gfw/visio/package-shape.vsd
+SHA1-Digest: 6XisbCmkkt7espaLIB0ZQXADjVo=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/ColorUtil.html
+SHA1-Digest: ZT4y8xg5ikKnO2WDmgYeGWFqzY0=
+
+Name: javadoc/index-files/index-17.html
+SHA1-Digest: eCd1NX9ZG1M/puTKVKlN4hdxy/E=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Abstra
+ ctTextImpl.html
+SHA1-Digest: GJw7GUXDscuH71UdS7F1ME1ZsMs=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Pas
+ teContext.html
+SHA1-Digest: speMDevhiK4xWug+hLyz6PGZ37E=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/GraphicsToGr
+ aphics2DAdaptor.State.html
+SHA1-Digest: BbnSCwBfYAMJip5LK+HR9ByI14c=
+
+Name: javadoc/org/eclipse/graphiti/features/IMoveAnchorFeature.html
+SHA1-Digest: D7ke6z6fKnEXmFhaEUNFuw+8m/s=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/UpdateFeatureForP
+ attern.html
+SHA1-Digest: WjQBU69KvrpaX9r+vUPmnHdjMiU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractAdd
+ Feature.html
+SHA1-Digest: nKTpCXIfcoC55O0trgW4Swvbxss=
+
+Name: resources/docu/examples/images/InitialBoard.png
+SHA1-Digest: 1tvdta6PTGz3IpnDwwqE41ct1cY=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IVisualStateHolder.html
+SHA1-Digest: ARKR/jBESvqIVYwDoGLPS8fslkg=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/PaletteSeparatorEntry.
+ html
+SHA1-Digest: RzWGaWesKaqJly2fs9Cy6dIN5FA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/EllipseImpl.html
+SHA1-Digest: uyM0I+31BRT4Um9rijuHHc4pHPk=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/DynamicContextMenuEntr
+ y.html
+SHA1-Digest: uaEJVupZ4Ls7F1CkZk6e+xBMmDs=
+
+Name: javadoc/org/eclipse/graphiti/services/IGaCreateService.html
+SHA1-Digest: 8SluzWb/Lxn8jz/b0OCbAhN/Qos=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Grad
+ ientColoredAreas.html
+SHA1-Digest: B4u0NzKz+0nIXuJYWTB1iyt+/rg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Cop
+ yContext.html
+SHA1-Digest: kqly8XLKoFmzrC9TXQ+ufn+I3x4=
+
+Name: resources/docu/gfw/visio/context-buttons-click.png
+SHA1-Digest: 5TEgj578tACjmweXhFO6FwrTFG8=
+
+Name: javadoc/index-files/index-22.html
+SHA1-Digest: JW3R15qm1/FUbDddzzQ/58ErDJ8=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/Proposal.html
+SHA1-Digest: V0umRth9F3rurLMs7+G9/EFGHLk=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/AbstractPale
+ tteToolEntry.html
+SHA1-Digest: f2perVYRjU7cNqdEZvkMXT8CZcI=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/ImageConverter.html
+SHA1-Digest: hYanTXnAc5oSQbyNQ6wZG+l2WOk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/package-frame.html
+SHA1-Digest: p00ta43lkPdOHBYn0lq5S8Qe95g=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ISplitCo
+ nnectionContext.html
+SHA1-Digest: M5yzHxegZKdwnpgOEX9TnJXo9Wc=
+
+Name: javadoc/org/eclipse/graphiti/tb/BorderDecorator.html
+SHA1-Digest: CTQkyMPiiyZkAuNggRyXtJkcb6Y=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultResizeShapeFea
+ ture.html
+SHA1-Digest: uADZ9dTb1WUtP/trcDokqiprQTk=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureProvider
+ .html
+SHA1-Digest: 20eUUY3JnS6eDbDPeUHGjnzdaiA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /StylesFactoryImpl.html
+SHA1-Digest: cp1ea059cKPdTvgJ3qDNFakEQUw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IAddContext.html
+SHA1-Digest: xock7BVWOxkU0F5x4o+oYw2mdg8=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditorCo
+ ntextMenuProvider.html
+SHA1-Digest: /DppA80hzw9vo0bU2KZFq/gmkV8=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/IEclipseImageDe
+ scriptor.html
+SHA1-Digest: pzGOq0wwUqASr5fHZxkAAzvJONQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /RenderingStyleImpl.html
+SHA1-Digest: 63mioj4cV07pFe7DVhcKUCIMexI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/DataMapping.ht
+ ml
+SHA1-Digest: /TdaR6CF43zfV8D1jAaU8G/+kUo=
+
+Name: resources/docu/gfw/tool-behavior-provider.htm
+SHA1-Digest: zBO8W7XypDiuxLTEHlHWS8v0fJs=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IContextButtonEntry.ht
+ ml
+SHA1-Digest: obY725EKGHWngVkl6pDcdpVTZT0=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramBehavior
+ .html
+SHA1-Digest: Qbszzt4Z0lIXMNayI6GAGxunx7g=
+
+Name: javadoc/index-files/index-5.html
+SHA1-Digest: 9ssdqGQpdrZSINoRBeR8G6X4MWM=
+
+Name: javadoc/org/eclipse/graphiti/mm/MmFactory.html
+SHA1-Digest: i/6m47MCwfz+MILt+yc5ygb30JM=
+
+Name: resources/docu/gfw/custom-feature.htm
+SHA1-Digest: yomLb08CZj2mzGW2cMtX6Yg7gbs=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ITargetConnectionD
+ ecoratorContext.html
+SHA1-Digest: FIhFIqvo4TgQlY9og4GJ0HoLmV4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/IDat
+ aMapping.html
+SHA1-Digest: /7wJHXT5pdNnpRKr3hWYxhKbRB8=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/PlatformImageProvider.h
+ tml
+SHA1-Digest: Jszc4MRxf8wZC7jTbv65uGD46gg=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/package-use.html
+SHA1-Digest: 1Ck3sOtfu27L94DbwAns+089b8g=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/package-tree.htm
+ l
+SHA1-Digest: cNcF7Xs/ZHRbPd03FNIVLwH5Ayc=
+
+Name: javadoc/org/eclipse/graphiti/features/ILayoutFeature.html
+SHA1-Digest: DUHQxFNBG8Rr+09xWaP5ZGiXA5g=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/MappingPr
+ oviderProvider.html
+SHA1-Digest: OoLJAMC7ig6paZljLZDflZPRj0E=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IUpdateFeature.h
+ tml
+SHA1-Digest: b7e87UK+3DiqdPeFlNpVLnRSNUk=
+
+Name: resources/docu/gfw/default_values.html
+SHA1-Digest: E4wCR+iTEAheQB9LI0kDu566gk8=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/Labe
+ lDataMapping.html
+SHA1-Digest: e/v8LoM4BYWNJBfMHoRfcu6Br1w=
+
+Name: resources/docu/examples/Composite.htm
+SHA1-Digest: UlxXGgEcK+CZIH0JPoKlh74+iG0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/AlgorithmsF
+ actory.html
+SHA1-Digest: 6b/Pu95au0BJ7M491D/jZCPEgBA=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditorMa
+ tchingStrategy.html
+SHA1-Digest: 13sMuumfjBpQC2yN/2CILE7/JGI=
+
+Name: resources/docu/gfw/visio/connection-decorator-static.png
+SHA1-Digest: VewrJzfhi5SJWikdPjZNMY2Cv0U=
+
+Name: javadoc/org/eclipse/graphiti/tb/DynamicContextMenuEntry.html
+SHA1-Digest: 7Q2lhzyEjTQQFoC9k2T3KX4HEiA=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/TypedPattern.html
+SHA1-Digest: PWfmRaXctghqpo0k+RnXd7+6Q/w=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/package-tree.html
+SHA1-Digest: n+xSYqRelovWwfa/K/dVQPCwOlc=
+
+Name: javadoc/org/eclipse/graphiti/notification/package-frame.html
+SHA1-Digest: Y6xEMta+xUfYFyinh0JtJ+SHLuo=
+
+Name: javadoc/org/eclipse/graphiti/tb/IBorderDecorator.html
+SHA1-Digest: UM90gzRgPGu7INclF3BKPdNxOcI=
+
+Name: resources/docu/advanced/images/FeaturesAndPatterns.png
+SHA1-Digest: JBoViDK5g3WEi/1IeYQyABsNvUc=
+
+Name: javadoc/org/eclipse/graphiti/features/FeatureCheckerAdapter.html
+SHA1-Digest: V+Kw0lk0cPLDQuL22DdpZHZbgvc=
+
+Name: javadoc/org/eclipse/graphiti/services/ICreateService.html
+SHA1-Digest: /rePAVVIi3hfYXvVRT1ndurGTS0=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/package-summary.html
+SHA1-Digest: SRmFAUTGvwpKbxNi3vL5YH5k19E=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureChecker.html
+SHA1-Digest: lKAOEmaNg8hW5gZZ3KvHK6owkmI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/MultiT
+ extImpl.html
+SHA1-Digest: kP8pFCT9dC9A3Y4qlJdUyQ1qlUY=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/LabelDataMappi
+ ng.html
+SHA1-Digest: 7MnNm6+FTfnGJUN7tA/P+8w8j2Y=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/ILinkCrea
+ tionInfo.html
+SHA1-Digest: bIBCHfPdU4A6elac3VxeTjn1VA4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/PolylineImpl.htm
+ l
+SHA1-Digest: wxwd+NT3ApbuJovKmzem+o3Rao8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/AlgorithmsPackage.Lit
+ erals.html
+SHA1-Digest: YVmpSl0Yp2BYCMht/D+msxG4cMs=
+
+Name: javadoc/org/eclipse/graphiti/dt/class-use/IDiagramTypeProvider.h
+ tml
+SHA1-Digest: JJmKGbz8S9G2IduBJQfevxSK2RY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/AlgorithmsAdapte
+ rFactory.html
+SHA1-Digest: sAL6qYkkB6fwQX2Ywk0RdNGERDQ=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/IExtension.html
+SHA1-Digest: nWZF1kmWzU8AewrxxV+pr3MAbXo=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IReadOnly.html
+SHA1-Digest: 8mSFS/X5p65GXDdegL8ZTMBzITo=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultPersistencyBehavio
+ r.SaveOperation.html
+SHA1-Digest: 4+x751LMOW4aRFsGNOB3TWAIZhI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Adap
+ tedGradientColoredAreas.html
+SHA1-Digest: EYshb6tzgzpGyJDXm97VVZYTn3I=
+
+Name: javadoc/org/eclipse/graphiti/services/IPeCreateService.html
+SHA1-Digest: rJtEhk9AjnjgfT85Z0TU2sFuvgA=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/IStructureMappingSi
+ ngle.html
+SHA1-Digest: ekbXwcavR2owcuUX+nVIjERewkw=
+
+Name: resources/docu/gfw/visio/context-buttons-drag.png
+SHA1-Digest: 9XmYNqN+I/lSd2qINwMqCWAUwrM=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/package-tree.html
+SHA1-Digest: 8vq7OKztuv9D0j282jIoDjoyB1o=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /StylesPackageImpl.html
+SHA1-Digest: ittQ5cqcNDOdwIyC7OjHJw8zJAA=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/PictogramsP
+ ackage.html
+SHA1-Digest: dOht6AbbtNQrspSbqPsPLhhK0Ws=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/package-f
+ rame.html
+SHA1-Digest: cWARViaPYVbDVOc9XNygxaQJlHQ=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/IDiagramContain
+ erUI.html
+SHA1-Digest: +9YfqKIPil7QAl4BSZ60CwPUBgA=
+
+Name: javadoc/org/eclipse/graphiti/features/IPrintFeature.html
+SHA1-Digest: SdoPeoPaTd6IqC1TcdjQI0saicY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/class-use/Algori
+ thmsSwitch.html
+SHA1-Digest: ilr0LKrR6MYrQEfJwiXV1UQ0y6Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/PictogramsPackage.htm
+ l
+SHA1-Digest: cW7z1ObhqGvbK46zrjV2r9kLhbY=
+
+Name: javadoc/constant-values.html
+SHA1-Digest: RYhiLIIQehKvgt2q1ovOfgSDTKw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/StructureMapping.ht
+ ml
+SHA1-Digest: drqZ4graUug1R2PYTyFU82ok6AI=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/ResourceSetUpdateAdapter.
+ html
+SHA1-Digest: x7ZLgdW8usQKrcRgcWpfSC6Kuug=
+
+Name: javadoc/org/eclipse/graphiti/util/ColorUtil.html
+SHA1-Digest: 589Z4aEbcaLr77gipWj3HCKZXg4=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IGraphicsAlgorithmRende
+ rer.html
+SHA1-Digest: AwYunwQWtaErKfbRyKijiv17aIU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IDirectEditingCont
+ ext.html
+SHA1-Digest: sRAk3o0ZmZLXaN7SMllAdpRMYd8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /AdaptedGradientColoredAreasImpl.html
+SHA1-Digest: YL14wsvQQk7tcpQSBd9FO1OersM=
+
+Name: resources/docu/gfw/visio/palette-compartment.png
+SHA1-Digest: xZnk/T2JbVQU88cGr7i/JkuIWlw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/IStructur
+ eMappingMulti.html
+SHA1-Digest: jAlJg6rvMSymddK+zCFIp7mVR58=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/package-summary.html
+SHA1-Digest: WfkCkMXkKNinpO3c73uc6DnraXs=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/ManhattanConnection.h
+ tml
+SHA1-Digest: wmB0pt9lPqiSB2XUpRTbBq5blDs=
+
+Name: javadoc/org/eclipse/graphiti/mm/package-tree.html
+SHA1-Digest: p5KLw2m6oLPYSHFJVV5L/tCPrCA=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/AbstractPaletteEntry.h
+ tml
+SHA1-Digest: xpVZrBTArMAxN9uc9laRxAFlF2s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/Text.html
+SHA1-Digest: h2IyKiJfczpirpDcKGVhavaPZBA=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/GdiFont.html
+SHA1-Digest: P4U7yQhY9dEX5Px+SnaJT4Feva8=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IProgress.html
+SHA1-Digest: qeTVHijWyne97fx4TMVHTwtdq1M=
+
+Name: resources/docu/gfw/visio/connection-decorator-dynamic.png
+SHA1-Digest: LEANk3UyUL0VzHKq7M13oRpD8xo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/DeleteContext
+ .html
+SHA1-Digest: cQF+drHk84m5Mk/GDifgYuPE4wg=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/package-t
+ ree.html
+SHA1-Digest: 2ShhrUgFCTEckge0A3zHG9bkfx0=
+
+Name: javadoc/org/eclipse/graphiti/features/IResizeShapeFeature.html
+SHA1-Digest: +sNq+Ls6jJsCL0EfRJwaEyZKZFI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/Point.html
+SHA1-Digest: x6QDdCrpVmk6jQOj2zpbF9JvWKY=
+
+Name: resources/docu/Legal.html
+SHA1-Digest: uQf1VIqtNvVKPqiaYqAlnp12ao0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ITargetC
+ ontext.html
+SHA1-Digest: pM1dzCyjCioKb3jaI35X0KE+D/0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Mov
+ eConnectionDecoratorContext.html
+SHA1-Digest: Mvhx3in9RHg1qyGRCi3Ff9qfAIA=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/package-tree.html
+SHA1-Digest: Rbuwtq3zTtyuV+7uSx1e9gLn45s=
+
+Name: javadoc/index-files/index-18.html
+SHA1-Digest: cbRFAcuhOxLHHzN+W/nM6ez7xaU=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/package-summar
+ y.html
+SHA1-Digest: eRGzXzwbwOOSq7B5JPsOvwjkI4k=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/package-frame.html
+SHA1-Digest: +qGPkOP1X8aaq7XUnrWtCBK88+U=
+
+Name: resources/docu/gfw/context-menu.htm
+SHA1-Digest: AScvO2W1Mt/IteVQ2rYA5i3cAQU=
+
+Name: resources/docu/gfw/visio/connection-routing-direct.png
+SHA1-Digest: FbL+gCBnB3edAr0Qc2n+VhET7Qg=
+
+Name: resources/docu/gfw/anchors.htm
+SHA1-Digest: GsW5mfrnRwhtcHMQ4lkVWhu/3GE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/PointImpl
+ .html
+SHA1-Digest: 5oNOhDJfUyFeo/bElRiwHOnmmoo=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IImageDecorator.html
+SHA1-Digest: fErIg9/Epqv1yrgsltEeoknJvqw=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IConnectionSelectionIn
+ fo.html
+SHA1-Digest: GZ0Tgq2/KDs9nz+vYNvKjIluKws=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/GraphitiConne
+ ctionEditPart.html
+SHA1-Digest: 93fNLtdOsV+Qgv/QLJT7hHcWEok=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/IStructur
+ eMappingGrid.html
+SHA1-Digest: B+p3sukejSnvpe92yn96qqLR+MI=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IColorDecorator.html
+SHA1-Digest: K6UJ5EZvLmrPunyJurSf8HoNZA4=
+
+Name: resources/docu/tools/images/NPW_Settings2.png
+SHA1-Digest: 5x7CTh3BrREBzxB3LClTu2RZeJY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Pictog
+ ramElementImpl.html
+SHA1-Digest: lt3OcAJMZldPGwG/ZKvcfaYjbaA=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/GraphicalComposite.html
+SHA1-Digest: vAn9A/b+NcdAxeFsF7C/eTVe1pg=
+
+Name: javadoc/org/eclipse/graphiti/tb/DefaultToolBehaviorProvider.html
+SHA1-Digest: UzNe9fniKPM+OjwaqIwYJ4lCLuA=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/package-use.html
+SHA1-Digest: UXTCJU76o4+8+Ks0UpoEid3RPxI=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/package-use.html
+SHA1-Digest: TSzxD4ttNo7pTxJsDLAOd30QFk0=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/IDiagramBehaviorUI.html
+SHA1-Digest: 5zijTz0t1XyCfKnooDn089fU24U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/IdUpdateContext.html
+SHA1-Digest: FlOKB/sZWzRVY7vkG0AY/nGpDS8=
+
+Name: javadoc/index-files/index-23.html
+SHA1-Digest: XWUuK8om/j7Rrh3csd+Dd8ePwyQ=
+
+Name: javadoc/org/eclipse/graphiti/IDescription.html
+SHA1-Digest: Ua7bXyCi052COgTlVamufrIm51Y=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IProposal.html
+SHA1-Digest: ExxRy6jF164yd4aGeO3Cj6rZM5Y=
+
+Name: javadoc/org/eclipse/graphiti/tb/IConnectionSelectionInfo.html
+SHA1-Digest: TabUMko4bpF1xWepjLxAJ1NzSF0=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ConfigurableFeat
+ ureProviderWrapper.html
+SHA1-Digest: n09ELKzkwh0FEa1jq9lIe7TLsa8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/package-use.html
+SHA1-Digest: sX2l7licPUzX2BQmXWuyXwzOPpw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/AlgorithmsP
+ ackage.Literals.html
+SHA1-Digest: KV8dmhoAyF09w0/T6+81GaMXu0M=
+
+Name: resources/docu/gfw/visio/context-buttons-collapse-2.png
+SHA1-Digest: gA8VAK7vi68KDWSE21VUAvIeqs0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/MultiText.h
+ tml
+SHA1-Digest: iPNNsL+aTloVVeawg/GW8ZL74w4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/package-tree.htm
+ l
+SHA1-Digest: uCEhGMEGcGg2FVKmExDsBDtMRlo=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureCheckerHolder.html
+SHA1-Digest: mxvdML2hitpUJeGh4eirPRKWQGM=
+
+Name: resources/docu/gfw/visio/diagram-name.png
+SHA1-Digest: SJwW4FB+sYnGH0QepgoigG7CzYA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/AbstractStyle.
+ html
+SHA1-Digest: BGQVoy0WWDeLq9jMCI/V9Re3z0o=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/SelectionInfoImpl.html
+SHA1-Digest: 5U2zdzqMIYn+601dGFaZ7TdaxVs=
+
+Name: javadoc/index-files/index-6.html
+SHA1-Digest: Ias7VDZX5DMPQIb3P259QxST9So=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IAdd.html
+SHA1-Digest: eTk9qv223dkfP253U0EXOa1WxzU=
+
+Name: javadoc/org/eclipse/graphiti/util/package-frame.html
+SHA1-Digest: gBJ6VES8Ba9/uJ8ThdjKhVdoQ1g=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultDirectEditingI
+ nfo.html
+SHA1-Digest: pVY9xbnlpVk+C42jO0wxJKQhugA=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/CompositeCo
+ nnection.html
+SHA1-Digest: LDbSfRC+Hcs8eTAc3MfDx/Z2CuY=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/ILabelDataMapp
+ ing.html
+SHA1-Digest: 9zT8GIbm0B0c3UM8CZfKHigXSZE=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/DefaultPrintF
+ eature.html
+SHA1-Digest: Y0sOWOnmdZ2hWEFTSZFwgIkbGK4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/LayoutFeatureForPattern.htm
+ l
+SHA1-Digest: LDmbzUD+TnC6IOPcHHfP70VFsLI=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureAndConte
+ xt.html
+SHA1-Digest: 6Tbo862fUI6VP5dzxJBj8Min46s=
+
+Name: javadoc/org/eclipse/graphiti/tb/IContextMenuEntry.html
+SHA1-Digest: r/7t4iQ6PXZ21EQcMrpLIOc2HSA=
+
+Name: javadoc/org/eclipse/graphiti/features/IMoveFeature.html
+SHA1-Digest: ISJ4XOQXfJmQWPunmEHH3kLu2LQ=
+
+Name: javadoc/org/eclipse/graphiti/tb/IContextButtonPadData.html
+SHA1-Digest: gfAKt4JxKHUSC7+Uhk/qOMGnZKg=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/class-use/IPatternCo
+ nfiguration.html
+SHA1-Digest: YUxPolI9VUaJIkfwTIDjq1pNYME=
+
+Name: resources/docu/gfw/visio/digram-type-tutorial.png
+SHA1-Digest: uRz2Kk8ZlhU2ZzXbLDsXfnDjmT0=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/package-frame.html
+SHA1-Digest: gCn8i+fhvmUithKhOV+FE2chAkw=
+
+Name: resources/docu/gfw/drill-down.htm
+SHA1-Digest: ejT36KD9JcbqKrMPw5DeRMNp7f8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Ellipse.htm
+ l
+SHA1-Digest: fPcEA4sSiXjIDxYuOWPjkDl99uc=
+
+Name: javadoc/org/eclipse/graphiti/dt/IDiagramType.html
+SHA1-Digest: omIgY9HMHYrZbpBIrea3gZ2q7zM=
+
+Name: about.html
+SHA1-Digest: R7Hm5DnGTFULGaX/mdNb21tGJHU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractSav
+ eImageFeature.html
+SHA1-Digest: D1wdTrCaljAz0V7IkpMt//t9/2M=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Graphi
+ csAlgorithmImpl.html
+SHA1-Digest: oxB4kS616SAzasBKLhoNUrOzdvg=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/package-use.html
+SHA1-Digest: pMqPQQBMIBhiop8GbDtksFREKsk=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/PropertyImpl.html
+SHA1-Digest: J7D/yfMLIrI/qZt21ALJdLIziw0=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractFeature.html
+SHA1-Digest: egHhpjsDezcaSJ4MvtREP9nImH8=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Are
+ aAnchorContext.html
+SHA1-Digest: FknQyifJu6ppdRlIWBPk2Je04uc=
+
+Name: resources/docu/gfw/visio/project-explorer-editor.png
+SHA1-Digest: V4vUIGeZuqh64t4R+TIk6tmAtWU=
+
+Name: javadoc/allclasses-frame.html
+SHA1-Digest: u+Ryt19pwgVijEU4lmBeUue+4cA=
+
+Name: resources/docu/gfw/color-schemas.htm
+SHA1-Digest: uXAvgKZsMsAksHbfMqA85X/9iX0=
+
+Name: resources/docu/NaNimages/PluginWizard.png
+SHA1-Digest: 0O2VThIH993olzp8T1HK2St+6mc=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ContextEntryHelper.htm
+ l
+SHA1-Digest: FFlcl8RXz87OpUY5gB4qweOOv8o=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/TextStyleRegio
+ n.html
+SHA1-Digest: vR3IO8WnRZrAfY5yURIuGXdj+7I=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IToolBehaviorProvider.
+ html
+SHA1-Digest: V6cBJGOnSmKzkgjM4wmtj+WpD3U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/class-use/IIndentCon
+ figuration.html
+SHA1-Digest: i+J/edtc6+IHZl6Y8fgSnoi2ZO8=
+
+Name: javadoc/org/eclipse/graphiti/palette/IPaletteEntry.html
+SHA1-Digest: AMs+n9vn3qt0YRfe4zIwV0ClhKw=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IConnectionCreati
+ onToolEntry.html
+SHA1-Digest: F6WmzuCUEJfAT5OyKfFL/21rgaE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/IMinimumSizeConfigur
+ ation.html
+SHA1-Digest: MDQ3a2x7n7sBXLt+9hl+ZHa9Rik=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Orie
+ ntation.html
+SHA1-Digest: I9gsMSg+5vgQBsE1udHmjTeIjKk=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ITargetC
+ onnectionContext.html
+SHA1-Digest: eXxzHKVPa8NwNPhV7GsjjruwQ9Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/ShapeI
+ mpl.html
+SHA1-Digest: 38tt021Cnb8/cgkG34OHxSJUTG8=
+
+Name: javadoc/org/eclipse/graphiti/services/ILinkService.html
+SHA1-Digest: E4EiHE1nxavxHBEH8o5co86puFw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Polygon.htm
+ l
+SHA1-Digest: NJ3w7EmMN1ko0fcF3Uxl3HF4eRk=
+
+Name: javadoc/org/eclipse/graphiti/features/IRemoveBendpointFeature.ht
+ ml
+SHA1-Digest: CSC5baXOxkFfcoxNLK0k2mzVT+Q=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/GraphicsAlgorithm
+ ContainerImpl.html
+SHA1-Digest: VVjQLygwLKJbvA6sG7idjZP8EEU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/PasteContext.
+ html
+SHA1-Digest: 2OvS4U507/YprOw1hzCuK7qePfA=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/EditorInputAdap
+ ter.html
+SHA1-Digest: Qp9Irc+Cs/JyKVJ3J1MZlvcvLvs=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/IGraphicsAlgo
+ rithmRenderer.html
+SHA1-Digest: EDp4jdcjXFsWx3atIfPY4nJ+DI8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/StylesSwi
+ tch.html
+SHA1-Digest: 1KHZlfXYUeuNo2+y0dp293idxM4=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ShapeSelectionInfoImpl
+ .html
+SHA1-Digest: YiKWqbLWgqFmrlYgu2Wihfsls6E=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ILayoutFeature.h
+ tml
+SHA1-Digest: mcHkq3yJAIGPFnFujTwVge+h4UY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/LineStyle.html
+SHA1-Digest: MaP1Mr1uZ2LNputfTSrur2MevJI=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/ILayoutService.h
+ tml
+SHA1-Digest: joFl/g8onWd5fJujTmzb6FI4dTQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/ILinkCreationInfo.h
+ tml
+SHA1-Digest: TRV8g29/6sZX6uN4Blrx51y3td0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/MoveBendpoint
+ Context.html
+SHA1-Digest: XKDpozzI8WhtB8GS+/TkNZMKlDQ=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ISingleClickContex
+ t.html
+SHA1-Digest: eUCYPyX4R+tSqSfH4x7YtJ99EmA=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/IObjectCreationTo
+ olEntry.html
+SHA1-Digest: bM7dc+1w6yQELKOC2ge7W1YDr6A=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/PaletteCompa
+ rtmentEntry.html
+SHA1-Digest: kk0bwRF9/Ygd2pLFW2XznoX374A=
+
+Name: resources/docu/tools/images/NPW_Settings1.png
+SHA1-Digest: cbD62ra6Krg+rZZ0hphIeFfhA4U=
+
+Name: javadoc/org/eclipse/graphiti/features/IMoveConnectionDecoratorFe
+ ature.html
+SHA1-Digest: jiinhCa/aAvklYiNXzzxeFId4Go=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/IDiagramContainerUI.html
+SHA1-Digest: D8bJrwvllduYiZVj7NFiTg+vqfc=
+
+Name: javadoc/index-files/index-19.html
+SHA1-Digest: uI7NTmilXjeZWoaghaNhgGPAunU=
+
+Name: resources/docu/gfw/Non-EMF domain objects.htm
+SHA1-Digest: qxiHcUDEz5zI/y6Zb6CsFIYZNIQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/package-summary.html
+SHA1-Digest: GkxIwKCLfhnM2uGuNLNVAab/CpY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Connec
+ tionDecoratorImpl.html
+SHA1-Digest: oYPJcziH71mCeBIpWMVxGkwcwKo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/GradientColore
+ dLocation.html
+SHA1-Digest: cA58oNV1rKA/Pwxk/g+eSAi09lc=
+
+Name: javadoc/org/eclipse/graphiti/platform/IPlatformImageConstants.ht
+ ml
+SHA1-Digest: zVJZkfxE3wwn6N9X5qO8YOPZSxE=
+
+Name: javadoc/org/eclipse/graphiti/util/package-use.html
+SHA1-Digest: ZR4zwaxr23zhxBBpydtEvxgD518=
+
+Name: resources/docu/examples/Chess.htm
+SHA1-Digest: MAx82JbUgbM11DhFqkFCsVfzxFg=
+
+Name: javadoc/org/eclipse/graphiti/features/IDeleteFeature.html
+SHA1-Digest: UQPe5+X7BV96XPag+mmtThY/TEw=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultMoveAnchorFeat
+ ure.html
+SHA1-Digest: 3rJrEBuHkLzYRMfQrYjxbWjhPw4=
+
+Name: javadoc/stylesheet.css
+SHA1-Digest: ImkIJB0RcjV0xhyiSqc3bT1SXE8=
+
+Name: javadoc/org/eclipse/graphiti/func/ILayout.html
+SHA1-Digest: JolaR9AGF8mR+fhihoQT8OntVRE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/class-use/IMinimumSi
+ zeConfiguration.html
+SHA1-Digest: wqo/M9z2STa7kgSt/5bH46J8ePY=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultPersiste
+ ncyBehavior.SaveOperation.html
+SHA1-Digest: gEvmDTvo70n1UHATiBALpMafyyg=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/package-use.html
+SHA1-Digest: nIDs8HTCTpmEOmTx6kfyA2iG5n8=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditorMatchingStra
+ tegy.html
+SHA1-Digest: m+D5aV8bURdxMDgNjP/ldZtHpus=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMappingProvider
+ .html
+SHA1-Digest: FMORpS5hT/lqvcyf3/jhn5ciXAY=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/package-use.html
+SHA1-Digest: qs/EaPqSnXydTAqz/88RzsTZypg=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Styl
+ esFactory.html
+SHA1-Digest: nhLouhf+kzh7EVGDaG5RaxMYZ1o=
+
+Name: javadoc/index-files/index-24.html
+SHA1-Digest: T5ryA6FSkG8lWMtf+S3Vvn/xd/s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/TextStyle
+ RegionImpl.html
+SHA1-Digest: EgYr4iQV+Cv/H9OCNuZU/ZiEGAI=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureProvider
+ Holder.html
+SHA1-Digest: 25pt+mDKnFAhvbDHlnF+xNKOb/0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/CreateConnect
+ ionContext.html
+SHA1-Digest: Io7oKZwx+ebFMzUpNlJcqHznkHI=
+
+Name: javadoc/org/eclipse/graphiti/util/PredefinedColoredAreas.html
+SHA1-Digest: Uf9w3qqh5IZwFWUyP3fifGSiwuI=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/AbstractCustomFeatu
+ re.html
+SHA1-Digest: +sH2UxR7Wt+7tljE7RbJunUMHko=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/package-tree.h
+ tml
+SHA1-Digest: bSSMwPmWmHbapzC561N8/QEvrrQ=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/GFPropertySec
+ tion.html
+SHA1-Digest: ngZ80oBNy0mba2DJYNR75pufzl0=
+
+Name: resources/docu/gfw/visio/context-buttons-collapse.png
+SHA1-Digest: s3KtIWDGDg+tv7O2rIA9T/m0Lv4=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/package-frame.html
+SHA1-Digest: kTaI/ck95XzynuoVuK0g9j79OqM=
+
+Name: resources/docu/gfw/visio/rendering-area-1b.gif
+SHA1-Digest: 0EsDE0CuiFJF5xNz8FZH48T5Bz0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ISaveImageContext.
+ html
+SHA1-Digest: P6oEKy3NTzOI/1/+WeyVVAk6sYM=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/IRectangle.html
+SHA1-Digest: BjzWqZl2JxCcJhelmBJSamcsCUQ=
+
+Name: javadoc/org/eclipse/graphiti/palette/ICreationToolEntry.html
+SHA1-Digest: h+ZpYThOn7GiBpTECEkvvFJSPc0=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IRemove.html
+SHA1-Digest: J4vfWQWCYqkwOIvEjtocPXMP/vI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/package-tree.html
+SHA1-Digest: 10nQYe9mZHMpg6dY87TvmvGpgjw=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IGraphicsAlgorithmHolder.
+ html
+SHA1-Digest: q5pbncUYX3GSl5+gupilnX3LffI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMoveBen
+ dpointContext.html
+SHA1-Digest: HYhyn2hJtZYLvl51CjSaik2wGuo=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IVisualState.Type.html
+SHA1-Digest: GNiH9ugn9YfFpPJofQQdteSr0YA=
+
+Name: javadoc/org/eclipse/graphiti/dt/package-summary.html
+SHA1-Digest: OVcglRbh6bI1h3I2h9orwKFWFqI=
+
+Name: javadoc/index-files/index-7.html
+SHA1-Digest: Zrtr8rF/W4VqV+a9LCWO+WMk7qE=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IPrintCo
+ ntext.html
+SHA1-Digest: ENUMK675fqd+mVTso8XsBE2yr3Q=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/VisualStateCh
+ angedEvent.html
+SHA1-Digest: mfKuDzWIi3pHMllKkUBbXF5HSCs=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/ILinkService.htm
+ l
+SHA1-Digest: eY1bvihXACDW1687EahQzOE2YAQ=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ILocatio
+ nContext.html
+SHA1-Digest: a0U+zul/UfxQ247KgG2tYj4cvXE=
+
+Name: resources/docu/gfw/user-defined-properties.htm
+SHA1-Digest: ge8m+t1fngl8+lgbcHioK7U0ZaM=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/package-summary.
+ html
+SHA1-Digest: qNSRIQlTxxbbzKfjcCKplaA3XN4=
+
+Name: javadoc/resources/inherit.gif
+SHA1-Digest: 42+8XxPTdk4LcKDh/HbbyXG+EKI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/RemoveFeatureForP
+ attern.html
+SHA1-Digest: TLeHV9aTcb7wK9tW/dD4/Eejx3s=
+
+Name: javadoc/org/eclipse/graphiti/pattern/IPatternContainer.html
+SHA1-Digest: A/ohEg41msXk3ARBKHz/HKpa9DI=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultMove
+ BendpointFeature.html
+SHA1-Digest: 5c8sYI1ODcgamL8WpKXHkUxCQ+s=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureAndContext.html
+SHA1-Digest: DMakCrIDGDl4yisOWA4O4S+X8s4=
+
+Name: javadoc/org/eclipse/graphiti/dt/IDiagramTypeProvider.html
+SHA1-Digest: y2RLOuNWE2LrmYZNOQXpvZTf2W8=
+
+Name: javadoc/org/eclipse/graphiti/platform/IExtension.html
+SHA1-Digest: dopGHHlBm0zyg9yVxSb1K+Gx8c8=
+
+Name: javadoc/org/eclipse/graphiti/func/class-use/IMoveShape.html
+SHA1-Digest: yuhonV5iJ4pj1Wnu5gtUaGuVDwk=
+
+Name: resources/docu/gfw/visio/outdated-shape.png
+SHA1-Digest: FG2GebwYVdl5cdV9Ovl6eYC4CAo=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/AlgorithmsSwitch
+ .html
+SHA1-Digest: jiJ9vyN4m8fFUamf9DNcrYygq4w=
+
+Name: resources/docu/gfw/update-feature.htm
+SHA1-Digest: Z96LpbvRTRHA2rI2ALOr+1G+0uY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Poin
+ t.html
+SHA1-Digest: Dk5+j8VwkII97f1CYtqJY+wUXKg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ICustomContext.htm
+ l
+SHA1-Digest: WqLSdL18Adj3+mD0kIyDEdb8PbE=
+
+Name: javadoc/org/eclipse/graphiti/features/ICreateConnectionFeature.h
+ tml
+SHA1-Digest: TbWcmRx+ECUYadZY9L2GeWS5MVQ=
+
+Name: resources/docu/gfw/visio/anchor-points.gif
+SHA1-Digest: wDdScTNnyazHPCyLWNexuz3OdEw=
+
+Name: javadoc/org/eclipse/graphiti/IExecutionInfo.html
+SHA1-Digest: RVbhKQ9wq0COW419WAwibMILEOA=
+
+Name: resources/docu/gfw/visio/diagram-type-agent.gif
+SHA1-Digest: Y1geO22ctj4VVZ0hkjFIHNmCBNs=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/RectangleImpl.ht
+ ml
+SHA1-Digest: l6G8fE977DyxMsL8wiRTbtmrscI=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Connec
+ tionImpl.html
+SHA1-Digest: Arn5bDS5myXjkmCrslYcP3EtfOI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/package-use.html
+SHA1-Digest: QcHFZ9uNoQ3eoc1kteCMnTQmfmE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/IStructureMappingMu
+ lti.html
+SHA1-Digest: YhhTZXtZoO6TTAN39P4NUz9dCL8=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/IdLayoutContext.html
+SHA1-Digest: KhLp4RypGie8myHihq3viC/p1i0=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultRefreshBehavior.ht
+ ml
+SHA1-Digest: QUOcgYyjD0MyV66e4KY7fUSuf5M=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMultiDe
+ leteInfo.html
+SHA1-Digest: qyGaQXvZOceEKzeOzmPbomVzWNE=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditorInput.html
+SHA1-Digest: BfanxbFHDk1maVp0qs6e7taps8Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/ConnectionD
+ ecorator.html
+SHA1-Digest: AVsZjZSP22FKGi4/tRmwK0x9rnY=
+
+Name: resources/docu/gfw/visio/new-other.png
+SHA1-Digest: KT0NGrKs7AlbTZd6g4IcHEl5Bbk=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ISplitConnectionCo
+ ntext.html
+SHA1-Digest: 8XK66ewr0gr3rYTF3rKVcoW93Yc=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/package-use.html
+SHA1-Digest: gzG0vazt2fctL2a4BfPJoPTOdW0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /PrecisionPointImpl.html
+SHA1-Digest: +Q66XB/G/qS3avghi4SC9KoZsRo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ISaveIma
+ geContext.html
+SHA1-Digest: efsi9aNPRXtBvIZxbQBKM+RwXMA=
+
+Name: javadoc/org/eclipse/graphiti/util/class-use/IPredefinedRendering
+ Style.html
+SHA1-Digest: vgNVnyzdmfptAFQ3nH5t0kpfBco=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractDirectEditing
+ Feature.html
+SHA1-Digest: go7k8IE+GJGHlUWAfN8PVMPyxi4=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/PropertyContainerImpl.html
+SHA1-Digest: sYxcL2mAbv3efMfxxNw0k6wXoVQ=
+
+Name: javadoc/org/eclipse/graphiti/palette/IPaletteCompartmentEntry.ht
+ ml
+SHA1-Digest: 89VlH3sNWgXv3n8DYLEDHd/1b3I=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/package-tree.
+ html
+SHA1-Digest: /Ay2fkGHvQzIV7AJ7NNsE7yH4dM=
+
+Name: javadoc/org/eclipse/graphiti/dt/package-use.html
+SHA1-Digest: TOwY8RwbRuUiWi48V22vxMC1GK0=
+
+Name: resources/book.css
+SHA1-Digest: gsAyT1VJFk+QWnJ3X+acttvvN3E=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/package-summa
+ ry.html
+SHA1-Digest: 5KCD6Spepe9mv0gH2cy6FTuqAJ4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/MoveContext.h
+ tml
+SHA1-Digest: rk+jMnexOQhE/M0IdFclfl+7FQU=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/GaServiceImpl.html
+SHA1-Digest: k1ZPHzZLehd4M18YtDXBc0uOEA8=
+
+Name: javadoc/org/eclipse/graphiti/mm/package-frame.html
+SHA1-Digest: 820v3NtFSRF/KShJxEnaoKA2ZV0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/package-frame.ht
+ ml
+SHA1-Digest: CTlJ7Gx291sBwZRWGI71Rdmrn9A=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/package-summary.html
+SHA1-Digest: AyYkuZVeilyU6hQH64I/us9hR2M=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IDoubleC
+ lickContext.html
+SHA1-Digest: DHb/oT93RokeRfvEuNH2WsnLBWE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/IIma
+ geDataMapping.html
+SHA1-Digest: rdaRPZNk40Gk1+GogsLE5bafNaw=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/PictogramsFactor
+ yImpl.html
+SHA1-Digest: EQpB/EK1gPEznM3n9hU4gH3f7S8=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultMove
+ ConnectionDecoratorFeature.html
+SHA1-Digest: Q/sV7meNkS4o1Ghz2IuM/WB/50A=
+
+Name: javadoc/allclasses-noframe.html
+SHA1-Digest: xGqwXzTTgvY5aNY/yvp5WG2Su2A=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Text
+ StyleRegion.html
+SHA1-Digest: SkIF6jxzqHHQ87YmK4pun3elxLE=
+
+Name: resources/docu/gfw/visio/key4bo.png
+SHA1-Digest: 0sCzEV4SbKV6p8dRQ4Rf/6SeZX8=
+
+Name: javadoc/org/eclipse/graphiti/tb/package-tree.html
+SHA1-Digest: i0x0J0cVM/WA1ilw3vI30VxXl9c=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/IdPattern.html
+SHA1-Digest: oPjSMG4rgx7VtRRHE4AB6/kpwMI=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/package-frame.html
+SHA1-Digest: 4o8N2mbPwtcAGKVwgO1gUlI5nzI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/Orientation.ht
+ ml
+SHA1-Digest: 7tBV06CFeHULHsFRuxlhCGvtyEM=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultUpdateBehavior.Def
+ aultUpdateAdapter.html
+SHA1-Digest: 9kaJ7b1E3f9NxeC3WPR1XatB3hM=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IGaService.html
+SHA1-Digest: RhBKH/FR88BYdCz9122xNMVGCWM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Loc
+ ationContext.html
+SHA1-Digest: BSNagrxJypNBHKJgM3Zj3Dcwdxg=
+
+Name: resources/docu/extension-points/diagramTypeProviders.html
+SHA1-Digest: rRfYpKYPuwXrOy9xwyPf0MVDr8A=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IRemoveB
+ endpointContext.html
+SHA1-Digest: twkRgwNBMTsU7g1vTWDFO06WbgQ=
+
+Name: resources/docu/advanced/images/EditorAPI.png
+SHA1-Digest: HvZWBnd7zeD9VIdlmgez7ZaufZY=
+
+Name: resources/docu/tools/NewPluginWizard.html
+SHA1-Digest: pE5t6JBpS9xbiNPXhdxr/lkJyiU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/package-summary.
+ html
+SHA1-Digest: XfJPEHtdxMEwsCe409Peo5Fn0Dw=
+
+Name: resources/docu/tools/images/NPW_Template.png
+SHA1-Digest: uv/7ALzny6SBERiAJVbHkfeoCik=
+
+Name: resources/docu/gfw/visio/rendering-area-1a.gif
+SHA1-Digest: 5m7xIrnQ7aA9ON11Ek4qEjJJMXA=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/PaletteCompartmentEntr
+ y.html
+SHA1-Digest: 9uBqeg/dvcs1q5mFn11x1Ddhi64=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/DefaultToolBehaviorPro
+ vider.html
+SHA1-Digest: t4Bf2NDd0JITHpw1ZdGvxLlm6eo=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/IDiagramContaine
+ r.html
+SHA1-Digest: qDFcIw5ZFK14QM8MRNesdVtQXqM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/DirectEditing
+ Context.html
+SHA1-Digest: +dNUmFcql2EPS8DT6sQwzsHpJ8s=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/PrecisionPoint
+ .html
+SHA1-Digest: RogAuJOQqVeSuANN4FUwZ6C4ASU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/AnchorContainer.html
+SHA1-Digest: 3dIsHR3ORyM8CQcSI6ERY6keyDo=
+
+Name: javadoc/org/eclipse/graphiti/services/impl/class-use/GaServiceIm
+ pl.html
+SHA1-Digest: 2UljlxswYKqyApVEVJa136Wpvvw=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/Font.html
+SHA1-Digest: P1mDdEdU7YBqdmQmbB2pQABgC0Y=
+
+Name: javadoc/org/eclipse/graphiti/tb/IContextButtonEntry.html
+SHA1-Digest: sv12FVfZLLgohFq40NUVjIi1B4w=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/class-use/GraphitiUi.ht
+ ml
+SHA1-Digest: Cmr3XLTyHkoRV2POMX2a7vynEs8=
+
+Name: toc.xml
+SHA1-Digest: 2l+Ym4nHhBWlbIEoQd9jyZX/kMY=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/ISaveAsImageConfigur
+ ation.html
+SHA1-Digest: UCbcfeKnVHLM0fJCS7zggBBJmNI=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramEditor.html
+SHA1-Digest: clgsHMGnLko6Np2YxYFeAGHSF80=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultPaletteBehavior.ht
+ ml
+SHA1-Digest: 85aMVuhve5nU0uqcXlkW+AnNPAI=
+
+Name: javadoc/org/eclipse/graphiti/util/package-summary.html
+SHA1-Digest: n+OSyqsV1SzK5vGg0Z3xUD3SXfI=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Mul
+ tiDeleteInfo.html
+SHA1-Digest: lA2a9PGAqdPKygN+WsPIgheZsk4=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/package-tree.html
+SHA1-Digest: gx2C9AFEtFdaHqDEHbkyjG+yrA4=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/MmPackage.Literals.htm
+ l
+SHA1-Digest: 7h+Ygv28pJn+NzkROu6+cKv52dw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IBendpointContext.
+ html
+SHA1-Digest: 4kohgrRrAkncnlS/9T4MDKrraQ4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/AreaAnchorCon
+ text.html
+SHA1-Digest: FnjpgsWF8jAMX//Kf/Wyq+gZ7Cc=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/PictogramsPackag
+ eImpl.html
+SHA1-Digest: e0f3McOpROZwNCUfx/Z7Spi7KQg=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/ICustomFeature.html
+SHA1-Digest: NV/Ne3S/wWTyzqAzrqihKSo26cM=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/package-summary.html
+SHA1-Digest: Nnu8IlOZ/9jPFlasruL0NzT9BXY=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/FeatureCheckerAd
+ apter.html
+SHA1-Digest: 3gL3LZOWWMz5+zH2RFdJ6qRU0yw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMoveCon
+ text.html
+SHA1-Digest: xNhzu7UrptZNE+BDtpUWoEzYrVk=
+
+Name: javadoc/index-files/index-8.html
+SHA1-Digest: I17y4aGPyZX8WU29Cz7uaMXQpSo=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IPasteFeature.ht
+ ml
+SHA1-Digest: Npm/78SJv+X3qky08JeQ0tFPvvA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/ICopyContext.html
+SHA1-Digest: 7D1GUOXp6S5lm3Tx1sUUUJ8CDJs=
+
+Name: resources/docu/gfw/images.htm
+SHA1-Digest: gLkOPUS6SYPYFfoQQfIJmJKu2NQ=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/GraphicalComposite.Action
+ IDList.html
+SHA1-Digest: awK27b7huPXjWmsT7pT72aGNV0M=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/package-use.html
+SHA1-Digest: Cv6Em0dsWEekAlvgzCyNlAUG3EA=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IAddBend
+ pointContext.html
+SHA1-Digest: e17yC6puzoXzVGBXQljwTtNwG18=
+
+Name: javadoc/org/eclipse/graphiti/tb/AbstractDecorator.html
+SHA1-Digest: +eQZ6J/EN4XfGc9gz2m810fW7fQ=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/IIndependen
+ ceSolver.html
+SHA1-Digest: rZ0TqjrdW7hbHWKjIm8igTwoHAc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/ResizeContext
+ .html
+SHA1-Digest: 6aSVo/HSvvwFeb4EUowVZ2PATgk=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/class-use/VisualState.h
+ tml
+SHA1-Digest: uCDfwPo40T5BZd3xHHXkNbY8Q80=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractAdd
+ PictogramElementFeature.html
+SHA1-Digest: OX1mL2yORNtw52PLISpoxHJRWi8=
+
+Name: resources/docu/gfw/context-buttons.htm
+SHA1-Digest: r+LIXP/irneDdyvFSH42pt8gI7c=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/class-use/AbstractDrill
+ DownFeature.html
+SHA1-Digest: Cuwt/ePu+TP2PHU8phFZWSvnDto=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IContext
+ .html
+SHA1-Digest: c2PwDADzS2yx7TW31NpG+U48nQY=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IRemoveContext.htm
+ l
+SHA1-Digest: icOPLKA6gNL6KpnW4qQNinr86Qc=
+
+Name: resources/docu/gfw/visio/anchor-box-relative.png
+SHA1-Digest: Gt6cALKbUFGuJBS5FNhJpp89XYw=
+
+Name: javadoc/org/eclipse/graphiti/features/package-summary.html
+SHA1-Digest: VRNRes1YUwkGdgH8m1O6+xNLZ9Y=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/AddContext.ht
+ ml
+SHA1-Digest: a6keeqIS3xe9y4dF0paKyzEVGgA=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IDeleteFeature.h
+ tml
+SHA1-Digest: wvtimZLZ0H2KILfVhaMdi16qaZI=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultResi
+ zeShapeFeature.html
+SHA1-Digest: mxJv1ZbiqsoHCiSJzbLlWQrrD8k=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IAddCont
+ ext.html
+SHA1-Digest: QPZwZ3BW4hcS2qZz+FyqVn4T3Iw=
+
+Name: javadoc/org/eclipse/graphiti/tb/package-frame.html
+SHA1-Digest: sQ5R8hGp4k2yNq4+WaOP7Ydj6Nk=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IShapeSelectionInfo.ht
+ ml
+SHA1-Digest: K0dtcL5h5lVpemf+62If1fBAhuA=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/AbstractImageProvider.h
+ tml
+SHA1-Digest: 4qLriLk+nkWOIhSZjg33pdkYNK8=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/package-use.html
+SHA1-Digest: P1u0+GXHXZS2I2y+kvJBGMNqpb0=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/package-tree.htm
+ l
+SHA1-Digest: /gOguku7402L6uoyBFp4kIBofy0=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/IPatternConfiguratio
+ n.html
+SHA1-Digest: +HcWXJCgETNj5CACDdfJr37BUpE=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/class-use/IAdvancedLocati
+ on.html
+SHA1-Digest: 0H9gce1LbmAJ8VaasJ5fVZJhScY=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/class-use/ILocation.html
+SHA1-Digest: PzWQHtfMdCEaL7s18V0CagNYSbg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IDirectE
+ ditingContext.html
+SHA1-Digest: r3rc/wymRA6CN4CDJ3g5m/dFmv4=
+
+Name: javadoc/org/eclipse/graphiti/pattern/AbstractBasePattern.html
+SHA1-Digest: 34F7gjV7puH6eSXkDFISIY2UBaM=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/package-frame.html
+SHA1-Digest: w06KXGWemtGeMvbFyqppZ5ly85c=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IBendpoi
+ ntContext.html
+SHA1-Digest: NWl/F2SFje3UItStnLv5cBhobKU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/package-tree.html
+SHA1-Digest: N4pHdMtyIu2zxXf/bALJK7UvbuI=
+
+Name: resources/docu/gfw/visio/anchor-box-relative-example.png
+SHA1-Digest: 6XMcDq7cA5qQfp2tQt4dVObs7lY=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/PictogramsPackage.Lit
+ erals.html
+SHA1-Digest: GPREEMcFXY82ubD9VW4feweXK00=
+
+Name: javadoc/org/eclipse/graphiti/platform/package-frame.html
+SHA1-Digest: L1Kf5ij7bLYVEDg4I/D+uiUQsoM=
+
+Name: javadoc/org/eclipse/graphiti/pattern/ReconnectionFeatureForPatte
+ rn.html
+SHA1-Digest: coTF/35vyyODK+pL9xc0mIDpMn4=
+
+Name: javadoc/org/eclipse/graphiti/features/IResizeConfiguration.html
+SHA1-Digest: XXEAyyBoTvcHEEcvcRUzfbQXxCM=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/IPattern.html
+SHA1-Digest: Y4bdncxyLTrMgPvEvwR5Yz4HQx8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/Rendering
+ StyleImpl.html
+SHA1-Digest: hg5mgiXZgeapHLslwmGNLvqHhx0=
+
+Name: javadoc/org/eclipse/graphiti/dt/class-use/AbstractDiagramTypePro
+ vider.html
+SHA1-Digest: UQlBeTmucSlS8IMt8zOiwNtxIaE=
+
+Name: resources/docu/gfw/visio/polygon.gif
+SHA1-Digest: nAtlTxfkvUla3ZlsBr+shoKBlxs=
+
+Name: resources/docu/gfw/rendering-decorators.htm
+SHA1-Digest: PTxfSIs13W/5c2ZStDchd9LFIfI=
+
+Name: javadoc/org/eclipse/graphiti/platform/package-tree.html
+SHA1-Digest: gPGYRGoIX4Fmy2D3xH27E5tornE=
+
+Name: plugin.properties
+SHA1-Digest: JQ1+fj12VFZ3JEGm3vfa7StPofg=
+
+Name: javadoc/org/eclipse/graphiti/tb/IAnchorSelectionInfo.html
+SHA1-Digest: NdWL3uwg25SZivorvNz0HVQlwmo=
+
+Name: javadoc/org/eclipse/graphiti/mm/MmPackage.Literals.html
+SHA1-Digest: ITh7UIdnXkYDnZedA3xSNvLXY0s=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/PropertyImpl.html
+SHA1-Digest: uh22uRzdqCOVkG6gjNGUYf9rjQI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/AlgorithmsFactor
+ yImpl.html
+SHA1-Digest: zmu7i/sCTGCRL14WQ5OKsclEbQE=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/CurvedConnection
+ Impl.html
+SHA1-Digest: XeKp3PRtuR+bCY44/fJbUpdCtAw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/CreateContext
+ .html
+SHA1-Digest: CMfsXIplJHV0g4ie0oQmvYwdonQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/package-summary.html
+SHA1-Digest: yHXEcFL9S6tK+4ujLJKnXUY0Mg0=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IContextMenuEntry.html
+SHA1-Digest: vBz2O6MgoapcZuYTsSGhOxzUR7U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/DefaultFeatureProviderWithP
+ atterns.html
+SHA1-Digest: 8LkpO07FODLrZel0Vgo5deq6keo=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/AbstractPale
+ tteEntry.html
+SHA1-Digest: f5KZO6WUhtucjW6Rf6Zn2IdEISE=
+
+Name: plugin.xml
+SHA1-Digest: iht5A8GZp4qjieBJgQBJxTAHpoM=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/PropertyContainer
+ Impl.html
+SHA1-Digest: GMvjrg/VL6PoBJjmmnfIr/slbjk=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/util/PictogramsSwitch
+ .html
+SHA1-Digest: qj9g5BUGi/Z4kx0ia+f34bEMdIE=
+
+Name: javadoc/org/eclipse/graphiti/mm/GraphicsAlgorithmContainer.html
+SHA1-Digest: MkGqvTa2ipNOmuw9vYRJPfQ0z7s=
+
+Name: javadoc/org/eclipse/graphiti/platform/package-use.html
+SHA1-Digest: 5hda1BvB4gi5XY4wuAjOLn3EKKk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/IFeatureProviderW
+ ithPatterns.html
+SHA1-Digest: cnsOolPMzCiXyVcS7FO1xO9iroM=
+
+Name: resources/docu/gfw/layout-feature.htm
+SHA1-Digest: scACQsRGv/n4WZWI/ghYpeXGGcE=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/IImageProvide
+ r.html
+SHA1-Digest: jZSfE6vdZsnhmbtkgZHNQjKtPwc=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/DefaultDeleteFeature.ht
+ ml
+SHA1-Digest: fwsSe/Aid9cbQkxOKinbF+HOnEM=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/Structure
+ MappingSingle.html
+SHA1-Digest: lnY8oudA1WRaMxb7NjdvTEKgRas=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/AdvancedAnchor.html
+SHA1-Digest: dq8lvepuXsiKm6KeRlUdkcC9SM0=
+
+Name: javadoc/org/eclipse/graphiti/services/class-use/IPeService.html
+SHA1-Digest: GGVcyLjSYWh3wSqG93WC+3sC1bc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Mov
+ eContext.html
+SHA1-Digest: 6VR+VIZMEG0SOr/0wmWiTNdDEwg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/ICustomC
+ ontext.html
+SHA1-Digest: Qfq5Se4k4EuIxmN7shBF/NcP1hc=
+
+Name: javadoc/org/eclipse/graphiti/notification/package-use.html
+SHA1-Digest: i7kdjzxt8pgd/LiCpu46j5LNV2w=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/IExtensionManager.html
+SHA1-Digest: empkOL3+7yQnE9Glj5e7Wjt3Y90=
+
+Name: resources/docu/examples/images/FilesystemEditor.png
+SHA1-Digest: 1KhtzyCH/QfGLhPjP+4hfaKxU3o=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Add
+ BendpointContext.html
+SHA1-Digest: 5x4Prrh7hkws736sRmc5uuwcCGY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/Polyline.ht
+ ml
+SHA1-Digest: iU4RKgNdxRdqUhONZQflqKLFmGU=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/FixPointAnchor.html
+SHA1-Digest: 57+5YRQNyaWQjZ43XKNuUCwTaBQ=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DiagramBehavior.html
+SHA1-Digest: X//xldRJUiMfewJpnIbjeDi0Uyw=
+
+Name: javadoc/org/eclipse/graphiti/mm/MmPackage.html
+SHA1-Digest: dxU4V1cV11mPDtHhxWiRs/yOXbc=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditorIn
+ putFactory.html
+SHA1-Digest: 7S7d83m7iINp7rKmJYOKQ73EFBw=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/SVGExporter.html
+SHA1-Digest: hQePQoj5Xmj3cEYoFi0oqt4FJt4=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Pictog
+ ramsFactoryImpl.html
+SHA1-Digest: x0rQNRLeHpo+K9Q57J/1KJWiS6Q=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/class-use/PaletteSepar
+ atorEntry.html
+SHA1-Digest: XPcUAuLXyIM2kTWrmumUnsbctSE=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/AbstractPattern.h
+ tml
+SHA1-Digest: h2LH3KWAnyAMvFfsu/qgWgJsW+U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/id/package-use.html
+SHA1-Digest: udJGb6TiHf1RjimamYQs3BWRnrc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/class-use/ITex
+ tDataMapping.html
+SHA1-Digest: aTUsHkeKJmxUlmfqzhsV/Spn75U=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/PictogramElement.html
+SHA1-Digest: uRplDNoKNSi1hswTx51YplbMg/s=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/LinkCreationInfo.ht
+ ml
+SHA1-Digest: mHDGJ4/Ckdl9xQSyaDka2OueW+s=
+
+Name: resources/docu/gfw/copy-and-paste-feature.htm
+SHA1-Digest: lr5ufmqigkvaudizGaWFdSzxk6c=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IFeatureCheckerH
+ older.html
+SHA1-Digest: L09WzSbrbHBUq2Uah5Zsot+ndVE=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractDir
+ ectEditingFeature.html
+SHA1-Digest: F9y84CFkd3TEsp3weaSTB7D9yBU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/AlgorithmsP
+ ackage.html
+SHA1-Digest: dKzzp+XibQe5J6iPJVf2XKDz7XQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/FeatureForPattern
+ Delegate.html
+SHA1-Digest: iYddHbtJQi6t/HTGti3SPlgGwco=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/PropertyContainer.html
+SHA1-Digest: NUyoW+gVuRMlhPN3qkjU8VVvEqo=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/package-frame.ht
+ ml
+SHA1-Digest: EIpO3GwfBONPcfT8+UIDH8sO0n0=
+
+Name: resources/docu/gfw/diagram.htm
+SHA1-Digest: 5ARk2LMcOirrMNQMns99dW09/q4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IReconne
+ ctionContext.html
+SHA1-Digest: +0hqtjkRcyvoknGtYZmnefHsTdo=
+
+Name: javadoc/org/eclipse/graphiti/mm/PropertyContainer.html
+SHA1-Digest: f3yywNzudB5lv7wJe4jD1CScu34=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/package-u
+ se.html
+SHA1-Digest: ZxXp9T8y6rnJj0O2x5/X1n0lOkU=
+
+Name: javadoc/org/eclipse/graphiti/ui/print/IPrintConfiguration.html
+SHA1-Digest: 3yCo3EhsNg3A1m5Blv/k8cxj4lQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/Color.html
+SHA1-Digest: rm4nyxpQzuDNSsSKC8dqL0qvm7g=
+
+Name: javadoc/org/eclipse/graphiti/mm/package-use.html
+SHA1-Digest: wPHc7L5sRsEYPm0kzDWBas0WNjk=
+
+Name: javadoc/org/eclipse/graphiti/pattern/ResizeShapeFeatureForPatter
+ n.html
+SHA1-Digest: LcmEHqJVbqtprfRKDU760c7alhY=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/AlgorithmsPackag
+ eImpl.html
+SHA1-Digest: 7PY4Ohm4KUJ+Z1duWtZ3DsZOH3E=
+
+Name: javadoc/org/eclipse/graphiti/IName.html
+SHA1-Digest: Bk8vA5BVVtxBbq8BhxKA1s6QG8A=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/data/ITextDataMappi
+ ng.html
+SHA1-Digest: bqiR38hLPBnAFMp4MIIQFTov/hQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Rend
+ eringStyle.html
+SHA1-Digest: rnrIhYAFtosYHJ+RO38ErtrVB8s=
+
+Name: javadoc/org/eclipse/graphiti/export/batik/class-use/Util.html
+SHA1-Digest: vyI6irsppqDLJ0hYETf0ydqua8k=
+
+Name: resources/docu/gfw/visio/anchor-box-relative-example-2.png
+SHA1-Digest: ue2jdMJFK/1OUNzPNEeQOABub8Q=
+
+Name: javadoc/org/eclipse/graphiti/palette/IToolEntry.html
+SHA1-Digest: W8M3eAO+HgK36RbA6VZao6DDS1k=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IMoveConnectionD
+ ecoratorFeature.html
+SHA1-Digest: 5QdVDSB1DTKCBFGLXUz6psTFfvg=
+
+Name: javadoc/index-files/index-9.html
+SHA1-Digest: jisISygB1K0Z5U278b3/yli+K1w=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/GradientColore
+ dAreas.html
+SHA1-Digest: Bhkj34jjP5C98mLU903lHE735H0=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/class-use/IConfiguratio
+ nProvider.html
+SHA1-Digest: 5rxqRJd0/KAGOBJaT3FffoL1Ujs=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/package-tree.html
+SHA1-Digest: rN3iTG5URx89A3E8OmX+1J/0YFA=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/ICreateConnectio
+ nFeature.html
+SHA1-Digest: LSYTe+K9DvSIE90h6t+/j02kNRU=
+
+Name: javadoc/org/eclipse/graphiti/features/DefaultFeatureProviderWrap
+ per.html
+SHA1-Digest: zY+J0Q0k7OqFL8EJTFSYzGpEY4Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/class-use/Property.html
+SHA1-Digest: 9aCzweQQlOajbhIGqJja9gL4Nc0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Mov
+ eShapeContext.html
+SHA1-Digest: C1EzhX0ZwBMB3uO00PBwNSyuj9Y=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IPrintContext.html
+SHA1-Digest: n0Wd73Gsmn+avkWr2cYipbkq92o=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/CurvedConne
+ ction.html
+SHA1-Digest: 2tMKe1LyHu2BT/UGzX3M5+nX/z8=
+
+Name: javadoc/org/eclipse/graphiti/func/package-use.html
+SHA1-Digest: nKbH3iOL2wTRE0dnxukupN9jCps=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DefaultUpdateBe
+ havior.html
+SHA1-Digest: 1GvWOPe5WFvLq3tBRoyZz/Z5iD0=
+
+Name: resources/docu/gfw/dark-feature-processing.htm
+SHA1-Digest: HEUcKeud21tlG2M8CLmg/tF/4Js=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/class-use
+ /StylesSwitch.html
+SHA1-Digest: ++2a5CncWet/AU8AVGT+LeqKwwY=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultMoveBendpointF
+ eature.html
+SHA1-Digest: dbvrWKVjhnhI5ajd0tzWDhTQ+C8=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/class-use/Pictog
+ ramsPackageImpl.html
+SHA1-Digest: iX40YCW1Eoa1HK/6lXkdmcUwMzQ=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/MappingProviderProv
+ ider.html
+SHA1-Digest: uLpY5vUXytcugtTfazNVXiUI+f0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Add
+ ConnectionContext.html
+SHA1-Digest: A1J5LHS72agk0xwm11+HZ6/FrGI=
+
+Name: javadoc/org/eclipse/graphiti/pattern/AbstractPattern.html
+SHA1-Digest: xifO3mMbngPWY2F92rilLbuCZ2c=
+
+Name: resources/docu/gfw/tool-tips.htm
+SHA1-Digest: t4nU2j5pWAtx6bpfRueHmjH7s4Y=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractFea
+ tureProvider.html
+SHA1-Digest: +Zefdw0RWb06Nylaqg9p4gMqfCY=
+
+Name: javadoc/org/eclipse/graphiti/features/IResizeFeature.html
+SHA1-Digest: WWPk+eMFvQjODu+PfUID23DH6+c=
+
+Name: javadoc/org/eclipse/graphiti/palette/class-use/ICreationToolEntr
+ y.html
+SHA1-Digest: hPOxVuJM+47sktPko6KWa1y1QAg=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/ResizeShapeCo
+ ntext.html
+SHA1-Digest: hKppg3tyTqUKg5TUjtDnhogk6J4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Cus
+ tomContext.html
+SHA1-Digest: +SGd8LYdOebGMdD7VloJi6HE5sM=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/DefaultSaveImageFeature
+ .html
+SHA1-Digest: AMjHAK8sq2jeq7e5kLVXi848OTo=
+
+Name: javadoc/org/eclipse/graphiti/func/package-frame.html
+SHA1-Digest: UK3BygUbPTlNnQ6+wSy+IW6Kdto=
+
+Name: resources/docu/gfw/reconnection-feature.htm
+SHA1-Digest: 5Atn6ziFdl+oZ61L35xTOK29rmk=
+
+Name: javadoc/org/eclipse/graphiti/dt/class-use/IDiagramType.html
+SHA1-Digest: fRX8qIfBBK7ct8su2KQQnavGaZo=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IResizeShapeContex
+ t.html
+SHA1-Digest: mzCXFO06bbiVcDh/SEqWnyZULzU=
+
+Name: javadoc/org/eclipse/graphiti/features/IProgressProvider.html
+SHA1-Digest: vBdSe993Z6K9R3aueGhkBKTuvHg=
+
+Name: javadoc/org/eclipse/graphiti/DiagramScrollingBehavior.html
+SHA1-Digest: eEzfXqMVAhQuyinoiSFKgHPegoI=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/class-use/Unde
+ rlineStyle.html
+SHA1-Digest: EO+ydP6dGcH0k8l5Irtt3e3aqVk=
+
+Name: javadoc/org/eclipse/graphiti/tb/ContextEntryHelper.html
+SHA1-Digest: 7ceEW7UYMJ7IIK6cH0NogDchgf0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Polygo
+ nImpl.html
+SHA1-Digest: GFztKfn+tlnqoSK85IndTp4Qdo0=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IMoveAnc
+ horContext.html
+SHA1-Digest: xxZf9zLAvGjF9RqWMmwHv9uQ4t4=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IUpdateContext.htm
+ l
+SHA1-Digest: SwCmJT4YmyJUxBD+haiL6LamdDw=
+
+Name: javadoc/package-list
+SHA1-Digest: hVZeKSFkFPZ7yRwNnawCfTmtCMA=
+
+Name: javadoc/org/eclipse/graphiti/ui/saveasimage/package-frame.html
+SHA1-Digest: +x8WEy98EijQINm4oO1glmbnBr8=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractUpdateFeature
+ .html
+SHA1-Digest: Lsv6sSFgTgol67ayzJmesufvmhg=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/GraphitiShapeEditPart.h
+ tml
+SHA1-Digest: B+eLcoUeawp/JG6VtFRf3xHKnIY=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/class-use/ICustomFe
+ ature.html
+SHA1-Digest: lVcNhIR0t1iZlLuXWxDmEyLEV1I=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/package-summary.html
+SHA1-Digest: g/n8vPiSD52PW+ugdjLGkGa/+Zo=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/AbstractCopyFeature.htm
+ l
+SHA1-Digest: oX+Es0DBMATk6lGqjKN891DpAWU=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/impl/class-use
+ /ColorImpl.html
+SHA1-Digest: OIzBA9lpmjPI3Q0Qtc0VwaR/H2M=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/DefaultMarkerBehavior.htm
+ l
+SHA1-Digest: qFXwpx6FHI9NOd/dPB43Qy0raMM=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Rec
+ onnectionContext.html
+SHA1-Digest: KifHc5HSGB2UF8mF4/aOqatSi2o=
+
+Name: resources/docu/gfw/visio/new-graphiti-project.png
+SHA1-Digest: iJECtcu+f3aO4Bd+VBfiDnC2cZQ=
+
+Name: javadoc/org/eclipse/graphiti/datatypes/IAdvancedLocation.html
+SHA1-Digest: PrOi8KCFZeZC8qpjbkqLVumhQC4=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/class-use/DiagramEditor.h
+ tml
+SHA1-Digest: JsbP11tow5vDfvp1S32UIZmPT44=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IContext.html
+SHA1-Digest: Dxp4hwnI1NlNhX+4xMWB/OAFDxQ=
+
+Name: resources/docu/gfw/visio/project-explorer.png
+SHA1-Digest: z71OZj985WUu6sQH11r+Xlrv6PE=
+
+Name: resources/docu/gfw/visio/ecore-editor-example.png
+SHA1-Digest: 9Add30Llx23tOhM2uOhD3powu2Y=
+
+Name: javadoc/org/eclipse/graphiti/features/context/class-use/IRemoveC
+ ontext.html
+SHA1-Digest: EdIpa7WXodgQPG6LDTpsWw7R8+o=
+
+Name: javadoc/org/eclipse/graphiti/util/LocationInfo.html
+SHA1-Digest: nLbaHUnh8wlSEwDjjh7YMtcM8VM=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/MmFactoryImpl.htm
+ l
+SHA1-Digest: junlYNNFmk22OFnCi9MqU8VAUic=
+
+Name: resources/docu/tools/Overview.html
+SHA1-Digest: /9CHQhQsfgjbf/5mS/DC3dnCvDg=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/package-summary.html
+SHA1-Digest: xpbaLwg6I5gTPDekTeOKgP7Fee8=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Rectan
+ gleImpl.html
+SHA1-Digest: d51a/el9hz8754SdMUMQ+Ox411M=
+
+Name: javadoc/org/eclipse/graphiti/pattern/FeatureForPatternDelegate.h
+ tml
+SHA1-Digest: PiBRx9uB1it9vzC5UOyFCc9iKeU=
+
+Name: javadoc/org/eclipse/graphiti/features/ICreateFeature.html
+SHA1-Digest: kqYHCXV6fQVN4e+qYKuQKAVfeX4=
+
+Name: javadoc/org/eclipse/graphiti/mm/util/package-use.html
+SHA1-Digest: pnsOqYBGYOhwJAQTwrTjvgMIf0A=
+
+Name: resources/docu/gfw/visio/anchor-points.vsd
+SHA1-Digest: jma3ktN+kP7LVPYJn7dFxgZowEI=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/GraphitiUi.html
+SHA1-Digest: xdvzCj8KlHCWwVt2qA7+4dgyHT8=
+
+Name: javadoc/org/eclipse/graphiti/package-summary.html
+SHA1-Digest: OKvWfy5AwPd0IEOxHfw4o+j960c=
+
+Name: javadoc/org/eclipse/graphiti/features/class-use/IProgressProvide
+ r.html
+SHA1-Digest: bFQAj2eHHfLWzs58gS5w1uioyt0=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractCreateConnect
+ ionFeature.html
+SHA1-Digest: BIAwpVBEccBDFTwFl8jGE1YFzLk=
+
+Name: resources/docu/gfw/scenario-description.htm
+SHA1-Digest: bRbB9uN59dMtpBeQ0DVeie5bOL4=
+
+Name: javadoc/org/eclipse/graphiti/features/custom/class-use/AbstractC
+ ustomFeature.html
+SHA1-Digest: oQjZwbFjCTzOpEiKYb8gLbpc/A0=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/TextStyle.html
+SHA1-Digest: EWmWmDm0+lDcjewECshT8cJl88g=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/util/package-use.html
+SHA1-Digest: GSUBw4iIJPUyiOQnJ5i9/oEbOGo=
+
+Name: resources/docu/gfw/visio/new-diagram.png
+SHA1-Digest: qxYQ2Lv0WhYYRMYm5VPlKcP4A3Y=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/DiagramImpl.html
+SHA1-Digest: aqnWHMf3YdAMnjEcWviGEUUoZiA=
+
+Name: resources/docu/examples/images/EMFmodel.png
+SHA1-Digest: 1lEc3elVZsOWEPhZ9sOnkpEjdws=
+
+Name: javadoc/org/eclipse/graphiti/package-tree.html
+SHA1-Digest: hLfX9DEBkJKyecS7VabIlHjeKCE=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/AdaptedGradien
+ tColoredAreas.html
+SHA1-Digest: ltCy0hTVSw3JTi2To4qi4U8YSUw=
+
+Name: javadoc/org/eclipse/graphiti/platform/AbstractExtension.html
+SHA1-Digest: no2pgTeO5JKPlSfJG9h3ShE387I=
+
+Name: javadoc/org/eclipse/graphiti/tb/AbstractContextEntry.html
+SHA1-Digest: sR8AyludZSLHi7zs2kuJO4xVV40=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/IBorderDecorator.html
+SHA1-Digest: 9YbrnFxcnXYI71afztQq+lRzTig=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/Reason.html
+SHA1-Digest: ENlwh9hbXcj+VdVpG3F3lzYKhX4=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/package-s
+ ummary.html
+SHA1-Digest: UIOEWKiDvq0ahp45tPKLd9z58io=
+
+Name: javadoc/org/eclipse/graphiti/ui/features/AbstractPasteFeature.ht
+ ml
+SHA1-Digest: 769hYyI2SU9G0yJfuyzw35r4b8g=
+
+Name: javadoc/org/eclipse/graphiti/platform/class-use/IPlatformImageCo
+ nstants.html
+SHA1-Digest: +6AWK+fHAbYRPlBxUEdqi1Kv3PU=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/DefaultDire
+ ctEditingInfo.html
+SHA1-Digest: 84Ihhcrr8v/F/arXuWedLVjLgHs=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/Shape.html
+SHA1-Digest: XmjFTCU5BAdm+G22TYGi9LVcZ7w=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractFea
+ ture.html
+SHA1-Digest: KRbbzSsE2lUq3NP9SKyK5zMRIQA=
+
+Name: javadoc/org/eclipse/graphiti/func/AbstractProposalSupport.html
+SHA1-Digest: C5DcyLjzJ41r1kfHAJ1U5qCo1ng=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/impl/FixPointAnchorIm
+ pl.html
+SHA1-Digest: 6H3APSnTJJ6DQOZtxxni+MOSMSk=
+
+Name: resources/docu/gfw/visio/eclass-editor.png
+SHA1-Digest: 3A6UpcAUIxjCmmD0esC5Gielj9U=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/ReconnectionFeatu
+ reForPattern.html
+SHA1-Digest: FPT1G2dWGSGgMSN0rNnGPEHr6VA=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/impl/class-use/Polyli
+ neImpl.html
+SHA1-Digest: wn7FxiNY+t8T4zaVfFhjCZ06ddw=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultMoveConnection
+ DecoratorFeature.html
+SHA1-Digest: +iNQ3nZf31lJuPuj0IOGwWXCMas=
+
+Name: javadoc/org/eclipse/graphiti/ui/platform/IImageProvider.html
+SHA1-Digest: Ii4fllXU9AiztnNwRqYK6ra8wSw=
+
+Name: javadoc/org/eclipse/graphiti/features/IProgress.html
+SHA1-Digest: gGZt846xEZOZjxf/UwgtQlcjqYc=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/styles/util/package-f
+ rame.html
+SHA1-Digest: aqJ6beiVipdUPFYS23VfiUM+amg=
+
+Name: javadoc/org/eclipse/graphiti/mm/impl/class-use/MmPackageImpl.htm
+ l
+SHA1-Digest: l0+mGBCGS8u6xHFTL/zILRPWShY=
+
+Name: javadoc/org/eclipse/graphiti/notification/package-tree.html
+SHA1-Digest: MEmxV18jlSA+PvGGyqcaQ+57Ur4=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/package-use.html
+SHA1-Digest: H273rL6/pJXqXiJ25t/bcZMMcsw=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IVisualState.html
+SHA1-Digest: YVNgl+IIv/ubIGe42KE4Qe8HR1Q=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractFea
+ tureProvider.StringTransformer.html
+SHA1-Digest: sdOcMkK12vE3KchyRAbW8Qi/ncQ=
+
+Name: javadoc/org/eclipse/graphiti/mm/Property.html
+SHA1-Digest: UgcDeiRHOo4vlq461GRLRE74ADI=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/AbstractFeatureProvid
+ er.StringTransformer.html
+SHA1-Digest: PI0b9wAXjfJLUSUtzRLhL2WGw4g=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractCre
+ ateConnectionFeature.html
+SHA1-Digest: D21e1DN0kh6441hXVbiIFSEUzKI=
+
+Name: javadoc/org/eclipse/graphiti/features/IPasteFeature.html
+SHA1-Digest: gTZzcsCA/TZZR1B5Mil45fQiWQw=
+
+Name: javadoc/org/eclipse/graphiti/palette/impl/package-tree.html
+SHA1-Digest: 2jD6fB1ncbbQjbjQLGSxZMpORuc=
+
+Name: resources/docu/gfw/visio/predefined-eclass.png
+SHA1-Digest: +vwM9EVwSW3XwCAlvIgp7TJ8+lw=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IRemoveBendpointCo
+ ntext.html
+SHA1-Digest: Txb7qPqFZUOWTDG85V0W09tbXUs=
+
+Name: javadoc/org/eclipse/graphiti/ui/editor/ElementDeleteListener.htm
+ l
+SHA1-Digest: uQLvJCdtQA8Kn/4bynyF3jIVIQc=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/DefaultRemoveFeature.
+ html
+SHA1-Digest: v9dDV2xbRGNRNv+1KFMPaNIT7vA=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/ChopboxAnch
+ or.html
+SHA1-Digest: YAhIsi43b/q8Tus8BRW7/uaqnbs=
+
+Name: javadoc/org/eclipse/graphiti/features/DefaultResizeConfiguration
+ .html
+SHA1-Digest: D2YQ48ljfEzse97EqtbReuYVnm8=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/class-use/AbstractUpd
+ ateFeature.html
+SHA1-Digest: K4gsMFCYKjSh013KTsL96jWWXDc=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Rem
+ oveContext.html
+SHA1-Digest: TJwEcoDPVi9rGrettRpy6Kl+Xvg=
+
+Name: javadoc/org/eclipse/graphiti/tb/class-use/ContextButtonEntry.htm
+ l
+SHA1-Digest: A9aV9Et427ASLhflocbrIfqsdYw=
+
+Name: javadoc/org/eclipse/graphiti/pattern/config/IIndentConfiguration
+ .html
+SHA1-Digest: uKaFrRWURUMKE8bztj0SjX8NLxo=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/Connection.html
+SHA1-Digest: vB1PkwdqJmONjQ6ZfwmVhONYgUk=
+
+Name: javadoc/org/eclipse/graphiti/mm/algorithms/class-use/GraphicsAlg
+ orithm.html
+SHA1-Digest: VH5eWoqlT8oRNUtGvSaUsrvPLjg=
+
+Name: javadoc/org/eclipse/graphiti/features/impl/package-frame.html
+SHA1-Digest: rxxBN1ggWbIVOpxzXmYPEYDubxI=
+
+Name: javadoc/org/eclipse/graphiti/tb/ContextMenuEntry.html
+SHA1-Digest: /WMc9BhRB0H7VOhpaFPuC67HFUg=
+
+Name: javadoc/org/eclipse/graphiti/pattern/mapping/class-use/Structure
+ MappingGrid.html
+SHA1-Digest: jbEACGZnFiXy3iWnZL+qyYLCpV8=
+
+Name: javadoc/org/eclipse/graphiti/dt/package-tree.html
+SHA1-Digest: ARH1KbEwlKjCvW8zxQBxciyUBGc=
+
+Name: javadoc/org/eclipse/graphiti/platform/ga/IRendererContext.html
+SHA1-Digest: p1CbxY048HbU5ri43tcr+xifHNU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/impl/class-use/Res
+ izeShapeContext.html
+SHA1-Digest: oIUzqCzpoa8Sd7RgHV92rJfx0Nc=
+
+Name: javadoc/org/eclipse/graphiti/pattern/class-use/AbstractBasePatte
+ rn.html
+SHA1-Digest: 8I5uaSRnurwSS5uOVG+3lJx5KiI=
+
+Name: javadoc/org/eclipse/graphiti/class-use/IExecutionInfo.html
+SHA1-Digest: OaIGq7b/J4pyv+vEsLB3Hf8Ro0I=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMoveConnectionDec
+ oratorContext.html
+SHA1-Digest: nDuDPOvD30zMP7zkpZoexT1HZcc=
+
+Name: javadoc/org/eclipse/graphiti/features/IFeatureProviderHolder.htm
+ l
+SHA1-Digest: y95s/GWH8D908cG2BSwuSaIttFw=
+
+Name: resources/docu/gfw/styles.htm
+SHA1-Digest: /6TSwLMmQTl2Q04AwHHTx/Tx3cU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/package-summary.ht
+ ml
+SHA1-Digest: bXZ/+iaUdbMdSZtVjCHFwdyj5FU=
+
+Name: javadoc/org/eclipse/graphiti/features/context/IMoveAnchorContext
+ .html
+SHA1-Digest: 99Q91N1pzekF9Cnow6JBFD09ACc=
+
+Name: javadoc/org/eclipse/graphiti/mm/pictograms/class-use/PictogramLi
+ nk.html
+SHA1-Digest: vvEZuba7R3oPriywL08QpZgB28M=
+
+Name: resources/docu/gfw/add-feature.htm
+SHA1-Digest: u4oAo5yatdd/3TFfol0oHYfdZZM=
+
+Name: javadoc/org/eclipse/graphiti/ui/services/IImageService.html
+SHA1-Digest: Ma1qvGsv3Da5x9lHi5U+YH+FqUI=
+

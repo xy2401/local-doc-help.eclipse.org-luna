@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Creating a Consumer Model</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+      "create-provider-model.html","",
+		"../tut-preface.htm","Tutorials",
+      "create-multi-model-preface.html","Working with Multiple Models in One Audit Trail");
+-->
+</script>
+<h1>Creating a Consumer Model</h1>
+<p>As the provider model is ready, you can create another model in which you can reference the
+elements of the provider model. 
+</p>
+<p>In this chapter, we are going to reference the Collect Customer Information process.
+To reference the process, we need to create a file connection by reference and drag-drop the elements that we 
+want to reference.</p>
+<p>The following steps explain how to establish the file connection.</p>
+<h2 id="fileConnection">Creating a File Connection</h2>
+<ol>
+
+	<li>Create a model named Consumer.xpdl</li>
+	<li>In the <strong>Outline view</strong>, right-click the <strong>External Model Information</strong> node and select <strong>File Connection</strong></li>
+	<li>In the file connection properties dialog box, click the <strong>Browse</strong> button
+	to provide the path for the created provider model 
+	named <strong>Provider</strong>.</li>
+	<p class="image"><img src="images/con-file.png" alt="">
+	<br>
+<strong>Figure:</strong> File Connection</p>
+	<li>Click <strong>Apply</strong> and <strong>OK</strong>
+	<p>Once the file connection is established, the elements of the provider model that can be referenced are available
+	under the created file connection in the Outline view.</p>
+	<p class="image"><img src="images/con-outline.png" alt="">
+	<br>
+<strong>Figure:</strong> Outline View of Consumer Model</p>
+</ol>
+<h2 id="referencing">Referencing the Elements and Creating the Workflow</h2>
+<p>The following steps explain how to reference the elements and create a consumer model.</p>
+<ol>
+	<li>Create a manual trigger</li>
+	<lI>Create a manual activity named <strong>CustEnquiry</strong></lI>
+	<li>Drag and drop the referenced process definition named <strong>Collect Customer Information</strong> from the Outline view.</li>
+	<li>Connect all these activities</li>
+	<li>Create two more manual activities named <strong>Sanction Loan</strong> and <strong>Do not Sanction Loan</strong></li>
+	<li>Create a primitive data named <strong>LoanAmount</strong> of integer type and provide it in the in data mapping for the Sanction Loan and Do
+	not Sanction Loan activities</li>
+	<li>Also, provide the <strong>LoanAmount</strong> in the Out Data Mappings of the CustEnquiry activity </li>
+	<li>Drag and drop the <strong>CustomerInformation</strong> from the Outline 
+	view under the File Connection and rename it to <strong>CustomerData</strong>.
+	Note that you need to drag the provided interface / process in the consumer process. Otherwise
+	the interface cannot be selected in the 'Provides Interface' property of the process in the consumer model.</li>
+	<li>Define the <strong>In Data Mapping</strong> in the ProcessInterfaceContext as <strong>CustomerData</strong> in the <strong>Data</strong> drop-down list 
+	and <strong>Formal Parameter 1</strong> as the <strong>Access Point</strong>.</li>
+	<li>Define the <strong>Out Data Mapping</strong> in the ProcessInterfaceContext as <strong>CustomerData</strong> in the <strong>Data </strong> drop-down list 
+	and <strong>Formal Parameter 1</strong> as the <strong>Access Point</strong>.</li>
+	<li>Right-click the Collect Customer Information activity and select 
+	<strong>Split Behavior &gt; XOR</strong>.</li>
+	<li>Define the Condition Expression as <strong>CustomerData.AssetSalary >10000
+ 	&& 
+ 	LoanAmount <5000;</strong> for Sanction Loan activity</li>
+ 	<li>Also define the Condition Expression as <strong>CustomerData.AssetSalary<=10000
+ 	&& 
+ 	LoanAmount>=5000;</strong> for Do not Sanction Loan activity</li>
+ 	<li>Define Administrator as the Participant for the required elements</li>
+
+</ol>
+<p>The created consumer model should look like as shown in the following screenshot:</p>
+<p class="image"><img src="images/consumermodel.png" alt="">
+<br>
+<strong>Figure:</strong> Consumer Model</p>
+<h2 id="executing">Executing the Workflow of Consumer Model </h2>
+<P>Here we will deploy the provider and consumer models in the Stardust Portal.
+Note the workflow of the Consumer model.
+As per the defined workflow of Consumer model, the process definition of the consumer is triggered
+and then the referenced process definition Collect Customer Information is invoked. Let's see how this 
+happens in the Stardust Portal.</P>
+<p>Perform the following steps:</p>
+<ol>
+	<li>Start your server and deploy the model. For details on how to deploy a model, 
+	please refer to the section <a href="../../handbooks/modelling/mg-deploy-model.html#multideploy">Deploying 
+	Multiple Models from One Audit Trail</a> of the <a href="../../handbooks/modelling/mg-deploy-model.html">Deploying a Workflow
+	Model</a> chapter of the Modeling Guide. </li>
+	<li>Start the Stardust Portal as described in the chapter
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+	Logging in the Stardust Portal</a> of the
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</li>
+	<li>Login as administrator (<tt>motu/motu</tt>). You can use the Shift-F8 short key.</li>
+	
+	<li>In the <strong>Workflow Perspective</strong>, start the process from the consumer model named Consumer Process.</li>
+	<p class="image"><img src="images/conpro.png"></img>
+	<br>
+<strong>Figure:</strong> Start Consumer Process</p>
+	<li>Enter the loan amount as 4000 and complete the activity <strong>CustEnquiry</strong>.
+	<p class="image"><img src="images/custenq.png" alt="">
+	<br>
+<strong>Figure:</strong> Complete Activity</p></li>
+	<p>As soon as you complete this activity, the Collect Customer Information process is referenced from 
+	the provider model.</p>
+	<p class="image"><img src="images/collcustinfo.png"></img>
+	<br>
+<strong>Figure:</strong> Collect Customer Information Process</p>
+	<li>Enter the customer information and complete the activity.</li>
+	<p class="image"><img src="images/collcustinfocomplete.png"></img>
+	<br>
+<strong>Figure:</strong> Complete the Collect Customer Information Process</p>
+	<p>As soon as you complete the CustomerInformation activity, the customer is notified by sending an email.
+	Here the provider process Collect Customer Information is complete and the workflow returns to the consumer model.
+	The next activity of the consumer model gets triggered.</p>
+	<li>The Sanction Loan activity is triggered as it satisfies the given condition in the modeler. Complete the activity.</li>
+	<p class="image"><img src="images/xanctionloan.png"></img>
+	<br>
+<strong>Figure:</strong> Sanction Loan</p>
+</ol>
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

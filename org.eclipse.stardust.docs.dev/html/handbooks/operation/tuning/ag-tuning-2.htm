@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Tuning for Concurrency</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Tuning for Performance via Data Clusters",
+		"","ag-tuning-3.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Tuning for Concurrency</h1>
+<p>Concurrent process execution is mainly governed by the
+concurrency restrictions of the data accessed in a process - independent
+from whether Stardust manages these data by reference or by value. If
+two concurrent workflow threads are accessing the same process data
+either directly via data mappings or indirectly via applications
+performed in the process activities - concurrency conflicts may occur.
+These conflicts are either handled by the application logic or by
+explicitly modeled exception handling in the corresponding process
+models.</p>
+<p>To reduce the possibility of conflicts when 
+accessing internal persistent data concurrently (e.g. the state of
+a process), Stardust provides sophisticated concurrency tuning mechanisms as
+described in the following sections.</p>
+<ul>
+    <li><a href="#proxy">Proxy Lock Tables</a></li>
+    <li><a href="#jdbc">Tuning JDBC Exception Handling</a></li>
+    <li><a href="#tracing">Tracing of Transactions, Method Calls or Requests</a></li>
+</ul>
+<h2 id="proxy">Proxy Lock Tables</h2>
+<p>The Stardust Process Engine relies on pessimistic locking of
+database rows to guarantee correctness of process execution. While all
+database systems supported by the Stardust Process Engine provide means
+to implement such row locking behavior, current experience proves the
+chosen implementation to have scalability and robustness problems on
+database systems using the classical two-phase locking approach to row
+lock management (basically any DBMS but Oracle). A major weakness in
+such environments is even readers being blocked from accessing locked
+rows, thus causing unneeded delays or even deadlocks.</p>
+<p>The feature<strong> Proxy Lock Tables</strong> is the
+introduction of a runtime option to separate logically and physically
+locked database rows. This change will introduce optional proxy tables
+exclusively used for applying exclusive row locks. Thus, even while
+original rows are logically locked for update by one thread of execution
+(which is done by obtaining a physical lock on the associated row in the
+proxy table), any parallel read access is able to obtain the original
+row content without causing a conflict.</p>
+<p>If applied, the locking table extension will add for each of the
+tables <tt>ACTIVITY_INSTANCE, DATA_VALUE</tt>, <tt>PROCESS_INSTANCE</tt>
+and <tt>TRANSITION_TOKEN</tt>, a proxy table containing just the primary
+key column from the original table. The engine then maintains a row in
+the associated proxy table, consisting of exactly the original row's PK
+value for every row in original tables. Additionally, any pessimistic
+lock operation on a row from original tables with proxy will obtain an
+exclusive DB lock from the according row in the associated proxy table.</p>
+<p>Disadvantages of using <strong>Proxy Lock Tables</strong> are a
+minimal database size overhead.</p>
+<p>The <strong>Proxy Locking Table</strong> feature is activated
+with the session property <tt>UseLockTables</tt>:</p>
+<pre>
+AuditTrail.UseLockTables = false/true
+</pre>
+<p>Proxy lock tables are administrated with the corresponding
+options in the <a href="../commandline/ag-commandline-2.htm">sysconsole
+command</a>.</p>
+<h2 id="jdbc">Tuning JDBC Exception Handling</h2>
+<p>Exactly one data value can be created per process instance and
+per data, but in a process instance more than one activity instance
+could try to access the same data value. If this data value does not
+already exist at that time, it will be created. This can happen 
+ at the same time in more than one threads of a process instance.
+In that case a database exception is thrown.</p>
+<p>There are two possibilities how this can be handled:</p>
+<ol>
+	<li>The rollback mechanism provided by Stardust will come into
+	action and the activity thread will be restarted. This can
+	happen several times until the exception is propagated.
+	Please refer to the chapter 
+	<a href="../../programming/embed/pg-embed-exceptions.html">Exceptions</a>
+	in the <a href="../../programming/pg-preface.htm">Programming Guide</a>
+    for detailed information on exception handling in Stardust .</li>
+	<li>If you set the property <tt>AuditTrail.InterceptJdbcCalls</tt> in
+	your server-side <tt>carnot.properties</tt> to
+	<tt>true</tt>, the exception will directly be caught during the creation
+	of the data value bean in the engine. It will be tried to load
+	the instance of the already existing data value bean, which has
+	been created meanwhile from a parallel thread. This will be tried up to
+	three times before an <strong>ObjectNotFoundException</strong> is
+	thrown.</li>
+</ol>
+<h2 id="tracing">Tracing of Transactions, Method Calls or Requests</h2>
+<p>To trace the duration of database calls, use the tuning property
+<tt>Carnot.Engine.Tuning.ServiceCallTracingThreshold</tt>.
+Set this property in your server-side <tt>carnot.properties</tt> file to a 
+threshold in milliseconds. If this threshold is exceeded, a log is written.
+This log could look like in the following example, where a threshold of <tt>100</tt> 
+was used:</p>
+<pre>
+14:24:44 INFO - [main  ] DebugInterceptor - --&gt; closeSession
+14:24:44 INFO - [main  ] Security         - Partition: default, Domain: default.
+....
+14:24:44 INFO - [main  ] Performance      - Service call: 188 ms for 'org.eclipse.stardust.engine.api.runtime.UserService.closeSession'. (total SQL: 0 ms)
+14:24:44 INFO - [main  ] Performance      - List of recorded SQL statements for this service call:
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT dd.oid, dd.model, dd.id, dd.name, dd.description FROM data dd INNER JOIN model m ON (dd.model = m.oid AND m.partition = 1)
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT sd.oid, sd.xpath, sd.data, sd.model FROM structured_data sd INNER JOIN model m ON (sd.model = m.oid AND m.partition = 1)
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT mpd.oid, mpd.model, mpd.id, mpd.name, mpd.type, mpd.description FROM participant mpd INNER JOIN model m ON (mpd.model = m.oid AND m.partition = 1)
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT pd.oid, pd.model, pd.id, pd.name, pd.description FROM process_definition pd INNER JOIN model m ON (pd.model = m.oid AND m.partition = 1)
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT pt.oid, pt.model, pt.id, pt.name, pt.processDefinition FROM process_trigger pt INNER JOIN model m ON (pt.model = m.oid AND m.partition = 1)
+14:24:44 INFO - [main  ] Performance      -     0 ms: SELECT ad.oid, ad.model, ad.id, ad.name, ad.processDefinition, ad.description FROM activity ad INNER JOIN model m ON (ad.model = m.oid AND m.partition = 1)
+....
+14:24:44 INFO - [main  ] DebugInterceptor - &gt;-- closeSession
+</pre>
+<p>The lines with category <tt>Performance</tt> have the following format:</p>
+<ul>
+    <li>Service call: XXX ms for <tt>className.methodName.</tt> (total SQL: YYY ms)</li>
+    <li>List of recorded SQL statements for this service call (only printed if any recorded SQL statement exist)</li>
+    <li>. yyy ms: SQL statement</li>
+    <li>. yyy ms: SQL statement</li>
+    <li>. ....</li>
+</ul>
+<p>The list of recorded SQL statements contains <strong>all</strong> SQL statements
+performed during this service method call.</p>
+
+<p>The dependencies between the values XXX, YYY and yyy are the following:</p>
+<ul>
+    <li>YYY = yyy + yyy + ...</li>
+    <li>XXX &gt;= YYY</li>
+</ul>
+<p>The logging is performed by <tt>log4j</tt>. So the logging can be configured
+by a file name <tt>log4j.properties</tt>. The following example writes any line to 
+<tt>any.log</tt> excluding the lines for the category <tt>Performance</tt>,
+ which are written to <tt>perf.log</tt>:</p>
+<pre>log4j.rootCategory = INFO, default
+log4j.appender.default = org.apache.log4j.FileAppender
+log4j.appender.default.File = any.log
+log4j.appender.default.layout = org.apache.log4j.PatternLayout
+log4j.appender.default.layout.ConversionPattern = %d{HH:mm:ss} %-5.5p- [%-15.15t] %-20.20c{1} - %m%n
+log4j.appender.default.Threshold = INFO
+
+log4j.logger.org.eclipse.stardust.engine.api.runtime.logging.Performance = INFO, perf
+log4j.appender.perf = org.apache.log4j.FileAppender
+log4j.appender.perf.File = perf.log
+log4j.appender.perf.layout = org.apache.log4j.PatternLayout
+log4j.appender.perf.layout.ConversionPattern = %d{HH:mm:ss} %-5.5p- [%-15.15t] %-20.20c{1} - %m%n
+log4j.appender.perf.Threshold = INFO
+log4j.additivity.org.eclipse.stardust.engine.api.runtime.logging.Performance=false
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

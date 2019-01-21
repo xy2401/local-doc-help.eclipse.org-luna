@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Extracting Pages Tutorial</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Aborting and Starting Processes",
+      "spawn-tutorial.html","abort-and-start-process.html",
+		"../tut-preface.htm","Tutorials",
+		"derive-procs-preface.html","Managing Unstructured Workflows");
+-->
+</script>
+
+<h1>Extracting Pages Tutorial</h1>
+<p>In this example, we demonstrate how to extract pages from 
+a document attached to a process instance and pass those
+pages to a new process that will be started.</p>
+<ul>
+	<li><a href="#importModel">Importing the Example Model</a></li>
+	<li><a href="#deploy">Deploying and Running the Model</a>
+	<ul>
+      <li><a href="#attach">Attaching a TIFF Document</a>
+      <ul>
+         <li><a href="#extract">Extracting the Pages</a></li>
+         <li><a href="#checkDoc">Checking the Newly Created Document</a></li>
+         <li><a href="#revSource">Reviewing the Source Document</a></li>
+         <li><a href="#revHist">Reviewing Process History of Affected Process Instances</a></li>
+      </ul></li>
+   </ul></li>
+</ul>
+<p>For details on the extracting pages functionality, refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/document-viewing/tiff-docs/extract-pages.html">
+Extracting Pages</a>
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User Handbook</a>.</p>
+<h2 id="importModel">Importing the Example Model</h2>
+<p>We will use the provided <strong>ScanDemo</strong> example model containing several
+process definitions that allow process attachments. 
+Download the following ZIP file containing the example model:</p>
+<p class="ind">
+<a href="../../examples/tutorials/derive-procs/managing-unstructured-workflow.zip">managing-unstructured-workflow.zip</a>
+<br></p>
+<p>Create a dynamic Web project designed to deploy Stardust models to run in 
+the Stardust Portal.
+For detailed information on creating dynamic Web projects for usage with
+the Stardust Portal, please refer to the <a
+	href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+Rapid Application Development</a> guide.</p>
+<p>Right-click the project and select 
+<strong>Import &gt; Process Manager Wizards &gt; Process Model</strong>.
+Click <strong>Next</strong> and browse to the location of the example
+model extracted from the zip file.</p>
+
+<h2 id="deploy">Deploying and Running the Model</h2>
+<p>Perform the following steps to deploy the model and run
+the project in the Stardust Portal:</p>
+<ol>
+	<li>Start your server and deploy the model. For details on how to
+	deploy a model, please refer to the chapter <a
+		href="../support-case/tut-main-12.htm">Deploying a Workflow Model</a> of the <a
+		href="../support-case/support-case-preface.htm">Support Case Example</a>.</li>
+	<li>Start the Stardust Portal as described in the chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/portal-login.html">
+	Logging in the Stardust Portal</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User
+	Handbook</a>. Login as administrator (<tt>motu/motu</tt>). You can use the
+	Shift-F8 short key.</li>
+	<li>Switch to the <strong>Participant Management View</strong> of the <strong>Administration Perspective</strong>.</li>
+	<li>Create a user and assign him to the roles <strong>Scan Operator</strong> and
+	<strong>Good Order Reviewer</strong>. For details on how to create a new user, refer to section <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html#createUser">
+	Creating a new User</a> of the chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-participant.html">
+	Creating and Editing User Accounts</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+		Stardust Portal</a> documentation.
+	<p class="image"><img src="images/assign-user.png" alt="Upload"></p></li>
+	<li>Logout and login again as the new user.</li>
+	<li>In the <strong>Workflow Perspective</strong>, start the process <strong>IRA</strong>.</li>
+</ol>
+
+<h3 id="attach">Attaching a TIFF Document</h3>
+<p>Now attach a multi-page TIFF Document to activity <strong>Good Order Review</strong>:</p>
+<ol>
+	<li>In the toolbar click the <strong>Process Documents</strong> icon and 
+	choose <strong>Upload Document</strong>. 
+	<p class="image"><img src="images/upload-document.png" alt="Upload"></p></li>
+	<li>In the <strong>Upload File</strong> dialog, browse to the location of the 
+	multi-page TIFF document and click <strong>Upload</strong>.</li>
+	<li>Now open the <strong>Process Details</strong> view for the 
+	<strong>IRA</strong> process instance, e.g. from the Process Manager or Process Search 
+	view.</li>
+	<li>Expand the <strong>Process Documents</strong> section.</li>
+	<li>The uploaded TIFF document is displayed under <strong>Process Attachments</strong>.</li>
+	<li>Click the TIFF document to open the TIFF document viewer. For details on this
+	view, refer to chapter 
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/documents/document-viewing/viewing-tiffs.html">
+	Viewing TIFF Documents</a> of the 
+	<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">End User
+	Handbook</a>.
+	<p class="image"><img src="images/tiff-as-proc-att.png" alt="Process Attachments"></p></li>
+</ol>
+<p>Note that you can also attach multi-page TIFF documents by scanning TIFF documents.</p>
+<h4 id="extract">Extracting the Pages</h4>
+<p>The document opens in the TIFF document viewer.</p>
+<p class="image"><a href="images/doc-tiff-viewer_orgSize.png" target="_blank"><img
+	src="images/doc-tiff-viewer.png" alt="TIFF Viewer"></a><br>
+<strong>Figure:</strong> Document opened in the TIFF Viewer</p>
+<p>Now extract pages from the document and pass those
+pages to a new process that will be determined in the Extract Pages dialog:</p>
+<ol>
+	<li>In the <strong>Bookmarks</strong> section, click the
+	<strong>Add Bookmark</strong> icon <img src="images/bookmark-icon.png">.</li>
+	<li>Add a bookmark with a valid page range, e.g. <tt>3-7</tt>:
+	<p class="image"><img src="images/added-bookmarks.png" alt="Process Attachments"></p></li>
+	<li>Save the document with the bookmark by clicking
+	 the <strong>Save</strong> icon
+    <img src="images/toolbar-save.png"> in the upper right corner.</li>
+	<li>In the <strong>Save Document Confirmation</strong> dialog, 
+	confirm that bookmarks and annotations should be saved.
+	<p class="image"><img src="images/save-bookmark-confirm.png"></p></li>
+	<li>Select the bookmark and click the <strong>Extract Pages</strong> icon.
+	<p class="image"><img src="images/extract-icon.png"></p></li>
+	<li>The <strong>Extract Pages Dialog</strong> opens with the selected bookmark as
+	preset column and default entries.
+	<p class="image"><img src="images/extract-dialog-default.png"></p></li>
+	<li>Click the <strong>Start Process</strong> drop-down list. It contains processes
+	the logged in user is able to start.</li>
+	<li>Choose the <strong>Brokerage</strong> process.
+	<p class="image"><img src="images/start-process-column.png"></p></li>
+	<li>In the <strong>Document Type</strong> drop-down list, see the
+	document types <strong>Address</strong> and <strong>NewIRAApplication</strong>
+	as well as the value <strong>Default</strong>.
+	<p class="image"><img src="images/doc-type-column.png"></p></li>
+	<li>Keep <strong>Default</strong> as selected Document Type.</li>
+	<li>Leave <strong>Process Attachments</strong> as document data.
+	<p class="image"><img src="images/doc-data-column.png"></p></li>
+	<li>Select to delete pages, copy annotations and bookmarks as well as
+	to copy the process data.
+	<p class="image"><img src="images/other-checkmarks.png"></p></li>
+	<li>Click <strong>OK</strong> to start the Brokerage process.
+	<p class="image"><img src="images/extract-dialog-ok.png"></p></li>
+	<li>A dialog opens to notify about the newly started processes.
+	<p class="image"><img src="images/extract-pages-confirm.png"></p></li>
+	<li>Click <strong>Yes</strong> to view the spawned activities.</li>
+</ol>
+<h4 id="checkDoc">Checking the Newly Created Document</h4>
+<p>In the worklist view of the spawned activity, see the started 
+activity <strong>Good Order Activity</strong> of the newly 
+started process <strong>Brokerage</strong>.</p>
+<p class="image"><a href="images/result-worklist_orgSize.png" target="_blank">
+	<img src="images/result-worklist.png" alt=""></a></p>
+<p>Now view the newly document, created as process attachment:</p>
+<ol>
+	<li>Open the <strong>Process Details</strong> view for the started activity.</li>
+	<li>Find the data attached to the process under <strong>Process Attachments</strong> in
+	the <strong>Process Documents</strong> section.
+	<p class="image"><img src="images/details-new-proc.png"></p></li>
+	<li>Click the TIFF document to open it in the TIFF document viewer.	
+	<p class="image"><img src="images/open-new-tiff.png"></p></li>
+</ol>
+<p>See that the new document is created containing the extracted pages. In our example, 
+pages 3-7 from the original file are present and reordered as 1-5.</p>
+<p class="image"><img src="images/new-tiff-result.png" alt="New TIFF"><br>
+<strong>Figure:</strong> New TIFF Document</p>
+<h4 id="revSource">Reviewing the Source Document</h4>
+<p>Reopen the source TIFF document to check it the extracted
+pages are correctly deleted.</p>
+<p>In our example, the pages 3-7 are deleted and the remaining pages
+are reordered.</p>
+<p class="image"><img src="images/result-org-del-pages.png" 
+alt="Updated Source Document"><br>
+<strong>Figure:</strong> Updated Source Document</p>
+<h4 id="revHist">Reviewing Process History of Affected Process Instances</h4>
+<p>Open the Process Details view of the originally started <strong>IRA</strong>
+process instance. The spawned <strong>Brokerage</strong> process instance
+should be displayed as sub-process of this process instance in the 
+<strong>Process History</strong> section.</p>
+<p class="image"><img src="images/proc-history-subproc.png" alt="Process History Result"><br>
+<strong>Figure:</strong> Newly started process displayed as sub-process 
+of origin process instance.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

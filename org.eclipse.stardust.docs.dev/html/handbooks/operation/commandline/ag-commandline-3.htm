@@ -1,0 +1,570 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Using the Console Command</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Console Command Use Cases",
+	"ag-commandline-2.htm","ag-commandline-4.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-command-preface.htm","Command Line Tools");
+ -->
+</script>
+<h1>Using the Console Command</h1>
+<p>The <strong>Console</strong> command line tool handles
+administrative tasks related to a deployed model.</p>
+<ul>
+    <li><a href="#scope">Scope</a></li>
+    <li><a href="#environment">Setting Up the Environment</a></li>
+    <li><a href="#options">Global options</a></li>
+    <li><a href="#commands">Commands Overview</a></li>
+</ul>
+<p>For a detailed description of the specific commands and options, 
+refer to the next chapter <a href="ag-commandline-4.htm">
+Console Command Use Cases</a>.</p>
+
+<h2 id="scope">Scope</h2>
+<p>The <strong>Console</strong> command can perform the
+following tasks:</p>
+<ul>
+    <li>recovering the runtime environment,</li>
+    <li>cleaning-up the audit trail database,</li>
+    <li>deploying models to the runtime environment,</li>
+    <li>listing audit trail database metrics,</li>
+    <li>listing deployments or the repository etc.,</li>
+    <li>creating, dropping and listing realms,</li>
+    <li>managing daemons,</li>
+    <li>password encryption.</li>
+</ul>
+<h2 id="environment">Setting Up the Environment</h2>
+<p>This section describes how to prepare your environment for using
+the <strong>Console</strong> command.</p>
+<div class="ipp"><p>Start by downloading one of the Maven archetype templates from the Stardust artifactory
+matching your requirements. Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html">
+Creating a Stardust Runtime Environment with Apache Maven</a>
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+Stardust Installation Guide</a> for details.</p></div>
+<p>Perform the following steps:</p>
+<ol>
+    <li>Start a command console (<tt>cmd</tt>).</li>
+    <li>Switch to your working environment, where you extracted the 
+    template.</li>
+    <li>Add the client libraries of the application server you use.</li>
+    <li>Add a database driver. Please refer to the specific database chapter
+    in the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/audittraildatabasesetup/toc.html">
+    Audit Trail Database Setup</a> part of the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">Deployment Guide</a>
+    for information on the needed database driver.</li>
+    <li>Additionally add the database connector jar file and other required model related
+    jar files.</li>
+    <li>Adapt the <tt>carnot.properties</tt> file, residing in your <tt>etc</tt>
+    folder of your workspace environment.</li>
+</ol>
+<p>For detailed information on setting up the environment for deployment,
+refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/ag-deployment-2.htm">
+Deploying Stardust Components to an EJB Application Server</a>
+of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a> for EJB
+and to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/runtimesetup.html">Runtime Setup</a>
+of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/toc.html">Spring Integration Guide</a>
+for Spring accordingly.</p>
+<h3>Using Archetypes to create Environments for Console Clients</h3>
+<p>Stardust provides archetypes to create environments for console and sysconsole clients.
+Please refer to our 
+<a href="http://wiki.eclipse.org/Stardust/Knowledge_Base/Build_and_Change_Management/Maven/Basic_Setup">
+Stardust Knowledge Base</a> for details.</p>
+
+<h2 id="options">Global options</h2>
+<p>The global options for the <strong>Console</strong> tool are:</p>
+<table id='id'>
+	<tr>
+		<th>Option</th>
+		<th>Short form</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>-domain</td>
+		<td>&nbsp;</td>
+		<td>Identifies the target domain.</td>
+	</tr>
+	<tr>
+		<td>-realm</td>
+		<td>&nbsp;</td>
+		<td>Identifies the realm to be used for user
+			ID resolution.</td>
+	</tr>
+	<tr>
+		<td>-force</td>
+		<td>-f</td>
+		<td>Forces the command to execute without any callback.</td>
+	</tr>
+	<tr>
+		<td>-partition</td>
+		<td>&nbsp;</td>
+		<td>Identifies the target partition.</td>
+	</tr>
+	<tr>
+		<td>-password &lt;arg&gt;</td>
+		<td>-p</td>
+		<td>The password of the user.</td>
+	</tr>
+	<tr>
+		<td>-user &lt;arg&gt;</td>
+		<td>-u</td>
+		<td>The user to login to the Stardust runtime.</td>
+	</tr>
+	<tr>
+		<td>-verbose</td>
+		<td>-v</td>
+		<td>Makes output more verbose.</td>
+	</tr>
+</table>
+<h2 id="commands">Commands</h2>
+<p>The currently available commands are:</p>
+<table id='id_1'>
+	<tr>
+		<th>Command</th>
+		<th>Description</th>
+	</tr>
+   <tr>
+      <td>abort</td>
+      <td>
+      <ul>
+         <li>-activityInstance/-ai - a single AI OID or a comma separated list of AI OIDs (without spaces).
+         Required if no -pi is set.</li>
+         <li>-processInstance/-pi - a single PI OID or a comma separated list of PI OIDs (without spaces).
+         Required if no -ai is set. 
+         </li>
+         <li>-scope/-sc - eiher root or sub as parameter</li>     
+         <li>-info/-i - This is an optional parameter. Added as Note to each aborted PI, if more than one single word quotes must be used.
+         </li>
+       </ul>
+       Example - <tt>console -u motu -p motu abort -sc root -ai 5,8,20 -i "Aborted by Console Command"</tt>
+       
+       
+      </td>
+   </tr>
+    <tr>
+        <td>bindeventhandler</td>
+        <td>Provides explicit binding of events. Possible arguments:
+        <ul>
+            <li><tt>-handler/-h</tt> - ID of the handler to bind.</li>
+            <li><tt>-oid</tt> - OID for the instance(Activity or Process) 
+            specified by the type option.</li>
+            <li><tt>-type/-t</tt> - type to which the 
+            event handler should bind to. Valid values are <tt>ai</tt> 
+            for an ActivityInstance or <tt>pi</tt> for a ProcessInstance.</li>        
+        </ul>
+        </td>
+    </tr>
+	<tr>
+		<td>cleanup</td>
+		<td>Deletes the audit trail. Additional arguments are:
+		<ul>
+			<li><tt>-audittrail/-a</tt> - deletes the audit trail.</li>
+			<li><tt> -keepUsers/-k</tt> - keeps users and their roles.</li>
+			<li><tt> -model/-m &lt;arg&gt;</tt> - deletes audit trail for the model
+			with the specified OID</li>
+			<li><tt> -models/-s</tt> - deletes all deployed models too.</li>
+		</ul>
+		</td>
+	</tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>Creates a department. Arguments:
+        <ul>
+            <li><tt>-name/-n &lt;arg&gt;</tt> -name of the department to 
+            be created. If not supplied, the ID will be taken as name. By default, 
+            the ID of the department is taken.</li>
+            <li><tt> -description/-d &lt;arg&gt;</tt> - an optional description of
+            the department.</li>  	
+            <li><tt> -departmentpath/-dp &lt;arg&gt;</tt> - 
+            path to the department(each department is separated by a '/').</li>
+            <li><tt>-recursive/-r</tt> -
+            if specified, all departments specified in the path will be created(if missing).
+            By default, it is set to false.</li>           
+            <li><tt>-participantid/-pid &lt;arg&gt;</tt> -id of the 
+            participant(role or organization).</li>
+        </ul></td>
+    </tr>
+    <tr>
+		<td>createuser</td>
+		<td>Creates a Stardust user. Possible arguments:
+		<ul>
+			<li><tt> -account/-a &lt;arg&gt;</tt> - account name of the user.</li>
+			<li><tt> -description/-d &lt;arg&gt;</tt> - an optional description of
+			the user.</li>
+			<li><tt> -email/-e &lt;arg&gt;</tt> - e-mail address of the user.</li>
+			<li><tt> -firstname/-f &lt;arg&gt;</tt> - first name of the user. Note
+         that using a colon (":") character in the user name is not allowed as this might
+         lead to misinterpretations in a WebService environment!</li>
+			<li><tt> -grants/-g &lt;arg&gt;</tt> - grants given to the user.
+			Specify as comma-separated list of participant IDs. Model version
+			constraints can be given with the format <tt>id:modeloid</tt>, e.g.
+			<tt>engineer:47,clerk</tt>.</li>
+			<li><tt> -lastname/-l &lt;arg&gt;</tt> - last name of the user. Note
+         that using a colon (":") character in the user name is not allowed as this might
+         lead to misinterpretations in a WebService environment!</li>
+			<li><tt> -password/-p &lt;arg&gt;</tt> - the password of the user.</li>
+			<li><tt>-realm</tt> - identifies the realm to be used for user
+			ID resolution.</li>
+			<li><tt> -validfrom/-v &lt;arg&gt;</tt> - <strong>Valid from</strong> time of the
+			user.</li>
+			<li><tt> -validto/-t &lt;arg&gt;</tt> - <strong>Valid to</strong> time of the user.</li>
+		</ul>
+      <p class="note"><strong>Note</strong><br>
+      In case of multi-model environment, 
+		if participant IDs are duplicated in more than one models then 
+		qualified IDs of participants should be supplied despite of their IDs. 
+		Qualified ID is comprised of model ID and participant ID ({modelID}participantID).
+		Administrator role is not bounded with this restriction because 
+		it is merged into a single administrator from all the deployed model.
+		</p>
+		</td>
+	</tr>
+	<tr>
+		<td>configuration</td>
+		<td>Allows backup and loading of partition configuration as a ZIP file.
+		Possible arguments:
+		<ul>
+			<li><tt>-backup</tt> - extracts all files stored in
+		the configuration area of the logged in user's partition or the system(default) 
+		configuration files to be stored in a ZIP file.</li>
+			<li><tt>-targetFile <tt>filename</tt></tt> - the target file where the ZIP will be stored.</li>
+			<li><tt>-load</tt> - uploads all configuration files from the ZIP archive.</li>
+			<li><tt>-sourceFile <tt>filename</tt></tt> -  the source file of the ZIP archive.</li>
+			<li><tt>-scope partition|system|all</tt> - the scope for the configuration
+			operation. The default scope is <tt>partition</tt>.</li>
+			<li><tt>-ignoreEmptyFolders</tt> - ignores empty folders for the backup and load operation.</li>
+		</ul></td>		
+	</tr>
+	<tr>
+		<td>daemon</td>
+		<td>Manages a daemon. Valid arguments are:
+		<ul>
+			<li><tt> -ack/-c</tt> - executes a daemon command with
+			acknowledgment.</li>
+			<li><tt> -list/-l</tt> - lists all daemons.</li>
+			<li><tt> -name/-n &lt;arg&gt;</tt> - the name of the daemon.</li>
+			<li><tt> -start/-a</tt> - starts the daemon</li>
+			<li><tt> -status/-s</tt> - shows the daemon state.</li>
+			<li><tt> -stop/-z</tt> - stops the daemon.</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>dashboard</td>
+		<td>Prints Audit Trail Database metrics
+		<ul>
+			<li><tt> -overview, -o</tt> - evaluates some overall indicators
+			(default option).</li>
+			<li><tt> -recovery, -r</tt> - evaluates process recovery related
+			indicators</li>
+         <li><tt>-recovery -showOids</tt> - using option <tt>showOids</tt> in 
+         combination with <tt>recovery</tt> shows a list of process instances 
+         OIDs in place of only the count of process instances</li>
+		</ul>
+		</td>
+	</tr>
+    <tr>
+        <td>delete</td>
+        <td>Deletes a model from the audit trail. Use the following argument:
+        <ul>              
+            <li><tt> -model/-m <tt>modeloid</tt></tt> - 
+            model with OID <tt>modeloid</tt>.</li>
+        </ul>
+    </tr>
+    <tr>
+        <td>deletedepartment</td>
+        <td>Deletes a department. Possible arguments:
+        <ul>              
+            <li><tt> -departmentpath/-dp &lt;arg&gt;</tt> - 
+            path to the department(each department is separated by a '/').</li>
+            <li><tt>-recursive/-r</tt> -
+            if specified, all departments specified in the path will be deleted.
+            By default, it is set to false.</li>           
+            <li><tt>-participantid/-pid &lt;arg&gt;</tt> -id of the 
+            participant(role or organization).</li>
+        </ul>
+    </tr>
+	<tr>
+		<td>deploy</td>
+		<td>Deploys a model. It accepts the arguments:
+		<ul>
+			<li><tt> -comment/-c &lt;arg&gt;</tt> - adds a deployment comment.</li>
+			<li><tt>-deployVersion</tt> - If set the given model will only
+			be deployed if no existing deployment of a model having the same ID
+			and version exists. <br>
+			This option may be used in combination with the <tt>-overwriteVersion</tt>
+			option.</li>
+			<li><tt> -filename/-n &lt;arg&gt;</tt> - the file to be deployed.
+			Also ZIP archives containing a set of XPDL model files are possible.</li>
+			<!--  momentarily doesn't work with the (actual) console
+<li><tt>
+  -id/-i &lt;arg&gt;</tt> - the id of the model to be deployed from the repository. The -id and -filename arguments are mutually exclusive.</LI>
+-->
+			<li><tt> -ignoreWarnings/-w</tt> - if set, a deployment is done
+			even in case of warnings.</li>
+			<li><tt> -overwrite/-o &lt;arg&gt;</tt> - if set, the specified model
+			will be overwritten. Not supported in case the file to be deployed is a 
+			deployment unit archive.</li>
+			<li><tt> -overwriteActive/-a</tt> - if set, the active model
+			will be overwritten. Not supported in case the file to be deployed is a 
+			deployment unit archive.</li>
+			<li><tt> -overwriteVersion</tt> - if set an existing deployment
+			of the model having the same ID and version as the model to be
+			deployed will be overwritten. Not supported in case the file to be deployed is a 
+			deployment unit archive.</li>
+			<li><tt> -partition &lt;ID[,ID]*&gt;</tt> - identifies the
+			partition(s) to operate against. If multiple partitions are
+			specified, model deployment will either be successfully performed
+			against all given partitions or fail completely.</li>
+			<li><tt> -validfrom, -f &lt;arg&gt;</tt> - <strong>Valid from</strong> time of the
+			deployment.</li>
+			<!--  momentarily doesn't work with the (actual) console
+<li><tt>
+  -version, -v &lt;arg&gt;</tt> - repository version of the model to be deployed. Valid only when used together with the -id argument.</LI>
+ -->
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>encrypt</td>
+		<td>Encrypts the password passed and returns the encrypted password 
+		string to the console. Use the following argument:
+		<ul>
+			<li><tt>password &lt;arg&gt;</tt> - the password to be encrypted.</li>
+			<li><tt>passfile &lt;arg&gt;</tt> - If this parameter is set, &lt;arg&gt; 
+			is expected to contain a file path to a file. This file will be 
+			loaded and expected to conatin an encrypted password string 
+			prevoiously created with the command "encrypt -password &lt;arg&gt;" . 
+			This String will be decrypted and then used for authentication. 
+			If the property "-passfile" is used, a "-password" option simultaneously
+			passed will be ignored.</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>engine</td>
+		<td>Flushes all internal caches, effectively returning the engine
+		to a state just like after it has started. Use the following argument:
+		<ul>
+			<li><tt>init</tt> - starts the flushing</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>list</td>
+		<td>Lists the models in the audit trail.
+		<ul>
+			<li><tt> -deployments/-d</tt> - lists deployed model versions.</li>
+			<li><tt> -allVersions/-a</tt> - lists all deployed model versions
+			and their relationships to other models.</li>
+			<li><tt> -model/-m &lt;arg&gt;</tt> - lists the deployment information 
+			for a specific model id.</li>
+			<li><tt> -short/-s</tt> - using this option 
+			results in leaving out detailed information concerning the linking.</li>
+			<li><tt> -verbose/-v</tt> - using this option 
+			shows inactive implementation relations as well.</li>
+		</ul>
+		</td>
+	</tr>
+    <tr>
+        <td>migraterepository</td>
+        <td>Option to specify a batch size to limit the processing to short calls:
+        <ul class="table">
+            <li><tt class="table">-batchSize / -b</tt> - specifies how many
+            resources are processed in one API call. The default value is 500.</li>
+            <li><tt class="table">-timeLimit / -t</tt> - allows setting a time
+            limit in minutes after which the migration is stopped after
+            finishing the current batch. Default for this parameter
+            is 0 which means no time limit is set and the migration process
+            continues until it is complete.</li>
+        </ul>
+        </td>
+    </tr>
+	<tr>
+		<td>modifyuser</td>
+		<td>Modifies a Stardust user. The following arguments may be
+		used:
+		<ul>
+			<li><tt> -account/-a &lt;arg&gt;</tt> - account name of the user.</li>
+			<li><tt> -addgrants/-g &lt;arg&gt;</tt> - grants to be given to the
+			user. Specify as comma separated list of participant IDs. 
+         Department constraints can be given with the format <tt>id@departmentoid</tt>, e.g. 
+         <tt>engineer@33,clerk</tt> or as <tt>id@departmentpath</tt> e.g. 
+         <tt>engineer@root/child,clerk</tt>.
+         Model version constraints can be given with the format <tt>id:modeloid</tt>, e.g.
+			<tt>engineer:47,clerk</tt>.</li>
+			<li><tt> -description/-d &lt;arg&gt;</tt> - an optional description of
+			the user.</li>
+			<li><tt> -email/-e &lt;arg&gt;</tt> - e-mail address of the user.</li>
+			<li><tt> -firstname/-f &lt;arg&gt;</tt> - first name of the user.</li>
+			<li><tt> -lastname/-l &lt;arg&gt;</tt> - last name of the user.</li>
+			<li><tt> -newaccount/-n &lt;arg&gt;</tt> - the new account of the
+			user, in case it should be changed.</li>
+			<li><tt> -password/-p &lt;arg&gt;</tt> - the password of the user.</li>
+			<li><tt>-realm</tt> - identifies the realm to be used for user
+			ID resolution.</li>
+			<li><tt> -removegrants/-r &lt;arg&gt;</tt> - grants to be removed from
+			the user. Specify as comma separated list of participant IDs. Model
+			version constraints can be given with the format <tt>id:modeloid</tt>, e.g.
+			<tt>engineer:47,clerk</tt>.</li>
+			<li><tt> -validfrom/-v &lt;arg&gt;</tt> - <strong>Valid from</strong> time of the
+			user.</li>
+			<li><tt> -validto/-t &lt;arg&gt;</tt> - <strong>Valid to</strong> time of the user.</li>
+		</ul>
+		<p class="note"><strong>Note</strong><br>
+		In case of multi-model environment, 
+		if participant IDs are duplicated in more than one models then 
+		qualified IDs of participants should be supplied despite of their IDs. 
+		Qualified ID is comprised of model ID and participant ID ({modelID}participantID).
+		Administrator role is not bounded with this restriction because 
+		it is merged into a single administrator from all the deployed model.
+		</p>
+		</td>
+	</tr>
+	<tr>
+		<td>preferenceStore</td>
+		<td>command to backup and load preferences as a ZIP file:
+		<ul>
+			<li><tt> -backup -targetFile <tt>targetfile</tt> </tt>
+			- extracts all preferences stored in the PreferenceStore.
+			<ul>
+				<li><tt> -targetFile</tt>
+				 - path to the target ZIP file which will contain the preferences.</li>
+				<li><tt> -limitScope </tt>
+				 - Limits operation to the specified scope. 
+				 The default is all scopes. Available scopes are PARTITION, REALM or USER. <br>
+				 
+				 </li>
+			</ul></li>
+			<li><tt>-limitModuleId </tt> - Limits operation to the specified moduleId. 
+			The default is preferences having any moduleId. 
+			Any one moduleId can be specified. The <tt>*</tt> wildcard can also be used. <br>
+			
+			
+			</li>
+			<li><tt> -load -sourceFile <tt>sourcefile</tt></tt> 
+			- uploads all preferences from the ZIP archive
+			<ul>
+				<li><tt> -sourceFile</tt> 
+				- the ZIP file containing the preferences.</li>	
+			</ul></li> 	
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>realm</td>
+		<td>Creates, drops and lists realms:
+		<ul>
+			<li><tt>-create ID</tt> - creates a new realm with the given ID,
+			if no realm having this ID currently exists. Scope is the partition
+			the user is logged in.</li>
+			<li><tt>-drop ID</tt> - deletes the realm identified by the
+			given ID, if no user associated with this realm exists.</li>
+			<li><tt>-list</tt> - lists all existing realms in scope of the
+			target partition.</li>
+		</ul>
+		</td>
+
+	</tr>
+	<tr>
+		<td>recover</td>
+		<td>Recovers process instances. The following arguments can be
+		used:
+		<ul>
+			<li><tt> -all/-a</tt> - recovers all process instances of the
+			audit trail.</li>
+			<li><tt> -batchSize &lt;arg&gt;</tt> - Performs recovery of process
+			instances in controlled batches. If this option is missing, all
+			qualifying process instances are recovered in one big transaction.<br>
+			Might be used for both full and quick recovery.</li>
+			<li><tt> -max/-m &lt;arg&gt;</tt> - Recovers at most the given number
+			of process instances. Might be used for both full and quick recovery.</li>
+			<li><tt> -processes/-p &lt;arg&gt;</tt> - recovers selected process
+			instances, specified as a comma separated list of OIDs.</li>
+			<li><tt> -quick &lt;arg&gt;</tt> - Performs a quick recovery of the
+			audit trail, which effectively just considers INTERRUPTED process
+			instances.</li>
+			<li><tt> -startedAfter &lt;arg&gt;/-startedBefore &lt;arg&gt;</tt> -
+			Recovers only process instances started after/before the given date.
+			Might be used for both full and quick recovery. The specified date
+			must conforms to ISO date patterns (i.e. "2013-10-01","2013-10-01
+			08:30" or "2013-01-01T08:30:00:000").</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>setPrimaryImplementation</td>
+		<td>Sets the primary implementation. The following arguments
+		are possible:
+		<ul>
+			<li><tt>-interfaceModelOid/-moid &lt;arg&gt;</tt> - model OID of interface.</li>
+			<li><tt>-processId/-ipid &lt;arg&gt;</tt> - process ID</li>
+			<li><tt>-implementationModelId/-imid &lt;arg&gt;</tt> - implementation model ID.</li>
+			<li><tt>-comment/-c &lt;arg&gt;</tt> - adds a comment.</li>
+		</ul>
+		</td>
+	</tr>
+    <tr>
+        <td>unbindeventhandler</td>
+        <td>Provides explicit unbinding of events. Possible arguments:
+        <ul>
+            <li><tt>-handler/-h</tt> - ID of the handler to unbind.</li>
+            <li><tt>-oid</tt> - OID for the instance(Activity or Process) 
+            specified by the type option.</li>
+            <li><tt>-type/-t</tt> - type for which the eventhandler should 
+            unbind from. Valid value are <tt>ai</tt> for an ActivityInstance or <tt>pi</tt> 
+            for a ProcessInstance.</li>        
+        </ul>
+        </td>
+    </tr>
+	<tr>
+		<td>version</td>
+		<td>Returns version information for the Stardust Process engine.
+		Option:
+        <ul>
+            <li><tt>-component &lt;arg&gt;</tt> - specifies which components the 
+            version information should be retrieved for. 
+            Supported components:
+        	<ul>
+            	<li><strong>engine</strong> - retrieves version information for the engine.
+            	Return format: <tt>Stardust engine version: x.x.x.x</tt></li>
+            	<li><strong>client</strong> - retrieves version information for the client 
+            	VM itself.
+            	Returns for example the behavior of the command in earlier Stardust versions.</li>
+            	<li><strong>all</strong> - retrieves version information for engine and client
+            	 components in two separate lines.
+            	Default value to be applied if no option is set.</li>
+        	</ul></li>
+        </ul>
+		</td>
+	</tr>
+</table>
+<p>Please refer to the next chapter for a detailed description of the
+specific commands and options.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

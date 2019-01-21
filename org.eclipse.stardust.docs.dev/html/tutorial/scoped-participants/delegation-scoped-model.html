@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Creating the Model and Organizational Structure</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Delegating the Activity in the Stardust Portal",
+        "delegation-scoped.html","delegation-scoped-portal.html",
+		
+		"../tut-preface.htm","Tutorials",
+		"tut-scoped-main.html","Scoped Participants Tutorials",
+		"delegation-scoped.html","Delegating to a User in Another Target Department");
+ -->
+</script>
+<h1>Creating the Model and Organizational Structure</h1>
+<p>In this chapter we create the example model with its organizational structure and
+the authorization and department settings we need to demonstrate the delegation
+of an activity to another department.</p>
+<p>The following sections guide you through the process:</p>
+<ul>
+	<li><a href="#model">Creating the Model</a></li>
+	<li><a href="#workflow">Creating the Workflow</a></li>
+	<li><a href="#org">Creating the Organizational Structure</a></li>
+    <li><a href="#auth">Setting the Delegation Authorization</a></li>
+</ul>
+<h2 id="model">Creating the Model</h2>
+<p>Create a new model by choosing
+<strong>File &gt; New &gt; Other &gt; Process Manager Wizards &gt; Process Model</strong>
+in the main menu and name it <strong>DemoDelegationModel</strong>. A default process
+definition is created automatically.</p>
+<h2 id="workflow">Creating the Workflow</h2>
+<p>Open the diagram of the default process definition. Create a manual trigger
+by selecting <strong>Lifecycle &gt; Manual Trigger</strong> in the diagram
+toolbar palette. Create two subsequent manual activities
+by selecting <strong>Activities &gt; Manual</strong>. Name the activities <strong>Set Departments</strong>
+and <strong>Delegate</strong> as demonstrated in the following 
+screenshot:</p>
+<p class="image"><img src="images/delegation-activities.png"
+    alt="workflow" /> <br>
+<strong>Figure:</strong> Workflow for the Delegation Use Case</p>
+<p>Please refer to the chapter
+<a href="../support-case/tut-main-4.htm">Adding Activities to Process Definition</a>
+of the <a href="../support-case/support-case-preface.htm">Support Case Example</a> tutorial
+for detailed information on how to add and connect activities in
+a process diagram.</p>
+<h3>Creating and Assigning the Department Data</h3>
+<p>Create a primitive data named <strong>DepartmentData</strong>, 
+which will be used as data path
+for the department defined for the organization.</p>
+<p>Now assign the data as Out-data mapping
+to the activity <strong>Set Departments</strong>. 
+Thus, the department values will be
+determined via this activity.</p>
+<p class="image"><img src="images/delegation-data.png"
+    alt="workflow" /> <br>
+<strong>Figure:</strong> Primitive Data for Department Values</p>
+<p>For information on
+how to create data and set data connections to activities, please refer to the chapter
+<a href="../support-case/tut-main-6.htm">Handling Data in the Process</a> of the 
+<a href="../support-case/support-case-preface.htm">Support Case Example</a> tutorial.</p>
+<h2 id="org">Creating the Organizational Structure</h2>
+<p>Now we create the organizational structure with the participants
+to perform the workflow.</p>
+<ul>
+	<li><a href="#orgDiagram">Creating the Participants</a></li>
+	<li><a href="#performers">Setting Performers of Activities and Trigger</a></li>
+</ul>
+<h3 id="orgDiagram">Creating the Participants</h3>
+<p>In the default model diagram, create the following participants:</p>
+<ul>
+	<li>an organization <strong>NationDivision</strong></li>
+	<li>a role <strong>NationalDirector</strong></li>
+	<li>a role <strong>Engineer</strong></li>
+</ul>
+<p>Via the <strong>Connect</strong> option in the toolbar palette, connect
+the role <strong>NationalDirector</strong> with the organization and 
+choose <strong>Manager Of</strong> to make it the team leader of the organization.
+Also connect the role <strong>Engineer</strong> to the organization, which
+will be automatically be the <strong>Works For</strong> connection. Now the
+organizational structure should look as illustrated in the 
+following screenshot:</p>
+<p class="image"><img src="images/delegation-org.png"
+    alt="Organizational Structure" /> <br>
+<strong>Figure:</strong> The Organizational Structure</p>
+<p>For information on creating and assigning organizations, please refer
+ to the chapter <a href="../../handbooks/modelling/mg-defdesk-10.htm">Modeling the Organizational Structure</a>
+of the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>.</p>
+
+<h4>Setting the department data</h4>
+<p>To set the department data for the organization <strong>NationDivision</strong>:</p>
+<ol>
+	<li>Open the properties page of the <strong>NationDivision</strong>
+		organization.</li>
+	<li>Select <strong>Department Binding</strong>.</li>
+	<li>Enable the checkbox for <strong>Organization support departments</strong>.</li>
+	<li>In the <strong>Department Id</strong> section, select the data
+		<strong>DepartmentData</strong> in the <strong>Data</strong> drop-down list.</li>
+	<li>Click <strong>OK</strong>.</li>
+</ol>
+<p class="image"><img src="images/delegation-property-dep1.png"
+    alt="Department Settings" /> <br>
+<strong>Figure:</strong> Department Settings for NationDivision</p>
+<h3 id="performers">Setting Performers of Activities and Trigger</h3>
+<p>Now we assign the participants as performers of the activities and the manual 
+trigger. To do so:</p>
+<ol>
+	<li>Go back to the process diagram.</li>
+	<li>Assign the <strong>Administrator</strong> role as participant
+	to the manual trigger by opening the properties page and
+	choosing <strong>Administrator</strong> in the <strong>Participants</strong>
+	part.
+	<p class="image"><img src="images/delegation-assign-trigger.png"
+    alt="Assign Manual Trigger"></p></li>
+	<li>In the same way assign the <strong>Administrator</strong> role as participant
+	of the activity <strong>Set Departments</strong>.</li>
+	<li>Drag the <strong>NationalDirector</strong> role from the Outline
+	view to the diagram and connect it
+	with the <strong>Delegate</strong> activity to make it the
+	performer of this activity.
+	<p class="image"><img src="images/delegation-assign-director.png"
+    alt="Assign National Director" /></p></li>
+</ol>
+
+<h2 id="auth">Setting the Delegation Authorization</h2>
+<p>Now we give the organization <strong>NationDivision</strong> the
+permission to delegate the activity <strong>Delegate</strong>
+to other departments.
+An entitlement <strong>Delegation to other departments</strong> is provided,
+that allows the user to delegate work from one department to another.
+To add this authorization to the activity, perform the following steps:</p>
+<ol>
+	<li>Open the properties page of the <strong>Delegate</strong> activity.</li>
+	<li>Select <strong>Authorization</strong> in the left pane.</li>
+	<li>Choose <strong>Delegation to other departments</strong>
+	in the <strong>Permission</strong> list.</li>
+	<li>In the <strong>Participant</strong> section enable the 
+	<strong>NationDivision</strong> additionally to
+	the preselected <strong>Administrator</strong>.</li>
+</ol>
+<p class="image"><img src="images/delegation-set-auth.png"
+    alt="Assign National Director" /> <br>
+<strong>Figure:</strong> Authorization Settings</p>
+<p>As authorization settings are inherited to organizations and roles underneath the 
+organizational tree,
+also the role <strong>NationalDirector</strong> gets this grant and is
+authorized to delegate the activity to other departments.</p>
+<p>Please refer to the chapter <a href="../../handbooks/modelling/property-page-authorization.html">
+Authorization</a> of the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide</a>
+for detailed information about declarative authorization settings.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

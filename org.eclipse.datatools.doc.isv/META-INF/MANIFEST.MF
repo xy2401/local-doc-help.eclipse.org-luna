@@ -1,0 +1,423 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Bundle-Vendor: Eclipse Data Tools Platform
+Bundle-Localization: plugin
+Bundle-Name: Data Tools Documentation Plug-in
+Bundle-SymbolicName: org.eclipse.datatools.doc.isv; singleton:=true
+Require-Bundle: org.eclipse.help
+Created-By: 1.6.0-b105 (Sun Microsystems Inc.)
+Bundle-Version: 1.12.0.v201403111158
+Bundle-ManifestVersion: 2
+
+Name: projects/dtp/dtp/en/source/c_test_dynamic_context-sensitive_help
+ .html
+SHA1-Digest: VyUujKrSEcxSuRmr/574oeAcRO8=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ esult_resultListener.html
+SHA1-Digest: uQ1XGscPXKTkw5Nv9ZdtRfMHeCI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_consumer_driverBridge.html
+SHA1-Digest: 6x1YCEICac/1M7RwGXq/mjBTJVA=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_metaDataExtension.html
+SHA1-Digest: GpAztqm5JnizJzXUprcL6A2rspY=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_e
+ ditor_core_ui_dbUIConfigurations.html
+SHA1-Digest: DTwObr5agTX9MsH1v4iTkL3S7bc=
+
+Name: projects/dtp/dtp/en/source/c_plugin_spy.html
+SHA1-Digest: LJnFef7/V7bKT0Ncv6JKuCrM2Ts=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_labelService.html
+SHA1-Digest: WyqaWrhNBSNeXZR/m25N1/rA9Jc=
+
+Name: projects/dtp/dtp/en/source/c_development_team_responsibilities.h
+ tml
+SHA1-Digest: fTRuyv+Pf23b/Z4W2itfGQvCKrQ=
+
+Name: projects/dtp/dtp/en/source/c_debug_mode.html
+SHA1-Digest: EiVevEa07cxhysdK0JV78xgs08o=
+
+Name: projects/dtp/dtp/en/source/c_test_objectives.html
+SHA1-Digest: 7ro5HQTj9OlYm1yBLSVGg2S4tmA=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_creationInfoProvider.html
+SHA1-Digest: //0wKINJbdvCiErlIRUwXVHu2/g=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_p
+ arsers_sql_query_vendorExtension.html
+SHA1-Digest: haXBr8GtjjNkRivOxOHBqTwEuGg=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_logicalContainment.html
+SHA1-Digest: TFpiUuGq7RH/31MfvfoFnuaonIs=
+
+Name: projects/dtp/dtp/en/source/c_csh_plugins_with_dita.html
+SHA1-Digest: e4MYeaX7oT3eQ6wyMA5dXDmTT88=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ ql_ui_sqlNodesImage.html
+SHA1-Digest: 0+v/A7bvCVngRdf2in+zcACSBGA=
+
+Name: projects/dtp/dtp/en/source/c_related_topics_associated_with_help
+ _contexts.html
+SHA1-Digest: 9qc1TxTnPeMesLTKjmD/e0FFosM=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_design_ui_dataSource.html
+SHA1-Digest: rJblJRrDDvQ3ROmWwqTs8SyGiGI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_profile_profileStore.html
+SHA1-Digest: H9oG9ZvZ7xsekpoZZaMkjxD0KFA=
+
+Name: projects/dtp/dtp/en/source/c_csh_ua_plugins.html
+SHA1-Digest: 5QKmxqpXUD7FL4Qt4ITeqnzy7zU=
+
+Name: projects/dtp/dtp/en/source/c_test_procedures.html
+SHA1-Digest: YHsd8+kONHFFVarIPmFekN3S3pk=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ebugger_core_sourceLocatorProvider.html
+SHA1-Digest: iubFcZHQTBqsGemJ+8yzVaKDADQ=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_dynamicResultSet.html
+SHA1-Digest: u6U/S06XV+IumD+KlAYDSQSBr74=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ProfileManagerInitializationProvider.html
+SHA1-Digest: kegLAaiLsAuDhhtVCNaTQwm2rV0=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ui_driverUIContributor.html
+SHA1-Digest: xTlqD0TwpK6IV6FVLeYqqCkLccc=
+
+Name: projects/dtp/dtp/en/source/c_documentation_team_workflow.html
+SHA1-Digest: Mqhudel3qLCS/G+bNFfBpTRQv/M=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_databaseRecognition.html
+SHA1-Digest: tUKLZOsooQeMmlmrbhPaNIeAIIU=
+
+Name: projects/dtp/dtp/en/source/c_context_specific_help_content.html
+SHA1-Digest: VWNSJYJaVn4PA4+e0fp6wtskXA8=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_connectionProfile.html
+SHA1-Digest: Ky7FouTV7NdqC6VaviiTsWdhfpQ=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ chemaobjecteditor_ui_pages_introductionPage.html
+SHA1-Digest: 9aahTANY7LNZZ5pJa/83pllyfC8=
+
+Name: projects/dtp/dtp/en/source/c_ui_plugins_associated_with_help_con
+ texts.html
+SHA1-Digest: r/6QlwRPuw3PNo4Y8yIES+QbH80=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ outineeditor_ui_documentprovider.html
+SHA1-Digest: +v4Ecb8hrJQNiyppyeitB7XTXvo=
+
+Name: html/reference/extension-points/org_eclipse_datatools_modelbase_
+ sql_query_sourceWriterExtension.html
+SHA1-Digest: 38N6pX7HeEdtglmBpyOK9wyLFH0=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ata_ui_externalTableDataEditor.html
+SHA1-Digest: A0p4bMlYQen6TOIkQ26XtSfjyq4=
+
+Name: projects/dtp/dtp/en/images/dtp_csh_runtime_interaction.jpg
+SHA1-Digest: KtV++gWKw/uZ9CSPfCyf+XK82U8=
+
+Name: projects/dtp/dtp/en/source/c_dynamic_csh.html
+SHA1-Digest: 8d1qhKBRR/5nP3liZ+8wCCktMJc=
+
+Name: html/reference/extension-points/org_eclipse_datatools_modelbase_
+ sql_sqlObjectNameHelper.html
+SHA1-Digest: PaKcIVCOyJ33VMcsygUR2I1uDs8=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ui_addConnectListener.html
+SHA1-Digest: 88n25tZN2GwHXcVFOpO15dP1xBU=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ esult_ui_parameterViewer.html
+SHA1-Digest: FHkUkIFH5TlNx370E7zothLCArw=
+
+Name: projects/dtp/dtp/en/source/c_help_context_abstraction.html
+SHA1-Digest: gmz4uTH3znoUBHszzcNsBCyshqI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_enablement
+ _sybase_ase_additionalcontroller.html
+SHA1-Digest: SnwKQvWmBlt8tTy4cDUiQDH//Ww=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ qleditor_texthover.html
+SHA1-Digest: RGceEVSC8JqoiQpvHHjxo6viK+Q=
+
+Name: projects/dtp/dtp/en/source/c_dtp_help_helper.html
+SHA1-Digest: bA6GJMsdYla7Pf8KKlhrxc5jSdw=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_validConnectionHandler.html
+SHA1-Digest: Ba0Vj7sbI8PY+wgAdbCQKlzNXx8=
+
+Name: projects/dtp/dtp/en/images/Thumbs.db
+SHA1-Digest: oIap6vtYOHBitMBrlk42dyzRvJI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_cipherProvider.html
+SHA1-Digest: 650OrnelSLWVN/ulm2acZuifqno=
+
+Name: about.html
+SHA1-Digest: r/s6prl5ufhQJKsXROXOvPLnzhM=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_databaseDefinition.html
+SHA1-Digest: N2p24IE9lH82V/zhPzt0WKcQIPY=
+
+Name: html/reference/extension-points/org_eclipse_datatools_enablement
+ _sybase_deltaDdlGenProvider.html
+SHA1-Digest: PZZ1R1Hc1GmW6pU10u17wnM3fR8=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ddlParser.html
+SHA1-Digest: fCt3dPQwUl8WPis6unwfyZVuxYo=
+
+Name: projects/dtp/dtp/en/source/c_helpkey_properties_files_extension.
+ html
+SHA1-Digest: QMLFkFnc/4kpl1NVuiC0VTwCHm0=
+
+Name: toc.xml
+SHA1-Digest: F0YAk597MWROp9jnwe6uwn2IDJI=
+
+Name: connectivity.package.properties
+SHA1-Digest: 6gZ/lGPF2VJ8lInU2wavv7cr1AU=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ qlscrapbook_dbdeffilter.html
+SHA1-Digest: DLChhvsk+LnKN97VBeZZgtOMFgU=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ esult_reExecuteScript.html
+SHA1-Digest: 8iP82b0fXsGYOyTxfzmuJUXvBf0=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ata_ui_externalTableDataLoad.html
+SHA1-Digest: PuUJ7DwRIR2TrQ9f0K/02fliSMM=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_c
+ ommon_ui_preferenceSections.html
+SHA1-Digest: /4L8tcQcxGpjl1mLd/ObeZ+b3mA=
+
+Name: projects/dtp/dtp/en/images/dtp_cs_content.jpg
+SHA1-Digest: YjvgvwvzZlACiKiQ9i4rXdX9YWk=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ esult_ui_resultSetViewer.html
+SHA1-Digest: RIyNI93D6urL2sgHH9XuANzI5XM=
+
+Name: enablement.package.properties
+SHA1-Digest: c6vFVrM3mz1lXJWcggVn2syoWkQ=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_consumer_propertyProvider.html
+SHA1-Digest: 0MJfjI5wJA231aC/B/zgpI6m/QI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_filterInformation.html
+SHA1-Digest: kuTBoq/8VQHYKf3O+6Tg92WBkJ0=
+
+Name: projects/dtp/dtp/en/source/c_help_context_ids.html
+SHA1-Digest: I2vyaBOLDYM7BmVmkWc8sMic9eg=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ddlGeneration.html
+SHA1-Digest: uSHujX5bVq82ucQ/sEZCN9iDFY8=
+
+Name: projects/dtp/dtp/en/source/c_help_search_expressions.html
+SHA1-Digest: Ba01i12SLCg5DlDefRKQWOJs7Rs=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ outineeditor_launchConfigurationTypes.html
+SHA1-Digest: 45t4uRB/+2CgzeOAY5Ucyz0hB50=
+
+Name: sqltools.package.properties
+SHA1-Digest: 1VNX7kP1BAU4h9iSOnlt9B7FoRQ=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_t
+ abledataeditor_externalRunQuery.html
+SHA1-Digest: oJ2LXUoXoV0lBZ//zrQCz+u+3yc=
+
+Name: projects/dtp/dtp/en/source/c_csh_ui_implementation.html
+SHA1-Digest: Os7PNMQmaAy0FuPFxv+pJPyjrpQ=
+
+Name: projects/dtp/dtp/en/images/dtp_csh_abstraction_layer.jpg
+SHA1-Digest: j7t6u3IB9AWEQMTyE5b2fG0mBJw=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: projects/dtp/dtp/en/source/c_help_keys.html
+SHA1-Digest: rAucsvZ2AmrAmnskkyGzExGY0yk=
+
+Name: projects/dtp/dtp/en/source/c_team_responsibilities_and_collabora
+ tion.html
+SHA1-Digest: dMIJRKejvtQMnTcW6WS/rPg8QAs=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_dataModelElementFactory.html
+SHA1-Digest: Ad9BnDeRPAz8CFukOTwvQt1jNiI=
+
+Name: tocreference.xml
+SHA1-Digest: c7CuXOIGFEDMmRkkuF/a5KnZ8pg=
+
+Name: dtp_help_helper_doc.xml
+SHA1-Digest: voMMbBG98A93Px7KJhtfx0Mh79w=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_oda_dataSource.html
+SHA1-Digest: fqSXgLalmfasESrU+VXHfWR3U4Y=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ata_ui_externalTableDataExtract.html
+SHA1-Digest: O6wQJdnaIx7qEoto+d1rrlNMYRw=
+
+Name: projects/dtp/dtp/en/source/c_helpkey_constants_interface_class.h
+ tml
+SHA1-Digest: 9HNv8mfUFve5FSf9vWqCyyDb2pI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_r
+ esult_resultSetOutputter.html
+SHA1-Digest: 8XEXKLvcyCV8pM/6iOm19k+APuU=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ui_connectionExceptionHandler.html
+SHA1-Digest: tOtcBrDK09C6TgTT2j57snHRDtk=
+
+Name: projects/dtp/dtp/en/source/c_helpkey_properties_file_names.html
+SHA1-Digest: PCom44ypG37JnlC1FFwbRMsaFzw=
+
+Name: projects/dtp/dtp/en/source/c_csh_plugin_ids.html
+SHA1-Digest: JKAvgx9lbKilNqe8+IqhSlOi4pc=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_sorterValidatorProvider.html
+SHA1-Digest: 53MR/33pJtAJdlu6SqGvAY+T52Q=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ata_core_tableEditorResultFilter.html
+SHA1-Digest: m6w4qVienQn1BOJQouDGEK4tqd0=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_sqlexceptionHandler.html
+SHA1-Digest: WJoziJC4QYawUXh5FLVQJl3Xx/g=
+
+Name: modelbase.package.properties
+SHA1-Digest: ygrYCjQNaAVJ5df25/ewm5R+sWs=
+
+Name: projects/dtp/dtp/en/source/c_overview_of_dtp_help_helper_plugin.
+ html
+SHA1-Digest: kc/O4LLbsTYrKOk8JGoO7ZFsXK4=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_mappings.html
+SHA1-Digest: d+XR6aamcF5njgl15SxK0UaWjBE=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_e
+ ditor_core_dbConfigurations.html
+SHA1-Digest: vgbtDaO6NIYcrVrxqT898/A6IeQ=
+
+Name: plugin.xml
+SHA1-Digest: urO7bsGOhPTfVDWAAp3e3ie0wj0=
+
+Name: projects/dtp/dtp/en/source/c_dialog_implementation_example.html
+SHA1-Digest: PiQyB6FBnv6pbF9yzSkyMbF3wVQ=
+
+Name: projects/dtp/dtp/en/source/c_static_vs_dynamic_help_contexts.htm
+ l
+SHA1-Digest: TxRNH8TNSRkYIS9h/ZAGrGMp3/s=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_p
+ lan_planService.html
+SHA1-Digest: unXGCvD9A6CW20NbN9sctoLcJlw=
+
+Name: projects/dtp/dtp/en/source/c_documentation_team_responsibilities
+ .html
+SHA1-Digest: KJKQ8GE/Fq26nMB9DM7PTcx5XIw=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_markerNavigationProvider.html
+SHA1-Digest: Q2A3Db82r7hii52gCTNYVkYXAIY=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_elementID.html
+SHA1-Digest: Uv5DGLrs2/7PsXPKqvXkydcqvDE=
+
+Name: html/reference/extension-points/org_eclipse_datatools_help_helpK
+ eyProperties.html
+SHA1-Digest: +jqZTPfQBaoRght6RTemc9q5qNY=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ui_connectionProfileImage.html
+SHA1-Digest: TcyDZuA6hSuH1tQegqzErkQSyVM=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ qleditor_sourceViewerConfiguration.html
+SHA1-Digest: 614ITA79oyniIaYS7qRk5nul1xo=
+
+Name: projects/dtp/dtp/en/source/c_eclipse_context_xml_files_extension
+ .html
+SHA1-Digest: QZF0aALtBn/CgWycYIM8MkokQWs=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ qleditor_actionExtensions.html
+SHA1-Digest: P7adw1xhKos5tLwLpeVmcsGcaOM=
+
+Name: projects/dtp/dtp/en/source/c_helpkey_properties_files.html
+SHA1-Digest: F6EytysvLt++lh9qPmwJ+2hsw7U=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_d
+ ata_core_columnDataAccessors.html
+SHA1-Digest: i1EC458KGJ/iM/dnBFfFEleRHFU=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_driverExtension.html
+SHA1-Digest: Qq97P3YwQ7Z+5pp0UHHunucddsI=
+
+Name: projects/dtp/dtp/en/source/c_context_provider_delegate.html
+SHA1-Digest: xd1DGsnb8H+dR+T0lSgGuba7lJ8=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_ui_addObjectProvider.html
+SHA1-Digest: 9tWEF2p9OxPemQptV7G90pRqqN0=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_ui_driverPropertyEditor.html
+SHA1-Digest: eCLk58ZbdGWfJcvZ3eFjxSM++T4=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_e
+ ditor_core_SQLBuilderUIComponentService.html
+SHA1-Digest: DIOpQF9OXZIfz9wU6Mq0FZsBtYI=
+
+Name: html/reference/extension-points/org_eclipse_datatools_sqltools_s
+ chemaobjecteditor_ui_schemaObjectEditor.html
+SHA1-Digest: mSvhMXooaLD94sezaxAmTpCB9+o=
+
+Name: projects/dtp/dtp/en/source/c_introduction_to_csh.html
+SHA1-Digest: XkqVR89VAHehR8p1xOZIOdS1eXs=
+
+Name: projects/dtp/dtp/en/source/c_view_implementation_example.html
+SHA1-Digest: TE5Qxq6rprfhMi8IDd4BuXXzjYA=
+
+Name: html/reference/extension-points/org_eclipse_datatools_connectivi
+ ty_sqm_core_catalog.html
+SHA1-Digest: kc3rjjGCf7bh4Mu+LI+trdn9mT0=
+

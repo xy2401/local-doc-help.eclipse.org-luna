@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css">
+<title>API Visibility of Transient Workflow Objects</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Filter Criteria",
+        "pg-embed-objects.html","pg-embed-filter.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+   <h1>API Visibility of Transient Workflow Objects</h1>
+   <p>This chapter describes the visibility of transient workflow objects in
+   queries and Stardust service methods.</p>
+   <ul>
+      <li><a href="#userservice">UserService</a></li>
+      <li><a href="#queryservice">QueryService</a></li>
+      <li><a href="#workflowservice">WorkflowService
+      and AdministrationService</a></li>
+      <li><a href="#recovery">Recovery</a></li>
+      <li><a href="#archiver">Reporting and
+      Archiver</a></li>
+   </ul>
+   <h2 id="userservice">UserService</h2>
+   <p>
+      Regardless of whether a process instance is <tt>transient</tt> or not it is
+      not recommended to modify a user involved in a currently running process
+      instance, since in these cases the outcome is undefined. Apart from that,
+      <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserService.html">UserService</a>
+      operations are not affected by transient process execution.
+   </p>
+   <h2 id="queryservice">QueryService</h2>
+   <p>
+      All 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+ methods operate against the persisted
+      Audit Trail Database exclusively. Hence any <tt>transient</tt> process
+      instances or running <tt>deferred</tt> processes do not influence any
+      Query Service method results. <tt>Transient</tt> processes never
+      change any query results, even after their completion.
+   </p>
+   <h2 id="workflowservice">WorkflowService
+      and AdministrationService</h2>
+   <p>
+      Retrieving a process instance or its related data via API, e.g. via
+      <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a> 
+      or
+      <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>,
+      always
+      returns a snapshot of the currently executed process instance. After
+      completion it is completely gone, unless its <tt>deferred</tt>). Since a
+      transient process instance by definition is executed without waiting in a
+      defined state, e.g. a suspended activity instance, there is no means to
+      modify the process instance's state safely. If not using transient processes,
+      to perform a safe modification you had to first determine the current state
+      and afterwards modify based on the retrieved state. In case of transient 
+      processes as soon as the state has been retrieved it might have already 
+      changed. Therefore any outcome of modifying operations is undefined.
+   </p>
+   <p>
+      Please note that during execution <tt>transient</tt> as well as <tt>deferred</tt>
+      process instances are completely invisible, if the property
+      <tt>Carnot.Engine.Tuning.TransientProcesses.ExposeInMemStorage</tt>
+      is set to <tt>false </tt>. By default this property is <tt>true</tt>. For
+      details on this property refer to section 
+      <a href="../../operation/properties/ag-appendix-properties-2.htm#tuning">Tuning</a>
+      of chapter
+      <a href="../../operation/properties/ag-appendix-properties-2.htm">
+      Server Side Properties</a>.
+   </p>
+   <h2 id="recovery">Recovery</h2>
+   <p>
+      During transient process instance execution recovery is unable to find <tt>transient</tt>
+      or <tt>deferred</tt> process instances, since they are invisible for
+      queries triggered by recovery. However, transient process execution
+      detects whenever a process instance needs to be recovered. In these cases
+      transient process instance execution for the process instances in question
+      is canceled and they are written to the database. From then on the
+      ordinary recovery mechanism may be applied.
+   </p>
+   <h2 id="archiver">Reporting and
+      Archiver</h2>
+   <p>
+      These operations are working directly on the Audit Trail database. Hence,
+      <tt>transient</tt> process instances are completely invisible, <tt>deferred</tt>
+      ones are not visible until they are written to the database.
+   </p>
+   <script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

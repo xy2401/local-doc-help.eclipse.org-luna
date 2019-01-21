@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Transient Processes</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+   title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"audit-trail-persist-modes.html","",
+		"../key-concepts.html","Concepts",
+	    "audit-trail-persist.html","Audit Trail Persistence");
+ -->
+</script>
+<h1>Transient Processes</h1>
+<p>Process run information about all activity instances and process data values 
+that are part of a business process instance is stored in the Audit Trail.
+There are situations in which this detailed information is not necessarily needed 
+for all process types.
+Pure BPM-driven solutions are mainly requiring a full and detailed Audit Trail 
+on an abstract level or business view.
+There are also many use cases in which Stardust is used more as a routing 
+and transformation engine, whereas the persistence of all process run 
+information is even less important. For these use cases the performance 
+like latency or throughput is more critical. To reduce the amount of data 
+stored in the database and increase the overall runtime performance of the engine,
+Stardust provides the option to use transient processes.</p>  
+<ul>
+      <li><a href="#profit">Performance Enhancements by using Transient Processes</a></li>
+      <li><a href="#transient">Using Transient Processes</a></li>
+      <li><a href="#platforms">Platforms supported for Transient
+            Processing</a></li>
+      <li><a href="#api">Visibility of Transient Workflow Objects in API</a></li>
+      <li><a href="#usecase">Use Case - Executing A Transient Process
+            Instance</a></li>
+</ul>
+<h2 id="profit">Performance Enhancements by using Transient Processes</h2>
+<p>Transient processes keep instances of the process in-memory only during the
+course of execution. No audit trail is persisted at all during or after the
+execution of the process instance. The corresponding objects are created during 
+process execution and are available in the context of the activity threads 
+running for that process instance.</p>
+<p>Almost no remote calls to the database and no persisting of data is
+ necessary, thus transient processes are executed faster and with lower latency.
+<p>If there is system downtime during process 
+execution, the instances of a transient process do not leave a trace in the audit trail.
+However in case of unhandled faults, the information is written to the audit trail.</p> 
+<p>To summarize, using project transient processes provides the following 
+performance enhancements:</p>
+<ul>
+   <li>Almost no remote calls to the database are necessary</li>
+   <li>Reduced amount of data stored in the database (no audit-trail data needs 
+   to be persisted)</li>
+   <li>Significant improvement of through-put</li>
+   <li>Optimization for low latency</li>
+</ul>
+   <p>There is almost no contention like Java synchronization or database locks,
+   when running transient process instances due to:</p>
+   <ul>
+      <li>serial execution of process instance graphs (for a
+   particular root process instance including all synchronous subprocess
+   instances at most one activity thread is being executed)</li>
+<li>transience of process instances, i.e. no database operations during
+   process execution are needed</li>
+   </ul>
+   
+   <h2 id="transient">Using Transient Processes</h2>
+   <p>The process run information of transient processes is only kept in an internal
+      in-memory storage, e.g. Hazelcast, during execution of the process
+      instance and will be discarded when the process instance is completed.</p>
+   <ul>
+      <li><a href="#serial">Serialization of activity threads</a></li>
+      <li><a href="#require">Mandatory Requirements for Transient
+            Processing</a></li>
+      <li><a href="#req">Further Requirements and Restrictions</a></li>
+      <li><a href="#applex">Behavior in case of Application Exceptions</a></li>
+      <li><a href="#tppull">Pull events are ignored for Transient Process Instance Execution</a></li>
+   </ul>
+<p>For details on how to use transient processes refer to chapter
+<a href="../../handbooks/operation/tuning/tuning-transient-proc.html">
+Tuning for low Latency and high Throughput</a> in the
+<a href="../../handbooks/operation/ag-preface.htm">Operation Guide</a>.</p>
+   <h3 id="serial">Serialization of activity threads</h3>
+   <p>
+      In usual processing of process instances several activity threads can be
+      running in parallel in the scope of one process hierarchy. This is
+      typically the case if several parallel transitions originate from one
+      gateway of type
+      <tt>AND</tt>
+      -split. This could result in a very large number of parallel running threads. 
+   To avoid such a possible overhead, all activity threads in a transient process instance are
+      executed sequentially. As in the normal (persistence
+      <tt>Immediate</tt>
+      ) case, the first transition modeled for that
+      <tt>AND</tt>
+      split will be executed first and in the same transaction. All other
+      activity threads will be invoked via Messaging. The corresponding messages
+      will be processed:
+   </p>
+   <ul>
+      <li>sequentially</li>
+      <li>in separate transactions against the transient process cache</li>
+      <li>without any guaranteed order</li>
+   </ul>
+   <h3 id="require">Mandatory Requirements for Transient Processing</h3>
+   <p>
+      Due to technical restrictions, several events can occur during the
+      lifetime of a process instance that are incompatible with transient
+      processing. These events will force the engine to persist the audit trail
+      for this process instance in order to avoid permanent loss of data. This
+      is the case when the process instance cannot be further processed without
+      asynchronous actions of an external party, e.g. a participant or external
+      system. An example for such a required interaction is the processing of an
+      interactive activity or the triggering of a recovery. The current state of
+      the process instance audit trail will be persisted and any subsequent
+      processing of the process instance will be done in persistence mode <strong>Immediate</strong>
+      for the following cases:
+   </p>
+   <ul>
+      <li>If a process instance is in state <strong>Interrupted</strong>,
+         e.g. due to an exception being thrown, audit trail of execution up to
+         this point will be persisted. A recovery will restart the process
+         instance.</li>
+      <!--<li>If an activity thread rolls back due to an uncaught <strong>RuntimeException</strong>
+         and there are other activity threads already completed, e.g. committed
+         against the internal cache, a recovery will
+         restart the process instance as persisted.</li>-->
+      <li>Invocation of an interactive activity (to be persisted in state <strong>Suspended</strong>)</li>
+      <li>Invocation of a JMS Response (or JMS Request/Response) activity
+         (to be persisted in state <strong>Hibernated</strong>)</li>
+      <li>Invocation of a mail application using HTTP callback (to be
+         persisted in state <strong>Hibernated</strong>)</li>
+      <li>Hibernation of a non-interactive activity (typically via an event
+         action or the <strong>Hibernate Initially</strong> flag being set for
+         that activity)</li>
+      <li>Aborting a transient process instance (regardless of reason or
+         entry point triggering the abort)</li>
+   </ul>
+   <p class="note">
+      <strong>Note</strong><br> Currently, asynchronous subprocesses are
+      not supported for transient processing. Whenever the workflow of a
+      transient or deferred process instance reaches a subprocess activity that
+      invokes an asynchronous sub-process or an activity having an event action 
+      triggering a subprocess, the audit trail persistence is set to
+      <strong>Immediate</strong> for both the parent as well as the sub-process.
+   </p>
+<p>Whenever a process instance changes persistence mode from <strong>Transient</strong>
+      to <strong>Immediate</strong> or <strong>Deferred</strong> for one of the
+      reasons listed above, this change in persistence mode will propagate and
+      be applied to the entire process hierarchy from that point of execution
+      onwards.</p>
+<!--   <h3 id="progag">Propagation of Persistence to Super-Processes</h3>
+   <p>
+      Whenever a process instance changes persistence mode from <strong>Transient</strong>
+      to <strong>Immediate</strong> or <strong>Deferred</strong> for one of the
+      reasons listed above, this change in persistence mode will propagate and
+      be applied to the entire process hierarchy from that point of execution
+      onwards. Thus, if any sub-process changes persistence mode in the
+      following direction:
+   </p>
+   <dl>
+      <dd>
+         <strong>Transient &gt; Deferred &gt; Immediate</strong>
+      </dd>
+   </dl>
+   <p>all super-processes will change their persistence mode in the same
+      way.</p>-->
+<h3 id="req">Further Requirements and Restrictions</h3>
+   <ul>
+      <li><strong>Process Definition Control Flow</strong> - there are no
+      restrictions on using control flow
+         - splits, joins and loops are supported.</li>
+      <li><strong>Supported process definition activities</strong> -
+         process definitions tagged as being transient can only be executed
+         transiently if the control flow does not contain activities that cannot
+         be completed in the current activity thread (e.g. interactive
+         activities or asynchronous application activities).</li>
+      <li><strong>Process instance queries</strong> - 
+         queries cannot be performed on transient process instances 
+         via the 
+   <a href="../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">
+   QueryService</a> unless they are interrupted and therefore persisted.</li>
+      <li><strong>Transient and non-transient process instances</strong> -
+         a process instance hierarchy is either transient or non-transient.
+         It is not possible to have transient and non-transient process instances
+         within the same process instance hierarchy. The determining process
+         instance is the root process instance:
+         <ul>
+            <li>if it is transient, all subprocesses are transient</li>
+            <li>if it is non-transient, all subprocesses are
+            non-transient</li>
+         </ul></li>
+      <li><strong>Distributed object provider</strong> - the usage of transient
+      processes is only available with an appropriate distributed object
+         provider. Currently the only provider Stardust offers is Hazelcast.
+      </li>
+      <li><strong>Sequence-based databases</strong> - The Transient Process
+         Instance functionality is only available if the database supports
+         sequences.</li>
+      <li><strong>External synchronization</strong> - The transient process
+         instance must not initiate user, user group or department
+         synchronization with an external system.</li>
+      <li><strong>Spawning and cases</strong> - as there is no valid use case
+         for spawning processes or Case processes with transient processes,
+         they are not supported for transient processes.</li>
+      <li><strong>Notes</strong> - as there is no user interaction after
+         transient process instance start, attaching
+         Notes is not supported for transient processes.</li>
+      <li><strong>Criticality</strong> - as long as the process instance is
+         executed transiently its criticality is always the lowest possible
+         value.</li>
+   </ul>
+<h3 id="applex">Behavior in case of Application Exceptions</h3>
+<p>In case the property 
+<strong>Carnot.Engine.ErrorHandling.ApplicationExceptionPropagation</strong>
+is set to value <tt>always</tt> and an 
+<strong>ApplicationException</strong> occurs, the whole transient 
+process instance graph is purged from the in-memory storage and written to the 
+audit trail database such that a subsequent recovery action may recover the 
+process instance. This also applies if the property is set to <tt>onRollback</tt>
+and an activity thread rolls back due to an uncaught
+exception and there are other activity threads already 
+completed, e.g. committed against the internal cache.</p>
+<h3 id="tppull">Pull events are ignored for Transient Process Instance Execution</h3>
+<p>As long as a process instance is executed transiently, pull events, i.e. 
+events triggered by the event daemon, are not processed. Instead a warning is 
+logged whenever a transient process instance having a pull trigger event bound 
+is written to the in-memory storage. This can be the case for example if its
+transaction is committed. The according log message looks as follows:</p>
+<pre>Event binding 'Event binding [oid = 1, type = 2, model oid = 2, object oid = 1, handler oid = 2]' applies to a transient process instance and will therefore not be processed by the event daemon.</pre> 
+<h2 id="platforms">Platforms supported for Transient Processing</h2>
+   <p>
+      Note that the usage of any audit trail storage mode other than <strong>Immediate</strong>
+      requires a second level cache configured in the runtime, e.g. Hazelcast.
+      Currently, the following platforms are covered:
+   </p>
+   <ul>
+      <li><strong>Application Servers:</strong>
+         <ul>
+            <li>Tomcat 7</li>
+            <li>WebSphere 8</li>
+            <li>WebLogic 10.3.3</li>
+         </ul>
+      </li>
+      <li><strong>Databases</strong>
+         <ul>
+            <li>MySQL 5.1</li>
+            <li>Oracle</li>
+            <li>DB2 (main test platform 9.7)</li>
+         </ul>
+      </li>
+   </ul>
+<h2 id="api">Visibility of Transient Workflow Objects in API</h2>
+<h3>Retrieving a Transient Process Instance via API</h3>
+<p>Retrieving a process instance or its related data via the 
+<a href="../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+or the 
+<a href="../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+will always return a snapshot of the currently executed process instance. After completion the
+snapshot is completely gone (unless its deferred). Since a transient process 
+instance by definition is executed without waiting in a defined state, e.g. a 
+suspended activity instance, there are no means to modify the state of the 
+process instance safely. In general, to perform a safe modification you have to first 
+determine the current state and afterwards modify it based on the retrieved state.
+However in case of transient processes as soon as the state has been retrieved 
+it might have already changed. Therefore the outcome of any modifying operations
+is undefined.</p>
+<h3>Query Results</h3>
+<p>All 
+<a href="../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+methods operate against the persisted Audit Trail database exclusively. 
+Hence any transient process instances do not influence any QueryService method 
+results. Transient processes will never change any query results, even after 
+their completion.</p>
+   <h2 id="usecase">Use Case - Executing A Transient Process Instance</h2>
+   <p>This use case describes the execution of a transient process instance,
+      for example a process instance that executes without leaving a trace in
+      the database.</p>
+   <h3>Precondition</h3>
+   <p>The precondition for this use case is one of the following:</p>
+   <ul>
+      <li>the process definition in question needs to be modeled to support
+         transient process execution and transient process execution is not
+         disabled globally, or</li>
+      <li>the process definition in question needs to be modeled to support 
+      transient process execution and the execution of transient processes is 
+      defined globally</li>
+   </ul>
+   <h3>Postcondition</h3>
+   <p>The transient process instance has been completed without leaving a
+      trace in the database.</p>
+   <h3>Basic Flow of Events</h3>
+   <p></p>
+   <ul>
+      <li>The user starts a new transient process instance.</li>
+      <li>The system executes the process instance.</li>
+      <li>The system completes the process instance.</li>
+   </ul>
+   <h3>Alternative Flow of Events</h3>
+   <p></p>
+   <ol>
+      <li><strong>Interactive/Asynchronous Activity</strong>:<br> The
+         process instance hits an activity instance that requires interaction or
+         is executed asynchronously:<br>The process instance (including all related
+         information) will be written to the database - exactly as it would have
+         been done for non-transient process instances.</li>
+      <li><strong>Execution Error</strong>:<br>Something prevents the
+         process instance from completing successfully (e.g. an error during
+         process instance execution):<br>The process instance (including all
+         related information) will be written to the database - exactly as it
+         would have been done for non-transient process instances. This will be
+         done regardless of whether the process instance execution has been
+         interrupted or the activity thread rescheduling retry count exceeded.</li>
+      <li><strong>Abort</strong>:<br>The process instance is aborted
+         during its execution:<br>The process instance (including all related
+         information) will be written to the database - exactly as it would have
+         been done for non-transient process instances.</li>
+      <li><strong>Deferred Persist</strong>:<br>The process instance
+         execution is configured to allow for deferred persistence (either
+         modeled via the underlying process definition or configured with the
+         global setting):<br>The process instance (including all related
+         information) will be written to the database, but not until all related
+         process instances are completed.</li>
+   </ol>
+   <script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

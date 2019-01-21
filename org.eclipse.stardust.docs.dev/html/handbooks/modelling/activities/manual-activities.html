@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Manual Activities</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Converting Manual Activities to JSF Application Activities",
+      "mg-subprocesses.html","mg-convert-activities.html",
+      "../../handbooks.htm","Developer Handbook",
+      "../mg-preface.htm","Modeling Guide",
+      "../mg-modeler-preface.html","The Process Workbench",
+      "activities-preface.html","Working with Activities");
+ -->
+</script>
+<h1>Manual Activities</h1>
+<p>Manual activities are interactive activities without an
+associated interactive application context, see <a
+	href="../../../concepts/workflow-basics/mg-basics-5.htm"
+>Activities</a>.</p>
+<ul>
+	<li><a href="#manual">Modeling Manual Activities</a></li>
+	<li><a href="#data">Supported Data Types for Manual Activity</a></li>
+</ul>
+
+
+<h2 id="manual">Modeling Manual Activities</h2>
+<p>To create a manual activity in the Stardust 
+diagram:</p>
+<ul>
+	<li>In the diagrams toolbar palette select <strong>Activities
+	&gt; Manual</strong>.</li>
+	<li>Click in the diagram canvas to place the activity.</li>
+	<li>Double-click the activity to open the properties dialog and
+	set the appropriate properties.</li>
+</ul>
+<p class="image"><img src="images/create-manual-activity.png"
+	alt="Create a Manual Activity"
+> <br>
+<strong>Figure:</strong> Create a Manual Activity</p>
+<h3>Participant</h3>
+<p>To choose the participant of the manual activity, double-click
+the activity to open its properties dialog. Select <strong>Participant</strong>.
+On the right side of the pane a list of possible participant is
+displayed, where you can choose one. You can also remove the selected
+participant by pressing the <strong>None</strong> button.</p>
+<p class="image"><img src="images/manual-activity-participant.png"
+	alt="Manual Activity Properties"
+> <br>
+<strong>Figure:</strong> Select the Participant of the Manual Activity.</p>
+<h3 id="maps">Data Mappings</h3>
+<p>As mentioned before, the <strong>Workflow Execution Perspective</strong> will generate panels/pages for manual
+activities.</p>
+<p>A generated panel collects all data mappings belonging to the
+particular activity and represents them in suitable fields. This is done
+as follows:</p>
+<ul>
+	<li>For every data mapping in the default context resulting in a
+	bridge object being of primitive type an appropriate control is shown
+	on the panel/page labeled with the ID of the data mapping. This would
+	be e.g. a text field for a <tt>String</tt> and a check box for boolean
+	values.</li>
+	<li>A pair of IN/OUT mappings with the same ID links to the same
+	control.
+	<p class="note"><strong>Note</strong><br>
+For the time being, if creating an in- and out-data mapping for interactive activities that
+should have the same Id, the automatic Id generation changes the Id of the secondly created 
+data mapping by appending a number.
+In that case you need to disable the <strong>Enable Auto Id Generation</strong> option 
+in the Process Manager Preferences dialog and adjust the Id manually.
+For details on how to set this option, refer to section
+<a href="../mg-preferences.html#autoID">Enable Auto Id Generation</a>
+of chapter
+<a href="../mg-preferences.html">Setting Process Manager Preferences</a></p>
+	</li>
+	<li>If an IN mapping is linked to a control the content of the
+	control is filled by evaluating this IN mapping.</li>
+	<li>If an OUT mapping is linked to a control this control is
+	editable. When completing the activity the content of this control is
+	used to perform this OUT mapping.</li>
+	<li>Data mappings which result in non-primitive bridge objects
+	are ignored.</li>
+</ul>
+<p>The table below summarizes the data types with their
+corresponding GUI fields. Note that primitive Java types and their
+corresponding wrapper types are considered the same.</p>
+<table id='id'>
+	<tr>
+		<th rowspan="1" colspan="1">Data Type</th>
+		<th rowspan="1" colspan="1">GUI Field</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>a check box</td>
+	</tr>
+	<tr>
+		<td>char</td>
+		<td>an entry field with a character
+		validating function</td>
+	</tr>
+	<tr>
+		<td>byte</td>
+		<td>an entry field with a byte validating
+		function</td>
+	</tr>
+	<tr>
+		<td>short</td>
+		<td>an entry field with a short
+		validating function</td>
+	</tr>
+	<tr>
+		<td>int</td>
+		<td>an entry field with an integer
+		validating function</td>
+	</tr>
+	<tr>
+		<td>long</td>
+		<td>an entry field with a long validating
+		function</td>
+	</tr>
+	<tr>
+		<td>float</td>
+		<td>an entry field with a float
+		validating function</td>
+	</tr>
+	<tr>
+		<td>double</td>
+		<td>an entry field with a double
+		validating function</td>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>an entry field</td>
+	</tr>
+	<tr>
+		<td>timestamp (<code>java.util.Date</code>)
+		</td>
+		<td>an entry field with a pattern
+		function and calendar utility.</td>
+	</tr>
+	<tr>
+		<td>other</td>
+		<td>unsupported GUI mapping</td>
+	</tr>
+</table>
+<p>The following example shows how a generated panel for a manual
+activity <strong>Solve Problem</strong> looks like. It wires the
+properties of a serializable data <strong>Problem</strong> to the fields
+of the panel:</p>
+<pre>public class Problem<br>{<br>  String getElaboration()...<br>  String getSynopsis()...<br>  Date getNotedOn()...<br>  String getSolution()...<br>  boolean isSolved()...<br>  void setSolution(String s)...<br>  void setSolved(boolean b)...<br>...</pre>
+<p>Define data mappings as in the following figure:</p>
+<p class="image"><a href="images/mg-integration-5_orgSize.png"
+	target="_blank"
+> <img src="images/mg-integration-5.png"
+	alt="Data Mappings for the Activity Solve Problem"
+></a> <br>
+<strong>Figure:</strong> Data Mappings for the Activity Solve Problem</p>
+
+<h2 id="data">Supported Data Types for Manual Activity</h2>
+
+<ul>
+	<li>Primitive
+	<ul>
+	<li>Calendar</li>
+	<li>TimeStamp</li>
+	<li>Boolean</li>
+	<li>Byte</li>
+	<li>Char</li>
+	<li>Double</li>
+	<li>Float</li>
+	<li>Integer</li>
+	<li>Long</li>
+	<li>String</li>
+	</ul></li>
+		
+	<li>Structured/XSD
+	<ul>
+	<li>string</li>
+	<li>date</li>
+	<li>dateTime</li>
+	<li>time</li>
+	<li>int</li>
+	<li>integer</li>
+	<li>decimal</li>
+	<li>boolean </li>
+	<li>double </li>
+	<li>float </li>
+	<li>long </li>
+	<li>short </li>
+	<li>byte </li>
+	<li>character </li>
+	<li>duration </li>
+	</ul></li>
+	<li>Stardust Specific
+	<ul>
+	<li>PROCESS_ID </li>
+	<li>ROOT_PROCESS_ID </li>
+	<li>CURRENT_LOCALE </li>
+	<li>CURRENT_DATE </li>
+	<li>PROCESS_PRIORITY</li>
+	</ul></li>
+	<li>Document</li>
+</ul>
+<h3>Unsupported Data Types</h3>
+
+<p>Note that unsupported XSD types are displayed on UI with simple String input field without
+any validations or converters. The unsupported XSD types are:</p>
+
+<ul>
+<li>Unsupported Structured/XSD
+<ul>
+	<li>anySimpleType</li>
+	<li>anyURI </li>
+	<li>base64Binary</li>
+	<li>ENTITIES</li>
+	<li>ENTITY</li>
+	<li>gMonth</li>
+	<li>gMonthDay</li>
+	<li>gYear</li>
+	<li>gYearMonth </li>
+	<li>hexBinary</li>
+	<li>ID</li>
+	<li>IDREF</li>
+	<li>IDREFS</li>
+	<li>language</li>
+	<li>Name </li>
+	<li>NCName </li>
+	<li>negativeInteger </li>
+	<li>NMTOKEN </li>
+	<li>NMTOKENS </li>
+	<li>(x)nNegativeInteger </li>
+	<li>(x)nPositiveInteger</li>
+	<li>(x)rmalizedString </li>
+	<li>(x)TATION </li>
+	<li>positiveInteger</li>
+	<li>Qname </li>
+	<li>token </li>
+	<li>unsignedByte </li>
+	<li>unsignedInt </li>
+	<li>unsignedLong </li>
+	<li>unsignedShort </li>
+	<li>unsigned </li>
+	<li>&lt;anonymous&gt; </li>
+	<li>&lt;choice&gt; </li>
+	<li>&lt;sequence&gt; </li></ul></li>
+	<li>Other Unsupported Data Types
+	<ul>
+		<li>Document List</li>
+		<li>Folder</li>
+		<li>Folder List</li>
+		<li>Entity Bean</li>
+		<li>Hibernate Bean</li>
+		<li>XML Document</li>
+		<li>Serializable data</li>
+		
+	</ul>
+	</li>
+	<li>Stardust Specific Unsupported Data Types
+	<ul>
+	<li>CURRENT_MODEL</li>
+	<li>CURRENT_USER</li>
+	<li>STARTING_USER</li>
+	<li>LAST_ACTIVITY_PERFORMER </li>
+	<li>PROCESS_ATTACHMENTS </li>
+	</ul></li>
+	
+</ul>
+<p>Other unsupported fields are not displayed on UI. Also, for any unsupported fields 
+warning is logged on console.  Process Priority is displayed as -1, 0, 1 instead of Low, Normal, and High.
+</p>
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

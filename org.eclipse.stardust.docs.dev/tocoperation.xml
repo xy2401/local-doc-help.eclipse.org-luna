@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<!--
+    Copyright (c) 2011, 2014 SunGard CSA LLC and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    _http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+       SunGard CSA LLC - initial API and implementation and/or initial documentation
+ -->
+
+<toc label="Operation Guide" link_to="tochandbooks.xml#tocoperation">
+
+	<topic label="Operation Guide" href="html/handbooks/operation/ag-preface.htm">
+		<topic label="Administration Clients" href="html/handbooks/operation/admin-client/admin-clients.html" />
+		<topic label="Command Line Tools" href="html/handbooks/operation/commandline/ag-command-preface.htm">
+			<topic label="Administrative Functionality"
+				href="html/handbooks/operation/commandline/ag-commandline-1.htm" />
+			<topic label="Using the Sysconsole Command"
+				href="html/handbooks/operation/commandline/ag-commandline-2.htm" />
+			<topic label="Using the Console Command"
+				href="html/handbooks/operation/commandline/ag-commandline-3.htm" />
+			<topic label="Console Command Use Cases"
+				href="html/handbooks/operation/commandline/ag-commandline-4.htm" />
+		</topic>
+		<topic label="Tuning" href="html/handbooks/operation/tuning/ag-tuning-1.htm">
+			<topic label="Tuning for Concurrency"
+				href="html/handbooks/operation/tuning/ag-tuning-2.htm" />
+            <topic label="Tuning for Performance via Data Clusters"
+                href="html/handbooks/operation/tuning/ag-tuning-3.htm" />
+            <topic label="Improving Performance via Eager Link Fetching"
+                href="html/handbooks/operation/tuning/ag-tuning-fetch.html" />
+            <topic label="Retrieving Entities from In-Memory Cache"
+                href="html/handbooks/operation/tuning/tuning-memory-cache.html" />
+            <topic label="Optimizing the Performance of secure JCR Deployments"
+                href="html/handbooks/operation/tuning/tuning-transient-proc.html" />
+            <topic label="Tuning for low Latency and high Throughput"
+                href="html/handbooks/operation/tuning/tuning-jcr-depl.html" />
+            <topic label="Avoiding Query Timeouts in internal JDBC Queries"
+                href="html/handbooks/operation/tuning/tuning-jdbc-timeout.html" />
+			   <topic label="Stardust Portal Performance Tuning"
+				   href="html/handbooks/operation/tuning/ag-tuning-portal.html" />
+            <topic label="Database Access Tuning"
+                href="html/handbooks/operation/tuning/ag-tuning-4.htm" />
+            <topic label="Performance Considerations"
+                href="html/handbooks/operation/tuning/tuning-performance.html" />
+            <topic label="Message Driven Bean Tweaking"
+               href="html/handbooks/operation/tuning/ag-tuning-msg-beans.html" />
+		</topic>
+		<topic label="Security"
+				href="html/handbooks/operation/ag-appendix-security-1.htm" />
+		<topic label="Logging" href="html/handbooks/operation/logging/ag-appendix-logging.html">
+		</topic>
+		<topic label="Audit Trail Model"
+			 href="html/handbooks/operation/audit-trail/ag-appendix-audittrail.html">
+			<topic label="The Repository Model"
+					href="html/handbooks/operation/audit-trail/ag-appendix-audittrail-1.htm" />
+			<topic
+					label="Technical Requirements to the Database Schema"
+					href="html/handbooks/operation/audit-trail/ag-appendix-audittrail-2.htm" />
+			<topic
+					label="Audit Trail Archive"
+					href="html/handbooks/operation/audit-trail/ag-archiving.htm" />
+			<topic
+					label="Structured Data Storage"
+					href="html/handbooks/operation/audit-trail/ag-struct-data.html" />
+		</topic>
+		<topic label="Stardust Properties" href="html/handbooks/operation/properties/ag-appendix-properties.html">
+				<topic label="Client Side Properties"
+					href="html/handbooks/operation/properties/ag-appendix-properties-1.htm" />
+				<topic label="Server Side Properties"
+					href="html/handbooks/operation/properties/ag-appendix-properties-2.htm" />
+		</topic>
+		<topic label="Internationalization"
+			href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html" >
+			<topic href="html/handbooks/operation/internationalization/i18n-modeler.html" 
+				label="Internationalization of the Modeler" />
+         <topic href="html/handbooks/operation/internationalization/i18n-portal.html" 
+            label="Internationalization of the Portal" />
+         <topic href="html/handbooks/operation/internationalization/i18n-prefmodel.html" 
+            label="Internationalization of the Predefined Model" />
+			<topic href="html/handbooks/operation/internationalization/i18n-error.html" 
+				label="Internationalization of Error Code" />
+			<anchor id="toci18n" />			
+<!--			<topic href="html/handbooks/operation/internationalization/using-excelbundle.html" 
+				label="Using Excel Tables to Facilitate Translation" /> -->
+			<topic href="html/handbooks/operation/internationalization/artificial-keys.html" 
+				label="Identifying Property Keys using artificial Resource Bundles" />
+		</topic>
+	</topic>
+	
+</toc>

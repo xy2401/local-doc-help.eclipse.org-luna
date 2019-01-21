@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Working with Process Definitions</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working with Process Interface",
+		"models/model-preface.html","mg-process-interface.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working with Process Definitions</h1>
+<p>The Stardust Process Workbench visualizes the existing process
+definitions in the <a href="model-views/views-outline.html">Outline
+view</a> area. You can view your list of process definitions there, add new
+or modify existing ones.</p>
+
+<p class="image"><img src="images/mg-defdesk-15.png" alt=""> <br>
+<strong>Figure:</strong> Outline View with Process Definitions</p>
+<p>This chapter covers the following:</p>
+<ul>
+   <li><a href="#crepro">Creating and Deleting Process Definitions in the Outline View</a> 
+      - helps you to create and delete process definitions in the Outline View.</li>
+   <li><a href="#diagram">Creating and Deleting Process Definitions in a Diagram</a> 
+      - helps you to create and delete process definitions in a diagram.</li>
+	<li><a href="#modifypro">Modifying Process Definition Properties</a> 
+      - provides information to set and modify properties of created process definition.</li>
+	<li><a href="#set">Setting the Process Priority via predefined Data</a> 
+      - explains how to set priority via predefined data</li>
+   <li><a href="#cddiagram">Creating and Deleting Process Definition Diagrams</a></li>
+</ul>
+
+<h2 id="crepro">Creating and Deleting Process Definitions in the Outline View</h2>
+<p>In the <a href="model-views/views-outline.html">Outline
+view</a> you can create new process definitions by choosing <strong>New
+Process Definition</strong> from the pop-up menu of the model element.</p>
+<p class="image"><img src="images/mg-defdesk-16.png" alt=""> <br>
+<strong>Figure:</strong> Creating a new Process Definition</p>
+<p>To delete a process definition from model, you select the
+symbol of the process definition in the <strong>Outline</strong> view
+and choose the option <strong>Delete </strong> in the pop-up menu of
+this process definition.</p>
+<p class="image"><img src="images/delete-process-def.png" 
+   alt="Deleting a Process Definition"> <br>
+<strong>Figure:</strong> Deleting a Process Definition</p>
+<h2 id="diagram">Creating and Deleting Process Definitions in a Diagram</h2>
+<p>In a model diagram, process definitions can be created, deleted and 
+dragged/dropped from the Outline view.</p>
+<p class="image"><img src="images/create-proc-in-diagram.png" 
+   alt="Creating a Process Definition in a Diagram"> <br>
+<strong>Figure:</strong> Creating a Process Definition in a Diagram</p>
+<p>If you delete process definition in a diagram, you must make a distinction 
+between deleting a process definition with all its contents from the model 
+information or only deleting its symbol from the diagram.</p>
+<p class="image"><img src="images/delete-proc-in-diagram.png" 
+   alt="Deleting a Process Definition in a Diagram"> <br>
+<strong>Figure:</strong> Deleting a Process Definition in a Diagram</p>
+<h2 id="modifypro">Modifying Process Definition Properties</h2>
+<p>The properties of a process definition are accessible in its
+properties dialog. To open this dialog, right-click the process
+definition symbol in the <strong>Outline</strong> view and select the
+option <strong>Properties</strong>.</p>
+<p>Process definition properties are grouped into eight categories
+organized in a tabbed pane. The categories comprise</p>
+<ul>
+	<li><strong>Authorization</strong> - for detailed information on how to set
+	authorization properties for process definitions please refer to the
+	section <a href="property-page-authorization.html#process">Authorization
+	for Process Definitions</a> of the <a
+		href="property-page-authorization.html">Property Page
+	Authorization</a> chapter.</li>
+	<li><strong>General</strong> - including the process name, ID and
+	description as well as the internationalization part. Refer to section
+   <a href="#general">General Settings</a> for details.</li>
+	<li><strong>Data Path</strong> - specifying all data paths defined for
+	the process. Refer to chapter
+   <a href="mg-defdesk-9.htm">Working with Data Paths</a> for details.</li>
+	<li><strong>Event Handling</strong> - specifying all event handlers and
+	event actions defined within the process. Refer to chapter
+   <a href="mg-defdesk-12.htm">Working with Process Definition Event Handlers</a>
+   for details.</li>
+    <li><strong>Display</strong> - a checkbox <strong>Is Auxiliary Process</strong>
+    is provided to mark processes as auxiliary
+    from a business perspective. Thus, non business relevant process instances
+    can be hidden in the Stardust Portal. This option is disabled by default.
+    </li>
+   <li><strong>Controlling</strong>: controlling properties for the process definition.
+   Refer to section <a href="#controlling">Controlling Properties</a> for details.</li>
+	<li><strong>Process Interface</strong> - helps to refer the elements of a model 
+	as public. Refer to chapter <a href="mg-process-interface.htm">Working with Process Interface</a> for details.</li>
+	<li><strong>Process Attachments</strong> - specifying if process supports
+	attachments. Refer to section <a href="#attachments">Process Attachments</a>
+	for details.</li>
+	<li><strong>Simulation</strong> - specifying simulation configurations (see
+	chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+	Simulation Configurations</a> of the <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+	Simulation Guide</a>.)</li>
+	<li><strong>Effort Planning</strong> - for detailed information on how to set
+	properties for effort planning please refer to the chapter <a
+		href="process-effort-calculation.html">Process Effort Calculation</a>.</li>
+</ul>
+<p class="image"><img src="images/mg-defdesk-16a.png"
+	alt="Properties Dialog"> <br>
+<strong>Figure:</strong> Properties Dialog</p>
+<p>General properties can be modified by typing the desired
+strings or text elements into the provided text fields.</p>
+
+<h3 id="general">General Settings</h3>
+<p>In the <strong>General</strong> section, you can set ID and name of the
+process definition and choose specific settings.</p> 
+<ul>
+   <li><a href="#id">ID</a></li>
+   <li><a href="#auto">Auto Generation</a></li>
+   <li><a href="#defprio">Default Priority</a></li>
+   <li><a href="#trans">Audit Trail Persistence</a></li>
+   <li><a href="#descr">Description</a></li>
+</ul>
+<h4 id="id">ID</h4>
+<p>Please note that IDs containing
+hyphens, blanks or dots and IDs starting with digits are not supported.</p>
+<h4 id="auto">Auto Generation</h4>
+<p>If you use <strong>Auto Generation</strong>, the ID is generated automatically 
+with the name you enter, cutting spaces and unsupported characters. By default, 
+this check box is selected.</p>
+<h4 id="defprio">Default Priority</h4>
+<p>You can set an Integer value for the default priority of
+the process definition.</p> 
+
+<p>
+You can enter any +ve value for setting priority as high
+and any -ve value for setting priority as low.
+ Any +ve value is treated as high priority and gets converted to 1.
+ Any -ve value is treated as low priority and gets converted to -1.</p>
+<p>
+
+<p>The default value is <tt>0</tt>. Also, refer to the 
+section <a href="#point">Setting the Priority via Access Point</a>.</p>
+<h4 id="trans">Audit Trail Persistence</h4>
+<p>Via <strong>Audit Trail Persistence</strong> option you determine if the process
+definition should support transient execution. Refer to chapter
+<a href="../../concepts/audit-trail/audit-trail-persist-modes.html">Audit Trail Persistence Modes</a> for details 
+on the provided audit trail persistence modes in Stardust.</p>
+<p>The drop-down list provides the 
+persistence modes to choose. The following values are provided:</p>
+<ul>
+   <li><tt>Immediate</tt>:<br>The process and potentially all its subprocesses should
+   be executed transiently and audit trail data will only be kept in an 
+   in-memory cache for the time until the process instance completes. Upon 
+   completion of the process hierarchy, all audit trail data is discarded 
+   for this process instance and no audit trail will be persisted to the database.</li>
+   <li><tt>Transient</tt>:<br>The process and all its subprocesses should be executed 
+   transiently and audit trail data is only kept in an in-memory cache for the 
+   time until the process instance completes. Upon process completion the data 
+   is stored to the audit trail data base asynchronously.</li>
+   <li><tt>Deferred</tt>:<br>The audit trail should be persisted to the audit trail
+   database directly and synchronously along with activity thread processing. </li>
+</ul>
+<p>Though the default selection is <tt>Immediate</tt>; as long as you do not 
+change anything, the XPDL does not contain the attribute.
+Note that you need to select and save the persistence 
+value explicitly to go into the XPDL.</p>
+<p class="image"><img src="images/select-persistence-mode.png"
+   alt="Audit Trail Persistence"> <br>
+<strong>Figure:</strong> Audit Trail Persistence Modes</p>
+<p>In case a process definition is not applicable for transient process 
+execution, e.g. it contains an interactive activity or an asynchronous application,
+only the value <tt>Immediate</tt> is available.</p>
+
+<p class="note"><strong>Note</strong><br>
+For the time being the parameter values will only be evaluated when starting 
+a process definition as top level process. If invoking a process definition as a 
+subprocess these values will always be ignored and the persistence mode for the 
+process instance will be inherited from the invoking superprocess. This limitation 
+will be removed in a later release.</p>
+<h4 id="descr">Description</h4>
+<p>Optionally you can enter a description in the <strong>Description</strong> part.
+The description of the process is displayed as tooltip text in the Stardust Portal
+when you hover the mouse over the process name.</p>
+<p class="image"><img src="images/process-description-tooltip.png"
+   alt="Tooltip"> <br>
+<strong>Figure:</strong> Process description tooltip in Portal.</p>
+<h3 id="controlling">Controlling Properties</h3>
+<p>The following controlling properties can be set for process definitions:</p>
+<ul>
+   <li><strong>Cost Driver</strong> - the cost driver.</li>
+   <li><strong>Target Cost-Driver Quantity</strong> - the estimated cost-driver quantity.</li>
+   <li><strong>Target Processing Time</strong> - the estimated processing time, default is 
+       <tt>Y:000 M:00 D:00 h:00 m:00 s:00</tt>.
+      This property is used for the process definition critical 
+       status in the 
+       <strong>Process Manager View</strong> and the
+       <strong>Resource Performance View</strong> in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+       Stardust Portal</a>.</li>
+   <li><strong>Target Execution Time</strong> - the estimated duration of 
+       the process in seconds, default is <tt>Y:000 M:00 D:00 h:00 m:00 s:00</tt>.
+      This property is used for calculation of the process definition critical count
+      in the <strong>Process Manager View</strong> and for estimated duration of a process in the
+       <strong>Gantt Chart View</strong> in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+       Stardust Portal</a>.</li>
+   <li><strong>Target Idle Time</strong> - the estimated idle time, default is
+       <tt>format Y:000 M:00 D:00 h:00 m:00 s:00</tt>.</li>
+   <li><strong>Target Cost Per Execution</strong> - the estimated cost per execution.
+      This property is used for calculation of the process definition critical 
+       status in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/bcc-views-costs.html">
+       Cost and Controlling View</a> in the 
+       <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+       Stardust Portal</a>.</li>
+   <li><strong>Target Cost Per Second</strong> - the estimated cost per second.</li>
+   <li><strong>Overdue Threshold</strong> - threshold for criticality in percent.
+   The default value is 0%.</li>
+</ul>
+<p class="image"><img src="images/process-controlling-props.png"
+   alt="Controlling Properties"> <br>
+<strong>Figure:</strong> Controlling Properties</p>
+   
+<h3 id="attachments">Process Attachments</h3>
+<p>Per default, process attachments support is disabled in
+the process instance property page.</p>
+<p class="image"><img src="images/mg-proc-attach.png"
+	alt="flag"> <br>
+<strong>Figure:</strong> Process support Attachments Flag</p>
+<p>To support process attachments, enable the 
+<strong>Support process attachments</strong> flag.
+In case this flag is enabled, an In-data and an Out-data path
+with the Id <strong>PROCESS_ATTACHMENTS</strong> 
+are created automatically.</p>
+<p class="image"><img src="images/mg-proc-attach-path.png"
+	alt="data path"> <br>
+<strong>Figure:</strong> Process Attachments Data Path</p>
+<h4 id="unique">Unique per root process instance</h4>
+<p>In case the <strong>Support process attachments</strong> flag
+is enabled, the <strong>Unique per root process instance</strong>
+option gets activated.</p>
+<p class="image"><img src="images/mg-proc-attach-unique.png"
+	alt="unique flag"> <br>
+<strong>Figure:</strong> Unique per root process instance option.</p>
+<p>If this flag is enabled, 
+all process attachments pertaining to subprocesses access the root 
+process data instead of the scope process data. That means
+that the process attachments list is maintained in scope of the root 
+process instance and all attachments pertaining to the
+root process instance can be accessed in sub processes.</p>
+<p>If the flag is disabled, which is the default,
+process attachments pertaining to the root process instance
+are not present for the sub processes. The sub processes have separate data
+in that case.</p>
+
+<h2 id="set">Setting the Process Priority via predefined Data</h2>
+<p>To set the priority of a process during runtime, you can use the predefined
+data <strong>Process Priority</strong>. For information on predefined data please
+refer to the section
+<a href="../../concepts/workflow-basics/mg-basics-8.htm#predefined">Predefined Data</a> of the chapter
+<a href="../../concepts/workflow-basics/mg-basics-8.htm">Workflow Data</a>.</p>
+<h4>Setting the Priority via Manual Activity</h4>
+<p>To set the process priority during execution via manual
+activity, add an out-data mapping from the manual activity to the predefined 
+<strong>Process Priority</strong>, so that you
+can enter a priority for your current process during execution.</p>
+<p class="image"><img src="images/process-priority-data.png"
+    alt="Adding a Process Priority Data"> <br>
+<strong>Figure:</strong> Adding a Process Priority Data</p>
+<p>During the process, an entry field opens for the priority, where
+you can choose between the priorities high, normal and low:</p>
+<p class="image"><img src="images/process-priority-input.png"
+    alt="Process Priority Selection Dialog"> <br>
+<strong>Figure:</strong> Process Priority Selection Dialog</p>
+<h4 id="point">Setting the Priority via Access Point</h4>
+<p>To set the process priority via an access point, 
+you can use for example an application activity. The application activity
+calls an application to set the priority. This value can then be transferred via
+out-data mapping to the <strong>Process Priority</strong> data.</p>
+<p class="image"><img src="images/process-priority-application.png"
+    alt="Using an Application Activity for Priority Input."> <br>
+<strong>Figure:</strong> Using an Application Activity for Priority Input.</p>
+<p>The access point of the out-data mapping is the getter method of the application.</p>
+<p class="image"><img src="images/process-priority-access-point.png"
+    alt="Setting an Access Point for the Priority."> <br>
+<strong>Figure:</strong> Setting an Access Point for the Priority.</p>
+<p>The data written to the predefined <strong>Process Priority</strong> data works
+for all Integer values in the following way:</p>
+<table class="autoWidth">
+<tr><th>Value in data mapping</th>
+<th>Value used for process priority</th></tr>
+<tr><td>value &gt; 0 (high priority)</td><td>1</td></tr>
+<tr><td>value == 0 (normal priority)</td><td>0</td></tr>
+<tr><td>value &lt; 0 (low priority)</td><td>-1</td></tr>
+</table>
+<h2 id="cddiagram">Creating and Deleting Process Definition Diagrams</h2>
+<p>Deleting a diagram is done by selecting it in the <strong>Outline</strong>
+view and choosing <strong>Delete </strong> in the diagram's pop-up menu.</p>
+<p>To create a diagram:</p>
+<ul>
+	<li>In the <strong>Outline</strong> view, select the process
+	definition.</li>
+	<li>Use the option <strong>New Diagram </strong> in the pop-up
+	menu of the corresponding process definition.</li>
+</ul>
+<p>A diagram created this way can be used only to define this
+process.</p>
+<p>For more information about diagrams, see the chapter <a
+	href="model-views/views-diagrams.html">Diagrams</a> in the Stardust 
+Process Workbench description.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

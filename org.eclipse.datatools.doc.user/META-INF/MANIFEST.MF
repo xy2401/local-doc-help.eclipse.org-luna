@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.6.5
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: TPS_build ditamap.pipeline.1-1_20090521092446
+Bundle-SymbolicName: org.eclipse.datatools.doc.user; singleton:=true
+Created-By: 1.5.0_15-b04 (Sun Microsystems Inc.)
+Bundle-Version: 1.7.0.20090521092446
+Bundle-ManifestVersion: 2
+
+Name: styles/doc.css
+SHA1-Digest: c8r5qz1TFpl6ozJ0H/fV6GuqP/o=
+
+Name: eclipse32.png
+SHA1-Digest: eCk/A3/COXL3S6qAVDOSrlsqmLw=
+
+Name: about.ini
+SHA1-Digest: zWapvtYNzFzavPtijcKqqWiq4U8=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: about.mappings
+SHA1-Digest: kgK+yTo11OeUEuTOxfM2OPedYLU=
+
+Name: styles/commonltr.css
+SHA1-Digest: jUdw+2MOgDSmWT8luKFl5TY3B3M=
+
+Name: styles/commonrtl.css
+SHA1-Digest: DFjj+8+2k6Xme851N+sYRSN2Mco=
+
+Name: styles/book.css
+SHA1-Digest: +jMjY3GD/AZ8AWyoyyzOCICTMJU=
+
+Name: about.html
+SHA1-Digest: fXaKsPQILsLQaWSEQelhxJGbgbQ=
+
+Name: plugin.properties
+SHA1-Digest: s5Pv7+vj7IJF4mD5mvP/MpZyDVA=
+
+Name: toc.xml
+SHA1-Digest: sjlvd4aXP3uj7Rlg3oem4WH8koo=
+
+Name: about.properties
+SHA1-Digest: iynRFN0AhGtRKodl2BmHAMDkQ7E=
+
+Name: about_files/eclipse32.png
+SHA1-Digest: eCk/A3/COXL3S6qAVDOSrlsqmLw=
+
+Name: index.xml
+SHA1-Digest: WPERQ3XohUAj9lrnkmrOvJ999pk=
+
+Name: plugin.xml
+SHA1-Digest: /SuELC7/7eHgJ6jxtPNjg1YDmJc=
+

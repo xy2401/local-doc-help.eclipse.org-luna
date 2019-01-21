@@ -1,0 +1,641 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Securing the Stardust Engine</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Logging",
+	"tuning/ag-tuning-1.htm","logging/ag-appendix-logging.html",
+		"../handbooks.htm","Developer Handbook",
+		"ag-preface.htm","Operation Guide");
+ -->
+</script>
+<h1>Securing the Stardust Engine</h1>
+<p>This section summarizes the configuration issues when integrating Stardust into
+an existing security infrastructure. For an in-depth discussion of the underlying
+concepts, see the <a href="../programming/pg-preface.htm">Programming Guide</a>.</p>
+<p>Note: <a href="properties/ag-appendix-properties-2.htm">Server side
+properties</a> described in the configurations below are meant to be set in the server side <tt>carnot.properties</tt>.
+<a href="properties/ag-appendix-properties-1.htm">Client side properties</a> have to be
+set in the client side <tt>carnot.properties</tt>.</p>
+
+<h2 id="authentication">Authentication and Authorization Choices</h2>
+<h3>Authentication</h3>
+<p>Authentication can be done in one of the following modes:</p>
+<ul>
+    <li>Internal: authentication is done by the engine and directly against the
+    audit trail database.</li>
+    <li>Implicit: the EJB caller principal is assumed to contain the authenticated
+    principal. This smoothly integrates into the application server infrastructure and
+    real authentication is delegated to the application server.</li>
+    <li>JAAS: this is done by explicitly doing a JAAS authentication on the server.
+    Like implicit authentication you can connect to an external user registry. Anyway,
+    there is no principal set which will be transported along the EJB calls. That's why
+    usage of this authentication mode is only recommended if for some reason implicit
+    authentication cannot work in your infrastructure.</li>
+</ul>
+<p>The following table summarizes the different authentication options.</p>
+<table class="autoWidth" id='id'>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Custom Registry</th>
+        <th>Spring Local Mode</th>
+        <th>Client Bean Factory</th>
+    </tr>
+    <tr>
+        <td>Internal Login</td>
+        <td class="center">no</td>
+        <td class="center">yes</td>
+        <td class="center">no</td>
+    </tr>
+    <tr>
+        <td>Implicit Login</td>
+        <td class="center">yes</td>
+        <td class="center">no</td>
+        <td class="center">yes</td>
+    </tr>
+    <tr>
+        <td>JAAS Login</td>
+        <td class="center">yes</td>
+        <td class="center">yes</td>
+        <td class="center">no</td>
+    </tr>
+</table>
+<h3>Authorization</h3>
+<p>Authorization in Stardust, i.e. the assignment of participants
+(roles/organizations) to users is normally stored in the audit trail. If an external user
+registry is used the authorization information has to be replicated from the external
+registry every time a login is done. This role mapping logic has to be implemented by
+providing an implementation of the</p>
+<p><tt>org.eclipse.stardust.engine.core.spi.security.DynamicParticipantSynchronizationProvider</tt></p>
+<p>interface. The details for implementing a synchronization provider can be found
+in the <a href="../programming/pg-preface.htm">Programming Guide</a>.</p>
+<h2>Internal Authentication</h2>
+<p>Internal authentication mode is turned on by default when no security related
+properties are explicitly set. It always uses the audit trail database as authentication
+and authorization source. You can document the use of internal authentication explicitly
+by setting the following property on the server:</p>
+<p><tt>Security.Authentication.Mode = internal</tt></p>
+<p>The following table summarizes other server side configuration options for
+internal authentication:</p>
+<table class="autoWidth" id='id_1'>
+    <tr>
+        <th>Property</th>
+        <th>Range/Default Value</th>
+        <th>Remarks</th>
+    </tr>
+    <tr>
+        <td><tt> Security.Authentication.Mode </tt></td>
+        <td>String / internal</td>
+        <td>internal authentication mode</td>
+    </tr>
+    <tr>
+        <td><tt> Security.Authentication.MaximumNumberLoginRetries </tt></td>
+        <td>integer / 3</td>
+        <td>A re-login try threshold. If exceeded the account is temporarily disabled
+        </td>
+    </tr>
+    <tr>
+        <td><tt> Security.Authentication.InvalidationTimeInMinutes </tt></td>
+        <td>integer / 1 min</td>
+        <td>The time an account is disabled after unsuccessful login</td>
+    </tr>
+</table>
+<h3>Deploying Stateless Beans</h3>
+<p>Please note that in case you like to perform a stateless deployment for internal
+authentication you have to adjust some settings in your 
+deployment descriptor. Please refer to the section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/ag-deployment-2.htm#stateless">
+Stateless Bean Deployment for Internal Authentication</a> of the chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/ag-deployment-2.htm">
+Deploying Stardust Components to an EJB Application Server</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">Deployment Guide</a> for
+detailed information.</p>
+
+ <h2>Implicit Authentication</h2>
+<h3>Server configuration</h3>
+<p>Implicit authentication is turned on by setting the following server side
+property:</p>
+<p><tt>Security.Authentication.Mode = principal</tt>.</p>
+<p>If you use an external user registry you also have to configure participant
+synchronization (see below).</p>
+<h3>Java Client Configuration</h3>
+<p>Configuring a Stardust Java client for implicit authentication means specifying
+the secure session factory and the credential provider to be used. The <tt>Secure.Session.Factory</tt>
+client side property should contain the name of a class implementing the <tt>org.eclipse.stardust.engine.api.ejb2.SecureSessionFactory</tt>
+interface, while correspondingly the <tt>Credential.Provider</tt> property must contain
+the name of a class extending the <tt>org.eclipse.stardust.engine.api.runtime.CredentialProvider</tt>
+class.</p>
+<p>Also, you have to provide the necessary JAAS configuration file. The content of
+the configuration file must be conforming to the specifications of the application server
+used. The configuration file should be specified according to the JAAS standards, either
+in the client JVM security properties, placed in the user home path or by explicitly
+providing the configuration file path in the JVM system property <tt>java.security.auth.login.config</tt>.</p>
+<p>By default, the security configuration is named <tt>carnot</tt>. If necessary,
+you can specify another security configuration by providing the corresponding name in the
+<tt>Security.Authentication.ConfigurationName</tt> client side property.</p>
+<p>Stardust provides security examples with source code for 
+example implementations. Refer to the
+<a href="../../examples/index.html">Examples</a> section
+for details.</p>
+<h4>WebLogic example</h4>
+<p>For a WebLogic authentication example, download the following zip file:</p>
+<ul>
+   <li><a href="../../examples/weblogic-auth/weblogic-auth.zip">weblogic-auth.zip</a></li>
+</ul>
+<p>This example provides a secure session factory for WebLogic, that you can
+use by setting the property <strong>Secure.Session.Factory</strong> in your 
+<tt>carnot.properties</tt> file:</p>
+<pre>Secure.Session.Factory = org.eclipse.stardust.examples.authentication.weblogic.WeblogicSecureSessionFactory</pre>
+<h4>WebSphere example</h4>
+<p>For a WebSphere authentication example, download the following zip file:</p>
+<ul>
+   <li><a href="../../examples/websphere-auth/websphere-auth.zip">websphere-auth.zip</a></li>
+</ul>
+<p>This example provides a secure session factory and a credential provider 
+for WebSphere, that you can
+use by setting the properties <strong>Secure.Session.Factory</strong> and
+<strong>Credential.Provider</strong> in your 
+<tt>carnot.properties</tt> file:</p>
+<pre>Credential.Provider = org.eclipse.stardust.examples.authentication.websphere.WASCredentialProvider
+Secure.Session.Factory = org.eclipse.stardust.examples.authentication.websphere.WASSecureSessionFactory</pre>
+
+<h3>Web Client Configuration</h3>
+<p>No Stardust specific configuration has to be done because the principal
+association is a matter of the servlet container setup.</p>
+<h2>JAAS Authentication</h2>
+<h3>Server Configuration</h3>
+<p>Server side JAAS Authentication is set by:</p>
+<pre> Security.Authentication.Mode = jaas</pre>
+<p>Additionally, you have to provide the following properties:</p>
+<table id='id_2'>
+    <tr>
+        <th>Property</th>
+        <th>Range / Default Value</th>
+        <th>Remarks</th>
+    </tr>
+    <tr>
+        <td><tt>Security.Authentication.<br>
+        ConfigurationName</tt></td>
+        <td><tt>String</tt> / -</td>
+        <td>The JAAS login configuration name</td>
+    </tr>
+    <tr>
+        <td><tt>Security.Authentication.PrincipalClass</tt></td>
+        <td><tt>String</tt> / -</td>
+        <td>The class name of the principal to use from the returned JAAS Subject</td>
+    </tr>
+</table>
+<p>You also have to set up a login configuration in the server configuration itself.
+Please refer to your application server security documentation for detailed information on
+how to do this. Note, that the exact method of authentication tried depends on the
+credentials present in the JAAS subject and the JAAS configuration set by the application.</p>
+<h3>Client Configuration</h3>
+<p>The JAAS authentication mode is transparent to the client. No configuration is
+necessary.</p>
+<h2>Participant Synchronization</h2>
+<p>Participant synchronization has to be done if authentication is done against an
+authentication source different from the audit trail database. The Stardust Process Engine
+then has to synchronize the participant mappings at login time. The configuration to be
+provided is the name of the <tt>SynchronizationProvider</tt> to use, and probably provider
+specific settings:</p>
+<pre> Security.Authorization.SynchronizationProvider = classname</pre>
+<p>To control the frequency of participant synchronization, Stardust evaluates the
+property:</p>
+<pre> Security.Authorization.SynchronizationStrategy = classname</pre>
+<p>The strategy implementation has to be an implementation of the interface:</p>
+<pre> org.eclipse.stardust.engine.core.spi.security.DynamicParticipantSynchronizationStrategy  </pre>
+<p class="Stil1">By implementing this interface it is possible to tell the engine if
+a specific dynamic participant's external representation is likely to have been, thus
+requiring a new synchronization operation. By default the class:</p>
+<pre> org.eclipse.stardust.engine.core.spi.security.TimebasedSynchronizationStrategy</pre>
+<p>is used, which itself by default synchronizes any participant only every 10
+seconds. This delay may be configured by setting the properties:</p>
+<pre> Security.Authorization.TimebasedSynchronizationStrategy.UserSyncTimeout</pre>
+<p>and</p>
+<pre> Security.Authorization.TimebasedSynchronizationStrategy.UserGroupSyncTimeout</pre>
+<p>to the desired number of seconds.</p>
+<p>If you want to invalidate a user or usergroup, which does not exist in external
+registry, you can set the following property:</p>
+<pre>Security.Authorization.InvalidateNonexistingParticipants</pre>
+<p>The validTo property of the non-existing user or usergroup will then be set to
+current date.</p>
+<p>To enable tracing for user or usergroup synchronization with external registry
+evaluate the following property:</p>
+<pre>Security.Authorization.TraceSynchronization</pre>
+<p>Participant synchronization is transparent to Stardust clients. It only has to be
+configured on the server side.</p>
+<h3>LDAP Synchronization Example</h3>
+<p>Stardust provides an LDAP synchronization example, which is
+useful if you have to synchronize against an LDAP repository and if you can
+express the user-to-participant mapping by an LDAP search filter.</p>
+<p>You can download this example here:</p>
+<ul>
+   <li><a href="../../examples/ldap-sync/ldap-sync.zip">ldap-sync.zip</a></li>
+</ul>
+
+<p>This provider can be configured using the following properties:</p>
+<table id='id_3'>
+    <tr>
+        <th>Property</th>
+        <th>Range/<br>
+        Default Value</th>
+        <th>Remarks</th>
+    </tr>
+    <tr>
+        <td><tt>LDAPSynchronization.ServerName </tt></td>
+        <td>Hostname / -</td>
+        <td>The host name of the LDAP server to connect</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.ServerPort </tt></td>
+        <td>Port number / 389</td>
+        <td>The port number to connect</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.RootDN </tt></td>
+        <td>LDAP distinguished name</td>
+        <td>The distinguished name where all operations are relative to</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.BindMode </tt></td>
+        <td>'anonymous' or 'dedicated' /'anonymous'</td>
+        <td>Flag indicating whether to connect anonymously</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.BindUserDN </tt></td>
+        <td>String</td>
+        <td>User DN to use for connecting if bind mode is <tt>dedicated</tt></td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.BindPassword </tt></td>
+        <td>String</td>
+        <td>Password to use for connecting if bind mode is <tt>dedicated</tt></td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.SearchTimeLimit </tt></td>
+        <td>Integer / <br>
+        0 (unlimited)</td>
+        <td>The time limit for searches in milliseconds</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.UserFilter </tt></td>
+        <td>LDAP search filter</td>
+        <td>The search filter to get user information for a principal name. The
+        wildcard <tt>%v</tt> is used to include the principal name.</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.ParticipantFilter </tt></td>
+        <td>LDAP search filter</td>
+        <td>The search filter to get the participants for a principal name. The
+        wildcard <tt>%v</tt> is used to include the principal name.</td>
+    </tr>
+    <tr>
+        <td><tt> LDAPSynchronization.<br>
+        ParticipantNamingAttribute </tt></td>
+        <td>LDAP attribute <tt>name/'cn'</tt></td>
+        <td>The attribute name for getting the Stardust participant ID from a found
+        participant</td>
+    </tr>
+</table>
+<p>As an example here is a configuration which:</p>
+<ul>
+    <li>matches users by having the <tt>uid</tt> attribute equal to the principal
+    name</li>
+    <li>matches the participants of a user by being a member of an arbitrary static
+    group</li>
+    <li>gets the participant ID from the <tt>cn</tt> attribute of a participant
+    match (because this is the default of the <tt>ParticipantNamingAttribute</tt> not
+    provided here):</li>
+</ul>
+<pre>Security.Authorization.SynchronizationProvider = org.eclipse.stardust.examples.authorization.ldap.LDAPSynchronizationProvider<br>
+LDAPSynchronization.ServerName=ldap.de.carnot.ag
+LDAPSynchronization.RootDN=dc=de,dc=carnot,dc=ag,dc=test
+LDAPSynchronization.UserFilter=&quot;(&amp;(uid=%v)(objectclass=inetOrgPerson))
+LDAPSynchronization.ParticipantFilter=(&amp;(objectClass=groupOfUniqueNames)(uniqueMember=uid=%v*))</pre>
+<h2>Java 2 Security</h2>
+<p>If you want to enforce Java 2 Security in your application server you have to
+relax somehow the permissions mandated in the J2EE specification to allow access to
+Stardust resources. Also, Stardust uses advanced Java reflection you have to permit.</p>
+<p>Here are the permissions you have to set to operate Stardust:</p>
+<pre> java.io.FilePermission &quot;carnot-engine.jar&quot; &quot;read&quot;;</pre>
+<p>to read resources from the Stardust jar:</p>
+<pre> permission java.lang.reflect.ReflectPermission &quot;suppressAccessChecks&quot;;</pre>
+<pre> permission java.lang.RuntimePermission &quot;accessDeclaredMembers&quot;;</pre>
+<p>to allow advanced Java reflection.</p>
+<p>Dependent on the JAXP implementation your application server is using you may
+need additional permissions, like</p>
+<p>permission:</p>
+<pre> java.io.FilePermission &quot;xalan.jar&quot;, &quot;read&quot;;</pre>
+<p>If you intend to use Stardust mail functionality (notifications or triggers) you
+also have to relax the permissions to get access to JDK specific mail resources.</p>
+<h2 id="applPermission">Setting Application Permissions</h2>
+<p></p>
+<h3>Predefined Permissions</h3>
+<p>The following table shows the service operations provided by Stardust depending on
+the model element and the permission to be used:</p>
+<table id='id_4'>
+    <tr>
+        <th width="120">Model Element</th>
+        <th width="200">Permission/Default Participant</th>
+        <th>Service Operations concerned</th>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Deploy and Modify Process Model/Administrator</td>
+        <td>AdministrationService.deployModel<br>
+        AdministrationService.modifyModel<br>
+        AdministrationService.overwriteModel</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Modify Audit Trail Content/Administrator</td>
+        <td>AdministrationService.cleanupRuntime<br>
+        AdministrationService.cleanupRuntimeAndModels</td>
+
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Run Recovery/Administrator</td>
+        <td>AdministrationService.recoverProcessInstances<br>
+        AdministrationService.recoverRuntimeEnvironment</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Manage Daemons/Administrator</td>
+        <td>AdministrationService.getDaemon<br>
+        AdministrationService.startDaemon<br>
+        AdministrationService.stopDaemon</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Control process engine/Administrator</td>
+        <td>AdministrationService.flushCashes</td>
+
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Obtain Audit Trail Statistics/Administrator</td>
+        <td>AdministrationService.getAuditTrailHealthReport<br>
+        QueryService.getLogEntriesCount(LogEntryQuery query)<br>
+        QueryService.findFirstLogEntry(LogEntryQuery query)<br>
+        QueryService.getAllLogEntries(LogEntryQuery query)</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Obtain User Data/Administrator</td>
+        <td>QueryService.getAllUserGroups(UserGroupQuery query)<br>
+        QueryService.getAllUsers(UserQuery query) <br>
+        QueryService.getUserGroupsCount(UserGroupQuery query)<br>
+        QueryService.getUsersCount(UserQuery query)<br>
+        QueryService.findFirstUser(UserQuery query)<br>
+        QueryService.findFirstUserGroup(UserGroupQuery query)<br>
+        UserService.getUser(String account)<br>
+        UserService.getUser(String realm, String account)<br>
+        UserService.getUser(long userOID)<br>
+        UserService.getUserGroup(String id)<br>
+        UserService.getUserGroup(long oid)<br>
+        UserService.getUserRealms()</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Modify User Data/Administrator</td>
+        <td>
+        UserService.modifyUser(User user)<br>
+        UserService.createUser(String account, String firstName, String lastName, String description,
+         String password, String eMail, Date validFrom, Date validTo)<br>
+        UserService.createUser(String realm, String account, String firstName, String lastName,
+         String description, String password, String eMail, Date validFrom, Date validTo)<br>
+        UserService.invalidateUser(String account)<br>
+        UserService.invalidateUser(String realm, String account)<br>
+        UserService.createUserGroup(String id, String name, String description, Date validFrom,
+         Date validTo)<br>
+        UserService.modifyUserGroup(UserGroup userGroup)<br>
+        UserService.invalidateUserGroup(String id)<br>
+        UserService.invalidateUserGroup(long oid)<br>
+        UserService.createUserRealm(String id, String name, String description)<br>
+        UserService.dropUserRealm(String id)
+        </td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Obtain Model Data/All</td>
+        <td>QueryService.getProcessDefinition(long modelOID, String id) <br>
+        QueryService.getProcessDefinition(String id)<br>
+        QueryService.getModel(long modelOID) <br>
+        QueryService.getModel(long modelOID, boolean computeAliveness)<br>
+        QueryService.getModels(DeployedModelQuery query) <br>
+        QueryService.getModelAsXML(long modelOID)<br>
+        QueryService.getModelDescription(long modelOID) <br>
+        QueryService.getActiveModel() (deprecated)<br>
+        QueryService.getActiveModelDescription()<br>
+        QueryService.getAllProcessDefinitions()<br>
+        QueryService.getAllProcessDefinitions(long modelOID)<br>
+        QueryService.getAllAliveModelDescriptions()<br>
+        QueryService.getAllParticipants() <br>
+        QueryService.getAllParticipants(long modelOID)<br>
+        QueryService.getParticipant(long modelOID, String id)<br>
+        QueryService.getAllModelDescriptions()<br>
+        QueryService.wasRedeployed(long modelOid, int revision)<br>
+        QueryService.getParticipant(String id)</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Read Departments</td>
+        <td>AdministrationService.getDepartment(long oid)</td>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Modify Departments</td>
+        <td>AdministrationService.createDepartment(String id, String name, String description, DepartmentInfo parent, OrganizationInfo organization)<br>
+        AdministrationService.modifyDepartment(long oid, String name, String description)<br>
+        AdministrationService.removeDepartment(long oid)
+        </td>
+    </tr>
+    <tr>
+        <td>Process Definition</td>
+        <td>Start Process/Implicitly via manual trigger</td>
+        <td>WorkflowService.startProcess(String id, Map data, boolean synchronously)</td>
+
+    </tr>
+    <tr>
+        <td>Process Definition</td>
+        <td>Abort Process Instances/Administrator</td>
+        <td>AdministrationService.abortProcessInstance<br>
+        WorkflowService.abortProcessInstance(long processInstanceOID)</td>
+    </tr>
+    <tr>
+        <td>Process Definition</td>
+        <td>Delete Process Instances/Administrator</td>
+        <td>AdministrationService.deleteProcesses</td>
+
+    </tr>
+    <tr>
+        <td>Process Definition</td>
+        <td>Read Process Instance Data/Administrator</td>
+        <td>QueryService.getAllProcessInstances(ProcessInstanceQuery query)<br>
+        QueryService.findFirstProcessInstance(ProcessInstanceQuery query)<br>
+        QueryService.getProcessInstancesCount(ProcessInstanceQuery query)</td>
+
+    </tr>
+    <tr>
+        <td>Process Definition</td>
+        <td>Manage Event Handlers/Administrator</td>
+        <td>WorkflowService.getProcessInstanceEventHandler(long processInstanceOID,
+        String handler)<br>
+        WorkflowService.bindProcessEventHandler(long processInstanceOID,
+        EventHandlerBinding eventHandler)<br>
+        WorkflowService.bindProcessEventHandler(long processInstanceOID, String handler)<br>
+        WorkflowService.unbindProcessEventHandler(long processInstanceOID, String handler)</td>
+    </tr>
+    <tr>
+        <td>Data</td>
+        <td>Read Data Values/All</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Activity</td>
+        <td>Perform Activity Permission/Implicitly via performer assignment</td>
+        <td>WorkflowService.getWorklist(WorklistQuery query)<br>
+        WorkflowService.getActivityInstance(long activityInstanceOID)<br>
+        WorkflowService.abortActivityInstance(long activityInstanceOID)<br>
+        WorkflowService.abortActivityInstance(long activityInstanceOid,
+         AbortScope abortScope)<br>
+        WorkflowService.activate(long activityInstanceOID) <br>
+        WorkflowService.activateAndComplete(long activityInstanceOID, String context, Map
+        outData)<br>
+        WorkflowService.activateAndComplete(long activityInstanceOID, String context, Map
+        outData, int flags) <br>
+        WorkflowService.activateNextActivityInstance(long activityInstanceOID)<br>
+        WorkflowService.activateNextActivityInstanceForProcessInstance(long
+        processInstanceOID) <br>
+        WorkflowService.complete(long activityInstanceOID, String context, Map outData) <br>
+        WorkflowService.complete(long activityInstanceOID, String context, Map outData,
+        int flags)<br>
+        WorkflowService.hibernate(long activityInstanceOID)<br>
+        WorkflowService.suspendToUser(long activityInstanceOID)</td>
+    </tr>
+    <tr>
+        <td>Activity</td>
+        <td>Delegation to other users</td>
+        <td>WorkflowService.delegateToDefaultPerformer(long activityInstanceOID)<br>
+        WorkflowService.delegateToParticipant(long activityInstanceOID, String performer)<br>
+        WorkflowService.delegateToParticipant(long activityInstanceOID, ParticipantInfo participant)<br>
+        WorkflowService.delegateToUser(long activityInstanceOID, long userOID)<br>
+        WorkflowService.suspendToDefaultPerformer(long activityInstanceOID)<br>
+        WorkflowService.suspendToDefaultPerformer(long activityInstanceOID, String
+        context, Map outData)<br>
+        WorkflowService.suspendToParticipant(long activityInstanceOID, String participant)
+        <br>
+        WorkflowService.suspendToParticipant(long activityInstanceOID, String participant,
+        String context, Map outData)<br>
+        WorkflowService.suspendToParticipant(long activityInstanceOID, ParticipantInfo participant,
+         ContextData outData)<br>
+        WorkflowService.hibernate(long activityInstanceOID)<br>
+        WorkflowService.suspend(long activityInstanceOID, ContextData outData)<br>
+        WorkflowService.suspendToUser(long activityInstanceOID, long userOID)<br>
+        WorkflowService.suspendToUser(long activityInstanceOID, long userOID, String
+        context, Map outData) <br>
+        WorkflowService.suspendToUser(long activityInstanceOID, String context, Map
+        outData)</td>
+    </tr>
+<!--    <tr>
+        <td>Activity</td>
+        <td>Delegation to other departments</td>
+        <td>WorkflowService.</td>
+    </tr>  -->
+    <tr>
+        <td>Activity</td>
+        <td>Manage Event Handlers/Administrator</td>
+        <td>WorkflowService.getActivityInstanceEventHandler(long activityInstanceOID,
+        String handler) <br>
+        WorkflowService.bindActivityEventHandler(long activityInstanceOID,
+        EventHandlerBinding eventHandler)<br>
+        WorkflowService.bindActivityEventHandler(long activityInstanceOID, String handler)<br>
+        WorkflowService.unbindActivityEventHandler(long activityInstanceOID, String
+        handler)</td>
+    </tr>
+    <tr>
+        <td>Activity</td>
+        <td>Read Activity Instance Data/All</td>
+        <td>QueryService.findFirstActivityInstance(ActivityInstanceQuery query)<br>
+        QueryService.getAllActivityInstances(ActivityInstanceQuery query) <br>
+        QueryService.getActivityInstancesCount(ActivityInstanceQuery query)<br>
+        QueryService.getAuditTrail(long processInstanceOID)</td>
+    </tr>
+</table>
+<p>For a detailed description on the permissions for specific services, refer
+to chapter <a href="../programming/embed/pg-declarative-security.html">
+Declarative Security Usage in Stardust Services API</a> in the 
+<a href="../programming/pg-preface.htm">Programming Guide</a>.</p>
+<h4>Service Methods restricted to OWNER</h4>
+<p>The grant <strong>OWNER</strong> is either the user, the user group, 
+or the model participant that is currently assigned as performer of 
+an activity instance. The following methods of the <strong>WorkflowService</strong> are restricted 
+to the <strong>OWNER</strong> by the means of the <tt>activity.performActivity</tt>
+permission, which is fixed and cannot be changed by the modeler:</p>
+<ul>
+	<li><tt>activate</tt></li>
+	<li><tt>activateAndComplete</tt></li>
+	<li><tt>complete</tt></li>
+</ul>
+<p>If the current user does not qualify as an <strong>OWNER</strong>
+of the activity instance, an <strong>AccessForbiddenException</strong>
+will be thrown.</p>
+
+<p>The following two methods require the current user to become the 
+<strong>OWNER</strong> of the next activity instance:</p>
+<ul>
+	<li><tt>activateNextActivityInstance</tt></li>
+	<li><tt>activateNextActivityInstanceForProcessInstance</tt></li>
+</ul>
+<p>If that is not 
+possible, because the permission is denied, a value of <tt>null</tt>
+is returned and no authorization specific exception will be thrown.</p>
+<h4>Service Methods restricted to Administrator</h4>
+<p>The method <tt>AdministrationService.forceCompletion</tt> is 
+restricted to the <strong>Administrator</strong> by the means of the 
+<tt>activity.performActivity</tt> permission, which is fixed and cannot 
+be changed by the modeler.</p>
+<p>If the current user does not qualify as an <strong>Administrator</strong>,
+an <strong>AccessForbiddenException</strong>
+will be thrown.</p>
+<h3>Service Methods without Permission</h3>
+<p>The following service methods can be executed without permission:</p>
+<ul>
+    <li>UserService.isInternalAuthentication()</li>
+    <li>UserService.isInternalAuthorization()</li>
+    <li>UserService.startSession(String clientId)</li>
+    <li>UserService.closeSession(String sessionId)</li>
+    <li>UserService.modifyLoginUser(String oldPassword, String firstName, String lastName,
+         String newPassword, String eMail)</li>
+    <li>UserService.getUser()</li>
+    <li>WorkflowService.getInDataPath(long processInstanceOID, String id)</li>
+    <li>WorkflowService.getInDataPaths(long processInstanceOID, Set ids)</li>
+    <li>WorkflowService.getInDataValue(long activityInstanceOID, String context,
+    String id)</li>
+    <li>WorkflowService.getInDataValues(long activityInstanceOID, String context)</li>
+    <li>WorkflowService.getInDataValues(long activityInstanceOID, String context, Set
+    ids)</li>
+    <li>WorkflowService.getModel()</li>
+    <li>WorkflowService.getProcessInstance(long processInstanceOID)</li>
+    <li>WorkflowService.getStartableProcessDefinitions()</li>
+    <li>WorkflowService.getUser()</li>
+    <li>WorkflowService.setOutDataPath(long processInstanceOID, String id, Object
+    object)</li>
+    <li>WorkflowService.setOutDataPaths(long processInstanceOID, Map values)</li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css"> 
+<title>Copying and Pasting Modeled Elements</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Authorization","mg-defdesk-15.htm","property-page-authorization.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Copying and Pasting Modeled Elements</h1>
+<p>To define new model elements similar to ones you already modeled, you can use
+copies of these already modeled elements as a basis. In the Stardust Process Workbench you can copy, paste or cut model 
+elements in the Outline view or diagram canvas by options in the context-menu or by key-strokes. You can move 
+or copy model elements between process definitions as well as between models.</p>
+<p>If you want to use similar activities with a rather complex configuration, you don't have to
+recreate them entirely in the target process definition or model. Undo is possible for all operations.
+To revoke your copy, paste or cut action please select <strong>Edit &gt; Undo</strong> or use the
+<strong>Ctrl-Z</strong> key-stroke.</p>
+<ul>
+	<li><a href="#clipBoard">Clipboard and Copy Sets</a></li>
+	<li><a href="#copy">Copying Elements</a></li>
+	<li><a href="#cut">Cutting Elements</a></li>
+	<li><a href="#paste">Pasting Elements</a></li>
+<!-- <li><a href="#refactor">Refactoring</a></li> -->	
+	<li><a href="#reference">Copying By Reference or By Value</a></li>
+	<li><a href="#useCases">Example Use Cases</a></li>
+	<li><a href="#tables">Overview of Gestures</a></li>
+</ul>	
+<h2 id="clipBoard">Clipboard and Copy Sets</h2>
+<p>The set of elements are copied to and pasted from the Stardust clipboard. This clipboard can also
+be used across model boundaries. The clipboard content is called a <strong>copy set</strong>.</p>
+<p>Copy sets of the following elements are supported:</p>
+<ul>
+	<li>Structured Types</li>
+	<li>Data</li>
+	<li>Applications</li>
+	<li>Participants</li>
+	<li>Process definitions</li>
+	<li>Process and model diagrams</li>
+	<li>Fragments of activity-transition graphs in process definitions</li>
+</ul>
+<p>Process models can be copied via copying the XPDL files.</p>
+<p>A copy set may contain an arbitrary number of model elements of arbitrary type, which could be for example
+three data, two participants and an application:</p>
+<p class="image"><img src="images/cp-copy-set-example.png" alt="Copy Set Example with Elements of Arbitrary Type"/><br>
+<strong>Figure:</strong> Copy Set Example with Elements of Arbitrary Type</p>
+<h2 id="copy">Copying Elements</h2>
+<p>You have the possibility to copy elements from the <a href="#outline">Outline View</a> or from
+the <a href="#diagram">Diagram Canvas</a>.</p>
+<h3 id="outline">Copying from the Outline View</h3>
+<p>In the Outline view copying is possible for the following types:</p>
+<ul>
+	<li>Structured Types</li>
+	<li>Applications</li>
+	<li>Data</li>
+	<li>Participants</li>
+	<li>Processes</li>
+	<li>Diagrams</li>
+	<li>Activities</li>
+	<li>Triggers</li>		
+</ul>
+<p>To copy one or more elements in the Outline view do the following:</p>
+<ul>
+	<li>Right-click one or more elements to be copied in the Outline view.</li>
+	<li>Select <strong>Copy Element</strong>.</li>
+</ul>
+<p class="image"><img class="noborder" src="images/cp-copy-role-in-outline.png" alt="Copying an Element in the Outline View"/><br>
+<strong>Figure:</strong> Copying an Element in the Outline View</p>
+<!--  TODO screenshot -->
+<h3 id="diagram">Copying from the Diagram</h3>
+<p>In diagrams copying is possible for the following types:</p>
+<ul>
+	<li>Lanes</li>
+	<li>Activities</li>
+	<li>Applications</li>
+	<li>Data</li>
+	<li>Participants</li>
+	<li>Triggers</li>
+	<li>Process Definitions</li>
+</ul>
+<p>To copy one or more elements in the diagram canvas do the following:</p>
+<ul>
+	<li>Right-click one or more elements to be copied in the Outline view.</li>
+	<li>Select <strong>Copy Element</strong>.</li>
+</ul>
+<p class="image"><img src="images/cp-copy-element-in-diagram.png" alt="Copying an Element in the Diagram"/><br>
+<strong>Figure:</strong> Copying an Element in the Diagram</p>
+<p>Please note that the copying option is not available if the selection contains unsupported 
+element types like gateways. All necessary gateways will be added automatically during
+the copying process, but cannot be copied explicitly.</p>
+<h2 id="cut">Cutting Elements</h2>
+<p>Cutting Elements is possible for the same elements as for copying elements as described in the sections above.</p>
+<h3>Cutting Elements from the Outline View</h3>
+<p>To cut one or more elements in the Outline view do the following:</p>
+<ul>
+	<li>Right-click one or more elements to be cut in the Outline view.</li>
+	<li>Select <strong>Cut Element</strong>.</li>
+</ul>
+<p class="image"><img src="images/cp-cut-elements-in-outline.png" alt="Cutting Elements in the Outline View"/><br>
+<strong>Figure:</strong> Cutting Elements in the Outline View</p>
+<h3>Cutting Elements in Diagrams</h3>
+<p>To cut one or more elements in the diagram canvas do the following:</p>
+<ul>
+	<li>Select one or more elements you want to be cut from the diagram canvas.</li>
+	<li>Right-click and choose <strong>Cut Element</strong>.</li>
+</ul>
+<p class="image"><img src="images/cp-cut-elements-in-diagram.png" alt="Cutting Elements in a Diagram"/><br>
+<strong>Figure:</strong> Cutting Elements in a Diagram</p>
+<p>Please note that the cut option is not available if the selection contains unsupported 
+element types like gateways. All necessary gateways will be added automatically during
+the subsequent paste process, but cannot be cut explicitly.</p>
+<h2 id="paste">Pasting Elements</h2>
+<p>You can paste elements to the Outline View or to the diagram canvas, depending on where you cut or copied them. 
+The <strong>Paste Element</strong> option for process definition diagrams is only enabled for diagrams of the same 
+process definition.</p>
+<p>Note that the <strong>Paste Element</strong> option is only enabled for the group nodes like Data, Applications or
+Participants, if all top level elements in the clipboard are of the corresponding type.</p>
+<ul>
+	<li><a href="#pasteOutline">Pasting to the Outline View</a></li>
+	<li><a href="#pasteDiagram">Pasting to the Diagram</a></li>
+	<li><a href="#semantics">Paste Semantics and Name/ID Collisions</a></li>
+</ul>
+<p>Pasting elements from the copy set to </p>
+<h3 id="pasteOutline">Pasting to the Outline View</h3>
+<p>To paste an element to the Outline View:</p>
+<ul>
+	<li>Click the process or model to copy your element(s) to.</li>
+	<li>Select <strong>Paste Element</strong>.</li>
+</ul>
+<p class="image"><img class="noborder" src="images/cp-paste-role-to-outline.png" alt="Pasting an Element to the Outline View"/><br>
+<strong>Figure:</strong> Pasting an Element to the Outline View</p>
+<h3 id="pasteDiagram">Pasting to the Diagram</h3>
+<p>To paste one or more elements in the diagram canvas do the following:</p>
+<ul>
+	<li>Right-click on the diagram canvas.</li>
+	<li>Select <strong>Paste Element</strong>.</li>
+</ul>
+<p class="image"><img src="images/cp-paste-element-in-diagram.png" alt="Pasting an Element in the Diagram"/><br>
+<strong>Figure:</strong> Pasting an Element in the Diagram</p>
+<h3 id="semantics">Paste Semantics and Name/ID Collisions</h3>
+<p>Elements copied into an arbitrary element ("target element") of the process model structure 
+(e.g. activities into a process definition) will be put semantically under this element independently of their 
+origin. This way, an activity-transition network from one process definition can be copied into another process 
+definition. If a name or ID collision with existing elements occurs, a dialog pops up with name and ID proposals:</p>
+<p class="image"><img class="noborder" src="images/cp-paste-element-dialog.png" alt="Dialog"/><br>
+<strong>Figure:</strong> Change Name and ID of the Element.</p>
+<p>When copying and pasting elements with relationships to general model elements like participants or applications, you have to 
+decide whether to copy by reference to this elements or to copy by value. This is described in detail in the following
+section.</p>
+<h2 id="reference">Copying By Reference or By Value</h2>
+<p>Model elements have hierarchical and other relationships to other model elements. Copy and paste operations maintain
+the hierarchical relationships as specified in the previous sections.</p>
+<p>In case elements are selected to be copied into another model,
+the selected elements may have references to other elements that are not selected explicitly.
+To prevent inconsistencies, all those referenced elements are also collected.
+If some or all of those elements already exist in the target model, a dialog opens where you
+can decide whether to copy by reference or by value. All elements selected in
+this dialog will be used from the target model and the according references are 
+transferred to those.
+To copy the referenced elements from the source
+model to the target model, enable the according checkboxes.</p>
+<p>By default, all checkboxes for data, applications and participants are checked to be copied by reference. 
+Enabling the checkboxes makes the tree item(s) editable with a default name and ID of "Copy of X/CopyOfX".</p>
+<ol>
+	<li>Enable the elements to be copied by value.</li>
+	<li>Enter a new name or leave the suggested name as <tt>CopyOf&lt;name&gt;</tt> and id as 
+	<tt>CopyOf&lt;id&gt;</tt> accordingly.</li>
+</ol>
+<p class="image"><img src="images/cp-how-to-copy-dialog.png" alt=""/><br>
+<strong>Figure:</strong> Choose the Elements to be copied by Reference or by Value. </p>
+<p>In case the suggested names <tt>CopyOf&lt;name&gt;</tt> or <tt>CopyOf&lt;id&gt;</tt> are already 
+in use, you have to choose a new name and id. The duplicate name or id is marked red and the <strong>OK</strong>
+button is enabled:</p>
+<p class="image"><img src="images/cp-how-to-copy-dialog-red.png" alt=""/><br>
+<strong>Figure:</strong> Choose the Elements to be copied by Reference or by Value. </p>
+<p>When you have a file connection in the Outline view and you are trying to 
+import the model elements by copy in the consumer model, you are prompted to 
+reuse or replace the duplicate element. 
+By default, the <strong>Replace existing element with the new one</strong> checkbox is selected.</p>
+
+<p class="image"><img src="images/conflict.png" alt=""/><br>
+<strong>Figure:</strong> Conflict</p>
+
+<p>If you are trying to import more than one element by copy then in case of duplicate elements, 
+select the checkbox Use option for all duplicate elements and click <strong>OK</strong>. In this case, you do not have to select
+replace or reuse options for each element.</p> 
+
+<h2 id="useCases">Example Use Cases</h2>
+<h3 id="moveCase">Moving Model Elements between Process Definitions</h3>
+<p>When processes change in a way that, for example, activities are now executed at a different stage in the process flow, 
+it is possibly that the new execution point lies in a different process definition, for example a subprocess. 
+In the modeler you can cut out the activities and paste them into the desired target process definition with the 
+activities keeping all their configuration settings like events, participants, data paths, etc.</p>
+<p>In the following example two activities are shifted to another process definition by cutting them out and
+pasting them in the diagram of the new process definition. This process definition is then assigned as subprocess
+in the starting process definition.</p>
+<ol>
+	<li>Select the set of elements to be shifted:
+<p class="image"><img src="images/cp-select-set-of-activities.png" alt="Select Activities and needed Elements."/><br>
+<strong>Figure:</strong> Select Elements.</p></li>
+	<li>Right-click and select <strong>Cut Element</strong>.
+<p class="image"><img src="images/cp-cut-set-of-activities.png" alt="Cutting out the selected Elements."/><br>
+<strong>Figure:</strong> Cutting out the selected Elements.</p></li>
+	<li>Open the diagram of the new process definition.</li>
+	<li>Right-click on the canvas and select <strong>Paste Element</strong>.
+<p class="image"><img class="noborder" src="images/cp-paste-set-of-activities.png" alt="Pasting"/><br>
+<strong>Figure:</strong> Paste Activities and Elements to New Process Definition.</p></li>
+</ol>
+<p>Now the element cut out from the diagram of the first process definition are pasted to the new process
+definition:</p>
+<p class="image"><img src="images/cp-shiftet-set-of-activities.png" 
+		alt="Pasted Activities in the New Process Definition."/><br>
+<strong>Figure:</strong> Pasted Activities in the New Process Definition.</p>
+<p>In the starting process definition you can now add a subprocess activity and assign the new process definition:</p>
+<ol>
+	<li>Add a new activity with type <strong>Subprocess</strong>.</li>
+	<li>Open the properties dialog and select <strong>Subprocess</strong>.</li>
+	<li>Select the new process definition as subprocess and <strong>Apply</strong>.</li>
+</ol>
+<p class="image"><img src="images/cp-assign-subprocess.png" alt="Assign Subprocess"/><br>
+<strong>Figure:</strong> Assign the New Process to the Subprocess Activity.</p>
+
+
+<!-- delayed:
+
+<h3 id="refactorCase">Refactoring of Coherent Activities</h3> 
+<p>As the number of activities in a process definition grows the need might arise to move some activities to a new 
+subprocess in order to maintain a certain level of manageability. Select a number of coherent activities and move
+them to a new subprocess. A new process definition is then created and the activities in the old process definition 
+are replaced with a subprocess activity that represents the newly created process.</p>
+ -->
+<h2 id="tables">Overview of Gestures</h2>
+<p>The following section gives an overview of the operation gestures:</p>
+<ul>
+	<li><a href="#copyOverview">Copy Gestures</a></li>
+	<li><a href="#pasteOverview">Paste Gestures</a></li>
+	<li><a href="#cutOverview">Cut Gestures</a></li>
+</ul>
+<h3 id="copyOverview">Copy Gestures</h3>
+<p>Copying is initiated by the following gestures on the following elements:</p>
+<table id='id'>
+<tr><th>Elements/Gesture</th>
+<th>CTRL-C Keystroke</th>	
+<th>Popup Menu Entry</th>
+</tr><tr>
+<td>Structured Type</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Structured type node(s) in outline tree is selected.</li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for the structured type(s) node in outline tree is selected.</li>
+</ul></td>
+</tr><tr>
+<td>Data</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Data node(s) in outline tree is selected.</li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for the data node(s) in outline tree is selected.</li>
+</ul></td>
+</tr><tr>
+<td>Applications</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Application node(s) in outline tree is selected.</li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for application node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Participants</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Participant node(s) in outline tree is selected.</li>
+<li>CRTL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for the participant node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Process Definitions</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Process Definition node(s) in outline tree is selected.</li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for the process definition node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Process and model diagrams</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Diagram node(s) in outline tree is selected.</li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Copy item in popup menu for the diagram node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Fragments of activity-transition graphs in process definitions</td>
+<td><ul>
+<li>Process diagram has focus.</li>
+<li>Model elements to be copied are selected via their symbols in the diagram 
+(e.g. using the rubberband or multiple mouse clicks) </li>
+<li>CTRL-C is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Process diagram has focus.</li>
+<li>Model elements to be copied are selected via their symbols in the diagram 
+(e.g. using the rubberband or multiple mouse clicks)</li>
+<li>Copy item in popup menu the diagram is selected.</li>
+</ul></td>
+</tr>
+</table><br>
+<h3 id="pasteOverview">Paste Gestures</h3>
+<p>Pasting is initiated by the following gestures on the following elements:</p>
+<table id='id_1'>
+<tr><th>
+Elements/Gesture</th>
+<th>CTRL-V Keystroke</th>
+<th>Popup Menu Entry</th>
+</tr>
+<tr>
+<td>Structured Types</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the structured types elements in the clipboard are copied in the structured
+types section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for model or Structured Types category node in the outline tree is selected*.</li>
+<li>Copy/ies of the data model elements in the copy set are copied under the Structured Types category of the 
+process model.</li></ul></td>
+</tr><tr>
+<td>Data</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the data model elements in the clipboard are copied in the data 
+section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for model or Data category node in the outline tree is selected*.</li>
+<li>Copy/ies of the data model elements in the copy set are copied under the Data category of the 
+process model.</li></ul></td>
+</tr>
+<tr>
+<td>Applications</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the application elements in the clipboard are copied in the data 
+section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for model or Application category node in the outline tree is selected*.</li>
+<li>Copy/ies of the application model elements in the copy set are copied under the 
+Applications category of the process model.</li></ul></td>
+</tr><tr>
+<td>Participants</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the participant elements in the clipboard are copied in the data 
+section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for model or Participants category node in the outline tree is selected*.</li>
+<li>Copy/ies of the data model elements in the copy set are copied under the Participants section of 
+the process model.</li></ul></td>
+</tr><tr>
+<td>Process Definitions</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the process definition elements in the clipboard are copied in the data 
+section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for model  in the outline tree is selected*.</li>
+<li>Copy/ies of the process definitions elements in the copy set are copied in 
+the under the process model.</li></ul></td>
+</tr><tr>
+<td>Process and model diagrams	</td>
+<td><ul><li>Model outline has scope.</li>
+<li>Copy/ies of the diagram elements in the clipboard are copied in the data 
+section of the process model.</li></ul></td>
+<td><ul><li>Model outline has scope.</li>
+<li>Paste item in popup menu for the process definition or model node in outline 
+tree is selected**.</li>
+<li>Copy/ies of the diagrams in the clipboard are copied under the process 
+definition or model.</li></ul></td>
+</tr><tr>
+<td>Fragments of activity-transition graphs in process definitions</td>
+<td><ul><li>Diagram has scope.</li></ul></td>
+<td></td></tr>
+</table><br>
+<p class="note"><strong>Note</strong><br>
+Please note that the CTRL-V keystroke only works in a target diagram where at least one mouse-click 
+has already been performed. If it is not working for that reason just click in the target diagram before using the
+CTRL-V keystroke.</p>
+<h3 id="cutOverview">Cut Gestures</h3>
+<p>Cutting is initiated by the following gestures on the following elements:</p>
+<table id='id_2'>
+<tr><th>Elements/Gesture</th>
+<th>CTRL-X Keystroke</th>	
+<th>Popup Menu Entry</th>
+</tr><tr>
+<td>Structured Types</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Structured types node(s) in outline tree is selected.</li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for the structured types node(s) in outline tree is selected.</li>
+</ul></td>
+</tr><tr>
+<td>Data</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Data node(s) in outline tree is selected.</li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for the data node(s) in outline tree is selected.</li>
+</ul></td>
+</tr><tr>
+<td>Applications</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Application node(s) in outline tree is selected.</li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for application node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Participants</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Participant node(s) in outline tree is selected.</li>
+<li>CRTL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for the participant node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Process Definitions</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Process Definition node(s) in outline tree is selected.</li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for the process definition node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Process and model diagrams</td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Diagram node(s) in outline tree is selected.</li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Model outline has focus.</li>
+<li>Cut item in popup menu for the diagram node(s) in outline.</li>
+</ul></td>
+</tr><tr>
+<td>Fragments of activity-transition graphs in process definitions</td>
+<td><ul>
+<li>Process diagram has focus.</li>
+<li>Model elements to be copied are selected via their symbols in the diagram 
+(e.g. using the rubberband or multiple mouse clicks) </li>
+<li>CTRL-X is pressed.</li>
+</ul></td>
+<td><ul>
+<li>Process diagram has focus.</li>
+<li>Model elements to be copied are selected via their symbols in the diagram 
+(e.g. using the rubberband or multiple mouse clicks).</li>
+<li>Cut item in popup menu the diagram is selected.</li>
+</ul></td>
+</tr>
+</table><br>
+<!-- delayed:
+<h3 id="refactorOverview">Refactor Gestures</h3>
+<table>
+<tr><th>Elements/Gesture</th>
+<th>Popup Menu Entry</th>
+</tr>
+<tr><td>Fragments of activity-transition graphs in process definitions</td>
+<td><ul>
+<li>Process diagram has focus.</li>
+<li>Model elements to be refactored are selected via their symbols in the diagram 
+(e.g. using the rubberband or multiple mouse clicks).</li>
+<li>Refactor category in popup menu the diagram is selected.</li>
+<li>Extract subprocess item in submenu is selected.</li>
+</ul></td></tr></table>-->
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

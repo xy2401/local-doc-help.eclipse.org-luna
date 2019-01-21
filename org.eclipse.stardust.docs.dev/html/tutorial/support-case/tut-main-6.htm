@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  
+  <link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+  <title>Handling Data in the Process</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Adding Process Data Paths",
+		"tut-main-5.htm","tut-main-data-path.html",
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1> Handling Data in the Process</h1>
+
+<p>Activities manipulate workflow relevant data. In the support
+management process of ACME a set of data items describing the support
+case, e.g. a description of the problem, a reference to the
+customer reporting the problem, etc. will be created by the <strong>Create
+Case</strong> activity and then passed to other applications to
+be changed or augmented with other data items related to the support
+case. The data structures or variable definitions used in this process must now
+be defined in the model. Our ACME example will use the
+Structured Data type to represent the case data.</p>
+
+<h2 id="createData"> Creating a Data Resource</h2>
+<p>
+To create a data element:</p>
+<ol>
+  <li>In the diagrams toolbar palette click <strong>Data</strong>.</li>
+
+  <li>In the pull-down menu, select the data type you want (in this case Structured Data).</li>
+  <li>Move the cursor to the diagram canvas and place the data
+symbol there by clicking on the canvas.</li>
+</ol>
+<p class="image"><img src="images/tut-main-14.png">
+<br><strong>Figure:</strong> Adding a Data Element to the
+Process Definition</p>
+<p><strong><span class="tip">! </span>Tip:</strong> To facilitate property settings
+for data and data mappings,
+select the automatic Id generation provided in the Process Manager preferences.
+Per default, automatic Id generation is enabled. For details on how to set this preference 
+please refer to section
+<a href="../../handbooks/modelling/mg-preferences.html#autoID">Enable Auto Id Generation</a>
+of chapter
+<a href="../../handbooks/modelling/mg-preferences.html">Setting Process Manager Preferences</a>.</p>
+<p class="note"><strong>Note</strong><br>
+For the time being, if creating an in- and out-data mapping for interactive activities that
+should have the same Id, the automatic Id generation changes the Id of the secondly created 
+data mapping by appending a number.
+In that case you need to disable the <strong>Enable Auto Id Generation</strong> option 
+in the Process Manager Preferences dialog temporarily and adjust the Id manually.</p>
+
+<h2 id="dataProps"> Changing Properties of Data
+(Dereferencing)</h2>
+<p>
+Data may be of various types. The support case data has been priory
+defined in the bean <tt>org.eclipse.stardust.examples.supportcase.SupportCase</tt>,
+so defining the data in our model will consist in setting a reference
+to this class.</p>
+<ol>
+  <li>By double-clicking on the <strong>Data</strong>
+   symbol, open the properties dialog of the data element.</li>
+  <li>Change the <strong>Name</strong> to <tt>Support
+   Case Data</tt>. The <strong>ID</strong> will become <tt>SupportCaseData</tt>.</li>
+  <li>From the left pane of the dialog, click <strong>Structured Data Definition</strong>.</li>
+  <li>In the <strong>Declared Types</strong> section select <strong>Customer</strong>.</li>
+</ol>
+<p class="image">
+  <img src="images/structured-data-definition.png" alt="Data Properties Dialog">
+<br><strong>Figure:</strong> Data Properties Dialog</p>
+
+<h2 id="dataMapping"> Setting up Data as Output
+of a non-interactive Activity</h2>
+
+<p>The data definition we have created will keep the support case
+information and make it available for all activities in our process.
+The difference consists in the relationships between the support case
+data and the diverse activities. First, an instance of the Support Case
+Data class needs to be created so it can be used by other activities. <strong>Init Data</strong> will
+perform the object instantiation. In <strong>Enter Data</strong>
+the activity will only output case information to the Support Case Data
+object instance. Then the activity <strong>Analyze To Solve</strong>
+uses the data (modified or supplemented within this activity) as both
+input and output. Finally, the remaining activities in the process use
+the same data element as the input data only.</p>
+<p>We proceed with setting this data mapping between the data element and
+the <strong>Init Data</strong> activity.</p>
+<ol>
+  <li>Select <strong>Connect</strong> on the diagram toolbar palette</li>
+  <li>Click the activity <strong>Init Data</strong> and subsequently the <strong>Support Case Data</strong>.</li>
+</ol>
+<p class="image"><img src="images/tut-main-16a.png" alt="Data mapping Creation">
+<br><strong>Figure:</strong> Data mapping Creation</p>
+<p>Now you have created a data mapping between an activity and a data.</p>
+<p><strong><span class="tip">! </span>Tip:</strong> You can open the data mapping 
+properties dialog by double-clicking on the light gray arrow or you can open the activity properties 
+dialog and switch to the data mappings in the left tree of that dialog. In these dialogs you can 
+add, edit or delete data mappings. In the data mapping properties dialog you can only see the mappings 
+of that specify mapping, in this case of activity Init Data and Support Case Data. If you open the 
+activity properties dialog you can access all mappings connected to that activity.</p>
+<ol>
+  <li>Open the data mapping properties dialog of the new created data mapping as described above.</li>
+  <li>Select <strong>application:SupportCaseData </strong>from the OUT Data Mappings on
+  from
+the left pane of the dialog.</li>
+  <li>Use the Access Point drop-down list to select <strong><tt>returnvalue :
+  Map</tt></strong>. This is the return value of the previous defined completion method of the Support Case Factory. </li>
+  <li>Notice the direction of the arrow on the Out Data Mappings
+    icon
+    in the left pane of the dialog. The arrow pointing at the
+    data
+    indicates this activity is changing the data (Support Case Data).
+    The Access Point is the method to invoke on the
+    application (CreateSuupportDataAppl) associated with this process activity
+    (Init Data).
+    The result of the method invocation is written to the data
+    object
+    (Support Case Data). Think
+    of the Stardust activity as the bridge between data and an
+    application, where data could flow in either direction. The mapping
+    names are from the perspective of the Stardust activity. Thus, an Out
+    Data
+    Mapping is data flowing out of the activity. In this case, the result of the method
+    (the application access point) is used as output data (mapped) to an
+  object instance. </li>
+  <li>Click <strong>OK</strong>.</li>
+</ol>
+<p class="image"><a href="images/out-support-case-data_orgSize.png" target="_blank">
+<img src="images/out-support-case-data.png" alt="Data Mapping Properties"></a>
+<br><strong>Figure:</strong> Data Mapping Properties</p>
+<h2> Setting up Data as Output
+of the Interactive Activity Enter Data</h2>
+<p>Next we turn our attention to
+<strong>Enter Data</strong>,
+the first activity in the process to interact with a human.
+The steps will be similar to those used for the
+non-Interactive application. However, because <strong>Enter Data</strong> is a Manual
+activity you will provide additional detail, so that later,
+the Stardust Portal features can automatically render a user
+interface to present the data.</p>
+<p>Start with setting the out data mappings:</p>
+<ol>
+  <li>Open the activity properties dialog of the <strong>Enter Data</strong> activity by
+   double-clicking on its symbol in the diagram.</li>
+  <li>Select <strong>Out Data Mappings</strong> from
+   the left pane of the dialog.</li>
+  <li>Choose the <strong>default</strong>
+   context and click the <strong>Add</strong> button.</li>
+  <li>The dialog content changes to provide mapping
+   details.</li>
+  <li>Select <strong>Support Case Data</strong> from the <strong>Data</strong> drop-down list. This is
+   the serializable object representing the entire case.</li>
+  <li>In the <strong>Name</strong> field enter 
+   <strong>CustomerID</strong> and make sure the Id is also <strong>CustomerID</strong>. 
+   This name will later be used as a user prompt in the final
+   user interface.</li>
+</ol>
+<p class="image"><a href="images/tut-main-16c_orgSize.png" target="_blank">
+<img alt="Enter Data mapping" src="images/tut-main-16c.png"></a>
+<br><strong>Figure:</strong> Creating an Output Mapping with modified Name</p>
+<p>To specify the data path:</p>
+<ol>
+  <li>Click the <strong>Browse</strong> button displayed next to the Data Path text box</li>
+  <li>Select the data path <strong>Id</strong>.</li>
+  <li>Click <strong>Finish</strong> to return to the Enter Data properties dialog.
+The Data Path is now <tt>Id</tt>.</li>
+</ol>
+<p class="image"><img src="images/tut-main-16d.png" alt="">
+<br><strong>Figure:</strong> Browse Content </p>
+<p>To create the next out data mapping:</p>
+<ol>
+  <li>Click the <strong>Add</strong> button to create another output
+   mapping.</li>
+  <li>Again, in the Data drop-down list select <strong>Support Case Data</strong>.</li>
+  <li>Enter <strong>CustomerName</strong> in the <strong>Name</strong> field and
+  make sure the Id is also <strong>CustomerName</strong>.</li>
+  <li>Click <strong>Browse</strong> on the Data Path and select the
+   element <tt>Name</tt>.</li>
+  <li><strong>Enter Data</strong> properties now has two output mappings in its
+   left hand pane (<strong>CustomerID</strong> and <strong>CustomerName</strong>).</li>
+</ol>
+<p class="image"><img src="images/tut-main-16e.png" 
+    alt="Data Mapping Property Dialog">
+<br><strong>Figure:</strong> Data Mapping Property Dialog</p>
+<p>Continue to use the Add button to create an Out Data Mappings
+with name and Id <strong>eMail</strong> and to data path element
+<tt>Email</tt>.</p>
+<p>Again use the <strong>Add</strong> button to create an out data mapping with
+name and Id <strong>ProductName</strong>. To create the data path element:</p>
+<ol>
+    <li>Click the data path <strong>Browse</strong> button.</li>
+    <li>In the data path dialog select <strong>Product</strong>.</li>
+    <li>Click the <strong>Next</strong> button.</li>
+</ol>
+<p class="image"><img src="images/create-data-path-product-name-1.png" 
+    alt="Add the Product Element.">
+<br><strong>Figure:</strong> Add the Product Element.</p>
+<ol start="4">
+    <li>Select the element <strong>Name</strong>.</li>
+    <li>Click <strong>Finish</strong>.</li>
+</ol>
+<p class="image"><img src="images/create-data-path-product-name-2.png" 
+    alt="Add the Product Name Element.">
+<br><strong>Figure:</strong> Add the ProductName Element.</p>
+<p>Now the out data mapping for the product name is created:</p>
+<p class="image"><img src="images/create-data-path-product-name-3.png" 
+    alt="ProductName Out Data Mapping">
+<br><strong>Figure:</strong> The ProductName Out Data Mapping</p>
+<p>In the same way create an out data mapping with the name and Id <strong>Synopsis</strong>,
+    which maps to data path element <tt>Product/Synopsis</tt>.</p>
+<p class="image"><img src="images/create-data-path-synopsis.png" 
+    alt="Add the Synopsis Out Data Mapping.">
+<br><strong>Figure:</strong> Add the Synopsis Out Data Mapping.</p>
+<p>When you have performed these steps, there will be a total of five Out Data
+mappings in the left pane of Enter Data properties:</p>
+<p class="image">
+<img src="images/enter-data-all-out-data-mappings.png" alt="Enter Data - all data-mappings">
+<br><strong>Figure:</strong> Data Mappings after Configuration</p>
+<h2 id="dataMapping2"> Setting up Data as Input
+of the Interactive Activity Enter Data</h2>
+<p>Now proceed with the setting of the In data mappings in the same way as the
+Out data mappings described above. Create the following In data mappings with the same
+Id and name as the Out data mappings:</p>
+<ol>
+    <li><strong>CustomerName</strong> with data path element <tt>Name</tt></li>
+    <li><strong>CustomerID</strong> with data path element <tt>ID</tt></li>
+    <li><strong>eMail</strong> with data path element <tt>Email</tt></li>
+    <li><strong>ProductName</strong> with data path element <tt>Product/Name</tt></li>
+    <li><strong>Synopsis</strong> with data path element <tt>Product/Synopsis</tt></li>
+</ol>
+<p>When you have performed these steps, there will
+ be a total of five In Data mappings in the left pane of Enter Data properties:</p>
+<p class="image">
+<img src="images/enter-data-all-in-data-mappings.png" alt="Enter Data - all data-mappings">
+<br><strong>Figure:</strong> Data Mappings after Configuration</p>
+<p>The In data mappings have the same Ids as the out data mappings, so that
+they can be stored during a <strong>Suspend and Save</strong> option in the 
+<strong>Workflow Execution Perspective</strong>.
+Please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-suspend.html">
+Suspending Activities</a> of the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation for detailed information on this option.</p>
+<h2 id="dataMapping3"> Setting up Data as Input/Output of
+the Interactive Activity Analyze To Solve</h2>
+<p>The second human activity of the ACME process,
+<strong>Analyze To Solve</strong>, needs both input and output data mappings. The
+procedure is very similar to the one used for Out Data Mappings in <strong>Enter Data</strong> (see
+above).</p>
+<ol>
+ <li>Open the activity properties dialog of the <strong>Analyze To Solve</strong> activity by
+double-clicking on its symbol in the diagram.</li>
+
+  <li>Select <strong> In
+Data Mappings</strong> from
+the left pane of the dialog.</li>
+
+  <li>Choose the <strong>default</strong>
+context and click the <strong>Add</strong> button.</li>
+
+  <li>The dialog content changes to provide mapping
+   details.</li>
+  <li>Use the Data drop-down list to select <strong>Support Case Data</strong>. This is
+   the data object representing the entire case.</li>
+  <li>In the <strong>Name</strong> field enter <strong>CustomerID</strong> and make sure 
+  the Id is also <strong>CustomerID</strong>. This name
+	will later be used as a user prompt in the final user interface.</li>
+  <li>Use the <strong>Browse</strong> button on the Data Path to select the
+   <strong>Id</strong> element.</li>
+  <li>After these steps, the <strong>Analyze To Solve</strong> properties will
+   look like this:</li>
+</ol>
+<p class="image"><img src="images/in-data-mappings-analyze.png" 
+    alt="Analyze to Solve">
+<br><strong>Figure:</strong> Mappings of Interactive Activity </p>
+<p>Press the <strong>Add</strong> button to add more In Data Mappings as
+follows:</p>
+  <ul>
+    <li><strong>CustomerName</strong> with data path element <tt>Name</tt></li>
+    <li><strong>eMail</strong> with data path element <tt>Email</tt></li>
+    <li><strong>ProductName</strong> with data path element <tt>Product/Name</tt></li>
+    <li><strong>Synopsis</strong> with data path element <tt>Product/Synopsis</tt></li>
+    <li><strong>State</strong> with data path element <tt>Product/State</tt></li>
+    <li><strong>Analysis</strong> with data path element <tt>Product/Analysis</tt></li>
+  </ul>
+<p>When these steps are completed, <strong>Analyze To Solve</strong> shows the
+following In Data Mappings:</p>
+
+<p class="image">
+<img src="images/tut-main-16h.png" alt="Analyze To Solve in maps">
+<br><strong>Figure:</strong> Data Mappings after Configuration </p>
+<p>Notice the arrows on the data icons under In Data Mappings.
+The
+arrow pointing away from the data indicates these fields will come into
+the activity for use, but these input mappings will not cause the data
+to be changed at its source (the Support Case Data object).
+Out Data Mappings are required to change the data at its source.</p>
+<p>Now, create Out Data Mappings for <strong>Analyze To Solve</strong>,
+following a procedure similar to the one used for <strong>Enter Data</strong> above.
+Create the Out Data Mappings as follows:</p>
+<ul>
+    <li><strong>Analysis</strong> to <tt>Product/Analysis</tt></li>
+    <li><strong>State</strong> to <tt>Product/State</tt></li>
+</ul>
+
+<p>When these steps are complete, <strong>Analyze To Solve</strong> will have this
+appearance:</p>
+
+<p class="image"><img src="images/analyze-to-solve-props.png" 
+    alt="Analyze To Solve, all mappings">
+<br><strong>Figure:</strong> Out Data Mappings </p>
+<p><strong>Deliver Patch</strong> is also an interactive activity which needs an In
+Data Mapping for
+e-mail (allowing the customer to be sent a software patch in the ACME
+example). Following the examples above, add the following In
+Data Mapping to Deliver Patch:</p>
+  <ul>
+    <li><strong>eMail</strong> from data path element <tt>Email</tt></li>
+  </ul>
+<h2 id="dataMapping4"> Setting up Data as Input
+of a non-interactive Activity</h2>
+<p>The last
+activity to be configured for data is <strong>Notify Customer</strong>:</p>
+
+<ol>
+  <li>Double-click the activity symbol of <strong>Notify Customer</strong> to
+open its properties dialog.</li>
+  <li>Select <strong>In
+Data Mappings</strong> from
+the left pane of the dialog.</li>
+  <li>Choose the <strong>application</strong>
+context and click the <strong>Add</strong> button.</li>
+  <li>The dialog content changes to provide mapping
+details.</li>
+  <li>Use the Data drop-down list and select <strong>Support Case Data</strong>. This is
+the serializable object representing the entire case.</li>
+  <li>Use the Access Point drop-down list to select <tt>mParam1 : Map</tt>.</li>
+  <li>After these steps, the <strong>Notify Customer</strong> properties will
+look like this:</li>
+</ol>
+
+<p class="image"><a href="images/notify-customer-props_orgSize.png" target="_blank">
+<img src="images/notify-customer-props.png" alt="Notify Cust mappings"></a>
+<br><strong>Figure:</strong> Non-Interactive Application Data Mappings </p>
+<h2>Summary</h2>
+<p>
+The table below summarizes the data mappings carried out in this section:</p>
+<table width="100%" id='id'>
+    <tr>
+      <th >Activity </th>
+      <th >Type </th>
+      <th >Context </th>
+      <th >Data Path </th>
+      <th >Access Point </th>
+    </tr>
+    <tr>
+      <td>Init Data</td>
+      <td>OUT</td>
+      <td>non interactive App</td>
+      <td></td>
+      <td>returnValue : Map (sets the complete Support Case Data complex type)</td>
+    </tr>
+    <tr>
+      <td>Enter Data </td>
+      <td>IN</td>
+      <td>default </td>
+      <td>structured data path elements
+      <ul>
+        <li>ID</li>
+        <li>Name</li>
+        <li>Email</li>
+        <li>Product/Name</li>
+        <li>Product/Synopsis</li>
+     </ul>
+      </td>
+      <td>implicit in Manual Activity</td>
+    </tr>
+    <tr>
+      <td>Enter Data </td>
+      <td>OUT</td>
+      <td>default </td>
+      <td>structured data path elements
+      <ul>
+        <li>ID</li>
+        <li>Name</li>
+        <li>Email</li>
+        <li>Product/Name</li>
+        <li>Product/Synopsis</li>
+     </ul>
+      </td>
+      <td>implicit in Manual Activity</td>
+    </tr>
+    <tr>
+      <td>Analyze To Solve </td>
+      <td>OUT</td>
+      <td>default </td>
+      <td>structured data path elements
+      <ul>
+        <li>Product/State</li>
+        <li>Product/Analysis</li>
+      </ul>
+      </td>
+      <td>implicit in Manual Activity</td>
+    </tr>
+    <tr>
+      <td>Analyze To Solve </td>
+      <td>IN</td>
+      <td>default </td>
+      <td>structured data path elements 
+      <ul>
+        <li>ID</li>
+        <li>Name</li>
+        <li>Email</li>
+        <li>Product/Name</li>
+        <li>Product/Synopsis</li>
+        <li>Product/State</li>
+        <li>Product/Analysis</li>
+      </ul>
+      <td>implicit in Manual Activity<br></td>
+    </tr>
+    <tr>
+      <td>Deliver Patch </td>
+      <td>IN</td>
+      <td>default </td>
+      <td>structured data path element <strong>Email</strong></td>
+      <td>implicit in Manual Activity</td>
+    </tr>
+    <tr>
+      <td>Notify Customer</td>
+      <td>IN</td>
+      <td>non interactive App </td>
+      <td></td>
+      <td>mParam1 : Map (retrieves the complete Support Case Data complex type)</td>
+    </tr>
+</table>
+
+<p> <strong><span class="tip">! </span>Tip:</strong> You may find it helpful to remember two rules for Stardust data mappings:</p>
+<ol>
+  <li>For In Data Mappings - get from the data, set the corresponding application (Access Point)</li>
+  <li>For Out Data Mappings - get from the application, set the corresponding data (Path)</li>
+</ol>
+<p>For most of the activities in this
+tutorial, the application is implicit via a manual activity, where
+Stardust automatically provides the user interface application. Other processes may use explicit applications and related
+mappings. These two rules consistently follow the activity perspective involved in Data Mappings.</p>
+
+<p>At this point of the ACME Tutorial, your process diagram should be similar to this:</p>
+
+<p class="image"><img alt="Diagram after mappings" src="images/overview-handling-data.png">
+<br><strong>Figure:</strong> Finished Data Mappings </p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

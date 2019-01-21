@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Creating a Provider Model</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Creating a Consumer Model",
+        "create-multi-model-preface.html","create-consumer-model.html",
+        "../tut-preface.htm","Tutorials",
+        "create-multi-model-preface.html","Working with Multiple Models in One Audit Trail");
+-->
+</script>
+<h1>Creating a Provider Model</h1>
+<p>In this tutorial, we want to create a model which can be referenced in the other processes of 
+Financial System. In this organization,
+Customer Information collection is the common process which can be used across all the segments.
+To achieve this, we need to define a process interface for the created process in the model.
+</p>
+<p>You can create the model as described in the following section,
+or import the completed example model provided by Stardust. 
+</p>
+<h2 id="createModel">Creating the Model</h2>
+<p>Create a model in a dynamic Web project.
+For detailed information on creating dynamic Web projects,
+please refer to the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.wst/html/wst-integration/toc.html">
+Rapid Application Development</a> guide.</p>
+
+<p>Perform the following steps:</p>
+<ul>
+	<li><a href="#crwork">Creating the Workflow</a></li>
+	<li><a href="#PI">Defining a Process Interface</a></li>
+</ul>
+
+<h2 id="crwork">Creating the Workflow</h2>
+<ol>
+	<li>Create a manual trigger</li>
+	<li>Create a manual activity named <strong>Collect Customer Information</strong></li>
+	<li>Create a structured data <strong>Customer Information</strong> and provide in and out data
+	mapping between data and manual activity. Make sure that the <strong>Visibility Public</strong> option is selected. For more information,
+	please refer to the <a href="../../handbooks/modelling/data-integration/structured-data/struct-type-def.html#comp">Composite Types</a>
+	section of chapter <a href="../../handbooks/modelling/data-integration/structured-data/struct-type-def.html">Defining Structured Types</a>
+	of the Modeling Guide.</li>
+	<p class="image"><img src="images/prov-struct-data.png" alt="">
+	<br>
+<strong>Figure:</strong> Customer Information</p>
+	<li>Similarly, create a structured data <strong>Email Address</strong> with Fromaddress and Toaddress fields and provide the 
+	data mappings as shown in the model screenshot.</li>
+	<li>Connect the manual activity to the application activity named <strong>Send Notification Email</strong></li>
+	<li>Define a mail application and connect it to the <strong>Send Notification Email activity</strong>.
+	Make sure that the <strong>Visibility Public</strong> option is selected. For more information, please refer to the
+	<a href="../../handbooks/modelling/mg-defdesk-6.htm#prop">Properties</a> section of the 
+	<a href="../../handbooks/modelling/mg-defdesk-6.htm">Specifying Application</a> chapter of the Modeling Guide.</li>
+	<li>Define the Administrator as participant for the required elements in the model</li>
+</ol>
+<p class="image"><img src="images/prov-workflow.png" alt="">
+<br>
+<strong>Figure:</strong> Provider Model</p>
+<p>Once the workflow is ready, you can define the process interface.</p>
+<h3 id="PI">Defining a Process Interface</h3>
+<p>For the definition of the process interface, please refer to the chapter <a href="../../glossary.html#procInt">Glossary.</a></p>
+<ol>
+	<li>In the <strong>Outline View</strong>, double-click the <strong>Collect Customer Information</strong> process.
+The properties of the process definition get displayed.</li>
+	<li>Click the <strong>Process Interface</strong> in the left pane and select <strong>Provides Process Interface</strong> 
+	from the drop-down list.</li>
+	<li>Click <strong>Add</strong> to define a <strong>Formal Parameter 1</strong> of the process interface</li>
+	<li>Select <strong>INOUT</strong> from the <strong>Direction</strong> drop-down list and select 
+	<strong>Customer Information</strong> from the <strong>Data Type</strong> and 
+<strong>Data</strong> drop-down lists</li>
+	<li>Click <strong>Apply</strong> and <strong>OK</strong></li>
+
+</ol>
+
+<p class="image"><img src="images/prov-interface.png" alt="">
+<br>
+<strong>Figure:</strong> Define Process Interface</p>
+<p>For more information, please refer to the section <a href="../../handbooks/modelling/mg-defdesk-3.htm#definePI">
+Defining Process Interface</a>
+of the chapter <a href="../../handbooks/modelling/mg-defdesk-3.htm">Working with Process Definitions</a>
+ in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling Guide.</a>
+
+</p>
+<p>Now your workflow and the process interface definition is ready.
+Thus, the provider model is ready to be referenced in the consumer model.
+In the next chapter of the tutorial, we will see how to create a consumer model.</p>
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

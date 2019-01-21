@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Controlling Daemon Execution</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Deployment Unit Support",
+      "pg-embed-conf-var.html","pg-embed-deployment-unit.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Controlling Daemon Execution</h1>
+<p>The AdministrationService provides the following options
+to handle daemons:</p>
+<ul>
+    <li><a href="#retrieve">Retrieving a Specified Daemon</a></li>
+    <li><a href="#start">Starting a Daemon</a></li>
+    <li><a href="#stop">Stopping a Daemon</a></li>
+    <li><a href="#list">Retrieving a List of All Available Daemons</a></li>
+</ul>
+<p>Please refer to the section <a href="../pg-embedded-3.htm#adminservice">AdministrationService</a>
+of the chapter <a href="../pg-embedded-3.htm">Stardust Services</a> for information
+on this service or the according Javadoc of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a>
+for detailed information on its methods and their parameter usage.</p>
+
+<h2 id="retrieve">Retrieving a Specified Daemon</h2>
+<p>To retrieve information on a daemon with a specified daemon type, use
+the method <tt>getDaemon</tt>:</p>
+<pre>Daemon getDaemon(String daemonType, boolean acknowledge)
+    throws ObjectNotFoundException;</pre>
+<p>The following daemon types are provided:</p>
+<ul>
+    <li><code>event.daemon</code> for the event daemon</li>
+    <li><code>mail.trigger</code> for the mail trigger daemon</li>
+    <li><code>timer.trigger</code> for the timer trigger daemon.</li>
+    <li><code>system.daemon</code> for the notification daemon.</li>
+    <li><code>criticality.daemon</code> for the prioritization daemon.</li>
+</ul>
+<p>The parameter <tt>acknowledge</tt> determines whether the daemon information
+should be acknowledged. If no daemon with the specified type is found, an 
+<tt>ObjectNotFoundException</tt> is thrown.</p>
+<h2 id="start">Starting a Daemon</h2>
+<p>To start a daemon with a specified daemon type, use the method
+<tt>startDaemon</tt>:</p>
+<pre>Daemon startDaemon(String daemonType, boolean acknowledge)
+    throws ObjectNotFoundException;</pre>
+<p>The parameter <tt>acknowledge</tt> determines whether the start operation
+should be acknowledged. If started with acknowledgment, then each new request
+first checks that previous requests have been acknowledged and are not still 
+in response-requested state.
+When started without acknowledgment, these checks will not be made.</p>
+<p>If no daemon with the specified type is found, an 
+<tt>ObjectNotFoundException</tt> is thrown.</p>
+<h2 id="stop">Stopping a Daemon</h2>
+<p>To stop a daemon with a specified daemon type, use the method
+<tt>stopDaemon</tt>:</p>
+<pre>Daemon stopDaemon(String daemonType, boolean acknowledge)
+    throws ObjectNotFoundException;</pre>
+<p>The parameter <tt>acknowledge</tt> determines whether the stop operation
+should be acknowledged. If no daemon with the specified type is found, an 
+<tt>ObjectNotFoundException</tt> is thrown.</p>
+<h2 id="list">Retrieving a List of All Available Daemons</h2>
+<p>To retrieve a list of all the available daemons, use the method
+<tt>getAllDeamons</tt>:</p>
+<pre>List&lt;Daemon&gt; getAllDaemons(boolean acknowledge) throws AccessForbiddenException;</pre>
+<p>This method returns a list with the available Daemon objects. 
+The parameter <tt>acknowledge</tt> determines whether the daemon information
+should be acknowledged. If you have no permission to manage daemons, an 
+<tt>AccessForbiddenException</tt> is thrown.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

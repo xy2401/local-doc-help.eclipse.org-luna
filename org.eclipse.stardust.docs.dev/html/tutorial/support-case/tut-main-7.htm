@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Control Flow - Join, Split and Loop</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Defining Roles and Organizations",
+	    "tut-main-data-path.html","tut-main-8.htm",
+		
+		"../tut-preface.htm","Tutorials",
+		"support-case-preface.htm","The Support Case Example");
+ -->
+</script>
+
+<h1>Control Flow - Join, Split and Loop</h1>
+<p>As we have already mentioned, our sequence of activities is not a linear structure.
+The activity <strong>Notify Customer</strong> has not yet been defined as a successor
+activity of any other one. ACME wants to differentiate between two paths in the process
+definition:</p>
+<ul>
+    <li>If the case solution has been found, a patch will be sent to the customer
+    having reported the problem.</li>
+    <li>If the analysis of the software problem for some reason leads to a case
+    rejection, the customer will be notified.</li>
+</ul>
+<p>Which path the process will go depends on the state of the support case. If the
+activity <strong>Analyze To Solve</strong> set this variable to "C" which stands for the <tt>CLOSED</tt>
+state, the first option will be realized. If the same variable has been set to "R",
+standing for <tt>REJECTED</tt>, the activity <strong>Notify Customer</strong> will follow.
+This means that processing of the support case needs to be split into two branches at
+activity <strong>Analyze To Solve</strong>. Our diagram has to reflect this.</p>
+<h2>Setting the Control Flow</h2>
+<p>Before we can create a transition between the activities <strong>Analyze
+To Solve</strong> and <strong>Notify Customer</strong>, we have to redefine the properties of the
+activity <strong>Analyze To Solve</strong> to make it a node where the split occurs.
+Additionally, we will add a loop allowing to perform this activity as long as it does not
+reach one of the mentioned states: <tt><span class="Stil1">CLOSED</span></tt> or <tt><span
+    class="Stil1">REJECTED</span></tt>.</p>
+<p>To introduce these supplements to our activity graph, proceed as follows:</p>
+<ol>
+    <li>Double-click the symbol <strong>Analyze To Solve</strong> to open its
+    properties dialog.</li>
+    <li>In the property dialog select <strong>Control Flow</strong> on the left side.</li>
+    <li>Select the radio button <strong>XOR</strong> in the <strong>Split </strong>section.</li>
+    <li>Select the radio button <strong>XOR</strong> in the <strong>Join</strong>
+    section (needed later to create the loop transition).</li>
+    <li>Now <strong>OK</strong> the properties dialog.</li>
+</ol>
+<p class="image"><img src="images/tut-main-17.png" alt="Control Flow"> <br>
+<strong>Figure:</strong> Defining Control Flow of an Activity</p>
+<p><strong><span class="tip">! </span>Tip:</strong> You may need to adjust the
+placement of your activities to make the newly added split gateways clearly visible.
+Adjusting the diagram viewing percentage (zoom) on the Eclipse main toolbar can
+help you see the overall layout of your diagram.</p>
+<h2>Adding the Transition</h2>
+<p>Now you can add the missing transition between <strong>Analyze To Solve</strong>
+and the activity <strong>Notify Customer</strong>:</p>
+<ol>
+    <li>In the diagram toolbar palette, select <strong>Connect</strong>.</li>
+
+    <li>Click <strong>XOR split</strong> gateway (diamond) that has an arrow pointing
+    into it coming from <strong>Analyze To Solve</strong>. In the suggested layout (see
+    below) this is the lower diamond below Analyze To Solve.</li>
+    <li>Then click activity <strong>Notify Customer</strong>.</li>
+</ol>
+<p>An ACME Support Case needs to remain with the <strong>Analyze To Solve</strong>
+activity until it is either Closed or Rejected. Thus a loop is needed around <strong>Analyze
+To Solve</strong>.</p>
+<p>To add the loop transition:</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Connect</strong>.</li>
+    <li>Click the <strong>XOR split</strong> gateway&nbsp;of the <strong>Analyze
+    To Solve</strong> activity.</li>
+    <li>Click the <strong>XOR join</strong> gateway of the <strong>Analyze
+    To Solve</strong> activity.</li>
+</ol>
+<p>Now, the newly created loop is in the process definition. The process diagram
+should now be similar to this:&nbsp;</p>
+<p class="image"><img alt="Analyze loop" src="images/overview-control-flow.png">
+<br>
+<strong>Figure:</strong> Activities Graph with a Join, a Split and a Loop</p>
+<p>Now the question arises how to make&nbsp; the successor activities of <strong>Analyze
+To Solve</strong> conditional depending on the state of the support case. Each transition between
+activities&nbsp;has a condition, which by default is set to <tt>TRUE;</tt> this condition
+can be redefined.</p>
+<h2 id="cond">Defining Transition Conditions</h2>
+<p>We have defined a split in our process and need transition conditions between the
+activity <strong>Analyze To Solve</strong> and its successors. To define the transition
+condition between <strong>Analyze To Solve</strong> and <strong>Deliver Patch</strong>:</p>
+<ul>
+    <li>Double-click the transition symbol between&nbsp;the <strong>XOR
+    split</strong> gateway and <strong>Deliver Patch</strong> to open its properties dialog.</li>
+    <li>Set the <strong>Condition Type</strong> to <tt>CONDITION</tt>.</li>
+    <li>In the <strong>Condition Expression</strong> field enter <tt>Su</tt> and 
+        enter <strong>CTRL+Space</strong>.</li>
+    <li>Select <tt>SupportCaseData</tt> which will be offered in a list and enter.</li>
+    <li>Type a dot and <tt>Pr</tt> and press <strong>CTRL+Space</strong> again.</li>
+    <li>Select <tt>Product</tt> in the list and enter.</li>
+    <li>Type a dot and <tt>St</tt> and press <strong>CTRL+Space</strong> again.</li>
+    <li>Select <tt>State</tt> and enter.</li>
+    <li>Finish the condition with <tt>=="C"</tt>.</li>
+    <li>Now the condition is set to: 
+    <pre>SupportCaseData.Product.State == "C"</pre>
+    In the transition condition you can use any of the defined data (use the ID of the
+    data element) including a de-referencing path. Keep in
+    mind that this value has been assigned in our implementation to the state <tt>"C"(meaning
+    </tt><tt>CLOSED)</tt>, when a support case has been analyzed and solved.</li>
+</ul>
+<p class="image"><img src="images/set-transition-condition.png"
+    alt="First Analyze loop transition"> <br>
+<strong>Figure:</strong> Setting the Transition Condition between Analyze To Solve and Deliver Patch</p>
+<p>Likewise, define the transition condition between <strong>Analyze To Solve</strong>
+and <strong>Notify Customer</strong>:</p>
+<ul>
+
+    <li>Double-click the transition symbol between&nbsp;the <strong>XOR
+    split</strong> gateway and <strong>Notify Customer</strong> to open its properties dialog.</li>
+    <li>Set the <strong>Condition Type</strong> to <tt>CONDITION</tt>.</li>
+    <li>Set the <strong>Condition Expression</strong> to: <pre>SupportCaseData.Product.State=="R"</pre>
+    In our implementation, this value has been assigned&nbsp; to the state <tt>REJECTED</tt>,
+    when a support case solution will not be sought.</li>
+</ul>
+<p class="image"><img src="images/set-transition-condition-2.png"
+    alt="First Analyze loop transition"> <br>
+<strong>Figure:</strong> Setting the Transition Condition between Analyze To Solve and Notify Customer</p>
+<p>Likewise, define the transition condition between <strong>Analyze To Solve</strong>
+and its third successor <strong>Analyze To Solve</strong>:</p>
+<ul>
+    <li>Double-click the transition symbol to open its properties dialog.</li>
+    <li>Set the <strong>Condition</strong> to: 
+    <pre>SupportCaseData.Product.State!="C" &&
+SupportCaseData.Product.State!="R"</pre>
+    This will add a loop permitting to perform this activity as long as it does not reach
+    one of the mentioned states: <tt>CLOSED</tt> or <tt>REJECTED</tt>.&nbsp;</li>
+</ul>
+<p class="image"><img src="images/set-transition-condition-3.png"
+    alt="Analyze loop transition"> <br>
+<strong>Figure:</strong> Setting a Transition Condition</p>
+<p><strong><span class="tip">! </span>Tip:</strong> 
+There is another option for
+implementing the <strong>Analyze To Solve</strong> repeat loop. You can choose
+the condition type <strong>OTHERWISE</strong>. This will cause the transition to
+only evaluate to true, when all the other conditions on the split have false values.</p>
+<p class="image"><img src="images/set-transition-condition-otherwise.png"
+    alt="OTHERWISE Condition"> <br>
+<strong>Figure:</strong> OTHERWISE Condition</p>
+<p>Please note that once you changed the <strong>Condition Type</strong>, the
+entry in the <strong>Condition Expression</strong> editor will be lost.</p>
+<p>The diagram with the transition conditions will look like the following
+now:</p>
+<p class="image"><img src="images/overview-trans-condition.png"
+    alt="Diagram with Transition Conditions"> <br>
+<strong>Figure:</strong> Diagram with Transition Conditions</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

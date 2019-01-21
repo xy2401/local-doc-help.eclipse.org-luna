@@ -1,0 +1,606 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Filter Criteria</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Exceptions",
+        "pg-embed-trans-procs.html","pg-embed-exceptions.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+
+<h1>Filter Criteria</h1>
+<p>Stardust services are provided to filter for activities, processes, users etc. The 
+following sections describe how these filters work.</p>
+<ul>
+    <li><a href="#activity">Activity Filter</a></li>
+    <li><a href="#process">Process Filter</a></li>
+    <li><a href="#data">Data Filter</a></li>
+    <li><a href="#participant">Participant and User Filter</a></li>
+    <li><a href="#filterprovider">Creating a Filter Provider Java File</a></li>
+</ul>
+<p>For a detailed description on how to use filter criteria efficiently please
+refer to the section <a href="#filterUsage">Using Filter Criteria efficiently</a>.</p>
+<h2 id="activity">Activity Filter</h2>
+<h3>ActivityFilter</h3>
+<p>This filter restricts the resulting items to the ones related to a specific activity. 
+The search can be further restricted to certain models by passing in a collection of model OIDs.
+Please refer to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityFilter.html">ActivityFilter</a>
+ for detailed information.</p>
+<h3>ActivityInstanceFilter</h3>
+<p>This is a filter criterion for matching specific activity instances.
+Please refer to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceFilter.html">ActivityInstanceFilter</a>
+ for detailed information.</p>
+<h3 id="actState">ActivityStateFilter</h3>
+<p>This is a predefined filter matching activity instances being in states other than
+a list of given states.
+Please refer to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityStateFilter.html">ActivityStateFilter</a>
+ for detailed information.</p>
+<h2 id="process">Process Filter</h2>
+<h3>ProcessDefinitionFilter</h3>
+<p>This filter restricts the resulting items to the ones related to a specific 
+process definition.
+Please refer to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessDefinitionFilter.html">ProcessDefinitionFilter</a>
+for detailed information.</p>
+<h3>ProcessInstanceFilter</h3>
+<p>This is a filter criterion for matching specific process instances. Please refer to the
+Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceFilter.html">ProcessInstanceFilter</a>
+for detailed information.</p>
+<h3>ProcessStateFilter</h3>
+<p>Filter for finding process instances in a given state. Please refer to the
+Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessStateFilter.html">ProcessStateFilter</a>
+for detailed information.</p>
+<h2 id="data">Data Filter</h2>
+<p>The following data filters are provided:</p>
+<ul>
+    <li>DataFilter</li>
+    <li>HierarchyDataFilter</li>
+    <li>SubprocessDataFilter</li>
+</ul>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataFilter.html">DataFilter</a>
+will filter all process instances from the scope, whereas the <tt>SubprocessDataFilter</tt>
+(mode &quot;Subprocesses&quot;) retrieves all subprocesses of qualifying scope process
+instances and the <tt>HierarchyDataFilter</tt> (mode &quot;AllFromHierarchy&quot;) all the
+sub- and super-processes of qualifying scope process instances.</p>
+<p>A set of methods provide different filter functionality for matching 
+workflow data:</p>
+<ul>
+   <li><a href="#equal">Filtering for matching Workflow Data</a></li>
+   <li><a href="#notequal">Filtering for matching Workflow Data not equal a given value</a></li>
+   <li><a href="#lessthan">Filtering for matching Workflow Data less than a given value</a></li>
+   <li><a href="#lessoreq">Filtering for matching Workflow Data less or equal a given value</a></li>
+   <li><a href="#greateroreq">Filtering for matching Workflow Data greater or equal a given value</a></li>
+   <li><a href="#greaterthan">Filtering for matching Workflow Data greater than a given value</a></li>
+   <li><a href="#like">Filtering for matching Workflow Data like a given value</a></li>
+   <li><a href="#in">Filtering for matching Workflow Data equal a list of given value</a></li>
+   <li><a href="#notin">Filtering for matching Workflow Data not equal a list of given value</a></li>
+   <li><a href="#notany">Filtering for Workflow Data excluding Process and Activity Instances with specified List Values</a></li>
+   <li><a href="#between">Filtering for matching Workflow Data between given values</a></li>
+   <li><a href="#case">Filtering for matching Case Descriptors</a></li>
+</ul>
+<h3 id="equal">Filtering for matching Workflow Data</h3>
+<pre>public static DataFilter isEqual(String dataID, Serializable value)
+public static DataFilter isEqual(String dataID, String value, boolean caseSensitive)
+public static DataFilter isEqual(String dataID, String attributeName, Serializable value)
+public static DataFilter isEqual(String dataID, String attributeName,
+         String value, boolean caseSensitive)</pre>
+<h3 id="notequal">Filtering for matching Workflow Data not equal a given value</h3>
+<p>To filter for matching workflow data being not equal with a given value, use
+method <tt>notEqual</tt>.</p>
+<pre>public static DataFilter notEqual(String dataID, Serializable value)
+public static DataFilter notEqual(String dataID, String attributeName, Serializable value)</pre>
+<h3 id="lessthan">Filtering for matching Workflow Data less than a given value</h3>
+<pre>public static DataFilter lessThan(String dataID, Serializable value)
+public static DataFilter lessThan(String dataID, String attributeName, Serializable value)</pre>
+<h3 id="lessoreq">Filtering for matching Workflow Data less or equal a given value</h3>
+<pre>
+public static DataFilter lessOrEqual(String dataID, Serializable value)
+public static DataFilter lessOrEqual(String dataID, String attributeName, Serializable value)</pre>
+<h3 id="greateroreq">Filtering for matching Workflow Data greater or equal a given value</h3>
+<pre>
+public static DataFilter greaterOrEqual(String dataID, Serializable value)
+public static DataFilter greaterOrEqual(String dataID, String attributeName, Serializable value)</pre>
+<h3 id="greaterthan">Filtering for matching Workflow Data greater than a given value</h3>
+<pre>public static DataFilter greaterThan(String dataID, Serializable value)
+public static DataFilter greaterThan(String dataID, String attributeName, Serializable value)</pre>
+<h3 id="like">Filtering for matching Workflow Data like a given value</h3>
+<pre>public static DataFilter like(String dataID, String value)
+public static DataFilter like(String dataID, String value, boolean caseSensitive)
+public static DataFilter like(String dataID, String attributeName, String value)
+public static DataFilter like(String dataID, String attributeName, String value,
+         boolean caseSensitive)</pre>
+<h3 id="in">Filtering for matching Workflow Data equal a list of given value</h3>
+<pre>public static DataFilter in(String dataID, Collection values)
+public static DataFilter in(String dataID, String attributeName, Collection values)</pre>
+<h3 id="notin">Filtering for matching Workflow Data not equal a list of given value</h3>
+<pre>public static DataFilter notIn(String dataID, Collection values)
+public static DataFilter notIn(String dataID, String attributeName, Collection values)</pre>
+<h3 id="notany">Filtering for Workflow Data excluding Process and Activity Instances with specified List Values</h3>
+<p>This DataFilter <strong>notAnyOf</strong> is applicable for Structured Data Type list 
+values only. Structured Data Types are defined as lists via a cardinality, which is set 
+to <tt>one or more</tt> or <tt>zero or more</tt>. For details on Structured Data Type 
+lists refer to section
+<a href="../../modelling/data-integration/structured-data/struct-type-def.html#comp">
+Composite Types</a> of chapter
+<a href="../../modelling/data-integration/structured-data/struct-type-def.html">
+Defining Structured Types</a>.
+<pre>
+public static DataFilter notAnyOf(String dataID, String attributeName, Collection values)
+</pre>
+<p>Hereby, <tt>dataID</tt> determines the ID of the workflow data to be matched against.
+Parameter <tt>attributeName</tt> specifies the name of the data attribute to search for 
+(XPath, etc.). Note that only Structured Data value list nodes are supported.
+The last parameter provides a list of values to match with, which will be excluded from
+the result set.</p>
+<p>The resulting SQL adds for each applied filter an additional <tt>OUTER JOIN</tt>.
+For example for <tt>DataFilter.notAnyOf("SD1", "list", listWithXYZ)</tt>:</p>
+<pre>from process_instance pi
+OUTER JOIN structured_data_value sdv on (pi.oid and sdv.string_value in ('X', 'Y', 'Z'))</pre>
+<p>As <tt>DataFilter.notAnyOf()</tt> is used to exclude process and activity instances,
+which have any value mentioned in the list argument in their corresponding Structured Data
+Value entries, the corresponding <tt>WHERE</tt> clause will select for <tt>NULL entries</tt>
+as shown below:</p>
+<pre>WHERE sdv.oid is null</pre>
+<p><tt>OUTER JOIN</tt> is used because it generates NULL values for lines which do not 
+match the join condition.</p>
+<h4>Example</h4>
+<p>The following example shows the usage of the <strong>notAnyOf</strong> DataFilter with
+three process instances <strong>piABC, piKLM, piXYZ</strong> having a Structured Data Type 
+list element with ID <strong>SD1</strong>. The values of this list element for each
+process instance are as in the following table:</p>
+<table class="autoWidth">
+   <tr>
+      <th>Process Instance</th>
+      <th>Values in List Element SD1</th>
+   </tr>
+   <tr>
+      <td>piABC</td>
+      <td>A, B, C</td>
+   </tr>
+   <tr>
+      <td>piKLM</td>
+      <td>K, L, M</td>
+   </tr>
+   <tr>
+      <td>piXYZ</td>
+      <td>X, Y, Z</td>
+   </tr>
+</table>
+<p>The following table shows some example queries with these process instances and the
+according results:</p>
+<table>
+   <tr>
+      <th>Query (Pseudo Java)</th>
+      <th>Result</th>
+      <th>SQL (Pseudo)</th>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [X])</td>
+      <td>piABC, piKLM (note that piXYZ is excluded as it matches)</td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdv on (pi.oid and sdv.string_value in ('X'))
+WHERE sdv.oid is null</pre></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [Y])</td>
+      <td>piABC, piKLM </td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdv on (pi.oid and sdv.string_value in ('Y'))
+WHERE sdv.oid is null</pre></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [Z])</td>
+      <td>piABC, piKLM </td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [U])</td>
+      <td>piABC, piKLM, piXYZ (none excluded as <tt>U</tt> has no match)</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A,X])</td>
+      <td>piKLM (piABC and piXYZ are excluded as both match)</td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdv on (pi.oid and sdv.string_value in ('A', 'X'))
+WHERE sdv.oid is null</pre></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A,Y])</td>
+      <td>piKLM</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A,X,Z])</td>
+      <td>piKLM</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A,X,M])</td>
+      <td>&lt;empty&gt;</td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdv on (pi.oid and sdv.string_value in ('A', 'X', 'M'))
+WHERE sdv.oid is null</pre></td>
+   </tr>
+</table>
+<p>Now we use three process instances <strong>piABC, piALM, piAYZ</strong> also having the 
+Structured Data Type list element with ID <strong>SD1</strong>, but with the following
+values:</p>
+<table class="autoWidth">
+   <tr>
+      <th>Process Instance</th>
+      <th>Values in List Element SD1</th>
+   </tr>
+   <tr>
+      <td>piABC</td>
+      <td>A, B, C</td>
+   </tr>
+   <tr>
+      <td>piALM</td>
+      <td>A, L, M</td>
+   </tr>
+   <tr>
+      <td>piAYZ</td>
+      <td>A, Y, Z</td>
+   </tr>
+</table>
+<p>See some example queries and the according results for these process instances, which all have
+<tt>A</tt> as value in their list element, in the table below:</p>
+<table>
+   <tr>
+      <th>Query (Pseudo Java)</th>
+      <th>Result</th>
+      <th>SQL (Pseudo)</th>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A])</td>
+      <td>&lt;empty&gt;<br>
+      (all excluded as all match <tt>A</tt>) </td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A,B])</td>
+      <td>&lt;empty&gt;<br>
+      (all excludes as all match <tt>A</tt> even if they do not match <tt>B</tt>) </td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A])<br>
+      AND<br>
+      DataFilter.notAnyOf("SD1", "list", [B])</td>
+      <td>&lt;empty&gt;<br>
+      (See <a href="#matrix">Match Matrix</a> table) </td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdvA on (pi.oid and sdvA.string_value in ('A'))
+OUTER JOIN structured_data_value sdvB on (pi.oid and sdvB.string_value in ('B'))
+WHERE sdvA.oid is null AND sdvB.oid is null</pre></td>
+   </tr>
+   <tr>
+      <td>DataFilter.notAnyOf("SD1", "list", [A])<br>
+      OR<br>
+      DataFilter.notAnyOf("SD1", "list", [B])</td>
+      <td>piALM, piAYZ
+      (See <a href="#matrix">Match Matrix</a> table) </td>
+      <td><pre>from process_instance pi
+OUTER JOIN structured_data_value sdvA on (pi.oid and sdvA.string_value in ('A'))
+OUTER JOIN structured_data_value sdvB on (pi.oid and sdvB.string_value in ('B'))
+WHERE sdvA.oid is null OR sdvB.oid is null</pre></td>
+   </tr>
+</table>
+<p>The following table provides a matching matrix for combinations of list values and 
+process instances when using <tt>AND</tt> and <tt>OR</tt> operators:</p>
+<table class="autoWidth" id="matrix">
+   <tr>
+      <th>PI</th>
+      <th>sdvA.oid</th>
+      <th>sdvB.oid</th>
+      <th><span class="ind">AND</span>
+      <ul>
+         <li>all filters need to be null</li>
+         <li>excludes PIs which match at least one filter</li>
+      </ul></th>
+      <th><span class="ind">OR</span>
+      <ul>
+         <li>at least one result needs to be null</li>
+         <li>excludes PIs which match all filters</li>
+      </ul></th>
+   </tr>
+   <tr>
+      <td>piABC</td>
+      <td>A</td>
+      <td>B</td>
+      <td>excluded</td>
+      <td>excluded</td>
+   </tr>
+   <tr>
+      <td>piALM</td>
+      <td>A</td>
+      <td>null </td>
+      <td>excluded</td>
+      <td>included</td>    
+   </tr>
+   <tr>
+      <td>piAYZ</td>
+      <td>A</td>
+      <td>null</td>
+      <td>excluded</td>
+      <td>included</td>
+   </tr>
+</table>
+<h3 id="between">Filtering for matching Workflow Data between given values</h3>
+<pre>public static DataFilter between(String dataID, Serializable lowerBound,
+         Serializable upperBound)
+public static DataFilter between(String dataID, String attributeName, Serializable lowerBound,
+         Serializable upperBound)</pre>
+<h3 id="case">Filtering for matching Case Descriptors</h3>
+<pre>public static DataFilter equalsCaseDescriptor(String id, Object value)
+public static DataFilter likeCaseDescriptor(String id, Object value)</pre>
+
+<h3>Known restrictions for String comparison using MySQL</h3>
+<p>Please note that MySQL always performs a case sensitive String comparison, so
+the usage of the Boolean parameter <tt>caseSensitive</tt> for a String comparison in a
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataFilter.html">DataFilter</a> 
+query using MySQL will have no affect.</p>
+<h2 id="participant">Participant and User Filter</h2>
+<h3>ParticipantAssociationFilter</h3>
+<p>The
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ParticipantAssociationFilter.html">ParticipantAssociationFilter</a>
+will query for fetching workflow users matching specific criteria. Use one of the
+following kinds:</p>
+<ul>
+    <li>FILTER_KIND_USER_GROUP: <br>
+    The user group membership filter. Use <tt>inUserGroup(String groupID)</tt> to
+    construct a filter criterion matching the user group identified by the given id.
+    Whereby <tt>groupID</tt> is the ID of the user group to filter for.<br>
+    &nbsp;</li>
+    <li>FILTER_KIND_MODEL_PARTICIPANT: <br>
+    The model participant grant filter. Use <tt>forModelParticipant(String
+    participantID, boolean recursively)</tt> to construct a filter criterion matching the
+    closure of the given model participant. Whereby <tt>participantID</tt> is the ID of
+    the model participant to filter for. The closure will be calculated according to
+    worklist rules.<br>
+    &nbsp;</li>
+    <li>FILTER_KIND_USER: <br>
+    The user filter. Use <tt>forUser(String account)</tt> to construct a filter criterion
+    matching the user identified by the given account. Whereby <tt>account</tt> is the
+    account of the user to filter for.<br>
+    &nbsp;</li>
+    <li>FILTER_KIND_TEAM_LEADER: <br>
+    The team leader filter. Use <tt>forTeamLeader(String roleId)</tt> to construct a
+    filter criterion which can be used for UserQueries and will return all users of the
+    team the given role (<tt>roleId</tt>) is team leader of. This comprises:
+    <ul>
+        <li>the organization the given role is team leader of,</li>
+        <li>sub organizations of that organization,</li>
+        <li>all manager-of and works-for roles related
+	       to the organization and their sub-organizations.</li>
+    </ul></li>
+    <li>FILTER_KIND_DEPARTMENT: <br>
+    The department filter. Use <tt>forDepartment(DepartmentInfo department)</tt> to 
+    construct a filter criterion
+    matching the department identified by the given department instance. 
+    Whereby <tt>department</tt> is the department users have to assigned to. 
+    It may be null which means the default department.<br>
+    &nbsp;</li>
+</ul>
+<h3>PerformingParticipantFilter</h3>
+<p>The <strong>PerformingParticipantFilter</strong>
+filter retrieves items performed by any participant (roles, organizations or
+user groups) associated with the calling user. Finding such participants will
+perform a deep search. Use one of the
+following kinds:</p>
+<ul>
+    <li>FILTER_KIND_ANY_FOR_USER: marking the special ANY_FOR_USER filter.</li>
+    <li>FILTER_KIND_MODEL_PARTICIPANT: marking a model participant filter</li>
+    <li>FILTER_KIND_USER_GROUP: marking a user group filter.</li>
+</ul>
+<p>Use <tt>forParticipant(ParticipantInfo participant)</tt> to construct
+a filter criterion matching the participant identified by the given
+participant info. You can also use 
+<tt>forParticipant(ParticipantInfo participant, boolean recursively)</tt>,
+with <tt>recursively</tt> as flag to indicate that evaluation
+of this filter should traverse the participant hierarchy.</p>
+<p>Please refer to the Javadoc of the 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingParticipantFilter.html">
+PerformingParticipantFilter</a> for detailed information.</p>
+<h3>PerformedByUserFilter</h3>
+<p>This filter indicates a match against the currently logged in user. Please
+refer to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformedByUserFilter.html">PerformedByUserFilter</a>
+for detailed information.</p>
+
+<h3>PerformingUserFilter</h3>
+<p>The
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingUserFilter.html">PerformingUserFilter</a>
+is a predefined filter indicating a match against the currently logged in user.</p>
+<h3>PerformingOnBehalfOfFilter</h3>
+<p>The <strong>PerformingOnBehalfOfFilter</strong>
+filter will get all activity instances for that you have an appropriate 
+permission, including those which are in a different user worklist. 
+Use one of the following kinds:</p>
+<ul>
+    <li>FILTER_KIND_USER_GROUP: the user group membership filter.</li>
+    <li>FILTER_KIND_MODEL_PARTICIPANT: the model participant grant filter.</li>
+</ul>
+<p>Use one of the following methods to construct
+a filter criterion matching the participant identified by the given
+participant info:</p>
+<ul>
+	<li><tt>forParticipant(ParticipantInfo participant)</tt></li>
+	<li><tt>forParticipant(ParticipantInfo participant, boolean recursively)</tt></li>
+	<li><tt>forParticipants(Set&lt; ? extends ParticipantInfo&gt; participants)</tt></li>
+</ul>
+<p>Please refer to the Javadoc of the 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PerformingOnBehalfOfFilter.html">
+PerformingOnBehalfOfFilter</a> for detailed information.</p>
+<p class="note"><strong>Note</strong><br>
+Note that the <strong>PerformingOnBehalfOfFilter</strong> is only
+evaluated in case the property 
+<strong>Carnot.AuditTrail.ActivityInstanceHistory.Enabled</strong> is
+set to <tt>true</tt>, as
+it requires the values <tt>ONBEHALFOFKIND</tt>, 
+<tt>ONBEHALFOF</tt> and <tt>ONBEHALFOFDEPARTMENT</tt>
+from the <strong>ACT_INST_HISTORY</strong> table.
+If the property is set to <tt>false</tt>, the query throws an
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/IllegalOperationException.html">
+      org.eclipse.stardust.engine.api.runtime.IllegalOperationException</a>.</p>
+<h3>StartingUserFilter</h3>
+<p>This is a filter for finding processes started by a specific user. Please refer
+to the Javadoc of the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/StartingUserFilter.html">StartingUserFilter</a>
+for detailed information.</p>
+<h3>UserStateFilter</h3>
+<p>The 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserStateFilter.html">UserStateFilter</a>
+is a filter that reduces the query result to users with the given status.</p>
+<p>To create a filter matching the currently logged in users, use:</p>
+<pre>UserQuery query = new UserQuery();
+query.getFilter().add(UserStateFilter.forLoggedInUsers());</pre>
+<p>This will return all users which are currently logged on.</p>
+<h2 id="filterUsage">Using Filter Criteria efficiently</h2>
+<p>There is a basic performance difference between criteria directly targeting
+attributes of the queried type and complex criteria.</p>
+<p>Filter criteria against attributes are applied by using the <tt>Attribute</tt>
+-constants defined for each <tt>Query</tt> subclass. For example, common attributes are
+the runtime object ID, provided as an OID attribute and the appropriate model element
+object ID, provided as <tt>ACTIVITY_OID</tt> attribute or PROCESS_DEFINITION_OID
+
+attribute. As <tt>Attribute</tt> is a specialization of <tt>FilterableAttribute</tt> , it
+provides various methods for creating a concrete <tt>FilterCriterion</tt> instances, like
+<tt>isEqual()</tt> for matching a specific value or <tt>between()</tt>for matching a range
+of values. Most common SQL search condition operators are supported.</p>
+<p>Complex filter criteria are all high-level filters like <tt>ProcessDefinitionFilter</tt>,
+<tt>ProcessInstanceFilter</tt> and most prominently <tt>DataFilter</tt>, as well as the <tt>SubprocessDataFilter</tt>
+and the <tt>HierarchyDataFilter</tt>. The sole purpose of those complex filters is
+providing a programmers friendly API for doing such complex things like hierarchy
+unrolling, versioning and finding the right joins.</p>
+<p>From a performance point of view, <tt>Attribute</tt> filter criteria are very
+efficient as evaluation never requires any join or subselect. On the downside, using those
+criteria requires giving up a certain level of abstraction when creating queries. For
+example, as the application developer will have to use numeric OIDs to search for
+instances of model elements, the application has to take special care in multi model
+version scenarios.</p>
+<p>Complex filters on the other hand allow for more abstract queries, but evaluating
+those filters usually involves additional preprocessing and, depending on context, join
+operations.</p>
+<h3>ProcessInstanceFilter / ProcessDefinitionFilter</h3>
+<p>A very typical use case is finding activity instances or process instances by
+process instance OID: while in general such queries will be performed by using an instance
+of <tt>ProcessInstanceFilter</tt> , some scenarios may allow for using<br>
+<tt>ActivityInstanceQuery</tt>.<tt> PROCESS_INSTANCE_OID</tt> , or <tt>ProcessInstanceQuery.OID</tt>
+respectively instead, making use of additionally available context information. Especially
+if the process in question does not involve subprocesses, or even in case of process
+hierarchies, the exact process instance is known in advance. Filtering against the OID
+attribute will prevent process hierarchy preprocessing needed in the generic case and
+potentially reduce query evaluation to one database call. Similar considerations apply for
+<tt>ProcessDefinitionFilter</tt>, where the direct use of <tt>ProcessInstanceQuery.PROCESS_DEFINITION_OID
+</tt>may lead to considerable performance improvements.</p>
+
+
+<h2 id="filterprovider">Creating a Filter Provider Java File</h2>
+<p>By creating the filter provider, you can control the viewing of worklist of a particular location or role.
+For more information, please refer to chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/config/config-worklists.html">Configuring Worklists</a> 
+in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">Portal Documentation</a>.</p>
+<p>The following is the sample
+code snippet to create the LocationFilter.java</p>
+<pre>
+package com.filters;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.stardust.engine.api.web.jsf.common.beans.SessionContext;
+import org.eclipse.stardust.engine.api.web.jsf.processportal.spi.AbstractFilterProvider;
+import org.eclipse.stardust.engine.api.query.DataFilter;
+import org.eclipse.stardust.engine.api.query.FilterAndTerm;
+import org.eclipse.stardust.engine.api.query.FilterOrTerm;
+import org.eclipse.stardust.engine.api.query.Query;
+import org.eclipse.stardust.engine.api.runtime.Grant;
+import org.eclipse.stardust.engine.api.runtime.User;
+
+
+public class LocationFilter extends AbstractFilterProvider
+{
+   private static final long serialVersionUID = 1L;
+
+   /* (non-Javadoc)
+    * @see org.eclipse.stardust.ui.web.client.common.spi.IFilterProvider#applyFilter(org.eclipse.stardust.engine.api.query.Query)
+    */
+   public void applyFilter(Query query)
+   {
+      System.out.println("Applying Filter Provider - LocationFilter.applyFilter()");
+      User user = SessionContext.findSessionContext().getUser();
+      
+      boolean puneCenter = false;
+      boolean mumbaiCenter = false;
+
+      List&lt;Grant&gt; grants = (List&lt;Grant&gt;) user.getAllGrants();
+      Iterator&lt;Grant&gt; iterator = grants.iterator();
+      while (iterator.hasNext())
+      {
+         Grant grant = iterator.next();
+
+         if (grant.getId().equalsIgnoreCase("PuneCenter"))
+         {
+            puneCenter = true;
+         }
+
+         if (grant.getId().equalsIgnoreCase("MumbaiCenter"))
+         {
+            mumbaiCenter = true;
+         }
+      }
+
+      System.out.println("puneCenter = " + puneCenter + ":: mumbaiCenter = " + mumbaiCenter);
+      
+      if (puneCenter &amp;&amp; mumbaiCenter)
+      {
+         FilterOrTerm filter = query.getFilter().addOrTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Pune%", false));
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Mumbai%", false));
+      }
+      else if (puneCenter)
+      {
+         FilterAndTerm filter = query.getFilter().addAndTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Pune%", false));
+      }
+      else if (mumbaiCenter)
+      {
+         FilterAndTerm filter = query.getFilter().addAndTerm();
+         filter.add(DataFilter.like("SupportCaseData", "Location", "%Mumbai%", false));
+      }
+      else
+      {
+         System.out.println("NOT Applying any Filter");
+      }
+   }
+}
+
+</pre>
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

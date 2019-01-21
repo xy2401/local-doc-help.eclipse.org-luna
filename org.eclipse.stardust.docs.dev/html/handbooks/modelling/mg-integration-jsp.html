@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Integrating Web via JSPs</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using External Web Applications",
+        "mg-integration-8.htm","integration/activity-panel-integration.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating Web via JSPs</h1>
+<p>JavaServer Pages (JSPs), generate HTML dynamically on the server side.
+They are dynamic HTML pages accessing business logic via methods written in Java
+code embedded in these HTML pages. JSPs are preprocessed and compiled at first
+invocation and handled like servlets in subsequent requests. Servlets in turn
+are Java classes handling Http requests and generating Http responses.</p>
+<p>JSPs can be integrated in Stardust in two different ways:</p>
+<ul>
+    <li><strong>Standalone usage</strong> - JSPs may be invoked by the <strong>Stardust Workflow Execution Perspective</strong>.
+    The following sections explain in detail
+    how to integrate these JSPs.</li>
+    <li><strong>Embedded usage</strong> - existing JSP-based applications
+    may call workflow functionality. Refer to the chapter <a
+        href="../programming/embed/pg-embedded-preface.htm">Embedded Usage</a> in the
+    <a href="../programming/pg-preface.htm">Programming Guide</a> for more
+    details.</li>
+</ul>
+<h2>Standalone Usage of Web</h2>
+<p>Integrating JSPs in Stardust means to give the process participant
+the possibility of accessing the Stardust Process engine using an
+http-based Web browser. Hence, integrating a JSP in the <strong>Stardust Workflow Execution Perspective</strong> 
+provides a GUI device with high functionality.</p>
+<!-- <p>The code examples in the following sections are taken from our 
+<A HREF="../../tutorial/tut-advanced-2.htm">Tutorial for Web Deployment</a>. There you get a practical introduction on
+modeling and execution of Web applications within Stardust.  -->
+<p>The implementation of the <strong>Stardust Workflow Execution Perspective</strong> - and how your JSPs can be
+integrated - is described in the following sections. A short introduction to the
+Model-View-Controller concept underlying the Web user interface will start this
+description.</p>
+
+<h2>Modeling JSP Applications</h2>
+<p>To create a JSP application in the Process Workbench select <strong>Items
+&gt; Int. Applications &gt; JSP Application</strong> in the diagrams toolbar palette.</p>
+<p class="image"><img src="images/mg-select-jsp-appl.png"
+    alt="Select JSP Application"> <br>
+<strong>Figure:</strong> Creating a JSP Application</p>
+<p>Open the properties dialog of the application with a double-click on its
+symbol. In the panel select <strong>Interactive &gt; JSP Application</strong>
+and fill in the URL of your JSP page. You can click the <strong>Test</strong>
+button to check if the URL is correct.<br />
+&nbsp;</p>
+<p class="image"><img src="images/mg-jsp-appl.png" alt="Properties"> <br>
+<strong>Figure:</strong> Setting the Properties</p>
+<p>If the JSP URL starts with "/", "http://" or "https://", then the current
+context root of your Web project will not be prefixed to the given URL. In all
+other cases, the context root will be prefixed to the given URL.</p>
+<h3>Data Mappings</h3>
+<p>Data mappings for interactive activities work different than
+non-interactive ones. Please refer to the section <a
+    href="../../concepts/workflow-basics/mg-basics-8.htm#intactAppl"> Data
+Mappings for Interactive Application Activities</a> of the chapter <a
+    href="../../concepts/workflow-basics/mg-basics-8.htm">Workflow Data</a> for a
+detailed description of how to work with data mappings for JSP applications.</p>
+<p>JSP applications read "In Data" using Http Session in the following way:</p>
+<pre>session.getAttribute("&lt;in-data-mapping-id&gt;")</pre>
+<p>Similarly, "Out Data" can be set for JSP in Http Session:</p>
+<pre>session.setAttribute("&lt;out-data-mapping-id&gt;", &lt;value&gt;)</pre>
+<p>Date will be persisted when the activity is processed via
+Complete/SuspendAndSave.</p>
+<h2>Processing the Application Activity</h2>
+<p>Processing JSP applications work similar as <a
+    href="integration/activity-panel-integration.html">Using External Web
+Applications</a>, but without REST support.</p>
+<p>Use the following URL to post the data:</p>
+<pre>
+&lt;form action="/&lt;context-path&gt;/executor.jsp" method="get"&gt;
+&lt;/form&gt;
+</pre>
+<p>To process the activity, you need to forward control with appropriate
+'key':</p>
+<ul>
+    <li>Complete - executor.jsp?key=complete</li>
+    <li>Suspend - executor.jsp?key=suspend</li>
+    <li>Suspend And Save - executor.jsp?key=suspendAndSave</li>
+    <li>Abort - executor.jsp?key=abort</li>
+</ul>
+<h2>Problems with Shared Session Approach</h2>
+<p>The shared session approach is a way to let an external JSP application
+interact with Stardust and the process data. This is no longer a
+recommended approach as several standard-compliant technology stacks are
+provided as outlined in the 
+<a href="../../concepts/integration/activity-panel-integration.html">Process-based UI Mashups</a> chapter.</p>
+<p>The usage of a shared session
+includes leveraging of object names which might not be stable and introduces
+common class-loading issues. The external JSP application must not request any
+object which relates (either due to inheritance or member attribute) to classes
+from the JEE Stack (Servlets, JSF-classes etc.), otherwise <tt>CallNotFoundExceptions</tt>
+will occur if the libraries from the external JSP application differ from those
+bundled with the Stardust Portal. For example the usage of an external JSP
+application powered by RichFaces is not possible in shared-session mode as those
+JSF library classes will clash with those provided by the Stardust Portal.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Direct editing activation</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Direct Editing Activation after Object Creation</h1>
+<p>Often it is useful to activate a <a href="direct-editing-feature.htm">direct 
+editing feature</a> directly after object creation. For example after creating a 
+class the text-editor is opened and the user can immediately change the class name.
+</p>
+<p>It is very simple to invoke the direct editing feature automatically, but it 
+depends on the implementation of the shape how to do this. </p>
+<h2>Direct Editing Activation, if Shape is Implemented by Features</h2>
+<p>Prerequisite: the shape of the EClass is implemented by features, and we already 
+implemented a <a href="direct-editing-feature.htm">direct editing feature</a>, which 
+can edit the name of the EClass.</p>
+<p>As an example we want to activate this direct editing of the name after creating 
+a EClass.</p>
+<p>At creation time of a new shape different features are called:
+<a href="create-feature.htm">create feature</a>, <a href="add-feature.htm">add feature</a> 
+and <a href="update-feature.htm">update feature</a>. </p>
+<p>For the automatic switch into the direct editing mode we need to collect some 
+information in those features and store it in the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IDirectEditingInfo.html">
+IDirectEditingInfo</a>. All features have access to this direct editing info calling
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getDirectEditingInfo()">
+getFeatureProvider().getDirectEditingInfo()</a>.</p>
+<p>In the <a href="create-feature.htm">create feature</a> the automatic direct editing 
+for this creation process has to be activated. This has to be done at the end of 
+the
+<a href="../../../javadoc/org/eclipse/graphiti/func/ICreate.html#create(org.eclipse.graphiti.features.context.ICreateContext)">
+create</a> method.</p>
+<p>Note, that previously in this tutorial we implemented the create method in a 
+way, that at the beginning the user is asked for the class name in a popup-dialog. 
+This becomes obsolete now and has to be deleted.</p>
+<p>You can see the new create method here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">public </span>Object[] create(ICreateContext 
+		context) {<br>&nbsp;&nbsp;&nbsp; <span class="comment">// create new EClass</span><br>&nbsp;&nbsp;&nbsp; 
+		EClass newClass = EcoreFactory.<span class="string"><em>eINSTANCE</em></span>.createEClass();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// Add model element to resource.<br>&nbsp;&nbsp;&nbsp; 
+		// We add the model element to the resource of the diagram for<br>&nbsp;&nbsp;&nbsp; 
+		// simplicity&#39;s sake. Normally, a customer would use its own<br>&nbsp;&nbsp;&nbsp; 
+		// model persistence layer for storing the business model separately.</span><br>&nbsp;&nbsp;&nbsp; 
+		getDiagram().eResource().getContents().add(newClass);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// do the add</span><br>&nbsp;&nbsp;&nbsp; addGraphicalRepresentation(context, 
+		newClass);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// activate 
+		direct editing after object creation</span><br>&nbsp;&nbsp;&nbsp; getFeatureProvider().getDirectEditingInfo().setActive(<span class="keyword">true</span>);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// return newly created business object(s)</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> Object[] { newClass };<br>&nbsp;}
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>In the <a href="add-feature.htm">add feature</a> the outer container shape of 
+the newly created object must be set (the main pictogram element of the EClass). 
+Additionally the shape (pictogram element) and its graphics algorithm have to be 
+specified, where the direct editing editor shall be opened.</p>
+<p>You have to do this at the end of the
+<a href="../../../javadoc/org/eclipse/graphiti/func/IAdd.html#add(org.eclipse.graphiti.features.context.IAddContext)">
+add</a> method as shown here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">public </span>PictogramElement add(IAddContext 
+		context) {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="comment">// ... 
+		EXISTING CODING ...<br></span><br>&nbsp;&nbsp;&nbsp; IPeCreateService peCreateService 
+		= Graphiti.getPeCreateService();<br>&nbsp;&nbsp;&nbsp; IGaService gaService 
+		= Graphiti.getGaService();<br>&nbsp;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// SHAPE WITH TEXT</span><br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create shape for text</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Shape shape = peCreateService.createShape(containerShape,
+		<span class="keyword">false</span>);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create and set text graphics algorithm</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Text text = gaService.createText(shape, addedClass.getName());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text.setForeground(manageColor(<span class="string"><em>E_CLASS_TEXT_FOREGROUND</em></span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text.setHorizontalAlignment(Orientation.<span class="string"><em>ALIGNMENT_CENTER</em>
+		</span>); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// vertical alignment has as default value &quot;center&quot;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text.setFont(gaService.manageDefaultFont(getDiagram(),
+		<span class="keyword">false</span>, <span class="keyword">true</span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.setLocationAndSize(text, 0, 0, width, 20);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create link and wire it</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		link(shape, addedClass);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// provide information to support direct-editing directly
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // after object creation 
+		(must be activated additionally)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IDirectEditingInfo directEditingInfo =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		getFeatureProvider().getDirectEditingInfo();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// set container shape for direct editing after object 
+		creation</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directEditingInfo.setMainPictogramElement(containerShape);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// set shape and graphics algorithm where the editor 
+		for<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // direct editing shall 
+		be opened after object creation</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		directEditingInfo.setPictogramElement(shape);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		directEditingInfo.setGraphicsAlgorithm(text);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ... EXISTING CODING ...</span><br>&nbsp;<br>}
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<h2>Test: Direct Editing after Creation of a EClass</h2>
+<p>Open a diagram and create a new EClass from the palette. The shape for the EClass 
+should immediately allow the direct editing of the class name.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

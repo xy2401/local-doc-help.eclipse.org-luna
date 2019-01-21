@@ -1,0 +1,1941 @@
+Manifest-Version: 1.0
+Bundle-Classpath: .
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.objectteams.otdt.doc;singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/object
+ teams/org.eclipse.objectteams.git;path="plugins/org.eclipse.objecttea
+ ms.otdt.doc"
+Require-Bundle:  org.eclipse.help;bundle-version="[3.5.100,4.0.0)"
+Bundle-Version: 2.3.0.201406101339
+Bundle-ManifestVersion: 2
+
+Name: guide/otjld/xdef/s4.3.c.html
+SHA1-Digest: QgOgYpTigFMn/10g6hwbxX/XbuQ=
+
+Name: guide/otjld/xdef/s3.5.b.html
+SHA1-Digest: RpEuCXHq7e6xHUNltT8/x7Zw9g4=
+
+Name: guide/otjld/xdef/s2.7.a.html
+SHA1-Digest: yS5DTrtbeKSMt5mKTmW52rBpxOw=
+
+Name: guide/otjld/xdef/s1.2.2.a.html
+SHA1-Digest: ecgF420RwMLmzXc+MZA5I7eNsHk=
+
+Name: guide/otjld/def/css/line.gif
+SHA1-Digest: ORN+TmYa3cToIReC/wK3eTexqIk=
+
+Name: guide/otjld/xdef/s2.1.c.html
+SHA1-Digest: NkLEJr8O3G3+j7GCyyXhY4ZTUxM=
+
+Name: guide/images/screenshots/NN07/ChangeSignature2.png
+SHA1-Digest: cnHPIBmaIluGpCkqIGDbx5ugQUo=
+
+Name: guide/otjld/xdef/sA.4.html
+SHA1-Digest: 921Vep9Xl/Gw59lVsHd+RsXHbJc=
+
+Name: css/book.css
+SHA1-Digest: 2WNj+xXTgfataLC5vRSzIxwLHao=
+
+Name: guide/news/new_in_0.7.1.html
+SHA1-Digest: ItsD0pchTCWC2D6Ex33omIfaOzA=
+
+Name: guide/images/screenshots/AspectBindingsInPackageExplorer.png
+SHA1-Digest: zUiyjiCsGPM0itqlYPqLcJdscDE=
+
+Name: guide/otjld/images/smart_lifting_small.png
+SHA1-Digest: uKVts7KE6flBTEJCfcviSJfUQ2o=
+
+Name: images/team_act_implicit.gif
+SHA1-Digest: seuzT2d9Xvm86wCa8Znef9f1Qw4=
+
+Name: guide/otjld/xdef/s4.10.d.html
+SHA1-Digest: oBCXKLtc2ZvO8N2xfeeHpS7Dqr0=
+
+Name: images/heading_left.png
+SHA1-Digest: 9G+pHrQ3e9wMKGNJqbgw4eg4ajM=
+
+Name: guide/otjld/xdef/s4.3.html
+SHA1-Digest: eT0xyf9v2UVLi97oL4rOPSyF6xU=
+
+Name: guide/otjld/def/images/team_nesting_hor.png
+SHA1-Digest: 5aOoUAS4SKiOa2/6QXqccvhXNmQ=
+
+Name: images/callinbindingbefore_obj.gif
+SHA1-Digest: HtI3qk6qcMm6LTvHw9W5sVOlHKc=
+
+Name: guide/images/screenshots/roleWizard.jpg
+SHA1-Digest: OMZ1dNch2VItxH7jXWgu8DuKAIU=
+
+Name: images/run_exc.gif
+SHA1-Digest: 9nUFtkM1LiPz9RddB8tq+Zl7LlE=
+
+Name: guide/otjld/images/jira.png
+SHA1-Digest: hAsMc0eyJmUk79gsmMnQYxk02fo=
+
+Name: guide/otjld/xdef/s5.4.1.c.html
+SHA1-Digest: MSDhwrcH+CLYvuSFx78y7s1ZBEc=
+
+Name: guide/otjld/xdef/s4.7.d.html
+SHA1-Digest: Y7KQVBXk7BkABqoyW7vxjhhOqJU=
+
+Name: guide/views.html
+SHA1-Digest: PgcCpsgChPOXVmSpYwWk9xL3zVk=
+
+Name: images/role_obj.png
+SHA1-Digest: Mmlyp9DrMPV2vdWgKgc3LcApOYM=
+
+Name: guide/otjld/xdef/s4.1.f.html
+SHA1-Digest: dzLeuNe+zVKRqQm4vBgBJUcGaHI=
+
+Name: guide/otjld/xdef/s3.3.e.html
+SHA1-Digest: d02yTC+UH/4b16c4Xh5y6eDXB10=
+
+Name: guide/otjld/css/otjld.css
+SHA1-Digest: g9daWg4Pzyqmlv8YfEFzWQ1IGZQ=
+
+Name: guide/images/disconnect_co.gif
+SHA1-Digest: 47UWEsUMkBMePm5Wn3YRFTMsvIY=
+
+Name: guide/otjld/xdef/s6.2.a.html
+SHA1-Digest: Utpn14Yl+RLerjsdB/6BqKbPZ/A=
+
+Name: guide/otjld/xdef/sB.1.3.html
+SHA1-Digest: 82pu/zEPqEbpDjAcDKa/PrXJjnU=
+
+Name: guide/images/screenshots/NN07/GoToLangDefHover.png
+SHA1-Digest: iuZ/AOzBfsqjZzm5QOlsCP+Mufc=
+
+Name: guide/images/bug.gif
+SHA1-Digest: lEL3cuV5u9/Y3/qMFs+5qXTl9hs=
+
+Name: guide/images/screenshots/RemoveSignatures-QuickAssist.png
+SHA1-Digest: 33HJSLzLCPXdA/LEUe9Fdh0Y458=
+
+Name: images/ot-eclipse.gif
+SHA1-Digest: iqohStED/Kv+DetXouVZjbSRJnQ=
+
+Name: guide/refactoring.html
+SHA1-Digest: qyiDMTrwzZioCUHuo2DJyvLkO9s=
+
+Name: guide/images/screenshots/selectTargetWeavingScheme.png
+SHA1-Digest: FrpAHZmRUxaP3xQnBmTskohyh94=
+
+Name: guide/otjld/xdef/s5.4.3.html
+SHA1-Digest: Wea6+ksKhsMmVjmEoJ7ByX2hv+A=
+
+Name: guide/otjld/images/linkto_help.gif
+SHA1-Digest: rPmovBGARoDY4DIO6eJwtboVz8Y=
+
+Name: guide/otjld/xdef/s2.4.2.html
+SHA1-Digest: KCvRvv9Kl/M25x4idmGT0+C6ozQ=
+
+Name: images/class_hi.gif
+SHA1-Digest: ctQRKm2TzoLiEbkfSPsVbwvd2ak=
+
+Name: guide/otjld/xdef/s2.6.html
+SHA1-Digest: EEy9QhcNcuuIY3K89pVljmbpVtw=
+
+Name: schema.css
+SHA1-Digest: 1GF7mL9i/mSAevOaxAVp6Dk9IIs=
+
+Name: guide/news/new_in_2.1.html
+SHA1-Digest: nPvkDWHlPZ5S/W57BfYYRmy0hGM=
+
+Name: guide/images/add_correction.gif
+SHA1-Digest: mG22jt881tEX830+GOVYzwEL1Xg=
+
+Name: guide/images/screenshots/BindingEditor_FlightBonus.png
+SHA1-Digest: CBP3gQj9Dvekv4Tfo5kRVSlPfFg=
+
+Name: guide/otjld/xdef/s1.1.html
+SHA1-Digest: CoERD3ohCE4EREp4ujWe89fyrHQ=
+
+Name: guide/otjld/xdef/s1.5.f.html
+SHA1-Digest: qC1J+OmNMDe0H3aIwAwYsfxqc6A=
+
+Name: guide/otjld/xdef/s2.3.4.a.html
+SHA1-Digest: 4ujnDmaWRzudLikoAolUNA8IUqo=
+
+Name: guide/otjld/xdef/s2.4.2.b.html
+SHA1-Digest: zPtSafpQYF3h9Pa3Nwzq5AAGWE0=
+
+Name: guide/otjld/xdef/s3.1.h.html
+SHA1-Digest: jZRB9gUbBCUboXrFpaem8pEa8LU=
+
+Name: guide/otjld/xdef/s5.2.c.html
+SHA1-Digest: 1DyD0wUnZwZRbPXIXDa8AB9SlII=
+
+Name: guide/otjld/xdef/s4.4.b.html
+SHA1-Digest: T/tACODDY3VhBJKwrReFJv2H+fE=
+
+Name: guide/otjld/xdef/s1.3.1.a.html
+SHA1-Digest: m3KpjaSg/rlexecQWFWvcaA/yQE=
+
+Name: guide/otjld/xdef/s2.1.2.a.html
+SHA1-Digest: HBqmO4p7NGv7ROa2ruWcjWAsnLk=
+
+Name: guide/images/screenshots/callinmarker-menu3.png
+SHA1-Digest: cnzjKuhkO5lrTuv0QlK3hNDtAxU=
+
+Name: guide/images/otdt/ot_paragraph.png
+SHA1-Digest: stOdtwQNHv9EjBGT29cONOGdV5o=
+
+Name: guide/otjld/xdef/s1.4.a.html
+SHA1-Digest: TWLfEmuxuOEJ4AqTjAdHkLbGZN8=
+
+Name: guide/otjld/xdef/s2.2.b.html
+SHA1-Digest: fyn0GbW3wKpGIh2YwHXhe44/XTc=
+
+Name: images/playedBy_obj.gif
+SHA1-Digest: TuwbnnMrB1/B3kQBpP0jVavyR9c=
+
+Name: guide/images/screenshots/NN21/MultipleCallins.png
+SHA1-Digest: nxyriyv/Tu/WlCdxfuIhOzkQVMw=
+
+Name: guide/images/screenshots/complete_binding_1.png
+SHA1-Digest: w8DNI6SrZBY4gXe4dP40YXqRqsA=
+
+Name: guide/otjld/xdef/s5.1.1.html
+SHA1-Digest: qx57jHpIrlEp/zgtliLvU2RAGHE=
+
+Name: guide/otjld/xdef/s5.2.html
+SHA1-Digest: yvOz8bQ8NT8p76aq09/D4qtI2gc=
+
+Name: guide/otjld/xdef/s5.4.2.b.html
+SHA1-Digest: dqa0AzkjYxIKMeWES7SXhPMw7sY=
+
+Name: guide/otjld/xdef/s4.8.c.html
+SHA1-Digest: t6lCKn2HuaNOwIo6FpLkkLVYylU=
+
+Name: guide/otjld/xdef/s1.2.2.h.html
+SHA1-Digest: /fQ7ISju/J6r2lKDWPoT/hOZeJA=
+
+Name: guide/otjld/xdef/s9.3.a.html
+SHA1-Digest: DSn4c9GhWj1ETCnk1NjvgycfFbw=
+
+Name: guide/otjld/xdef/s2.3.2.d.html
+SHA1-Digest: bk1JdspUVtG6A7VpnOUU2mLgzco=
+
+Name: guide/otjld/xdef/s3.4.d.html
+SHA1-Digest: 3VkCkLUAVSjSJhzkG3Dvel5UePs=
+
+Name: guide/otjld/xdef/s2.6.c.html
+SHA1-Digest: 4nc+0WDnhntN7HHJrU+zwTUCiqQ=
+
+Name: guide/otjld/images/arrow-right2-trans.png
+SHA1-Digest: r66teZNmKSZ7H8SwIm64+DYG3oQ=
+
+Name: guide/otjld/xdef/s1.2.1.c.html
+SHA1-Digest: nRN/3bBeroVv3t9jxGMFtJ04zvY=
+
+Name: guide/otjld/xdef/sB.2.2.html
+SHA1-Digest: jU4K163PaWrFWws+qAyUk77Rg9A=
+
+Name: guide/images/brkp_obj.gif
+SHA1-Digest: hHogrKP5Bmj/1YP1pe+Tb2sot7E=
+
+Name: guide/methodcompare.html
+SHA1-Digest: CNuNwcHbSy6tShzzCediNHIAYic=
+
+Name: guide/otjld/xdef/s9.3.html
+SHA1-Digest: Arx2TDQeDo5JNCVwrb/H3v8p+qE=
+
+Name: guide/otjld/images/ot32.png
+SHA1-Digest: 8AP+7NAPKNel++nKy0hbf4n2LSw=
+
+Name: guide/otjld/def/images/Layering.png
+SHA1-Digest: OklGaj6zYLPl9k9B6lDTrKjP1Z4=
+
+Name: guide/otjld/xdef/s3.5.html
+SHA1-Digest: C5HymGfkWtTiqdtBlcdaa10fsbA=
+
+Name: images/callout_marker.gif
+SHA1-Digest: Yn/PARqG7pBqusKgPOVdrNem9I4=
+
+Name: guide/otjld/xdef/s6.html
+SHA1-Digest: 1JLqr46YGjmGFVHHnppOscUfNCA=
+
+Name: guide/syntaxhighlight.html
+SHA1-Digest: 5c/y6KmfL5SbRRcdjWp4YqY4OnI=
+
+Name: guide/otjld/xdef/s1.2.5.d.html
+SHA1-Digest: Q3AidJn/ZJQDDCtOxNND83XXiUE=
+
+Name: guide/otjld/xdef/s6.1.c.html
+SHA1-Digest: Tkc3QaERNuPXNuySh//4LTe49fA=
+
+Name: guide/otjld/xdef/s5.3.b.html
+SHA1-Digest: uJSJMlUYOgX3JxPq4v+b1Fml9I8=
+
+Name: guide/otjld/xdef/s4.5.a.html
+SHA1-Digest: FoGq+SOn08Mj+3PjlzjC/AJDsbg=
+
+Name: guide/otjld/xdef/index.html
+SHA1-Digest: onu/sqa6hxTlQbldiGt+oJYmohQ=
+
+Name: guide/otjld/xdef/s2.3.a.html
+SHA1-Digest: hlFGa0UnSkXOH4WNFwGXdSCgzSQ=
+
+Name: guide/otjld/xdef/s3.1.b.html
+SHA1-Digest: Eh0NjnsFTBs9JYjlD2MHy48CBDo=
+
+Name: css/shared.css
+SHA1-Digest: SxVmveoW+jfByNiLHluY5qOY10g=
+
+Name: guide/otjld/def/s6.html
+SHA1-Digest: yfcVKdLamoB0SvJ0VDwVKuppBkA=
+
+Name: guide/images/screenshots/NN07/othierarchy.png
+SHA1-Digest: yR2fwYQF2JbZKA4caQPyMUDKnoI=
+
+Name: guide/otjld/xdef/css/otjld.css
+SHA1-Digest: oMk2wX2G6zu26F+MJflO9KROGGg=
+
+Name: guide/otjld/xdef/s4.10.html
+SHA1-Digest: TyOSfjXiKT4xtTBm2JgAl02CKYA=
+
+Name: guide/images/screenshots/RuntimeWorkbenchMainTab.png
+SHA1-Digest: MDcN9OO7UIWlexmIUo4vLwt+xRo=
+
+Name: guide/otjld/images/valid-css2-blue.png
+SHA1-Digest: 6QrWkp8zqcerThFoIg8M+TL1Tds=
+
+Name: guide/otjld/xdef/s2.3.4.html
+SHA1-Digest: RSzSkmZ8Ai1uKDxh8WKZUjeD9Fk=
+
+Name: images/role_ovr.png
+SHA1-Digest: g6rBhwPjyIzvh05czbGrkK4NRRY=
+
+Name: guide/whatsnew.html
+SHA1-Digest: XRqBRRuWelC91OB5dCOjUl1LnEc=
+
+Name: guide/otjld/xdef/s6.1.html
+SHA1-Digest: takH99Xa3r4jRTHo9Z94Ao2imew=
+
+Name: guide/otjld/images/pass.gif
+SHA1-Digest: iJuM44gIfzj9EeW98O5Y5UN4JGA=
+
+Name: css/overview.css
+SHA1-Digest: Vsfpgx6mljTqXyaG/kH4AaGNMLs=
+
+Name: guide/otjld/xdef/s0.3.html
+SHA1-Digest: kXovfBv3KiBej5ucCi0Zt5JVHwY=
+
+Name: guide/otjld/xdef/s1.3.1.h.html
+SHA1-Digest: 1xnRl+BfMyMlEqemisfBcvAUgFE=
+
+Name: guide/otjld/xdef/s2.3.3.c.html
+SHA1-Digest: sho0D3OkNxHirKVn0CMn03fl6cY=
+
+Name: guide/otjld/xdef/s4.3.d.html
+SHA1-Digest: Iw6VhwvYzs0pRvpUYduc63t024E=
+
+Name: guide/otjld/xdef/s3.5.c.html
+SHA1-Digest: 0LUCqJO5IoAMck+YHMLppS+Y6zE=
+
+Name: guide/otjld/xdef/s2.7.b.html
+SHA1-Digest: 3ZEcKqWWDcqZUPBAY71qpfZW53Q=
+
+Name: guide/otjld/images/team_nesting_hor.png
+SHA1-Digest: 0xpcjJNUDYtI88shgDsnpx76TZ4=
+
+Name: images/team_obj.gif
+SHA1-Digest: hSenbyS1gb5G+hF9d0jNq3nmLaM=
+
+Name: guide/otjld/xdef/s1.2.2.b.html
+SHA1-Digest: mJeMO7mNOdbX6LJHrWcrt9zWza8=
+
+Name: guide/otjld/xdef/s2.1.d.html
+SHA1-Digest: yWBwq31E84ZUcRzZlU08ofeo65g=
+
+Name: guide/otjld/xdef/sA.5.html
+SHA1-Digest: vU4ScqnFvNg5pH9gW3zCior/6nc=
+
+Name: guide/callinmarker.html
+SHA1-Digest: SNfaRu5UrzGRj6P1VNXC1fes6o0=
+
+Name: guide/otjld/xdef/images/smart_lifting_small.png
+SHA1-Digest: uKVts7KE6flBTEJCfcviSJfUQ2o=
+
+Name: guide/otjld/css/ot.css
+SHA1-Digest: WFkVTYQkEVGSqPCj2HLkmueF6qs=
+
+Name: guide/otjld/xdef/s4.10.e.html
+SHA1-Digest: lq0phzKzfdpivLXbUJYp3UVmVW0=
+
+Name: guide/otjld/xdef/s4.4.html
+SHA1-Digest: 3sbow6iPWtYX2LDUZLhWeVTlLtI=
+
+Name: guide/otjld/xdef/s1.2.1.html
+SHA1-Digest: GPE8FkW35f7xG9MBi8Os3nkGBwg=
+
+Name: images/team_inact.gif
+SHA1-Digest: 22PHTbxfilzSefI1juPCYQILJVk=
+
+Name: guide/otjld/xdef/s5.4.1.d.html
+SHA1-Digest: VZHS1UlhUHj41FIXsJCmGCXTYnU=
+
+Name: guide/otjld/xdef/s4.7.e.html
+SHA1-Digest: gEeZEyoK4xLfKJQ5YEr2c/SPof0=
+
+Name: guide/images/screenshots/NN23/QFAddAspectExport1.png
+SHA1-Digest: tx7o6DkYjqVpEcOkPhHK5aVm0KQ=
+
+Name: guide/otjld/xdef/s4.1.g.html
+SHA1-Digest: VwTQomLPgGQsz5L0EEW0CyFttz8=
+
+Name: guide/otjld/xdef/s0.html
+SHA1-Digest: WKRwTsgnpBch2EajCmZaQD52rvo=
+
+Name: images/file_obj.gif
+SHA1-Digest: OUDeKrGafzJmrGkXEWv46mLfllo=
+
+Name: guide/otjld/xdef/s6.2.b.html
+SHA1-Digest: NxzkIPYLPxemoAda8R160utDG4g=
+
+Name: guide/otjld/xdef/s5.4.a.html
+SHA1-Digest: ziqAPvlc2p8jgNkhEJhftDNyXas=
+
+Name: guide/otjld/xdef/s3.2.a.html
+SHA1-Digest: SO0KGyKk1Kkf+z0EUdG96c4VBWA=
+
+Name: guide/images/screenshots/otequinoxMonitor.png
+SHA1-Digest: E0foOhGcT6u3sOVJ2mF1fsW6z0E=
+
+Name: guide/otjld/def/s0.html
+SHA1-Digest: V8/wgpkB9SM0Y2u3nQXCNklP3v8=
+
+Name: guide/develop.html
+SHA1-Digest: U471vz1cr0uqpJMNnB5vkddK1OY=
+
+Name: guide/otjld/images/junit.gif
+SHA1-Digest: 0VjJdj1N8O5PSYayeUfKaa+6k4g=
+
+Name: guide/otjld/xdef/s2.4.3.html
+SHA1-Digest: JyB1bCW6E+BwGYDEWnAsuwZMQts=
+
+Name: guide/images/screenshots/debug_prefs_callin_stepping.png
+SHA1-Digest: 3d248LfKN0+nwDRQiTm6GFtosP8=
+
+Name: guide/otjld/xdef/s2.7.html
+SHA1-Digest: oT2D9JEj20iBxYHPzNJHfpzMt5M=
+
+Name: guide/news/new_in_2.2.html
+SHA1-Digest: gm1yd/wnXq8OGiF3KEh6F39oYZA=
+
+Name: guide/otjld/xdef/s4.9.3.a.html
+SHA1-Digest: wZsl5qKiKe1axm6JNOGSn2q/X4E=
+
+Name: images/otj_launch.gif
+SHA1-Digest: Qtv6LmxvH+6klfw0IRWpwl0WjcE=
+
+Name: guide/otjld/xdef/s1.2.html
+SHA1-Digest: ZyfVeuFdUCfOgvG+31tXuK+y0wA=
+
+Name: guide/otjld/def/images/smart_lifting_small.png
+SHA1-Digest: uKVts7KE6flBTEJCfcviSJfUQ2o=
+
+Name: css/swt.properties
+SHA1-Digest: QJgoJOEFKeO9zC8qSMFWTEFvWf4=
+
+Name: guide/images/screenshots/NN07/ProjectErrors.png
+SHA1-Digest: SfAIy6FadotJe6s6d6y6KsMEQcU=
+
+Name: guide/otjld/xdef/s2.3.4.b.html
+SHA1-Digest: zfjNLOo3ePSF/+CNROzRGf1MV84=
+
+Name: guide/otjld/xdef/s2.4.2.c.html
+SHA1-Digest: ckaV6diy4DtKJsJnLulRblTQVpg=
+
+Name: guide/otjld/xdef/s3.1.i.html
+SHA1-Digest: qlIr1Lisox3B4NqfAJJpN3TT+h8=
+
+Name: guide/otjld/xdef/s4.4.c.html
+SHA1-Digest: /pyJIoU2atIcyyzJTgigEIuhOBY=
+
+Name: guide/otjld/xdef/s1.2.3.a.html
+SHA1-Digest: k2shbGe8SKP60m6Vg/l2Z0IBSrU=
+
+Name: guide/otjld/xdef/s1.3.1.b.html
+SHA1-Digest: DkIL/1zhJB8LPxONPGrNV7tzBIY=
+
+Name: guide/otjld/xdef/s2.1.2.b.html
+SHA1-Digest: lh7DGeUU1AQX7Ac91lq4OzVr43Y=
+
+Name: guide/otjld/images/valid-xhtml10-blue.png
+SHA1-Digest: Ft59otOVIw/dC4RONAxmAPToxec=
+
+Name: guide/otjld/xdef/s1.4.b.html
+SHA1-Digest: rq2Kmg1sYx3D2mwn/btuhqXiK+A=
+
+Name: guide/otjld/xdef/s2.2.c.html
+SHA1-Digest: WffbnQhKcNb67Wwf6h7MhlR0eiI=
+
+Name: guide/otjld/xdef/css/heading_left.png
+SHA1-Digest: 9G+pHrQ3e9wMKGNJqbgw4eg4ajM=
+
+Name: guide/otjld/xdef/sA.0.1.html
+SHA1-Digest: Q5XLMbi4FmZTfgTb6qk3AFR8dSM=
+
+Name: guide/features.html
+SHA1-Digest: AdCN5k0ok/7H4Cs+f+GO9OZbEaw=
+
+Name: guide/images/screenshots/projectWizard.jpg
+SHA1-Digest: 7eOwEl1sYmOy88VEb4QHrxkVmAU=
+
+Name: guide/otjld/xdef/s5.1.2.html
+SHA1-Digest: jW/1uAxTQTIsfxbmBDJCY3uZLus=
+
+Name: guide/otjld/xdef/s5.3.html
+SHA1-Digest: sS0i3YIgky04hqNdPA2cXVDNwjI=
+
+Name: guide/otjld/xdef/s2.1.1.html
+SHA1-Digest: 1OgSpH6Vf7GEMNQR2k4cG0+bfgA=
+
+Name: guide/editor.html
+SHA1-Digest: mxKUAIQ9qmP5jP1imYYrtyHWLoQ=
+
+Name: guide/images/screenshots/packageExplorer.png
+SHA1-Digest: N6Gg8VCAzzhQXgLQUGxajCb9AQE=
+
+Name: guide/otjld/xdef/s5.4.2.c.html
+SHA1-Digest: stPA6AMLPwaHCwgpOI6G1bSvZOM=
+
+Name: guide/otjld/xdef/s4.8.d.html
+SHA1-Digest: eJBjilLKwpRIBPCSUHVP0b77qbY=
+
+Name: guide/otjld/xdef/s1.2.2.i.html
+SHA1-Digest: 9xTlcCLX5lZkQkm+4xKMzyOCV+k=
+
+Name: guide/otjld/xdef/s9.3.b.html
+SHA1-Digest: p8Vho6n2u3m5fpSOBjZqIwv0/7w=
+
+Name: guide/otjld/xdef/s2.3.2.e.html
+SHA1-Digest: dUDrSc1Gf4k1cgl/qBo7w2Xsr4Q=
+
+Name: images/newprj_wiz.gif
+SHA1-Digest: FnxXblBEmdwer4St1v9k6VlKYjk=
+
+Name: guide/quickfix.html
+SHA1-Digest: RVc8sxhSbTj7CiDsawwf6+56Odg=
+
+Name: guide/otjld/xdef/s2.6.d.html
+SHA1-Digest: Zmi9OToNDzgEXUs2/KDlOzMJIPc=
+
+Name: guide/otjld/xdef/s6.3.a.html
+SHA1-Digest: ZcZpan6p3jxcvm/43WgfAelAeVM=
+
+Name: guide/otjld/images/bend-trans.png
+SHA1-Digest: 6TmiEeCOTYp1dsp9O619SZqVBP0=
+
+Name: guide/otjld/xdef/s1.2.1.d.html
+SHA1-Digest: 7ptRwpjHM7rVT0bTuwsYe/pFbeQ=
+
+Name: guide/otjld/xdef/sB.2.3.html
+SHA1-Digest: JQQ/yqbNwZNcdoshXZNW6VRDono=
+
+Name: images/package.gif
+SHA1-Digest: TAzEv4kYyock9dC9OENnoK2FF1Y=
+
+Name: guide/otjld/xdef/s4.1.a.html
+SHA1-Digest: vB7bOFRQO6RWaVLrPK8XTk+cGow=
+
+Name: images/team_ovr.gif
+SHA1-Digest: fQ0HCC+U0Ws6lRM5Hay/4uRm2yg=
+
+Name: guide/otjld/xdef/s7.html
+SHA1-Digest: eC8TvWtTpTMRsGaeS9Ycq4fFORc=
+
+Name: guide/otjld/xdef/s2.1.html
+SHA1-Digest: v4mE7vVXU2M5dfpGHX6KS+6Ceno=
+
+Name: guide/otjld/xdef/s1.2.5.e.html
+SHA1-Digest: VGvwEiDGwHvtuXg+Xi8TMJe4bGk=
+
+Name: guide/otjld/xdef/s2.3.5.a.html
+SHA1-Digest: NPRKMZh+wvR4sBOp+Q9XkM/O5EY=
+
+Name: guide/images/screenshots/NN07/OverrideRole.png
+SHA1-Digest: qSB/GLYtqLbVx3yNDLUu+4lDUGc=
+
+Name: guide/otjld/xdef/s5.3.c.html
+SHA1-Digest: AqhRMJHLWKOSa6GIIzRNlKxb3kM=
+
+Name: guide/otjld/xdef/s4.5.b.html
+SHA1-Digest: dGvm6wDJYMb/ORJWWFo3MjnH8Xc=
+
+Name: images/ot_paragraph.gif
+SHA1-Digest: LKPSm1d4Md8yGhFKexPStw+h44E=
+
+Name: guide/otjld/xdef/s1.3.2.a.html
+SHA1-Digest: Gf2OcU8IZ41wuwaGSP8So7+Etpk=
+
+Name: guide/images/screenshots/GoToLangDefGutter.png
+SHA1-Digest: AvV5GyaKxBI5WySbKPZeUysj+rw=
+
+Name: guide/otjld/xdef/s1.5.a.html
+SHA1-Digest: GWJGq2Q67i5/NvN4g6FPVvHqWeA=
+
+Name: guide/otjld/xdef/s2.3.b.html
+SHA1-Digest: ngEN49P35bAzMVO5g1MN/0HzI+g=
+
+Name: guide/otjld/xdef/s3.1.c.html
+SHA1-Digest: 3Sci4gx+zXe9P3bm6jx7bePX1A0=
+
+Name: guide/otjld/def/s7.html
+SHA1-Digest: a1kdds8SIxZaWHCYSwUELex1sNA=
+
+Name: guide/images/screenshots/CallHierarchy.png
+SHA1-Digest: x1WkI0dfb5Tv/YXOcD2xBD1L6Bs=
+
+Name: guide/otjld/xdef/s2.3.5.html
+SHA1-Digest: +FJqCfmkD2j0eqdM15BjUSkb1qY=
+
+Name: guide/images/bundle_obj.gif
+SHA1-Digest: 6GDeZMGd3114xfLAaGsNEcyXCgY=
+
+Name: guide/otjld/xdef/s6.2.html
+SHA1-Digest: tLVs9yLhlFqgZDSLdMdmQgPbv8g=
+
+Name: guide/images/screenshots/NN08/ExtractInterface3.png
+SHA1-Digest: o5ogTi28V+IvVnzbUWxfRQ77/Ew=
+
+Name: guide/images/screenshots/callinMarker.jpg
+SHA1-Digest: 6Q+/pRzDJdorCqxHZBY9KiiIUHA=
+
+Name: guide/images/screenshots/NN07/MoreDebugColoring.png
+SHA1-Digest: dFf7xUsYMlwYyEYqvKFvjciljWo=
+
+Name: images/jar_src_obj.gif
+SHA1-Digest: AJ01GBNn2kt/Wjo+qEKdUKTexgI=
+
+Name: guide/images/julaunch.gif
+SHA1-Digest: bPynA5PYsWk5YkuhnOSriF20g5M=
+
+Name: guide/otguide.css
+SHA1-Digest: x9hDSFa8ARtzzRbKmJlSt67hl2w=
+
+Name: guide/otjld/xdef/s0.4.html
+SHA1-Digest: 1TDhKjOT09I+Fq7mFutZHOcb6TM=
+
+Name: guide/otjld/xdef/s1.3.1.i.html
+SHA1-Digest: 7GfIXSjiYBYFYVzEZugUWTQZblw=
+
+Name: guide/otjld/xdef/s2.3.3.d.html
+SHA1-Digest: jCa+vcVwtPpN1MVy23vslLKcgUQ=
+
+Name: guide/otjld/xdef/s4.3.e.html
+SHA1-Digest: 02vH/gvrtxecrHA6eV5zdGQZEtU=
+
+Name: guide/otjld/xdef/s3.5.d.html
+SHA1-Digest: NxMbIl3raRD9v6y9LDwJwrCEjkE=
+
+Name: guide/otjld/xdef/s2.7.c.html
+SHA1-Digest: pQVSsbYo/lXi2TQJcDO8OnATgXo=
+
+Name: guide/otjld/xdef/s7.2.a.html
+SHA1-Digest: mAv7YSH5LEJZ+Uz0tCCPFgdHuLk=
+
+Name: guide/images/screenshots/teamWizard.jpg
+SHA1-Digest: UubclpWr+JgZCwujiry2wppuy5o=
+
+Name: guide/otjld/xdef/s1.2.2.c.html
+SHA1-Digest: 5CfUkduDFwXceCo8WK7g+EbouR8=
+
+Name: guide/otjld/xdef/s2.1.e.html
+SHA1-Digest: dn9K57QbMuXqPXFygnxzvu1qhlk=
+
+Name: guide/otjld/xdef/sA.6.html
+SHA1-Digest: upsrN1rNDTm+XOvPt8/1LLZrMjU=
+
+Name: images/over_co_ovr16.gif
+SHA1-Digest: 4lE0p00NwQhPcYivFej1IZBt21w=
+
+Name: guide/images/screenshots/NN21/GotoCallin.png
+SHA1-Digest: OzQfSva9MfF3kFqGd4Cn/snIdzA=
+
+Name: guide/teammonitor.html
+SHA1-Digest: n31auHmXFe+7uUcyTeyLp+rJelY=
+
+Name: guide/otjld/def/images/guards.png
+SHA1-Digest: U7AV8o1fGeQiVitg4N1bPPSJPkU=
+
+Name: guide/otjld/xdef/s4.5.html
+SHA1-Digest: 4mooDcVUS+fE90+dBuRrLyxAULI=
+
+Name: guide/otjld/xdef/s1.2.2.html
+SHA1-Digest: DhPf7aSJxHU1mOLIVJItGT5TdkY=
+
+Name: guide/otjld/images/heading-right.png
+SHA1-Digest: vOsA84Q0TCiU7bVBzuAcZfvxt1w=
+
+Name: guide/otjld/xdef/s4.1.h.html
+SHA1-Digest: MYcgtQHw7epP5Bae9RwgOXyXXpY=
+
+Name: guide/otjld/xdef/s1.html
+SHA1-Digest: lWsxNtZ9LGHE3XfX95TWmsHOK4I=
+
+Name: guide/otjld/images/heading-left.png
+SHA1-Digest: H6m4l7jstyRP0/RoZRdYdKtc43Q=
+
+Name: guide/otjld/xdef/s6.2.c.html
+SHA1-Digest: qmSa4g9qj2Sd9BkAlz+buthtwy0=
+
+Name: guide/otjld/xdef/s5.4.b.html
+SHA1-Digest: s+tdhAOCfIT0Y/iwttpm+TYkpuY=
+
+Name: guide/otjld/xdef/s4.6.a.html
+SHA1-Digest: RytWYGlaZj/GAjwUBK5Ctq5QX+A=
+
+Name: guide/images/screenshots/OverrideRole.png
+SHA1-Digest: qSB/GLYtqLbVx3yNDLUu+4lDUGc=
+
+Name: guide/otjld/xdef/s3.2.b.html
+SHA1-Digest: S/VHv5BVgEfd2TErXYtPAUIyVFc=
+
+Name: guide/otjld/xdef/images/Layering.png
+SHA1-Digest: OklGaj6zYLPl9k9B6lDTrKjP1Z4=
+
+Name: guide/css/style.css
+SHA1-Digest: 3wDCOn+UOwsRoKFeqD223liv1sk=
+
+Name: guide/weavingscheme.html
+SHA1-Digest: 8vSk3HIvFp4laNY9LYvA3Vt1EWw=
+
+Name: guide/otjld/xdef/s0.2.a.html
+SHA1-Digest: fKQ/WXajnum7MWQLYRgljDCd6Qo=
+
+Name: guide/completion.html
+SHA1-Digest: GJHyQx4qFSLQJP00j4fNPUczPrw=
+
+Name: guide/otjld/def/s1.html
+SHA1-Digest: dw/KTvjbGTlNlvoKnpL0AuJ1YKc=
+
+Name: about.html
+SHA1-Digest: lqb3XcPdleH+azsLHcyxNhU5mzc=
+
+Name: guide/news/new_in_2.3.html
+SHA1-Digest: KHnWNYnzsemO+wWn2anu1gOlf74=
+
+Name: guide/otjld/xdef/s7.1.html
+SHA1-Digest: RAHKfcv9yMYrt7ET5FaSzwCpjlE=
+
+Name: guide/otjld/xdef/s4.9.3.b.html
+SHA1-Digest: cEXxYj8AGkKm5aMCv4dLL/MJEEI=
+
+Name: guide/otjld/xdef/s1.3.html
+SHA1-Digest: TyCMdxyGuChnKioaJ3ldP7q2L2c=
+
+Name: guide/otjld/xdef/s2.3.4.c.html
+SHA1-Digest: MWEaGokjQugFgs+IPL9zES9E88I=
+
+Name: guide/otjld/xdef/s3.1.j.html
+SHA1-Digest: BrBiHVVguhe57xlkbmZ/6aeOuTU=
+
+Name: book.css
+SHA1-Digest: 2WNj+xXTgfataLC5vRSzIxwLHao=
+
+Name: guide/otjld/xdef/s4.4.d.html
+SHA1-Digest: 0XKb7ypkN582prdK1UrxyttkzaA=
+
+Name: guide/images/screenshots/CallHierarchyLifting.png
+SHA1-Digest: tA5x6YdB9OpDBlSn7MXRtKYb2vM=
+
+Name: guide/otjld/xdef/s1.2.3.b.html
+SHA1-Digest: 9B3sTz7z3r95pQMLV/VGz3Eb2yo=
+
+Name: guide/otjld/xdef/s1.3.1.c.html
+SHA1-Digest: XbY85ofc56zSgHUixMljM/F0V6Y=
+
+Name: guide/otjld/xdef/s2.1.2.c.html
+SHA1-Digest: 2n04Dc//StZSBYYyVxOTAKvkS0k=
+
+Name: images/heading_right.png
+SHA1-Digest: lKeSxLSZIpsg6OgpO4KVv/M1tuM=
+
+Name: css/root.css
+SHA1-Digest: LflgyrGTwQe9ZmFGmf0BsYnz61M=
+
+Name: guide/otjld/xdef/s2.2.d.html
+SHA1-Digest: 4R6oT6QKSquoVyGySLii0bickMo=
+
+Name: guide/otjld/xdef/sA.0.2.html
+SHA1-Digest: 9hWHyb+1LqNqvKF7XkRdqrUZZ6E=
+
+Name: guide/otjld/xdef/sA.0.html
+SHA1-Digest: EOwBOLcvwOws6vnaM5muvD2Pzhc=
+
+Name: guide/assist/addRemoveSignatures.html
+SHA1-Digest: BCCK63GjNAkrzFX9W9eojDI3r5g=
+
+Name: guide/project.html
+SHA1-Digest: gpIRT/OAVWCzj6annecDkOI3m3k=
+
+Name: guide/otjld/xdef/s5.4.html
+SHA1-Digest: vqwfE+koatKZL9SrH/a/GFzNpdw=
+
+Name: guide/images/screenshots/stack_lifting.png
+SHA1-Digest: 6N/mLrprbwLUdlRNDv1YP9PZMUk=
+
+Name: guide/images/screenshots/BindingEditor_ParameterMappings.png
+SHA1-Digest: L8UFXFKkQADPihar1clbzcQdh+I=
+
+Name: guide/otjld/xdef/s1.3.1.html
+SHA1-Digest: RfiULr1J4vmmGt+b8D6ZQ/CayVg=
+
+Name: guide/otjld/xdef/s2.1.2.html
+SHA1-Digest: OQMBIUCHDZ+BxAZ2s6ulXvDPVfE=
+
+Name: guide/otjld/xdef/s5.4.2.d.html
+SHA1-Digest: ZQjEUvJCklKGLtQrnMz30OBg9Q4=
+
+Name: guide/otjld/xdef/s4.8.e.html
+SHA1-Digest: 4fNY3c4lyjLmon2Ehz3ytZ4VUOo=
+
+Name: reference/extension-points/org_eclipse_objectteams_otequinox_asp
+ ectBindingNegotiators.html
+SHA1-Digest: y4qZ0LKydbLxEYTVaRc42KLYd/4=
+
+Name: guide/images/stepover_co.gif
+SHA1-Digest: +kc88nB0q3ph+CAuyJbq50901MM=
+
+Name: guide/otjld/xdef/s2.6.e.html
+SHA1-Digest: Y+odpiZIby+T8yqKAgayxwPou98=
+
+Name: guide/otjld/css/ot.fix-ie6.css
+SHA1-Digest: AXAbHIemWnFSqxPD7APEzHdOSNY=
+
+Name: guide/otjld/xdef/s6.3.b.html
+SHA1-Digest: xHLWVWlXwMjMcKfalZlbmYrMSAo=
+
+Name: guide/otjld/xdef/s1.2.1.e.html
+SHA1-Digest: WmiMID/kY5/soWP5KyKN/nwVXds=
+
+Name: guide/otjld/xdef/s2.3.1.a.html
+SHA1-Digest: 5aBo4kSlpGH826gS6Hpg5XNnO24=
+
+Name: guide/otjld/xdef/sB.2.4.html
+SHA1-Digest: 14Vh+9BwA/ZBiBRjADpnw3eXhSU=
+
+Name: images/boundrole_co.gif
+SHA1-Digest: tRBPGkbjfzmVXLCGxWieAdBu1FE=
+
+Name: guide/wizards.html
+SHA1-Digest: pIHo2z/WzfFNCd4riQUIAF96swU=
+
+Name: guide/otjld/xdef/s4.1.b.html
+SHA1-Digest: KWABUet3yFu74p3HNl0XlEfZo5Y=
+
+Name: guide/otjld/xdef/s3.3.a.html
+SHA1-Digest: 9oBXguHAspsErGW2ZOKRbfRfEMg=
+
+Name: guide/images/library_obj.gif
+SHA1-Digest: nkL22+4kbPDTI1ASDZhct7YaLXQ=
+
+Name: guide/images/screenshots/NN07/BindingEditorCalloutToField2.png
+SHA1-Digest: LSZCPN93YEISu3ZXYg0PyBgG1f0=
+
+Name: guide/otjld/xdef/s9.2.1.html
+SHA1-Digest: 5+daHw4ly/pcQ6Gg7pvIobcfhrM=
+
+Name: guide/images/java_attach.gif
+SHA1-Digest: 5lNc5eHawA9bH/dzI8q0k6zrKl4=
+
+Name: guide/images/screenshots/NN08/ExtractInterface2.png
+SHA1-Digest: OqlOzgXOddjiqOwcnJ5VUjpAi5Y=
+
+Name: guide/otjld/def/index.html
+SHA1-Digest: RW149UX7zBWNzWupPIkTwUewPfc=
+
+Name: guide/otjld/xdef/s8.html
+SHA1-Digest: 7lgIgSNFN1i/dLD+Sfx8yqskT1w=
+
+Name: images/plugin_obj.gif
+SHA1-Digest: FT+yMU/XrBGk25OwgZC0vvpreSk=
+
+Name: guide/otjld/xdef/s2.2.html
+SHA1-Digest: Nj6DrCYgbCyPbZNQzBneWgPeLMY=
+
+Name: images/role_obj.gif
+SHA1-Digest: iuZi+p75zxouyTEL851beN95zS0=
+
+Name: guide/otjld/xdef/s1.2.5.f.html
+SHA1-Digest: GS919LUJf6Sq518MNVkwIztIz7c=
+
+Name: guide/otjld/xdef/s2.3.5.b.html
+SHA1-Digest: agBtkuiGcLncJHYXYxb++EF+dCo=
+
+Name: guide/otjld/xdef/s5.3.d.html
+SHA1-Digest: RoX1L9Sx3YukMXf7FxNI4zZCwDA=
+
+Name: guide/otjld/xdef/s4.5.c.html
+SHA1-Digest: 4qgFh1OQtyr+mfrUHEn9w2Km6Ec=
+
+Name: guide/images/stepreturn_co.gif
+SHA1-Digest: aEnqaVIGCBZibB/7TmLJ4xDW+c4=
+
+Name: guide/otjld/xdef/s1.2.4.a.html
+SHA1-Digest: 4LrxfXQC6WZvCrDx81atAGWXOlg=
+
+Name: guide/otjld/xdef/s1.3.2.b.html
+SHA1-Digest: Tc/wntErRc7Et0BTnwREJP5fU9I=
+
+Name: guide/otjld/xdef/s1.5.b.html
+SHA1-Digest: kG/Po1+I6mlEsts3zO0YCnZPqSQ=
+
+Name: guide/otjld/xdef/s2.3.c.html
+SHA1-Digest: Isw9u0fZyeRxtSx7HRAZS8UbMtc=
+
+Name: guide/otjld/xdef/s3.1.d.html
+SHA1-Digest: +T0cZ1UWLd9V3GNI/w3dSlNkEa0=
+
+Name: guide/otjld/def/s8.html
+SHA1-Digest: oBzky0G0TYEg5XjooUaaRx+/29g=
+
+Name: guide/images/screenshots/NN08/CompilerPreferences.png
+SHA1-Digest: gAPZRbVpH2ffVNdbILtn8M7ROmg=
+
+Name: guide/otjld/xdef/s6.3.html
+SHA1-Digest: jj7HIRl/su3HerVgKF8WWn7P4YM=
+
+Name: guide/otjld/xdef/s0.5.html
+SHA1-Digest: amhzC20+jON3c6tUgncGXTU1OUc=
+
+Name: images/calloutbinding_obj.gif
+SHA1-Digest: zhdEQUAGg1iGeln/zwHi87V3COM=
+
+Name: guide/bindingeditor.html
+SHA1-Digest: G6JBXN2ADhaCB7cRPaoYaZlI+tk=
+
+Name: guide/otjld/xdef/s1.3.1.j.html
+SHA1-Digest: 9OaffIzpnTZHzNrqSpa9ZmwRWT8=
+
+Name: guide/images/screenshots/OSGiLaunchSettings.png
+SHA1-Digest: LkhNiW+IM59YSrpPfILfRn/gR4g=
+
+Name: guide/otjld/xdef/s4.3.f.html
+SHA1-Digest: DlUmazkQ7Az4kVoTyuJgM3fcEJY=
+
+Name: guide/otjld/xdef/s3.5.e.html
+SHA1-Digest: Vz/iFlKRXkBPe8qLoqUGI8WrK/4=
+
+Name: guide/otjld/xdef/s2.7.d.html
+SHA1-Digest: xfiIZfJmLI9GrzRHk/r3oMniixw=
+
+Name: guide/otjld/xdef/s7.2.b.html
+SHA1-Digest: QE6SV7iz81JR+u4HfpgEXF0t+r4=
+
+Name: guide/otjld/xdef/s1.2.2.d.html
+SHA1-Digest: vrTKV/yOID+a8gRJOuGscURIYhw=
+
+Name: guide/images/screenshots/addOTNature.png
+SHA1-Digest: Xi8mA94+x3UFVW+q7Kvo8eSU1d4=
+
+Name: guide/otjld/xdef/s2.1.f.html
+SHA1-Digest: 1eJN8Iu3877P4koSP+C8/zJfV+s=
+
+Name: guide/otjld/xdef/s4.2.a.html
+SHA1-Digest: UasXFisHzgjrSXtKbcklUAZ+y8Q=
+
+Name: guide/otjld/xdef/sA.7.html
+SHA1-Digest: F28fHsolQGQHtKo8wZmLRyOblZY=
+
+Name: guide/images/team_inact.gif
+SHA1-Digest: 22PHTbxfilzSefI1juPCYQILJVk=
+
+Name: guide/images/over_co.gif
+SHA1-Digest: KDXEkxrj3cdRhNP0UO9f3ztxPQc=
+
+Name: images/ote_osgi_launch.gif
+SHA1-Digest: 1OFXTE+tV45jQVNJ2e6mMl40GEQ=
+
+Name: images/team_package.gif
+SHA1-Digest: Tz/4y0tYdtDYdePMvZqGL+v7cdA=
+
+Name: guide/otjld/xdef/s4.6.html
+SHA1-Digest: ybkxafXPGeNKQeWpnFFF9/woy8Q=
+
+Name: guide/otjld/xdef/s1.2.3.html
+SHA1-Digest: b4VnjQ7vIAW+Vw2//eHL103IVN8=
+
+Name: guide/images/screenshots/NN21/AddSignaturesAssist.png
+SHA1-Digest: ivSH9HFNacsHFVU5mVcq9fNmJ5A=
+
+Name: guide/otjld/xdef/s3.1.html
+SHA1-Digest: HdkcZEpqhTMA3nNQynZgHBcS03o=
+
+Name: guide/otjld/xdef/s4.1.i.html
+SHA1-Digest: sazCxnCt8UkIMa4VxzI5fnWAV74=
+
+Name: guide/images/screenshots/RemoteDebugging.png
+SHA1-Digest: FSbZCNNKTbLBC+sG1g1GOCIbVcs=
+
+Name: guide/otjld/xdef/s2.html
+SHA1-Digest: +EIBIODt6CeR5IowCnP/HNrnPdg=
+
+Name: images/ote_launch.gif
+SHA1-Digest: 28ySgnqPVUIW9qBbFYR1B1edXNQ=
+
+Name: guide/otjld/xdef/s6.2.d.html
+SHA1-Digest: 7r8ZE2bbAqVr0WMuzgC53nLpAHE=
+
+Name: guide/otjld/xdef/s5.4.c.html
+SHA1-Digest: 8fg+etJ5Gqatz4P83N8FvVjn4dc=
+
+Name: guide/otjld/xdef/s3.2.c.html
+SHA1-Digest: aS8fnP1qgCN+qV8JjPQavmRNhfk=
+
+Name: guide/images/screenshots/callinmarker-menu.png
+SHA1-Digest: VKiC6geWW4v0Aglks1ZvJNVrt+Q=
+
+Name: guide/otjld/xdef/s0.2.b.html
+SHA1-Digest: LA7ITOVICMGKAV9kgUbcMnUM4vQ=
+
+Name: guide/outline.html
+SHA1-Digest: 2mx1ofAas2Miez697Dlj8lm7vpw=
+
+Name: guide/otjld/images/feed.png
+SHA1-Digest: 9xEl3m5fCbPYyDKFcldifnN8lds=
+
+Name: guide/otjld/def/s2.html
+SHA1-Digest: chmEqUGL8al0qfuAQDrjc/xaOSY=
+
+Name: guide/images/screenshots/perspective.png
+SHA1-Digest: eUd4Qo9v6VdqpqdsIfixsXp1hd8=
+
+Name: guide/images/eclipse_launcher.gif
+SHA1-Digest: BiOkzscG+YWRUcRy/IiP1yD7o84=
+
+Name: ot.html
+SHA1-Digest: 2ukXiKKn+GGkiqfCuq1f/cWGRrM=
+
+Name: guide/otjld/xdef/s7.2.html
+SHA1-Digest: dPlkR3a1MSeeTGDI8cuUVkLZ+I0=
+
+Name: guide/otjld/images/heading-right-small.png
+SHA1-Digest: kBUJGbC+Zc8f/ubfOKNo+TshlZc=
+
+Name: guide/otjld/xdef/s4.9.3.c.html
+SHA1-Digest: xirzoSbY4l1xYr+gRoEUPKlVfNE=
+
+Name: guide/otjld/def/css/otjld.css
+SHA1-Digest: 9VW7LlHnYpcqwDHagV8MYqOJWUk=
+
+Name: guide/images/screenshots/NN08/CreateRoleMethodQuickfix.png
+SHA1-Digest: xRurZsNflcEa+Y2cx9vb6sE1q74=
+
+Name: guide/otjld/def/xhtml11-flat.dtd
+SHA1-Digest: 18INmSJNzNlWvaAAO7CMfrrB558=
+
+Name: guide/otjld/xdef/s1.4.html
+SHA1-Digest: 8RC45CNnCfLTHqYjJrzARUmLaQg=
+
+Name: guide/otjld/xdef/css/valid-xhtml11-blue.png
+SHA1-Digest: AEK76jD3o3o4xJBfGyj9n5IbZQ8=
+
+Name: guide/otjld/xdef/s9.2.1.a.html
+SHA1-Digest: uTIwhv4si4Y6lqrWOt//JU+Epio=
+
+Name: guide/otjld/xdef/s2.3.4.d.html
+SHA1-Digest: TWN67xSGBqmV/7ArW2lo+MpP1QU=
+
+Name: guide/otjld/xdef/s3.1.k.html
+SHA1-Digest: hzxO9kmWV44suXnjx9Uwrc96oUc=
+
+Name: guide/debugging.html
+SHA1-Digest: P9+p/f2wyBV1V98tlC1DsD7bMxg=
+
+Name: css/graphics/obj_48/ot_obj.gif
+SHA1-Digest: jvweCFTl/hQzKXeIYxwA5R3Y+8Y=
+
+Name: guide/otjld/xdef/s1.2.3.c.html
+SHA1-Digest: JMY3yBC3QUYI0c7c7uPCe9cdn3s=
+
+Name: guide/otjld/xdef/s1.3.1.d.html
+SHA1-Digest: bO95Ejhum5mPwe0eDqUxQCWF2D4=
+
+Name: guide/otjld/xdef/s2.1.2.d.html
+SHA1-Digest: SZm2+gPae9I6hE9nyt7nqBAHO+M=
+
+Name: guide/otjld/xdef/s2.2.e.html
+SHA1-Digest: /O+Ts5mIVJAD+4w3E9WmVNbBgb8=
+
+Name: guide/otjld/xdef/sA.0.3.html
+SHA1-Digest: KsMsUg+5fzp9iuntWgzBUEBSh44=
+
+Name: guide/images/screenshots/stack_hit_callin.png
+SHA1-Digest: vQNoqscy3HOh3txCa/tPk5LjgS0=
+
+Name: guide/otjld/xdef/sA.1.html
+SHA1-Digest: IPM32FpeDKqjYHrhPaC3nA0yc3w=
+
+Name: guide/otjld/xdef/s4.9.1.html
+SHA1-Digest: Th0x9rqzWoGIlZKFhgAJM7WB+Zs=
+
+Name: guide/images/screenshots/NN07/BindingEditorCalloutToField1.png
+SHA1-Digest: aHTdlQ4qqHYugyZFVnjyI5tyyhA=
+
+Name: guide/news/new_in_0.7.html
+SHA1-Digest: J2c/1Jqzd4GbNwgVzxPU8OzZmrQ=
+
+Name: guide/otjld/xdef/s5.5.html
+SHA1-Digest: p+keK4JPpO1Bsx0p7wwFootR6Bc=
+
+Name: guide/images/debugt_obj.gif
+SHA1-Digest: lGxT1EvwA05G1Efbbqo96qa5xdw=
+
+Name: guide/images/screenshots/NN08/ExtractInterface1.png
+SHA1-Digest: 9iuM3b3c39UL+qcfGtddhlHrig0=
+
+Name: guide/otjld/xdef/s1.3.2.html
+SHA1-Digest: OgkGIjuS4hyq42RIDdpgIv3+2ys=
+
+Name: guide/images/screenshots/launchConfig.png
+SHA1-Digest: Hla7VIUvXFmxX8+YWKZVAvh6hWA=
+
+Name: guide/otjld/xdef/s4.10.a.html
+SHA1-Digest: Ny75vig2IXozi0QKhLVj6rVbsqI=
+
+Name: guide/otjld/xdef/s5.4.2.e.html
+SHA1-Digest: 5vjpPyV/ixO+jNprL/tUTG2YyOM=
+
+Name: guide/otjld/xdef/s2.6.f.html
+SHA1-Digest: deT+gmjUHhwV7zHp+2sE/l7Nx4U=
+
+Name: guide/otjld/xdef/s4.7.a.html
+SHA1-Digest: OfkfHqgtBV9hq9CfHa5cfxzAt0E=
+
+Name: guide/otjld/xdef/s1.2.1.f.html
+SHA1-Digest: tpQvC2yg4mEe9IWNxq5lpspUfuw=
+
+Name: guide/otjld/images/implicitly_overriding_playedby.png
+SHA1-Digest: 6HFi/RPHpZxZfHuSXi6SjhMtLX8=
+
+Name: guide/otjld/xdef/s2.3.1.b.html
+SHA1-Digest: 0C7ZtcMBE2pjizEZDpm8w2DBDZk=
+
+Name: css/root_swt.properties
+SHA1-Digest: DLsHYNJqYeaBz2QlSWhvvdoKxjM=
+
+Name: guide/otjld/xdef/s4.1.c.html
+SHA1-Digest: 6U6k0xMaUGm1JIkMrfvyg2I+Gxs=
+
+Name: guide/otjld/xdef/s3.3.b.html
+SHA1-Digest: SlEHVzrWR0Zq6SzyAG3w+cwoNOQ=
+
+Name: guide/otjld/xdef/s2.5.a.html
+SHA1-Digest: uyC6gN6mrDuoj/U0EZRklr2VaJU=
+
+Name: images/tm.gif
+SHA1-Digest: PXu3GmLiUWaceIgDJbzCw+vU0ss=
+
+Name: guide/images/team_act_implicit.gif
+SHA1-Digest: seuzT2d9Xvm86wCa8Znef9f1Qw4=
+
+Name: guide/otjld/images/favicon.ico
+SHA1-Digest: 4hZjfh9sVsQdKzBfII6T37kcIEg=
+
+Name: guide/otjld/xdef/s9.2.2.html
+SHA1-Digest: HIlt6HkbXGyR3FjDSMe9hhgH0uo=
+
+Name: images/team_role_obj.gif
+SHA1-Digest: pw62Apif8jf9OQX5vK0jNUsX27A=
+
+Name: guide/builder.html
+SHA1-Digest: O5wC8Oo7MfY3LrI0gVe3PoiTpRA=
+
+Name: images/jcu_obj.gif
+SHA1-Digest: 095E6yV6LDm/81H6zTvLkyoAtkc=
+
+Name: guide/otjld/xdef/s8.1.html
+SHA1-Digest: YE/Uj4/st/gqLNfAU7m9ELcGn2I=
+
+Name: guide/otjld/xdef/s9.html
+SHA1-Digest: xZxQ3eV6mRAJekUHUh5zWDJgXis=
+
+Name: guide/otjld/xdef/s2.3.html
+SHA1-Digest: U/rqaLxc5Vg3DVuiRfu3h6Ix+2s=
+
+Name: guide/otjld/images/heading-left-small.png
+SHA1-Digest: rb/lZR/DxjURGXrPhBOJzAFspPk=
+
+Name: guide/otjld/images/guards.png
+SHA1-Digest: U7AV8o1fGeQiVitg4N1bPPSJPkU=
+
+Name: guide/images/screenshots/ForcedExports.png
+SHA1-Digest: lXZhyJIjgpOdQmldYtOdRv/Sg1Q=
+
+Name: guide/otjld/xdef/s2.3.5.c.html
+SHA1-Digest: icuFx+uXca2xY1EIcJbnUpCEe/A=
+
+Name: guide/toc.xml
+SHA1-Digest: DJxUpiWtAXIB1EvewoVFZ75uM9k=
+
+Name: guide/otjld/xdef/s4.5.d.html
+SHA1-Digest: PgTfKNpgXj8ReztxHEmj7yQRNpE=
+
+Name: css/tutorials.css
+SHA1-Digest: S/f0W6Ko9z4HwkNmG8svONxFT10=
+
+Name: guide/otjld/xdef/s1.2.4.b.html
+SHA1-Digest: 9kw+R5XWHz1hUSu9LPdmwpLsqOc=
+
+Name: guide/otjld/xdef/s1.3.2.c.html
+SHA1-Digest: Xy8d0n50t6UZ3tPhI2UNXguMIlA=
+
+Name: guide/otjld/xdef/s1.5.c.html
+SHA1-Digest: i37r0l6TGkCoqb+NrDsOI3bO87s=
+
+Name: guide/otjld/xdef/s2.3.d.html
+SHA1-Digest: w2t/2/58MesSYIlj8TesIswZs8s=
+
+Name: guide/otjld/xdef/s3.1.e.html
+SHA1-Digest: MtYLoB9pJeWnbwiHtiiOg3/jvqQ=
+
+Name: guide/otjld/def/s9.html
+SHA1-Digest: G7uvF2VKNMY0fc4IyHTf6w1+n1A=
+
+Name: guide/otjld/xdef/xhtml11-flat.dtd
+SHA1-Digest: Ehqlrtu8HdQmVF5g3U+okPgI/eo=
+
+Name: guide/images/screenshots/GoToLangDefHover.png
+SHA1-Digest: iuZ/AOzBfsqjZzm5QOlsCP+Mufc=
+
+Name: guide/images/screenshots/callinmarkers.png
+SHA1-Digest: QTNSN4CzKgFn2WtzQ1zH2Nak6Bs=
+
+Name: css/ot-overview.properties
+SHA1-Digest: l3gnq70j0DBu9CutzyfuPkL78y0=
+
+Name: guide/otjld/xdef/s1.3.1.k.html
+SHA1-Digest: XmOO3m7XOZPad5Rnev0EKdmJTKg=
+
+Name: guide/otjld/xdef/s3.5.f.html
+SHA1-Digest: aTIwOhUk7qRJxYU77i5sLvE82GM=
+
+Name: guide/otjld/def/css/heading_right.png
+SHA1-Digest: lKeSxLSZIpsg6OgpO4KVv/M1tuM=
+
+Name: guide/otjld/xdef/s1.2.2.e.html
+SHA1-Digest: rKZply7OJWM0OMoNHDB8ugxnfic=
+
+Name: guide/otjld/xdef/s2.3.2.a.html
+SHA1-Digest: E96piRkW96i+4jQCFvO4IrMRCMw=
+
+Name: guide/otjld/xdef/s4.2.b.html
+SHA1-Digest: KLJKfieqerH7+prHPPaXkT/oCAw=
+
+Name: guide/otjld/xdef/s3.4.a.html
+SHA1-Digest: bB4ucvDw4cRC4uZlhKCXgGhJXh4=
+
+Name: guide/otjld/xdef/sA.8.html
+SHA1-Digest: A8o9fKXh3WwsADCheP3ZitfTRBY=
+
+Name: guide/images/screenshots/debug_prefs_filtering.png
+SHA1-Digest: /1qBaFzKHIfEe3/2ZcMwRSHVxrw=
+
+Name: guide/images/screenshots/implicitRoleHierarchy.jpg
+SHA1-Digest: SzxXa6BwWDY92cG++oTmyYxyE5c=
+
+Name: css/graphics/obj_48/otjdev_obj.gif
+SHA1-Digest: teKTOSzLp4gxlmsnY9X2lx5ke0A=
+
+Name: guide/images/stepinto_co.gif
+SHA1-Digest: Tunbr6mxlciX62C24IaJo5Kp14c=
+
+Name: guide/otjld/xdef/s4.7.html
+SHA1-Digest: cpIX01xU3kjtphDKShKXTwdOfq4=
+
+Name: guide/otjld/xdef/s1.2.4.html
+SHA1-Digest: qtHCcSL4zgnMi9uLFvdXmAgAj08=
+
+Name: guide/images/screenshots/NN22/ot-elements-in-structure-compare.p
+ ng
+SHA1-Digest: 7vdUOKykeXnS4XrlsV1TJrb1Hp4=
+
+Name: images/external_roles.gif
+SHA1-Digest: 5KOgXaf+DA1l/Q0gufsGCcElJp4=
+
+Name: images/callinbindingreplace_obj.gif
+SHA1-Digest: Ykdl4WTPF3ZaiBQ7kUp6EJTNUuk=
+
+Name: guide/otjld/xdef/s3.2.html
+SHA1-Digest: +F4Rzm8ju+EN+Mg7ozCfykASwgU=
+
+Name: guide/otjld/xdef/s3.html
+SHA1-Digest: h0KuxMoCJedrWo7Jbor12PLepUA=
+
+Name: images/class_public.gif
+SHA1-Digest: WZrGadfJKULy/axKBr47A/v1Wm8=
+
+Name: guide/otjld/xdef/s6.2.e.html
+SHA1-Digest: LfPz6fNmyKWyYHDPWsA/Wt4Svoc=
+
+Name: guide/otjld/xdef/s9.1.a.html
+SHA1-Digest: 6i+AoZcDLOEksDdns6gRFueOXxI=
+
+Name: guide/images/junit.gif
+SHA1-Digest: 0VjJdj1N8O5PSYayeUfKaa+6k4g=
+
+Name: guide/otjld/xdef/s1.2.5.a.html
+SHA1-Digest: na8vaXCOGojidA4QOfgcnja05jI=
+
+Name: guide/otjld/xdef/s3.2.d.html
+SHA1-Digest: c2KpGQTvMfRj69s3oboXyc9jDpc=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: guide/packageexplorer.html
+SHA1-Digest: m61LDo3/YvpBg6ICE9XEszG1YiI=
+
+Name: guide/images/screenshots/NN07/CreateMethodBinding3.png
+SHA1-Digest: t67nZB39yAkmT2T8bdq9SAZyoO8=
+
+Name: guide/otjld/xdef/images/implicitly_overriding_playedby.png
+SHA1-Digest: 6HFi/RPHpZxZfHuSXi6SjhMtLX8=
+
+Name: guide/otjld/def/s3.html
+SHA1-Digest: ThxPrED9HwwiUj5U2Utv5uHuyPg=
+
+Name: guide/images/screenshots/NN07/BindingEditorBaseCallout.png
+SHA1-Digest: ZRhaItgB0rceEMky3oGPub3SO2k=
+
+Name: guide/otjld/images/WebHeadBar.png
+SHA1-Digest: nQMv6tA263PpbbCyihPKZ4XFt3I=
+
+Name: guide/images/screenshots/langdef.png
+SHA1-Digest: 6jpdlhdqhBAbsgQklBtYpsbzqw4=
+
+Name: guide/running.html
+SHA1-Digest: e/gGkwLrm28JrTysZA9dDt/+1p0=
+
+Name: guide/images/screenshots/stack_entered_earnCredit.png
+SHA1-Digest: jjefDf6AXKD91Ffw+zoKrZnV/fs=
+
+Name: guide/images/screenshots/packageExplorer.jpg
+SHA1-Digest: 6mp3XOYpGyOeAirF5lomLVdiuqM=
+
+Name: guide/otjld/xdef/s2.3.1.html
+SHA1-Digest: dkiWT6r57yNEdVUPnk1lYCsPL/k=
+
+Name: guide/quickassist.html
+SHA1-Digest: zewczXLsxYsqKUoaMEhCUNh2gkM=
+
+Name: guide/otjld/xdef/s1.5.html
+SHA1-Digest: NZIGcbYuN8jZxMvqeH4d952jJSU=
+
+Name: guide/images/screenshots/BindingEditor_AddTypeBinding.png
+SHA1-Digest: l+ktrcMT/9irY0JYSKmHUFYBsjc=
+
+Name: guide/images/screenshots/JRETab.png
+SHA1-Digest: xIRWUCZApJoYiQ/YueCgnrFRX2c=
+
+Name: guide/otjld/images/arrow-right-trans.png
+SHA1-Digest: WIzhZuZ/hh8NW/dfulu0crvZ1Cw=
+
+Name: images/team_act.gif
+SHA1-Digest: A6tCXxEk5ZEr0jcpYkefgB5buRQ=
+
+Name: guide/images/screenshots/NN07/AddPrecedenceAfter-QuickFix.png
+SHA1-Digest: X7gTGUVsC2DyJB06kePLQlan1wg=
+
+Name: guide/images/screenshots/calloutmarker.png
+SHA1-Digest: l6ehtM29v2sD9MmId0PsddESIps=
+
+Name: guide/otjld/xdef/s1.2.3.d.html
+SHA1-Digest: jURnawW31WGLnX2tulSaj6Ot8Ec=
+
+Name: guide/otjld/xdef/s1.3.1.e.html
+SHA1-Digest: Mtwrkv9ld8Ieglwxwl3pZnlx5Ac=
+
+Name: guide/otjld/xdef/s2.1.2.e.html
+SHA1-Digest: 7mxdSvesa01SwKW+Sn2iOAwe18E=
+
+Name: guide/otjld/xdef/s2.2.f.html
+SHA1-Digest: 8YqkTlgtVRIRYuqNnz7xVX+771w=
+
+Name: guide/otjld/xdef/s2.4.1.a.html
+SHA1-Digest: sLCCZklQAK2qB5rFxz2zqJ8nDPo=
+
+Name: images/team_role_ovr.gif
+SHA1-Digest: rWZHbT7RhrldZiUt6b7TiewVbHI=
+
+Name: guide/otjld/xdef/s4.3.a.html
+SHA1-Digest: 7BanJiy4Z33nIcwhQ1xQaZyfEaQ=
+
+Name: guide/otjld/xdef/images/guards.png
+SHA1-Digest: U7AV8o1fGeQiVitg4N1bPPSJPkU=
+
+Name: guide/otjld/xdef/s2.1.a.html
+SHA1-Digest: JK/7t7MJkwaoykWC3U12h2Zi7xE=
+
+Name: guide/otjld/xdef/sA.2.html
+SHA1-Digest: C9GLQ+wDWkkIXldINkx1V5SwXho=
+
+Name: guide/otjld/xdef/s4.9.2.html
+SHA1-Digest: KcAetiUrx32q6w4ynRXCXPNwq9Y=
+
+Name: plugin.properties
+SHA1-Digest: PMOFnHJXxGthKUz+DVb7VRO3gxk=
+
+Name: guide/perspective.html
+SHA1-Digest: xcoCGvGiqaUO7qz6F049IqSR6B4=
+
+Name: guide/otjld/xdef/s4.10.b.html
+SHA1-Digest: R9LiGtkyDy4rfn39QMAt/IZbFik=
+
+Name: guide/otjld/xdef/s5.4.2.f.html
+SHA1-Digest: lgm8EGmFoiYDAJC5aOdXo4Oda8A=
+
+Name: guide/otjld/xdef/s4.1.html
+SHA1-Digest: /+caWefF6m7cgPjrLvavNKel23E=
+
+Name: plugin.xml
+SHA1-Digest: sZABvxeu6huuzRmC788wJ2hggxs=
+
+Name: guide/otjld/xdef/s2.6.g.html
+SHA1-Digest: 6xFpscB8ZcK8BBfrF2yMa+YxsgQ=
+
+Name: guide/otjld/xdef/s5.4.1.a.html
+SHA1-Digest: UjF0Key7nsUjFFFzs7/wuApJROQ=
+
+Name: guide/otjld/xdef/s4.7.b.html
+SHA1-Digest: 2iXP4VPQP6LrRtKCEd88hCyY3Xk=
+
+Name: guide/otjld/xdef/s1.2.1.g.html
+SHA1-Digest: x8mUpF0Xul8Jkreyn0x9H44gLsU=
+
+Name: guide/otjld/xdef/s2.3.1.c.html
+SHA1-Digest: y+f7uJIK8+wyG6ROZyLVsWZxHzc=
+
+Name: guide/otjld/xdef/s4.1.d.html
+SHA1-Digest: YGSyfqPKC22ugYTwMW64r5Hfz54=
+
+Name: guide/otjld/xdef/s3.3.c.html
+SHA1-Digest: Yf0Cmy1pK4BdJk2IlIqu+VK3B/Q=
+
+Name: guide/otjld/xdef/s2.5.b.html
+SHA1-Digest: D8UPyfHWUEcT7BwVOsKT+xtW2Cw=
+
+Name: guide/otjld/xdef/sB.1.1.html
+SHA1-Digest: 8IzkoHk+jrfnq7Z0xdS450EdJ5s=
+
+Name: guide/images/screenshots/NN07/GoToLangDefGutter.png
+SHA1-Digest: AvV5GyaKxBI5WySbKPZeUysj+rw=
+
+Name: guide/otjld/images/WebHead2.png
+SHA1-Digest: +O5NrHSBrcJs7oDQSYHEFMgaFz8=
+
+Name: guide/otjld/xdef/s5.4.1.html
+SHA1-Digest: fS2xzGMUrG2oHcP7v9gUBzkZt1o=
+
+Name: guide/otjld/xdef/css/heading_right.png
+SHA1-Digest: lKeSxLSZIpsg6OgpO4KVv/M1tuM=
+
+Name: guide/otjld/xdef/s8.2.html
+SHA1-Digest: CjnyQaGW9j9WBlGNPqclSAt7fPQ=
+
+Name: guide/otjld/xdef/s2.4.html
+SHA1-Digest: Y+JoscONLpd/kREb99F25EPOOR8=
+
+Name: guide/otjld/images/trac_logo_mini.png
+SHA1-Digest: v468JZcvX1rvk5/xOp8KIShnhyI=
+
+Name: guide/otjld/xdef/s9.2.2.a.html
+SHA1-Digest: UHb4eaC2gkQI23Zm03UBTw6glAk=
+
+Name: guide/otjld/xdef/s2.3.5.d.html
+SHA1-Digest: xx8Pj4q63j4QJUqyKRSIs04Xj8k=
+
+Name: guide/otjld/images/line.gif
+SHA1-Digest: ORN+TmYa3cToIReC/wK3eTexqIk=
+
+Name: guide/otjld/xdef/s4.5.e.html
+SHA1-Digest: 5Qh1T7oFgTU138ji7KJUylVRtI0=
+
+Name: guide/otjld/images/Layering.png
+SHA1-Digest: OklGaj6zYLPl9k9B6lDTrKjP1Z4=
+
+Name: images/callinbindingafter_obj.gif
+SHA1-Digest: P3wSgkFTqFl22uY1pgtldxe3EO8=
+
+Name: guide/otjld/xdef/s1.2.4.c.html
+SHA1-Digest: E+MWmU9akyTCOtaEU/HW6rtsrFo=
+
+Name: guide/otjld/xdef/s1.3.2.d.html
+SHA1-Digest: pyUFdN9RIL78omzzaRcdz9CKlLw=
+
+Name: guide/otjld/xdef/s1.5.d.html
+SHA1-Digest: VdXzP+XsDx1IANKyeOIdHxYzpFQ=
+
+Name: guide/otjld/xdef/s3.1.f.html
+SHA1-Digest: av2u764L6q/sNMqMiOuXY+4qPPU=
+
+Name: css/graphics/obj_48/otjdevhov_obj.gif
+SHA1-Digest: FJpYHaEcQ9Tc56keb6tLK/BE5v4=
+
+Name: guide/otjld/xdef/s5.2.a.html
+SHA1-Digest: v7THiN8U1GkQiFI0BL8KHNtfoVA=
+
+Name: guide/otjld/images/implicitly_overriding_playedby_base.png
+SHA1-Digest: xfBLpLbiz/pVP5ThAYxXEWnDT74=
+
+Name: guide/otjld/xdef/images/team_nesting_hor.png
+SHA1-Digest: 5aOoUAS4SKiOa2/6QXqccvhXNmQ=
+
+Name: guide/otjld/xdef/sB.1.html
+SHA1-Digest: SEDwWBP4p9QQ0A8Jpn8/6DwcnYo=
+
+Name: guide/images/julaunchpgn.gif
+SHA1-Digest: 02vsQ0hyw3/LxHSWp6gPPut8fCg=
+
+Name: guide/otjld/images/arrow-left-trans.png
+SHA1-Digest: 5qI6GUw2tZ70YTFTpmuj63qVctQ=
+
+Name: images/built-on-eclipse.gif
+SHA1-Digest: ipiWwhkBN30Y5l0inJSwtM+sUX0=
+
+Name: guide/images/screenshots/NN07/ProjectMigration-QuickFix.png
+SHA1-Digest: SVVEDvo9ognzNTxbSPG3s9hz2Ws=
+
+Name: guide/otjld/xdef/s4.9.1.a.html
+SHA1-Digest: pLxoLR/4VghsGQw3+g85FHSJAaw=
+
+Name: guide/otjld/xdef/s3.5.g.html
+SHA1-Digest: 5K6HRfpOcFb/SBhlirFjWUlOYXk=
+
+Name: guide/otjld/xdef/s4.8.a.html
+SHA1-Digest: 6hiiaEmhqOU15ESkDEIx0Uf5Q04=
+
+Name: guide/otjld/xdef/s1.2.2.f.html
+SHA1-Digest: grLpDNYjJSZSTFncs2EAQ2LvQjc=
+
+Name: guide/otjld/xdef/s2.3.2.b.html
+SHA1-Digest: baHXov6x0bO9YvWDWlFlFuL2GuE=
+
+Name: guide/otjld/xdef/s4.2.c.html
+SHA1-Digest: jbL6pfbB1Ic0a/e8C25CsbmueME=
+
+Name: guide/otjld/xdef/s3.4.b.html
+SHA1-Digest: dEgabaBVPqj0/etQ8W5t7kd60Ds=
+
+Name: guide/otjld/xdef/s2.6.a.html
+SHA1-Digest: bmIT1cNdHbqdbrm1ci8R0Pdo4II=
+
+Name: guide/otjld/xdef/sA.9.html
+SHA1-Digest: dd/fy7fPJ4uy3y1o7zi2lSLBJXE=
+
+Name: guide/otjld/xdef/s1.2.1.a.html
+SHA1-Digest: OcTGvVihUcJZhHQk669qZxQhytM=
+
+Name: images/callinmethod_co.gif
+SHA1-Digest: 1UzqifsGZ94x1lvZAbn2yM6px9o=
+
+Name: guide/images/screenshots/NN07/CreateMethodBinding2.png
+SHA1-Digest: OwFuCl6rWN8M0kDHbwYWl1td1Zo=
+
+Name: guide/otjld/xdef/images/foo.png
+SHA1-Digest: 8HQbOsoiOL+S221ID/h7c1jHQpU=
+
+Name: guide/images/screenshots/team_monitor_marked.png
+SHA1-Digest: HUGkt8CUeEFgjqOnEjvnnpWSmlQ=
+
+Name: guide/images/team_act.gif
+SHA1-Digest: A6tCXxEk5ZEr0jcpYkefgB5buRQ=
+
+Name: guide/images/screenshots/completion1.png
+SHA1-Digest: XDCbY5/jmIDKaE8p8daQ+ggKSDw=
+
+Name: guide/images/screenshots/NN07/RunJRE-OTRE.png
+SHA1-Digest: k3lc0gxqUY7Sdv1kh2070F5Ya0k=
+
+Name: guide/otjld/xdef/s4.8.html
+SHA1-Digest: LdlDIZOjsC/4DefbGnpVKr7Sho8=
+
+Name: guide/otjld/xdef/s9.1.html
+SHA1-Digest: A8T4rE5ZNek3wmhV0vS2H76/Gag=
+
+Name: guide/otjld/xdef/s1.2.5.html
+SHA1-Digest: +p+tQdV5P4M8rweyQm0iJNceEhY=
+
+Name: guide/otjld/def/images/implicitly_overriding_playedby.png
+SHA1-Digest: 6HFi/RPHpZxZfHuSXi6SjhMtLX8=
+
+Name: guide/otjld/xdef/s3.3.html
+SHA1-Digest: Bfe/QnnWWfNUGdI0ar9XwDGQ4r8=
+
+Name: guide/otjld/xdef/s4.html
+SHA1-Digest: w81TlZlXSC10crAkMPweo11vsmg=
+
+Name: guide/otjld/xdef/s9.1.b.html
+SHA1-Digest: c0gyvkRveT0hyFCgm+44hqOQSNc=
+
+Name: guide/otjld/xdef/s1.2.5.b.html
+SHA1-Digest: Ldmxnm3oVU7CnnCUOMcNafSKHQM=
+
+Name: guide/otjld/xdef/s3.2.e.html
+SHA1-Digest: 7xa21JeXlyT42uakJwZtDVSnGHQ=
+
+Name: guide/otjld/images/button.down.gif
+SHA1-Digest: mOU97U302j+5CiS0PpVZtxwNM3Q=
+
+Name: guide/otjld/xdef/s6.1.a.html
+SHA1-Digest: tCPHftdIsdoOTJxXgogC/uP9hh0=
+
+Name: guide/images/screenshots/stack_entered_callin.png
+SHA1-Digest: 85iUyEY1hv+Dj83tejzj8EaUjt0=
+
+Name: images/line.rainbow.gif
+SHA1-Digest: ORN+TmYa3cToIReC/wK3eTexqIk=
+
+Name: guide/otjld/def/s4.html
+SHA1-Digest: gzGHKRh+dpatyRC5TAJwqbcex1s=
+
+Name: guide/otjld/def/css/valid-xhtml11-blue.png
+SHA1-Digest: AEK76jD3o3o4xJBfGyj9n5IbZQ8=
+
+Name: css/graphics/obj_48/othov_obj.gif
+SHA1-Digest: sWzkyX76u8uGxiOE/pIJf9qxzts=
+
+Name: guide/otjld/xdef/sA.html
+SHA1-Digest: 8ta2+4D8kRnFG4FL+HgZuEc8dQ4=
+
+Name: guide/otjld/xdef/css/line.gif
+SHA1-Digest: ORN+TmYa3cToIReC/wK3eTexqIk=
+
+Name: guide/images/screenshots/complete_binding_3.png
+SHA1-Digest: R4UankFtcsqJwYnEEg+B00lbpGo=
+
+Name: guide/css/nn.css
+SHA1-Digest: L+AixTSLlpBZLKgk0585cHYdgg8=
+
+Name: guide/otjld/xdef/s2.3.2.html
+SHA1-Digest: jf6s1+9jyBzJbmrtMq0Eu9fksvM=
+
+Name: guide/otjld/def/images/foo.png
+SHA1-Digest: 8HQbOsoiOL+S221ID/h7c1jHQpU=
+
+Name: images/guard_obj.gif
+SHA1-Digest: XFCX3gvr5WlYc0CAqt7MVKRi3j0=
+
+Name: guide/otjld/def/sA.html
+SHA1-Digest: X5LA2AonOmDB0jYRDh7+7WvEEgk=
+
+Name: guide/otjld/xdef/s0.1.html
+SHA1-Digest: Y1R7AWTN3BjjBHV8f54Xrpm504Y=
+
+Name: guide/otjld/xdef/s1.3.1.f.html
+SHA1-Digest: zKP4I+UWypuRRX2WNmQonvFRe1w=
+
+Name: guide/otjld/xdef/s2.3.3.a.html
+SHA1-Digest: ln4iMexFCg7lO5LHGf/8+dyrZHc=
+
+Name: guide/otjld/xdef/s2.4.1.b.html
+SHA1-Digest: VlIR8xPBCpVYIEiPSs7Br1z0XOk=
+
+Name: guide/otjld/images/bottom-right-small.png
+SHA1-Digest: Vd6A+M6uZ4DWa5W9vgRGejBXiZ8=
+
+Name: guide/otjld/xdef/s4.3.b.html
+SHA1-Digest: GHST5JgjXJsJ5ZRWEKDHUm0Hfmc=
+
+Name: guide/otjld/xdef/s3.5.a.html
+SHA1-Digest: AKrVltNHTvETYQ2B8+ydEcgomhk=
+
+Name: guide/otjld/xdef/s2.1.b.html
+SHA1-Digest: ufs18X4M2ntkMTVYDxOUuxbB/+U=
+
+Name: guide/otjld/xdef/sA.3.html
+SHA1-Digest: 7O+lWRaLWI1GDfKVTNoJOGP7FcI=
+
+Name: guide/otjld/images/WebHead1.png
+SHA1-Digest: bCbAUZb0+/3OY1/3WmLrcQQYmis=
+
+Name: guide/otjld/xdef/s4.9.3.html
+SHA1-Digest: RO9ocgfcDECZUuBoUnUfxnDOw2k=
+
+Name: guide/images/screenshots/NN23/QFAddAspectExport.png
+SHA1-Digest: +zqNl87uYKMucKdNglgIUYwGG1w=
+
+Name: guide/otjld/images/bottom-left-small.png
+SHA1-Digest: auMeYiIYzHBq1KwuGmNxSxp4y/Y=
+
+Name: guide/typehierarchy.html
+SHA1-Digest: EckDf/q2f8N6Tjethz7vgoskUwg=
+
+Name: guide/images/screenshots/CompareWithBaseMethod.png
+SHA1-Digest: AeYYtO5CAOcpfiyOw/VDAbKCja0=
+
+Name: guide/otjld/xdef/s4.10.c.html
+SHA1-Digest: QjpuAOJLTcTorSPwVnb15yKhSgk=
+
+Name: guide/images/screenshots/NN07/Variables_Base.png
+SHA1-Digest: mw+SfTnEkQl5FybYziz65qnRHs4=
+
+Name: guide/otjld/xdef/s4.2.html
+SHA1-Digest: 7e+iBOwZ9KihbmpluUAvhAdQ8d4=
+
+Name: guide/otjld/xdef/s5.4.1.b.html
+SHA1-Digest: Q/17e2aN0cIqT39vPTNQwK2Sp6o=
+
+Name: guide/otjld/xdef/s4.7.c.html
+SHA1-Digest: JQZmlXa5Hfq41v+vgqAuhP983yo=
+
+Name: guide/otjld/xdef/s2.3.1.d.html
+SHA1-Digest: edIGu9gf61oc5UYGfm6wHUWkkFo=
+
+Name: guide/otjld/xdef/s4.1.e.html
+SHA1-Digest: isRHtwmhsTrJOjAro94xYLUMHh4=
+
+Name: guide/otjld/xdef/s3.3.d.html
+SHA1-Digest: xzZGskwlgKRG6ZiU1U75cVRE9JE=
+
+Name: guide/images/screenshots/NN21/ImplementFromTSuper1.png
+SHA1-Digest: ZEkZXbYfJRvfT5BgTpiuBeKrfxo=
+
+Name: images/ot_paragraph.png
+SHA1-Digest: stOdtwQNHv9EjBGT29cONOGdV5o=
+
+Name: guide/otjld/xdef/sB.1.2.html
+SHA1-Digest: atdIXWjCgJYD7edle1C/N+NN2wc=
+
+Name: guide/otjld/images/trac_logo_16.png
+SHA1-Digest: bdgDBMWRfHKqC9CjqySZU/ta5uI=
+
+Name: guide/stepping.html
+SHA1-Digest: +EZtzNezoW/3pmQ9AYRDdGaf7R4=
+
+Name: guide/otjld/xdef/s5.4.2.html
+SHA1-Digest: 7l5fZ7+IGMO4t4RhZ47GvvlQP7M=
+
+Name: guide/otjld/xdef/s8.3.html
+SHA1-Digest: zrtyWPFkDFDC2E20OkDE/uYaLVw=
+
+Name: guide/otjld/xdef/s2.4.1.html
+SHA1-Digest: DscMaSVj4guEvthwPhoxjBew6O0=
+
+Name: guide/callhierarchy.html
+SHA1-Digest: KXyJlS/LuSKHNuDWbd8rDw/9KE8=
+
+Name: guide/otjld/xdef/s2.5.html
+SHA1-Digest: MeHhh3d1GYD5VgKyGD/zpAmb/Jw=
+
+Name: guide/otjld/xdef/sA.10.html
+SHA1-Digest: 1ujxldlWntPUUYGAVe7BlzyNwQg=
+
+Name: guide/news/new_in_2.0.html
+SHA1-Digest: iplXkn96oJOGknn1CU4k/pvhTFg=
+
+Name: guide/otjld/images/pdficon_small.gif
+SHA1-Digest: s30KIqTC1fF+s3VHdy1wn8fNnX0=
+
+Name: guide/images/screenshots/CompareMenu.png
+SHA1-Digest: tuHwukCiI0gkVZuJgRvcJwqIpyk=
+
+Name: guide/otjld/xdef/s9.2.2.b.html
+SHA1-Digest: Dp4jVHPNL0Wbg0l4rL1u5qeBAY8=
+
+Name: guide/otjld/def/css/heading_left.png
+SHA1-Digest: 9G+pHrQ3e9wMKGNJqbgw4eg4ajM=
+
+Name: guide/otjld/xdef/s4.5.f.html
+SHA1-Digest: nlDKvQu7y6ZFwpWuIns3Xp/4ZtE=
+
+Name: guide/otjld/xdef/images/implicitly_overriding_playedby_base.png
+SHA1-Digest: xfBLpLbiz/pVP5ThAYxXEWnDT74=
+
+Name: guide/otjld/xdef/s1.3.2.e.html
+SHA1-Digest: pUJu/bXhYgPd2qkyYW6JKg46sJA=
+
+Name: guide/otjld/xdef/s1.5.e.html
+SHA1-Digest: 6WZSc/+yis1sYOYejm+1iP/4EIg=
+
+Name: guide/otjld/xdef/s2.4.2.a.html
+SHA1-Digest: HEnYc8MxvDrYBb6HRSj+YcVAoEU=
+
+Name: guide/otjld/xdef/s3.1.g.html
+SHA1-Digest: TJGiUq9oGOfXySABZEkmJvfu3ak=
+
+Name: guide/otjld/xdef/s5.2.b.html
+SHA1-Digest: LNeOYalK4KWFgWgy09YFpobH5TA=
+
+Name: guide/otjld/xdef/s4.4.a.html
+SHA1-Digest: 7IDQlu/nzDEn1ezaKTX8kXwOCcs=
+
+Name: guide/images/screenshots/NN07/CreateMethodBinding1.png
+SHA1-Digest: NqQyXrP04D1p8Y9Oi43iksfNzGs=
+
+Name: guide/otjld/xdef/s2.2.a.html
+SHA1-Digest: hgsDLXquhpev/0NK2X9GYjVKf8s=
+
+Name: guide/images/screenshots/typeHierarchy.jpg
+SHA1-Digest: eMBqpRWxS/atxN3k47FpyHNHXc0=
+
+Name: guide/images/screenshots/NN08/CalloutToFieldSeverity.png
+SHA1-Digest: u7P/psYXbgc3JDKCRO4MJzbud3I=
+
+Name: guide/otjld/xhtml1-strict.dtd
+SHA1-Digest: tM7oRR9zvQkgPQ4bs/QEaPU/rLc=
+
+Name: guide/otjld/xdef/sB.2.html
+SHA1-Digest: AVG7gref/8h6cxcBDn14RqjdfWY=
+
+Name: guide/compilation.html
+SHA1-Digest: yxg38sgMfeWSMhZyiejfpVI3gNU=
+
+Name: images/baseguard_obj.gif
+SHA1-Digest: bt6Rg2KIgXjdX/ZT4X3eLykwtbk=
+
+Name: guide/otjld/images/permalink.png
+SHA1-Digest: toAkucZ1ADnfn1fvRA6HSVE17rg=
+
+Name: guide/otjld/xdef/s5.1.html
+SHA1-Digest: 8P1b+eULiVRVszagT5OYpXot04s=
+
+Name: guide/otjld/xdef/s4.9.1.b.html
+SHA1-Digest: 39PkcUi8lpXVdJsYAM40pe7j3J4=
+
+Name: images/java8.png
+SHA1-Digest: SLq0eDpHqtwdEkPTsSmeIRiLxgU=
+
+Name: guide/otjld/xdef/s3.5.h.html
+SHA1-Digest: IN827ENktnJHyVtkwuDeB76B/NY=
+
+Name: guide/otjld/xdef/s5.4.2.a.html
+SHA1-Digest: 1aO/EVd2OrtLzG0/CH/J/GmdEcg=
+
+Name: guide/otjld/xdef/s4.8.b.html
+SHA1-Digest: 5pYpipBHKIlufRCmaJReX4bJYzw=
+
+Name: guide/otjld/xdef/s1.2.2.g.html
+SHA1-Digest: t+ojHgV9WNVp5gbnfBLR2VmwnRA=
+
+Name: guide/otjld/xdef/s2.3.2.c.html
+SHA1-Digest: R22XLNnmGzApnYWHzr1P5lJXiD0=
+
+Name: images/newpprj_wiz.gif
+SHA1-Digest: /UoBDXhLKgT5bITYAOf7SUfSumw=
+
+Name: guide/otjld/xdef/s4.2.d.html
+SHA1-Digest: 4jkRotDLic5xZ9cBw7vV6kyg0iY=
+
+Name: guide/otjld/xdef/s3.4.c.html
+SHA1-Digest: LTdbtPRN0H8rNj/rdt5htLwG+dM=
+
+Name: guide/otjld/xdef/s2.6.b.html
+SHA1-Digest: Ty9ax0Blo+pXwYkyQkyVGJOvHXE=
+
+Name: guide/otjld/xdef/s1.2.1.b.html
+SHA1-Digest: c4gblUy+qScPtJ6Mq+fHp5cpdX0=
+
+Name: guide/images/screenshots/packageExplorer_logical.png
+SHA1-Digest: JT5tzTyU6d5N+OcqIfvD+tAcVgg=
+
+Name: guide/otjld/xdef/sB.2.1.html
+SHA1-Digest: CBWqNc6fgW33KJpEula/UNR+bY8=
+
+Name: guide/webindex.html
+SHA1-Digest: ZL4Xuy9iblGxmmWtbYx0+5KTMCk=
+
+Name: guide/images/screenshots/perspective.jpg
+SHA1-Digest: M2r++ZbEywhI/KZBo1n8KD0bGAc=
+
+Name: guide/images/screenshots/outline.jpg
+SHA1-Digest: w5rI8VR0Q6uwHw4jkWNr55qvfL0=
+
+Name: guide/otjld/xdef/s4.9.html
+SHA1-Digest: lkwjIzh2WsF6D++TLy0FGgmGT9I=
+
+Name: guide/otjld/def/images/implicitly_overriding_playedby_base.png
+SHA1-Digest: xfBLpLbiz/pVP5ThAYxXEWnDT74=
+
+Name: reference/extension-points/org_eclipse_objectteams_otequinox_asp
+ ectBindings.html
+SHA1-Digest: TeMYD0DcNGq702iYPArIVhtmW0M=
+
+Name: guide/otjld/xdef/s9.2.html
+SHA1-Digest: +Mtzkz3GdRKMHYSKdvTfkqJhHzg=
+
+Name: guide/images/screenshots/complete_binding_2.png
+SHA1-Digest: IGKowng5g3+ppYYScolkg+TCwdI=
+
+Name: guide/otjld/xdef/s3.4.html
+SHA1-Digest: H17O8i8lS/z+fdMQr137EinmDSQ=
+
+Name: images/callinbinding_obj.gif
+SHA1-Digest: MuCqmA3W0fZEDwoVv8PljC67/3M=
+
+Name: guide/otjld/xdef/s5.html
+SHA1-Digest: /1dDThaChcfX/mP+3uU09LzD7MQ=
+
+Name: reference/extension-points/org_eclipse_objectteams_otequinox_lif
+ tingParticipant.html
+SHA1-Digest: mh2jkuPmXa4Eg/ie3DvNXgkbqQo=
+
+Name: guide/otjld/xdef/s9.1.c.html
+SHA1-Digest: 6qiR5bS9pBElnSxJafdeWdNorsQ=
+
+Name: guide/otjld/xdef/s1.2.5.c.html
+SHA1-Digest: lah0lOSzYZDOE5V1XYFuH9WRQcM=
+
+Name: guide/otjld/xdef/s6.1.b.html
+SHA1-Digest: LITyCcpFy6Gyyh0AGn/6zQUe5E8=
+
+Name: guide/otjld/xdef/s5.3.a.html
+SHA1-Digest: YnADqSoJl5m0s7AmNRT9wZpPJOU=
+
+Name: guide/images/screenshots/NN07/RemoveSignatures-QuickAssist.png
+SHA1-Digest: 33HJSLzLCPXdA/LEUe9Fdh0Y458=
+
+Name: guide/images/screenshots/NN21/ImplementFromTSuper.png
+SHA1-Digest: mxPCArW6M11EgI7YjWB/2w5Q9xs=
+
+Name: guide/images/screenshots/NN21/callHierarchyLifting.png
+SHA1-Digest: zadsZwpqCaiH48JD1y0GEEoXeQg=
+
+Name: guide/otjld/xdef/s3.1.a.html
+SHA1-Digest: 2fzKd3ezuvo6AxxK81fz2aYdHcw=
+
+Name: guide/otjld/def/s5.html
+SHA1-Digest: qLRaDuKhmWEgqiq6dDxLJjM6MUg=
+
+Name: guide/contentassist.html
+SHA1-Digest: 2k0qzJb8ZiQtye7u6wWhMM6RLds=
+
+Name: guide/otjld/xdef/sB.html
+SHA1-Digest: W/ueA/HQycwqOb66Vi1RUVrQRJo=
+
+Name: guide/images/screenshots/launchConfig.jpg
+SHA1-Digest: oGqJoW4c6ZCjlFioiMU8+Kw4ECg=
+
+Name: guide/images/screenshots/NN21/AmbiguousBaseMethod.png
+SHA1-Digest: FGHl60DMUPG2L4CEu2Iqab1fsYU=
+
+Name: guide/otjld/xdef/s2.3.3.html
+SHA1-Digest: FiYvJqVUTATqWAjtyf2YdnrDBTA=
+
+Name: guide/otjld/def/sB.html
+SHA1-Digest: d6nu3A43N8CDV8E/6WLWoOs+L1k=
+
+Name: guide/otjld/xdef/s0.2.html
+SHA1-Digest: FCelxjVVM4eotIR3y0KlNxUCYHg=
+
+Name: guide/otjld/xdef/s1.3.1.g.html
+SHA1-Digest: yTTKuNYY09J39jgknIfGIupuaoQ=
+
+Name: guide/images/java_app.gif
+SHA1-Digest: YWjfiP8NhM082qoIJJ8EyFmSM00=
+
+Name: guide/images/screenshots/NN07/AddSignatures-QuickAssist.png
+SHA1-Digest: 650ez4FD0bmkgKyofKNTB8DyhU0=
+
+Name: guide/otjld/xdef/s2.3.3.b.html
+SHA1-Digest: zX+zh4ZXQ6MidrgaBAO5MSf56aw=
+
+Name: guide/otjld/xdef/s2.4.1.c.html
+SHA1-Digest: J1Te3fo4qP8yUwHomr+7IbJBU2Q=
+

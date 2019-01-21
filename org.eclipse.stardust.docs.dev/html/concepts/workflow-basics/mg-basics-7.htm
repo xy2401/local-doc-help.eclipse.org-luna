@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Applications</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Workflow Data","mg-basics-6.htm","mg-basics-8.htm",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Applications</h1>
+
+<p>Applications may be associated with activities to specify the
+action to be executed when the activity is instantiated at runtime. They
+are basically application programs. Multiple activities may use the same
+application but only one application may be executed within an activity.<br>
+There is an exception with interactive applications. You can define JFC
+applications, JSP Pages etc. in one interactive application to cover
+different application contexts (e.g. execution clients).</p>
+
+<h2>Application Type</h2>
+<p>Applications are categorized by having a unique application type
+describing the execution semantics and custom hooks to the modeling
+environment to have type-specific modeling facilities. Prescribed by the
+application type, every application has its own specific properties to
+be configured.</p>
+<p>Stardust ships with a set of default application types for
+interactive and non-interactive activities as well:</p>
+<p>Non-interactive:</p>
+<ul>
+	<li>DMS Operation (please see chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.dms/html/dms/dms-application.html">
+	Document Service Operation Application Type</a> of the DMS Integration
+	Guide)</li>
+	<li>JMS applications</li>
+	<li>Mail applications</li>
+	<li>Message Parsing applications</li>
+	<li>Message Serialization applications</li>
+	<li>Message Transformation applications</li>
+	<li>Plain Java applications</li>
+	<li>Session Bean applications</li>
+	<li>Spring Bean applications (please see chapter <a
+		href="PLUGINS_ROOT/org.eclipse.stardust.docs.spring/html/applicationtype.html">
+	Modeling the Spring Bean Application Type</a> of the Spring Integration
+	Guide)</li>
+	<li>Web Service applications</li>
+	<li>XSL Message Transformation applications</li>
+</ul>
+<p>Interactive:</p>
+<ul>
+	<li>External Web applications</li>
+	<li>JFC applications</li>
+	<li>JSF applications</li>
+	<li>JSP applications</li>
+</ul>
+<p>Please refer to the chapter <a
+	href="../../handbooks/modelling/mg-integration-preface.htm">System
+Integration</a> for detailed information on the usage of concrete
+applications. The list of default applications may be extended by
+writing custom application types.</p>
+<p>Applications are a pure modeling concept. They have no persistent
+representation in the audit trail. As a model element, applications are
+first class model elements, i.e. they are shared between all process
+definitions.</p>
+<p>An application in Stardust is visualized by an icon showing a
+desktop window. This icon may be overlaid by symbols representing a
+concrete application type.</p>
+<img src="images/mg-basics-17.jpg" alt="">
+<h3>Application Type and Target Portals</h3>
+<p>If you are using interactive applications, please note the
+following restrictions:</p>
+
+<ul>
+	<li>Application activities with JSF, JSP and external web
+	applications can be used only with Web-based portals (clients).</li>
+	<li>Application activities with JFC application can be used only
+	with Swing based portals (clients).</li>
+</ul>
+<h2>Non-Interactive Applications</h2>
+
+<h3>Synchronous/Asynchronous Application</h3>
+<p>Applications associated with non-interactive activities, i.e.
+non-interactive applications, come in two different flavors:</p>
+<ul>
+	<li>Synchronous applications: the application is executed
+	synchronously in the current activity thread of the Stardust runtime.
+	The application execution is part of the current transaction. Note that
+	it is nevertheless possible for the application to execute in an own
+	transaction, e.g. for a Session Bean call with <tt>RequiresNew</tt>
+	semantics.</li>
+	<li>Asynchronous applications obeying the request/response
+	paradigm. The Stardust runtime ends its activity thread and the current
+	transaction after sending the request. Upon getting the correct
+	response which &quot;awakens&quot; the corresponding activity instance,
+	a new activity thread/transaction is started.</li>
+</ul>
+<p>Two very common synchronous application types deserve special
+attention. These are</p>
+<ul>
+	<li>Session Bean applications and</li>
+	<li>Plain Java applications.</li>
+</ul>
+<h3>Completion Method</h3>
+<p>Both application types are just for executing Java code at
+runtime - on a Session Bean or on a plain Java object. This is realized
+by executing one dedicated method, the completion method. See also <a
+	href="mg-basics-13.htm#93298">Runtime Behavior</a>.</p>
+<p>As a model element non-interactive applications have the
+following properties:</p>
+<ul>
+	<li>An ID unique inside the model</li>
+	<li>A human readable name</li>
+	<li>A reference to the application type</li>
+	<li>Custom properties prescribed by the application type</li>
+</ul>
+
+<h3 id="appretry">Retry Mechanism of Non-interactive Applications</h3>
+
+<p>When specifying the retry time, the user should take in account
+the default transaction timeout. The retry count * delay + processing
+time should be less than transaction timeout. Following is the default
+transaction timeout of application servers:</p>
+
+<table id='retry'>
+	<tr>
+		<th>Servers</th>
+		<th>Default Transaction Timeout</th>
+	</tr>
+	<tr>
+		<td>WebSphere</td>
+		<td>120 seconds</td>
+	</tr>
+	<tr>
+		<td>WebLogic</td>
+		<td>30 seconds</td>
+	</tr>
+	<tr>
+		<td>JBoss</td>
+		<td>300 seconds</td>
+	</tr>
+</table>
+<p>No indication is set in the audit trail to know if an application
+is executed more than once, if in the end the application succeeded. To
+find this, you should refer to the stack traces in the log files. In case
+of exceptions that are thrown within the application and if retry ends
+at the last cycle with an exception, only this last exception is shown
+in the audit trail. You need to check the log files to know about other
+exceptions. For example, exception1 is thrown, then exception2 and
+finally application completes. Retry is set to 3. In another case, first
+exception1 is thrown, then exception2 and then exception3 interrupts
+activity instance. Only exception3 is reported in the audit trail. To
+know about execption1 and exception2, you need to refer to the log
+files.</p>
+<p>If the Stardust engine was stopped the hard way while the
+activity is executed, there is no difference between an application with
+retry configured and one without. Meaning an engine recovery will
+re-animate both but it is not visible to the user (except log
+file-scanning) if the application with retry-mechanism was already
+executed several times.</p>
+
+<h2>Interactive Applications</h2>
+<p>For interactive activities, workflow control is temporarily
+outside the engine, e.g. in a Windows client application or in a Web
+page. After creating an interactive activity, the current activity
+thread and transaction stop. Only when an activity instance is
+completed, control is returned to the Stardust runtime. <!-- <span class="Stil1">The other way round: what is happening if a workflow client application is outside the scope of the Stardust runtime engine.</span> -->
+Nevertheless, Stardust enables you at modeling time to store information
+in the associated application (interactive application) on behalf of a
+client.</p>
+
+<h3>Application Context</h3>
+<p>Because different client contexts may exist (e.g. Web-based
+client, native Windows client) Stardust will maintain client-specific
+information in the scope of so-called application contexts, allowing for
+an arbitrary number of such contexts to be associated to specific
+interactive applications. Stardust ships with the following application
+contexts:</p>
+<ul>
+	<li>JSF context for execution inside the Stardust Workflow
+	Execution Perspective,</li>
+	<li>a generic JSP context for execution of the client inside a JSP
+	engine.</li>
+</ul>
+<p>As a model element interactive applications have the following
+properties:</p>
+<ul>
+	<li>an ID unique inside the model,</li>
+	<li>a human readable name,</li>
+	<li>an application context sub-element for every used application
+	context.</li>
+</ul>
+
+<h2>Custom Application Types</h2>
+<p>The modeling and runtime environment can be customized to support
+arbitrary application types by using the Stardust Service Provider
+Interface (SPI). The use of the Stardust SPI is described in the <a
+	href="../../handbooks/programming/spi/pg-spi.htm">Tutorial Stardust SPI
+Programming</a> chapter of the <a href="../../handbooks/programming/pg-preface.htm">Programming
+Guide</a>.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

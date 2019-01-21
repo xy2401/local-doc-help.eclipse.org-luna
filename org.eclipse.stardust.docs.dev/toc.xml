@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<!--
+    Copyright (c) 2011, 2014 SunGard CSA LLC and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    _http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+       SunGard CSA LLC - initial API and implementation and/or initial documentation
+ -->
+
+<toc label="Stardust Online Documentation 2.1.1"
+   topic="html/toc.html">
+   <anchor id="tocrelease" />
+   <anchor id="tocupgrade" />
+   <anchor id="tocinstallation" />
+   <topic href="html/getting-started.html" label="Getting Started">
+   <topic href="html/how-to-read.html"
+      label="How to read the Stardust Online Documentation" />
+      <anchor id="toctutorials" />
+      <topic href="html/videos.html"
+         label="Self-Learning Training Videos" />
+   </topic>
+
+   <topic href="html/concepts/key-concepts.html" label="Concepts">
+      <topic label="Workflow Basics"
+         href="html/concepts/workflow-basics/mg-basics-preface.htm">
+         <topic label="What is Workflow Management?"
+            href="html/concepts/workflow-basics/mg-basics-1.htm" />
+         <topic label="The Stardust Process Engine"
+            href="html/concepts/workflow-basics/mg-basics-2.htm" />
+         <topic label="Process Models"
+            href="html/concepts/workflow-basics/mg-basics-3.htm" />
+         <topic label="Processes"
+            href="html/concepts/workflow-basics/mg-basics-4.htm" />
+         <topic label="Activities"
+            href="html/concepts/workflow-basics/mg-basics-5.htm" />
+         <topic label="Control Flow"
+            href="html/concepts/workflow-basics/mg-basics-6.htm" />
+         <topic label="Applications"
+            href="html/concepts/workflow-basics/mg-basics-7.htm" />
+         <topic label="Workflow Data"
+            href="html/concepts/workflow-basics/mg-basics-8.htm" />
+         <topic label="Participants and Users"
+            href="html/concepts/workflow-basics/mg-basics-9.htm" />
+         <topic label="Scoped Participants"
+            href="html/concepts/workflow-basics/scoped-participants.html" />
+         <topic label="Configuration Variables"
+            href="html/concepts/workflow-basics/mg-basics-config-vars.html" />
+         <topic label="Events"
+            href="html/concepts/workflow-basics/mg-basics-11.htm" />
+         <topic label="Representation of Model Elements"
+            href="html/concepts/workflow-basics/mg-basics-12.htm" />
+         <topic label="Runtime Behavior"
+            href="html/concepts/workflow-basics/mg-basics-13.htm" />
+      </topic>
+      <topic label="Administrative Concepts"
+         href="html/concepts/admin-concepts/ag-concepts-preface.htm">
+         <topic label="Runtime Environment"
+            href="html/concepts/admin-concepts/ag-concepts-1.htm" />
+         <topic label="Multiple Versions"
+            href="html/concepts/admin-concepts/multiversion.html" />
+         <topic label="Managing Multi Partition Stardust Installations"
+            href="html/concepts/admin-concepts/ag-multipartition.htm" />
+         <topic label="Daemons"
+            href="html/concepts/admin-concepts/ag-concepts-2.htm" />
+         <topic label="Log Entries"
+            href="html/concepts/admin-concepts/ag-concepts-3.htm" />
+         <topic label="Stardust Environment"
+            href="html/concepts/admin-concepts/ag-concepts-4.htm" />
+         <topic label="Document Types"
+            href="html/concepts/admin-concepts/ag-concepts-doc-types.html" />
+         <topic label="Preferences Storage"
+            href="html/concepts/admin-concepts/ag-concepts-preferences.html" />
+      </topic>
+      <topic label="Executing Workflow"
+         href="html/concepts/executing-workflow/workflow.html">
+         <topic label="Worklists"
+            href="html/concepts/executing-workflow/worklist-concept.html" />
+         <topic label="Delegating Worklist Items"
+            href="html/concepts/executing-workflow/delegation-concept.html" />
+         <topic label="Relocating Activities"
+            href="html/concepts/executing-workflow/concept-relocation.html" />
+         <topic label="Spawning Process Instance"
+            href="html/concepts/executing-workflow/spawn-usage-concept.html" />
+         <topic label="Extracting Pages"
+            href="html/concepts/executing-workflow/extract-pages.html" />
+         <anchor id="toctriagec" />
+<!-- intermediately hide 
+         <topic label="Document Rendezvous"
+            href="html/concepts/executing-workflow/document-rendezvous.html" />
+         <topic label="Document Triage"
+            href="html/concepts/executing-workflow/document-triage.html" />-->
+         <topic label="Aborting and Starting Processes"
+            href="html/concepts/executing-workflow/abort-and-start-usage.html" />
+         <topic
+            href="html/concepts/executing-workflow/abort-and-join.html"
+            label="Aborting and Joining Processes" />
+         <topic
+            href="html/concepts/executing-workflow/case-concept.html"
+            label="Case - Grouping Processes" />
+         <!-- <topic label="Processing Worklists" href="html/concepts/executing-workflow/process-worklists.html"/> -->
+      </topic>
+      <topic label="Multi Model Audit Trail Setups"
+         href="html/concepts/multi-model/multi-model.html">
+         <topic label="Using Multi Model Audit Trail Setups"
+            href="html/concepts/multi-model/multi-model-intro.html" />
+         <topic label="Creating Models With Cross References"
+            href="html/concepts/multi-model/creating-ref-models.html " />
+         <topic label="Common Usage Pattern"
+            href="html/concepts/multi-model/usage-pattern.html" />
+         <topic label="Using Elements from Other Process Models"
+            href="html/concepts/multi-model/using-elements.html" />
+         <topic label="Deploying Different Models into One Runtime"
+            href="html/concepts/multi-model/model-deployment.html" />
+         <topic label="Multiple Implementations"
+            href="html/concepts/multi-model/multiple-impl.html" />
+      </topic>
+      <topic label="Federated Document Repositories" href="html/concepts/repository-storage.html" />
+      <topic label="Audit Trail Persistence"
+         href="html/concepts/audit-trail/audit-trail-persist.html" >
+         <topic label="Audit Trail Persistence Modes"
+            href="html/concepts/audit-trail/audit-trail-persist-modes.html" />
+         <topic label="Transient Processes"
+            href="html/concepts/audit-trail/transient-procs.html" />
+      </topic>
+      <topic label="System Integration" href="html/concepts/concepts-integration.html">
+         <topic label="Process-based UI Mashups" href="html/concepts/integration/activity-panel-integration.html" />
+      </topic>
+      <topic label="Using Multiple Instance Activities"
+         href="html/concepts/multi-instance.html" />
+      <anchor id="tocboc" />
+<!-- intermediately hide 
+      <topic label="Business Objects (Technology Preview)"
+         href="html/concepts/business-objects.html" />-->
+      <topic label="Activity Criticality"
+         href="html/concepts/activity-criticality.html" />
+      <topic label="Quality Assurance"
+         href="html/concepts/quality-assurance.html" />
+      <topic label="Rule Management"
+         href="html/concepts/rules-management.html" />
+      <topic href="html/concepts/security.html" label="Security Propagation for Web Applications">
+      </topic>
+   </topic>
+   <topic label="Administrator Handbook" href="html/handbooks/admintoc.html">
+   </topic>
+   <anchor id="analyst" />
+   <anchor id="modeler" />
+   <anchor id="additional_handbooks" />
+   <anchor id="inttoc" />
+   <anchor id="tocexamples" />
+   <topic label="Reference" href="html/reference/toc.html">
+      <topic label="Stardust API" href="html/reference/api/toc.html">
+         <anchor id="tocapi" />
+      </topic>
+      <!-- <topic label="List of Tables" href="html/reference/TableList.html"/> -->
+      <topic label="List of Error Codes" href="html/reference/error-code.html" />
+      <!-- <topic label="Extension Points Reference" href="html/reference/extensions/toc.html"> 
+         <topic label="org.eclipse.stardust.modeling.data.structured" href="html/reference/extensions/ag_carnot_bpm_modeling_data_structured_applicationInfo.html"/> 
+         <topic label="com.infinity.bpm.messaging.modeling.messageFormat" href="html/reference/extensions/com_infinity_bpm_messaging_modeling_messageFormat.html"/> 
+         </topic> -->
+   </topic>
+   <anchor id="toctrouble" />
+   <topic label="Glossary" href="html/glossary.html" />
+   <anchor id="toclegal" />
+</toc>

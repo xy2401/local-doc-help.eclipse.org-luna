@@ -1,0 +1,609 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Building Queries</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Querying Data",
+	"../pg-query-1.htm","pg-data-query.htm",
+   "../../handbooks.htm","Developer Handbook",
+   "../pg-preface.htm","Programming Guide",
+   "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Building Queries</h1>
+<p>This chapter describes the query API Stardust provides for building queries
+and how it is used.</p>
+<ul>
+   <li><a href="#queries">Query API</a></li>
+	<li><a href="#order">Defining Order</a></li>
+   <li><a href="#policy">Using Policies</a></li>
+	<li><a href="#customFilters">Applying Custom Filters</a></li>
+	<li><a href="#resultSize">Restricting the Result in Size</a></li>
+	<li><a href="#structData">Using Structured Data in Queries </a></li>
+</ul>
+<h2 id="queries">Query API</h2>
+<p>The Stardust Process Engine offers a rich query API for querying 
+runtime elements. The following concrete Query classes located in the 
+<tt>org.eclipse.stardust.engine.api.query</tt> package are available:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+    ActivityInstanceQuery</a> - query container for building complex queries 
+    for activity instances</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html">
+    ProcessInstanceQuery</a> - query container for building complex queries for process instances</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/LogEntryQuery.html">
+    LogEntryQuery</a> - query container for building queries for log entries</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserQuery.html">
+    UserQuery</a> - query for fetching workflow users matching specific criteria</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserGroupQuery.html">
+    UserGroupQuery</a> - query for fetching workflow user groups matching specific criteria</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistQuery.html">
+    WorklistQuery</a> - query for retrieving (parts of) a user's worklist</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataQuery.html">
+    DataQuery</a> - query container for building complex queries for data. Refer to chapter
+    <a href="pg-data-query.htm">Querying Data</a> for details on provided data query options.</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DeployedModelQuery.html">
+    DeployedModelQuery</a> - query container for building complex queries for deployed models</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DocumentQuery.html">
+    DocumentQuery</a> - query container for queries on documents</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/PreferenceQuery.html">
+    PreferenceQuery</a> - query container for building queries on preferences</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessDefinitionQuery.html">
+    ProcessDefinitionQuery</a> - query container for building queries on process definitions. Refer to chapter
+    <a href="query-proc-def.html">Querying Process Definition Details</a> for details on provided process 
+    definition query options.</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserGroupQuery.html">
+    UserGroupQuery</a> - query for fetching workflow user groups matching specific criteria</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserQuery.html">
+    UserQuery</a> - query for fetching workflow users matching specific criteria</li>
+ </ul>
+<p>They all extend the main 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/Query.html">
+Query</a> class, which provides the basic functionality for creating query 
+containers for complex queries. For details on query objects refer to section
+<a href="../embed/pg-embed-objects.html#queryObjects">Query Objects</a> of chapter
+<a href="../embed/pg-embed-objects.html">Objects and Model Elements</a>.</p>
+<h2 id="order">Defining Order</h2>
+<p>While in most situations it is completely sufficient to obtain
+runtime objects satisfying certain filter criteria in arbitrary order,
+in some cases it may be necessary to exactly specify a relative order of
+retrieved items.</p>
+<p>As an example, to address certain quality of service aspects you
+may like to retrieve the <tt>ActivityInstance</tt> of the oldest
+activity instance belonging to instances of the process <tt>INTERNET_ORDER</tt>.
+To achieve this you would have to write code like:</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+query.orderBy(ActivityInstanceQuery.START_TIME);&nbsp;
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);
+This sample combines the predefined query for finding activity instances belonging to a certain process with a single additional order criterion.</pre>
+
+<p>The methods used to define a sorting order are:</p>
+<pre>public abstract class Query<br>{<br>  ...<br>  public OrderCriteria orderBy(FilterableAttribute attribute);<br>  public OrderCriteria orderBy(FilterableAttribute attribute, boolean ascending);<br>  public OrderCriteria orderBy(OrderCriterion criterion);<br>  ...<br>}</pre>
+<p>The first two are used to define an order according to attributes
+of the objects queried for. The first method implicitly requests
+ascending order, while the second lets the caller choose between
+ascending or descending order.</p>
+<p>Attributes you can use for ordering are defined in the scope of
+the concrete query. For instance, when performing an <tt>ActivityInstanceQuery</tt>
+you may select from the following:</p>
+<pre>public class ActivityInstanceQuery extends Query<br>{<br>  public static final Attribute STATE = ...;<br>  public static final Attribute START_TIME = ...;<br>  public static final Attribute LAST_MODIFICATION_TIME = ...;<br>  public static final Attribute ACTIVITY_OID = ...;<br>  public static final Attribute CURRENT_PERFORMER_OID = ...;<br>  public static final Attribute CURRENT_USER_PERFORMER_OID = ...;<br>  public static final Attribute PERFORMED_BY_OID = ...;<br>  public static final Attribute PROCESS_INSTANCE_OID = ...;<br>  ...<br>}</pre>
+<p>Which attributes are supported by the concrete query you want to
+perform can be found in the query class's JavaDoc. Attributes are always
+static instances of an inner class <tt>Attribute</tt>.</p>
+<p>In case you need a combination of more than one order criterion
+you may make use of having the <tt>orderBy</tt> methods returning an
+instance of class <tt>OrderCriteria</tt>. As the name implies, instances
+of <tt>OrderCriteria</tt> are used to group lists of single order
+criteria into one object. The most important methods are:</p>
+<pre>public final class OrderCriteria implements OrderCriterion<br>{<br>  ...<br>  public OrderCriteria and(FilterableAttribute attribute);<br>  public OrderCriteria and(FilterableAttribute attribute, boolean ascending);<br>  public OrderCriteria and(OrderCriterion criterion);<br>  ...<br>}</pre>
+<p>You may notice the similarity to the three <tt>orderBy</tt>
+methods shown before. Calling one of the methods appends another order
+criterion to the list already set. The list of criteria will later be
+evaluated in order of appearance.</p>
+<p>To extend the former example we now add another criterion to
+still find the oldest activity instance, but now additionally requesting
+to get the instance with the longest idle time in case of multiple
+instances of the same age.</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);
+</pre>
+<p>To finish the quick order walk-through, let's come back to the
+third <tt>orderBy</tt> method. Its <tt>OrderCriterion</tt> parameter may
+be used to set a pre-configured complex list of order criteria at once.
+For instance, when having a GUI for defining order criteria it may be
+useful to evaluate its state once and later reuse the resulting <tt>OrderCriteria</tt>
+object for multiple queries. In terms of our last example this would
+mean:</p>
+<pre>OrderCriteria ordering = new OrderCriteria();
+ordering.and(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+...
+ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+query.orderBy(ordering);&nbsp;
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);</pre>
+
+<h2 id="policy">Using Policies</h2>
+<p>Policies allow to set special options for queries. Using policies you can fine
+tune the behavior for more complex queries.</p>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/EvaluationPolicy.html">
+EvaluationPolicy</a> is the interface to be implemented by custom query evaluation policies.
+The following policies are available:</p>
+<ul>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/CasePolicy.html">
+      CasePolicy</a> - policy to include cases in the result</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DescriptorPolicy.html">
+      DescriptorPolicy</a> - policy for specifying retrieval of descriptors</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/EvaluateByWorkitemsPolicy.html">
+      EvaluateByWorkitemsPolicy</a> - policy to advise QueryService to retrieve activtiy instance from Workitems only.
+      Refer to section <a href="#evwork">Retrieving Activity Instances based on Workitem Table</a> for details.</li>  
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ExcludeUserPolicy.html">
+      ExcludeUserPolicy</a> - policy to exclude Activity Instances from excluded users in the result.
+      Refer to section <a href="#excludeai">Excluding Activity Instances for excluded Users</a> for details.</li>  
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/HistoricalEventPolicy.html">
+      HistoricalEventPolicy</a> - evaluation policy determining the inclusion of the given event types in process 
+      and activity instances. Refer to section <a href="#historypol">Determining the Inclusion of Event Types in 
+      Process and Activity Instances</a> for details.</li>  
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/HistoricalStatesPolicy.html">
+      HistoricalStatesPolicy</a> - evaluation policy for specifying retrieval of historical states</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ModelPolicy.html">
+      ModelPolicy</a> - evaluation policy to exclude the predefined model from the result set of a DeployedModelQuery</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ModelVersionPolicy.html">
+      ModelVersionPolicy</a> - evaluation policy affecting query execution in a multi-version model environment</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessDefinitionDetailsPolicy.html">
+      ProcessDefinitionDetailsPolicy</a> - evaluation policy affecting the level of details for process definition details.
+      For details on this policy refer to section <a href="#procdef">Determine the Level of Details for Process Definition Details</a>.</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceDetailsPolicy.html">
+      ProcessInstanceDetailsPolicy</a> - evaluation policy affecting the level of details for process instances</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/RepositoryPolicy.html">
+      RepositoryPolicy</a> - allows multiple repositories to be target of a query.
+      Refer to section <a href="#allrep">Extending a DocumentQuery to multiple Repository Instances</a> for details.</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/SubFolderPolicy.html">
+      SubFolderPolicy</a> - allows to limit a DocumentQuery to a specified subfolder</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/SubsetPolicy.html">
+      SubsetPolicy</a> - evaluation Policy for specifying retrieval of only a subset of found data</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/TimeoutPolicy.html">
+      TimeoutPolicy</a> - supports specification of a runtime constraint on query execution</li>
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UserDetailsPolicy.html">
+      UserDetailsPolicy</a> - policy for specifying retrieval of user details. 
+      Refer to section <a href="#retruser">Retrieving User Details with the UserDetailsPolicy</a> for details.</li>  
+   <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistLayoutPolicy.html">
+      WorklistLayoutPolicy</a> - evaluation Policy for specifying layout of result for worklist queries. 
+      Refer to section <a href="#layout">Specifying the Layout of the Result for Worklist Queries</a> for details.</li> 
+</ul>
+<h3 id="evwork">Retrieving Activity Instances based on Workitem Table</h3>
+<p> Stardust provides a policy <strong>EvaluateByWorkitemsPolicy</strong> 
+to retrieve activity instances based on the workitem table,
+which contains only manual/interactive activity instances.
+This policy is available for the <tt>ActivityInstanceQuery</tt>. 
+If this policy is set, any 
+<tt>ActivityInstanceQuery</tt> for <tt>getAllActivityInstance</tt> or 
+<tt>getActivityInstanceCount</tt> is executed on the 
+<a href="../../operation/audit-trail/ag-appendix-audittrail-1.htm#workitem">workitem</a>
+table instead of 
+the <a href="../../operation/audit-trail/ag-appendix-audittrail-1.htm#act_inst">activity_instance</a>
+table.</p>
+<p>Note that based on this fact, this policy is relevant <strong>only</strong> 
+for queries on interactive and manual activities that are active 
+(in state application or suspended). Other activities will not be part of the 
+result set.</p>
+<p>According to the nature of the <tt>ActivityInstanceQuery</tt>, the use of 
+other filters and/or policies should be handled with care as the workitems may 
+not contain the same details as <tt>ActivityInstances</tt>.</p>
+<h3 id="allrep">Extending a DocumentQuery to multiple Repository Instances</h3>
+<p>You can extend a document search from the default repository to either all 
+repositories or to all specified repositories by setting a RepositoryPolicy.</p>
+<pre>
+package org.eclipse.stardust.engine.api.query;
+
+import java.util.Collections;
+import java.util.List;
+
+public class RepositoryPolicy implements EvaluationPolicy
+{
+   private static final long serialVersionUID = -4922399462085360884L;
+
+   private List&lt;String&lt; repositoryIds;
+
+   public RepositoryPolicy()
+   {
+      repositoryIds = Collections.EMPTY_LIST;
+   }
+
+   public static RepositoryPolicy includeAllRepositories()
+   {
+      return new RepositoryPolicy(Collections.EMPTY_LIST);
+   }
+
+   public static RepositoryPolicy includeRepositories(List&lt;String&lt; repositoryIds)
+   {
+      return new RepositoryPolicy(repositoryIds);
+   }
+
+   public RepositoryPolicy(List&lt;String&lt; repositoryIds)
+   {
+      this.repositoryIds = repositoryIds;
+   }
+
+   public List&lt;String&lt; getRepositoryIds()
+   {
+      return repositoryIds;
+   }
+   
+}
+</pre>
+<p>Method <tt>includeAllRepositories()</tt> configures a policy to includes all 
+available repositories into the search. To create a policy to include a list
+of repositories, use <tt>includeRepositories(List&lt;String&lt; repositoryIds)</tt>.</p>
+<p>The following example uses a RepositoryPolicy to search for documents in a 
+set of repositories, which is specified as list of repository Ids:</p>
+<pre>
+DocumentQuery query = DocumentQuery.findAll();
+Documents findDocuments(DocumentQuery query);
+query.setPolicy(new RepositoryPolicy(&lt;<i>list of repository Ids</i>&gt;));</pre>
+<h3 id="retruser">Retrieving User Details with the UserDetailsPolicy</h3>
+<p>To control the level of detail for user details, you can use the following policy:</p>
+<pre>
+UserQuery query = UserQuery.findAll();
+query.setPolicy(new UserDetailsPolicy(&lt;level&gt;));
+</pre>
+<p>whereby &lt;level&gt; can be one of the following:</p>
+<ul>
+    <li><tt>UserDetailsLevel.Core</tt>: The user details only contain first level
+    attributes of UserBean.</li>
+    <li><tt>UserDetailsLevel.WithProperties</tt>: The user details contain the same
+    attributes as with CORE plus properties.</li>
+    <li><tt>UserDetailsLevel.Full</tt>: The user details contain the same attributes
+    as with WITH_PROPERTIES plus all grants.</li>
+</ul>
+<p>This policy applies to any query referencing user details in its results. If no
+policy is set then <tt>UserDetailsLevel.Full</tt> will be used.</p>
+<p>The method</p>
+<pre>UserDetailsLevel getDetailsLevel();</pre>
+<p>in the interface <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/User.html">User</a>
+retrieves the level of details for users.</p>
+<p>The method <tt>UserService.modifyUser(User changes)</tt> will throw the exception</p>
+<pre>new IllegalOperationException("Operation requires fully initialized user.")</pre>
+<p>in case the following predicate is not true:</p>
+<pre>UserDetailsLevel.Full != changes.getDetailsLevel();</pre>
+
+<h3 id="excludeai">Excluding Activity Instances for excluded Users</h3>
+<p>To exclude activity instances in activity instance queries, 
+where the user is an excluded user for that activity instance,
+you can use the <tt>ExcludeUserPolicy</tt> policy:</p>
+<pre>
+ActivityInstanceQuery query = ActivityInstanceQuery.findAll();
+query.setPolicy(ExcludeUserPolicy.EXCLUDE_USER);
+</pre>
+<p>Refer to class
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+ActivityInstanceQuery</a> for details.</p>
+<p>You have the option to determine if the exclude user evaluation is performed 
+in queries. Set the property 
+<strong>Stardust.Engine.Tuning.Query.ExcludeUser.Evaluation</strong> in your server-side 
+<tt>carnot.properties</tt> file accordingly. If set to <tt>true</tt>, ActivityInstanceQueries 
+evaluate if activities have <strong>ExcludeUser</strong> actions applied (in case 
+the <strong>ExcludeUserPolicy</strong> is applied). If set to <tt>false</tt>,
+which is the default value, no evaluation takes place.</p>
+<p>To limit the runtime effort associated with the worklist count retrieval,
+in case exclude user evaluation is performed,
+you can configure a threshold up to which the total count is counted exactly.
+Set the property 
+<strong>Stardust.Engine.Tuning.Query.ExcludeUser.MaximumWorklistCount</strong> to a 
+maximum count value to be used as threshold.
+Refer to the
+<a href="../../operation/properties/ag-appendix-properties-2.htm#tuning">Tuning</a>
+section of chapter 
+<a href="../../operation/properties/ag-appendix-properties-2.htm">Server Side Properties</a>
+for details on these properties.</p>
+<h3 id="historypol">Determining the Inclusion of Event Types in Process and Activity Instances</h3>
+<p>To determine the inclusion of given event types in process and activity instances, 
+use the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/HistoricalEventPolicy.html">
+HistoricalEventPolicy</a>. The possible event types of type
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/HistoricalEventType.html">
+HistoricalEventType</a> are:</p>
+<ul>
+   <li><strong>NOTE</strong></li>
+   <li><strong>EXCEPTION</strong></li>
+   <li><strong>STATE_CHANGE</strong></li>
+   <li><strong>DELEGATION</strong></li>
+   <li><strong>EVENT_EXECUTION</strong></li>
+</ul>
+<p>The predefined policy <tt>ALL_EVENTS</tt> includes all event types in the process or activity instance:</p>
+<pre>
+   public final static HistoricalEventPolicy ALL_EVENTS = new HistoricalEventPolicy(
+         HistoricalEventType.EXCEPTION | HistoricalEventType.STATE_CHANGE | 
+         HistoricalEventType.NOTE | HistoricalEventType.DELEGATION);
+</pre>
+<p>To create a policy for a given event type respectively event types, use</p>
+<pre>public HistoricalEventPolicy(int eventTypes)</pre>
+<p>To add more than one event type, concatenate the types via the logical <tt>or</tt> operator,
+e.g.:</p>
+<pre>new HistoricalEventPolicy(HistoricalEventType.EXCEPTION | HistoricalEventType.DELEGATION)</pre>
+<p>To create a policy for given events, use</p>
+<pre>public HistoricalEventPolicy(HistoricalEventType[] eventTypes)</pre>
+<h4>Queries with EVENT_EXECUTION policy</h4>
+<p>Activity instance queries having set a <tt>HistoricalEventPolicy</tt> with 
+<tt>HistoricalEventType.EVENT_EXECUTION</tt> will return in <tt>ActivityInstance.getHistoricalEvents()</tt>
+additional HistoricalEvents based on the log entries for that activity instance with:</p>
+<pre>
+    LogType.Info.equals(logType) AND
+    LogCode.EVENT.equals(logCode)
+</pre>
+<p><tt>HistoricalEvent.getDetails()</tt> returns an instance of 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/EventHandler.html">
+org.eclipse.stardust.engine.api.model.EventHandler</a> which describes the 
+event handler associated to the executed event.</p> 
+<h3 id="procdef">Determine the Level of Details for Process Definition Details</h3>
+<p>You can set the level of detail in which the process definition object is initialized, e.g. if 
+you like to provide general information about a process definition only, not including
+all details about activities. The following levels are available:</p>
+<ul>
+   <li><strong>CORE</strong> - excludes activities, data paths, triggers and event handlers</li>
+   <li><strong>WITHOUT_ACTIVITIES</strong> - excludes activities, but contains data paths, triggers and event handlers</li>
+   <li><strong>FULL</strong> - contains all information including activities, data paths, triggers and event handlers</li>
+</ul>
+<p>Note that the declared and implemented ProcessInterface is always contained. The default level of detail
+is <strong>FULL</strong>.</p>
+<h4>Example Usage</h4>
+<p>For example, the following code retrieves all process definitions excluding 
+information on activities, data paths, triggers or event handlers:</p>
+<pre>
+   ServiceFactory sf = ServiceFactoryLocator.get("motu", "motu");
+   QueryService qs = sf.getQueryService();
+
+   ProcessDefinitionDetailsLevel detailsLevel = ProcessDefinitionDetailsLevel.CORE;
+   ProcessDefinitionQuery query = ProcessDefinitionQuery.findAll();
+   query.setPolicy(new ProcessDefinitionDetailsPolicy(detailsLevel));
+   ProcessDefinitions processDefinitions = qs.getProcessDefinitions(query);
+</pre>
+<h3 id="layout">Specifying the Layout of the Result for Worklist Queries</h3>
+<p>The following policies can be used to specify the result for worklist queries:</p>
+<ul>
+   <li><a href="#mergeddep">MERGED_DEPUTY</a></li>
+   <li><a href="#sepdep">SEPARATE_DEPUTY</a></li>
+</ul>
+<h4 id="mergeddep">MERGED_DEPUTY</h4>
+<p>The value <strong>MERGED_DEPUTY</strong> merges deputy relates activity
+instances into standard layout. This is the default value.
+One worklist is displayed with several sub participant worklists, as illustrated in
+the following example:</p>
+<pre>(top level) UserWorklist containing own workitems and those of private worklists user is being deputy of
+        (sub) ParticipantWorklist1 (e.g own or inherited grant)
+        (sub) ParticipantWorklist2 (...)
+        (sub) ParticipantWorklist3 (...)</pre>
+<h4 id="sepdep">SEPARATE_DEPUTY</h4>
+<p>Policy value <strong>SEPARATE_DEPUTY</strong> determines to split the result into
+one own user worklist with own sub participant worklists.
+User sub worklists of those users the user is deputy of with their own participant worklists, as
+shown in the following example:</p>
+<pre>(top level) UserWorklist containing own workitems
+
+    (sub) ParticipantWorklist1 (own or inherited grant)
+    (sub) ParticipantWorklist2 (...)
+    (sub) ParticipantWorklist3 (...)
+    ....
+    (sub) userWorklist1 (for 1st user being deputy of)
+        (sub) ParticipantWorklist1_1 (inherited grant)
+        (sub) ParticipantWorklist1_2 (...)
+        (sub) ParticipantWorklist1_3 (...)
+        ....
+    (sub) userWorklist2 (for 2nd user being deputy of)
+        (sub) ParticipantWorklist2_1 (inherited grant)
+        (sub) ParticipantWorklist2_2 (...)
+        (sub) ParticipantWorklist2_3 (...)
+        ....
+</pre>
+<h2 id="customFilters">Applying Custom Filters</h2>
+
+<h3>Why do you need a Custom Filter</h3>
+<p>Stardust provides various factory methods to execute queries on
+objects at runtime. Sometimes these well-defined query semantics do not
+meet specific requirements and return a huge amount of data, or do not
+retrieve the accurate data. Custom Filters help you to get the
+appropriate data by fetching only selected portion of the query results.
+You can also use Custom Filters to extend the existing query
+capabilities.</p>
+<h3>What is a Custom Filter</h3>
+<p>A Custom Filter is a part of the query. It dynamically intercepts
+all requests and responses, and transforms or uses the information
+contained in the requests or responses. It does not create responses by
+itself. You can also specify one or more filter criteria if required.
+All filters are implementations of the interface <tt>FilterCriterion</tt>.
+</p>
+<h3>Types of Custom Filters</h3>
+<p>Currently, Stardust provides three types of Custom Filters - <tt>attribute
+filters</tt>, <tt>structural filters</tt> and <tt>filter terms</tt>.</p>
+<h3>Attribute filter</h3>
+<p>Attribute filter is the simplest one. You can use it to filter
+the attribute values of the objects. You can use a subset of Java's
+operators in the filter expression. For instance, you can test for
+equality, inequality, pattern matches, range matches, or NULL. For
+criteria, you can use any attribute that is valid for defining order
+criteria.</p>
+<p>Attributes are defined as static constants of an inner class
+Attribute in scope of the actual query class. Attribute itself is a
+specialization of <tt>FilterableAttribute</tt>, which in turn defines
+several factory methods for creating filter criteria against the actual
+attribute. You can refer to the <tt>JavaDoc</tt> of class <tt>FilterableAttribute</tt>
+for a complete list.</p>
+<p>An easiest way to use the Custom Filters is to use it with a
+predefined query. We can use a Custom Filter in the previous example to
+find activity instances started after a certain date.</p>
+
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+Date date = ...;
+query.getFilter().and(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime()));
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);</pre>
+<p>Note that query.getFilter().and(filter) is functionally
+equivalent to query.where(filter).</p>
+
+
+<h3>Structural Filters</h3>
+<p>This is a more advanced way of filtering the data. In this
+method, the data may not be directly attributed to the query object. For
+instance, items related to workflow data of a specific value, or items
+related to specific process definitions. You can specify the actual
+relation between these items in the query. Note that the details of a
+process instance directly relate to workflow data and process
+definitions. The details of activity instances relate indirectly via the
+process instance they belong to, but additionally relate to an activity
+definition. Refer to the query specific <tt>javadoc</tt> for actual set
+of filters available.</p>
+<p>As an example, we can modify the previous query to additionally
+filter for activity instances belonging to process instances containing
+a certain workflow data identifying the ordered item:</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+Date date = ...;
+query.where(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime()));
+query.where(DataFilter.isEqual(&quot;ORDERED_ITEM_ID&quot;, &quot;CARNOT_MUG&quot;));
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);</pre>
+
+<p>Applying structural filters is as easy as applying attribute
+filters. It's the job of the process engine to perform all joins and
+traversals needed for the query.</p>
+<p>Note that some of the structural filters require an additional
+post-processing step. This adds a little overhead to the query
+execution. Please consult the <tt>JavaDoc</tt> to get additional
+information.</p>
+
+<h3>Filter terms</h3>
+<p>In this method, you can combine several simple filter criteria to
+build a complex and efficient filter. You can do this in two ways: You
+can either use <tt>FilterAndTerm</tt>, or use <tt>FilterOrTerm</tt>.
+Both of them are specializations of <tt>FilterTerm</tt>, which has some
+interesting methods as follows:</p>
+<pre>public abstract class FilterTerm<br>{<br>  ...<br>  public FilterTerm add(FilterCriterion filter);<br>  public FilterAndTerm addAndTerm();<br>  public FilterOrTerm addOrTerm();<br>  ...<br>}</pre>
+<p>You can add arbitrary filter criteria by calling the <tt>add()
+</tt>method, which returns a <tt>FilterTerm</tt> class. This method calls
+itself recursively, thus allowing for chained calling like <tt>add(filter1).add(filter2)</tt>.
+You can use the other two methods to create sub-terms and build deeply
+nested filter trees. <tt>FilterAndTerm</tt> and <tt>FilterOrTerm</tt>
+are provided for convenience, to improve type safety while building
+filter terms.</p>
+<p>Note that every query implicitly contains a top-level <tt>AND</tt>
+term. Any filter criterion you add with the <tt>where()</tt> method is
+added to the top-level <tt>AND</tt> term. Adding sub-terms resembles the
+practice of using braces when building complex logical terms. You may
+have noticed that adding another <tt>AND</tt> term to the query's
+top-level <tt>AND</tt> term doesn't produce an efficient query. You can
+add an <tt>OR</tt> sub-term for making it more flexible and effective. We
+can extend the previous example by not looking for order processes for
+one, but one out of two possible items:</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+Date date = ...;
+query.where(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime()));
+FilterOrTerm itemFilter = query.getFilter().addOrTerm();
+itemFilter.or(DataFilter.isEqual(&quot;ORDERED_ITEM_ID&quot;, &quot;CARNOT_MUG&quot;)).or(DataFilter.isEqual(&quot;ORDERED_ITEM_ID&quot;, &quot;CARNOT_SHIRT&quot;));
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);</pre>
+
+<p>Data filters are not restricted to simple equality tests. They
+also provide rich operators for filtering the attributes. The following
+example is an improved way of writing the previous one, which also has
+improved performance.</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+Date date = ...;
+query.where(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime())).and(DataFilter.in(&quot;ORDERED_ITEM_ID&quot;, Arrays.asList(
+   new String[] {&quot;CARNOT_MUG&quot;, &quot;CARNOT_SHIRT&quot;})));
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+QueryService qs = ...;
+ActivityInstance oldest = qs.findFirstActivityInstance(query);</pre>
+
+<p>You can use arbitrary complex sub-terms to build complex filter
+criteria for runtime queries.</p>
+
+
+<h2 id="resultSize">Restricting the Result in Size</h2>
+<p>Often it is not needed to get all items resulting from a query
+but the top n. If combined with a well known order of items you may want
+to fetch further chunks of data on demand.</p>
+<p>You can do so by specifying a <tt>SubsetPolicy</tt> for your
+query. Any subset defines a size restriction, and optionally a number of
+items to be skipped. For specifying subsets you set the <span
+	class="Stil1">appropriate policy via the query's <tt>setPolicy</tt>
+method</span>. To extend the last example to retrieve five instead of one item
+you have to write code like:</p>
+<pre>ActivityInstanceQuery query = ActivityInstanceQuery.findAlive(&quot;INTERNET_ORDER&quot;);
+Date date = ...;
+query.where(ActivityInstanceQuery.START_TIME.greaterOrEqual(date.getTime()));
+FilterOrTerm itemFilter = query.getFilter().addOrTerm();
+itemFilter.or(DataFilter.isEqual(&quot;ORDERED_ITEM_ID&quot;, &quot;CARNOT_MUG&quot;)).or(DataFilter.isEqual(&quot;ORDERED_ITEM_ID&quot;, &quot;CARNOT_SHIRT&quot;));
+query.orderBy(ActivityInstanceQuery.START_TIME).and(ActivityInstanceQuery.LAST_MODIFICATION_TIME);
+query.setPolicy(new SubsetPolicy(5));
+QueryService qs = ...;
+ActivityInstances oldest = qs.getAllActivityInstances(query);</pre>
+
+<p>This will get you up to five items matching the given filter
+criteria. If you later decide to fetch the next chunk you may simply
+write code like:</p>
+<pre>ActivityInstanceQuery query = oldest.getQuery();
+SubsetPolicy subset = (SubsetPolicy) query.getPolicy(SubsetPolicy.class);
+query.setPolicy(SubsetPolicy.nextChunk(subset));
+ActivityInstances nextChunk = qs.getAllActivityInstances(query);</pre>
+<p>Especially as any query result object carries its query the last
+code snippet allows to generically page through result sets, for
+instance triggered by GUI operations.</p>
+
+<h2 id="structData">Using Structured Data in Queries</h2>
+<p>Structured data can be used in queries to retrieve process and
+activity instances. To specify query conditions against structured data,
+XPath expressions can be specified as a third parameter to queries.</p>
+<h3>Attribute Filters</h3>
+<p>The query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;77&quot;))).and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/ordernr&quot;, &quot;N2&quot;));</pre>
+<p>searches for orders, that have both <tt>qty=77</tt> and <tt>ordernr=N2</tt>.
+If in some instance of structured data orderbook has two orders</p>
+<ul>
+	<li><tt>qty=77,ordernr=N1</tt> and</li>
+	<li><tt>qty=22,ordernr=N2</tt></li>
+</ul>
+<p>this structured data will not match the search criteria. The
+query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;77&quot;))).and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/customer/address/street&quot;, &quot;North&quot;)));</pre>
+<p>The query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/customer/address/street&quot;, &quot;North&quot;));</pre>
+<p>filters for one specific attribute. The query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;77&quot;))).and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/ordernr&quot;, &quot;N2&quot;));</pre>
+<p>filters for two attributes - the same entity is assumed. The
+query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;77&quot;))).and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/customer/address/street&quot;, &quot;North&quot;)).and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/customer/name&quot;, &quot;James&quot;))
+   .and(DataFilter.isEqual(&quot;struct_1&quot;, &quot;status&quot;, &quot;OPEN&quot;));</pre>
+<p>filters for four different attributes in the hierarchy.</p>
+<h3>OR Filters</h3>
+<p>The query</p>
+<pre>query.getFilter().addOrTerm().add(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;2&quot;))).add(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;100&quot;)));</pre>
+<p>applies an OR filter in one entity, whereby</p>
+<pre>query.getFilter().addOrTerm().add(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/qty&quot;, new Integer(&quot;77&quot;))).add(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/ordernr&quot;, &quot;N1&quot;));</pre>
+<p>applies and OR filter in different entities.</p>
+<h3>Multiple Data Filters</h3>
+<p>The query</p>
+<pre>query.where(DataFilter.isEqual(&quot;struct_1&quot;, &quot;order/customer/address/street&quot;, &quot;North&quot;)).and(DataFilter.isEqual(&quot;struct_2&quot;, &quot;qty&quot;, new Integer(&quot;1001&quot;)));</pre>
+<p>filters for two data in the process.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

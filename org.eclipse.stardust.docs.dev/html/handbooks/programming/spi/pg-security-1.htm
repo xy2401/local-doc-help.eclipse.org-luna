@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Integrating External User Repositories</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript">
+</script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Providing localized Labels for a User Interface",
+		"portal/pg-portal-config.html","spi-resource-bundle.html",
+      "../../handbooks.htm","Developer Handbook",
+      "../pg-preface.htm","Programming Guide",
+      "spi-toc.html","SPI");
+-->
+</script>
+<!--  TODO add diagram -->
+<h1>Integrating External User Repositories</h1>
+<p>For many production scenarios the Stardust Process Engine will
+need to be integrated with previously existing user registries. This
+integration includes the following three aspects:</p>
+<ul>
+	<li><a href="#authent">Authenticating Users against an External Registry</a></li>
+	<li><a href="#synch">Synchronizing User, User Group and Department Attributes from an External
+	Registry</a></li>
+	<li><a href="#authorization">Authorization for Users from an External Registry</a></li>
+</ul>
+<p>All these aspects can be customized by providing implementations
+of Stardust -defined interfaces.</p>
+<h2 id="authent">Authenticating Users against an External Registry</h2>
+<p>For most common integration scenarios Stardust provides
+implementations for authentication against both, a Stardust internal
+user registry and an external user registry, accessible using the default
+JAAS API.</p>
+<p>However, sometimes it may be required to provide custom
+authentication using username, password and user's properties
+credentials. The properties map specify the user's realm, partition and
+domain. If these values are not specified, the map is passed empty. To
+support the authentication, Stardust provides the interface:</p>
+<pre>org.eclipse.stardust.engine.core.spi.security.ExternalLoginProvider</pre>
+<p>declaring a single <tt>login(id, password, properties)</tt>
+method. Any implementation will be along the following simple pattern:</p>
+<pre>
+public class MyExternalLoginProvider implements ExternalLoginProvider
+{
+  public ExternalLoginResult login(String id, String password, Map properties)
+  {
+       // delegate authentication to external registry
+    if (/* authentication succeeded */)
+    {
+      return ExternalLoginResult.testifySuccess();
+    }
+    else
+    {
+      if (/* invalid password */)
+      {
+        return ExternalLoginResult.testifyFailure(new LoginFailedException(&quot;The password is incorrect.&quot;, LoginFailedException.INVALID_PASSWORD));
+      }
+      else if (/* unknown realm */)
+      {
+        return ExternalLoginResult.testifyFailure(new LoginFailedException(&quot;The realm is unknown.&quot;, LoginFailedException.UNKNOWN_REALM));
+      }
+      else if (/* unknown domain */)
+      {
+        return ExternalLoginResult.testifyFailure(new LoginFailedException(&quot;The domain is unknown.&quot;, LoginFailedException.UNKNOWN_DOMAIN));
+      }
+      else if (/* unknown partition */)
+      {
+        return ExternalLoginResult.testifyFailure(new LoginFailedException(&quot;The partition is unknown.&quot;, LoginFailedException.UNKNOWN_PARTITION));
+      }
+      else
+      {
+        return ExternalLoginResult.testifyFailure(new LoginFailedException(&quot;Login failed&quot;, LoginFailedException.UNKNOWN_REASON));<br>
+      }
+    }
+  }
+}</pre>
+<p>If authentication fails or was canceled, the provider may signal
+various common reasons, causing Stardust to react in a proper way. For
+further details, please consult the included JavaDoc for the <a
+	href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/ExternalLoginProvider.html"
+> ExternalLoginProvider</a> class.</p>
+<p>To enable the use of your login provider, you need to configure
+the following properties:</p>
+<pre>Security.Authentication.Mode = internal
+Security.Authentication.LoginService = &lt;&lt;fully.qualified.class.name&gt;&gt;</pre>
+<p>In case an exception is thrown in the class defined in the <tt>Security.Authentication.LoginService</tt>
+property, all exceptions should be caught and should return:</p>
+<pre>return org.eclipse.stardust.engine.core.spi.security.ExternalLoginResult.testifyFailure(new org.eclipse.stardust.common.error.LoginFailedException(...));</pre>
+<h2 id="synch">Synchronizing User, User Group and Department Attributes from an External
+	Registry</h2>
+<p>When Stardust operates against an external user registry, still
+some assorted attributes of users, user groups and departments need to be replicated
+to the audit trail. But as the details of obtaining such attributes are
+highly registry-dependent, the engine requires support from the
+integrator. The contract for providing user, user group and
+department attributes is
+defined by the following abstract class:</p>
+<pre>
+public abstract class DynamicParticipantSynchronizationProvider
+{
+   /**
+    * Resolves a user in the external registry and provides its attributes.
+    *
+    * @param account The identity of the external user.
+    * @return A (probably snapshot) of the users attributes.
+    * 
+    * @see #provideUserConfiguration(String realm, String account)
+    */
+   public abstract ExternalUserConfiguration provideUserConfiguration(String account);
+   
+   /**
+    * Resolves a user in the external registry and provides its attributes.
+    * 
+    * The default implementation just calls {@link #provideUserConfiguration(String account)},
+    * effectively ignoring the realm.
+    *
+    * @param realm The security realm of the external user.
+    * @param account The identity of the external user.
+    * @param properties The login properties like partition, domain, ...
+    * @return A (probably snapshot) of the users attributes.
+    * 
+    * @see #provideUserConfiguration(String account)
+    */
+   public ExternalUserConfiguration provideUserConfiguration(String realm,
+         String account, Map properties)
+   {
+      return provideUserConfiguration(account);
+   }
+   
+   /**
+    * Resolves a user group in the external registry for current partition and provides
+    * its attributes.
+    *
+    * @param groupId The identity of the external user group.
+    * @return A (probably snapshot) of the user groups attributes.
+    */
+   public ExternalUserGroupConfiguration provideUserGroupConfiguration(String groupId)
+   {
+      return null;
+   }
+   
+   /**
+    * Resolves a user group in the external registry for given partition and provides
+    * its attributes.
+    *
+    * @param groupId The identity of the external user group.
+    * @param properties The login properties like partition, domain, ... 
+    * @return A (probably snapshot) of the user groups attributes.
+    */
+   public ExternalUserGroupConfiguration provideUserGroupConfiguration(String groupId,
+         Map properties)
+   {
+      return provideUserGroupConfiguration(groupId);
+   }
+   
+   /**
+    * Resolves a department in the external registry for given partition and provides
+    * its attributes.
+    *
+    * @param departmentKey The identity of the external department.
+    * @return A (probably) snapshot of the department attributes.
+    */
+   public ExternalDepartmentConfiguration provideDepartmentConfiguration(String participantId,
+         List&lt;String&gt; departmentKey)
+   {
+      return null;
+   }
+   
+   /**
+    * Resolves a department in the external registry for given partition and provides
+    * its attributes.
+    *
+    * @param departmentKey The identity of the external department.
+    * @param properties The login properties like partition, domain, ...
+    * @return A (probably) snapshot of the department attributes.
+    */
+   public ExternalDepartmentConfiguration provideDepartmentConfiguration(String participantId,
+         List&lt;String&gt; departmentKey, Map&lt;String, ?&gt; properties)
+   {
+      return provideDepartmentConfiguration(participantId, departmentKey);
+   }
+}</pre>
+<p>The methods <tt>provideUserConfiguration</tt>,
+<tt>provideUserGroupConfiguration</tt> and <tt>provideDepartmentConfiguration</tt>
+resolve a user, user group or department respectively in the external registry
+and provide its attributes.</p>
+<p>Any implementation is eventually asked to provide a reference to
+an attribute provider for users, user groups or departments. As support for user
+groups is somewhat an advanced scenario, there is a default
+implementation doing nothing.</p>
+<p>The types <tt>ExternalUserConfiguration</tt>, <tt>ExternalUserGroupConfiguration</tt>
+and <tt>ExternalDepartmentConfiguration</tt>
+themselves are also abstract classes, allowing to provide both, an
+adapter to the external registry's query interfaces or a snapshot of
+previously obtained attributes.</p>
+<p>If the user, user groups or departments queried for are not
+existing in the registry, or the registry is not available for some
+reason, return <tt>null</tt>.</p>
+<p>To set your synchronization provider, you need
+to configure the following property:</p>
+<pre>Security.Authorization.SynchronizationProvider = &lt;&lt;fully.qualified.class.name&gt;&gt;</pre>
+<p>In case an exception is thrown in the <tt>DynamicParticipantSynchronizationProvider</tt>
+class, which is an instance of the property <tt>Security.Authorization.SynchronizationProvider</tt>,
+all exceptions should be caught. For
+further details, please consult the included JavaDoc for the <a
+	href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/DynamicParticipantSynchronizationProvider.html">
+DynamicParticipantSynchronizationProvider</a> class.</p>
+<h3>Notes</h3>
+<h4>Realms</h4>
+<p>Note, that synchronization takes only place on certain events
+like logging in or creating user details objects. During a user
+synchronization, a realm for the user is specified. If the user realm
+already exists, an update in the database is performed automatically,
+otherwise a new realm is created.</p>
+<h4>Synchronization when working on archive audit trail</h4>
+<p>Note, that it is not possible to perform a synchronization if you
+work on the <a href="../../operation/audit-trail/ag-archiving.htm">archive
+audit trail</a>.</p>
+<h4>Providing Department Configuration</h4>
+<p>The method <tt>provideDepartmentConfiguration(...)</tt> is only invoked 
+if the <tt>ExternalUserConfiguration</tt> object obtained via one of the 
+<tt>provideUserConfiguration(...)</tt> methods returns a valid 
+<tt>Set&lt;GrantInfo&gt;</tt> when invoking its <tt>getModelParticipantsGrants()</tt>
+method. Thus, the key is to first provide a valid department hierarchy set 
+<tt>(Set&lt;GrantInfo&gt;)</tt> in the <tt>ExternalUserConfiguraton</tt>,
+ which is subsequently used to retrieve department details via 
+<tt>provideDepartmentConfiguration(...).</tt>.</p>
+<h3>Examples</h3>
+<h4>Java Property File Synchronization Example</h4>
+<p>For an example implementation of both, a login provider and
+participant synchronization, please
+refer to the following example, which you can download from here:</p>
+<ul>
+   <li><a href="../../../examples/properties-sync/properties-sync.zip">properties-sync.zip</a></li>
+</ul>
+<h4>LDAP Synchronization Example</h4>
+<p>For an example implementation to retrieve authorization information from an 
+LDAP repository, please
+refer to the following example, which you can download from here:</p>
+<ul>
+   <li><a href="../../../examples/ldap-sync/ldap-sync.zip">ldap-sync.zip</a></li>
+</ul>
+
+<h2 id="authorization">Authorization for Users from an External Registry</h2>
+<h3>DynamicParticipantSynchronizationStrategy</h3>
+<p>To determine if a given user, user group or department
+needs to be synchronized with an external registry, Stardust 
+provides the interface:</p>
+<pre>org.eclipse.stardust.engine.core.spi.security.DynamicParticipantSynchronizationStrategy</pre>
+<p>This interface provides the following implementation:</p>
+<pre>
+public abstract class DynamicParticipantSynchronizationStrategy
+{
+   /**
+    * Checks if this user needs to be synchronized.
+    * 
+    * @param user the user to be checked.
+    * @return 
+    */
+   public abstract boolean isDirty(IUser user);
+
+   /**
+    * Callback method to inform the SynchronizationStrategy that the user have been
+    * successfully synchronized.
+    * 	
+    * @param user the user that has been synchronized.
+    */
+   public abstract void setSynchronized(IUser user);
+
+   /**
+    * Checks if this user group needs to be synchronized.
+    *
+    * The default implementation is to never flag the user group as dirty.
+    * 
+    * @param userGroup
+    *           the user group to be checked.
+    * @return
+    */
+   public boolean isDirty(IUserGroup userGroup)
+   {
+      return false;
+   }
+
+   /**
+    * Callback method to inform the SynchronizationStrategy that the user group has been
+    * successfully synchronized.
+    * 
+    * The default implementation is to do nothing.
+    *
+    * @param userGroup
+    *           the user group that has been synchronized.
+    */
+   public void setSynchronized(IUserGroup userGroup)
+   {
+   }
+   
+   /**
+    * Checks if this department needs to be synchronized.
+    *
+    * The default implementation is to never flag the department as dirty.
+    *
+    * @param department
+    *           the department to be checked.
+    * @return
+    */
+   public boolean isDirty(IDepartment department)
+   {
+      return false;
+   }
+
+   /**
+    * Callback method to inform the SynchronizationStrategy that the department has been
+    * successfully synchronized.
+    *
+    * The default implementation is to do nothing.
+    *
+    * @param department
+    *           the department that has been synchronized.
+    */
+   public void setSynchronized(IDepartment department)
+   {
+   }
+}
+</pre>
+<p>The <tt>isDirty</tt> method checks if the given user, user group or 
+department needs to be synchronized.</p>
+<p>Use the <tt>setSynchronized</tt> method to inform the 
+SynchronizationStrategy that the user, user group or department has been 
+successfully synchronized.</p>
+<p>For further details, please consult the included JavaDoc for the  <a
+	href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/DynamicParticipantSynchronizationStrategy.html">
+DynamicParticipantSynchronizationStrategy</a> class.</p>
+<h3>ExternalUserConfiguration</h3>
+<p>The interface <tt>ExternalUserConfiguration</tt> provides authorization
+information about user, user groups and departments the participant is assigned to.</p>
+<pre>
+public abstract class ExternalUserConfiguration
+{
+   public abstract String getFirstName();
+
+   public abstract String getLastName();
+
+   public abstract String getEMail();
+
+   public abstract String getDescription();
+
+   public abstract Map getProperties();
+
+   public abstract Collection getGrantedModelParticipants();
+
+   public Collection getUserGroupMemberships()
+   {
+      return Collections.EMPTY_LIST;
+   }
+   
+   public Set&lt;GrantInfo&gt; getModelParticipantsGrants()
+   {
+      return Collections.emptySet();
+   }
+   
+	  
+   public static class GrantInfo
+   {
+      private final String participantId;
+      private final List&lt;String&gt; departmentKey;
+
+      public GrantInfo(String participantId, List&lt;String&gt; departmentKey)
+      {
+         if (participantId == null)
+         {
+            throw new NullPointerException("participantId must not be null.");
+         }
+         if (StringUtils.isEmpty(participantId))
+         {
+            throw new IllegalArgumentException("participantId must not be empty.");
+         }
+         
+         this.participantId = participantId;
+         this.departmentKey = getAdjustedList(departmentKey);
+      }
+      
+      public GrantInfo(String participantId, String... departmentKey)
+      {
+         this(participantId, Arrays.asList(departmentKey));
+      }
+
+      public String getParticipantId()
+      {
+         return participantId;
+      }
+
+      public List&lt;String&gt; getDepartmentKey()
+      {
+         return departmentKey;
+      }
+
+      @Override
+      public int hashCode()
+      {
+         final int prime = 31;
+         int result = 1;
+         result = prime * result + departmentKey.hashCode();
+         result = prime * result + participantId.hashCode();
+         return result;
+      }
+
+      @Override
+      public boolean equals(Object obj)
+      {
+         if (this == obj)
+         {
+            return true;
+         }
+         if (obj == null)
+         {
+            return false;
+         }
+         if (getClass() != obj.getClass())
+         {
+            return false;
+         }
+         
+         final GrantInfo other = (GrantInfo) obj;
+         if ( !departmentKey.equals(other.departmentKey))
+         {
+            return false;
+         }
+         if ( !participantId.equals(other.participantId))
+         {
+            return false;
+         }
+
+         return true;
+      }
+      
+      private List&lt;String&gt; getAdjustedList(final List&lt;String&gt; departmentKeys)
+      {
+         if (departmentKeys == null)
+         {
+            return newArrayList();
+         }
+         
+         final int firstIndexOfNull = departmentKeys.indexOf(null);
+         if (firstIndexOfNull != -1)
+         {
+            return copyList(departmentKeys.subList(0, firstIndexOfNull));
+         }
+         else
+         {
+            return copyList(departmentKeys);
+         }
+      }
+   }
+}
+
+</pre>
+<p>The method <tt>getModelParticipantsGrants</tt> gets a set of participants
+the external user has the grants for. A set is used as return value
+to reflect the department hierarchy in case of scoped participants.
+External departments are identified by a list of strings, where:</p>
+<ul>
+	<li>the last element of the list is the actual ID of the department and</li>
+	<li>the first to second-to-last elements determine the identity 
+	of the parent department.</li>
+</ul>
+<p class="note"><strong>Note</strong><br>
+Please note that the method <tt>getGrantedModelParticipants</tt> is obsolete and will be
+deprecated in later releases. This method is only valid for unscoped participants.
+It is recommended to use the method 
+<tt>getModelParticipantsGrants</tt> instead, which is described above.</p>
+<p>For further details, please consult the included JavaDoc for the <a
+	href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/ExternalUserConfiguration.html">
+ ExternalUserConfiguration</a> class.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

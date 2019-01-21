@@ -1,0 +1,752 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css"
+>
+<title>Console Command Use Cases</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("","ag-commandline-3.htm","",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-command-preface.htm","Command Line Tools");
+ -->
+</script>
+<h1>Console Command Use Cases</h1>
+<p>This chapter gives a detailed description of using
+specific commands and options:</p>
+    <ul>
+        <li><a href="#userConf">User Confirmation</a></li>
+        <li><a href="#recovery">Recovery of the Runtime Environment</a></li>
+        <li><a href="#cleanup">Cleanup for Audit Trail and Model Database</a></li>
+        <li><a href="#deploy">Model Deployment to the Runtime Environment</a></li>
+        <li><a href="#config">Configuration</a></li>
+        <li><a href="#metrics">Obtaining Metrics</a></li>
+        <li><a href="#scopedcommands">Scoped Participants Management</a></li>
+        <li><a href="#event">Explicit Binding and Un-binding of Events</a></li>
+        <li><a href="#daemon">Daemon Management</a></li>
+        <li><a href="#migrate">Migrating Document Repository</a></li>
+        <li><a href="#preferences">Storing Preferences</a></li>
+        <li><a href="#multimodel">Multi-Model Environment</a></li>
+        <li><a href="#list">Retrieving Model Version Tree Information</a></li>
+    </ul>
+<h2 id="userConf">User Confirmation</h2>
+<p>If no <tt>-force</tt> parameter has been used in the command
+line starting a batch, the tasks including</p>
+<ul>
+    <li>model deployment,</li>
+    <li>cleanup and</li>
+    <li>recovery</li>
+</ul>
+<p>will always prompt for user confirmation.</p>
+<h2 id="recovery">Recovery of the Runtime Environment</h2>
+<p>In certain cases (for example, if an EJB server crashes, or
+there is an execution exception), non-interactive activities may be left
+in an uncompleted state. To &quot;reanimate&quot; these non-interactive
+activities you can invoke the Stardust Process Engine recovery using the
+command line</p>
+<pre>   &gt; console -user motu -password motu recover</pre>
+<p>where the user and password are valid entries for an
+administrator role defined in the deployed workflow model.</p>
+<p>Use the <tt>-force</tt> flag to omit the user confirmation and
+to ignore messages on recovery already in progress.</p>
+<p>With the <tt>-all</tt> flag, all recoverable process instances
+are recovered.</p>
+<p>The flag <tt>-batchSize &lt;number&gt;</tt> is used to specify
+the number of instances recovered in one database transaction. If this
+option is missing, all qualifying process instances are recovered in one
+big transaction. The flag <tt>-batchSize &lt;number&gt;</tt> might be
+useful to limit the usage of database resources, e.g. rollback files.
+This flag does not limit or filter the number of process instances to be
+recovered.</p>
+<p>With the <tt>-max &lt;number&gt;</tt> or <tt>-m
+&lt;number&gt;</tt> flag you can limit the number of process instances to be
+recovered. The console will return after this limit is reached
+independently of remaining process instances to be recovered.</p>
+<p>The <tt>-quick</tt> flag restricts the recovery only to process
+instances in the <tt>INTERRUPTED</tt> state. For these process
+instances, the Stardust Process Engine has detected an unhandled
+exception during execution of one of the associated non-interactive
+activities and has explicitly marked the process to be interrupted. This
+flag can be used in combination with the other filter flags.</p>
+<p>The <tt>-startedAfter &lt;timestamp&gt;</tt> and/or <tt>-startedBefore
+&lt;timestamp&gt;</tt> flags can be used to select the process instances to
+be recovered by their start timestamp. Hereby, the specified date must
+conforms to ISO date pattern e.g.</p>
+<p><tt>-startAfter &quot;2013-10-01&quot;</tt></p>
+<p>or</p>
+<p><tt>-startBefore &quot;2013-10-01 08:30&quot; </tt></p>
+<p>or</p>
+<p><tt>-startAfter &quot;2006-01-01T08:30:00:000&quot;</tt></p>
+<p>Specific process instances can be recovered using the <tt>-processes
+&lt;oid list&gt;</tt> or <tt>-p &lt;oid list&gt;</tt> flag. <tt>&lt;oid
+list&gt;</tt> has to be a comma separated list with process instance OIDs,
+e.g.</p>
+<p><tt>-process &quot;192999812, 12766767, 1873788&quot;</tt></p>
+
+<p>Upgrade might fail in theory. For example, if there is a power outage, 
+or network problem during upgrading. As a result the database might be inconsistent, 
+with some steps committed and some not.</p>
+
+<p>	In that case, once the problem that caused the upgrade to fail was resolved, 
+it is recommended to start the upgrade again with "-recover" option that will 
+perform special steps to ensure database consistency.
+	So, the basic rule is:</p>
+<ul>
+	<li>When you execute the upgrade job for the first time, don't use "-recover" flag</li>
+	<li>If the initial upgrade fails, then run the upgrade job with "-recover" flag until 
+	the upgrade completes successfully</li>
+</ul>
+<h2 id="cleanup">Cleanup for Audit Trail and Model Database</h2>
+<p>The audit trail database stores all information on every piece
+of work that has been performed via the Stardust Process Engine. Also,
+it stores the workflow model information, on the base of which processes
+are instantiated and their activities performed. The administrator has
+full control over the database, so that both the audit trail and the
+model information can be deleted.</p>
+<p>Cleaning up audit trail database means deleting all the audit
+trail data but the definition of tables in the database remains
+untouched. All the log entries and all users defined in the Stardust 
+runtime environment are also deleted. Cleaning up model database will
+delete the model information from the database also deleting all data
+contained in the audit trail.</p>
+<p>Cleanup should never be applied to models in production!</p>
+<p>Also, it is necessary to restart the EJB server after you have
+performed a cleanup.</p>
+<p>To clean up only the audit trail invoke the clean-up batch
+using the command line:</p>
+<pre>&gt; console -user motu -password motu cleanup -audittrail</pre>
+<p>To remove both the audit trail and all the models from the
+database invoke the cleanup batch using the command line:</p>
+<pre>&gt; console -user motu -password motu cleanup -audittrail -models</pre>
+<p>Use <tt>-force</tt> flag not to be prompted for additional
+confirmation to perform this task.</p>
+<h2 id="deploy">Model Deployment to the Runtime Environment</h2>
+<p>The command line utility is also intended to be used for
+deploying a Stardust workflow model to the runtime environment. The
+console command for model deployment is <tt>deploy</tt>.</p>
+<p>There are two choices, to deploy from a file or to directly
+deploy from a process model repository.</p>
+<p>Deployment of a file is done by calling the console like:</p>
+<pre>&gt; console -user &lt;username&gt; -password &lt;password&gt; deploy -filename &lt;model file&gt; &lt;other-options&gt;</pre>
+<!--  <p>When deploying from a repository, use:</p>
+<pre>&gt; console -user &lt;username&gt; -password &lt;password&gt; deploy -id &lt;model-id&gt; -version &lt;repository-version&gt; &lt;other-options&gt;</pre>-->
+<p>You can force a deployment even in case of warnings being
+issued by using the option <tt>-ignoreWarnings</tt>. Deployments with
+errors are never performed.</p>
+<h3>Overwriting Options</h3>
+<p>You can deploy in overwrite
+mode by using the option <tt>-overwrite &lt;OID&gt;</tt>, where OID
+represents the OID of the model version to be overwritten. To overwrite
+the active model, use <tt>-overwriteActive</tt> option.</p>
+<p>To overwrite an existing deployment of the model having the same ID and version as 
+the model to be deployed, use the <tt>-overwriteVersion</tt> option.</p>
+<p>Note that all overwrite options are not supported in case the file to 
+be deployed is a deployment unit archive.</p>
+<!--  <p>You can specify the start validity date of the model to be deployed
+by using the <tt>-validFrom</tt> option. Additionally, you can specify a deployment comment by
+using the <tt>-comment</tt> option.</p>-->
+<h3>Deployments of Deployment Unit Archives</h3>
+<p>The console command <tt>-deploy</tt>
+also accepts ZIP archives containing a set of XPDL model files as target files 
+for the argument <tt>-filename</tt>.
+Note that if the file to be deployed is a deployment unit archive, the following options 
+cannot be used:</p>
+<ul>
+	<li><tt>-overwrite</tt></li>
+	<li><tt>-overwriteActive</tt></li>
+	<li><tt>-overwriteVersion</tt></li>
+</ul>
+<h2 id="config">Configuration</h2>
+<p>The <tt>configuration</tt> command allows to backup and upload
+sources of partition configurations as a ZIP file.</p>
+
+<h4>Backup</h4>
+<p>The <tt>-backup</tt> option extracts all files stored in the configuration
+area of the logged-in user's partition or the default system configuration files
+and adds them to a .zip file stored at a target file specified by the 
+<tt>-targetFile</tt> option.</p>
+<pre>configuration -backup -targetFile &lt;filename&gt;</pre>
+<p>The extracted file structure represents the
+structure of the tree view for the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-resource.html">
+    Resource Management View</a> in the
+<strong>Administration Perspective</strong> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">Stardust Portal</a>.</p>
+<h4>Upload</h4>
+<p>The <tt>-load</tt> option uploads all configuration files from the ZIP
+archive given with the <tt>-sourceFile</tt> parameter.
+This command will replace an entire configuration. All files of the old
+configuration are removed.</p>
+<pre>configuration -load -sourceFile &lt;filename&gt;</pre>
+<h4>Further options</h4>
+<p>The <tt>-scope</tt> option defines the scope for the configuration operations. 
+The default scope is <tt>partition</tt>. Momentarily other scopes are not possible.</p>
+<p>Both, the <tt>-backup</tt> and the <tt>-load</tt> option backup and load 
+empty folders respectively. This can be switched off by using the option 
+<tt>-ignoreEmptyFolders</tt>. </p>
+<h2 id="metrics">Obtaining Metrics</h2>
+<p>Metrics of the audit trail database to be used for
+administrative purposes can be obtained via the dashboard command.</p>
+<p>With the <tt>-overview</tt> option general metrics (e.g. number
+of active/suspended/interrupted activities or number of active users)
+can be obtained.</p>
+<p>Using the <tt>-recovery</tt> option displays metrics to
+estimate the effect of recovery operations.</p>
+<p>E.g. the operation</p>
+<pre>&gt; console dashboard -overview -recovery</pre>
+<p>will cause the following output:</p>
+<pre>Overview
+
+Processes (total): 600
+Processes (alive): 100
+Processes (completed): 500
+Processes (aborted): 0
+
+Activities (total): 1,200
+Activities (alive): 100
+Activities (completed): 1,100
+Activities (aborted): 0
+
+Users (total): 21
+Users (active): 21
+
+
+Process Recovery Indicators
+
+Interrupted process instances: 0
+Interrupted activity instances: 0
+
+Number of process instances likely to have ..
+.. pending process completion: 0
+.. pending process abortion: 0
+.. crashed activity instances: 0
+.. crashed activity threads: 0</pre>
+<p>The following table contains a short explanation of all
+displayed metrics.</p>
+<table id='id_3'>
+    <tr>
+        <th>Metric</th>
+        <th>Interpretation</th>
+    </tr>
+    <tr>
+        <td>Processes (total)</td>
+        <td>Total number of processes.</td>
+    </tr>
+    <tr>
+        <td>Processes (alive)</td>
+        <td>Number of active processes.</td>
+    </tr>
+    <tr>
+        <td>Processes (completed)</td>
+        <td>Number of completed processes</td>
+    </tr>
+    <tr>
+        <td>Processes (aborted)</td>
+        <td>Number of processes explicitly aborted via administrative
+        operations.</td>
+    </tr>
+    <tr>
+        <td>Activities (total)</td>
+        <td>Total number of activities.</td>
+    </tr>
+    <tr>
+        <td>Activities (alive)</td>
+        <td>Number of active activities.</td>
+    </tr>
+    <tr>
+        <td>Activities (completed)</td>
+        <td>Number of completed activities.</td>
+    </tr>
+    <tr>
+        <td>Activities (aborted)</td>
+        <td>Number of aborted activities.</td>
+    </tr>
+    <tr>
+        <td>Users (total)</td>
+        <td>Total number of users.</td>
+    </tr>
+    <tr>
+        <td>Users (active)</td>
+        <td>Total number of valid users.</td>
+    </tr>
+    <tr>
+        <td>Interrupted process instances</td>
+        <td>Number of process instances for those at least one
+        interrupted activity exists.</td>
+    </tr>
+    <tr>
+        <td>Interrupted activity instances</td>
+        <td>Number (non-interactive) activity instances interrupted via
+        non-declarative exceptions thrown by the invoked application. These
+        applications are retried during recovery.</td>
+    </tr>
+    <tr>
+        <td>Number of process instances likely to have pending complete</td>
+        <td>Processes who do not have active activities to be completed
+        and likely to be completed as a whole after recovery.</td>
+    </tr>
+    <tr>
+        <td>Number of process instances likely to have pending abortion</td>
+        <td>Processes with status ABORTING. In case the
+            process instance has further subprocesses, these will not be taken 
+            in account.</td>
+    </tr>
+    <tr>
+        <td>Number of process instances likely to have crashed activities
+        </td>
+        <td>Processes whose activities have obtained exceptions during
+        execution (state INTERRUPTED or CREATED). Most likely application
+        problems. Candidates for recovery.</td>
+    </tr>
+    <tr>
+        <td>Number of process instances likely to have crashed threads</td>
+        <td>Processes with interrupted process threads to be re-animated.
+        Interruption mostly caused by Exceptions in JMS handling (e.g.
+        deadlocks). Candidates for recovery.</td>
+    </tr>
+</table>
+<h3 id="showoids">Displaying Audit Trail Metrics with Process OIDs List</h3>
+<p>If you like to have a list of process instances OIDs shown in place of only 
+the count of process instances, use the option <tt>showOids</tt> in 
+combination with <tt>dashboard -recovery</tt>.</p>
+<pre>console dashboard -recovery -showOids</pre>
+<p>Here is an example with a list of process instances OIDs likely to have:</p>
+<pre>
+.. pending process completion: 25, 26
+.. pending process abortion: 4, 6, 9
+.. pending activity abortion: 3, 8
+.. crashed activity instances: 16, 2, 18, 20, 22, 24, 12, 28, 14, 30
+.. crashed activity threads: none
+</pre>
+<h2 id="scopedcommands">Scoped Participants Management</h2>
+<p>Following are the commands supported for scoped participants:</p>
+
+<table>
+    <tr>
+        <th>Command</th>
+        <th>Type</th>
+        <th>Short Name</th>
+        <th>Long Name</th>
+        <th>Required</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>local</td>
+        <td>n</td>
+        <td>name</td>
+        <td>false</td>
+        <td>The name of the department to be created - if not supplied, the id will be taken as name.
+        By default, the ID of the department is taken.</td>
+    </tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>local</td>
+        <td>d</td>
+        <td>description</td>
+        <td>false</td>
+        <td>The description of the department to create.</td>
+    </tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>local</td>
+        <td>dp</td>
+        <td>departmentpath</td>
+        <td>true</td>
+        <td>The path to the department(each department is separated by a '/').</td>
+    </tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>local</td>
+        <td>r</td>
+        <td>recursive</td>
+        <td>false</td>
+        <td>If specified, all departments specified in the path will be created(if missing). By default, it is
+        set to false.</td>
+    </tr>
+    <tr>
+        <td>createdepartment</td>
+        <td>local</td>
+        <td>pid</td>
+        <td>participantid</td>
+        <td>true</td>
+        <td>The id of the participant(role or organization).</td>
+    </tr>
+    <tr>
+        <td>deletedepartment</td>
+        <td>local</td>
+        <td>dp</td>
+        <td>departmentpath</td>
+        <td>true</td>
+        <td>The path to the department(each department is separated by a '/').</td>
+    </tr>
+    <tr>
+        <td>deletedepartment</td>
+        <td>local</td>
+        <td>r</td>
+        <td>recursive</td>
+        <td>false</td>
+        <td>If specified, all departments specified in the path will be deleted. By default, it is
+        set to false.</td>
+    </tr>
+    
+    <tr>
+        <td>deletedepartment</td>
+        <td>local</td>
+        <td>pid</td>
+        <td>participantid</td>
+        <td>true</td>
+        <td>The id of the participant(role or organization).</td>
+    </tr>
+    <tr>
+        <td>modifyuser</td>
+        <td>local</td>
+        <td>g</td>
+        <td>addgrants</td>
+        <td>false</td>
+        <td>Grants to be given to the user. Specified as comma separated list of participant IDs.
+Department constraints can be added with @%OID_OR_PATH% where %OID_OR_PATH% can be either an OID or a 
+path(each department in the path is separated by a '/'). For example, engineer@33 or engineer@department1/department2</td>
+    </tr>
+    
+    <tr>
+        <td>modifyuser</td>
+        <td>local</td>
+        <td>r</td>
+        <td>removegrants</td>
+        <td>false</td>
+        <td>Grants to be removed from the user. Specified as comma separated list of participant IDs.
+Department constraints can be added with @%OID_OR_PATH% where %OID_OR_PATH% can be either 
+an OID or a path(each department in the path is separated by a '/'). For example, engineer@33 or engineer@department1/department2</td>
+    </tr>
+    <tr>
+        <td>createuser</td>
+        <td>local</td>
+        <td>g</td>
+        <td>addgrants</td>
+        <td>false</td>
+        <td>Grants to be given to the user. Specified as comma separated list of participant IDs.
+Department constraints can be added with @%OID_OR_PATH% where %OID_OR_PATH% can be either an OID or a path(each department in the path is separated by a '/').
+For example, engineer@33 or engineer@department1/department2.</td>
+    </tr>
+    <tr>
+        <td>createuser</td>
+        <td>local</td>
+        <td>r</td>
+        <td>removegrants</td>
+        <td>false</td>
+        <td>Grants to be removed from the user. Specified as comma separated list of participant IDs.
+Department constraints can be added with @%OID_OR_PATH% where %OID_OR_PATH% can be either an OID or a path(each department in the path is separated by a '/').
+For example, engineer@33 or engineer@department1/department2.</td>
+    </tr>
+        
+</table>
+
+<h3>Example Commands for Scoped Participants</h3>
+<p>All commands have local and global options. The user and password are global options that means they 
+have to be provided before the command name. For example, console -u motu -p motu createdepartment. The 
+parameters u and p are provided before the command createdepartment. In case of local option, the parameters
+are specified after the command. For example, deletedepartment -pid SubSubChildOrg -dp m1/m2/m3 -r. 
+The parameters pid and dp are local parameters because they are command specific and coming after the command.
+Following are example commands for scoped participants:
+ </p>
+ 
+<p>To create the department using the command line:</p>
+<pre>&gt; console -u motu -p motu createdepartment -pid SubSubChildOrg -dp m1/m2/m3 -r</pre>
+<p>To delete the department using the command line:</p>
+<pre>&gt; console -u motu -p motu deletedepartment -pid SubSubChildOrg -dp m1/m2/m3 -r</pre>
+
+<p>To create the user using the command line:</p>
+<pre>&gt; console -u motu -p motu createuser -a mynewuserwithgrant -password mypassword -g SubSubChildOrg@m1/m2/m3</pre>
+
+<p>To modify the user using the command line:</p>
+<pre>&gt; console -u motu -p motu modifyuser -a motu -g SubSubChildOrg@m1/m2/m3</pre>
+
+<h2 id="event">Explicit Binding and Unbinding of Events</h2>
+
+<p>
+</p>
+
+<table>
+    <tr>
+        <th>Command</th>
+        
+        <th>Short Name</th>
+        <th>Long Name</th>
+        <th>Required</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>bindeventhandler</td>
+        
+        <td>h</td>
+        <td>handler</td>
+        <td>true</td>
+        <td>ID of the handler to bind</td>
+    </tr>
+    
+    <tr>
+        <td>bindeventhandler</td>
+        <td>OID</td>
+        <td>OID</td>
+        <td>true</td>
+        <td>The OID for the instance(Activity or Process) specified by the type option.</td>
+    </tr>
+    <tr>
+        <td>bindeventhandler</td>
+        <td>t</td>
+        <td>type</td>
+        <td>true</td>
+        <td>The type to which the eventhandler should bind to. Valid values are <tt>ai</tt> 
+        for an ActivityInstance or <tt>pi</tt> for a ProcessInstance.</td>
+    </tr>
+        <tr>
+        <td>unbindeventhandler</td>
+        <td>h</td>
+        <td>handler</td>
+        <td>true</td>
+        <td>ID of the handler to unbind</td>
+    </tr>
+    
+    <tr>
+        <td>unbindeventhandler</td>
+        <td>OID</td>
+        <td>OID</td>
+        <td>true</td>
+        <td>The OID for the instance(Activity or Process) specified by the type option.</td>
+    </tr>
+    <tr>
+        <td>unbindeventhandler</td>
+        <td>t</td>
+        <td>type</td>
+        <td>true</td>
+        <td>The type for which the eventhandler should unbind from. Valid values are <tt>ai</tt> 
+        for an ActivityInstance or <tt>pi</tt> for a ProcessInstance.</td>
+    </tr>
+</table>
+
+<h4>Example Commands for Binding and Unbinding Events</h4>
+
+<p>bindeventhandler</p>
+<pre>&gt; console -u motu -p motu bindeventhandler -t ai -oid 5 -h myHandler</pre>
+
+<p>unbindeventhandler</p>
+<pre>&gt; console -u motu -p motu unbindeventhandler -t ai -oid 5 -h myHandler</pre>    
+    
+<h2 id="daemon">Daemon Management</h2>
+<p>The <tt>-daemon</tt> option allows to perform operations
+on a specified daemon.
+The parameter <tt>-name</tt> defines which daemon is accessed,
+including:</p>
+<ul>
+    <li>event daemon type: <tt>-name event.daemon</tt></li>
+    <li>timer trigger daemon type: <tt>-name timer.trigger</tt></li>
+    <li>mail trigger daemon tpye: <tt>-name mail.trigger</tt></li>
+    <li>notification daemon type: <tt>-name system.daemon</tt></li>
+    <li>prioritization daemon type: <tt>-name criticality.daemon</tt></li>
+</ul>
+<p>Another parameter
+including <tt>-start</tt>, <tt>-stop</tt> or <tt>-status</tt> defines which
+operation should be performed on the selected daemon. Next to these parameters
+the username and password of an Administrator must be passed to the console as
+well. You can start the event handling daemon with the command:</p>
+<pre>&gt; console.bat -user motu -password motu daemon -name event.daemon -start</pre>
+<p>For general information on working with daemons, refer to chapter
+<a href="../../../concepts/admin-concepts/ag-concepts-2.htm">
+Daemons</a> in the 
+<a href="../../../concepts/admin-concepts/ag-concepts-preface.htm">
+Administrative Concepts</a> section of the 
+<a href="../../../concepts/key-concepts.html">
+Concepts</a> part.</p>
+<h3 id="monitoringDaemon">Monitoring the State of a Daemon</h3>
+<p>To query the status of a daemon, you use the console tool with the
+command <tt>daemon</tt> and specify the name of the daemon and the action to
+perform (<tt>-status</tt>). Use the appropriate user and password for your
+system, our examples are written for user <tt>motu</tt> with password <tt>motu</tt>.</p>
+<pre>&gt; console.bat -user motu -password motu daemon -name mail.trigger -status</pre>
+<h3>Starting and stopping a Daemon</h3>
+<p>To start or stop a daemon, you use the console tool exactly as for
+getting its status, except that the command used is <tt>-start</tt> for starting
+the daemon, respectively <tt>-stop</tt> for stopping the daemon. An example is
+provided below.</p>
+<pre>&gt; console.bat -user motu -password motu daemon -name timer.trigger -start</pre>
+<pre>&gt; console.bat -user motu -password motu daemon -name event.daemon -stop  </pre>
+<h3>Acknowledgment</h3>
+<p>To start a daemon with acknowledgment, use the option
+<tt>-ack/-c</tt>. If a daemon is started with acknowledgment, each new request
+first checks that previous requests have been acknowledged
+and are not still in response-requested state.
+When started without acknowledgment, these checks will not be made.</p>
+<h2 id="preferences">Storing Preferences</h2>
+<p>The <tt>preferencesStore</tt> command allows backup and loading of 
+preferences as a ZIP file.</p>
+<h3>Extracting Preferences</h3>
+<p>To extracts all preferences stored in the PreferenceStore,
+use the option <tt>-backup</tt>.
+The <tt>-targetfile</tt> argument should provide the path to the 
+target ZIP file which will contain the preferences.
+The preferences will be dumped in a <tt>.ZIP</tt> file stored at
+the target file.
+Optionally, you can set an option <tt>-limitScope</tt> and <tt>-limitModuleId</tt> to change
+the scope of the specified moduleID preferences. The following scope options are
+possible:</p>
+<ul>
+	<li>PARTITION</li>
+	<li>REALM</li>
+	<li>USER</li>
+</ul>
+
+<p>The following are moduleId examples:</p>
+
+<ul>
+	
+	<li><tt>configuration-variables</tt> </li>
+	<li><tt>permissions</tt> </li>
+</ul>
+<p>The default scope is <tt>all</tt> for -limitScope.
+For -moduleId the default is preferences having any moduleId.</p>
+<p>Examples:</p>
+<pre>
+-user motu -password motu preferenceStore -backup -targetFile c:/tmp/tst.zip -limitScope USER -limitModuleId ipp-portal-common
+-user motu -password motu preferenceStore -backup -targetFile c:/tmp/tst.zip -limitScope USER -limitModuleId ipp-portal*
+-user motu -password motu preferenceStore -backup -targetFile c:/tmp/tst.zip -limitScope PARTITION -limitModuleId bcc
+-user motu -password motu preferenceStore -backup -targetFile c:/tmp/tst.zip -limitScope PARTITION -limitModuleId permissions
+-user motu -password motu preferenceStore -backup -targetFile c:/tmp/tst.zip -limitScope PARTITION -limitModuleId configuration-variables
+
+</pre>
+<h3>Loading Preferences</h3>
+<p>To upload all preferences from a ZIP archive, use the option
+<tt>-load</tt>. The argument <tt>-sourcefile</tt> should describe
+the ZIP file containing the preferences.
+It is assumed that the structure of the ZIP archive reflects the 
+structure of a result of the <tt>-backup</tt> operation.
+You have to restart your server 
+to make the imported variable value effective.
+Note that the <tt>load</tt> option replaces existing preferences if they are 
+already contained in the source ZIP file.</p>
+<p>Example:</p>
+<pre>preferenceStore -load -sourceFile c:/tmp/test.zip</pre>
+<h2 id="migrate">Migrating Document Repository</h2>
+<p>The command <tt>migraterepository</tt> allows specifying 
+a batch size to limit the processing to short calls
+via the optional parameters <tt>-batchSize</tt> and <tt>-timeLimit</tt>.</p>
+<h3>Batch Size</h3>
+<p>The parameter <tt>-batchSize</tt> specifies how many resources 
+are processed in one API call. The default value is <tt>500</tt>.</p>
+<h3>Time Limit</h3>
+<p>The parameter <tt>-timeLimit</tt> allows setting a time limit in
+minutes after which the migration is stopped after completing the 
+current batch. The migration to the new repository version might 
+not be complete but the repository is still consistent and the migration 
+can be continued by using the console command again at a later point in time.
+The default value for this parameter is <tt>0</tt>, which means no time limit is 
+set and the migration process continues until it is complete.</p>
+<h3>Example</h3>
+<p>An example command for setting a migration for a maximum of 
+two hours with a batch size of 300 would look like the following:</p>
+<pre>console -f -u motu -p motu migraterepository -batchSize 300 -timeLimit 120</pre>
+<h2 id="multimodel">Multi-Model Environment</h2>
+
+<p>In all methods referring to top model elements via ID, the qualified ID of the model element 
+can be used. The qualified ID is defined as:
+<pre>'{' + model-id + '}' + element-id
+</pre>
+<p>If participants have duplicate IDs in multi-model environment then
+qualified ID should be used to execute the <tt>createuser</tt> and <tt>modifyuser</tt> commands.</p>
+<h3>Example Command for Multi-Model Environment</h3>
+<p>In the following examples, Consumer1 is the model ID and Role1 is the element ID which makes a quaulified ID.
+<h4>Create User Example</h4>
+<pre>
+-u motu -p motu createuser -account "Test_user1" -addgrants {Consumer1}Role1
+</pre>
+<h4>Modify User example:</h4>
+<pre>
+-u motu -p motu modifyuser -account "Test_user1" -addgrants {Consumer1}Role1
+</pre>
+
+<h2 id="list">Retrieving Model Version Tree Information</h2>
+<p>The console command <tt>-list</tt> can be used to display all model 
+versions deployed. The model versions are displayed in the following
+structure:</p>
+<pre>
+ModelA
+      ModelA - Version 2 (oid: nnn) (active)
+         Provider relationships for model elements used by other models:
+            used by ModelB - Version 3 (oid:mno)
+            used by ModelC - Version 3 (oid:mnp)
+            ...
+         Consumer relationships for model elements provided by other models
+            using ModelD - Version 1 (oid:mnq)
+         Provided Process Interfaces
+            Process Interface1
+               implemented by ModelA - Version 2 (oid: nnn) (Default)
+               implemented by ModelE - Version2 (oid:nmo)
+               implemented by ModelF - Version2 (oid:nmp) (Primary Implementation)
+               ...
+            ...
+   ModelB - Version1 (oid:mmm)
+         Referenced By:
+            ...
+</pre> 
+<p>By default, the above tree will only contain the active versions
+of every model. Other versions can be included by supplying the 
+following parameter:</p>
+<pre>
+console -list -allVersions
+</pre>
+<p>The option <tt>-model</tt> takes the model id (String) as a parameter 
+and only displays the subtree for this model Id, e.g.:</p>
+<pre>
+console -list -model <tt>DemoModel</tt>
+</pre>
+<p>To display the model and model version nodes only, but skip the linkage information,
+use the <tt>-short</tt> option:</p>
+<pre>
+console -list -short
+</pre>
+<p>In case you like to have also inactive implements relationships displayed, which, 
+although not relevant for newly started processes, might be relevant for running intances,
+use option <tt>-verbose</tt>.
+They will be marked as "usage inactive".</p>
+<pre>
+console -list -verbose
+</pre>
+<p>For example, the structure could look like the following:</p>
+<pre>
+   ModelA
+      ModelA - Version 2 (oid: nnn) (active)
+         Provider relationships for model elements used by other models:
+            used by ModelB - Version 3 (oid:mno)
+            used by ModelC - Version 3 (oid:mnp)
+            ...
+         Consumer relationships for model elements provided by other models
+            using ModelD - Version 1 (oid:mnq)
+         Provided Process Interfaces
+            Process Interface1
+               implemented by ModelA - Version 2 (oid: nnn) (Default)
+               implemented by ModelE - Version2  (oid:nmo)
+               implemented by ModelE - Version1  (oid:nop)   - usage inactive
+               implemented by ModelF - Version2  (oid:nmp)  (Primary Implementation)
+               implemented by ModelF - Version1  (oid:nmq)  (Primary Implementation) - usage inactive
+               ...
+            ...
+   ModelB - Version1 (oid:mmm)
+         Referenced By:
+            ...
+</pre>
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

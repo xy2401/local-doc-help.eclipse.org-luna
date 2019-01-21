@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Querying and Recalculating Activity Criticality</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Retrieving Activity Quality Assurance Information",
+        "","pg-embed-qa.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Querying and Recalculating Activity Criticality</h1>
+<p>This chapter describes how to query for specific criticality aspects,
+how specific activity processing influences
+the recalculation of activity criticality and how the recalculation 
+behavior can be controlled.</p>
+<ul>
+    <li><a href="#retrieve">Retrieving Criticality of an Activity Instance</a></li>
+    <li><a href="#query">Querying for Criticality</a></li>
+	<li><a href="#recalc">Calculation and Recalculation during Activity Processing</a></li>
+  	<li><a href="#behavior">Controlling Recalculation Behavior</a></li>
+</ul>
+<h2 id="retrieve">Retrieving Criticality of an Activity Instance</h2>
+<p>To retrieve the current criticality of an activity instance,
+use the method <tt>getCriticality</tt> of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">
+ActivityInstance</a> object.</p>
+<pre>
+/**
+    * Returns the current criticality of an activity instance
+    * 
+    * @return the value if the criticality
+    */
+   double getCriticality();
+</pre>
+<h2 id="query">Querying for Criticality</h2>
+<p>The 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+ActivityInstanceQuery</a> and the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistQuery.html">
+WorklistQuery</a> provide the following query functionality for
+criticality:</p>
+<ul>
+	<li>Searching by criticality criteria via range</li>
+	<li>Sorting and filtering results by criticality</li>
+</ul>
+<p>Sorting and filtering for criticality attributes is possible through the filterable 
+<tt>CRITICALITY</tt> attribute of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ActivityInstanceQuery.html">
+ActivityInstanceQuery</a> and the 
+<tt>ACTIVITY_INSTANCE_CRITICALITY</tt> attribute of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistQuery.html">
+WorklistQuery</a>. Those can be added to the queries as 
+in following example:</p>
+<pre>
+ActivityInstanceQuery query = ActivityInstanceQuery.findAlive();      
+query.where(ActivityInstanceQuery.CRITICALITY.greaterOrEqual(limit));
+ActivityInstances ais = qrService.getAllActivityInstances(query);
+     
+WorklistQuery wQuery = WorklistQuery.findCompleteWorklist();
+wQuery.where(WorklistQuery.ACTIVITY_INSTANCE_CRITICALITY.between(0, 1));
+Worklist wList = wfService.getWorklist(wQuery);
+</pre>
+<h2 id="recalc">Calculation and Recalculation during Activity Processing</h2>
+<p>The following use cases results in recalculation of
+the activity criticality:</p>
+<ul>
+    <li><a href="#actcreate">Activity creation</a></li>
+    <li><a href="#priochange">Changing Process Priority</a></li>
+    <li><a href="#suspend">Modifying Process Data via suspend()</a></li>
+</ul> 
+<h3 id="actcreate">Activity creation</h3>
+<p>When you create a new activity, the initial activity criticality value 
+is calculated using the javaScript formula for the model containing
+ the current activity and the corresponding algorithm.</p>
+<h3 id="priochange">Changing Process Priority</h3>
+<p>Whenever you change the priority for the process instance containing the current activity,
+the activity criticality is recalculated and stored analogously.
+The following methods to change process priority result in a reevaluation of the 
+dependent activity criticality:</p>
+<ul>
+    <li>AdministrationService methods to set priority:
+<pre>ProcessInstance setProcessInstancePriority(long oid, int priority)
+ProcessInstance setProcessInstancePriority(long oid, int priority, boolean propagateToSubProcesses</pre>
+    Refer to chapter <a href="../administration/pg-embed-prio.html">Changing Process Instance Priorities</a>
+    for details on these methods.</li>
+	<li>out-data-mappings to the predefined <tt>PROCESS_PRIORITY</tt> data.
+    This data contains the priority assigned to the current process.</li>
+	<li>modification via <tt>Set Data</tt> event actions of the predefined 
+    <tt>PROCESS_PRIORITY</tt> data.</li>
+</ul>
+<h3 id="suspend">Modifying Process Data via suspend()</h3>
+<p>Activity criticality is recalculated whenever any of the following
+<tt>suspend()</tt>-methods of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">
+WorkflowService</a> is called:</p>
+<ul>
+    <li><tt>suspend()</tt></li>
+    <li><tt>suspendToDefaultPerformer()</tt></li>
+    <li><tt>suspendToParticipant()</tt></li>
+    <li><tt>suspendToUser()</tt></li>
+</ul>
+<h2 id="behavior">Controlling Recalculation Behavior</h2>
+<p>The recalculation behavior can be configured with the following 
+Preferences keys within the Preference store:</p>
+<ul>
+    <li><tt>Criticality.Recalc.OnSuspend</tt>
+    -  determines if recalculation should take place when process data
+    is modified via a suspend method as described in section
+    <a href="#suspend">Modifying Process Data via suspend()</a>.</li>
+    <li><tt>Criticality.Recalc.OnCreate</tt> 
+    - determines if recalculation should take place when a new activity
+    is created as described in section 
+    <a href="#actcreate">Activity creation</a>.</li>
+    <li><tt>Criticality.Recalc.OnPriorityChange</tt> 
+    - determines if recalculation should be done on priority change as
+    described in section <a href="#priochange">Changing Process Priority</a>.</li>
+</ul> 
+<p>These keys can be used to specify whether criticality 
+should be reevaluated for the following use cases or not:</p>
+<ul>
+    <li>activity creation</li>
+    <li>change process priority</li>
+    <li>calling suspendAndSave()</li>
+    <li>On activity state change (per target state)</li>
+</ul>
+<p>The scope for the preferences is <strong>PARTITION</strong>, the module id is 
+<strong>engine-internals</strong> and the preference id is 
+<strong>workflow-criticalities</strong>.
+To change the preferences accordingly:</p>
+<ul>
+    <li>Retrieve the preferences via method
+<pre>Preferences getPreferences("PARTITION","engine-internals", "workflow-criticalities");</pre></li>
+    <li>Change the preferences using one of the preferences keys
+    for criticality mentioned above.</li>
+    <li>Save the changed preferences via the method
+<pre>void savePreferences(Preferences preferences);</pre></li>
+</ul>
+<p>Refer to section <a href="../administration/pg-embed-preferences.html#retrieveScope">
+Retrieving preferences from a given scope</a> and
+<a href="../administration/pg-embed-preferences.html#savePrefs">Saving Preferences</a>
+of chapter <a href="../administration/pg-embed-preferences.html">Retrieving and Changing Preferences</a>
+respectively for details on getting and saving preferences methods of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">
+AdministrationService</a>.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

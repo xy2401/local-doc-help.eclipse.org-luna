@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Security Propagation for Web Applications</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css" title="Style">
+<script language="JavaScript" src="../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+         <!--
+            writeNavigation("", "rules-management.html", "", "key-concepts.html",
+                     "Concepts");
+            -->
+         </script>
+   <h1>Security Propagation for Web Applications</h1>
+<p>
+Proper integration of Web applications with Stardust requires the Web application to safely know on behalf 
+of which Stardust user it is being invoked. This information typically includes basic identity information 
+as a user ID and mail address. For certain integration scenarios it might additionally include access or 
+session tokens provided by an external system, which can be used to invoke backend 
+services from the Web application.
+As with all identity related pieces of information great care needs to be taken to ensure:</p>
+<ul>
+   <li>it doesn't leak into wrong hands (to prevent an arbitrary third-party from pretending to be someone else)</li>
+   <li>it cannot be forged (to prevent an arbitrary third-party from pushing a forged identity to a component, 
+thus potentially getting access to protected data)</li>
+</ul>
+<p>Fortunately there exists a variety of protocols providing blueprints for safely passing user identity 
+and communicating authorizations between applications. One such protocol especially suited for 
+Browser based Web applications is OAuth v2.0 (with the OpenID Connect Core v1.0 extensions), 
+thus it was chosen as a foundation for the integration Stardust provides.</p>
+<p>Note: At the time of writing Stardust is not a full OAuth v2.0/OpenID Connect v1.0 Authorization Server. 
+It just leverages parts of the OpenID Connect Implicit Flow to safely pass user identity from Stardust to 
+an external Web application.</p> 
+<h2>How Stardust passes user identity to an external Web application</h2>
+<p>User identity is being passed in alignment with the OpenID Connect v1.0 Implicit Flow 
+(namely steps 5 and 6 as equivalents of steps 1 to 4 are already implied). 
+However, in an attempt to simplify development of external Web applications, 
+Stardust provides an easily deployable implementation of the relevant client part 
+(aka. the auth-proxy page). This implementation consists of a simple HTML page 
+which will exchange an access token for the full identity and convert any potentially 
+associated tokens into session cookies.
+The exact sequence of steps is as follows:</p>
+<ol>
+   <li>A user logs into Stardust, potentially performing authentication against an external identity provider
+      <ul>
+      <li>In addition to verifying the credentials provided by the user the external provider potentially 
+provides additional session tokens to be used when accessing external services.</li></ul></li>
+<li> Eventually the user uses the Stardust portal to invoke an external Web application
+      <ul>
+      <li>If there are any session tokens associated with the user's session, 
+      Stardust creates an access-token which can be exchanged for the user's identity exactly once.</li>
+      <li>The Stardust portal locates the address of the auth-proxy page (relative to the Web 
+      application to be invoked) and loads it into the browser.</li>
+      <li>The auth-proxy page receives the access-token and invokes an Stardust provided REST 
+      service to retrieve the user's identity.</li>
+      <li>The auth-proxy page converts the user's identity into session cookies.</li>
+     <li>After creating relevant cookies, the page redirect to the actual Web application, 
+which in turn can extract cookie values as required.</li></ul></li>
+</ol>
+<p>This feature is guarded by a global property <tt>org.eclipse.stardust.ui.web.feature.mashupCredentialsPropagation</tt>. 
+If required, you may adjust this entry as follows in your WARs carnot.properties</p>
+
+<pre>
+org.eclipse.stardust.ui.web.feature.mashupCredentialsPropagation = withSessionTokens
+</pre>
+<p>
+Possible values are:</p>
+<ul>
+<li>never - will completely ignore this feature, thus not pass any session tokens to the mashup</li>
+<li>withSessionTokens (the default) - will use this feature whenever there are any entries in the session's
+token map</li> 
+<li>always - will always use this feature, 
+even if there are no entries in the session's token map 
+(which means, the auth proxy page will be used although no cookies will be created).</li>
+</ul>
+
+
+
+  
+<h2 id="faq">Frequently Asked Questions</h2>
+<ol>
+   <li>Why is identity information not simply passed as query parameters?
+   <ul>
+      <li>Query parameters are not just visible in the browser's address bar, but are 
+      also passed to HTTP proxies and the receiving server and will be extensively 
+      logged at each of those. Thus query parameters are relatively easy to be obtained by 
+      arbitrary third-parties and thus not a suitable means to transport sensitive information.
+By using the hash part of the requested URI, a one-time access-token and a callback to actually 
+retrieve the user's identity exposure of sensitive information is greatly reduced.
+      </li>
+     </ul></li>
+     <li>Why do I have to deploy an Stardust provided auth-proxy page with my application?
+     <ul>
+     <li>Somehow identity information will have to be passed via a more complex protocol 
+     than query parameters. While a Web application certainly could act according to the 
+     protocol described above itself, Stardust chose to provide an easily deployable default 
+     implementation which provides tokens as session cookies. This choice was made to ease adoption.</li>
+     <li>Due to Browser security constraints Stardust will not be able to create or 
+     access any Browser cookies intended for a different domain than the one Stardust 
+     is deployed to (e.g. if Stardust is deployed on <tt>http://services.sungard.com/ipp/</tt> 
+     it is not able to touch any cookie intended for <tt>http://localhost:8080/</tt>, 
+     assuming the Web application to be invoked is deployed to <tt>http://localhost:8080/</tt>). 
+     Thus an intermediary component, deployed to the Web application's domain, is required.</li>   
+     </ul></li>
+     <li>What steps do I have to take to deploy Stardust's auth-proxy page?
+     <ul>
+     <li>This page is a simple HTML page which can be served statically. This typically implies the file 
+     just needs to be copied into the a directory at the target server and served as static file.</li>
+     <li>For the time being the auth-proxy page will be invoked at the same path than 
+     the actual Web application (e.g., if the Web application URI is <tt>http://server.name:80/path/to/app/file.xyz</tt>, 
+     the auth-proxy will be expected at URI <tt>http://server.name:80/path/to/app/ippMashupAuthProxy.html)</tt>.</li>
+     </ul>    
+     </li>
+     <li>Does the use of cookies imply sensitive information is at risk?
+      <ul>
+         <li>No. Tokens will be stored as session cookies and thus not stored on disk 
+         <a href="http://en.wikipedia.org/wiki/HTTP_cookie#Session_cookie">http://en.wikipedia.org/wiki/HTTP_cookie#Session_cookie</a>. Cookies in general are only 
+         accessible to pages from the same domain and path, thus being inaccessible to arbitrary 
+         third-party Web applications or JavaScript code.</li>
+      </ul>      
+      </li>
+      <li>From where do I get the authorization proxy page?
+      <ul>
+      <li>If you have not deployed the authorization proxy page, 
+      Stardust Portal will redirect you to the page having the link
+      to download.</li>
+      <li>The "here" link is
+      displayed in the Stardust Portal. 
+      Click the link to download and save the <tt>ippMashupAuthProxy.html</tt> page.
+      Note that the Download option is supported only in Google Chrome and Firefox browsers.
+      For other browsers, you should choose Save As option from the link's context menu.    
+      <p class="image"><img src="images/auth.png"
+   alt=""> <br>
+<strong>Figure:</strong> Authorization Proxy Page Link</p></li></ul>
+      </li>
+</ol>
+
+<script language="JavaScript" type="text/javascript">
+         <!--
+            writeFooter();
+            -->
+         </script>
+</body>
+</html>

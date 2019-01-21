@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Identifying Property Keys using artificial Resource Bundles</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<span class="ipp">
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+       "PLUGINS_ROOT/com.infinity.bpm.docs.misc/html/i18n/using-excelbundle.html","",
+      "../../handbooks.htm","Developer Handbook",
+      "../ag-preface.htm","Operation Guide",
+      "PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html","Internationalization");
+ -->
+</script></span>
+<span class="stardust">
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+       "i18n-error.html","",
+      "../../handbooks.htm","Developer Handbook",
+      "../ag-preface.htm","Operation Guide",
+      "PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/i18n/inter-preface.html","Internationalization");
+ -->
+</script></span>
+<h1>Identifying Property Keys using artificial Resource Bundles</h1>
+<p>In some cases it might be difficult to identify where in the modeler
+user interface or in the Portal layout the keys to be translated are displayed.
+For this purpose, create an artificial resource bundle, e.g. called <tt>en_NM</tt>,
+containing numbered keys followed by the default English key entries.
+Use this bundle to easily identify the keys you like to translate in
+the Portal or modeler.</p>
+<p>To create this artificial keys, do the following:</p>
+<ol>
+	<li>In your <tt>i18n.properties</tt> file, enter the
+	<tt>en_NM</tt> locale, e.g.:
+	<pre># locales to export from XLS
+export.locales=ja,en_NM
+# locales to import into XLS
+import.locales=en,ja,en_NM</pre></li>
+	<li>Call <tt>xls.bat</tt> to create the Excelsheets
+	with new columns for the artificial locale.</li>
+</ol>
+<h2 id="artexcel">Editing the Excelsheets with artificial column</h2>
+<p>Now edit the Excelsheet <tt>modeler-messages.xls</tt> or 
+<tt>portal-messages.xls</tt>, depending on if you like to see the
+identifying keys in the Portal or the modeler.</p>
+<ol>
+	<li>A new empty column called <strong>en_NM</strong> is created.
+	<p class="ulimg"><a href="images/art-excel-empty_orgSize.png" target="_blank">
+	<img src="images/art-excel-empty.png" alt=""></a></p>
+	In case you used the artificial locale already, it exists with the 
+	earlier created entries. In that case clear the column and overwrite it 
+	with the following steps to keep it synchronized with new properties.</li>
+	<li>First unprotect your sheet.
+	(In tab <strong>Review</strong> click the <strong>Unprotected Sheet</strong> button).</li>
+	<li> Add an additional numbered column.
+	<p class="ulimg"><img src="images/art-excel-numbers.png" alt=""></p></li>
+	<li>In the new <strong>en_NM</strong> column, add the following formula:
+	<pre>=IF(B<i>&lt;linenumber&gt;</i>="en";"en_NM";IF(B<i>&lt;linenumber&gt;</i>="";"";CONCATENATE(<i>&lt;column with numbers&gt;</i><i>&lt;linenumber&gt;</i>;": ";B<i>&lt;linenumber&gt;</i>)))</pre>
+	For example, if the column containing the line numbers is <strong>D</strong>, enter in the
+	third and forth line of your <strong>en_NM</strong> column the following formula and apply it
+	to the rest of the column:
+	<pre>=IF(B3="en";"en_NM";IF(B3="";"";CONCATENATE(D3;": ";B3)))
+=IF(B4="en";"en_NM";IF(B4="";"";CONCATENATE(D4;": ";B4)))</pre>
+	<p class="ulimg"><img src="images/art-excel-formular.png" alt=""></p>
+	This formula adds the row number followed by the English key of the according row,
+	taking in account headings for the locale and empty rows.</li>
+	<li>Convert the formula in the <strong>en_NM</strong> column to values.<br>
+	(Select the column. Choose <strong>Copy</strong> and then
+	<strong>Paste Special &gt; Values</strong>.)</li>
+	<li>The column now should look similar like the following:
+	<p class="ulimg"><img src="images/art-excel-result.png" alt=""></p></li>
+	<li>Save the Excelsheet.</li>
+</ol>
+<h2 id="artexport">Exporting the artificial Properties</h2>
+<p>Call <tt>EclipseImport.bat</tt> to add the resource bundles to your 
+Stardust Eclipse installation.</p>
+<!-- ? as described in 
+section <a href="#reintegrate">Merging back the new Properties</a>.</p>-->
+
+<h2 id="identify">Identifying the Keys in Portal and Modeler UI</h2>
+<p>Now you can check labels, options, messages etc. and identify them accordingly in your
+Excelsheet. To display the keys with the artificial locale:</p>
+<ul>
+		<li>In the modeler: start Eclipse with the artificial locale (<tt>nl -en_NM</tt>).<br>
+		For example, you can now check the keys displayed in an activity property dialog:
+		<p class="ulimg"><img src="images/modeler-nm-result.png" alt=""></p></li>
+		<li>In the Portal: add the artificial locale as new language in your
+		browser and restart the portal.
+		For example, in the Internet Explorer:
+		<ol> 
+			<li>Select <strong>Tools &gt; Internet Options &gt; Languages</strong>.</li>
+			<li>In the <strong>Language Preference</strong> dialog select 
+			<strong>Add</strong>.</li>
+			<li>Add <strong>en_NM</strong> as user defined language.</li>
+			<li>Choose this as top language.</li>
+		</ol>
+		<p class="ulimg"><img src="images/portal-nm-result.png" alt=""></p></li>
+</ul>
+		<p class="note"><strong>Note:</strong><br>
+		In case you face problems adding a user defined language in your browser,
+		add any language that you will not use in any case and use its locale instead
+		of en_NM. Replace en_NM with the chosen locale for the <strong>export.locales</strong>
+		and <strong>import.locales</strong> properties in your <tt>i18n.properties</tt>
+		file. In the Excelsheet, replace the <strong>en_NM</strong> entry in the column
+		with your chosen locale. Then call <tt>EclipseImport.bat</tt> again.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!doctype html PUBLIC "-//W3C//DTD html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html"; charset=ISO-8859-1">  -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Implementing a Repository Connection Extension Point</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+writeNavigation("Implementing a Provider to enable Security on JMS Connection Factories",
+	    "spi-repository.html","spi-queue-connection.html",
+	      "../../handbooks.htm","Developer Handbook",
+	      "../pg-preface.htm","Programming Guide",
+	      "spi-toc.html","SPI");
+-->
+</script>
+<h1>Implementing a Repository Connection Extension Point</h1>
+<p>Stardust provides you with the option to implement your own repository connection extension points. This
+chapter covers the following topics:</p>
+<ul>
+	<li><a href="#extInfo">Providing Extension Information in the plugin.xml</a></li>
+	<li><a href="#propertyPage">Implementing the Property Page</a></li>
+	<li><a href="#connHandler">Implementing the Connection Handler</a></li>
+	<li><a href="#outlineNodes">User Interaction with Outline Nodes</a></li>
+	<li><a href="#quickstart">Quick Start using XPDL Documents</a></li>
+	<li><a href="#programmatically">Programmatically Creating Model Elements</a></li>
+</ul>
+<br>
+<h2 id="extInfo">Providing Extension Information in the plugin.xml</h2>
+<p>For each connection you have to implement at least two extensions: a handler for the repository connection
+ and one (ore more) property page(s) for the connection.</p>
+<p>The handler is defined as following:</p>
+<pre>
+&lt;extension point="org.eclipse.stardust.modeling.repository.common.connections"&gt;
+   &lt;connection
+      handler="&lt;implementation class name&gt;"
+      icon="&lt;the icon of the connection type&gt;"
+      id="&lt;unique identifier&gt;"
+      name="&lt; connection type name&gt;"/&gt;
+&lt;/extension&gt;
+</pre>
+<p>The handler attribute represents the fully qualified class name of an 
+<tt>org.eclipse.stardust.modeling.repository.common.ConnectionHandler</tt> interface implementation, for example 
+<tt>org.eclipse.stardust.modeling.repository.file.FileConnectionHandler</tt>.</p>
+<p>The implementation class must have a public default constructor to allow instantiation in the OSGI bundle
+ context.</p>
+<p>The icon attribute describe a path to a plug-in resource of an actual image file, for example 
+<tt>icons/draw_transition.gif</tt>.</p>
+<tt>The id attribute is the unique identifier of the connection type. To ensure uniqueness, a good practice 
+is to qualify the id with the plug-in id. An example would be 
+<tt>org.eclipse.stardust.modeling.repository.file.connection</tt>.</tt>
+<p>The name attribute is the human readable name of the connection type. It is used in all the labels 
+presented to the end user.</p>
+<p>The property page is defined as below:</p>
+<pre>
+&lt;extension point="org.eclipse.ui.propertyPages"&gt;
+   &lt;page
+      class="&lt;page class name&gt;"
+      id="&lt;unique id&gt;"
+      name="&lt;property page name&gt;"
+      objectClass="org.eclipse.stardust.modeling.repository.common.Connection"&gt;
+      &lt;filter
+         name="feature:type"
+         value="&lt;id of the connection type&gt;"/&gt;
+   &lt;/page&gt;
+&lt;/extension&gt;
+</pre>
+<p>The class attribute represents the fully qualified class name of a standard 
+<tt>org.eclipse.ui.IWorkbenchPropertyPage</tt> interface implementation. The implementation class 
+must have a public default constructor to allow instantiation in the OSGI bundle context.</p>
+<p>The id attribute is the unique identifier of the property page. To ensure uniqueness, a good practice 
+is to qualify the id with the plug-in id. An example would be 
+<tt>org.eclipse.stardust.modeling.repository.file.fileConnection</tt>.</p>
+<p>The name attribute is the label in the property pages tree and is used also as the title of the property
+ page itself.</p>
+<p>The objectClass attribute represents a fully qualified class or interface name that the element to 
+which the property page will be displayed must extend or implement. It must be 
+<tt>org.eclipse.stardust.modeling.repository.common.Connection</tt> or a subclass of it.</p>
+<p>The filter tag is optional, but if it is missing, the property page will be displayed for all repository 
+connection types. To ensure that the property page is displayed only for a specific connection type, a 
+filter must be provided with the name <tt>feature:type</tt> and the value containing the id of the 
+connection type.</p>
+<p>An example <tt>plugin.xml</tt> file:</p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?eclipse version="4.3"?&gt;
+&lt;plugin&gt;
+  &lt;extension point="org.eclipse.stardust.modeling.repository.common.connections"&gt;
+    &lt;connection
+      handler="org.eclipse.stardust.test.TestConnectionHandler"
+      icon="icons/draw_transition.gif"
+      id="org.eclipse.stardust.test"
+      name="Test Connection"/&gt;
+  &lt;/extension&gt;
+  &lt;extension point="org.eclipse.ui.propertyPages"&gt;
+    &lt;page
+      class="org.eclipse.stardust.test.TestConnectionPropertyPage"
+      id="org.eclipse.stardust.test.testConnection"
+      name="Test Connection Property Page"
+      objectClass="org.eclipse.stardust.modeling.repository.common.Connection"&gt;
+      &lt;filter
+        name="feature:type"
+        value="org.eclipse.stardust.test"/&gt;
+    &lt;/page&gt;
+  &lt;/extension&gt;
+&lt;/plugin&gt;
+</pre>
+<h2 id="propertyPage">Implementing the Property Page</h2>
+<p>The property page must implement the <tt>org.eclipse.ui.IWorkbenchPropertyPage</tt> interface. 
+The scope of the property page is to allow the user to specify the set of attributes needed to open 
+the connection. When implementing the page, a good choice is to extend <tt>org.eclipse.ui.dialogs.PropertyPage</tt>
+class.</p>
+<p>The user must implement at least the Control <tt>createContents(Composite parent)</tt> method. The page 
+can get and set attributes to the corresponding Connection object. The Connection attached to the page can 
+be obtained via <tt>(Connection) getElement().getAdapter(EObject.class)</tt>.</p>
+<p>Once you have the Connection object, you can get or set the id, name, or type (although it is not 
+recommended to change the type of the connection). Every connection has two sets of properties: persistent 
+attributes that will be stored in the model file and transient properties that will be available in the 
+context of the current eclipse session.</p>
+<p>You can get or set the persistent attributes using List <tt>Connection.getAttributes()</tt>.</p>
+<p>For transient properties, <tt>getProperty</tt>, <tt>setProperty</tt> and <tt>removeProperty</tt>
+methods are provided.</p>
+
+<h2 id="connHandler">Implementing the Connection Handler</h2>
+<p>The actual connection handler must implement the following methods:</p>
+<ul>
+	<li><a href="#open">void open(Connection connection)</a></li>
+	<li><a href="#close">void close(Connection connection)</a></li>
+	<li><a href="#select">List select(IFilter[] filters)</a></li>
+	<li><a href="#import">void importObject(ModelType model, IObjectDescriptor[] descriptor, boolean asLink)</a></li>
+	<li><a href="#resolve">Object resolve(ModelType model, Object proxy)</a></li>
+</ul>
+<h3 id="open">void open(Connection connection) throws CoreException;</h3>
+<p>This method is responsible for actually opening a connection resource to the external repository. 
+Failing of opening the connection must be signaled by throwing a CoreException. For opening the connection, 
+the implementer may use both the persistent attributes and the transient properties. If necessary he can 
+ask the user for further input via dialogs. No queries will be performed on the connection by the 
+Stardust modeler if the connection is not successfully opened.</p>
+<h3 id="close">void close(Connection connection) throws CoreException;</h3>
+<p>This method is responsible for closing a connection resource to the external repository and releasing 
+any resources acquired since opening.</p>
+<h3 id="select">List select(IFilter[] filters) throws CoreException;</h3>
+<p>The method returns a list of IObjectDescriptors that will be used to generate the outline tree. 
+The filters (if present) may be used to restrict the elements to be returned.</p>
+<h3 id="import">void importObject(ModelType model, IObjectDescriptor[] descriptor, boolean asLink);</h3>
+<p>This method is responsible for creating and adding the model elements corresponding to the array of 
+descriptors to the provided model. The parameter asLink specifies if the objects will be generated as 
+links or will be fully imported into the model. It is possible and allowed that for a specific object 
+descriptor more than one model element is added to the model.</p>
+<h4>Example Implementation</h4>
+<p>The following shows an example implementation:</p>
+<pre>
+public abstract void createData(boolean asLink);
+
+public void importObject(ModelType model, IObjectDescriptor[] descriptors, 
+	boolean asLink)
+{
+   for (int i = 0; i &lt; descriptors.length; i++) 
+   {
+      IObjectDescriptor descriptor = descriptors[i];
+      if ("process".equals(descriptor.getURI().segment(0)))
+      {
+         createData(asLink);
+         DataTypeType primitiveType = (DataTypeType) 
+ModelUtils.findIdentifiableElement(
+               model.getDataType(), "primitive");
+         data.setType(primitiveType);
+         
+         model.getProcessDefinition().add(process);
+         model.getRole().add(role);
+         model.getData().add(data);
+      }
+   }   
+}
+</pre>
+
+<h3 id="resolve">Object resolve(ModelType model, Object proxy);</h3>
+<p>This method is responsible for replacing proxy objects that are created during model load with actual 
+linked elements. This method is invoked only once per each proxy object at the end of a successful model 
+load. The returned value is the resolved object or null if the proxy was not resolved. This method is 
+supposed to perform all necessary changes in the model.</p>
+<h4>Example Implementation</h4>
+<p>A typical implementation is provided below:</p>
+<pre>
+public abstract EObject findObjectByUri(URI uri);
+
+public Object resolve(ModelType model, Object object)
+{
+   URI uri = ((EObjectImpl) object).eProxyURI();
+
+   EObject element = findObjectByUri(uri);
+   if (element != null)
+   {
+      EcoreUtil.replace(eObject, element);
+      for (EContentsEList.FeatureIterator featureIterator =
+          (EContentsEList.FeatureIterator) eObject.eCrossReferences()
+.iterator();featureIterator.hasNext(); )
+      {
+         EObject target = (EObject)featureIterator.next();
+         EReference eReference = (EReference)featureIterator.feature();
+         unset(eObject, target, eReference);
+         set(element, target, eReference);
+      }
+   }
+   return element;
+}
+
+private void set(EObject object, EObject target, EReference reference)
+{
+   if (reference.isMany())
+   {
+      List list = (List) object.eGet(reference);
+      list.add(target);
+   }
+   else
+   {
+      object.eSet(reference, target);
+   }
+}
+
+private void unset(EObject object, EObject target, EReference reference)
+{
+   if (reference.isMany())
+   {
+      List list = (List) object.eGet(reference);
+      list.remove(target);
+   }
+   else if (reference.isUnsettable())
+   {
+      object.eUnset(reference);
+   }
+   else
+   {
+      object.eSet(reference, null);
+   }
+}
+</pre>
+
+<h2 id="outlineNodes">User Interaction with Outline Nodes</h2>
+<p>There are situations where the developer may want to give the user the possibility to interact with the 
+outline nodes. This is possible via two extension points:
+<ul>
+	<li><tt>org.eclipse.ui.propertyPages</tt>: allows the developer to provide property pages for the 
+	outline nodes.</li>
+	<li><tt>org.eclipse.stardust.modeling.core.contextMenuAction</tt>: allows the developer to provide 
+	context menu actions.</li>
+</ul>
+<p>The property pages must be implemented in the exact way as described for the connections, with the only 
+change that the objectClass attribute to match the class of the implementation node and the filter removed 
+or adapted to the specific class.</p>
+<p>Context menu actions are specified in the <tt>plugin.xml</tt> file as follows:</p>
+<pre>
+&lt;extension point="org.eclipse.stardust.modeling.core.contextMenuAction"&gt;
+  &lt;contextMenuAction
+    actionClass="&lt;class name of the action&gt;"
+    group="rest"
+    id="&lt;unique identifier&gt;"
+    targetEObjectType="&lt;class name or superclass/interface of the node&gt;"/&gt;
+&lt;/extension&gt;
+</pre>
+<p>The action class must implement <tt>IAction</tt> interface, but it is recommended to implement <tt>ISpiAction</tt> 
+interface too to get access to the actual selected element, configuration element of the action 
+(the data described in the plugin.xml for that action) and the <tt>WorkflowModelEditor</tt> that have invoked the 
+action.</p>
+<p>If the result of the action has generated a change in the node data (either label/icon or children) 
+the developer must ensure that a corresponding notification is sent by the node to all adapters so that 
+the change will be reflected in the outline tree.</p>
+<p>Example action:</p>
+<pre>
+public class GetCategoryDetailsAction extends Action implements ISpiAction
+{
+   private IStructuredSelection selection;
+
+   public boolean isEnabled()
+   {
+      return !selection.isEmpty() &amp;&amp; isMyOwnCategory();      
+   }
+
+   private boolean isMyOwnCategory ()
+   {
+      Object selection = this.selection.getFirstElement();
+      if (selection instanceof IAdaptable)
+      {
+         Object model = ((IAdaptable) selection).getAdapter(EObject.class);
+         if (model instanceof CategoryDescriptor)
+         {
+            return !((CategoryDescriptor) model).isFetched();
+         }
+      }
+      return false;
+   }
+   
+   public void run()
+   {
+      Object selection = this.selection.getFirstElement();
+      CategoryDescriptor descriptor = (CategoryDescriptor)
+         ((IAdaptable) selection).getAdapter(EObject.class);
+      descriptor.fetchChildren();
+   }
+
+   public void setConfiguration(IConfigurationElement config,
+         WorkflowModelEditor editor, IStructuredSelection selection)
+   {
+      setId(config.getAttribute(SpiConstants.ID));
+      setText("Get Details");
+      this.selection = selection;
+   }
+}
+</pre>
+<p>The CategoryDescriptor is the actual implementation class of the node. The <tt>fetchChildren()</tt>
+ method is responsible for sending the change notification, as below:</p>
+<pre>
+public void fetchChildren()
+{
+   doAction();
+   if (eNotificationRequired())
+   {
+      if (labelOrIconChanged())
+      {
+         eNotify(new ENotificationImpl(this, Notification.SET, null, null, null));
+      }
+      if (childrenChanged())
+      {
+         eNotify(new ENotificationImpl(this, Notification.ADD_MANY, null, null, null));
+      }
+   }
+}
+</pre>
+
+<h2 id="quickstart">Quick Start using XPDL Documents</h2>
+
+<p>If the plug-in developer has already the elements that he wants to expose in the form of XPDL documents,
+ he can reuse the Stardust loading functionality to populate the outline tree. The XPDL documents can be 
+ retrieved either from the file system, a database or generated on the fly.</p>
+<p>On connection <tt>open()</tt>, the developer should prepare the connection handler to be able to 
+retrieve the XPDL document and parse it into the relevant model elements. In the example below, we will 
+read the XPDL document and store the contained model for later usage:</p>
+<pre>
+public void open(Connection connection) throws CoreException
+{
+   InputStream is = getInputStreamOfTheXpdlDocument(connection);
+   if (is != null)
+   {
+      connectionUri = ConnectionManager.makeURI(connection);
+      CarnotWorkflowModelPackageImpl.init();
+      Resource.Factory factory =
+         new CarnotWorkflowModelResourceFactoryImpl();
+      Resource resource = factory.createResource(
+         URI.createFileURI("dummy.xpdl"));
+      Map options = new HashMap();
+      options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+      try
+      {
+         resource.load(is, options);
+      }
+      catch (IOException e)
+      {
+         throw new CoreException(new Status(IStatus.ERROR,
+               ObjectRepositoryActivator.PLUGIN_ID, 0,
+               "Error parsing input stream.", null));
+      }
+      finally
+      {
+         try
+         {
+            is.close();
+         }
+         catch (IOException e)
+         {
+         }
+      }
+      EList l = resource.getContents();
+      Iterator i = l.iterator();
+      while (i.hasNext())
+      {
+         Object o = i.next();
+         if (o instanceof DocumentRoot)
+         {
+            model = ((DocumentRoot) o).getModel();
+            break;
+         }
+      }
+   }
+   else
+   {
+      throw new CoreException(new Status(IStatus.ERROR,
+            ObjectRepositoryActivator.PLUGIN_ID, 0,
+            "Cannot access resource.", null));
+   }
+}
+</pre>
+<p>After successful execution of <tt>open()�</tt> we will have two values stored in the handler fields:</p> 
+<ul>
+	<li>the computed base URI of the connection (we will use it to uniquely identify model elements)</li>
+	<li>the ModelType - model field - corresponding to the loaded model</li>
+</ul>
+<p>The outline nodes are retrieved via the select method. In this example we will ignore the filters and 
+provide nodes for participants and applications found in the model. We will create two categories, one for 
+the participants and one for the applications, and for each category we will have to add the 
+<tt>IObjectDescriptors</tt> corresponding to each model element added.</p>
+<p>In order to keep the example simple, we will reuse another Stardust class - EObjectDescriptor - that 
+works as an adapter between <tt>IObjectDescriptors</tt> and <tt>EObjects</tt>.</p>
+<pre>
+public List select(IFilter[] filters) throws CoreException
+{
+   ArrayList participants = new ArrayList();
+   addElements(participants, "role", model.getRole());
+   addElements(participants, "organization", model.getOrganization());
+   
+   ArrayList applications = new ArrayList();
+   addElements(applications, "application", model.getApplication());
+   
+   ArrayList result = new ArrayList();
+   result.add(createCategory("participants", "Participants",
+      (IObjectDescriptor[]) participants.toArray(
+         new IObjectDescriptor[participants.size()])));
+   result.add(createCategory("applications", "Applications",
+      (IObjectDescriptor[]) applications.toArray(
+         new IObjectDescriptor[applications.size()])));
+   return Collections.unmodifiableList(result);      
+}
+
+private IObjectDescriptor createCategory(String id, String name,
+      final IObjectDescriptor[] children)
+{
+   return new EObjectDescriptor(connectionUri.appendSegment(id),
+         null, id, name, null, null, null)
+   {
+
+      public IObjectDescriptor[] getChildren()
+      {
+         return children;
+      }
+
+      public boolean hasChildren()
+      {
+         return children.length &gt; 0;
+      }
+   };
+}
+
+private void addElements(List descriptors, String type, List elements)
+{
+   for (int i = 0; i &lt; elements.size(); i++)
+   {
+      IIdentifiableModelElement identifiable =
+         (IIdentifiableModelElement) elements.get(i);
+      URI elementUri = connectionUri.appendSegment(type)
+         .appendSegment(identifiable.getId());
+      EObjectDescriptor descriptor = new EObjectDescriptor(elementUri, 
+            // classifier
+            ((EObject) identifiable).eClass(),
+            // id, name, description
+            identifiable.getId(), 
+            identifiable.getName(), 
+            ModelUtils.getDescriptionText(identifiable.getDescription()),
+            // Icon
+            null, 
+            null);
+      descriptors.add(descriptor);
+   }
+}
+</pre>
+<p>For importing, we create a command for each imported model element. First we search the actual model 
+elements that we want to link. For each model element we must set the proxy URI so that Stardust modeler 
+and the EMF framework will know that the new model element is a linked element. After that we add the 
+element to the parent using the SetValueCmd that has as arguments the parent, the EMF containing feature 
+of the element to add and the last argument is the element we want to add.</p>
+<pre>
+public void importObject(ModelType origmodel, IObjectDescriptor[] 
+descriptors, boolean asLink)
+{      
+   for (int i = 0; i &lt; descriptors.length; i++) 
+   {
+      IObjectDescriptor descriptor = descriptors[i];
+      URI uri = descriptor.getURI();
+      IIdentifiableModelElement identifiable = findIdentifiableByUri(model, 
+Uri, asLink);
+      if (identifiable != null)
+      {
+         if (identifiable != null)
+         {
+            new SetValueCmd(origmodel,
+               identifiable.eContainingFeature(), identifiable).execute();
+         }
+      }
+   }   
+}
+
+public IIdentifiableModelElement findIdentifiableByUri(ModelType model,
+URI uri, boolean asLink)
+{
+   String type = uri.segment(0);
+   String id = uri.segment(1);
+   
+   List searchList = null;
+   
+   if ("role".equals(type))
+   {
+      searchList = model.getRole();
+   }
+   else if ("organization".equals(type))
+   {
+      searchList = model.getOrganization();
+   }
+   else if ("application".equals(type))
+   {
+      searchList = model.getApplication();
+   }
+   
+   if (searchList != null)
+   {
+      IIdentifiableModelElement identifiable = (IIdentifiableModelElement)
+         ModelUtils.findIdentifiableElement(searchList, id);
+	if (asLink)
+	{
+         // the proxy uri is needed for resolving
+         ((EObjectImpl) identifiable).eSetProxyURI(uri);
+}
+else
+{
+   AttributeUtil.setAttribute(identifiable, 
+      ConnectionManager.URI_ATTRIBUTE_NAME,
+            uri);
+   
+}
+      return identifiable;
+   }
+   
+   return null;
+}
+</pre>
+
+<h2 id="programmatically">Programmatically Creating Model Elements</h2>
+<p>There are cases when the plug-in developers do not have XPDL documents but some other proprietary 
+solution management that cannot be easily converted to Stardust formats. In this case, the developer may 
+want to create "on the fly" the model elements that he wants to link based on the information that he has.</p>
+<p>Creating Stardust model elements is done always via the Stardust factory. The factory is a singleton 
+and has methods to create each of the Stardust model elements (<tt>createXXXType()</tt>). For example, if 
+you want to create a Role and an Application, you can use:</p>
+<pre>
+CarnotWorkflowModelFactory factory = CarnotWorkflowModelFactory.eINSTANCE;
+RoleType role = factory.createRoleType();
+ApplicationType application = factory.createApplicationType();
+</pre>
+<p>The full set of Stardust model elements is comprised of the following classes:</p>
+<ul>
+	<li>AccessPointType</li>
+	<li>ActivityType</li>
+	<li>ApplicationType</li>
+	<li>BindActionType</li>
+	<li>ConditionalPerformerType</li>
+	<li>ContextType</li>
+	<li>DataMappingType</li>
+	<li>DataPathType</li>
+	<li>DataType</li>
+	<li>EventActionType</li>
+	<li>EventHandlerType</li>
+	<li>OrganizationType</li>
+	<li>ParameterMappingType</li>
+	<li>ProcessDefinitionType</li>
+	<li>RoleType</li>
+	<li>TransitionType</li>
+	<li>TriggerType</li>
+	<li>UnbindActionType</li>
+</ul>
+<p>Each of this classes follows the java bean pattern, so that for each property there are setters and 
+getters with the exception of aggregate structures that have only a getter that retrieves a <tt>java.util.List</tt>
+ where the developer can directly add or remove elements.</p>
+<p>We will describe below how to create a Process Definition containing two activities, a transition, 
+one role and a diagram. This process definition can be presented, linked and resolved as described in the 
+previous sections.</p>
+<p>For the beginning, we will create the process and both activities:</p>
+<pre>
+CarnotWorkflowModelFactory factory = CarnotWorkflowModelFactory.eINSTANCE;
+
+ProcessDefinitionType process = factory.createProcessDefinitionType();
+process.setId("sample");
+process.setName("Sample Process");
+process.setDescription(ModelUtils.createDescription(
+"Sample process created programmatically"));
+((EObjectImpl) process).eSetProxyURI(
+connectionUri.appendSegment("process"));
+
+ActivityType route = factory.createActivityType();
+route.setId("route");
+route.setName("Route Activity");
+route.setImplementation(ActivityImplementationType.ROUTE_LITERAL);
+process.getActivity().add(route);
+
+ActivityType manual = factory.createActivityType();
+manual.setId("manual");
+manual.setName("Manual Activity");
+manual.setImplementation(ActivityImplementationType.MANUAL_LITERAL);
+process.getActivity().add(manual);
+
+The manual activity, needs a performer, so we will create a new role and set it as the activity performer.
+
+RoleType role = factory.createRoleType();
+role.setId("role");
+role.setName("Role ");
+((EObjectImpl) role).eSetProxyURI(connectionUri.appendSegment("role"));
+ manual.setPerformer(role);
+</pre>
+<p>Next, we will create a Data object and a data mapping to the manual activity. The Data object will have
+the Stardust meta type <tt>primitive</tt>. Since the meta type should be normally retrieved from the model,
+we will not set yet the type of the data, and will defer that to the time of linking or resolving. As a 
+primitive data, we must set two dynamic attributes that defines the specifics of the data object:</p>
+<ul>
+	<li>the type of the primitive</li>
+	<li>the default value</li>
+</ul>
+<pre>
+DataType data = factory.createDataType();
+data.setId("primitive_string");
+data.setName("Primitive String Data");
+AttributeUtil.setAttribute(data, "carnot:engine:type",
+"org.eclipse.stardust.engine.core.pojo.Type", "String");
+AttributeUtil.setAttribute(data, "carnot:engine:defaultValue", "Hello!");
+((EObjectImpl) data).eSetProxyURI(connectionUri.appendSegment("data"));
+
+DataMappingType mapping = factory.createDataMappingType();
+mapping.setId("in_mapping");
+mapping.setDirection(DirectionType.IN_LITERAL);
+mapping.setContext("default");
+mapping.setData(data);
+manual.getDataMapping().add(mapping);
+</pre>
+<p>Now we create a transition between the route and manual activities:</p>
+<pre>
+TransitionType transition = factory.createTransitionType();
+transition.setId("transition");
+transition.setName("Transition");
+transition.setCondition("TRUE");
+transition.setFrom(route);
+transition.setTo(manual);
+process.getTransition().add(transition);
+</pre>
+<p>This process can be used already as it is, but we want to add a diagram too:</p>
+<pre>
+DiagramType diagram = factory.createDiagramType();
+diagram.setName("Diagram");
+diagram.setOrientation(OrientationType.HORIZONTAL_LITERAL);
+process.getDiagram().add(diagram);
+
+ActivitySymbolType routeSymbol = factory.createActivitySymbolType();
+routeSymbol.setActivity(route);
+routeSymbol.setXPos(300);
+routeSymbol.setYPos(200);
+diagram.getActivitySymbol().add(routeSymbol);
+
+ActivitySymbolType manualSymbol = factory.createActivitySymbolType();
+manualSymbol.setActivity(manual);
+manualSymbol.setXPos(100);
+manualSymbol.setYPos(400);
+diagram.getActivitySymbol().add(manualSymbol);
+
+RoleSymbolType roleSymbol = factory.createRoleSymbolType();
+roleSymbol.setRole(role);
+roleSymbol.setXPos(450);
+roleSymbol.setYPos(300);
+diagram.getRoleSymbol().add(roleSymbol);
+
+DataSymbolType dataSymbol = factory.createDataSymbolType();
+dataSymbol.setData(data);
+dataSymbol.setXPos(400);
+dataSymbol.setYPos(50);
+diagram.getDataSymbol().add(dataSymbol);
+
+TransitionConnectionType transitionConnection = factory.createTransitionConnectionType();
+transitionConnection.setTransition(transition);
+transitionConnection.setSourceAnchor("center");
+transitionConnection.setTargetAnchor("center");
+transitionConnection.setSourceActivitySymbol(routeSymbol);
+transitionConnection.setTargetActivitySymbol(manualSymbol);
+diagram.getTransitionConnection().add(transitionConnection);
+
+PerformsConnectionType performsConnection = factory.createPerformsConnectionType();
+performsConnection.setActivitySymbol(manualSymbol);
+performsConnection.setParticipantSymbol(roleSymbol);
+diagram.getPerformsConnection().add(performsConnection);
+
+DataMappingConnectionType mappingConnection = factory.createDataMappingConnectionType();
+mappingConnection.setActivitySymbol(manualSymbol);
+mappingConnection.setDataSymbol(dataSymbol);
+diagram.getDataMappingConnection().add(mappingConnection);
+</pre>
+<p>For our example the presentation will deliver a single element, the process definition. For that, 
+the select method looks fairly simple:</p>
+<pre>
+public List select(IFilter[] filters) throws CoreException
+{
+   EObjectDescriptor descriptor = new EObjectDescriptor(
+connectionUri.appendSegment("process"),            CarnotWorkflowModelPackage.eINSTANCE
+         .getProcessDefinitionType(),
+      "sample", "Sample Process", null, null, null);
+   return Collections.singletonList(descriptor);
+}
+</pre>
+<p>In contrast, the import operation is a composite,  because we need to add not only the process, but the 
+role and the data too, then again we must set the proper type of the data.</p>
+<pre>
+public void importObject(ModelType model, IObjectDescriptor[]
+descriptors, boolean asLink)
+{
+   for (int i = 0; i &lt; descriptors.length; i++) 
+   {
+      IObjectDescriptor descriptor = descriptors[i];
+      if ("process".equals(descriptor.getURI().segment(0)))
+      {
+         updateOids(model);
+         DataTypeType primitiveType = (DataTypeType)
+ModelUtils.findIdentifiableElement(model.getDataType(),
+   "primitive");
+         
+	   model.getProcessDefinition().add(process);
+	   model.getRole().add(role);
+	   model.getData().add(data);
+	   data.setType(primitiveType);
+      }
+   }   
+}
+
+private void updateOids(ModelType model)
+{
+   long oid = ModelUtils.getElementOid(process, model);
+   process.setElementOid(oid++);
+   route.setElementOid(oid++);
+   manual.setElementOid(oid++);
+   role.setElementOid(oid++);
+   data.setElementOid(oid++);
+   mapping.setElementOid(oid++);
+   transition.setElementOid(oid++);
+   diagram.setElementOid(oid++);
+   routeSymbol.setElementOid(oid++);
+   manualSymbol.setElementOid(oid++);
+   roleSymbol.setElementOid(oid++);
+   dataSymbol.setElementOid(oid++);
+   transitionConnection.setElementOid(oid++);
+   performsConnection.setElementOid(oid++);
+   mappingConnection.setElementOid(oid++);
+}
+</pre>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

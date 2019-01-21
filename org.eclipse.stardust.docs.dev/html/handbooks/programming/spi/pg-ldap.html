@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Tutorial - LDAP Synchronization Provider Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Monitoring Worklists",
+        "pg-spi.htm","pg-worklist-monitoring.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "spi-toc.html","SPI"); 
+-->
+</script>
+<h1>Tutorial - LDAP Synchronization Provider Example</h1>
+<ul>
+	<li><a href="#motiv">Motivation</a></li>
+	<li><a href="#folder">LDAP Directory Structure</a></li>
+	<li><a href="#config">LDAP Configuration (OpenLDAP)</a></li>
+	<li><a href="#browser">Setting Up the LDAP Browser - Optional</a></li>
+	<li><a href="#spi">Implementing SPI</a></li>
+	<li><a href="#ipp">Stardust Configuration</a></li>
+</ul>
+<h2 id="motiv">Motivation</h2>
+<p>With the help of SPI synchronization, you have the option to
+perform the following actions against arbitrary external repositories,
+which otherwise would have to be performed against audit trail databases:</p>
+<ul>
+	<li>User Authentication</li>
+	<li>User Authorization</li>
+	<li>Synchronizing user, user group and department information</li>
+</ul>
+<p>You need to perform the following steps to make SPI synchronizing possible:</p>
+<ol>
+	<li>Create a data structure, where the required information
+	should be stored. Please refer to section <a href="#folder">LDAP Directory
+	Structure</a> for details.</li>
+	<li>Configure an external repository, against which the actions
+	mentioned above should be performed. Please refer to the sections <a
+		href="#config"
+	>LDAP Configuration (OpenLDAP)</a> and <a href="#browser">Setting Up the LDAP Browser
+	- Optional</a> accordingly.</li>
+	<li class="ipp">Set up a working environment as described in
+	the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+	Stardust Installation Guide</a>.</li>
+	<li>SPI implementation. Please refer to the section <a href="#spi">Implementing
+	SPI</a>.</li>
+	<li>Configuration of Stardust. Please refer
+	to the section <a href="#ipp">Stardust
+	Configuration</a> for details.</li>
+</ol>
+<h2 id="folder">LDAP Directory Structure</h2>
+<p>You can download the following zip file containing sources required
+for this tutorial:</p>
+<ul>
+   <li><a href="../../../examples/ldap-sync/ldap-sync.zip">ldap-sync.zip</a></li>
+</ul>
+<p>You find all data needed for this tutorial, like user and
+department information and grants, in LDIF (LDAP Data Interchange
+Format) format in the <tt>user-directory.ldif</tt> file, residing in the
+<tt>examples/ldap-sync/etc</tt> folder of this zip file.
+Please note that user groups are not covered with this example.</p>
+<h3>Branch Nodes</h3>
+<h4>ou=People</h4>
+<p><tt>ou=People</tt> contains user information like user name
+(uid), password (userPassword), name and last name (givenName and sn),
+etc.</p>
+<pre>
+# People
+dn: ou=People,dc=ldap,dc=example,dc=ipp
+objectClass: top
+objectClass: organizationalUnit
+ou: People
+</pre>
+<h4>ou=Departments</h4>
+<p><tt>ou=Departments</tt> contains information about the department
+(ou) and the according description.</p>
+<pre>
+# Departments
+dn: ou=Departments,dc=ldap,dc=example,dc=ipp
+objectClass: top
+objectClass: organizationalUnit
+ou: Departments
+</pre>
+<h4>ou=Groups</h4>
+<p>ou=Groups represents the grants by assigning an organization, a
+role or department to a user (uniqueMember). Roles and organizations (cn) are defined in
+the model, whereby departments are defined in the LDAP folder under <tt>ou=Departments</tt>.</p>
+<pre>
+# Groups
+dn: ou=Groups,dc=ldap,dc=example,dc=ipp
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+</pre>
+<h2 id="config">LDAP Configuration</h2>
+<p>To configure the LDAP, perform the following steps:</p>
+<ol>
+	<li>Install the LDAP server from <a
+		href="http://www.openldap.org"
+	>www.openldap.org</a>.</li>
+	<li>Add the following content to the LDAP configuration file <tt>slapd.conf</tt>:
+	<pre>
+ucdata-path	./ucdata
+include		./schema/core.schema
+include		./schema/cosine.schema
+include		./schema/inetorgperson.schema
+
+pidfile		./run/slapd.pid
+argsfile	./run/slapd.args
+
+database	bdb
+suffix		"dc=ldap,dc=example,dc=ipp"
+rootdn		"cn=Manager,dc=ldap,dc=example,dc=ipp"
+rootpw		secret
+
+directory	./data
+index		objectClass	eq
+</pre></li>
+	<li>Make sure the LDAP configuration file <tt>ldap.conf</tt> is
+	empty.</li>
+	<li>Make sure the LDAP server is running (e.g. LDAP Windows
+	service is started).</li>
+	<li>Import the files necessary for this tutorial (user and
+	department information as well as grants) via the follwing console
+	command: <pre>%OPEN_LDAP_DIR%/ldapadd -f %CARNOT_HOME%/examples/ldap-sync/etc/user-directory.ldif -D "cn=Manager,dc=ldap,dc=example,dc=ipp" -x -w secret</pre>
+	</li>
+</ol>
+<h2 id="browser">Setting Up the LDAP Browser (Optional)</h2>
+<p>To set up the LDAP browser, perform the following steps:</p>
+<ol>
+	<li>Install the LDAP browser, you like to visualize an LDAP
+	structure with, from <a href="http://www.ldapbrowser.com/">http://www.ldapbrowser.com/</a>.</li>
+	<li>Start the LDAP browser.</li>
+	<li>Select <strong>File &gt; New Profile</strong>.
+	<ul>
+		<li>Enter a profile name.</li>
+		<li>Enter <tt>dc=ldap,dc=example,dc=ipp</tt> as base DN.</li>
+		<li>Enter <tt>cn=Manager,dc=ldap,dc=example,dc=ipp</tt> as user DN.</li>
+	</ul>
+	</li>
+	<li>After the data import to the LDAP directory, the LDAP browser displays the following:
+	<p class="image"><a href="images/ldap-browser_orgSize.png"
+		target="_blank"
+	> <img src="images/ldap-browser.png" alt="LDAP Browser"></a><br>
+	<strong>Figure:</strong> Data displayed in the LDAP Browser</p>
+	</li>
+</ol>
+<h2 id="spi">Implementing SPI</h2>
+<p>It is necessary to supplement the following abstract classes and interfaces to
+provide the implementations needed to access the desired external
+repository:</p>
+<ul>
+	<li>ExternalLoginProvider</li>
+	<li>DynamicParticipantSynchronizationProvider</li>
+	<li>DynamicParticipantSynchronizationStrategy</li>
+</ul>
+<p>Please refer to the chapter <a href="pg-security-1.htm">Integrating
+External User Repositories</a> for detailed information on these classes and
+interfaces.</p>
+<p>Additionally, the following abstract classes have to be
+supplemented with the necessary implementation, so that they are able to
+get the information on user, user group and department retrieved from
+the external repository:</p>
+<ul>
+	<li>ExternalUserConfiguration</li>
+	<li>ExternalUserGroupConfiguration (not used in this tutorial)</li>
+	<li>ExternalDepartmentConfiguration</li>
+</ul>
+<p>You find a sample SPI implementation in the 
+<a href="../../../examples/index.html">Examples</a> section
+ of your Stardust installation. Download the following file containing the
+ example implementation:</p>
+<ul>
+   <li><a href="../../../examples/ldap-sync/ldap-sync.zip">ldap-sync.zip</a></li>
+</ul>
+<p>In this example, the class <tt>LDAPAdapter</tt> plays a major role as it
+converts the Java requests into LDAP requests (please see the following
+section). Hereby it is using the class <tt>LDAPConnection</tt>, which
+encapsulates the connection to an LDAP directory structure.</p>
+<p>In the following section, we provide a quick look into the
+necessary implementations:</p>
+<ul>
+	<li><pre>LDAPLoginProvider implements ExternalLoginProvider</pre>
+	This class performs a login via <tt>LDAPAdapter</tt> with the given
+	user-password couple. It determines, if a login is allowed, thus
+	performs an authentication against the LDAP directory structure.</li>
+	<li><pre>LDAPSynchronizationProvider extends DynamicParticipantSynchronizationProvider</pre>
+	This class performs the synchronization of user and department
+	information via delegation to the LDAP-adapter. It also provides the
+	retrieved information as object of the class <tt>UserConfig</tt> and <tt>DepartmentConfig</tt>
+	respectively.</li>
+	<li><pre>AlwaysSyncStrategy extends DynamicParticipantSynchronizationStrategy</pre>
+	In case this implementation is asked in the engine, if a
+	synchronization is necessary, e.g. during loading a user from the database, it always returns <tt>true</tt>. Thus it makes
+	sure a synchronization takes always place in this example. This
+	only serves for demonstration purpose, in a productive environment,
+	more complex solutions are implemented.<br></li>
+	<li><pre>UserConfig extends ExternalUserConfiguration</pre>
+	This
+	class encapsulates entries like name,
+	description, email and other properties, which are user relevant during sychronization. Additionally, grants, which
+	this users owns and are needed for the authorization (method
+	getModelParticipantsGrants()), are provided via delegation of the
+	request to the LDAPAdapter.<br></li>
+	<li><pre>DepartmentConfig extends ExternalDepartmentConfiguration</pre>
+	This class encapsulates the fields name and description, which
+	are relevant for a department during synchronization.</li>
+</ul>
+<p>To keep the search in the LDAP directory flexible, the search
+mechanism is implemented via filter, which is demonstrated in the
+following user filter:</p>
+<ol>
+	<li>Starting with the filter declared in the <tt>carnot.properties</tt>
+	file <pre>(Property LDAPSynchronization.UserFilter)(&amp;(uid=%v)(objectclass=inetorgperson)) ...</pre></li>
+	<li>... the placeholder <tt>%v</tt> is replaced with exactly the user,
+	which is searched for, e.g. motu:
+	<pre>&amp;(uid=motu)(objectclass=inetorgperson)</pre> Hereby, the character
+	&amp; describes the logical conjunction operator. The two following
+	conditions in the brackets have to be fulfilled.</li>
+	<li>It is also possible to restrict the search scope via the
+	property <tt>LDAPSynchronization.UserBaseDN</tt>, which is given
+	relativ to the base DN: <tt>ou=People</tt>.</li>
+	<li>In summary a search request results, comparable to the
+	following OpenLDAP request on the console: 
+	<pre>%OPEN_LDAP_HOME%/ldapsearch -b "ou=People,dc=ldap,dc=example,dc=ipp" "(&amp;(uid=motu)(objectclass=inetorgperson))"</pre></li>
+</ol>
+<p>Additionally to the configurable filters, there are numerous further properties, which can be 
+configured with the help of the <tt>carnot.properties</tt> file, 
+e.g. the attribute names of the several LDAP entries or the LDAP entry, which is determined to be searched for users (see class <tt>LDAPProperties</tt>).
+
+<h2 id="ipp">Stardust Configuration</h2>
+<p>The following properties have to be added to your <tt>carnot.properties</tt> file:</p>
+<pre>
+Security.Authentication.LoginService = org.eclipse.stardust.examples.authorization.ldap.LDAPLoginProvider
+
+Security.Authorization.SynchronizationProvider = org.eclipse.stardust.examples.authorization.ldap.LDAPSynchronizationProvider
+Security.Authorization.SynchronizationStrategy = org.eclipse.stardust.examples.authorization.ldap.AlwaysSyncStrategy
+
+LDAPSynchronization.ServerName = localhost
+LDAPSynchronization.ServerPort = 389
+
+LDAPSynchronization.BindMode = dedicated
+LDAPSynchronization.BindUserDN = cn=Manager,dc=ldap,dc=example,dc=ipp
+LDAPSynchronization.BindPassword = secret
+
+LDAPSynchronization.RootDN = dc=ldap,dc=example,dc=ipp
+LDAPSynchronization.UserBaseDN = ou=People
+LDAPSynchronization.DepartmentBaseDN = ou=Departments
+LDAPSynchronization.GroupBaseDN = ou=Groups
+
+LDAPSynchronization.UserFilter = (&amp;(uid=%v)(objectclass=inetorgperson))
+LDAPSynchronization.DepartmentFilter = (&amp;(cn=%v)(objectClass=organizationalRole))
+LDAPSynchronization.ParticipantFilter = (&amp;(uniqueMember=uid=%v,ou=People,dc=ldap,dc=example,dc=ipp)(objectClass=groupOfUniqueNames))
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

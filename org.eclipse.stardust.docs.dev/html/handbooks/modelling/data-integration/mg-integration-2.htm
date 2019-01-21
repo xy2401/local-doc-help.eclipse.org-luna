@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Working with Java Style Data Types</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Structured Data Types",
+		"","struct-data-preface.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"data-int-preface.html","Data Integration");
+ -->
+</script>
+<h1>Working with Java Style Data Types</h1>
+<p>Java style data types are data which use the Java type system. They differ
+regarding their usage and storage. The following Java style data types are provided with
+Stardust :</p>
+<ul>
+    <li><a href="java-style-data/primitive-data.html">Primitive Data</a></li>
+    <li><a href="java-style-data/serializable-data.html">Serializable Data</a></li>
+    <li><a href="java-style-data/entity-bean-data.html">Entity Bean Data</a></li>
+</ul>
+<p>Section <a href="#methodPath">Handling of Accessors</a> describes
+how Java Style Data types use accessors as method path.</p>
+<h2 id="methodPath">Handling of Accessors</h2>
+<p>Common for all data types is the handling of accessors. Access points of Java
+style data types always contain a property with the Java type of the access point. Based
+on this associated type access paths have always the form of method paths, i.e. chained
+getters and setters:</p>
+<ul>
+    <li>IN access paths have the form g 1 ...g n .s where g i are getters and s is
+    a setter.</li>
+    <li>An empty IN access path varies in precise semantics. Normally, it means
+    setting directly the access point value but in case of an Entity Bean a primary key
+    value is expected instead.</li>
+    <li>OUT access paths have the form g 1 ...g n where g i are getters.</li>
+    <li>An empty OUT access path varies in precise semantics. Normally, it means
+    getting directly the access point value but in case of an Entity Bean the primary key
+    value is returned.</li>
+</ul>
+<h3>Getters and Setters</h3>
+<p>Getters and setters in the scope of method paths are defined somewhat different
+than for Java Beans:</p>
+<ul>
+    <li>A getter is a method returning a non-void value without parameters.</li>
+    <li>A setter is a method having one method parameter.</li>
+</ul>
+<p>The following example shows different IN paths:</p>
+<pre>
+getCustomer().getName()
+customer().name()
+customer().toString()
+customer()</pre><p class="image"><img src="images/in-data-path-example.png" alt=""> <br>
+<strong>Figure:</strong> Example IN Data Path</p>
+
+<p>The following example shows different OUT paths:</p>
+<pre>getCustomer().setName(java.lang.String)<br>customer().setName(java.lang.String)<br>setName(java.lang.String)<br>setCustomer(com.acme.Customer)<br>
+</pre>
+<p class="image"><img src="images/out-data-path-example.png" alt=""> <br>
+<strong>Figure:</strong> Example OUT Data Path</p>
+<p>In the Process Workbench method paths can commonly be defined with the help of a
+method browser where you can choose the method path from a tree view. The method browser
+is opened by pressing the button next to the text field in a method path control.</p>
+<p class="image"><img src="images/mg-integration-1.png" alt=""> <br>
+<strong>Figure:</strong> The Method Browser for Specifying Method Paths</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.1"?>
+<!-- ===================================================== -->
+<!-- Declare the documentation for the ECF User Guide  	   -->
+<!-- ===================================================== -->
+<plugin>
+
+<!-- ============================================================================= -->
+<!-- Define TOC's                                                                  -->
+<!-- ============================================================================= -->
+   <extension point="org.eclipse.help.toc">
+      <toc file="toc.xml" primary="true"/>
+      <toc file="topics_Tutorials.xml"/>
+      <toc file="topics_Reference.xml"/>
+      <toc file="topics_Extpoint.xml"/>
+      <toc
+            file="tocapi.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="topics_Reference_RemoteServices.xml"
+            primary="false">
+      </toc>
+    </extension>
+   
+   
+<!-- ============================================================================= -->
+<!-- Eclipse Welcome                                                               -->
+<!-- ============================================================================= -->   
+   <extension point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+         configId="org.eclipse.ui.intro.universalConfig"
+         content="$nl$/intro/overviewExtensionContent.xml">
+      </configExtension>
+      <configExtension
+         configId="org.eclipse.ui.intro.universalConfig"
+         content="$nl$/intro/whatsnewExtensionContent.xml">
+      </configExtension>
+      <configExtension
+         configId="org.eclipse.ui.intro.universalConfig"
+         content="$nl$/intro/tutorialsExtensionContent.xml">
+      </configExtension>
+      <configExtension
+         configId="org.eclipse.ui.intro.universalConfig"
+         content="$nl$/intro/samplesExtensionContent.xml">
+      </configExtension>
+   </extension>
+</plugin>

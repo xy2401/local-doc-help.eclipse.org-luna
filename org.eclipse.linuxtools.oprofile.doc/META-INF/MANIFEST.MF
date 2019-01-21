@@ -1,0 +1,194 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.oprofile.doc; singleton:=t
+ rue
+Require-Bundle: org.eclipse.help
+Bundle-Version: 1.0.0.201502180018
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %Bundle-Name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_ima
+ ge.gif
+SHA1-Digest: Oh2bd/9lE739M5UGcCmr7C5Fshw=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Profiling-Configuration.
+ html
+SHA1-Digest: FQ/wD8SKDQxXzkavwV6gnlwbdUk=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ le_save_session.png
+SHA1-Digest: PSFm/93vM0iLroNdV53HSOdCQ5s=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_sam
+ ple.gif
+SHA1-Digest: hKWbPY9IGKI88i73fsZ8W60cNQs=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_eventcon
+ fig.png
+SHA1-Digest: S584uV3ukmxAnz53woe7xuM5NCo=
+
+Name: doc/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ led_log_reader.png
+SHA1-Digest: rOetOVinhy33MVlDxsAZgXXTADY=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_event_ti
+ mer.png
+SHA1-Digest: UfoMm8vCm65HDjBWA18LJitdUXs=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Installation-and-Set-Up.
+ html
+SHA1-Digest: TcjeU+Vf2eXgeo0qclf3yU7SJ/Y=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_dep
+ endent.gif
+SHA1-Digest: cDni1NFMK3LJE0ZZ5mAO/Fw6l0g=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/User-Guide.html
+SHA1-Digest: llZvToZBKNnt0RR0LvLDDotX7hY=
+
+Name: META-INF/maven/org.eclipse.linuxtools.oprofile/org.eclipse.linux
+ tools.oprofile.doc/pom.xml
+SHA1-Digest: rSsf4dVgofr5S0Im9QddRr7UuPw=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_proj_pre
+ fs.png
+SHA1-Digest: e71R2AXhCcZWZoGlTR8Tzktv1Gc=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Remote-OProfile.html
+SHA1-Digest: vSQ1t/lbA2cjeKgS7qZIiX7rSU4=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-one-cl
+ ick_launch.png
+SHA1-Digest: CdReCZTbnmbooIfqTg7UzoVFNR0=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_global_p
+ refs.png
+SHA1-Digest: Je2MydQKl/yHqIjoOiKCoSMKAjs=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Callgraph_timing_
+ submenu.png
+SHA1-Digest: mwjQLmXyizgxctxtnGGZmYSLwek=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-remote
+ -oprofile.png
+SHA1-Digest: t0BVC3gIL5ymBcebP0cnySQEt5I=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Example-Project.html
+SHA1-Digest: kBW2so12rlZY1pPVqHKxJqaY8y4=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_eve
+ nt.gif
+SHA1-Digest: VMOAhQ4bL9IHVeaRZBpKAqvqBMA=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_tab.png
+SHA1-Digest: 6lY2S1vhwWuDoH58dkWMDjs7cpw=
+
+Name: plugin.properties
+SHA1-Digest: B/dmBGY235swud7dxcKQ8j1QZ3g=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_original
+ _submenu.png
+SHA1-Digest: LUz2h4OR3hjIUT+ewptfneuwkL0=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-global
+ _config.png
+SHA1-Digest: fI3KCkHgzsRvfJpWMfXy8zQoYKg=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_global_c
+ onfig.png
+SHA1-Digest: u/gxwwEfMP3TLtkdnbGGJr/gg1s=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_manual_s
+ hortcut.png
+SHA1-Digest: lISPpfDGom3sFqVy/5PUbocQkx0=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-opcont
+ rol_consolehelper.png
+SHA1-Digest: 65bqDt2HK2cZzMa1khZazxnknvo=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Oprofile_manual_d
+ ialog.png
+SHA1-Digest: 9iJK7hS/kd/8eiip6oLgND7UEhE=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/OProfile-View.html
+SHA1-Digest: VEXl8kYUOHZOg1OCNQ/RuZPsdXs=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ le_eventconfig.png
+SHA1-Digest: MbzeYV0/69CWX9sduInG/rmvhac=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Remote-oprofile.p
+ ng
+SHA1-Digest: Sgh2rjkRgmOixm2Kt0+lm/xNV10=
+
+Name: toc-doc.xml
+SHA1-Digest: pOpwW2lLJMJvRJ112RGPmB8rtwQ=
+
+Name: plugin.xml
+SHA1-Digest: PkT6PDybJDc07AaaOU/4xm9V3C8=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ le_event_timer.png
+SHA1-Digest: A4VYLyjmXUfJiM/3YWDmjaHM5JY=
+
+Name: META-INF/maven/org.eclipse.linuxtools.oprofile/org.eclipse.linux
+ tools.oprofile.doc/pom.properties
+SHA1-Digest: FeUI9xhqVSXdLxDUiQpuGq9pgRQ=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ le_view_full.png
+SHA1-Digest: AtcsNqeGWv04Pt/gkmMGUTQX8Vs=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: toc.xml
+SHA1-Digest: z/Lf54o1ndCUMdCXNHh2YznAFLk=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Launching-A-Profile.html
+SHA1-Digest: OfrjWEFzOUNqsBNZqoJT98LXYJM=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-oprofi
+ le_global_differences.png
+SHA1-Digest: s8An8/yu5fgKv1R1ve04hUzJL7w=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Troubleshooting.html
+SHA1-Digest: 9/5qqWtHJr6J8y5saONCXmlNFTA=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Screenshot-instal
+ lscript_error_dialog.png
+SHA1-Digest: r23eNH0K+PR3gT7r2z6ZUcV2/L4=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_ses
+ sion.gif
+SHA1-Digest: GLusgmDUGcF7YoeBLMwf+W0wCyM=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/images/Icon-oprofile_sym
+ bol.gif
+SHA1-Digest: 5JOK79zhu3TCLXfOd9O1hYCW92o=
+
+Name: Linux_Tools_Project/OProfile/User_Guide/Updating-This-Document.h
+ tml
+SHA1-Digest: j0SEQsHpJAOxkGqt5ySjvR6Tlok=
+

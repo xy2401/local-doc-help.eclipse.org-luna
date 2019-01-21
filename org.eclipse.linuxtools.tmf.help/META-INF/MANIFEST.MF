@@ -1,0 +1,234 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.tmf.help;singleton:=true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 3.1.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: doc/images/Screenshot-NewPlug-inProject3.png
+SHA1-Digest: alwL0EHsreZpesTChVodvchUR9U=
+
+Name: META-INF/maven/org.eclipse.linuxtools.tmf/org.eclipse.linuxtools
+ .tmf.help/pom.xml
+SHA1-Digest: a7B/JjceibvywhwXSbHcEGB8BsI=
+
+Name: doc/images/SelectManifest.png
+SHA1-Digest: ddt/9WODLsV7Y6NGGtsClWqUMHQ=
+
+Name: doc/Performance-Tests.html
+SHA1-Digest: HtBWmCTUl60/lJ22fvOeVdFmOYQ=
+
+Name: doc/images/NTTTraceType.png
+SHA1-Digest: e2blxAOrk7VgX/xmH5dxPsNRJV0=
+
+Name: doc/images/TmfAddModelPackage.png
+SHA1-Digest: wEcX6HnnKJD8xhPvcKR/d3vuX5c=
+
+Name: doc/images/SampleDiagramAsyncMessage.png
+SHA1-Digest: 6NlHhind32pA7/csYv+KmrMfF3w=
+
+Name: doc/images/PrintDialog.png
+SHA1-Digest: EkLblDTThVbaCoAoaKXnTYyS8To=
+
+Name: doc/images/TmfStatisticsView.png
+SHA1-Digest: JRxjInyOkPtq0tIJnDksV9G4OSA=
+
+Name: doc/images/FindProviderAdded.png
+SHA1-Digest: 3BND93/TStLbOQz6OCIrOOIqzB8=
+
+Name: doc/images/AddViewExtension1.png
+SHA1-Digest: WiychEavRmVYQ5W/5Z5MdYmesKU=
+
+Name: doc/images/AddViewExtension2.png
+SHA1-Digest: 5ZrcvGMNGKwixREa4m20WFSPJp0=
+
+Name: doc/images/SampleDiagramMessageDelta.png
+SHA1-Digest: UOLCQ3zpiFef6FOnbI4xjdrx0AY=
+
+Name: doc/images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: doc/images/NewSampleLoaderClass.png
+SHA1-Digest: 1L/zBI3eo1z3bjB7D+B8jDEerRE=
+
+Name: doc/images/TmfAddStatisticsView.png
+SHA1-Digest: ZBghaNw5VEYMh1mcZaV1olI7jfo=
+
+Name: doc/images/FillSampleSeqDiagram.png
+SHA1-Digest: 1ucYbNs0x843FtRF7WEOvVoNnnw=
+
+Name: doc/images/FindDialog.png
+SHA1-Digest: X4RYAn3k50ve57SP9RQ0I44WvEU=
+
+Name: doc/Event-matching-and-trace-synchronization.html
+SHA1-Digest: 4CLDOJlzEC1Vz6G9x3sMUsj+Y+A=
+
+Name: doc/images/SampleDiagramSyncMessage.png
+SHA1-Digest: e+OjhDPRhJmejNZITFFSUcTZJYU=
+
+Name: doc/images/SampleDiagramTimeComp.png
+SHA1-Digest: 1L2ETggXrSgdd4DaeTWFEYGTv3g=
+
+Name: doc/images/ShowTmfSDView.png
+SHA1-Digest: lMzdrQeJL/3tnC66me2xC5PzAm4=
+
+Name: doc/UML2-Sequence-Diagram-Framework.html
+SHA1-Digest: CJ48SVj4rcnyuXF/CLYMN/GMm0E=
+
+Name: doc/images/ShowViewOther.png
+SHA1-Digest: Wovm5II+4uPRncLHz8vVKnc/lAs=
+
+Name: doc/images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: doc/images/AddTmfUml2SDLoader.png
+SHA1-Digest: Dbmf33HqvCvbN+9iOrrYjQk/4jY=
+
+Name: doc/images/SampleView.png
+SHA1-Digest: bOp4H8OioZQmauY4C2x6cioNZ0g=
+
+Name: doc/images/NTTExtension.png
+SHA1-Digest: 0RsSU8CsfbgThMR6OWmNniVzdoE=
+
+Name: doc/images/RunEclipseApplication.png
+SHA1-Digest: 1TGIFq/LULePbRseUkJ1eNrXzVw=
+
+Name: doc/images/HidePatternsMenuItem.png
+SHA1-Digest: L/0KVew5+9agHPBPOzJ5MDLe7As=
+
+Name: doc/images/TmfAddStatisticsViewClass.png
+SHA1-Digest: 6Rltclysc2ThS6S1MmCHL+U/laA=
+
+Name: doc/images/SupplCoolbar.png
+SHA1-Digest: fdIwQGwHD3xCFM6y7YGMPatL4v4=
+
+Name: doc/images/FillSampleLoader.png
+SHA1-Digest: PyApQlh4EK7Qz8+413vw+SoIZpk=
+
+Name: doc/images/ImportTracePackage.png
+SHA1-Digest: URUIdqS+AyVD8DeQwoFK5c7Y1P8=
+
+Name: doc/images/SampleDiagram1.png
+SHA1-Digest: H8twwaItO2XXWC+8zqxyUcbYVsQ=
+
+Name: doc/Developer-Guide-toc.xml
+SHA1-Digest: sdBMo4tovkQHSn+kWE6PGozRG74=
+
+Name: doc/Implementing-a-New-Trace-Type.html
+SHA1-Digest: pq+9noe1Myn1d+B07Sy8t2wU1h4=
+
+Name: doc/Developer-Guide.mediawiki
+SHA1-Digest: h99rQxY4T/gHYyw7K478X5Q7Tbs=
+
+Name: doc/images/FillSampleViewExtension.png
+SHA1-Digest: uNXP1lZxul7ukMumzydEdbqS45k=
+
+Name: doc/View-Tutorial.html
+SHA1-Digest: P0Ib1JH/f3tDA5mUUyb1jZUslOU=
+
+Name: doc/images/NTTPluginxmlComplete.png
+SHA1-Digest: ULaqImoiMYaCrvqT+wajcjbkEPw=
+
+Name: doc/CTF-Parser.html
+SHA1-Digest: 2LQZOFarhxzcfT0TxoU9an7nJ/s=
+
+Name: doc/Network-Tracing.html
+SHA1-Digest: vL9XVDvoyqyNhqFATpBm//ARKjo=
+
+Name: plugin.properties
+SHA1-Digest: 1jM8HQUczPQCL6IXSf3NpNuBMSw=
+
+Name: doc/Component-Interaction.html
+SHA1-Digest: DY+K1sg603oSvOfP6fV7CmDK/RE=
+
+Name: doc/images/AddDependencyTmfUi.png
+SHA1-Digest: RiEAMyG2oR6G6IH9jjLoTvgCr5k=
+
+Name: doc/Analysis-Framework.html
+SHA1-Digest: ZjoGDC4Cqwk/4FgOZ+fm5qSSpBw=
+
+Name: doc/images/EmptySampleView.png
+SHA1-Digest: xlup9uaAZ9dcXb17085+JlNjONg=
+
+Name: doc/images/NTTAddDepend.png
+SHA1-Digest: 7YB3gk/0IAMj3THUSvvhJG4g1mg=
+
+Name: doc/images/ReferenceSeqDiagram.png
+SHA1-Digest: mq5Rkfprr4wLG7qJuYtuQw6m6h8=
+
+Name: doc/images/NTTExtensionPoint.png
+SHA1-Digest: hYsGFLsOlPgJWPoR4ujlfP8dGxc=
+
+Name: plugin.xml
+SHA1-Digest: +LknXUPWE1/okg6lsVmQgXQ/bNo=
+
+Name: doc/images/AddDependencyTmf.png
+SHA1-Digest: e5y6I8hDSR82eA3pKvkACXvc7Rc=
+
+Name: doc/images/NTTSelectProjects.png
+SHA1-Digest: AMeTD+0aJlvCr2CEvJhZRtjDz+s=
+
+Name: doc/Generic-State-System.html
+SHA1-Digest: Ki8WdnoKh4S8z0xe1HKLlW78Bmg=
+
+Name: doc/images/DefaultCoolbarMenu.png
+SHA1-Digest: 9bHMA5xIC6rJZB2xFkQkLkG6w2g=
+
+Name: META-INF/maven/org.eclipse.linuxtools.tmf/org.eclipse.linuxtools
+ .tmf.help/pom.properties
+SHA1-Digest: uomy1dmEw4Ihn5QAzq85z+uDwkI=
+
+Name: doc/images/DialogHidePatterns.png
+SHA1-Digest: c7AIG8LVsoLwwWgASpl7nTu9+/Y=
+
+Name: doc/images/NTTAddType.png
+SHA1-Digest: tsjLhWdCp/g2h/5v+uv08LKlhsc=
+
+Name: doc/images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: doc/images/ExampleNewStatsView.png
+SHA1-Digest: y+XVMpuqDInJ7rs3ZHQBN1hAapQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: doc/images/BlankSampleSeqDiagram.png
+SHA1-Digest: YKPCQPkQ2AjJK2ynORjC0yHyjMY=
+
+Name: doc/images/SeqDiagramPref.png
+SHA1-Digest: TQGtt+djuOeJh6G1dIbv4vmJrdo=
+
+Name: doc/images/CustomStatisticsView.png
+SHA1-Digest: LULZ735ZOMegnxbzgZpLsy5hUR8=
+
+Name: doc/images/ShowEventsView.png
+SHA1-Digest: 5dlSqllX3682M+X5qlRDVGYweSk=
+
+Name: doc/Developer-Guide.html
+SHA1-Digest: i+EjIq6E+8eCiA5G8yIriKOkyTc=
+
+Name: doc/images/ReferenceExtensions.png
+SHA1-Digest: wkrLMKJKT4/x7xu5vj953ZS6fbU=
+
+Name: doc/images/PageProviderAdded.png
+SHA1-Digest: oFglYCr2A3ahv2BmPIPb+rAZnu4=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: doc/images/Screenshot-NewPlug-inProject1.png
+SHA1-Digest: VJsUuvfwWYkYYNWiPOQJRWW1Ogg=
+
+Name: doc/images/TmfAddModelClass.png
+SHA1-Digest: 2Q77t5ognFt5q7RCH8TxI6FSVok=
+
+Name: doc/images/Screenshot-NewPlug-inProject2.png
+SHA1-Digest: Wrg1md3RlaKMaT1VpN4X8mokOlg=
+

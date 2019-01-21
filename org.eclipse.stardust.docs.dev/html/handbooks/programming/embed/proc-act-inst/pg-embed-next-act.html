@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Activating the Next Activity Instance</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Adding Notes to Process Instances",
+        "pg-receive-par-oid.html","pg-embed-notes.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Activating the Next Activity Instance</h1>
+<p>The 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">
+WorkflowService</a> provides three methods to activate the next
+activity instances, which return the activity instance that was activated.
+The activation methods cover the following cases:</p>
+<ul>
+	<li><a href="#query">Activating the Next Activity Instance from Given Worklist Query</a></li>
+	<li><a href="#act">Activating the Next Activity Instance for Specified Activity Instance</a></li>
+	<li><a href="#proc">Activating the Next Activity Instance for Specified Process Instance</a></li>
+</ul>
+<p>These methods require the <strong>performActivity</strong> permission.
+For detailed information on this permission, refer to the section 
+<a href="../pg-declarative-security.html#perm">Permissions</a>
+of chapter
+<a href="../pg-declarative-security.html">
+Declarative Security Usage in Stardust Services API</a>.</p>
+<h2 id="query">Activating the Next Activity Instance from Given Worklist Query</h2>
+<p>To activate the next activity instance from a given worklist query, use the
+following method:</p>
+<pre>
+ActivityInstance activateNextActivityInstance(WorklistQuery query);
+</pre>
+<p>The query parameter defines a 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/WorklistQuery.html">
+WorklistQuery</a> object.
+Note that a <tt>WorklistQuery</tt> can contain 
+an <strong>ActivityStateFilter</strong>,
+which can reduce the set of returned activity instances. Without this filter,
+the state can be <strong>APPLICATION</strong> and <strong>SUSPENDED</strong>.
+This can be reduced to one of these states by applying a specific filter.
+For details on this filter, refer to section
+<a href="../pg-embed-filter.html#actState">ActivityStateFilter</a>
+of chapter <a href="../pg-embed-filter.html">Filter Criteria</a>.</p>
+<h3>Activation Retry</h3> 
+<p>In case all activity instances in the previously fetched subset are already activated,
+the activation is performed again with the specified worklist query.
+The search is retried with the same query, if the query does return activity
+instances which all could not be activated. If the query does not return activity 
+instances at all, the retry is stopped.</p>
+<p>You can determine the number of retries via the <tt>carnot.properties</tt> property
+<strong>Infinity.Engine.Tuning.Query.ActivateNextActivityInstance.Retries</strong>.
+After the configured amount of retries, the query is stopped. The default value
+is five times.</p>
+
+<h2 id="act">Activating the Next Activity Instance for Specified Activity Instance</h2>
+<p>In case you like to activate the next activity instance
+for a specified process instance, use the following method:</p>
+<pre>
+ActivityInstance activateNextActivityInstance(long activityInstanceOID)
+</pre>
+<p>Parameter <strong>activityInstanceOID</strong> specifies the OID of
+ the last completed activity instance.
+An <strong>ObjectNotFoundException</strong> is thrown,
+if there is no activity instance with the specified OID.</p>
+<h2 id="proc">Activating the Next Activity Instance for Specified Process Instance</h2>
+<p>To activate the next activity instance after a specified one 
+in the same process instance, use:</p>
+<pre>
+ActivityInstance activateNextActivityInstanceForProcessInstance(long processInstanceOID)
+</pre>
+<p>Parameter <strong>processInstanceOID</strong> defines the OID of the 
+process instance.
+An <strong>ObjectNotFoundException</strong> is thrown,
+ if there is no process instance with the specified OID.</p>
+ 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

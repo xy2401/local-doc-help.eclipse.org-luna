@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="doc/User-Guide.html" label="GDB Tracepoint Analysis User Guide">
+	<topic href="doc/User-Guide.html" label="Overview"></topic>
+	<topic href="doc/Getting-Started.html" label="Getting Started"></topic>
+	<topic href="doc/GDB-Trace-Perspective.html" label="GDB Trace Perspective"></topic>
+	<topic href="doc/Collecting-Tracepoint-Data.html" label="Collecting Tracepoint Data"></topic>
+	<topic href="doc/Importing-Tracepoint-Data.html" label="Importing Tracepoint Data">
+		<topic href="doc/Importing-Tracepoint-Data.html#Creating_a_Tracing_Project" label="Creating a Tracing Project"></topic>
+		<topic href="doc/Importing-Tracepoint-Data.html#Importing_a_GDB_Trace" label="Importing a GDB Trace"></topic>
+		<topic href="doc/Importing-Tracepoint-Data.html#Selecting_the_GDB_Trace_Type" label="Selecting the GDB Trace Type"></topic>
+		<topic href="doc/Importing-Tracepoint-Data.html#Selecting_the_Trace_Executable" label="Selecting the Trace Executable"></topic>
+	</topic>
+	<topic href="doc/Visualizing-Tracepoint-Data.html" label="Visualizing Tracepoint Data">
+		<topic href="doc/Visualizing-Tracepoint-Data.html#Opening_a_GDB_Trace" label="Opening a GDB Trace"></topic>
+		<topic href="doc/Visualizing-Tracepoint-Data.html#Viewing_Trace_Data" label="Viewing Trace Data"></topic>
+		<topic href="doc/Visualizing-Tracepoint-Data.html#Navigating_the_GDB_Trace" label="Navigating the GDB Trace"></topic>
+	</topic>
+	<topic href="doc/References.html" label="References"></topic>
+	<topic href="doc/Updating-This-Document.html" label="Updating This Document"></topic>
+	<anchor id="additions"/>
+</toc>

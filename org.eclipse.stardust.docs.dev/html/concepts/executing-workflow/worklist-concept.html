@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Worklists</title>
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style"
+>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Delegation",
+		"","delegation-concept.html",
+		"../key-concepts.html","Concepts",
+        "workflow.html","Executing Workflow");
+ -->
+</script>
+<h1>Worklists</h1>
+<p>Worklists serve the purpose of structuring the activities
+waiting to be processed interactively. A worklist is a collection of
+non-terminated activity instances being able to be completed by a
+certain user or participant. An activity instance as part of a worklist
+is also referred to as <strong>worklist item</strong>.</p>
+
+<h2>Participant/User Worklist</h2>
+<p>A participant/user worklist contains all activity instances
+from the audit trail, which</p>
+<ul>
+	<li>are in suspended or activated state and</li>
+	<li>have this participant/user as current performer.</li>
+</ul>
+<p>Worklists in the <strong>Stardust Workflow Execution Perspective</strong>
+can be restricted in size and paged by various
+filters.</p>
+<p>From the point of view of embedded programming the worklist
+concept is much broader. You can assemble and sort the worklists based
+on a rich query language and nearly arbitrary predicates including
+filtering by workflow data. Please refer to the <a href="../../handbooks/programming/pg-preface.htm">Programming
+Guide</a> for more details.</p>
+<h2>Worklist Views</h2>
+<p>In worklist views, worklist items that
+meet the criteria defined for that worklist view, e.g. filter criteria 
+like starting date, end date or activity name, are displayed in a list.</p>
+<p>Stardust provides worklist views
+in the <strong>Stardust Portal</strong>.
+Please refer to chapter 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/process-portal-workarea.html">
+Viewing Worklists</a> of the
+<a	href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation for details.</p>
+<h2 id="cumulated">Cumulated Worklist</h2>
+<p>A cumulated worklist of a user is the union</p>
+<ul>
+	<li>of the user worklist and</li>
+	<li>of all participant worklists the user has an explicit or
+	implicit grant for.</li>
+</ul>
+<p>Note that worklists span worklist items from multiple process
+instances and multiple models.</p>
+<p>Worklists in the <strong>Stardust Workflow Execution Perspective</strong>
+can be restricted in size and paged by various
+filters.</p>
+<p>From the point of view of embedded programming the worklist
+concept is much broader. You can assemble and sort the worklists based
+on a rich query language and nearly arbitrary predicates including
+filtering by workflow data.</p>
+<p>Please refer to the <a href="../../handbooks/programming/pg-preface.htm">Programming
+Guide</a> for more details.</p>
+
+<h2>Scoped Worklist Items</h2>
+<p>The target department of a worklist item is stored upon creation, if the activity instance 
+is interactive and the default participant of the activity is scoped.
+Only users having the grant for the department are able to see the worklist items and perform the actions
+associated with the scoped participant for the according department.</p>
+<p>Please refer to the chapter
+<a href="../workflow-basics/scoped-participants.html">Scoped Participants</a> for details on
+the concept of scoped participants.</p>
+<script language="JavaScript"
+	type="text/javascript"
+>
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

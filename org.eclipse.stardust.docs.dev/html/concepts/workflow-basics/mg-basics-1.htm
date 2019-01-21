@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>What is Workflow Management?</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("The Stardust Engine","","mg-basics-2.htm",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>What is Workflow Management?</h1>
+<p>The general understanding of workflow management or business
+process management is the automation of business processes. This
+includes orchestration of all parts of the business process, the
+management of all user interactions and administrative tasks.</p>
+<h2>Business Processes</h2>
+<p>Business processes in the scope of the Stardust Engine
+are understood as a set of well-defined tasks and execution
+rules for them to achieve a specific goal. The execution rules include
+rules for the task execution, task dependencies and execution side
+effects. A business process should be repeatable, i.e. the tasks and
+rules should describe a typical problem at a generalization level
+matching most, if not all concrete occurrences of the problem.</p>
+<p>It should be emphasized that the term &quot;business
+process&quot; in this sense is not restricted to a certain problem
+domain. The definition includes &quot;common sense&quot; business
+processes like handling a support case but also very technical processes
+like managing tasks in a chemical production line.</p>
+<p>A common example is the support case handling in a company
+selling a specific product:</p>
+<ul>	
+	<li>It has a well-defined goal: resolving support cases for the
+	product.</li>
+	<li>It is composed of smaller tasks such as handling the receipt
+	of the case, evaluating the case, fixing the case and delivering the
+	fixed product to the customer.</li>
+	<li>It obeys specific rules, like following a different
+	procedure depending on the evaluation result of the support request.</li>
+	<li>It is repeatable.</li>
+</ul>
+<p>An important characteristic of many business processes is
+their interactive aspect involving human resources making decisions,
+entering data etc. Workflow management systems take care of this by
+providing contracts for user interactions and supporting the management
+of resource worklists.</p>
+<h2>Workflow Management Goals</h2>
+<p>Automation of processes executed manually in a business is
+surely the most prominent and the most basic goal of using workflow
+management.</p>
+<h3>Business Process Automation</h3>
+<p>Automation of business processes is seldom realizable out of
+the box.</p>
+<p>It often requires a formalization of processes never performed
+before in a problem domain.</p>
+<h4>System Integration</h4>
+<p>Also, it is often necessary to integrate existing IT
+infrastructure. This way, when automating processes, workflow management
+systems are often acting as enterprise application integration tools.
+The Stardust Engine provides strong integration facilities by
+providing interfaces to integrate arbitrary legacy systems, protocols or
+storage.</p>
+<h3>Business Activity Monitoring</h3>
+<p>Business activity monitoring allows insight into running
+processes providing real time information for operational and strategic
+decisions. It is used as the base for business process reengineering
+done based on the gathered information.</p>
+<p>Conceptually, these main goals of workflow management form a
+circle of continuous improvement of the processes of a business:</p>
+<p class="image"><img src="images/mg-basics-1.png" alt=""> <br>
+<strong>Figure:</strong> Evolution of a Business Process Management
+Solution</p>
+<h2>Workflow Management Realization</h2>
+<p>Typical for workflow management is dividing the problem domain
+into a modeling phase and an execution phase.</p>
+<h3>Modeling Phase</h3>
+<h4>Workflow Model</h4>
+<p>After analyzing your business processes to be automated, you
+have to specify your processes in a formal manner. This is what is
+called the modeling phase. In the context of Stardust products, business
+processes are managed as logical groups of processes called a workflow
+model.</p>
+<h3 id="execution">Execution Phase</h3>
+<h4>Deployment</h4>
+<p>After your business processes are formally specified in the
+modeling phase they have to be enabled for runtime execution. This task
+is called deployment. After deployment, the workflow management system
+is able to execute the processes.</p>
+<h4>Audit Trail</h4>
+<p>The audit trail database stores all historical records of the
+progress of process instances from their start to completion or
+termination. Such information includes e.g. date, time and performer of
+activity instances belonging to the process.</p>
+<h2>Autonomous vs. Embedded Workflow</h2>
+<p>Depending on the requirements a workflow management solution
+may be functional without any other system components in one case
+(autonomous workflow solution) or it may be functional only inside
+another system (embedded workflow solution). While this classification
+is somehow vague it shows different possible usage scenarios:</p>
+<h3>Autonomous Workflow</h3>
+<p>Autonomous systems have their own standalone execution
+environment and tend to even have their own client applications. This is
+often applicable when a business process management solution is started
+from scratch and surrounding systems can be integrated based on their
+APIs.</p>
+<h3>Embedded Workflow</h3>
+<p>Embedded workflow systems are used from inside existing
+applications, using them in a more software library-like manner.</p>
+<p>The Stardust Engine is able to adapt to both
+situations. It has its own set of clients and facilities to interact
+with existing legacy systems. On the other hand, it has a rich API and
+different options of embedded execution to be managed by existing
+software solutions.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

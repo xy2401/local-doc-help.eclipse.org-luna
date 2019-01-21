@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Working with Process Definition Event Handlers</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working With Activity Event Handlers",
+			"activity-criticality.html","mg-defdesk-13.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Working with Process Definition Event Handlers</h1>
+<p>Event handlers and -actions for process definitions are managed in the
+event handlers pane of the process definition dialog. The event handlers pane is
+structured to have an overview tree of the event handlers and -actions on the
+left side and a details pane for the chosen model element on the right side.
+Refer also to <a href="../../concepts/workflow-basics/mg-basics-11.htm">Events</a> for basic informations.</p>
+<p class="image"><a href="images/mg-eventhandling-timer_orgSize.png"
+    target="_blank"><img src="images/mg-eventhandling-timer.png"
+    alt="Event Handlers Pane"></a> <br>
+<strong>Figure:</strong> Structure of the Event Handlers Pane</p>
+<p>The overview tree groups handlers by type. In the event handling tree
+the bind actions and event actions are listed.</p>
+<p class="image"><img src="images/mg-defdesk-49.jpg" alt=""> <br>
+<strong>Figure:</strong> The Overview Tree</p>
+<h2>Creating Event Handlers</h2>
+<p>To create an event handler:</p>
+<ol>
+    <li>Choose an event handler type in the event handlers pane and press
+    the <strong>Add</strong> button.</li>
+    <li>Optionally, change the ID and name of the event handler. Please note that
+    IDs containing hyphens, blanks or dots and IDs starting with digits are not
+    supported. The name is used to display the handler in the overview tree.</li>
+</ol>
+<p class="image"><img src="images/mg-eventhandling-props-add.png"
+    alt="Creation of an Event Handler"> <br>
+<strong>Figure:</strong> Creation of an Event Handler</p>
+<p>Event handlers must have a name and an ID uniquely identifying them in
+the scope of the associated process definition. Additionally, event handlers may
+have some of the following general attributes:</p>
+<ul>
+    <li>A flag indicating the auto bind behavior. When <strong>Automatic
+    binding</strong> is selected the event handler is bound immediately after the process
+    instance is created.</li>
+    <li>A flag specifying whether an occurrence of this event should be
+    logged to the audit trail or not. If <strong>Log handler</strong> is
+    enabled, an <tt>org.eclipse.stardust.engine.api.runtime.LogEntry</tt> record with log
+    code <tt>LogCode.EVENT</tt> will be written into the audit trail and
+    associated with the affected process instance.</li>
+    <li>A flag whether an event accepted by the handler will be consumed.
+    If <strong>Consume on match</strong> is selected any logically following
+    handler accepting the same event will not be executed, thus effectively
+    terminates the processing of the current event.</li>
+</ul>
+<h2>Event Handler Types</h2>
+<p>The following event handler types are provided for processes:</p>
+<ul>
+    <li><a href="#timer">Timer Event Handlers</a></li>
+    <li><a href="#procHandl">Process State Change Event Handlers</a></li>
+</ul>
+<h3 id="timer">Timer Event Handlers</h3>
+<p>For a timer event handler you can derive the moment of timer either as
+a constant offset or from workflow data. While a modeling-time timer constant
+can only be of type <tt>org.eclipse.stardust.common.Period</tt> (specifying an offset to the
+event binding time), a timeout derived from workflow data may either be of type
+<tt>java.util.Date</tt> , long or<tt> java.lang.Long</tt> (defining an absolute
+time) or <tt>org.eclipse.stardust.common.Period</tt> (again specifying an offset to the event
+binding time). Numeric timer values are considered to be milliseconds since
+January 1, 1970 0:0 GMT, according to the specification of method <tt>getTime()</tt>
+of class <tt>java.util.Date</tt>.</p>
+<p class="image"><a href="images/mg-eventhandling-timer_orgSize.png"
+    target="_blank"><img src="images/mg-eventhandling-timer.png"
+    alt="Event Handlers Pane"></a> <br>
+<strong>Figure:</strong> Structure of the Event Handlers Pane</p>
+<h3 id="procHandl">Process State Change Event Handlers</h3>
+<p>For a process state change event handler <span class="Stil1">you
+can specify the intended source state and target state you want to match
+against.</span> See also <a href="../../concepts/workflow-basics/mg-basics-4.htm#pInstanceStates">Process Instance
+States</a> for more details on modeling the different process instance states.</p>
+<p class="image"><a href="images/mg-eventhandling-state-props_orgSize.png"
+    target="_blank"><img src="images/mg-eventhandling-state-props.png"
+    alt=""></a><br>
+<strong>Figure:</strong> State Change Event Handler Properties</p>
+<h2>Modifying Event Handlers</h2>
+<p>Event handlers can be modified by selecting them in the overview tree
+of the process properties dialog, then editing their properties in the details
+pane.</p>
+<h3>Changing the Order of Event Handlers</h3>
+<p>All engine event handlers are executed in the order specified in the
+corresponding properties dialog, e.g. the activity properties dialog or the
+process definition dialog. Event handlers may be reordered by selecting an event
+handler in the event handlers pane and then moving it by using the <strong>Move
+Up</strong> and <strong>Move Down</strong> buttons.</p>
+<h3>Deleting Event Handlers</h3>
+<p>An event handler can be deleted by selecting it in the event handlers
+pane of the properties dialog and then pressing the <strong>Delete</strong>
+button.</p>
+<h2>Event Actions</h2>
+<p>The following event actions are available for process definition
+event handlers depending on the event handler type:</p>
+<ul>
+    <li><a href="#abort">Abort Process</a> - (Timer)</li>
+    <li><a href="#trigger">Process Trigger Actions</a> - (Timer, On Process State Change)</li>
+    <li><a href="#mail">Send Mail Actions</a> - (Timer, On Process State Change)</li>
+    <li><a href="#data">Set Data Actions</a> - (Timer, On Process State Change)</li>
+</ul>
+<h3>Creating Event Actions</h3>
+<p>To create an event action for an event handler:</p>
+<ul>
+    <li>Choose the event handler in the event handlers pane.</li>
+    <li>Press the <strong>Add Event Action</strong> button.</li>
+</ul>
+<p class="image"><img src="images/mg-add-event-action.png"
+    alt="Add Event Action"> <br>
+<strong>Figure:</strong> Add an Event Action.</p>
+<ul>
+    <li>Choose the action type in the new event action pane.</li>
+    <li>Optionally, change the ID and the name of the action.</li>
+</ul>
+<p class="image"><img src="images/mg-event-choose.png" alt=""> <br>
+<strong>Figure:</strong> Action Type Choice</p>
+<p>Bind actions are created in a similar manner. Click <strong>Add
+Bind Action</strong> or <strong>Add Unbind Action</strong> to add a bind or unbind
+action. See also <a href="../../concepts/workflow-basics/mg-basics-11.htm#eventBinding">Event Binding</a>.</p>
+<h3 id="abort">Abort Process Actions</h3>
+<p>Abort process actions implicitly target the process instance hosting
+the current activity instance, thus not needing to be configured.</p>
+<h3 id="trigger">Process Trigger Actions</h3>
+<p>For trigger process actions you have to select the process to be
+triggered.</p>
+<p class="small">&nbsp;</p>
+<p class="image"><img src="images/mg-event-processtrigger.png" alt="">
+<br>
+<strong>Figure:</strong> Select Trigger Process</p>
+<h3 id="mail">Send Mail Actions</h3>
+<p>For send mail actions the following properties may be specified:</p>
+<ul>
+    <li>the <a href="#recipient">Recipient</a></li>
+    <li>the <a href="#subject">Mail Subject</a></li>
+    <li>the <a href="#content">Mail Content</a>.</li>
+</ul>
+<p class="image"><img src="images/mg-event-send-mail.png" alt=""> <br>
+<strong>Figure:</strong> Send Mail Action Properties</p>
+<h4 id="recipient">Recipient</h4>
+<p>In the <strong>Send Mail To</strong> section,
+choose a recipient:</p>
+<ul>
+	<li>from the model (<strong>Model Participant</strong>)
+	<p class="image"><img src="images/send-mail-model-participant.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Model Participant as Recipient.</p>
+	In this case, the receiver mail address from the users, who have this role, is
+	used.<br>&nbsp;</li>
+	<li>as a constant email address (<strong>Predefined Address</strong>)
+	<p class="image"><img src="images/send-mail-predefined-address.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Predefined Address as Recipient.</p></li>
+</ul>
+<p>The sender mail address is used from the <tt>Mail.Sender</tt> property, set 
+in the <tt>carnot.properties</tt> file.</p>
+<h4 id="subject">Mail Subject</h4>
+<p>In the <strong>Mail Subject</strong>
+entry field, you can enter a subject for the mail. The default
+value of the subject is "<tt>Stardust Notification Mail</tt>".</p>
+<h4 id="content">Mail Content</h4>
+<p>In the <strong>Runtime Defined Message</strong> section, add the
+email body text in one of the following ways:</p>
+<ul>
+	<li>as a constant text (<strong>Predefined Message</strong>)
+	<p class="image"><img src="images/predefined-mail-message.png" alt=""><br>
+	<strong>Figure:</strong> Enter Mail Content as Predefined Message</p></li>
+	<li>from a workflow data (<strong>Runtime Defined Message</strong>)
+	<p class="image"><img src="images/runtime-mail-message.png" alt=""><br>
+	<strong>Figure:</strong> Choose a Runtime Defined Message</p></li>
+</ul>
+<h3 id="data">Set Data Actions</h3>
+<p>Set data actions will set values retrieved from the event handler on
+workflow data similar to data mappings. To do this, every event handler offers a
+certain set of <a href="../../concepts/workflow-basics/mg-basics-8.htm#accessPoints">access points</a> (which
+may be empty). This way the following properties may be configured:</p>
+<ul>
+    <li>The OUT access point offered by the event handler</li>
+    <li>An access path to be applied to the access point resulting in a
+    bridge object value</li>
+    <li>An access path belonging to the workflow data (data path) to be
+    applied to the bridge object value and the workflow data</li>
+    <li>The workflow data</li>
+</ul>
+<p class="image"><img src="images/mg-event-set-data.png" alt=""> <br>
+<strong>Figure:</strong> Set Data Action of the Process Dialog</p>
+
+<h3>Modifying Event Actions</h3>
+<p>An event action is modified by selecting it in the overview tree and
+then editing its properties in the details pane.</p>
+<p>Bind actions are modified similarly.</p>
+<h4>Changing the order of event actions</h4>
+<p>All event actions are executed in the order specified in the model.
+Event actions may be reordered by selecting an event action in the event
+handlers pane of the properties dialog and clicking on the <strong>Move
+Up</strong> and <strong>Move Down</strong> button. The same applies to bind actions.</p>
+<h3>Deleting Event Actions</h3>
+<p>An event action or bind action is deleted by selecting it in the event
+handlers pane and pressing the <strong>Delete </strong> button.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

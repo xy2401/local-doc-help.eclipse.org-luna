@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css">
+<title>Optimizing the Performance of secure JCR Deployments</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Avoiding Query Timeouts in internal JDBC Queries",
+	"tuning-memory-cache.html","tuning-jdbc-timeout.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Optimizing the Performance of secure JCR Deployments</h1>
+<p>Setting up secure JCR sessions produces a high number of data base accesses to initialize authorizations.
+Using the 2nd-level caching feature provides most of the required information and could reduce the 
+load from the data base.
+Thus we recommend to enable 2nd-level caching for production deployments.</p>
+<p>Refer to chapter
+<a href="tuning-memory-cache.html">Retrieving Entities from In-Memory Cache</a> for details on how
+to enable and configure 2nd-level caching.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

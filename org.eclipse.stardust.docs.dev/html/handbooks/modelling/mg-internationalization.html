@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Native Language Support</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","mg-defdesk-18.htm","",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Native Language Support for Model Elements</h1>
+<p>Internationalization of model information is provided via Java
+properties files in Native Language Support (NLS) - bundles. It is
+possible to internationalize names and descriptions of model objects.
+All localization information for one model will be contained within one
+NLS bundle.</p>
+<h2>Supported Model Elements</h2>
+<p>Specification of internationalization information is supported
+for the names of the following model elements with the corresponding
+scope ID and the property names, which can be internationalized:</p>
+<table id='id'>
+	<tr>
+		<th>Model Element</th>
+		<th>Scope ID</th>
+		<th>Property Name</th>
+	</tr>
+	<tr>
+		<td>Model</td>
+		<td>Model</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Data</td>
+		<td>Data</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Role</td>
+		<td>Role</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Organization</td>
+		<td>Organization</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Conditional Performer</td>
+		<td>CondPerformer</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Application</td>
+		<td>Application</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Process Definition</td>
+		<td>Process</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Diagram</td>
+		<td>Diagram</td>
+		<td>Name</td>
+	</tr>
+	<tr>
+		<td>Activity</td>
+		<td>Activity</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Trigger</td>
+		<td>Trigger</td>
+		<td>Description, Name</td>
+	</tr>
+	<tr>
+		<td>Data Path</td>
+		<td>DataPath</td>
+		<td>Name</td>
+	</tr>
+	<tr>
+		<td>Data Mapping</td>
+		<td>DataMapping</td>
+		<td>Name</td>
+	</tr>
+	<tr>
+		<td>Process Event Handler</td>
+		<td>ProcessEH</td>
+		<td>Description, Name</td>
+	</tr>
+    <tr>
+        <td>Activity Event Handler</td>
+        <td>ActivityEH</td>
+        <td>Description, Name</td>
+    </tr>
+    <tr>
+        <td>Quality Assurance Codes</td>
+        <td>QualityAssuranceCode</td>
+        <td>Description, Name</td>
+    </tr>
+</table>
+<p>The according entries in the language bundles apply to the following pattern:</p>
+<pre>&lt;scope id&gt;.&lt;model element id&gt;.Name=
+&lt;scope id&gt;.&lt;model element id&gt;.Description=</pre> 
+<p>For example:</p>
+<pre>
+Process.SalesProcess.Name=Verkaufsprozess
+Process.SalesProcess.Description=Verkaufsprozess mit Dateneingabe
+</pre>
+<p>For specific entries like event handlers or quality assurance codes, the
+id of the specific entry is added as well, e.g.:</p>
+<pre>
+ProcessEH.SalesProcess.OnProcessStateChange.Name=&#92;u00C4nderung Prozess Status 
+QualityAssuranceCode.ValidationError.Description=Fehler beim Validieren
+QualityAssuranceCode.ValidationError.Name=ValidierungsFehler
+</pre>
+<p>For details on internationalizing Quality Assurance Codes
+refer to section 
+<a href="#qac">Translating Quality Assurance Codes</a>.</p>
+<p>For the time being, internationalization of structured data is not
+provided. Section 
+<a href="#struct">Internationalization of Structured Data Types</a>
+describes how to provide translation of structured data types manually.</p>
+<h2>Creating Language Bundles</h2>
+<p>You can create language bundles in the properties page of the model.
+Make sure a source folder exists in your project to place the
+bundle. If no source folder is found, the following error message is
+shown on top of the dialog:</p>
+<p class="image"><img src="images/no-source-folder-error.png"
+	alt="No Source Folder Error Message"> <br>
+<strong>Figure:</strong> No Source Folder Error Message</p>
+<p>In this case create one by selecting <strong>File &gt;
+New &gt; Source Folder</strong>.</p>
+<h3>Creating new Locales</h3>
+<p>To add locales to a model:</p>
+<ul>
+	<li>Open the properties dialog of the model.</li>
+	<li>Select <strong>Language Bundles</strong>.</li>
+	<li>Specify an NLS <strong>Bundle Basename</strong> for the model.</li>
+	<li>Click on the <strong>NLS</strong> list.</li>
+	<li>Double-click in the entry field beneath the <strong>NLS</strong>
+	entry.</li>
+	<li>Click the arrow appearing on the right side of the entry
+	field.</li>
+	<li>A list pops up, where you can choose the language.</li>
+	<li>Add other locales if needed.</li>
+	<li>Click <strong>Apply</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-nls-bundle.png"
+	alt="Select Language Bundle"> <br>
+<strong>Figure:</strong> Properties Dialog Settings</p>
+<p class="image"><img src="images/mg-nls-languages.png"
+	alt="Selected Languages"> <br>
+<strong>Figure:</strong> List of Selected Locales</p>
+<p>You find the properties files for your languages in the source
+folder of your project. Their name is created with the bundle basename
+and the appendix of the according locale, e.g.:</p>
+<p class="image"><img src="images/mg-nls-file-structure.png" alt="">
+<br>
+<strong>Figure:</strong> The Properties Files in the Source Folder</p>
+<p>Please note that once you created a bundle, you cannot change
+the bundlename afterwards. Editing the name would create a new bundle
+with the modified name.</p>
+<h3>Deleting Language Bundles</h3>
+<p>To delete a locale, select it in the list and enter the <strong>Delete</strong>
+button. A confirmation dialog will pop up to make sure you really want
+to delete this locale and all its properties.</p>
+<p class="image"><img src="images/mg-nls-delete.png" alt="Delete">
+<br>
+<strong>Figure:</strong> Deleting a Locale</p>
+<div class="note"><strong>Note</strong><br>&nbsp;<br>
+In case a language bundle defined in the modeler cannot be deleted, use the
+following workaround:
+<ol>
+	<li>Restart the Eclipse environment.</li>
+	<li>Manually delete the resource bundle file from its location in
+		the tree in the Package Explorer.</li>
+</ol></div>
+
+<!-- <h4>Restore</h4>
+<p><strong>Restore Defaults</strong> button...undo redo????<p> -->
+
+<h2>Adding Translations for Identifiable Elements</h2>
+<p>In the properties pages of all identifiable model elements
+supporting internationalization, listed in the table of supported model
+elements above, you can set locale specific names and in some cases
+descriptions.</p>
+<p>In the properties pages of the model elements:</p>
+<ul>
+	<li>Select <strong>General &gt; Internationalization</strong>.</li>
+	<li>Now you see a tabular view of all available locales and the
+	display Strings specified for each locale.</li>
+	<li>Edit the String values for the different locales.</li>
+</ul>
+<p class="image"><img src="images/mg-nls-properties-dialog.png"
+	alt="I18N Settings in the Properties Dialog"> <br>
+<strong>Figure:</strong> I18N Settings in the Properties Dialog</p>
+<p>The locales available for certain model elements will be
+determined based on searching the classpath for the relevant properties
+files compatible with the NLS base name specified for the model.</p>
+<p class="note"><strong>Note</strong><br> Note that using configuration variables for the
+internationalized values is not supported!</p>
+<h3 id="qac">Translating Quality Assurance Codes</h3>
+<p>Quality Assurance Codes can be internationalized in the model property page.</p>
+<ol>
+    <li>Open the model property page and go to section 
+    <strong>Quality Assurance Codes</strong>.</li>
+    <li>Under the specific error codes in the tree you find entries for 
+    <strong>Internationalization</strong>.</li>
+    <li>Click on the appropriate error code <strong>Internationalization</strong>
+    to open the dialog where you can enter translations for the specific 
+    code.</li>
+</ol>
+<p class="image"><img src="images/mg-nls-qa-code.png"
+    alt="I18N of Quality Assurance Codes"> <br>
+<strong>Figure:</strong> I18N of Quality Assurance Codes</p>
+<h3 id="struct">Internationalization of Structured Data Types</h3>
+<p>To internationalize structured types, you have to modify the language bundle
+properties file manually. Edit the 
+<tt>&lt;basename&gt;_&lt;locale&gt;.properties</tt> file and add the values
+for the structured types in the following way:</p>
+<pre>StructuredTypes.&lt;structured type name&gt;.&lt;entry&gt;.Name=&lt;localized entry name&gt;
+StructuredTypes.&lt;structured type name&gt;.&lt;entry&gt;.Description=&lt;localized entry description&gt;</pre>
+<p>For example, for our support case tutorial model 
+<strong>ACMEWorkflowModel</strong> 
+(see chapter <a href="../../tutorial/support-case/support-case-preface.htm">The Support Case Example</a>) 
+create a language bundle as described above and edit it.
+The structured type definition <strong>Customer</strong> looks like the following:</p>
+<p class="image"><img src="images/in18-customer-struct.png"
+    alt="Structured Type for Customer"> <br>
+<strong>Figure:</strong> Structured Type for Customer</p>
+<p>To internationalize the label names of the structured type, that will for
+example be displayed in the 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>, add the following entries to the language bundle:</p>
+<pre>
+StructuredType.Customer.Email.Name=&lt;Customer&gt; &lt;Email&gt;
+StructuredType.Customer.Id.Name=&lt;Customer&gt; &lt;Id&gt;
+StructuredType.Customer.Name.Name=&lt;Customer&gt; &lt;Name&gt;
+StructuredType.Customer.Product.Analysis.Name=&lt;Customer&gt; &lt;Product&gt; &lt;Analysis&gt;
+StructuredType.Customer.Product.Name.Name=&lt;Customer&gt; &lt;Product&gt; &lt;Name&gt;
+StructuredType.Customer.Product.State.Name=&lt;Customer&gt; &lt;Product&gt; &lt;State&gt;
+StructuredType.Customer.Product.Synopsis.Name=&lt;Customer&gt; &lt;Product&gt; &lt;Synopsis&gt;
+</pre>
+<p>For example with a German translation:</p>
+<p class="image"><img src="images/in18-properties.png"
+    alt="Structured Type Example"> <br>
+<strong>Figure:</strong> Internationalized Structured Type Example</p>
+<h2>Update of NLS Bundles</h2>
+<p>The following modifications and actions will result in an
+automatic update of the NLS bundles associated with the model:</p>
+<table id='id_1'>
+	<tr>
+		<th>Model modification</th>
+		<th>Resulting NLS file update action</th>
+	</tr>
+	<tr>
+		<td>Model element creation</td>
+		<td>The corresponding keys will be added to the NLS properties
+		files.</td>
+	</tr>
+	<tr>
+		<td>Modification of model element Id</td>
+		<td>The NLS keys for all existing bundles will be updated
+		correspondingly. If the resulting new key should collide with existing
+		NLS keys, a dialog allowing to resolve the potential conflict will be
+		displayed.</td>
+	</tr>
+	<tr>
+		<td>Model element deletion</td>
+		<td>The corresponding NLS entries (key-value pairs) will be
+		removed from the NLS bundles.</td>
+	</tr>
+</table>
+<h2>Validation</h2>
+<p>If there is at least one NLS-String provided for a model element,
+NLS Strings must be provided for all locales supported. Violations of
+this rule will be flagged with an inconsistency warning.<br />
+&nbsp;</p>
+<p class="image"><img src="images/mg-nls-validation.png"
+	alt="Validation Warning"> <br>
+<strong>Figure:</strong> Warning for missing NLS String</p>
+<p>Per default, the String of the default language bundle is used. In case no 
+NLS Strings are provided at all for a model element,
+this is interpreted as not wanting to internationalize the
+corresponding String and no validation warning or error is flagged.</p>
+<h2>External Editing of NLS-Bundles</h2>
+<p>NLS bundles consist of normal properties files. You can directly
+modify these files with an editor of your choice. You find the
+properties files in the <tt>src</tt> folder of your project, named
+<tt>&lt;basename&gt;_&lt;locale&gt;.properties</tt>.</p>
+<p>To ensure synchronism of model and display information and
+resource bundle files, the Workflow Modeler will listen to changes of
+the NLS bundle files and update its internal caches when necessary.</p>
+<p>Note that the NLS bundles are created and maintained by the
+modeler with a defined ordering, corresponding to the ordering of the
+model outline. When modifying the resource bundle files, it is important
+to respect this ordering.</p>
+<h2>Runtime Support</h2>
+<p>The Stardust
+Portal will use the information specified in the NLS bundle when
+displaying or referencing the corresponding model elements at runtime.
+If no internationalized String is found for the model element or locale
+needed, the model element will be displayed with the name specified
+directly in the model.</p>
+<!--<h2>Internationalization of Modeling Features</h2>-->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

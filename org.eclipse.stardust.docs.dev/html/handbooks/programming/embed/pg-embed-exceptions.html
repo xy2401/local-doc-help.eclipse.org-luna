@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Exceptions</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Transactional Behavior",
+        "pg-embed-filter.html","pg-embed-transactional.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Exceptions</h1>
+<p>Beside the exception thrown by EJBs as specified in EJB 2.0 such
+as:</p>
+<ul>
+	<li><tt>java.rmi.RemoteException</tt></li>
+	<li><tt>javax.ejb.FinderException</tt></li>
+	<li><tt>javax.ejb.CreateException</tt></li>
+</ul>
+<p>every method in the remote interface of a Stardust bean can throw
+the following checked exceptions:</p>
+<ul>
+	<li><a
+		href="../../../reference/api/common/org/eclipse/stardust/common/error/WorkflowException.html"
+	>org.eclipse.stardust.common.error</a> and</li>
+	<li>possibly other Stardust exceptions (e.g. <a
+		href="../../../reference/api/common/org/eclipse/stardust/common/error/LoginFailedException.html"
+	>org.eclipse.stardust.common.error.LoginFailedException</a>).</li>
+</ul>
+<p>The first type of exception is thrown whenever the following
+information about an exception is sufficiently the fact, whether the
+exception has to be displayed to the user or is internal and the error
+message itself. The latter type of exceptions is used whenever more
+information is available about an exception and specific handling for
+this exception in a client is expected.</p>
+<p>For handling exceptions thrown by invoked
+applications or services, please refer to the section
+<a href="#appl">Engine Exception Handling</a>.
+The section <a href="#exceptionsEJB">Exception Handling in EJB
+	Environment</a> provides a description on how 
+exceptions are handled in an EJB environment.</p>
+<h2 id="appl">Engine Exception Handling</h2>
+<p>It is possible to propagate exceptions from invoked applications
+or services to synchronous callers of Stardust services by using a
+global option. The engine handling of exceptions can be controlled
+via the server side property:</p>
+<pre>Carnot.Engine.ErrorHandling.ApplicationExceptionPropagation = [never | onRollback | always]</pre>
+<p>The default value is <tt>never</tt>. Please refer to chapter <a
+	href="../../operation/properties/ag-appendix-properties-2.htm#excptProp"
+> Server Side Properties</a> for information on this server side 
+property.</p>
+<p>Before defining the intended behavior, please consider the
+following two scenarios:</p>
+<dl>
+	<dt>Scenario a):</dt>
+	<dd>An exception is raised, but the transaction is not yet forced
+	to rollback:<br>
+	the engine has a choice to either interrupt the current activity
+	thread, or to undo the current activity thread by forcing the current
+	transaction to rollback.</dd>
+</dl>
+<dl>
+	<dt>Scenario b):</dt>
+	<dd>An exception is raised, and the current transaction is already
+	forced to rollback:<br>
+	the engine has no real choice, any attempt to interrupt the current
+	activity thread will be undone when the transaction eventually rolls
+	back.</dd>
+</dl>
+<p>The behavior is defined as follows:</p>
+<ul>
+	<li><strong>never:</strong> The engine ignores the status of the
+	current transaction and tries to interrupt the current activity thread.
+	For scenario b) this will eventually be undone on transaction rollback.
+	<br>&nbsp;</li>
+	<li><strong>onRollback:</strong> The engine checks the status of
+	the current transaction and interrupts the activity thread if and only
+	if the transaction is not already marked for forced rollback.
+	<ul>
+		<li>If the transaction is marked for rollback the actual
+		exception raised by the service invocation is wrapped in an instance
+		of <tt>org.eclipse.stardust.common.error.ServiceException</tt> and propagated up the
+		call stack. The fact of activity thread rollback is persisted to the
+		log_entry table in a separate transaction so the log entry survives
+		transaction rollback.</li>
+		<li>If the activity thread was triggered by a synchronous service
+		invocation (i.e. WorkflowService#startProcess(...)), the caller will
+		receive the ServiceException and may react appropriately.</li>
+		<li>If the activity thread was triggered by an asynchronous
+		service invocation (i.e. from the System Queue), the regular retry
+		mechanism will be invoked.</li>
+	</ul><br></li>
+	<li><strong>always:</strong> The engine marks the current
+	transaction for forced rollback if this is not already the case and
+	continues as with onRollback.</li>
+</ul>
+<p>The <strong>onRollback</strong> behavior allows the implementor to control which
+exceptions will interrupt the execution flow and which exceptions will
+be propagated to the client by setting the transaction state.</p>
+<p class="note"><strong>Note</strong><br>
+Please note that in case of <strong>never</strong>, the engine does not 
+check the status of the transaction, and therefore if the transaction is 
+already set to <strong>rollback</strong> then all the actions performed in this transaction 
+will be lost.</p>
+<h3>Transaction Behavior of Exceptions during Execution</h3>
+<p>Stardust provides the option to specify the transaction behavior
+in case of exceptions during execution. Set the server-side property 
+<code>Carnot.Engine.RollbackOnError</code> in your <code>carnot.properties</code>
+file to determine the rollback behavior. 
+For details on this property please refer to chapter 
+<a href="../../operation/properties/ag-appendix-properties-2.htm#rollbk">
+Server Side Properties</a> in the
+<a href="../../operation/ag-preface.htm">Operation Guide</a>.</p>
+<p>The property can have the following values:</p>
+<ul>
+   <li><strong>always</strong>:<br>
+   transactions will be automatically rolled back when exceptions
+   occurs</li>
+   <li><strong>never</strong>:<br>
+   transactions are no longer rolled back automatically</li>
+   <li><strong>lenient</strong>:<br>
+   behavior depends on service and method invoked</li>
+</ul>
+<h4>AdministrationService behavior</h4>
+<p>The following 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+methods will not trigger a rollback in case of exceptions:</p>
+<ul>
+   <li><code>getDaemon</code></li>
+   <li><code>getAllDaemons</code></li>
+   <li><code>startDaemon</code></li>
+   <li><code>stopDaemon</code></li>
+   <li><code>getAuditTrailHealthReport</code></li>
+   <li><code>flushCaches</code></li>
+   <li><code>getUser</code></li>
+</ul>
+<h4>WorkflowService behavior</h4>
+<p>In case of the 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>,
+no method will trigger a rollback with the exception of:</p>
+<ul>
+   <li><code>complete</code></li>
+   <li><code>activateAndComplete</code></li>
+   <li><code>startProcess</code></li>
+   <li><code>abortProcessInstance</code></li>
+   <li><code>abortActivityInstance</code></li>
+</ul>
+<h3>Public Exceptions</h3>
+<p>The <a
+	href="../../../reference/api/common/org/eclipse/stardust/common/error/WorkflowException.html"
+>org.eclipse.stardust.common.error.WorkflowException</a> serves as a wrapper for <a
+	href="../../../reference/api/common/org/eclipse/stardust/common/error/PublicException.html"
+>PublicExceptions</a>. If you receive a <a
+	href="../../../reference/api/common/org/eclipse/stardust/common/error/WorkflowException.html"
+>WorkflowException</a> use the method <tt>getCause()</tt> to return the
+inner <tt>Throwable</tt> which caused this workflow exception.</p>
+<p>The following table lists the possible Stardust PublicExceptions:</p>
+<table id='id'>
+	<tr>
+		<th>Exception</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/AccessForbiddenException.html">
+      org.eclipse.stardust.common.error.AccessForbiddenException</a></td>
+		<td>Thrown when the performing user is not valid or if he doesn't
+		have the necessary permissions</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/ConcurrencyException.html">
+      org.eclipse.stardust.common.error.ConcurrencyException</a></td>
+		<td>Thrown whenever the workflow engine detects concurrency
+		problems with workflow enactment</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/ExpectedFailureException.html">
+      org.eclipse.stardust.common.error.ExpectedFailureException</a></td>
+		<td>failure exception</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/InvalidValueException.html">
+      org.eclipse.stardust.common.error.InvalidValueException</a></td>
+		<td>Thrown if a write operation to workflow data fails as of an
+		invalid input value. Most probably in consequence of a type conflict
+		between the input value and the static type of the data or data's attribute</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/ObjectNotFoundException.html">
+      org.eclipse.stardust.common.error.ObjectNotFoundException</a></td>
+		<td>Thrown when an object was not found</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/ValidationException.html">
+      org.eclipse.stardust.common.error.ValidationException</a></td>
+		<td>Thrown when validation fails</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/common/org/eclipse/stardust/common/error/LoginFailedException.html">
+      org.eclipse.stardust.common.error.LoginFailedException</a></td>
+		<td>This exception is thrown by the authentication framework due
+		to various exceptions</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/model/ModelParsingException.html">
+      org.eclipse.stardust.engine.api.model.ModelParsingException</a></td>
+		<td>Thrown when model parsing failed</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/UnsupportedFilterException.html">
+      org.eclipse.stardust.engine.api.query.UnsupportedFilterException</a></td>
+		<td>Will be thrown if filter criteria are not supported in the
+		envisioned context</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/BindingException.html">
+      org.eclipse.stardust.engine.api.runtime.BindingException</a></td>
+		<td>Thrown when binding error occurs</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeploymentException.html">
+      org.eclipse.stardust.engine.api.runtime.DeploymentException</a></td>
+		<td>Thrown if an exception occurred during deployment</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/IllegalOperationException.html">
+      org.eclipse.stardust.engine.api.runtime.IllegalOperationException</a></td>
+		<td>Thrown when an operation is illegal in the current context</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/IllegalStateChangeException.html">
+      org.eclipse.stardust.engine.api.runtime.IllegalStateChangeException</a></td>
+		<td>Thrown when an activity instance is required to perform an
+		illegal state change (i.e. from completed to application)</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserExistsException.html">
+      org.eclipse.stardust.engine.api.runtime.UserExistsException</a></td>
+		<td>Thrown if another user with the specified account already
+		exists</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserGroupExistsException.html">
+      org.eclipse.stardust.engine.api.runtime.UserGroupExistsException</a></td>
+		<td>Thrown if another user group with the specified account
+		already exists</td>
+	</tr>
+	<tr>
+		<td><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserRealmExistsException.html">
+      org.eclipse.stardust.engine.api.runtime.UserRealmExistsException</a></td>
+		<td>Thrown if another user realm with the specified account
+		already exists</td>
+	</tr>
+</table>
+<p class="note"><strong>Note</strong>: Note that after declared
+Exceptions have been thrown, transaction contexts can be marked for
+rollback. If this is ignored and a Session Bean method acting as a
+client continues to work with the bean after catching exceptions, very
+hard-to-debug errors can occur.</p>
+<h2 id="exceptionsEJB">Exception Handling in EJB Environment</h2>
+<p>Basically we have to distinguish between the following two
+scenarios during exception handling in EJB environment:</p>
+<ul>
+	<li><a href="#applEx">Application Exceptions</a></li>
+	<li><a href="#sysEx">System Exceptions</a></li>
+</ul>
+<p>The section <a href="#usecase">Use Case</a> provides you with
+error handling strategies in a use case.</p>
+<h3 id="applEx">Application Exceptions</h3>
+<p>Application exceptions are exceptions declared in the remote
+interface of the bean. When an application exception occurs, the EJB
+container doesn't roll back the transaction automatically and the
+exception is handed back to the calling client application.</p>
+<p>Generally application exceptions are used for functional
+predictable errors and give the client of the application the
+possibility to handle these error cases explicitly.</p>
+<p>The standard error handling for application exceptions in
+Stardust consists in setting the relevant session bean activity to the
+status "Interrupted" (after writing appropriate log messages), assuming
+that the exception is due to the unavailability of the application. A
+recovery of the workflow engine can then restart these specific
+activities at a later date, when the external application is available
+again and lead them to a successful processing.</p>
+<p>Alternatively application exceptions defined inside the workflow
+model through OnException event handler can be treated technically.</p>
+<h3 id="sysEx">System Exceptions</h3>
+<p>System exceptions are exceptions, which can't explicitly be
+declared in the signature of the accordant method. In case such an
+exception is thrown, the EJB container will automatically invoke a
+rollback.</p>
+<p>To guarantee maximum data consistency, generally the
+transactional attributes of the methods will be set in a way that the
+Stardust session beans and session beans called by Stardust take place
+in the same transaction.</p>
+<p>For that reason a rollback of an EJB container, for example
+caused by a system exception, also leads to a rollback of the precedent
+Stardust activities up to the last explicitly set commit point. This
+allows a consistent error handling for several external applications
+(session beans). a Stardust recovery call would handle this case
+through a restart of the activity thread and eventually all rolled-back
+method calls. However, because of this behavior it could happen that
+after the rollback no active activities exist to the accordant process.</p>
+<h3 id="usecase">Use Case</h3>
+<p>Generally, from the view of a Stardust application, even the
+non-existence of an external session bean application is a predictable
+error case, which can be handled by the Stardust recovery. For that
+reason preferably all exceptions in the external session beans should be
+thrown as ApplicationExceptions only. A setRollbackOnly() of the
+container should be avoided.</p>
+<p>This means in detail:</p>
+<ul>
+	<li>The exception or its base class must be declared in the remote
+	interface.</li>
+	<li>As per EJB specification the application exception must not
+	extend java.lang.RuntimeException or its subclasses.</li>
+	<li>No explicit calls of the setRollbackOnly() method.</li>
+</ul>
+<p>RuntimeExceptions thrown so far will be caught inside the EJB
+method and wrapped in application exceptions. By adapting the workflow
+model inside the Stardust application you can decide to just set the
+activity to "Interrupted" (standard behavior) or if an advanced
+technical error handling makes sense.</p>
+<p>Thus the scenario described in section <a href="#sysEx">System
+Exceptions</a> could be reduced to those cases, in which the container or
+the transaction manager itself cause a rollback for technical reasons.</p>
+<p>For detailed information on Spring transaction management,
+please refer to the Spring documentation 
+(<a href="http://www.springframework.net">www.springframework.net</a>).</p>
+<h2>Authorization Handling</h2>
+<p>Note that Authorization validation is always checked before any other validation
+or code is performed.
+Thus, in case the user is not authorized, an AccessForbiddenException occurs 
+rather than an anticipated Exception.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

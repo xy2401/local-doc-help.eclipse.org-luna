@@ -1,0 +1,1028 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Building Web Services Queries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Deployment",
+        "pg-webservice-endpoints.html","pg-webservice-deployment.html",
+	"../../../handbooks.htm","Developer Handbook",
+	"../../pg-preface.htm","Programming Guide",
+	"../pg-embedded-preface.htm","Embedded Usage",
+	"../pg-webservice-api.html","Stardust Web Services");
+-->
+</script>
+<h1>Building Web Services Queries</h1>
+<p>All queries consist of the following three optional parts
+that can be used to build Web Services queries:</p>
+<ul>
+	<li>The <a href="#predicate">predicate</a> element which is used for filtering.</li>
+	<li>The <a href="#order">order</a> element used to specify a custom order.</li>
+	<li>The <a href="#policy">policy</a> element used to specify policies e.g. a
+	<strong>subsetPolicy</strong> to limit results to a subset.</li>
+</ul>
+<p>Some available query filters are 
+query dependent. For working with specific queries please refer to 
+the section <a href="#specific">Specific Queries</a>, which describes 
+the specific predicates, available attributes 
+and supported policies accordingly.</p>
+<h2 id="predicate">Predicate</h2>
+<p>The <tt>predicate</tt> element in queries is of type <tt>AndTerm</tt>
+and can contain a list of various <tt>PredicateBase</tt> elements which
+are evaluated via <tt>and</tt> conjunction. By using nested <tt>and</tt>
+and <tt>or</tt> elements more complex filter statements can be realized.
+Note that not every query type supports every predicate element.</p>
+<h3>Predicate descriptions</h3>
+<table>
+<tr>
+    <th>Predicate</th>
+    <th>Description</th>
+</tr>
+<tr><td>FilterAndTerm</td><td>Building complex filter terms.</td></tr>
+<tr><td>FilterOrTerm</td><td>Building complex filter terms.</td></tr>
+<tr><td>OperatorFilters (attribute)</td><td>Applying filters to according
+ attributes.</td></tr>
+<tr><td>OperatorFilters (variable)</td><td>Finding activity instances /
+    process instances
+    containing specific workflow data.</td></tr>
+<tr><td>ProcessDefinitionFilter</td><td>Finding instances 
+    belonging to specific process definitions.</td></tr>
+<tr><td>ProcessInstanceFilter</td><td>Finding instances belonging to
+    specific process instance hierarchies.</td></tr>
+<tr><td>ActivityFilter</td><td>Finding instances of specific activities /
+finding instances related to instances of specific activities.</td></tr>
+<tr><td>ActivityInstanceFilter</td><td>Finding specific activity
+    instances / finding log entries related to
+    specific activity instances.</td></tr>
+<tr><td>ActivityStateFilter</td><td>Finding activity instances currently
+    being in specific states.</td></tr>
+<tr><td>PerformingUserFilter</td><td>Finding activities currently being
+    performed by a specific user.</td></tr>
+<tr><td>PerformingParticipantFilter</td><td>Finding activities currently
+    being performed by a specific participant.</td></tr>
+<tr><td>PerformedByUserFilter</td><td>Finding activities that were
+    performed and completed by a specific user.</td></tr>
+<tr><td>ProcessStateFilter</td><td>Finding process instances currently
+    being in specific states.</td></tr>
+<tr><td>StartingUserFilter</td><td>Finding process instances being
+    started by a specific user.</td></tr>
+<tr><td>UserStateFilter</td><td>Limiting to only logged in users.</td></tr>
+<tr><td>ParticipantAssociationFilter (for ModelParticipant, UserGroup,
+    TeamLeader, Department)</td><td>Restricting to users having granted
+    specific roles/organizations or being members of specific user groups.</td></tr>
+<tr><td>ParticipantAssociationFilter (for User)</td><td>Restricting to
+    UserGroups having specific users associated.</td></tr>
+</table>
+
+<h3>Example</h3>
+<p>The following example shows a SOAP Request for a query retrieving only ActivityInstances which
+have an <tt>oid</tt> of less than 10 <strong>and</strong> are in state <tt>Completed</tt>.</p>
+<pre>
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://http://eclipse.org/stardust/ws/v2012a/api" xmlns:quer="http://eclipse.org/stardust/ws/v2012a/api/query"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;api:findActivities&gt;
+         &lt;api:query&gt;
+    &lt;quer:predicate&gt;
+    
+          &lt;quer:lessThan&gt;
+             &lt;quer:lhsAttribute&gt;oid&lt;/quer:lhsAttribute&gt;
+             &lt;quer:rhsValue&gt;10&lt;/quer:rhsValue&gt;
+          &lt;/quer:lessThan&gt;
+
+          &lt;quer:activitiesInState&gt;
+             &lt;quer:states inclusive="true"&gt;
+        &lt;quer:state&gt;Completed&lt;/quer:state&gt;
+             &lt;/quer:states&gt;
+          &lt;/quer:activitiesInState&gt; 
+    &lt;/quer:predicate&gt;
+         &lt;/api:query&gt;
+      &lt;/api:findActivities&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</pre>
+<h3>Operator Filters</h3>
+<p>Operator Filters are used to filter results by either by query
+type predefined attributes or by variables using dynamic data defined in
+the model. There are <a href="#unary">Unary</a>, <a href="#binary">Binary</a>
+ and <a href="#binarylist">BinaryListValued</a> Predicates.</p>
+<p>The XSD Elements look like the following:</p>
+<pre>
+&lt;!--Unary--&gt;
+&lt;element name="isNull" type="tns:IsNullPredicate" /&gt;
+&lt;element name="notNull" type="tns:NotNullPredicate" /&gt;
+
+&lt;!--Binary--&gt;
+&lt;element name="isEqual" type="tns:IsEqualPredicate" /&gt;
+&lt;element name="notEqual" type="tns:NotEqualPredicate" /&gt;
+&lt;element name="lessThan" type="tns:LessThanPredicate" /&gt;
+&lt;element name="lessOrEqual" type="tns:LessOrEqualPredicate" /&gt;
+&lt;element name="greaterOrEqual" type="tns:GreaterOrEqualPredicate" /&gt;
+&lt;element name="greaterThan" type="tns:GreaterThanPredicate" /&gt;
+&lt;element name="isLike" type="tns:IsLikePredicate" /&gt;
+
+&lt;!--BinaryListValued--&gt;
+&lt;element name="between" type="tns:BetweenPredicate" /&gt; (exactly two values)
+&lt;element name="inList" type="tns:InListPredicate" /&gt; (only for variables)
+&lt;element name="notInList" type="tns:NotInListPredicate" /&gt; (only for variables)
+&lt;element name="notAnyOf" type="tns:NotAnyOfPredicate" /&gt; (only for variables)
+</pre>
+
+<h4 id="unary">Unary</h4>
+<p>UnaryPredicates can either be used with variables or attributes.
+The <tt>variable</tt> element is used to pass a dataId, while the <tt>attribute</tt>
+element can hold a predefined attribute.</p>
+<p>For example:</p>
+<pre>
+&lt;quer:notNull&gt;
+      &lt;quer:variable&gt;someDataId&lt;/quer:variable&gt;
+&lt;/quer:notNull&gt; 
+&lt;quer:notNull&gt;
+      &lt;quer:attribute&gt;oid&lt;/quer:attribute&gt;
+&lt;/quer:notNull&gt; 
+</pre>
+<h4 id="binary">Binary</h4>
+<p>BinaryPredicates additionally use a single <tt>rhsValue</tt>
+element to specify a value to compare with. Similar to UnaryPredicates
+the <tt>lhsVariable</tt> or <tt>lhsAttribute</tt> element can be used.</p>
+<p>When using <tt>lhsAttribute</tt> the <tt>type</tt>
+attribute of element <tt>rhsValue</tt> is restricted to the following types:</p>
+<ul>
+	<li>xsd:string (default)</li>
+	<li>xsd:long</li>
+	<li>xsd:double</li>
+	<li>xsd:dateTime</li>
+</ul>
+<p>lhsAttribute Example:</p>
+<pre>
+&lt;quer:isEqual&gt;
+        &lt;quer:lhsAttribute&gt;oid&lt;/quer:lhsAttribute&gt;
+        &lt;quer:rhsValue xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long"&gt;100&lt;/quer:rhsValue&gt;
+ &lt;/quer:isEqual&gt;
+</pre>
+<p>For most attributes the default string type is sufficient, e.g.:</p>
+<pre>
+&lt;quer:isEqual&gt;
+        &lt;quer:lhsAttribute&gt;oid&lt;/quer:lhsAttribute&gt;
+        &lt;quer:rhsValue&gt;100&lt;/quer:rhsValue&gt;
+ &lt;/quer:isEqual&gt;
+</pre>
+<p>The <tt>lhsVariable</tt> element allows the use of <tt>rhsValue</tt>
+for all supported types. Please refer to the table in the section
+<a href="pg-webservice-classes.html#webdata">Supported Data Types</a>
+of the chapter <a href="pg-webservice-classes.html">Stardust Web Services</a>.
+The values in the table are also supported for filtering workflow data
+and can thus be used as <tt>rhsValue</tt> for the <tt>lhsVariable</tt> element.</p>
+<p>Structured data can be dereferenced using <tt>.</tt> or <tt>/</tt>
+delimiter, as illustrated in the following examples:</p>
+<pre>
+&lt;quer:isEqual&gt;
+        &lt;quer:lhsVariable&gt;primitive_string_data1&lt;/quer:lhsVariable&gt;
+        &lt;quer:rhsValue&gt;text&lt;/quer:rhsValue&gt;
+ &lt;/quer:isEqual&gt;
+
+&lt;quer:isEqual&gt;
+        &lt;quer:lhsVariable&gt;primitive_long_data1&lt;/quer:lhsVariable&gt;
+        &lt;quer:rhsValue xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long"&gt;100&lt;/quer:rhsValue&gt;
+ &lt;/quer:isEqual&gt;
+
+&lt;quer:isEqual&gt;
+        &lt;quer:lhsVariable&gt;SupportCaseData.Name&lt;/quer:lhsVariable&gt;
+        &lt;quer:rhsValue&gt;Smith&lt;/quer:rhsValue&gt;
+ &lt;/quer:isEqual&gt;
+</pre>
+<h4 id="binarylist">BinaryListValued</h4>
+<p>BinaryListValuedPredicates are used for OperationFilters which
+require more than one value. The <tt>between</tt> element requires
+exactly two values.</p>
+<p>Data type restriction is the same as for BinaryPredicates.</p>
+<p>When using <tt>lhsAttribute</tt> the <tt>type</tt>
+attribute of element <tt>rhsValues</tt> is restricted to the following
+types:</p>
+<ul>
+	<li>xsd:string (default)</li>
+	<li>xsd:long</li>
+	<li>xsd:double</li>
+	<li>xsd:dateTime</li>
+</ul>
+<p>The following example illustrates how the <tt>between</tt> element
+can be used:</p>
+<pre>
+&lt;quer:between&gt;
+     &lt;quer:lhsAttribute&gt;lastModificationTime&lt;/quer:lhsAttribute&gt;
+     &lt;quer:rhsValues xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:dateTime"&gt;
+        &lt;quer:value&gt;2011-05-28T12:12:38.323+02:00&lt;/quer:value&gt;
+        &lt;quer:value&gt;2011-06-28T12:12:38.323+02:00&lt;/quer:value&gt;
+     &lt;/quer:rhsValues&gt;
+&lt;/quer:between&gt;
+</pre>
+<h3>Query Dependent Filters</h3>
+<p>The rest of the available filters are not available for every
+query. For more information please refer to the section 
+<a href="#specific">Specific Queries</a>.</p>
+<p>The XSD Elements look like the following:</p>
+<pre>
+&lt;element name="forProcessDefinition" type="tns:ProcessDefinitionFilter" /&gt;
+&lt;element name="forProcess" type="tns:ProcessInstanceFilter" /&gt;
+&lt;element name="processesInState" type="tns:ProcessStateFilter" /&gt;
+
+&lt;element name="forActivityDefinition" type="tns:ActivityDefinitionFilter" /&gt;
+&lt;element name="forActivity" type="tns:ActivityInstanceFilter" /&gt;
+&lt;element name="activitiesInState" type="tns:ActivityStateFilter" /&gt;
+
+&lt;element name="performingUser" type="tns:PerformingUserFilter" /&gt;
+&lt;element name="performedByUser" type="tns:PerformedByUserFilter" /&gt;
+&lt;element name="performingParticipant" type="tns:PerformingParticipantFilter" /&gt;
+
+&lt;element name="startingUser" type="tns:StartingUserFilter" /&gt;
+&lt;element name="userState" type="tns:UserStateFilter" /&gt;
+&lt;element name="participantAssociation" type="tns:ParticipantAssociationFilter" /&gt;
+</pre>
+<h2 id="order">Order</h2>
+<p>By setting an <tt>attributeOrder</tt> or <tt>dataOrder</tt> the
+query results can be ordered.</p>
+<h3>Example</h3>
+<pre>
+&lt;quer:order&gt;
+    &lt;quer:attributeOrder&gt;
+        &lt;quer:attribute&gt;startTime&lt;/quer:attribute&gt;
+        &lt;quer:ascending&gt;true&lt;/quer:ascending&gt;
+    &lt;/quer:attributeOrder&gt;
+&lt;/quer:order&gt;
+
+&lt;quer:order&gt;
+    &lt;quer:dataOrder&gt;
+        &lt;quer:dataId&gt;primitive_descriptor1&lt;/quer:dataId&gt;
+        &lt;quer:ascending&gt;true&lt;/quer:ascending&gt;
+    &lt;/quer:dataOrder&gt;
+&lt;/quer:order&gt;
+</pre>
+<h2 id="policy">Policies</h2>
+<p>Policies allow setting special options for the query. One
+important policy that can be used to realize paging is the <tt>subsetPolicy</tt>.</p>
+<h3>Example</h3>
+<pre>
+&lt;quer:policy&gt;
+    &lt;quer:subsetPolicy&gt;
+        &lt;quer:evaluateTotalCount&gt;true&lt;/quer:evaluateTotalCount&gt;
+        &lt;quer:maxSize&gt;5&lt;/quer:maxSize&gt;
+        &lt;quer:skippedEntries&gt;0&lt;/quer:skippedEntries&gt;
+    &lt;/quer:subsetPolicy&gt;
+&lt;/quer:policy&gt;
+</pre>
+<h2 id="specific">Specific Queries</h2>
+<p>This section describes the following query classes with the
+specific predicates that can be used for filtering,
+available attributes and policies.</p>
+<ul>
+    <li><a href="#worklistQuery">WorklistQuery</a></li>
+    <li><a href="#actInstQuery">ActivityInstanceQuery</a></li>
+    <li><a href="#procInstQuery">ProcessInstanceQuery</a></li>
+    <li><a href="#userQuery">UserQuery</a></li>
+    <li><a href="#UserGroupQuery">UserGroupQuery</a></li>
+    <li><a href="#LogEntryQuery">LogEntryQuery</a></li>
+    <li><a href="#procDefQuery">ProcessDefinitionQuery</a></li>
+    <li><a href="#docQuery">DocumentQuery</a></li>
+    <li><a href="#data">DataQuery</a></li>
+    <li><a href="#prefer">PreferencesQuery</a></li>
+</ul>
+<h3 id="worklistQuery">WorklistQuery</h3>
+<p>For the worklist query primarily <tt>userContribution</tt> is
+used to configure private worklist and <tt>participantContributions</tt>
+to configure specific participant worklists inclusion.</p>
+<table id="WorklistQuery">
+    <tr>
+        <th>WorklistQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td>setUserContribution(boolean) <br>
+        setUserContribution(SubsetPolicy)</td>
+        <td>&lt;element name="UserContribution" minOccurs="0" /&gt;</td>
+        <td>Enables or disables the retrieval of the UserWorklist and
+        optionally a SubsetPolicy can be set.</td>
+    </tr>
+    <tr>
+        <td>setParticipantContribution(PerformingParticipantFilter) <br>
+        setParticipantContribution(PerformingParticipantFilter, SubsetPolicy)</td>
+        <td>&lt;element name="ParticipantContributions" minOccurs="0" /&gt;
+        </td>
+        <td>Supports setting PerformingParticipantFilter and optionally a
+        SubsetPolicy</td>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+            <li>ProcessDefinitionFilter</li>
+            <li>ProcessInstanceFilter</li>
+            <li>ActivityFilter</li>
+            <li>DataFilter</li>
+            <li>SubProcessDataFilter</li>
+            <li>HierarchyDataFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>startTime</li>
+            <li>lastModificationTime</li>
+            <li>activityOid</li>
+            <li>activityInstanceOid</li>
+            <li>processOid</li>
+            <li>processPriority</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/DescriptorPolicyXto.html">DescriptorPolicy</a> (default: descriptors included)</li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ExcludeUserPolicyXto.html">ExcludeUserPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/EvaluateByWorkitemsPolicyXto.html">EvaluateByWorkitemsPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/HistoricalEventPolicyXto.html">HistoricalEventPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="actInstQuery">ActivityInstanceQuery</h3>
+
+<table id="ActivityInstanceQuery">
+    <tr>
+        <th>ActivityInstanceQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+            <li>ProcessDefinitionFilter</li>
+            <li>ProcessInstanceFilter</li>
+            <li>ActivityFilter</li>
+            <li>ActivityInstanceFilter</li>
+            <li>ActivityStateFilter</li>
+            <li>PerformingUserFilter</li>
+            <li>PerformingParticipantFilter</li>
+            <li>PerformedByUserFilter</li>
+            <li>DataFilter</li>
+            <li>SubProcessDataFilter</li>
+            <li>HierarchyDataFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>startTime</li>
+            <li>lastModificationTime</li>
+            <li>activityOid</li>
+            <li>processOid</li>
+            <li>processPriority</li>
+            <li>oid</li>
+            <li>currentPerformerOid</li>
+            <li>currentUserPerformerOid</li>
+            <li>performedByOid</li>
+            <li>state</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/DescriptorPolicyXto.html">DescriptorPolicy</a> (default: descriptors included)</li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/HistoricalEventPolicyXto.html">HistoricalEventPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="procInstQuery">ProcessInstanceQuery</h3>
+<table id="ProcessInstanceQuery">
+    <tr>
+        <th>ProcessInstanceQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+            <li>ProcessDefinitionFilter</li>
+            <li>ProcessInstanceFilter</li>
+            <li>ProcessStateFilter</li>
+            <li>StartingUserFilter</li>
+            <li>DataFilter</li>
+            <li>SubProcessDataFilter</li>
+            <li>HierarchyDataFilter</li>
+            <li>ProcessInstanceHierarchyFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>oid</li>
+            <li>startTime</li>
+            <li>terminationTime</li>
+            <li>state</li>
+            <li>processDefinitionOid</li>
+            <li>rootProcessOid</li>
+            <li>startingUserOid</li>
+            <li>startingActivityInstanceOid</li>
+            <li>priority</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/DescriptorPolicyXto.html">DescriptorPolicy</a> (Default: descriptors NOT included)</li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ProcessInstanceDetailsPolicyXto.html">ProcessInstanceDetailsPolicy</a>
+            	<ul>
+            		<li>ProcessInstanceDetailsOptions</li>
+            		<li>WITH_HIERARCHY_INFO</li>
+            		<li>WITH_NOTES</li>
+            		<li>WITH_LINK_INFO</li>
+              	</ul></li>
+              <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/CasePolicyXto.html">CasePolicy</a></li>
+              	
+         </ul>
+        </td>
+    </tr>
+</table>
+<h3 id="procDefQuery">ProcessDefinitionQuery</h3>
+<table id="ProcessDefinitionQuery">
+    <tr>
+        <th>ProcessDefinitionQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>triggerType</li>
+            <li>invocationType</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ProcessDefinitionDetailsPolicyXto.html">ProcessDefinitionDetailsPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="userQuery">UserQuery</h3>
+<table id="UserQuery">
+    <tr>
+        <th>UserQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>ParticipantAssociationFilter.FILTER_KIND_MODEL_PARTICIPANT</li>
+            <li>ParticipantAssociationFilter.FILTER_KIND_USER_GROUP</li>
+            <li>ParticipantAssociationFilter.FILTER_KIND_TEAM_LEADER</li>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+            <li>UserStateFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>oid</li>
+            <li>accountId</li>
+            <li>firstName</li>
+            <li>lastName</li>
+            <li>eMail</li>
+            <li>validFrom</li>
+            <li>validTo</li>
+            <li>description</li>
+            <li>failedLoginCount</li>
+            <li>lastLoginTime</li>
+            <li>realmId</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="UserGroupQuery">UserGroupQuery</h3>
+<table id="UserGroupQuery_table">
+    <tr>
+        <th>UserGroupQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>ParticipantAssociationFilter.FILTER_KIND_USER</li>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>oid</li>
+            <li>id</li>
+            <li>name</li>
+            <li>validFrom</li>
+            <li>validTo</li>
+            <li>description</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="LogEntryQuery">LogEntryQuery</h3>
+<table id="LogEntryQuery_table">
+    <tr>
+        <th>LogEntryQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+            <li>ProcessDefinitionFilter</li>
+            <li>ProcessInstanceFilter</li>
+            <li>ActivityFilter</li>
+            <li>ActivityInstanceFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>oid</li>
+            <li>type</li>
+            <li>code</li>
+            <li>subject</li>
+            <li>timestamp</li>
+            <li>processOid</li>
+            <li>activityOid</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/ModelVersionPolicyXto.html">ModelVersionPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+<h3 id="docQuery">DocumentQuery</h3>
+<table id="DocumentQuery">
+    <tr>
+        <th>DocumentQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td><strong>Inherited from Query</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>getFilter() <br>
+        where(FilterCriterion)</td>
+        <td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+        <td>Refer to section <a href="#predicate">Predicate</a> <br>
+        <br>
+        Supported:
+        <ul>
+            <li>FilterAndTerm</li>
+            <li>FilterOrTerm</li>
+            <li>UnaryOperatorFilter</li>
+            <li>BinaryOperatorFilter</li>
+            <li>TernaryOperatorFilter</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getOrderCriteria() <br>
+        orderBy(OrderCriterion) <br>
+        orderBy(FilterableAttribute) <br>
+        orderBy(FilterableAttribute, boolean)</td>
+        <td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+        <td>Works as a list of OrderCriteria which consists of
+        AttributeOrder or DataOrder elements <br>
+        Supported Attributes are:
+        <ul>
+            <li>id</li>
+            <li>name</li>
+            <li>contentType</li>
+            <li>owner</li>
+            <li>dateCreated</li>
+            <li>dateLastModified</li>
+            <li>content</li>
+            <li>score</li>
+            <li>documentQuery:metaDataFilter:any</li>
+            <li>documentQuery:metaDataFilter:named:&lt;name&gt;</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>getPolicy(Class) <br>
+        setPolicy(EvaluationPolicy) <br>
+        removePolicy(Class)</td>
+        <td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+        <td>Supported Policies
+        <ul>
+            <li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+        </ul>
+        </td>
+    </tr>
+</table>
+
+<h3 id="data">DataQuery</h3>
+<table>
+	 <tr>
+        <th>DataQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+    	<td>getFilter()<br> 
+where(FilterCriterion) 
+    	</td>
+    	<td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+    	<td>See section about <a href="#pterm">PredicateTerm</a>. Also, refer to 
+    	section <a href="#predicate">Predicate</a>. <br>Supported:
+    	<ul>
+    		<li>FilterAndTerm</li>
+    		<li>FilterOrTerm</li>
+    		<li>UnaryOperatorFilter</li>
+    		<li>BinaryOperatorFilter</li>
+    		<li>TernaryOperatorFilter</li>
+    		
+    	</ul>
+  		</td>
+    </tr>
+    <tr>
+    	<td>getOrderCriteria()<br> 
+			orderBy(OrderCriterion)<br> 
+			orderBy(FilterableAttribute)<br> 
+			orderBy(FilterableAttribute, boolean)<br> 
+    	</td>
+    	<td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+    	<td>Works as a list of OrderCriteria which consists of AttributeOrder or DataOrder elements. <br> 
+			Supported Attributes are:
+			<ul>
+				<li>processId</li>
+				<li>dataTypeId</li>
+				<li>declaredTypeId</li>
+				<li>modelOid</li>
+			</ul> 
+    	</td>
+    </tr>
+    <tr>
+    	<td>getPolicy(Class)<br> 
+		setPolicy(EvaluationPolicy)<br> 
+		removePolicy(Class)<br> 
+    	</td>
+    	<td>&lt;element name="Policy" minOccurs="0" /&gt;</td>
+    	<td>Supported Policies:<br>
+    	<ul>
+    		<li><a href="../../../../reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/SubsetPolicyXto.html">SubsetPolicy</a></li>
+    	</ul>
+    	</td>
+    </tr>
+   
+</table>
+
+<h3 id="prefer">PreferencesQuery</h3>
+
+<table>
+	<tr>
+        <th>PreferencesQuery</th>
+        <th>Mapped Structure</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+    	<td>getFilter() 
+where(FilterCriterion) </td>
+    	<td>&lt;element name="AndTerm" minOccurs="0" /&gt;</td>
+    	<td>See section about <a href="#pterm">PredicateTerm</a>.<br>Supported:  
+				<ul>
+				<li>FilterAndTerm</li> 
+				<li>FilterOrTerm </li>
+				<li>UnaryOperatorFilter</li> 
+				<li>BinaryOperatorFilter</li> 
+				<li>TernaryOperatorFilter</li></ul> 
+    	</td>
+    </tr>
+     <tr>
+    	<td>getOrderCriteria()<br> 
+			orderBy(OrderCriterion)<br> 
+			orderBy(FilterableAttribute)<br> 
+				orderBy(FilterableAttribute, boolean)</td>
+    	<td>&lt;element name="OrderCriteria" minOccurs="0" /&gt;</td>
+    	<td>Works as a list of OrderCriteria which consists of AttributeOrder or DataOrder elements. 
+			Supported Attributes are:<br> 
+				<ul>
+				<li>scope</li> 
+				<li>moduleId</li> 
+				<li>preferencesId</li> 
+				<li>realmId</li> 
+				<li>userId</li></ul> 
+    	</td>
+    </tr>
+     <tr>
+    	<td>getPolicy(Class)<br> 
+setPolicy(EvaluationPolicy)<br> 
+removePolicy(Class) </td>
+    	<td>&lt;element name="Policy" minOccurs="0" /&gt; </td>
+    	<td>No policies are supported.</td>
+    </tr>
+     
+</table>
+
+
+<h3 id="pterm">PredicateTerm Building</h3>
+<pre>
+	&lt;!-- filter terms --&gt;
+   &lt;complexType name=&quot;PredicateTerm&quot; abstract=&quot;true&quot;&gt;
+      &lt;complexContent&gt;
+         &lt;extension base=&quot;tns:PredicateBase&quot;&gt;
+            &lt;sequence&gt;
+
+               &lt;choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;
+                  &lt;element name=&quot;and&quot; type=&quot;tns:AndTerm&quot; /&gt;
+                  &lt;element name=&quot;or&quot; type=&quot;tns:OrTerm&quot; /&gt;
+
+                  &lt;element name=&quot;isNull&quot; type=&quot;tns:IsNullPredicate&quot; /&gt;
+                  &lt;element name=&quot;notNull&quot; type=&quot;tns:NotNullPredicate&quot; /&gt;
+
+                  &lt;element name=&quot;isEqual&quot; type=&quot;tns:IsEqualPredicate&quot; /&gt;
+                  &lt;element name=&quot;notEqual&quot; type=&quot;tns:NotEqualPredicate&quot; /&gt;
+                  &lt;element name=&quot;lessThan&quot; type=&quot;tns:LessThanPredicate&quot; /&gt;
+                  &lt;element name=&quot;lessOrEqual&quot; type=&quot;tns:LessOrEqualPredicate&quot; /&gt;
+                  &lt;element name=&quot;greaterOrEqual&quot; type=&quot;tns:GreaterOrEqualPredicate&quot; /&gt;
+                  &lt;element name=&quot;greaterThan&quot; type=&quot;tns:GreaterThanPredicate&quot; /&gt;
+                  &lt;element name=&quot;isLike&quot; type=&quot;tns:IsLikePredicate&quot; /&gt;
+
+                  &lt;element name=&quot;inList&quot; type=&quot;tns:InListPredicate&quot; /&gt;
+                  &lt;element name=&quot;notInList&quot; type=&quot;tns:NotInListPredicate&quot; /&gt;
+                  &lt;element name=&quot;notAnyOf&quot; type=&quot;tns:NotAnyOfPredicate&quot; /&gt;
+                  &lt;element name=&quot;between&quot; type=&quot;tns:BetweenPredicate&quot; /&gt;
+
+                  &lt;element name=&quot;forProcessDefinition&quot; type=&quot;tns:ProcessDefinitionFilter&quot; /&gt;
+                  &lt;element name=&quot;forProcess&quot; type=&quot;tns:ProcessInstanceFilter&quot; /&gt;
+                  &lt;element name=&quot;processesInState&quot; type=&quot;tns:ProcessStateFilter&quot; /&gt;
+
+                  &lt;element name=&quot;forActivityDefinition&quot; type=&quot;tns:ActivityDefinitionFilter&quot; /&gt;
+                  &lt;element name=&quot;forActivity&quot; type=&quot;tns:ActivityInstanceFilter&quot; /&gt;
+                  &lt;element name=&quot;activitiesInState&quot; type=&quot;tns:ActivityStateFilter&quot; /&gt;
+
+                  &lt;element name=&quot;performingUser&quot; type=&quot;tns:PerformingUserFilter&quot; /&gt;
+                  &lt;element name=&quot;performedByUser&quot; type=&quot;tns:PerformedByUserFilter&quot; /&gt;
+                  &lt;element name=&quot;performingParticipant&quot; type=&quot;tns:PerformingParticipantFilter&quot; /&gt;
+
+                  &lt;element name=&quot;startingUser&quot; type=&quot;tns:StartingUserFilter&quot; /&gt;
+                  &lt;element name=&quot;userState&quot; type=&quot;tns:UserStateFilter&quot; /&gt;
+                  &lt;element name=&quot;participantAssociation&quot; type=&quot;tns:ParticipantAssociationFilter&quot; /&gt;
+               &lt;/choice&gt;
+
+            &lt;/sequence&gt;
+         &lt;/extension&gt;
+      &lt;/complexContent&gt;
+   &lt;/complexType&gt;
+	
+</pre>
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

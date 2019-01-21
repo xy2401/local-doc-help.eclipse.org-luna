@@ -1,0 +1,937 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Using the Sysconsole Command</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Using the Console Command",
+	"ag-commandline-1.htm","ag-commandline-3.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-command-preface.htm","Command Line Tools");
+ -->
+</script>
+<h1>Using the Sysconsole Command</h1>
+<p>The <strong>Sysconsole</strong> command line tool handles
+administrative tasks not related to a deployed Stardust runtime environment.</p>
+<ul>
+    <li><a href="#scope">Scope</a></li>
+    <li><a href="#environment">Setting Up the Environment</a></li>
+    <li><a href="#options">Global options</a></li>
+    <li><a href="#comm">Commands</a></li>
+</ul>
+<h2 id="scope">Scope</h2>
+<p>The <strong>Sysconsole</strong> command handles the
+following tasks:</p>
+<ul>
+    <li>creating a schema for the audit trail database or alternatively generating
+    a DDL file describing this schema</li>
+    <li>dropping the schema of the audit trail database or alternatively generating
+    a DDL for this purpose</li>
+    <li>changing the system operator password</li>
+    <li>running an audit trail upgrade when the schema evolves along with new
+    versions of Stardust</li>
+    <li>archiving audit trail data by moving them to a second audit trail schema,
+    the backup audit trail schema</li>
+    <li>creating lock or cluster tables for performance and concurrency tuning</li>
+    <li>password encryption</li>
+</ul>
+<h2 id="environment">Setting Up the Environment</h2>
+<p>This section describes how to prepare your environment for using
+the <strong>Sysconsole</strong> command.</p>
+<div class="ipp"><p>Start by downloading one of the Maven archetype templates from the Stardust artifactory
+matching your requirements. Refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html">
+Creating a Stardust Runtime Environment with Apache Maven</a>
+in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+Stardust Installation Guide</a> for details.</p></div>
+<p>Perform the following steps:</p>
+<ol>
+    <li>Start a command console (<tt>cmd</tt>).</li>
+    <li>Switch to your custom work folder.</li>
+    <li>Add your client libraries and jar files required by the model according to the
+    application server you use. Please refer to the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/applicationserversetup/toc.html">
+    Application Server Setup</a> chapters in the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">Deployment Guide</a>
+    for detailed information on which libraries and jar files are required.</li>
+    <li>Add a database driver. Please refer to the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/audittraildatabasesetup/toc.html">
+    Audit Trail Database Setup</a> chapters in the 
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">Deployment Guide</a>
+    for detailed information on the database drivers you need.</li>
+    <li>Additionally add the database connector jar file and other required model related
+    jar files.</li>
+    <li>Adapt the <tt>carnot.properties</tt> file, residing in your <tt>etc</tt>
+    folder of your workspace environment.</li>
+</ol>
+<h3>Using Archetypes to create Environments for Sysconsole Clients</h3>
+<p>Stardust provides archetypes to create environments for console and sysconsole clients.
+Please refer to our 
+<a href="http://wiki.eclipse.org/Stardust/Knowledge_Base/Build_and_Change_Management/Maven/Basic_Setup">
+Stardust Knowledge Base</a> for details.</p>
+<h2 id="options">Global Options</h2>
+<p>The sysconsole tool supports the following global options which can be used with
+every command:</p>
+<table id='id'>
+    <tr>
+        <th>Option</th>
+        <th>Short form</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>-dbdriver &lt;arg&gt;</td>
+        <td>-r</td>
+        <td>The JDBC driver class to use.</td>
+    </tr>
+    <tr>
+        <td>-dbpassword &lt;arg&gt;</td>
+        <td>-s</td>
+        <td>Audit trail DB password to use.</td>
+    </tr>
+    <tr>
+        <td>-dbschema &lt;arg&gt;</td>
+        <td>&nbsp;</td>
+        <td>Audit trail DB schema to use.</td>
+    </tr>
+    <tr>
+        <td>-dbtype &lt;arg&gt;</td>
+        <td>-t</td>
+        <td>The database type, i.e. oracle, db2, etc.</td>
+    </tr>
+    <tr>
+        <td>-dburl &lt;arg&gt;</td>
+        <td>-l</td>
+        <td>The JDBC URL to use.</td>
+    </tr>
+    <tr>
+        <td>-dbuser &lt;arg&gt;</td>
+        <td>-d</td>
+        <td>Audit trail DB user to use.</td>
+    </tr>
+    <tr>
+        <td>-force</td>
+        <td>-f</td>
+        <td>Forces the command to execute without any callback.</td>
+    </tr>
+    <tr>
+        <td>-password &lt;arg&gt;</td>
+        <td>-p</td>
+        <td>The password of the sysop user.</td>
+    </tr>
+    <tr>
+        <td>-verbose</td>
+        <td>-v</td>
+        <td>Makes output more verbose.</td>
+    </tr>
+    <tr>
+        <td>-statementDelimiter &lt;arg&gt;</td>
+        <td>-sd</td>
+        <td>Sets the delimiter string for all operations.<br>
+        	<strong>Default values:</strong><br>
+        	 <tt>&#92;nGO</tt> : for Sybase. Note that <tt>&#92;n</tt> is used to add a line feed.<br>
+        	 <tt>;</tt> : for any other database.<br>        	 
+        </td>
+    </tr>
+</table>
+<p>The first five global options allow you to override the corresponding settings in
+the carnot.properties.</p>
+<h2 id="comm">Commands</h2>
+<p>The following table lists the commands supported by the
+sysconsole.</p>
+<table id='id_1'>
+    <tr>
+        <th>Command</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>archive</td>
+        <td>Deletes or archives the audit trail or parts of it. Please refer to
+        section <a href="#archive">Audit Trail Archive Administration</a> for detailed
+        information. Also, refer to the chapter 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/operation/audit-trail/ag-archiving.htm">
+        Audit Trail Archive</a> of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/handbooks/operation/ag-preface.htm">Operation Guide</a>
+        
+        <ul>
+            <li><tt>-batchSize/-b &lt;arg&gt; - </tt> Determines how many process
+            instances should be performed in a transaction. The data will be kept in a
+            consistent state. If this option is missing, a default batch size of 1000 will
+            be used. You have to specify at least one of the following options: model, processes, 
+            deadModels, deadProcesses, deadData, logEntries and userSessions.</li>
+            <li><tt>-deadData/-d 'arg' - </tt>deletes dead workflow data values.
+            It has to be used together with option <tt>-noBackup</tt>.
+            Accepts as argument a single data ID or a comma separated list of data IDs.
+            </li>
+            <li><tt>-deadData/-d &lt;arg&gt; - </tt>deletes dead workflow data values.
+            It has to be used together with option <tt>-noBackup</tt>.
+            Accepts as argument a single data ID or a comma separated list of data IDs.</li>
+            <li><tt>-deadModels/-m </tt>deletes or archives audit trail for all dead models
+            (models not having nonterminated
+            process instances) and their preferences. You need to specify archive audit trail schema with this option.</li>
+            <li><tt>-deadProcesses/-p</tt> deletes or archives terminated process instances
+            and their preferences.</li>
+            <li><tt>-interval/-i &lt;arg&gt;- </tt> The interval for which the archiving
+            has to be performed, from now until &lt;arg&gt;, in format
+            nn{d{ays}|h{ours}|m{inutes}}. You can use one of the time units d(ays), h(ours)
+            or m(inutes), e.g. <tt>3d</tt> or <tt>10hours</tt>. If this option is missing, a
+            default interval of 1 day will be used.</li>
+            <li><tt>-logEntries/-l -</tt> deletes or archives log entries.</li>
+            <li><tt>-model -v &lt;arg&gt; </tt> deletes or archives audit trail for the model
+            version with the specified OID including preferences.</li>
+            <li><tt>-noBackup/-n -</tt> only deletes and doesn't archive data.</li>
+            <li><tt>-schemaName/-s &lt;arg&gt;</tt> specifies the schema containing the
+            backup tables.</li>
+            <li><tt> -timestamp/-t &lt;arg&gt; - </tt>Restricts any operation to either
+            process instances terminated before the given date or log records created
+            before the given date (always inclusive). The specified date must conform to
+            ISO date patterns (i.e. &quot;2005-12-31&quot;, &quot;2005-12-31 23:59&quot;
+            or &quot;2005-12-31T23:59:59:999&quot;) or &quot;yyyy/MM/dd hh:mm:ss:SSS&quot;
+            for backward compatibility.</li>
+            <li><tt>-partition &lt;ID[,ID]*&gt;</tt> - identifies the partition(s) to
+            operate against.</li>
+            <li><tt>-processes &lt;OID[,OID]*&gt;</tt> - deletes or archives process instances by
+            OID including their preferences. The OID should be of a root process instance. The process instances must be terminated (completed or aborted).</li>
+			<li><tt>-userSession</tt> - provides the possibility that user session entries 
+				can be archived or deleted.</li>
+        </ul>
+        </td>
+        <td>
+        <ul>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -deadModels -batchSize 2000</li>
+        		<li>sysconsole -password sysop -force archive -deadData aBoolean,aString,anInt,aBigSerializable,OrderBook1 -noBackup</li>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -deadModels</li>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -deadProcesses</li>
+        		<li>sysconsole -password sysop archive -deadData aBoolean,aString,anInt,aBigSerializable,OrderBook1 -noBackup -interval 1m</li>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -logEntries </li>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -model &lt;model OID&gt;</li>
+        		<li>sysconsole -password sysop archive -s &lt;Specify target schemaname&gt; -deadProcesses -partition &lt;Specify partition ID&gt;</li>
+        		<li>sysconsole -p sysop archive -noBackup -userSession</li>
+        	</ul>
+        </td>
+       </tr>
+       
+       
+    <tr>
+        <td>archiveDDL</td>
+        <td>Creates DDL for the Stardust schema:
+        <ul>
+            <li><tt>-file/-f &lt;arg&gt; -</tt> the DDL file name.</li>
+            <li><tt>-schemaName/-s &lt;arg&gt; -</tt> specifies the schema supposed to
+            contain the backup tables.</li>
+        </ul>
+        </td>
+        <td>
+        <ul>
+        	<li>sysconsole -password sysop archiveDDL -file &lt;Specify file name&gt; -s &lt;Specify schemaname&gt;</li>
+        
+        </ul>
+        </td>
+              
+    </tr>
+    <tr id="auditTrail">
+        <td>auditTrail</td>
+        <td>Manages Proxy Lock Tables (see detailed description in the sections
+        below):
+        <ul>
+            <li><tt>-checkConsistency/-cco [-partition &lt;ID&gt;[,&lt;ID&gt;]*]</tt>
+            - runs consistency checks to test whether any problem instances exist 
+            in the audit trail. See section 
+            <a href="#consistency">Checking Consistency in the Audit Trail</a>
+            for details.</li>
+            <li><tt>-createPartition &lt;ID&gt; -</tt> creates a new partition with
+            the given ID, if no partition having this ID currently exists. Additionally
+            creates the new partitions default domain, having the same ID as the
+            partition.</li>
+            <li><tt>-dropDataClusters/-ddc [-sql &lt;spool-file&gt;]
+            [-partition ID[,ID]*] -</tt> drops Data Clusters.</li>
+            <li><tt>-dropLockTables/-dlt [-sql &lt;spool-file&gt;] -</tt> drops
+            existing Proxy Lock Tables.</li>
+            <li><tt>-dropPartition &lt;ID&gt; -</tt> deletes the partition identified
+            by the given ID and any contained data from the AuditTrail. Also
+            cleans up user, realm and partition scope preferences.
+            <br>
+            Requires explicit
+            confirmation, which may be overwritten with the <tt>-force</tt> parameter.</li>
+            <li><tt>-enableDataClusters/-edc -configFile
+            &lt;cluster-config-file&gt; [-skipDDL] [-skipDML] [-sql &lt;spool-file&gt;]
+<!--             [-partition ID[,ID]*] [-modelID] -</tt> creates missing data cluster tables and synchronizes -->
+            [-partition ID[,ID]*] -</tt> creates missing data cluster tables and synchronizes
+            table content.</li>
+            <li><tt>-enableLockTables/-elt [-skipDDL] [-skipDML] [-sql
+            &lt;spool-file&gt;] -</tt> creates and enables Proxy Lock Tables.</li>
+            <li><tt>-listPartitions</tt> lists all existing partitions.</li>
+            <li><tt>-upgradeDataClusters/-udc -configFile &lt;cluster-config-file&gt;</tt>
+            - allows modifications to the data cluster. Any exceptions during the upgrade
+            (e.g. duplicate column name, invalid index name) result in the deletion of 
+            the cluster definition. The cluster table itself is kept in that case.</li>
+            <li><tt>-verifyDataClusters/-vdc [-partition ID[,ID]*] -</tt>
+            existence of data cluster tables and their consistency.</li>
+            <li><tt>-verifyLockTables/-vlt - </tt> verifies existence of proxy
+            locking tables and their consistency.</li>
+        </ul>
+        Options for MySQL sequence support (in case the database type is set to 
+        <tt>MYSQL_SEQ</tt> either per global option <tt>-dbtype</tt> or 
+        in your <tt>carnot.properties</tt> file):
+        <ul>
+            <li><tt>-dropSequenceTable/-dst [-sql &lt;spool-file&gt;]</tt>
+            - drops table <strong>sequence</strong> and function <tt>next_sequence_value_for</tt>.</li>
+            <li><tt>-enableSequenceTable/-est [-skipDDL] [-skipDML] [-sql &lt;spool-file&gt;]</tt> 
+            - creates and initializes table <strong>sequence</strong> and adds 
+            function <tt>next_sequence_value_for</tt>.</li>
+            <li><tt>-verifySequenceTable/-vst</tt> - checks if data synchronization is required.</li>
+        </ul>
+        </td>
+        <td>
+        <ul>
+        	<li>sysconsole -password sysop auditTrail -createPartition 15</li>
+        	<li>sysconsole -password sysop auditTrail -dropPartition 15</li>
+        	<li>sysconsole -password sysop auditTrail -listPartitions</li>
+        	<li>sysconsole -password sysop auditTrail -dropLockTables [-sql C:/myfile.sql]</li>
+        	<li>sysconsole -password sysop auditTrail -enableDataClusters -configFile &lt;specify .xml 
+        	cluster configuration file&gt; </li>
+        	<li>sysconsole -p sysop auditTrail -verifyDataClusters</li>
+        	<li>sysconsole -p sysop auditTrail -dropDataClusters</li>
+        
+        </ul>
+        </td>
+     </tr>
+    <tr>
+        <td>createschema</td>
+        <td>Creates the Stardust schema.</td>
+        <td>sysconsole -password sysop createschema</td>
+    </tr>
+    <tr>
+        <td>ddl</td>
+        <td>Creates DDL for the Stardust schema. Possible arguments:
+        <ul>
+            <li><tt>-file/-f &lt;arg&gt;</tt> - the DDL file name.</li>
+            <li><tt>-drop/-d -</tt> creates DDL for dropping the schema.</li>
+            <li><tt>-schemaName/-s &lt;arg&gt; - </tt> Specifies the schema name to be
+            used</li>
+        </ul>
+        </td>
+        <td>
+        <ul>
+        	<li>sysconsole ddl -file newddlfile</li>
+        	<li>sysconsole -p sysop dropschema</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>dropschema</td>
+        <td>Drops the Stardust schema. This command requires the system operator
+        password to be passed with the -password global option, which by default is sysop.
+        </td>
+        <td></td>
+    </tr>
+	<tr>
+		<td>encrypt</td>
+		<td>Encrypts the password passed and returns the encrypted password 
+		string to the console. Use the following argument:
+		<ul>
+			<li><tt>password &lt;arg&gt;</tt> - the password to be encrypted.</li>
+			<li><tt>passfile &lt;arg&gt;</tt> - If this parameter is set, &lt;arg&gt; 
+			is expected to contain a file path to a file. This file will be 
+			loaded and expected to conatin an encrypted password string 
+			prevoiously created with the command "encrypt -password &lt;arg&gt;" . 
+			This String will be decrypted and then used for authentication. 
+			If the property "-passfile" is used, a "-password" option simultaneously
+			passed will be ignored.</li>
+            <li><tt>dbpassfile &lt;arg&gt;</tt> - this parameter
+            points to a file containing an encrypted audit trail password
+            previously created with the command "encrypt -password
+            &lt;arg&gt;". This String will be decrypted and then used for
+            authentication. If the property "-dbpassfile" is used, a "-password"
+            option simultaneously passed will be ignored.</li>
+		</ul>
+		</td>
+		<td></td>
+	</tr>
+     <tr>
+      <td>fixruntimeoids</td>
+      <td>Fixes invalid runtime OIDs in the audit trail database. Possible arguments:
+      <ul>
+         <li><tt>-logonly</tt> - if specified, no database operation will be performed</li>
+         <li><tt>-nolog</tt> - if specified, no log file will be written</li>
+      </ul></td>
+   </tr>
+    <tr>
+        <td>password</td>
+        <td>Changes the password of the sysop user. It accepts a single argument, the
+        new password:
+        <ul>
+            <li><tt>-new/-n &lt;arg&gt; -</tt> the new password.</li>
+        </ul>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>property</td>
+        <td>With this command it is possible to maintain runtime properties which
+        override properties set by property files. Thus changes to properties are possible
+        without the need to redeploy. This is useful for short test cycles. &nbsp;
+        <ul>
+            <li><tt>-delete/-d &lt;arg&gt; -</tt> deletes a runtime property.</li>
+            <li><tt>-get/-g &lt;arg&gt; -</tt> retrieves the current value of a runtime
+            property.</li>
+            <li><tt>-list/-l -</tt> lists existing runtime properties.</li>
+            <li><tt>-locale &lt;locale-value&gt; - </tt> specifies the locale of
+            the runtime property.</li>
+            <li><tt>-set/-s &lt;arg&gt; -value &lt;arg&gt; - </tt> sets the (new) value of a
+            runtime property. Note that some properties are protected and cannot be deleted
+            or modified. Please refer to section <a href="#protect">Protected Properties</a> for details.</li>
+        </ul>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>upgrademodel</td>
+        <td>Upgrades a model from a previous Stardust version. It supports the
+        following arguments:
+        <ul>
+            <li><tt>-file/-f &lt;arg&gt; -</tt> the model file to upgrade inplace.</li>
+            <li><tt>-source/-s &lt;arg&gt; -</tt> the source file to upgrade.</li>
+            <li><tt>-target/-t &lt;arg&gt; -</tt> the target file for upgrade.</li>
+        </ul>
+         </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>upgraderuntime</td>
+        <td>Upgrades the audit trail from a previous Stardust version. The following
+        arguments may be used:
+        <ul>
+            <li><tt>-data/-a -</tt> Performs only data migration, preventing any SQL
+            DDL execution. Note that the <tt>data</tt> argument always needs to be combined with 
+            <tt>-step</tt> to guarantee a correct result!</li>
+            <li><tt>-ddl/-l &lt;arg&gt; -</tt> Spools the SQL DDL defining the audittrail
+            schema migration into the specified file. No modifications to the audittrail
+            will be performed.<br>
+            Note that the <tt>ddl</tt> argument always needs to be combined with <tt>-step</tt>
+            to guarantee a correct result!
+            </li>
+            <li><tt>-describe/-d -</tt> Describes the migration steps involved,
+            including any temporary schema versions. No modifications to the audittrail
+            will be performed.</li>
+            <li><tt>-ignorelock/-i -</tt> forces an upgrade run even if the audit
+            trail DB is already locked for upgrade.</li>
+            <li><tt>-recover/-r -</tt> to force a recovery run of the upgrade.</li>
+            <li><tt>-step/-s -</tt> Performs exactly one migration step. May require
+            multiple invocations to fully perform migrations involving temporary schema
+            versions.</li>
+            <li><tt>-verbose/-v</tt> Display additional information about the upgrade 
+            job.</li>
+        </ul>
+        </td>
+        <td>
+        	<ul>
+        		<li>sysconsole upgraderuntime -verbose (audit trail will be upgraded and 
+        		detailed information of the upgrade will be displayed)</li>
+        		<li>sysconsole upgraderuntime -describe -verbose (detailed upgrade information will be displayed but audit trail will not be modified)</li>        	
+        	</ul>
+        </td>
+    </tr>
+    <tr>
+        <td>version</td>
+        <td>Returns version information for the Stardust Process engine.</td>
+        <td></td>
+    </tr>
+   
+</table>
+<p>The following sections provide details on archiving as well as
+lock table and cluster table administration:</p>
+<ul>
+    <li><a href="#archive">Audit Trail Archive Administration</a></li>
+    <li><a href="#consistency">Checking Consistency in the Audit Trail</a></li>
+    <li><a href="#proxyTableAdmin">Proxy Lock Tables Administration</a></li>
+    <li><a href="#cluster">Cluster Table Administration</a></li>
+    <li><a href="#run">Runtime Upgrade</a></li>
+    <li><a href="#multistep">Step-by-step Runtime Upgrade</a></li>
+    <li><a href="#fixoid">Fixing invalid runtime OIDs in audit trail</a></li>
+    <li><a href="#protect">Protected Properties</a></li>
+</ul>
+<h3 id="archive">Audit Trail Archive Administration</h3>
+<p>The archive command deletes or archives data from the audit trail. The deleted 
+or archived data may be
+backed up in a second audit trail DB, the backup audit trail DB. The execution of the tool
+is responsible for maintaining the closure of the backed-up objects, e.g. backing up the
+corresponding models, model elements and grants. The backup audit trail may be
+cumulatively populated.</p>
+<p>During a backup operation with long duration, the data keeps constistent even if
+the network breaks, due to transactional processing. Repeating the command will start it
+again at the last position.</p>
+<p>For all backup operations the archive schema name has to be provided with the
+option</p>
+<p><tt>-schemaName schemaname</tt>.</p>
+<p>This argument is independent of any other argument. It specifies the 
+target schema where the audit trail will be archived, but will be ignored if 
+the argument <tt>-noBackup</tt> is specified.</p>
+<p>The following main subcommands (provided as a command option) can be used
+and are mutually exclusive:</p>
+<ul>
+	<li><tt>-deadModels</tt></li>
+	<li><tt>-deadProcesses</tt></li>
+	<li><tt>-deadData</tt></li>
+	<li><tt>-logEntries</tt></li>
+	<li><tt>-userSessions</tt></li>
+	<li><tt>-processes</tt></li>
+	<li><tt>-model</tt></li>
+</ul>
+<p>Each of this option specifies a set of objects to be archived or deleted
+that cannot be combined with the set of objects specified by one of the other 
+options. The archive command must specify exactly one of these commands.</p>
+
+<p>The following sections explain the usage of the
+specific options in detail:</p>
+<ul>
+	<li><a href="#refmod">Archiving models with references to other models</a></li>
+	<li><a href="#dead">Backing Up All Dead Models</a></li>
+	<li><a href="#backup">Backing Up A Model</a></li>
+	<li><a href="#backCompl">Backing Up Completed Process Instances</a></li>
+	<li><a href="#logEntry">Backing Up Log Entries</a></li>
+	<li><a href="#dataVal">Deleting Data Values</a></li>
+	<li><a href="#Ident">Identifying partition(s)</a></li>
+	<li><a href="#session">Archiving and deleting user session entries</a></li>
+	<li><a href="#delProc">Deleting process instances</a></li>
+	<li><a href="#spawn">Archiving Spawnned Processes</a></li>
+	<li><a href="#start">Archiving Aborted and Started Process</a></li>
+	<li><a href="#join">Archiving Aborted and Joined Processes</a></li>
+	<li><a href="#case">Archiving Case Process Instance</a></li>
+	
+</ul>
+<h4 id="refmod">Archiving models with references to other models</h4>
+<p>In case the model(s) to be archived have references to other models,
+archiving is performed in the following way:</p>
+<ul>
+	<li>All referenced models are always copied into the archive audit trail.
+	Thus, dangling references in the archive are avoided.</li>
+	<li>Archiving with delete is only allowed for models if they have no incoming 
+	references.</li>
+	<li>The history of model version relationships is copied along with the models
+	into the archive.</li>
+	<li>If archiving a consumer model, you have to archive all referenced
+	provider models first.</li>
+</ul>
+<h4 id="dead">Backing Up All Dead Models</h4>
+<p>With the following command all dead models (i.e. no longer active and with no
+non-terminated processes) can be backed up:</p>
+<p><tt>-deadModels</tt></p>
+<p>This means also backing up all dependent objects, i.e. process instances,
+activity instances, data values and log entries. Without the <tt>-noBackup</tt> command
+the dead models stay in the audit trail.</p>
+<p>Note that after this operation a <tt>flushCaches</tt> call is required to 
+clear the engine's model cache to synchronize up the changed state of the 
+AuditTrail again. The according console command is:</p>
+<pre>console engine init</pre>
+<p>For details on this command refer to section
+<a href="ag-commandline-3.htm#commands">Commands Overview</a> of
+chapter <a href="ag-commandline-3.htm">Using the Console Command</a>. Calling this command is not 
+possible in the same call from the sysconsole as it cannot access services or 
+the runtime caches.</p>
+<p>In case of physical deletion the optional command</p>
+<p><tt>-noBackup</tt></p>
+<p>must be used. Attention: Be sure that your back up was successful. Otherwise your
+dead models can't be restored.</p>
+<p class="note"><strong>Note:</strong> Note that the archive command with 
+model deletion should only 
+be performed in maintenance windows without workflow, otherwise
+this might lead to inconsistency in the audit trail.</p>
+<h4 id="backup">Backing Up A Model</h4>
+<p>The following option is backing up a model with all its dependent objects:</p>
+<p><tt>-model oid </tt>(to find in the database table <tt>model</tt>)</p>
+<p>
+Whenever a new model is archived, the archive command checks for OID consistency with the 
+older models and fixes the according OID registry and related references, if required.</p>
+
+<p>Without the <tt>-noBackup</tt> command the dead models stay in the audit trail.</p>
+<p>In case of physical deletion the optional command</p>
+<p><tt>-noBackup</tt></p>
+<p>must be used. Attention: Be sure that your back up was successful. Otherwise your
+dead models can't be restored.</p>
+<p class="note"><strong>Note:</strong> Note that the archive command with 
+model deletion should only 
+be performed in maintenance windows without workflow, otherwise
+this might lead to inconsistency in the audit trail.</p>
+<h4 id="backCompl">Backing Up Completed Process Instances</h4>
+<p>The following option is backing up all completed or aborted process instances.</p>
+<p><tt>-deadProcesses</tt></p>
+<p>It specifies that all terminated processes will be archived or deleted.</p>
+<p>With the following additional option you can confine the process instances to
+delete or archive to be terminated not after a certain timestamp</p>
+<p><tt>-timestamp timestamp</tt>.</p>
+<p>The specified date must conform to ISO date patterns (i.e.
+&quot;2013-12-31&quot;, &quot;2013-12-31 23:59&quot; or
+&quot;2013-12-31T23:59:59:999&quot;) or <tt>yyyy/MM/dd hh:mm:ss:SSS</tt> for backward
+compatibility with older Stardust releases.</p>
+<p>Optionally, this command can also be used for plain deletion of data. This is
+done with the option</p>
+<p><tt>-noBackup</tt>.</p>
+<h4 id="logEntry">Backing Up Log Entries</h4>
+<p>The following option is backing up log entries that are not referenced by
+other objects (e.g by process instances):</p>
+<p><tt>-logEntries</tt></p>
+<p>(Referenced log entries will be archived when archiving the object, e.g.
+an activity or process instance.)</p>
+
+<p>With the following option you can confine the log entries to delete to be not
+deleted after a certain timestamp:</p>
+<p><tt>-timestamp timestamp </tt></p>
+<p>Optionally, this command can also be used for deletion. This is
+done with the option:</p>
+<p><tt>-noBackup</tt></p>
+<h4 id="dataVal">Deleting Data Values</h4>
+<p>Deletes all data values for terminated process instances for a specific workflow
+data.</p>
+<p><tt>-deadData dataid (qualified ID of the model element) </tt></p>
+<p>Note that this command must be used with the additional option
+<tt>-noBackup</tt>, because standalone data can only be deleted and not 
+archived.</p>
+<p>The argument <tt>-noBackup</tt> is independent of any other argument.
+If it is specified, the argument <tt>-schemaName</tt> will be ignored.</p>
+<h4 id="Ident">Identifying partition(s)</h4>
+<p>This option is used to identify the partition(s) to operate against.</p>
+<p><tt>-partition &lt;ID[,ID]*&gt;</tt></p>
+<p>The given partitions will be used as search scope for additional arguments like <tt>-deadProcesses</tt>
+or <tt>-deadModels</tt>.</p>
+<h4 id="session">Archiving and deleting user session entries</h4>
+<p>With this option user session entries can be archived (first backup to archive schema 
+and then delete from source schema) or deleted. Here are some usage examples:</p>
+<ol>
+<li>The following command inserts all user session entries that are not already archived and having an expiration 
+timestamp &lt;= "2011-01-31 11:30:00" into the archive schema and delete them afterwards from the source schema.
+<pre>sysconsole -password sysop archive -userSessions -schemaName arc_carnot -timestamp "2011-01-31 11:30:00"</pre></li>
+<li>The following command does the same as above but without backup:
+<pre>sysconsole -password sysop archive -userSessions -schemaName arc_carnot -timestamp "2011-01-31 11:30:00" -noBackup</pre></li>
+<li>The following command does the same as above but for all existing user session entries.
+<pre>sysconsole -password sysop archive -userSessions -schemaName arc_carnot -noBackup</pre></li>
+</ol>
+<h4 id="delProc">Deleting process instances</h4>
+<p>The <tt>-processes &lt;OID[,OID]*&gt;</tt> option deletes process instances by
+OID. It expects an explicit list of root process instance OIDs that will 
+be archived or deleted. Note that the process instances must be 
+terminated (completed or aborted).</p>
+<h4 id="spawn">Archiving Spawned Processes</h4>
+<p>The spawned root process cannot be archived 
+until all the child processes of the spawned process are complete.</p> 
+
+<h4 id="start">Archiving Aborted and Started Process</h4>
+<p>If the target process is in terminated state then it gets archived along 
+with its source process and linked processes.</p>
+
+<h4 id="join">Archiving Aborted and Joined Processes</h4>
+<p>If the target process is in terminated state then it gets archived along 
+with its source process and linked processes.</p>
+
+<h4 id="case">Archiving Case Process Instance</h4>
+<p>The case process instance can be archived if only it is in a terminated state. All the 
+case processes also get archived as they are also in the terminated state.</p> 
+              
+<h4>Note</h4>
+<p>Note that if the parameter <tt>-partition</tt> is not used, the archiving command
+of sysconsole has an effect only on the default partition.</p>
+<h3 id="consistency">Checking Consistency in the Audit Trail</h3>
+<p>The <tt>auditTrail</tt> command option <tt>-checkConsistency</tt> runs 
+consistency checks to test whether any problem instances exist 
+in the audit trail. The check looks if the audit trail contains data of  
+<tt>Document</tt> and <tt>Document-Set</tt> types that are 
+shared between super- and subprocesses, which is not supported anymore. 
+A property <strong>Infinity.Dms.SharedDataExist</strong> 
+will be set in the audit trail indicating if the check passed or 
+failed. This property will be evaluated by the archiver in order to 
+determine whether simplified treatment in archiving can be applied 
+or not. Note that archiving slows down if such shared data exist.</p>
+<h3 id="proxyTableAdmin">Proxy Lock Tables Administration</h3>
+<p>Lock tables will be enabled with the command</p>
+<pre>sysconsole auditTrail -enableLockTables [-skipDDL] [-skipDML] [-sql &lt;spool-file&gt;</pre>
+<p>The implementation of this command will create any missing proxy locking tables
+as well as synchronize table content with the existing rows in the associated original
+tables. The option</p>
+<p><tt>-skipDDL</tt></p>
+<p>indicates that the lock tables are already created, their creation will be
+skipped.</p>
+<p>With the option</p>
+<p><tt>-skipDML</tt></p>
+<p>the synchronization of lock tables with the associated original tables will be
+skipped.</p>
+<p>With</p>
+<p><tt>-sql &lt;spool-file&gt;</tt></p>
+<p>the required statements will be spooled to <tt>&lt;spool-file&gt;</tt> instead of
+executing creation and synchronization statements against the audit trail.</p>
+<p>The command</p>
+<pre>sysconsole auditTrail -verifyLockTables</pre>
+<p>allows to verify the existence of all required lock tables as well as the
+completeness of proxy rows with regard to the existing rows in the associated original
+tables. If any inconsistency is found an error message will be produced. Any inconsistency
+may then be fixed by applying the <tt>auditTrail -enableLockTables</tt> command.</p>
+<p>The command</p>
+<pre>sysconsole auditTrail -dropLockTables [-sql &lt;spool-file&gt;]</pre>
+<p>will drop any existing lock table from the audit trail. With</p>
+<p><tt>-sql &lt;spool-file&gt;</tt></p>
+<p>the required statements will be spooled to <tt>&lt;spool-file&gt;</tt> instead of
+executing drop statements against the audit trail database.</p>
+<h3 id="cluster">Cluster Table Administration</h3>
+<p>The command</p>
+<pre>sysconsole auditTrail -enableDataClusters [-configFile &lt;cluster-config-file&gt;] [-skipDDL] [-skipDML] [-sql &lt;spool-file&gt;] 
+[-partition ID[,ID]*]</pre>
+<!-- <pre>sysconsole auditTrail -enableDataClusters [-configFile &lt;cluster-config-file&gt;] [-skipDDL] [-skipDML] [-sql &lt;spool-file&gt;] 
+[-partition ID[,ID]*] [-modelID]</pre> -->
+<p>will create the cluster tables as well as synchronizing their content with the
+existing rows in the <tt>DATA_VALUE</tt> table according to the provided configuration
+data.</p>
+<p>The configuration file provided by <tt>-configFile</tt> is necessary if no
+cluster configuration is present in audit trail and vice versa. Otherwise, an error
+message is produced which states that either an configuration file has to be specified or
+<tt>auditTrail -dropDataCluster</tt> needs to be performed first. The option</p>
+<p><tt>-configFile &lt;cluster-config-file&gt;</tt></p>
+<p>specifies the configuration file which shall be deployed to the audit trail. With</p>
+<p><tt>-skipDDL</tt></p>
+<p>it is assumed that data cluster tables are already created, their creation will
+be skipped. Using the option</p>
+<p><tt>-skipDML</tt></p>
+<p>synchronization of data cluster tables with the existing rows in the <tt>DATA_VALUE</tt>
+table will be skipped. With</p>
+<p><tt>-sql &lt;spool-file&gt;</tt></p>
+<p>the statements will be spooled to <tt>&lt;spool-file&gt;</tt> instead of
+executing creation and synchronization statements to the audit trail.</p>
+<pre>sysconsole auditTrail -verifyDataClusters [-partition ID[,ID]*]</pre>
+<p><span class="Stil1"> The implementation of the command seen above will
+verify the existence of all required data cluster tables</span> as well as their consistency with
+the existing rows in the <tt>DATA_VALUE</tt> table. If any inconsistency is found an error
+message will be produced. Any inconsistency may then be fixed by applying the <tt>auditTrail
+-enableDataClusters</tt> command.</p>
+<p>The command</p>
+<pre>sysconsole auditTrail -dropDataClusters [-sql &lt;spool-file&gt;] [-partition ID[,ID]*]</pre>
+<p>will drop any existing data cluster table from the audit trail. Using the option</p>
+<p><tt>-sql &lt;spool-file&gt;</tt></p>
+<p>the required statements for dropping will be spooled to <tt>&lt;spool-file&gt;</tt>
+instead of executing drop statements against the audit trail of the statements.</p>
+<p>The optional argument for all three DataCluster commands</p>
+<p><tt>-partition ID[,ID]*</tt></p>
+<p>identifies the partition(s) to operate against. If multiple partitions are
+specified, cluster definition modification will either be successfully performed against
+all given partitions or fail completely. Cluster DDL and DML operations will be performed
+in separate transactions and support idempotent invokation in case of errors.</p>
+<!-- <p><tt>-modelID</tt></p>
+<p>The argument <tt>-modelID</tt> sets the default model ID,
+if no model ID is set for data-slots.
+The missing attribute modelId is added using the model ID of 
+the already deployed model. The modified cluster definition 
+replaces the old one in the audit trail.</p> -->
+
+
+<h3 id="run">Runtime Upgrade</h3>
+
+<p>Executing the command <tt>upgraderuntime</tt> displays the progress of upgrade job execution.</p>
+<p>The
+progress information is displayed similar as shown in the following snippet: </p>
+
+<pre>
+Upgrading audit trail DB:
+
+Database type : MYSQL
+Database URL : jdbc:mysql://localhost:3306/ipp
+Database user : carnot
+Database schema : ipp
+Database driver : com.mysql.jdbc.Driver
+
+Do you want to proceed? (Y/N): y
+
+Upgrading Runtime.
+
+Running job 'y.0.0' against item 'Runtime Environment' with version 'x.0.5'.
+
+Upgrading schema...
+Upgrade Job Ry_0_0fromx_x_xRuntimeJob:
+Upgrading data block: 1 of 9. 0 % completed.
+Upgrading data block: 2 of 9. 11 % completed.
+Upgrading data block: 3 of 9. 22 % completed.
+Upgrading data block: 4 of 9. 33 % completed.
+Upgrading data block: 5 of 9. 44 % completed.
+Upgrading data block: 6 of 9. 55 % completed.
+...Schema upgrade done.
+Migrating data...
+Upgrading data block: 7 of 9. 66 % completed.
+Upgrading data block: 8 of 9. 77 % completed.
+Upgrading Datatypes...
+Partition with OID: 1
+Upgrading Datatypes...done.
+...Data Migration done.
+Upgrading Model...
+...Model migration done.
+Finalizing schema...
+Upgrading data block: 9 of 9. 88 % completed.
+Upgrade Job Ry_0_0fromx_x_xRuntimeJob: 100 % completed.
+...Schema finalization done.
+Upgrade to version y.0.0 done, upgrading runtime version stamp...
+...Version stamp updated.
+Upgrade to version y.0.0 done.
+
+Runtime upgraded.
+</pre>
+<h4>Viewing Additional Information during Runtime Upgrade Job</h4>
+<p>Following upgrade details are displayed when the
+<tt>-v/verbose</tt> option is used:</p>
+<pre>
+
+Upgrade from version x.x.x to x.x.x:
+
+Upgrade schema task:
+A new table 'department' with the columns'oid', 'id', 'name', 'partition', 'parentDepartment', 'description', 'organization' and indexes 'department_idx1' and 'department_idx2' will be created.
+A new table 'department_hierarchy' with the columns 'superDepartment', 'subDepartment' and indexes 'department_hier_idx1' and 'department_hier_idx2' will be created.
+The new columns 'currentUserPerformer', 'currentPerformer' and 'currentDepartment' will be created in table 'activity_instance' and indexes 'activity_inst_idx2' and 'activity_inst_idx3' will be modified.
+The new columns 'performerKind', 'performer', 'department' and 'state' will be created in table 'workitem' and index 'workitem_idx2' will be modified.
+The new columns 'department' and 'onBehalfOfDepartment' will be created in table 'act_inst_history'.
+The new columns 'participant' and 'department' will be created in table 'user_participant' and index 'user_particip_idx2' will be modified.
+The new column 'extendedState' will be created in table 'workflowuser'.
+
+Upgrade from version x.x.x to x.x.x:
+
+Upgrade schema task:
+A new table 'preferences' with the columns 'ownerId', 'ownerType', 'moduleId', 'preferencesId', 'partition', 'stringValue' and index 'preferences_idx1' will be created.
+The table 'message_store' will be dropped.
+A new table 'model_ref' with the columns 'code', 'modelOid', 'id', 'refOid', 'deployment' and indexes 'model_ref_idx1' and 'model_ref_idx2' will be created.
+A new table 'model_dep' with the columns 'oid', 'deployer', 'deploymentTime', 'validFrom', 'deploymentComment' and indexes 'model_dep_idx1', 'model_dep_idx2' and 'model_dep_idx3' will be created.
+A new table 'model_dep_lck' with the column 'oid' and index 'model_dep_lck_idx' will be created. (only if AuditTrail.UseLockTables = true)
+A new column 'deployment' will be created in table 'process_instance'.
+
+Migrate data task:
+Table 'model_ref' will be populated.
+Table 'model_dep' will be populated.
+Field 'deployment' in table 'process_instance' will be populated.
+Index 'user_particip_idx2' in table 'user_participant' will be modified.
+Permissions will be inserted into table 'preferences'.
+Model Id will be added to xml data cluster definition.
+
+Upgrade from version x.x.x to x.x.x:
+
+Upgrade schema task:
+The new columns 'criticality', 'propertiesAvailable' and index 'activity_inst_idx9' will be created in table 'activity_instance'.
+A new column 'criticality' will be created in table 'workitem'.
+A new table 'procinst_link' with the columns 'processInstance', 'linkedProcessInstance', 'linkType', 'createTime', 'creatingUser' and 'linkingComment' will be created.
+A new table 'link_type' with the columns 'oid', 'id', 'description', 'partition' and index 'link_type_idx1' will be created.
+Datacluster setup key will be upgraded to 'org.eclipse.stardust.engine.core.runtime.setup_definition' in column 'name' in table 'property'.
+A new table 'partition_lck' with column 'oid' and index 'partition_lck_idx' will be created. (only if AuditTrail.UseLockTables = true)
+
+Migrate data task:
+Initializes the field 'propertiesAvailable' in table 'activity_instance'.
+Missing XPaths which are needed to store the revisionComment will be created for Structured Datatypes.
+
+Finalize schema task:
+Default link types will be added.
+</pre>
+
+<h4 id="multistep">Step-by-step Runtime Upgrade</h4>
+<p>
+You can execute runtime upgrade step by step. 
+Suppose, you want to upgrade from Stardust x.0 to Stardust y.1.
+Firstly, perform the upgrade using the option <tt>-ddl</tt> in combination with <tt>-step</tt> option.
+</p>
+
+<pre>
+sysconsole -p sysop upgraderuntime -verbose -step -ddl x_0Toy_0.txt
+</pre>
+
+<p>The following upgrade details are displayed in the <tt>x_0Toy_0.txt</tt> file. </p>
+
+<pre>
+// y.0.0 schema upgrade DDL
+
+ALTER TABLE ipp.activity_instance ADD CRITICALITY DOUBLE;
+ALTER TABLE ipp.activity_instance ADD PROPERTIESAVAILABLE INT;
+CREATE INDEX activity_inst_idx9 ON ipp.activity_instance(CRITICALITY, PROCESSINSTANCE);
+UPDATE ipp.activity_instance SET criticality = -1;
+UPDATE ipp.activity_instance SET propertiesAvailable = 0;
+ALTER TABLE ipp.workitem ADD CRITICALITY DOUBLE;
+UPDATE ipp.workitem SET criticality = -1;
+CREATE TABLE ipp.procinst_link (PROCESSINSTANCE BIGINT, LINKEDPROCESSINSTANCE BIGINT, LINKTYPE BIGINT, CREATETIME BIGINT, CREATINGUSER BIGINT, LINKINGCOMMENT VARCHAR(255));
+CREATE TABLE ipp.link_type (OID BIGINT AUTO_INCREMENT PRIMARY KEY, ID VARCHAR(50), DESCRIPTION VARCHAR(255), PARTITION BIGINT);
+CREATE UNIQUE INDEX link_type_idx1 ON ipp.link_type(OID);
+CREATE TABLE ipp.partition_lck (OID BIGINT);
+CREATE UNIQUE INDEX partition_lck_idx ON ipp.partition_lck(OID);
+
+// y.0.0 schema finalization DDL
+</pre>
+<p>
+Using <tt>-ddl</tt> parameter writes the sql that performs the audit trail upgrade into a ddl script. 
+Until here the audit trail is not modified. Only when you execute the ddl script the audit trail gets modified.
+So, run upgrade command with option <tt>-step</tt> to modify the audit trail and upgrade to y.0. 
+Note that the <tt>-ddl</tt> parameter should only be used in combination with the <tt>step</tt> option!</p>
+<p>Now run the following command with <tt>-step</tt> and <tt>-ddl</tt> options:</p>
+
+<pre>
+sysconsole -p sysop upgraderuntime -verbose -step -ddl y_0Toy_1.txt
+</pre>
+
+<p>The following upgrade details are displayed in the <tt>y_0Toy_1.txt</tt> file.</p>
+<pre>
+// y.1.0 schema upgrade DDL
+
+ALTER TABLE ipp.data_value ADD DOUBLE_VALUE DOUBLE;
+UPDATE ipp.data_value SET double_value=0.0;
+ALTER TABLE ipp.structured_data_value ADD DOUBLE_VALUE DOUBLE;
+UPDATE ipp.structured_data_value SET double_value=0.0;
+
+// y.1.0 schema finalization DDL
+
+</pre>
+
+<h3 id="fixoid">Fixing invalid runtime OIDs in audit trail</h3>
+<p>Use the command <tt>fixruntimeoids</tt> to repair archive OID inconsistencies in an
+audit trail database. For example:</p>
+<pre>sysconsole -password sysop -dbschema arctarg -force fixruntimeoids -nolog</pre>
+<p>This command fixes invalid runtime OIDs in database <tt>arctarg</tt> without 
+writing a log file.</p>
+
+<h3 id="protect">Protected Properties</h3>
+<p>The following properties cannot be deleted or modified via the Sysconsole command 
+<strong>property</strong>:</p>
+<table>
+   <tr>
+   <th>Property Name</th>
+   <th>Description</th>
+	</tr>
+	<tr>
+      <td>sysop.password</td>
+      <td>password of sysop <br>Note that this property also cannot
+            be retrieved with the <tt>list</tt> option (<tt>sysconsole
+                  property list</tt>)
+      </td>
+	</tr>
+	<tr>
+      <td>carnot.version</td>
+      <td>the version of the audit trail</td>
+	</tr>
+	<tr>
+      <td>product.name</td>
+      <td>the name of the product:
+      <ul>
+         <li>Infinity Process Platform</li>
+         <li class="noicon">or</li>
+         <li>Stardust Process Manager</li>
+      </ul>
+      </td>
+	</tr>
+	<tr>
+      <td>org.eclipse.stardust.engine.core.runtime.setup_definition</td>
+      <td>dummy value which marks that the property is available</td>
+   </tr>
+</table>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

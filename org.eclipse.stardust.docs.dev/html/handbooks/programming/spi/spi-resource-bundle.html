@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Providing localized Labels for a User Interface</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript">
+</script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("",
+		"pg-security-1.htm","",
+      "../../handbooks.htm","Developer Handbook",
+      "../pg-preface.htm","Programming Guide",
+      "spi-toc.html","SPI");
+-->
+</script>
+<h1>Providing localized Labels for a User Interface</h1>
+<p>To provide localized labels for a User Interface, you can implement the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/resources/IResourceBundleProvider.html">
+IResourceBundleProvider</a>.</p>
+<pre>
+@SPI(status = Status.Stable, useRestriction = UseRestriction.Public)
+public interface IResourceBundleProvider
+{
+
+   public interface Factory
+   {
+      IResourceBundleProvider getInstance();
+   }
+
+   public ResourceBundle getResourceBundle(String bundleName, Locale locale);
+
+   public String getModuleId();
+
+}
+</pre>
+<p>Method <tt>getResourceBundle</tt> retrieves a resource bundle
+with a specified name and a specific locale to request the resources for.</p>
+
+<h2>Creating a custom Implementation</h2>
+<p>Create your own implementations for this interface. 
+For details on how to configure custom Service Provider Interface implementations refer
+to chapter
+<a href="pg-spi-tenant.html">Configuring SPI Implementations per Tenant</a>.</p>
+<p>To publish an implementor to the engine, a file named by the interface's 
+factory has to be created in the <tt>/META-INF/services</tt> folder of the jar
+as follows:</p>
+<ol>
+   <li>Implement the interface as shown below</li>
+   <li>Create a text file named <tt>org.eclipse.stardust.engine.core.spi.resources.IResourceBundleProvider</tt>.
+    The file contents needs to be the fully qualified name of your implementation class, 
+    e.g. <tt>org.eclipse.stardust.example.ResourceBundleProviderImpl</tt>.</li>
+   <li>Place the file into the <tt>META-INF/services</tt> folder of the jar that will contain your implementation class</li>
+</ol>
+<pre>
+package org.eclipse.stardust.example;
+ 
+import java.util.Locale;
+
+import org.eclipse.stardust.common.annotations.SPI;
+import org.eclipse.stardust.common.annotations.Status;
+import org.eclipse.stardust.common.annotations.UseRestriction;
+import org.eclipse.stardust.engine.api.runtime.ResourceBundle;
+import org.eclipse.stardust.engine.core.spi.resources.IResourceBundleProvider;
+
+@SPI(status = Status.Stable, useRestriction = UseRestriction.Public)
+public class ResourceBundleProviderImpl implements IResourceBundleProvider
+{
+
+   public interface Factory
+   {
+      IResourceBundleProvider getInstance();
+   }
+
+   public ResourceBundle getResourceBundle(String bundleName, Locale locale);
+
+   public String getModuleId();
+
+}
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

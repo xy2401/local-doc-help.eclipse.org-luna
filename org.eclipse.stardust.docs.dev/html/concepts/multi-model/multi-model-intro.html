@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Using Multi Model Audit Trail Setups</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Creating Models With Cross References",
+			"multi-model.html","creating-ref-models.html",
+			"../key-concepts.html","Concepts",
+			"multi-model.html","Multi Model Audit Trail Setups");
+ -->
+</script>
+<h1>Using Multi Model Audit Trail Setups</h1>
+<p> Stardust allows to deploy several 
+different models, for example models having different IDs, into one partition 
+of an audit trail.</p>
+<h2>Motivation</h2>
+<p>Using multiple models in terms of:</p>
+<ul>
+   <li>working on separate models to describe business process models at modeling time</li>
+   <li>using model elements from other models, like 
+	processes in one model to be invoked as subprocesses from 
+	activities in other models</li>
+</ul>
+<p>has the following restrictions:</p>
+<ul>
+	<li>Independently deploy and version different interrelated model files is not possible.</li>
+	<li>Model versioning in the runtime environment is also performed on the entire model.</li>
+</ul>
+<p>To avoid those restrictions, the following
+functionality is provided:</p>
+<ul>
+	<li>Model elements (process definitions, data types, applications) in one model can be used in another model.</li>
+	<li>Parameters can be passed when calling process definitions from different models.</li>
+	<li>Several models for deployments in one interaction are accepted.</li>
+	<li>Independent versioning of different models.</li>
+</ul>
+<h2>New Behavior</h2>
+<p>Models can use model elements from other models, like
+for example:</p>
+<ul>
+	<li>Processes in one model can be invoked as subprocesses from activities 
+	in another model.</li>
+	<li>Applications in one model can be used in processes of another
+	model.</li>
+</ul>
+<h3>Benefits</h3>
+<p>Using multi model audit trail setups provides the option to:</p>
+<ul>
+	<li>Structure systems along components with possibly different 
+	development responsibilities.</li>
+	<li>Enhance potential for reuse while retaining a holistic end 
+	user view on all processes of the resulting system.</li>
+</ul>
+<h3>Features</h3>
+<p>The following features are provided by using multi model audit
+trail setups:</p>
+<ul>
+	<li>Possibility of cross-references between arbitrary process models
+		to process definitions, data types and applications
+	 	at modeling time.</li>
+	<li>Passing parameters when calling process definitions from different models.</li>
+	<li>Independent versioning of different models.</li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

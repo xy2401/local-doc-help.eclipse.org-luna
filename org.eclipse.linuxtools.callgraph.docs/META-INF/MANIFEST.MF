@@ -1,0 +1,142 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.callgraph.docs;singleton:=
+ true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 1.0.0.201502180018
+Bundle-ManifestVersion: 2
+
+Name: META-INF/maven/org.eclipse.linuxtools.systemtap/org.eclipse.linu
+ xtools.callgraph.docs/pom.xml
+SHA1-Digest: 6zDkozyxAkxVOiag541lHNS86Ug=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/General-Usage.html
+SHA1-Digest: H87Ue/5a+C6V8ZNaMPIxuXzWxlg=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: build-doc.xml
+SHA1-Digest: gSfbkGKvrjZ9US/N8uUr9uIpOh4=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Selectfilestopro
+ be.png
+SHA1-Digest: vwryaXaFWKiPiBRXuCDhTVWKVI0=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -agg.png
+SHA1-Digest: HDh3EjQhm6uzR6oTSGyMnS8sNjM=
+
+Name: plugin.properties
+SHA1-Digest: xnn10iUPLlddzP2H0ARCMgVuJTY=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_goto_m
+ enu.png
+SHA1-Digest: ReJaECXCyHqkLBRaItVNcDx1VtU=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_proj_p
+ references.png
+SHA1-Digest: 4rD71ylLakTTRhfKRA8sGAHqyZU=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -collapse.png
+SHA1-Digest: Dc9mmsLGje8B9ytBGJbibzfI1/E=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_global
+ _preferences.png
+SHA1-Digest: GdnDwMzXV1ZBQptIHsfNBCbwa5A=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_file_m
+ enu.png
+SHA1-Digest: SU34U4Du8kXCfgheUG0cmK32uw8=
+
+Name: plugin.xml
+SHA1-Digest: Cu11XS7hsH3Aqhz4stD3txCE8WU=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/User-Guide.html
+SHA1-Digest: svdwTW+maVKylX3yHnRlTGkzQlk=
+
+Name: toc-doc.xml
+SHA1-Digest: NHqwi2df4BUvmEadRv/wpFXjL/Q=
+
+Name: notices.html
+SHA1-Digest: zn407HQEXEEeNqA/T9iV2mMJ91c=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_orig_s
+ ubmenu.png
+SHA1-Digest: IWgUJYoVwXF6PdRhCQVXS/s5L0M=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Profile-screen.p
+ ng
+SHA1-Digest: gPR5CHFG/oh8+Zv7SKLYFec63bE=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/General-Usage2.html
+SHA1-Digest: Ib7j96U8nfl+UrhVKnJ0xiUnsvg=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -thumb.png
+SHA1-Digest: wIIcsyvNQfEN6jAjP5nalndUQok=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/Callgraph-Perspectives.
+ html
+SHA1-Digest: FU+hVeM7cyPYNCZ+EoAx4I+hYzY=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_timing
+ _submenu.png
+SHA1-Digest: mwjQLmXyizgxctxtnGGZmYSLwek=
+
+Name: META-INF/maven/org.eclipse.linuxtools.systemtap/org.eclipse.linu
+ xtools.callgraph.docs/pom.properties
+SHA1-Digest: khoD03ZSQON3VXnXKFE+Nxx028Q=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Callgraph_tab.pn
+ g
+SHA1-Digest: qTMGBfh1+eaCM9UVDhzuIeVhKLM=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -treeview.png
+SHA1-Digest: +fGbUPbSPO1bqcCBtjsdW5ah6cM=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -radialview.png
+SHA1-Digest: uTZiMlnYC7uzlTNqRtRldckxltY=
+
+Name: toc.xml
+SHA1-Digest: bWUmxoF2yMz2tq3WOkLUtKvbHR8=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/Updating-This-Document.
+ html
+SHA1-Digest: goViuQZwVJ9UASTAfLlB+aJcO2U=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -levelview.png
+SHA1-Digest: nfaQLg0Quk7pCOXZTmhVisYmlQc=
+
+Name: pom.xml
+SHA1-Digest: 6zDkozyxAkxVOiag541lHNS86Ug=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/Installation.html
+SHA1-Digest: ePdCeHdeWo6IIcbMegNEAy8dj0g=
+
+Name: book.css
+SHA1-Digest: QzSdnFvDAT6K/1026itJZooSy8o=
+
+Name: Linux_Tools_Project/Callgraph/User_Guide/images/Eclipsecallgraph
+ -profilewhich.png
+SHA1-Digest: CjslkfCSV/VOUmXDG4yIHLealc0=
+

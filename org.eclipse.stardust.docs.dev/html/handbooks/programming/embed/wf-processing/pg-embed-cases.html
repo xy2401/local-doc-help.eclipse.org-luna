@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Workflow Processing for Cases</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Relocating Activities",
+	        "pg-workflow-join.htm","pg-embed-relocation.html",
+	        "../../../handbooks.htm","Developer Handbook",
+	        "../../pg-preface.htm","Programming Guide",
+	        "../pg-embedded-preface.htm","Embedded Usage","wf-preface.html","Processing Workflow");
+ -->
+</script>
+<h1>Workflow Processing for Cases</h1>
+<p>A Case is a process instance which allows grouping any set of other 
+process instances as subprocesses. Any added process instance will have 
+the Case set as its root process.
+Only root processes can be added to a Case.
+Adding a Case to a Case is not valid. For details on Case process instances
+concepts, refer to chapter <a href="../../../../concepts/executing-workflow/case-concept.html">Case - Grouping Processes</a>.</p>
+<p>A Case supports the following functionality to create and modify the Case structure:</p>
+<ul>
+	<li><a href="#create">Creating a Case</a></li>
+	<li><a href="#attach">Attaching a ProcessInstance to a Case</a></li>
+	<li><a href="#detach">Detaching a ProcessInstance from a Case</a></li>
+	<li><a href="#merge">Merging (Joining)Cases</a></li>
+</ul>
+<p>Additional functionality on Cases and Case Data is provided, like setting
+ any primitive value as descriptor of the Case or modifying the
+name specified on creation. The following sections describe this
+functionality:</p>
+<ul>
+    <li><a href="#delegate">Delegating a Case</a></li>
+	<li><a href="#descr">Setting and Reading Case Descriptors</a></li>
+	<li><a href="#setname">Setting a Case Name</a></li>
+	<li><a href="#search">Searching for Cases</a></li>
+</ul>
+<h2 id="create">Creating a Case</h2>
+<p>When creating a Case, a Case name and member process instances have to be specified.
+By calling the <tt>createCase</tt> method of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+the Case is created 
+with the specified name and members.</p>
+<p>For Example:</p>
+<pre>
+ProcessInstance memberProcessInstance1 = wfs.startProcess(&quot;{CaseModel}CaseProcess1&quot;, null, true);
+
+long[] members = {memberProcessInstance1.getOID()};
+ProcessInstance caseProcessInstance1 = wfs.createCase(&quot;Case1&quot;, members);
+</pre>
+<p>The required permission to execute this method is <strong>createCase</strong>.</p>
+<h2 id="attach">Attaching a ProcessInstance to a Case</h2>
+<p>To add additional members to a Case the method <tt>joinCase</tt> of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+can be used.</p>
+<p>Example usage:</p>
+<pre>
+ProcessInstance memberProcessInstance2 = wfs.startProcess("{CaseModel}CaseProcess2", null, true);
+
+long[] members2 = {memberProcessInstance2.getOID()};
+ProcessInstance caseProcessInstance2 = wfs.joinCase(caseProcessInstance1.getOID(),
+            members2);
+</pre>
+<h2 id="detach">Detaching a ProcessInstance from a Case</h2>
+<p>Removing a process instance from the Case is possible with the <tt>leaveCase</tt>
+method of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>.
+The specified process instances are removed from the Case hierarchy and are again root processes.</p>
+<p>Example usage:</p>
+<pre>
+long[] members3 = {memberProcessInstance1.getOID()};
+ProcessInstance caseProcessInstance3 = wfs.leaveCase(caseProcessInstance2.getOID(), members3);
+</pre>
+<h2 id="merge">Merging (Joining) Cases</h2>
+<p>Merging (or joining) Cases is done by using the <tt>mergeCases</tt>
+method of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>.
+After the call the target Case will contain all process instances which were contained in the other specified Cases.
+Note that process attachments will also get merged to the target Case.</p>
+<p>Example usage:</p>
+<pre>
+long[] sources = {caseProcessInstance1.getOID()};
+ProcessInstance targetCaseProcessInstance2 = wfs.mergeCases(targetCaseProcessInstance.getOID(),
+            sources);
+</pre>
+<h2 id="delegate">Delegating a Case</h2>
+<p>A created Case is automatically delegated to the creator of the Case. 
+The owner of the Case will be able to delegate the Case to any other participant using the existing 
+<tt>delegateToParticipant</tt> method of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>.
+<p>Example usage:</p>
+<pre>
+ParticipantInfo participant = getModel().getParticipant("{CaseModel}Org1");
+ActivityInstance delegatedAi = wfs.delegateToParticipant(ai.getOID(), participant);
+</pre>
+<pre>
+Organization scopedOrg = getModel().getOrganization("{CaseModel}ScopedOrg1");
+Department department1 = sf.getQueryService().findDepartment(null, "Department1", scopedOrg);
+ActivityInstance delegatedAi = wfs.delegateToParticipant(ai.getOID(),
+            department1.getScopedParticipant(scopedOrg));
+</pre>
+<h2 id="descr">Setting and Reading Case Descriptors</h2>
+<p>A Case has the ability to store descriptors and its values dynamically per process instance.
+Descriptors for a Case are not designed at model time, instead it is possible to set 
+any primitive value by using <tt>setOutDataPath</tt> or <tt>setOutDataPaths</tt> on the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>.
+The only exception is the Case name, which is also a descriptor but limited 
+to the type String. Refer to section <a href="#setname">Setting a Case Name</a> 
+for details on the Case name.
+Retrieval of the Descriptors is possible via the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">ActivityInstance</a>
+<tt>getDescriptorDefinitions()</tt> method, which returns a list of DataPath 
+objects containing the 
+IDs <tt>DataPath.getId()</tt> and <tt>MappedType DataPath.getMappedType()</tt> 
+of the available descriptors.
+Finally by knowing the mapped type and IDs, the descriptor values can be retrieved by the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ActivityInstance.html">ActivityInstance</a>
+<tt>getDescriptorValue()</tt> method.</p>
+<p class="note"><strong>Note</strong>: It is also possible to retrieve the 
+descriptor values by using getInDataPath or getInDataPaths on the WorkflowService. 
+Using this method however also includes the process attachments which are not a 
+descriptor but only a data path.</p>
+<p>Example usage:</p>
+<pre>
+wfs.setOutDataPath(casePi.getOID(), "FirmId", Long.valueOf(123));
+
+assertEquals(Long.valueOf(123), (Long) ai.getDescriptorValue("FirmId"));
+assertEquals(Long.valueOf(123), (Long) wfs.getInDataPath(casePi.getOID(), "FirmId"));
+
+List&lt;DataPath&gt; descriptorDefinitions = ai.getDescriptorDefinitions();
+assertEquals("FirmId", descriptorDefinitions.get(1).getId());
+assertEquals(Long.class, descriptorDefinitions.get(1).getMappedType());
+</pre>
+<h2 id="setname">Setting a Case Name</h2>
+<p>The Case name can be changed by the same means as descriptors by just using 
+the reserved id for the Case name descriptor:<br>
+<tt>PredefinedConstants.CASE_NAME_ELEMENT</tt>.</p>
+<p>Example usage:</p>
+<pre>
+wfs.setOutDataPath(casePi.getOID(), PredefinedConstants.CASE_NAME_ELEMENT, "NewName");
+assertEquals("NewName",
+ai.getDescriptorValue(PredefinedConstants.CASE_NAME_ELEMENT));
+assertEquals("NewName", wfs.getInDataPath(casePi.getOID(),
+PredefinedConstants.CASE_NAME_ELEMENT));
+
+List&lt;DataPath&gt; descriptorDefinitions = ai.getDescriptorDefinitions();
+assertEquals(PredefinedConstants.CASE_NAME_ELEMENT,
+descriptorDefinitions.get(0).getId());
+assertEquals(String.class, descriptorDefinitions.get(0).getMappedType());
+</pre>
+<h2 id="search">Searching for Cases</h2>
+<p>Factory methods of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html">ProcessInstanceQuery</a>
+are provided to allow searching for Case members.
+It is possible to search all process instances that are Cases, Cases matching a 
+specified name or members of a specific Case.</p>
+<p>Example usage:</p>
+<pre>
+ProcessInstanceQuery query = ProcessInstanceQuery.findCases();
+
+ProcessInstanceQuery query = ProcessInstanceQuery.findCaseByName("CaseForQuery1");
+
+ProcessInstanceQuery query = ProcessInstanceQuery.findCaseMembers(caseProcessInstance.getOID());
+
+ProcessInstances processInstances = sf.getQueryService().getAllProcessInstances(
+            query);
+</pre>
+<h3>Searching for Cases by Descriptor</h3>
+<p>Note that searching by Case descriptors is not supported,
+Thus finding a Case process instance based on one or more Case descriptor values is not possible.
+Case process instances can be found indirectly by searching for Case members and navigating up.</p>
+
+<p>Note that when using the API of a Case functionality, you may get <tt>ConcurrencyException</tt>. 
+In that case, wait for sometime and retry the API call.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

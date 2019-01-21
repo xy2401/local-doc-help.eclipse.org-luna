@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Daemons</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Log Entries",
+	"ag-multipartition.htm","ag-concepts-3.htm",
+    "../key-concepts.html","Concepts",
+    "ag-concepts-preface.htm","Administrative Concepts");
+ -->
+</script>
+<h1>Daemons</h1>
+<p>Daemons are tasks that run continuously in the background of
+the Stardust Engine. They play an important role in setting
+automatic triggers and events. 
+The system provides two daemons by default, the System daemon and the Event daemon.
+Apart from them, daemons are created for every pull trigger defined in the model, 
+like for example mail trigger or timer trigger.</p>
+<p>The daemon execution is triggered at fixed intervals by a timer service.
+This timer service will start a short-living thread for each 
+daemon type that is supposed to be started.
+Stopping the daemon stops the timer, so that no more executions are scheduled.
+Starting the daemons means that a corresponding timer is created
+ that schedules execution jobs. A locking system guarantees that there are 
+ no overlapping job executions of the same daemon, i.e. a second execution 
+ will not start if the previous one has not yet finished. 
+ Server stopping will automatically stop the timers.</p>
+<p>The periodicity of the timer service can be individually
+configured in
+the Stardust properties file. For details refer to section
+<a href="#props">Daemon Properties</a>.
+The total loop duration is the maximum
+(not the sum) of the duration of the loop tasks and the configured
+periodicity.</p>
+<p>A running daemon is automatically restarted after a server restart.</p>
+<h3>Behavior in Case of Exception</h3>
+<p>If an execution fails with an exception, the next execution is 
+triggered by the system timer event not being affected by the former exception.
+An exception is errors based on database connection problems.</p>
+<p>The following functionalities are available to start or stop daemons necessary 
+to run Stardust:</p>
+<ul>
+    <li>from the <strong>Administration Perspective</strong> in the 
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+   Stardust Portal</a></li>
+    <li>using the <tt>console.bat</tt>/<tt>console.sh </tt>command
+    line utility (see 
+    <a href="../../handbooks/operation/commandline/ag-commandline-4.htm#daemon">
+    Daemon Management</a> of chapter
+    <a href="../../handbooks/operation/commandline/ag-commandline-4.htm">
+    Console Command Use Cases</a>),</li>
+    <li>using the <strong>AdministrationService</strong>, please refer to the chapter
+    <a href="../../handbooks/programming/embed/administration/pg-embed-daemons.html">Controlling Daemon Execution</a>
+    of the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+    for details.</li>
+</ul>
+<p>Daemons communicate with the Stardust Administration Perspective or
+with the console via timestamps in the audit trail database. If you
+intend to start and stop daemons from multiple machines, the machine
+system time must be the same on all machines.</p>
+<ul>
+	<li><a href="#types">Daemon Types</a></li>
+	<li><a href="#log">Daemon Log Entries</a></li>
+	<li><a href="#props">Daemon Properties</a></li>
+	<li><a href="#transact">Transactional Behavior of Event Bindings</a></li>
+</ul>
+<h2 id="types">Daemon Types</h2>
+<p>The following
+predefined daemons are currently provided:</p>
+<ul>
+	<li><a href="#mail">Mail Trigger Daemon</a></li>
+	<li><a href="#timer">Timer Trigger Daemon</a></li>
+	<li><a href="#event">Event Daemon</a></li>
+	<li><a href="#system">System Daemon</a></li>
+   <li><a href="#prior">Prioritization Daemon</a></li>
+   <li><a href="#report">Reporting Daemon</a></li>
+</ul>
+<h3 id="mail">Mail Daemon</h3>
+<p>On the technical side, the mail daemon periodically polls the
+mail servers of all mail triggers defined for process definitions of a
+workflow model. If a new mail matching the specification of the mail
+trigger is found, a process instance is created.</p>
+<p>The process instance is created asynchronously to the daemon
+execution. All the data contained in the trigger mail, and possibly
+necessary for executing the activities in the process, are passed as
+workflow data to the process instance.</p>
+<h3 id="timer">Timer Trigger Daemon</h3>
+<p>The timer daemon periodically checks if timer-based triggers
+defined for the running process instances have to be fired. If a
+timer-based trigger matching the current timestamp is found, a new
+process instance is created asynchronously to the daemon execution.</p>
+<h3 id="event">Event Daemon</h3>
+<p>The event daemon checks whether timer events were fired and
+need processing. The daemon periodically checks all event handlers bound
+and executes the event actions corresponding to matching handlers.</p>
+<h3 id="system">System Daemon</h3>
+<p>The system daemon periodically checks if daemon actions are defined and
+executes those actions. Please note that currently only one action
+is available, which is responsible for password expiration notification.
+In case this action is started and password rules are set,
+it is checking password expiration and sending a notification mail 
+according to the password rules settings. Per default it runs once per day.</p>
+<h3 id="prior">Prioritization Daemon</h3>
+<p>The prioritization daemon:</p> 
+<ul>
+	<li>periodically loads pending activity instances in chunks</li>
+	<li>re-calculates criticality according to JavaScript formula applied in the model to which the activity belongs</li>
+	<li>stores re-calculated criticality</li>
+</ul>
+<h3 id="report">Reporting Daemon</h3>
+<p>The reporting daemons runs periodically to check the next recurrence date for
+a Report Definition. Once the next recurrence date arrives, it executes the 
+report and distributes it via the specified delivery method.</p>
+<h2 id="log">Daemon Log Entries</h2>
+<p>When encountering an Exception, except in cases where it would not even 
+be able to write to the database, because for example of connection problems, 
+log entries are written by daemons.
+These log entries are stored in the audit trail, in
+the table <tt>daemon_log</tt>. Please refer to the chapter
+<a href="../../handbooks/operation/audit-trail/ag-appendix-audittrail-1.htm">
+The Repository Model</a> of the
+<a href="../../handbooks/operation/ag-preface.htm">Operation Guide</a>
+for details on this table.</p>
+<h2 id="acknowledge">Acknowledgment</h2>
+<p>The acknowledge mechanism determines to wait at least one timer 
+periodicity before a guaranteed "is running" is received.</p>
+<h2 id="props">Daemon Properties</h2>
+<p>Daemons are configured via a set of parameters, which,
+depending on the operating mode, can be provided either in the
+deployment descriptor of the <tt>DaemonListener</tt> or in the <tt>carnot.properties</tt>.</p>
+<h3>Periodicity</h3>
+<p>The most important property for daemons is the periodicity:</p>
+<blockquote>
+<p><tt>&lt;daemon name&gt;.Periodicity</tt></p>
+</blockquote>
+<p>where <tt>&lt;daemon name&gt;</tt> includes the following:</p>
+<ul>
+	<li><tt>mail.trigger</tt></li>
+	<li><tt>timer.trigger</tt></li>
+	<li><tt>event.daemon</tt></li>
+   <li><tt>reporting.daemon</tt></li>
+   <li><tt>system.daemon</tt></li>
+	<li><tt>criticality.daemon</tt></li>
+</ul>
+<p>The periodicity controls how often the daemon should perform
+its task. By setting the property you can specify a time interval expressed in seconds between the
+executions to achieve more accuracy. The default value for all daemon types
+is 5 seconds except for the reporting daemon. The reporting daemon has a default
+periodicity of 60 seconds.</p>
+<h4>Behavior due to large periodicity</h4>
+<p>If the periodicity of daemons is increased by using these properties 
+then the following behavior is expected:</p>
+<ol>
+	<li>An Acknowledgment status <tt>Response Required</tt> might occur, but
+	the daemons are performing the required actions nonetheless.</li>
+	<li>If the action point falls 
+	between the custom duration settings, it will be performed only 
+	when the daemons poll next time. For example:
+	If a re-submission is supposed to happen at a specific time and 
+	the daemon is polling before that time and after that time
+	according to the custom setting, the re-submission will occur 
+	at the last polling time due to the long 
+	periodicity setting.
+</ol>
+<h3>Timeout</h3>
+<p>The default value for daemon timeout period is set to 5 seconds.
+You can adapt this value in the <tt>carnot.properties</tt> file by
+setting the <tt>Carnot.Engine.Tuning.FindDaemonLogQueryTimeout</tt>
+parameter. The value "0" means that no timeout is performed.</p>
+<h2 id="transact">Transactional Behavior of Event Bindings</h2>
+<p>All the events that need to be handled by the event daemon or 
+timer trigger are stored in the <tt>event_binding</tt> table.
+When the thread for the event daemon starts, it reads all the entries in 
+this table, which have a target timestamp that expired.
+For each event action, a separate transaction is started. Thus, if the transaction
+rolls back, the daemon thread itself will remain running and process the next event. 
+The rolled back event will be handled during the next execution of this daemon type.
+The event itself is handled in a separate thread, whereby the following
+two types of exceptions are caught:<p>
+<ul>
+    <li>UnrecoverableExceptions</li>
+    <li>RuntimeExceptions</li>
+</ul>
+<p>Unrecoverable exceptions will remove the event binding from the 
+database table, mark a log entry, and subsequently commit 
+(so that the daemon thread can continue with the next event). The runtime exceptions 
+will first start a retry mechanism. After five times it gives up and 
+mark this event as disabled. It does so by adding 1024 to the <tt>type</tt> field, 
+which else holds <tt>1</tt> for process instances and 2 for 
+activity instances (1025 means disabled process instance).</p>
+<h2>Daemons in a Clustered Environment</h2>
+<p>In a clustered environment the behavior of daemons depends on the 
+server configuration. With standard configurations, no failover is provided
+and it is not guaranteed that there is only one instance running.
+It is guaranteed however that a specific event or action is performed by 
+exactly one instance, i.e. different instances will execute different sets of actions, 
+possibly in parallel.</p>
+<p>Note that, depending on the platform used, there might be cluster able timer 
+bean implementations providing failover and uniqueness on the level
+of the application server. Please check with your specific user platform.</p>
+<h3>EJB Deployments</h3>
+<p>If all configured as clusters in EBJ mode, the EJB timer guarantees
+that only one timer event will be executed 
+for all cluster nodes.</p>
+<h3>Spring Deployments</h3>
+<p>A heartbeat is executed on every Stardust instance. 
+Every instance will check the <tt>daemon_log</tt> table, if a daemon execution 
+is required, based on the last execution time in the database and the next execution time 
+calculated by the periodicity.
+If a new run is required, a lock on the audit trail is acquired which will be
+available to only one engine. All other engines will not acquire the lock 
+and only see the updated last execution time. Thus they wait another time.
+If no new execution is required as last modification time + periodicity &gt; current time,
+the heartbeat sleeps and tries again during the next run.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

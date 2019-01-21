@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Retrieving the Partitions in a multi-partition Audit Trail</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Logging Custom Log Entries",
+    "pg-embed-partitions.html","pg-embed-logging.html",
+    "../../../handbooks.htm","Developer Handbook",
+    "../../pg-preface.htm","Programming Guide",
+    "../pg-embedded-preface.htm","Embedded Usage","admin-preface.html","Administration");
+ -->
+</script>
+<h1>Retrieving the Partitions in a multi-partition Audit Trail</h1>
+<p>The following example API usage demonstrates how to retrieve a list of partitions in
+an audit trail.</p>
+<p>A partition is a logical separation in the audit trail database used to support 
+multi-tenancy. In this context the term does not refer to a database partition.</p> 
+<p>This example uses internal API (<tt>ForkingServiceFactory</tt> and <tt>IJobManager</tt>)
+to get the list of partitions in an audit trail.</p>
+<pre>
+public List&lt;String&gt; listPartitions() 
+ 
+   {
+    ForkingServiceFactory factory = (ForkingServiceFactory) Parameters.instance().get(
+          EngineProperties.FORKING_SERVICE_HOME);
+    IJobManager jobManager = factory.getJobManager();
+    if (null!= jobManager)
+    {
+       final List&lt;String&gt; result = newArrayList();
+ 
+         jobManager.performSynchronousJob(new Procedure&lt;Void&gt;()
+       {
+          @Override
+          protected void invoke()
+          {
+             for (Iterator&lt;IAuditTrailPartition&gt; i = AuditTrailPartitionBean.findAll(); i.hasNext(); )
+             {
+                IAuditTrailPartition partition = i.next();
+ 
+                  result.add(partition.getId());
+             }
+ 
+               Collections.sort(result);
+          }
+       });
+ 
+         return result;
+    }
+    else
+    {
+       trace.warn(&quot;Not able to list partitions, the component is not fully configured.&quot;);
+ 
+         return emptyList();
+    }
+ }</pre>
+ 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

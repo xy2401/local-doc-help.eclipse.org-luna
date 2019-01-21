@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc link_to="toc.xml#tocapi" label="Stardust Web Services Engine API">
+  <topic label="Stardust Web Services Engine API" href="html/reference/api/wsengine/index.html">
+    <topic label="Overview" href="html/reference/api/wsengine/overview-summary.html">
+      <topic label="org.eclipse.stardust.engine.api.ws Package" href="html/reference/api/wsengine/org/eclipse/stardust/engine/api/ws/package-summary.html"/>
+      <topic label="org.eclipse.stardust.engine.api.ws.query Package" href="html/reference/api/wsengine/org/eclipse/stardust/engine/api/ws/query/package-summary.html"/>
+    </topic>
+  </topic>
+</toc>

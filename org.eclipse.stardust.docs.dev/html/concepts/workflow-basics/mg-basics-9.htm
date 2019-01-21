@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Participants and Users</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Scoped Participants",
+            "mg-basics-8.htm","scoped-participants.html",
+		"../key-concepts.html","Concepts",
+        "mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Participants and Users</h1>
+
+<p>Participants are abstractions of human resources starting
+processes or performing the work represented by an interactive activity.
+Contrary to users, they are defined at modeling time and are part of the
+workflow model.</p>
+<ul>
+	<li><a href="#roles">Roles and Organizations</a></li>
+	<li><a href="#relation">Hierarchical Relationships</a></li>
+	<li><a href="#teams">Teams</a></li>
+	<li><a href="#exec">Executing Participant / Default Performer</a></li>
+	<li><a href="#workflowUsers">Workflow Users</a></li>
+	<li><a href="#performer">Current Performers</a></li>
+	<li><a href="#triggers">Manual Triggers</a></li>
+	<li><a href="#condPerf">Conditional Performers</a></li>
+</ul>
+<h2 id="roles">Roles and Organizations</h2>
+<p>Participants are either organizations or roles, whereby:</p>
+<ul>
+	<li>an organization is a group of resources, e.g. a
+	department or any organizational unit,</li>
+	<li>a role represents a role played by a resource, e.g. the chair of a department
+	or a software engineer.</li>
+</ul>
+<p><img src="images/mg-basics-33.jpg" alt=""></p>
+
+<p>In Stardust , roles and organizations are visualized by icons
+showing a pictogram of one or two persons respectively.</p>
+<p>As a model element, participants have the following properties:</p>
+<ul>
+	<li>An ID which is unique inside the model</li>
+	<li>A human readable name</li>
+</ul>
+
+<h3>Administrator Role</h3>
+
+<p>An administrator is a default role in Stardust . Each
+model has at least one Administrator role, by default. In case of models with provider and consumer
+relationship, once deployed, the administrator role of all the models is cumulated and presented as 
+only one administrator in the Stardust Process Portal. This administrator 
+has grants of all the deployed models. For example, the administrator can modify user of model A 
+and model B, as well.</p>
+
+<h2 id="relation">Hierarchical Relationships</h2>
+<p>Stardust allows defining hierarchical
+relationships between both roles and organizational units:</p>
+<ul>
+	<li><a href="#workfor">Works-for / part-of connection</a></li>
+	<li><a href="#manager">Manager-of connection</a></li>
+	<li><a href="#super">Super Organization</a></li>
+</ul>
+<p class="image"><img src="images/mg-basics-connections.png" alt=""> <br>
+<strong>Figure:</strong> Relationships between roles and organization.</p>
+<h4 id="workfor">Works-for / part-of connection</h4>
+<ul>
+	<li>A role being part of an organization is modeled as a
+	works-for relationship. In diagrams this relationship is rendered as a
+	line with an arrow to the organization.</li>
+	<li>An organization being part of another organization is
+	modeled as a part-of relationship.</li>
+</ul>
+<h4 id="manager">Manager-of connection</h4>
+<p>The <strong>Manager Of</strong> connection is a works-for relationship
+between a team leader role and an organization. An organization can only have
+one team leader role assigned. This connection is rendered as a dotted line.</p>
+<h4 id="super">Super Organization</h4>
+<p>Cyclic relationships are forbidden. Choosing a participant and
+traversing the relationships upwards will result in the set of super
+organizations of the chosen participant (note that roles are always leaf
+nodes in the relationship graph).</p>
+<p>In the figure below, the role Role1 has the following super organizations:</p>
+<ul>
+	<li>Organization1 </li>
+</ul>
+<p>The Organization1 has the following super
+organization:</p>
+<ul>
+	<li>Organization2</li>
+</ul>
+<p class="image"><img src="images/mg-basics-34.png" alt=""> <br>
+<strong>Figure:</strong> Role with Super Organizations</p>
+<h2 id="teams">Teams</h2>
+<p>A team is defined by the team lead role 
+(see <a href="#manager">Manager-of connection</a>), 
+managed roles, the immediate organization and their users. Teams also include all 
+elements down the tree from the immediate organization but exclude elements 
+higher up the tree.</p>
+<p>The following example demonstrates how a team structure is
+defined:</p>
+<p class="image"><img src="images/team-example.png" alt=""> <br>
+<strong>Figure:</strong> Example hierarchy demonstrating a team.</p>
+<p>In this example, two teams are defined:</p>
+<ol>
+	<li>a team for <strong>TeamleadRole1</strong> as manager of
+	<strong>Organization1</strong>.</li>
+	<li>a team for <strong>TeamleadRole2</strong> as manager of
+	<strong>Organization2</strong>.</li>
+</ol>
+<p>The team of <strong>TeamleadRole1</strong> comprises the following
+users, roles and organizations:</p>
+<ul>
+	<li><strong>Organization1</strong></li>
+	<li><strong>TeamleadRole1</strong></li>
+	<li><strong>Role1</strong></li>
+	<li><strong>User A</strong></li>
+	<li><strong>User B</strong></li>
+	<li><strong>User C</strong></li>
+	<li><strong>Organization2</strong></li>
+	<li><strong>TeamleadRole2</strong></li>
+	<li><strong>Role2</strong></li>
+	<li><strong>User X</strong></li>
+	<li><strong>User Y</strong></li>
+	<li><strong>User Z</strong></li>
+</ul>
+<p>The team of <strong>TeamleadRole2</strong> comprises the following
+users, roles and organizations:</p>
+<ul>
+	<li><strong>Organization2</strong></li>
+	<li><strong>TeamleadRole2</strong></li>
+	<li><strong>Role2</strong></li>
+	<li><strong>User X</strong></li>
+	<li><strong>User Y</strong></li>
+	<li><strong>User Z</strong></li>
+</ul>
+<h3>Teams and Departments</h3>
+<p>In case departments are implemented, each department defines the 
+boundary of that team. All team concepts described above apply.</p>
+<p>For the default department, the boundary is the default department.
+Participants outside of the default department are not considered to be 
+part of the team.</p>
+
+
+<h2 id="exec">Executing Participant / Default Performer</h2>
+
+<p>An interactive activity in the workflow model has to be
+associated with a participant, the so called executing participant or
+default performer. This means that</p>
+<ul>
+	<li>the participant is allowed to execute the activity at
+	runtime and</li>
+	<li>no other participant is allowed to execute the activity.</li>
+</ul>
+<p>Only one participant can be chosen as executing participant.</p>
+
+<h2 id="workflowUsers">Workflow Users</h2>
+
+<p>Whereas participants are part of the model they have no human
+identity. Individual (workflow) users are defined later in the runtime
+environment. The most basic feature of a user is that he/she can login
+to the Stardust runtime environment.</p>
+
+<h3>Grant</h3>
+<p>A user is associated with a deployed workflow model by
+associating it with participants from this model. An association between
+a user and a participant is called a grant. Conceptually, this means
+that the user becomes part of this participant (role or organization).</p>
+<p>Users and grants can be managed in two different ways:</p>
+<ul>
+	<li>As part of the audit trail</li>
+	<li>As part of an external security infrastructure, e.g. a LDAP
+	server</li>
+</ul>
+<p>Details of the user management are covered in the <a
+	href="../admin-concepts/ag-concepts-preface.htm">Administrative Concepts</a>, or the <a
+	href="../admin-concepts/ag-multipartition.htm#usermanagement">User
+Management</a> section of the <a
+	href="../admin-concepts/ag-multipartition.htm">Managing
+Multi Partition Stardust Installations</a> chapter.</p>
+
+<h3>Grant Propagation</h3>
+<p>When a new model is deployed there would initially be no grants
+for this new model. The process engine resolves this issue by
+replicating all grants, which still make sense in the new model from the
+previously active model to the new model. This process is called grant
+propagation and takes place during model deployment.</p>
+
+<h3 id="deputy">Deputies</h3>
+<p>A user has the options to transfer authorizations and workflow tasks to another user who will be in charge of 
+performing these tasks for a limited time. This user is called the <strong>Deputy</strong> of the other user.</p>
+<p>Deputies can be defined in the <strong>Deputy Management</strong> view in the 
+<strong>Business Control Center</strong> perspective or in the <strong>Configuration Panel</strong> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a>.
+For details refer to the following chapters in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation:</p>
+<ul>
+   <li><a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/participants/bcc-deputy-management.html">
+   Managing Deputies</a> for editing deputies in the <strong>Deputy Management</strong> view</li>
+   <li><a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/config/config-deputy.html">
+   Managing your Deputies</a> for editing your deputies in the <strong>Configuration Panel</strong></li>
+</ul>
+<p>In the worklist tree of a user, the user can also see the worklist of users he is deputy of. This is described
+in section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/perspectives/pp-launch-panels.html#myAssignments">
+My Assignments</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/components/perspectives/pp-launch-panels.html#myAssignments">
+Using Launch Panels</a>.</p>
+<h2 id="performer">Current Performers</h2>
+<p>An interactive activity instance is intended to be executed by
+a human. In the Stardust Process Engine an interactive activity instance
+is always associated with a concrete participant or user. This
+associated participant or user is called the current performer. An
+associated user is sometimes also more specifically called the current
+user performer. The current performer relationship is used to build
+worklists (see below).</p>
+<p>A current performer has to have the grant to execute the
+activity, which means:</p>
+<ul>
+	<li>The current performer is a participant and is equal to the
+	executing participant of the activity or to a sub-participant of the
+	executing participant.</li>
+	<li>The current performer is a user and the user has a grant for
+	which the associated participant is granted to execute the activity.</li>
+</ul>
+<p>When an activity instance is activated the activating user is
+set as the current performer. The activity instance is then locked for
+exclusive usage by that user. This lock can only be released by</p>
+<ul>
+	<li>suspending that activity by the owner or</li>
+	<li>suspending that activity by an administrator and only with
+	the help of administrative tools.</li>
+</ul>
+
+<h2 id="triggers">Manual Triggers</h2>
+<p>Besides the usage of grants for current performers there is
+another use case in manual triggers: A process definition appears in the
+list of startable process definitions for a user if the process
+definition has a manual trigger with an associated participant the user
+has a grant for.</p>
+
+<h2 id="condPerf">Conditional Performers</h2>
+
+<p>Roles and organizations in its plain form set up the
+association between an interactive activity and its executing
+participant at modeling time. This is not possible if the runtime
+behavior of a process instance dynamically determines the performer of
+an interactive activity. A conditional performer is used in such
+situations instead of a participant. Conditional performers are assigned
+to activities in the same manner as static participants.</p>
+<p>As a model element a conditional performer has the following
+properties:</p>
+<ul>
+	<li>A unique ID</li>
+	<li>A human readable name</li>
+	<li>A flag indicating whether it is used to specify a user, user
+	group or a participant (= Organization/Role)</li>
+	<li>An IN accessor from a workflow data specifying the current
+	performer at runtime</li>
+</ul>
+<p>At runtime, the conditional performer (i.e. its workflow data
+accessor) is evaluated and determines the identity of the actual
+performer (user or participant - as specified in the model). This is
+done at activity instance creation time.</p>
+<img src="images/mg-basics-35.jpg" alt="">
+<p>The icon to visualize a conditional performer is a person
+pictogram in brackets decorated with an equals sign.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SQL Editor Document Provider</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">SQL Editor Document Provider</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.routineeditor.ui.documentprovider<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>0.7.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point allows a document provider to be contributed for SQL Routine editor. Extensions register a <code>org.eclipse.datatools.sqltools.routineeditor.IRoutineEditorDocumentProvider</code> class which will provide additional functions beyond the original document provider. Note: this extension point is intended to be used by DTP SQL debugger only for now.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.provider">provider</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+This extension point should be used by debugger only.</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.provider">provider</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST provider</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">class&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>id</b> - optional id</li>
+<li><b>class</b> - a fully qualified name of the Java class implementing  org.eclipse.datatools.sqltools.routineeditor.IRoutineEditorDocumentProvider.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6><p><pre class="Example"><span class="code SchemaTag">
+&lt;extension
+          point=</span><span class="code SchemaCstring">&quot;org.eclipse.datatools.sqltools.routineeditor.ui.documentprovider&quot;</span><span class="code SchemaTag">&gt;
+       &lt;provider class=</span><span class="code SchemaCstring">&quot;org.eclipse.datatools.sqltools.debugger.editorextension.SQLDebuggerDocumentProvider&quot;</span><span class="code SchemaTag">/&gt;
+    &lt;/extension&gt;
+    </span></pre></p>
+SQLDebuggerDocumentProvider will be used by SQLEditorDocumentProvider to manage breakpoint positions.
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>The class attribute must be a fully qualified name of the Java class implementing  org.eclipse.datatools.sqltools.routineeditor.IRoutineEditorDocumentProvider.
+public interface IRoutineEditorDocumentProvider extends IDocumentProvider, IDocumentProviderExtension2, IDocumentProviderExtension3 
+{
+    /**
+     * Refreshs the routine object from database.
+     * @param element the routine object
+     * @param controlCon control connection that's used by the routine editor
+     * @param proc the routine identifier
+     */
+    public void refreshFromDatabase(Object element, IControlConnection controlCon, ProcIdentifier proc) throws CoreException, SQLException;
+}
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+Copyright (c) 2005 Sybase, Inc.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ Contributors:
+ Sybase, Inc. - initial API and implementation
+
+</p>
+</BODY>
+</HTML>

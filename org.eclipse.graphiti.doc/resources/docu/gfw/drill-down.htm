@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing drill-down behavior</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Drill-Down Behavior</h1>
+<p>Often the information which is shown in a diagram has a certain abstraction level, 
+and the further details are shown in a separate diagram. For example if a workflow 
+connects several sub-workflows, then one overview-diagram might show the complete 
+workflow without the inner details of the sub-workflows, and several detail-diagrams 
+show the inner details of each sub-workflow.</p>
+<p>In this case the user wants to have an easy possibility to navigate from the 
+overview-diagram into the detail-diagrams and vice versa. We call this &quot;drill-down&quot; 
+behavior.</p>
+<p>Although going from overview to detail is the most typical example, there are 
+other examples, where the user navigates to more independent diagrams. </p>
+<p>All those use cases have one thing in common: the user wants to navigate to a 
+diagram, which &quot;represents&quot; the selected business object (meaning this business 
+object is central for the diagram). </p>
+<p>Graphiti offers the possibility to link business objects to pictogram elements 
+(including the diagram). The drill-down feature works in a way that it searches 
+for all diagrams having a given business object associated. Then the user can choose 
+from the found diagrams to which to navigate (if only one diagram is found, than 
+this is directly opened).</p>
+<p>This is different to a where-used functionality, where the user would search 
+for all diagrams using a business object, no matter if the diagram really &quot;represents&quot; 
+the business object.</p>
+<h2>Creating a Drill-Down Feature</h2>
+<p>In this example we want to enable the users to navigate to the diagram(s) which 
+have the currently selected EClass associated. Therefore we have to create a drill-down 
+feature and make it available in the feature provider.</p>
+<ul>
+	<li>A drill-down feature is a <a href="custom-feature.htm">custom feature</a> 
+	which can easily be implemented by extending the base class
+	<a href="../../../javadoc/org/eclipse/graphiti/ui/features/AbstractDrillDownFeature.html">
+	AbstractDrillDownFeature</a>.</li>
+</ul>
+<p>The functionality of the <span class="inlinecode">AbstractDrillDownFeature</span> 
+is not tool-independent, so the method <span class="inlinecode">getDiagrams()</span> 
+can be implemented only by the tool efficiently. Furthermore we just overwrite the
+<span class="inlinecode">canExecute()</span> method, so that the feature is only 
+enabled if exactly one EClass is selected.</p>
+<p>You can see the complete implementation of the drill-down feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialDrillDownEClassFeature
+		<span class="keyword">extends </span>AbstractDrillDownFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>TutorialDrillDownEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>String 
+		getName() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Open associated 
+		diagram&quot;</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>String 
+		getDescription() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Open the diagram 
+		associated with this EClass&quot;</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public boolean</span> 
+		canExecute(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// first check, if one EClass is selected</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pes != <span class="keyword">null
+		</span>&amp;&amp; pes.<span class="string"><em>length</em></span> == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pes[0]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// then forward to super-implementation, which checks 
+		if<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// this EClass is associated with other diagrams</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return super</span>.canExecute(context);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">protected </span>Collection&lt;Diagram&gt; 
+		getDiagrams() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Collection&lt;Diagram&gt; 
+		result = Collections.emptyList();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Resource resource = getDiagram().eResource();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		URI uri = resource.getURI();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URI 
+		uriTrimmed = uri.trimFragment();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (uriTrimmed.isPlatformResource()){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String platformString = uriTrimmed.toPlatformString(<span class="keyword">true</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IResource fileResource = ResourcesPlugin.getWorkspace()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getRoot().findMember(platformString);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (fileResource != <span class="keyword">null</span>){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IProject project = fileResource.getProject();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		result = TutorialUtil.getDiagrams(project);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> result;<br>&nbsp;&nbsp;&nbsp; }<br>}<br>
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>The complete implementation of class <span class="inlinecode">TutorialUtil</span> 
+can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial;<br>
+		<br><span class="keyword">public class</span> TutorialUtil {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public static</span> Collection&lt;Diagram&gt; getDiagrams(IProject 
+		p) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">final</span> 
+		List&lt;IFile&gt; files = getDiagramFiles(p);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> List&lt;Diagram&gt; diagramList =
+		<span class="keyword">new </span>ArrayList&lt;Diagram&gt;();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> ResourceSet rSet =
+		<span class="keyword">new</span> ResourceSetImpl();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">final</span> IFile 
+		file : files) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> Diagram diagram = getDiagramFromFile(file, 
+		rSet);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		if (diagram != <span class="keyword">null</span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		diagramList.add(diagram);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> diagramList;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private static</span> List&lt;IFile&gt; getDiagramFiles(IContainer 
+		folder) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">
+		final</span> List&lt;IFile&gt; ret = <span class="keyword">new</span> ArrayList&lt;IFile&gt;();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">try</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		final IResource[] members = folder.members();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">final</span> IResource 
+		resource : members) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (resource <span class="keyword">instanceof</span> 
+		IContainer) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret.addAll(getDiagramFiles((IContainer) resource));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		} <span class="keyword">else if</span> (resource <span class="keyword">instanceof</span> 
+		IFile) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> IFile file = (IFile) resource;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (file.getName().endsWith(<span class="string">&quot;.diagram&quot;</span>)) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret.add(file);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <span class="keyword">catch</span> 
+		(<span class="keyword">final</span> CoreException e) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		e.printStackTrace();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;return</span> ret;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;private static</span> Diagram getDiagramFromFile(IFile 
+		file, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ResourceSet resourceSet) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// Get the URI of the model file.</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> URI resourceURI = getFileURI(file, resourceSet);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// Demand load the resource for this file.</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Resource resource;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">try</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		resource = resourceSet.getResource(resourceURI, <span class="keyword">true</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (resource != <span class="keyword">null</span>) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">&nbsp;// does resource contain a diagram as root object?</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">final</span> EList&lt;EObject&gt; contents = resource.getContents();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">final</span> EObject 
+		object : contents) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (object <span class="keyword">instanceof</span> 
+		Diagram) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> (Diagram) object;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		} <span class="keyword">catch</span> (<span class="keyword">final</span> 
+		WrappedException e) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		e.printStackTrace();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return null</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private static</span> URI getFileURI(IFile file, ResourceSet 
+		resourceSet) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">&nbsp;final</span> 
+		String pathName = file.getFullPath().toString();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		URI resourceURI = URI.createFileURI(pathName);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		resourceURI = resourceSet.getURIConverter().normalize(resourceURI);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return</span> resourceURI;<br>&nbsp;&nbsp;&nbsp; }<br>
+		}<br>&nbsp; </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Before we test our drill-down feature, we have link EClasses to our diagrams. 
+In our small example there is no obvious reasoning, which EClass to assign to a 
+diagram. Because of that we create a new custom feature, where the user himself 
+can assign selected EClasses to the current diagram. </p>
+<p>You can see the complete implementation of this custom feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialAssociateDiagramEClassFeature
+		<span class="keyword">extends</span><br>&nbsp;&nbsp;&nbsp; AbstractCustomFeature 
+		{<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>TutorialAssociateDiagramEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>String 
+		getName() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Associate diagram&quot;</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>String getDescription() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Associate the 
+		diagram with this EClass&quot;</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public boolean</span> 
+		canExecute(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean</span> ret = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pes != <span class="keyword">null
+		</span>&amp;&amp; pes.<span class="string"><em>length</em> </span>&gt;= 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (PictogramElement pe : pes) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pe);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (! (bo <span class="keyword">instanceof</span> 
+		EClass)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">return</span> 
+		ret;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;public</span> <span class="keyword">void</span> 
+		execute(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClasses[] = <span class="keyword">new</span> EClass[pes.<span class="string"><em>length</em></span>];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;for</span> (int i = 0; i &lt; eClasses.<span class="string"><em>length</em></span>; 
+		i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eClasses[i] =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		(EClass) getBusinessObjectForPictogramElement(pes[i]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// associate selected EClass with diagram</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		link(getDiagram(), eClasses);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>}<br>
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Finally the feature provider has to deliver our newly created custom features 
+(overwrite the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getCustomFeatures(org.eclipse.graphiti.features.context.ICustomContext)">
+getCustomFeatures</a>). </p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>ICustomFeature[] 
+		getCustomFeatures(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> ICustomFeature[] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		{ <span class="keyword">new</span> TutorialRenameEClassFeature(this),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> TutorialDrillDownEClassFeature(this),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> TutorialAssociateDiagramEClassFeature(this)};<br>
+		}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Navigate to Diagram Associated with a EClass</h2>
+<p>Now start the editor and test this new drill-down feature:</p>
+<ol>
+	<li>create or open two diagrams</li>
+	<li>in the first diagram create a new EClass</li>
+	<li>use &quot;copy &amp; paste&quot; to copy this EClass to the second diagram (the underlying 
+	business object is remains the same!)</li>
+	<li>open the context menu on the EClass in the second diagram; choose &quot;Associate 
+	diagram&quot;</li>
+	<li>save both diagrams and close the second diagram</li>
+	<li>open the context menu on the EClass in the first diagram; choose &quot;Open associated 
+	diagram&quot;</li>
+	<li>now the second diagram is opened again</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

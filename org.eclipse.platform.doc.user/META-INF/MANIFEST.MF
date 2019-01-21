@@ -1,0 +1,3063 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: e4Build
+Bundle-SymbolicName: org.eclipse.platform.doc.user; singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
+ rm/eclipse.platform.common.git;path="bundles/org.eclipse.platform.doc
+ .user";tag="M20141014-1906";commitId=72e67ae8eebc864630c3d8517c99853d
+ ba3eca41
+Require-Bundle: org.eclipse.help;bundle-version="[3.2.0,4.0.0)"
+Bundle-Version: 4.4.2.v20141003-1449
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.1.1
+Bundle-ManifestVersion: 2
+
+Name: images/ant_builder_targets_tab.png
+SHA1-Digest: eAda92Ty3oAifl4oZ9Nzbt+lIw8=
+
+Name: gettingStarted/qs-43.htm
+SHA1-Digest: 8DEozxlGX/Mj0ATZrZiVycssg3U=
+
+Name: tasks/tasks-118.htm
+SHA1-Digest: RfdCzQyu5Wh7yTFNtTCaHDhSOcE=
+
+Name: tasks/tasks-93.htm
+SHA1-Digest: eg9+pFsGHnxFmLtwYg8cp09zw1M=
+
+Name: reference/ref-33.htm
+SHA1-Digest: 1nn/WlPo+FJsYenpl0FR4PwurJ4=
+
+Name: tasks/tasks-cvs-watch.htm
+SHA1-Digest: Ybhdv/iAm+cABuweEnHIH6O4Zd8=
+
+Name: concepts/accessibility/colordialog.htm
+SHA1-Digest: 8vpEpVFbGar3c9OoDkPjUPPncws=
+
+Name: images/prbfil.png
+SHA1-Digest: u/yS0CnOX2lBBT0W47OFvhdVbNU=
+
+Name: tasks/tasks-cvs-11.htm
+SHA1-Digest: t86/ipRj+701i50mFsZkRiI2PrA=
+
+Name: concepts/ctskview.htm
+SHA1-Digest: HJuFWn5+4+7uo9GvS3v/SUj5ljg=
+
+Name: reference/ref-5.htm
+SHA1-Digest: U8Ri0+BslV9fVkQpMn0L+zXM6oY=
+
+Name: tasks/tasks-129.htm
+SHA1-Digest: 9yKYJ7LMTPOzQ54xN+x8G8mWkXY=
+
+Name: images/ref-annotationspref.png
+SHA1-Digest: jleLCpQ+TsuFVDBXMN8c2vETeks=
+
+Name: images/next_diff_nav.gif
+SHA1-Digest: ktgjNcK3ai1xIAmN0ckJJZZbmGQ=
+
+Name: images/cap-pref-advanced.png
+SHA1-Digest: PqWI1eP4g/7FXRu4YWVZR/z7vNo=
+
+Name: concepts/concepts-26.htm
+SHA1-Digest: /A3XsgEvotdXToM2vmCet44vAC4=
+
+Name: reference/ref-composite-cheatsheets.htm
+SHA1-Digest: 1tST93HIZy2CeyAsqx+YDVXnGHk=
+
+Name: gettingStarted/qs-37-2f.htm
+SHA1-Digest: Y2ZyFVGA4781khFZYQXFiTYg/+8=
+
+Name: tasks/tasks-95a.htm
+SHA1-Digest: oj2imtT83ja0mcair85Ea+Vrfvo=
+
+Name: images/drop_top_source.png
+SHA1-Digest: nN4U9dbSTLFDXkcPHMT+l5tTMxA=
+
+Name: tasks/tasks-9c.htm
+SHA1-Digest: wYJ4OQHKDHf97CVgKVsUyPEt1Yk=
+
+Name: images/Image230_editor_area.png
+SHA1-Digest: vOwfvV5KFeHplCiTJlFut362nzA=
+
+Name: gettingStarted/qs-83_edit.htm
+SHA1-Digest: 5IdkolEfiUF1yHA6sRfqHqMwAhg=
+
+Name: images/TrimStack.png
+SHA1-Digest: Jc8xmU9hSmHMvxeE5ahaIGnUzh0=
+
+Name: images/Image83_fred_verson2.png
+SHA1-Digest: 1tw1Bw30LNyj8ubhdwoESlHrr2I=
+
+Name: tasks/tasks-1i.htm
+SHA1-Digest: c5e6ykfYhiqqyw+eettJu/CLhIc=
+
+Name: tasks/tasks-70.htm
+SHA1-Digest: j7lHAUPXhJOIxFZ0UFEH+Uw6fGU=
+
+Name: images/Image_ignore_pref.png
+SHA1-Digest: fhxyQyH4zxpTdbGVBaJeh3Whe+4=
+
+Name: reference/ref-10.htm
+SHA1-Digest: EVueTDhwBpm7fEWllqAanlkHuDc=
+
+Name: reference/ref-20team-models.htm
+SHA1-Digest: zBh3V7KeuGt46VYXtYvtapDwqJ0=
+
+Name: images/ref-18.png
+SHA1-Digest: bdfXRV8m+5bztnPXpgZ5yjxe9qU=
+
+Name: concepts/concepts-cvs-watch.htm
+SHA1-Digest: YuvwZk2hGlgaHVmHN2X9oFmxAsw=
+
+Name: tasks/tasks-96b.htm
+SHA1-Digest: KUztJGYLbacyEG7gKR5k3uD54f8=
+
+Name: images/Image_file_folder_operation.png
+SHA1-Digest: IEmlBGCaxvEow6j8ZcFftW+tp4A=
+
+Name: images/Image71_file_menu_after.png
+SHA1-Digest: 1xHKEe5EVKbahiEknjrWb4DdoNA=
+
+Name: tips/images/cap-pref.png
+SHA1-Digest: eC0bfCU7sXtqiEnjhv48WQVaZa4=
+
+Name: gettingStarted/qs-70_replace.htm
+SHA1-Digest: 2IIr5OHqlMyokVoBf7pBOnG4HRY=
+
+Name: gettingStarted/gs_htmldoc_book.book
+SHA1-Digest: fMUkyOeou2ARo0wit1Je6Ibajis=
+
+Name: images/Image82_repo_view1.png
+SHA1-Digest: +XTwzLzPdLYxW/wn0aL6PfFj4WQ=
+
+Name: images/org.eclipse.ui.externaltools/obj16/build_tab.png
+SHA1-Digest: KdAf0I9Bxd1AuFRcFWo7LLgUiF4=
+
+Name: reference/ref-40b.htm
+SHA1-Digest: 7fRjvetXStebbcc1wePnwKw1UfE=
+
+Name: gettingStarted/qs-93_project_builder.htm
+SHA1-Digest: N6J/lh+bll5LsTrJYu2+oW8Vv/8=
+
+Name: gettingStarted/qs-64c_catch_mod.htm
+SHA1-Digest: V5SmKtgdlbr4rm/bQpLx8kFCeNE=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/ant_targets.png
+SHA1-Digest: F8nmq+2tFqSsnplNOJCzzmG/CdA=
+
+Name: gettingStarted/qs-52c.htm
+SHA1-Digest: gQUcodzZaVKca6OKce4P5bu2Ji8=
+
+Name: images/localHistoryView.png
+SHA1-Digest: STwMINtj7S5hAHvKkim37Ub9nBg=
+
+Name: gettingStarted/intro/overview.htm
+SHA1-Digest: 1moORmU3BgWCp03YDB6+gHh2Bzw=
+
+Name: reference/ref-anttemplates.htm
+SHA1-Digest: z927ZtaRhdUL2U5UC6jOYWV0VM0=
+
+Name: contexts_AntUI.xml
+SHA1-Digest: DFquu5Sx2eDcNPekUI0ycpL8jLk=
+
+Name: tasks/tasks-81.htm
+SHA1-Digest: Uxh0U430asNZQYYTFwX3gkF5yJg=
+
+Name: images/Image262_import_preferences.png
+SHA1-Digest: mGiHMCopDcXqwY98GkY+adHTlUI=
+
+Name: images/Image51_search_switching.png
+SHA1-Digest: g75mmiJdNshwDKD00dnvcstHRKc=
+
+Name: reference/ref-66.htm
+SHA1-Digest: G1KuYCVgtLUkH07ZNnxW3NQ65h0=
+
+Name: tasks/tasks-100d2.htm
+SHA1-Digest: zweCZaB1vfxhZtNX/PU+HOcMq88=
+
+Name: gettingStarted/qs-93a_project_builder_targets.htm
+SHA1-Digest: 1hLiBqUyENQtsDh/c5Az+SSD8ws=
+
+Name: images/Image276_search_preference.png
+SHA1-Digest: tQvOd23Wr6clrEalNrwvSQ8xvBs=
+
+Name: images/Image82_nav.png
+SHA1-Digest: MhV0uVQ3JxqA8LyQiCY5t9f88lI=
+
+Name: images/Image20_nav_with_resources.png
+SHA1-Digest: 2ZTI9VpeL7MCvcW3XEL5nhhTtnI=
+
+Name: images/Image83_jane3_conflict2.png
+SHA1-Digest: XzeyIRYu6PA8Y3/rnJiDC8Atq+Q=
+
+Name: reference/ref-19cvs-ext.htm
+SHA1-Digest: PxWvMUY8euZoAgNKUKR87d4ZGj0=
+
+Name: images/Image48_move.png
+SHA1-Digest: iZFaj5O1ojfOwyffij1vyajRrBs=
+
+Name: tips/images/last_edit_pos.png
+SHA1-Digest: DyBLiqSPzBRiN0J/dyhHx73My9w=
+
+Name: images/welcome.png
+SHA1-Digest: aRNnozNlpnD0LLs0wUyD7a2Yvpk=
+
+Name: tips/images/line-delimiter.png
+SHA1-Digest: HKfeJs2ABU6aJtCtpowIbFn00R0=
+
+Name: reference/ref-anteditor.htm
+SHA1-Digest: VB6bAwrjt0kFCLIYlQzKrHc5XYU=
+
+Name: tasks/tasks-117.htm
+SHA1-Digest: OqAXoaYNNZUinpOSbwLpqQ6xtTc=
+
+Name: tasks/tasks-92.htm
+SHA1-Digest: trhAzdlGYTMi5HMacyKkSTuRTx4=
+
+Name: reference/ref-32.htm
+SHA1-Digest: mPoMn9RFgGrZMjeD3wdmg6qd2dQ=
+
+Name: images/Image275_project_explorer.png
+SHA1-Digest: gtKOWcErvavxJ/Ex1KEmlMBCp0o=
+
+Name: images/EANormal.png
+SHA1-Digest: IhZupND/kGfeX2RLCXlAF1CI3EI=
+
+Name: gettingStarted/qs-02b.htm
+SHA1-Digest: tp8d4WNzbpRAFYSHddR06cAPsLM=
+
+Name: tasks/tasks-18.htm
+SHA1-Digest: ViY1keOBKJkJ3mj3fei/fmB8TuQ=
+
+Name: tasks/tasks-cvs-10.htm
+SHA1-Digest: aBIshzMyhEreylZV0Syn0zMm/pI=
+
+Name: tasks/tasks-105c.htm
+SHA1-Digest: bZfVIKA6GMwHwximpb3fzqUY1wY=
+
+Name: images/localHistoryCompare.png
+SHA1-Digest: idiLxkTewH9Fu2G/KhXkqBEey00=
+
+Name: images/Image71_pers_reset.png
+SHA1-Digest: H10R/kOr1pBPRtqpoytaqGO+w1c=
+
+Name: images/Image50_search.png
+SHA1-Digest: Kle6JXRbQsN4mKw71H6ow432+aw=
+
+Name: gettingStarted/qs-95_external_tools.htm
+SHA1-Digest: Vj41HXq9APf+dB0dvPLGILY7j6w=
+
+Name: gettingStarted/qs-85a_ant_view.htm
+SHA1-Digest: IIIG4TEwyBvZzC9cq+yxk1rAiW0=
+
+Name: reference/ref-4.htm
+SHA1-Digest: BbgkRBqs+NSz0475PCdJWpejUro=
+
+Name: tasks/tasks-128.htm
+SHA1-Digest: 7u2bBetCrbWOYUxIpL3qSoOGt5g=
+
+Name: tips/images/annotations-preferences.png
+SHA1-Digest: hz47BUsNQAGyvkhGmdF6xzY/80M=
+
+Name: gettingStarted/qs-80_ant.htm
+SHA1-Digest: /TgPj6GJ6D+PcBWwPnSO2rjBZuU=
+
+Name: images/image92-help.png
+SHA1-Digest: XJvximCX7Qg+SjJoDrR9GlolPZI=
+
+Name: reference/ref-19cvs.htm
+SHA1-Digest: LzTrJ7Hu5Txa6wBIvwaEuNFcuS4=
+
+Name: reference/ref-19cvs-watch-edit.htm
+SHA1-Digest: oYX07DIQygIrkLQQmeRm6AOAtzU=
+
+Name: reference/ref-43.htm
+SHA1-Digest: 5dLwCN4vORnW3Pq5nEL8SQOTIZE=
+
+Name: images/defaults_ps.png
+SHA1-Digest: uhsXwpw0BY26kIpWs1+AgxafKpQ=
+
+Name: reference/ref-antruntimeprefs.htm
+SHA1-Digest: YdXv9JVML3IrtH+PTUQZRk2zdVs=
+
+Name: concepts/concepts-25.htm
+SHA1-Digest: QCVsWpqi9HtfX6ZBHGTyWg/EwZU=
+
+Name: images/Image263_import_cvs.png
+SHA1-Digest: 9XGbFYuZESlE2V+oLVb1XMJL3ug=
+
+Name: images/run_exec.png
+SHA1-Digest: 2STMlJQWulm40h4UY/munCIIF+k=
+
+Name: concepts/concepts-21a.htm
+SHA1-Digest: ctGoXhMZJwJQUye91zA7I6PLumc=
+
+Name: images/Image84_replace3.png
+SHA1-Digest: HaqjJOzxaW0fzUPChv3OleCbSnU=
+
+Name: tasks/tasks-9b.htm
+SHA1-Digest: mNOX+iyM7PVTacw2OjPmFTYyIkI=
+
+Name: tips/images/editor-tiles.png
+SHA1-Digest: 7C+EE1dmzpzA4ZT7RfH2e5l9+hY=
+
+Name: images/mark_occurrences.png
+SHA1-Digest: 6VDTI715aLVY4v0pLgIN0FZipj8=
+
+Name: images/ref-p2-installupdate.png
+SHA1-Digest: sLLeWxj+eXADO4rjCjEpHwwDyWI=
+
+Name: index/_0.fnm
+SHA1-Digest: vS1yc7d/M0xp1o2totJNpm/VURI=
+
+Name: images/ref-spellingpref.png
+SHA1-Digest: icHutpJfpTtPrNJjooRK7T23+TU=
+
+Name: tasks/tasks-1h.htm
+SHA1-Digest: wRlT4WDaXKVhgTGUTEN5dmJftZE=
+
+Name: images/Image70_quickaccess.png
+SHA1-Digest: sNXOFMK1BV9n+P59jM+KXCMaQ0c=
+
+Name: images/addtask.png
+SHA1-Digest: hfFtB4KADAzFVjm5qEDqNf5Ozas=
+
+Name: images/org.eclipse.ui.externaltools/obj16/macrodef_obj.png
+SHA1-Digest: EbqU6yBmFVdSbCJmyghbQJRxN8U=
+
+Name: images/ref-17.png
+SHA1-Digest: MTXtz5NEhNvWrlqqEtcsobst4sw=
+
+Name: tasks/tasks-53.xhtml
+SHA1-Digest: rCMW3M53Z2auDODGolRnezbVA4o=
+
+Name: concepts/accessibility/keyboardshortcuts.htm
+SHA1-Digest: 3In5Aum9Q9KVFmhXspMcrEbiF1U=
+
+Name: whatsNew/images/darktheme.png
+SHA1-Digest: shYyydkdexicNAdnyHMS+bLlMUk=
+
+Name: gettingStarted/qs-37-3f.htm
+SHA1-Digest: Tm5SZpV6aP9V4K29sfE8lQ9WF+o=
+
+Name: tasks/tasks-96a.htm
+SHA1-Digest: ss1ZwU4ttNDcxHCpnwZzvRy4kgo=
+
+Name: images/ant_builder_refresh_tab.png
+SHA1-Digest: U7Pq6EWKTNiUrv+NIoSBt7FxQP8=
+
+Name: images/Image_file_operation.png
+SHA1-Digest: dfnjoZwU9cdnlllddDGY20C/3oc=
+
+Name: reference/ref-40a.htm
+SHA1-Digest: 1OUoFElctF1Q1KniO3NbrcNCd5U=
+
+Name: images/Image53_add_task_dlg.png
+SHA1-Digest: qu4m6lgKCbYOp01Cu+T6VrLnW5A=
+
+Name: images/Image54_bookmark_oneleft.png
+SHA1-Digest: 3hXD64AONdjjA8Tl3b+WxiLXyfs=
+
+Name: reference/ref-19cvs-commenttemplates.htm
+SHA1-Digest: AdqtJ4cphv1qg0hydzwBSXRB2JQ=
+
+Name: images/Image201_filetype.png
+SHA1-Digest: eWZO4k7m0im81UeEYekilT0tgfM=
+
+Name: images/cvs-decoration-text.png
+SHA1-Digest: shHLZ9PcduK8TglAR7pf895akjk=
+
+Name: gettingStarted/qs-85_ant_configs.htm
+SHA1-Digest: 9ghGyDW3jwbE2y9e2zGmWb+xcpA=
+
+Name: images/dirty_ov.png
+SHA1-Digest: l0PRB+4J/z3pGnMEbBcSBwt1G9I=
+
+Name: images/et_builder_main_tab.png
+SHA1-Digest: zhJ0EZedlKjrV9XmcAg+6zD8R1o=
+
+Name: images/Image70_shortcut4.png
+SHA1-Digest: xjxw6q91Vkw0w14W/IiQgc0Cjz8=
+
+Name: tasks/tasks-105.htm
+SHA1-Digest: pFNUqApXLfOiokdPNoRiA0bgLWA=
+
+Name: tasks/tasks-cvs-ssh2.htm
+SHA1-Digest: +Z2auRi00jMx136typm34xZb90o=
+
+Name: images/ant_view.png
+SHA1-Digest: sgsYpsZYQzbYmmLKrMMddHucsw4=
+
+Name: reference/ref-20.htm
+SHA1-Digest: hAEkstiu/BeTl4J6otZ3Nf8pa3Q=
+
+Name: images/copycont_r_co.gif
+SHA1-Digest: 196d/Nz+XdhmwjByOcrKhmsSUME=
+
+Name: reference/ref-65.htm
+SHA1-Digest: mfifsdAcPwXcNdFvaHOiiKOhOeE=
+
+Name: tasks/tasks-100d1.htm
+SHA1-Digest: YfyiPkEfIBN+9xnp170UyMR03Fk=
+
+Name: images/prev_diff_nav.gif
+SHA1-Digest: Yxsdfq+aXRfRviOHJijC7ipIhQ4=
+
+Name: images/builder_property_page.png
+SHA1-Digest: 2MsDee4nUXL6w63LVY3gGrmsW1A=
+
+Name: images/ant_builder_main_tab.png
+SHA1-Digest: 0i2Ho2HryCLLhCdjK01vq3dBoYw=
+
+Name: images/Image52_new_task.png
+SHA1-Digest: tUwwUHpFkhTNZCeFoTtJTgItNCI=
+
+Name: images/Image201_contenttype.png
+SHA1-Digest: SyfuUrLGdvOmpZP6R6eRBX+7ZZc=
+
+Name: images/import_wiz.png
+SHA1-Digest: vdldQRHm06e5W7SK97prZHNRZRc=
+
+Name: images/ant_runtime_classpath.png
+SHA1-Digest: o5sdtoWQyGPM+z5/kkEwBOYJ0lg=
+
+Name: images/Image60_fast_view1.png
+SHA1-Digest: wndVkYi3ZEOMJYs29fT2ksq5hCg=
+
+Name: images/ant_run_dialog.png
+SHA1-Digest: CymSJ09xoRYTYM98PQWL5aMbJx0=
+
+Name: tips/images/quick-access-hide.png
+SHA1-Digest: HJX134F4EAoN8IrFo8ks7jQcPr0=
+
+Name: images/compare-editor.png
+SHA1-Digest: SqaPcdqwn1izyfdIkQX3eVz1uFA=
+
+Name: images/r_inadd_ov.png
+SHA1-Digest: mxF+BRcrhkYlgvxO5KZyypKn23M=
+
+Name: images/Image275_startup_preference.png
+SHA1-Digest: ZCmAXMW4rV5WpJFdclSJ2ZflCoI=
+
+Name: reference/ref-securestorage-works.htm
+SHA1-Digest: FxKBCKIQEatxR1EUUeySJODaTXw=
+
+Name: reference/ref-31.htm
+SHA1-Digest: zvcignEIm9N/51AtgtrkiaCBk9E=
+
+Name: concepts/concepts-13.htm
+SHA1-Digest: Vt+BYJ/jyydWDrE8jBt6D3en0lk=
+
+Name: reference/ref-14b.htm
+SHA1-Digest: 8nYaMN85e8XHK0LbDOEeGYGCGok=
+
+Name: whatsNew/images/launch-options.png
+SHA1-Digest: DebA6krIBTmeo5g6LpQGe/il4zs=
+
+Name: gettingStarted/qs-02a.htm
+SHA1-Digest: UZp0f8X+PW+BK8UbGnB9Ccz+4Ps=
+
+Name: tasks/tasks-17.htm
+SHA1-Digest: 2uPMSqF+DEHy/Zs8QCaIo8Aknew=
+
+Name: images/external_tools.png
+SHA1-Digest: fZGLfhtVUavwH+eiC4atgjR2X1k=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/filter_internal_targe
+ ts.png
+SHA1-Digest: GrHuKWJd2u8yf1zglET/UjHecaI=
+
+Name: gettingStarted/qs-34a.xhtml
+SHA1-Digest: G2KTiWUQuPWPvI3KDtQf3winVn0=
+
+Name: tasks/tasks-105b.htm
+SHA1-Digest: eMpuL7Gl8n+B/WLA1sOoWO1a+M4=
+
+Name: concepts/cpathvars.htm
+SHA1-Digest: k2GnJEHuWnHzAjOp4S4CxBn2wBA=
+
+Name: images/Image30_goto_resource.png
+SHA1-Digest: PH1O9MEVVNdVDX2mN4fFVJRYxd8=
+
+Name: images/Image252_projref_page.png
+SHA1-Digest: ysaGud7afMNngQwTTJbbJjpnzdw=
+
+Name: reference/ref-3.htm
+SHA1-Digest: ZkYVDwv9UamnCFz6C2uVetkrrsU=
+
+Name: gettingStarted/qs-52.htm
+SHA1-Digest: 3k5n5ynifRGohzIj2MyrX/EY+S4=
+
+Name: tasks/tasks-127.htm
+SHA1-Digest: f7IL9j7IJTiuRqlrhZ/E2Ombsrw=
+
+Name: images/Image276_available_content.png
+SHA1-Digest: e6n0SKXgRRuz9pzSvwDqBSiFUI8=
+
+Name: reference/ref-42.htm
+SHA1-Digest: dEu7rGiepLX39AIHzbJN1sbjihs=
+
+Name: concepts/concepts-17a.htm
+SHA1-Digest: MQmeHGcTxhy009A8VfRXYmnzp8c=
+
+Name: images/up_nav.png
+SHA1-Digest: qELhgMw27xAugh4Nlysb7TleJ7Q=
+
+Name: images/content_type.png
+SHA1-Digest: AMIZc75OpBlAUrzyZHzHu9i9m7s=
+
+Name: tasks/tasks-cvs-project-set.htm
+SHA1-Digest: XbhQfktmoDaFvRhfl7dJ7t0ezFE=
+
+Name: gettingStarted/qs-37-2d.htm
+SHA1-Digest: XJeu3esqh8nRbbXUjIxaesJSA10=
+
+Name: images/Image84_replace2.png
+SHA1-Digest: rKE/lBeN43e/VWBkse2UFDelXOk=
+
+Name: tasks/tasks-28.htm
+SHA1-Digest: 3QRkxCOgU2MKGPH3EoSo+CS28pE=
+
+Name: images/backward_nav.png
+SHA1-Digest: CN9LltgL4fRnYSHPxKfs17klqn4=
+
+Name: reference/ref-securestorage-prefs.htm
+SHA1-Digest: XkD4Fbexy8LrfgUkSJyVyymOkgo=
+
+Name: images/help_preference.png
+SHA1-Digest: XDTAOPorugZPWnwuVOUtvrXxA3I=
+
+Name: gettingStarted/qs-31c.htm
+SHA1-Digest: IDjhHHG0du2F9ZUu5v6r+Qfz968=
+
+Name: reference/ref-3a.htm
+SHA1-Digest: p7wDguiMw5xVFliGJ4tdMSkmYZ0=
+
+Name: index/_0.frq
+SHA1-Digest: 8XT030csArd7xwIQT0TBG1re4Qg=
+
+Name: images/cvs-updatemerge.png
+SHA1-Digest: DERW9Igm07+fqdUTYhm/QZ3Blhk=
+
+Name: images/Image71_pers_pref.png
+SHA1-Digest: jNFbYCZr7sp7YGT/iRp2tF6m3Ss=
+
+Name: images/Image220_pref_dte.png
+SHA1-Digest: v6fDkOxw8s+FyP3YnzLNgel5yyo=
+
+Name: images/help_view_toc.png
+SHA1-Digest: 08bQ88AWxa4UyFiSj5QYO/2pX7s=
+
+Name: tasks/tasks-48b.htm
+SHA1-Digest: j9tm5mar/9P/Fijr/ClAUkwlqZ8=
+
+Name: images/ref-16.png
+SHA1-Digest: G/CoVetkZohv3YGfJQXCHSX2ezE=
+
+Name: images/help_window.png
+SHA1-Digest: SKEez8bDdqYkBF4A3Bu3zYUkPME=
+
+Name: concepts/help_view.htm
+SHA1-Digest: fN9FyEnIK1Y4YJGINBxjYkDMTAg=
+
+Name: gettingStarted/qs-37-3e.htm
+SHA1-Digest: gRT0kB3UmbroMNYx+/3aGnyHqxs=
+
+Name: tips/images/team-project-set.png
+SHA1-Digest: CFIz19hJivSEDETTEPkpzwWFDh4=
+
+Name: images/org.eclipse.ui.externaltools/obj16/defaulttarget_obj.png
+SHA1-Digest: MyPonNaCIRvotd+BlQSPh2ruHU8=
+
+Name: gettingStarted/qs-61f_syncproject.htm
+SHA1-Digest: bJaOFqvydWPsjhhBsdh2h0xzv3A=
+
+Name: images/Image240_props_view.png
+SHA1-Digest: Icf2LLnciDPYU3Gkc0F/HmESy98=
+
+Name: images/Image221_pref_fe.png
+SHA1-Digest: 8AeNfSJ/SFZqAf29nn3cwDvEo7s=
+
+Name: concepts/cworkset.htm
+SHA1-Digest: jpzjlyEXu4EQMaVKup7aDYlUq/U=
+
+Name: images/ngrelt.png
+SHA1-Digest: T/aObgW4iyz6C+UTnzXp4mA1cV4=
+
+Name: images/org.eclipse.ui.externaltools/cview16/ant_view.png
+SHA1-Digest: g8JO02ZX1sNWpN+5HS0DirmCnKo=
+
+Name: concepts/accessibility/navigation.htm
+SHA1-Digest: rykczgSOZy/7Tcp1EPqCllH2ikA=
+
+Name: images/Image36_linkedresources.png
+SHA1-Digest: hrmtxsR0fBp0pG5Rl3npDFOLDUc=
+
+Name: concepts/coutline.htm
+SHA1-Digest: /YAQkblhR7el6V+U7r7cH2EEVcA=
+
+Name: reference/ref-41a.htm
+SHA1-Digest: TbaqAxXEYaHRCMIDc+pOPfDQ2HM=
+
+Name: book.css
+SHA1-Digest: RMY0AOe7RY5IfQWsEAkZ8s5awuo=
+
+Name: images/Image219_pref_cv.png
+SHA1-Digest: cVr7kdQ2FvyVzMJI573L4pAH7jU=
+
+Name: images/ant_runtime_properties.png
+SHA1-Digest: 1fohEAaqGm8LKxM9bpqgPSoF+zo=
+
+Name: gettingStarted/qs-40.htm
+SHA1-Digest: FMCuVMbGhuHGp4AybfhW2DdLRuM=
+
+Name: tasks/tasks-115.htm
+SHA1-Digest: 35s8ehuod/huzo9hcjZSK4rzWa0=
+
+Name: images/last_edit_pos.png
+SHA1-Digest: /eO6t4bhVVYCWmy1zgPe0U2MANM=
+
+Name: reference/ref-30.htm
+SHA1-Digest: dvjMFNeISGMsWb/J3CaYR2+6Bw0=
+
+Name: concepts/concepts-12.htm
+SHA1-Digest: t00Zkm4iWRg5sTNGjXbUWpllBqg=
+
+Name: tasks/tasks-16.htm
+SHA1-Digest: KRoDfmiVjwVRkjcNDQAn4eXby0A=
+
+Name: tasks/tasks-105a.htm
+SHA1-Digest: nkZnT8sPWLULUZhHbFk5VEzSQwY=
+
+Name: images/Image619_ole.png
+SHA1-Digest: Sgd8Dm4NJx1FyyqApUZcuqJb0fM=
+
+Name: images/Image71_file_toolbar_before.png
+SHA1-Digest: upNSDntuvTik+ME4ByoicteXqTc=
+
+Name: images/help_icon_forward.png
+SHA1-Digest: 3BDgJdQR3xj4ucgwyJORGbK7pJ0=
+
+Name: images/Image82_repo_sync2.png
+SHA1-Digest: R1YqGC5Zhbk3EC40Mu/l5SmmiVA=
+
+Name: images/Image211_perspective.png
+SHA1-Digest: I7xs1f57dEa9+z5DAHA1D/+QU4s=
+
+Name: images/change-obj.gif
+SHA1-Digest: R8HcObKb0v2GdTsmx2C6Lk5iM7U=
+
+Name: reference/ref-2.htm
+SHA1-Digest: 5DMxITFXaq5fGvAA+5yrdcwmZuE=
+
+Name: tasks/tasks-126.htm
+SHA1-Digest: 8VgUFL3HD1RC8A88KFUxqsjfvWQ=
+
+Name: images/org.eclipse.ui.externaltools/obj16/ant_buildfile.png
+SHA1-Digest: cR9wHRSOiUHg5HLp/jj/RFbgbOE=
+
+Name: whatsNew/images/no-overlays.png
+SHA1-Digest: Btq9EVAZfA5J21xJt2gQofWCj5I=
+
+Name: images/Image57_two_editors.png
+SHA1-Digest: dVDnd914RpVfqFkIh3JO1WFu4SM=
+
+Name: images/Image229_view_popup.png
+SHA1-Digest: dM405zHBBztQOilyDQ5kfvCR0Yo=
+
+Name: images/Image232_marker_context.png
+SHA1-Digest: NaGItZX0VBiEU8evp4/9n7479TM=
+
+Name: images/Image54_bookmark_two.png
+SHA1-Digest: yZuuwPga/OdrafGr+3HlPRe4nnA=
+
+Name: reference/ref-net-preferences.htm
+SHA1-Digest: fo84YDsi6lT4UaD9G/ybKpRthLU=
+
+Name: gettingStarted/qs-31b.htm
+SHA1-Digest: HXnd7ofRUtOBDJOpRdeOOEAavY0=
+
+Name: images/Image21_task_view.png
+SHA1-Digest: 2QoecHXT9Z+cclk/AKthk4vKsec=
+
+Name: images/help_view_bookmarks.png
+SHA1-Digest: 1YtCtqZKCZoOnH8YRtY1rVr6MaQ=
+
+Name: images/res_details.png
+SHA1-Digest: hrT1SniCF/xzQMfFQGkr36OCuyg=
+
+Name: images/prob.png
+SHA1-Digest: jQl9e0apllmHDPF8NgLYzSHnXp0=
+
+Name: tasks/tasks-1f.htm
+SHA1-Digest: tGZTcXZs7brzT6XzZqx/xlFt5XA=
+
+Name: images/help_icon_print.png
+SHA1-Digest: Tm8VjDYTkadHvVL87xu5/sopv1g=
+
+Name: images/help_icon_search_local.png
+SHA1-Digest: OUdWUwKT5ztUOSCiZAB6tLngeaM=
+
+Name: images/ref-15.png
+SHA1-Digest: v7QpfgvlZ89lfDG0nP5zocPtf6Y=
+
+Name: images/ngrelc.png
+SHA1-Digest: AtrS4kkJDBiPeN+v4oUlyJqqi/M=
+
+Name: gettingStarted/qs-64b_fredmod.htm
+SHA1-Digest: 2WofTeAAQZK47GCxiYp0gwltq0I=
+
+Name: images/drop_invalid_source.png
+SHA1-Digest: qpBiAiTptrUiz5mfPBaj8+dVWuk=
+
+Name: images/stop_nav.png
+SHA1-Digest: iiybaRVqqtJn18D8BqBElDOPSKU=
+
+Name: images/copy_r_co.gif
+SHA1-Digest: iClegzpu4BVWpS3bnF/9VK4NGt0=
+
+Name: images/Image70_shortcut2.png
+SHA1-Digest: KC9fqgDJ4JSu3yr5IK9pope74QY=
+
+Name: tasks/tasks-103.htm
+SHA1-Digest: xJnPOl7da6+rNX4R34A0d41XCe0=
+
+Name: images/undo_edit.png
+SHA1-Digest: 7y/WbCNA0hEQteBx3MaPyx0eatY=
+
+Name: whatsNew/images/quick-access-hide.png
+SHA1-Digest: HJX134F4EAoN8IrFo8ks7jQcPr0=
+
+Name: reference/ref-securestorage-start.htm
+SHA1-Digest: Ls+wX+j4MW7kTDnt6Tw0r4tXL6w=
+
+Name: images/error_log.png
+SHA1-Digest: 49ZKulFCQPV/N2jJVvB3emgbUv0=
+
+Name: images/Image261_import_sel.png
+SHA1-Digest: f7rcoMTH/wRMQeZZO3PLtdXd5xo=
+
+Name: images/Image273_nav-decorators.png
+SHA1-Digest: 4y+cJ4Om9880gqtnkU2XZfcphRk=
+
+Name: images/Image9_viewdownarrow.png
+SHA1-Digest: y03iRKMZObiwq+nwQQUbhwpK28k=
+
+Name: tasks/tasks-49.htm
+SHA1-Digest: Um7mXPCI0Js1w9Rf3kOfy1XXCPQ=
+
+Name: tasks/tasks-81b.htm
+SHA1-Digest: 4lgvb8stxTka5Tr2gpH/5mw+4B4=
+
+Name: images/Image51_search_pinview.png
+SHA1-Digest: 3VQqyfqELIYIom+8D0aDX5hmr2A=
+
+Name: whatsNew/images/use-overlays.png
+SHA1-Digest: VQ9em/2bPZxxi6AGraGGPsbFGYU=
+
+Name: images/Image80_compare_editor.png
+SHA1-Digest: WT2dW6DbHqNs44zSlSwQGI7G5Nw=
+
+Name: tips/images/help_show_topic.png
+SHA1-Digest: ktJ2PsfeNV4LDp0su5TC8d/pJOc=
+
+Name: tasks/tasks-114.htm
+SHA1-Digest: 0gDUCHafoYDSV718Wv29Cq5jlrw=
+
+Name: tasks/tasks-3h.htm
+SHA1-Digest: jqxUt3Zaf5v5xuDxWE2ZyH8VXbc=
+
+Name: reference/ref-p2-installupdate.htm
+SHA1-Digest: xOFBrFh+LXBJ7Ugrg8AyP6rZBNE=
+
+Name: images/Image5_text_editor.png
+SHA1-Digest: 6k33Wx96nn2tTwuXCoN5+LmQwr8=
+
+Name: whatsNew/images/import-filter-conflicts-before.png
+SHA1-Digest: YTI1QK6ZgHdzFvTYtLCYJbhMidI=
+
+Name: images/export_wiz.png
+SHA1-Digest: 19F61k0fYwwVutyFT1YPXIzziaY=
+
+Name: concepts/concepts-11.htm
+SHA1-Digest: W0yOHmxGwUQOF2Cg4vMpXqV+nf4=
+
+Name: tasks/tasks-100d1b.htm
+SHA1-Digest: 2tH27wgublgMqInXJ6SBH3pjT+k=
+
+Name: index/indexed_contributions
+SHA1-Digest: R3/SLRBSLtriCVwrINzKo944OH0=
+
+Name: gettingStarted/qs-24a.xhtml
+SHA1-Digest: x72ICesTcgZzPdyfNy1eWBBZsNQ=
+
+Name: images/newfolder_wiz.png
+SHA1-Digest: FwUxW/I7btD3eaqutlC9StkYtjU=
+
+Name: images/show_whitespace_chars.gif
+SHA1-Digest: +MnCsFJSCOMkFFwAgT1zXZRCCnI=
+
+Name: reference/ref-globalizationprefs.htm
+SHA1-Digest: cr1bDnuAKoUiC7VDuz7bqDmuzhM=
+
+Name: images/help_icon_back.png
+SHA1-Digest: vxquQP7h2ixXjl7lr5r0Qp+mmxs=
+
+Name: images/Image222_pref_lh.png
+SHA1-Digest: cm2UQ7M+s61zZzLg4EHzw7dqkFw=
+
+Name: gettingStarted/qs-37-2d2.htm
+SHA1-Digest: IAhLIZ/F1UsAHqz3tXBeEMzfIOY=
+
+Name: images/Image274_fonts_preference2.png
+SHA1-Digest: Pr4QpzwV5FMPDR/kNAz4ByhUM1U=
+
+Name: images/ref-webbrowserpref.png
+SHA1-Digest: QYqJnSazxWusNswPWLw2RH8CNe8=
+
+Name: images/Image15_project_depend.png
+SHA1-Digest: Ji0TVsphTbMHP06ftJDZ7PJbQYw=
+
+Name: images/Image82_repo_sync1.png
+SHA1-Digest: vZNQMgdczGX5/NV4KDnv8I/LhzE=
+
+Name: tasks/tasks-125.htm
+SHA1-Digest: Cp1EadBWBGsbbAdyx+sNm0qQsRM=
+
+Name: tasks/tasks-ant-addtasksandtypes.htm
+SHA1-Digest: Nubqm15uz9G8aOHpvjUglwFqZck=
+
+Name: images/r_outadd_ov.png
+SHA1-Digest: fxT3EjqtnJRBu56H7F+53YAzWpw=
+
+Name: images/cvs-decoration-icon.png
+SHA1-Digest: s64h/JRT0O2DnqNEGbJ/4rUBihA=
+
+Name: reference/ref-40.htm
+SHA1-Digest: njPTsggJ9hC7wsWBTANVtONqWWs=
+
+Name: images/ancestorpane_co.gif
+SHA1-Digest: hoO1cRjCTQJiwFuUKIhPULzQWus=
+
+Name: images/cap-conf.png
+SHA1-Digest: /22qIKCDtNcJb6WqTfAxgHEnW7s=
+
+Name: concepts/concepts-22.htm
+SHA1-Digest: q/LsPDTGGUb8CQb0H9Sv/Kb3AAU=
+
+Name: tips/images/key-assist.png
+SHA1-Digest: 9rSjSeR4SVpHwR+wCPoMjV7yZgg=
+
+Name: gettingStarted/qs-37-2b.htm
+SHA1-Digest: TKtRh4fvnHcpV09hVSk6EIREL5I=
+
+Name: tasks/tasks-team-1.htm
+SHA1-Digest: MhAtGMO7BpZiZjwL0yztpiBcF88=
+
+Name: tips/images/changelog-obj.gif
+SHA1-Digest: j5/caRFZWzW9Ny0gLuUEZF0mkpc=
+
+Name: gettingStarted/team-cvs.css
+SHA1-Digest: YLmA7zP6NXUrtt2ve84q0kowY28=
+
+Name: reference/ref-19cvs-console.htm
+SHA1-Digest: 1/+kzuJRTANFJy3LtEkTKFI1xWM=
+
+Name: tasks/running_eclipse.htm
+SHA1-Digest: UaX7Qtf3vGHG6491jwNELgB31Vw=
+
+Name: gettingStarted/qs-60_team.htm
+SHA1-Digest: oymERRojjra5dR5hQvEZBbSwpT0=
+
+Name: images/ant_prefs.png
+SHA1-Digest: pZoZGCVrgsW/XxzkLCZaVRIFR90=
+
+Name: images/Image_pref_inup.png
+SHA1-Digest: iWVcgFKoHiMT/T10CJ1GpNWLB7s=
+
+Name: gettingStarted/qs-31a.htm
+SHA1-Digest: hrGE/RpGtWK4L9DtklNwqCd1dA4=
+
+Name: images/ref-quickdiffpref.png
+SHA1-Digest: zotwLaQxlFwsKyuo8D+OP1Hnt+c=
+
+Name: tasks/tasks-1e.htm
+SHA1-Digest: gaBN/GQmprDCyRyynDAmDsM44q0=
+
+Name: images/Image602_tar_assist.png
+SHA1-Digest: PtD0bufVF2q6JCXtSDAEY9mSNSU=
+
+Name: images/Image218_pref_app.png
+SHA1-Digest: r/UvC2EXvdn1s7O+WmrMbtolN60=
+
+Name: images/help_scope_criteria.png
+SHA1-Digest: 0SE8vF6ifQUS22HeXS2XUk0Zb+0=
+
+Name: images/cvs-merge-sync.png
+SHA1-Digest: XUW4PSbfMVbpbMcyyRjWmu+ulu8=
+
+Name: tasks/tasks-51.xhtml
+SHA1-Digest: wkmalw9mrcwnmkNKoPpEhBCF1vg=
+
+Name: gettingStarted/qs-37-3c.htm
+SHA1-Digest: uONZFSpnZZBG7IArnsiuhL+AqVU=
+
+Name: concepts/cnav.htm
+SHA1-Digest: AXNXZvbX5dOLRe87g2coMqkeOwc=
+
+Name: concepts/cpropview.htm
+SHA1-Digest: 4VhVtWIh86K4wREpZv3xeWpglWA=
+
+Name: tasks/tasks-107b.htm
+SHA1-Digest: Xyev1WUBla383xnOlnBkRClAZTI=
+
+Name: images/r_indel_ov.png
+SHA1-Digest: DRcraJ9zZe8ooXlX83HKe3YEcKA=
+
+Name: contexts_Team.xml
+SHA1-Digest: HhkDYGgHfrROFrfcjmmE/pM6mvA=
+
+Name: images/ref-9.png
+SHA1-Digest: n7BMeLIVThdTsyt1AOX14PV8EDU=
+
+Name: tasks/help_accessibility.htm
+SHA1-Digest: fli+17N0zwfjqqC6Ma0N+DWPr8Y=
+
+Name: images/ngrelr.png
+SHA1-Digest: OzguzM/OK663iNL85kw/xEyPpdw=
+
+Name: images/Image19_close_on_tab.png
+SHA1-Digest: CPyv4cg6foewr3zmxXAmH2oh1qw=
+
+Name: images/ref-25.png
+SHA1-Digest: Ot/Hkthz+60EwjIrxT0lBvnWM2s=
+
+Name: images/cvs-console-prefs.png
+SHA1-Digest: iyz+sKvIK/Y3pmlSAapH2nNFKI0=
+
+Name: images/res_build.png
+SHA1-Digest: SIXF7l4diVDfgCoY2VTL8qk4qDQ=
+
+Name: images/build_exec.png
+SHA1-Digest: so/ZoHTocSiJiZ3qvWa9rddPBuQ=
+
+Name: tasks/tasks-77b.htm
+SHA1-Digest: 4fp8w2sTXY2TOhwefC9W18kxXUQ=
+
+Name: images/ref-accessibility.png
+SHA1-Digest: wujCbAn79VJBTdzEsJp0M+11P5U=
+
+Name: images/confchg_ov.png
+SHA1-Digest: IW+IVt/mDpJBXvE3ahfKR6Q9NyQ=
+
+Name: whatsNew/platform_whatsnew.html
+SHA1-Digest: eXaTGhaQd+S5x7KtkB6jnE1btL0=
+
+Name: reference/ref-workspaceswitch.htm
+SHA1-Digest: +DT3amU91x72VLaU7S5KjeUEwW0=
+
+Name: gettingStarted/qs-74_version.htm
+SHA1-Digest: bMj2MXiwYsMLfjaFtgN0G3Dpm64=
+
+Name: images/Image15_new_button.png
+SHA1-Digest: 7a3Vp94G82ge4tzjRSYUpU87WRY=
+
+Name: images/Image12_new_project_wizard.png
+SHA1-Digest: 94r9beiB0iFJ5NMPZbH035gWzeg=
+
+Name: tasks/tasks-113.htm
+SHA1-Digest: gatgs+xw+Mq4iFeR9wi0uK2PVX4=
+
+Name: tasks/tasks-3g.htm
+SHA1-Digest: ENSLqMNPCRKZEE+mis23Ub9ye4I=
+
+Name: images/Image1.png
+SHA1-Digest: LOJLDdlQYg2mewetSLM9SkAAj+o=
+
+Name: images/cvs-decoration-general.png
+SHA1-Digest: n60SmAoeG/5v5S4wXL+3XQrI9bI=
+
+Name: tasks/tasks-14.htm
+SHA1-Digest: ljD4pBnoQwO+BQrKygVnlkx9GEk=
+
+Name: whatsNew/images/iconupdate.png
+SHA1-Digest: D2abt/E2QqvrkvjgXMLV7LkILZ0=
+
+Name: tasks/tasks-59.htm
+SHA1-Digest: qDt9QXKrCrlajWWvBR9KL77GGm8=
+
+Name: tips/images/link-with-editor.png
+SHA1-Digest: d0wbfKYnAY2ivsw3/uTt+hOlrzw=
+
+Name: gettingStarted/qs-34d.htm
+SHA1-Digest: dttsUOhMlY+nH1rFUXy3rKXwI/Q=
+
+Name: gettingStarted/qs-10b.htm
+SHA1-Digest: Dbek8JqdvRyRaOmRnwQZH3sXjhs=
+
+Name: images/cvs-general.png
+SHA1-Digest: LpepePenGZLiQrzC62rRFazEbEI=
+
+Name: images/Image243_tasks_view.png
+SHA1-Digest: YWTp8vAjJQ99vunz9Iops26iqiE=
+
+Name: tasks/tasks-124.htm
+SHA1-Digest: S1SfIiKQATKAFOcooQ6KL93Xb58=
+
+Name: images/Image83_jane3_conflict.png
+SHA1-Digest: S5CN7iGi1X+yK8khuqTnluBF+Fg=
+
+Name: reference/ref-p2-siteprefs.htm
+SHA1-Digest: tCeXVQBsmXL4j2jD61516iwKQhU=
+
+Name: concepts/concepts-21.htm
+SHA1-Digest: NMKXflLvizHZq9lMtyrrvTYgAys=
+
+Name: gettingStarted/qs-74_review.htm
+SHA1-Digest: 6RraINDXnirvUzQIXYiaDKt3pkE=
+
+Name: images/Image83_jane-sync.png
+SHA1-Digest: X2CixU/A1dy+TFk/X+gmlUGqEc0=
+
+Name: images/Image53_marker1.png
+SHA1-Digest: 01lRiDAUGAkSN5z8mFpz4OWjS+g=
+
+Name: gettingStarted/qs-07d.htm
+SHA1-Digest: dpfu6YFc0hbOyz3f3AXB/ZbkhWQ=
+
+Name: gettingStarted/qs-55b.htm
+SHA1-Digest: I1al7atx44Fw8QkqiMiL04vm6xA=
+
+Name: tasks/tasks-59ag.htm
+SHA1-Digest: 6UbWgeqp4be8It19ehd2OcoPXgA=
+
+Name: images/merged_ov.png
+SHA1-Digest: MyeEU+gnTCa01SCIX+47Yv3OHw4=
+
+Name: whatsNew/images/split_editors.png
+SHA1-Digest: Yp49hhoU3PF4YscxsrFVghqzcnM=
+
+Name: tasks/tasks-1d.htm
+SHA1-Digest: rqTNP3lsY6IdJmzDX1OF4TXsD9s=
+
+Name: tasks/tasks-9n.htm
+SHA1-Digest: SwJGPNdkc5VFcUT/HUdeLNIIkjk=
+
+Name: images/Image82_repo_new.png
+SHA1-Digest: wqht/TfduOPFNAaYpcKVjy3iVRw=
+
+Name: gettingStarted/qs-37-3b.htm
+SHA1-Digest: HLSz2AB6AkBNhfCXkCcuTSrg54E=
+
+Name: images/drop_right_source.png
+SHA1-Digest: rLQi47xPhHKf51WcsUj19VlWN0E=
+
+Name: contexts_JSch.xml
+SHA1-Digest: bBfGN6+GP37d9z5b7cEB5u3v1/A=
+
+Name: images/res_pref.png
+SHA1-Digest: R/gqAT/MWJvHnjkSiZL9+tQwsF8=
+
+Name: images/image92-opencheat.png
+SHA1-Digest: ffkWG7UevsxSZyozNkkbJvftQB0=
+
+Name: gettingStarted/qs-61d_repolocb.htm
+SHA1-Digest: szhDqT3RDperUFavdLUObE0wypk=
+
+Name: images/ant_formatter.png
+SHA1-Digest: huWvBA51cXWvZoRh/7DAi4zwkFc=
+
+Name: images/Image217_pref_wb.png
+SHA1-Digest: YSXUDVxu4SCFWpxNtD/EJ4G1Cig=
+
+Name: gettingStarted/qs-96_non_ant_pjs.htm
+SHA1-Digest: wsTjJdS7h9/pcti10QpXnGK054g=
+
+Name: images/Image202_editorsel.png
+SHA1-Digest: YNel92dNMrK1GnMV/gbDaKq46xc=
+
+Name: images/ref-8.png
+SHA1-Digest: 1pzHMBZnKtdvZgEK+xzlpMhMelw=
+
+Name: tasks/tasks-101.htm
+SHA1-Digest: gQTNuGUghOGGRCTZw796QY7d/KU=
+
+Name: images/cvs-checkout5.png
+SHA1-Digest: s4/9WHMyujMFaM6NYf/e9zl2HJw=
+
+Name: images/ref-p2-siteprefs.png
+SHA1-Digest: ewPX4+n9S7cZFCwk8I9lx7aA+j4=
+
+Name: tips/images/compare-merge-button.png
+SHA1-Digest: Gmj5btPvY6rI8oUn8OWDWranJMc=
+
+Name: images/remote_history_mode.png
+SHA1-Digest: kCvI1e+YswpNVO1HcWoj9hmvm/0=
+
+Name: reference/ref-61.htm
+SHA1-Digest: 9wxniAWXELoUJNoh7BPbCGSfOco=
+
+Name: contexts_Workbench.xml
+SHA1-Digest: fklCWOY54b8FllVeiWU+QOKOGTo=
+
+Name: images/ref-24.png
+SHA1-Digest: 9Ar8BztgZka0DVtr2W81gIiL1SY=
+
+Name: whatsNew/images/quick-access-dialog.png
+SHA1-Digest: pv+sO9HVL7WgA+/oxVEvr19HvdQ=
+
+Name: images/cvs-share4.png
+SHA1-Digest: 1oWeVjfZG3QmEp96gqrrgvIp2Q8=
+
+Name: images/block_selection_mode.gif
+SHA1-Digest: W098NvGnGe9EfZ+/NOiXMrTipQo=
+
+Name: images/drop_left_source.png
+SHA1-Digest: fpGd/KnzP+3KQ+A93LwezLK0z8M=
+
+Name: tasks/tasks-47.htm
+SHA1-Digest: mA6OgBbTf6QlOokt9aKnugT4rHA=
+
+Name: images/twowaycompare_co.gif
+SHA1-Digest: 1VU+ZncFwyojVgZiCqpkMKMcOkk=
+
+Name: images/help_icon_book_open.png
+SHA1-Digest: IUCaTB4qzf2tP7Dy4KHSa6C/QM4=
+
+Name: images/Image244_bmark_view.png
+SHA1-Digest: tA42E56eFZorWoXJqynkMyhzt1w=
+
+Name: tips/images/help_external_window.png
+SHA1-Digest: l0+m36wGL4NIROiuBo/3QvE1Axo=
+
+Name: images/Image40_import_target.png
+SHA1-Digest: vg1xA5YgjIywlmpkQe4prUdd+XA=
+
+Name: images/prev_nav.png
+SHA1-Digest: WQ47kuf/ltwSP0nD7V8ChUjItHs=
+
+Name: reference/ref-exttoolsprefs.htm
+SHA1-Digest: VsdQnvPvB8LXk8eMbXMFQ+Mui9E=
+
+Name: reference/ref-72.htm
+SHA1-Digest: ECy4UdRPdf0QXR28jvVWfDk/B38=
+
+Name: images/Image55_reset.png
+SHA1-Digest: 05KLrZsOtuNxmX+sM9mNlysHvf0=
+
+Name: images/EATrim.png
+SHA1-Digest: XYyzJbxq1j46vYqqwiWXukOUAvg=
+
+Name: images/Image83_jane-history.png
+SHA1-Digest: yltOyr69Ii9luEUG1dk1e0XmMg4=
+
+Name: images/org.eclipse.ui.externaltools/obj16/type.png
+SHA1-Digest: Pm/ew8VDfbmxiqs8l8GI2gn2I5E=
+
+Name: tips/images/perspective-other.png
+SHA1-Digest: /vxh/g3RavTrJPD6iDV/b62Aok0=
+
+Name: images/help_preference_infocenter.png
+SHA1-Digest: 3qJrOa9NWl3Z0pYvVTKbLywyM6c=
+
+Name: images/help_icon.png
+SHA1-Digest: UByzTBIVKHqZxsMsPr+xWiKY9Pw=
+
+Name: images/ssh2-keys.png
+SHA1-Digest: 7HRz2o7PQ+to+zRwn9q83+tiKKo=
+
+Name: images/Image224_pref_build.png
+SHA1-Digest: LfvSKoehChuqWPkZd3GBGYAtd9E=
+
+Name: tips/images/collapse-all.png
+SHA1-Digest: eWycIqeFiY2oNpNiUk0Q6TQ/5x8=
+
+Name: reference/ref-6a.htm
+SHA1-Digest: VW3s0FcfqRWZYGlEzoQv1bx7khA=
+
+Name: images/detachview2.png
+SHA1-Digest: kmA6IREygM+6FrpjxPNsBfL2hq8=
+
+Name: images/Image83_jane1.png
+SHA1-Digest: TO+TG7WgnmdBJIWuQPTUzLMipjI=
+
+Name: tasks/tasks-113b.htm
+SHA1-Digest: lK8vs6f11o7z7XgdVnwYoSwuoJc=
+
+Name: tasks/tasks-123.htm
+SHA1-Digest: 28p8p0AOH2nnCxD33AjDCO/n7As=
+
+Name: tips/images/path-vars.png
+SHA1-Digest: 3HdTux1kNILSncb4u09rhKxfQqo=
+
+Name: reference/ref-39a.htm
+SHA1-Digest: FC5g7bJtz0h7hPrQSnJloAaA0zc=
+
+Name: contexts_SecureStorage.xml
+SHA1-Digest: yaKWSrNhvM3zoGX1NfYNNdl/Dtw=
+
+Name: tasks/tasks-24.htm
+SHA1-Digest: +kY2GTHJHhn2QjiZwUzw4PLO/tU=
+
+Name: gettingStarted/qs-07c.htm
+SHA1-Digest: bvtuAwGZwQwmOjTkTS2MXedwv1M=
+
+Name: tips/images/mini-view.png
+SHA1-Digest: ZBiaL5hw3+qj0sXafczLRxyzSKA=
+
+Name: images/help_icon_search_web.png
+SHA1-Digest: VF74uT2o41g1GMvZwPTIOOcYUoI=
+
+Name: images/Image17_save_button.png
+SHA1-Digest: ACwaZnjE4fb4bWIqODJX6OX02KE=
+
+Name: images/cvs_module_rep.png
+SHA1-Digest: 5ywDPu315Qjj3xOyFx1tRSryNoM=
+
+Name: gettingStarted/qs-35d.htm
+SHA1-Digest: 8/ASbPrEQbNmte5VXI3enn7tLns=
+
+Name: tasks/tasks-exttools-running.htm
+SHA1-Digest: Rjwn1c+EA7bRXDsg0cctolVuvxI=
+
+Name: images/new_persp.png
+SHA1-Digest: vu90KUhBHbhgJpjcxexXdYxYw4Q=
+
+Name: images/Image210_filefilter.png
+SHA1-Digest: mi1DDsK1HIJ6fPQuXKZrHk0IJh4=
+
+Name: images/Image249_repo_wiz.png
+SHA1-Digest: 4bXCyHe9JXw2iIMU4PRCFYBI418=
+
+Name: images/res.png
+SHA1-Digest: iYx8ltVp6AWUXRt26AJ3ho3JkHY=
+
+Name: reference/ref-anticons.htm
+SHA1-Digest: 6xQbI1yV1pt3RUDMToQ0a9iJhw0=
+
+Name: tasks/tasks-134.htm
+SHA1-Digest: /tTN+a6uUmpGhlG8cfQQw8yppCU=
+
+Name: tasks/tasks-1c.htm
+SHA1-Digest: v6IY4y2SDOWNBCdMZUaRVs8Er18=
+
+Name: tasks/tasks-9m.htm
+SHA1-Digest: KkxwUgzSWn41dHQ1NIhnbzjSxpY=
+
+Name: images/help_icon_topic.png
+SHA1-Digest: 0I7TQO8/u+EYeL9nHQ5wM2gx820=
+
+Name: images/ref-12.png
+SHA1-Digest: X+v3YdqKfh5B/tlofJo/lzBcR18=
+
+Name: tasks/welcome.htm
+SHA1-Digest: 3Vio+qtcxhUnabeveA0Y+uBQbSQ=
+
+Name: gettingStarted/qs-61d_repoloca.htm
+SHA1-Digest: R8DF90Tn1R82xTC8LC8l/67FPcw=
+
+Name: images/help_infopop.png
+SHA1-Digest: XCLY8LqniypKQXpEeaZ8BYOvFo0=
+
+Name: gettingStarted/qs-12c.htm
+SHA1-Digest: MeZWrY2M3AiVutDnLXR/vqlKJqo=
+
+Name: images/help_icon_book_closed.png
+SHA1-Digest: pifHyaRh+DbTBn3Jkrfp07iYZKA=
+
+Name: images/ref-7.png
+SHA1-Digest: GH50lcJ00bW+43SjtDIfSDUHEks=
+
+Name: reference/ref-keybindings.htm
+SHA1-Digest: u7UvYvcvOKjH+fSE9uvLO9i0rMY=
+
+Name: contexts_Team_CVS.xml
+SHA1-Digest: 2PiSy0cIRzQh+Zk+RAI0HjCKIfc=
+
+Name: tasks/tasks-100.htm
+SHA1-Digest: Tdfw57XT74OuC+XIfxUBXC4rb0U=
+
+Name: images/cvs-checkout4.png
+SHA1-Digest: wKJE55hwL/0Cw2l6gKQ3yNfypYU=
+
+Name: images/org.eclipse.ui.externaltools/obj16/targetinternal_obj.png
+SHA1-Digest: x83NoWpDwMaLCg7u0hDvn2ZyeBo=
+
+Name: images/Image209_workspace.png
+SHA1-Digest: jF9d2lTRC3dZ61i0D/A7WYQd2oI=
+
+Name: images/newfile_wiz.png
+SHA1-Digest: /4gado1CBNn+3EtkAlyseiYCjAM=
+
+Name: reference/ref-60.htm
+SHA1-Digest: erFV5Pw0CyAOMCnZm8T+UbCldho=
+
+Name: images/ref-23.png
+SHA1-Digest: N8GilIU/i8yBO5AlKlAx5iMNWys=
+
+Name: images/org.eclipse.ui.externaltools/obj16/ant_target_err.png
+SHA1-Digest: G98EzrzEjo7XoXeSFwbsQjMxX0M=
+
+Name: reference/ref-19cvs-updatemerge.htm
+SHA1-Digest: wMcVS5eP1Mi/FH8Q4b6ETZKt4+k=
+
+Name: images/help_icon_bookmark.png
+SHA1-Digest: Ubk62tiavFGheZvvjMkbQrdamUo=
+
+Name: images/cvs-share3.png
+SHA1-Digest: 4PWW+dEjN2X50G8OCa3e1Qo3lPk=
+
+Name: concepts/concepts-27c.htm
+SHA1-Digest: meTncHWkP7jSIzY/9EeZhIcBbSE=
+
+Name: images/error_log_details.png
+SHA1-Digest: qOfrdphKQip1dZ2mngYiZFVqCXI=
+
+Name: images/Image400_filterbutton.png
+SHA1-Digest: Zln8ZXZz3LJhovaAW0Gp9O7mIUE=
+
+Name: tasks/tasks-46.htm
+SHA1-Digest: PrybpNpoG69cPJqtwW6XluEan9o=
+
+Name: images/et_run_dropdown.png
+SHA1-Digest: 2uv1rGUVi2ZKOOJIs+qkFZuY2Hw=
+
+Name: images/ant_content_assist.png
+SHA1-Digest: 1Kl4xoOaOULEw2znFMKL1yXdej8=
+
+Name: images/outline_hello.png
+SHA1-Digest: TUCNL+dxQSZ+pvxJl58b64SztB4=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/remove_co.png
+SHA1-Digest: +mThxX8nRhyDm/oc61E8JqKjUp0=
+
+Name: images/r_outdel_ov.png
+SHA1-Digest: nsc8+TFnJVLKMYT3wrLYveqJhLg=
+
+Name: images/org.eclipse.ui.externaltools/ctool16/external_tools.png
+SHA1-Digest: fZGLfhtVUavwH+eiC4atgjR2X1k=
+
+Name: images/Image13_project_in_nav.png
+SHA1-Digest: xGxnC8InDOJDyYoWwrCFPz/FokI=
+
+Name: tasks/tasks-3e.htm
+SHA1-Digest: R9ON4jPwnycnrfb1H70O6BuWDJ0=
+
+Name: images/Image82_import_project_fred.png
+SHA1-Digest: ItfgEmtYAVrg7jUN84Z+pEmGUpc=
+
+Name: images/pin_editor.png
+SHA1-Digest: 6iCq+MY7bqEOK82DPH5a0N5rhDA=
+
+Name: images/cvs-annotate.png
+SHA1-Digest: PDjK+eDClf2sVYMWrHW8HE0Uf1E=
+
+Name: reference/ref-71.htm
+SHA1-Digest: 3K4mM5xloIBrBn/zy31jtxz5mxs=
+
+Name: images/ref-79.png
+SHA1-Digest: MYNobVkRgI2n1CDC058ziSKS4OY=
+
+Name: concepts/cbookmrk.htm
+SHA1-Digest: rU142C48OgNEMgw/zeFDVCFVqI0=
+
+Name: images/Image70_select_pers.png
+SHA1-Digest: ZCPkuqb0J3OZEDLuE70nUGsHPes=
+
+Name: images/image92-check.png
+SHA1-Digest: gq+OGh/3G+tigC4J93cUSro5A2U=
+
+Name: images/quickfix_error_obj.gif
+SHA1-Digest: syy/dePAYAEfMNGOGwFWBBH993s=
+
+Name: images/next_change_nav.gif
+SHA1-Digest: AUgFHBYTjvzpYw55jm2O+viZcTI=
+
+Name: images/Image82_import2_project_fred.png
+SHA1-Digest: mW+B95z7Xbn+TxfHhLuCM/l4bpc=
+
+Name: images/Image71_pers_save.png
+SHA1-Digest: r2etznVd1Jbw3XGiHgmUWuidMz8=
+
+Name: tasks/tasks-122.htm
+SHA1-Digest: a6yx4AztyK/yVFNHozSJVHqq1BQ=
+
+Name: images/ref-texteditorpref.png
+SHA1-Digest: 2EgNl24l6sQr4byHCMGWCGCh2sk=
+
+Name: tasks/tasks-ant-classpath.htm
+SHA1-Digest: cvfT7lhAYa7604SMOnlU4ndsJ4A=
+
+Name: images/cvs-files.png
+SHA1-Digest: IkOKS5r3RbL3Epb7HhCdR1ba5vI=
+
+Name: images/Image48_rename.png
+SHA1-Digest: OQcegvrAi3/Bs8Rq7llUlrzoZx4=
+
+Name: gettingStarted/qs-07b.htm
+SHA1-Digest: oYir+EjohNQe6vyfVi0R60UBJMc=
+
+Name: tasks/tasks-68.htm
+SHA1-Digest: 0JxML3HJWGEJQHpWpIagnfUXdRw=
+
+Name: images/cvs-prompting.png
+SHA1-Digest: wjogsRf65Q/1P5Q2wtWCsWTW/ug=
+
+Name: images/copycont_l_co.gif
+SHA1-Digest: ApKDv5dH4axLh7l9PY5nH9S1IAE=
+
+Name: images/help_view_context.png
+SHA1-Digest: We9kh90f7WFBskKVM9wsmVjakuQ=
+
+Name: tasks/tasks-cvs-quickdiff.htm
+SHA1-Digest: I/LcOnk3S0e/sJOTgeOF5thofws=
+
+Name: gettingStarted/qs-35c.htm
+SHA1-Digest: VpwfbUUwInohXqMeAwu1BIAZB7Y=
+
+Name: tasks/tasks-1b.htm
+SHA1-Digest: r+YBH/8UwaxEFYTk+0wXJLbiL1s=
+
+Name: tasks/tasks-133.htm
+SHA1-Digest: 806jHQ05cMzVR7nUU+QMtzaAIM0=
+
+Name: tasks/tasks-9l.htm
+SHA1-Digest: ImndEwzgqUpDIoHfQU9eb8pdKUs=
+
+Name: tips/images/keyboard-shortcut.png
+SHA1-Digest: Zq7fzjM5G7e8eeSbOzTntIrVzfk=
+
+Name: images/next_nav.png
+SHA1-Digest: laSAl8cAPfkHR719cceoMb92xJo=
+
+Name: images/ref-11.png
+SHA1-Digest: O8cjACckSPM9B+SmmxidUkn+pIE=
+
+Name: reference/ref-anteditorprefs.htm
+SHA1-Digest: a3jNm1U66es9NhcPQWCbv+0nlFI=
+
+Name: concepts/concepts-30.htm
+SHA1-Digest: Ia0qd+RC10STtfMrAG90bKuAUDA=
+
+Name: tasks/tasks-79.htm
+SHA1-Digest: 3YPG1qQAzzZugICG9Z9yFl9Lb1g=
+
+Name: tips/images/detachview2.png
+SHA1-Digest: gPFA24UDPUX2ov8iwhi31ifbv0U=
+
+Name: tasks/tasks-84b.htm
+SHA1-Digest: lL1m7dKtf7k0o/sCwaPYPWa+HHQ=
+
+Name: reference/ref-19.htm
+SHA1-Digest: p+FlFeoIm4FsG3n6ELq86g3IzsY=
+
+Name: images/Image206_persp_saveas.png
+SHA1-Digest: ctSIFIqtxBcRjCY7aaXs+ehu/ag=
+
+Name: gettingStarted/qs-12b.htm
+SHA1-Digest: qbgGQAfHdq3JU3Qw8OVkaUn8sXQ=
+
+Name: images/Image45_setup.png
+SHA1-Digest: THwd1JgCXUXOBx4TRnbVzoVVrMY=
+
+Name: images/Image51_search_it.png
+SHA1-Digest: 8eLajKRAbVJ5qE9G/4wzVC2IA+8=
+
+Name: concepts/csearchview.htm
+SHA1-Digest: oEBEmQHKuOYiqunnIArO+soGVOA=
+
+Name: images/cvs-checkout3.png
+SHA1-Digest: jo8NIoSaW2PqJVhBhi0yWPpwCTs=
+
+Name: images/Image265_team_project.png
+SHA1-Digest: 6fIMsXjbQfCDwSShakkg3Zc7RzQ=
+
+Name: images/Image80_compare_editor4.png
+SHA1-Digest: CDG5mtdH2aqBi6mKUFk4HyNRMaU=
+
+Name: reference/ref-securestorage-options.htm
+SHA1-Digest: 86BHTTj8KqJdL5J/nWKBMSxL+58=
+
+Name: reference/ref-tracing_preference_page.htm
+SHA1-Digest: ylV9V8omYDCuvD5gYxGw83qEXqc=
+
+Name: images/ref-22.png
+SHA1-Digest: ljS0NX6pqVEgONPjUrFq0AVOtls=
+
+Name: images/Image211_fastview.png
+SHA1-Digest: AF041WBIl96anq3Mh9nVxK3bthc=
+
+Name: images/cvs-share2.png
+SHA1-Digest: P01TK90yrSml8V7+U2/20MMwD84=
+
+Name: concepts/concepts-27b.htm
+SHA1-Digest: ajYf/4R1ZKoLp9Jwnl6aSILdsE4=
+
+Name: images/Image3_single.png
+SHA1-Digest: btuPBF7FAISRiNvanwHoWNtg7L4=
+
+Name: tasks/tasks-45.htm
+SHA1-Digest: D6Ov4lD6CS9YbIXRHK+eth3xw3k=
+
+Name: gettingStarted/qs-64b_fredadd.htm
+SHA1-Digest: ryL8VCE1OyAq/PQMXfFK/dMAg68=
+
+Name: concepts/accessibility/accessmain.htm
+SHA1-Digest: ltePxM8ljXlggnI1JBiVaJWyvfU=
+
+Name: images/org.eclipse.ui.externaltools/obj16/prop_ps.png
+SHA1-Digest: 8+GzvXbbPPksjK3LHpm6DjTjddw=
+
+Name: tips/images/new.png
+SHA1-Digest: a9gzSZUaDie7cq3uf1H0CH7swoo=
+
+Name: images/Image229_editor_popup.png
+SHA1-Digest: k04+tfF+BF/GJt0OOHBG/15aJ5I=
+
+Name: images/search_src.png
+SHA1-Digest: E3ufpsjNeA6KyTsOc3rT2XlgJsU=
+
+Name: reference/ref-20-fileContent.htm
+SHA1-Digest: ImFB7FnGmcSx+ha47PNqmr5AtN0=
+
+Name: reference/ref-antview.htm
+SHA1-Digest: BDDn/TyZY1iSmBFUAJ+ub7CT9tQ=
+
+Name: tasks/tasks-110.htm
+SHA1-Digest: vNsW0oczK4qKn2bDm22AKs1QJfw=
+
+Name: images/Image2_active_view.png
+SHA1-Digest: AOWRtB62wn/SDymiKWvKOqnJAuQ=
+
+Name: reference/ref-70.htm
+SHA1-Digest: oReMvYx0sOCbrYsXYnHiHw2Xq5g=
+
+Name: tips/platform_tips.html
+SHA1-Digest: MByRfVfrtWYJRxgQgOtbs9C90Zo=
+
+Name: images/Image7_view_pulldown.png
+SHA1-Digest: q4SnfjZiJxz7dziRJDdiPqlFZ1k=
+
+Name: tasks/topenmode.htm
+SHA1-Digest: csSVjwmKiklPYMqFOlAgvh8Jbgg=
+
+Name: reference/ref-securestorage-passwd.htm
+SHA1-Digest: 2Qb7wVjL73KOjYD6KYWP38oYOcI=
+
+Name: images/arch-npi.jpg
+SHA1-Digest: GJe4ubLOM88ugRcrqeVvjGLF6pQ=
+
+Name: tasks/tasks-46ag.htm
+SHA1-Digest: 7NzuESYsya4+0ZCC0eJ3FAGOUMg=
+
+Name: whatsNew/images/darktheme-full.png
+SHA1-Digest: OMIxqDeQCW9vxu66qldr63mCack=
+
+Name: gettingStarted/qs-02d.xhtml
+SHA1-Digest: ohEVycX59jX/iWEgJj94AyejkTY=
+
+Name: images/win_only.png
+SHA1-Digest: DKc+HmYdCqanLqBPG/gfsfzeS8g=
+
+Name: images/cvs_refresh_branches.png
+SHA1-Digest: eEXOpO2gb79qyK8FQWrF6zvVh6s=
+
+Name: images/Image17b_unsaved_changes.png
+SHA1-Digest: 9KNBN8qXXoc4NMQRkyeRtKPnm1g=
+
+Name: images/Image43_export_tree.png
+SHA1-Digest: i7/ROn3uL0uxBRg/SnucTKKRqVk=
+
+Name: images/debug_exec.png
+SHA1-Digest: V8X6Zov064P+yVvXbC5mU23R744=
+
+Name: reference/help_preferences.htm
+SHA1-Digest: /hToqwp7pVo3PvJoF/s8c+JQWyQ=
+
+Name: gettingStarted/qs-07a.htm
+SHA1-Digest: 5ls/2etcK06ZQdEH5A3VAxeo+ck=
+
+Name: tasks/tasks-67.htm
+SHA1-Digest: RLnR40boaDIY05tfySn8Qf24pi0=
+
+Name: reference/ref-decorations.htm
+SHA1-Digest: 0RRv4Yx3N8C6wDv2rWkdNQfiB2U=
+
+Name: images/prb_quickfix.png
+SHA1-Digest: nF/QfUNcWVVy0HWiyYJikf+zWVc=
+
+Name: gettingStarted/qs-35b.htm
+SHA1-Digest: hqO1lEq547pnRNv05HHeIXVOrXg=
+
+Name: gettingStarted/qs-39g.htm
+SHA1-Digest: w/cxyJO1UueSOvMN14Dl729HQq4=
+
+Name: topics_Tasks.xml
+SHA1-Digest: f5mwo8GNYKYzdoL4nx6OBGr1/6M=
+
+Name: gettingStarted/qs-43f.htm
+SHA1-Digest: +Xg86nSX1AQKuPfiDTuKrxwv9NI=
+
+Name: tasks/tasks-132.htm
+SHA1-Digest: 8j4ngcMhXmrU43M90BfzPtD/U+4=
+
+Name: tasks/tasks-1a.htm
+SHA1-Digest: RxyYJl4TUxgQesegj6mv4QtVs10=
+
+Name: images/Image208_view_sel.png
+SHA1-Digest: O5qf3AuhBQ0rUUdJw9OT8CyJF2k=
+
+Name: tasks/tasks-9k.htm
+SHA1-Digest: mOpCYncE4WmX3wPSQyjSn3hJ6iI=
+
+Name: reference/ref-error_log_view.htm
+SHA1-Digest: Tgj5QAYVocU6OlofX9+mIC+sL/k=
+
+Name: images/ref-10.png
+SHA1-Digest: eezGqlG6SXqtNCOY636YEdpNLAw=
+
+Name: images/ant_tar_assist.png
+SHA1-Digest: 8g67E2p97V3lw8QIrgYmvPrVmkk=
+
+Name: images/org.eclipse.ui.externaltools/obj16/targetpublic_obj.png
+SHA1-Digest: aFTxsXcbsP2LoecUl8mTtlG7wK8=
+
+Name: images/Image51_choose_ext.png
+SHA1-Digest: C3FbvWe1ybgmSnqf2WgtG+kl/0c=
+
+Name: contexts_Compare.xml
+SHA1-Digest: LncsXISE33IqRlyknDH3c1yLEMs=
+
+Name: tasks/tasks-78.htm
+SHA1-Digest: 3FT9xvX6Mkfr50eGsYfbdWkiIfg=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/properties.png
+SHA1-Digest: 8+GzvXbbPPksjK3LHpm6DjTjddw=
+
+Name: tasks/help.xhtml
+SHA1-Digest: nI7mKPsraNbRDu2azgdJVqINYrU=
+
+Name: tips/images/key-bindings.png
+SHA1-Digest: MQG4MRGrle6AG2IYihfZB3KQ3ng=
+
+Name: reference/ref-search.htm
+SHA1-Digest: XeCwMVtVpCWFPYIaNBcpaGhuNZU=
+
+Name: gettingStarted/qs-34b.xhtml
+SHA1-Digest: Q0uCMUrSsrvLyAxtWwUF9YP4exY=
+
+Name: images/prev_change_nav.gif
+SHA1-Digest: uLw7X4PJkCtl7iw1scdTQRQMHzk=
+
+Name: images/ref-5.png
+SHA1-Digest: BNet+AStUGN2LnXsIBQIOUjNJ4Y=
+
+Name: gettingStarted/qs-40b.htm
+SHA1-Digest: s7uYFW86YwBcA0IVCgkjtPlGofw=
+
+Name: images/cvs-checkout2.png
+SHA1-Digest: 0ugMquwZWihb7wPLRTjOJaAby84=
+
+Name: images/Image80_compare_editor3.png
+SHA1-Digest: SBTvYhqjd9sIvCgrH4RCohwvOyU=
+
+Name: images/ref-templates-view.png
+SHA1-Digest: Ns5hZ9AdLkXK8YNTlbUDJIycUuA=
+
+Name: tips/images/preference-transfer-compiler.png
+SHA1-Digest: 8dJBkHFAdU7C6HvhCD8PhI6lTpY=
+
+Name: images/EAMaxed.png
+SHA1-Digest: i+V+cUMBjZ7Ac21R+2PojdJ/k6Y=
+
+Name: images/ref-21.png
+SHA1-Digest: w49K3Our8zZRX/cFerAyC4uDYg0=
+
+Name: reference/help_preferences_content.htm
+SHA1-Digest: 22siR0DGl93EmB1EEMk9XR/oFBI=
+
+Name: concepts/accessibility/text_editor.htm
+SHA1-Digest: CLyeUbBzzLcrIy6GEHrcilNimZE=
+
+Name: images/equinox_secure_storage_start.png
+SHA1-Digest: 5X+0ulnZzAieEYNXdFT3BgmkEcA=
+
+Name: images/res_blocked.png
+SHA1-Digest: ZGiNZIqUl2owOcEHzWLhuNbBj+Q=
+
+Name: images/cvs-share1.png
+SHA1-Digest: 0nAfQacpzx+7wdpaB1bK99MLN1k=
+
+Name: gettingStarted/qs-39.htm
+SHA1-Digest: g5UrZ2a1cENj7VZw/NaoTgwacl4=
+
+Name: images/cvs-sync-compare.png
+SHA1-Digest: eNDxGRQQJfuoSK1X0qw2hNjLjtU=
+
+Name: reference/ref-19cvs-annotate.htm
+SHA1-Digest: K7P+dLinI0T07Nh+mLbg6BL/IkI=
+
+Name: tasks/tasks-44.htm
+SHA1-Digest: 1OtlkNv798dDbk4KzcXdLM+1KH8=
+
+Name: images/drop_offscreen_source.png
+SHA1-Digest: QYx//w8A0xAnZ51lRxnMA70JUPk=
+
+Name: tips/images/keycompletions.png
+SHA1-Digest: gJ16WfMY/ejm9yh2jBPxHBzWwPI=
+
+Name: concepts/concepts-antexttools.htm
+SHA1-Digest: Ul/a5E8WgA9WV0Uk8QBSjoUFZ64=
+
+Name: pom.xml
+SHA1-Digest: Jnobu80yld/XmFA5F6JtyJSAWAk=
+
+Name: reference/ref-29.htm
+SHA1-Digest: mqvG6X8REixXW6c22v8/Sg7C16I=
+
+Name: images/team-models.png
+SHA1-Digest: MUXYYS14sebJmZuYUFcJFFduIRs=
+
+Name: images/Image80_compare_change2.png
+SHA1-Digest: GCSEzyHQ/HaBwCn4IKbr0iB4R+8=
+
+Name: images/Image14_new_folder_wizard.png
+SHA1-Digest: 4snDpbY+PSitygvscMO7EeA27v0=
+
+Name: images/image92-close.png
+SHA1-Digest: dEcbQkqblL/djmALvZNX03C2AHQ=
+
+Name: images/Image71_arrow.png
+SHA1-Digest: 32mhgD5RAFpDnO1OR2uv7aAwV1c=
+
+Name: tasks/help_context.htm
+SHA1-Digest: i/e3tesgNiac2yKHDP1ETn0IHzU=
+
+Name: whatsNew/images/shown-in-system-explorer.png
+SHA1-Digest: +GUGYiMWOJZg8IN3fcnmIXgi6Hg=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/refresh.png
+SHA1-Digest: Swp/Y4AE/CeQvfuu9ZfmyrdkIK4=
+
+Name: images/drop_bottom_source.png
+SHA1-Digest: lAWQ6FzzVwaTEq5XIEGFuRQLZX0=
+
+Name: images/cvs_new_branch.png
+SHA1-Digest: kbaC233SygTHAs9i4YoKRTisT0g=
+
+Name: tasks/help_settings.htm
+SHA1-Digest: hF6nfYYSU1KIMrP1eyt7fAo4hUI=
+
+Name: tasks/tasks-55.htm
+SHA1-Digest: mlRSCpccn2UIXpwLqWzamy5s2zA=
+
+Name: images/Image18_created_resources.png
+SHA1-Digest: jWR7bCYt5lL9U29IE5rchw6D7Pk=
+
+Name: images/help_icon_search_infocenter.png
+SHA1-Digest: w6UHBnC0xO3hSadpk41vN/sLoCU=
+
+Name: images/help_view_index.png
+SHA1-Digest: /fYfWhPYrRc4slgTv4F8li1kJuk=
+
+Name: images/Image264_export_sel.png
+SHA1-Digest: WDfdk3TeeBDJn9c2ZVzb2mqXqg0=
+
+Name: reference/ref-dialog-open-resource.htm
+SHA1-Digest: SwFRf2II5+it1BKQ1bbVu7nXD3w=
+
+Name: images/cvs_filter_res_history.png
+SHA1-Digest: Ek+MqhIB3ARpfJbhYw9jauBTRDQ=
+
+Name: images/Image214_toobar_rsrc.png
+SHA1-Digest: eMDE7s6EM6OcSWQGJHmLE9SfFSI=
+
+Name: whatsNew/images/ant-view.png
+SHA1-Digest: IpJ5hbqt/BHcMYlj1PXklYi50o8=
+
+Name: whatsNew/images/restore-btn.png
+SHA1-Digest: MOkDu7W6Wb2M9Z3EHcyv57UEFmg=
+
+Name: images/searchm_obj.png
+SHA1-Digest: X767EQjpGrekmcghQ4teJHhPX/Q=
+
+Name: tasks/tasks-120.htm
+SHA1-Digest: Q31ca12wFqwGb2uWsYv8GBxXy30=
+
+Name: tasks/tasks-3.htm
+SHA1-Digest: 79sM/SLYc+CLC92+HRNZEoJgw+U=
+
+Name: contexts_UserAssistance.xml
+SHA1-Digest: lRTjany3o8C7PYS/Ma/5A0bt9ns=
+
+Name: images/copy_l_co.gif
+SHA1-Digest: HYyOFXnM3k5qhGqGrzOMcr3WjBY=
+
+Name: images/Image87_workset_sel.png
+SHA1-Digest: ND0+jUHXtiwD2KE3Pt2E9HCcZUs=
+
+Name: index/segments_1
+SHA1-Digest: 3hAvuf06QjR1nE0D1b+fj2K4HLY=
+
+Name: images/Image71_dialog_menu.png
+SHA1-Digest: JBhcG/kI2JQ0QoQlI8ivr9UoBSM=
+
+Name: tasks/tasks-66.htm
+SHA1-Digest: DsnH8s2FJTUgSWlECL52KmkpYSw=
+
+Name: index/_0.tii
+SHA1-Digest: vJloWLlljajJ43846zJm7QcXols=
+
+Name: images/ssh2-general.png
+SHA1-Digest: BpXmNpuP6MtBniiyubaxzZgoPs8=
+
+Name: gettingStarted/qs-39f.htm
+SHA1-Digest: AEe8fHthxYr4tQNiLAp+KWmBgyQ=
+
+Name: images/Image54_bookmark1.png
+SHA1-Digest: TIxlm3BXNmslxAZbNzPGKUgcwgY=
+
+Name: images/org.eclipse.ui.externaltools/obj16/import_obj.png
+SHA1-Digest: Jw0NtNF7/Uc7Kg3m2LCk3Dbi1i4=
+
+Name: index/_0.tis
+SHA1-Digest: KZFu+aECT0B8jSn3YwLJq+RNc8s=
+
+Name: gettingStarted/qs-43e.htm
+SHA1-Digest: 0MfL7GMBgfzNhh2li1u2xZJim+w=
+
+Name: images/Image11_new_wizard.png
+SHA1-Digest: v8WJE129wly29QOauyeip1j5zQY=
+
+Name: tasks/tasks-131.htm
+SHA1-Digest: DnEXy5XdJjtrokRq9IXU6+xauKI=
+
+Name: images/tasks-96b-module_rep.png
+SHA1-Digest: N74EFHWQDmlrD9XBaCi7pvYHSoo=
+
+Name: tasks/tasks-9j.htm
+SHA1-Digest: d9fXF/+dUugkSQJ/yvN0jM9s/i0=
+
+Name: images/Image274_fonts_preference.png
+SHA1-Digest: oey18I2Gldn8f8F81/QM7O9TMGY=
+
+Name: concepts/concepts-exttools.htm
+SHA1-Digest: /8nl0ujSRfIzRTpNVHjDrdI560c=
+
+Name: images/Image2_active_editor.png
+SHA1-Digest: ngF4HlICWhcRI/aJDE6YQrH9UAI=
+
+Name: tasks/tasks-77.htm
+SHA1-Digest: qzCAxdsGtjQtKaWUh0GXltdAXaU=
+
+Name: images/Image61_nav_fast.png
+SHA1-Digest: 4lBMR549X5qBnj9Wbvzk2YEwCtE=
+
+Name: reference/ref-17.htm
+SHA1-Digest: 6gct5kW2YAOC4l4ocRk2RLroqDQ=
+
+Name: gettingStarted/qs-36b.htm
+SHA1-Digest: 6t9qez+GlPIyJeRtKGh0JvaAXbY=
+
+Name: images/Image53_task_updated.png
+SHA1-Digest: 7ckN4woE2NSSTe70lTW3Je641h4=
+
+Name: images/Image82_repo_new3.png
+SHA1-Digest: 60KBC2A4eOUMXjiltfYTACfk2eI=
+
+Name: tips/images/fastview-drag.png
+SHA1-Digest: XcR8qqVSdQKdKaLRfKmmzNac6vo=
+
+Name: images/Image262_import_file.png
+SHA1-Digest: nLUU3ZSkIHf6wFllysZBgaMT1U0=
+
+Name: gettingStarted/qs-70_workingWithHistory.htm
+SHA1-Digest: qqlWLVt2SrbVlKWFAVoDuZqkzyw=
+
+Name: images/ref-4.png
+SHA1-Digest: rR5vyaRpXENOhUuZpIqm6iYu+cs=
+
+Name: gettingStarted/qs-40a.htm
+SHA1-Digest: cAPnWeA3PdM8iHKfsl9eIZ2a8EE=
+
+Name: images/cvs-checkout1.png
+SHA1-Digest: 3sTYfO+uI0+vIjsUiFq2+g2eQZg=
+
+Name: images/Image80_compare_editor2.png
+SHA1-Digest: gHjYrFUInjeDBmcRM8YWKfhQY9c=
+
+Name: gettingStarted/qs-64c_catch_sync_view.htm
+SHA1-Digest: vHd5HsPuqbMTbXtpatAADd592S0=
+
+Name: images/gotoobj_tsk.png
+SHA1-Digest: 1BDWJzrhjlLArhMHt/+YhfrYCRQ=
+
+Name: images/cheatsheet_composite_running.png
+SHA1-Digest: X4RsNJUpqunKmZFnjzOokFgpphU=
+
+Name: images/image92-select.png
+SHA1-Digest: Px8W1tB3neZWIMQq/8aO+c/IAZk=
+
+Name: images/Image219_pref_cv2.png
+SHA1-Digest: oBI5Vr+C8vE+1YTrtoyLIyPwRxk=
+
+Name: images/paste_edit.png
+SHA1-Digest: maondzcRZ1igqwJUqRTWPzX+/Vw=
+
+Name: images/image92-redo.png
+SHA1-Digest: QlQoKvW1dMQ0kno3egIVLV7w4Oc=
+
+Name: images/drop_stack.png
+SHA1-Digest: Vz66QDyzGeGpBejf6ZdQjGHYDGE=
+
+Name: images/ref-20.png
+SHA1-Digest: zT0NkuukAGpRButan4CHlMBX+SU=
+
+Name: images/help_icon_restore.png
+SHA1-Digest: GuK2S8STcqOAqH2tSsIGg7XgzAA=
+
+Name: tips/images/res_build.png
+SHA1-Digest: pTZ9SBWnYq0KS2wcxQGvPYbzZao=
+
+Name: reference/ref-templates-view.htm
+SHA1-Digest: F5vkI+P5NCSgVqCHnkW8mnk1B6I=
+
+Name: images/Image83_cvs_savedpasswords.png
+SHA1-Digest: oc8PjyhDyJuEtTBD/Rdm1DpkvOk=
+
+Name: images/Image42_export.png
+SHA1-Digest: ht7diEjdEUJxCEYRJsWGANRh0uE=
+
+Name: tasks/tasks-43.htm
+SHA1-Digest: ysiT85jWpGfCltfg0vQUgzV5JOs=
+
+Name: reference/ref-startup.htm
+SHA1-Digest: So0qM9fG5GVq6StDRyeaFkGVBLg=
+
+Name: tasks/tasks-88.htm
+SHA1-Digest: Tdb0N7pufGSBQQnEoynm+zC+DpA=
+
+Name: images/help_view_search.png
+SHA1-Digest: d2YO4pGqDjsIdl1XcNIzy9HwwqU=
+
+Name: images/Image263_import_zip.png
+SHA1-Digest: xA0DzcUsnWTmuHtM4jOoz/u0/XQ=
+
+Name: images/Image216_history_view.png
+SHA1-Digest: jKSP01gyn2D4nBnjfVAXjlGHhUk=
+
+Name: reference/ref-28.htm
+SHA1-Digest: ksl2rtBnpNphbDF25IAnbtxMp08=
+
+Name: concepts/cprbview.htm
+SHA1-Digest: 580xGhR4JxF6CzPtAMb16CW+wiw=
+
+Name: tasks/tasks-68bg.htm
+SHA1-Digest: qf0tTgMe6pQmdQtE6F8QbPl7X/k=
+
+Name: tips/images/quickdiff-hover.png
+SHA1-Digest: EPXMp5cSi3Bv/1/ytsTbr1SBLsg=
+
+Name: gettingStarted/qs-92_project_builders.htm
+SHA1-Digest: izUHDTTM3v579vhF0LRpQwivN5o=
+
+Name: images/newprj_wiz.gif
+SHA1-Digest: M2AF6DTIB0+YIkEPrgS8YADVdh8=
+
+Name: tasks/tasks-100d.htm
+SHA1-Digest: msJZ2TSR/mAUfWqDLQGtWj4Fvso=
+
+Name: images/Image223_pref_persp.png
+SHA1-Digest: 0SnaaK7fslegWFNA1okGXSBKHcI=
+
+Name: images/cheatsheet_composite_start.png
+SHA1-Digest: y3XSo53FI9y2511qfAZj9B7b7J8=
+
+Name: tips/images/pb-context-menu.png
+SHA1-Digest: 8Wefvrrsjc2Ada9QkOZF5XMlNVI=
+
+Name: gettingStarted/qs-responsiveUI.htm
+SHA1-Digest: Fh/7HN+IsGUuAMFCdfIJS7hmPi8=
+
+Name: images/Image245_sync_view.png
+SHA1-Digest: MnzbN0j/BcHExXq5fV8AJLRDzJw=
+
+Name: reference/ref-39.htm
+SHA1-Digest: paUuiXqVItTnijwdc0q/+SLNfhw=
+
+Name: reference/ref-regex-find-replace.htm
+SHA1-Digest: ux8nMcGbYedFBO/KkWa3G/TBYd4=
+
+Name: images/image92-restart.png
+SHA1-Digest: b0aJNJDIPjACtbwDVIT+IV4+yAk=
+
+Name: images/Image54_bookmark_remove2.png
+SHA1-Digest: qSUf8ZovF5eR8T8s7NoXVFL1QK8=
+
+Name: notices.html
+SHA1-Digest: 4obZTVI4cbVaIGPTypdpiLcUnhM=
+
+Name: images/Image84_decorator_pref.png
+SHA1-Digest: uuFWZngORoWamdnu92nCVVBx63M=
+
+Name: images/synch_participants.png
+SHA1-Digest: GZd3xWOpfYznPzr7L65L5jUUISA=
+
+Name: images/drop-detachedwindow.png
+SHA1-Digest: XPeT18ff3WJ4kUnD6O7Y8Wf483Q=
+
+Name: images/keys4.png
+SHA1-Digest: GS0gTUXwSlJvoNRtqTv2VfWYDAI=
+
+Name: tasks/tasks-2.htm
+SHA1-Digest: qDvRZVO6BejPmcVgc83YM2TaMq4=
+
+Name: images/Image207_persp_sel.png
+SHA1-Digest: UYXVD2O73g/02Xa2fggQnqNOQj0=
+
+Name: images/quickfix_warning_obj.gif
+SHA1-Digest: n+3qzrl8rIap2UC2CC9vnfF3MgM=
+
+Name: tasks/tasks-20.htm
+SHA1-Digest: iFlAC01+//S0KJ0grLZOr/qY2Jo=
+
+Name: images/ref-Workspaces_pref_page.png
+SHA1-Digest: aLPYeeE/wufGuAfUItg1B8IwrL0=
+
+Name: gettingStarted/qs-39e.htm
+SHA1-Digest: jczIqIikrwPHugxP2X77C+pCVYQ=
+
+Name: topics_Tips.xml
+SHA1-Digest: zbDee0P7XKkdkZaTiNXEbZIKoek=
+
+Name: images/Image39_import_tree.png
+SHA1-Digest: 795hxaOZznbhGHfjosUI5QxtSrc=
+
+Name: images/cvs_configure_branches_and_versions.png
+SHA1-Digest: Jkwd+dK3kRMeEcFes7FZGDXANhE=
+
+Name: reference/ref-content-type.htm
+SHA1-Digest: WaigsrmuiaCcBaI1OvtMgDzBtvM=
+
+Name: tasks/tasks-130.htm
+SHA1-Digest: FXM2Uo4NQZEvNe/+db0E82f/Yos=
+
+Name: tasks/tasks-9i.htm
+SHA1-Digest: EEEh9tDRk2vgQEFxnrDocdxBh7M=
+
+Name: gettingStarted/qs-81_basics.htm
+SHA1-Digest: /H4/pnNRGyBwhwBoFLIH4h4Er5k=
+
+Name: images/Image90_locked_toolbar.png
+SHA1-Digest: 7zXMKT6QEfxsm+wG2xNZ3NWgRYY=
+
+Name: images/Image54_bookmark_menu.png
+SHA1-Digest: AvpNx6lwSnXEDvrEcAnfG/RrEf0=
+
+Name: tasks/tasks-ant-running.htm
+SHA1-Digest: yu7xtseDctSmV1RlFqBCO/mlymQ=
+
+Name: reference/ref-antcontentassist.htm
+SHA1-Digest: FZbAlu3ZY8reqnBHV/JMyZs8/Cc=
+
+Name: images/help_icon_topic_container.png
+SHA1-Digest: IEZT3VlxhZ9mBiyz4/f7ig5bWtM=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/removeAll_co.png
+SHA1-Digest: TDfK7a1Etpzy6Gb+GpjMo9dpmyU=
+
+Name: tasks/tasks-31.htm
+SHA1-Digest: FENlaYe61YambQX/xFopFVitP80=
+
+Name: tasks/timpandexp.htm
+SHA1-Digest: OVBcyscfTTRHVmWng8aMfIXLoZk=
+
+Name: tasks/tasks-63cg.htm
+SHA1-Digest: CsZSfv+SiqXkL/D5Pm6XIG89LaE=
+
+Name: reference/ref-16.htm
+SHA1-Digest: ijg7lKxZ3/oeVYZhQqzv/sI0KR0=
+
+Name: gettingStarted/qs-36a.htm
+SHA1-Digest: Xz1oy2C0MfvAkhZ2ms6YYltCNOQ=
+
+Name: images/cvs-ext.png
+SHA1-Digest: EI5Cg6lZLLUiqzAlaZcuR2EiMlk=
+
+Name: images/cvs-password.png
+SHA1-Digest: RTp8lyvLkTJGOZVEEfe2HxCoSoQ=
+
+Name: concepts/concepts-6a.htm
+SHA1-Digest: 9QFXAPZ2luN991ujog1o5pq7c7A=
+
+Name: images/ref-3.png
+SHA1-Digest: 9FsbBr8Vdrb76PpHwa/eGvfCNeQ=
+
+Name: images/Image269_merge_init.png
+SHA1-Digest: Ff1/mSCNUkLDbz1xsArQgo6NKqI=
+
+Name: images/showcat_co.png
+SHA1-Digest: F3f8J4Cp4jpdziFnAeW4NH88gl4=
+
+Name: images/Image_team_pref.png
+SHA1-Digest: V4BFTN5LFORc1C6fFix7n0R5VpA=
+
+Name: images/Image8_view.png
+SHA1-Digest: 9+Cod7vb+B4izVUM6HGmpX4YNjc=
+
+Name: concepts/concepts-6.htm
+SHA1-Digest: e/4DfyvFpyEGlYJuZHXXDMvdI5I=
+
+Name: images/image92-perform.png
+SHA1-Digest: axRx+gYBrLz7rGIZ81Aal74VNCI=
+
+Name: contexts_Search.xml
+SHA1-Digest: 6DBMGvJOdqk9w1maP07eLu6obnQ=
+
+Name: about.html
+SHA1-Digest: 0fjaQSuI91gt3RRgYoXH2bRg2Dc=
+
+Name: images/contenttype-pref-charset.png
+SHA1-Digest: uA9a+jKZYcf28LsxkP8XdxDZ228=
+
+Name: images/save_edit.png
+SHA1-Digest: H2Thpy6yyDk8B/ZtzNN/kPawZ08=
+
+Name: images/org.eclipse.ui.externaltools/obj16/invalid_build_tool.png
+SHA1-Digest: 3YqTqR6ckcmE/UYGKnxJmi934zA=
+
+Name: tasks/tasks-42.htm
+SHA1-Digest: Kxxi+xlifE/DHmvlF+ep7vxRq0w=
+
+Name: tasks/tasks-87.htm
+SHA1-Digest: Pu7H4j5pdmaFeby58Rv7vOsMP/o=
+
+Name: images/Image44_confirm_state.png
+SHA1-Digest: 51YgC0nlPTBUGRn9nu/13YLaNFE=
+
+Name: reference/ref-antformatter.htm
+SHA1-Digest: f2PDVcrtxyKFQFnyFYf9TjelkCM=
+
+Name: images/Image251_proj_wiz.png
+SHA1-Digest: jdziQk+cGlnFZWkW2jWipuOJcsA=
+
+Name: reference/ref-27.htm
+SHA1-Digest: VPjao6d1C7To0Ynkxt0ywS8ZiKg=
+
+Name: images/help_preference_content.png
+SHA1-Digest: Ki0Nk1N2NIfWn5jJOMDqvSL1L10=
+
+Name: images/Image258_perps_custom.png
+SHA1-Digest: M0TszQcL6XwWNgsO/ZxzuhGe4rc=
+
+Name: reference/ref-fonts.htm
+SHA1-Digest: 0X+bHstwSdvU8EgZ3ntQXJxjKDE=
+
+Name: images/team-file-content.png
+SHA1-Digest: 4X5ELE5bliJByI+6OtT08tiqO9c=
+
+Name: images/ant_editor_appearance.png
+SHA1-Digest: 26mvR9AKpj6MleSBmCt8k+7DTQw=
+
+Name: gettingStarted/qs-94_run_pj.htm
+SHA1-Digest: hCfxtEWsd98Wil5EilUkyS9C8Fo=
+
+Name: tips/images/help_bookmarks_2.png
+SHA1-Digest: ddMw0kbR5urjQM0/RoyjyJNEvrQ=
+
+Name: images/cvs_change_ascii_binary_prop.png
+SHA1-Digest: pH941B+efZMBvdggJrnhIR/OG5k=
+
+Name: images/alpha_mode.png
+SHA1-Digest: 7P0BYde6v5euekPSBAdifxAeunU=
+
+Name: reference/ref-38.htm
+SHA1-Digest: gY2EFPGjy0wJ3eij24cjS4JVL98=
+
+Name: tasks/tasks-42b.htm
+SHA1-Digest: /mlyS4eiW2vPkA1DPPj7780tbGI=
+
+Name: reference/ref-30a.htm
+SHA1-Digest: rBmUFSJ07O/WXr85MPyisSKklk8=
+
+Name: images/confadd_ov.png
+SHA1-Digest: Du7UeOeGyVTCDpxol9ZblEnv7Rw=
+
+Name: tasks/tasks-117b.htm
+SHA1-Digest: rZzHiLp0NxBEoWpAcHNKk2ouzBk=
+
+Name: images/keys3.png
+SHA1-Digest: pX3vYRHLpwcN7/U1weZ6rmq/R/A=
+
+Name: tasks/tasks-1.htm
+SHA1-Digest: YRqbnZzwOepRvYKD0ubrHItspQw=
+
+Name: tasks/tasks-cvs-16.htm
+SHA1-Digest: Asm4Atu6trQc1KaTgFc6TOGBKN8=
+
+Name: tasks/antRunner.htm
+SHA1-Digest: NOUXUUq6zDmEw+G9/lOxu/zbzEs=
+
+Name: images/Image54_bookmark_added.png
+SHA1-Digest: JGVAcD+SZkIOYsmmX25zxrYcadg=
+
+Name: images/cap-pref.png
+SHA1-Digest: kLllz65yfrwzwBN9AA3xh1Ue7Qo=
+
+Name: images/compare-editor-diff-change.png
+SHA1-Digest: Cv6UfishD7A9gHBRLgdiNOJLWlM=
+
+Name: tasks/tasks-87b.htm
+SHA1-Digest: +QpqlkH8Oq8iwjAgOmC6u6+02Jk=
+
+Name: gettingStarted/qs-39d.htm
+SHA1-Digest: Wd5J348NWiyLeb2xPQBdN9iaoQo=
+
+Name: gettingStarted/qs-43c.htm
+SHA1-Digest: Qi06xt0xvtUISLx/qZNybu/wESU=
+
+Name: images/Image82_import3_project_fred.png
+SHA1-Digest: Q4o+SM5wXAK6DvZBtnXFU2Z1Yz0=
+
+Name: images/Image83_fred_verson.png
+SHA1-Digest: UQowLxql+veeBbGsW8YZkQKc49k=
+
+Name: tasks/task-team-cmdlineclient.htm
+SHA1-Digest: dal9nZnjlKzertV3rh/oEh83exs=
+
+Name: images/ant_templates.png
+SHA1-Digest: 6Rf4f7fFv2sTmGdVT1FYqCJJ3no=
+
+Name: images/ref-52.png
+SHA1-Digest: e8PKQa5TCtJO8YHJVk0zkB3+HWA=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/search.png
+SHA1-Digest: E3ufpsjNeA6KyTsOc3rT2XlgJsU=
+
+Name: reference/ref-cvs-decorations.htm
+SHA1-Digest: LW/9WHAH/hb11PbsxcwGfdS8Uxk=
+
+Name: images/Image41_import_combo.png
+SHA1-Digest: muT6J5u89Bnl3lvp1oBs1nQrlm0=
+
+Name: images/forward_nav.png
+SHA1-Digest: u09BhOxnO5Ig/LLh1OWZZQa3hQk=
+
+Name: images/minmaxOptions.png
+SHA1-Digest: Ggl7A2qA91r7iD2G2i/VAoziqUY=
+
+Name: tips/images/show-in.png
+SHA1-Digest: OvX8k5BQ5eoOfjoOlY5umY8/xto=
+
+Name: tasks/tasks-75.htm
+SHA1-Digest: nqQxftz2J/+3SdIy0BhXfUUPYCc=
+
+Name: reference/ref-48a.htm
+SHA1-Digest: 3qodKOy5KpSqF35kfJ1koxbWE8E=
+
+Name: images/help_icon_sync.png
+SHA1-Digest: nkfa5P/uvcK42KaYmg6gknt6nfE=
+
+Name: reference/ref-15.htm
+SHA1-Digest: eLJgFz621rhgvvf04g7yQLLkMqw=
+
+Name: tasks/tasks-57.xhtml
+SHA1-Digest: rhIZxkgMhqwSLM0M2Uz+z6+JI/8=
+
+Name: images/saveall_edit.png
+SHA1-Digest: cUfBZ/Et57yOTbD8nNqsDfaxtXU=
+
+Name: images/Image16_new_pulldown.png
+SHA1-Digest: hZQqk9ruxPsB77v7jEOFXX26byQ=
+
+Name: concepts/accessibility/fontsandcolors.htm
+SHA1-Digest: vQbvpMNV0YiEO+NKa9sylcLK/SU=
+
+Name: images/ref-2.png
+SHA1-Digest: KmMTYWcxFB/Nyv0LmhfSF4nOw2I=
+
+Name: images/Image71_dialog_toolbar.png
+SHA1-Digest: BBzF6aURsWn1pL4vwq/8UTm/XcQ=
+
+Name: images/r_inchg_ov.png
+SHA1-Digest: e0BKmMII0NvfO3yVQQNvUY5X53w=
+
+Name: images/first_anteditor.png
+SHA1-Digest: JAB/sAQyQ7YgVoODT1mccgA7tVs=
+
+Name: images/help_scope_select.png
+SHA1-Digest: mpemiZS0fT3s4n2e6hErMv7erm8=
+
+Name: concepts/concepts-5.htm
+SHA1-Digest: QF8Eth0OyHDu7xBtszqGGsRqmgE=
+
+Name: images/org.eclipse.ui.externaltools/obj16/property_obj.png
+SHA1-Digest: nqNYiseCSLrow4GcsgGBp7adotk=
+
+Name: images/Image49_3_way_compare.png
+SHA1-Digest: zwcLnR2WnMO/0qiCfhNiFrqQCe0=
+
+Name: gettingStarted/qs-36.htm
+SHA1-Digest: A2/o9j9Mb7O8/Av8OWnQ5Ded2Sg=
+
+Name: images/Image241_nav_view.png
+SHA1-Digest: wAYOjMtHOiiIsEnO2NuDlVR/AEk=
+
+Name: reference/ref-26.htm
+SHA1-Digest: OWJP5pEMAGmTPC49UzEHeJGQs9Y=
+
+Name: concepts/cdecorations.htm
+SHA1-Digest: 60ukols1YaQ6cGlfOxG6tdOa+cc=
+
+Name: images/ant_editor_folding.png
+SHA1-Digest: 5+w4c+vWBkhErBaKKxwsT3D7V5w=
+
+Name: images/Image266_export_preferences.png
+SHA1-Digest: v26HTeDUDmnKpMgPlPhpwKpMULg=
+
+Name: concepts/concepts-antsupport.htm
+SHA1-Digest: VsPzoxw8Qb1RyqyUizNXWCHgRE8=
+
+Name: reference/ref-cheatsheets.htm
+SHA1-Digest: JGhSOMvadG5tNMP9TsUCA9XWiPU=
+
+Name: images/Image51_search_reduced.png
+SHA1-Digest: /8LK/RYFMr4Hj9OU2q8f+WJwSEI=
+
+Name: tasks/tasks-100b.htm
+SHA1-Digest: fsvxRyeCCi5lwqJ/vgbojvsuY0I=
+
+Name: images/help_icon_maximize.png
+SHA1-Digest: PzUnHchLBuVPdY8n1jFa3EnMxj8=
+
+Name: contexts_P2.xml
+SHA1-Digest: KokV1ke+AZWWXmcwE/OnjwP9gUo=
+
+Name: images/max.png
+SHA1-Digest: Nxx+lhO8dcK9D/ucdnZ1jzKmxLI=
+
+Name: reference/ref-texteditorprefs.htm
+SHA1-Digest: K114HHN2jjx/0HMo1NMccTSOxOE=
+
+Name: tips/images/help_bookmarks_1.png
+SHA1-Digest: KwaZrKU0JNMR3wMWYtT47fbbaK8=
+
+Name: images/print_edit.png
+SHA1-Digest: Tm8VjDYTkadHvVL87xu5/sopv1g=
+
+Name: topics_Concepts.xml
+SHA1-Digest: NXHLPe5305aZBtuU9XZmUkNUbSw=
+
+Name: images/redo_edit.png
+SHA1-Digest: fGycf9az51VOx3yOFmhF/Q2NXz4=
+
+Name: tasks/tasks-52.htm
+SHA1-Digest: Kpko0oq82lnp/PsS5Zqj2UbBB8k=
+
+Name: tasks/tasks-97.htm
+SHA1-Digest: p5aqcscu4m7RS+RqelF9TuYh6h4=
+
+Name: images/Image268_export_team.png
+SHA1-Digest: Z7Wjpyaem7nyT8FxZ/GL48d8zYw=
+
+Name: reference/ref-37.htm
+SHA1-Digest: rB+/jGZYjV1X9uj+/ewVy8sp/1w=
+
+Name: images/Image38_import.png
+SHA1-Digest: SngdnPXtB3M1Bl3rVw0EUu4CzSw=
+
+Name: reference/ref-p2-autoupdate.htm
+SHA1-Digest: 7ZIYlkjDOOw+Ez9cW71WXry0d3o=
+
+Name: images/help_icon_home.png
+SHA1-Digest: WDnMrJoToRCfmMWsmOzfopzAHGE=
+
+Name: gettingStarted/qs-82_create.htm
+SHA1-Digest: u/o2WNWzROtNiN6SGsawNngi2PI=
+
+Name: tasks/tasks-117a.htm
+SHA1-Digest: an5GmXbAp+axWWJm9qinGiGP/kQ=
+
+Name: images/view_menu.png
+SHA1-Digest: fB9OuSm7TtM6Out37wdmX14aCmk=
+
+Name: images/tracing_preferences.png
+SHA1-Digest: EEQUJBhWAaYUq1oeADAtp2SlC9U=
+
+Name: index/segments.gen
+SHA1-Digest: 0qa/uioKpCmO6iscE6rldo0UW0U=
+
+Name: images/keys2.png
+SHA1-Digest: MUou79xNfjfHJSCmLvlTBcrkyz4=
+
+Name: reference/ref-19cvs-decorations.htm
+SHA1-Digest: TbVWokdQD4B/JOKBIM2J2x7Dutk=
+
+Name: gettingStarted/qs-97_standalone_ets.htm
+SHA1-Digest: ke03R6nklxGaqYEnt2nUP9r4nPA=
+
+Name: images/image92-hide.png
+SHA1-Digest: 76MvTfSNmWDsffCKlMrfIZFjbB0=
+
+Name: gettingStarted/qs-13.htm
+SHA1-Digest: 6Bu/3j0B36j9HsAgE60XMBeeXBk=
+
+Name: reference/ref-9.htm
+SHA1-Digest: OL6JsIM8xhPHCjnYHJ/1OwGpZSA=
+
+Name: tasks/tasks-63.htm
+SHA1-Digest: oPO13yfOHndU6cIprozHGqMzzsA=
+
+Name: tasks/tasks-68dg.htm
+SHA1-Digest: Dj7dI6BYyjr0Y39lecSisNi+sn4=
+
+Name: images/Image71_file_menu_before.png
+SHA1-Digest: /XX87SIXlek2QQXUFTHb3AtwQP8=
+
+Name: reference/ref-31a.htm
+SHA1-Digest: RsVCZzyNvg3H/t7FjI4fKS/anBI=
+
+Name: images/Image60_tabs.png
+SHA1-Digest: 9S9VTXDE1gznGaRXwHoz78VMl4Q=
+
+Name: images/Image61_fast_minimize.png
+SHA1-Digest: dD4wof5GNXVoiTG9/lFlWapcjdY=
+
+Name: gettingStarted/qs-43b.htm
+SHA1-Digest: cQzwz8RFXLH9PhMDaHvJ4MdNrqY=
+
+Name: images/close_view.png
+SHA1-Digest: UKwM+ENCmz8Ro3wf8X/a0/dhOPY=
+
+Name: tips/images/pin-editor.png
+SHA1-Digest: oin2B4cHVqGFQ1aAR4GgYaUDudg=
+
+Name: whatsNew/images/move-persp-items.png
+SHA1-Digest: nPDDhXALGNw1Jhi5lDtnaDUL3hE=
+
+Name: images/Image89_workset_new_res.png
+SHA1-Digest: 27INAKEl2OR3WW/SnGxXEhJgNYo=
+
+Name: reference/ref-14.htm
+SHA1-Digest: nA5NCLyUFuvAvluUYex15mnqM9I=
+
+Name: reference/ref-59.htm
+SHA1-Digest: SUut94HkUpW5RLsie+JaCsGiU2E=
+
+Name: tasks/tasks-55bg.htm
+SHA1-Digest: g26adCm47VztTSB82j5S1iulg6g=
+
+Name: images/Image51_search_view.png
+SHA1-Digest: 5CCGoUjNmL7IJgNgNiOEEbQCtFg=
+
+Name: reference/ref-32b.htm
+SHA1-Digest: GQ0jiLrQuWyr0Lds6+fM8dIMbeU=
+
+Name: images/Image54_bookmark_added2.png
+SHA1-Digest: Eg6oOls2ViDXAlAgi5CADJKofl0=
+
+Name: images/ref-1.png
+SHA1-Digest: pesN2ISqjpSg7pjd7mgh9CEGrn4=
+
+Name: images/net-general.png
+SHA1-Digest: uwKr/WVIbX8jV7gMpf7TXEFBbBc=
+
+Name: images/showdesc_co.png
+SHA1-Digest: dZnohpjxhNaQzeHQ8kfkZqwk+mU=
+
+Name: topics_GettingStarted.xml
+SHA1-Digest: 30PhNygp+jWEm3upfrwpocYhGqk=
+
+Name: images/help_scope_link.png
+SHA1-Digest: yxd8A3tE/0WwQvMz5lit8WVpDQI=
+
+Name: images/help_scope_new.png
+SHA1-Digest: vTC3HnlC+loMXAYcw0XwqlNNAgQ=
+
+Name: concepts/concepts-4.htm
+SHA1-Digest: OEC4eSRn2rZzj8j2l4hdhfAmc84=
+
+Name: images/res_otherjobs.png
+SHA1-Digest: zfocOhqIAyD6AuiaBcwrNj5NXuU=
+
+Name: images/new_wiz.png
+SHA1-Digest: NmrGUbCofDcEI9M2u64Kc42X0fk=
+
+Name: gettingStarted/qs-35.htm
+SHA1-Digest: m5ljDmy6pB1G2DXSpWQ4i4HowZI=
+
+Name: images/cvs-commenttemplates2.png
+SHA1-Digest: xnkLT9CdqQBE1oTsY6r8bVUhpvs=
+
+Name: images/Image246_file_wiz.png
+SHA1-Digest: pxbfveAIVkpefs0xsY9o1jbVEIY=
+
+Name: images/help_icon_capabilities.png
+SHA1-Digest: Tf9AItFaCr8yaf6wcSpJmJkbDq8=
+
+Name: toc.xml
+SHA1-Digest: M/f9iK8RAJjFh6uBHy5qW9NtsP0=
+
+Name: images/Image264_existing_project.png
+SHA1-Digest: GRIHzXzNGLotXcAALr1X1Lf3u58=
+
+Name: images/local_history_mode.png
+SHA1-Digest: a6J61AvCBFdGs02pw3jFr93lGq8=
+
+Name: reference/ref-25.htm
+SHA1-Digest: urUHXw/HObQutBaoDr5s1TDI15M=
+
+Name: images/Image3_tabbed.png
+SHA1-Digest: 63KDRmNT6WEOi111cofM2onxMgU=
+
+Name: images/copy_edit.png
+SHA1-Digest: hKYfx34SYcRO6UJxoLUmDoDwQ/Y=
+
+Name: tasks/tasks-cvs-passwords.htm
+SHA1-Digest: bbTB9iERAo3ocKlnTtcgUJkVzNs=
+
+Name: images/saveas_edit.png
+SHA1-Digest: PyqSBmYlH9/BzCjWkTnmwOcOZDw=
+
+Name: reference/ref-startup-workspaces.htm
+SHA1-Digest: dd4WG5nX6ZHsNpMNJ8eaXl0JXAc=
+
+Name: tasks/tasks-100a.htm
+SHA1-Digest: 6e/ZiF0q9h4C6ACqeq5Aqk88ETE=
+
+Name: images/question_ov.png
+SHA1-Digest: mLqJaLvcZna6/fVA9en27nL2QcM=
+
+Name: images/segment_edit.png
+SHA1-Digest: mYoCgPOSkSxdbgkIthluHg9LGWY=
+
+Name: images/Image237_search_view.png
+SHA1-Digest: EKI+d30ZQobPlbjxu7M8xXgiNxk=
+
+Name: images/welcome_preference.png
+SHA1-Digest: Stx6amwPWXKV86KOccuhUbhiVcg=
+
+Name: gettingStarted/qs-01.htm
+SHA1-Digest: ClQ52kVahWT85xJPP6I4emu6B/8=
+
+Name: tasks/tasks-96.htm
+SHA1-Digest: 9mMEKh6qjSk0Gk1Yv3q7NDjI6wo=
+
+Name: reference/ref-36.htm
+SHA1-Digest: D7wo3aMFma80ASmjaL97241vATE=
+
+Name: concepts/concepts-18.htm
+SHA1-Digest: /6ZeXFroEtLLrreZubL9bE9yViU=
+
+Name: concepts/resourcefilters.htm
+SHA1-Digest: 5uTLM4iQT7C3kUo7PyK8OXTQO/Q=
+
+Name: images/Image90_unlocked_toolbar.png
+SHA1-Digest: QxBFjXh524xcdHSQfjUpgVwHimg=
+
+Name: images/ssh2-authentication.png
+SHA1-Digest: c/+OhAbRwqrxTSl9p4w7vB1NN1k=
+
+Name: images/keys1.png
+SHA1-Digest: QmOAnTcM42TMB4avJ8XmIYhFJCY=
+
+Name: images/image92-complete.png
+SHA1-Digest: Ndf8LwW9dhxR9xMk9dEZMdebT48=
+
+Name: gettingStarted/qs-61c_offline.htm
+SHA1-Digest: gYvaD8lX0tIAxck8vctKcbCbXB0=
+
+Name: images/synced.png
+SHA1-Digest: Z+GOqbEGSPqVjGtGig3Z+k6rv+k=
+
+Name: gettingStarted/qs-12.htm
+SHA1-Digest: qoQkb1e+jK/Loyi9eiNNmwRBsbk=
+
+Name: reference/ref-8.htm
+SHA1-Digest: 7Xa3a0ygnskQg2eIvRrei4KIC98=
+
+Name: tasks/tquickfix.htm
+SHA1-Digest: B48UeaM4qdEgXU9W1tmlTwHKx4Q=
+
+Name: images/image92-begin.png
+SHA1-Digest: DxS69GIhMOwU99u1NClyNGkU+6U=
+
+Name: reference/ref-47.htm
+SHA1-Digest: Qa5WmuqrHlpFFETGVLejUdZm+dk=
+
+Name: images/image92-maximize.png
+SHA1-Digest: iMHVaOTy9P0TJC22HAhJSuB8F5w=
+
+Name: concepts/concepts-29.htm
+SHA1-Digest: rusXAhan/DjX5LCSw39JjNya2ys=
+
+Name: images/et_standalone.png
+SHA1-Digest: Z0V1dLBgM7zayR8k7bFd/s4/Bqc=
+
+Name: images/Image231_marker_bar.png
+SHA1-Digest: Azy08Z4+0FAFBXz1izm59sKiW5M=
+
+Name: images/switch_workspace.png
+SHA1-Digest: lzO2ofgOWUQOakKE2303EuzNEZ4=
+
+Name: images/et_dialog.png
+SHA1-Digest: 92aNG4+BNB5lbLv3MM9HuAAggrM=
+
+Name: tasks/tasks-9f.htm
+SHA1-Digest: McD2WS6QX9XACVrUsmV17cVpGT8=
+
+Name: images/delete_edit.png
+SHA1-Digest: Wfitw2hn56hod64IlpP5oy4Jd3w=
+
+Name: images/et_dropdown.png
+SHA1-Digest: 1RFsQf14uDUgHRTZCNoylmGR8Tk=
+
+Name: tasks/tkeybindings.htm
+SHA1-Digest: +i1SZOxmpaHOUWyChnsOdNzcbJs=
+
+Name: images/ref-p2-autoupdate.png
+SHA1-Digest: sjQbLGO+9kMg3nStS80NQWqUVTQ=
+
+Name: plugin.properties
+SHA1-Digest: dLtCQxfVBjZUtG0VfJdJIXY6C4E=
+
+Name: tasks/tasks-73.htm
+SHA1-Digest: FKqZsmRhhvkQnmDkHU0f0IdG+64=
+
+Name: concepts/virtualfolders.htm
+SHA1-Digest: v7i7Z9cojIRxTrRtYN4GVaU0O/E=
+
+Name: reference/ref-13.htm
+SHA1-Digest: OggmJ7oRgYAZus7tzDcmYB2Ryxo=
+
+Name: reference/ref-58.htm
+SHA1-Digest: 9EeU6agtZFAhgHgc8Hg4+hQRXRw=
+
+Name: index/indexed_dependencies
+SHA1-Digest: Ur2yJiaHnjyHv8zkbLka3MixB0M=
+
+Name: index/_0.prx
+SHA1-Digest: U+7rwEUUmx7QtyLscftMq169h2Q=
+
+Name: reference/ref-32a.htm
+SHA1-Digest: gswEcvq8qmFWgYyC/yGXx1Is4so=
+
+Name: tasks/help_search.htm
+SHA1-Digest: h4ovAarQACoEqdhdEqskJkvI0qw=
+
+Name: plugin.xml
+SHA1-Digest: 1l4RvIPronkDk6EWcq2vkgXTODk=
+
+Name: tips/images/separate_derived_encodings.png
+SHA1-Digest: ALhP76bd34AB+DWPw5iTb3s5r+g=
+
+Name: images/ant_runtime_types.png
+SHA1-Digest: G0pzQsJ+YXt2+s7VLyW2KuJC44c=
+
+Name: tasks/help_navigate.htm
+SHA1-Digest: QxKxCuoz4jKqyqQ0hx9AV+1ZRjs=
+
+Name: images/drop-editorsplit.png
+SHA1-Digest: NtQkBvNzPsun0T3IsSCTMQtlJnE=
+
+Name: index/indexed_docs
+SHA1-Digest: K2VncgkSZWnZleNfOBELR65a2q0=
+
+Name: images/drop-viewsplit.png
+SHA1-Digest: Ye/AZwL8xUB/GtTzXJo8jWGER2A=
+
+Name: tasks/tasks-84.htm
+SHA1-Digest: psmtK7hmX76knIp7sZPSY3MRGcM=
+
+Name: images/confdel_ov.png
+SHA1-Digest: 0fOOxk6XtVFe+cCmJrpGVDu9DLo=
+
+Name: images/Image37drop.png
+SHA1-Digest: JFG4TUtPutAGkwhcGS3ZkFNPaoM=
+
+Name: reference/ref-24.htm
+SHA1-Digest: oKKeY7pTtR3gUGO38TQr7tm12Xw=
+
+Name: images/cvs-commenttemplates.png
+SHA1-Digest: ns2Smq9MIdRZVl0HariKotOQSOA=
+
+Name: topics_Reference.xml
+SHA1-Digest: UAMRxapj3RGiEXCuoOl8sg/wdHE=
+
+Name: images/addbkmrk_tsk.png
+SHA1-Digest: b5gIOvROyjf6cpJPaEt+XT2kQPU=
+
+Name: contexts_ExternalTools.xml
+SHA1-Digest: D9S+5wBxTOiG2jUQ6KI7FV73x3M=
+
+Name: images/ant_classpath_tab.png
+SHA1-Digest: Qo4vAOX83qo6dYSfNR9VRrgfQW0=
+
+Name: images/no_remotedir_ov.png
+SHA1-Digest: o0gR/Q7uFkcqeU5E74Wno4WQckk=
+
+Name: images/ant_editor_syntax.png
+SHA1-Digest: +9/tFc45YTEqM8KGtqVOwHIE5Rw=
+
+Name: images/r_outchg_ov.png
+SHA1-Digest: nUs640RYTbPKasTp8jZX/sPACqY=
+
+Name: images/filter_ps.png
+SHA1-Digest: 7Tzitwz8eRQDG3WsrvW73O+Piqc=
+
+Name: tasks/tasks-95.htm
+SHA1-Digest: 5H41seHrZa+gsRV0FkBRegGUK08=
+
+Name: reference/ref-35.htm
+SHA1-Digest: HtF9XxSypViEmrj9FVshXNKs1yU=
+
+Name: images/Image61_fast_options.png
+SHA1-Digest: X9cpKXiBP9LQ1T9zewR9SZkK8kE=
+
+Name: concepts/concepts-17.htm
+SHA1-Digest: t9kTcbGpe1PAorLpCLdUaetL3+k=
+
+Name: images/image92-collapse.png
+SHA1-Digest: cBpPoRlZjJjtEs9z86KxgPY/oQI=
+
+Name: images/equinox_secure_storage_pswd.png
+SHA1-Digest: jv1H3IfI2H9eFYtzsqjaPFOuk8w=
+
+Name: buildDoc_log.xml
+SHA1-Digest: 1ziJA3QFdKtNtb77Z9sCaVdkPuA=
+
+Name: images/ssh2-hosts.png
+SHA1-Digest: AH/gAHlqqmI7w13LLWCER1MGK6I=
+
+Name: gettingStarted/qs-02e.htm
+SHA1-Digest: GNt9/N+yzsUJvj9LgvsX+qrvzLY=
+
+Name: images/cvs-connection.png
+SHA1-Digest: hsORhAD1FmqwYtFOPpprdpZA0Bs=
+
+Name: images/edited_ov.png
+SHA1-Digest: Bn3Zd1C0h2gNUXQayfDHtYtHC2Y=
+
+Name: images/help_icon_toc.png
+SHA1-Digest: pu93U3R4wP8CNTvTf6BxqYXwCZs=
+
+Name: reference/ref-7.htm
+SHA1-Digest: 1lEpna+k3pXQHZFLbcl7xUROQiQ=
+
+Name: images/help_window_external.png
+SHA1-Digest: tr4ET8LrVfci9omeaDXtCAmhJ2s=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/run_tool.png
+SHA1-Digest: 2STMlJQWulm40h4UY/munCIIF+k=
+
+Name: images/org.eclipse.ui.externaltools/obj16/classpath.png
+SHA1-Digest: v4sPy2CNCRPVLZykREXF4pcnIfM=
+
+Name: images/open_persp.png
+SHA1-Digest: xh+XIOQEOMAFmx2tvfXmPbArLDM=
+
+Name: concepts/help.htm
+SHA1-Digest: VgWufwCgZ6QH9WS0F5Vl4QYXQ5Q=
+
+Name: images/cvs_folder_rep.png
+SHA1-Digest: bV8vvDfmMyh3iGUvZHFIBnz5r1s=
+
+Name: index/_0.nrm
+SHA1-Digest: qf8VqV+Xarmy1v75R9/oyC6gZTs=
+
+Name: reference/welcome_preferences.htm
+SHA1-Digest: sYaTXdsh4rVxMekPnSi1bKlxVQg=
+
+Name: tips/images/shown-in-system-explorer.png
+SHA1-Digest: +GUGYiMWOJZg8IN3fcnmIXgi6Hg=
+
+Name: tasks/tasks-1k.htm
+SHA1-Digest: FbCHcbI2SlJ+x3OcEhJOE7+YOFk=
+
+Name: images/Image60_tabs2.png
+SHA1-Digest: 52qA4REUZH4UZ+kDM5OTVw/gZ98=
+
+Name: concepts/welcome.htm
+SHA1-Digest: WCAOceEoL0CU6WfYIvKMyW0HFdc=
+
+Name: reference/ref-12.htm
+SHA1-Digest: CbypqZqPcS3eXuW1zMnBbYWWg9Q=
+
+Name: reference/ref-57.htm
+SHA1-Digest: 2UVe+GBjltvfW2cQHIcRvJsQNwg=
+
+Name: tasks/tasks-68c.htm
+SHA1-Digest: zUSwEOL2S79dOz41O1ROv7XUx/o=
+
+Name: gettingStarted/qs-61e_whatisloc.htm
+SHA1-Digest: byKdFrWurZ5//1pn4H+1cD3zGIA=
+
+Name: images/drop-viewstack.png
+SHA1-Digest: oYxg1tGrsLSGjzCiRMZjKTVvP9s=
+
+Name: images/Image242_repo_view.png
+SHA1-Digest: jKdbqGZ8Ydw+dS04QJ8CQrdA0ko=
+
+Name: gettingStarted/qs-60a_setup.htm
+SHA1-Digest: lnkFe1KgIg8B0W2jCgxZc4VbP2k=
+
+Name: images/Image248_folder_wiz.png
+SHA1-Digest: H5/CqxLpeb432Lc1ZFMNYdWOXmk=
+
+Name: gettingStarted/qs-52e.htm
+SHA1-Digest: i0CELFWMXy6G3uFzHRp9cCYmRC0=
+
+Name: tips/images/backward_nav.png
+SHA1-Digest: 3zcVGWKJstnJPYs0bF5iXvdxrSw=
+
+Name: images/image92-skip-mark.png
+SHA1-Digest: vXoTlHqDd0y4MfPFmzWglC8yqyc=
+
+Name: images/Image273_local_hist.png
+SHA1-Digest: OqnMQDX3tfo8YHalOieUO9yqkFA=
+
+Name: concepts/concepts-2.htm
+SHA1-Digest: DS+wE+wSIbGNvVQLL32SsMWvf6Q=
+
+Name: images/Image266_export_ant.png
+SHA1-Digest: McMHMrB58Jp877BlCZYIWpWikQs=
+
+Name: tasks/help_scope.htm
+SHA1-Digest: 3pXs8QhWzZPzJCS5H7U+f3/ZSX0=
+
+Name: images/Image4_showview.png
+SHA1-Digest: 33haxXFGtwd+Al2pbhJEDn/nVqU=
+
+Name: tips/images/quickaccess.png
+SHA1-Digest: aM9pP0PxG5NuvLetrA4aQRZloAM=
+
+Name: images/org.eclipse.ui.externaltools/obj16/main_tab.png
+SHA1-Digest: YijvVX1iPsrAVjYe/+yZcucB1gU=
+
+Name: reference/ref-23.htm
+SHA1-Digest: tOqksDWLotDdM2QXOeHat5+WGsE=
+
+Name: images/ant_runtime_tasks.png
+SHA1-Digest: U3X8houThLDLyHG7K4+sK9Jjwto=
+
+Name: reference/ref-68.htm
+SHA1-Digest: 96JcosKzzC8Pq4IOA2nWjZD8OwA=
+
+Name: images/cvs-specify-repository.png
+SHA1-Digest: gH9o5lN7wdAf8vgxLbZcYcvU9Pw=
+
+Name: reference/ref-33a.htm
+SHA1-Digest: pVtKAeUTxh8AvjgMKQwPrGaSh6w=
+
+Name: images/Image88_workset_new_type.png
+SHA1-Digest: wG/pRm1XAP6ZuGmN4aoIDOH6/hY=
+
+Name: images/org.eclipse.ui.externaltools/obj16/ant.png
+SHA1-Digest: PhhRypkfpqxRACsSWhtzzLkotag=
+
+Name: images/image92-expand.png
+SHA1-Digest: eIKx1xSctz3JOXqau81L31ylFPw=
+
+Name: images/help_icon_external.png
+SHA1-Digest: yLCsWKSKpq0fp696BtBKCGurPFc=
+
+Name: reference/ref-ssh2-preferences.htm
+SHA1-Digest: 53TtnyHy0NLOrj8SmrN9os2Kww8=
+
+Name: images/version_controlled.png
+SHA1-Digest: NIBbD+B6rUS6v/q4yl6uPDej46U=
+
+Name: images/cvs-watch-edit.png
+SHA1-Digest: EC6EIsOLiBt+Ft/tY+1cRmbirVY=
+
+Name: images/tree_mode.png
+SHA1-Digest: fWUSpqAUCh2t+2J6totBneOASIM=
+
+Name: reference/ref-capabilitiespref.htm
+SHA1-Digest: lU+9WSem7B0/IuM27zWRxKiAJ3E=
+
+Name: contexts_Net.xml
+SHA1-Digest: AONWfJaNm43oHpa4NXE7PhwlQd4=
+
+Name: tasks/tasks-cvs-annotate.htm
+SHA1-Digest: O8gkUp1wikIW0tLiAyhHsDnIkyA=
+
+Name: tasks/tasks-119.htm
+SHA1-Digest: 9MEXbyp19DGpOqkzZkjyeMZsENY=
+
+Name: tasks/tasks-94.htm
+SHA1-Digest: SRBLvs2ByK0LwCXU21ZSgC4Yo/0=
+
+Name: images/cvs-console.png
+SHA1-Digest: /7UbjSEJrgEScOcwgHo8P6bc4Gs=
+
+Name: images/ant_editor_problems.png
+SHA1-Digest: A3qfIPSc9SuLFUYqZ7eC6lEjpwY=
+
+Name: images/Image616_et_dropdown.png
+SHA1-Digest: mkrBd43Yv+ijU4B5vR73hvzgXt0=
+
+Name: index/_0.fdt
+SHA1-Digest: 4YUpgGotI83OHbZdSj6AVpMExcs=
+
+Name: images/org.eclipse.ui.externaltools/obj16/jar_l_obj.png
+SHA1-Digest: UawLxKniJG6XbK62FZFlXioewQU=
+
+Name: images/Image80_compare_after.png
+SHA1-Digest: bwCJdBzG7h7iC7bHAkQv27Uv73o=
+
+Name: contexts_CommonNavigator.xml
+SHA1-Digest: BOPHPfeWO/wqQv4zU8QOYZADW/I=
+
+Name: index/_0.fdx
+SHA1-Digest: Gc4h4DoqK4GLAFQVxfWaIvdA9JA=
+
+Name: images/org.eclipse.ui.externaltools/obj16/task_obj.png
+SHA1-Digest: 4+oJ/5Ty+UDQBZZXcUAmX8OiGZs=
+
+Name: gettingStarted/qs-34c.xhtml
+SHA1-Digest: aNBBDiVoOjxGSZPPRw7BY43GtFs=
+
+Name: gettingStarted/qs-64a_another.htm
+SHA1-Digest: g94pFp857+RcTxoTnZLDI5OV6E8=
+
+Name: images/Image266_export_zip.png
+SHA1-Digest: UeVml+G6C5xj0dKZJ0QATjDi3/o=
+
+Name: images/Image82_repo_team.png
+SHA1-Digest: LJ01aBFzQxZJVq4YnMXozYJ2vFU=
+
+Name: images/Image51_search_next.png
+SHA1-Digest: TSVAi/hC498eOQP9JWS6cp84u+I=
+
+Name: reference/ref-6.htm
+SHA1-Digest: ZIGrjmIAEyEr964wo/ozN28RsV0=
+
+Name: gettingStarted/qs-55.htm
+SHA1-Digest: jYhu1UPhzUsdLH5at2gR0QYVjPw=
+
+Name: images/Image45_file_search.png
+SHA1-Digest: aDwWCghJwb/VfOwgfx15n5N+/tg=
+
+Name: images/Image276_available_filters.png
+SHA1-Digest: dDBnFlVyIAm2xvQm6bPGTRzgvEo=
+
+Name: images/Image265_export_file.png
+SHA1-Digest: cBhZ/bWhW2tWJIAmdt5x0bMzBYY=
+
+Name: reference/ref-45.htm
+SHA1-Digest: KPYH4Qs7qtpJ8PaL8qPWjIYDTp0=
+
+Name: concepts/concepts-27.htm
+SHA1-Digest: Lqvj+OEOcVNVeGJnrIimu0Z8mY8=
+
+Name: tasks/tasks-9d.htm
+SHA1-Digest: 146v8aNo8ClWBy8IYQw+p3aqi3A=
+
+Name: reference/ref-19cvs-sync.htm
+SHA1-Digest: F4h06TlAdpgnxR7wsgBplDfPfvo=
+
+Name: tasks/tasks-importproject.htm
+SHA1-Digest: zUVkxED0Q9PGuNfILeO0Qg109/g=
+
+Name: images/Image48_rename_done.png
+SHA1-Digest: 23SWgb34S9DAi5SrE6Ezziwqw38=
+
+Name: tips/images/restore-local.png
+SHA1-Digest: /hI26lpW0SJ03dZdeu+4SL6AWgc=
+
+Name: images/fast_view_menu.png
+SHA1-Digest: 45ZQYm1rbpuRQCmd7qoLibZK7H4=
+
+Name: images/external_tools_prefs.png
+SHA1-Digest: kar9CWWOTFrmxdityAGEHisGqMY=
+
+Name: tasks/tasks-1j.htm
+SHA1-Digest: kKae9luNBTSejTeaFhekXRlqtgA=
+
+Name: tips/images/quick-access-dialog.png
+SHA1-Digest: pv+sO9HVL7WgA+/oxVEvr19HvdQ=
+
+Name: reference/ref-securestorage-recovery.htm
+SHA1-Digest: cYwbll8LHCiWxIBvJuvK4+qaX+c=
+
+Name: images/help_icon_highlight.png
+SHA1-Digest: XfGCug3VbaKU2hOV2PHtgxB0xvs=
+
+Name: images/Image215_toolbar_view.png
+SHA1-Digest: r2xtD6MjiJWu68FEm7DbajkOWSY=
+
+Name: reference/ref-11.htm
+SHA1-Digest: lO6WSDEYV5TE/aQfGB5cX40xuFM=
+
+Name: images/help_icon_bookmark_add.png
+SHA1-Digest: 5G6fYZVEcJUSSJCAFs/VLPKPH80=
+
+Name: reference/ref-56.htm
+SHA1-Digest: VdEZqkOnuYcfT2/pOIdPMD/CJBQ=
+
+Name: tasks/tasks-68b.htm
+SHA1-Digest: IRm7E/3Gtk+ZDQ19lJL35/bYJ1A=
+
+Name: tips/images/compare-showancestor.png
+SHA1-Digest: aR7MFIGOPcHnxsuWOqK0Tn4qOJE=
+
+Name: images/cut_edit.png
+SHA1-Digest: SMPcTFkftpJRhdvl9GdlR2ZFSgo=
+
+Name: reference/ref-antprefs.htm
+SHA1-Digest: hh1Gf6yurYutlIN3jX3KVjrovbo=
+
+Name: images/Image82_import4_project_fred.png
+SHA1-Digest: WXzMUrTRvRC2VA+WjFCiqKY4HrY=
+
+Name: gettingStarted/qs-52d.htm
+SHA1-Digest: /qX8wg5x7InbPRQMikxjlSFNjAc=
+
+Name: images/refresh_nav.png
+SHA1-Digest: KM5XP7FCqN0fTmuKLGRKnAyiWCs=
+
+Name: tasks/tasks-ant-version.htm
+SHA1-Digest: PLqrvTLomX01KYZN6FOwVZbvzN4=
+
+Name: whatsNew/images/import-as-project.png
+SHA1-Digest: gNMC+0Oy1SQOWdidYOYa7vhS3EA=
+
+Name: images/image92-skip.png
+SHA1-Digest: R9DDcuW87trxRTCjf/1qEn30H20=
+
+Name: gettingStarted/qs-32.htm
+SHA1-Digest: +xb9GBtOXCcsKTA8RdvcF5Ovai8=
+
+Name: images/org.eclipse.ui.externaltools/clcl16/add_co.png
+SHA1-Digest: aHl69rvHGk8j66wMuvXA9krvbWI=
+
+Name: tips/images/backgroundpref.png
+SHA1-Digest: KA+uUp2P4Otuoy0yveD/GdoPHZc=
+
+Name: tasks/tasks-82.htm
+SHA1-Digest: GSbUVn6YD1nCDElbvc3UdKyJL9o=
+
+Name: images/Image71_file_toolbar_after.png
+SHA1-Digest: EsYXmu5W+fkGY+sH9bOOwjdXaxQ=
+
+Name: reference/ref-22.htm
+SHA1-Digest: uk38lC6F0YdU+iBqcCYNH2Lil8o=
+
+Name: reference/ref-67.htm
+SHA1-Digest: coannyy+v+IuWY34l8qEl7rV5TU=
+
+Name: tasks/tasks-45a.htm
+SHA1-Digest: Dnzo5Umndt2LFyA89QKCnG72CVA=
+
+Name: gettingStarted/qs-84_run_ant.htm
+SHA1-Digest: 3c4b+4bvquhPfK+UbS+bR41G06Q=
+
+Name: tips/images/props-view.png
+SHA1-Digest: 2nq7BI/IQd8qU1htEJ6NJtV3it4=
+
+Name: tasks/ttoolbars.htm
+SHA1-Digest: tK19cd2uioiQkrNM3ksdivj1gok=
+

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css"
+>
+<title>Audit Trail Archive</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Structured Data Storage",
+	"ag-appendix-audittrail-2.htm","ag-struct-data.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-audittrail.html","Audit Trail Model");
+ -->
+</script>
+<h1>Audit Trail Archive</h1>
+<p>When deleting data from the audit trail, it may be backed up in a
+second audit trail DB, the backup audit trail DB.</p>
+<h2>Audit Trail Archive Administration</h2>
+<p>To delete or archive the audit trail or parts of it you can use
+the Sysconsole command <tt>archive</tt>. The execution of this tool is
+responsible for maintaining the closure of the backed-up objects, e.g.
+backing up the corresponding models, model elements and grants. The
+backup audit trail may be cumulatively populated.</p>
+<p>The Sysconsole <tt>archive</tt> command allows you to:</p>
+<ul>
+	<li>specify the schema containing the backup tables</li>
+	<li>back up all dead models (i.e. no longer active and with no
+	non-terminated processes)</li>
+	<li>back up a model with all its dependent objects</li>
+	<li>back up completed or aborted process instances</li>
+	<li>delete log entries</li>
+	<li>delete data values for terminated process instances for a
+	specific workflow data</li>
+</ul>
+<p>Please refer to the section <a
+	href="../commandline/ag-commandline-2.htm#archive"
+>Audit Trail Archive Administration</a> in the chapter <a
+	href="../commandline/ag-commandline-2.htm"
+>The Sysconsole Command</a> to get detailed information on the <tt>archive</tt>
+command and its options.</p>
+<h3>Archiving Dead Models having Grants</h3>
+<p>In case a dead model is deleted from the source database,
+having grants, these grants get deleted as well if the granted participants
+do not exist in any other model version.</p>
+
+<h2>Archiving the Database</h2>
+<p>To archive the database:</p>
+<ol>
+	<li>Create two users. For example, arcsrc and arctarg</li>
+	<li>Give the DBA grant to the arcsrc user</li>
+	<li>Configure the workspace</li>
+	<li>Deploy the model in arcsrc workspace and execute it</li>
+	<li>Create the DDL file using the command. This file contains
+	the SQL commands that are required to create the target schema. 
+	<pre>-password sysop archiveDDL  -schemaName arctarg -file c:/ddlfile.ddl</pre>
+	</li>
+	<li>Oracle users, change the extension of the file to
+	ddlfile.sql</li>
+	<li>Execute the ddl file on the target schema using the arctarg
+	user</li>
+	<li>Check that the arctarg user has tables generated for it.<br>
+	&nbsp;<br>
+	Note: Once the data gets copied, check that source schema count is
+	reduced to target schema.</li>
+</ol>
+<h2>Upgrading the Database</h2>
+<p>To upgrade a database, use the sysconsole command <tt>upgraderuntime</tt>.</p>
+<pre>sysconsole -upgraderuntime </pre>
+<p>The following arguments are available:</p>
+<ul>
+    <li><tt>-data, -a -</tt> Performs only data migration, preventing any SQL
+    DDL execution. Note that the <tt>ddl</tt> argument always needs to be combined with 
+    <tt>-step</tt> to guarantee a correct result!</li>
+    <li><tt>-ddl, -l &lt;arg&gt; -</tt> Spools the SQL DDL defining the audittrail
+    schema migration into the specified file. No modifications to the audittrail
+    will be performed.
+    Note that the <tt>ddl</tt> argument needs to be combined with 
+    <tt>-step</tt> to guarantee a correct result!</li>
+    <li><tt>-describe, -d -</tt> Describes the migration steps involved,
+    including any temporary schema versions. No modifications to the audittrail
+    will be performed.</li>
+    <li><tt>-ignorelock, -i -</tt> forces an upgrade run even if the audit
+    trail DB is already locked for upgrade.</li>
+    <li><tt>-recover, -r -</tt> to force a recovery run of the upgrade.</li>
+    <li><tt>-step, -s -</tt> Performs exactly one migration step. May require
+    multiple invocations to fully perform migrations involving temporary schema
+    versions.</li>
+</ul>
+<p>Please refer to the chapter
+<a href="../commandline/ag-commandline-2.htm">The Sysconsole Command</a>
+in the <a href="../ag-preface.htm">Operation Guide</a>
+for detailed information on using sysconsole commands and their provided arguments.</p>
+<h3>Archiving and Upgrading</h3>
+<p>Suppose you are using a Stardust product version for a long time. So its
+audit trail has huge data. You have archived the data in a target
+schema. And now you plan to use a later version of Stardust. In this case, you need
+to upgrade source and target to the new version.</p>
+<p>To archive and upgrade:</p>
+<ol>
+	<li>Archive the database</li>
+	<li>Execute the sysconsole command <tt>upgraderuntime</tt> on the target and
+	source databases: <pre>sysconsole -upgraderuntime</pre></li>
+</ol>
+<h3>Upgrading the Database</h3>
+<p>Suppose you are working on an earlier Stardust version and you plan to
+upgrade to a newer one</p>
+<p>To upgrade the database:</p>
+<ol>
+   <li>Create the environment for the new version and let it point to
+   the source database of the earlier version</li>
+	<li>Execute the sysconsole command <tt>upgraderuntime</tt> to upgrade the
+   database runtime from the earlier version to the new version <pre>sysconsole -upgraderuntime</pre></li>
+</ol>
+<h2>Re-archiving the Database</h2>
+<p>Suppose the database is archived for 500 rows. Then once again
+300 more rows are added to the source database. You want to archive the
+newly added 300 rows but in this case the archived 500 rows should not
+be overwritten. The 300 rows should be added to the database in
+continuation of 500 rows. Thus, the target database should have 800
+rows.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

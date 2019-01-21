@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="help/tutorial/tutorial.html#EMF_Compare_tutorial" label="EMF Compare tutorial">
+	<topic href="help/tutorial/tutorial.html#Installation" label="Installation"></topic>
+	<topic href="help/tutorial/tutorial.html#Tutorial" label="Tutorial">
+		<topic href="help/tutorial/tutorial.html#Set_up" label="Set up">
+			<topic href="help/tutorial/tutorial.html#Install_custom_ExtLibrary_plugins" label="Install custom ExtLibrary plugins">
+				<topic href="help/tutorial/tutorial.html#Imports_the_plugins" label="Imports the plugins"></topic>
+				<topic href="help/tutorial/tutorial.html#Launch_runtime_platform" label="Launch runtime platform"></topic>
+			</topic>
+			<topic href="help/tutorial/tutorial.html#Associate_EXTLibrary_models_with_EMF_Compare_Content_type" label="Associate EXTLibrary models with EMF Compare Content type"></topic>
+		</topic>
+		<topic href="help/tutorial/tutorial.html#Tutorial_2" label="Tutorial">
+			<topic href="help/tutorial/tutorial.html#Context" label="Context"></topic>
+			<topic href="help/tutorial/tutorial.html#Compare_with_history_.282-way_comparison.29" label="Compare with history (2-way comparison)">
+				<topic href="help/tutorial/tutorial.html#Create_a_library_model" label="Create a library model"></topic>
+				<topic href="help/tutorial/tutorial.html#Create_a_new_book" label="Create a new book">
+					<topic href="help/tutorial/tutorial.html#Compare_with_previous_version" label="Compare with previous version"></topic>
+					<topic href="help/tutorial/tutorial.html#Accept_a_difference" label="Accept a difference"></topic>
+					<topic href="help/tutorial/tutorial.html#Reject_a_difference" label="Reject a difference"></topic>
+				</topic>
+				<topic href="help/tutorial/tutorial.html#Set_the_name_of_the_book" label="Set the name of the book"></topic>
+				<topic href="help/tutorial/tutorial.html#Change_the_category_of_the_book" label="Change the category of the book"></topic>
+				<topic href="help/tutorial/tutorial.html#Fill_the_library_with_employees" label="Fill the library with employees"></topic>
+				<topic href="help/tutorial/tutorial.html#Set_a_manager" label="Set a manager"></topic>
+				<topic href="help/tutorial/tutorial.html#Change_of_manager" label="Change of manager"></topic>
+				<topic href="help/tutorial/tutorial.html#No_more_manager" label="No more manager"></topic>
+				<topic href="help/tutorial/tutorial.html#Add_borrowers" label="Add borrowers"></topic>
+				<topic href="help/tutorial/tutorial.html#Borrowing_a_book" label="Borrowing a book"></topic>
+				<topic href="help/tutorial/tutorial.html#Create_a_new_library_branch" label="Create a new library branch"></topic>
+				<topic href="help/tutorial/tutorial.html#Move_a_book" label="Move a book"></topic>
+				<topic href="help/tutorial/tutorial.html#Remove_a_book" label="Remove a book"></topic>
+			</topic>
+		</topic>
+	</topic>
+</toc>

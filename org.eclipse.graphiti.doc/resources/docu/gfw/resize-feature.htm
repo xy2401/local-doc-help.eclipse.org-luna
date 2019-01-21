@@ -1,0 +1,105 @@
+﻿<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing Resize Functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Resize Functionality</h1>
+<h2>Creating a Resize Feature</h2>
+<p>In our current editor the resize functionality is already provided by the framework. 
+Nevertheless this tutorial should explain how the resize behavior can be customized. 
+Therefore we constructed the following example behavior:</p>
+<p>Resizing EClasses should be restricted to EClasses whose name is longer than 
+one character (just an example without logical reason).</p>
+<p>Remember, that we already <a href="move-feature.htm">provided move functionality</a>, 
+which restricted the move of EClasses whose name is longer than one character. Now 
+we want to additionally restrict the resize. </p>
+<p>A resize feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IResizeShapeFeature.html">
+IResizeShapeFeature</a>. Instead of implementing this directly you should extend 
+one of the available base classes.</p>
+<p>In this example we extend the base class<a href="../../../javadoc/org/eclipse/graphiti/features/impl/DefaultResizeShapeFeature.html">DefaultResizeShapeFeature</a>.
+</p>
+<p>There are two methods to overwrite: </p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IResizeShape.html#canResizeShape(org.eclipse.graphiti.features.context.IResizeShapeContext)">
+	canResizeShape</a> has to check if this feature can do the resize corresponding 
+	to the given context. In this case the location information contained in the 
+	context consists of the shape to be resized.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IResizeShape.html#resizeShape(org.eclipse.graphiti.features.context.IResizeShapeContext)">
+	resizeShape</a> does the final resize. </li>
+</ul>
+<p>You can see the complete implementation of the resize feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialResizeEClassFeature
+		<span class="keyword">extends </span>DefaultResizeShapeFeature {<br>&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>TutorialResizeEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public boolean</span> 
+		canResizeShape(IResizeShapeContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean</span> canResize = <span class="keyword">super</span>.canResizeShape(context);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// perform further check only if move allowed by default 
+		feature</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (canResize) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// don&#39;t allow resize if the class name has the length 
+		of 1</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Shape shape = context.getShape();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(shape);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass c = (EClass) bo;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(c.getName() != <span class="keyword">null
+		</span>&amp;&amp; c.getName().length() == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		canResize = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>canResize;<br>&nbsp;&nbsp;&nbsp; }<br>
+		}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getResizeShapeFeature(org.eclipse.graphiti.features.context.IResizeShapeContext)">
+getResizeShapeFeature</a>).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>IResizeShapeFeature 
+		getResizeShapeFeature(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IResizeShapeContext 
+		context) {<br>&nbsp;&nbsp;&nbsp; Shape shape = context.getShape();<br>&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(shape);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialResizeEClassFeature(this);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getResizeShapeFeature(context);<br>
+		}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<h2>Test: Resize EClass Is Restricted</h2>
+<p>Now start the editor again and test it: Just create a EClass whose name is only 
+one character long. This EClass can no longer be resized, because on selection the 
+resize-handles do not appear any more. For EClasses whose name has more than one 
+character the resize should still work.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Filtering Documents</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Retrieving a Resource Bundle from a specific Module",
+    "pg-data-query.htm","query-resource-bundle.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Filtering Documents</h1>
+<p>The Stardust 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+provides functionality to filter for
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DocumentQuery.html">DocumentQuery</a>
+types, which can be used to search for documents.</p>
+<ul>
+   <li><a href="#queryDocId">Filtering on Document IDs</a></li>
+   <li><a href="#queryDocName">Filtering on Document Names</a></li>
+   <li><a href="#querycontenttype">Filtering on Document Content Types</a></li>
+   <li><a href="#querycontent">Filtering on Document Content</a></li>
+   <li><a href="#queryowner">Filtering on Document Owners</a></li>
+   <li><a href="#querydate">Filtering on Document Creation Date</a></li>
+   <li><a href="#querymodidate">Filtering on Last Modification Date of a Document</a></li>
+   <li><a href="#querymeta">Filtering on Document Meta Data Attributes</a></li>
+   <li><a href="#queryall">Finding all existing Documents</a></li>
+<!--    <li><a href="#repos">Extending the Search across multiple Repository Instances</a></li> -->
+</ul>
+<p>For details on filtering Document Types, refer to section 
+<a href="../embed/documents/pg-embed-doc-types.html#search">Searching for Document Types</a> of 
+chapter
+<a href="../embed/documents/pg-embed-doc-types.html">Managing Document Types</a>.</p>
+<h2 id="queryDocId">Filtering on Document IDs</h2>
+<p>To define a filter on the document ID (ID) use the document Id as a predicate
+in a Document Query.</p>
+<pre>public static final FilterableAttribute ID = new Attribute("id");</pre>
+<h2 id="queryDocName">Filtering on Document Names</h2>
+<p>To define a filter on the document name (NAME) use the document name as a predicate
+in a Document Query.</p>
+<pre>public static final FilterableAttribute NAME = new Attribute("name");</pre>
+<h2 id="querycontenttype">Filtering on Document Content Types</h2>
+<p>To define a filter on the document's content type (CONTENT_TYPE) use the 
+document content type as a predicate in a Document Query.</p>
+<pre>public static final FilterableAttribute CONTENT_TYPE = new Attribute("contentType");</pre>
+<h3>Example</h3>
+<p>The following example uses the <tt>DocumentQuery</tt> for finding
+documents with a specific content type by using the <tt>CONTENT_TYPE</tt> filter:</p>
+<pre>
+   private ServiceFactory sf = ServiceFactoryLocator.get("motu", "motu");
+
+   private static final String CONTENT_TYPE1 = "text/plain";
+   
+   public void demoFindByContentType()
+   {
+      DocumentQuery query = DocumentQuery.findAll();
+      query.where(DocumentQuery.CONTENT_TYPE.isEqual(CONTENT_TYPE1));
+
+      Documents docs = sf.getQueryService().getAllDocuments(query);
+   }
+</pre>
+<h2 id="querycontent">Filtering on Document Content</h2>
+<p>To define a filter on the document's content itself (CONTENT) use the 
+document content as a predicate in a Document Query. Note note that only some 
+document types (like plain text, PDF, Microsoft Office
+documents) support content indexing. Which document types are supported is implied
+by the concrete Document Management Service.</p>
+<pre>public static final FilterableAttribute CONTENT = new Attribute("content");</pre>
+<h2 id="queryowner">Filtering on Document Owners</h2>
+<p>To define a filter on the document's owner (OWNER) use the owner of the
+document as a predicate in a Document Query.</p>
+<pre>public static final FilterableAttribute OWNER = new Attribute("owner");</pre>
+<h2 id="querydate">Filtering on Document Creation Date</h2>
+<p>To define a filter on the creation date of the document (DATE_CREATED) use this date
+as a predicate in a Document Query.</p>
+<pre>public static final FilterableAttribute DATE_CREATED = new Attribute("dateCreated");</pre>
+<h2 id="querymodidate">Filtering on Last Modification Date of a Document</h2>
+<p>To define a filter on the last modification date of the document (DATE_LAST_MODIFIED) use this date
+as a predicate in a Document Query.</p>
+<pre>public static final FilterableAttribute DATE_LAST_MODIFIED = new Attribute(
+         "dateLastModified");</pre>
+<h2 id="querymeta">Filtering on Document Meta Data Attributes</h2>
+<p>To define a filter on the meta-data attributes of the document (META_DATA) 
+use the following method:</p>
+<pre>public static final MetadataFilterBuilder META_DATA = new MetadataFilterBuilder();</pre>
+<p>This method supports filters on any attribute (e.g. searching if there is any
+attribute containing a certain text fragment) or specific attributes (e.g. 
+searching if there is an attribute with a given name,
+containing a certain text fragment).</p>
+<h3>Example with any attribute</h3>
+<p>In the following example, all documents containing any meta-data like a 
+specified string are searched. Hereby the filter <tt>META_DATA</tt> is used.</p>
+<pre>
+   private ServiceFactory sf = ServiceFactoryLocator.get("motu", "motu");
+
+   private static final String META_VALUE1 = "someMetaString";
+
+   public void demoFindMetaDataAnyLike()
+   {
+      DocumentQuery query = DocumentQuery.findAll();
+
+      query.where(DocumentQuery.META_DATA.any().like(META_VALUE1+"*"));
+      
+      Documents docs = sf.getQueryService().getAllDocuments(query);
+
+   }
+</pre>
+<h3>Example with a given name</h3>
+<p>In the following example, all documents containing meta-data with an attribute
+with a given name containing a text like a specified string are searched. 
+Hereby the filter <tt>META_DATA</tt> is used.</p>
+<pre>
+   private ServiceFactory sf = ServiceFactoryLocator.get("motu", "motu");
+
+   private static final String META_VALUE1 = "someMetaString";
+   private static final String META_KEY1 = "name";
+
+   public void demoFindMetaDataNamedStringLike()
+   {
+      DocumentQuery query = DocumentQuery.findAll();
+      query.where(DocumentQuery.META_DATA.withName(META_KEY1).like(META_VALUE1+"*"));
+      
+      Documents docs = sf.getQueryService().getAllDocuments(query);
+      printDocuments(docs);
+      assertEquals("Documents", 1, docs.size());
+   }
+</pre>   
+<h2 id="queryall">Finding all existing Documents</h2>
+<p>Use the method <tt>findAll()</tt> to create a query for finding all documents
+that currently exist.</p>
+<pre>
+   public static DocumentQuery findAll()
+   {
+      return new DocumentQuery();
+   }
+</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

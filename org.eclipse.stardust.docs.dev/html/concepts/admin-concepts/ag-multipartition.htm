@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css"
+>
+<title>Managing Multi Partition Stardust Installations</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"
+></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Daemons",
+	"multiversion.html","ag-concepts-2.htm",
+    "../key-concepts.html","Concepts",
+    "ag-concepts-preface.htm","Administrative Concepts");
+ -->
+</script>
+<h1>Managing Multi Partition Stardust Installations</h1>
+<p>The Stardust Engine provides AuditTrail partitioning and
+enactment of process definitions for multiple user domains. The
+functionalities are described in this chapter:</p>
+<ul>
+    <li><a href="#audittrail">AuditTrail Partition</a></li>
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#modelassociation">Association of Models to
+    Partitions</a></li>
+    <li><a href="#comb_part_domains">Combining Partitions and
+    Domains</a></li>
+    <li><a href="#usermanagement">User Management</a></li>
+    <li><a href="#restrictions">Restrictions</a></li>
+</ul>
+<h2 id="audittrail">AuditTrail Partition</h2>
+<p>AuditTrail Partitions define logical distinct subset of data
+inside an audit trail. The extent of any partition is defined by a set
+of models associated with this partition and their transitive closure of
+model and runtime data. For example if three models Ma, Mb and Mc are
+deployed to an audit trail, and models Ma and Mb are associated with
+partition p1, the extent of p1 is defined by all rows inside model
+element tables referencing models Ma or Mb, and all rows inside runtime
+item tables transitively referencing rows from those model element
+tables as their defining model element. As any runtime item is uniquely
+associated with a model element and thus with a model, model elements
+and runtime items are uniquely associated with a partition, too, thus
+making partitions fully distinct.</p>
+<h3>Working with Partitions</h3>
+<p>Partitions will be created, modified and dropped via the
+sysconsole tool's <tt>auditTrail</tt> command, as described in the
+chapter <a href="../../handbooks/operation/commandline/ag-commandline-2.htm">The Sysconsole
+Command</a>.</p>
+<p class="note"><strong>Note</strong><br>
+Please note that using the tuning property <tt>Carnot.Engine.Tuning.DB.singlePartition</tt>
+in multi partition audit trails will result in exceptions during
+queries. This property tells the engine that only one partition exists.</p>
+<h2 id="domains">Domains</h2>
+<p>In addition to creating users at runtime, the administrator may
+create <strong>domains</strong>. A domain represents an organizational 
+unit of an enterprise or an enterprise group.</p>
+<p>Domains provide scoping rules for workflow participant
+resolution. They augment modeling time workflow participant resolution
+rules with runtime user segmentation. A domain per se defines a set of
+users. The cardinality between domains and users is <tt>*:*</tt>, so for
+example any domain can contain an arbitrary set of users, and any user
+may be associated with an arbitrary set of domains.</p>
+<p>Additionally, domains may be associated with an arbitrary set of
+model participants. Model participant resolution semantics can
+optionally use domains as scope when resolving the set of valid users
+qualifying as performers for activities. For example there are users U1,
+U2 and U3. U1 and U2 are associated with domain D1, U1 and U3 are
+associated with domain D2. All three users are members of role R1. There
+are several possibilities to resolve R1:</p>
+<ul>
+    <li>without consideration of domains, R1 resulting in U1, U2,
+    and U3.
+    <li>under consideration of i.e. D1, yielding U1 and U2,</li>
+    <li>under consideration of D2, yielding U1 and U3.</li>
+</ul>
+<p>Consideration of domains for participant resolution is a runtime
+decision. Domains cannot be shared between partitions and are unique
+within a partition.</p>
+<h3>Default Domain</h3>
+<p>A Stardust Runtime Environment always contains a default domain.</p>
+<h2 id="modelassociation">Association of Models to Partitions</h2>
+<p>Any Workflow Model will be part of an audit trail. It is possible
+to deploy unrelated models to the same audit trail, but to different
+partitions. To get more information on deploying a Workflow Model refer
+to the chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploy-model.html"
+> Deploying a Workflow Model</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html"
+> Deployment Guide</a>.</p>
+<h3>Associating Models with Partitions</h3>
+<p>The model itself is directly associated with the partition it is
+deployed to via a foreign key into the partition table. Any model is
+associated with exactly one partition.</p>
+<h3>Associating Model Elements with Partitions</h3>
+<p>Model elements are not linked with their partition via a direct
+foreign key reference, but indirectly via their model OID.</p>
+<h2 id="comb_part_domains">Combining Partitions and Domains</h2>
+<p>Domains are unique only within a partition. Thus only a
+domain/partition pair identifies a domain uniquely.</p>
+<p>Currently only one default domain per partition is supported. The
+ID of the default domain has by default the same ID as the partition.</p>
+<h2 id="usermanagement">User Management</h2>
+<p>Users are associated with exactly one partition, effectively
+rendering user member parts of partitions. Users may be associated with
+an arbitrary number of domains from their hosting partition. By default,
+they are associated with the partition's default domain.</p>
+<h3 id="realm">User Realms</h3>
+<p>A realm defines the uniqueness scope for user IDs. For example
+two users from the same realm are required to have different IDs and
+accounts respectively, while users from different realms are not.</p>
+<p>Realms are associated with exactly one partition, effectively
+rendering realm member parts of partitions. Any user is associated with
+exactly one realm.</p>
+<h4>Working with Realms</h4>
+<p>Realms will be created and dropped via the console tool's <tt>realm</tt>
+command, as described in the section <a
+    href="../../handbooks/operation/commandline/ag-commandline-3.htm#commands"
+>Commands</a> of chapter <a href="../../handbooks/operation/commandline/ag-commandline-3.htm">Using the Console Command</a>.</p>
+<h3>Sharing Users between Partitions</h3>
+<p>It is possible to share users between partitions logically (i.e.
+user IDs). This could be achieved in different ways, for example:
+<ul>
+    <li>by replicating user realms over partitions, where logically
+    identical realms are having the same ID in all partitions.</li>
+    <li>by replicating users over partitions, where logically
+    identical users are having the same realm ID and user ID in all
+    partitions.</li>
+</ul>
+<h2 id="restrictions">Restrictions</h2>
+<h3>Data Cluster restrictions</h3>
+<p>Data Cluster operation will be restricted to Audit Trails
+containing only the default partition. This implies that the following
+validation rules will be added to the system:</p>
+<ul>
+    <li>If the Audit Trail either contains several partitions or,
+    in a single partition audit trail, the partition id is not the
+    default partition id, it will not be possible to upload a data
+    cluster configuration to the audit trail.</li>
+    <li>If currently a data cluster configuration is active in the
+    audit trail, it will not be able to create a partition with an Id
+    different from the default partition Id. If the default partition
+    already exists, this will also fail, as multiple partitions with
+    identical IDs are not allowed.</li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+
+</body>
+</html>

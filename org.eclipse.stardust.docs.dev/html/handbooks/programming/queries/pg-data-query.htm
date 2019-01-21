@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+   charset="ISO-8859-1" type="text/css">
+<title>Querying Data</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+    writeNavigation("Filtering Documents",
+    "query-build.html","query-documents.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "../pg-query-1.htm","Querying Workflow");
+ -->
+</script>
+<h1>Querying Data</h1>
+<p>You can use the
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DataQuery.html">
+DataQuery</a> class to evaluate if specific data (document, document list, folder, folder list)
+is used in a process definition. To identify
+the usage of data in a process definition, the following elements are queried:</p>
+<ul>
+   <li>Data paths</li>
+   <li>Data mappings</li>
+   <li>Triggers</li>
+   <li>Transition condition</li>
+   <li>Conditional performer mapping</li>
+   <li>Scoped organization mapping used in activities</li>
+   <li>Formal parameter mapping</li>
+</ul>
+<p>Using the data query you can retrieve data by specific criteria. It can be used to find data which is
+used in a process and can also be limited to a specific data type and document type.</p>
+<h2>Retrieving All Data</h2>
+<p>Use the following QueryService.java method to retrieve all data.</p>
+<pre>
+/**
+    * Retrieves all data satisfying the criteria specified in the
+    * provided query.
+    *
+    * @param query The DataQuery.
+    * @return A list of Data objects.
+*/
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readModelData,
+         defaults={ExecutionPermission.Default.ALL})
+   DataQueryResult getAllData(DataQuery query);
+</pre>
+<p>Note that in case of multi-model scenario, referenced data is not retrieved through <tt>getAllData</tt> method.</p>
+
+<h2>Retrieving All Data Used in a Model</h2>
+<p>Use the following DataQuery.java factory method to find the data used in the specified model.</p>
+<pre>
+   /**
+    * Creates a query for finding all data used in the specified model.
+    *
+    * @param modelOid The model to retrieve the data from.
+    * @return The configured query.
+    */
+   public static DataQuery findAllForModel(long modelOid)
+</pre>
+
+<h3>Retrieving All Data Used in a Model and Process</h3>
+<p>To retrieve all data used in a model and process:</p>
+<pre>
+/**
+    * Creates a query for finding all data used in a specified model and process.
+    *
+    * @param modelOid The model to retrieve the data from.
+    * @param processId The process to search used data for.
+    * @return The configured query.
+    */
+   public static DataQuery findUsedInProcess(long modelOid, String processId)
+</pre>
+<h3>Retrieving Data of Specified Type</h3>
+<p>To find data of specified type used in a specified model and process.</p>
+<pre>
+   /**
+    * Creates a query for finding data of a specified type (see {@link DataTypeConstants}) used in a specified model and process.
+    *
+    * @param modelOid The model to retrieve the data from.
+    * @param processId The process to search used data for.
+    * @param dataTypeId The data type from {@link DataTypeConstants}.
+    * @return The configured query.
+    *
+    * @see DataTypeConstants
+    */
+   public static DataQuery findUsedInProcessHavingDataType(long modelOid,
+         String processId, String dataTypeId)
+</pre>
+<h3>Finding Document Data for Specified Document Type</h3>
+<p>To find document data used in a specified process having the specified document type assigned.</p>
+<pre>
+/**
+    * Creates a query for finding document data used in a specified process having the specified {@link DocumentType} assigned.
+    *
+    * @param modelOid The model to retrieve the data from.
+    * @param processId The process to search used data for.
+    * @param documentType The document type to search used data for.
+    * @return The configured query.
+    *
+    * @see DocumentType
+    * @see DocumentTypeUtils
+    */
+   public static DataQuery findUsedInProcessHavingDocumentWithDocType(long modelOid,
+         String processId, DocumentType documentType)
+</pre>
+<h3>Finding Document Data for Non-specific Document Type</h3>
+<p>To find document data used in a specified process having no specific document type assigned.
+The Default document type is returned.</p>
+<pre>
+   /**
+    * Creates a query for finding document data used in a specified process having no specific document type assigned.
+    *
+    * @param modelOid The model to retrieve the data from.
+    * @param processId The process to search used data for.
+    * @return The configured query.
+    */
+   public static DataQuery findUsedInProcessHavingDocumentWithoutDocType(
+         long modelOid, String processId)
+</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+writeFooter();
+-->
+</script>
+<p></p>
+</body>
+</html>

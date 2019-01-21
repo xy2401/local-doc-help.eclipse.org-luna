@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Integrating JFC Applications</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Integrating JSF Applications",
+	"integration/message-appl-preface.html","mg-integration-jsf.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Integrating JFC Applications</h1>
+<p>JFC application contexts or JFC applications in short provide a
+GUI by means of which the user can inter-operate in an execution client
+with workflow data from the model.</p>
+<p>JFC Java applications allow to instantiate any Java class which
+extends JComponent with a public default constructor in an execution
+client and execute it. For this, at modeling time you have to specify</p>
+<ul>
+	<li>the Java class and</li>
+	<li>a public method - the completion method called at runtime
+	after the user interaction is finished.</li>
+</ul>
+<p>The completion method parameters will be exposed as IN <a
+	href="../../concepts/workflow-basics/mg-basics-8.htm#accessPoints">access points</a> named <tt>x
+
+Param n</tt> where x is the first letter of the class name and n is a
+consecutive number, starting with 1. The return value of the completion
+method, if any, will be exposed as an OUT access point <tt>returnValue</tt>.
+Let's consider a class <tt>PersonPanel</tt> used as JFC application with
+completion method <tt>save()</tt> defined the following way:</p>
+<pre>public class PersonPanel extends JPanel<br>{<br>  private Person person;<br>  private JTextField nameField;<br>  public void NamePanel()<br>  {<br>     add(new JTextField());<br>     ...<br>  }
+
+  public void setPerson(Person person)<br>  {<br>     this.person = person;<br>     nameField.setText(person.getName());<br>  }
+
+  public Person save()<br>  {<br>     person.setName(nameField.getText());<br>     return person;<br>  }<br>}</pre>
+
+<p>This will result in the access point <tt>pParam1</tt> for the
+completion method parameter.</p>
+<p>To specify a JFC application in the Process Workbench:</p>
+<ol>
+	<li>Right-click <strong>Int. Applications</strong> in the diagram
+		toolbar palette.</li>
+	<li>Choose <strong>JFC Application</strong>.</li>
+	<li>Click in the diagram to position this application.</li>
+</ol>
+<p class="image"><img src="images/mg-int-create-jfc-appl.png"
+	alt="Creating a JFC Application"> <br>
+<strong>Figure:</strong> Creating a JFC Application</p>
+<p>Open the properties page of the JFC application. 
+In the details panel, choose the correct values for the
+implementation class and the completion method. Note that for
+accomplishing this step it is necessary to have the implementation class
+in the class path of the Process Workbench.<br />
+&nbsp;</p>
+<p class="image"><img src="images/mg-integration-jfc.png"
+	alt="Specifying a JFC Application"> <br>
+<strong>Figure:</strong> Specifying a JFC Application</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

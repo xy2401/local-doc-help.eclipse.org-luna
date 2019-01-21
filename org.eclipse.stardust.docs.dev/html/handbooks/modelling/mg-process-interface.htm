@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Working with Process Interface</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Specifying Activities",
+		"mg-defdesk-3.htm","activities/activities-preface.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1 id="definePI">Working with Process Interface</h1>
+
+<p>Using the process interface, a process definition of the provider model can be referenced in the consumer model.
+For the definition of the process interface, please refer to the chapter <a href="../../glossary.html#procInt">
+Glossary.</a></p>
+<p>This chapter covers the following:</p>
+<ol>
+   <li><a href="#definePI">Defining a Process Interface</a></li>
+   <li><a href="#implementPI">Implementing Process Interface</a></li>
+	<li><a href="#provide">Providing Process Interface</a></li>
+	<li><a href="#refprocess">Working with Referenced Process Definitions</a></li>
+</ol>
+<h2 id="#definePI">Defining a Process Interface</h2>
+<p>To define a process interface:</p>
+<p>Open the property page of the process definition and click on <strong>Process Interface</strong></p>
+
+<p class="image"><img src="images/processinterface.png"
+	alt="Properties"> <br>
+<strong>Figure:</strong> Process Definition Properties - Process Interface</p>
+<p>You can define the process interface using the following options:</p>
+
+<p class="image"><img src="images/pioptions.png"
+	alt="Process Interface"> <br>
+<strong>Figure:</strong> Process Interface</p>
+
+<ul>
+	<li><a href="#implementPI">Implements Process Interface</a></li>
+	<li><a href="#provide">Provides Process Interface</a></li>
+	<li>No Interface Defined / Implemented - By default this option is selected. It means
+	no process interface is defined for the current process definition.</li>
+</ul>
+
+<p>So there are three valid states concerning declared and implemented process interfaces:</p>
+<ul>
+	<li>The process definition neither implements nor declares a process interface.</li>
+	<li>The process definition provides process interface and it is by default implementer of declared interface.</li>
+	<li>The process definition implements a process interface.</li>
+</ul>
+
+<h2 id="implementPI">Implementing Process Interface</h2>
+<p>A model that wants to provide an alternate implementation of its process definition  
+should opt for Implements Process Interface option. It provides an implementation for 
+a process interface defined in a provider model file.</p>
+<p>When you select the Implement Process Interface option, the processes available for implementation
+are listed.</p>
+
+<p class="image"><img src="images/implementpi.png"
+	alt="Implements Process Interface"> <br>
+<strong>Figure:</strong> Implements Process Interface</p>
+
+<p>When you select the process to be implemented, its exposed parameters are 
+listed under Process Interface.</p>
+<p class="image"><img src="images/expostedparam.png"
+	alt="Exposed Parameters"> <br>
+<strong>Figure:</strong> Exposed Parameters</p>
+<p>Select the parameter. Only Data attribute is editable.</p>
+<p class="image"><img src="images/datattribute.png"
+	alt="Parameter - Data Attribute"> <br>
+<strong>Figure:</strong> Parameter - Data Attribute</p>
+
+<p>You can define more than one process interface implementation per process model.</p>
+
+<p>If the defined Implements relationship is no longer valid due to changed parameter types,
+an inconsistency warning is displayed.</p>
+<p>A warning is displayed in the <a href="models/model-validation.html#problemsView">Problems View</a> in the following cases:</p>
+<ul>
+   <li>A process interface is not accessible and a process is marked as
+   implementer of a process interface, but no process is selected. The warning indicates 
+   that the process does not refer to a valid process interface.</li>
+   <li>An additional parameter has been added to the process interface. The warning indicates
+   that the implementing process does not provide parameter as defined in the process interface.</li>
+   <li>A parameter has been removed from the process interface or renamed within the 
+   process interface context. The warning indicates that implementing process provides a parameter
+   that is not defined in the process interface.</li> 
+   <li>No local data has been selected for a defined interface parameter within the implementing process.
+   The warning indicates that the implementing process provides no mapping for the parameter.</li>
+   <li>The data type of the local data assigned to a parameter declared in the process interface is 
+   incompatible to the declared type.</li>
+</ul>
+<p class="note"><strong>Note</strong><br>
+When implementing a process interface in a different model, make sure to import data that is used 
+in the process interface into the new model <strong>per reference</strong>. Creating data with the same Id is not 
+sufficient and data values passed by the process interface will not be passed into the 
+implementing process. Only data referenced from the model defining the process interface 
+can be accessed correctly.
+No modeling validation is displayed to warn of this behavior.</p>
+<h3 id="patt">Using Process Attachments over Process Interface Implementations</h3>
+<p>Process attachments do not work in a scenario where a subprocess is invoked that 
+is an implementation of a process interface and was defined in a different model fragment.
+To avoid this problem, make sure that the model which implements the interface imports and
+overwrites his own process attachment data with the one of the provider model.</p>
+
+<h2 id="provide">Providing Process Interface</h2>
+<p>This property defines the process interface.
+A model that wants to expose its process to other consumer model should choose this option.
+When a process interface property of a process definition is set to Provides Process Interface, it can be referenced from
+the consumer model.</p>
+
+<p> Select the Provides Process Interface property and click on Add.</p>
+<p class="image"><img src="images/provideinterface.png"
+	alt="Provides Process Interface"> <br>
+<strong>Figure:</strong> Provides Process Interface</p>
+<p>Specify following parameters to be exposed as IN/OUT values for referring model.</p>
+<ul>
+	<li><strong>Name</strong> - Name of the formal parameter</li> 
+	<li><strong>ID</strong> - Unique ID</li> 
+	<li><strong>Direction</strong> - Parameters for the process interface invocation. The list allows to select 
+global data of the model to be selected as: 
+<ol>
+	<li><tt>IN</tt> - for read access</li> 
+	<li><tt>OUT</tt> - for write access</li> 
+	<li><tt>INOUT</tt> - for read and write access</li>
+</ol></li>
+	<li><strong>Category</strong> - Select the type of the data from the drop-down list. The 
+   following types are supported:
+   <ul>
+      <li>Primitive Data</li>
+      <li>Structured Type</li>
+      <li>Document</li>
+      <li>Document List</li>
+   </ul>
+   <p class="image"><img src="images/formal-params-data-mapping.png"></p></li>
+	<li><strong>Data Type</strong> - specify the defined data type according to the selected category.
+   Structured Types, Document and Document List types provide all types specified for
+   this category. Primitive types provide all supported primitive types, as listed in
+   chapter 
+   <a href="data-integration/java-style-data/primitive-data.html">Primitive Data</a>.
+   <p class="note"><strong>Note</strong><br>
+   Primitive Enumeration types are not supported as formal parameters in case of
+   SOAP and REST external process invocation. Use a structured data type embedding
+   the required Enumeration type instead.</p>
+   <p class="image"><img src="images/formal-params-prim-data.png"></p></li> 
+   <li><strong>Data</strong> - specify the appropriate data. All data in the model
+   of the data type specified in the <strong>Data Type</strong> section is provided in the
+   drop-down list.</li>
+</ul>
+
+<p class="image"><img src="images/piparam.png"
+	alt="Process Interface Parameters"> <br>
+<strong>Figure:</strong> Process Interface Parameters</p>
+
+<h3>Process Interface Invocation</h3>
+<p>When the user defines a process interface, it is possible to specify how the interface is invokable:</p>
+
+<ul>
+	<li>remotely via Web service endpoint</li>
+	<li>remotely via REST endpoint</li>
+	<li>only locally</li>
+</ul>
+<p>For more information on REST and SOAP endpoints, please refer to the chapter 
+<a href="../programming/pg-process-interface-invocation.htm">
+Process Interface - External Invocation Mechanism</a> of the 
+<a href="../programming/pg-preface.htm">Programming Guide</a>.</p>
+<p>To provide the remote invocation:</p>
+<ol>
+	<li>Once you select the <strong>Provides Process Interface</strong> option from the properties of the
+	process definition, select the <strong>Invocation</strong> tab</li>
+	<li>Select the Invocation Type as <strong>SOAP</strong> or <strong>REST</strong></li>
+	<li>If you select <strong>SOAP</strong>, click <strong>Generate WSDL</strong>
+	<p class="image"><img src="images/genwsdl.png"
+	alt="Process Interface Parameters"> <br>
+   <strong>Figure:</strong> Invocation Type - WSDL</p>
+	<p class="image"><img src="images/soap.png"
+	alt="Process Interface Parameters"> <br>
+   <strong>Figure:</strong> Generated WSDL</p>
+	<p>For more information, please refer to the <a href="mg-process-interface.htm#soap">WSDL/XSD mapping</a> section.</p></li>
+	<li>If you select <strong>REST</strong>, click <strong>Apply</strong> and <strong>OK</strong>. </li>
+</ol>
+
+<h3 id="soap">WSDL/XSD Mapping</h3>
+<p>When Web service endpoint (SOAP) is selected a read only text area shows the WSDL code corresponding to the defined parameters.
+For the selected Process Interface a WSDL for WS invocation is created in document literal style (request/response message pair).
+The specified input and output data are mapped to XSD structures according to the following rules:</p>
+<ul>
+	<li>Primitive data are mapped to their XSD equivalents</li>
+	<li>Structured data according to the established XSD</li>
+</ul>
+
+<p>In case if at least one of the formal parameters does not satisfy the requirements for the
+external invocation, a validation error is displayed in the Problems view. Further, the corresponding WSDL 
+code cannot be generated as the Generate WSDL button is disabled.</p>
+
+<h2 id="refprocess">Working with Referenced Process Definitions</h2>
+<p>The referenced process definition becomes the subprocess in the referencing model. 
+For more information, please refer <a href="mg-registry.html#fileConn">
+External Model Fragments</a> section of the <a href="mg-registry.html">External Model Resources</a> from the
+<a href="../../toc.html"> Developers Handbook</a>.  
+To define the subprocess 
+implementation for referenced process definition:</p>
+<ol>
+  	<li>Open the <strong>Property</strong> page of the subprocess activity in the referencing process definition.</li>
+	<li>Click on <Strong>Subprocess</strong>
+	<p class="image"><img src="images/ref-process-properties.png" 
+		alt="Properties of Referenced Process Definition">
+		<br>
+	<strong>Figure:</strong> Referenced Process - Subprocess</p></li>
+	<li>Select the Execution Type and subprocess implementation <br>
+	<p class="image"><img src="images/subprocess.png">
+	<br>
+	<strong>Figure:</strong> Subprocess Implementation</p>
+	<p>If the selected subprocess is a referenced process from a provider model then 
+	the following execution types are available:</p>
+	<ul>
+		<li>Synchronous / Separate Data</li>  
+		<li>Asynchronous / Separate Data</li>
+		<li>Synchronous / Shared Data</li>
+	</ul>
+	<p>By default, Synchronous / Separate Data is selected.</p>
+	<p>Note that in these cases invocation at runtime is always done via the process interface.<br>
+	If the selected subprocess is a process from the same model 
+	then the subprocess will be invoked directly at runtime as no process 
+	interface exists. For more information on execution types of such
+	 subprocess, please refer to chapter 
+	<a href="activities/mg-subprocesses.html">Configuring Subprocess Activities
+	</a>.</p></li>
+	 	
+	<li>Note that if the <strong>Displays Imported Model Elements as Groups</strong> 
+	check box is selected, the subprocess list displays references for the 
+	referenced process definitions.
+	Selecting the check box also groups local and referenced elements.
+	<p class="image"><img src="images/displayimportedelements.png">
+	<br>
+	<strong>Figure:</strong> Display Imported Model Element as Groups</p></li>
+   <li><p>To create data mappings related to the process interface parameters, you can use processInterface context.
+	Process Interface context in data mapping will only be available in the process which has references to other model.
+	For example, the referenced subprocess of the consumer model will have the process interface context.</p>
+	 <p class="image"><img src="images/processinterface-context.png">
+	<br>
+	<strong>Figure:</strong> Process Interface Context</p></li>
+	<li><p>To define the process interface context: </p>
+	<ul>
+	<li>Select the process interface context from the data mapping and click <strong>Add</strong>.
+	<p class="image"><img src="images/addprocesscontext.png">
+	<br>
+	<strong>Figure:</strong> Add Process Interface Context</p></li>
+	<li>Set the In and Out data mappings for the process interface context.
+	<p class="image"><img src="images/interfaceparam.png">
+	<br>
+	<strong>Figure:</strong> Process Interface Context Parameters</p></li>
+	</ul>
+</ol>
+
+<h3 id="dynamic">Dynamic Binding of Subprocess Implementation</h3>
+<p>Dynamic binding enables you to choose the implementation model at runtime. To enable the dynamic binding,
+you can mark the subprocess activity that invokes process interface, to be resolved at runtime.</p>
+<p>Open the properties of the referenced process definition and click on Runtime Binding.</p>
+<p class="image"><img src="images/runtime-binding.png">
+	<br>
+	<strong>Figure:</strong> Subprocess Activity</p>
+<p>Select the option <strong>Subprocess is resolved at runtime</strong>.</p>
+<p>In the Data drop-down list, it is mandatory to provide the target model, implementation 
+model ID or a qualified implementation process Id with type String. 
+The implementation model ID is used to invoke the process definition that implements the 
+selected process interface.
+Using a qualified implementation process Id allows to have multiple implementing processes
+in the same model and to select the intended process by the qualified process Id.</p>
+<p class="image"><img src="images/rumtimebinding-data.png">
+	<br>
+	<strong>Figure:</strong> Subprocess Activity - Runtime Binding</p>
+<p>Note that the ID of the implementing process definition is fetched from the declared <a href="mg-process-interface.htm#implementPI">implements</a> relationship
+to the process interface.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

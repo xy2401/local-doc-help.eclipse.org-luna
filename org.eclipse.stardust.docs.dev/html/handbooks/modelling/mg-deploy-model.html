@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Deploying a Workflow Model</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Debugging Process Definitions",
+	"mg-registry.html","mg-defdesk-18.htm",
+	"../handbooks.htm","Developer Handbook",
+	"mg-preface.htm","Modeling Guide",
+	"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+
+<h1>Deploying a Workflow Model</h1>
+<p>Model deployment makes the process definitions available to the
+runtime environment, so that all processes can be executed according to
+the definitions of this model. To support model version deployment, the
+Stardust Process Workbench provides a Deploy Model option, which</p>
+<ul>
+    <li>executes a consistency check and informs the deployer which
+    inconsistencies have been found in the model,</li>
+    <li>determines which models have already been deployed to this
+    runtime environment as well as whether (or how) the current version
+    can be deployed to this environment and which</li>
+    <li>writes the model definition to the audit trail database.</li>
+</ul>
+<p>At the time you are deploying a model, all Stardust daemons
+must not be running. This will apply the first time to deployments
+subsequent to the first model version.</p>
+<ul>
+	<li><a href="#modeler">Deploying a Model in the Process Modeler</a></li>
+	<li><a href="#login">Login Dialog</a></li>
+	<li><a href="#version">Version Deployment</a></li>
+		<li><a href="#multideploy">Deploying Multiple Models from One Audit Trail</a></li>
+	<li><a href="#consistency">Consistency Checks</a></li>
+</ul>
+<h2 id="modeler">Deploying a Model in the Process Modeler</h2>
+<p>To deploy a model version, open this model in the Stardust
+Process Workbench and proceed as follows:</p>
+<ul>
+    <li>Right-click the model and select <strong>Export...</strong></li>
+    <li>In the <strong>Export</strong> dialog choose <strong>Process Manager
+    Wizards &gt; Deploy Process Model</strong>.</li>
+    <li>Select <strong>Next</strong>.</li>
+    <li>In the <strong>Deploy Process Model Wizard</strong> 
+    select the model(s) to deploy.</li>
+</ul>
+<p class="image"><a href="images/deploy-model_orgSize.png"
+    target="_blank"> <img src="images/deploy-model.png"
+    alt="Deploying a Process Model"></a> <br>
+<strong>Figure:</strong> Deploying a Process Model</p>
+<div class="ipp"><p>In case you prefer to use your custom environment to deploy your
+model(s) to, expand the <strong>Advanced</strong> section and browse to
+your <tt>CARNOT_HOME</tt> and <tt>CARNOT_WORK</tt> folders. Please refer
+to the section <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm#envVariables">
+Environment Variables</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-main-2.htm">
+Installation</a> chapter for more information on these variables.</p>
+<p class="image"><img src="images/deploy-model-advanced.png"
+    alt="Deploying with Custom Environment Variables"> <br>
+<strong>Figure:</strong> Deploying with Custom Environment Variables</p></div>
+<h3>Quick Deployment Option</h3>
+<p>Another way to quickly start a model deployment with the default
+environment settings is to right-click
+the model in the Outline view and select <strong>Deploy Model</strong>.</p>
+<p class="image"><img src="images/mg-deploy-quickly.png"
+    alt="Deploying a Process Model"><br>
+<strong>Figure:</strong> Deploy Option in the Outline View</p>
+<p>To skip the following dialogs like the login dialog and the version
+dialog, you can set appropriate preferences in the <strong>Process Manager Preferences</strong>,
+like the option to always overwrite model versions and providing the credentials for
+the deployment authentication. Please refer to the section
+<a href="mg-preferences.html#deployment">Deployment</a> of the chapter
+<a href="mg-preferences.html#">Setting Process Manager Preferences</a>
+for detailed information on available deployment preferences.</p>
+<h4>Adding a deployment toolbar button</h4>
+<p>To be able to quickly start a model deployment from the perspective
+toolbar, Stardust provides a deployment button, which can be added
+to the currently open perspective in the following way:</p>
+<ol>
+	<li>In the main menu, select <strong>Window &gt; Customize Perspective</strong>.</li>
+	<li>In the <strong>Customize Perspective</strong>, select the <strong>Commands</strong>
+	tab.</li>
+	<li>In the <strong>Available command groups</strong> section, select
+	<strong>Stardust</strong>.</li>
+	<li><strong>OK</strong> the dialog.</li>
+</ol>
+<p class="image"><img src="images/mg-add-deploy-button.png"
+    alt="Deploy Icon"><br>
+<strong>Figure:</strong> Add an Icon for Model Deployment to the Toolbar.</p>
+<p>Now a button to start a model deployment is available in the perspective
+toolbar:</p>
+<p class="image"><img src="images/mg-add-deploy-icon.png"
+    alt="Deploy Option"><br>
+<strong>Figure:</strong> Model Deployment Option in the Toolbar.</p>
+<p>Note that the deploy option only starts in case a model editor is currently open.
+The deployment then starts with the currently open model.</p>
+<h4 id="pre">PredefinedModel in Deployment Dialog</h4>
+<p>Also, note that when you are deploying a model, the <strong>Deploy Model</strong> 
+dialog also displays the PredefinedModel. This is the technical model which gets deployed automatically
+at the time of deployment. It gets deployed at the time of first deployment of any other model but 
+it is visible in the Deployment dialog if at least one model version is already deployed. 
+For more information, please refer to the section 
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/case-concept.html#tech">Predefined Model
+</a> of the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/executing-workflow/case-concept.html">
+Case - Grouping Processes</a> chapter of 
+the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.dev/html/concepts/key-concepts.html">Concepts Handbook.</a>
+</p>
+<p class="image"><img src="images/mg-deploy-predefined.png"
+    alt="PredefinedModel"><br>
+<strong>Figure:</strong> Model Deployment - PredefinedModel</p>
+
+
+
+<h2 id="login">Login Dialog</h2>
+<p>In case no default user and password for the deployment login
+are set in the <strong>Process Manager Preferences</strong>,
+a login dialog opens with entry fields for the required credentials.
+Per default, the administrator
+account motu (username: <tt>motu</tt>, password: <tt>motu</tt>)
+is required.
+Please refer to the section
+<a href="mg-preferences.html#deployment">Deployment</a> of the chapter
+<a href="mg-preferences.html#">Setting Process Manager Preferences</a>
+for detailed information on the available deployment preferences.</p>
+
+<h2 id="version">Version Deployment</h2>
+
+<p>At the time of deployment Stardust performs a check whether the 
+model to be deployed is a version
+of the existing model(s).</p>
+<p>A model version dialog opens, where you can choose to 
+overwrite a model version or to create a new model version along
+with other optional settings like validity date or deployment
+comment.</p>
+<p class="image"><a href="images/ag-deployment-8_orgSize.png"
+    target="_blank"> <img src="images/ag-deployment-8.png" alt=""></a> <br>
+<strong>Figure:</strong> Version Deployment to a Runtime Environment
+with Existing Active Model</p>
+<p>You have the option to skip this dialog and use the default 
+option to always deploy a new model version, by setting as preference
+in your <strong>Process Manager Preferences</strong>. Please
+refer to the section
+<a href="mg-preferences.html#deployment">Deployment</a> of the chapter
+<a href="mg-preferences.html#">Setting Process Manager Preferences</a>
+for detailed information on how to set this preference.</p>
+<p>Since the check is based on the model ID, it is your
+responsibility to ensure that you deploy a successor version of the
+model already deployed and you do not deploy an entirely different model
+with the same model ID. The ID and the OID of the model version are the
+criteria, which Stardust analyzes to determine whether you should
+perform version deployment or overwriting.</p>
+<!-- <p>Please note that model versions with IDs differing from the ones formerly deployed
+cannot be deployed to the runtime environment. An error message is
+issued if the deployment attempts to do so.</p> -->
+<p>When deploying a version to a runtime environment with already
+deployed versions, Stardust automatically chooses between two possible
+operations: version deployment or overwriting.</p>
+<ul>
+    <li>Version deployment is chosen if the model to be deployed
+    does not have an OID.</li>
+    <li>Version overwriting is selected if the model to be deployed
+    already has an OID received by a previous deployment operation.</li>
+    <li>The version number helps administrators to keep track of
+    the model and has only visual semantics.</li>
+</ul>
+<p>Regardless of the selection performed automatically by the
+deployment dialog, you have the option to override the selection
+and manually choose which operation to perform.</p>
+
+<p class="ind"><strong>Note:</strong>
+In production mode, overwriting should be performed with extreme
+caution. If the model to be overwritten contains elements that were
+deleted in the model to be deployed and those model elements have
+corresponding runtime audit trail objects, overwriting can introduce
+serious inconsistencies in the audit trail database.</p>
+<p>Please refer to the chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploy-model.html">
+Deploying a Workflow Model</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html">
+Deployment Guide</a>, which discusses model version deployment
+in detail.</p>
+<p class="image"> <img src="images/ag-deployment-9.png" alt=""> <br>
+<strong>Figure:</strong> Overwriting a Model</p>
+<p>In the figure above, the version 3.0 is being redeployed to the
+audit trail database. Stardust compares the version ID and OID which
+results in enabling the option <strong>Overwrite</strong> instead of
+version deployment.</p>
+
+<h2 id="multideploy">Deploying Multiple Models from One Audit Trail</h2>
+<p>Stardust supports deployment of multiple models
+at a time from one audit trail database.
+You can deploy models either one by one in order or in parallel. This is possible
+only when the provider and consumer relationship is established between two models.
+
+It can be achieved through file connection. For more information on file connection, 
+please refer to the section <a href="mg-registry.html#fileConn">Referencing Model Elements</a> 
+of the <a href="mg-registry.html">External Model Resources</a> chapter. </p>
+<h3>Deploying Multiple Models One by One</h3>
+<p>You should deploy the models one by one in the following order always. If 
+the sequence is not followed, the references are not resolved and the models don't
+get deployed. The deployment sequence is as follows:</p>
+<ol>
+	<li>Deploy Provider Models</li>
+	<li>Deploy Consumer Models</li>
+</ol>
+<p>In case of multiple provider and consumer models, first, all the provider models
+should be deployed and then the deployment of consumer models should take place.
+</p>
+
+
+<p>To deploy multiple models one by one:</p>
+<p>Right-click the provider model and select <strong>Export</strong></p>
+
+<p class="image"><img src="images/provider-model.png"> <br>
+<strong>Figure:</strong> Deploy Provider Model</p>
+<p>Ensure that provider model is selected in the Deploy Process Model Wizard 
+and click Finish. The model gets deployed.</p>
+<p class="image"><img src="images/provider-model-version.png"> <br>
+<strong>Figure:</strong> Deployed Provider Model</p>
+
+<p>Right-click the consumer model and select <strong>Export</strong></p>
+<p class="image"><img src="images/consumer-model.png"> <br>
+<strong>Figure:</strong> Deploy Consumer Model</p>
+<p>Ensure that consumer model is selected in the Deploy Process Model Wizard 
+and click Finish. The model gets deployed.</p>
+
+<p class="image"><img src="images/consumer-model-version.png"> <br>
+<strong>Figure:</strong> Deployed Consumer Model</p>
+
+<p>When deploying a process model from modeler that has a reference to already deployed another model, the 
+Model Version Deployment warning is displayed. In that case, first you need to deploy the Provider model. 
+</p>
+
+
+<p class="image"><img src="images/version-deploy.png"> <br>
+<strong>Figure:</strong> Warning - Model Version Deployment</p>
+
+<h3>Deploying Multiple Models Parallel</h3> 
+<p>Parallel deployment of multiple models provides the ability to deploy
+a set of provider and consumer models in one click. A set of multiple models ready for deployment
+is called a deployment unit. Note that you cannot deploy more than one version of the same model in one deployment unit.
+To deploy multiple models in parallel:</p>
+
+<p>Select all the models to be deployed from the Package Explorer.</p>
+
+<p class="image"><img src="images/deploy-multiple-model.png" alt=""><br>
+<strong>Figure:</strong> Select Models</p>
+
+<p>Right-click selected models and select <strong>Export</strong></p>
+<p>Ensure that provider and consumer models are selected in the Deploy Process Model 
+Wizard and click Finish. All the selected models get deployed.</p>
+<p class="image"><img src="images/providerconsumer-model-version.png"> <br>
+<strong>Figure:</strong> Deployed Provider and Consumer Model</p>
+
+
+<h2 id="consistency">Consistency Checks</h2>
+
+<p>If the model has consistency deficiencies, the automatic
+consistency check, which otherwise remains invisible to you, will issue
+a list of inconsistencies found. There are two categories of
+inconsistencies:</p>
+<ul>
+    <li>Fatal inconsistencies may cause crashes of the Stardust
+    runtime environment.</li>
+    <li>Minor inconsistencies may cause unexpected behavior.</li>
+</ul>
+
+<p>Consistency checks are implemented for:</p>
+
+<ul>
+	<li><a href="#concheck1">Consistency Checks for Scoped Participants</a></li>
+	<li><a href="#concheck2">Consistency Checks for Dependent Models Deployed in One Audit Trail Partition</a></li>
+</ul>
+
+<h3 id="concheck1">Consistency Checks for Scoped Participants</h3>
+<p>The following rules apply to version deployment consistency checks
+as well as for overwrite deployment consistency checks:</p>
+<ul>
+	<li><a href="#scopedOrg">Unscoped organization followed by scoped organization</a></li>
+	<li><a href="#dataPathChange">Changed data or data path for department</a></li>
+	<li><a href="#validData">Invalid data types for departments</a></li>
+	<li><a href="#structure">Changes in the organizational structure</a></li>
+	<li><a href="#dupId">Duplicate Participant ID</a></li>
+	<li><a href="#adminRel">Administrator role has relationship</a></li>
+	<li><a href="#superorg">Multiple superorganizations</a></li>
+</ul>
+
+<h4 id="scopedOrg">Unscoped Organization followed by Scoped Organization</h4>
+<p>If in any model of the audit trail a certain organization exists and is unscoped,
+it is not possible to deploy a successor model version that contains this organization
+as a scoped organization. A consistency error occurs, notifying that the organization
+is scoped, but in the audit trail it is unscoped. The deployment fails.</p>
+<p class="image"><img src="images/deploy-valid-scoped-org.png"><br>
+<strong>Figure:</strong> Consistency Error for Scoped Organization former Unscoped</p>
+<p>Likewise it is also not supported to change from a scoped to an unscoped 
+organization in model version deployment.</p>
+<h4 id="dataPathChange">Changed Data or Data Path for Department</h4>
+<p>If in any model of the audit trail a certain organization exists and is scoped,
+it is not allowed to deploy a successor model version that contains this organization
+as a scoped organization, but uses a different data or data path to retrieve the 
+scope identified. A consistency error occurs, notifying that the ID of the
+data or the data path is different from the data ID of the deployed 
+scoped organization in the audit trail. The deployment fails.</p>
+<p class="image"><img src="images/deploy-valid-changed-data.png"><br>
+<strong>Figure:</strong> Consistency Error for Changed Data.</p>
+<h4 id="validData">Invalid Data Types for Departments</h4>
+<p>Only primitive or structured data with type <tt>java.lang.String</tt> are 
+allowed. In case other types are used a consistency error occurs, notifying
+that the data type used to retrieve the department for the scoped organization
+is not valid. The deployment fails.</p>
+<p class="image"><img src="images/deploy-valid-data.png"><br>
+<strong>Figure:</strong> Consistency Error for Unsupported Data Type.</p>
+
+<h4 id="structure">Changes in the organizational structure</h4>
+<p>It is not supported to deploy a succeeding version with changes in
+the department association for existing roles or organizations. 
+That means that for any scoped organization and its entire subtree 
+(all roles and organizations directly or indirectly connected to 
+this organization via "Part Of" or "Works For" or "Manager Of") it is not allowed to:</p>
+<ul>
+	<li>remove any "Part Of" or "Works For" association for any pair of organizations.</li>
+	<li>change any node of any "Part Of" or "Works For" association.</li>
+	<li>create new associations to other organizations or roles previously not
+	belonging to the subtree.</li>
+</ul>
+<p>All operations that will change the number or order of declared departments for
+any of the participants are not supported.</p>
+
+<!--<h5>Supported organizational changes</h5>-->
+<p>However, the following changes are allowed:</p>
+<ul>
+	<li>adding a new role, which previously was not contained in the predecessor
+	model version, as a "Works For" or "Manager Of" role.</li>
+	<li>completely removing a role from the model that previously was associated 
+	with a scoped organization via "Works For" or "Manager of".</li>
+	<li>adding a new organization, which is not contained in the predecessor model
+	version, as a "Part Of" of an existing scoped organization.
+	Please note that if the added organization has suborganizations,
+	"Works For" roles or "Manager Of" roles, these have to follow the same rules
+	as for adding roles and organizations. 
+	This means that a new organizational subtree may only be added if all its parts
+	 previously were not part of the model.</li>
+	<li>delete a complete tree of scoped participants, thus
+		the root node and its entire subtree, like suborganizations and
+		"Works For" roles or "Manager Of" roles. It is not allowed to remove only parts
+		of a scoped organization.</li>
+</ul>
+<p>In case changes in the organizational structures, which are not allowed to be
+deployed in a succeeding model version, have been performed, a consistency error 
+occurs, notifying that the organization tree
+is different from the tree in the model that was deployed earlier. 
+The deployment fails.</p>
+<p class="image"><img src="images/deploy-valid-tree.png"><br>
+<strong>Figure:</strong> Consistency Error for Changed Participant Tree.</p>
+
+<h4 id="dupId">Duplicate Participant ID</h4>
+<p>IDs for participants have to be unique within all model participants 
+like roles, organizations
+or conditional performer. In case you use the same ID for more than one
+participant, the deployment fails with the following error:</p>
+<p class="image"><img src="images/deploy-valid-id.png"><br>
+<strong>Figure:</strong> Consistency Error for Duplicate Participant ID.</p>
+<h4 id="adminRel">Administrator role has relationsship</h4>
+<p>The <strong>Administrator</strong> role is not allowed to have 
+relationships to any organization. In case such a connection exist
+in the model, the deployment fails with the following consistency
+error:</p>
+<p class="image"><img src="images/deploy-valid-admin.png"><br>
+<strong>Figure:</strong> Consistency Error for unsupported Relationship of Administrator.</p>
+<h4 id="superorg">Multiple Superorganizations</h4>
+<p>It is not supported that a model participant has
+multiple superorganizations. Only one or zero relationships to other
+model participants are allowed, otherwise a consistency error occurs
+during model deployment and the deployment fails.</p>
+<p class="image"><img src="images/deploy-valid-mult-orgs.png"><br>
+<strong>Figure:</strong> Consistency Error for Multiple Superorganizations.</p>
+
+<h3 id="concheck2">Consistency Checks for Dependent Models Deployed in One Audit Trail Partition</h3>
+
+<p>The following rules apply whenever you want to deploy multiple models dependent on each other by any
+relationship:</p>
+<ul>
+	<li><a href="#check1">Deploying a referencing model that has references to not yet deployed referenced model</a></li>
+	<li><a href="#check2">Deploying a model that has more than one implementing process definitions</a></li>
+	<li><a href="#check3">Overwriting a model with a version  that has an incompatible interface</a></li>
+	<li><a href="#check4">Overwrite of a model which has default implementation for a process interface with a model without process interface</a></li>
+	<li><a href="#check5">Deployment of models having references to models that are not part of same deployment unit</a></li>
+	<li><a href="#check6">Deploying a model set (deployment unit) that has circular references</a></li>
+	<li><a href="#check7">Deploying a provider model file having future validFrom timestamp </a></li>
+	<li><a href="#check8">Deploying a deployment unit or overwriting a model that would violate transitive consistency</a></li>
+	<li><a href="#check9">Deploying a model that has participants with identical IDs</a></li>
+	<li><a href="#check10">Deploying a model that has broken references</a></li>
+	<li><a href="#check11">Deploying a model that has data with identical IDs</a></li>
+</ul>
+<h4 id="check1">Deploying a referencing model that has references to not yet deployed referenced model</h4>
+<p>If any referencing model is deployed without deploying its referenced model in that case 
+the references are not resolved. This results in deployment error preventing deployment.</p>
+
+
+<h4 id="check2">Deploying a model that has more than one implementing process definitions for a process interface</h4>
+
+<p>Any model cannot have two process definitions that are implementing same process interface of a referenced model.
+Whenever such a relationship is established, it causes deployment error.
+For example, process definition PD1 and PD2 are trying to implement the process interface of model M1.
+In this case, the deployment error is displayed
+because either PD1 or PD2 can implement the process interface of Model M1.</p>
+
+<h4 id="check3">Overwriting a model with a version  that has an incompatible interface</h4>
+<p>If any changes are done to the process interface and then the referenced model is overwritten, in
+this case the referencing model cannot get the changed references. This results in deployment error.</p>
+
+<h4 id="check4">Overwrite of a model which has default implementation for a process interface</h4>
+<p>Whenever an overwrite takes place at the deployment time, the versions of the model to be overwritten 
+should be taken into consideration. If it has default implementation configured for a process interface and it
+gets overwritten with a version without process interface then the references that are not resolved causes deployment
+error.</p>
+
+<h4 id="check5">Deployment of models having references to models that are not part of same deployment unit</h4>
+<p>If the model set contains the models having references to models that are not part of the same model set and are not being deployed,
+in that the deployment error occurs. The models that are referenced should be deployed first. </p>
+
+<h4 id="check6">Deploying a model set (deployment unit) that has circular references</h4>
+<p>Circular references are not allowed in Stardust. If the referenced model
+is again establishing relationship with the referencing model then the deployment error is displayed.
+Similarly, the model which references to the referenced model cannot become the referenced model again.
+For more information on Circular References please refer to the Key Concepts chapter.</p>
+
+<h4 id="check7">Deploying a provider model file having future validFrom timestamp</h4>
+ <p>The validFrom timestamp of all the referenced provider models should always be before or equal to the
+ consumer model to be deployed.
+ For example, the validFrom date of the Provider model is 20/02/2020 and the validFrom date of the
+ consumer model is 11/02/2015. The references to the provider model won't get resolved because in 2020 the 
+ Provider model will be available for use.</p>
+ <h4 id="check8">Deploying a deployment unit or overwriting a model that would violate transitive consistency</h4>
+ <p>If model A is a consumer of models B and C, and model B is itself a consumer of model C, any deployment 
+ of A and B must be linked to identical deployments of C. Note that relinking will happen only when you will
+ deploy consumer models. So, when you deploy version one of Model C, you need to deploy version one of model A and B
+ to see the references.
+ </p>
+ <h4 id="check9">Deploying a model that has participants with identical IDs</h4>
+ <p>IDs of each participant in the provider and consumer model 
+ should be unique. If the provider and consumer model contains participants with identical IDs then the validation error 
+ is displayed.</p>
+<h4 id="check10">Deploying a model that has broken references</h4>
+<p>The model elements that can be referenced from the provider model should not be deleted. If a deleted model element
+is already referenced in the consumer model, then at the time of deployment it results into broken references.</p>
+<h4 id="check11">Deploying a model that has data with identical IDs</h4>
+<p>IDs of the data defined in the provider and consumer model should be unique. If the provider and consumer 
+model contains data with identical IDs then the validation error is displayed.</p>
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

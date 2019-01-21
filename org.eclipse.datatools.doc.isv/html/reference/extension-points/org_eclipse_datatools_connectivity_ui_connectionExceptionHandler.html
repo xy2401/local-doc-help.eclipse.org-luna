@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Connection Exception Handler</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Connection Exception Handler</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.connectivity.ui.connectionExceptionHandler<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>Provides a ConnectionExceptionHandler.  
+A ConnectionExceptionHandler must implement org.eclipse.datatools.connectivity.ui.status.IConnectionExceptionHandler.  It is used to provide a useful message when an error has occurred.
+When a connection error occurs, the SQLException generated may not always contain useful information.  A ConnectionExceptionHandler can take the exception and context and use it to generate a new SQLException that contains a better message.
+Since SQL codes vary by database vendor, implementers designate a class to generate the enhanced SQLException based on the vendor.
+This SQLException can be passed wrapped in Status object for proper handling.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.handler">handler</a>+)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.handler">handler</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST handler</p>
+<p class="code SchemaDtdAttlist">vendor&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">class&nbsp;&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>vendor</b> - The database platform vendor, for example, as defined in the base properties of a <code>org.eclipse.datatools.connectivity.IConnectionProfile</code></li>
+<li><b>class</b> - Fully qualified name of class that implements the org.eclipse.datatools.connectivity.ui.status.IConnectionExceptionHandler interface</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>[Enter extension point usage example here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>[Enter API information here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+Copyright (c) 2010 IBM Corporation and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+Contributors:
+IBM Corporation - initial API and implementation
+
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Adding Notes to Process Instances</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Retrieving and Using Permission States",
+        "pg-embed-next-act.html","pg-embed-permission.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","procs-preface.html","Managing Processes and Activities");
+ -->
+</script>
+<h1>Adding Notes to Process Instances</h1>
+<h2>Notes Attributes</h2>
+<p>The class 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ProcessInstanceAttributes.html">
+org.eclipse.stardust.engine.api.runtime.dto.ProcessInstanceAttributes</a> contains
+notes attributes of the process instance. The method</p>
+<pre>ProcessInstanceAttributes org.eclipse.stardust.engine.api.runtime.ProcessInstance.getAttributes()</pre>
+<p>returns an instance of <tt>ProcessInstanceAttributes</tt>.</p>
+<p>Call this method to get the notes attributes for your process instance, e.g.:</p>
+<pre>ProcessInstanceAttribites attr = pi.getAttributes();</pre>
+<p>The method</p>
+<pre>long ProcessInstanceAttributes.getProcessInstanceOid()</pre>
+<p>returns the OID of the associated process instance.</p>
+<h3>Adding Notes</h3>
+<p>To add a new note to your process instance, with the context of this note being
+the process instance itself, use</p>
+<pre>Note ProcessInstanceAttributes.addNote(String)</pre>
+<p>Note that this note is not persisted! It is only added to the attribute, but
+not yet saved in the database. Section <a href="#persist">Persisting the Notes</a>
+describes how the notes added to the attribute are saved to
+the database.</p>
+<p>Please refer to the JavaDoc description of
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/Note.html">Note</a>
+for detailed information on this type.</p>
+<h3>Adding Notes with Context Kind</h3>
+<p>The method</p>
+<pre>Note ProcessInstanceAttributes.addNote(String, ContextKind, long)</pre>
+<p>also adds a new note. Here the context of this note is selected by 
+<tt>ContextKind</tt> and a <tt>long</tt> value, which is the OID of the context object.
+Note that this note is not persisted! It is only added to the attribute, but
+not yet saved in the database. Section <a href="#persist">Persisting the Notes</a>
+describes how the notes added to the attribute are saved to
+the database.</p>
+<p>For information on the type <tt>ContextKind</tt>
+please refer to the according JavaDoc description for
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/dto/ContextKind.html">
+ContextKind</a>.</p>
+
+<pre>List /&lt;Note&gt;/ ProcessInstanceAttributes.getNotes()</pre>
+<p>returns a list of all notes.</p>
+<h2 id="persist">Persisting the Notes</h2>
+<p>In order to persist the added notes, call:</p>
+<pre>void WorkflowService.setProcessInstanceAttributes(ProcessInstanceAttributes attributes)</pre>
+<p>Note that momentarily only scope process instances are supported as only notes are supported there.
+Also note that it is not possible to change notes, you only have the option to add them.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

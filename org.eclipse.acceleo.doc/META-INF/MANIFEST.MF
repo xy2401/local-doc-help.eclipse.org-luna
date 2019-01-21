@@ -1,0 +1,284 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.modeling.acceleo
+Bundle-SymbolicName: org.eclipse.acceleo.doc; singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/m2t/or
+ g.eclipse.acceleo.git;path="doc/org.eclipse.acceleo.doc";tag=R3_3_0
+Require-Bundle: org.eclipse.help
+Bundle-Version: 3.5.1.201409021433
+Build-Jdk: 1.7.0_51
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: assets/img/glyphicons/glyphicons_042_group.png
+SHA1-Digest: vx9Ur+0VS/yqQzr6UMGK/Bb4mRc=
+
+Name: assets/img/features/domain-free-scala-code.png
+SHA1-Digest: ixr719Rrs7PahNnSb3/FLByV2Uo=
+
+Name: assets/img/features/domain-free-python-code_th.png
+SHA1-Digest: 82CaWjDs/U3+LFbfQ6hhE0wE5Vs=
+
+Name: about.ini
+SHA1-Digest: 2grXC+dVgmcxeije7qSMl0lXLEo=
+
+Name: assets/img/openMarketplace.png
+SHA1-Digest: ihIEb2PjapUb0EAWzuEn7R2b94k=
+
+Name: assets/img/features/domain-free-python-code.png
+SHA1-Digest: y/4vDE57QIyOWsHr0MEfXovEMsQ=
+
+Name: assets/img/features/domain-free-textbased-model.png
+SHA1-Digest: ZUYBsUhmR4OyugSnK/5UnInGXa4=
+
+Name: pages/features/index.html
+SHA1-Digest: A8J1EXUqyzhEUGViU5D+lrkWzfg=
+
+Name: assets/img/glyphicons/glyphicons_204_unlock.png
+SHA1-Digest: s8efPuRk5Nd5XsqOxcaQ6T9zCac=
+
+Name: assets/img/glyphicons/glyphicons_050_link.png
+SHA1-Digest: IGT2NxeWfhKkTHdnx7UnVyWAJ7M=
+
+Name: assets/img/features/domain-free-cdo-model.png
+SHA1-Digest: AZjNbjJhUPFajOEKLZtHwQfvHCc=
+
+Name: assets/img/features/domain-free-scalamodel-gen.png
+SHA1-Digest: MQIfDPpq9UdBDphA7WviLPSI3mE=
+
+Name: assets/img/discovery.png
+SHA1-Digest: HexsJMhpq3VXtwTboy3rXufNmOU=
+
+Name: assets/img/features/domain-free-javascript-code_th.png
+SHA1-Digest: 8wbFEnw+v+F6ZCIg7zAkyUjDjDY=
+
+Name: assets/img/features/domain-free-javascript-code.png
+SHA1-Digest: DtPsS16xNJPhUft7ibhbi+xV95I=
+
+Name: assets/img/features/eclipse-tooling-acceleo-project.png
+SHA1-Digest: luFIJgNDYKQlU8B0OC7E5fyfvN8=
+
+Name: assets/img/features/first-view-block.png
+SHA1-Digest: O7gqIoVdCFcz45LF64c6Hd0jJ78=
+
+Name: index/indexed_contributions
+SHA1-Digest: Wufca3G19C7QvBEi6hfAsjdCJKA=
+
+Name: assets/img/glyphicons/glyphicons_081_refresh.png
+SHA1-Digest: hUyGNwWu+sEA+y9hoUsOzlv8cPM=
+
+Name: assets/img/features/domain-free-ecore-gen_th.png
+SHA1-Digest: 82CaWjDs/U3+LFbfQ6hhE0wE5Vs=
+
+Name: assets/img/features/domain-free-graphical-model-2_th-hover.png
+SHA1-Digest: Y9EmTfYV/z7QzsRHcf7nhTDDQCY=
+
+Name: assets/img/features/domain-free-graphical-model-2.png
+SHA1-Digest: AzcVGMrTyzJXxk/axlvXUI/mEl4=
+
+Name: assets/img/features/stand-alone-lib.png
+SHA1-Digest: +u2oL98GY07O7gW1fcOQl9PDLuM=
+
+Name: pages/reference/operations.html
+SHA1-Digest: U+uICuYAFth3ZX2nSRj6FlpDOvw=
+
+Name: assets/img/features/second-view-block.png
+SHA1-Digest: w/5FKPPMMLkAqMd6Z2jgF5/8PVg=
+
+Name: assets/img/gettingstarted/umlDesigner.png
+SHA1-Digest: bOsKCsIfJ4jmHcycwGQ7ua/yCRw=
+
+Name: assets/img/features/domain-free-uml-gen.png
+SHA1-Digest: FAIN5TD5Nrv9DR1Oj4l++Yh3+Ks=
+
+Name: assets/img/glyphicons/glyphicons_242_google_maps.png
+SHA1-Digest: DXShrN/nfNJSChuE+puuQIU5SUw=
+
+Name: assets/img/reference/propertiesFiles.png
+SHA1-Digest: qk51uwFtri0dMqmYr+0/Em2HErs=
+
+Name: about.mappings
+SHA1-Digest: Vzb7TFjW4D8kxrtmNf4ad5sfqK8=
+
+Name: assets/img/installUpdate.png
+SHA1-Digest: IpW/Wrhm7VqZO631vyacFHSnSA4=
+
+Name: assets/img/features/domain-free-graphical-model-2_th.png
+SHA1-Digest: hKKb4WDD7PEZ08vtuYt2W7Fkd/I=
+
+Name: acceleo32.png
+SHA1-Digest: 3aB42VMMAD+iyIVQ/T7NV8AQdso=
+
+Name: assets/img/features/domain-free-treebased-model_th.png
+SHA1-Digest: ufr3AWJfBlEAXg4wTcSC/Rtai8E=
+
+Name: assets/img/features/domain-free-graphical-model_th.png
+SHA1-Digest: ImwO1iMXxij+srCYlDXdc/QE0LU=
+
+Name: assets/js/jquery/jquery-1.7.1.js
+SHA1-Digest: ph2lN3RL84l+QLZtHJd7A7H4k+I=
+
+Name: about.properties
+SHA1-Digest: LyScJuHsGNtF4AwfT/oXE1e/WzI=
+
+Name: assets/img/features/domain-free-scala-code_th-hover.png
+SHA1-Digest: 7dwhd29OtY/9bvhlI9zezgskTWw=
+
+Name: assets/img/features/domain-free-graphical-model.png
+SHA1-Digest: bOsKCsIfJ4jmHcycwGQ7ua/yCRw=
+
+Name: pages/whatsnew/index.html
+SHA1-Digest: 8DaDpmid44Xpp5xvzx0Gy5vdeXY=
+
+Name: assets/img/reference/propertiesFilesUse.png
+SHA1-Digest: RwtxhEi5rc4hgBM/+oMcFK7p3+c=
+
+Name: toc_reference.xml
+SHA1-Digest: /HBGdO41ruRzkSv9uATGE3iNLUk=
+
+Name: index/segments
+SHA1-Digest: c7ZQu6M1kUIPb6KibAX3IAh0Dj8=
+
+Name: toc_gettingstarted.xml
+SHA1-Digest: 5jFI8qXlOrQu2MYjUJMsKBLf//o=
+
+Name: assets/img/installUpdateAcceleo.png
+SHA1-Digest: +II/PfsrU6iPg7mr7sbNiNHdrvw=
+
+Name: assets/img/features/domain-free-javascript-code_th-hover.png
+SHA1-Digest: PXoquuqs4v81Cfhyxt7EDxNsAsE=
+
+Name: assets/js/bootstrap/bootstrap.js
+SHA1-Digest: hoZYUWOShMXgzSwNL1XBz1SKRKo=
+
+Name: assets/img/features/domain-free-ecore-gen_th-hover.png
+SHA1-Digest: H+aEIBlrcTkZBges6Uzw7C799Qs=
+
+Name: assets/img/features/domain-free-scala-code_th.png
+SHA1-Digest: oIJ+dj1LGVqzD23BbhxmO15BzXI=
+
+Name: assets/img/features/domain-free-uml-gen_th.png
+SHA1-Digest: RgJUDvP3kjXnY2w9Jhbns9Ek9uM=
+
+Name: assets/img/glyphicons/glyphicons_051_eye_open.png
+SHA1-Digest: SaAQIP3jFbOCN52LLOwM7cDAf7s=
+
+Name: plugin.properties
+SHA1-Digest: mZ4nVPhX+FigXQ8B9bETsb2mZEY=
+
+Name: pages/gettingstarted/index.html
+SHA1-Digest: yxBNRuTMeE9MTWHsUJA65GKs1EQ=
+
+Name: pages/reference/project.html
+SHA1-Digest: R56/4Klifj7NbzInl52EqbkQnYA=
+
+Name: assets/img/features/domain-free-ecore-gen.png
+SHA1-Digest: y/4vDE57QIyOWsHr0MEfXovEMsQ=
+
+Name: index/indexed_dependencies
+SHA1-Digest: KDaTqO0A25q8QB7UbmDW09oqCsQ=
+
+Name: pages/reference/onlineresources.html
+SHA1-Digest: MbF9cCMjJd0rUxuZiI5nnWHmYWE=
+
+Name: pages/reference/textproductionrules.html
+SHA1-Digest: ajhrQgkq1T5PRil7FTO3SDxCPAk=
+
+Name: assets/img/marketplaceAcceleo.png
+SHA1-Digest: OZMIFPqZNd6uq1tu7mqJT3XbgT4=
+
+Name: plugin.xml
+SHA1-Digest: yKvpm1LtC3kRgdoIILo4oI3DC3o=
+
+Name: assets/img/features/domain-free-treebased-model_th-hover.png
+SHA1-Digest: DqK8jAWkAdxbFMm7UkMAS2KQIbY=
+
+Name: assets/img/features/domain-free-graphical-model_th-hover.png
+SHA1-Digest: oBWEhWy36G3oGZcjGyL5x5+lrvM=
+
+Name: assets/img/reference/propertiesFilesResult.png
+SHA1-Digest: diGSs1fuCTlm/1idmj63ftcalls=
+
+Name: assets/img/features/editor.png
+SHA1-Digest: ZiwHxNdrd5YzKA7NZQBozmftJ4o=
+
+Name: assets/img/features/domain-free-cdo-model_th-hover.png
+SHA1-Digest: bn4/EQgiVIAWOasASirWICZKF9Y=
+
+Name: assets/img/features/domain-free-scalamodel-gen_th-hover.png
+SHA1-Digest: eoaPf9hlzhu/ES0kWi1753kgb74=
+
+Name: pages/reference/standalone.html
+SHA1-Digest: RDnc/kiDv2Qa8oAUtOBGE8dtQYs=
+
+Name: assets/img/reference/package.png
+SHA1-Digest: H/TbC6RSISlPRSFCOPty7CLKCFE=
+
+Name: index/indexed_docs
+SHA1-Digest: LfTyFvYo3c0F3AgrDUyU7YG4PvM=
+
+Name: assets/css/docs.css
+SHA1-Digest: 4r/CZHEYokkdIS+NdYZWmSXN35s=
+
+Name: assets/img/features/perspective-doc.png
+SHA1-Digest: bmZkU0tF1CgtDj2CvKnuywKaP4k=
+
+Name: assets/img/openDiscovery.png
+SHA1-Digest: rIAzldvI3GLyfuZlF/9tE8kHd4E=
+
+Name: assets/img/glyphicons/glyphicons_019_cogwheel.png
+SHA1-Digest: oPX1Fcu+KIBZ9iWqi7u/7W668l8=
+
+Name: assets/css/bootstrap.css
+SHA1-Digest: 4rKoZ016idIaXVbye3uEOWNw1nk=
+
+Name: pages/legal.html
+SHA1-Digest: UmT04zX7sRk8uIl2TsLZDxk2QWg=
+
+Name: about.html
+SHA1-Digest: NWUkD2ZtLMVKKZ5w1UeqagEnpPg=
+
+Name: assets/img/features/domain-free-textbased-model_th-hover.png
+SHA1-Digest: Eaff79wd87ai/zRDuK5G0PjhQgw=
+
+Name: assets/img/features/domain-free-python-code_th-hover.png
+SHA1-Digest: YWy0MtX/4mUF/Y8jlayg2z45FvM=
+
+Name: toc.xml
+SHA1-Digest: hvGcfY16nUvv4pIFYJzT500EjWs=
+
+Name: pages/index.html
+SHA1-Digest: THVoG1ztPfdr2ey1WWUhMHTnI70=
+
+Name: pages/reference/language.html
+SHA1-Digest: OMZETZAhqoVOCzH5ssKs76sBMyo=
+
+Name: pages/overview.html
+SHA1-Digest: u7Fq6yMGK1DaEeVufRVnIA7USW0=
+
+Name: assets/img/features/domain-free-scalamodel-gen_th.png
+SHA1-Digest: H3stYzJ5o7yopWWy6yYykMIIRTw=
+
+Name: assets/img/features/domain-free-cdo-model_th.png
+SHA1-Digest: dImdiLpt/QH3kHGgRh1jznAVDmg=
+
+Name: pages/reference/index.html
+SHA1-Digest: Ro2HPZE/qtZQnuVZkb4NGE/l3dQ=
+
+Name: assets/img/features/domain-free-uml-gen_th-hover.png
+SHA1-Digest: OtcOgK2fpAPoaolUg4tEw0CQOmI=
+
+Name: assets/img/features/domain-free-treebased-model.png
+SHA1-Digest: pEl7mevKXwST+mJbTiDUXXlyb0g=
+
+Name: pages/reference/migration.html
+SHA1-Digest: CU662KiZFiYF6tg1v/rR0Q+LI8I=
+
+Name: assets/img/features/domain-free-textbased-model_th.png
+SHA1-Digest: cdIRvc1RXfVn4zPgu/JYOCCHg+g=
+

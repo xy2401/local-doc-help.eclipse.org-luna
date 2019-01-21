@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing a Provider to enable Security on JMS Connection Factories</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+
+	writeNavigation("Implementing a Static Configuration Provider for Default Preferences",
+			"spi-credential-delivery.html","pg-config-provider-spi.html",
+	      "../../handbooks.htm","Developer Handbook",
+	      "../pg-preface.htm","Programming Guide",
+	      "spi-toc.html","SPI");
+	 -->
+</script>
+<h1>Implementing a Provider for validating the passed Principal</h1>
+<p>In a Spring deployment with principal-based security 
+(<tt>Security.Authentication.Mode = principal</tt>), you might like to validate the passed principal on server side.
+For that purpose you can implement the interface
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/PrincipalValidator.html">
+org.eclipse.stardust.engine.core.spi.security.PrincipalValidator</a>.</p>
+<pre>
+@SPI(status = Status.Stable, useRestriction = UseRestriction.Public)
+public interface PrincipalValidator
+{
+   boolean isValid(Principal principal);
+}
+</pre>
+<p>By default, the principal validator 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/security/AlwaysValidPrincipalValidator.html">
+org.eclipse.stardust.engine.core.spi.security.AlwaysValidPrincipalValidator</a>
+is configured whose validation outcome always returns <tt>true</tt>, i.e. the
+principal is valid.</p>
+<pre>
+public class AlwaysValidPrincipalValidator implements PrincipalValidator
+{
+   @Override
+   public boolean isValid(Principal ignored)
+   {
+      return true;
+   }
+}
+</pre>
+<p>Another principal validator may be specified by setting the server-side property
+<strong>Security.Principal.Validator</strong> in your <tt>carnot.properties</tt> file
+to the fully qualified class name of the class which
+should be used as principal validator.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

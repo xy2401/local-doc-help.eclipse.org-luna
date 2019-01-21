@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Diagram Retrieval</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Structured Data and Java Type Applications",
+	"spi/spi-toc.html","pg-structured-data.html",
+		"../handbooks.htm","Developer Handbook",
+		"pg-preface.htm","Programming Guide");
+ -->
+</script>
+<h1>Diagram Retrieval</h1>
+<p>This chapter describes the possibilities Stardust offers for diagram
+retrieval.</p>
+<h2>Retrieving Diagrams</h2>
+<p>Stardust allows you to retrieve</p>
+<ul>
+    <li>diagrams of process definitions and</li>
+    <li>diagrams of process definitions indicating the current state of a
+    particular process instance</li>
+</ul>
+<p>via a simple servlet-based interface. You may easily generate image
+files with contents like the following:</p>
+<p class="image"><a href="images/diagram-retrieval-process-instance.png"
+    target="_blank"><img
+    src="images/diagram-retrieval-process-instance_small.png" alt=""></a></p>
+
+<!--<h2>Deployment</h2>
+  <p>In case you do not use one of the preconfigured deployment configurations
+provided by Stardust , which you can retrieve as described in chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html">Creating a Stardust Runtime 
+Environment with Apache Maven</a>,
+you can retrieve the <tt>carnot-diagram.war</tt> file directly 
+from the repository
+<a href="https://infinity.sungard.com/repository/ipp-releases/com/infinity/bpm/carnot-diagrams/">
+https://infinity.sungard.com/repository/ipp-releases/com/infinity/bpm/carnot-diagrams/</a>.</p>
+<p>The Stardust components provide a <tt>carnot-diagrams.jar</tt>
+file. This file is located in the <tt>ipp-portal.war</tt> file.
+<tt>%CARNOT_HOME%/webapps/deploy</tt>
+folder, in case you 
+set up a working environment as described in the 
+the <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-preface.htm">
+Stardust Installation Guide</a>.</p>
+In that case you have to perform the following steps to
+deploy the <tt>carnot-diagrams.war</tt>:</p>
+<ul>
+    <li>Unpack the <tt>carnot-diagrams.war</tt>.</li>
+	<li>In case your database is configured to have AutoCommit set to <tt>true</tt>,
+	add the <tt>AuditTrail.FixAutoCommit</tt> property in the <tt>carnot.properties</tt>
+	file and set it to <tt>true</tt> to enable commit control by the engine:
+	<pre>AuditTrail.FixAutoCommit = true</pre>
+	Additionally add the <tt>AuditTrail.Type</tt> property:
+	<pre>AuditTrail.Type = &lt;<i>database type</i>&gt;</pre>
+	Please refer to the chapter <a href="../operation/properties/ag-appendix-properties-2.htm">
+	Client Side Properties</a> for detailed information on these properties.</li>
+<p>By default the servlet is deployed to:</p>
+<pre>http://server:port/carnot/diagrams/servlet/DiagramServlet</pre>  -->
+
+<h2>Execution</h2>
+<p>If not configured differently in your <tt>web.xml</tt> deployment descriptors, 
+the servlet for diagram retrieval can be accessed with:<br>
+</p>
+<pre> http://&lt;server&gt;:&lt;port&gt;/&lt;context-root&gt;/eclipse/servlet/DiagramServlet</pre>
+<p>e.g.:</p>
+<pre> http://localhost:8080/carnot/diagrams/eclipse/servlet/DiagramServlet</pre>
+<p>There are several parameters which can be provided with the query string
+of this URL. Distinguish between mandatory and optional parameters.</p>
+<table id='id'>
+    <tr>
+        <th width="150">Mandatory Parameters</th>
+        <th>Description</th>
+        <th>Optional Parameters (additionally)</th>
+    </tr>
+    <tr>
+        <td>activityInstanceOid</td>
+        <td>The activityInstanceOid is used internally to retrieve the
+        processInstanceOid. (It is then not necessary to provide an optional
+        activityId for the processInstanceOid, because it will be deduced by the
+        given activityInstanceOid.)</td>
+        <td>
+        <ul>
+            <li>diagramId</li>
+            <li>encoding</li>
+            <li>modelSource</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>processInstanceOid</td>
+        <td>The diagram shows completed, active and pending activities of
+        this process instance in different colors. The information about the
+        process instance state are retrieved from the corresponding audit trail
+        database.</td>
+        <td>
+        <ul>
+            <li>activityId</li>
+            <li>diagramId</li>
+            <li>encoding</li>
+            <li>modelSource</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>processId</td>
+        <td>The selected diagram is displayed without any particular
+        coloring. This option is intended to be used for reports on the process
+        model.</td>
+        <td>
+        <ul>
+            <li>diagramId</li>
+            <li>encoding</li>
+            <li>modelSource</li>
+        </ul>
+        </td>
+    </tr>
+</table>
+<p>Whereby the optional parameters have the following effects:</p>
+<ul>
+    <li><tt>activityId=...</tt><br>
+    The activity symbols in the selected diagram are displayed in a different
+    color. This option is also intended to be used for reports on the process
+    model.</li>
+    <li><tt>diagramId=...</tt><br>
+    Specifies the diagram to be displayed according to the diagrams of the
+    process model. If this parameter is not provided, the default diagram of
+    the process definition is displayed.</li>
+    <li><tt>partitionId=...</tt><br>
+    Id of partition to specify a partition in case it cannot be retrieved
+    by ServiceFactory configured during a portal login. If not set,
+    the default partition is used. Please refer to the section
+    <a href="embed/pg-embedded-3.htm#credPassing">Credential Passing</a> of the chapter
+    <a href="embed/pg-embedded-3.htm">Stardust Services</a> for detailed 
+    information.</li>
+    <li><tt>realmId =...</tt><br>
+    Id of realm to specify a user realm within partition in case it cannot be retrieved
+    by ServiceFactory configured during a portal login. If not set,
+    the default realm is used. Please refer to the section
+    <a href="embed/pg-embedded-3.htm#credPassing">Credential Passing</a> of the chapter
+    <a href="embed/pg-embedded-3.htm">Stardust Services</a> for detailed 
+    information.</li>
+    <li><tt>encoding=... </tt><br>
+    Specifies the graphics format of the retrieved diagram. Supported values are
+    <tt>image/png</tt> or <tt>image/jpeg</tt>. The default value is <tt>image/png</tt>.</li>
+    <li><tt>modelSource=...</tt><br>
+    This parameter is used to specify the path to a model file. Both relative
+    path and absolute path can be used. A relative path is taken as relative to
+    the servlet context root. An empty entry for <tt>modelSource</tt> will be
+    ignored and the model is loaded from the audit trail. If the model specified
+    by <tt>modelSource</tt> is not existing, the following error message will
+    occur:
+    <!-- TODO: replace with screenshot -->
+    <pre>Path "xx/.../xx/modelname.xpdl" for modelSource does not exists.</pre></li>
+</ul>
+<p>For example the URL:</p>
+<pre>http://localhost:8080/carnot/diagrams/servlet/DiagramServlet?processInstanceOid=12&amp;encoding=image/png</pre>
+<p>will retrieve a PNG file with the default diagram of the process
+definition of process instance 12 with coloring for the state of this process
+instance.<br>
+</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

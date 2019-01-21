@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mappings</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Mappings</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.connectivity.sqm.core.mappings<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>DTP 1.7, June 2009
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>Provides a metadata-driven way to map a connection profile provider ID or a vendor/version combination to a driver category ID.
+
+<p><strong>EXPERIMENTAL</strong>. This class or interface has been added
+as part of a work in progress. There is no guarantee that this API will
+work or that it will remain the same. Please do not use this API
+without consulting with the DTP Connectivity team.</p><p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.providerIDtoDriverCategoryID">providerIDtoDriverCategoryID</a>)*&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.providerIDtoDriverCategoryID">providerIDtoDriverCategoryID</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST providerIDtoDriverCategoryID</p>
+<p class="code SchemaDtdAttlist">providerID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">driverCategoryID&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Map a connection profile provider ID to a driver category ID. If mapped for a particular provider ID, this will override the mapping used in the wizard page and property page classes used for the ExtensibleProfileDetailsWizardPage and ExtensibleProfileDetailsWizardPage</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>providerID</b> - Connection Profile Provider ID. This maps to the provider ID defined in the connection profile extension point.</li>
+<li><b>driverCategoryID</b> - Driver Category ID maps to the category id specified in the driver templates extension.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>An example of use of this mapping can be seen in the org.eclipse.datatools.connectivity.ui plug-in in the o.e.d.connectivity.ui.wizards package for the ExtensibleProfileDetailsPropertyPage and ExtensibleProfileDetailsWizardPage.
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>Currently this can be accessed from the SQMServices (o.e.d.connectivity.sqm.core.SQMServices) via the method:
+
+public static ProviderIDMappingRegistry getProviderIDMappingRegistry();
+
+From there you can access the Provider ID in a number of ways:
+
+public String getCategoryIDforProviderID ( String providerID );
+public String getProviderIDforDriverCategoryID ( String driverCategoryID );
+public String getProviderIDforVendorVersion ( String vendor, String version);
+
+So you'll be able to get a driver category ID for a connection profile provider ID, a connection profile provider ID from a driver category ID, and a connection profile provider ID from a vendor/version.
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+Copyright 2009 Sybase, Inc. and others.<br>
+All rights reserved. This program and the accompanying materials are made 
+available under the terms of the Eclipse Public License v1.0 which 
+accompanies this distribution, and is available at 
+<a href="http://www.eclipse.org/legal/epl-v10.html">http://www.eclipse.org/legal/epl-v10.html</a>
+
+</p>
+</BODY>
+</HTML>

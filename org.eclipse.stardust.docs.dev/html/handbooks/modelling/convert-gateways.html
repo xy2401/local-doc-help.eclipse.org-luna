@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Converting Gateways to a Business Modeler-compliant Format</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Specifying Applications",
+		"mg-defdesk-5.htm","mg-defdesk-6.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Converting Gateways to a Business Modeler-compliant Format</h1>
+<p>Unlike as in the Eclipse modeler, gateways are handled as first class elements in the 
+Business Modeler. Details are described in chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-gateways.htm">
+Working with Gateways</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeler guide</a>. To make models using gateways created in the
+Eclipse modeler compatible in the Business Modeler, you can convert them via the
+<strong>Convert Gateway</strong> option. This option is provided in the context
+menu for models and process definitions.</p>
+<ul>
+   <li><a href="#proc">Converting Gateways in a Process Definition</a></li>
+   <li><a href="#model">Converting all Gateways in a Model</a></li>
+</ul>
+<h2 id="proc">Converting Gateways in a Process Definition</h2>
+<p>To convert gateways of a process definition, right-click the process definition
+in the Outline view and select <strong>Convert Gateways</strong>.</p>
+<p class="image"><img src="images/convert-gateway-proc.png" alt=""><br>
+<strong>Figure:</strong> Convert Gateways of a Process Definition</p>
+<p>A route activity is created as first class element to represent the gateway,
+which can be imported in the Business Modeler.
+The control flow in this route activity is set to the type of the split or join
+control flow of the activity the gateway is referring to.</p>
+<p class="image"><img src="images/convert-gateway-xor-flow.png" alt=""><br>
+<strong>Figure:</strong> </p>
+<h3 id="split">Converted Split Gateways</h3>
+<p>For activities, that have their <strong>Split Behavior</strong> set to other
+than <strong>NONE</strong>, a route activity with this <strong>Split Behavior</strong> 
+(<strong>AND</strong> or <strong>XOR</strong>) as 
+well as the same behavior type set for <strong>Join Behavior</strong> is created.
+The <strong>Split Behavior</strong> of the original activity is reset to 
+<strong>NONE</strong>.</p>
+<h4>Split example</h4>
+<p>In the following example an activity <strong>Split Activity</strong>
+has its <strong>Split Behavior</strong> set to 
+<strong>AND</strong>:</p>
+<p class="image"><img src="images/convert-gateway-split-ex.png" alt=""><br>
+<strong>Figure:</strong> Activity with Split Behavior AND</p>
+<p>After converting the gateways, a new route activity was created to
+represent the gateway.</p>
+<p class="image"><img src="images/convert-gateway-split-result.png" alt=""><br>
+<strong>Figure:</strong> Graph after conversion</p>
+<p>In the property page of this route activity, you can see that the control flow 
+is set to <strong>AND</strong>.</p>
+<p class="image"><img src="images/convert-gateway-split-and.png" alt=""><br>
+<strong>Figure:</strong> Control Flow of Gateway activity</p>
+<p>The control flow of activity <strong>Split Activity</strong> was changed
+to <strong>NONE</strong>.</p>
+<p class="image"><img src="images/convert-gateway-split-none.png" alt=""><br>
+<strong>Figure:</strong> Control Flow of Split Activity</p>
+<p>In this format, the converted model is now able to be imported into the Business Process
+Modeler.</p>
+<h3 id="join">Converted Join Gateways</h3>
+<p>For activities, that have their <strong>Join Behavior</strong> set to other
+than <strong>NONE</strong>, a route activity with this <strong>Join Behavior</strong> 
+(<strong>AND</strong> or <strong>XOR</strong>) as 
+well as the same behavior type set for <strong>Split Behavior</strong> is created.
+The <strong>Join Behavior</strong> of the original activity is reset to 
+<strong>NONE</strong>.</p>
+<h4>Join example</h4>
+<p>In the following example, an activity <strong>Join Activity</strong>
+has its <strong>Join Behavior</strong> set to 
+<strong>XOR</strong>:</p>
+<p class="image"><img src="images/convert-gateway-join-ex.png" alt=""><br>
+<strong>Figure:</strong> Activity with JOIN Behavior XOR</p>
+<p>After converting the gateways, a new route activity was created to
+represent the gateway.</p>
+<p class="image"><img src="images/convert-gateway-join-result.png" alt=""><br>
+<strong>Figure:</strong> Graph after conversion</p>
+<p>In the property page of this route activity, you can see that the control flow 
+is set to <strong>XOR</strong>.</p>
+<p class="image"><img src="images/convert-gateway-join-xor.png" alt=""><br>
+<strong>Figure:</strong> Control Flow of Gateway activity</p>
+<p>The control flow of activity <strong>Join Activity</strong> was changed
+to <strong>NONE</strong>.</p>
+<p class="image"><img src="images/convert-gateway-join-none.png" alt=""><br>
+<strong>Figure:</strong> Control Flow of Join Activity</p>
+<p>In this format, the converted model is now able to be imported into the Business Process
+Modeler.</p>
+<h2 id="model">Converting all Gateways in a Model</h2>
+<p>To convert gateways of all process definitions in a model, right-click the 
+model in the Outline view and select <strong>Convert Gateways</strong>.</p>
+<p class="image"><img src="images/convert-gateway-model.png" alt=""><br>
+<strong>Figure:</strong> Convert all Gateways of a Model</p>
+<!--
+<p>In the Outline view select the process definition containing these activities
+and select <strong>Convert Gateways</strong>. You can now see in the diagram,
+that a new route activity was created.</p>
+<p class="image"><img src="images/convert-gateway-split-result.png" alt=""><br>
+<strong>Figure:</strong> </p>
+<p>Open the property page of this route activity. The control flow of the 
+activity is set to <strong>AND</strong>.</p>
+<p class="image"><img src="images/convert-gateway-split-and.png" alt=""><br>
+<strong>Figure:</strong> </p>
+<p>The control flow of activity <strong>Split Activity</strong> was changed
+to <strong>NONE</strong>.</p>
+<p class="image"><img src="images/convert-gateway-split-none.png" alt=""><br>
+<strong>Figure:</strong> </p>
+
+<h3>Join Example</h3>
+<p>TODO</p>
+<p class="image"><img src="images/convert-gateway-join-ex.png" alt=""><br>
+<strong>Figure:</strong> </p>
+<p></p>
+<p class="image"><img src="images/convert-gateway-join-result.png" alt=""><br>
+<strong>Figure:</strong> </p>-->
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

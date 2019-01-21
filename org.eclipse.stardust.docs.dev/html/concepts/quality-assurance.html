@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Quality Assurance</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Rule Management",
+		"activity-criticality.html","rules-management.html",
+		"key-concepts.html","Concepts");
+ -->
+</script>
+<h1>Quality Assurance</h1>
+
+<p>Stardust provides the option to mark interactive activities for quality 
+assurance. Quality assurance criteria are specified for such activities and they
+are reviewed by a quality assurance operator.</p>
+<ul>
+    <li><a href="#usage">Common Usage Pattern</a></li>
+    <li><a href="#modeler">Specifying Quality Assurance Criteria in the Modeler</a></li>
+    <li><a href="#expression">Determining whether to perform Quality Assurance 
+    or not</a></li>
+    <li><a href="#cycle">Quality Assurance Lifecycle</a></li>
+    <li><a href="#codes">Quality Assurance Codes</a></li>
+    <li><a href="#example">Example Use Cases</a></li>
+    <li><a href="#portal">Quality Assurance in Stardust Portal</a></li>
+</ul>
+<h2 id="usage">Common Usage Pattern</h2>
+<p>This section describes common usage patterns, where different criteria for
+quality assurance performance are described.
+<ul>
+    <li><a href="#useconfig">
+        Determining Quality Assurance based on Environment Variable</a></li>
+    <li><a href="#usedata">Determining Quality Assurance based on specific Criteria on
+        Input Data</a></li>
+    <li><a href="#usecombi">Determining Quality Assurance for Specific Document 
+        Types combined with Probability</a></li>
+</ul>
+<h3 id="useconfig">Determining Quality Assurance based on Environment Variable</h3>
+<p>Assuming an activity, which is performed in a test environment as well as in
+production mode. Quality assurance on this activity is only required in 
+production mode. To decide if quality assurance is required, create a 
+configuration variable and evaluate it in the quality assurance formula. For a
+more detailed description on this use case, refer to section <a href="#exconfig">
+Using a formula based on configuration variables</a>.</p>
+<h3 id="usedata">Determining Quality Assurance based on specific Criteria on
+Input Data</h3>
+<p>An accountant has to type in data for accounts of users. To avoid known
+invalid inputs, quality assurance should be performed on all activities, in case
+one of these invalid inputs were given. For a
+more detailed description on this use case, refer to section <a href="#exdata">
+Using Primitive Data to evaluate the Formula</a>.</p>
+<h3 id="usecombi">Determining Quality Assurance for Specific Document Types
+combined with Probability</h3>
+<p>A use case for a combination of the formula and a probability value is a
+document processing workflow. Quality assurance should only take place in case
+the document is of a specific type. Documents of this type need review on a 
+percentage basis, e.g. <tt>25%</tt> of these document types need quality 
+assurance.</p>
+<p>For a more detailed description on this use case, refer to section 
+<a href="#combi">Using a Combination of Probability and Formula</a>.</p>
+<h2 id="modeler">Specifying Quality Assurance Criteria in the Modeler</h2>
+<p>You can mark an interactive activity for quality assurance in its
+property page. If an activity is marked for quality assurance, the
+following criteria for quality assurance can be set:
+</p><ul>
+    <li>The quality assurance performer.</li>
+    <li>The default quality assurance rate.</li>
+    <li>A formula used to decide for quality assurance.</li>
+</ul>
+<h3 id="qaop">Quality Assurance Performer</h3>
+<p>The quality assurance operator specified for an interactive activity reviews 
+the according activity instances. They are able to:</p>
+<ul>
+    <li>Complete the activity with no revisions.</li>
+    <li>Complete the activity with revision.</li>
+    <li>Send the activity instance back to the activity performer for 
+    correction. Quality assurance code can be attached to the activity 
+    instance.</li>
+</ul>
+<h3 id="qarate">Quality Assurance Rate</h3>
+<p>The default quality assurance sample size will be used whenever no specific 
+probability has been configured for the current performer. The rate is a value 
+between <tt>0</tt> and <tt>100</tt> percent. For example:</p>
+<ul>
+    <li><tt>100%</tt>: results in performing quality assurance on all activity 
+    instances, only depending on the formula result.</li>
+    <li><tt>75%</tt>: result in performing quality assurance on three out of
+    four of all activity instances in average (if formula results in 
+    <tt>true</tt>).</li>
+    <li><tt>50%</tt>: result in performing quality assurance on half of all 
+    activity instances in average (if formula results in <tt>true</tt>).</li>
+    <li><tt>0%</tt>: result in no quality assurance regardless of the formula
+    result.</li>
+</ul>
+<p>The default value is <tt>100%</tt>.</p><h3 id="formula">JavaScript Expression</h3>
+<p>Stardust provides the ability to use process data for quality assurance
+evaluation. These can be used instead of or in combination with the quality
+assurance sample rates. JavaScript based expressions can be added in the
+property page of interactive activities in the modeler. These are evaluated as
+described in section
+<a href="#expression">Determining whether to perform Quality Assurance or not</a>.</p>
+<h3>Influence of the Formula and Quality Assurance Rate specified in the Modeler</h3>
+<p>The specified formula and quality assurance rate are applied in
+combination. First, the formula is executed. If it returns <tt>false</tt>,
+no quality assurance will be performed on this activity instance. In
+case the formula returns <tt>true</tt>, the probability configured will
+be applied for the activity and the activity instance will be marked for
+quality assurance depending on the resulting probability experiment.</p>
+<p>Quality assurance is applied in the following way for specific
+cases:</p>
+<ul>
+    <li class="tab">Formula result is <tt>true</tt>:<br>
+    Only the probability mechanism will be used
+    to determine whether quality assurance should be applied.</li>
+    <li class="tab">Formula result is <tt>false</tt>:<br>
+    No quality assurance will be applied
+    regardless of the probabilities configured.</li>
+    <li class="tab">Configured probability for the activity instance equals to
+    <tt>100%</tt>:<br>
+    The formula alone will decide whether the
+    quality assurance should be applied or not.</li>
+    <li class="tab">Configured probability for the activity instance equals to
+    <tt>0%</tt>:<br>
+    No quality assurance will be applied
+    regardless of the formula.</li>
+</ul>
+<h2 id="expression">Determining whether to perform Quality Assurance or not</h2>
+<p>The runtime algorithm to determine whether or not to perform quality assurance
+for a given activity instance is as follows:</p>
+<ul>
+    <li class="tab">If the JavaScript expression specified for an activity in the
+    modeler evaluates to <tt>false</tt>:<br>
+     No quality assurance is performed and an
+    instance for the next modeled activity is created.</li>
+    <li class="tab">If the JavaScript expression specified for an activity in the
+    modeler evaluates to <tt>true</tt>:<br>
+    The quality assurance probability is
+    determined in the following way:
+    <ul>
+        <li class="tab">In case the quality assurance probability is configured for
+        the corresponding user: <br>
+        The engine checks whether this value differs from
+        <tt>unspecified</tt>. If so, this quality assurance percentage is used.
+        Otherwise no percentage applies at user level.</li>
+        <li class="tab">If no quality assurance probability is configured for
+        the user:<br>
+        In case a user-override default
+        quality assurance percentage value different from <tt>undefined</tt> is
+        configured for the partition, this
+        percentage is used. Otherwise no percentage applies at user level.
+        </li>
+    </ul></li>
+    <li>If a quality assurance percentage is configured
+    for the combination (fully qualified activity id, fully qualified
+    participant, department), this probability is used.</li>
+    <li>Otherwise, use the default probability set in the modeler
+    for the activity corresponding to the current activity instance.</li>
+</ul>
+
+<h2 id="cycle">Quality Assurance Lifecycle</h2>
+<p>If an activity is completed, the following steps are performed to check for
+quality assurance:</p>
+<ol>
+    <li>The performer of an activity tries to complete the activity.</li>
+    <li>It is checked, if the activity is marked for quality assurance:
+    <ul>
+        <li>The activity is marked for quality assurance:
+        <ol>
+            <li>A separate instance for the quality assurance activity
+            is created. 
+            This quality assurance activity instance is associated with the 
+            original activity, but will override some attributes at runtime, 
+            like the default performer.           
+            The quality assurance operator is the performer of this
+            activity, he checks the quality assurance.
+            <ul>
+                <li>Quality Assurance fails:<br>
+                <ol>
+                    <li>The activity goes back to the default activity performer.</li>
+                    <li>The performer corrects the issues.</li>
+                    <li>The activity goes back to the
+                        quality assurance operator to be checked again.</li>
+                </ol></li>
+                <li class="tab">Quality Assurance is passed or the quality assurance
+                operator corrects the activity directly:<br>The activity is
+                completed.</li>
+            </ul></li>
+         </ol></li>
+         <li class="tab">The activity is not marked for quality assurance:
+         <br>The activity is completed.</li>
+    </ul></li>
+</ol>
+<p>The following graphic illustrates this process:</p>
+<p class="image"><img src="images/qa-graphic.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance Lifecycle</p>
+
+<h3 id="datamap">Handling Data Mappings for Quality Assurance Activities</h3>
+<p>Data mappings for activities marked for quality assurance should be modeled 
+in a way that all data that goes out could be read and displayed.
+<h4>Suspending quality assurance activities</h4>
+<p>Changing data values via the following suspend methods:</p>
+<ul>
+    <li><tt>suspendToDefaultPerformer()</tt></li>
+    <li><tt>suspendToParticipant()</tt></li>
+    <li><tt>suspendToUser()</tt></li>
+</ul>
+<p>in not possible for quality assurance activities. Calling <tt>suspend()</tt>
+with a nonempty data map results in an InvalidArgumentException.</p>
+<h4>Completing quality assurance activities</h4>
+<p>Note that completing a quality assurance activity instance only executes out 
+data mappings and hence persists changed data values if the quality assurance
+specific activity properties indicate a "Pass with Corrections" result. In all 
+other cases data mappings will not be executed and changed data will not be 
+persisted.</p>
+<!--<h2>Quality Assurance Override</h2>
+User Level
+Override QC probability for specific users
+Default values configurable per tenant
+Administration perspective participant management-->
+<h2 id="codes">Quality Assurance Codes</h2>
+<p>Stardust provides the option to create quality assurance codes to indicate 
+results of quality assurance. These can be specified in case of failure as well 
+as pass condition. You can define a set of available codes and their values 
+as model property.
+It is possible to restrict quality assurance codes to a subset of the available
+list for each activity.
+In the Stardust portal, the performing user can select codes from the provided
+list. </p>
+<h2 id="example">Example Use Cases</h2>
+<p>This section describes some example use cases, where different criteria for
+quality assurance performance are described.
+For a detailed tutorial on using quality assurance code, refer to chapter
+<a href="../tutorial/quality-assurance/tut-quality-assurance.html">
+Performing Quality Assurance on interactive Activities</a> in the
+<a href="../tutorial/tut-preface.htm">Tutorial Guide</a>.</p>
+<ul>
+    <li><a href="#exconfig">
+        Using a Formula based on Configuration Variables</a></li>
+    <li><a href="#exdata">Using Primitive Data to evaluate the Formula</a></li>
+    <li><a href="#combi">Using a Combination of Probability and Formula</a></li>
+</ul>
+<h3 id="exconfig">Using a Formula based on Configuration Variables</h3>
+<p>Assuming an activity, which is performed in a test environment as well as in
+production mode. Quality assurance on this activity is only required in 
+production mode. To decide if quality assurance is required, create a 
+configuration variable and evaluate it in the quality assurance formula:</p>
+<ol>
+    <li>Create a configuration variable as a flag to determine if the activity
+    is in test or production mode.
+    <p><img src="images/qa-config-example-prop.png" alt=""></p></li>
+    <li>In the activity property page, enter a formula evaluation this
+    configuration variable. If the configuration variable is set to
+    <tt>PRODUCTION</tt>, the formula returns <tt>true</tt> for quality 
+    assurance.
+    <pre>"${Environment}" == "PRODUCTION";</pre></li>
+    <li>Quality assurance is performed on the activity, if the configuration
+    variable <strong>Environment</strong> evaluates to <tt>PRODUCTION</tt>.
+    In case the configuration variable changes to <tt>TEST</tt>, no quality 
+    assurance is performed.</li>
+</ol>
+<p class="image"><img src="images/qa-config-example.png" alt=""><br>
+<strong>Figure:</strong> Configuration variable used in formula.</p>
+<p>For details on configuration variables, refer to chapter
+<a href="../handbooks/modelling/model-variables.html">Using Configuration Variables</a>.</p>
+<h3 id="exdata">Using Primitive Data to evaluate the Formula</h3>
+<p>An accountant has to type in data for accounts of users. To avoid known
+invalid inputs, quality assurance should be performed on all activities, in case
+one of these invalid inputs were given.</p>
+<ol>
+    <li>Create two primitive data with ID <strong>AccountNumber</strong> and
+    <strong>AccountName</strong> respectively.</li>
+    <li>In the quality assurance formula of the activity, use the Ids of the
+    primitive data:
+<pre>
+var accnr=AccountNumber;
+var accname=AccountName;
+if ( (accnr &gt; 9999) || (accnr &lt; 1000))
+{
+    true;
+}
+else if ( accname == "" )
+{
+    true;
+}
+else 
+{
+    false;
+}
+</pre></li>
+    <li>In case the entered account number has less or more than 4 digits or 
+    the account name is empty, quality assurance will be performed on the 
+    activity instance.</li> 
+</ol>
+<p class="image"><img src="images/qa-criteria.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance Criteria</p>
+<h3 id="combi">Using a Combination of Probability and Formula</h3>
+<p>A use case for a combination of the formula and a probability value is a
+document processing workflow. Quality assurance should only take place in case
+the document is of a specific type. Documents of this type need review on a 
+percentage basis, e.g. <tt>25%</tt> of these document types need quality 
+assurance.</p>
+<p class="image"><img src="images/qa-example-combi.png" alt="Combination"><br>
+<strong>Figure:</strong> Criteria in Combination of probability and formula.</p>
+<h2 id="portal">Quality Assurance in Stardust Portal</h2>
+<p>The Stardust portal provides a Quality Assurance Management View,
+where you can specify quality assurance sample sizes for activities that
+are marked for quality assurance. 
+If the activity default performer is scoped, an additional table is provided
+for departments to allow a quality assurance sample size to be specified for 
+each data scope. Only administrators have access to the Quality Assurance 
+Management View. For details on this view, refer to
+chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/admin-portal/admin-portal-quality.html">
+Modifying Quality Assurance Probability</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a>.</p>
+<h3>Activity Execution</h3>
+<p>When a quality assurance activity is performed, for example in
+the second execution of the activity by the quality assurance
+participant, options to pass or fail the quality assurance are provided.
+The option to pass quality assurance allows the user to mark whether any
+corrections were done and to select according quality assurance codes.
+If choosing to fail quality assurance, you can select an according
+quality assurance (error) code and choose whether the activity should be
+delegated to the last activity performer.</p>
+<p>Refer to chapter <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-qa.html">
+Executing Quality Assurance Activities</a> of the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> in the <a
+    href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html"> End
+User Handbook</a> for details.</p>
+<p>Activities are marked with different icons for:</p>
+<ul>
+    <li>Awaiting/in quality assurance.</li>
+    <li>Failed quality assurance.</li>
+    <li>Passed quality assurance.</li>
+</ul>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

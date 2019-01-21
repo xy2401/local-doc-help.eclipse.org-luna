@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Project Effort Calculation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Modeling Pattern Support",
+	"property-page-authorization.html","pattern-support.html",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+
+<h1>Project Effort Calculation</h1>
+<h2>General</h2>
+<p>In many BPM projects efforts to model, implement, test and roll-out a given 
+  &quot;to be&quot; process model including</p>
+<ul>
+  <li>modeling of specific (sub)processes of the end-to-end value chain to be 
+    supported,</li>
+  <li>configuration of the runtime execution environment for Stardust
+   (GUI portal, application server, database, directory service etc.),</li>
+  <li>integration of non-interactive services via Web Services, message buses, 
+    Enterprise Java Beans,</li>
+  <li>integration of interactive GUI building blocks for the execution of specific 
+    activities and</li>
+  <li>integration of data sources containing data and business objects accessed 
+    in the process.</li>
+</ul>
+<p>have to be estimated.</p>
+<p>Efforts for the tasks above can easily be assigned to the different process 
+  model elements such as</p>
+<ul>
+  <li>the model itself,</li>
+  <li>process definitions and their activities or</li>
+  <li>data and application definitions.</li>
+</ul>
+<p>Project effort contributions will occur in the different phases of a project:</p>
+<ul>
+  <li>Define Phase</li>
+  <li>Design Phase</li>
+  <li>Implementation Phase</li>
+  <li>Validation Phase</li>
+  <li>Rollout Phase</li>
+</ul>
+<p>The process effort calculation feature supports the specification of such effort 
+  drivers for all project phases, the entry of concrete values for these cost 
+  drivers and calculation of the resulting efforts</p>
+<p>Two different effort drivers are supported:</p>
+<ul>
+  <li><strong>&quot;By Key&quot; Effort Drivers</strong> <br>
+    listing different alternatives all related to a specific effort (e.g. a high-complexity 
+    subprocess implementation might take 10 days whereby a medium-complex implementation 
+    might only require 5 days)</li>
+  <li><strong>&quot;By Quantity&quot; Effort Drivers</strong><br>
+    where a &quot;per unit&quot; effort has to be multiplied with the volume expected 
+    (e.g. number of process runtime reports to be created for the process model)<br>
+  </li>
+</ul>
+<h2>Configuring Effort Drivers</h2>
+<p>Effort drivers can be specified in the <strong>Effort Drivers</strong> tab of the 
+<strong>Effort Planning</strong> subpage in the process model property page:</p>
+<p class="image"><a href="images/effort-drivers_orgSize.png" target="_blank">
+<img src="images/effort-drivers.png" alt="Effort Drivers"></a></p>
+<p>A predefined list of &quot;By Key&quot; and &quot;By Quantity&quot; drivers 
+  for all model element types is provided for every model. This list can be changed 
+  according to the project needs.</p>
+<h3>Creating &quot;By Key&quot; Drivers</h3>
+<p>A new &quot;By Key&quot; driver for a process model element can be created by 
+  selecting the <strong>New &quot;By Key&quot; Driver</strong> option in the popup-meu for 
+  the corresponding model element node in the <strong>Effort Driver</strong> table:</p>
+<p align="center"><img src="images/create-driver-popup-menu.png" alt="Create Driver Popup Menu"></p>
+<h3>Creating &quot;By Quantity&quot; Drivers</h3>
+<p>A new &quot;By Quantity&quot; driver for a process model element can be created 
+  by selecting the <strong>New &quot;By Quantity&quot; Driver</strong> option in the popup-meu 
+  for the corresponding model element node in the <strong>Effort Driver</strong> table:</p>
+<p align="center"></p>
+<p align="center"><img src="images/new-by-quantity-driver-popup-option.png" alt=""></p>
+<h3>Editing Effort Drivers</h3>
+<p>You can edit names or values for the different project phases simply by selecting 
+  and editing the corresponding table cells in the <strong>Effort Drivers</strong> table:</p>
+<p align="center"><img src="images/editing-driver-values.png" alt=""></p>
+<p>New keys for &quot;By Key&quot; drivers can be added using the <strong>New Key</strong> 
+  option in the popup-menu for this driver:</p>
+<p align="center"><img src="images/new-key-popup-menu.png" alt=""></p>
+<h2></h2>
+<h2>Deleting Effort Drivers</h2>
+<p>Effort drivers and keys of &quot;By Key&quot; drivers can be deleted by using 
+  the corresponding <strong>Delete</strong> options in the popup-menus for drivers and keys.</p>
+<p align="center"><img src="images/delete-driver-popup-menu.png" alt=""></p>
+<h2>Editing Effort Driver Contributions</h2>
+<p>Once all effort drivers has been defined corresponding GUI elements to enter 
+  concrete effort distributions for all corresponding effort drivers will occur 
+  in the <strong>Effort Planning</strong> subpage of the property pages for all model elements 
+  effort drivers have been specified, e.g. the process model itself or</p>
+<p align="center"><img src="images/effort-driver-values-model.png" alt=""></p>
+<p>activities</p>
+<p align="center"><img src="images/effort-driver-values-activity.png" alt=""></p>
+<p>Hereby, &quot;By Key&quot; drivers will occur as combo boxes containing all 
+  keys and &quot;By Value&quot; drivers will occur as entry field to enter the 
+  concrete value of an effort driver.</p>
+<h2>Calculating Project Effort</h2>
+<p>Once all effort driver contributions are entered in the model, the total effort 
+  can be obtained by pressing the <strong>Calculate Effort</strong> in the <strong>Effort</strong> 
+  tab of the <strong>Effort Planning</strong> subpage of the process model property page:</p>
+<p align="center"><img src="images/effort-calculation.png" alt=""></p>
+<h3>Drag &amp; Drop Into Excel</h3>
+<p>The entire table in the <strong>Effort</strong> tab of the <strong>Effort Planning</strong> 
+  subpage of the process model property page can be dragged into a table in Microsoft 
+  Excel to perform additional calculations (e.g. multiply efforts with resource 
+  costs to obtain cost estimates).</p>
+<p align="center"><img src="images/excel.png" alt=""></p>
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

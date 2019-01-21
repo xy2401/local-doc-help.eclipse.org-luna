@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Converting Manual Activities to JSF Application
+Activities</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Quality Assurance on interactive Activities",
+        "manual-activities.html","quality-assurance.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","activities-preface.html","Working with Activities");
+ -->
+</script>
+<h1>Converting Manual Activities to JSF Application Activities</h1>
+<p>A conversion wizard is provided to automatically convert Manual
+activities to JSF interactive application activities.</p>
+<h2>The Conversion Wizard</h2>
+<p>To open the conversion wizard:</p>
+<ul>
+	<li>Right-click the activity.</li>
+	<li>Select <strong>Convert to JSF Application Activity</strong>.</li>
+</ul>
+<p class="image"><img src="images/mg-manual-to-jsf.png"
+	alt="Convert Manual Activity"> <br>
+<strong>Figure:</strong> Convert Manual Activity</p>
+<p>The dialog to generate the JSF GUI opens with the following
+entries:</p>
+<ul>
+	<ul><li><a href="#applName">Application Name</a></li>
+	<li><a href="#webRoot">Web Root</a></li>
+	<li><a href="#panelLoc">Panel Location</a></li>
+	<li><a href="#panelName">Panel Name</a></li>
+	<li><a href="#adaptLoc">Adapter Location</a></li>
+	<li><a href="#adaptName">Adapter Name</a></li></ul>
+	<li><a href="#pref">Generation Preferences</a></li>
+</ul>
+<p>In most of the cases, the JSF automatic GUI generation wizard
+fields will be already filled with matching information. Optionally you
+can change the default values of the fields.</p>
+<p class="image"><img src="images/mg-manual-to-jsf-generation.png"
+	alt="Conversion Wizard"> <br>
+<strong>Figure:</strong> JSF Conversion Wizard</p>
+<p></p>
+<h3 id="applName">Application Name</h3>
+<p>The name (and id) of the new application that will be generated.
+The default value is derived from the <tt>&lt;activity name&gt;</tt> + <tt>"App"</tt>
+suffix.</p>
+<h3 id="webRoot">Web Root</h3>
+<p>This entry determines the root folder, where the Web project is
+located. The default value is derived from the <tt>"/"</tt> + <tt>&lt;project
+name&gt;</tt> + <tt>"/WebContent"</tt>. If this entry is not valid, browse
+and select a valid workspace folder. Please make sure the selected
+folder is a dynamic Web project.</p>
+<h3 id="panelLoc">Panel Location</h3>
+<p>This represents the folder in the Web root where the generated
+JSF snippet will be placed. The default value is <tt>/xhtml</tt>. If the
+folder does not exist, a new one will be created.</p>
+<h3 id="panelName">Panel Name</h3>
+<p>The file name of the JSF snippet is determined in this field. The
+implicit extension of <tt>.xhtml</tt> will be attached. The default
+panel name is derived from the <tt>&lt;activity name&gt;</tt> + <tt>"Panel"</tt>
+suffix.</p>
+<h3 id="adaptLoc">Adapter Location</h3>
+<p>This entry represents the package name of the backing bean of the
+JSF panel. The default value is derived from <tt>"org.eclipse.stardust."</tt> + <tt>&lt;project
+name&gt;</tt> + <tt>".web.jsf.beans"</tt>.</p>
+<h3 id="adaptName">Adapter Name</h3>
+<p>Here the name of the backing bean of the JSF panel is filled in.
+The default value is derived from the <tt>&lt;activity name&gt;</tt> + <tt>"Bean"</tt>
+suffix.</p>
+<h2 id="pref">Generation Preferences</h2>
+
+<p>Select the number of columns to be displayed in the Stardust Portal 
+from the <strong>Number of Columns Used to Display Data
+in Column Layouts</strong> drop-down list. By default, data is displayed in three columns.</p>
+
+<p class="image"><img src="images/gen-pref.png"
+	alt="Generation Preferences"> <br>
+<strong>Figure:</strong> Generation Preferences</p>
+
+<h2>Conversion Execution</h2>
+<p>On execution the following objects will be generated:</p>
+<ul>
+	<li>A new interactive JSF application with the following
+	attributes:<br />
+	&nbsp;
+	<table id='id'>
+		<tr>
+			<th width="20%">Field</th>
+			<th>Entry</th>
+		</tr>
+		<tr>
+			<td>URL</td>
+			<td>&lt;panel location&gt;/&lt;panel name&gt;.xhtml</td>
+		</tr>
+		<tr>
+			<td>Managed Bean Name</td>
+			<td>&lt;adapter name&gt;</td>
+		</tr>
+		<tr>
+			<td>Managed Bean Class</td>
+			<td>&lt;adapter location&gt;.&lt;adapter name&gt;</td>
+		</tr>
+		<tr>
+			<td>Completion Method</td>
+			<td>complete()</td>
+		</tr>
+	</table>
+	<br />
+	&nbsp; For example:</li>
+</ul>
+<p class="image"><a href="images/mg-new-jsf-appl_orgSize.png"
+	target="_blank"> <img src="images/mg-new-jsf-appl.png"
+	alt="JSF Application"></a></p>
+<ul>
+	<li>A new symbol for the application and an <strong>executedBy</strong>
+	connection between application symbol and activity symbol.<br />
+	&nbsp;<br />
+	&nbsp; <img src="images/mg-manual-to-jsf-new-appl.png"
+		alt="New Application"><br />
+	&nbsp;</li>
+	<li>A new class <tt>&lt;adapter name&gt;</tt> will be created in
+	the package <tt>&lt;adapter location&gt;</tt>.</li>
+	<li>The JSF snippet will be created in the panel location folder.</li>
+	<li>In the <tt>&lt;Web root&gt;/WebContent/WEB-INF</tt> folder a new file <tt>&lt;project
+	name&gt;-jsf-faces-config.xml</tt> will be created containing the definition
+	of the new managed bean and this file will be appended to the list of
+	faces config files defined in the context param <tt>javax.faces.CONFIG_FILES</tt>
+	of <tt>web.xml</tt>. If the file already exist, then only the
+	definition of the new bean will be appended in the faces-config file.</li>
+</ul>
+<p>The new structure in your package explorer will look like in the
+following example:</p>
+<p class="image"><img src="images/mg-manual-to-jsf-struct.png"
+	alt="New Application"><br />
+<strong>Figure:</strong> Added Files</p>
+<h4>Deleting JSF code / undo operations</h4>
+<p>Note that after undoing a converting process, the JSF application symbol is removed
+from the model, but the created classes will still remain in the project.
+After performing an undo operation and deleting the according packages and code,
+a redo cannot create the code again.</p>
+<p>The created packages and code will also still remain in the
+project, after the according JSF application is deleted from the model.</p>
+<h2>Automatically created Activity Panel in the Portal</h2>
+<p>An automatically created activity panel with input and output fields is created 
+when running the activity in the Portal in case In and Out-data-mappings exist for the activity.
+For details on activity panels refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/pp_renovated/activity-interactive.html">
+Working with interactive Activity Panels</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/portal/toc.html">
+End User Handbook</a>.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

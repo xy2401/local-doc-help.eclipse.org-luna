@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing move functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Move Functionality</h1>
+<h2>Create a Move Feature</h2>
+<p>In our current diagram the move functionality is already provided by the framework. 
+Nevertheless this tutorial should explain how the move behavior can be customized. 
+Therefore we constructed the following example behavior:</p>
+<p>Moving EClasses should be restricted to EClasses whose name is longer than one 
+character (just an example without logical reason).</p>
+<p>Another possibility would be to allow, that a EClass can be moved onto another 
+EClass (which is not allowed in the default implementation). This does not make 
+sense in our example, but in other scenarios this is a quite typical usage for a 
+move feature.</p>
+<p>For that purpose we need a special move feature which is used by the diagram if 
+a move gesture (a drag) is received as interaction. A move feature has to implement 
+the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IMoveFeature.html">IMoveFeature</a> 
+or one of the more specialized interfaces. Instead of implementing them directly 
+you should extend one of the available base classes. In this example we extend the 
+base class <a href="../../../javadoc/org/eclipse/graphiti/features/impl/DefaultMoveShapeFeature.html">DefaultMoveShapeFeature</a> 
+which implements the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IMoveShapeFeature.html">
+IMoveShapeFeature</a>.</p>
+<p>In this case we only have to overwrite/implement one method:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IMoveShape.html#canMoveShape(org.eclipse.graphiti.features.context.IMoveShapeContext)">
+	canMoveShape</a> has to check whether the current pictogram element of the given 
+	context can be moved to the given location. In this case the location information 
+	contained in the context consists of the coordinates and the target container. 
+	With this information it is also possible to realize a move behavior depending 
+	on the target the user wants to drag to.</li>
+</ul>
+<p>You can see the complete implementation of the move feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialMoveEClassFeature
+		<span class="keyword">extends </span>DefaultMoveShapeFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>TutorialMoveEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp; <span class="keyword">&nbsp;public boolean</span> 
+		canMoveShape(IMoveShapeContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean </span>canMove = <span class="keyword">super</span>.canMoveShape(context);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// perform further check only if move allowed by default 
+		feature</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(canMove) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// don&#39;t allow move if the class name has the length 
+		of 1</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Shape shape = context.getShape();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(shape);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass c = (EClass) bo;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(c.getName() != <span class="keyword">null
+		</span>&amp;&amp; c.getName().length() == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		canMove = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;return</span> canMove;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getMoveShapeFeature(org.eclipse.graphiti.features.context.IMoveShapeContext)">
+getMoveShapeFeature</a>.</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>IMoveShapeFeature 
+		getMoveShapeFeature(IMoveShapeContext context) {<br>&nbsp;&nbsp;&nbsp; Shape 
+		shape = context.getShape();<br>&nbsp;&nbsp;&nbsp; Object bo = getBusinessObjectForPictogramElement(shape);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialMoveEClassFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getMoveShapeFeature(context);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<h2>Test: Move EClass Is Restricted</h2>
+<p>Now start the editor again and test it: Just create a EClass whose name is only 
+one character long. Moving this EClass should not be possible. Create another EClass 
+whose name is longer than one character. Moving this EClass must still be possible.
+</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

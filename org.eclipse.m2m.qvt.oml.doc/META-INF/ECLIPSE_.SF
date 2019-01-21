@@ -1,0 +1,74 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: x1FvXQZ9N8jH6cJ04dyYV+1rqqw=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: QOvG8DBecTuZBtseCv1lRVwvu18=
+
+Name: about.ini
+SHA1-Digest: mVAmrhORKtx6G9nxKmOS4UDCPJI=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: about.mappings
+SHA1-Digest: RzhZcQ4sjib91TergIQVNqGeyuU=
+
+Name: references/doc.css
+SHA1-Digest: S2QdoAbsy2nAG36VqAPy/2fY7Rs=
+
+Name: references/breakingChangesInQVTOImplementation.html
+SHA1-Digest: 93TiRGMgRjJRSq5VUkQzZA+9y6U=
+
+Name: references/blackboxing.html
+SHA1-Digest: 5DSqBKQf6Ama8g5qdKzTqrrWzi8=
+
+Name: references/anttasks.html
+SHA1-Digest: Y9d3S5GnEhXFlTek8UXSqIZaACk=
+
+Name: about.html
+SHA1-Digest: BMvIwy+fBoN5ciI+DJ/tBreEc5I=
+
+Name: plugin.properties
+SHA1-Digest: AQYh1123Y9CrMMAKZbEtQO2AkEk=
+
+Name: references/M2M-QVTO.pdf
+SHA1-Digest: 6/QQDQSRoIUby9dYYawW0SWTFlk=
+
+Name: toc.xml
+SHA1-Digest: f8nnyJYDO10ninzT9zW4IaElAw8=
+
+Name: modeling32.png
+SHA1-Digest: HNz2oYHVqQEUObJQL6sh+Ik2jak=
+
+Name: about.properties
+SHA1-Digest: zwRJO/qktoXW7iSWpPxRn73ede0=
+
+Name: references/reference.html
+SHA1-Digest: bCdPo66f9so2oboJKvLMpsx0YXU=
+
+Name: schema.css
+SHA1-Digest: CKdxhh/cT2WU7BV6XRhBX928bec=
+
+Name: references/overview.html
+SHA1-Digest: ZtRzk+kIPzxroqY74NiwWpGIGmw=
+
+Name: topics_Reference.xml
+SHA1-Digest: XXWZCgGGohslN1Fh3YuUZWWn04g=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_blackboxProv
+ ider.html
+SHA1-Digest: zlUAmwaaFG7CWD1sFRsFkd1R8ac=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_javaBlackbox
+ Units.html
+SHA1-Digest: ul/5kfGG4Apfe8IdWNSoPRngpqE=
+
+Name: references/extension-points/org_eclipse_m2m_qvt_oml_unitResolver
+ Factory.html
+SHA1-Digest: /wyK9KKnUtpXnRo47VWFkeYHRUc=
+
+Name: plugin.xml
+SHA1-Digest: mz+P9GCMvjvgj0wXKhuNyZ5GNmM=
+
+Name: book.css
+SHA1-Digest: UxW21iFAeWJ2UzS0KO6JsEbZLew=
+

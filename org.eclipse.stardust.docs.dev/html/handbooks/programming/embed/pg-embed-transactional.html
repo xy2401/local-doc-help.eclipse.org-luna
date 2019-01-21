@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Transactional Behavior</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Leveraging Query Evaluation Profiles",
+        "pg-embed-exceptions.html","pg-embed-performance.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Transactional Behavior</h1>
+<p>Performing methods of the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>,
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+and the <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserService.html">UserService</a>
+will change the content of the audit trail database and other data sources being accessed
+during process execution. These changes will be applied in the context of a transaction.</p>
+<p>Furthermore, applications (e.g. Session Bean methods) may be executed on behalf
+of a <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+or <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>.
+These applications may access transactional resources like databases or message queues,
+too.</p>
+<p>Because transactions on multiple data sources need to be synchronized, Stardust
+uses EJB transaction support to perform global transactions in a two-phase-commit
+protocol.</p>
+<h2>Container Managed Transaction Demarcation</h2>
+<p>Transaction demarcation for the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+and the <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+has to be managed by the container to provide you with the highest degree of flexibility
+for your application design.</p>
+<p>Hence, these beans always have to be deployed as follows:</p>
+<pre>&lt;session&gt;<br>   &lt;ejb-name&gt;WorkflowService&lt;/ejb-name&gt;<br>   ...<br>   &lt;transaction-type&gt;Container&lt;/transaction-type&gt;<br>   ...<br>&lt;/session&gt;</pre>
+
+
+<h2>Assembly Information</h2>
+<p>Normally, each method of the Stardust services and default Message Driven Beans
+is thought to begin and complete a transaction and the changes in the audit trail database
+and the transactional resources accessed by the invoked applications will be visible for
+other transactions. To achieve this behavior, the deployment descriptor for the Stardust
+Session Beans should contain the following:</p>
+<pre>&lt;assembly-descriptor&gt;<br>   &lt;container-transaction&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;WorkflowService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;UserService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;AdministrationService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;QueryService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;<br>       ...<br>      &lt;trans-attribute&gt;RequiresNew&lt;/trans-attribute&gt;<br>   &lt;/container-transaction&gt;<br>&lt;/assembly-descriptor&gt;</pre>
+<p>However, it might be desirable to perform subsequent methods of these beans in a
+single transaction started before a Stardust Session Bean call, because the changes
+should be applied as a whole or not at all. In this case, the <tt>Deployment
+Descriptor</tt> should be:</p>
+<pre>&lt;assembly-descriptor&gt;<br>   &lt;container-transaction&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;WorkflowService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;<br>      &lt;method&gt;<br>         &lt;ejb-name&gt;UserService&lt;/ejb-name&gt;
+         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;
+      &lt;method&gt;
+         &lt;ejb-name&gt;AdministrationService&lt;/ejb-name&gt;<br>         &lt;method-name&gt;*&lt;/method-name&gt;<br>      &lt;/method&gt;
+      &lt;method&gt;
+         &lt;ejb-name&gt;QueryService&lt;/ejb-name&gt;
+         &lt;method-name&gt;*&lt;/method-name&gt;
+      &lt;/method&gt;
+       ...
+      &lt;trans-attribute&gt;Required&lt;/trans-attribute&gt;
+   &lt;/container-transaction&gt;
+&lt;/assembly-descriptor&gt;</pre>
+<p>One of the Stardust EJBs always need the trans-attribute set to <tt>RequiresNew</tt>:</p>
+<ul>
+    <li>the authentication method of the <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+    responsible for user authorization and</li>
+    <li>the method <tt>executeDaemonBody</tt> of the <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+    responsible for daemon execution in the process engine.</li>
+</ul>
+<p>Therefore your assembly descriptor must contain the following container
+transaction segments:</p>
+<pre>&lt;container-transaction&gt;
+   &lt;method&gt;
+      &lt;ejb-name&gt;ForkingService&lt;/ejb-name&gt;
+      &lt;method-name&gt;*&lt;/method-name&gt;
+   &lt;/method&gt;
+   &lt;trans-attribute&gt;RequiresNew&lt;/trans-attribute&gt;
+&lt;/container-transaction&gt;</pre>
+<p>For reference Stardust ships with default deployment descriptors reflecting a
+basic deployment scenario.</p>
+<h2>Deployment Hints</h2>
+<p>The following steps have to be performed for creating an application embedding
+Stardust functionality:</p>
+<ul>
+    <li>The Stardust EJBs contained in <tt>carnot.ear</tt> 
+    have to be deployed to your application server and connected to an audit trail
+    database. This step is described in detail in the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/toc.html">
+    Deployment Concepts</a> chapters of the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html"> Deployment Guide</a>.
+    <div class="ipp">The <tt>carnot.ear</tt> file can be achieved by downloading
+    one of the Maven archetype templates from the Stardust artifactory
+    matching your requirements. Refer to chapter
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-maven.html">
+    Creating a Stardust Runtime Environment with Apache Maven</a>
+    in the
+    <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+    Stardust Installation Guide</a> for details.</div></li>
+    <li><tt>carnot_client.jar</tt> and <tt>carnot.properties</tt> (provided in <tt>lib</tt>
+    and <tt>etc</tt> subdirectory of the Stardust installation directory) have to be part
+    of the classpath of the compilation and runtime environment for your client
+    application. The file <tt>carnot.properties</tt> has to be adjusted according to the
+    requirements of your client application. You can find a description of all Stardust
+    properties in the <a href="../../operation/properties/ag-appendix-properties.html">Stardust&nbsp;Properties</a>
+    chapters of the<strong> <a href="../../operation/ag-preface.htm">Stardust&nbsp;Operation&nbsp;Guide</a>.</strong></li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

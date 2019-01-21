@@ -1,0 +1,4863 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: e4Build
+Bundle-SymbolicName: org.eclipse.jdt.doc.user; singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
+ rm/eclipse.platform.common.git;path="bundles/org.eclipse.jdt.doc.user
+ ";tag="M20140827-1200";commitId=788f8c68752da9f48c7d6034d811fed9f7ce8
+ eff
+Require-Bundle: org.eclipse.help;bundle-version="[3.2.0,4.0.0)"
+Bundle-Version: 3.10.1.v20140827-1504
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.1.1
+Bundle-ManifestVersion: 2
+
+Name: reference/views/console/images/ref-stacktrace_console.PNG
+SHA1-Digest: CqximtWzMuSfZsTmVKsWY1+loUg=
+
+Name: images/org.eclipse.debug.ui/obj16/osprc_obj.png
+SHA1-Digest: 5CgnVwgCFyKv8XJPv58aR5YSEGY=
+
+Name: tips/images/colored-labels.png
+SHA1-Digest: pgIAJBzU4kp49xYnlx/+2Uj2sG0=
+
+Name: gettingStarted/images/view_search_editor_runTest.png
+SHA1-Digest: ZxOkSjTR8ry44wVEtILh1wTna2A=
+
+Name: reference/views/shared/ref-execute.htm
+SHA1-Digest: 8nIzqBpv1wy4bXwhLHR9J4iM2QQ=
+
+Name: images/org.eclipse.jdt.ui/elcl16/external_browser.png
+SHA1-Digest: N2STvW6ZLZoAIYZbHz7zy4qReVQ=
+
+Name: reference/menus/run/ref-menu-run.htm
+SHA1-Digest: IT4+34vlM7dmnxnv5vd/6QTLNpE=
+
+Name: reference/menus/run/ref-debug_as.htm
+SHA1-Digest: prSdfzlyYqBDny4CX8s6OJyhEwg=
+
+Name: images/org.eclipse.debug.ui/elcl16/tnames_co.png
+SHA1-Digest: cQSe2/q0e0CGOzHRpijuzTF3dpI=
+
+Name: contexts_APT.xml
+SHA1-Digest: M4SzQyAG+9ec0NS1GY+5pj4HYB8=
+
+Name: images/org.eclipse.jdt.ui/obj16/typevariable_obj.png
+SHA1-Digest: sqyhprACwoUTWZuQlttRCegmB9Q=
+
+Name: reference/preferences/run-debug/ref-perspectives.htm
+SHA1-Digest: j8vWrKRmchGZPjyKAB7704388XQ=
+
+Name: reference/images/c-quickfix.png
+SHA1-Digest: cK2DBfzqrdEl/imzqmDn5JCJL/I=
+
+Name: tasks/images/task-memory-remove-monitor.gif
+SHA1-Digest: h0kZkzhUBBwSKCLEH4ItnWNDcLk=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout12.png
+SHA1-Digest: hCRrh9ZgBWiGy6VO/hQrlkYNwQs=
+
+Name: gettingStarted/images/navigate_opendeclaration.png
+SHA1-Digest: by+8/z044vqYwUvG7wCyEY2jEeQ=
+
+Name: gettingStarted/qs-OrganizeImports.htm
+SHA1-Digest: Uac1xdwn3gO/3VuSMofs5Y5jHdU=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss4.png
+SHA1-Digest: o9Xr9i9IwYQoGp3wJUDcdqGUO2g=
+
+Name: gettingStarted/images/quicktype_dialogs.png
+SHA1-Digest: NZV3qF1gvVKLJ2hddxwCypa0NAc=
+
+Name: tips/images/warn-deprecation-opt.png
+SHA1-Digest: jCUP/HubpbXow0XMdteuhhM/mjg=
+
+Name: reference/menus/run/ref-run_history.htm
+SHA1-Digest: zbkAjwYeWJK8dSEyXfH5nA5DB5k=
+
+Name: images/org.eclipse.jdt.ui/obj16/over_co.png
+SHA1-Digest: WQSWdO4n7kKUBvQIf3Bg1wgF6G0=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout23.png
+SHA1-Digest: uNYR8M5OX4lC1BcT5BfMp561pSU=
+
+Name: reference/views/shared/ref-viewlayoutcommands.htm
+SHA1-Digest: kILfnLZ+png6NYqZDkaq5EtoVPA=
+
+Name: images/org.eclipse.debug.ui/obj16/stckframe_running_obj.png
+SHA1-Digest: x2GIF1wqWv/S0vAo7dMjNgOw5KU=
+
+Name: images/org.eclipse.jdt.ui/etool16/jdoc_hover_edit.png
+SHA1-Digest: Y6BFyf6zUTp8Aui/XoofPTZJfGI=
+
+Name: images/org.eclipse.debug.ui/elcl16/skip_brkp.png
+SHA1-Digest: EcT3IbwMkh5iFA1S3ry1BAJ2fgs=
+
+Name: tips/images/project-specific-jre.png
+SHA1-Digest: 4yT+sGQL36DPAj7nXq/0ekaRF2c=
+
+Name: tips/images/quickfix-addcast3.png
+SHA1-Digest: 7x80WNewzbogGv4ANQUD69GeSqg=
+
+Name: tips/images/advanced-highlighting.png
+SHA1-Digest: Li71eOI5NxU3eZuGmIVbRB7Mj9k=
+
+Name: images/org.eclipse.jdt.junit/elcl16/th_automatic.png
+SHA1-Digest: muDQnmfvhm2jEW1A4MThTzsyHE8=
+
+Name: reference/views/console/ref-removelaunch_action.htm
+SHA1-Digest: EEmpRAv3js6oX1Yhc7MU2a2xZcI=
+
+Name: images/org.eclipse.jdt.ui/ovr16/write.png
+SHA1-Digest: Kamsbe1/l4QzjM8E+WniiZ2YjXw=
+
+Name: images/org.eclipse.jdt.ui/obj16/change.png
+SHA1-Digest: s7ImA1Chr39x6QBsqGGg5XkPI+M=
+
+Name: gettingStarted/intro/overview.htm
+SHA1-Digest: vwXaFDIEU/qH1ffRQHRKdiSeaWI=
+
+Name: images/org.eclipse.ltk.ui.refactoring/elcl16/filter_ps.png
+SHA1-Digest: jw3nIFNkridYnik6n1W4YTcAj+E=
+
+Name: images/org.eclipse.jdt.ui/obj16/search_ref_obj.png
+SHA1-Digest: hM8JKiUuvw0L3DdJNiiovBGNrhI=
+
+Name: reference/views/breakpoints/ref-linkwith_viewaction.htm
+SHA1-Digest: MqGgruKbC+vhDCX0cxeKRMosUNA=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout34.png
+SHA1-Digest: xiiksz11H9tYCe/g6Hwg2MM03rk=
+
+Name: images/org.eclipse.jdt.ui/etool16/exportapp_wiz.png
+SHA1-Digest: vd+lm3WsY2djgoIsRzGEhzoOBAo=
+
+Name: reference/views/debug/ref-stepreturn.htm
+SHA1-Digest: HS2foshdwQRVLz6ugQ2hppEi2AM=
+
+Name: whatsNew/images/block-to-expression.png
+SHA1-Digest: BNNzFGuKpnLnUvoNxfGgn0ygfbA=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_exitcont
+ ext.PNG
+SHA1-Digest: xUMznos6OecYybS3dUkofAxRoq4=
+
+Name: images/org.eclipse.debug.ui/elcl16/hierarchicalLayout.png
+SHA1-Digest: u01QjBvr7LSxU7BF+wb6f38FXgk=
+
+Name: gettingStarted/qs-7.htm
+SHA1-Digest: Y9ceZqw6XogQfaIBZbZFpSY0fc0=
+
+Name: images/org.eclipse.debug.ui/elcl16/writeout_co.png
+SHA1-Digest: Z9YmwzvQypSoC8SqwkSZkpMGHyU=
+
+Name: images/org.eclipse.ui.editors/etool16/prev_nav.png
+SHA1-Digest: WQ47kuf/ltwSP0nD7V8ChUjItHs=
+
+Name: tips/images/code-assist-type-arg-guessing2.png
+SHA1-Digest: 6xFLHpxyJTPL68KMUxLvBDRIFY4=
+
+Name: images/org.eclipse.jdt.junit/eview16/stackframe.png
+SHA1-Digest: QpPT6zU87g50UvWy4PTknAoR/Ao=
+
+Name: tips/images/hover-on-lambda.png
+SHA1-Digest: TcQoASm5JK42HFSPurDD35k4iUI=
+
+Name: images/org.eclipse.jdt.ui/elcl16/refresh_nav.png
+SHA1-Digest: Swp/Y4AE/CeQvfuu9ZfmyrdkIK4=
+
+Name: gettingStarted/images/pref_jre.png
+SHA1-Digest: Tx/91QMLsEUZV3R71Yz3lwQqEOQ=
+
+Name: images/org.eclipse.ui.console/elcl16/paste_edit.png
+SHA1-Digest: SujjWhkxQr+D1nv0r4oeii2/eEY=
+
+Name: images/org.eclipse.jdt.ui/obj16/classfo_obj.png
+SHA1-Digest: xEkGU/kotPgTnNg8UCjghSWmVEw=
+
+Name: tasks/tasks-230.htm
+SHA1-Digest: 1orToiImek09o5wIcRlAyVTSMws=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout45.png
+SHA1-Digest: oMAsF6TIbtNRvragAeC4RhKZIp0=
+
+Name: images/org.eclipse.jdt.ui/obj16/settings_obj.png
+SHA1-Digest: 9GCPaT/c7iUShk2XNfI0UeATQFY=
+
+Name: tasks/task-catching_exceptions.htm
+SHA1-Digest: 5iOSu/UckidDbCtgOauRbmAPWrc=
+
+Name: tips/images/create-getter-setter.png
+SHA1-Digest: hXuxa1smWVdsB3llHbo6f9rFo9w=
+
+Name: images/org.eclipse.jdt.ui/elcl16/hierarchy_co.png
+SHA1-Digest: dgEDc6S4PM1258YHzvKm8EIQB0w=
+
+Name: gettingStarted/images/pref_launch_operation.png
+SHA1-Digest: GrNT/yVJ8g/aqMcL00nU43ZDrNw=
+
+Name: reference/preferences/java/debug/ref-step_filtering.htm
+SHA1-Digest: dZJxFloOjBWuWMoiBmpOuIgSwQM=
+
+Name: images/org.eclipse.jdt.ui/obj16/inclusion_filter_attrib.png
+SHA1-Digest: 34bjZuTyBDjHOLjiAM/AROGiQGs=
+
+Name: reference/ref-menu-file.htm
+SHA1-Digest: 4iNACOA6g2Zn6VevF/xe70zGfFo=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout56.png
+SHA1-Digest: pVpr7TDKRdWjb/ep+I4R+CiCmY8=
+
+Name: reference/preferences/java/debug/ref-detail_formatters.htm
+SHA1-Digest: 7Noln3K2z2ladpVr9SkNa/S+rHo=
+
+Name: images/org.eclipse.debug.ui/elcl16/terminate_rem_co.png
+SHA1-Digest: z+eeblLf5tV4CoTMFVHVNzOUH1c=
+
+Name: reference/ref-wizard-source-folder.htm
+SHA1-Digest: 7VF23ljVLkE0v4CoJaVeLGYRwII=
+
+Name: images/org.eclipse.jdt.ui/obj16/template_swt_obj.png
+SHA1-Digest: YEuZ0pwzuRFy+aqWmtzQmUTh0J4=
+
+Name: reference/views/debug/images/ref-editstepfilters.PNG
+SHA1-Digest: 1OUlbLGmsERLeTg8oFgxb4ic1DE=
+
+Name: images/org.eclipse.jdt.junit/obj16/exc_catch.png
+SHA1-Digest: CVrBtkI2Oww7QSghNrcF8wJ+1HU=
+
+Name: reference/views/debug/ref-layout_breadcrumb_auto_expand.htm
+SHA1-Digest: D+1Rh5mW6bCefimA/PK9xN3vy5U=
+
+Name: reference/preferences/run-debug/ref-view_management.htm
+SHA1-Digest: gSqLPFT1c9zKV2AhLB27x77UteU=
+
+Name: reference/preferences/java/buildpath/ref-preferences-classpath-v
+ ariables.htm
+SHA1-Digest: dgPKP1fXi3gPxaYa/EuMzuEDQBs=
+
+Name: reference/views/shared/ref-allreferences.htm
+SHA1-Digest: ZkT45d3y9cfj0aZNa2NC4UhODhI=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout67.png
+SHA1-Digest: 6wgFlhb2jWiTuqzW1Tolerhre1w=
+
+Name: gettingStarted/qs-BasicTutorial.htm
+SHA1-Digest: Z4NUb3GQOT4SkGqcBg5j9KJwUWg=
+
+Name: reference/views/debug/images/ref-sourcelookupdialog.PNG
+SHA1-Digest: WfnzNWqh3fDUCjfwYS4zsLQtG0U=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/exit_ovr_disabled.png
+SHA1-Digest: alavOFasvbO6mbuFB3sOKV79+Ps=
+
+Name: images/org.eclipse.jdt.ui/obj16/implm_co.png
+SHA1-Digest: Nxsdg3cI98VBS2NmfjYuaqkswfE=
+
+Name: tips/images/annotation-navigation.png
+SHA1-Digest: b00tx7tPz6TQ4VJVjAqH0g2lPL8=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout2.htm
+SHA1-Digest: tg52Dq8Dr+6SqXESe/CDrozDczo=
+
+Name: images/org.eclipse.debug.ui/elcl16/drop_to_frame.png
+SHA1-Digest: Skc/+eZdI/A6cGzjqTW5Ady/jpQ=
+
+Name: images/org.eclipse.jdt.ui/elcl16/package_mode.png
+SHA1-Digest: 5V0gKuRhorp9Fcb1qbbMnxbvrrM=
+
+Name: tips/images/code-assist-argument-proposal.png
+SHA1-Digest: RQmAu/SAYroKi5K+DGTTUoqnsHs=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/sethitcount_co.png
+SHA1-Digest: fIakYEddi15dpwG4KUHCGRpTcG4=
+
+Name: images/org.eclipse.jdt.ui/elcl16/remove_as_source_folder.png
+SHA1-Digest: eHc0MUenD5A8gD054jrmyOX52TI=
+
+Name: reference/views/shared/images/ref-detailpane.PNG
+SHA1-Digest: 97/Krmt2cZBAZVki1jwD2bp/L1Y=
+
+Name: images/org.eclipse.debug.ui/ovr16/skip_breakpoint_ov.gif
+SHA1-Digest: B2laU5QWoswA3yd5Bhsn5zWIFNs=
+
+Name: images/org.eclipse.debug.ui/dlcl16/copyviewtoclipboard_tsk.png
+SHA1-Digest: DVhEFoaN7tGFKu0dzi0HgrHcodY=
+
+Name: reference/preferences/java/codestyle/ref-preferences-cleanup.htm
+SHA1-Digest: tXXXQlK6jON6AxLT8uqSwuR9pEA=
+
+Name: tasks/task-suppress_warnings.htm
+SHA1-Digest: 5aIXCj88cBhX69d0UJ/thTmSkrA=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jexception_obj.png
+SHA1-Digest: PXNhcauzJlthwhjvyirYN3oR5Xs=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/refactorings_obj.png
+SHA1-Digest: +26mqo7xEvkSP2NTUcUfgTJe2cQ=
+
+Name: reference/views/shared/ref-allinstances.htm
+SHA1-Digest: 7d+g0r/YZN5QutBXpt7TE3x0kRU=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/ownsmonitor_ovr.png
+SHA1-Digest: fpGvy6DdpFpWJ4MxMnJ87dbZhNw=
+
+Name: images/org.eclipse.jdt.ui/elcl16/ch_callees.png
+SHA1-Digest: tIrmBPPbkyTZFS3ypNsAjv/MgUs=
+
+Name: images/org.eclipse.ui.console/elcl16/rem_co.png
+SHA1-Digest: pf50K9eH06j2myUPeSmvZZBihNc=
+
+Name: tips/images/suppresswarningsR31.png
+SHA1-Digest: om8crRN01w8/GIktUIYngEVzntA=
+
+Name: images/org.eclipse.jdt.junit/elcl16/th_vertical.png
+SHA1-Digest: d+pL6zuWCf5z2Eg88axE1MKpPhI=
+
+Name: images/org.eclipse.jdt.junit/obj16/testassumptionfailed.gif
+SHA1-Digest: BLawnlAjNpI9rPkbZ+MUnouy/7E=
+
+Name: reference/menus/run/ref-toggle_watchpoint.htm
+SHA1-Digest: 0ZnghfLCPKyGCprTwGjvWWZi6n0=
+
+Name: concepts/concept-java-editor.htm
+SHA1-Digest: miVSR8FYA6DWo+IJvcS1Ka59h9E=
+
+Name: tasks/task-memory-inspect.htm
+SHA1-Digest: 05R9Mb6/4elYwAkmwsrWcMG24kQ=
+
+Name: gettingStarted/images/qs-OrganizeSources6.png
+SHA1-Digest: pBpiOdAaET28I63C9PQdx05MXUg=
+
+Name: images/org.eclipse.jdt.ui/obj16/annotation_protected_obj.png
+SHA1-Digest: SUQ4kkN0SivTGwkUjoD2CFIXvCE=
+
+Name: images/org.eclipse.jdt.ui/elcl16/ch_callers.png
+SHA1-Digest: UBEUyitVB3iCjjyy+CrANwvWA/Q=
+
+Name: images/org.eclipse.jdt.ui/obj16/jrtexception_obj.png
+SHA1-Digest: eI8AlDtsfNChMc6jTQC4SNb1K7w=
+
+Name: images/org.eclipse.debug.ui/elcl16/resume_co.png
+SHA1-Digest: U5n1leIjhZnf68oALZPI1TQcTZs=
+
+Name: reference/views/shared/images/ref-find_dialog.PNG
+SHA1-Digest: jEZJcWk/R5h7phmd4msawFysB1c=
+
+Name: images/org.eclipse.jdt.ui/obj16/jexceptiond_obj.png
+SHA1-Digest: jCeGr0LfntM7BjOMTcsCZbRvhWw=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout10.png
+SHA1-Digest: E9868VxIlcorYCmqWvRnyMxvrTU=
+
+Name: reference/views/console/images/ref-open_console_menu.PNG
+SHA1-Digest: nduxOu7wX5wTVKS0KdTYpcyVxS4=
+
+Name: tips/images/compare-java.png
+SHA1-Digest: Jl9LiqXVkQ9RZZD4qqCJ+G0r8mw=
+
+Name: images/org.eclipse.debug.ui/obj16/ldebug_obj.png
+SHA1-Digest: bW63YbG4rbqAKOo+qNo6GBnWsJQ=
+
+Name: whatsNew/images/convert-to-lambda-2.png
+SHA1-Digest: 19/wu3vRHva1oJnzhVIc08OpwWA=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss2.png
+SHA1-Digest: S+e+ArATi2WYRTru1zaKc3f1tU0=
+
+Name: reference/views/console/images/ref-prefs_context.PNG
+SHA1-Digest: aU8NMDd/g1xuINCRFR7LSkrdyz8=
+
+Name: gettingStarted/images/editor_testcase.png
+SHA1-Digest: 4nEfB+55Xq7VmNi7Zm70TdLicsA=
+
+Name: images/org.eclipse.jdt.ui/elcl16/hide_ignored.png
+SHA1-Digest: NdBVT96N7nQufnHvQhdYIx9fxjI=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/debug_exc.png
+SHA1-Digest: mLoq6yPZ1xJbOCpW1ohpE11KXJE=
+
+Name: images/org.eclipse.jdt.ui/elcl16/class_obj.png
+SHA1-Digest: LCZBz2gXKcmo85u/ds1TgOnjL0k=
+
+Name: reference/images/formatter-prefer-wrapping-outer-expressions.png
+SHA1-Digest: z4eVC2XLbt6tYax3WX8vXosQ1U8=
+
+Name: tasks/task-memory-multiple-add.htm
+SHA1-Digest: mE3JXcNTRcP/n8TIuuqsAc9MQqE=
+
+Name: tips/images/redundant-null-check.png
+SHA1-Digest: olXPO8r/1asSOv9SmOhPx/SlfRg=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout21.png
+SHA1-Digest: hGWk8859XGx1MNKsN9RLbY+NKgo=
+
+Name: images/org.eclipse.jdt.ui/elcl16/metharg_obj.png
+SHA1-Digest: BpY5DDCSc9PP+TcJJaA5tDgygY4=
+
+Name: gettingStarted/images/editor_testcase_error_unsaved.png
+SHA1-Digest: Zqsgb3eopDueq7eHpdG6jF2KCag=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/variable-view-columns.png
+SHA1-Digest: ebAR2nBt1cmoaOi9/G0+pAZRPjM=
+
+Name: reference/views/shared/ref-vertview.htm
+SHA1-Digest: y/N5PeHYqO7N2IJJp8MnWA/pB4o=
+
+Name: tasks/images/task-null-annotations-qf-simple.png
+SHA1-Digest: /u2xeeBp5jtkNCJ4I46+uSE2sjU=
+
+Name: gettingStarted/images/editor_vectortest_for_template.png
+SHA1-Digest: lwX25kQU33PmwtYK41pDeiSXOF4=
+
+Name: images/org.eclipse.jdt.ui/ovr16/callee_co.png
+SHA1-Digest: PypoJbAdFA1LhIf/rHqEUE2O5q8=
+
+Name: gettingStarted/images/editor_vectortest_quickoutline.png
+SHA1-Digest: +oIP+aEpZNc/MG37fSRErNyUQSU=
+
+Name: gettingStarted/images/view_variables_1.png
+SHA1-Digest: AkZef30ATCyojCXzo1QnJcutp+U=
+
+Name: tips/images/quickfix-addcast1.png
+SHA1-Digest: 3KPeSZwr9MCWdrBlsmFmJofX2oI=
+
+Name: images/org.eclipse.jdt.ui/elcl16/sync_broken.gif
+SHA1-Digest: lR4ZSRrV3LHkm/3DIbQwkbP4+Wg=
+
+Name: images/org.eclipse.debug.ui/elcl16/memoryreset_tsk.png
+SHA1-Digest: tLNCKw2zi5k8rBuNDR9Wj3VaDro=
+
+Name: reference/breakpoints/ref-suspendsubclass_option.htm
+SHA1-Digest: FvG+3X33gh6TIXQOESlQQiBRCiU=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/uncaught_ovr.png
+SHA1-Digest: nU5UCiTjURPuSvcOAee1dxc4lV8=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout32.png
+SHA1-Digest: hCRrh9ZgBWiGy6VO/hQrlkYNwQs=
+
+Name: tips/images/completiononcamelcase.png
+SHA1-Digest: HzJ5h6vVwD57ZJZ3iC5qJn+lWG8=
+
+Name: images/org.eclipse.jdt.ui/ovr16/maxlevel_co.png
+SHA1-Digest: Vcp96HwyENXDCm3xi8xqS7v42xc=
+
+Name: gettingStarted/images/java7/remove-safevarargs-2.png
+SHA1-Digest: n/jXe82w1JVLWaOomIyj2aQBbug=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/watchpoint_properties.png
+SHA1-Digest: IpB9N3S8niPYwytb7eFhxIdkD4I=
+
+Name: gettingStarted/images/java7/ee-page.png
+SHA1-Digest: V5A88ZkWpts/jSkxAYekR8zZ0fc=
+
+Name: images/org.eclipse.jdt.ui/elcl16/cpyqual_menu.png
+SHA1-Digest: 7WhOXxXkERshg+eY90xk4sgNCFI=
+
+Name: reference/views/shared/images/force-return-action.png
+SHA1-Digest: /2CSjvggzmAJhVN2IKbIMxgME44=
+
+Name: tips/images/quickfix-create-for-loop-array.png
+SHA1-Digest: FjKv4EXqxAFh8l7DnM7vnXXfPRc=
+
+Name: images/org.eclipse.jdt.debug.ui/wizban/library_wiz.png
+SHA1-Digest: rmhtgVA1WRWMPsycGVeowsPOyes=
+
+Name: reference/views/breakpoints/ref-removeall_viewaction.htm
+SHA1-Digest: 2Csm5Sc94+LeqagEpJSROL8NDKY=
+
+Name: reference/views/expressions/ref-removeall.htm
+SHA1-Digest: fee49ohe5etcAxypFcF7GInuiNE=
+
+Name: reference/propertypages/images/rundebug-proppage.PNG
+SHA1-Digest: 0Z5283YaAUAgXq/ohN6+np7JU0Q=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout43.png
+SHA1-Digest: XuX85eTcwgnI7Q/6elfctqkPBVE=
+
+Name: gettingStarted/images/search_next.png
+SHA1-Digest: 2hUtHxAT9caEcyIBZ26U2SMVoJM=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_groupbya
+ dvanced_dialog.PNG
+SHA1-Digest: Brh+nL/oPrr1ktJfEPpD5sXEb0g=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_cast.png
+SHA1-Digest: sJr+VlLEDp9i5MNYJ2Lv5BCvGgA=
+
+Name: tips/images/package-abbreviations-on.png
+SHA1-Digest: NWnNUqe46g6lAbGkZNJovAeFt/M=
+
+Name: tasks/images/task-memory-add-monitor.gif
+SHA1-Digest: yoxjmqMtVphUpFQAd45TKQuy8gU=
+
+Name: reference/preferences/run-debug/ref-string_substitution.htm
+SHA1-Digest: npCnqeWoo+tXV/mEjPzVkceKfuM=
+
+Name: tips/images/warn-privates.png
+SHA1-Digest: bdP1j1eooQME3fdbciIbd3uMNLI=
+
+Name: reference/breakpoints/ref-condition_option.htm
+SHA1-Digest: 8n2mVs3KL7xn1veuCj0oLJywjW0=
+
+Name: images/org.eclipse.ltk.ui.refactoring/elcl16/prj_mode.png
+SHA1-Digest: MqlqgkWfY7ZuPq2ORWxnjf/9lbU=
+
+Name: gettingStarted/images/view_search_research_menu.png
+SHA1-Digest: fCD8qX6tD2YTtY1DVen9+U0Bm7Q=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout54.png
+SHA1-Digest: MJqpZK2hroMhvG+TrdTSMfSVu4M=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/java_applet.png
+SHA1-Digest: O+4+vpynqKjlSiDsXzZaLSAWLC0=
+
+Name: reference/views/ref-view-package-explorer.htm
+SHA1-Digest: HRVcqOHze2eR/V2SZ4cTPhwvcfI=
+
+Name: gettingStarted/images/navigate_opentype.png
+SHA1-Digest: yjYxArWj8g/P+iKpUWhN8rRJxnc=
+
+Name: reference/views/expressions/ref-enable.htm
+SHA1-Digest: YkY6W4Q7tcLJijM8RIgMJwkv0K8=
+
+Name: reference/ref-wizard-refactorings.htm
+SHA1-Digest: IfZqaQMStn12ChH9NK3EMW71T6w=
+
+Name: images/org.eclipse.jdt.ui/obj16/field_public_obj.png
+SHA1-Digest: zB9JVFPhSs+xMJHa0Qf5yl/CDAc=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_change.png
+SHA1-Digest: /rvo+1pK4NApH0WaVEdCgU6Bhp0=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/monitor_view.png
+SHA1-Digest: qeHkUlS8iMpf7TLa7ZeOWxb2HbA=
+
+Name: reference/views/expressions/images/ref-expressions_view.PNG
+SHA1-Digest: iOm7G0HyPMtPZFPdxDnaOPVu+co=
+
+Name: images/org.eclipse.jdt.ui/elcl16/default_co.png
+SHA1-Digest: DNhNMwCuV9hMtvxmEHNXXF22gZ8=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout65.png
+SHA1-Digest: tMW2nzuaQanaBmUKVsXdkcNQ1no=
+
+Name: tips/images/quickfix-create-for-loop-array.txt
+SHA1-Digest: VOCBRIuz0icoYsFAGhf1bcLibK4=
+
+Name: images/org.eclipse.debug.ui/dtool16/watch_exp.png
+SHA1-Digest: tjPg++Go//YebZYkd5hyeJFVhdw=
+
+Name: images/org.eclipse.jdt.ui/obj16/quickfix_warning_obj.png
+SHA1-Digest: xpRaqRaS7QRpeZcYay6AnTTtsNo=
+
+Name: images/org.eclipse.jdt.ui/obj16/enum_alt_obj.png
+SHA1-Digest: p6qhT0ih6FHY9V9ZDgHdoxSShNw=
+
+Name: whatsNew/images/quickfix-change-compliance-1.8.png
+SHA1-Digest: tEc0f75Su1IFMTibG8y9YMSvaAA=
+
+Name: images/org.eclipse.jdt.ui/elcl16/remove_from_buildpath.png
+SHA1-Digest: Z/g1SlNHgULyPTl/57ZcUXviv9E=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jexceptiond_obj.png
+SHA1-Digest: W861AbxKAWcGcbafN9+yc4/iUuQ=
+
+Name: images/org.eclipse.debug.ui/elcl16/metharg_obj.png
+SHA1-Digest: vwIAW4q78z0YJf1B4kp3rNgYmXc=
+
+Name: tasks/task-apply_hit_count.htm
+SHA1-Digest: 9IulfUzuGdkeHKiCXm15fV0ghTE=
+
+Name: gettingStarted/images/pref_editor.png
+SHA1-Digest: oKrAeZlR0Dhbg1rOFTiFBd4l3C4=
+
+Name: images/org.eclipse.jdt.ui/elcl16/pin_view.png
+SHA1-Digest: FHQ0l+TPK4ltoMNXRhm8lWOclsc=
+
+Name: tips/images/cleanupprofiles.png
+SHA1-Digest: f/5SiKV2YUxHGao3FtKwWKTSp6c=
+
+Name: reference/views/debug/ref-layout_tree.htm
+SHA1-Digest: 9eZZEUL6l+D27wXlBEISh9jg85s=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/newsbook_wiz.png
+SHA1-Digest: 2irOsB+ipjXugbpDgTBaNvCNsp0=
+
+Name: gettingStarted/images/java7/insert-inferred-type-arguments.png
+SHA1-Digest: 68SzN+Wig2LhfQ8Kc86usdCoxyA=
+
+Name: reference/ref-properties-task-tags.htm
+SHA1-Digest: 0QciHScGDBxXGYkIhNXWIS516d4=
+
+Name: tips/images/DeclarationView.png
+SHA1-Digest: 8IaHmr+0CKtj1rAV6p0qUuCO+gM=
+
+Name: gettingStarted/images/qs-OrganizeSources4.png
+SHA1-Digest: s3YTM3HJ0ZCUmEjl/UXjtIClWGU=
+
+Name: reference/views/debug/ref-showmonitors.htm
+SHA1-Digest: nW/r9cigCo4ynKKjz/HJMROlCA0=
+
+Name: tips/images/project-specific-settings.png
+SHA1-Digest: zR/gZXvDOQKzXmjQsrHpBzjHVNM=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/warning_obj.png
+SHA1-Digest: sBZdM8qZNY+k5X54vJ75+TFYLSI=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/breakpoint_menu.png
+SHA1-Digest: 6KWORGlgkZAZfxxd0qrWaU39EAk=
+
+Name: images/org.eclipse.ui.console/elcl16/new_con.png
+SHA1-Digest: iLjjxkfJziTY8XZSev3xmyus4yc=
+
+Name: tasks/task-resuming_threads.htm
+SHA1-Digest: 2cjjcDjlA+E7oiVW6dwelw963+I=
+
+Name: concepts/concept-inclusion-exclusion-patterns.htm
+SHA1-Digest: Q/HgL4a0BCxvjxP1aCi0RMeAEok=
+
+Name: gettingStarted/images/search_file_dialog.png
+SHA1-Digest: DbljhphMH/dBQScmfxej70orLwo=
+
+Name: images/org.eclipse.jdt.ui/obj16/brkpi_obj.png
+SHA1-Digest: V24uC0TTlOqhWs32jbwTj8MB/yE=
+
+Name: gettingStarted/images/view_package_explorer_junit_exp.png
+SHA1-Digest: wslL3VIlKSWWTE+QLzKU4YUrI78=
+
+Name: index/indexed_contributions
+SHA1-Digest: k52eK7yK+g6i4XZZOY0QiMhxnlk=
+
+Name: reference/views/debug/images/ref-filtertype.PNG
+SHA1-Digest: 7i0TXuMWgPvz2GCH/L+y+dfyyiI=
+
+Name: images/org.eclipse.debug.ui/dlcl16/debuglast_co.png
+SHA1-Digest: JnassRmzgDAhQ/6qJ2vbm+/sQis=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/thread_view.png
+SHA1-Digest: cJrMQvJZiVTvlZ5FIGRb4Z8jgPs=
+
+Name: reference/views/debug/ref-opendeclaredhier.htm
+SHA1-Digest: nZoHLZUp87H8BwMmiUy5hBOJGn8=
+
+Name: gettingStarted/images/view_outline_delete_import.png
+SHA1-Digest: 2tWT0SInKvJdO7DI3ZXGla4PSjU=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/disp_sbook.png
+SHA1-Digest: C84Obg6b69k6H6/rhSkF1RR4WZs=
+
+Name: reference/ref-menu-edit.htm
+SHA1-Digest: dT+s33AF8uQoafIq2l5EJR4D9gE=
+
+Name: images/org.eclipse.jdt.ui/elcl16/fields_co.png
+SHA1-Digest: IQLSq8FRLcw0dThaJD03gCHeICY=
+
+Name: images/org.eclipse.debug.ui/elcl16/toggledetailpane_co.png
+SHA1-Digest: 5LywZ7JdMLFwA1WIdDIZm28oWd0=
+
+Name: gettingStarted/images/pref_workspace.png
+SHA1-Digest: IZoyTJavvkrONNRA3+dmHZ96/bY=
+
+Name: gettingStarted/images/wiz_new_class_dialog_superchecked.png
+SHA1-Digest: od0ydtjQRp91ZvLMdQ/clP+7Ms4=
+
+Name: images/org.eclipse.debug.ui/obj16/debugt_obj.png
+SHA1-Digest: Y/EyUInF3YoAvYUIKDpNjIX9KD8=
+
+Name: tips/images/type-hierarchy-structured-view.png
+SHA1-Digest: ijTJ8rfFOx+IMiJybMvjDVGsV7g=
+
+Name: gettingStarted/images/pref_compiler.png
+SHA1-Digest: IKURy7uIu4ZnHJheaHUjZmOEZnU=
+
+Name: tips/images/juniterr.png
+SHA1-Digest: TekuiQk0Z3Vgf4EC6stwsW7+UDc=
+
+Name: gettingStarted/images/editor_vectortest_inspect.png
+SHA1-Digest: gfnqkx2mNZ25U7kjkcy47ejgsN0=
+
+Name: images/org.eclipse.jdt.ui/eview16/types.png
+SHA1-Digest: ib+l7bbdpq0IkMyGdF3kXtllFr8=
+
+Name: tasks/tasks-37.htm
+SHA1-Digest: GMYco7QP3YXBvj0a+IRx5iUIp0A=
+
+Name: reference/views/breakpoints/ref-export_contextaction.htm
+SHA1-Digest: enrkn1PJapVuKL9Mi3+P1/+N2cc=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout30.png
+SHA1-Digest: QO+sdSKIKNUOxxX0CfrBRWb7S3M=
+
+Name: images/org.eclipse.jdt.ui/elcl16/sub_co.png
+SHA1-Digest: 1Id+Gz6lJoiz8yXL4rOViT82AUU=
+
+Name: reference/views/console/ref-open_action.htm
+SHA1-Digest: V1/GalRKj2o9/SQstrfEhBLGyYs=
+
+Name: images/org.eclipse.jdt.ui/obj16/add_correction.png
+SHA1-Digest: tG4b8xT8GaQIyHgXyfpJLSgMQQM=
+
+Name: images/org.eclipse.jdt.junit/obj16/testfile_obj.gif
+SHA1-Digest: j/NGNLQ+4LjoPso4rIv0Ah1gHus=
+
+Name: gettingStarted/qs-3.htm
+SHA1-Digest: boKuQR6B1hcrT346og4LpKji/Gk=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_addexcep
+ tiondialog.PNG
+SHA1-Digest: mDM3HHBYTPhG/Zhl1K6mZE+U4/s=
+
+Name: gettingStarted/images/java7/twr-warning.png
+SHA1-Digest: fw+NufyV/SgOSJ8sIIT5tsL1hC4=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout41.png
+SHA1-Digest: hGWk8859XGx1MNKsN9RLbY+NKgo=
+
+Name: reference/views/ref-view-scrapbook.htm
+SHA1-Digest: MRUyie0ZxU5nT6Ovg7xScDeSOr8=
+
+Name: tasks/task-assign_default_jre.htm
+SHA1-Digest: zDFUD0M4FIC80fDTu8oy7/C9jow=
+
+Name: tips/images/junitsucc.png
+SHA1-Digest: s9dx4ugbSa4wBMmp0YUMdexdwoo=
+
+Name: images/org.eclipse.jdt.junit/obj16/testhier.png
+SHA1-Digest: pAfNDfWJRxOjzkWJJJ+cYNC8kWM=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/logical_structure_toggle.pn
+ g
+SHA1-Digest: a3v2sHQDnS+eFyDVThvz/qIbxvI=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/warning_co.png
+SHA1-Digest: FBDZy0SeVCilzQbFTZvQ2cVmmcs=
+
+Name: images/org.eclipse.debug.ui/elcl16/rem_co.png
+SHA1-Digest: fShuXhX66Tg8i53kncxC9fgZT7w=
+
+Name: images/org.eclipse.debug.ui/obj16/terminatedlaunch_obj.png
+SHA1-Digest: y2c8NuLqv2NXQssTDPLUsH79HnQ=
+
+Name: gettingStarted/images/extract_method_preview_dialog.png
+SHA1-Digest: He7ibXFDKbsZv8lV7F74ROuT8Fc=
+
+Name: reference/menus/run/ref-step_into_selection.htm
+SHA1-Digest: rwbMZLSiM7FkPor29lVIIBcK62I=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/deadlock_ovr.png
+SHA1-Digest: jkN8NiC98RtYcm9mBkS7fFCbvMU=
+
+Name: reference/views/debug/ref-resume.htm
+SHA1-Digest: 8ZVht63wwBbV4hAmaTA9/kO1fPs=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout52.png
+SHA1-Digest: +D/tW5KwBxc08X/bP2SbYiPqA0U=
+
+Name: reference/views/shared/ref-inspectvariable.htm
+SHA1-Digest: tXgufzPYQ2K/8vjsStS9cJT313c=
+
+Name: reference/preferences/java/editor/ref-preferences-content-assist
+ -advanced.htm
+SHA1-Digest: /kciArnatJDvNJNN66cwfs5sb+w=
+
+Name: gettingStarted/images/java7/assign-vars.png
+SHA1-Digest: O5bHHIP/H7Yi+W18hZlBkfMJj/Q=
+
+Name: images/org.eclipse.jdt.ui/obj16/compare_method.png
+SHA1-Digest: Ag4tyql3znT+oDrYOp7tuDgsizY=
+
+Name: concepts/concept-java-views-presentation.htm
+SHA1-Digest: AJ3CGlgfKXxeOjDMpUiOhq1BC3s=
+
+Name: images/org.eclipse.debug.ui/elcl16/printview_tsk.png
+SHA1-Digest: BXEHxc7+3CNN7sIlmV1U9KOTAIg=
+
+Name: images/org.eclipse.jdt.ui/obj16/methdef_obj.png
+SHA1-Digest: FU/LdXiCdV1b9POzE4yN1anevyM=
+
+Name: images/org.eclipse.debug.ui/elcl16/new_con.png
+SHA1-Digest: WHElJd8YZX4BAECPH/NVB56Tsvo=
+
+Name: tips/images/typing-preferences.png
+SHA1-Digest: 6FVNOr96pC+htOi6Kg10E/aYOkk=
+
+Name: reference/breakpoints/ref-exit_option.htm
+SHA1-Digest: ZJvyBLlhXgxD5ALLf6ERVRyq8QQ=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout63.png
+SHA1-Digest: I8rrNAq5/Z4E/qO7pJUIOmNMFN4=
+
+Name: images/org.eclipse.debug.ui/obj16/thread_obj.png
+SHA1-Digest: ezPSkHSA6tMfwLgWB2XZRVglbmg=
+
+Name: tasks/task-suspending_threads.htm
+SHA1-Digest: Cjzs49s+98bWTbENQvipiTZmqYs=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/insp_sbook.png
+SHA1-Digest: uNAk27M7kIO9mewCx3EHf2da5Vc=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/constant_co.png
+SHA1-Digest: eQS9XguqZV8eKppkOlRPAHdo3qU=
+
+Name: gettingStarted/images/view_package_explorer_open_type_hierarchy.
+ png
+SHA1-Digest: fvk6NsM0R+f99v4CFfOyv3TerEs=
+
+Name: reference/menus/run/ref-toggle_breakpoint.htm
+SHA1-Digest: A6iM1C/qEBnG/85IXTTaS7PmZDY=
+
+Name: reference/views/debug/ref-relaunch.htm
+SHA1-Digest: 7VsNE4b8P4OIxZ+iCNhw0tG9MEM=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/monitor_obj.png
+SHA1-Digest: qeHkUlS8iMpf7TLa7ZeOWxb2HbA=
+
+Name: reference/views/shared/ref-display.htm
+SHA1-Digest: PyTAqVyMO8KmzJn6m/etGUPUxt0=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/final_co.png
+SHA1-Digest: sddL54Y3BQgCfnOr7xf2mSkQUxY=
+
+Name: reference/menus/run/images/ref-run_dialog.PNG
+SHA1-Digest: A5UUSpJVg6Q6m/PueoRo7lVuHkY=
+
+Name: tasks/images/task-memory-det-pane.gif
+SHA1-Digest: wpzXlnORNZ+xlgzyQudNiJGgYGs=
+
+Name: tasks/task-launching_java_applet.htm
+SHA1-Digest: Ou0c6EHDEtRP7GSJEnOObxS/fU8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/jtypeassist_co.png
+SHA1-Digest: Ty8pQWf2y8ZNVRJLf3B12Cq9gYY=
+
+Name: tips/images/code-templates.png
+SHA1-Digest: EpKt3s7H/PLJH5ijST3EbTd5/wQ=
+
+Name: reference/propertypages/ref-properties-rundebug.htm
+SHA1-Digest: sKrM9HbufaAJ6wGRLnaH2EgDa+w=
+
+Name: reference/views/debug/ref-terminate.htm
+SHA1-Digest: UDg6LhhHcy6ATJOry1ZAYidpKtg=
+
+Name: reference/views/breakpoints/ref-suspendpolicy_contextaction.htm
+SHA1-Digest: ABQq29mpZf1sKS70vaFrWqz0RN8=
+
+Name: images/org.eclipse.jdt.ui/obj16/library_obj.png
+SHA1-Digest: EnF/vMPN7k33FdNyVo/glL0AvNs=
+
+Name: gettingStarted/images/qs-OrganizeSources2.png
+SHA1-Digest: 3Ogjof7V7eT66RGwu2QOnJAv0HA=
+
+Name: images/org.eclipse.jdt.ui/obj16/internalize.png
+SHA1-Digest: hKvJqZofuLLqgiGYriBC7mCf6sg=
+
+Name: tips/images/package-explorer.png
+SHA1-Digest: q9Dk38UHs5Uadwd25z03KEz3V9s=
+
+Name: reference/views/breakpoints/ref-hitcount_contextaction.htm
+SHA1-Digest: O7AfYiv7CMkc6SQcXBwiA06fywM=
+
+Name: images/org.eclipse.jdt.ui/ovr16/class_tsk.png
+SHA1-Digest: ygESBW13I5vYsr+2sS/av6vi+rY=
+
+Name: tips/images/hierarchy-lockview.png
+SHA1-Digest: RqPztrfJ2mAR7J2RzEmwcZnw7xg=
+
+Name: images/org.eclipse.jdt.ui/elcl16/type_mode.png
+SHA1-Digest: l2EFIruMmncDscHWL4lmDhBZAO0=
+
+Name: tasks/tasks-JREs.htm
+SHA1-Digest: ig7jEDwJvef8PbNM4Ff9mPfxlFE=
+
+Name: reference/breakpoints/images/ref-breakpoint_enabled.PNG
+SHA1-Digest: FihstOHDLmGvgyPy8jWSt/jOorw=
+
+Name: reference/preferences/java/codestyle/ref-preferences-formatter.h
+ tm
+SHA1-Digest: gNnas0Si4IILpUU4YlNWMOpYS6Q=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/newsbook_wiz.png
+SHA1-Digest: UT13Mv8Hv4B8ZootYua7qpIC5+o=
+
+Name: images/org.eclipse.jdt.ui/elcl16/collapseall.png
+SHA1-Digest: ui8IzelEnpExr8+Tup4mrJcy3w4=
+
+Name: tips/images/create-hashcode-equals.png
+SHA1-Digest: Ez8wijmoB6OyG8przIBSYFkTtos=
+
+Name: images/org.eclipse.debug.ui/obj16/brkp_grp.png
+SHA1-Digest: mNdjPcE+z4q48uoj/XDyjrgVSs8=
+
+Name: reference/views/breakpoints/ref-breakpoints_view.htm
+SHA1-Digest: vh/glc/3KoFF5PUx6opJ6a+nuXE=
+
+Name: gettingStarted/images/qs-DetectingExistingLayout4.png
+SHA1-Digest: y9ctPRYeJ77CFVQz7S1s/ONbTxg=
+
+Name: images/org.eclipse.jdt.junit/obj16/testrun.png
+SHA1-Digest: QNWMHVkV6ZxI5Z8d9nN+SB9HgVs=
+
+Name: reference/views/shared/ref-inspect.htm
+SHA1-Digest: JXAeeqQevKLmY+4ID6oByUBbCSM=
+
+Name: reference/preferences/run-debug/ref-launch_configurations.htm
+SHA1-Digest: xaPs7pG7qDCeK1nPbtvJnNyaHGY=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_runtest_locked
+ .png
+SHA1-Digest: UU02xTSzbopUYPTLmJa73jgFwK0=
+
+Name: images/org.eclipse.jdt.junit/elcl16/th_horizontal.png
+SHA1-Digest: fheoNj2gNLQy4j0XZiJ6FtGkIj0=
+
+Name: concepts/cscrapbook.htm
+SHA1-Digest: Yyt14Re3WKWl+n77i0ScUgDyCuE=
+
+Name: reference/views/debug/ref-opendeclared.htm
+SHA1-Digest: AvjyECmH4NCREDkRMZdzH6e+s3o=
+
+Name: reference/ref-export-jar.htm
+SHA1-Digest: FFLh14DI+nSLovB1j1ZhVUVjKo0=
+
+Name: images/org.eclipse.debug.ui/dtool16/environment_co.png
+SHA1-Digest: EmpY0FhMrMvOGGE+8hQLGBV8GJ8=
+
+Name: images/org.eclipse.debug.ui/etool16/debug_exc.png
+SHA1-Digest: mLoq6yPZ1xJbOCpW1ohpE11KXJE=
+
+Name: reference/menus/run/ref-debug_history.htm
+SHA1-Digest: 7m+TodpwJ3UOA70jv+WOFH0VHc8=
+
+Name: reference/views/shared/images/ref-inspectresult.PNG
+SHA1-Digest: InGPzjdWXbdZPwfUGHrCJljckXw=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/static_co.png
+SHA1-Digest: oMSx8+MoXTHjUV0mNAR1uQsegkk=
+
+Name: gettingStarted/images/editor_mytestcase_import.png
+SHA1-Digest: n3kEZugVYBvvvXgqPtx9TXLEsKY=
+
+Name: tasks/task-memory-change.htm
+SHA1-Digest: txtTpe4/uOpCObRXYAshuVnEfQo=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/stop_in_main.png
+SHA1-Digest: KNEzxVZbLgQYw106Sv0Z4uUcgrk=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/java_attach.png
+SHA1-Digest: ogJvByt3q8Nv5b1V2vYZ4ukn0+A=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff9.png
+SHA1-Digest: ttZPmhQM+o2ya6MiYxH7UPykchc=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout5a.png
+SHA1-Digest: tsU6/SmF8QI6LCumFt29qdZAnug=
+
+Name: images/org.eclipse.debug.ui/obj16/readwrite_obj.png
+SHA1-Digest: CBTXAg4R11/MOmnCzX1BHxAswws=
+
+Name: gettingStarted/images/editor_vectortest_toarray_template_exp.png
+SHA1-Digest: Bhu2jRfKOLk0vIrit9mqLpHsvqI=
+
+Name: tasks/tasks-35.htm
+SHA1-Digest: OiO2ZJ29EAUKYvgFoFGFRoLzouM=
+
+Name: gettingStarted/images/view_search_runTest.png
+SHA1-Digest: IPdcQgRG5pQTUD8npcca1hECk9k=
+
+Name: reference/views/debug/ref-removeallterminated.htm
+SHA1-Digest: qFZet7h1PuPsCSkNxhY2V3e1srI=
+
+Name: tasks/tasks-java-local-configuration.htm
+SHA1-Digest: w8pYhV++e2Kh+KmxfiS0w18Cxhc=
+
+Name: gettingStarted/qs-Navigate.htm
+SHA1-Digest: BCeWLQTYahxIxvOI5Dzk/bJfs4M=
+
+Name: reference/preferences/java/debug/ref-debug.htm
+SHA1-Digest: EdhvhtfmhxqU2hD5PWk5FC7vNYk=
+
+Name: gettingStarted/images/j2se50/autobox.png
+SHA1-Digest: H6PrYYa5FbXfHbjTIqcGCKtjOVU=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/envvar_obj.png
+SHA1-Digest: ulG+za6NHdUNpayibwnlASZ7vSo=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/run_exc.png
+SHA1-Digest: QmIW4EDPofHwbw4nF/39I5GcNts=
+
+Name: reference/preferences/java/ref-preferences-code-style.htm
+SHA1-Digest: rGVsNnfL3aPhvmKoeYpghyfJ7Bo=
+
+Name: reference/breakpoints/images/ref-breakpoint_condition.PNG
+SHA1-Digest: Qj9gkqWQvtq82997p9zHGQpuJ2o=
+
+Name: reference/views/shared/ref-collapseall.htm
+SHA1-Digest: pGm/nwGTGsAvaJ1/G8I+PU52sxs=
+
+Name: images/org.eclipse.debug.ui/elcl16/rem_all_co.png
+SHA1-Digest: HbPqJuDdjy7HBmswiUn1jQXrhMk=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout6b.png
+SHA1-Digest: tFp1Ph/302G7l5zxdEVHkPteqLo=
+
+Name: reference/preferences/java/ref-preferences-compiler.htm
+SHA1-Digest: LBIllbqrTBsa0zFIC0SbSNzkYds=
+
+Name: reference/ref-properties-build-path.htm
+SHA1-Digest: mz4yeVjwmIxOJw7bARNy1xqINOE=
+
+Name: reference/preferences/java/ref-preferences-installed-jres.htm
+SHA1-Digest: AYhxZk5vElpCGlUVtXwQ9NjhzCY=
+
+Name: gettingStarted/images/editor_testsuite_extract_method.png
+SHA1-Digest: 5gs7DBfp5WELcaCSzPKWVpT84YI=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoints_view.PN
+ G
+SHA1-Digest: x6Ep2tJ7jwqcL5p4CUS4saCCI80=
+
+Name: images/org.eclipse.debug.ui/elcl16/dissolve_group.png
+SHA1-Digest: KRRRwXqWwC7U4U7BgXNV6FgZSJ4=
+
+Name: tasks/task-choose_config_jre.htm
+SHA1-Digest: hGbbQg0B8mhi3l8fbo/neXeJyDc=
+
+Name: gettingStarted/images/wiz_new_suite.png
+SHA1-Digest: DL7HGXbBzkngC8ii2KhL8/vNsZo=
+
+Name: gettingStarted/qs-with-java7.htm
+SHA1-Digest: +VfG+3FqDNa4Z8yPegNX4aL0daU=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout50.png
+SHA1-Digest: Oj7SN0i9go9sTkqf/VSt/o1O4B4=
+
+Name: images/org.eclipse.debug.ui/elcl16/expandall.png
+SHA1-Digest: lhqsrvivfyZSCd3LuJckKPUuQLE=
+
+Name: reference/ref-dialog-tostring.htm
+SHA1-Digest: lV1W5zQchxwJCtGrOGm9g8+8qWg=
+
+Name: images/org.eclipse.jdt.ui/etool16/opentype.png
+SHA1-Digest: pse0z019WTl95MBtHV1ilHw68rI=
+
+Name: tasks/tasks-206.htm
+SHA1-Digest: 8LyP0J/1gDZzWrSeown+zpFFdGM=
+
+Name: images/org.eclipse.debug.ui/elcl16/collapseall.png
+SHA1-Digest: IEzflFOq8a/F0JHwsQehK9xL9sw=
+
+Name: reference/preferences/java/editor/ref-preferences-folding.htm
+SHA1-Digest: /9jfhJOJo+7BdxVHKVgDlLdq3BA=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/deadlock_view.png
+SHA1-Digest: OXDAtfqnsWZZTUabtrK8OQ9vXFo=
+
+Name: gettingStarted/images/icon_junit_successfull.png
+SHA1-Digest: cj586dwEIMNFGwmhRcbxwyqGMTs=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout61.png
+SHA1-Digest: oPP5ZF2nyaXcBvlPPaYTJZIDVpA=
+
+Name: images/org.eclipse.jdt.ui/etool16/segment_edit.png
+SHA1-Digest: +TVQqCVWg/F4K+cOpMK8QXkW9h4=
+
+Name: tips/images/camel-case-nav-6.png
+SHA1-Digest: 5oTYvl/twlYnzTzlWzws80i2Ie0=
+
+Name: whatsNew/jdt_whatsnew.html
+SHA1-Digest: nZtYvR5oYioXJ3JyS+x6d8CXgpo=
+
+Name: gettingStarted/images/select_how.png
+SHA1-Digest: gJNd1AYb11VU7i/HFqxz1IESLhk=
+
+Name: reference/views/debug/ref-stepover.htm
+SHA1-Digest: NkSlAH6SlHEV3MZasS0kctgeM7g=
+
+Name: gettingStarted/images/editor_vectortest_debug.png
+SHA1-Digest: m5iRo8gQEoc+3ihJsR6LKehcv68=
+
+Name: gettingStarted/images/editor_mytestcase_field.png
+SHA1-Digest: dH/ebrEVIUYHJHFSXhal+IuHmRY=
+
+Name: images/org.eclipse.jdt.ui/obj16/classf_obj.png
+SHA1-Digest: OH4Q19QnVpthctHSg6DXIU417/M=
+
+Name: images/org.eclipse.debug.ui/elcl16/copy_edit_co.png
+SHA1-Digest: +RjBLRGok5xB2pD88at+3MMxLFc=
+
+Name: tips/images/code-assist-newmethod.png
+SHA1-Digest: Q4hhnQFNZxji8VaDKN2JoXKCp4E=
+
+Name: images/org.eclipse.debug.ui/dlcl16/printview_tsk.png
+SHA1-Digest: DJH1aU9j6Z5OLIR3BNcmR5KmFhk=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/sethitcount_co.png
+SHA1-Digest: ov9XjX+tyB9BsZLMTKR6aWeHRes=
+
+Name: tasks/tasks-debug-launch.htm
+SHA1-Digest: YHMktHThECIMALCYZfqxCdpBOIw=
+
+Name: gettingStarted/images/java7/combine-catch-blocks.png
+SHA1-Digest: BJTZmMIAaJ+RP9O03HYvtz0enuY=
+
+Name: images/org.eclipse.jdt.ui/obj16/never_translate.png
+SHA1-Digest: 1wZO9M+VL/lcj3Bxoi6xXiXsu/8=
+
+Name: tips/images/new-class.png
+SHA1-Digest: i6NlhBLsyb6XxNmNChPtQWh3Nx0=
+
+Name: gettingStarted/images/open_run_dialog.png
+SHA1-Digest: m5WrqQYihwUvc9gxiMWENyV8qxU=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_accessco
+ ntext.PNG
+SHA1-Digest: OV6ZXaYg9701rMe2yTUoukVUlJ8=
+
+Name: gettingStarted/images/search.png
+SHA1-Digest: 17nOf5AEAxVAubQFOeaZzGOhyJc=
+
+Name: images/org.eclipse.jdt.ui/ovr16/deprecated.png
+SHA1-Digest: 5xGrlqGY7oS6J3lvRlyo8/HLhb0=
+
+Name: images/org.eclipse.jdt.ui/obj16/cf_src_obj.png
+SHA1-Digest: csqpV8f71/OQGlBOsK3VH0WJ27Y=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jwatch_obj.png
+SHA1-Digest: LpJWEglAb5mE77ZQF7u5p9AOSR0=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/uncaught_ovr_disabled.png
+SHA1-Digest: dsHi/kzaDhAzHxhtOmVpxDnZW0Y=
+
+Name: images/org.eclipse.jdt.ui/obj16/occ_read.png
+SHA1-Digest: hs5MNkb57EFjGDVK7wB38FZR7Ow=
+
+Name: images/org.eclipse.jdt.ui/eview16/projects.png
+SHA1-Digest: y+bWcXEwa3lhpuqdB3+AsB6lnGs=
+
+Name: images/org.eclipse.jdt.ui/elcl16/smartmode_co.png
+SHA1-Digest: f4yylSlBtfaR3RYisvfQh1ceewo=
+
+Name: images/org.eclipse.jdt.junit/etool16/new_testsuite.png
+SHA1-Digest: S0wRcoLsar+UW/OUIIoW9v7BaVc=
+
+Name: reference/preferences/java/codestyle/ref-preferences-code-templa
+ tes.htm
+SHA1-Digest: NsBnXK7lXbG7ybZAscIsLTT3Wrw=
+
+Name: tips/images/sort-by-def.png
+SHA1-Digest: YfDfAhVo9fr2trbPDGWF+42O2pg=
+
+Name: tips/images/new.png
+SHA1-Digest: a9gzSZUaDie7cq3uf1H0CH7swoo=
+
+Name: reference/views/debug/images/ref-lookupsource.PNG
+SHA1-Digest: 6RIwOQfvgk20soTqebPwsY4g4D8=
+
+Name: images/org.eclipse.jdt.ui/obj16/remove_correction.png
+SHA1-Digest: e0pe7DjI0ss4GqFPaicnmAR3oRI=
+
+Name: images/org.eclipse.jdt.junit/etool16/new_testcase.png
+SHA1-Digest: hyoiibufNPkFhWjfm3kVa0/GuoE=
+
+Name: images/org.eclipse.jdt.ui/obj16/searchm_obj.png
+SHA1-Digest: Bf4KePS4k39vjsQKrTYhwURzGzE=
+
+Name: reference/views/debug/ref-editsourcelookup.htm
+SHA1-Digest: dqm9afDf2izno1VWuRaWKi8uKgc=
+
+Name: gettingStarted/images/j2se50/wiz_new_java_project_myproject.png
+SHA1-Digest: NrtVxyvqtMyW8+CCPIad7kQqCqY=
+
+Name: images/org.eclipse.jdt.junit/ovr16/error_ovr.png
+SHA1-Digest: 7QibbuKCKqgmubyYxO0Ke/9QDJc=
+
+Name: reference/views/breakpoints/ref-properties_contextaction.htm
+SHA1-Digest: s2IPAVHi3fX4+7hOP5RiZz5tMLE=
+
+Name: images/org.eclipse.jdt.ui/elcl16/backward_nav.png
+SHA1-Digest: CN9LltgL4fRnYSHPxKfs17klqn4=
+
+Name: images/org.eclipse.jdt.ui/etool16/newint_wiz.png
+SHA1-Digest: XbFDRdDcGJrLcJDvdOCqMfGHQrc=
+
+Name: gettingStarted/images/qs-DetectingExistingLayout2.png
+SHA1-Digest: gsCjeUk+/xZZQotuGE5vqCMbIag=
+
+Name: reference/ref-actions-toolbar.htm
+SHA1-Digest: rAGZADR/c/OjVHpOKykXK6Eu+6I=
+
+Name: images/org.eclipse.debug.ui/dlcl16/terminate_co.png
+SHA1-Digest: DBx2lyQPaduFUS88ZKmimQOwgsQ=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/insp_sbook.png
+SHA1-Digest: P8g8bdXBiB1zRv9o21PCjbEfJe4=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/run_sbook.png
+SHA1-Digest: T66sEsG3mg2atdUWHPL7XootVn8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/definingtype_sort_co.png
+SHA1-Digest: oHk0caMV+SW7uKa1QAbR0YJAaRA=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_multi_fix.gif
+SHA1-Digest: HP9IHWDwM5ntUGN2j/QURDOXmhA=
+
+Name: reference/ref-java-editor-quickassist.htm
+SHA1-Digest: kIznoyOSB3qF/0q+nSOVv9QIwiA=
+
+Name: images/org.eclipse.jdt.junit/obj16/testfail.png
+SHA1-Digest: LxWPBHqo4QkGeoxE5EFm9o5ZurY=
+
+Name: reference/breakpoints/images/ref-breakpoint_suspendpolicy.PNG
+SHA1-Digest: trzAO9k4INeCTmC/9Mrnq7KAXjE=
+
+Name: topics_Tasks.xml
+SHA1-Digest: zKXio7YvR6cnywifm+cPHyqIiTI=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/method-breakpoint.png
+SHA1-Digest: 59Lu1GZ5xlj2ZU/RL/BgqQdXU7c=
+
+Name: gettingStarted/images/j2se50/inferred-generic.png
+SHA1-Digest: QqM5MmDHi2595cTP6EcurockDAs=
+
+Name: images/org.eclipse.jdt.ui/elcl16/private_co.png
+SHA1-Digest: bXjHmi73Ha1UMvfV0RD47C88AyU=
+
+Name: reference/breakpoints/images/ref-breakpoint_entry.PNG
+SHA1-Digest: lTjIXQTcQ5r/5fLK3WoOK7UAuPE=
+
+Name: reference/views/shared/ref-viewonly.htm
+SHA1-Digest: umFYVmUhkljS3xOc7ezYDHCAD8I=
+
+Name: reference/views/breakpoints/ref-exit_contextaction.htm
+SHA1-Digest: PtiVkMHcrlH+UigAd6UHpaTKs8Q=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/readwrite_obj.png
+SHA1-Digest: O9o1Pg0ILI4jCa2HHFniBB2OFME=
+
+Name: reference/views/console/images/ref-removeterminated_context.PNG
+SHA1-Digest: /eGDuh/3XNiqI1VqHGtfnizMkjE=
+
+Name: images/org.eclipse.jdt.junit/obj16/faillist.png
+SHA1-Digest: ctFFge+Poru8CvuwGMKxLlQOdXk=
+
+Name: gettingStarted/images/editor_vectortest_content_assist.png
+SHA1-Digest: EMjJzZi0MnEZ1joTSaFvLJJm/ts=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/perspective-prompt.png
+SHA1-Digest: hF8gr24A9ggLkoVKLrPuzDVw+d4=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff7.png
+SHA1-Digest: EZpc+unPGtxiMOoi2O0uoEH97x0=
+
+Name: images/org.eclipse.ui.editors/etool16/show_whitespace_chars.gif
+SHA1-Digest: +MnCsFJSCOMkFFwAgT1zXZRCCnI=
+
+Name: reference/views/debug/ref-terminateall.htm
+SHA1-Digest: dUF+ZdZ7tAnwoNYxm1WkeO5Niqw=
+
+Name: tips/images/focus-ovr.png
+SHA1-Digest: Mlbz5NBf2cymNy95TYNC8rPjqrk=
+
+Name: concepts/concept-classpath-variables.htm
+SHA1-Digest: FlERxzJROhnLC+c1md5+zORZC7k=
+
+Name: tasks/tasks-33.htm
+SHA1-Digest: iTAxZOqO/APsWDJ2IrLiv9LBh5U=
+
+Name: tips/images/javadoc-view.png
+SHA1-Digest: k25CyC/ldDB1c+DF8D1Q4qwRdqs=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/scoped_ovr_disabled.png
+SHA1-Digest: kHW+Xat95xNwxdhFUtWpi0egbF0=
+
+Name: reference/views/debug/ref-droptoframe.htm
+SHA1-Digest: KyVyhOnu57EsM9TGyy8x9+1+NZw=
+
+Name: gettingStarted/qs-ContentAssist.htm
+SHA1-Digest: MvDQP9JAmGzQJdkC22RNxg2WNFQ=
+
+Name: tips/images/group-problems.png
+SHA1-Digest: RGvcPoQhsZeqmpFHj2/gXacEZj8=
+
+Name: concepts/cremdbug.htm
+SHA1-Digest: iQc4btT6TBtnfYrdvwZfJUX73Jg=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_details.
+ PNG
+SHA1-Digest: +/jTKpGaEJnr9Dqjim8+30W74Y4=
+
+Name: tasks/task-inspect_evaluation_result.htm
+SHA1-Digest: nbaCMGY6L4KNy6DGBG19j4gRuys=
+
+Name: reference/views/console/images/ref-openlink_context.PNG
+SHA1-Digest: WQyCD8L567V/C3yfCYinmwpy6Nc=
+
+Name: images/org.eclipse.debug.ui/eview16/register_view.png
+SHA1-Digest: X0b6bXkbkOLajDnndSXgDZVqQrw=
+
+Name: images/org.eclipse.jdt.ui/obj16/enum_obj.png
+SHA1-Digest: fvk6rZG/VmhjqieY9laoDhutnMs=
+
+Name: tasks/task-memory-preference.htm
+SHA1-Digest: mPautghahbPlXkZTqfXvPxv0m10=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/term_sbook.png
+SHA1-Digest: DBx2lyQPaduFUS88ZKmimQOwgsQ=
+
+Name: pom.xml
+SHA1-Digest: rk9kwif3usHCaTlMd/mP2XH8+5I=
+
+Name: reference/preferences/java/ref-preferences-appearance.htm
+SHA1-Digest: fCDuc00sgap4M0JprP4A3JhjW3M=
+
+Name: gettingStarted/qs-AddMethod.htm
+SHA1-Digest: IJYu9SGR7kVxfo9NRKbfCR5vbgE=
+
+Name: images/org.eclipse.jdt.ui/ovr16/focus_ovr.png
+SHA1-Digest: 6OstJjbLvcg9ROe0hOHZyAcCjM8=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/file_change.png
+SHA1-Digest: PhiNTP8DMsU/IfqKzEL4LyjB9ik=
+
+Name: tips/images/search-returntype.png
+SHA1-Digest: G7tBBfNNBuYTn00fhzVFLXqKSzo=
+
+Name: images/org.eclipse.debug.ui/dlcl16/rem_co.png
+SHA1-Digest: YVPswdb+jv1j93PHRXQXCQY519o=
+
+Name: images/org.eclipse.jdt.junit/eview16/juniterr.png
+SHA1-Digest: a2hzOPGBTb9BUHU0VR4GWapzEbQ=
+
+Name: reference/preferences/java/editor/ref-preferences-content-assist
+ .htm
+SHA1-Digest: p7Hq9ebij57EyNKzDoJV3hQd36I=
+
+Name: tasks/task-display_evaluation_result.htm
+SHA1-Digest: yw8nERfqOzy5MGdCDrLbIchozow=
+
+Name: images/org.eclipse.jdt.ui/elcl16/synced.png
+SHA1-Digest: gAsSVUMa70n9lAoujuXDSvynhUU=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/installed_ovr_disabled.png
+SHA1-Digest: 3Xdr7qVHnK2pfchHYJ6nnUNW2y8=
+
+Name: reference/views/console/ref-cvs_console.htm
+SHA1-Digest: NLdLu1NWphzDTKp4JIXXkiTog78=
+
+Name: reference/views/debug/ref-suspend.htm
+SHA1-Digest: Jc08E31apjsT3yhpZsQv4ZW+NTc=
+
+Name: tips/images/swt-templates.png
+SHA1-Digest: S3HxggG4aNqdvOooir3ZkR1rDFg=
+
+Name: reference/menus/run/ref-add_class_load_breakpoint.htm
+SHA1-Digest: OKAiuK5bwf0Va5kqUwtjE5Cef4A=
+
+Name: reference/views/shared/images/ref-detailpane_dialog.PNG
+SHA1-Digest: SOYL7+KlL0BSxnaM7dgfiqaFGn8=
+
+Name: images/org.eclipse.jdt.ui/obj16/occ_match.png
+SHA1-Digest: rmRtHD7BCoCKD6JjLe8YUaNPDRw=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/localvariable_obj.png
+SHA1-Digest: nKEdPDxKXnkj6Vt7yDpSmlZf14M=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/resume_co.png
+SHA1-Digest: U5n1leIjhZnf68oALZPI1TQcTZs=
+
+Name: tasks/task-preparing_to_debug.htm
+SHA1-Digest: sKV3bZDmp/YNg2mlJKuoUBYLV10=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/final_co.png
+SHA1-Digest: Xk9+ZfszO9U3flNDuYX0JNI1+Ts=
+
+Name: images/org.eclipse.debug.ui/elcl16/runlast_co.png
+SHA1-Digest: 0EJz0Nt25lWsEFLK5gPGQb3hB1s=
+
+Name: images/org.eclipse.debug.ui/eview16/variable_view.png
+SHA1-Digest: nFygpDYnm2hDCQRdn4SZB911vW8=
+
+Name: gettingStarted/images/view_display_display.png
+SHA1-Digest: y2DlYHThl6XxAFzvEvO4V8Jie3U=
+
+Name: reference/preferences/java/debug/ref-logical_structures.htm
+SHA1-Digest: ko02rtvSp8TRb2xg5C7Q9K00QW0=
+
+Name: reference/views/expressions/ref-inspect.htm
+SHA1-Digest: HwJC1n6tViPBZUv+RVs7IFYiQZM=
+
+Name: reference/views/expressions/images/ref-enable.PNG
+SHA1-Digest: 9nG8NWFaIKql/A58bvN3BD5ScXs=
+
+Name: reference/views/expressions/images/ref-convert.PNG
+SHA1-Digest: l4vMbvFNxZIxNevpRBK7hkd5o3A=
+
+Name: images/org.eclipse.jdt.ui/ovr16/interface_tsk.png
+SHA1-Digest: ye1B03JEjE9HlsQGmrn0jOqN8tE=
+
+Name: images/org.eclipse.debug.ui/elcl16/stepover_co.png
+SHA1-Digest: gL23Mue9BLtDcRfE9pwmCMGx3uM=
+
+Name: gettingStarted/qs-ProjectConfiguration.htm
+SHA1-Digest: NUjuQP5yQj+CeNrSXp6DnY9ynNY=
+
+Name: tasks/task-enable_disable_breakpoints.htm
+SHA1-Digest: Sat+jW6CdqgesxYDyfjwYKqCX+Y=
+
+Name: tasks/task-view_compilation_errors.htm
+SHA1-Digest: qH2vEhdQssQR36CeoMNG5NdBbMc=
+
+Name: gettingStarted/images/editor_vectortest_organized_imports.png
+SHA1-Digest: AM+Zma5OG+r2F6pg+dXVWCSECdQ=
+
+Name: images/org.eclipse.jdt.ui/ovr16/read.png
+SHA1-Digest: KTmgkMvE/DVn3Wx+06/KVhHO6qk=
+
+Name: tasks/tasks-77.htm
+SHA1-Digest: PrkvWlgqkhzLR0VkS43LgK7Pyyw=
+
+Name: reference/views/shared/ref-cut.htm
+SHA1-Digest: xogD+OT7R9yiH6zR1fJ+KAHAXQk=
+
+Name: images/org.eclipse.jdt.junit/eview16/junitsuccq.png
+SHA1-Digest: YPLxW5Js/IyrP/LuJlbA1O9i2XA=
+
+Name: reference/ref-export-runnable-jar.htm
+SHA1-Digest: kAwjjdqgp8YChFC9h0Upb9E39N0=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/deadlock_view.png
+SHA1-Digest: aS67pNvfvrpJwwgZeBAyZ0OCCl8=
+
+Name: gettingStarted/qs-ExtractMethod.htm
+SHA1-Digest: XAFY+/UPs2K4TfHSwcmAW7P+etg=
+
+Name: tips/images/type-access-rules.png
+SHA1-Digest: SuSbWZTW9NnWHUb/YKbE6BnpwSE=
+
+Name: reference/views/breakpoints/ref-gotofile_viewaction.htm
+SHA1-Digest: wnUuISPJ3OuUGYzmQcGKM/pnHMI=
+
+Name: gettingStarted/images/view_outline_search_references.png
+SHA1-Digest: pHGgUK3aCkCPXIp7tcD06+4HGYo=
+
+Name: contexts_JDT_Debugger.xml
+SHA1-Digest: PqYmIrCTjgFJA3nmGze4PvHUbnA=
+
+Name: images/org.eclipse.jdt.ui/ovr16/volatile_co.png
+SHA1-Digest: nUoCf2GpG+QccSpwTcyivs0sjbc=
+
+Name: gettingStarted/images/editor_vectortest_toarray_template.png
+SHA1-Digest: ONTJufb0UxrbJ4PGOAlieoMML/E=
+
+Name: images/org.eclipse.jdt.ui/ovr16/synch_co.png
+SHA1-Digest: iwDvpVLPOQ7B4NfSTxKAk1515R8=
+
+Name: reference/views/shared/images/ref-selectcolumnsdialog.PNG
+SHA1-Digest: Nrlqls0Eh2yUFYe9KDf/ISBeNbg=
+
+Name: reference/views/ref-call-hierarchy.htm
+SHA1-Digest: 15BRkbKUkSG2eAaIUZZM1K8I0Pk=
+
+Name: reference/views/debug/images/ref-debug_view.PNG
+SHA1-Digest: lTSxZhxub9UJfvyNF18rJ8wgbhU=
+
+Name: gettingStarted/images/view_display_inspect.png
+SHA1-Digest: 09fxgscwM5vaLrcrhml7G4vkuwU=
+
+Name: images/org.eclipse.jdt.junit/obj16/testerr.png
+SHA1-Digest: DO0YrJ30Q/cRWuHXKQWVano6Www=
+
+Name: concepts/concept-java-views.htm
+SHA1-Digest: eYY3pEKze7ln7hJkZkWcHyLj36A=
+
+Name: images/org.eclipse.jdt.ui/elcl16/category_menu.png
+SHA1-Digest: thWVNtUDF3sOTXIDj4labrUQI2s=
+
+Name: images/org.eclipse.debug.ui/elcl16/enabled_co.png
+SHA1-Digest: MmEB+HS4AXE3+hGkmWhRfomPYcw=
+
+Name: images/org.eclipse.debug.ui/elcl16/copyviewtoclipboard_tsk.png
+SHA1-Digest: bC6uDzOvhYUZ1amgXAzkIoR8xjA=
+
+Name: tips/images/spelling-correction-proposal.png
+SHA1-Digest: TSsdZjOzT6pmd5kQ4EVFt4PvQws=
+
+Name: images/org.eclipse.jdt.ui/obj16/empty_pack_fldr_obj.png
+SHA1-Digest: c+vsCm5Ev1WqE1qERnNmQSyQ32w=
+
+Name: images/org.eclipse.jdt.ui/obj16/jexception_obj.png
+SHA1-Digest: CVrBtkI2Oww7QSghNrcF8wJ+1HU=
+
+Name: reference/preferences/run-debug/images/ref-ext_string_subbed.PNG
+SHA1-Digest: wKlkLvrzwFGu0UNa164FIDk7dIM=
+
+Name: images/org.eclipse.debug.ui/obj16/brkpd_obj.png
+SHA1-Digest: +C5g+1jI85+lYAtXqmCTo10El5c=
+
+Name: notices.html
+SHA1-Digest: 6Xn9dTenhsLnZYStoSKPkKM52aM=
+
+Name: tips/images/surroundwith.png
+SHA1-Digest: suksLJMxcyPYzHbDYEg/bj3o5a4=
+
+Name: tips/images/code-assist-argument-proposal-inserted.png
+SHA1-Digest: 5EaSev47YkT9KXOUC1H15mYCSOM=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/run_exc.png
+SHA1-Digest: FizzsPHKEzCbr6LO11OgdR/6I3I=
+
+Name: tips/images/code-assist-anonym2.png
+SHA1-Digest: G3kLnD5cROGu96Q6KS1i/rIQXRE=
+
+Name: gettingStarted/qs-15.htm
+SHA1-Digest: X5FI4HpCNaEVp00RmsvyzLrvrQg=
+
+Name: images/org.eclipse.jdt.junit/elcl16/select_prev.png
+SHA1-Digest: sVchYgbjL3H19R13jKi+ePJlWV8=
+
+Name: reference/views/shared/ref-selectcolumns.htm
+SHA1-Digest: b2p1s19m/LRSq4k3VfISRyW6PpU=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/watch_exp.png
+SHA1-Digest: pQiWnJG2gDmyYNCS0eLVIebqiDI=
+
+Name: topics_Tips.xml
+SHA1-Digest: /fcxvMZzRE9TaxgK7724QNliUAE=
+
+Name: reference/breakpoints/ref-hitcount_option.htm
+SHA1-Digest: O88h47U1x/vYz83OEBptSKiP3KM=
+
+Name: reference/breakpoints/images/ref-breakpoint_exit.PNG
+SHA1-Digest: dDQVBatPyvlJPicR7VUnj+1K/ug=
+
+Name: images/org.eclipse.jdt.ui/eview16/hierch_persp.png
+SHA1-Digest: qQ0NoslWwBFqgA84W7jnLHotqno=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff5.png
+SHA1-Digest: y9TSn/96MrOslYcIbxnR2RtrH7Q=
+
+Name: reference/ref-tostring-listcontent.htm
+SHA1-Digest: U8Aggk5ZrpSUMzUJOOPuClGTzTU=
+
+Name: images/org.eclipse.jdt.ui/ovr16/run_co.png
+SHA1-Digest: Gw/ZYaCQg5ojjqjCKLB+fGOX4UE=
+
+Name: reference/ref-dialog-java-search.htm
+SHA1-Digest: TA/BPChwg3i5Y1dcx2I7Azhv0XA=
+
+Name: reference/ref-menu-refactor.htm
+SHA1-Digest: Og+bbwkZOc7K4GvZCaWQNx76U/Y=
+
+Name: tasks/task-using_null_type_annotations.htm
+SHA1-Digest: kIaN8VNeRz3HnkRT3VFyVRIB9d4=
+
+Name: tasks/task-disconnect_remote_debug.htm
+SHA1-Digest: MM2FA+VuCFwxGJm4+I5cJFnE7mo=
+
+Name: images/org.eclipse.jdt.junit/obj16/tsuiteok.png
+SHA1-Digest: 2fyr/dZpkrvAFDJi8/71rifTdiU=
+
+Name: reference/images/ref-breadcrumb.png
+SHA1-Digest: WJ55a2U9tlJvUy0MZ70I6jlSsYU=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_supertype.png
+SHA1-Digest: elKx5uQDwf2NeliZTahQIFCU2VE=
+
+Name: reference/ref-java-editor-quickfix.htm
+SHA1-Digest: G8GB7V90x868ZX42tTJV5ZXv/N4=
+
+Name: tasks/images/task-memory-pin.gif
+SHA1-Digest: ATIBH+8jYHZlzRgJiDgzNI1JZWs=
+
+Name: concepts/cdebugger.htm
+SHA1-Digest: mlGT7EtBV+RT3Vc/WXaAKhXoNA8=
+
+Name: reference/views/shared/ref-contentassist.htm
+SHA1-Digest: vOmyA3pxglaSwNPfVy9B1yNMOfc=
+
+Name: images/org.eclipse.jdt.junit/obj16/stkfrm_obj.png
+SHA1-Digest: QpPT6zU87g50UvWy4PTknAoR/Ao=
+
+Name: tips/images/codeassist-getter.png
+SHA1-Digest: 7EZZBmvwWg+Qngu+hIXbvQukLrY=
+
+Name: images/org.eclipse.jdt.ui/obj16/annotation_alt_obj.png
+SHA1-Digest: BKvrTEdajtauhZrdIdGR3xzKuR0=
+
+Name: reference/breakpoints/images/ref-watchpoint_mod.PNG
+SHA1-Digest: ADSQvd+xvg0NGq6SNZuiF0Q6nGo=
+
+Name: reference/preferences/java/ref-preferences-editor.htm
+SHA1-Digest: xi7hIWCESuOJTZBv7GrnAZpX22g=
+
+Name: reference/menus/run/images/ref-debug_as.PNG
+SHA1-Digest: 6o+uQJ6WPSewWbligfMN9wUMVbo=
+
+Name: tasks/task-inspecting.htm
+SHA1-Digest: zDI+bjckncl/1lq274zNC6c+CIw=
+
+Name: reference/views/debug/ref-showthreadgroups.htm
+SHA1-Digest: 4BO7R6X2wnCe3XDDHEOqahc4jxQ=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/date_obj.png
+SHA1-Digest: X55TMF1NXcG9+s4iphO/ejvM3uM=
+
+Name: reference/views/shared/ref-preferences.htm
+SHA1-Digest: uuHfnZIGtsvxSAx6RiCWsxKd5qA=
+
+Name: tasks/tasks-consoleAppearance.htm
+SHA1-Digest: Pjj2i9AwPubpzbbn0UVIItqiHbY=
+
+Name: gettingStarted/images/icon_junit_successfull_workspace_modifed.p
+ ng
+SHA1-Digest: XH5d9xid9IH+hSThUzIBksyk3sg=
+
+Name: tasks/task-launching_java_program.htm
+SHA1-Digest: rg9/Sc7+Krf6Fe9rOsoV9CmwEUo=
+
+Name: images/org.eclipse.debug.ui/dlcl16/var_cntnt_prvdr.png
+SHA1-Digest: IM+ZiiKk2VhwxT+XYI89PVqtk58=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/change.png
+SHA1-Digest: s7ImA1Chr39x6QBsqGGg5XkPI+M=
+
+Name: gettingStarted/images/view_search_previous.png
+SHA1-Digest: H4LKr6mchpwtp0NZFzlywsBKerI=
+
+Name: images/org.eclipse.debug.ui/obj16/osprct_obj.png
+SHA1-Digest: DbniSkBmS27kjQd4wu3NI2vHi2M=
+
+Name: images/org.eclipse.jdt.ui/obj16/jsbook_obj.png
+SHA1-Digest: jhlNKA/BFhOf6Y7itu1U5HBOtO0=
+
+Name: reference/views/console/ref-process_console.htm
+SHA1-Digest: 72dEDJVZqazmsgyMVEWpUSV3rBU=
+
+Name: tasks/tasks-202.htm
+SHA1-Digest: wo7UNvT3ssPufNXED76Yk7cYBeA=
+
+Name: images/org.eclipse.jdt.ui/etool16/java_app.png
+SHA1-Digest: C9PYW/E/thjUD21N8prwy7fRseo=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss9.png
+SHA1-Digest: rSTMct8Td7Hcs1DUbKFNOnQRKBM=
+
+Name: images/org.eclipse.debug.ui/dlcl16/removememory_tsk.png
+SHA1-Digest: YVPswdb+jv1j93PHRXQXCQY519o=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_focused.png
+SHA1-Digest: DkbO0C825bdF77v21zap9mBFGRo=
+
+Name: images/org.eclipse.jdt.ui/obj16/empty_pack_obj.png
+SHA1-Digest: 61/v+zt/M8m3AMkjMZBlNzgKwMw=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/java_app.png
+SHA1-Digest: DrP5ehxNqNIBkwd+XLe6wQ/g2Mc=
+
+Name: tasks/tasks-64.htm
+SHA1-Digest: 5xT7MzbugA5n+NUURCpgm2Eeo5U=
+
+Name: images/org.eclipse.ui.console/elcl16/cut_edit.png
+SHA1-Digest: eFWrFQthy8S79G0LEJ9Z2IXQolA=
+
+Name: reference/views/shared/ref-horizview.htm
+SHA1-Digest: cBYu23S0OITYGu7krR+DlmJZjC0=
+
+Name: gettingStarted/images/java7/mark-occurrences-exception-thrown-by
+ -automatic-close.png
+SHA1-Digest: 2zcuV9+g70ISsgaJHe99aKW1gwU=
+
+Name: gettingStarted/images/view_package_explorer_junit.png
+SHA1-Digest: I1PCh4m/0+LUmOZlbIbCKDVg8do=
+
+Name: images/org.eclipse.jdt.ui/obj16/occ_write.png
+SHA1-Digest: 9qmDgO1whTt/CyQeGQh3KvVLlKI=
+
+Name: images/org.eclipse.debug.ui/elcl16/stepinto_co.png
+SHA1-Digest: nlnSts+uybg9bwlXCDAnSypFyPk=
+
+Name: tips/images/camel-case-nav-2.png
+SHA1-Digest: OnRJAHFIh3nKp2jLMns3xbh5woA=
+
+Name: tasks/task-avoiding_resource_leaks.htm
+SHA1-Digest: AeUeZ546y+jXtAksOJDf8AUc1RA=
+
+Name: gettingStarted/images/j2se50/autobox-coloring.png
+SHA1-Digest: 8EmjODWE6lpp8Z2AFJFywp8DR20=
+
+Name: gettingStarted/images/java7/pde-api-pref-page.png
+SHA1-Digest: hkxhAtqKqdbkSQvwRLUJxKXTkk8=
+
+Name: reference/preferences/java/compiler/ref-preferences-task-tags.ht
+ m
+SHA1-Digest: /+nrOUdFQdcPjR9/hQQjox/VL3E=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout28.png
+SHA1-Digest: BrnpFkslGxEb7CH75US2nbY8cFk=
+
+Name: images/org.eclipse.jdt.ui/elcl16/gointo_toplevel_type.png
+SHA1-Digest: PKc/2IQ5F+/lymdlB3EHcnB6gP4=
+
+Name: reference/preferences/java/editor/ref-preferences-edit-template-
+ dialog.htm
+SHA1-Digest: TSeup58Ir1aQwRUiCiC9SwNjsDY=
+
+Name: gettingStarted/images/move_dialog.png
+SHA1-Digest: RdaFsO/BOMEsKtWyb1CXjwf2ZeY=
+
+Name: images/org.eclipse.jdt.ui/elcl16/templateprop_co.png
+SHA1-Digest: CS+OMSLSROBV3uQ5cem54lxazzk=
+
+Name: images/org.eclipse.jdt.ui/etool16/importjar_wiz.png
+SHA1-Digest: wa+BbKHSN8Oo+7hahpyoMzcsy+M=
+
+Name: images/org.eclipse.debug.ui/etool16/profile_exc.png
+SHA1-Digest: YSbERH60uNGeiG/umz32VIoIqTo=
+
+Name: tasks/tasks-75.htm
+SHA1-Digest: IFIshLY9NzNC9Q6kLVKPUxHU3Ds=
+
+Name: images/org.eclipse.jdt.ui/obj16/jsearch_obj.png
+SHA1-Digest: SkB1QXIvQlhwiaNHp1P+1H1aGtY=
+
+Name: tips/images/warn-deprecation-y2.png
+SHA1-Digest: BosQczkAvBIQua2XaBznRZit03U=
+
+Name: tips/images/hover-on-method-reference.png
+SHA1-Digest: eceAxSb60xrxzvIArWVuUBSRjgs=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/classpath_obj.png
+SHA1-Digest: 2hgMiDB5xqoBkMPi27fnFQZRC1c=
+
+Name: reference/preferences/java/appearance/ref-preferences-member-sor
+ t-order.htm
+SHA1-Digest: esLnK7bZMyIIiW/ODpWVXWPf48U=
+
+Name: images/org.eclipse.jdt.ui/obj16/access_restriction_attrib.png
+SHA1-Digest: 402AORmXAkg+kjFXHhUqfykyEiQ=
+
+Name: reference/menus/run/ref-open_run_dialog.htm
+SHA1-Digest: g6Xb/N/obWuTAlm1z0liaZOnpbo=
+
+Name: reference/views/expressions/ref-reevaluate.htm
+SHA1-Digest: kAI6kQBugQNUrS5y3tx92O1pu1I=
+
+Name: reference/breakpoints/images/ref-breakpoint_uncaught.PNG
+SHA1-Digest: 3rdP+zNslazfRcuU1wF90n0Ly3A=
+
+Name: tips/images/convert-to-lambda-2.png
+SHA1-Digest: ebWW5puRA0wsALBhsRMKlq+KeW8=
+
+Name: tasks/images/task-add_jre_std_vm.PNG
+SHA1-Digest: ndGJWefQYkD8p/npwBFLK23TjTE=
+
+Name: tips/images/quick-assist-shortcuts.png
+SHA1-Digest: PdDTdQosrlP9CHGSDlbReO4Dd1Q=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerclass_private_obj.png
+SHA1-Digest: sPKpH+PYM23392fzxejKgFf3bPE=
+
+Name: reference/views/console/ref-autoformat_action.htm
+SHA1-Digest: HKsG+KDmnYOEvFJMdUL7tiG/5LU=
+
+Name: images/org.eclipse.jdt.debug.ui/wizban/java_app_wiz.png
+SHA1-Digest: upkNpAZAwyFI3tcg92Yh+zokLqM=
+
+Name: images/org.eclipse.jdt.ui/etool16/newsbook_wiz.png
+SHA1-Digest: 2Nc3vTH5Ie6vUPc563Eoz16iQ4U=
+
+Name: images/org.eclipse.jdt.ui/etool16/comment_edit.png
+SHA1-Digest: DqWtcHOtCHM3uGI8JGScO+v75dE=
+
+Name: reference/ref-menu-navigate.htm
+SHA1-Digest: B9n070y7VrmUPTmKhUOmWOoidVg=
+
+Name: gettingStarted/images/j2se50/suppress-applied.png
+SHA1-Digest: Vak7DlitmFVbJ9XhQa3PbxPPx30=
+
+Name: images/org.eclipse.jdt.ui/etool16/newjprj_wiz.png
+SHA1-Digest: wmbjEw2tX+TUVXjtDMKkQb5WPVo=
+
+Name: images/org.eclipse.jdt.ui/etool16/newenum_wiz.png
+SHA1-Digest: N4BgTsxmmqfQ/5Q2gcASiFnx630=
+
+Name: gettingStarted/images/debug_button.png
+SHA1-Digest: wXLmOfg02VlD9eEQNgwNpNP1+KM=
+
+Name: gettingStarted/images/j2se50/view_search_listInteger_incompatibl
+ e.png
+SHA1-Digest: HoIIzsYel8iYlPt//BOzu3iqe7s=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerclass_public_obj.png
+SHA1-Digest: 0oTXcgJabF+b5NHTPlAo0Xp1V3g=
+
+Name: gettingStarted/qs-junit.htm
+SHA1-Digest: pCZLP8b+fzC0Hhvo4/kAu11m5bQ=
+
+Name: gettingStarted/qs-13.htm
+SHA1-Digest: rKz8yzFg7/SxRTA4CijTSF4VZuU=
+
+Name: images/org.eclipse.jdt.ui/elcl16/prj_mode.png
+SHA1-Digest: MqlqgkWfY7ZuPq2ORWxnjf/9lbU=
+
+Name: gettingStarted/images/editor_testcase_error_hover.png
+SHA1-Digest: 2acWQudFCWiPh8YjFdljUTzjzDk=
+
+Name: images/org.eclipse.debug.ui/obj16/brkp_obj.png
+SHA1-Digest: j+0xvVOROaSiC351OlfhP6OTnRs=
+
+Name: tips/images/packages-flat.png
+SHA1-Digest: wdzvwQ3sBY91Hkg5+VpOAwzwiuU=
+
+Name: tips/images/potential-null-ref.png
+SHA1-Digest: 8HYr94wFiKSX9rLf8mgiC/q5328=
+
+Name: images/org.eclipse.jdt.junit/elcl16/cfilter.png
+SHA1-Digest: UbyoVOUmVK3ftdIEOSJs6WPZFf4=
+
+Name: images/org.eclipse.jdt.ui/obj16/class_obj.png
+SHA1-Digest: 0oTXcgJabF+b5NHTPlAo0Xp1V3g=
+
+Name: tips/images/code-assist-javadoc2.png
+SHA1-Digest: 9gvJSahPi5p10JwQvuNtpXV22D8=
+
+Name: tips/images/link-with-editor-in-occs.png
+SHA1-Digest: u8bjfGGxPSOcu/TxL77l/YiwAbA=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_small.png
+SHA1-Digest: iKmFJRlMKxXBMYO6IGJHhWHgBsA=
+
+Name: images/org.eclipse.jdt.ui/ovr16/sync_impl.png
+SHA1-Digest: vPL5z0Tp7UzMgT4kFRw7b9feKcI=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerinterface_public_obj.png
+SHA1-Digest: WQj4EPdT0GbOoH8+nzRKqb3OIUE=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff3.png
+SHA1-Digest: lo+meJwhMcJ8Dq4NLiFk/Sm+aGE=
+
+Name: gettingStarted/images/editor_vectortest_for_template_exp_expecte
+ d.png
+SHA1-Digest: kpPRPDtsYg7WQ5w873iv9fjP1pQ=
+
+Name: tasks/images/task-add-exception-breakpoint.PNG
+SHA1-Digest: 9s8fEB04bcJX0UPMdjIoyFk5YGs=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/thread_obj.png
+SHA1-Digest: SOzFbAvBXn2btpHB9vEpOZQtMq8=
+
+Name: images/org.eclipse.debug.ui/etool16/environment_co.png
+SHA1-Digest: ds57k/FYhBZ37qUsnRZsxODY/ec=
+
+Name: images/org.eclipse.jdt.ui/obj16/annotation_private_obj.png
+SHA1-Digest: yty1plBE9hAjTbhMahaWRh+fV1g=
+
+Name: images/org.eclipse.jdt.ui/etool16/exportjar_wiz.png
+SHA1-Digest: TegudJvhbs/qAYp0GagX0MexEl8=
+
+Name: gettingStarted/images/select_java_app_dialog.png
+SHA1-Digest: qpFqRwuKyekpaWeiRp7zi+scOVU=
+
+Name: images/org.eclipse.jdt.ui/elcl16/forward_nav.png
+SHA1-Digest: u09BhOxnO5Ig/LLh1OWZZQa3hQk=
+
+Name: images/org.eclipse.jdt.ui/obj16/history_working_set_obj.png
+SHA1-Digest: X55TMF1NXcG9+s4iphO/ejvM3uM=
+
+Name: images/org.eclipse.jdt.ui/elcl16/removea_exc.png
+SHA1-Digest: TDfK7a1Etpzy6Gb+GpjMo9dpmyU=
+
+Name: images/org.eclipse.debug.ui/elcl16/runtoline_co.png
+SHA1-Digest: bQQWzNAGKEKphcaqNpcDQr9Cjuw=
+
+Name: images/org.eclipse.debug.ui/elcl16/removememory_tsk.png
+SHA1-Digest: fShuXhX66Tg8i53kncxC9fgZT7w=
+
+Name: toc.xml
+SHA1-Digest: +yiNq66oMSR5c3X2woZXmg8h24o=
+
+Name: reference/breakpoints/ref-enabled_option.htm
+SHA1-Digest: TInJxihIee6sQ596ki1WlyBOX7Q=
+
+Name: images/org.eclipse.jdt.ui/elcl16/th_single.png
+SHA1-Digest: wsx8CVhb0OwbwSsGdG+wtQ7wvTQ=
+
+Name: whatsNew/images/generics_defaults.png
+SHA1-Digest: c0GT2P35qvJmsr8Bm1bT+/n5vRA=
+
+Name: reference/views/debug/ref-executioncontrolcommands.htm
+SHA1-Digest: kKtBctXffLA3PdKuricsuTpbsro=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/owned_monitor_obj.png
+SHA1-Digest: yGyWIWP5xdXq3jWdA4GnRgKuz6I=
+
+Name: images/org.eclipse.jdt.ui/ovr16/library_ovr.gif
+SHA1-Digest: qtTY38ZP4D/J6NAqA5yQuJgvuko=
+
+Name: images/org.eclipse.jdt.ui/etool16/shift_l_edit.png
+SHA1-Digest: kSjDR5hnhIxUsoS/1ODuaD2MTUw=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/deadlock.png
+SHA1-Digest: kg3dtem0fU6aUlAbkpTkxh0mDCE=
+
+Name: gettingStarted/images/previous_searches_dialog.png
+SHA1-Digest: GWCwOuztp6ptPdcmr/6YEcd91dM=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/autoform_menu.png
+SHA1-Digest: TvtaaJMsrFGBTayd/qfdq0Xl5PM=
+
+Name: images/org.eclipse.jdt.ui/ovr16/error_co_buildpath.png
+SHA1-Digest: A+UqgFIpcQmsBkQiB/ayIVqnHxw=
+
+Name: images/org.eclipse.jdt.ui/elcl16/help.png
+SHA1-Digest: uXLmodaJsulIZT5M2FgeRD07bqQ=
+
+Name: images/org.eclipse.debug.ui/dlcl16/toggledetailpane_co.png
+SHA1-Digest: 2YPdBkzxwseE6ozzELAFN+zcd1o=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/write_obj.png
+SHA1-Digest: oROTEN29vHAtZh104XifHwD4dl0=
+
+Name: reference/ref-apt-config.htm
+SHA1-Digest: 7zaYdDwZ9chY4QsXgHhj1Eh39To=
+
+Name: reference/views/display/images/ref-display_view.PNG
+SHA1-Digest: GnHazTuUHPWC2rF2ZrsWr6enH1c=
+
+Name: images/org.eclipse.jdt.ui/elcl16/th_vertical.png
+SHA1-Digest: d+pL6zuWCf5z2Eg88axE1MKpPhI=
+
+Name: gettingStarted/images/java7/content-assist-diamond-2.png
+SHA1-Digest: xN7qxk6WGQJlMhmaZpF/dh+jqxs=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/prj_obj.png
+SHA1-Digest: j7ZDZIIo+Mps/HlO9MRWkcqynB8=
+
+Name: tips/images/code-assist-add-constructor.png
+SHA1-Digest: S2qGUwtXoNueKI6Dy+8hi6DvYaY=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout15.png
+SHA1-Digest: Nul62pxypRXa12kWNmdRIF+zfeQ=
+
+Name: reference/preferences/java/buildpath/ref-preferences-user-librar
+ ies.htm
+SHA1-Digest: +uGgfnbD1MbzJa9jR7YQBZa9z8o=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/exit_ovr.png
+SHA1-Digest: anDUBnZgJmuJNxqRnTaLa/6j6HM=
+
+Name: images/org.eclipse.jdt.ui/obj16/localvariable_obj.png
+SHA1-Digest: 99g74Z6aje3cyrrwVS9RS3CSRMU=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss7.png
+SHA1-Digest: F7oX/MzHM2SjqprU8BE8gzRRF6Y=
+
+Name: reference/ref-properties-source-attachment.htm
+SHA1-Digest: sGk5e960moYxkGb65QgSKskbR0Y=
+
+Name: reference/preferences/run-debug/ref-launching.htm
+SHA1-Digest: Uizq8cDnDQPUZl1//zc7tSVGSMs=
+
+Name: tasks/tasks-62.htm
+SHA1-Digest: 93JZ62r0kMmCKlodt2Cdy2PEOzE=
+
+Name: images/org.eclipse.jdt.ui/obj16/javadoc_location_attrib.png
+SHA1-Digest: r4xCB196ApfOTbM9xL8klujXmUw=
+
+Name: reference/views/expressions/ref-addwatch.htm
+SHA1-Digest: 4Kn2hUvPjjDTzIIjdNhmZurh+eY=
+
+Name: whatsNew/images/generics_defaults.txt
+SHA1-Digest: wuba0aySGCfsPu8vJFXIOdVL3h8=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout26.png
+SHA1-Digest: EOprqNpyX2IB39/9vnIrnMC8zaA=
+
+Name: images/org.eclipse.debug.ui/elcl16/disconnect_co.png
+SHA1-Digest: 9UM3R0mYXWom83t2yiqCHb76I40=
+
+Name: images/org.eclipse.ltk.ui.refactoring/elcl16/date_mode.png
+SHA1-Digest: XP4UQCSEgPxkF0K2+lZzpN6pkhA=
+
+Name: tasks/tasks-73.htm
+SHA1-Digest: r/8WkdT1WNnUGTntp1/2+syk3FM=
+
+Name: plugin.xml
+SHA1-Digest: RuDu4vQFIniQh3pTI+jX2+rX7vE=
+
+Name: reference/wizards/ref-export_launch_configs.htm
+SHA1-Digest: cS3SuVWAagiGVCJUkmdl/UClI2k=
+
+Name: reference/views/breakpoints/ref-groupby_viewaction.htm
+SHA1-Digest: iiOEywNFzMlk+5zwHsg7SL6VWlQ=
+
+Name: tips/images/warn-deprecation-i.png
+SHA1-Digest: sFNikZS2JWrtxdqXDcUKsk/jirw=
+
+Name: reference/breakpoints/ref-suspendpolicy_option.htm
+SHA1-Digest: nm79cKuiN0ifu3TPiKLFE4nq6ow=
+
+Name: cpy.png
+SHA1-Digest: y5Gk7ZxCzcE83ImfSFbL047S9A4=
+
+Name: reference/views/shared/images/ref-showreferences.PNG
+SHA1-Digest: t4cdXhZiORql2Nexj/SGCWI5xzw=
+
+Name: tasks/images/tasks_200a.png
+SHA1-Digest: 0Oq9MMa1nRScWCBOBH54Zs6x0A8=
+
+Name: gettingStarted/images/replace_local_element.png
+SHA1-Digest: W7R3rIPP4yZRDGmF2daAUQmt07w=
+
+Name: images/org.eclipse.jdt.ui/elcl16/clear_co.png
+SHA1-Digest: DO9duSvlIFbhbaouqNeqa29NgJo=
+
+Name: images/org.eclipse.jdt.ui/ovr16/sync_over.png
+SHA1-Digest: J2+Qyjuc9yIXHRJZQiwe6fy3tmE=
+
+Name: images/org.eclipse.jdt.ui/obj16/packagefolder_obj.png
+SHA1-Digest: C8Pyfm6LaA2hPrX3PHUMrKUgPlU=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/show-references.png
+SHA1-Digest: ukAj/hQouRN8M4beUD5lddlzY54=
+
+Name: tips/images/rich-problem-hover.png
+SHA1-Digest: SjLYhNnKE51+t1v2CRyBUO6sGSw=
+
+Name: topics_Reference.xml
+SHA1-Digest: iW0z8xGls1Zl5yuNt5PtDSSMcOY=
+
+Name: tips/images/quick-assist-remove-surrounding.png
+SHA1-Digest: uDrvbAgFaBxoYw8WLyNaVuZuzAw=
+
+Name: tips/images/name-conventions.png
+SHA1-Digest: +Xcii++zalHgvs1xN9FTuLHYBbc=
+
+Name: reference/images/formatter-join-lines-after.png
+SHA1-Digest: 4kHXKU7aVcTI+wh7fTSI7xI2dYY=
+
+Name: tips/images/assign-to-casted-quickfix.png
+SHA1-Digest: 5rssT+FwPhIwx927Ed/hFMDIkWg=
+
+Name: reference/views/shared/ref-showlogical.htm
+SHA1-Digest: EtJ2zE31CPeFR+ERYHJCXdUDr/c=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout48.png
+SHA1-Digest: LLwDEBCNP19jmpZgoncdpoX26Jg=
+
+Name: images/org.eclipse.jdt.ui/elcl16/file_mode.png
+SHA1-Digest: OYLACtXfkfqX8T5hgL1iN2ap+4Y=
+
+Name: tasks/images/task-memory-link-panes.gif
+SHA1-Digest: Ghj9SQaJ6vJj8hRCpmwiAfHF1uI=
+
+Name: reference/preferences/java/editor/ref-preferences-hovers.htm
+SHA1-Digest: rkx+rsL+TR+WtMbn71FYT7MBh74=
+
+Name: reference/views/console/ref-prefs_action.htm
+SHA1-Digest: 8CuVi0a8frO11lm4ZLrlgBa+Tsg=
+
+Name: images/org.eclipse.jdt.ui/obj16/info_obj.png
+SHA1-Digest: zT0NkuukAGpRButan4CHlMBX+SU=
+
+Name: gettingStarted/images/editor_testcase_error_getname.png
+SHA1-Digest: Cjfi0gW08rWDSg8gkjWEpt2idAw=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/entry_ovr.png
+SHA1-Digest: UncYgTPojZts+ggQSQVCFhTmzdU=
+
+Name: gettingStarted/images/java7/use-separate-catch-blocks.png
+SHA1-Digest: FxupmViBi2xe+7ZwoK0I+uua4OM=
+
+Name: tips/images/package-abbreviations-off.png
+SHA1-Digest: xwq3Q53evW6ouQxzqi4PpPrw4Mc=
+
+Name: reference/views/shared/ref-maxlength.htm
+SHA1-Digest: wBJwYLp5hhTAnyuhElI8altijPA=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout59.png
+SHA1-Digest: kIwcdZ4PZQDIti57nybtOc3Khis=
+
+Name: whatsNew/images/hover-on-lambda.png
+SHA1-Digest: TcQoASm5JK42HFSPurDD35k4iUI=
+
+Name: concepts/concept-access-rules-combine-rules.htm
+SHA1-Digest: c8b9WmDQ/MXHipmx/6axpNpy65U=
+
+Name: gettingStarted/qs-11.htm
+SHA1-Digest: wFJMLWgbkWJ1uBBgPS2ngp3bOHM=
+
+Name: images/org.eclipse.jdt.ui/obj16/skip.png
+SHA1-Digest: 3/ck4+9h9wBrJXmmKjawTABAcgM=
+
+Name: images/org.eclipse.jdt.debug.ui/eview16/variable_tab.png
+SHA1-Digest: nFygpDYnm2hDCQRdn4SZB911vW8=
+
+Name: images/org.eclipse.jdt.ui/obj16/int_default_obj.png
+SHA1-Digest: V1icHU0SH834+dMRNkTZttwcpsE=
+
+Name: images/org.eclipse.jdt.ui/obj16/no_breakpoint.png
+SHA1-Digest: SKA9J/QlTXOr5fYAbWV4sZmNSdU=
+
+Name: images/org.eclipse.jdt.ui/elcl16/wordassist_co.png
+SHA1-Digest: AijzePlTky5F/1QOqmp69PcCePc=
+
+Name: reference/preferences/run-debug/images/ref-string_dialog.PNG
+SHA1-Digest: m64ft435HGmBxWmj6n4I6k88vEk=
+
+Name: images/org.eclipse.debug.ui/dlcl16/metharg_obj.png
+SHA1-Digest: iG3qmDFN1sSrmpUd0/QiisYUNiI=
+
+Name: gettingStarted/images/run_dialog.png
+SHA1-Digest: Gq3jl1QpHt6xS2FpLaHFLNLJG5g=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/class-load-breakpoint.png
+SHA1-Digest: VsTQupLGx0HZa6kD0TN/TfD2jH8=
+
+Name: images/org.eclipse.debug.ui/etool16/watch_exp.png
+SHA1-Digest: pQiWnJG2gDmyYNCS0eLVIebqiDI=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff1.png
+SHA1-Digest: MyJcdpO3Llm43bkIOaEUhrU76yg=
+
+Name: gettingStarted/images/run_dropdown.png
+SHA1-Digest: rEK9C/QG2bT8P4NtGSojGpp9YBM=
+
+Name: images/org.eclipse.jdt.ui/etool16/newannotation_wiz.png
+SHA1-Digest: ifhG2S5LjVOAHXeSGbI5Pt3G5rw=
+
+Name: images/org.eclipse.jdt.junit/obj16/julaunch.png
+SHA1-Digest: Xtg+K9aUknvjVgKtYz9aE1265FY=
+
+Name: index/_0.nrm
+SHA1-Digest: TQuf5u6/VrH50dMTxxzkMx8Oq7A=
+
+Name: gettingStarted/images/editor_vectortest_for_template_exp_e.png
+SHA1-Digest: YeCHxRahKFoID14aNtKyDuZlbXQ=
+
+Name: reference/wizards/ref-import_launch_configs.htm
+SHA1-Digest: a2zUWWnodcue96h03pj3N3kGh+g=
+
+Name: tasks/task-running_and_debugging.htm
+SHA1-Digest: vQail1iYlbUBuc/v5g8hvpcJxiM=
+
+Name: reference/menus/run/ref-toggle_method_breakpoint.htm
+SHA1-Digest: +qzt+7gmysgEVj1OnavD8QCU0rE=
+
+Name: reference/preferences/java/compiler/ref-preferences-building.htm
+SHA1-Digest: lO7xjU7MN0KVA/HtbqYk40V0LME=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout5.htm
+SHA1-Digest: iXiG1Lo2ZAgZg43mAcRXVPPRUBw=
+
+Name: whatsNew/images/formatter-whitespace-lambda.png
+SHA1-Digest: mI3D+AFaP3QdgF9jxNnv/z/GE+s=
+
+Name: tips/images/quick-assist-assign-statement2.png
+SHA1-Digest: wZ4aoNC+/sveiZQXN1iSppgaMz8=
+
+Name: reference/views/debug/images/ref-find_dialog.PNG
+SHA1-Digest: 1ZPyx+VqDi9ydIEa6V9xsp4GCVQ=
+
+Name: reference/views/debug/ref-stepinto.htm
+SHA1-Digest: YXKWWDcxObF6LDQxAJ9v6LV8PdE=
+
+Name: reference/views/debug/images/ref-opendeclaredhier.PNG
+SHA1-Digest: DN6ldC6tU6+CF2Bgsc7OVIT3GGY=
+
+Name: reference/breakpoints/ref-entry_option.htm
+SHA1-Digest: 1WzyNxZ5an7fSvsCRXqlaJkLU5g=
+
+Name: reference/breakpoints/ref-caught_option.htm
+SHA1-Digest: zWhGe8IP24BpoXYdwOK4tIwUDqI=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/dbg-bread-crumb.png
+SHA1-Digest: sOq5IOsYDush+qL+AR5NPOybfXg=
+
+Name: tips/images/packages-compound.png
+SHA1-Digest: gGeN3nceOtjTQbkdl6PQmJAdf6w=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/conditional_ovr.png
+SHA1-Digest: dSeiHx+YBnlK0fqFIlnrLN98ceA=
+
+Name: reference/views/expressions/images/ref-disable.PNG
+SHA1-Digest: nT9UcG2qFM3RRJgjtTkcPl/fzBg=
+
+Name: reference/views/debug/ref-editlaunchconfig.htm
+SHA1-Digest: WBbzz/LaHPb/fDhZSRCpGE8HKLE=
+
+Name: tips/images/warn-deprecation-x.png
+SHA1-Digest: 2/mFr/XqrYh81blonXeDPDZnAe4=
+
+Name: images/org.eclipse.jdt.ui/elcl16/configure_buildpath_filters.png
+SHA1-Digest: 2tjVB+JzkJmb0nCagQJVEGsdP5w=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerinterface_protected_obj.png
+SHA1-Digest: 9pwuG6Uozs/q5icKL7ZdGeNUoFM=
+
+Name: gettingStarted/images/view_debug.png
+SHA1-Digest: DyZs81ndZuPfLhqffKnFO7ppuIY=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/thread_view.png
+SHA1-Digest: SDI0rY8i+wwPt2ryMoSigVUXz7s=
+
+Name: gettingStarted/images/java7/add-exceptions-to-existin-catch-clau
+ se.png
+SHA1-Digest: gQUrsenfApEc6UEOar9k2eaDKqs=
+
+Name: tasks/images/task-add_jre_ee_file.PNG
+SHA1-Digest: QAmRvEH2yVKLa1lS14t5VOOZ9qw=
+
+Name: reference/breakpoints/images/ref-breakpoint_hitcount.PNG
+SHA1-Digest: +ghzTUgYYbWF9+GjHxFoaBVOC5E=
+
+Name: images/org.eclipse.jdt.ui/obj16/package_obj.png
+SHA1-Digest: SuvCJmQS3HcBIvW+nFfchgUxOTM=
+
+Name: images/org.eclipse.jdt.ui/etool16/newjworkingSet_wiz.png
+SHA1-Digest: C9PYW/E/thjUD21N8prwy7fRseo=
+
+Name: images/org.eclipse.debug.ui/ovr16/error.png
+SHA1-Digest: QMSzF6oO9Edk+FWLLEbO/XGA7mU=
+
+Name: gettingStarted/images/view_variables_logical_structures.png
+SHA1-Digest: 4ywzPbxXeULmyaBKyUS56vmn2vA=
+
+Name: reference/ref-icons.htm
+SHA1-Digest: eq6fOBjpxLVIozOApmzBltmRXFk=
+
+Name: gettingStarted/qs-OrganizingSources.htm
+SHA1-Digest: xoEaFgp13D6Xe0VhUKWTQr/dMtI=
+
+Name: index/_0.fdt
+SHA1-Digest: zld/HjILd8986BUqIx2za0KTvR0=
+
+Name: index/_0.fdx
+SHA1-Digest: nVDgzMyoDQsm+krGU0L6jMfQkX4=
+
+Name: tips/images/code-assist-with-import-result.png
+SHA1-Digest: +CvkUnjeuHRh5lnI9ha8zqzgQk0=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/installed_ovr.png
+SHA1-Digest: ttdrt8T6WqnLl8sXOFxEPrS1ESE=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout13.png
+SHA1-Digest: TUJBKWJ/WYPf43wRPKgnjEZ5owU=
+
+Name: gettingStarted/images/add_as_source_folder.png
+SHA1-Digest: ObkNZ2reC7iAdh2Zyx40Z20cjp8=
+
+Name: tips/images/enclosing-brackets.png
+SHA1-Digest: xUqpzuhVMKC2MQgvfiSklKIfR+Q=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss5.png
+SHA1-Digest: X4ULDm8mSVVWaVH8BA+fyY+uQ+Y=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jrtexception_obj.png
+SHA1-Digest: rdDkRaI+vmZm3MSsCixCzotQOKc=
+
+Name: reference/ref-dialog-override-method.htm
+SHA1-Digest: a0ArcN4h9JNELZk0SjDUv+f1eeg=
+
+Name: tips/images/call_hierarchy.png
+SHA1-Digest: jsgY120H/wabTLyi8Dk2yfQXgPY=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_linked_rename.png
+SHA1-Digest: XfDCSOI9kPaYczC1uCXIYWJTl7U=
+
+Name: images/org.eclipse.jdt.ui/ovr16/over_co.png
+SHA1-Digest: x9CVfjsp+pzKwqwdFIncowyMHR0=
+
+Name: images/org.eclipse.debug.ui/dlcl16/lock_co.png
+SHA1-Digest: Y6s7EeNvOqSdK2xvnSXuWCdJ8MI=
+
+Name: reference/views/shared/ref-wrap.htm
+SHA1-Digest: +wBILONyCOG/3psNGQP0b+q1KhY=
+
+Name: reference/views/expressions/images/ref-edit.PNG
+SHA1-Digest: ufPiCZkV6sxJXb4frVvGw1h0HWA=
+
+Name: whatsNew/images/hover-on-method-reference.png
+SHA1-Digest: B2R1oOL3ZKz/E14Qyc8BDO4R5I0=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout24.png
+SHA1-Digest: nKqmKu29chZ3DRPPmjwzekIQ7SM=
+
+Name: gettingStarted/images/j2se50/foreach-proposal.png
+SHA1-Digest: Mh4iaDM0P0Xr5ul9Ipd/mW1Mxk0=
+
+Name: reference/ref-dialog-open-type.htm
+SHA1-Digest: +9wfrJeTcW6UM3zyjDqOwUuiT5c=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/text_edit.png
+SHA1-Digest: 4BZnSmATuS1F1z3OuEAZr3FAX7M=
+
+Name: whatsNew/images/expression-to-block.png
+SHA1-Digest: 0ukjYVOnfFCLUy8bgDLzDmDsINU=
+
+Name: gettingStarted/images/java7/convert-switch-to-if-else.png
+SHA1-Digest: 5lRIoh3vFcNufNG4uncfOElMvio=
+
+Name: tips/images/compress-packages1.png
+SHA1-Digest: M4qSJ/X2kkLSWhkmaf/qkHIlw8Y=
+
+Name: tips/images/editor-link-style-open.png
+SHA1-Digest: T/PC12QiUkYS8cQSm09EtaXOi68=
+
+Name: images/org.eclipse.jdt.ui/obj16/enum_protected_obj.png
+SHA1-Digest: ReOr/UtVIlhQewZiD29SSZaU5H0=
+
+Name: reference/views/expressions/images/ref-java.PNG
+SHA1-Digest: 7TXjeucIYkCdkFAMR5ZI1KD7Wtg=
+
+Name: images/org.eclipse.jdt.ui/ovr16/implm_co.png
+SHA1-Digest: +LghiVinjBbyj7fawW+8xGauwSM=
+
+Name: images/org.eclipse.debug.ui/elcl16/edtsrclkup_co.png
+SHA1-Digest: /1amAjiq3UBFOKsET9SJ7OdWvog=
+
+Name: images/org.eclipse.jdt.ui/elcl16/add_linked_source_to_buildpath.
+ gif
+SHA1-Digest: pvMDyBEO0dXbJz2z2QLfretVrxo=
+
+Name: images/org.eclipse.debug.ui/wizban/profile_wiz.png
+SHA1-Digest: UZjQKoRAxRqrDASofOVI/T229cU=
+
+Name: tips/images/inplace_outline.png
+SHA1-Digest: zHalEb9mpYUqGXaBv1TmokwCZJA=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout35.png
+SHA1-Digest: jb3kMPkKqdVXzxj9CP/ppvKY6Uo=
+
+Name: images/org.eclipse.debug.ui/dlcl16/disconnect_co.png
+SHA1-Digest: sev3oxW3Tei0EVHvtEkiVujCJ/k=
+
+Name: reference/views/shared/ref-detailpane.htm
+SHA1-Digest: 0ORETbDr/yJIKHqv1LeiTFqXObc=
+
+Name: images/org.eclipse.jdt.junit/eview16/junitsucc.png
+SHA1-Digest: PiPLZWGBOytI43A3SZNEG8BbsQA=
+
+Name: reference/views/shared/ref-findreplace.htm
+SHA1-Digest: jHvBa/7XFTxd9FHolsZiGvtT5u8=
+
+Name: gettingStarted/qs-8.htm
+SHA1-Digest: 8djZhCWV9QZL2tfZSTtXs1FYpXA=
+
+Name: whatsNew/images/quickfix-create-for-loop-array.png
+SHA1-Digest: FjKv4EXqxAFh8l7DnM7vnXXfPRc=
+
+Name: whatsNew/images/quickfix-create-for-loop-collection.png
+SHA1-Digest: +tFQKDjasfiwR9Uj7FIGPu5sJ6k=
+
+Name: whatsNew/images/contrib-vm.png
+SHA1-Digest: U4XFdWPHW8ogM70vqBSuW6QdKZc=
+
+Name: tasks/tasks-231.htm
+SHA1-Digest: MP+38DxQ9nQRWgyFNZo0ONYhspA=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout46.png
+SHA1-Digest: ZUVHCKRYbouARvbfLEuiDFfDm2g=
+
+Name: images/org.eclipse.jdt.ui/ovr16/java_ovr.png
+SHA1-Digest: Mh118kKHCx7F/ConVv+zFr0+1ck=
+
+Name: tips/images/nls-problem-search.png
+SHA1-Digest: OKw4bTf4qCY6LSRpFanMEAC8Y14=
+
+Name: images/org.eclipse.jdt.ui/obj16/jar_l_obj.png
+SHA1-Digest: cqs8PRymE4WUIEP28pK1bybiDqw=
+
+Name: reference/views/breakpoints/ref-access_contextaction.htm
+SHA1-Digest: Rc0lNqC8RiiMunaw2I6lf88j+Aw=
+
+Name: reference/views/breakpoints/ref-import_contextaction.htm
+SHA1-Digest: 8B+ZImmcwlcOkkpZPJEjLS/3Nsk=
+
+Name: whatsNew/images/junit-failure-trace-font.png
+SHA1-Digest: qO8HIHtLp5U72Suy1TbtflDtFSs=
+
+Name: reference/menus/run/ref-run_as.htm
+SHA1-Digest: OdzCw8nMkqdZYWFXO3bmKRiH5s0=
+
+Name: tasks/images/task-null-annotations-qf-bundle.png
+SHA1-Digest: /I1skpe2LmL6z895F8S4Z4yvKHA=
+
+Name: reference/views/breakpoints/ref-remove_viewaction.htm
+SHA1-Digest: BKMc7jKCSzfb4CBzWN9Px60nOdQ=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_menu.png
+SHA1-Digest: A0FmOZyYcLzcQsQpQOrWjcKM8FQ=
+
+Name: reference/views/debug/images/ref-properties.PNG
+SHA1-Digest: 9GsT6OY2Pm5U8WY6dQ4HwAAgIKs=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/suspend_co.png
+SHA1-Digest: QJCoclAqnatXvb13t+YuuU7dD0Y=
+
+Name: images/org.eclipse.ui.workbench.texteditor/etool16/block_selecti
+ on_mode.gif
+SHA1-Digest: W098NvGnGe9EfZ+/NOiXMrTipQo=
+
+Name: tips/images/null-reference.png
+SHA1-Digest: frix+PH/fhEoMpMecY88cNCandU=
+
+Name: tips/images/working-set-selection.png
+SHA1-Digest: 6RQhUQE9uwmoBS5QwcoUGlQYG+c=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout57.png
+SHA1-Digest: jLpYLOWJtM6fB+6Q8lCTECAFSIU=
+
+Name: tips/images/code-assist.png
+SHA1-Digest: SogaxyAOvh+9hAWeBbC1vb1cwEs=
+
+Name: reference/ref-dialog-gettersetter.htm
+SHA1-Digest: AZkuDeT0ORS/sZjXsX4RgS6DOtY=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/contentionformonitor_ovr.p
+ ng
+SHA1-Digest: ppZdqznxvFUbvX4Kvzq5vNUvV+g=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/constant_co.png
+SHA1-Digest: ssOS4TAmd3oPYB2q4cJdkzxlXgQ=
+
+Name: gettingStarted/images/wiz_import_arch.png
+SHA1-Digest: 1cLijNpWLxgNkdQfnu49x80llFc=
+
+Name: tasks/task-stepping.htm
+SHA1-Digest: jilluOY1Si7TOp1CaBDdYC+OP10=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/process_properties.png
+SHA1-Digest: Tfr1aLXIPBrTTmKCIYHIneZK65A=
+
+Name: whatsNew/images/quickfix-create-for-loop-array.txt
+SHA1-Digest: VOCBRIuz0icoYsFAGhf1bcLibK4=
+
+Name: images/org.eclipse.debug.ui/obj16/inst_ptr.png
+SHA1-Digest: +nnta2tRBJ8FNXw69oR3yDDxedY=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/word_wrap.png
+SHA1-Digest: ab5WTdk+VFGTIrR1Xpf73ww/vp8=
+
+Name: whatsNew/images/quickfix-create-for-loop-collection.txt
+SHA1-Digest: aJrfRUAfUhGUQcEpXZo3ZA6uMj4=
+
+Name: images/org.eclipse.ui.console/elcl16/pin.png
+SHA1-Digest: FHQ0l+TPK4ltoMNXRhm8lWOclsc=
+
+Name: reference/views/debug/images/ref-breadcrumb_drop_down.png
+SHA1-Digest: Zug/zrEGKR30IGoEn9hOSh1vvUk=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout68.png
+SHA1-Digest: 90vF6k9E58u/B/qeOS0NIWHvl5U=
+
+Name: reference/ref-apt-automaticProcessorOptions.htm
+SHA1-Digest: RGvK6Fw6SZolrByyF8cFrSv8Ge4=
+
+Name: reference/views/shared/ref-showconstants.htm
+SHA1-Digest: i5lHBnZiNXS9YV3GLQBSlBrXXmo=
+
+Name: images/org.eclipse.jdt.ui/elcl16/th_horizontal.png
+SHA1-Digest: fheoNj2gNLQy4j0XZiJ6FtGkIj0=
+
+Name: reference/views/debug/ref-layout_breadcrumb.htm
+SHA1-Digest: 0A3I3TkOOXkcqdZ9GpIwJpnwpzs=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout3.htm
+SHA1-Digest: iaF0Kz9haVNuaEiTwq8y/HeVi8M=
+
+Name: reference/ref-dialog-type-selection.htm
+SHA1-Digest: xpuMF2S7OpkG5qcyULJM2gCZ7rI=
+
+Name: reference/views/debug/ref-showsystemthreads.htm
+SHA1-Digest: ZrLDloXdnAKmEtD3EzJvlE/nROY=
+
+Name: images/org.eclipse.debug.ui/elcl16/synced.png
+SHA1-Digest: E2d6Y4p/yKLgQbZLs4WwAT1c99s=
+
+Name: concepts/concept-template-variables.htm
+SHA1-Digest: SVzVFK7IU8vZ5YX+l21m0H09mgw=
+
+Name: images/org.eclipse.debug.ui/elcl16/disabled_co.png
+SHA1-Digest: clMwI0F97JOex9FSFV4ArBhr140=
+
+Name: images/org.eclipse.debug.ui/elcl16/stepreturn_co.png
+SHA1-Digest: oHdwHOWrlR/X9fGK9QVeZZ96ThI=
+
+Name: tips/images/ignore-warnings-source-folders.png
+SHA1-Digest: QQ2pws2dlm9f3/z59h2/0wdZfww=
+
+Name: tips/images/template-for-iter.png
+SHA1-Digest: KGwx0Fy/f6O+GwCZ2uC3vlFHQQc=
+
+Name: concepts/concept-java-views-decorators.htm
+SHA1-Digest: N3H9THPbIIfHXjgy9hzQSGbHfUE=
+
+Name: reference/views/shared/images/ref-displayresult.PNG
+SHA1-Digest: erIiKS8P0UeRLRr7sKc62+gSiZU=
+
+Name: images/org.eclipse.debug.ui/eview16/debug_persp.png
+SHA1-Digest: uaSmBGiJi0QRL0p7ll26opJXXFE=
+
+Name: images/org.eclipse.debug.ui/dtool16/run_exc.png
+SHA1-Digest: QmIW4EDPofHwbw4nF/39I5GcNts=
+
+Name: images/org.eclipse.jdt.junit/obj16/tsuiterun.png
+SHA1-Digest: VK7R1aolkee+ueoD0WtEdJAvGC0=
+
+Name: reference/preferences/java/debug/ref-installed_jres.htm
+SHA1-Digest: PLInYb2bw0KOIO2mC67hhqBjXH4=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/monitor_view.png
+SHA1-Digest: r1Vxn+pbLCNUH01aXsN3fwxKUow=
+
+Name: reference/preferences/java/compiler/ref-preferences-javadoc.htm
+SHA1-Digest: mtzg0fXgTeVlWZsPPdNAPbRCZNY=
+
+Name: images/org.eclipse.debug.ui/wizban/edtsrclkup_wiz.png
+SHA1-Digest: WNNHdIuc5S32ASH5BI+Zd8E8tDQ=
+
+Name: concepts/images/qs-37a.png
+SHA1-Digest: WBI/HtMcWc9hBb0WZuDSMVY/b5M=
+
+Name: gettingStarted/images/view_console_success.png
+SHA1-Digest: Q+s77HqtofsRwERFYyPnQTABNh8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/public_co.png
+SHA1-Digest: FCHTLTzP9o48XA4o5ouXrQD2nQY=
+
+Name: images/org.eclipse.jdt.junit/elcl16/compare.png
+SHA1-Digest: CL3HmgXgIKqYU3jqCa+x9ghWS/c=
+
+Name: images/org.eclipse.jdt.junit/obj16/testignored.gif
+SHA1-Digest: 6nKS/XdwxnaFRMmHbyaYIRTC7Es=
+
+Name: gettingStarted/images/java7/surround-with-try-multicatch.png
+SHA1-Digest: Vuq3KnhhI9pjhfEBltAkDOHo3lU=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_skipall_
+ example.PNG
+SHA1-Digest: tzJ/8pBF4/A0N7DcGhq7ed4pgGc=
+
+Name: gettingStarted/images/view_package_explorer_vectortest_error.png
+SHA1-Digest: DENLKUm9UYQyr0DnFuSpTjVT+5k=
+
+Name: gettingStarted/images/override_implement_dialog.png
+SHA1-Digest: BXxgAGRlSpHfI7mY2DQIU+ttZV4=
+
+Name: images/org.eclipse.debug.ui/elcl16/det_pane_right.png
+SHA1-Digest: 4AcORajrSFSYv7wa8cgoDCigdp0=
+
+Name: images/org.eclipse.jdt.ui/ovr16/final_co.png
+SHA1-Digest: vnhU2x+eZA214WDxO+823oVBpOA=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_select_d
+ efault_workingset_dialog.PNG
+SHA1-Digest: cUqyBixbA8mhfTjwzfRn6NMRI2s=
+
+Name: images/org.eclipse.jdt.ui/obj16/jar_desc_obj.png
+SHA1-Digest: q6qJS6VSKAUspiZ2HZ6kguCjBEQ=
+
+Name: gettingStarted/images/workbench_java_browsing.png
+SHA1-Digest: Myx5oImZPd6+9cXubi2QqEqF/4Y=
+
+Name: images/org.eclipse.jdt.ui/ovr16/caller_co.png
+SHA1-Digest: VoxNkt2eY9Ssqrww7A0drU7iaQg=
+
+Name: gettingStarted/images/quicktype_dialog_setup.png
+SHA1-Digest: K9UqB3st5FWNyKobUBr8WoiOklo=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout11.png
+SHA1-Digest: hGWk8859XGx1MNKsN9RLbY+NKgo=
+
+Name: images/org.eclipse.jdt.ui/etool16/javadoc.png
+SHA1-Digest: zq6dmj3SumS31jq0QNuAHNXvbVM=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss3.png
+SHA1-Digest: /SvclFNOL8CFxLEmqLYSY8tmrs4=
+
+Name: tips/images/build-path-error-decorator.png
+SHA1-Digest: tbrKpWzV2uLsc75g5L5mGRqVSPY=
+
+Name: concepts/concept-java-project.htm
+SHA1-Digest: fVhaehxQ9k9qqdOVi09ng35xfig=
+
+Name: images/org.eclipse.jdt.junit/obj16/tsuitefail.png
+SHA1-Digest: bdfISylB3O6xIOUN388qQ9yvB5g=
+
+Name: reference/ref-toolbar-run.htm
+SHA1-Digest: VGNKXqz1fkCIqW1+Gqxn1L3mar0=
+
+Name: images/org.eclipse.debug.ui/elcl16/var_cntnt_prvdr.png
+SHA1-Digest: Ta+zHyku4a/KWaTxyEHrHdWu5fU=
+
+Name: reference/views/breakpoints/ref-skipall_viewaction.htm
+SHA1-Digest: vHnASMYJfUzNBp1FMN3R9gR/QRw=
+
+Name: gettingStarted/images/extract_method_dialog.png
+SHA1-Digest: LFLLfmkXRuJftJJcQHNekV5dgQQ=
+
+Name: gettingStarted/images/search_prev.png
+SHA1-Digest: lOWdo9UrpYtiy2Q7ssoSiFxU5J0=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout22.png
+SHA1-Digest: hCRrh9ZgBWiGy6VO/hQrlkYNwQs=
+
+Name: index/_0.fnm
+SHA1-Digest: IdhqGshqwGn25r92yDKmqJY3n8U=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerclass_default_obj.png
+SHA1-Digest: TmjfLzTN/zFHSKViGjFyg3meS6A=
+
+Name: reference/images/contentassist.png
+SHA1-Digest: pCu9PD25pnpIVb74fFpu8a2ILU8=
+
+Name: reference/views/console/ref-pin_action.htm
+SHA1-Digest: buq3LxCeaJLeE5qi+2KCo1xMOFw=
+
+Name: reference/preferences/java/ref-preferences-properties-files-edit
+ or.htm
+SHA1-Digest: I4ecwo7IN5JPLBW8dqLXWqYhU5g=
+
+Name: tips/images/quickfix-addcast2.png
+SHA1-Digest: 0P0PxcummGvzUWdB+0vmQA4a0/E=
+
+Name: reference/views/expressions/ref-convert.htm
+SHA1-Digest: Gm8bY6vMnVU3KrDkcvv7d0YZjjc=
+
+Name: reference/views/shared/ref-showcolumns.htm
+SHA1-Digest: TOZX5XqfB0CPjV4+J9uJCBFardk=
+
+Name: reference/views/display/ref-clear.htm
+SHA1-Digest: VMOXv0AGgUr3jihVCjvh0t9qvtE=
+
+Name: reference/views/ref-type-hierarchy.htm
+SHA1-Digest: giojpyluA1EtETgCHX9FEx39NrE=
+
+Name: images/org.eclipse.debug.ui/eview16/details_view.png
+SHA1-Digest: Ay+7Bzoy4678SbMoD+pHBPhtRBs=
+
+Name: reference/menus/run/ref-run_to_line.htm
+SHA1-Digest: Wi9vPIp0F/uLYWwOO4WRgaySurQ=
+
+Name: reference/views/shared/images/ref-changestringvalue.PNG
+SHA1-Digest: KdQbjj9uMcZRJO1lKsQqNv46UV4=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout33.png
+SHA1-Digest: XuX85eTcwgnI7Q/6elfctqkPBVE=
+
+Name: images/org.eclipse.jdt.ui/obj16/field_protected_obj.png
+SHA1-Digest: /nAx6fg/OQvAG5eqWxZ9/6fOe+4=
+
+Name: concepts/concept-refactoring.htm
+SHA1-Digest: UySFkiFMVMatgAX7jt08/5z/2Xw=
+
+Name: tasks/task-evaluating_expressions.htm
+SHA1-Digest: iuMQR0dnOB90hHdEOomiJAxaSrc=
+
+Name: tasks/task-add_new_jre.htm
+SHA1-Digest: LPyIPbMxM3e53ShjxrKrWcXqrw8=
+
+Name: reference/ref-export-javadoc.htm
+SHA1-Digest: lyhsSUHN6EbTO6n8qFP9MTWqdk0=
+
+Name: reference/views/shared/ref-forcereturn.htm
+SHA1-Digest: JnmFXGjpO3z5a+Y3VvfaAxMpopI=
+
+Name: reference/views/expressions/ref-expressions_view.htm
+SHA1-Digest: VVIgtx6mog7Lc8ENQU2NRxfDIg0=
+
+Name: gettingStarted/qs-6.htm
+SHA1-Digest: AOvYJXWdcZQ3VeSWkK3GNzflsds=
+
+Name: gettingStarted/images/generate_getter_setter_dialog.png
+SHA1-Digest: ZPyKTTMkqWvZ0CO3TkJ32yPSYyQ=
+
+Name: topics_WhatsNew.xml
+SHA1-Digest: 4bOO5WaPsUaLukj+00VXw1mv0jg=
+
+Name: images/org.eclipse.debug.ui/dlcl16/edtsrclkup_co.png
+SHA1-Digest: xyE83oU1xtddw1fQp1UFenYNRbE=
+
+Name: reference/views/variables/images/ref-variables_view.PNG
+SHA1-Digest: VW4iGgKgOMXoJn1Ib6cOSqUhA0w=
+
+Name: images/org.eclipse.jdt.ui/obj16/jar_lsrc_obj.png
+SHA1-Digest: tiVh8t+UKIvvRHwiiTrjmhmO48U=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout44.png
+SHA1-Digest: KnuWV5W2rBf40aI0efK3+usptP8=
+
+Name: images/org.eclipse.debug.ui/dlcl16/terminate_all_co.png
+SHA1-Digest: mQSGdSFp3+thL07rCh21mIkF41o=
+
+Name: concepts/clocdbug.htm
+SHA1-Digest: zNNo3EwXtT6vZC9cWE0n1xo8fCs=
+
+Name: images/org.eclipse.debug.ui/dlcl16/collapseall.png
+SHA1-Digest: qp3HXH9lJebJLq3P6/37Sv3RHPo=
+
+Name: whatsNew/images/variable-coloring.png
+SHA1-Digest: 8W8Jtji3jc6q4Fdt5+NLbD5qu9U=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_groupbym
+ enu.PNG
+SHA1-Digest: DQQY6UVBzWQ89fB1aQxtTDRM/Go=
+
+Name: images/org.eclipse.jdt.ui/elcl16/configure_output_folder.png
+SHA1-Digest: 66j8QwULjuk9ck5Jp6zRNwDnvYM=
+
+Name: reference/views/shared/ref-showqualified.htm
+SHA1-Digest: v3PfA3798+5qEesw14mbANWseqA=
+
+Name: reference/views/debug/images/ref-viewmanagement.PNG
+SHA1-Digest: W3MASaO4NWJJ/XH4ayioMcxYYQY=
+
+Name: images/org.eclipse.jdt.ui/elcl16/ch_cancel.png
+SHA1-Digest: sph3MWJEyk3kqNio+eHb9fjmt+s=
+
+Name: reference/views/shared/images/ref-viewlayoutmenu.PNG
+SHA1-Digest: M173vCHARsi8kx/H0b6k8EunqW8=
+
+Name: images/org.eclipse.jdt.ui/obj16/annotation_default_obj.png
+SHA1-Digest: 8i/aYHtMCarQh/UPibDCI3IaDjE=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_move.png
+SHA1-Digest: 7kS+x1g5qAGcY5YrvHhF4IuC/L0=
+
+Name: images/org.eclipse.debug.ui/obj16/lrun_obj.png
+SHA1-Digest: 2STMlJQWulm40h4UY/munCIIF+k=
+
+Name: reference/views/debug/ref-filtertype.htm
+SHA1-Digest: DV0ryjYEDmEge97EzDNbuEINu04=
+
+Name: reference/views/breakpoints/ref-caught_contextaction.htm
+SHA1-Digest: ium+WO6ut/OGYoyopiuAC0s6uVQ=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout55.png
+SHA1-Digest: +zGqhhNB7QltmS9C2JJ5SqtjV1c=
+
+Name: reference/menus/run/images/add_class_load_dialog.PNG
+SHA1-Digest: Kn5HV/WdVTIIkjXiIwr0VqpLVVE=
+
+Name: reference/images/quickfix-hover.png
+SHA1-Digest: lK+em259CKcKHVJxqKvA0WiCFcY=
+
+Name: images/org.eclipse.debug.ui/ovr16/stcksync_ov.png
+SHA1-Digest: W9Sq6CMg6kkOzrNl6TW3M1Re4hk=
+
+Name: images/org.eclipse.ui.console/elcl16/lock_co.png
+SHA1-Digest: 7p7ehB94Ck3jMlf4JtFnUVOt6p8=
+
+Name: reference/images/formatter-condense-multi-lines-comments.png
+SHA1-Digest: lBx8IR2rEyIzUmaGzq6GekX6Vws=
+
+Name: tips/images/smart-javadoc.png
+SHA1-Digest: F+0KJjrIayl2rOCoRshbaCQ8XA8=
+
+Name: tips/images/gettersetter-quickassist.png
+SHA1-Digest: PDlEdOlEVtyjAXd50SlI2GF2Z2Q=
+
+Name: images/org.eclipse.jdt.ui/obj16/int_obj.png
+SHA1-Digest: WQj4EPdT0GbOoH8+nzRKqb3OIUE=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/all-instances.png
+SHA1-Digest: FLhwvVM/Mt65LoOEx1vOwvPwotc=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jmeth_obj.png
+SHA1-Digest: N3o8m02FtkxkllUfYFrgtAxrXZc=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/library_obj.png
+SHA1-Digest: oMmA83ImGPOR42LqaeuKSz4pmTo=
+
+Name: images/org.eclipse.ui.editors/etool16/next_nav.png
+SHA1-Digest: laSAl8cAPfkHR719cceoMb92xJo=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout66.png
+SHA1-Digest: I45BCp+wLBKyUrS31Zjc9UKepaU=
+
+Name: index/_0.frq
+SHA1-Digest: hyX+SqLSA+3QFLL7srqg5LL+DVo=
+
+Name: reference/views/breakpoints/ref-showsupported_viewaction.htm
+SHA1-Digest: RfDWYzr5GpA4+Zl+jY+gZLMi0MA=
+
+Name: reference/ref-apt-processorOptionsInput.htm
+SHA1-Digest: ZAqeEGTBPECjGyNULrTVvWxT3Y8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/exc_catch.png
+SHA1-Digest: VOmKYnh9FqiEy/gt9BwjUo2De64=
+
+Name: reference/views/ref-java-editor.htm
+SHA1-Digest: 74pDwt5w32D2a8IWTRTJ9TrmKuI=
+
+Name: reference/menus/run/ref-dll_debug.htm
+SHA1-Digest: HyeOrJa9Uq58RUNCZgiISDczwwM=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout1.htm
+SHA1-Digest: qebp6gRCMOXhnHNhfInzJ1BGA0o=
+
+Name: images/org.eclipse.jdt.ui/obj16/logical_package_obj.png
+SHA1-Digest: PJuaKWaI7q/9zsKYUBBDA24SlVU=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/exc_catch.png
+SHA1-Digest: QVCxluv4xo+lgWbpPEbhnxUuiLk=
+
+Name: gettingStarted/qs-with-j2se50.htm
+SHA1-Digest: +Z8WPOo1FjuiHOoc3Z6Fmu1dmb8=
+
+Name: tips/images/type-indicator.png
+SHA1-Digest: 6rw3yQL3Nw9XKhOCWJj/qlq8LWk=
+
+Name: images/org.eclipse.ui.console/elcl16/console_view.png
+SHA1-Digest: r/AJdkfdLdwuREza/CzJQDJ2eAg=
+
+Name: reference/preferences/java/editor/ref-preferences-content-assist
+ -favorites.htm
+SHA1-Digest: rS4qwfixINcE0/lS2t2fdRzUOwQ=
+
+Name: whatsNew/images/navigate-from-method-reference.png
+SHA1-Digest: ehuOCWeXOJKMpUqXrSB4pCf4xAk=
+
+Name: tips/images/quickfix-change-signature.png
+SHA1-Digest: 3WtpifBX5D89Qq7JgTpl0Br7aqo=
+
+Name: images/org.eclipse.jdt.junit/elcl16/relaunch.png
+SHA1-Digest: r9xgWQyImjB5BC+Q1qPG2kapSkQ=
+
+Name: images/org.eclipse.jdt.ui/obj16/methpro_obj.png
+SHA1-Digest: 5RN2fk68I7Olvbeo372D+7Pxz3k=
+
+Name: tips/images/quick-assist-catch-to-throws.png
+SHA1-Digest: n+8keSXAs/Vj+grq7zKiBncdAbc=
+
+Name: images/ngrelt.png
+SHA1-Digest: T/aObgW4iyz6C+UTnzXp4mA1cV4=
+
+Name: reference/views/shared/ref-copy.htm
+SHA1-Digest: /PdMmWyM7IO5T0wGaq4PePAfEec=
+
+Name: gettingStarted/images/add_linked_source_to_buildpath.png
+SHA1-Digest: gFuKZuRg2QYOY/r28ggu29wrRCI=
+
+Name: reference/views/shared/images/ref-changeobjectvalue.PNG
+SHA1-Digest: ahxh8Qa6cchuCcmi1gi4+JzTfEE=
+
+Name: tasks/task-ensuring_switch_completeness.htm
+SHA1-Digest: UalMg3kW2oncBhH+Z2GS5gykKWw=
+
+Name: tips/images/matching-brackets.png
+SHA1-Digest: uCl4o0+vKqfl6dFnXjzUAG5xvq4=
+
+Name: images/org.eclipse.jdt.ui/etool16/newpackfolder_wiz.gif
+SHA1-Digest: K5Zw5ex6HyNTpaFlHCN5ROsBHEE=
+
+Name: book.css
+SHA1-Digest: x+usWIJHSk4cWqBLcgSNaMUenvs=
+
+Name: tasks/task-scrapbook_error_reporting.htm
+SHA1-Digest: r4wqWbQccZiYvOzhhvxyxgn/dW0=
+
+Name: images/org.eclipse.jdt.ui/obj16/ignore.png
+SHA1-Digest: L+eyxod4/z5/rSCS/LvUAZfj3vk=
+
+Name: images/org.eclipse.jdt.junit/ovr16/failed_ovr.png
+SHA1-Digest: mvYeZtorgDxW8VKWesSGsIcnNG8=
+
+Name: images/org.eclipse.jdt.junit/etool16/debugjunit.png
+SHA1-Digest: DIvqnOmrNTcWeFPqVK2yb/b3OKo=
+
+Name: gettingStarted/images/workbench_debug_vectortest.png
+SHA1-Digest: MoK3KWaeFABDPa7+Vo1+zTmi080=
+
+Name: gettingStarted/images/qs-OrganizeSources5.png
+SHA1-Digest: b1TqLefjPCghOh+eenrAo0r8IoI=
+
+Name: reference/ref-wizard-java-project.htm
+SHA1-Digest: ak5q/gg5SN+Q1WovFeG93BMshsI=
+
+Name: tasks/task-ant_javac_adapter.htm
+SHA1-Digest: TzGpGREYDDuOng+Ieef1s+ql3Zg=
+
+Name: images/org.eclipse.debug.ui/dlcl16/stepreturn_co.png
+SHA1-Digest: NPzYfel1LT7ZcSzDLD+QmoPsgnU=
+
+Name: reference/ref-wizard-scrapbook.htm
+SHA1-Digest: 4ryK53wEh+HdwYoqx34Oy44Vpng=
+
+Name: concepts/concept-access-rules.htm
+SHA1-Digest: iOcn75dvsDutB/G83RZGbE7hApM=
+
+Name: gettingStarted/images/navigate_open_typehieracrchy.png
+SHA1-Digest: bwIPTGd9iSEwf+YvN3XbS9swvg4=
+
+Name: gettingStarted/images/editor_vectortest_problem_hover.png
+SHA1-Digest: UfKUEQidSVoEODjzeo9AfrV0RtA=
+
+Name: reference/views/debug/ref-terminaterelaunch.htm
+SHA1-Digest: quZB+5QNsdFErno6QJ0gtTvaP4E=
+
+Name: images/org.eclipse.jdt.ui/eview16/class_hi.png
+SHA1-Digest: x0Gh9RBEbrDZjHtmg1dH2qmXQLY=
+
+Name: whatsNew/images/convert-to-lambda-1.png
+SHA1-Digest: 1HCNdcIcwLg8E9HaIzjZcCa+1FA=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss1.png
+SHA1-Digest: cLV2KsJtmQ1zi8iMZUarPSk5bX0=
+
+Name: gettingStarted/qs-EditorTemplates.htm
+SHA1-Digest: HstWRA+RPrYxzhyJqSeQdrZPTcI=
+
+Name: tasks/images/tasks-exception-filtering-add.PNG
+SHA1-Digest: jdydW8pQ/o3D7PxnSOEO+JVMlIs=
+
+Name: tips/images/quick-refactoring-menu.png
+SHA1-Digest: ynsf3YlgCM0xKnqxSFbY0QFR+Ww=
+
+Name: images/org.eclipse.jdt.ui/etool16/newclass_wiz.png
+SHA1-Digest: IasQzrWU5wdfZdouZLNpBY7ENzQ=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/time_obj.png
+SHA1-Digest: i/NNHEW/Ox2RL8Z47xTkSj7Vj5E=
+
+Name: images/org.eclipse.jdt.ui/obj16/enum_private_obj.png
+SHA1-Digest: ub6iBbtejdiEOV+i+InxUnX8u70=
+
+Name: tasks/tasks-9.htm
+SHA1-Digest: D+keFW6i3MAtMQwFkHcD14IWyOQ=
+
+Name: images/org.eclipse.debug.ui/dlcl16/tnames_co.png
+SHA1-Digest: UBN0Md2FN+2JNxS34Enuah3M92w=
+
+Name: images/org.eclipse.jdt.ui/obj16/methpub_obj.png
+SHA1-Digest: yKNvCu4AP86cFb8ypcbYNfMUUCA=
+
+Name: gettingStarted/images/view_problems_goto.png
+SHA1-Digest: 1QqXqc2QQ6I4ZIPFbYWMwLLSLAY=
+
+Name: reference/views/debug/ref-usestepfilters.htm
+SHA1-Digest: nxXwTRP7NF4F+3PzhEp3huIznvM=
+
+Name: reference/views/breakpoints/ref-uncaught_contextaction.htm
+SHA1-Digest: LyRf0MH1ESqWpjTtmWXcEKpp2Y8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/history_list.png
+SHA1-Digest: 1IJPiVk36K/eMa4tkpBCmIRtVIg=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout20.png
+SHA1-Digest: 6344yVf7zbdseDlbEfB4mP7yLBY=
+
+Name: reference/preferences/run-debug/images/ref-lcd_string_subbed.PNG
+SHA1-Digest: Q5ONBcz/HeueJMxhfGeymPb0j00=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/breakpoint_condition.png
+SHA1-Digest: NS+zysXuaAD2ylU8fE5UnOPkLnU=
+
+Name: reference/views/shared/images/ref-selectedstatement.PNG
+SHA1-Digest: WjkLn6YDkV8ngnOAGk4ceVbV+9c=
+
+Name: images/org.eclipse.debug.ui/elcl16/terminate_all_co.png
+SHA1-Digest: lOyZeid5XRAuA4FsXwzBfagTXYk=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_delete_import.png
+SHA1-Digest: 4FsnGh2In2Q6p9rMJ40okECbx04=
+
+Name: images/org.eclipse.debug.ui/eview16/memory_view.png
+SHA1-Digest: ucya4A3DOaEtfRB7hYy+CjAMUJI=
+
+Name: gettingStarted/images/j2se50/compiler-property-page.png
+SHA1-Digest: JPwor2nZkCNt4nibvS4ppF7R000=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerinterface_private_obj.png
+SHA1-Digest: Qiyct4nKh/W7BONAJ6/6lnbOHc8=
+
+Name: images/ngrelc.png
+SHA1-Digest: AtrS4kkJDBiPeN+v4oUlyJqqi/M=
+
+Name: gettingStarted/images/active_break_point.png
+SHA1-Digest: YsX1nLwivYTDC8axB9ofm3h3S3o=
+
+Name: images/org.eclipse.debug.ui/elcl16/lock_co.png
+SHA1-Digest: 3LpuiiLHHOLQpxDhNrCxI/sYUfw=
+
+Name: reference/ref-dialog-java-element-filters.htm
+SHA1-Digest: y/eKkVQtBTF+VkxO7tLIOvKx/Yc=
+
+Name: images/org.eclipse.jdt.ui/obj16/template_obj.png
+SHA1-Digest: CS+OMSLSROBV3uQ5cem54lxazzk=
+
+Name: images/org.eclipse.jdt.ui/obj16/empty_logical_package_obj.png
+SHA1-Digest: L7NIkBAUUTwdn0/pDHmHZh/HoVY=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout31.png
+SHA1-Digest: hGWk8859XGx1MNKsN9RLbY+NKgo=
+
+Name: images/org.eclipse.jdt.ui/obj16/file_obj.png
+SHA1-Digest: u3vWJZkeGUzDh3cJv3fMntIa5Q8=
+
+Name: reference/preferences/java/appearance/ref-preferences-type-filte
+ rs.htm
+SHA1-Digest: 9L7TOlFIohE3UsccjJgwbmadJwE=
+
+Name: tasks/task-create_scrapbook_page.htm
+SHA1-Digest: +mTiMM5tHDO8C1NZgf3lgrEAt7Q=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/caught_ovr_disabled.png
+SHA1-Digest: X1q921JB4o55WmAW0m/SNYFMptY=
+
+Name: gettingStarted/images/java7/remove-safevarargs-1.png
+SHA1-Digest: bvfOIgcKPWFTxM95yPPYlJJWRW8=
+
+Name: gettingStarted/qs-4.htm
+SHA1-Digest: 7c8RMults1oOJhg5JDAYh2P7S1I=
+
+Name: images/org.eclipse.debug.ui/dlcl16/skip_brkp.png
+SHA1-Digest: wYxmj9C2x7QlSiTWIwa4dN+6M2U=
+
+Name: reference/views/debug/ref-breadcrumb.htm
+SHA1-Digest: T3iFIDlE9x5WUzuO63gGeF79wx8=
+
+Name: reference/views/breakpoints/ref-disable_contextaction.htm
+SHA1-Digest: pASnhhC52zju5lxL41TiEWH5A6o=
+
+Name: gettingStarted/images/wiz_new_project.png
+SHA1-Digest: bx5kFm/vqVQxKgCH7dZUc1XJcQ4=
+
+Name: images/org.eclipse.jdt.ui/ovr16/transient_co.png
+SHA1-Digest: WvRHOrwzt2qlxm85gxdbBFQEBsU=
+
+Name: reference/views/console/ref-stacktrace_console.htm
+SHA1-Digest: QN7/blBzgsGVxx2LUvG5wBTh/wE=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout42.png
+SHA1-Digest: hCRrh9ZgBWiGy6VO/hQrlkYNwQs=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jspbrkpt_obj.png
+SHA1-Digest: AdI8BQVxByz/CmG6wA+h1GebSX8=
+
+Name: images/org.eclipse.debug.ui/elcl16/changevariablevalue_co.png
+SHA1-Digest: lqKu8hJRqCG46O87yBK0tGbavYg=
+
+Name: concepts/concept-jdt.htm
+SHA1-Digest: cxHwcumtH2StACdl5PiZX4WIT8w=
+
+Name: tips/images/quick-outline-inherited.png
+SHA1-Digest: 7qXhwV9Wln0VqVZQGkV3Zc8db7s=
+
+Name: tips/images/quick-fix-uncaught-exception.png
+SHA1-Digest: JjaTsfg73WEQ1rYLw9v0kgGh6/0=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/java_attach.png
+SHA1-Digest: kfBUC1RTlUB8qpvWI0UvOsUVqko=
+
+Name: images/org.eclipse.jdt.ui/obj16/source_attach_attrib.png
+SHA1-Digest: Up2JTjjPXTmJOvZX+1rynwvSY8U=
+
+Name: tasks/images/tasks-46.png
+SHA1-Digest: Iy05KWM/BDqxolqXqFUcvkhqHxI=
+
+Name: reference/menus/run/ref-rll_run.htm
+SHA1-Digest: xY6Zcj2cTLV74Hwyi5+cAueDxac=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout53.png
+SHA1-Digest: szQpkqiq9mpBv7xFTJH+4VnIUjg=
+
+Name: gettingStarted/images/editor_vectortest_testSizeIsThree.png
+SHA1-Digest: GJR5xLGYNyT0K0gSrQkZwUSj8dY=
+
+Name: images/org.eclipse.jdt.ui/obj16/search_decl_obj.png
+SHA1-Digest: OJTffJQyoL0MAlbkfl2CusQTYF0=
+
+Name: images/org.eclipse.debug.ui/dlcl16/stepover_co.png
+SHA1-Digest: bmlOr1Htg25XHQBWRvfbVpAPYpg=
+
+Name: reference/ref-dialog-javadoc-location.htm
+SHA1-Digest: DtsjSnO7uxVOZEOfLOe3WX0UcR8=
+
+Name: images/org.eclipse.debug.ui/dlcl16/suspend_co.png
+SHA1-Digest: QJCoclAqnatXvb13t+YuuU7dD0Y=
+
+Name: images/org.eclipse.jdt.ui/elcl16/impl_co.png
+SHA1-Digest: JDhrikxJNXG6Meo0EYLwJEXl2xY=
+
+Name: gettingStarted/images/java7/redundant-specification-of-type-argu
+ ments.png
+SHA1-Digest: Nmg5sBwumdtvGeqF4jm98YmHNSg=
+
+Name: tips/images/unavoidable-generic-type-problems-example.png
+SHA1-Digest: fNhWQWp5bT3McAG4ZiTTnsRVeeU=
+
+Name: images/org.eclipse.debug.ui/etool16/run_exc.png
+SHA1-Digest: FizzsPHKEzCbr6LO11OgdR/6I3I=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/error_obj.png
+SHA1-Digest: G98EzrzEjo7XoXeSFwbsQjMxX0M=
+
+Name: images/org.eclipse.jdt.ui/obj16/externalize.png
+SHA1-Digest: WOiFcnAaW3KJU2A2avFLqacl6Ro=
+
+Name: gettingStarted/images/pref_buildpath.png
+SHA1-Digest: GYnNRUChxIfQEzEPxaTHQ36AFtg=
+
+Name: images/org.eclipse.jdt.junit/elcl16/stop.png
+SHA1-Digest: sph3MWJEyk3kqNio+eHb9fjmt+s=
+
+Name: reference/views/debug/images/ref-monitors_unsupported.PNG
+SHA1-Digest: g4tXAusEuZdvVDlQ25kNNcQRWQE=
+
+Name: tips/images/organize-imports-on-save.png
+SHA1-Digest: bxKhmFWQk7xKLR2SB8LmB0rWlYY=
+
+Name: reference/views/debug/ref-editstepfilters.htm
+SHA1-Digest: s0ICV8iGeGLvfTEHpdFkHVnS3TE=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout64.png
+SHA1-Digest: 5z2ytnQpJ4WVStEbVCt0hjv9mT4=
+
+Name: tips/images/instanceof-always-false.png
+SHA1-Digest: R+eifeP1KXlVn9dYGyEM3oRCUWs=
+
+Name: images/org.eclipse.jdt.ui/elcl16/add_linked_source_to_buildpath.
+ png
+SHA1-Digest: b9lJ11nUTGRYA1IWd6PGamQv1sg=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/conditional_ovr_disabled.p
+ ng
+SHA1-Digest: SLWQkDvYKgckNHxdDUTG/lV5Us4=
+
+Name: reference/views/debug/images/ref-properties_dialog2.PNG
+SHA1-Digest: UrhbMHf/bcATxeN7JW4qAkil7dc=
+
+Name: gettingStarted/images/run_dialog_arguments.png
+SHA1-Digest: 2KPVlT9Zm7ZvDEmAuj6poI6PmIQ=
+
+Name: images/org.eclipse.debug.ui/dlcl16/synced.png
+SHA1-Digest: 9cbL+nU1CwTFyOxWItdTWll+XYs=
+
+Name: gettingStarted/images/view_outline_testrunner_run.png
+SHA1-Digest: meK5hAwyWvJrwPk7dWEJCY2Pt4I=
+
+Name: images/ngrelr.png
+SHA1-Digest: OzguzM/OK663iNL85kw/xEyPpdw=
+
+Name: reference/ref-java-editor-code-assist.htm
+SHA1-Digest: nRjAgrJUZNzuIkB++RPfJfNSuE8=
+
+Name: images/org.eclipse.jdt.ui/obj16/html_tag_obj.png
+SHA1-Digest: cApQfjxsH2zsyDijsYo1TyxLq3M=
+
+Name: tips/images/build-path-actions.png
+SHA1-Digest: x0NT38G4Ynniw80orqO6YOXigIA=
+
+Name: tips/images/quick-fix-unimplemented-methods.png
+SHA1-Digest: hpu3q9WZitHYk87zMxiMkCm9U2g=
+
+Name: reference/views/debug/images/ref-configdialog.PNG
+SHA1-Digest: BQwsshlsvIfINzrnthA9Bmvn2+c=
+
+Name: gettingStarted/images/view_typehierarchy_testcase.png
+SHA1-Digest: XyKoErRFnMj/hUBzxsExSvJsoB4=
+
+Name: tips/images/unavoidable-generic-type-problems-example.txt
+SHA1-Digest: jzbHU8ofBv8rJ1IoTvw/UxfXSdE=
+
+Name: gettingStarted/images/qs-OrganizeSources3.png
+SHA1-Digest: Hg9eo+81W2+88XdrrARwynXXqTA=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jexcept_obj.png
+SHA1-Digest: qZrqRBCOIceyUBIu0SfDT661gUs=
+
+Name: reference/breakpoints/ref-modification_option.htm
+SHA1-Digest: EfF5jj7OrwjQF8UWr/xt/1UdFNw=
+
+Name: gettingStarted/images/java7/add-safevarargs-to-declaration.png
+SHA1-Digest: BkABoAsRpKIMy2O66RNHHfq4alQ=
+
+Name: tips/jdt_tips.html
+SHA1-Digest: glK9AIvv1Iymk7SA4GDbyJas+yY=
+
+Name: gettingStarted/images/java7/add-safevarargs.png
+SHA1-Digest: RCdAU611SGBK+5Qzsnu8X7RQ9kc=
+
+Name: tasks/task-memory-multiple-views.htm
+SHA1-Digest: W8twuNZOxPoqDYmu7DTz8B8SNBA=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/info_obj.png
+SHA1-Digest: zT0NkuukAGpRButan4CHlMBX+SU=
+
+Name: tasks/task-improve_code_quality.htm
+SHA1-Digest: vqnROLvQNgmUoCP0AVo0bNrYEGo=
+
+Name: images/org.eclipse.jdt.junit/obj16/tsuite.png
+SHA1-Digest: Ukk+H23wcVNmdprdO2SP7TqhhNI=
+
+Name: images/org.eclipse.jdt.ui/ovr16/native_co.png
+SHA1-Digest: Xa0v6sqCmuCk1XmTjYpQjfFHs9Q=
+
+Name: images/org.eclipse.debug.ui/dlcl16/copy_edit_co.png
+SHA1-Digest: 22BcK52R0jgI33KCfWBp9ChQ5y0=
+
+Name: gettingStarted/images/editor_myscrap_display.png
+SHA1-Digest: KF8xN3kYeW7Dxtwucz2loK1pu7w=
+
+Name: gettingStarted/images/search_runTest_dialog.png
+SHA1-Digest: ewFz8vRa8+R/bPYkvXWtc2keBjA=
+
+Name: reference/ref-wizard-enum.htm
+SHA1-Digest: /VulHdwNvOte7QheAAbb7BcmRBc=
+
+Name: reference/views/debug/images/ref-filterpackage.PNG
+SHA1-Digest: QsizJZdcX/CgpUu0gXX8EMexYS8=
+
+Name: images/org.eclipse.debug.ui/obj16/debugtt_obj.png
+SHA1-Digest: l2UYcAA/CEl8MEIAcyxMiItZyPI=
+
+Name: gettingStarted/images/j2se50/quick-fix.png
+SHA1-Digest: kv/jjrwYtVonOv9UDGafCjOfcJo=
+
+Name: images/org.eclipse.jdt.ui/obj16/jworkingSet_obj.png
+SHA1-Digest: 4CXx0QF7Wd0jYrS15GYDv7lcr80=
+
+Name: tips/images/instanceof-compl-proposals.png
+SHA1-Digest: WG9m3c4H19omA6JFIIRB5lM2wKA=
+
+Name: reference/views/console/ref-openlink_action.htm
+SHA1-Digest: eWuUXxTghpc89+KeBzp8Uoxefug=
+
+Name: gettingStarted/images/editor_vectortest_outline_main.png
+SHA1-Digest: B+fVzn0LcdfdDXz69+oYjYbsn1Q=
+
+Name: tasks/task-add_line_breakpoints.htm
+SHA1-Digest: 3T6nC2s1+/PYwsF4z1EUcryktgo=
+
+Name: tasks/task-manage_conditional_breakpoint.htm
+SHA1-Digest: gxjjKGQOxl96bylEQ6CMYlWIr3U=
+
+Name: reference/views/ref-viewsandeditors.htm
+SHA1-Digest: j3hbLBKqtAePmEH5m/5RV3KEAxk=
+
+Name: reference/views/debug/images/ref-monitors_supported.PNG
+SHA1-Digest: zfcLdtnd9nbzOhWSg7H+kILOMm0=
+
+Name: images/org.eclipse.jdt.ui/ovr16/class_abs_tsk.png
+SHA1-Digest: gDgBU+s73CxqaZO3XnPYTih6Zj8=
+
+Name: reference/menus/run/images/ref-debug_history.PNG
+SHA1-Digest: P5Qzy2hV+a8H2BylhLIK3Yl4KOA=
+
+Name: images/org.eclipse.debug.ui/elcl16/prop_ps.png
+SHA1-Digest: 9AQPDFwYihGP8lV83vNkNbkREms=
+
+Name: images/org.eclipse.debug.ui/dlcl16/resume_co.png
+SHA1-Digest: UuVGoLKu15yQdIya0g5Q8LSGecE=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/hyperlink_step.png
+SHA1-Digest: Dugpic3Ei3FTINh4xD6YsQnA9/Y=
+
+Name: gettingStarted/images/editor_myscrap_sysytem_get.png
+SHA1-Digest: Vn6wt+59DvVha0QiTgbvdxBKcS8=
+
+Name: gettingStarted/images/editor_vectortest_content_assist_t.png
+SHA1-Digest: ew8/8x1J4pz+qFU1GUT4aTiqYBo=
+
+Name: gettingStarted/images/j2se50/infer-generic.png
+SHA1-Digest: CBWMKck5/pi3h8NAmVOI41PwkTE=
+
+Name: reference/preferences/java/editor/ref-preferences-save-actions.h
+ tm
+SHA1-Digest: Akzcvw624V62meW6ZD2HtjUXeMY=
+
+Name: reference/views/shared/images/ref-changeprimitivevalue.PNG
+SHA1-Digest: 9BQahrI32n8t1rRoTnT/R6qT9wY=
+
+Name: images/org.eclipse.jdt.ui/obj16/jdoc_tag_obj.png
+SHA1-Digest: xJH09rJyeWR0MjCV8aWxre+SGBA=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout5b.png
+SHA1-Digest: RRNLyqm689c1DJyNxXavuYzR2XY=
+
+Name: tips/images/quickfix-create-for-loop-collection.png
+SHA1-Digest: +tFQKDjasfiwR9Uj7FIGPu5sJ6k=
+
+Name: tasks/tasks-36.htm
+SHA1-Digest: QdtdU+t+LFr1NDaHb8RPckQsqqE=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/java_applet.png
+SHA1-Digest: jCVCUaWZnlz+585zAZXOMZRkqsw=
+
+Name: images/org.eclipse.jdt.junit/elcl16/lock.png
+SHA1-Digest: VVu5nAIHUPT5Q8k7Z9m7bTrGGak=
+
+Name: gettingStarted/images/view_junit_red.png
+SHA1-Digest: qSim0g4Cas8avYWMLNba+/HroUw=
+
+Name: gettingStarted/images/run_dialog_junit.png
+SHA1-Digest: OGRbAdaHiVpYJ3qb6lyVPFvckGw=
+
+Name: gettingStarted/qs-2.htm
+SHA1-Digest: vhDfrREs3Bk9iXk7c67O+Wb0mt0=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout6c.png
+SHA1-Digest: FjdHIBchD7RN2wuKK8QJEBBTF9A=
+
+Name: reference/views/debug/images/ref-opendeclared.PNG
+SHA1-Digest: Sm3qwvy0Rdo+6gusd+JqTzcSG6I=
+
+Name: gettingStarted/images/java7/move-exceptions-to-separate-catch-bl
+ ock.png
+SHA1-Digest: GxDu8F7MqrumqY99uTXXchTlCi8=
+
+Name: gettingStarted/images/view_debug_removelaunched.png
+SHA1-Digest: Klz4rXT3BwhV9p/FVu6HuOiRfC8=
+
+Name: images/org.eclipse.jdt.ui/obj16/quickfix_error_obj.png
+SHA1-Digest: EstBNbFO4WD5AsYfwwfTA9CuRgk=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout40.png
+SHA1-Digest: oAjfgztImYHDqYNqsrl6UqKmvCI=
+
+Name: images/org.eclipse.jdt.ui/eview16/classfilegeneration_tab.png
+SHA1-Digest: NQFF57+uzftc4oIhRzJon9W7Z8w=
+
+Name: reference/preferences/run-debug/ref-run_debug.htm
+SHA1-Digest: QGuauBBwjfqj6P6fpqb2KL2XMRs=
+
+Name: reference/views/console/ref-removeallterminated_action.htm
+SHA1-Digest: +NiHkHgYf71cpBtLoY4ieH/JiMA=
+
+Name: gettingStarted/images/java7/remove-exception.png
+SHA1-Digest: TFUNAxwcK9qmd1jxPPyUAmsMIoo=
+
+Name: images/org.eclipse.jdt.ui/obj16/jar_src_obj.png
+SHA1-Digest: 1NNnDOJmbE3aZ/2VDkFgW5hfvHA=
+
+Name: images/org.eclipse.jdt.ui/elcl16/pack_empty_co.png
+SHA1-Digest: 61/v+zt/M8m3AMkjMZBlNzgKwMw=
+
+Name: reference/views/shared/ref-changevarvalue.htm
+SHA1-Digest: NOTomLgu+kTNze47RdN0MeDSKH8=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/brkpi_obj.png
+SHA1-Digest: VVw+11nW/a9Nr4bs3zlkU7vsCwA=
+
+Name: gettingStarted/images/quickoutline_submethods.png
+SHA1-Digest: DanFeAK68RvKtqKGwawN385cCDI=
+
+Name: concepts/concept-editor-templates.htm
+SHA1-Digest: BMfGfSwnpt80UYK7hZzAvM+Gwv4=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jar_obj.png
+SHA1-Digest: 5bxFe795xomn1kGDPb5JAbmbFlE=
+
+Name: tips/images/quickfix-create-for-loop-collection.txt
+SHA1-Digest: aJrfRUAfUhGUQcEpXZo3ZA6uMj4=
+
+Name: images/org.eclipse.debug.ui/dlcl16/stepinto_co.png
+SHA1-Digest: +ALesmB8S4EZln+vRxoN7EXuJfE=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jline_obj.png
+SHA1-Digest: FsbgpzSbIiUrrrwPah5N0wsLYKg=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/view-mngmt.png
+SHA1-Digest: CjFw2MIp5zthkhh8k67+e5OFAP4=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout51.png
+SHA1-Digest: 9MXqfFQO/k6oGOVVZTiuO3KirfU=
+
+Name: images/org.eclipse.jdt.ui/elcl16/javaassist_co.png
+SHA1-Digest: sLLP9dLjXOI7ozlIQO/G2PpWVqg=
+
+Name: reference/views/expressions/images/ref-edit_dialog.PNG
+SHA1-Digest: dM+IFqQHVd3MR5x+VS4iYND8MMY=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/inspect_popup.png
+SHA1-Digest: ThV0uTdEwfsj/MwUQO0pNYOgKSM=
+
+Name: images/org.eclipse.jdt.junit/elcl16/history_list.png
+SHA1-Digest: 1IJPiVk36K/eMa4tkpBCmIRtVIg=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/sync_ovr.png
+SHA1-Digest: o3P0hDOa4aJUA4QKZ5YFu3vbKq8=
+
+Name: images/org.eclipse.jdt.ui/obj16/packd_obj.png
+SHA1-Digest: MXHCFYltWxr1675fhryxXSgPrOk=
+
+Name: images/org.eclipse.jdt.ui/etool16/newpack_wiz.png
+SHA1-Digest: Rm9z5vMnhhioWu7uMlyl/8F6xM0=
+
+Name: reference/views/breakpoints/ref-selectdefaultws_viewaction.htm
+SHA1-Digest: 0Ptgyv9yYQw5DpKaVDDxtV2beeo=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/contention_ovr.png
+SHA1-Digest: o5M+mbJGKxfvCZtDIzPz04rVPwg=
+
+Name: images/org.eclipse.jdt.ui/obj16/class_default_obj.png
+SHA1-Digest: TmjfLzTN/zFHSKViGjFyg3meS6A=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout62.png
+SHA1-Digest: vQ86xj16Fwx2DvNwhtkZk8ncKVI=
+
+Name: reference/menus/run/ref-addwatch.htm
+SHA1-Digest: M/cyN1V/YBUpGU731wrbRICvYsY=
+
+Name: tips/images/camel-case-nav-7.png
+SHA1-Digest: rrovd6SMZm22jBTbSPPwIswXn4s=
+
+Name: images/org.eclipse.debug.ui/elcl16/det_pane_under.png
+SHA1-Digest: /oI2+DO8qnP8wxcpKLJXdUczlpg=
+
+Name: images/org.eclipse.jdt.ui/ovr16/recursive_co.png
+SHA1-Digest: zSnaFTLyuFE8nfFXHxgPu14UBsA=
+
+Name: reference/views/shared/images/ref-findreplace_dialog.PNG
+SHA1-Digest: 5pE2j4/l1xUb5BJHScjEG0bJ8DI=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_workings
+ et_dialog.PNG
+SHA1-Digest: wSAWliEuOs/nXwvdN1eAbIQPG9k=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/scoped_ovr.png
+SHA1-Digest: BcQRz2LmSzLM1jPmy6rowH0i47c=
+
+Name: reference/ref-menu-project.htm
+SHA1-Digest: IKHUmrJg6H5777VFfLIGliSxWTY=
+
+Name: concepts/concept-java-views-filtering.htm
+SHA1-Digest: FsHrnU1zXo+Xxg2fY6diGIjTKy8=
+
+Name: tips/images/override-method.png
+SHA1-Digest: C3oJpkgYUOoMwZ39usU/ItrgFvg=
+
+Name: reference/views/shared/ref-showstatic.htm
+SHA1-Digest: smmFRO0qk3AlNDEiEuU0Q2UGDtI=
+
+Name: images/org.eclipse.debug.ui/elcl16/debuglast_co.png
+SHA1-Digest: F/q9hC45VMtl9bfIMNOxiwLCGSo=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/error_co.png
+SHA1-Digest: cOGiLzNwQQtBvM4iZhRbwWC04rI=
+
+Name: images/org.eclipse.jdt.ui/eview16/package.png
+SHA1-Digest: qFEIpSvUqBNcLNkCYkGX71x+4RQ=
+
+Name: reference/preferences/java/debug/ref-execution_environments.htm
+SHA1-Digest: w9+Oxfo5I9aXXfj4w/3dVPqYO1I=
+
+Name: reference/ref-keybindings.htm
+SHA1-Digest: RSyNNiW4U9DihtEC0C8Si1BOTA0=
+
+Name: tasks/tasks-deleteJRE.htm
+SHA1-Digest: Sfhp9UuDXjpiJDfLkzzCqiKz184=
+
+Name: images/org.eclipse.debug.ui/elcl16/det_pane_hide.png
+SHA1-Digest: SCOICEG9Q9U8SnGqXZaO8XvT/+c=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/variable_hover.png
+SHA1-Digest: 119y0tIBFzhipQYU8y+EIHfykcA=
+
+Name: images/org.eclipse.jdt.ui/etool16/mark_occurrences.png
+SHA1-Digest: Rj5uuF8/IUEgoE/N291kglENJ24=
+
+Name: tasks/images/tasks-excetpion-filtering-page.PNG
+SHA1-Digest: tKYWrVDSs1H+GoB8bSzTVg47AOw=
+
+Name: images/org.eclipse.jdt.ui/obj16/impc_obj.png
+SHA1-Digest: 2Cf8HvR4290A3DGgilcCSgw3BdY=
+
+Name: gettingStarted/images/qs-OrganizeSources1.png
+SHA1-Digest: NlBFZyMFMr4ukob3atXgUZ6e+uw=
+
+Name: images/org.eclipse.jdt.ui/elcl16/exclusion_filter_attrib.png
+SHA1-Digest: mg57cDtgDvltSOXQ8q3a6fgo9JY=
+
+Name: reference/views/debug/ref-layout_automatic.htm
+SHA1-Digest: IRGMtkeMjNUpfKDqtfI7vUwlljc=
+
+Name: reference/views/expressions/ref-disable.htm
+SHA1-Digest: +f41CiHU+CsorPeJHvNRJRI6oRs=
+
+Name: images/org.eclipse.jdt.ui/obj16/unknown_obj.png
+SHA1-Digest: D2WeTEIVgf3e6eXWZ9D+yqw66mY=
+
+Name: images/org.eclipse.jdt.ui/eview16/jperspective.png
+SHA1-Digest: zEGwCRAAdtSbNnKdfTHScalBX9I=
+
+Name: images/org.eclipse.debug.ui/dlcl16/det_pane_right.png
+SHA1-Digest: osz1Tv7MWslSBfleKx7j6YzWNgU=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_supertype_lock
+ ed.png
+SHA1-Digest: wMnKLWHlPg34PjcdE7nQHQTArRc=
+
+Name: reference/views/console/images/ref-format_context.PNG
+SHA1-Digest: v7J+uUC23zJTCzQolV1drqz8kfI=
+
+Name: images/org.eclipse.jdt.ui/obj16/nls_search_obj.png
+SHA1-Digest: saNgO2hacGwRTCMH6Ap5s/tWx1s=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/activate-debug-view.png
+SHA1-Digest: L7CX+DTiUV/9vupcIZzWN7S4BY8=
+
+Name: images/org.eclipse.debug.ui/obj16/debugts_obj.png
+SHA1-Digest: VQDcqJGtCgPa7qWTM1nb4DND5IQ=
+
+Name: reference/views/shared/ref-togglewp.htm
+SHA1-Digest: 5l2mAyNvL85IR5LMJsbrqQpirb8=
+
+Name: reference/views/debug/images/ref-properties_dialog.PNG
+SHA1-Digest: pgvAncovi2J0GbVuPMUd8x7Bek8=
+
+Name: gettingStarted/images/qs-DetectingExistingLayout3.png
+SHA1-Digest: W740nfzYnSWUYgGCG3lrvriuLgs=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/context_menu_launch.png
+SHA1-Digest: TpGxt6YWzkjXHZsIldc+qyxZ468=
+
+Name: images/org.eclipse.jdt.ui/obj16/output_folder_attrib.png
+SHA1-Digest: FkbssTLgCgqFeUN+NQrcBRO1Nig=
+
+Name: gettingStarted/images/view_display_display_done.png
+SHA1-Digest: jVtTsaDfKkSEZynlJcPcyWtuRBw=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/debug_exc.png
+SHA1-Digest: 7NBUqG2kAk2HyzHfGYqkVqQbt7w=
+
+Name: images/org.eclipse.jdt.ui/obj16/classf_generate.png
+SHA1-Digest: mLsYGMDoGuhlv2GdSkKqmPIwW9k=
+
+Name: tasks/tasks-create-exception-filter-expression.htm
+SHA1-Digest: Iaw4/TMflcmzOrWh9fAwVd8RD/M=
+
+Name: gettingStarted/qs-Browsing.htm
+SHA1-Digest: dgtsXs3EjwJmK/w/ySIzp2D03Is=
+
+Name: reference/preferences/run-debug/ref-default_launchers.htm
+SHA1-Digest: laXNidvutVPdo4KBtHmHURN4uPM=
+
+Name: reference/breakpoints/images/ref-breakpoint_suspendsubclass.PNG
+SHA1-Digest: kRc2EwKHvIAHaO+pCbfyb3sllmY=
+
+Name: whatsNew/images/navigate-from-lambda.png
+SHA1-Digest: CqnNDBRGPNx7o6IggId9/vxKvr8=
+
+Name: reference/views/shared/ref-showtypenames.htm
+SHA1-Digest: SpI/U+NMsOKAWyIJrejk/AXFtwo=
+
+Name: tips/images/folding-preferences.png
+SHA1-Digest: HSCYOO8P5QfEXnq/CKlqgMJhCiU=
+
+Name: tips/images/localhistory-replace.png
+SHA1-Digest: dFWcNUOHcDSAEKqYoR2YXPDjLyA=
+
+Name: tips/images/content-assist-proposals.png
+SHA1-Digest: cZVrvJ7ItsljhjgegCV8dWWV/Ro=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff8.png
+SHA1-Digest: 9a9MqeayL7xNF1cIR3MPr8+KTFE=
+
+Name: concepts/cbrkpnts.htm
+SHA1-Digest: QARZnPK2jaUh0AScUVnTstsSd0E=
+
+Name: tips/images/ff4.png
+SHA1-Digest: ZasKIWdQniWIy0TIRr8091RFBy0=
+
+Name: tips/images/javadoc-prefs.png
+SHA1-Digest: t53yjon2GSfwvQ6avNfyWw8bUKk=
+
+Name: tasks/tasks-34.htm
+SHA1-Digest: FDE+vL8zeZE39BdMPzWaOf5+uF4=
+
+Name: images/org.eclipse.debug.ui/obj16/expression_obj.png
+SHA1-Digest: THe7H1wfkaNYfUzvysk8+dTv2mc=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_uncaught
+ context.PNG
+SHA1-Digest: /x7n4/iBlxDy3/uA4uVjQ5TmtYo=
+
+Name: concepts/concept-quickfix-assist.htm
+SHA1-Digest: 7ewlHXjz6g1D+4st/ZAJkfMYnw8=
+
+Name: images/org.eclipse.jdt.ui/etool16/newpackfolder_wiz.png
+SHA1-Digest: 6MWRqALdibnUW2l+OwTFwqlVfjY=
+
+Name: reference/views/ref-view-javadoc.htm
+SHA1-Digest: SS7JPAwFUu4ynjt9mhgMNtkoLUY=
+
+Name: reference/views/console/ref-show_out_action.htm
+SHA1-Digest: Uf6UPK1/0ZOsA1X+zchzp3ivdvM=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout6a.png
+SHA1-Digest: ximAUVE9fWB/MKn4tpUpHwOlamQ=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/stack_trace.png
+SHA1-Digest: wxonGmh7Dfft9V4qbvPtEmnlZY4=
+
+Name: reference/views/shared/images/force-return-code.png
+SHA1-Digest: ruAD5I48RWicnv/n/Sf2LSXJbHU=
+
+Name: gettingStarted/images/rename_cu_dialog.png
+SHA1-Digest: k22BRM2GV8R8jh4m9M0AZeWSrFw=
+
+Name: reference/images/formatter-join-lines-before.png
+SHA1-Digest: z+qFllKaDlilMA7C+zVGWGAdZhU=
+
+Name: reference/preferences/run-debug/ref-console.htm
+SHA1-Digest: 4+woUr/2I05AzNvtfuUNJZ21VlU=
+
+Name: gettingStarted/images/java7/throwing-exception.png
+SHA1-Digest: kwFdAKoMk0NXSAKCyHg0qOSpsOs=
+
+Name: images/org.eclipse.jdt.ui/elcl16/add_as_source_folder.png
+SHA1-Digest: ObkNZ2reC7iAdh2Zyx40Z20cjp8=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jsbook_obj.png
+SHA1-Digest: oymYYkWNDz6mv/JAvbmQsd9xJNg=
+
+Name: images/org.eclipse.jdt.ui/obj16/field_private_obj.png
+SHA1-Digest: +BJbR4FFtbFL3dfuU6JZJU0Kdyk=
+
+Name: reference/views/debug/ref-debug_view.htm
+SHA1-Digest: MccigA+C75iPx/dAms6pxI+9K94=
+
+Name: tasks/task-using_null_annotations.htm
+SHA1-Digest: ilGNjCk0xa4O1nsq9cYYrdR9bd4=
+
+Name: tips/images/delegate-method.png
+SHA1-Digest: eOXXHns/YepZgr1tPZBZs608/xQ=
+
+Name: concepts/concept-build-classpath.htm
+SHA1-Digest: hA7fPBeTpRkPGGhKawdyyPVtQuI=
+
+Name: images/org.eclipse.jdt.ui/obj16/imp_obj.png
+SHA1-Digest: 7SOaNVEcvoPRYpT8uCfzfY9YBj4=
+
+Name: gettingStarted/images/editor_testsuite_outline_collectinheritedm
+ ethod.png
+SHA1-Digest: nz9aRkI8ccfKMLiyjv/W+0Ww6y8=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/java_app.png
+SHA1-Digest: +h/Lq8LQeKeMtpBaMnaHdKIEdP8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/inher_co.png
+SHA1-Digest: 14Jijrd5iaatrvQZ6mg6PVRMrig=
+
+Name: gettingStarted/qs-LocalHistory.htm
+SHA1-Digest: 1Ekn6AFhAD6D5iL21L/xqkqakS4=
+
+Name: tasks/task-using_batch_compiler.htm
+SHA1-Digest: wbFTc7pW9aGtqUjqd+TnMrSTqwQ=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/entry_ovr_disabled.png
+SHA1-Digest: ILWQVl/miHh3154tgiOEzcL2gHw=
+
+Name: reference/ref-apt-factoryPath.htm
+SHA1-Digest: gVxCv3jG2poNkYExD0oHefkoPvU=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/contended_monitor_obj.png
+SHA1-Digest: vms4C92wP5OXgBFr60oyIOhXZqA=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_workings
+ ets.PNG
+SHA1-Digest: ZWZP20dN3IUH0REOKbCE+qXjPGk=
+
+Name: gettingStarted/images/edit_undo_refactoring_menu.png
+SHA1-Digest: 7pFeYEXZi/nf1cz5D7oV+4EC09Q=
+
+Name: reference/views/shared/images/ref-javapreferences.PNG
+SHA1-Digest: Foxzq99K5IQ17UxU2BbnhCRwY8c=
+
+Name: images/org.eclipse.jdt.ui/ovr16/warning_co.png
+SHA1-Digest: Kamsbe1/l4QzjM8E+WniiZ2YjXw=
+
+Name: reference/ref-java-editor-breadcrumb.htm
+SHA1-Digest: pbpJVsK2DwU3LUiSQy5vW4D1XB8=
+
+Name: reference/views/expressions/ref-remove.htm
+SHA1-Digest: yHtyIUHOIShqnCmDvtK7+C+6CUo=
+
+Name: concepts/concept-java-builder.htm
+SHA1-Digest: lHPxokK3UiQ4Hcq9d49krZNPnbM=
+
+Name: images/org.eclipse.debug.ui/obj16/threads_obj.png
+SHA1-Digest: BTMxzRupi6dCkaXOQFRya/x8h/E=
+
+Name: tasks/task-remotejava_launch_config.htm
+SHA1-Digest: KhCnX9ofgtvmCEkTa6pKgoPub+E=
+
+Name: tasks/task-memory-monitors.htm
+SHA1-Digest: IOHmNxFIXLrn7h3KhLktPkVwImM=
+
+Name: reference/preferences/java/ref-preferences-build-path.htm
+SHA1-Digest: 7ZCpR3KXjniJcjCExlCQsAaupS0=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout60.png
+SHA1-Digest: +eBAaqTeZEOg/qiAgvfYUAsr/MI=
+
+Name: tasks/task-remove_line_breakpoints.htm
+SHA1-Digest: bN6N9ij9grT6Zjsi51hr93G//5I=
+
+Name: gettingStarted/images/quickoutline_menu.png
+SHA1-Digest: fps/DafJEN27NtWOW2ZbwGxTVKs=
+
+Name: tips/images/camel-case-nav-5.png
+SHA1-Digest: T/xyZbhU4aZhc7ZdgNJmO94x/94=
+
+Name: whatsNew/images/generics_unsafePredicateCall.png
+SHA1-Digest: CBpVxQ8mOf6wqMYeKpZ/g0Fmigk=
+
+Name: images/org.eclipse.jdt.ui/elcl16/include_on_buildpath.png
+SHA1-Digest: yntULzwvRVG7RkSQTTi4YvFFIEs=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/select-columns.png
+SHA1-Digest: nvLobl/FrsRzU6SDK/IWn34a4i0=
+
+Name: reference/views/debug/ref-lookupsource.htm
+SHA1-Digest: MEX3Unns5O4VuvpBp6FzC/AiGoA=
+
+Name: gettingStarted/qs-Quickviews.htm
+SHA1-Digest: ZD4PuWnk91nSZ0JWaB9rmwlXGd4=
+
+Name: images/org.eclipse.jdt.junit/eview16/juniterrq.png
+SHA1-Digest: Lz+zdYBzAr5tbjUq3kMltrUu2qY=
+
+Name: gettingStarted/images/java7/unhandled-exception-thrown-by-automa
+ tic-close.png
+SHA1-Digest: l1DyomTpijhMcgTle6y9sNOgj/k=
+
+Name: images/org.eclipse.jdt.ui/ovr16/static_co.png
+SHA1-Digest: r8t6gBRRRul46GPvEwche1R+h5Q=
+
+Name: reference/views/console/ref-format_action.htm
+SHA1-Digest: 14mWeYAMS8wGzj2cByp86eBh2CM=
+
+Name: whatsNew/images/search-limitto-method-reference-expression.png
+SHA1-Digest: IWQ4EdCj7Il5lEmTKP2AXZ5W5Dg=
+
+Name: tips/images/javadoc-hover.png
+SHA1-Digest: XmrTN6hdM4rG4OG5HS2vO8Vy8I0=
+
+Name: images/org.eclipse.jdt.ui/obj16/cp_order_obj.png
+SHA1-Digest: nOKUG+heaKgN+oVv9hSRC3ua/I0=
+
+Name: reference/menus/run/ref-toggle_line_breakpoint.htm
+SHA1-Digest: uF7OYWnxTVwGrQgvz6HrDm6IfX8=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/env_tab.png
+SHA1-Digest: nI9iRV4k3uBCdou5TTDDi0TcNd4=
+
+Name: tasks/tasks-188.htm
+SHA1-Digest: qtrGIYx3IJ73FZM63Mkg0HKvRek=
+
+Name: images/org.eclipse.jdt.ui/elcl16/search_sortmatch.png
+SHA1-Digest: /aWacl6iu1h2ExY2eOfpu+LpwlI=
+
+Name: reference/views/shared/ref-paste.htm
+SHA1-Digest: 97CLPRCwR/14VzDw/oL8sGHrk/w=
+
+Name: images/org.eclipse.jdt.ui/obj16/enum_default_obj.png
+SHA1-Digest: 66NTrNpaGzKMIS8YCi3aXBeE/D4=
+
+Name: reference/ref-refactoring-extract-method.htm
+SHA1-Digest: LZkRcbU7CZC5flvMv4cAms6702A=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_properti
+ es_dialog.PNG
+SHA1-Digest: JkA+x+hFnsCWxOT8iIuE5cemGKo=
+
+Name: reference/views/shared/ref-showreferences.htm
+SHA1-Digest: FVjWGz6K02UNY9La/qWWlvKzxKA=
+
+Name: images/org.eclipse.jdt.junit/obj16/testok.png
+SHA1-Digest: BDPb9+Ag8zm+suPAg1hkYvkbZJE=
+
+Name: whatsNew/images/generics_unsafePredicateCall.txt
+SHA1-Digest: zjLeP1Y4yWyL44kF0bTD7hDe9zw=
+
+Name: images/org.eclipse.debug.ui/dlcl16/det_pane_hide.png
+SHA1-Digest: vg9Y7Z5QDfs8yhvlD+CKsHjIebw=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerinterface_default_obj.png
+SHA1-Digest: V1icHU0SH834+dMRNkTZttwcpsE=
+
+Name: images/org.eclipse.debug.ui/dtool16/profile_exc.png
+SHA1-Digest: 6sofxUmPwSwdXNRnAUPXh8nqH0c=
+
+Name: tips/images/quick-fix-create-method.png
+SHA1-Digest: sEKkTAIY7isCFkQEJlLqlYL0Ao0=
+
+Name: reference/ref-wizard-package.htm
+SHA1-Digest: 0Szl2a+Gfpco9ejR9M9tmHR42yg=
+
+Name: gettingStarted/images/j2se50/unused-warning.png
+SHA1-Digest: lLr4DV14e/R1SvsvqL8C69P4dr4=
+
+Name: whatsNew/images/generics_unsafeSingleton.png
+SHA1-Digest: 3rLFe4hPM9qigURfgzePqECp40A=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/scrapbook.png
+SHA1-Digest: Cxy1kBcYKsB/fNcyYD/iOpQ4GTc=
+
+Name: gettingStarted/images/qs-DetectingExistingLayout1.png
+SHA1-Digest: my8li5p4bYBRo3Jr7z+A2aQJEuk=
+
+Name: reference/preferences/java/compiler/ref-preferences-errors-warni
+ ngs.htm
+SHA1-Digest: feZaTM6WO/YjnnlD07V6vTaYHWo=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/fatalerror_obj.png
+SHA1-Digest: ejTnAL/lF4g/c9E+7YDbn+ljdpI=
+
+Name: images/org.eclipse.jdt.ui/elcl16/configure_build_path.png
+SHA1-Digest: PrkMMKAj2tGyYue0q9kV+IFRlUI=
+
+Name: contexts_Debugger.xml
+SHA1-Digest: 8S9ouQ4BHfFHj1GVIm2bFszNeAc=
+
+Name: gettingStarted/images/wiz_new_class_dialog.png
+SHA1-Digest: C4Eg3lqZwuIAebrVTH1aoKFdScg=
+
+Name: reference/breakpoints/ref-uncaught_option.htm
+SHA1-Digest: e/2zGxgJ5ScYVHbTNgXgDazKfFI=
+
+Name: reference/views/debug/images/ref-editlaunchconfig.PNG
+SHA1-Digest: yTZgEjIYRod6Z2uBpQGZN8y0Dfw=
+
+Name: reference/ref-wizard-externalize-strings.htm
+SHA1-Digest: F9mRIHmb3GrU8W51LR+8lyrs7sY=
+
+Name: reference/breakpoints/images/ref-watchpoint_access_option.PNG
+SHA1-Digest: 40MCz7mETfcOLiM/GdZrw7YyZgc=
+
+Name: index/segments_1
+SHA1-Digest: fyg8TTYe3v/T90v18cg7CtZchTQ=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/threadgroup_obj.png
+SHA1-Digest: Q/egbdblUTr/yOee+y4iCnr9UMI=
+
+Name: index/_0.tii
+SHA1-Digest: nAhEZ3T/M+nkFvMa8sLsfbqZNJg=
+
+Name: reference/ref-jdt-faq.htm
+SHA1-Digest: UYeFg5PzDGXthVpjobgpnMXmIiU=
+
+Name: images/org.eclipse.debug.ui/etool16/term_restart.png
+SHA1-Digest: ZLGn5cwiDq4B7ijfon6XbS19/yo=
+
+Name: reference/views/console/images/ref-console_view.PNG
+SHA1-Digest: ZzlkrkdCJ+YrqKBaJkbsWsUGU5I=
+
+Name: index/_0.tis
+SHA1-Digest: ye1624dO8xalDD0y6oAMVIPDrDA=
+
+Name: images/org.eclipse.jdt.ui/eview16/browse_persp.png
+SHA1-Digest: evIv3cILTHRyOTOnFdUyPHog4io=
+
+Name: reference/wizards/ref-import_breakpoints.htm
+SHA1-Digest: 1FpA8epsuUmQmxi7IevRssb356M=
+
+Name: images/org.eclipse.jdt.ui/obj16/exclusion_filter_attrib.png
+SHA1-Digest: xNLSYslNI4acr7sLe2PBAEY95wc=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff6.png
+SHA1-Digest: ODpKpwcDszCrMicDfpBbao9YY2I=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/disp_sbook.png
+SHA1-Digest: c2cBAfEuTyA8A7Ywe+xNDhElb2c=
+
+Name: images/org.eclipse.debug.ui/obj16/stckframe_obj.png
+SHA1-Digest: QpPT6zU87g50UvWy4PTknAoR/Ao=
+
+Name: images/org.eclipse.jdt.ui/eview16/call_hierarchy.png
+SHA1-Digest: fWZZYYCMckH3wFUPmzuEto/OOAU=
+
+Name: tasks/tasks-32.htm
+SHA1-Digest: iIJsh+s+VCiIcYgaR6Rp+JnpOyQ=
+
+Name: images/org.eclipse.debug.ui/eview16/breakpoint_view.png
+SHA1-Digest: f9l7IS/44yAkCj0G6zA4avfvmvU=
+
+Name: gettingStarted/images/j2se50/view_search_listInteger_unfiltered.
+ png
+SHA1-Digest: S98zne6VGcxuoCthogdU5/C94vI=
+
+Name: tips/images/mark-occurrences.png
+SHA1-Digest: xxTKW5Kc4iQIXKh+LdSLKOMmYO4=
+
+Name: whatsNew/images/generics_unsafeSingleton.txt
+SHA1-Digest: Ohwdu+2y9wWG8YzgI1s+NdOLtRg=
+
+Name: images/org.eclipse.jdt.ui/obj16/warning_obj.png
+SHA1-Digest: sBZdM8qZNY+k5X54vJ75+TFYLSI=
+
+Name: images/org.eclipse.jdt.ui/elcl16/localtypes_co.png
+SHA1-Digest: JwOrl/3sT+SVG5SIwmyHz/P0384=
+
+Name: images/org.eclipse.jdt.ui/elcl16/static_co.png
+SHA1-Digest: CMnbglEUbD3jqoQVbrp3xkONSVw=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/static_co.png
+SHA1-Digest: mG4wPt6AnsiySrFA2qERlT7xI5E=
+
+Name: tasks/task-executing_an_expression.htm
+SHA1-Digest: hXHs+8la4Xo3I/1PnUUwV7ev60o=
+
+Name: images/org.eclipse.jdt.ui/elcl16/remove_exc.png
+SHA1-Digest: GVweJ2qsmQu/FqdFw29TRwhA+iw=
+
+Name: images/org.eclipse.jdt.ui/obj16/native_lib_path_attrib.png
+SHA1-Digest: vVssws51roXo7cvsEv2wevVc4sY=
+
+Name: tips/images/quick-assist-assign-statement.png
+SHA1-Digest: DMOiktjo/Au0ozULtM8xJzWaLik=
+
+Name: images/org.eclipse.debug.ui/wizban/addsrcloc_wiz.png
+SHA1-Digest: i/X7dZJmRJCM0ze5wpnMRjWFrzI=
+
+Name: images/org.eclipse.jdt.ui/elcl16/protected_co.png
+SHA1-Digest: fKZBIhPO32qv/DAGcnjaRhh+fSc=
+
+Name: tips/images/file-associations-page.png
+SHA1-Digest: zXRxnwPHkYKEZ03Ib0R7PEBPMKE=
+
+Name: reference/views/shared/ref-shownull.htm
+SHA1-Digest: PPfbrriAMWuBFZDfwMnyNv8Z4rI=
+
+Name: reference/views/console/ref-console_view.htm
+SHA1-Digest: Z7rh0nXpWhPnr4N0Vuyh0lr8K78=
+
+Name: reference/ref-tostring-styles.htm
+SHA1-Digest: leByNHUmHurx+Ff69kXeVCUUIIQ=
+
+Name: images/org.eclipse.jdt.debug.ui/eview16/thread_and_monitor_view.
+ png
+SHA1-Digest: 5UwU2WtcUPThaBxevHu4xajoO2w=
+
+Name: gettingStarted/images/view_outline_testrunner_main.png
+SHA1-Digest: NKH/DZT4+fXzFE26xJnyzhP39fY=
+
+Name: images/org.eclipse.jdt.ui/obj16/envvar_obj.png
+SHA1-Digest: fjzn6iLqOhB+de8mjcxC5MFH1U4=
+
+Name: reference/ref-wizard-interface.htm
+SHA1-Digest: /FYdcYkP2ifiMzu4S8gI3YCCCfc=
+
+Name: images/org.eclipse.jdt.ui/elcl16/th_showqualified.png
+SHA1-Digest: MXHCFYltWxr1675fhryxXSgPrOk=
+
+Name: gettingStarted/images/editor_mytestcase_moved.png
+SHA1-Digest: 1EKL/Cy7Hg5VWTC/sbrAj/luv6o=
+
+Name: images/org.eclipse.debug.ui/elcl16/next_thread_nav.png
+SHA1-Digest: 2sAodkLGnX8rxa0J2QXraDtbyOk=
+
+Name: whatsNew/images/java8.png
+SHA1-Digest: SLq0eDpHqtwdEkPTsSmeIRiLxgU=
+
+Name: reference/views/breakpoints/images/ref-views-breakpoint_set_hitc
+ ount_dialog.PNG
+SHA1-Digest: 0SlleMtGt3/HssklPiyuzD/4uQ8=
+
+Name: images/org.eclipse.jdt.junit/obj16/test.png
+SHA1-Digest: XhdYSV/O4A495XD2X2025ag1VVI=
+
+Name: gettingStarted/images/workbench_testcase_errors.png
+SHA1-Digest: v68sXjjCJ/Zm1ec/YzISB3+PqsM=
+
+Name: gettingStarted/images/view_outline_vectortest.png
+SHA1-Digest: ODPd0W+WyZy18OdDyMCPa3ZUkl4=
+
+Name: gettingStarted/images/editor_vectortest_for_template_exp.png
+SHA1-Digest: 6OcQ0kJyoi8UaipWn/jIHpAKzak=
+
+Name: images/org.eclipse.debug.ui/elcl16/import_brkpts.png
+SHA1-Digest: HEjFiwA4fCWa8gHumIEE0NPWPSU=
+
+Name: images/org.eclipse.debug.ui/dlcl16/runtoline_co.png
+SHA1-Digest: zXHUAYAQqqfYHc6yN4YLwUEH8MU=
+
+Name: images/org.eclipse.jdt.ui/elcl16/add_exc.png
+SHA1-Digest: o5sSQ36wfB6rzWEbCRGoiPy/Vdo=
+
+Name: gettingStarted/images/view_console_noarg.png
+SHA1-Digest: UIxcL8nOlWP8R5kxVHyUMXe5Ir0=
+
+Name: images/org.eclipse.jdt.junit/obj16/failures.png
+SHA1-Digest: /bjM0WaQ2Iv83ncN2eWj2OgnY4E=
+
+Name: tips/images/warn-deprecation-x2.png
+SHA1-Digest: /dZgLybs+Ed0RMJxLMyoayFiyJQ=
+
+Name: tasks/tasks-63a.htm
+SHA1-Digest: QELSz60InX5+eidmOVQQaxx7ex0=
+
+Name: images/org.eclipse.jdt.ui/etool16/shift_r_edit.png
+SHA1-Digest: ITM6weyARP94+19/Wh9PMdfZtg8=
+
+Name: tips/images/camel-case-nav-3.png
+SHA1-Digest: il2ZcDisjD05NqWB0J7mA+UW2Wo=
+
+Name: reference/views/breakpoints/ref-modification_contextaction.htm
+SHA1-Digest: iKtIpOLC9/0PwqPtfLLWYbiTciU=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jsbook_run_obj.png
+SHA1-Digest: DUEjZCZlsleHPDvZsVnEpTUaS4A=
+
+Name: images/org.eclipse.jdt.ui/elcl16/alphab_sort_co.png
+SHA1-Digest: 7P0BYde6v5euekPSBAdifxAeunU=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout29.png
+SHA1-Digest: KI2SZrO+VwL7hyzUyy72kL/jryk=
+
+Name: gettingStarted/images/java7/twr-example.png
+SHA1-Digest: aUlKfc0RCFR0tta7s50WAFO5K1E=
+
+Name: tasks/tasks-76.htm
+SHA1-Digest: H8hQrQdMMIxNZi8IuoDojcHT/p4=
+
+Name: images/org.eclipse.debug.ui/elcl16/monitorexpression_tsk.png
+SHA1-Digest: SP+FDIxUfmFL9G6YcRGv6NvTjrI=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/step_into_selection.png
+SHA1-Digest: NU/+LXRrPonntNBR3eAVrH0c5b8=
+
+Name: reference/views/debug/ref-filterpackage.htm
+SHA1-Digest: lCgAkbXiV1gxb4ssVEyyTjPQpvg=
+
+Name: images/org.eclipse.debug.ui/elcl16/terminate_co.png
+SHA1-Digest: 6jckEYWT5d/EsOtMXnOa7w6Isbo=
+
+Name: images/org.eclipse.jdt.ui/elcl16/copy_qualified.png
+SHA1-Digest: hKYfx34SYcRO6UJxoLUmDoDwQ/Y=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/insp_sbook.png
+SHA1-Digest: 0mQRZe4v2gbhVrjbVyJKsCM0MmQ=
+
+Name: whatsNew/images/store-method-parameters.png
+SHA1-Digest: 4LLNpMuB4B7fWYKCLDQEy1o2QBs=
+
+Name: about.html
+SHA1-Digest: IqD8l1x4K048ed3QIzBGsADyttc=
+
+Name: reference/ref-properties-compiler.htm
+SHA1-Digest: +83BU7iLDYzgh80m6pFhLnOgE48=
+
+Name: reference/views/console/ref-show_err_action.htm
+SHA1-Digest: 80x0dOmaYjh4pYtQQwOP45STIKY=
+
+Name: gettingStarted/images/editor_vectortest_toarray_template_integer
+ .png
+SHA1-Digest: wfuBOodQH98IYaafP/L1OG3hn74=
+
+Name: tips/images/open-type-camel-case.png
+SHA1-Digest: 1mLi+tlJHuvFcFqUPFmGKQFjHaI=
+
+Name: reference/breakpoints/ref-access_option.htm
+SHA1-Digest: ANncbeRLXqpRrltwfHcssda/rzE=
+
+Name: gettingStarted/images/wiz_new_testcase.png
+SHA1-Digest: PRg17DLBJWzQd1ljMuCghqP06Vs=
+
+Name: images/org.eclipse.debug.ui/dlcl16/monitorexpression_tsk.png
+SHA1-Digest: ZpD3FhKo3VnFdT20A0E8C9ZbkDU=
+
+Name: tips/images/todo-example.png
+SHA1-Digest: XnnLDXd1qE0Zcp4pGEFHRx3aONk=
+
+Name: tips/images/new-project-with-ee.png
+SHA1-Digest: SrYpyQuAyyxPeLPKYbGnIP9BwB4=
+
+Name: reference/preferences/java/debug/ref-heap_walking.htm
+SHA1-Digest: aorvLQJdLxFnzo4sUxSudo8PYFQ=
+
+Name: gettingStarted/images/editor_testcase_error_getname_quickfix.png
+SHA1-Digest: W/Irv9l4nsJ/cV82PTRj+RlgMgw=
+
+Name: images/org.eclipse.jdt.ui/obj16/warning_gray_obj.png
+SHA1-Digest: gjLbrYDEuQOlcS9cZ8iDFl1zRfk=
+
+Name: gettingStarted/images/editor_mytestcase_getters.png
+SHA1-Digest: 4/yTLIIfMay0id4M0ml3sJx4gLY=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/suspend_co.png
+SHA1-Digest: voJDzHfb5mmIzDd1HreNd4QZuKg=
+
+Name: tips/images/code-assist-anonym1.png
+SHA1-Digest: r40pneDLHXOhQCNaX10c97zTZs8=
+
+Name: gettingStarted/images/view_outline_vectortest_filtered.png
+SHA1-Digest: KzBSBS4WHpKXW1UpdhNUlQKdCgs=
+
+Name: reference/views/shared/ref-find.htm
+SHA1-Digest: 9yTR6IJEQPXWYkPPD+G9MSJaeB8=
+
+Name: gettingStarted/qs-14.htm
+SHA1-Digest: JHbuFY+CtQjhhzJaAzdIEsnqI5A=
+
+Name: images/org.eclipse.jdt.ui/obj16/java_model_obj.png
+SHA1-Digest: RsFCMH/pK3fiYgHqJLEy3fAsKio=
+
+Name: tips/images/compare-properties.png
+SHA1-Digest: LaWiVVmcwAv93yZWYDwNR5Z6jT4=
+
+Name: reference/views/variables/ref-variables_view.htm
+SHA1-Digest: tHQ9BWqy+dLJRKOjpoyhe9OEG+o=
+
+Name: images/org.eclipse.debug.ui/elcl16/export_brkpts.png
+SHA1-Digest: BatxV4//hdrfZYpVJ/rQr0fBnGo=
+
+Name: images/org.eclipse.debug.ui/dtool16/debug_exc.png
+SHA1-Digest: 7NBUqG2kAk2HyzHfGYqkVqQbt7w=
+
+Name: images/org.eclipse.jdt.ui/elcl16/view_menu.png
+SHA1-Digest: kvhysmVM91pv4VxRP9ooRX2NIJw=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/package_obj.png
+SHA1-Digest: 3Dn/vmmECzO5LgOY+RQBRCzCKnE=
+
+Name: reference/images/formatter-disabling-enabling-tags.png
+SHA1-Digest: zeGRn8Kn0eBTJW3l1TVR0WwNBok=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_modconte
+ xt.PNG
+SHA1-Digest: w8dCnA1ozFSN7H+F8d9jkq8Gz0E=
+
+Name: images/org.eclipse.jdt.ui/ovr16/enum_tsk.png
+SHA1-Digest: mnVnbSoOD7wQRR97bT4WK9mAv4Y=
+
+Name: tips/images/quick-assist-create-field.png
+SHA1-Digest: iTxnxEkCcdio7qADEUlyWRJpubY=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff4.png
+SHA1-Digest: ZasKIWdQniWIy0TIRr8091RFBy0=
+
+Name: images/org.eclipse.debug.ui/dlcl16/disabled_co.png
+SHA1-Digest: HM/Xbr/xp/9tolVmI+0G30nBlXA=
+
+Name: reference/preferences/java/editor/ref-preferences-typing.htm
+SHA1-Digest: 49Y8i2bo3/p0CPguscyhk4JNmAA=
+
+Name: reference/menus/run/images/ref-run_as.PNG
+SHA1-Digest: NPqcvosQ85HcayTSuwk8ylguDnI=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_caughtco
+ ntext.PNG
+SHA1-Digest: wbpLsd0Ahio2wN3d74yQ5uwscRU=
+
+Name: images/org.eclipse.debug.ui/obj16/inst_ptr_top.png
+SHA1-Digest: K61Hrur0oskhnmDQrPOWmw6AYJ0=
+
+Name: images/org.eclipse.debug.ui/elcl16/prev_thread_nav.png
+SHA1-Digest: 0+H8cYc2tzzDJTxMEYHJRFs67GA=
+
+Name: reference/preferences/java/editor/ref-preferences-mark-occurrenc
+ es.htm
+SHA1-Digest: L1kAVL956AnDEWOyfDc0SgDgPQ4=
+
+Name: tips/images/hovergenericsignature.png
+SHA1-Digest: fJX4+vEt9BiFlQwRdviLcVrKtjA=
+
+Name: tips/images/code-assist-fieldname.png
+SHA1-Digest: DW1hFGsf0+t6qvSmBOVFQok/fAU=
+
+Name: images/org.eclipse.debug.ui/dtool16/term_restart.png
+SHA1-Digest: e29sdJ0VZEmcQcwoWCDGcAfFPF0=
+
+Name: images/org.eclipse.debug.ui/eview16/debug_view.png
+SHA1-Digest: uaSmBGiJi0QRL0p7ll26opJXXFE=
+
+Name: images/org.eclipse.jdt.ui/eview16/errorwarning_tab.png
+SHA1-Digest: /eaT7zbLEL1DA0K/FoNlywvMOaE=
+
+Name: gettingStarted/images/restore_local_history.png
+SHA1-Digest: NXKg+tNwkG+xFTf8HfoPevZTspA=
+
+Name: tips/images/javadoc-location.png
+SHA1-Digest: 0ywUh1P66+elbEPHaLMUB+s6X7w=
+
+Name: contexts_JDT.xml
+SHA1-Digest: HugzDh7uEzmPTC2AsjlSV2EujOA=
+
+Name: images/org.eclipse.debug.ui/dlcl16/rem_all_co.png
+SHA1-Digest: KDaJpt4gIJsqYvG8g8IeHOGLUkU=
+
+Name: reference/ref-dialog-working-set-assignments.htm
+SHA1-Digest: TqPUhZid9GPlaTUzWPZnkEi6PDM=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/debug-by-writing-to-console
+ .png
+SHA1-Digest: jl49re7gZvL7v8cMhrxs0Fp32/I=
+
+Name: images/org.eclipse.jdt.junit/elcl16/select_next.png
+SHA1-Digest: XE5dP0zsyGGgCkaAE502/Naf5Hw=
+
+Name: gettingStarted/images/editor_vectortest.png
+SHA1-Digest: wkOxBFJp0n2pzI7EmUU/aWVa4Kc=
+
+Name: images/org.eclipse.jdt.ui/eview16/jdkcompliance_tab.png
+SHA1-Digest: oC7WdRD8M62/nu6b0Bg4egp8D2I=
+
+Name: reference/views/breakpoints/ref-entry_contextaction.htm
+SHA1-Digest: aV3tZfHOFsh5FgLrv+McPo59WQw=
+
+Name: images/org.eclipse.debug.ui/dlcl16/changevariablevalue_co.png
+SHA1-Digest: 6+c/WVy4Uz9+xTq8LRrc8m/UPVU=
+
+Name: tips/images/parameter-hints.png
+SHA1-Digest: 07gvFlLbZplh63wrlGFk9BlJRfs=
+
+Name: images/org.eclipse.jdt.ui/elcl16/super_co.png
+SHA1-Digest: CsSwzifYM9q6XecFxtZYHtg0arg=
+
+Name: reference/views/debug/ref-disconnect.htm
+SHA1-Digest: whNfVuMk31zYGqTzPu2D2+7cVF0=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/jload_obj.png
+SHA1-Digest: s0MG7HYHhvb87DT70KodKg6PxzA=
+
+Name: images/org.eclipse.jdt.junit/ovr16/success_ovr.png
+SHA1-Digest: QLc/n1LNH1+eZEDhKUVj0RVRu94=
+
+Name: reference/ref-dialog-configure-working-sets.htm
+SHA1-Digest: CkkOkPxTAkio8pxmZxz6lM7tKmI=
+
+Name: topics_Concepts.xml
+SHA1-Digest: LpiE5h+588ux3GYy2w3WEMUXXKY=
+
+Name: reference/views/breakpoints/ref-expandall_viewaction.htm
+SHA1-Digest: q7f5xZ3NjLuG4IY+Y/YosivrGUA=
+
+Name: tips/images/editor-code-hover.png
+SHA1-Digest: Huw/QcDJVOZAIM4/EXZXSNaHVIw=
+
+Name: images/org.eclipse.jdt.ui/elcl16/flatLayout.png
+SHA1-Digest: ASXdk+TdeVBLbMqoP5Z8rHId8T0=
+
+Name: tasks/task-memory-remove.htm
+SHA1-Digest: /G+P3AmXnwlq2ygenrcDO3KHXSo=
+
+Name: index/segments.gen
+SHA1-Digest: 0qa/uioKpCmO6iscE6rldo0UW0U=
+
+Name: reference/breakpoints/images/ref-breakpoint_caught.PNG
+SHA1-Digest: JJ+Cw6HZ6ZEBQPBN64w2qAyREec=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/args_tab.png
+SHA1-Digest: 9MdMsCZnD0KPQY4gs0fnsW7xIrU=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss8.png
+SHA1-Digest: lCCmAGCLLxnXGFU3xzYW+F5y0Xc=
+
+Name: gettingStarted/images/java7/select-ee.png
+SHA1-Digest: TeAXQ0fx4IlzNvp0oXHG4Ccp70s=
+
+Name: tips/images/ss4.png
+SHA1-Digest: o9Xr9i9IwYQoGp3wJUDcdqGUO2g=
+
+Name: tasks/tasks-63.htm
+SHA1-Digest: RIzdexiJhKGIuDKPeEtJRB8pVL8=
+
+Name: tasks/task-view_runtime_exceptions.htm
+SHA1-Digest: /H3ESL53Co5xA6Ek5Y6ofrYRTDQ=
+
+Name: gettingStarted/images/view_typehierarchy_testcase_subtype.png
+SHA1-Digest: ptxvMe9etf/yqLF83NynOAI/b4Y=
+
+Name: images/org.eclipse.debug.ui/dlcl16/memoryreset_tsk.png
+SHA1-Digest: t9awYjIK6yx5kqffW8skBn2l+GE=
+
+Name: concepts/concept-java-views-sorting.htm
+SHA1-Digest: wk/+oYhK4reGEqB9VuSL14Hca4I=
+
+Name: images/org.eclipse.jdt.ui/elcl16/hide_externalized.png
+SHA1-Digest: SNFBVqTHueCH20uXmQwxZktGHVo=
+
+Name: tips/images/camel-case-nav-1.png
+SHA1-Digest: EZ0w5Q2xwUZ9yZ5eXPLox3fa+9g=
+
+Name: images/org.eclipse.jdt.debug.ui/dlcl16/resume_co.png
+SHA1-Digest: UuVGoLKu15yQdIya0g5Q8LSGecE=
+
+Name: tips/images/packages-hierarchical.png
+SHA1-Digest: 4hyyfnZt2gwijLfFdtPyvzqQTlg=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/all_instances.png
+SHA1-Digest: o0bi0DUD9cwFRoVS2wDVoTIAriE=
+
+Name: reference/preferences/run-debug/images/ref-string_sub.PNG
+SHA1-Digest: FTyahlmYG5dBvpGN6pP6GLiHncY=
+
+Name: tips/images/type-filter.png
+SHA1-Digest: b58+/L/yjpc2h6cssrfn0FUnE/k=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout27.png
+SHA1-Digest: dHdrLgataf7synjineYfgQrhm8w=
+
+Name: images/org.eclipse.jdt.ui/obj16/cf_obj.png
+SHA1-Digest: lRfiNfULKc7C9Y/t9w7c2GjspiA=
+
+Name: images/org.eclipse.jdt.ui/obj16/correction_rename.png
+SHA1-Digest: /rvo+1pK4NApH0WaVEdCgU6Bhp0=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/owned_ovr.png
+SHA1-Digest: elLZdYxDzUcch+qrtrxyeuYDoiY=
+
+Name: images/org.eclipse.debug.ui/dlcl16/det_pane_under.png
+SHA1-Digest: CVKIXE92QqB0hnZA/aR3Q9SDh8U=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/refactoring_obj.png
+SHA1-Digest: UX3RgxmVMPcfHhdEtGNZ6HXrxUA=
+
+Name: reference/views/ref-view-outline.htm
+SHA1-Digest: xYcXuq4q2ylXMGQ+xA1IloCDMvk=
+
+Name: tasks/tasks-74.htm
+SHA1-Digest: 9AWGqHKbZn7oPWCz9Gmlf6vZyss=
+
+Name: topics_GettingStarted.xml
+SHA1-Digest: 9N4XSezVwgDS2cBJRF6qH+7/PTQ=
+
+Name: gettingStarted/images/j2se50/suppress-proposed.png
+SHA1-Digest: 8vkIvyEYQCm3z1Av5gDS1TR4SIo=
+
+Name: reference/views/breakpoints/ref-enable_contextaction.htm
+SHA1-Digest: HEyUlP/KdDObaJ9vyKHggTtGwHA=
+
+Name: images/org.eclipse.jdt.ui/obj16/fatalerror_obj.png
+SHA1-Digest: ejTnAL/lF4g/c9E+7YDbn+ljdpI=
+
+Name: gettingStarted/images/editor_testcase_search_references.png
+SHA1-Digest: rfV8UJw2NFflXHjDyK8I49DQWvo=
+
+Name: reference/preferences/java/editor/ref-preferences-templates.htm
+SHA1-Digest: Ag8bVUkYZiTLV4G8bOedzHzOlaQ=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_defaultw
+ orkingset_dialog.PNG
+SHA1-Digest: wSAWliEuOs/nXwvdN1eAbIQPG9k=
+
+Name: images/org.eclipse.jdt.junit/obj16/tsuiteerror.png
+SHA1-Digest: 7NR2J10y3SSr3LjzjXzOTP/8kzE=
+
+Name: images/org.eclipse.jdt.ui/elcl16/remove_as_source_folder.gif
+SHA1-Digest: keAzWH/H/dFb6LsWZa/vEwk9Jlg=
+
+Name: tips/images/content_assist_participant.png
+SHA1-Digest: V/zHGDGReC/F2SLSJCs44iEaOqA=
+
+Name: images/org.eclipse.debug.ui/elcl16/writeerr_co.png
+SHA1-Digest: GcU724BUUc+TcO5Dr84FzbpwBB4=
+
+Name: tips/images/convert-to-lambda-1.png
+SHA1-Digest: eeb1s/E5LcIY5inDcopB6ZytO88=
+
+Name: reference/views/expressions/images/ref-reevaluate.PNG
+SHA1-Digest: DN8BMJOVEQjOLvRZKPuLM425Gho=
+
+Name: images/org.eclipse.jdt.ui/elcl16/add_to_buildpath.png
+SHA1-Digest: HYwlSPJ9n4AgU2j9pm8ZyY92cN8=
+
+Name: images/org.eclipse.jdt.ui/elcl16/goto_input.png
+SHA1-Digest: uPQU0r3kNV8gI1vyVfM1X8qagnI=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout49.png
+SHA1-Digest: 0s1FSgnPfiddkWeX+7HhE6t30Rs=
+
+Name: images/org.eclipse.debug.ui/wizban/debug_wiz.png
+SHA1-Digest: QeyOVya19zlEZXvahHM+Udkstns=
+
+Name: tasks/task-scrapbook_content_assist.htm
+SHA1-Digest: pvG8vNyDqPOffVxRgtyk9vbwD/8=
+
+Name: tasks/task-memory-add.htm
+SHA1-Digest: JkTTzsZ+HdsrJmwqisqTAV1syVI=
+
+Name: images/org.eclipse.debug.ui/elcl16/stepbystep_co.png
+SHA1-Digest: 1O8U+i1F0manyYOJizfHlCFZ6qA=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/assign_value.png
+SHA1-Digest: fVbicLC0YbOjJYL6WH9GCqOn3EU=
+
+Name: tips/images/templates-create-method.png
+SHA1-Digest: afDR89qNkjgly2KN0r15Yn19aR0=
+
+Name: images/org.eclipse.jdt.ui/obj16/jcu_obj.png
+SHA1-Digest: esEgysaUQNRsbqJ4LiKermn/1/o=
+
+Name: reference/menus/run/images/ref-debug_dialog.PNG
+SHA1-Digest: NPDDIwSJrhnS8krH4CebaoJXdhc=
+
+Name: gettingStarted/images/j2se50/editor_override_annotation_hover.pn
+ g
+SHA1-Digest: PnuWBgAIEjAW3uLYOXdxFUxavws=
+
+Name: tips/images/breadcrumb.png
+SHA1-Digest: m1o7MZi0rq/IV6XGi8d8KqyqicU=
+
+Name: tips/images/localhistory-restore.png
+SHA1-Digest: M7TzhUDU6ylqDCKEFlo5XVRQHdA=
+
+Name: reference/views/debug/images/ref-viewmng_menu.PNG
+SHA1-Digest: cTB1tETe29RAO8DTH8d+uyZxb7k=
+
+Name: images/org.eclipse.jdt.ui/obj16/compare_field.png
+SHA1-Digest: E3of/PQBy8lfy4nxHn6Pxm2dVo4=
+
+Name: reference/ref-tostring-templates.htm
+SHA1-Digest: GfZba9aE8SHWJ87/kEIuVhmtjsY=
+
+Name: gettingStarted/images/j2se50/view_search_listInteger.png
+SHA1-Digest: 04U+dchxrhO7yRm9dqTidO6CqX0=
+
+Name: images/org.eclipse.jdt.ui/elcl16/filter_ps.png
+SHA1-Digest: jw3nIFNkridYnik6n1W4YTcAj+E=
+
+Name: tips/images/quick-fix-localrename.png
+SHA1-Digest: q0EI0Afoen3NKD/jUaKUx3d2hA8=
+
+Name: gettingStarted/qs-12.htm
+SHA1-Digest: +XNaspUDaEOLbGIIo7wEBps7zZw=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/run_sbook.png
+SHA1-Digest: sDuxYAwijLs+qRE3dM7GHQX6v7Y=
+
+Name: images/org.eclipse.jdt.ui/eview16/members.png
+SHA1-Digest: sLLP9dLjXOI7ozlIQO/G2PpWVqg=
+
+Name: reference/views/ref-view-junit.htm
+SHA1-Digest: tIGX2IercZiqqkbcfKxvoMz6PbU=
+
+Name: images/org.eclipse.jdt.ui/obj16/field_default_obj.png
+SHA1-Digest: eKJ5UkIvxib4o/ZvSrr+UL//BlE=
+
+Name: reference/preferences/java/editor/ref-preferences-syntax-colorin
+ g.htm
+SHA1-Digest: l3qawq1fbGV++X0C9hF9eohttm0=
+
+Name: images/org.eclipse.debug.ui/wizban/run_wiz.png
+SHA1-Digest: TD6SBxCu9zwyUJuUCfH3PFs+zhI=
+
+Name: reference/preferences/ref-preferences-java.htm
+SHA1-Digest: RCZG21vxuEXOgC88d/0hpPDTKIk=
+
+Name: tasks/images/tasks-199a.png
+SHA1-Digest: Jfbas/OCJt9XzPfTOJOl4XwA0ao=
+
+Name: images/org.eclipse.jdt.debug.ui/wizban/java_attach_wiz.png
+SHA1-Digest: WAmWTVaNb1s7xOPzFvsu4/e5biQ=
+
+Name: images/org.eclipse.jdt.junit/prgss/ff2.png
+SHA1-Digest: eLbijxk03aHoFgo/77x7FHID6ZY=
+
+Name: reference/ref-wizard-annotation.htm
+SHA1-Digest: EhoVwMUtNUvmCp9smlFG+2z7F4I=
+
+Name: images/org.eclipse.jdt.junit/etool16/runjunit.png
+SHA1-Digest: hdZWOYQHtmAYTmEM5nYwJZSWLOw=
+
+Name: images/org.eclipse.jdt.ui/obj16/error_obj.png
+SHA1-Digest: G98EzrzEjo7XoXeSFwbsQjMxX0M=
+
+Name: reference/ref-menu-search.htm
+SHA1-Digest: dgdeZ6iC2QCJ2Bwyy1tJKt5M57s=
+
+Name: images/org.eclipse.jdt.ui/obj16/type_separator.png
+SHA1-Digest: VEDD2D6dzehrpkbzjiXLINDn1aA=
+
+Name: plugin.properties
+SHA1-Digest: RGyMoNsXDhj4cPGUM3G1w2XcKRs=
+
+Name: reference/wizards/ref-export_breakpoints.htm
+SHA1-Digest: RwzVEU70UtjHuR4ibB1gDLYV4aA=
+
+Name: images/org.eclipse.jdt.ui/ovr16/constr_ovr.png
+SHA1-Digest: N/ZwSgLMG0Bes4N85YoL9WKkt/M=
+
+Name: reference/preferences/java/debug/ref-primitive_display_options.h
+ tm
+SHA1-Digest: xP/GgJMDwhFduq/puR3bDNdaSxg=
+
+Name: index/indexed_dependencies
+SHA1-Digest: 3nZlKl0xcUrvCKwwFoV5hDM9ykI=
+
+Name: images/org.eclipse.jdt.ui/eview16/source.png
+SHA1-Digest: 1hzaNlEjxtjQibULTtJhz99mSj8=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout6.htm
+SHA1-Digest: lrM6Cd254L5HZglIumUVbd82Q84=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_entrycon
+ text.PNG
+SHA1-Digest: Ya1DdgIhWGeULScf3Tb9AIcw5Dg=
+
+Name: index/_0.prx
+SHA1-Digest: q+hBNjkxbvsaIHTdKiUmaP+z4ys=
+
+Name: images/org.eclipse.jdt.ui/obj16/quickassist_obj.png
+SHA1-Digest: SDzZzuizmoV6UdLu98Oz1EAfeNI=
+
+Name: images/org.eclipse.jdt.ui/obj16/translate.png
+SHA1-Digest: whXYAJWBrZBulnh5XX073DE/r2o=
+
+Name: reference/preferences/run-debug/images/ref-default_launchers.PNG
+SHA1-Digest: 7dhl1NwPE+INdwX+nDaxB4H9ZBY=
+
+Name: images/org.eclipse.debug.ui/obj16/genericvariable_obj.png
+SHA1-Digest: 6E8uzfXthuJkL9eg9j2Yvt2f+ng=
+
+Name: images/org.eclipse.jdt.junit/elcl16/relaunchf.png
+SHA1-Digest: iLa8YSVlq1C89K6nPQx7dz2EYqA=
+
+Name: gettingStarted/images/j2se50/view_search_listInteger_inexact.png
+SHA1-Digest: sblJKzFqvZHbO5f1GBQ8h9LXVfE=
+
+Name: index/indexed_docs
+SHA1-Digest: 76O4aE3R9J9XEvg5QhaiUw0+YGs=
+
+Name: images/org.eclipse.jdt.ui/eview16/packages.png
+SHA1-Digest: IpAFxPkz5XQAoFf0Qn1jqhcI8ls=
+
+Name: gettingStarted/images/j2se50/foreach-inserted.png
+SHA1-Digest: wtFODmigUbl58ZR9eGuGLfrszVU=
+
+Name: images/org.eclipse.jdt.ui/eview16/javadoc.png
+SHA1-Digest: xJH09rJyeWR0MjCV8aWxre+SGBA=
+
+Name: tips/images/warn-deprecation-y.png
+SHA1-Digest: XZ7/et1PV9bqCYBCc1Y62bRU8mY=
+
+Name: images/org.eclipse.jdt.ui/elcl16/th_automatic.png
+SHA1-Digest: muDQnmfvhm2jEW1A4MThTzsyHE8=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/thread_and_monitor_obj.png
+SHA1-Digest: 9dyzK/+n3GRtQ8UlGIKUQGWxcxs=
+
+Name: images/org.eclipse.jdt.junit/elcl16/hierarchicalLayout.png
+SHA1-Digest: M6GOdwEhUA0pXwsh+U+fIAr80ms=
+
+Name: images/org.eclipse.ltk.ui.refactoring/obj16/composite_change.png
+SHA1-Digest: 4HCE/pEqjbsn5Bv2jyM7gk7e/Gk=
+
+Name: reference/views/debug/images/ref-breadcrumb.png
+SHA1-Digest: +FzsB0V4Xt++Do8eq93xETKK+Uk=
+
+Name: images/org.eclipse.jdt.ui/obj16/annotation_obj.png
+SHA1-Digest: qCrwtp5hY8hITMGWt0pKjOY1SW0=
+
+Name: reference/views/shared/images/ref-viewdisplaycommands.PNG
+SHA1-Digest: K/ziyMz91W1VaHg22BtWgTZpZ70=
+
+Name: images/org.eclipse.jdt.debug.ui/etool16/term_sbook.png
+SHA1-Digest: x4PR1NdQIWdBys6nwG6TqgL+794=
+
+Name: contexts_JDT_JUnit.xml
+SHA1-Digest: Q7A2KBWkaAdYkf8a/Brr7hF4Rq8=
+
+Name: buildDoc_log.xml
+SHA1-Digest: YHUZYtH455y4DkBEYsw0b1pjeWY=
+
+Name: reference/views/shared/ref-viewdisplaycommands.htm
+SHA1-Digest: Md9j33Hv6yGgdeg8/wV739z49Xc=
+
+Name: images/org.eclipse.jdt.ui/obj16/error_gray_obj.png
+SHA1-Digest: Owc9wmt2HtBbjk1zqKFzzbjcei4=
+
+Name: reference/menus/run/ref-open_debug_dialog.htm
+SHA1-Digest: QIxZuPtG4WvGarX2azyN+lguwDU=
+
+Name: reference/preferences/java/ref-preferences-junit.htm
+SHA1-Digest: DVNiqY9PzFTqt+QdjZ9sFsoS5cw=
+
+Name: reference/views/debug/ref-properties.htm
+SHA1-Digest: V1TLPJKmI7lK1l5XbtGCNyJ8TSI=
+
+Name: gettingStarted/images/java7/content-assist-diamond-1.png
+SHA1-Digest: cSyehDj6zyAvBTlEOHlJGSNfJPI=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout14.png
+SHA1-Digest: 3m2dSOXPwTyLS6GybXubMBcVKLs=
+
+Name: images/org.eclipse.debug.ui/dlcl16/runlast_co.png
+SHA1-Digest: eYS3DlQZw+/xkSyuFCsPp/eJpqw=
+
+Name: reference/ref-apt-factoryPathOptions.htm
+SHA1-Digest: kMqu5MpQxWPVbKWGhenR6QTHhXg=
+
+Name: images/org.eclipse.jdt.ui/elcl16/hierarchicalLayout.png
+SHA1-Digest: M6GOdwEhUA0pXwsh+U+fIAr80ms=
+
+Name: images/org.eclipse.jdt.junit/prgss/ss6.png
+SHA1-Digest: W6P20/wn9Gzjs+lpSGBlamgLSkc=
+
+Name: images/org.eclipse.jdt.ui/elcl16/hide_internalized.png
+SHA1-Digest: jMOSweTf1YXfo8L0Dj6+lD3PypE=
+
+Name: images/org.eclipse.jdt.junit/eview16/junit.png
+SHA1-Digest: yqrHy2HKpynuGi8Ayl7u8Hw46p8=
+
+Name: gettingStarted/qs-DetectingExistingLayout.htm
+SHA1-Digest: 2bKfbf94P1hx+BsSrfM5ScQ3SZo=
+
+Name: gettingStarted/images/j2se50/enum.png
+SHA1-Digest: 0I4R9CgutD/DHju7RDF27m9Zpcg=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/class_obj.png
+SHA1-Digest: 0osK7CvLSbQ6rtzbNz8HMZBeSQ4=
+
+Name: images/org.eclipse.jdt.ui/etool16/toggle_breadcrumb.gif
+SHA1-Digest: /jHbMd1PzP73mMWmtGgC8YuWhrA=
+
+Name: reference/views/console/ref-terminate_action.htm
+SHA1-Digest: WAqBsBPYyU8AumFVwCTkDKkyNrk=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout25.png
+SHA1-Digest: ZqRR2fgcUgk56iBqme2Q6WimUwI=
+
+Name: gettingStarted/qs-OpenJavaEditor.htm
+SHA1-Digest: hR48VDxKiSEPQO4HycJIZjM4nsw=
+
+Name: images/org.eclipse.jdt.debug.ui/ovr16/caught_ovr.png
+SHA1-Digest: Tfq53v7utYiKD67u8wvmNIESZ5o=
+
+Name: reference/views/debug/ref-terminateandremove.htm
+SHA1-Digest: wLEexpc97BoDpzvBSkd44NldbeA=
+
+Name: tips/images/code-assist-type-arg-guessing.png
+SHA1-Digest: NYIj14ced0Pg5H+wQuYj9rxJ/Jg=
+
+Name: concepts/concept-java-perspective.htm
+SHA1-Digest: /ftbsECIEkoqqamV1Olqnm2EJwM=
+
+Name: images/org.eclipse.jdt.ui/elcl16/inclusion_filter_attrib.png
+SHA1-Digest: VPsgeXEYslK+biBMKQI7gB2oPyU=
+
+Name: reference/views/variables/ref-createwatch.htm
+SHA1-Digest: nM3rB11do+3KZ+ng12tmw/3ze3Y=
+
+Name: reference/views/console/ref-clear_action.htm
+SHA1-Digest: uBxoHt9sDzq3rUUE4dcuroMy7C8=
+
+Name: gettingStarted/images/superclass_selection_dialog.png
+SHA1-Digest: lXVIrl4I4nCKen6nle5CqShkxkw=
+
+Name: whatsNew/images/formatter-braces-lambda.png
+SHA1-Digest: HvdAMSM9AHxQ/1P//3eDVTFU/mU=
+
+Name: tips/images/compress-packages2.png
+SHA1-Digest: +3wAAx/AUeW9uUf1IXCFbkd6Gbs=
+
+Name: images/org.eclipse.jdt.ui/obj16/cu_obj.png
+SHA1-Digest: PjlGZCWwAwDv0F7wlJYajq6Fvko=
+
+Name: images/org.eclipse.jdt.ui/obj16/methpri_obj.png
+SHA1-Digest: CzOV2xjkRcVCxwIcFBtEHYBccMQ=
+
+Name: images/org.eclipse.jdt.ui/obj16/jar_obj.png
+SHA1-Digest: pmKE4gwY6ANIpSHKrQT5UhwFc5Y=
+
+Name: reference/views/display/ref-display_view.htm
+SHA1-Digest: 785cvJsfw7tozS6svAHs+/YMMfQ=
+
+Name: tips/images/code-assist-with-import.png
+SHA1-Digest: 1FFWC7Y8Y7WGnzphgoL/Opuhmcs=
+
+Name: reference/preferences/java/codestyle/ref-preferences-organize-im
+ ports.htm
+SHA1-Digest: iRlLzALd7TVqgyG5NnEN3Z06lqI=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout36.png
+SHA1-Digest: iuSBawjoBCniVePqXPMMIOo2isI=
+
+Name: tasks/task-relaunch_program.htm
+SHA1-Digest: KasJRLpt+g87pM4TwadgRyJjbsM=
+
+Name: reference/menus/run/images/ref-run_history.PNG
+SHA1-Digest: Uy8cq28gdv7KlK/Y2NcOD2GlEW0=
+
+Name: reference/views/expressions/ref-edit.htm
+SHA1-Digest: JdOc7DhYehxFrkquACvZlM4aSWI=
+
+Name: gettingStarted/qs-9.htm
+SHA1-Digest: 2tYsr3RcbsFHNmJWmY6YKLxOLZ4=
+
+Name: images/org.eclipse.jdt.ui/elcl16/remove_from_buildpath.gif
+SHA1-Digest: keAzWH/H/dFb6LsWZa/vEwk9Jlg=
+
+Name: images/org.eclipse.jdt.ui/ovr16/annotation_tsk.png
+SHA1-Digest: FWvI8lCQ4Dd6mEUv82VmQ9/VgzM=
+
+Name: reference/views/shared/ref-assignvalue.htm
+SHA1-Digest: PmLtqdKDRG9DnmQNqcZb+C20pos=
+
+Name: reference/views/breakpoints/ref-workingsets_viewaction.htm
+SHA1-Digest: rovZKE4SB3FOnnk6mmg4xjNgpDg=
+
+Name: reference/views/shared/ref-selectall.htm
+SHA1-Digest: VvqE4vYksPCD24LFw/cMfOeLAo8=
+
+Name: tasks/task-set_method_breakpoints.htm
+SHA1-Digest: vSiCqvF+B8M3o9t2EHk1aYOEkCE=
+
+Name: reference/views/console/images/ref-cvs_console.PNG
+SHA1-Digest: HhMG+jVQYk62fWR9StPoFi6DBkY=
+
+Name: gettingStarted/images/packagefolder_obj.png
+SHA1-Digest: C8Pyfm6LaA2hPrX3PHUMrKUgPlU=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout47.png
+SHA1-Digest: 84gQYYyAwQ7aTxtHW3CPonu+EAc=
+
+Name: tasks/tasks-232.htm
+SHA1-Digest: d0Pyh3Qf3+4ffUy/f+iU17Q6238=
+
+Name: images/org.eclipse.debug.ui/dlcl16/enabled_co.png
+SHA1-Digest: l1jmX04ceZUJDMEMA51azivdWsc=
+
+Name: tasks/tasks-executionArgs.htm
+SHA1-Digest: /7eij8eyb5w9DUww0t6g6y0ja3M=
+
+Name: images/org.eclipse.debug.ui/eview16/watchlist_view.png
+SHA1-Digest: F2Cnp3dcZNYPxoPQ5HpnS+r9DX4=
+
+Name: reference/views/breakpoints/images/ref-views_breakpoint_properti
+ es.PNG
+SHA1-Digest: 6THwwBaO5edsosRnhi9w351P/KI=
+
+Name: tasks/images/tasks_201a.png
+SHA1-Digest: NyOQcHdG1RMkFQiPFte6h4c8G0k=
+
+Name: reference/views/breakpoints/ref-addexception_viewaction.htm
+SHA1-Digest: fmQ/TtrT3SIS4m89okE9+KjUjKE=
+
+Name: reference/ref-jdt-actions.htm
+SHA1-Digest: hZgTL0ne/hDKhev2puFZNcbHkoU=
+
+Name: images/org.eclipse.jdt.debug.ui/obj16/read_obj.png
+SHA1-Digest: JOB6QZf/Q2kr9KiDTM0Q+NJNZ+4=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout58.png
+SHA1-Digest: ZalATYkWcSaZEh/u3qwBpzItbqA=
+
+Name: images/org.eclipse.jdt.ui/ovr16/abstract_co.png
+SHA1-Digest: WdGAWO6V8G1Hr3L2AOJzx9+8Pr4=
+
+Name: reference/ref-java-editor-formatter.htm
+SHA1-Digest: /bt02KBV2dtnragQLB5K4axJD9E=
+
+Name: gettingStarted/qs-10.htm
+SHA1-Digest: RUxv4ZN/gPu1J+2rbUlpo+j8rxc=
+
+Name: images/org.eclipse.debug.ui/elcl16/suspend_co.png
+SHA1-Digest: voJDzHfb5mmIzDd1HreNd4QZuKg=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/exc_catch.png
+SHA1-Digest: I6lg4vW8izLYsgm2g6GrD1nWDLA=
+
+Name: reference/views/shared/images/ref-contentassist.PNG
+SHA1-Digest: izTp+VsunMNZwWw44v5NeBlH+j4=
+
+Name: images/org.eclipse.jdt.debug.ui/dtool16/watch_exp.png
+SHA1-Digest: tjPg++Go//YebZYkd5hyeJFVhdw=
+
+Name: images/org.eclipse.debug.ui/dlcl16/stepbystep_co.png
+SHA1-Digest: /gSgFqcpAtfdr47N9Suex3/t+do=
+
+Name: images/org.eclipse.jdt.debug.ui/elcl16/all_references.png
+SHA1-Digest: CK5VLI6yZvbxfW2uME5AEI4wpys=
+
+Name: reference/views/console/ref-scrolllock_action.htm
+SHA1-Digest: Eg1Ox+Iavwd8bQ4Hgfz717pIm7M=
+
+Name: tips/images/javadoc-quickfix.png
+SHA1-Digest: 2rxH0Hw3vMB3+KxyiAzfBVvLY2U=
+
+Name: images/org.eclipse.jdt.ui/ovr16/error_co.png
+SHA1-Digest: QMSzF6oO9Edk+FWLLEbO/XGA7mU=
+
+Name: images/org.eclipse.jdt.ui/obj16/intf_obj.png
+SHA1-Digest: j4dj2w7/Klmzdn12q1pegdjGLuY=
+
+Name: concepts/concept-java-search.htm
+SHA1-Digest: kBxrNGvllVNO1Yl4UMWIgC1U3l4=
+
+Name: reference/ref-menu-source.htm
+SHA1-Digest: +wV8g9tLPtMjhL7mfWuhrXCRKR8=
+
+Name: reference/ref-jdt-glossary.htm
+SHA1-Digest: huuKelBVOoxOiLIZNsS/Nv90lNY=
+
+Name: images/org.eclipse.jdt.debug.ui/wizban/newsbook_wiz.png
+SHA1-Digest: l8059MRhvL+JH/oX3Mmw8nOsinQ=
+
+Name: reference/views/expressions/images/ref-addwatchexpression_dialog
+ .PNG
+SHA1-Digest: 0El3iePsyUnU99JVVLLEratLVD8=
+
+Name: gettingStarted/images/qs-WorkingWithExistingLayout69.png
+SHA1-Digest: 2A4xIwJPwGkfiPx5EsJU0I2uUMY=
+
+Name: reference/ref-wizard-class.htm
+SHA1-Digest: 6Nj0crnUAlp64PYL4OpgHXHy15Y=
+
+Name: gettingStarted/images/editor_mytestcase_outline_override.png
+SHA1-Digest: anyOmdzOx/uBXf3WlJCUgAqp++Q=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/def_vm_args.png
+SHA1-Digest: 8/W8m9tr1VqK1CGDqQRDcev85RM=
+
+Name: gettingStarted/images/rename_cu_preview_dialog.png
+SHA1-Digest: oxtgo0Ef9lDyPhZ+2IxeNtS+Q/E=
+
+Name: gettingStarted/images/java7/invokeExact-javadoc.png
+SHA1-Digest: uD3PKWOjW5bC2mTsH7xmg6xo8eY=
+
+Name: images/org.eclipse.jdt.ui/etool16/java_attach.png
+SHA1-Digest: ryiGs4+Vn9favKfdH6lQkeJhpqs=
+
+Name: tips/images/org.eclipse.jdt.debug.ui/detail_formatter.png
+SHA1-Digest: OySBbM9hV2a9DNTvCg5j+JbsD1k=
+
+Name: gettingStarted/qs-WorkingWithExistingLayout4.htm
+SHA1-Digest: 5y4ClNpd8SlYo8cnwSTAeJMVtds=
+
+Name: images/org.eclipse.jdt.ui/elcl16/exclude_from_buildpath.png
+SHA1-Digest: HpMLd8P7mqTHm9WFu6K/GZicjzw=
+
+Name: images/org.eclipse.ui.console/elcl16/clear_co.png
+SHA1-Digest: +4Wm1F0aofGWZzJoTK8CH0IvFlc=
+
+Name: images/org.eclipse.debug.ui/dlcl16/terminate_rem_co.png
+SHA1-Digest: SnkYKCnC3iUFC5TM1DWYG7yOGhI=
+
+Name: gettingStarted/images/java7/redundant-type-arguments-warning.png
+SHA1-Digest: JijLPWbgCInGu6/Ez6MSBc6+CqQ=
+
+Name: images/org.eclipse.debug.ui/elcl16/pin.png
+SHA1-Digest: Vxmaalq1n9SINlHCn+r3j5M8y00=
+
+Name: gettingStarted/images/wiz_new_scrap.png
+SHA1-Digest: 88XlgAp13mDmgwd/qzMaj4/qC70=
+
+Name: images/org.eclipse.jdt.ui/obj16/jcu_resource_obj.png
+SHA1-Digest: ch6PpvED80jwl8ahe8VsSp9HTkM=
+
+Name: images/org.eclipse.jdt.ui/obj16/innerclass_protected_obj.png
+SHA1-Digest: fbVitkZI5gm6LCWAO3xcofoXf2w=
+
+Name: concepts/concept-string-externalization.htm
+SHA1-Digest: zydbeOJy6Un2FNuH5xeWnNGwwhs=
+
+Name: images/org.eclipse.jdt.junit/elcl16/flatLayout.png
+SHA1-Digest: ASXdk+TdeVBLbMqoP5Z8rHId8T0=
+
+Name: tasks/images/task-memory-new.gif
+SHA1-Digest: QcxM0kkl1Mo/T76FdX6dg4s4tA0=
+
+Name: reference/views/console/ref-display_action.htm
+SHA1-Digest: EvQJWrr5Esilgc1B3LJHRy0TANI=
+

@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Session Bean Applications</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Integrating JMS","integration-plain-java.html","../mg-integration-6.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-integration-preface.htm","System Integration");
+ -->
+</script>
+<h1>Session Bean Applications</h1>
+<p>Session Bean applications allow to instantiate a stateful or stateless Session
+Bean and execute a method on it. To achieve this, at modeling time you have to specify</p>
+<ul>
+    <li>the remote interface,</li>
+    <li>the home interface,</li>
+    <li>the JNDI name,</li>
+    <li>a method from the remote interface- the completion method and</li>
+    <li>a create method from the home interface.</li>
+</ul>
+<p>The create method parameters will be exposed as IN access points named <tt>x
+
+InitParam n</tt> where x is the first letter of the class name and n is a consecutive number,
+starting with 1.</p>
+<p>The completion method parameters will be exposed as IN access points named <tt>x
+
+Param n</tt> where x is the first letter of the class name and n is a consecutive number,
+starting with 1. The return value of the completion method, if any, will be exposed as an
+OUT access point <tt>returnValue</tt>. Let's consider a Session Bean <tt>ProcessInvoice</tt>
+used in a Session Bean application with the following create method and completion method
+chosen:</p>
+<pre>public interface ProcessInvoiceHome extends EJBHome
+{
+  ProcessInvoice create (Invoice invoice, java.util.Date receivingDate);
+...
+public interface ProcessInvoice extends EJBObject
+{
+  Invoice addItem(InvoiceItem item);</pre>
+<p>This will result in the following access points for create method parameters and
+completion method parameters:</p>
+<ul>
+    <li><tt>iInitParam1</tt>, <tt>dInitParam2</tt> for the create method parameters</li>
+    <li><tt>iParam1</tt> for the completion method parameter</li>
+</ul>
+<p>These settings are accessed in Session Bean application types
+in the Process Workbench.</p>
+<ul>
+    <li><a href="#create">Creating a Session Bean Application</a></li>
+    <li><a href="#ejb2">EJB 2.x</a></li>
+    <li><a href="#ejb3">EJB 3.x</a></li>
+    <li><a href="#retrySB">Configuring Retry Mechanism</a></li>
+</ul>
+<h2 id="create">Creating a Session Bean Application</h2>
+<p>To specify a Session Bean application in the Process
+Workbench:</p>
+<ol>
+    <li>In the diagram toolbar palette select <strong>Applications &gt;
+    Session Bean Application</strong></li>
+    <li>Open the application properties dialog with a double-click.</li>
+    <li>Select the EJB mode (<a href="#ejb2">EJB 2.x</a> or <a href="#ejb3">EJB 3.x</a>).</li>
+    <li>Enter the properties according to the EJB mode as explained in the following sections.</li>
+</ol>
+<p>Please refer to the section <a href="../mg-integration-preface.htm">System Integration</a>
+for detailed information on integrating session beans.</p>
+<h2 id="ejb2">EJB 2.x</h2>
+<p>Choose the property values for:</p>
+<ul>
+    <li>Remote Interface</li>
+    <li>Home Interface</li>
+    <li>Home Interface JNDI Path</li>
+    <li>Completion Method</li>
+    <li>Creation Method</li>
+</ul>
+<p>Note that for accomplishing this step it is necessary to have the home interface
+and remote interface classes in the class path of the Process Workbench.</p>
+<h3>Local Binding</h3>
+<p>To test a local class as a mock Session Bean, check the <strong>Local
+Binding</strong> check box. There has to be an implementation of the home interface.</p>
+<p class="image"><a href="images/mg-integration-session.png" target="_blank">
+<img src="images/mg-integration-session.png" alt="Specifying Session Beans"></a><br>
+<strong>Figure:</strong> Specifying EJB 2.x Session Beans</p>
+<h2 id="ejb3">EJB 3.x</h2>
+<p>The property page for EJB 3.x contains the Eclipse class browser entry Bean Class 
+to enter the bean class.</p>
+<p>Fill in the values for the following entries:</p>
+<ul>
+    <li>Session Bean Class</li>
+    <li>Business Interface</li>
+    <li>JNDI Path</li>
+    <li>Initialization Method</li>
+    <li>Completion Method</li>
+</ul>
+<p class="image"><a href="images/integration-session-ejb3_orgSize.png" target="_blank">
+<img src="images/integration-session-ejb3.png" alt="Specifying EJB 3.x Session Beans"></a><br>
+<strong>Figure:</strong> Specifying EJB 3.x Session Beans</p>
+<h3 id="sessionBean">Session Bean Class</h3>
+<p>Arbitrary classes can be selected. If the selected class does not satisfy the EJB 3.0 
+beans requirements, an error status is displayed.</p>
+<!-- TODO insert error status screenshot here -->
+<h3 id="bInterface">Business Interface</h3>
+<p>A combo box for the Business Interface is provided with:</p>
+<ul> 
+    <li>all business interfaces as the first tree level 
+    (<i>class name</i> + " (" + "local" or "remote" + ")")</li>
+    <li>the accessible methods (<i>method name</i> + "(" + <i>parameters</i> + "): " + 
+    <i>return value</i>) of these interfaces as the second level.</li>
+</ul>
+<p>Once an appropriate bean class has been selected, the combo box is populated accordingly,  
+applying the rules regarding business interfaces of EJB 3.0 session beans:</p>
+<ul>
+    <li>If the selected bean class has only one interface, it is considered the business interface.</li>
+    <li>If the bean class implements more than one interface, all interfaces annotated by 
+    @Remote or @Local are considered business interfaces.</li>
+    <li>The following interfaces are excluded when determining whether the bean 
+    class has more than one interface:
+    <ul>
+        <li><tt>java.io.Serializable</tt></li>
+        <li><tt>java.io.Externalizable</tt></li>
+        <li>any of the interfaces defined by the <tt>javax.ejb</tt> package.</li>
+    </ul></li>
+    <li>The same business interface cannot be both, a local and a remote business 
+    interface of the bean.</li>
+</ul>
+<p>Instead of entering the business interface via browsing of bean classes, it
+can be entered directly or via browsing.</p>
+<h3 id="jndi">JNDI Path</h3>
+<p>The JNDI path can be entered if it cannot be derived from the bean class properties.</p>
+<h3 id="completion">Completion and Initialization Method</h3>
+<p>A combo box for the selection of the <strong>Completion Method</strong> is provided as well as
+ a combo box for the <strong>Initialization Method</strong>. Both methods will be invoked at runtime.</p>
+ 
+<h2 id="retrySB">Configuring Retry Mechanism</h2>
+
+<p> The configurable retry mechanism provides 
+the facility to retry the operation in case the target service is temporarily unavailable.</p>
+
+<p>For more information, please refer to 
+<a href="../../../concepts/workflow-basics/mg-basics-7.htm#appretry">
+Retry Mechanism of Non-interactive Applications 
+</a> section of the 
+<a href="../../../concepts/workflow-basics/mg-basics-7.htm">
+Applications</a> chapter.</p>
+
+<p>For example, you have added an application to the model.
+In the Property page of the application, you can enable the retry, specify number of retries and time
+between retries. However, note that maximum 10 retries and 60 seconds between two retries are allowed. 
+So, the application will retry for the defined number of times with a pause of the defined number of seconds, 
+until it has success. If the application still fails after the defined number, it will no longer retry.</p>
+ <p class="image"><img src="images/sessionretry.png" alt=""><br>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

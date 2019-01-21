@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>State Changes of Process and Activity Instances</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Model States",
+        "pg-declarative-security.html","pg-embed-model-states.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>State Changes of Process and Activity Instances</h1>
+<p>This chapter describes possible state changes for activity and process
+instances for service calls depending on the preconditions.</p>
+<ul>
+   <li><a href="#admin">Possible State Changes for the AdministrationService</a></li>
+   <li><a href="#workflow">Possible State Changes for the WorkflowService</a></li>
+</ul>
+<h2 id="admin">Possible State Changes for the AdministrationService</h2>
+<p>The following methods of the 
+<a href="pg-embedded-3.htm#adminservice">AdministrationService</a> might change
+the state of process instances and activity instances:</p>
+<ul>
+   <li><a href="#abort">abortProcessInstance()</a></li>
+   <li><a href="#force">forceCompletion()</a></li>
+   <li><a href="#forcesus">forceSuspendToDefaultPerformer()</a></li>
+   <li><a href="#start">startProcess()</a></li>
+</ul>
+<h3 id="abort">abortProcessInstance()</h3>
+<p>For method <tt>abortProcessInstance()</tt> the following state changes are 
+possible:</p>
+<ul>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>state after: 
+   <ul>
+      <li>aborted for the root process, all sub-processes and activities that 
+      are not yet completed</li>
+   </ul></li>
+</ul>
+<h3 id="force">forceCompletion()</h3>
+<p>Possible states for <tt>forceCompletion()</tt> are:</p>
+<ul>
+   <li>non-interactive activity state before: 
+   <ul>
+      <li>application</li>
+      <li>suspended</li>
+      <li>hibernated</li>
+   </ul></li>
+   <li>state after: 
+   <ul>
+      <li>completed</li>
+   </ul></li>
+</ul>
+<h3 id="forcesus">forceSuspendToDefaultPerformer()</h3>
+<p>Possible states for <tt>forceSuspendToDefaultPerformer()</tt> are:</p>
+<ul>
+   <li>activity state before: 
+   <ul>
+      <li>application</li>
+      <li>suspended</li>
+      <li>hibernated</li>
+   </ul></li>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>activity state after: 
+   <ul>
+      <li>suspended</li>
+   </ul></li>
+   <li>process state after: 
+   <ul>
+      <li>state does not change</li>
+   </ul></li>
+</ul>
+<h3 id="start">startProcess()</h3>
+<p>Possible states for <tt>startProcess():</tt> are:</p>
+<ul>
+   <li>state after:
+   <ul>
+      <li>active</li>
+   </ul></li>
+</ul>
+<h2 id="workflow">Possible State Changes for the WorkflowService</h2>
+<p>The following methods of the 
+<a href="pg-embedded-3.htm#workflowservice">WorkflowService</a> might change
+the state of process instances and activity instances:</p>
+<ul>
+   <li><a href="#activate">activate()</a></li>
+   <li><a href="#complete">complete()</a></li>
+   <li><a href="#suspend">suspend()</a></li>
+   <li><a href="#abortact">abortActivityInstance()</a></li>
+   <li><a href="#startproc">startProcess()</a></li>
+   <li><a href="#abortproc">abortProcessInstance()</a></li>
+</ul>
+<h3 id="activate">activate()</h3>
+<p>For method <tt>activate()</tt> the following state changes are 
+possible:</p>
+<ul>
+   <li>activity state before: 
+   <ul>
+      <li>suspended</li>
+      <li>hibernated</li>
+      <li>application</li>
+   </ul></li>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>activity state after: 
+   <ul>
+      <li>application 
+      <li>hibernated for activities with application that provide asynchronous
+      receive functionality</li>
+   </ul></li>
+   <li>process state after: 
+   <ul>
+      <li>state does not change</li>
+   </ul></li>
+</ul>
+<h3 id="complete">complete()</h3>
+<p>Possible states for <tt>complete()</tt> are:</p>
+<ul>
+   <li>activity state before: 
+   <ul>
+      <li>application</li>
+   </ul></li>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>activity state after: 
+   <ul>
+      <li>completed</li>
+   </ul></li>
+   <li>process state after: 
+   <ul>
+      <li>completed if all activities are completed, otherwise state does not change</li>
+   </ul></li>
+</ul>
+<h3 id="suspend">suspend()</h3>
+<p>Possible states for <tt>suspend()</tt> are:</p>
+<ul>
+   <li>activity state before:
+   <ul>
+      <li>application</li>
+   </ul></li>
+   <li>process state before:
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>activity state after:
+   <ul>
+      <li>suspended</li>
+   </ul></li>
+   <li>process state after:
+   <ul>
+      <li>state does not change</li>
+   </ul></li>
+</ul>
+<h3 id="abortact">abortActivityInstance()</h3>
+<p>Possible states for <tt>abortActivityInstance()</tt> are:</p>
+<ul>
+   <li>activity state before: 
+   <ul>
+      <li>suspended</li>
+      <li>application</li>
+      <li>interrupted</li>
+      <li>hibernated</li>
+   </ul></li>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>state after:
+   <ul>
+      <li>if abort scope is root hierarchy: 
+      <ul>
+         <li>aborted for specified activity, its root process, all contained 
+         sub-processes and activities that are not yet completed</li>
+      </ul></li>
+      <li>if abort scope is sub hierarchy: 
+      <ul>
+         <li>aborted for specified activity, including contained subprocesses 
+         and activities, if activity instance is a subprocess
+      </ul></li>
+      <li>completed if the last activity of the process is aborted and is not a 
+      subprocess.</li>
+   </ul></li>
+</ul>
+
+<h3 id="startproc">startProcess()</h3>
+<p>Possible states for <tt>startProcess()</tt> are:</p>
+<ul>
+   <li>state after: 
+   <ul>
+      <li>active</li>
+   </ul></li>
+</ul>
+<h3 id="abortproc">abortProcessInstance()</h3>
+<p>Possible states for <tt>abortProcessInstance()</tt> are:</p>
+<ul>
+   <li>process state before: 
+   <ul>
+      <li>active</li>
+      <li>interrupted</li>
+   </ul></li>
+   <li>state after: 
+   <ul>
+      <li>abort scope is root hierarchy:
+      <ul>
+         <li>aborted for the state of root process, all sub-processes and activities
+         that are not yet completed</li>
+      </ul></li>
+      <li>abort scope is sub hierarchy:
+      <ul>
+         <li>aborted for the state of the sub-process, all its subprocesses and 
+         activities that are not yet completed</li>
+      </ul></li>
+   </ul></li>
+</ul>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

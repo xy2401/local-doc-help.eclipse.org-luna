@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css">
+<title>Avoiding Query Timeouts in internal JDBC Queries</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Tuning for low Latency and high Throughput",
+	"tuning-jcr-depl.html","tuning-transient-proc.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Avoiding Query Timeouts in internal JDBC Queries</h1>
+<p>In case counts for queries are to executed by JDBC, this can take some time
+because of one of the following reasons:</p>
+<ul>
+   <li>the objects to be counted are locked by other transactions 
+   (this might happen on databases with dead locks)</li>
+   <li>the load on the database is high which results in long execution times</li>
+   <li>other issues</li>
+</ul>
+<p>In some cases the default timeout value of 5 seconds is not long enough,
+which results in a timeout of the query and a rollback of the complete transaction.</p>
+<p>To avoid the timeout you can change the timeout value via the server-side property 
+<strong>Carnot.Engine.Tuning.GetCountDefaultTimeout</strong>. 
+The higher the value of this property, the longer an implicit JDBC count will 
+wait for the correct result. On the other hand this might result in slow responses
+in case the count cannot be executed in a reasonable time.
+Try to keep this value as low as possible and as high as necessary.</p>
+<p>For details on this property refer to section
+<a href="../properties/ag-appendix-properties-2.htm#tuning">
+Tuning</a>
+of chapter
+<a href="../properties/ag-appendix-properties-2.htm">
+Server Side Properties</a>.</p>
+<p class="note"><strong>Note</strong><br>
+Do not mistake this property for the timeout value which can be set for queries
+in general by the TimeoutPolicy. The property is used for internal JDBC queries
+only.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

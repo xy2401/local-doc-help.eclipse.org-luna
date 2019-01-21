@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing create connection functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Reconnection Functionality</h1>
+<h2>Creating a Reconnection Feature</h2>
+<p>The so called <em>create connection feature</em> manages <strong>only the creation</strong> 
+of new connections. If you select an EReference with the selection tool you can 
+drag and drop the endpoint to any other EClass as shown in the figure below. But 
+this is accomplished with a <i>reconnection feature</i>, in our case the default 
+implementation
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/DefaultReconnectionFeature.html">
+DefaultReconnectionFeature</a>, which realizes the anchor handling.</p>
+<p>&nbsp;</p>
+<p>
+<img alt="" height="156" src="visio/reconnection-1.png" width="507"></p>
+<p>
+<strong>Figure: Reconnection is allowed</strong></p>
+<p>&nbsp;</p>
+<p>The integration into the platform’s UI is done by the framework.</p>
+<p>A reconnection feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IReconnectionFeature.html">
+IReconnectionFeature</a>. Instead of implementing it directly it should extend the 
+standard implementation <a href="../../../javadoc/org/eclipse/graphiti/features/impl/DefaultReconnectionFeature.html">DefaultReconnectionFeature</a>.</p>
+<p>The most important methods here are:</p>
+<ul>
+		<li>The method <a
+			href="../../../javadoc/org/eclipse/graphiti/func/IReconnection.html#canStartReconnect(org.eclipse.graphiti.features.context.IReconnectionContext)">canStartReconnect</a>
+			checks whether reconnection should be possible at all for the
+			connection. The default implementation returns <i>true</i>, in case <i>false</i>
+			is returned for this method, no selection handles at all will appear
+			when the connection is selected.
+		</li>
+	<li>The method 
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IReconnection.html#canReconnect(org.eclipse.graphiti.features.context.IReconnectionContext)">
+	canReconnect</a> has to check whether the reconnection is allowed for the given 
+	context.</li>
+	<li>The methods
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IReconnection.html#preReconnect(org.eclipse.graphiti.features.context.IReconnectionContext)">
+	preReconnect</a> and
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IReconnection.html#postReconnect(org.eclipse.graphiti.features.context.IReconnectionContext)">
+	postReconnect</a> can be used to modify business objects, manage bend points 
+	etc.</li>
+</ul>
+<p>In this example we simply do not want allow reconnecting existing EReferences 
+at all.</p>
+<p>&nbsp;</p>
+<p>
+<img alt="" height="158" src="visio/reconnection-2.png" width="507"></p>
+<p>
+<strong>Figure: Reconnection is not possible but reconnection is not completely disabled</strong></p>
+<p>&nbsp;</p>
+<p>You can see the complete implementation of the reconnection feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialReconnectionFeature 
+		<span class="keyword">extends</span> 
+		DefaultReconnectionFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public</span> TutorialReconnectionFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">&nbsp;public boolean</span> canReconnect(IReconnectionContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">//do not allow to reconnect</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getReconnectionFeature(org.eclipse.graphiti.features.context.IReconnectionContext)">getReconnectionFeature</a>).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> IReconnectionFeature 
+		getReconnectionFeature(IReconnectionContext context) {<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialReconnectionFeature(<span class="keyword">this</span>);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Try to reconnect an EReference</h2>
+<p>Now start the editor and test the create connection feature:</p>
+<ol>
+	<li>create or open a diagram</li>
+	<li>create two new EClasses (if you do not have them already) and create an 
+	EReference between them with the connection tool in the palette</li>
+	<li>click on the “EReference” with the selection tool in the palette that it 
+	becomes selected</li>
+	<li>drag the end point as it is shown in the figure above. You should notice 
+	the tiny prohibition symbol then. When you drop the endpoint, it snaps back 
+	to the original position.</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

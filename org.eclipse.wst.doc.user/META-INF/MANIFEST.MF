@@ -1,0 +1,171 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.wst.doc.user; singleton:=true
+Eclipse-LazyStart: true
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 1.2.0.v201309112106
+Bundle-ManifestVersion: 2
+
+Name: common.css
+SHA1-Digest: jUDTWeVty/ljmyHgAzIk+opDfKY=
+
+Name: images/wsdleditor-finished-wsdl.jpg
+SHA1-Digest: Owm1hGTSZaQD7oZSWhI70up8sJ0=
+
+Name: images/wsdleditor-complex-type.jpg
+SHA1-Digest: Ev/6ubepWPaQeisYF+P7wpkWq/M=
+
+Name: images/xsdeditor-figure1.jpg
+SHA1-Digest: wKnowA+04WfsO2RW+GLRnyt1x6E=
+
+Name: images/xsdeditor-figure2.jpg
+SHA1-Digest: Bx0NBrvEKROzjNm2ut3SkCWjzjU=
+
+Name: images/xsdeditor-figure3.jpg
+SHA1-Digest: yo6YVBmxOA9UAvzZHTW6rprxUWo=
+
+Name: images/SelectExistingServer.jpg
+SHA1-Digest: HSdYl75FyKXQb7VXs4F/1nhL+R8=
+
+Name: images/xsdeditor-figure4.jpg
+SHA1-Digest: Oprq+bxN4PWqBqEbzGohMBSzj2A=
+
+Name: images/imageLKF.jpg
+SHA1-Digest: RczD0oqT77LTno4NNB46PWIRJbQ=
+
+Name: images/xsdeditor-figure5.jpg
+SHA1-Digest: 89vyk7LZDPNSe5Ut590UprlGhTk=
+
+Name: images/xsdeditor-figure6.jpg
+SHA1-Digest: HB7ajClfeWY7Q175RAXhgNq6wEs=
+
+Name: images/xsdeditor-figure7.jpg
+SHA1-Digest: jr+999/C8VbEi9ErjsgDBVA2W/0=
+
+Name: images/xsdeditor-figure8.jpg
+SHA1-Digest: UDXUlJXEgWK+Ct9NI/y/+TAPMhM=
+
+Name: images/xsdeditor-figure9.jpg
+SHA1-Digest: FwFoUy0CNsbhBMbEIsGGtkNu1XI=
+
+Name: images/image99L.jpg
+SHA1-Digest: WaqzG22UpwuGFXOu79OY5+4E2/E=
+
+Name: notices.html
+SHA1-Digest: di6VnbMoJJAhDp6Pe8j2nbHEZSM=
+
+Name: images/imageIAI.jpg
+SHA1-Digest: 6qMEZmtg/ztucNWy9pUmnGb5WdE=
+
+Name: images/imageEJ9.jpg
+SHA1-Digest: Zceab3JzjDnCrNdz1sCRXhcl+l8=
+
+Name: images/SelectNewServer.jpg
+SHA1-Digest: M5qH2USC0bxi1Kh4eRgEt21PkYQ=
+
+Name: images/wsdleditor-new-operation.jpg
+SHA1-Digest: ysO5dvb1//5/MPvDIJas8/h5xXg=
+
+Name: images/wsdleditor-settype-dialog.jpg
+SHA1-Digest: RO8eEKAI1MhOfAXjazytPjWlz2U=
+
+Name: images/wsdleditor-new-skeleton.jpg
+SHA1-Digest: snBajA2mDeDFD3FENznGh+6GjQk=
+
+Name: images/wsdl_main.gif
+SHA1-Digest: xMqvwn9UJ4s7W2KAZYHuanC0Oc8=
+
+Name: commonrtl.css
+SHA1-Digest: /ae/a1S8Xiv04s2qaZeQKkYQ/dM=
+
+Name: commonltr.css
+SHA1-Digest: duJN3iJfDMEHaK6ZaG6GDihDg4E=
+
+Name: images/xsdeditor-backbutton.jpg
+SHA1-Digest: K8+UY07Mya9jP6QwZHZmmBF+jjs=
+
+Name: images/selectRootElementXSD.png
+SHA1-Digest: dqfjvex/tfaOymH1bjAlwor7vNc=
+
+Name: images/selectRootElementDTD.png
+SHA1-Digest: rR89cnwU5bpzn+0bdHuCp/L7U6Q=
+
+Name: images/wsdleditor-setelement-dialog.jpg
+SHA1-Digest: mgIkUQw91xVAKSEc8XYKMlDS04A=
+
+Name: plugin.properties
+SHA1-Digest: g3dzWVy4YZoY6g6TFOtAEaJP/cE=
+
+Name: images/wsdleditor-new-wizard.jpg
+SHA1-Digest: 5ocNQuXu/CVwXq3XdghDn/NJmLs=
+
+Name: topics/overview.html
+SHA1-Digest: vj5AyHgg9P1xlVQ3n7qtx9bofxM=
+
+Name: plugin.xml
+SHA1-Digest: 3RXlQmwiSQt9jb0wlxUx7F2IlPc=
+
+Name: images/wsdleditor-smart-rename1.jpg
+SHA1-Digest: D6qbHfyplmKn5aa5f9u7OSHQVlA=
+
+Name: images/imageU71.jpg
+SHA1-Digest: r3gC4if6n3FPzDDhPSLDXTU9JRk=
+
+Name: images/imageO78.jpg
+SHA1-Digest: 7zzB2vv5+d80et2JXhIsW651f8M=
+
+Name: topics/limitations.html
+SHA1-Digest: uEhbwAlVTAmLU/O+PLhPqbe900Y=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.doc.user/pom.properties
+SHA1-Digest: r687TvSTngRXR2K2JhqoL9A7Ypg=
+
+Name: images/XMLCatalog-Figure1.jpg
+SHA1-Digest: buH5dlI30ySPMMfbegQZ80D1XFo=
+
+Name: about.html
+SHA1-Digest: wdJbO2Pr9rJqJt3dfFjpWC3Ly5o=
+
+Name: images/XMLCatalog-Figure2.jpg
+SHA1-Digest: hSeF74ePgJ2XVt5IrFPPJXlpEY0=
+
+Name: images/XMLCatalog-Figure3.jpg
+SHA1-Digest: nbg/NdjkfbPB/HAPj5CCmoADCDQ=
+
+Name: images/XMLCatalog-Figure4.jpg
+SHA1-Digest: T3DEMvSW6/LMVtvV53KklgouRMc=
+
+Name: images/XMLCatalog-Figure5.jpg
+SHA1-Digest: q0bImEwrPsZmAd92ekaKNa4AuYc=
+
+Name: images/wsdleditor-backbutton.jpg
+SHA1-Digest: 338ik4q6gDNkyI96v+c8/8B2Cq8=
+
+Name: toc.xml
+SHA1-Digest: 7/gcZGlfWtfzDc+18Uj2SdXbBzE=
+
+Name: images/wsdl.gif
+SHA1-Digest: V5PmqSCg3hGlJsxv26PnHRWj5N0=
+
+Name: images/wsdleditor-binding.jpg
+SHA1-Digest: RKZbSdP11ihQACmWax7xCQw2SFI=
+
+Name: reference_toc.xml
+SHA1-Digest: 5j8SPy3wfoGH2dk2/qowvhuf60U=
+
+Name: META-INF/maven/org.eclipse.webtools.sourceediting/org.eclipse.ws
+ t.doc.user/pom.xml
+SHA1-Digest: 0NUBmHQxlRLJo5q44tU2WDh+aCI=
+
+Name: book.css
+SHA1-Digest: XL7Tv0eykC0fDymfutg4rCvrBjw=
+
+Name: images/note.gif
+SHA1-Digest: BIDRdvMEPAhKvIrHjNssbzMK8ys=
+

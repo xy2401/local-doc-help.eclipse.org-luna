@@ -1,0 +1,908 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.webtools
+Bundle-SymbolicName: org.eclipse.jpt.doc.user;singleton:=true
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 3.2.100.v201308231650
+Bundle-ManifestVersion: 2
+
+Name: reference009.htm
+SHA1-Digest: FWK7bpUzT/HKjtrtBP6R9tiOlmk=
+
+Name: img/new_icon_embeddedmapping.png
+SHA1-Digest: H4QVV5Ure1+o9cfuUmAJQKmPvN4=
+
+Name: img/inheritance_join.png
+SHA1-Digest: fd/mQRuatxqK9z0e4abBnq5798w=
+
+Name: task_mapping.htm
+SHA1-Digest: mDH0fqh9jDoeN0aLUnYmbajhkL4=
+
+Name: ref_jaxb_schema_wizard.htm
+SHA1-Digest: QJ4y5j9XqFIILbdjO0v9Nxso6+U=
+
+Name: img/new_dbws_project_web_dynamic.png
+SHA1-Digest: KpKyYgnDExYj+Db65e8m7fG3rV4=
+
+Name: tasks020.htm
+SHA1-Digest: qYRejReDHrIEasp5xMmu8O2TN2Y=
+
+Name: reference053.htm
+SHA1-Digest: STJrTNu6R7Mve3z2n7VAPYgh/ng=
+
+Name: tasks024.htm
+SHA1-Digest: 9ftJ4c7qNpI4DMJ3gP3yxEsLwL8=
+
+Name: img/new_jaxb_project_task.png
+SHA1-Digest: HS++aVeUzBmFJoyRIk0Yoc0H/oo=
+
+Name: reference012.htm
+SHA1-Digest: 3ZEkcLUcYoIlzLfpJxtfn4bcKjw=
+
+Name: reference057.htm
+SHA1-Digest: rp9CkVfx0njzSLzdJqONhTlIdws=
+
+Name: ref_jpa_facet.htm
+SHA1-Digest: pJp1ZNX5bylq/+NDyi39ADj3MEk=
+
+Name: tasks028.htm
+SHA1-Digest: mZUhy3hZFuO8dArlmZYpbLcmx1k=
+
+Name: reference016.htm
+SHA1-Digest: oJ02NH5rtjDPUJRSohJaQ9m20FU=
+
+Name: img/upgrade_persistence_jpa_version.png
+SHA1-Digest: jA8Blj21mUCRcKcdiJCFBiZH7v8=
+
+Name: ref_selectTables.htm
+SHA1-Digest: OkhDOhw7gYZ5GT4GVPo9Ksc7KfI=
+
+Name: cheatsheets/add_persistence.xml
+SHA1-Digest: qSXRjznCm8ascLt40lcKF+DFGl8=
+
+Name: img/new_icon_embeddableentitymapping.png
+SHA1-Digest: AZtkNDRcEjWkjr7pVKD6RxxBeH0=
+
+Name: cheatsheets/create_entity.xml
+SHA1-Digest: jL0/SaPEDbaCrokIW5fkNk557jk=
+
+Name: legal.htm
+SHA1-Digest: 7zW/BHXGqFFQDmJm8iCYvmEy3sU=
+
+Name: task_manage_persistence.htm
+SHA1-Digest: +P7FzR7/BnJsD4M1ShL0ScwDfNE=
+
+Name: reference060.htm
+SHA1-Digest: vEhlrCfVPnSVclsEAhzNFjoovbc=
+
+Name: reference064.htm
+SHA1-Digest: VP2n20yW57ZDGPz7YyNYG2LmPTI=
+
+Name: img/ngrelr.png
+SHA1-Digest: 3Pun/wKewWm6oijuw83U5l6x6SA=
+
+Name: concepts001.htm
+SHA1-Digest: ipNAIcZdB08AkVBWRs6RNGAlAK0=
+
+Name: reference023.htm
+SHA1-Digest: FoaHWkAKCuE2Ca8EZr6nGe/vanw=
+
+Name: reference068.htm
+SHA1-Digest: 0E0kEXV7sFwzo1qpk7yPLdUsSuQ=
+
+Name: reference027.htm
+SHA1-Digest: XLsy1BsFYwXldk02NDLYfZcLBhk=
+
+Name: ref_tableAssociations.htm
+SHA1-Digest: +OM4qW9n2airSdX5U/wNJdoCz24=
+
+Name: img/icon_basicmapmappings.png
+SHA1-Digest: NUGi9PheesysFlDHKv2BZeWyxJ0=
+
+Name: img/new_icon_onetoonemapping.png
+SHA1-Digest: 0cpVxF9I4Skw5ciya36naZsSMFk=
+
+Name: title.htm
+SHA1-Digest: KqQE864j2Z4r7SYDf/6UQKUQsug=
+
+Name: img/java_editor_address.png
+SHA1-Digest: +3FP3VqunZVzOpFuBE9oIJA6Tlk=
+
+Name: img/jpa_details_embedded.png
+SHA1-Digest: CI02yjmggn1U5iRZiMC04gZaoKM=
+
+Name: ref_create_new_association_wizard.htm
+SHA1-Digest: 477zD1Szfs+4VVodRrKUYVXpPv0=
+
+Name: reference071.htm
+SHA1-Digest: q+kQq9MPQpJVu2J1vHyCY90YSyQ=
+
+Name: img/new_icon_basicmappings.png
+SHA1-Digest: B0OzpK0d1S+KqDVxMNvCgNee3M0=
+
+Name: ref_new_jpa_project_wizard.htm
+SHA1-Digest: TjLgjw7ktv9BoNeWbz9gVprm4O0=
+
+Name: reference030.htm
+SHA1-Digest: CSvw4zW/km+2+ucZxzp1PvbTFaw=
+
+Name: reference075.htm
+SHA1-Digest: wPpvBYjRzz1VycYxwaeRQaxBNLg=
+
+Name: tasks001.htm
+SHA1-Digest: 7kxcm1pXgkzr5TX9vAh5eenXpx0=
+
+Name: META-INF/maven/org.eclipse.webtools.dali/org.eclipse.jpt.doc.use
+ r/pom.properties
+SHA1-Digest: BPtp8wgsquw5DnTaAnMt2zAzOnM=
+
+Name: reference034.htm
+SHA1-Digest: AMJFbat+LNfNVpIBToVsLD0cY8s=
+
+Name: img/jpa_details_manytoone.png
+SHA1-Digest: /zOdx2of3G6xyZn3qFMe5kJUjCk=
+
+Name: tasks005.htm
+SHA1-Digest: n1tnXJ4e4hQYvYuOJ8nhAMfjGP0=
+
+Name: reference079.htm
+SHA1-Digest: oydhF/+WuMTlirW1XTpK0CC5+dg=
+
+Name: img/new_dbws_project_driver_files.png
+SHA1-Digest: NbnkhmzRvoVQcSIe1WkJTg+1ZlM=
+
+Name: task_additonal_tables.htm
+SHA1-Digest: p4d20ctdTenu7wrVxWR2KNdeY4I=
+
+Name: reference038.htm
+SHA1-Digest: apLzU7uK1j1SC5rCO2VJr0ffPQM=
+
+Name: dcommon/html/cpyr.htm
+SHA1-Digest: T11FazzjeYepuDyFvAK8scO8U8Q=
+
+Name: tasks009.htm
+SHA1-Digest: nssMWxTdvvtbcY2O4/ZlXgn3f9w=
+
+Name: getting_started001.htm
+SHA1-Digest: T0HMJ8Ogb3oRs35EG895bbfHCyk=
+
+Name: img/add_virtual_attribute_dialog.png
+SHA1-Digest: 0WGje0CxR3W6Q3tvUFDE7/Hrbys=
+
+Name: img/customize_default_entity_generation_dynamic.png
+SHA1-Digest: jmrGslF3mBjC2mtkrZRPSOV5ofk=
+
+Name: img/table_associations_dynamic.png
+SHA1-Digest: rGLOOIaIjueDfkv6ZTWSY4eLCxU=
+
+Name: concept_mapping.htm
+SHA1-Digest: g5yGwXW5irNGs+Ny4c/mpV1MLmw=
+
+Name: img/table_associations.png
+SHA1-Digest: IG7sWNZOrnJOd7ReQVxu6XN764o=
+
+Name: img/details_entitymappings.png
+SHA1-Digest: Z5pqOaqArP4MYkZ+QWgS6Euz/a4=
+
+Name: img/new_icon_mappedentity.png
+SHA1-Digest: tmUDL+odp2/kuZV4AG9fzWdtTrI=
+
+Name: img/jpa_details_multitenancy.png
+SHA1-Digest: kBTVoIHcBZEKtOB0XAEYlRO/EV4=
+
+Name: toc.xml
+SHA1-Digest: IOwH6o67zJUvzinIF121mNUkXt8=
+
+Name: img/new_mapping_file_options.png
+SHA1-Digest: /hrB1MuQ1M4UgHOoVk5pBKUPXmU=
+
+Name: img/modify_faceted_project.png
+SHA1-Digest: 1lcdl8Rsz3/QcqCG1QtbxqmG7F0=
+
+Name: reference082.htm
+SHA1-Digest: iYUz2wful2Im45ckI2E6QHqCBL8=
+
+Name: img/persistence_editor_options.png
+SHA1-Digest: LcghHqjcFSNvWIQsDc6bC4LPGn0=
+
+Name: reference041.htm
+SHA1-Digest: WE1134HMoM3aX/e+9gqTSlNMOCw=
+
+Name: tasks012.htm
+SHA1-Digest: ajly3VDOYY22HZ/xtaNkAIIpEIU=
+
+Name: pom.xml
+SHA1-Digest: fXx2Mdel8dVclv+/cxCILOt66os=
+
+Name: reference045.htm
+SHA1-Digest: WFhH8GEF3eCs9GpdrvXqoj+o44c=
+
+Name: tasks016.htm
+SHA1-Digest: eyZouKZ6wFZ49nULGTXYC6GDVD8=
+
+Name: reference004.htm
+SHA1-Digest: LoHG0thb4AX1VYfLtLvsncPRBwI=
+
+Name: reference049.htm
+SHA1-Digest: 3tq7iD2WjV3RQbGPne6TDg/MUEk=
+
+Name: img/mapped_entity_type_link.png
+SHA1-Digest: S5hwIlJlJDhxOkcwkz8e3Tu010Y=
+
+Name: reference008.htm
+SHA1-Digest: utfpC7tH/SNOQdxyiMglvO7vvYo=
+
+Name: tasks.htm
+SHA1-Digest: 3AFjn51iwn0s8dntPrKZecxZSTA=
+
+Name: img/address.java_jpa_details.png
+SHA1-Digest: Dj9lMp3w8MFw64HtQxJXN4PyvCs=
+
+Name: img/jpa_details_onetomany.png
+SHA1-Digest: YhT5rPRXak2F6NeRN7AaKxX/CNA=
+
+Name: img/new_icon_idmapping.png
+SHA1-Digest: I8gqibDkzfkaswK4/zhltaCvGDA=
+
+Name: img/new_jpa_project_task.png
+SHA1-Digest: vPjUvNjYw0j/OzaN/TISFXxRD2E=
+
+Name: reference052.htm
+SHA1-Digest: rwxaa1kTW27R8hK9eJALE0vVxtU=
+
+Name: tasks023.htm
+SHA1-Digest: HoxGawpGWjgB1upvG+Yp0T8aMM0=
+
+Name: reference011.htm
+SHA1-Digest: Ij+evjjFqc/JvlsJMqeZ5qrU53k=
+
+Name: img/add_query.png
+SHA1-Digest: FYiyyYpEnWMPBwmY0IDFk7KS/0s=
+
+Name: img/mapping_type_selection_entity.png
+SHA1-Digest: z9FXeAyQmleHBsbzZY/YMcfSybA=
+
+Name: reference056.htm
+SHA1-Digest: ZH5psZ3p/uPRSY3RyCFtFEOr/+k=
+
+Name: tasks027.htm
+SHA1-Digest: WEtZy8L/VOuyrhk6bz3pymUYwNc=
+
+Name: ref_customizIndividualEntities.htm
+SHA1-Digest: T+GXhpBsO5ou9flYFIopYh8QpxE=
+
+Name: reference015.htm
+SHA1-Digest: Inj5d6B0mRWUpse8VoBIulMzT30=
+
+Name: img/select_a_wizard_entity.png
+SHA1-Digest: y99sQjo47Z6SccxC21CvtYh27ZA=
+
+Name: reference019.htm
+SHA1-Digest: Zs+o3rpEj2458dNNJQ/0yf+sLtc=
+
+Name: img/new_icon_onetomanymapping.png
+SHA1-Digest: oG1mAKOjQ4Fa28gDXM+Fa8PkL9o=
+
+Name: img/create_jpa_fields.png
+SHA1-Digest: sTSp7eIL0EZ9O1XRkGIk7oscgjE=
+
+Name: tasks030.htm
+SHA1-Digest: fdr/Hr4T6iDsXkYT5kV23qzOqKY=
+
+Name: dcommon/css/blafdoc.css
+SHA1-Digest: QnpC3xp0+LXUpTLjGuzOu7FA3rk=
+
+Name: img/persistence_editor_logging.png
+SHA1-Digest: 348hPjPZcvL+uD1RQf6U4Ic13D8=
+
+Name: reference063.htm
+SHA1-Digest: BIaXDrqk6/SJ9D3+jSMN2lOBAC0=
+
+Name: img/select_a_wizard_jaxb_project.png
+SHA1-Digest: iqpWmqIaTbiauxgHzCKDUfjUsrY=
+
+Name: reference022.htm
+SHA1-Digest: M1whzd4VjoUlbqe3EwvsgKg+3vY=
+
+Name: ref_project_properties.htm
+SHA1-Digest: ZeObcB17sqrm7nO/0tWpy1T8jWo=
+
+Name: reference067.htm
+SHA1-Digest: iSrulqjEEE713Jf3HNC72DqtsgQ=
+
+Name: img/address_id_details_quickstart.png
+SHA1-Digest: SPROv0hWH11t3HSTfcWaklUADSQ=
+
+Name: img/task_entering_query.png
+SHA1-Digest: ew/XPfCQgZwY5guRSK4nqlu+mi4=
+
+Name: concepts004.htm
+SHA1-Digest: cLILh9JWANv8NFux4o96ULv4oXI=
+
+Name: reference026.htm
+SHA1-Digest: RAkpFNdkM+HD3+UsVfk05H8bd5Y=
+
+Name: img/jpa_details_primarykeygeneration.png
+SHA1-Digest: 98Pq6OBy5NnWY+56/bSUGJVel9Q=
+
+Name: tips_and_tricks.htm
+SHA1-Digest: cOaIMZy+gFjLp4C06sQ6BKO7Z8k=
+
+Name: img/jpa_perspective.png
+SHA1-Digest: qPdCeXHdswQ+w9Atp55M5W4BbEw=
+
+Name: img/icon_arraymapping.png
+SHA1-Digest: 6oomecVdGsTicj7Q3md1ijuywsE=
+
+Name: img/new_icon_versionmapping.png
+SHA1-Digest: mch0oGxi/wYeZ/octpKxerANmjg=
+
+Name: img/jaxb_schmea_generation_dialog.png
+SHA1-Digest: yBHHUKEiCYOFJ1+a77cK05wnDqI=
+
+Name: plugin.properties
+SHA1-Digest: hR034io/fqEMf+eWLPlCqpgrzTw=
+
+Name: reference070.htm
+SHA1-Digest: kz5J0sT1V2FGW8UuHd+ouzGFnkU=
+
+Name: img/select_a_wizard_dbws.png
+SHA1-Digest: UK20zp7+ordF2NyM2FvDnNK+mhU=
+
+Name: reference074.htm
+SHA1-Digest: sQ74tmSUlEJTS+vowEwZLKMYlis=
+
+Name: img/jpa_details_transient.png
+SHA1-Digest: zb6apmRgJPi4KGtHFLUX90AKTiM=
+
+Name: reference033.htm
+SHA1-Digest: f3ShIqSUGgRE/uiMR14C0N0US7w=
+
+Name: reference078.htm
+SHA1-Digest: wo/JIpx3CI6C5LOdHLr5ONTiTgg=
+
+Name: tasks004.htm
+SHA1-Digest: tTGkZ8vwPETmBFRVaKO73D7CxRY=
+
+Name: reference037.htm
+SHA1-Digest: 4YDVV9f+50vOOwbWJK1bBbJ7M2E=
+
+Name: plugin.xml
+SHA1-Digest: i4SzhAoMp86hhsS6D+v4cS8gJUs=
+
+Name: tasks008.htm
+SHA1-Digest: UOEdP9bg/GHfE52s/1uwx/dsbBQ=
+
+Name: ref_persistence_xmll_editor.htm
+SHA1-Digest: VzdRFdqUg3fEEUMVgKsGxT+jPXo=
+
+Name: getting_started004.htm
+SHA1-Digest: Vo8U/o6WetJhqMsmTfOnHtS+3fE=
+
+Name: img/xmlpath_validation.png
+SHA1-Digest: eN4EUSFxkNOn3Vv+KlPIQP/n+QU=
+
+Name: ref_persistence_perspective.htm
+SHA1-Digest: RECc58epjLyjBGRHs49JLDSeme0=
+
+Name: ref_EntityPropertiesPage.htm
+SHA1-Digest: FlCKnpbl3QNid3Ao6xPSHu2edCo=
+
+Name: img/jpa_details_version.png
+SHA1-Digest: G0zr2i9xroq/xc32swQh3iUdEao=
+
+Name: img/new_jpa_project_source.png
+SHA1-Digest: MiaJq/SQqAUOMoZoDV1iiqdFrjI=
+
+Name: img/move_to_xml.png
+SHA1-Digest: PLNrX69Vvr2VzPKvLclVEyre8+g=
+
+Name: reference081.htm
+SHA1-Digest: RQMJKBi4oHtMATh8+dHRr6nfqak=
+
+Name: reference040.htm
+SHA1-Digest: VCFlg/MEzwjS0rjCnQqU5vKyplk=
+
+Name: tasks011.htm
+SHA1-Digest: 07aD6JP2QrTWnxw8kKkcbsYZzJU=
+
+Name: img/quickstart_project.png
+SHA1-Digest: vd7+4IMUnlpK+nMpYoHpzFl0PEw=
+
+Name: img/select_tables.png
+SHA1-Digest: HA6QeIaf6fcERb6lQCFZHZKZhRs=
+
+Name: reference044.htm
+SHA1-Digest: P/znzTNA8nsSW1X54PiSx45fz1Y=
+
+Name: tasks015.htm
+SHA1-Digest: 3sOY8wzQxEYKKFSvfbAvoc/50sY=
+
+Name: reference003.htm
+SHA1-Digest: WuaC9MwxWqrhaBWlVeKmD2JPlLA=
+
+Name: index.xml
+SHA1-Digest: 9dyfhKhMW594KtnmtKTnhQBS0Ow=
+
+Name: img/persistence_editor_source.png
+SHA1-Digest: he4IuFRHwN3G4Qc4TKO6UL3iu5s=
+
+Name: reference048.htm
+SHA1-Digest: tWBacX4fmMFYJm6SeLXS+uOSbV8=
+
+Name: task_manage_orm.htm
+SHA1-Digest: JWzA7Vk1zKxxrD7rt4fMzVHOD/0=
+
+Name: tasks019.htm
+SHA1-Digest: YBx/nAZXgIklL9lgHCobNEYueMw=
+
+Name: ref_schema_from_classes_page.htm
+SHA1-Digest: FhCNkn1KYyXxDmEiqeC+a6KWCxQ=
+
+Name: reference007.htm
+SHA1-Digest: EzWIu25dA1nsrqMJYhGN/+OzQ7A=
+
+Name: about.htm
+SHA1-Digest: 4yGA1Olqi5N6BGcuGimLkd/mpn8=
+
+Name: task_inheritance.htm
+SHA1-Digest: fzZDTePwt/esxwK5OsJNDeAk1ec=
+
+Name: task_manage_persistence001.htm
+SHA1-Digest: 0FBhsZ0zZvsvt8eQlth0w85N8kg=
+
+Name: img/jpa_details_query_2.png
+SHA1-Digest: TqXoIaAjeXeJ/GdmOh4qF+6LaOk=
+
+Name: img/jpa_details.manytomany.png
+SHA1-Digest: ZcAyDKdfxMLtYOs0t0iiJYve1e0=
+
+Name: img/mapping_type_selection_superclass.png
+SHA1-Digest: Fp9NzPooQjOg5h9NmZzwdxDZVp4=
+
+Name: img/persistence_editor_properties.png
+SHA1-Digest: RwugmOGcPe6i1a8H/zKOcSwva7Y=
+
+Name: img/persistence_editor_caching.png
+SHA1-Digest: OsDo0iwZtPNfN8KNH0hfIzKsrYo=
+
+Name: reference051.htm
+SHA1-Digest: RF1bJZvH4dOZS61vxvtuZ3nhcLU=
+
+Name: tasks022.htm
+SHA1-Digest: e+TzELDIQ7iSuJiHIznpooAeaow=
+
+Name: reference010.htm
+SHA1-Digest: w+pBU5Zaszbs+NtRVKxu9W35pUs=
+
+Name: ref_association_cardinality.htm
+SHA1-Digest: lew/cm1cPKG9y6AKLMEkqpE4spI=
+
+Name: reference055.htm
+SHA1-Digest: Aw4Wkxb/17NDtRvPKQ/82W5LnE4=
+
+Name: tasks026.htm
+SHA1-Digest: IbDjyEE2KagQaGAptfoPTDaSFv4=
+
+Name: img/customize_individual_entities_dynamic.png
+SHA1-Digest: 6oW52KtuIGTzTnkzAOhLyaULFyY=
+
+Name: img/customize_individual_entities.png
+SHA1-Digest: QLEqjgiuWqjYH/j0rD39kJi+bBE=
+
+Name: img/new_icon_transientmapping.png
+SHA1-Digest: SqnWver7+z1lzNkqbKOHmkTQdJ4=
+
+Name: reference014.htm
+SHA1-Digest: 5XChMJOx5XUc+xMHy+92r8zcpog=
+
+Name: reference059.htm
+SHA1-Digest: Eaqyo7eGb4VL7E5GehMha+s3bHI=
+
+Name: ref_select_cascade_dialog.htm
+SHA1-Digest: 0dnHyfvKNeV9od4lwNkTW7DnW4Y=
+
+Name: reference018.htm
+SHA1-Digest: 9gonUiwAB5VfSY7w34shq5XjqZ8=
+
+Name: img/jpa_details_idmapping.png
+SHA1-Digest: jy2Cw9wyA7CtW3ibv0A3jr4v2iE=
+
+Name: task_create_new_project.htm
+SHA1-Digest: XDMucxhW209IdxRHO4lM5g1ft70=
+
+Name: img/jpa_structure_virtual_attribute.png
+SHA1-Digest: 1DGnMDEVG9HUeErfEv5u6a0Y8MA=
+
+Name: ref_persistence_prop_view.htm
+SHA1-Digest: CaMDdBLg5IV+7tHdWxEO30Q4ka8=
+
+Name: img/persistence_outline_view.png
+SHA1-Digest: wwoL+3ugqUGZr88ebIB9Z9Cjups=
+
+Name: reference062.htm
+SHA1-Digest: eLF5HoB2njwx9iie2qiPFXQjBPY=
+
+Name: ref_details_orm.htm
+SHA1-Digest: RmrULK7WKmvvcGuwqYbYzVtE0Vs=
+
+Name: reference021.htm
+SHA1-Digest: JIqnjcO6VDHqixQ5nzRMJ4/DbzY=
+
+Name: reference066.htm
+SHA1-Digest: je3t20wlo9uBushIl3bgdKKWG4I=
+
+Name: img/mapping_type_selection_embed.png
+SHA1-Digest: 8SLEABtypEW4q715b4GtNYBLNO0=
+
+Name: img/ngrelt.png
+SHA1-Digest: Wavt0lEmZMYxUckB81e9b6YSlDc=
+
+Name: concepts003.htm
+SHA1-Digest: jfY9d2tsqCgley+nPXpl9RlFLSQ=
+
+Name: concept_persistence.htm
+SHA1-Digest: prZuIsXP9xE5hwB68xybJ49uX+M=
+
+Name: reference025.htm
+SHA1-Digest: fWVybEpIiBkHp2P76WFnC0UVm0k=
+
+Name: ref_mapping_general.htm
+SHA1-Digest: +Ug+Kmq4hP6ZtxzuwCd+btM+Nuw=
+
+Name: img/persistence_editor_connection.png
+SHA1-Digest: EhJGNv8kpOsbXgcNST/UK5qtbM4=
+
+Name: reference029.htm
+SHA1-Digest: NM6l4AjchNWJJW1PAdrSzCHv0j4=
+
+Name: img/error_sample.png
+SHA1-Digest: 7zOzV7laWGxiMvBhIcn82yBhEhE=
+
+Name: img/make_persistence_dialog.png
+SHA1-Digest: AArKXRX680mam6MHjMUVgXabzbw=
+
+Name: img/new_icon_embeddedidmapping.png
+SHA1-Digest: KETouQijxN0zfZ6aaHHhItbcmYs=
+
+Name: img/MakePersistentMenu.png
+SHA1-Digest: i5SfbBuA+OOW/ua1BbjCOJPmURg=
+
+Name: img/synchornize_classes.png
+SHA1-Digest: B/0z5KgHUaBZmljtHHKNr0YF7mU=
+
+Name: reference073.htm
+SHA1-Digest: GuhE5yrEDjiXoXesRoKoqzvi3bU=
+
+Name: reference032.htm
+SHA1-Digest: hS4yr3iptErGvdP1iUiktybLojU=
+
+Name: img/new_icon_manytoonemapping.png
+SHA1-Digest: zXemRCK3I7M25X+ocTyoQoQVhfY=
+
+Name: reference077.htm
+SHA1-Digest: 5TE7OOx35Lx22Zy6Oh2ewStXJ1o=
+
+Name: tasks003.htm
+SHA1-Digest: rYc+cmPm2gMIPrl6Kxm/SPCKtR8=
+
+Name: img/icon_elementcollection.png
+SHA1-Digest: hD6ozbpWXIs0JXIIeMHHn1qTMgI=
+
+Name: reference036.htm
+SHA1-Digest: nxVZKk58gvnyYyU48q4xepFBVsM=
+
+Name: tasks007.htm
+SHA1-Digest: cOjf4O8p2aOScgmcH0mP6Tu7OvU=
+
+Name: task_generate_classes_from_schema.htm
+SHA1-Digest: +u3o/KxA9yQJBk+HfVodl6P7nzY=
+
+Name: getting_started003.htm
+SHA1-Digest: B3+t288V3bdHwKKjq4ttA+Cwxb4=
+
+Name: img/new_icon_mappedsuperclass.png
+SHA1-Digest: Q7xUG5AGb2HsWfd46BJFwcJHytU=
+
+Name: img/create_jpa_entity_wizard.png
+SHA1-Digest: 8eK3CyCmm8e7J/JnWSol6tAHxmM=
+
+Name: ref_persistence_map_view.htm
+SHA1-Digest: ii7FXuM5YYiLt4/k708xNkkYs4g=
+
+Name: img/customize_default_entity_generation.png
+SHA1-Digest: HTYx3MseUV2LBbq0DwRD4Jh+el4=
+
+Name: about.html
+SHA1-Digest: 1/PINSFHU4NKA4VOYpruoJx6rHU=
+
+Name: reference080.htm
+SHA1-Digest: +qdPLZ5cq7MWth6bm6RYD1E5VS8=
+
+Name: META-INF/maven/org.eclipse.webtools.dali/org.eclipse.jpt.doc.use
+ r/pom.xml
+SHA1-Digest: fXx2Mdel8dVclv+/cxCILOt66os=
+
+Name: img/jpa_wizard_create_fields.png
+SHA1-Digest: 3vcxzaz5nxLNVnNBnwGtvlILMb4=
+
+Name: reference084.htm
+SHA1-Digest: xpwdIC1zGAqIng5pSDKw0+HxfUU=
+
+Name: tasks010.htm
+SHA1-Digest: OyeS0murDu46P48P1TEEeLuGkVs=
+
+Name: img/new_icon_manytomanymapping.png
+SHA1-Digest: qLeVx4G7wj6isCq3fKQc182WpD8=
+
+Name: img/new_jpa_facet_task.png
+SHA1-Digest: p/eSB3VUU6QixtvVQhIjXnkU4U4=
+
+Name: reference043.htm
+SHA1-Digest: 0GF7Ba3J9GKhpVglObqZLa8EhfQ=
+
+Name: tasks014.htm
+SHA1-Digest: 0NHoYphYkwH7nhsiMGE3LPK1ux8=
+
+Name: img/jpa_details_joiningstrategy.png
+SHA1-Digest: 04tTxKNILJ854JJI3g+c6B7Wom8=
+
+Name: getting_started.htm
+SHA1-Digest: ta9nIdoffzo4KdowhsPoZn0PGec=
+
+Name: reference002.htm
+SHA1-Digest: N5X/pAfkq/rHjciTme3HMpd8jP8=
+
+Name: img/table_entity.png
+SHA1-Digest: 6z5CzW5yGrdjF07jLPABtMZge84=
+
+Name: reference047.htm
+SHA1-Digest: vCoTLW+ovpukT90bCoX9Mwx7RSs=
+
+Name: tasks018.htm
+SHA1-Digest: S1qJo1dd/fU+GcloXCYLUsjsArk=
+
+Name: img/select_jaxb_schema_wizard.png
+SHA1-Digest: xgpdbLp6f02GJ07OrC2AfdxF2Q4=
+
+Name: reference006.htm
+SHA1-Digest: 8WT5p2nam5cdZhjgC4StmyV8iRE=
+
+Name: concepts.htm
+SHA1-Digest: b86Tn8OM8+OqTHSzFaCahkfVjrw=
+
+Name: ref_create_jpa_entity_wizard.htm
+SHA1-Digest: JQZ7DZwVF/PYvWAYrcItEnIDOWQ=
+
+Name: img/new_dbws_project_builder_xml_file.png
+SHA1-Digest: p4DbbdZ7bmF0HkP+RCJNE7geAvM=
+
+Name: img/jpa_details_query_1.png
+SHA1-Digest: BN6sBixYew9tZJPfpSbWlxkY9eo=
+
+Name: img/inheritance_tab.png
+SHA1-Digest: kEVpLnTuQ5HumyQySbvb6JV4Y54=
+
+Name: ref_persistence_general.htm
+SHA1-Digest: EGpMdyfY0Dcv2EuIDaq1sugjF8M=
+
+Name: task_generating_schema_from_classes.htm
+SHA1-Digest: RuMJtC5CWvvuCPYs+T5EBoFmzns=
+
+Name: reference050.htm
+SHA1-Digest: LnSIGKQLVRtAeVt8xPSW1+tFlCM=
+
+Name: tasks021.htm
+SHA1-Digest: h/vdXzzrZZ2xodG7V2QwXVqUagE=
+
+Name: img/secondary_tables.png
+SHA1-Digest: VWu/TFGJx1Eb1MT8zSqrbD6qeDA=
+
+Name: reference054.htm
+SHA1-Digest: Mov0LDegfLHGJMXUcAPpA4xE09g=
+
+Name: ref_customizeDefaultEntityGeneration.htm
+SHA1-Digest: YghsCAKdD1HzqtdHRHSzYEmvb08=
+
+Name: tasks025.htm
+SHA1-Digest: OYqJiuhsoaTTiC6moSMYghxF8Ig=
+
+Name: reference013.htm
+SHA1-Digest: 3UHEtjkeW4KlFlh16v8dEWC3W7A=
+
+Name: reference058.htm
+SHA1-Digest: qGbsHZo457pjcd++BkKJpCwy4YU=
+
+Name: tasks029.htm
+SHA1-Digest: Auk1j3ZXZ2n83WzNZ76U+ozictI=
+
+Name: reference017.htm
+SHA1-Digest: B+CWtVkLCJilAAmA8MY0JB8kcgw=
+
+Name: task_create_jpa_entity.htm
+SHA1-Digest: VgpJ3MLxlEgZgSP7xgwq2KG6q04=
+
+Name: img/persistence_editor_customization.png
+SHA1-Digest: FuwVFMULIfPZrLtDX2gxxg1d2dg=
+
+Name: img/ngrelc.png
+SHA1-Digest: IXT893oe/ZhksL5WX3L4j8FGpLc=
+
+Name: ref_eclipselink_mapping_file.htm
+SHA1-Digest: zDtJNt77JGNljQTGlM4T8FvwZJo=
+
+Name: ref_EntityClassPage.htm
+SHA1-Digest: enTUdNXRn3WVHO5+Y80t7xYf1I8=
+
+Name: img/jpa_details_onetoone.png
+SHA1-Digest: UHGTXRqx+9TgoM1YVMmVLbSS71g=
+
+Name: reference061.htm
+SHA1-Digest: zK3UgJC6DkdjEmKreGRK0E66Nd8=
+
+Name: img/mapping_file_new.png
+SHA1-Digest: iEGBgbrjdwjnMlmfWG88lwKSreA=
+
+Name: reference020.htm
+SHA1-Digest: Smvdfma3tTeNnKWIvhFCDRTwcFo=
+
+Name: reference065.htm
+SHA1-Digest: IOxYWYWMLQtvz+1boPKdMtND08c=
+
+Name: img/generate_dynamic_entities.png
+SHA1-Digest: pLSNEV7vPXYr84ssifqccZIeaYI=
+
+Name: img/generate_entities.png
+SHA1-Digest: Q1chstLeqqTTTF3qfoGNO8TWNh4=
+
+Name: reference024.htm
+SHA1-Digest: oZl4UR24IAGfMSFeBw3NM6x+jT8=
+
+Name: task_add_persistence.htm
+SHA1-Digest: plF9g8LOoXhN0htdD+5nTvj2GLs=
+
+Name: concepts002.htm
+SHA1-Digest: tckmXkxSq+E9w24/ScsEl2OInGg=
+
+Name: reference069.htm
+SHA1-Digest: Tmty1dvXp9i23CCJTr6mTQaCDwc=
+
+Name: img/persistence_editor_general.png
+SHA1-Digest: 23fZ2PmVlxcag+3TfPSzyCVoOx8=
+
+Name: reference.htm
+SHA1-Digest: uYOAjfObfWQV4u2sv4Vf5uvxDx4=
+
+Name: reference028.htm
+SHA1-Digest: U3LRjC0Rvq111K3DbKTjVsmNP0c=
+
+Name: ref_configure_jaxb_class_generation_dialog.htm
+SHA1-Digest: az/NvY72H+SgIfOmNoePxHyQ7ng=
+
+Name: ref_create_custom_entities_wizard.htm
+SHA1-Digest: rnTqOm9A7Tzx2FSNvBmIBTGZu1k=
+
+Name: img/address_java_JPA_structure_quickstart.png
+SHA1-Digest: h4X4He5CXRR9EVIhSFQYJpehk6k=
+
+Name: ref_add_converter.htm
+SHA1-Digest: IfkSp/KTzgLuQkSxwieFARfawfc=
+
+Name: contexts.xml
+SHA1-Digest: ZihNGQJ4kpTcWMMDVEVg0p8vPc4=
+
+Name: img/select_a_wizard_jpa_project.png
+SHA1-Digest: c8hRsgszdxbv6rROMjaSYYkD/Tk=
+
+Name: reference072.htm
+SHA1-Digest: aeX028dU+Ved0acbWtTbEFJK0Oo=
+
+Name: ref_java_page.htm
+SHA1-Digest: X2rR+3JTPaLLlgUKu/GEhIcW/Ao=
+
+Name: img/icon_basicmapping.png
+SHA1-Digest: Q0z25HHLCShhznr4m5U+S83CBvA=
+
+Name: img/generate_tables_from_entities.png
+SHA1-Digest: l6oINJ0mVQhRhGOE4IplnIE2e8s=
+
+Name: reference031.htm
+SHA1-Digest: lueASrYB5/74bXxDecKPeODJqzA=
+
+Name: reference076.htm
+SHA1-Digest: EIhYIlNo+fu//AvPYdqGmh2Hosw=
+
+Name: tasks002.htm
+SHA1-Digest: CjaVwyUBZSz2rVRgYMUdSEGVyUg=
+
+Name: cheatsheets/map_entity.xml
+SHA1-Digest: XSF2f+fSZukaU+rFViwPN5ha0z0=
+
+Name: ref_association_table.htm
+SHA1-Digest: WurCLjysCGtJ7gAkoya7Jf6x0f0=
+
+Name: img/properties_jpa_eclipselink.png
+SHA1-Digest: J545x+faKO2OrX7qPbdUqQQIVGc=
+
+Name: img/persistence_editor_schemageneration.png
+SHA1-Digest: YddynilctmTR151bLi3N4rPIoJs=
+
+Name: reference035.htm
+SHA1-Digest: nAtep0gsOzCNsEzDxk40Y829Z7Y=
+
+Name: tasks006.htm
+SHA1-Digest: G7MAPqHb1hes5hW8L3yUU/nWWeI=
+
+Name: ref_new_jpa_project.htm
+SHA1-Digest: sY0JelZJJEFAJTdNtuR/JPV2TvA=
+
+Name: img/generate_tables.png
+SHA1-Digest: sCiFAE6fOBtKDx15AimftDhLQ+8=
+
+Name: reference039.htm
+SHA1-Digest: Q3r0+TnFNxvFKomKR2lvUSKUs+4=
+
+Name: getting_started002.htm
+SHA1-Digest: btmd1OIKYBo+6fU4BFgH0llq1iM=
+
+Name: img/inheritance_single.png
+SHA1-Digest: 0/8zY6PjSx17bUQ1p9AgUPxmgCI=
+
+Name: ref_join_columns.htm
+SHA1-Digest: z/EC0EqTBTY1FPvdbi/YacrYh+M=
+
+Name: img/jpa_details_elementcollection.png
+SHA1-Digest: jRCn61dhY16HhU6WqiLGaN7e4AE=
+
+Name: ref_persistence_outline.htm
+SHA1-Digest: ctrfxmghOqW16pc3vRXF78kgOAw=
+
+Name: ref_primary_key.htm
+SHA1-Digest: MbfrgHgJQW3ccKbw3Z0YMTKjo3A=
+
+Name: img/select_a_wizard_mapping.png
+SHA1-Digest: atEySYqy1nTztH2lzq5/++sw4UY=
+
+Name: img/project_properties_tasks.png
+SHA1-Digest: QSxIXjwlnsweRmPvnHk/6JknfV4=
+
+Name: reference083.htm
+SHA1-Digest: 88Bpaa8ZT8Qf8TplmCURAagGwuo=
+
+Name: reference042.htm
+SHA1-Digest: WjyPGnd0zca4qzZG92dZz++F8iA=
+
+Name: img/select_tables_dynamic.png
+SHA1-Digest: 3savO2wClmwSRkhu7KH10OswtPA=
+
+Name: tasks013.htm
+SHA1-Digest: Kib6LVfR1U3bmbeOJ5hiJErCcrs=
+
+Name: reference001.htm
+SHA1-Digest: BcPBrpQhazqQ4AzP8fsIDOHVkJU=
+
+Name: img/generate_classes_from_schema.png
+SHA1-Digest: JNJMUTZMQJUBzeJfL7lr+fKWCQk=
+
+Name: reference046.htm
+SHA1-Digest: q8vR5qRAcuN4sSL2cC8t1NLcZK4=
+
+Name: img/new_jaxb_facet_task.png
+SHA1-Digest: T5Ss6kTuXgjOsyENyAsZ2Y6Nyug=
+
+Name: tasks017.htm
+SHA1-Digest: 8+q0MwuOn9Nd431aJ2Cjr8CPpbo=
+
+Name: img/jpa_details_basic.png
+SHA1-Digest: 2CJeWA6cBAIOTTvt+T9rRi9c3yQ=
+
+Name: reference005.htm
+SHA1-Digest: zCXHzkel7NKdTA7sCg9q95uuW5A=
+
+Name: img/new_jpa_perspective_button.png
+SHA1-Digest: h6zabIm2+iUQFeAR3dRWB+zHW70=
+

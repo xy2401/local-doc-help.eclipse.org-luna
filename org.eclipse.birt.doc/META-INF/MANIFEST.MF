@@ -1,0 +1,1562 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Eclipse BIRT Project
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: BIRT Documentation
+Bundle-SymbolicName: org.eclipse.birt.doc; singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help;bundle-version="[3.2.0,4.0.0)"
+Bundle-Version: 4.4.2.v201411181219
+Bundle-ManifestVersion: 2
+
+Name: birt/images/ChartBasics.13.8.10.png
+SHA1-Digest: eN1u3dAwfEkpRdtYW+3FiSE0JNs=
+
+Name: birt/images/Mongo02.png
+SHA1-Digest: FeRcQsUfYiNMG/7voWqv/MdRNGA=
+
+Name: birt/lib-HowToUseATemplateReportItem.html
+SHA1-Digest: sgcLonfp9qr4wiVqlwbhVMZR5hU=
+
+Name: birt/UsingScripting.21.2.html
+SHA1-Digest: TRpyNGxo0Z1LrPkQWfrb0DGR/Rs=
+
+Name: birt/con-HowToSpecifyConnectionInformationForMongoDBDataSource.h
+ tml
+SHA1-Digest: NI0FrTCt71WPzgPhjWnMlW/LxYg=
+
+Name: UserToc.xml
+SHA1-Digest: NBoSIQQ+uJ5BmMw8Ppkyj38bUOc=
+
+Name: birt/images/pojo_DataSetProps2.png
+SHA1-Digest: nLxuS9sRuxpE+oxLAyAG9XpTY2k=
+
+Name: birt/images/dataset_filter.png
+SHA1-Digest: 6ZOj4MRq31ZJTKWMaB0S4ehghR8=
+
+Name: birt/images/TextAfterTemplate.png
+SHA1-Digest: PaC0QUoON7BDytomeJF0OxQDnNo=
+
+Name: birt/images/CH_WithPicker.png
+SHA1-Digest: a5AcjwOvZ8F0ZTry+oFi7pjyKKw=
+
+Name: birt/images/jdbc_new_data_source.png
+SHA1-Digest: FrZmpN02sqYwSmRGw2C7M9TQiYU=
+
+Name: birt/images/manage_jdbc_drivers_drivers_selected.png
+SHA1-Digest: kLgMGSGvcIqoXhTmny7ERABn7AY=
+
+Name: birt/css/expressions.css
+SHA1-Digest: kBopkhOlBoYcFgJcYtIlwVRDAZA=
+
+Name: birt/images/PropertyEditorEventHandler.png
+SHA1-Digest: R/RsAGlQ3PZana0iZi8KVlcuMOA=
+
+Name: birt/css/filter.css
+SHA1-Digest: yEPbOHDnlQnRPvPLBknFqWl3ROc=
+
+Name: birt/images/finaloutput.png
+SHA1-Digest: MKON1C4wUsnI+AD1XFVdjP+FwUw=
+
+Name: birt/images/Excel-02.png
+SHA1-Digest: cHa9DFMNEuhMpSagzLfPb1ZGocU=
+
+Name: birt/sub-TutT13ViewReportOutline.html
+SHA1-Digest: 3mAwdwGk6AlUlHvjIN9mTlm5uSU=
+
+Name: birt/ds-HowToSpecifyWhatDataToRetrieveDataFromMongoDBDataSource.
+ html
+SHA1-Digest: Kq854qw7t+183Kf7kbZ8F9jV2GI=
+
+Name: birt/gs-TutT2CreateANewReport.html
+SHA1-Digest: FKuqXfvz4eIIxy2LZQnuevuTgrQ=
+
+Name: birt/ag-AggregatingData.html
+SHA1-Digest: vEgEDZwF/3bbgwGfgQRGuOO+st0=
+
+Name: birt/images/hyperopt2.png
+SHA1-Digest: kzNXAWrkY3VC6fL08MQFv2jo7oM=
+
+Name: birt/gs-TutT5LayOutTheReport.html
+SHA1-Digest: d6itenknKhUQifLmXfQuaImQKmw=
+
+Name: birt/images/New_Report_01.png
+SHA1-Digest: 7gokhujmqvD2yWWE11zLRvu4X/I=
+
+Name: birt/images/grpt_databinding.png
+SHA1-Digest: 3Z+ifjh2o0e/zEKXs9Xk5Ul/GLc=
+
+Name: birt/images/grpt_tablebindings.png
+SHA1-Digest: eIOaTpyWEhtc+tQL2dC//9r6qRo=
+
+Name: birt/images/layout.04.2.1.png
+SHA1-Digest: YIQwdDPQXH51Bf4jNecgV5GwfSI=
+
+Name: birt/ScriptingReference.24.7.html
+SHA1-Digest: DMu2wQQIrW3KLVAzi3IXS/N2Jlg=
+
+Name: birt/images/format.06.11.1.png
+SHA1-Digest: WZlKNqtD3tqF63KiWBvm6KHfR5o=
+
+Name: birt/images/prop_editor_table.png
+SHA1-Digest: Ay9jV1ZlYVCbHLzMsgrYrVeBCmg=
+
+Name: birt/iv-HowToCreateAHyperlinkToLinkTwoSections.html
+SHA1-Digest: CuubWw1PvU5pMW2xv4+wnaRvDoQ=
+
+Name: birt/images/ChartBasics.13.7.2.png
+SHA1-Digest: JJ63U0oNfGd0rwkjIy/HBR34URs=
+
+Name: birt/webworks.css
+SHA1-Digest: ZTRiI4OhCAi91J/XNN0XvS1GwR0=
+
+Name: birt/images/Listing_report_full_screen_01_PTO.png
+SHA1-Digest: KBIP4v2+jjjRtrqfJQNPKBOSgW8=
+
+Name: birt/ScriptingWithJavaScript.22.09.html
+SHA1-Digest: 7Ty9nJ58rxvR6k/vz+eLP5CDdRc=
+
+Name: birt/rp-HowToCreateABasicReportParameter.html
+SHA1-Digest: teqffrKkngyQV341Ge/DgEVolz4=
+
+Name: birt/images/tutorial3Shot5.png
+SHA1-Digest: vLO2Qp5YwRAS1g5HJLF4BFE4V9c=
+
+Name: birt/sg-TutT5GroupCustomerDataByCreditLimit.html
+SHA1-Digest: cp9NYYRzAkKNri5uwQ6OQPQWU3E=
+
+Name: birt/images/xtab_cubegroups.png
+SHA1-Digest: IyYM2IS+JPETIGPI0GdGkg/6Fnc=
+
+Name: birt/ct-CrosstabTutorialIntro.html
+SHA1-Digest: Y0lgKbxFLWu0NlPclgxRf3gxlv8=
+
+Name: birt/images/output_sorted_1.png
+SHA1-Digest: 83j9lLcxWxM2zm0PjB/JhOwPJKY=
+
+Name: birt/images/enter_quantityinstock_parm.png
+SHA1-Digest: uivVo1aI2RwnR9gkZHrDnfgUW44=
+
+Name: birt/css/UsingScripting.css
+SHA1-Digest: OoJhbUKVHJYr4L/QVtwVHt8x1T0=
+
+Name: birt/fm-HowToModifyAFormattingRule.html
+SHA1-Digest: 9bOC8yrM10FgMdZss4fFfI4+LMs=
+
+Name: birt/images/dsparambindingupdated.png
+SHA1-Digest: MelcmCKqKfjrTnfb/h49UJNBvHY=
+
+Name: birt/images/localization_page.png
+SHA1-Digest: szGzWmaXTkxL6afCLtYG79KWdo8=
+
+Name: birt/ScriptingWithJava.23.1.html
+SHA1-Digest: 1cAPmEEv1Ql+eczOzWs2noQH+oU=
+
+Name: birt/css/viewing.css
+SHA1-Digest: t0GUTXe4du8A53qDpc+FNijReE8=
+
+Name: birt/images/ChartFormatting.15.1.1.png
+SHA1-Digest: uNb89zYD85qjmOf+fyKxjK5IXt8=
+
+Name: birt/ct-TutT5AddACrossTabToTheReport.html
+SHA1-Digest: u2XnBiq9h4keDT7cmX58gAy2a4s=
+
+Name: birt/images/oprpt_outline.png
+SHA1-Digest: DSTXlccy4zqHoUV+AxXX+LVW0jU=
+
+Name: birt/images/Cass-Open.png
+SHA1-Digest: ihZyAry3KtNA2mvc7RVBmZsRbrc=
+
+Name: birt/Bullet.png
+SHA1-Digest: QY42QOLGfErF2zvMx12XoXOMMVg=
+
+Name: birt/sub-TutT2BuildDataSource.html
+SHA1-Digest: scPRX1+xiIXS6LsiPAqJV1VjnHc=
+
+Name: birt/images/grpt_layout3.png
+SHA1-Digest: 7f2gqa1JpTnZK9Gt1DrqNQy5ctE=
+
+Name: birt/images/ChartBasics.13.8.06.png
+SHA1-Digest: mMNjCK0idViPd+3lTDVcJqjxJ4Y=
+
+Name: birt/ds-HowToSpecifyWhatDataToRetrieveDataFromHadoopDataSource.h
+ tml
+SHA1-Digest: SYM62IvyDqkRw+BGkycO+o3AvuQ=
+
+Name: birt/images/ordersdsresults.png
+SHA1-Digest: njl7Fc3Bcp03soq4Y8qVpW7E88E=
+
+Name: birt/images/seelflow.gif
+SHA1-Digest: BBFBb95C1ZLYbVVbl6UwmuDjvTg=
+
+Name: birt/ch-TutT3ProvideDataForAChart.html
+SHA1-Digest: NjU2KBrSu467QsL8COp6qWmmbBQ=
+
+Name: birt/images/EllipsisButton.png
+SHA1-Digest: ZScpmQpUSdNYoRa96ld41yt5Whs=
+
+Name: birt/images/grpt_output4.png
+SHA1-Digest: Vr83ccj5keTdfeFMRTe/K+NLI2k=
+
+Name: birt/images/oprpt_output1.png
+SHA1-Digest: IUqpr51pskPlI8VRwL2hUonU/iY=
+
+Name: birt/images/ChoosethumbnailImage.png
+SHA1-Digest: qLU7xh319az4Z3nSX82QzuP8ahY=
+
+Name: birt/images/hyperopt.png
+SHA1-Digest: 9LE1stteDdh0S31DV/xDIHnwb4I=
+
+Name: birt/images/oprpt_output9.png
+SHA1-Digest: i7D9Hvq/mm7g/dwE4pGqBcLwRh0=
+
+Name: birt/images/datasetparambinding.png
+SHA1-Digest: WGneW6CXn68T7k8X0r1uAbIOGMU=
+
+Name: birt/images/output1.png
+SHA1-Digest: DAOBGMEuDSCRLr3dqfrSQe6SVnI=
+
+Name: birt/images/MyLabelClass.png
+SHA1-Digest: MxJ7XOtIoofhCYuCueXeNHE0Q8I=
+
+Name: birt/iv-AddingInteractiveViewingFeaturesIntro.html
+SHA1-Digest: V1pTtcecMdWWU6kGst3pp5vl4oc=
+
+Name: birt/ScriptingReference.24.1.html
+SHA1-Digest: 4i6wgSX0KampWXT8JFPDy1TV71U=
+
+Name: birt/images/mergecells.png
+SHA1-Digest: upr3zyGFsUA4zVckLIXqMOg+llE=
+
+Name: birt/images/ChartBasics.13.6.3.png
+SHA1-Digest: zwc6gkex1A7eORwj/mEOnfj5gaY=
+
+Name: birt/ct-TutT2BuildADataSource.html
+SHA1-Digest: eEekQLE/gPmDX8Je2l6eQz2d8As=
+
+Name: birt/images/usecss.png
+SHA1-Digest: BTEXF+SGSb3XUkwidrHt9QvHNa4=
+
+Name: birt/images/tablefilter_03.png
+SHA1-Digest: ajkb8BRIWpVxxPxdmoZ3UtEgh/k=
+
+Name: birt/images/grpt_output5b.png
+SHA1-Digest: MpkooDbkYaYl+2KbahXPvNJgq5g=
+
+Name: birt/fm-HowToResizeAColumnOrRowByDraggingItsBoundary.html
+SHA1-Digest: bW+Ft/xbEES4BSCQBgjqJh/47aI=
+
+Name: birt/ds-HowToViewAndChangeOutputColumns.html
+SHA1-Digest: pm0dOQXmmwjD3oDbF2Uni51cnys=
+
+Name: birt/images/imagebuilder.png
+SHA1-Digest: wSCqH4oT3bW5m7hS9r+4iX7ok1g=
+
+Name: birt/fm-HowToMergeTableOrGridCells.html
+SHA1-Digest: mbnkqcMYaVtwCK2fHZWRNITWSTU=
+
+Name: birt/ScriptingWithJavaScript.22.03.html
+SHA1-Digest: NVL4aGKQdl1dhVTxfEEYmZYR4KA=
+
+Name: birt/ds-HowToCreatePOJODataSet.html
+SHA1-Digest: tO2SjoGgtqrjDnLmq6GrRJf9Peo=
+
+Name: birt/sub-TutT14FormatReport.html
+SHA1-Digest: 8ofUhGaAJzJ66dPW/zB10s2x9tw=
+
+Name: birt/images/Viewer_PreviewTOC.png
+SHA1-Digest: gSPK/13uatvQqDmlP8pjUozZjkY=
+
+Name: birt/sub-TutT5BuildDataSetForPaymentsSubRpt.html
+SHA1-Digest: dsg58PIY8w3GP8CBdM4nh4Ih2z0=
+
+Name: birt/images/hive_outputcolumns.png
+SHA1-Digest: 5tDuIY6oqycLFp48CRTFUl1xePc=
+
+Name: birt/images/newsql.png
+SHA1-Digest: ErPNm4GpikWtOfx2dIjZjNBREes=
+
+Name: birt/con-HowToAddAJDBCDriver.html
+SHA1-Digest: h1ZslPdQuURfxz3sLTlwGop6Fjo=
+
+Name: birt/sg-DisplayCreditLimitRangesInTheTableOfContents.html
+SHA1-Digest: yKES4PHuUGkyLPIwN23lZ+CNC2Y=
+
+Name: birt/images/hive_datasource.png
+SHA1-Digest: OOgJF50KAdBU8CqcmYND/+Pckgo=
+
+Name: birt/images/CHT_TData3-2new.png
+SHA1-Digest: M0GeUwlA799maZa6Pi7EoLiXQMg=
+
+Name: birt/UsingScripting.21.3.html
+SHA1-Digest: tAZiyBiua9yDkq5oP+ENAtjtzeM=
+
+Name: birt/notices.html
+SHA1-Digest: pnEdro9KonJTaR+CQXEidbOFXGg=
+
+Name: birt/images/prevx.gif
+SHA1-Digest: C6QNplDW9r9jWPazS3DLYydcEs8=
+
+Name: birt/images/masterpage_properties.png
+SHA1-Digest: saVtWL+2/owIj99s9RPcO0j9Zk0=
+
+Name: birt/ds-HowToAddAComputedFieldToADataSet.html
+SHA1-Digest: qQe3eq3DE9OjMNATWunZxBaiEds=
+
+Name: birt/css/ScriptingWithJavaScript.css
+SHA1-Digest: bZ71dZGSTKI9mF3J10hn8j1ghpc=
+
+Name: birt/ct-HowToFilterDataAtTheCrossTabLevel.html
+SHA1-Digest: 11K5byUbcvePnptBh8lRamTwcgI=
+
+Name: birt/cf-LayingOutAndFormattingAChartIntro.html
+SHA1-Digest: csQjaMI6OS+ZKPF5ulUisEw50HQ=
+
+Name: birt/cf-HowToModifyThePlotArea.html
+SHA1-Digest: TTj/+h12zyhj8yM+MDGb5TUCXwU=
+
+Name: birt/images/enter_param_example.png
+SHA1-Digest: PMhUubp29EQ5H63rNUFE0zUGCvY=
+
+Name: birt/gs-Tut1BuildingASimpleListingReportIntro.html
+SHA1-Digest: tAt9waJk4c8xgY603mT28f9smKo=
+
+Name: birt/images/tutorial3Shot5A.png
+SHA1-Digest: fpPLnBDmw0ZnsFG6xMG0UVdcKAU=
+
+Name: birt/images/ChartBasics.13.7.1.png
+SHA1-Digest: gFPSUcaxULgPv25d/VC1bA0zb1I=
+
+Name: birt/images/Nav_view_01.png
+SHA1-Digest: f8xcJ1Nl0wTP44vuzenwXOag/+c=
+
+Name: birt/images/previewresults_ordpayrpt.png
+SHA1-Digest: qf1yocdd3NnzMqZl9zDDdN5sn5k=
+
+Name: birt/css/ChartData.css
+SHA1-Digest: 2EJaPHB5r+GHpVTpZpGY9Drw7Nw=
+
+Name: birt/images/import_styles_step2.png
+SHA1-Digest: 5AJHQAXzk4O7SX4TYdjKnePblzI=
+
+Name: birt/images/select_resultset.png
+SHA1-Digest: 34OyRQhwaAS2iU1ZTmOIm4U53kw=
+
+Name: birt/images/expressionbldrbutton.png
+SHA1-Digest: 7oM3X58PCQ73nlBQczdSMVWK2Eg=
+
+Name: birt/images/pojo_SelectJar.png
+SHA1-Digest: wGLZlSfyY0yF6SH+7476Cy3ZliM=
+
+Name: birt/images/tutorial3Shot4.png
+SHA1-Digest: Q9Z94CbbMthnysQRCPWqoac1QC8=
+
+Name: birt/fm-HowToDeleteAStyle.html
+SHA1-Digest: SeYqj95ov/ftFqRbgR19vN87k/E=
+
+Name: birt/gs-TutT6SortTheData.html
+SHA1-Digest: cTEanuEBsWCDe5zhhhXk/Rr4txY=
+
+Name: birt/images/Cass-Fetch.png
+SHA1-Digest: 75lD8H8ihfwnQs/sULtuW7P3aqQ=
+
+Name: birt/ScriptingReference.24.8.html
+SHA1-Digest: GDb2VX6JAOs3mhXFu9djpYKQno8=
+
+Name: birt/images/xtab_output1.png
+SHA1-Digest: LNoJ71JYmn9tA3ug75YrutaxWrM=
+
+Name: birt/sub-TutT12DisplaySubrptsNextToOneAnother.html
+SHA1-Digest: 7EcxH0wLc36jHpzjr7qd1XnBEA0=
+
+Name: birt/fm-ResizingMarginsBordersAndPaddingOfElements.html
+SHA1-Digest: umfo2kXcUkkd1rfJSeW25+NYsLA=
+
+Name: birt/fl-HowToFilterRheRowsToRetrieveFromAJDBCDataSource.html
+SHA1-Digest: /BCfAHio0MH7EHR6JjAytxq/0T4=
+
+Name: birt/images/mappage_3maps.png
+SHA1-Digest: vx8+QSS9iqSg3OZuao9Z6dOoauU=
+
+Name: birt/fm-HowToCreateAStyle.html
+SHA1-Digest: xkTy4aDee79aINEw6aVHGXsQAvQ=
+
+Name: birt/images/SelectLabel.png
+SHA1-Digest: na5nxUvmBbU7tIlCocS+ClUV4Po=
+
+Name: birt/images/newrptparam_big.png
+SHA1-Digest: NRx440KCR2/vBfC9YktabMebscQ=
+
+Name: birt/lay-HowToInsertALinkedImage.html
+SHA1-Digest: lLEIU0HNN1eIBLrk3YAshWUYYXk=
+
+Name: birt/images/seebttm.gif
+SHA1-Digest: 25vvCfNjPlvTeAREBAs9Jjbhics=
+
+Name: birt/images/grpt_layout2.png
+SHA1-Digest: xo67NCmrSl6OURFU8Z1EhsoASPQ=
+
+Name: birt/images/EventHandlerSelection.png
+SHA1-Digest: HomVV/pX4ZGvQm4gWuf9jKWDz94=
+
+Name: birt/images/ChartBasics.13.8.05.png
+SHA1-Digest: E1Y6q/rsuO2ssQaGxbOJll/8Qfs=
+
+Name: birt/fl-FilteringData.html
+SHA1-Digest: pFAh5n3hCggaFNQchJL6Rn5uWBE=
+
+Name: birt/images/getstarted.01.10.10.png
+SHA1-Digest: /A0JhAu+SP4aJyK8ESisqwQWC8w=
+
+Name: birt/images/grpt_output3.png
+SHA1-Digest: Iv01HfjSOT9bwcKL+31TvFZmw+k=
+
+Name: birt/lib-HowToPublishATemplate.html
+SHA1-Digest: eizf1gamK5XhL8YBjxjzDy0qYME=
+
+Name: birt/images/tut_newdataset.png
+SHA1-Digest: Pq36lwR969a4BP7qq53PkFfSgpI=
+
+Name: birt/images/Excel-DS-04.png
+SHA1-Digest: I9XxYF51O8w1nHpUM7p9PiuNWto=
+
+Name: birt/images/oprpt_output8.png
+SHA1-Digest: IW13GHRySME1uePgM75YggNG80o=
+
+Name: birt/images/editdatabinding.png
+SHA1-Digest: 3H8Yhr/qURfy/2y/Gr36GbPxep8=
+
+Name: birt/css/crosstab.css
+SHA1-Digest: 8L5tZEE05psdwn7qEbv6MtYki2M=
+
+Name: birt/ScriptingWithJava.23.2.html
+SHA1-Digest: qY6LrsINcs3oaBIDLd4fPGsnkG0=
+
+Name: birt/images/CHT_P4.png
+SHA1-Digest: yRUcHzYHJeIQtnL3+7C82JNjxBk=
+
+Name: birt/images/expanded.gif
+SHA1-Digest: sTxUBq3xn/p3InTMMAnYh1tZwZ4=
+
+Name: birt/ds-HowToSpecifyWhatDataToRetrieveDataFromExcelDataSource.ht
+ ml
+SHA1-Digest: SyOqUVKhIvzp3EKQhpQm7Mpf5Fg=
+
+Name: birt/images/propeditor_resource.png
+SHA1-Digest: +3nlE+xT49T1IiXVgosHoCpXOwY=
+
+Name: birt/images/oprpt_finaloutput.png
+SHA1-Digest: WY17zU9Xu7eC2d6ua0yf/VDR7MI=
+
+Name: birt/images/oprpt_newsortkey.png
+SHA1-Digest: lVm5zF97oVWJjK7hPVJJNS8T7Z0=
+
+Name: notices.html
+SHA1-Digest: GisV+XnY+ncDiGZfirTMNO99s74=
+
+Name: birt/gs-TutT8CreateAReportTitle.html
+SHA1-Digest: SDotkUnEPf9Orrju8GixxOIN774=
+
+Name: birt/css/format.css
+SHA1-Digest: 0JtkflzHR18NztNuscSC/5m1RWA=
+
+Name: birt/ScriptingReference.24.2.html
+SHA1-Digest: AObIzNOe/LiVZjLTPsTK8rAqoKo=
+
+Name: birt/images/layout5_print.png
+SHA1-Digest: Bl/UlogClKiHTvkyZg4xMIiyflk=
+
+Name: birt/images/localization.20.1.1.png
+SHA1-Digest: //qiw/9Y/KOMGIafgBnqpejzcsU=
+
+Name: birt/rp-HowToDefineADataSetParameter.html
+SHA1-Digest: PXLoetsTrDsgvj5C+Q5+iYdfeWY=
+
+Name: birt/images/dynamicimage.png
+SHA1-Digest: 8X+AtQJ0GzqdlzgtK4n/6KsnIzE=
+
+Name: birt/con-HowToSpecifyConnectionInformationForDatabaseOrOtherJDBC
+ DataSource.html
+SHA1-Digest: XRmbCuQIz5PAdANI2g+mqeGx/gg=
+
+Name: birt/images/table_data_binding.png
+SHA1-Digest: rqCG7dUcmZpTyThauzxfaNvkjqM=
+
+Name: birt/images/xtab_computedcolumn.png
+SHA1-Digest: bUIETGll8bIuvWX728sGPNLaMZo=
+
+Name: birt/ScriptingWithJavaScript.22.04.html
+SHA1-Digest: S8gO7p72ErzXdmjPjOcyJBffIto=
+
+Name: birt/images/edit_data_set_previewOutParams.png
+SHA1-Digest: +zP8G2+QXIrufgJedZkpUj7+YjA=
+
+Name: birt/images/Edit_Group_filter.png
+SHA1-Digest: WGs3uynaLko3HYVQZvGQ/cDy9OI=
+
+Name: birt/images/cssbrowse.png
+SHA1-Digest: QxJ/UsaBDknRYn1VtG9V5iQUjdo=
+
+Name: birt/images/agg_count.png
+SHA1-Digest: yrXYUz68gyUaNWgI+dIoRYaIHOU=
+
+Name: birt/UsingScripting.21.4.html
+SHA1-Digest: 7NTry0uzSVPEc5xh6oGYOq1BQaQ=
+
+Name: birt/css/localization.css
+SHA1-Digest: D6CbiHwRaN5rjsxm2GeI2WpK/xM=
+
+Name: birt/images/ds_dataexplorer.png
+SHA1-Digest: gxkhFN9WsSOUvQM82KQh6gBuhW0=
+
+Name: birt/images/ChartBasics.13.5.3.png
+SHA1-Digest: m/wDT7d+0bf851uXBN8VYogvQsA=
+
+Name: birt/sg-DisplayTheTotalNumberOfCustomersInTheReport.html
+SHA1-Digest: UX/CwARbH62ZLEbTBrYxP6jDfSs=
+
+Name: birt/images/MyLabelClass2.png
+SHA1-Digest: nnXWpMQq82Ca7z7a5c2gkh/8RSU=
+
+Name: birt/images/CodeEntry.png
+SHA1-Digest: U/KszKDwgSV538DE5W/ay+8TVsE=
+
+Name: birt/images/tutorial3Shot3.png
+SHA1-Digest: xDvwjLwUcePKAl6NKMJVHJ94ago=
+
+Name: birt/images/dataexplorer1.png
+SHA1-Digest: mhXBLQQE3xl9KGVsHc+rAEfkfOg=
+
+Name: birt/images/getstarted.01.10.06.png
+SHA1-Digest: ugNomJBUOSgKtY5wulrwgvYOsYs=
+
+Name: birt/fl-HowToFilterAtTheGroupLevel.html
+SHA1-Digest: fU69cy5OAV/vFqkyeShxEGNVCZg=
+
+Name: birt/images/Cass-NewScriptDSCol.png
+SHA1-Digest: aATpfNSFG4luP1f3h5ScB8Fe0n8=
+
+Name: birt/images/edit_data_set_stored_procedure.png
+SHA1-Digest: BUr0//2GATUKT/XevpE/2A3iU1Y=
+
+Name: birt/ch-ChartsTutorialIntro.html
+SHA1-Digest: 0fuHUoZdm+uZrapALh5bX97nJDA=
+
+Name: birt/images/bookmark.png
+SHA1-Digest: psnRF52t+BI6edDmnqC2nkRjUak=
+
+Name: birt/images/grpt_layout1.png
+SHA1-Digest: nvFC+dGhSmW00uAjmoDE5N2j+FQ=
+
+Name: birt/lib-HowToDropAThemeFromAReportDesign.html
+SHA1-Digest: 4s+f3l7TobLDE6hn0910wEYw1Tc=
+
+Name: birt/images/paymentsdsresults.png
+SHA1-Digest: P8BqAEiub9P9zs2du1oM7jRC8Wo=
+
+Name: birt/images/ChartFormatting.15.5.1.png
+SHA1-Digest: iZslfUDZOcZTvjY693XAYSCJC1Y=
+
+Name: birt/images/ChartBasics.13.8.04.png
+SHA1-Digest: k9HyH0jpxo8SseN072i/se5d6sQ=
+
+Name: birt/images/CHT_Preview1.png
+SHA1-Digest: XkoSg1NevlMeQF6VokRovzQdAv0=
+
+Name: birt/images/ChartFormatting.15.3.4.png
+SHA1-Digest: osq1pCncJXkwXFpqx0a4nMByhXI=
+
+Name: BIRTToc.xml
+SHA1-Digest: LiLug6EuusiGtl0dsrp9kHRAPXw=
+
+Name: birt/ds-AboutDataSets.html
+SHA1-Digest: QHsh1MAbpkYEGlKG0Ma0C1IS7Hs=
+
+Name: birt/images/CH_Preferences.png
+SHA1-Digest: QzwZtmyPa5yaSJFXE5T0j9k9dVQ=
+
+Name: about.html
+SHA1-Digest: ObsP47Fq6CSfBimdpGOcNnxQyPA=
+
+Name: birt/ch-UsingAChartIntro.html
+SHA1-Digest: kF+godPMSxXC70bKW+Tq/BlWD4Q=
+
+Name: birt/images/grpt_agg_table.png
+SHA1-Digest: 8AZvXIbksdMX40YDHDWu1BwiReQ=
+
+Name: birt/images/oprpt_layout6.png
+SHA1-Digest: lJQYNQnku93inuBSghnQAOZlKbY=
+
+Name: birt/images/xtab_FilterCondition.png
+SHA1-Digest: OeNEIqCdNnCAqaBAgAyAWwqrQAQ=
+
+Name: birt/images/newreportproject.png
+SHA1-Digest: 1VVTr5UlO+c6N3qPrlbQ8C5E9KY=
+
+Name: birt/images/CHT_EditFont.png
+SHA1-Digest: VyEKczVrIi4YbbynW66FmSG0w6g=
+
+Name: birt/images/bottomborderbutton.png
+SHA1-Digest: NY7NsvfJuy4MiGZpYMuAAev0erI=
+
+Name: birt/ScriptingReference.24.9.html
+SHA1-Digest: /N04ibqBSjkN3jTEJ/gqWUO2WLY=
+
+Name: birt/images/data_set_view_tables.png
+SHA1-Digest: d6ha7tZ7790cKdhMGmnpX88nDAE=
+
+Name: birt/images/ChartData.14.2.1.png
+SHA1-Digest: nO3tAsBjjCOmELRoruFUmKzEA1s=
+
+Name: birt/images/ChartBasics.13.6.1.png
+SHA1-Digest: pit4oAopD+lf+JeqydHj325SikE=
+
+Name: birt/mp-DesigningAMultipageReportIntro.html
+SHA1-Digest: b0YXKzyrd7gDqI+z8rYpwrCDN2k=
+
+Name: birt/images/ThemeProperty.png
+SHA1-Digest: +c3fLGGnfvkRUK9Kfwl48+DFWEo=
+
+Name: birt/txt-DisplayingText.html
+SHA1-Digest: l9zz8T3lImSh/Gt/fv/+xoOAOL4=
+
+Name: birt/sub-TutT10LinkPaymentsSubrpttoMasterRpt.html
+SHA1-Digest: KNRD0aNnjfCGTJVWEsV2gu3rlZ0=
+
+Name: birt/rp-HowToUpdateAFilterConditionDynamicallyWhenTheReportRuns.
+ html
+SHA1-Digest: jDnChDRDH4wJRwXS793nG3EhyKE=
+
+Name: birt/lib-HowToCreateATemplateReportItem.html
+SHA1-Digest: NCnu/3QBg3AnAb+duFtpXHyilrQ=
+
+Name: birt/ct-TutT3BuildADataSet.html
+SHA1-Digest: PNaRDpIOEPya1INZ+SV51vQY5XI=
+
+Name: birt/images/crosstab.16.8.2.png
+SHA1-Digest: pxIMtPYGyREQo/3ibwnmKi+1zgI=
+
+Name: birt/css/ScriptingReference.css
+SHA1-Digest: TSng1jyu1jCWEeKVs443jbxSP4o=
+
+Name: birt/ScriptingWithJava.23.3.html
+SHA1-Digest: +qRFlSV9Q1d76loFb4RVSAHRebU=
+
+Name: birt/images/chartformatvalues.png
+SHA1-Digest: q4DjX/R9xqOobPD2K51gJhH7CrE=
+
+Name: birt/images/xtab_dspreview.png
+SHA1-Digest: aOg9NM1dfLO+A8yb/iIhnGv0r1o=
+
+Name: birt/images/ChartFormatting.15.4.2.png
+SHA1-Digest: 9vh8QHAU4uq6UCYLPCf7QMQplWw=
+
+Name: birt/images/hive_query.png
+SHA1-Digest: 8tN1fnBJCwvR3yk5L/l00UE8LTo=
+
+Name: birt/fm-HowToHideAnElementConditionally.html
+SHA1-Digest: J0opUj2K1/rg9mh/vbj9HJvaJb8=
+
+Name: birt/images/expbuilder_rp.png
+SHA1-Digest: IJ7r+0QqUTuOGhBXsgL4PMYIzQw=
+
+Name: birt/ds-HowToUseAStoredProcedureToRetrieveDataFromJDBCDataSource
+ .html
+SHA1-Digest: aoqqD7j/NTUgUkKu1o8i/q7YfiM=
+
+Name: birt/images/highlights.png
+SHA1-Digest: L76zy4yn77qqd5/1jjYIVhceVpA=
+
+Name: birt/ct-TutT4SetUpDataForTheCrossTab.html
+SHA1-Digest: ozYEXA6ysGNgft1F05YfKwYo/58=
+
+Name: birt/images/new_data_source_new_JDBC.png
+SHA1-Digest: X9XEM8BaurlJKyKlC7vYWvT1kBU=
+
+Name: birt/fm-HowToLinkACSSFile.html
+SHA1-Digest: SGBIIr0ehC6Y5C3hxqjzumy17/w=
+
+Name: birt/css/subreport.css
+SHA1-Digest: CzayFmvlVCfHeYYhpHrNYJgSI04=
+
+Name: birt/fm-FormattingReportContent.html
+SHA1-Digest: xFUKrL1tUUqKA/rkMctTvFdnHI8=
+
+Name: birt/mp-HowToExcludeHeaderContentFromFirstPage.html
+SHA1-Digest: E0NZf8R8MrduSB1W3BFqnB49OTc=
+
+Name: birt/ScriptingReference.24.3.html
+SHA1-Digest: qeGJg4HMtp3ToMUTCzoiUMrcniQ=
+
+Name: birt/sub-TutT7CreateOrdersSubRpt.html
+SHA1-Digest: 6LuPfJXY9QDXQ+QEydeKVECHk4c=
+
+Name: birt/images/ChartBasics.13.5.2.png
+SHA1-Digest: 1oWMUZfZzajZOYPXvQfq1aTJCBI=
+
+Name: birt/gs-TutT3BuildADataSource.html
+SHA1-Digest: rkH4NEhVt/C3spz8S1cIo79bx28=
+
+Name: birt/images/styleproperties.png
+SHA1-Digest: JC4fIGIKSn1eJJdGk8Ck2Y15mWI=
+
+Name: birt/images/tutorial3Shot2.png
+SHA1-Digest: vzRGn9Dttjs6m6FAzOmzAV19SlA=
+
+Name: birt/ScriptingWithJavaScript.22.05.html
+SHA1-Digest: XN+nIe8BxRzlnRv9+TspX7VdjV4=
+
+Name: birt/fm-HowToSpecifyAColumnWidth.html
+SHA1-Digest: NVMZVUBToa05ciHKJJn5W45KC9s=
+
+Name: birt/css/webworks.css
+SHA1-Digest: 6/p/+Dpv0NfJ6QRGBsyxw5R+9QU=
+
+Name: birt/images/ds_add_driver_.png
+SHA1-Digest: DyXo0kZ1S974N6B0itPZOO88ORA=
+
+Name: birt/images/bold_button.png
+SHA1-Digest: 9H3K2GfWeDf+em3AElHnDarWF2g=
+
+Name: birt/images/editdataset.png
+SHA1-Digest: zyl5RnzAHbrcWgcq2bsPvOggUWE=
+
+Name: birt/images/sortpage.png
+SHA1-Digest: ostqaFZf4JsRCPMuKL1FK9CQU7M=
+
+Name: birt/images/blank.gif
+SHA1-Digest: Lf2FlnsKx3+FaXsF3iwayhsx6TQ=
+
+Name: birt/images/pojo_colmapcomplete.png
+SHA1-Digest: IYUSK9Zrl5//3MSU3wP1b10Iv4E=
+
+Name: birt/images/select_key_window.png
+SHA1-Digest: ATLKzqlSqJoMkBsGUqH06QrBG5c=
+
+Name: birt/images/pojo_DataSetProps.png
+SHA1-Digest: 2quNEEJx2uRfqCagUh/pcktxq/I=
+
+Name: birt/images/X_image.png
+SHA1-Digest: lii5pcy1RYA24ZzfBCouMiQfrSc=
+
+Name: birt/sub-TutT6CreateCustomerMasterRpt.html
+SHA1-Digest: SrnvxRW1dY3nKAe8VBMwNqGWGX8=
+
+Name: birt/sg-TutT6DisplayCreditLimitRangesInTheGroupHeader.html
+SHA1-Digest: qrStMkY8QAKdXepsercnnDBx7us=
+
+Name: birt/images/selected_row.png
+SHA1-Digest: pAgYbeVASm1CSUiVP5ONO0Cz5Lk=
+
+Name: birt/loc-HowToAssignAResourceFileToAReport.html
+SHA1-Digest: Nuf6Lwt3N3owL3394Upc0WuLkvI=
+
+Name: birt/images/edit_jdbc_driver.png
+SHA1-Digest: sRYJ2MosAp5Ua02qVWEo6C3JNhg=
+
+Name: birt/images/edittext.png
+SHA1-Digest: aEZS35gEQS/5y61ngoomobjj4OU=
+
+Name: birt/images/ChartBasics.13.8.03.png
+SHA1-Digest: pdk36iEU48RQKeN8IrpbeKcfcz8=
+
+Name: birt/mp-HowToSpecifyAHeaderOrFooterSize.html
+SHA1-Digest: 9sOtoCI53uLuPbuSs98QLjJYuwA=
+
+Name: birt/images/RootSelected.png
+SHA1-Digest: dcZ+u7gRhTCco/9q06pjui1mxao=
+
+Name: birt/images/PropertyEditorEventHandler2.png
+SHA1-Digest: Uayoqc/AotI/5NiFcK0332rLcn8=
+
+Name: birt/images/grpt_output1.png
+SHA1-Digest: EBbCGyzQPHzBqEdmKsoJBxVPPs8=
+
+Name: birt/images/selectcssfile.png
+SHA1-Digest: B8GMe65ABP/vzT+lXDDQYNICcgA=
+
+Name: birt/images/seeright.gif
+SHA1-Digest: LinH1CYfXW1RXixXYOOA5tIM7WY=
+
+Name: birt/gs-TutT1CreateANewProject.html
+SHA1-Digest: BZZJTBVHql/WdE2BdrAcPh+pUJk=
+
+Name: birt/con-HowToDeleteJDBCDriversInAJARFile.html
+SHA1-Digest: ZiPJxh1vvv5o6xj1omUTjQyG784=
+
+Name: birt/images/collapse.gif
+SHA1-Digest: 9dq0ou/56vtTHkSLP2A08rnCB58=
+
+Name: birt/images/seertup.gif
+SHA1-Digest: 8vOEUNtvmekNu80EAEamdfXHcPA=
+
+Name: birt/ScriptingWithJavaScript.22.10.html
+SHA1-Digest: UwrNc3VeN4OhPb6Szus7HHNMVQI=
+
+Name: birt/sub-TutT11DisplayCustomersWithOrdersOrPayments.html
+SHA1-Digest: nkRC5yUF59OoYVSmPCcLEkQiBP4=
+
+Name: birt/images/prev.gif
+SHA1-Digest: SYQl3NwYHUueuK6DGzDe6PfMYNY=
+
+Name: birt/con-HowToSpecifyConnectionInformationForHiveDataSource.html
+SHA1-Digest: 65DipUgetoK2CVoFvwS1i2yL3J8=
+
+Name: birt/images/getstarted.01.08.2.png
+SHA1-Digest: gI9vGwMIpiE/T2QAYru8/oqVXBo=
+
+Name: birt/ds-HowToChangeTheNumberOfRowsThatAppearInPreviewResults.htm
+ l
+SHA1-Digest: mndFmOYK4u9utNXwzspn643Q78I=
+
+Name: about.ini
+SHA1-Digest: 2w8BfdBzQbbWHJNbazxzu9YMYwo=
+
+Name: birt/images/format.06.14.1.png
+SHA1-Digest: o71N2btMNUuwydMiL6ql0UAPT1k=
+
+Name: birt/css/ChartFormatting.css
+SHA1-Digest: Q46vRLrQ0olRjAa0O3mUVJRPaj4=
+
+Name: birt/txt-HowToUseADynamicTextElement.html
+SHA1-Digest: IzXapWGSinLYXfjQGOy5WMB5KXQ=
+
+Name: birt/images/pojo_AddColMap.png
+SHA1-Digest: szOeMmaWoTBYWVrjiu1IOdNjixw=
+
+Name: birt/images/header_properties.png
+SHA1-Digest: Lqbcld+Uj2F+bN/FkDBOsVEhzBo=
+
+Name: birt/images/grpt_expbldr.png
+SHA1-Digest: 0e4EANXbfvGB5qac7Y2s/RK27jU=
+
+Name: birt/images/LibraryOutline.png
+SHA1-Digest: Y3NcEjbKblFpDdH6bOhy876hm3A=
+
+Name: birt/css/data_binding.css
+SHA1-Digest: 1NLqROBsHaCJHcxX7i4ttLJTZJ8=
+
+Name: birt/sg-TutT4AddCreditLimitDataToTheReport.html
+SHA1-Digest: iQs2ThEUW6PuctERoXiR8FPQbY4=
+
+Name: birt/images/PublishToTemplateFolder.png
+SHA1-Digest: oMQ80wMICuGV9L/tiYDsBxXlCBI=
+
+Name: birt/sub-TutT1CreateNewReport.html
+SHA1-Digest: 2GexddPXHlMYB/8NzIp/tJtLo8U=
+
+Name: birt/sg-SortingAndGroupingData.html
+SHA1-Digest: 2B5u3o+GlmhClzIg27arpV60Luo=
+
+Name: birt/bd-HowToCreateAColumnBinding.html
+SHA1-Digest: SlDwCDtVxwL9c6aviwraRaEZzlI=
+
+Name: birt/images/addcssfile.png
+SHA1-Digest: E+O03zOUoHj+P2eBpAhZJWppUoA=
+
+Name: birt/images/format.06.04.7.png
+SHA1-Digest: ZnBbQrEx3rH9VbFkdunetMh5W/k=
+
+Name: birt/images/setrowheight_qs.png
+SHA1-Digest: /ES88KHuz5A3nVUhOW0ZhhQVFls=
+
+Name: birt/images/Cass-OutputCols.png
+SHA1-Digest: Niq6YWBqMLHHp6n7lCQieVH7BL8=
+
+Name: birt/images/grpt_padding.png
+SHA1-Digest: Ew7LluH30Eryj3PUOXzKJU4qfUc=
+
+Name: birt/css/SharedWorking.css
+SHA1-Digest: rfJvtzbBJudNJTLdSkGX0RWNNn0=
+
+Name: about.properties
+SHA1-Digest: +/lsz5DrKzyuqSPjIcvw4xUdwVE=
+
+Name: birt/images/newreport.png
+SHA1-Digest: xhkXLGE5/qWieLv+W7xNeNABXXc=
+
+Name: birt/images/aggregate.08.2.2.png
+SHA1-Digest: pxIMtPYGyREQo/3ibwnmKi+1zgI=
+
+Name: birt/images/computed_column_expression1.png
+SHA1-Digest: zqxw5eASmBGnIRKGVhJZ9ph3UEY=
+
+Name: birt/images/viewing.18.3.3.png
+SHA1-Digest: AvitfzXLTVOAuVbRFmzTMhE0rmw=
+
+Name: birt/images/tutorial3Shot1.png
+SHA1-Digest: Ve9NBASRoELXHa4tZFHPEMqk9O8=
+
+Name: birt/images/image_selectbinding.png
+SHA1-Digest: OtRl37vUPFYmFOCeXFqkKw5Jx38=
+
+Name: birt/ch-TutT5ChangeChartAndValueSeriesTitles.html
+SHA1-Digest: a6/pymYh2bMp8qYyuJQithEETHo=
+
+Name: birt/ds-HowToSpecifyWhatDataToRetrieveDataFromCassandraDataSourc
+ e.html
+SHA1-Digest: E8YYS9D8L6aFizL6PjaRtOCsAUI=
+
+Name: birt/images/grouping.07.07.2.png
+SHA1-Digest: 2fAS+CT/Oj+s4yWnHJT3oiP4zpc=
+
+Name: birt/images/pojo_DataSourceProfile.png
+SHA1-Digest: 3QQd3hZgUC3MtdwfBiKPUw3CW5Y=
+
+Name: birt/images/dsparambinding2.png
+SHA1-Digest: eLBlwPiSLfSKnCuaye18OR79ziU=
+
+Name: birt/ch-TutT6RefineChartAppearance.html
+SHA1-Digest: 1JS7gtfD7/tfrlp63PIIltcDxHU=
+
+Name: birt/images/index.gif
+SHA1-Digest: 0UI41Hg9J9WSkCh5MaPjeXbq8vU=
+
+Name: birt/images/superclassSelection.png
+SHA1-Digest: wJYyj9SUF7G1pQPJOn6LcDdeo8E=
+
+Name: birt/ScriptingReference.24.4.html
+SHA1-Digest: L2w8P6Y0T256UT46K0iCax1SYFg=
+
+Name: birt/sub-TutT4BuildDataSetForOrdersSubRpt.html
+SHA1-Digest: 1aHdutwI9mJqsrD/sCDtVkzN4hg=
+
+Name: birt/css/connecting.css
+SHA1-Digest: sMCtEaDZxAOKYbfUcIOnthrsh3g=
+
+Name: birt/ct-TutT6AddGrandTotals.html
+SHA1-Digest: 20zVcmyCIGzeIaRIbrqxVL+FuRs=
+
+Name: birt/images/insertURL.png
+SHA1-Digest: ub7H3b/YGwDfdxpdtMjfkc0wrT4=
+
+Name: birt/sg-TutT2SaveTheReportAsANewFile.html
+SHA1-Digest: GZPH0Ms92B2R+Bjru/t0V26id/Q=
+
+Name: birt/images/ChartBasics.13.8.02.png
+SHA1-Digest: 3ccgYD4V7oXTUPOHtu+qpr3qbuI=
+
+Name: birt/fm-HowToModifyAStyle.html
+SHA1-Digest: u3JsNZdj2wzel2xihOKrdqAaET8=
+
+Name: birt/images/grpt_output8b.png
+SHA1-Digest: 432aKFfhfzuYOiBdhGSZA9ihXT0=
+
+Name: birt/bd-BindingData.html
+SHA1-Digest: qvvYFsygIRCglRC2tr5UZEXAFE8=
+
+Name: birt/ScriptingWithJavaScript.22.06.html
+SHA1-Digest: QufWD32lLAEVOyQ8OQGUPPxWF4g=
+
+Name: birt/images/grpt_output8.png
+SHA1-Digest: 9igF1pqrn8q7Xl3stIg9w9CpLfc=
+
+Name: birt/images/layout4.png
+SHA1-Digest: JBiIoCdr9Zv05upM+1RM+fXhIXs=
+
+Name: birt/images/oprpt_output5.png
+SHA1-Digest: MqzPd5XSAXWxkrgVtFg3l4bJdXk=
+
+Name: birt/cd-DisplayingDataInChartsIntro.html
+SHA1-Digest: jdENeYpe1crsE5diDa35Hn+BiyQ=
+
+Name: birt/images/CHT_previewSmall.png
+SHA1-Digest: dSzONdAbySfVFHJVLYx+mT5MsTY=
+
+Name: birt/images/embeddedimage.png
+SHA1-Digest: ngu0oHYiyiu/xE1MB0sEzmhmWXI=
+
+Name: birt/loc-HowToPreviewAReportInADifferentLocale.html
+SHA1-Digest: URKtqzSO+qKF1Rh7VYsjKj19N94=
+
+Name: RefToc.xml
+SHA1-Digest: adfw+MzEppR4/drFQaYapSsNnsE=
+
+Name: birt/images/output5.png
+SHA1-Digest: B4WnuwIHHLQhPPPUQrHgVA+NQy8=
+
+Name: birt/lay-HowToDeleteARowOrColumn.html
+SHA1-Digest: bAJ9GOroOiS1fNAKWaEof3c7dtU=
+
+Name: birt/images/getstarted.01.08.1.png
+SHA1-Digest: VXd9jXDiWoTWxnfKix+ALX/x+LU=
+
+Name: birt/css/aggregate.css
+SHA1-Digest: 8Zige7HG6ZqCaIzWWwdmGmMKwFk=
+
+Name: birt/images/newfilter.png
+SHA1-Digest: rxF6B0ebMJXt5A3kjRh5c6h4Vqc=
+
+Name: birt/images/ChartBasics.13.4.2.png
+SHA1-Digest: P/jCUaJySq159ygkeuRUGYNR1/k=
+
+Name: birt/lay-LayingOutAReport.html
+SHA1-Digest: PLOW+dlAA4dC6vpwnpmIOkm3SNA=
+
+Name: birt/images/thencondition.png
+SHA1-Digest: yJs05615JHF9dDZHcuKx6akQirc=
+
+Name: birt/images/connecting.02.13.2.png
+SHA1-Digest: E1H41Sdv36IAKcB7ETQR9vKnc4A=
+
+Name: birt/images/styles_in_outline.png
+SHA1-Digest: RySyKFc0S9tqlR/KKkq1aK8PUKg=
+
+Name: birt/css/getstarted.css
+SHA1-Digest: IwX5Xp3JkKmhv+RvgVUaKo1DaG8=
+
+Name: birt/images/query_output_columns_1.png
+SHA1-Digest: BmzbcfUTPvjj/3ErYQ24DP0gkoY=
+
+Name: birt/images/providingCode.png
+SHA1-Digest: Po+TlyU/JoHo862cX564JTXyNSY=
+
+Name: birt/ScriptingWithJavaScript.22.11.html
+SHA1-Digest: 75uQJlzhQCu9YlvdaXvubGvOkYs=
+
+Name: birt/images/filter_datasetfilter.png
+SHA1-Digest: ozbR/qY0nrpST1hJWFstWX5BKcM=
+
+Name: birt/images/previewresults.png
+SHA1-Digest: neawbZg7ziJ16q+uzk5/pziatLY=
+
+Name: birt/iv-HowToCreateATOCEntry.html
+SHA1-Digest: Rpq2XKrA/aWhwZcwQz5TP4qFdPc=
+
+Name: birt/cf-HowToSetAChartBackgroundColor.html
+SHA1-Digest: io5XXvvfIKMcYHaU8xGXgAc++m8=
+
+Name: birt/cd-HowToChangeChartPreviewPreferences.html
+SHA1-Digest: cN5/9Qe8PrO9UFVyg9lnw1E5Cx4=
+
+Name: birt/lib-HowToSetAThemeForAReportDesign.html
+SHA1-Digest: KTUGRMtch2jdpLhdZRyqQxBM13o=
+
+Name: birt/images/CH_Plot2.png
+SHA1-Digest: I2TYlR2Y2zCUWvYJkVSnM2q2x1k=
+
+Name: birt/images/SharedWorking.19.8.1.png
+SHA1-Digest: auaigEFKmevff8LiU2cg0tj7suU=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: birt/images/seertlow.gif
+SHA1-Digest: 9JD/VBgOCqungL4yXfzHdLk42Sc=
+
+Name: about.mappings
+SHA1-Digest: I8veu7ohSGhmojoGPqdTiPEFzm4=
+
+Name: birt/css/ChartBasics.css
+SHA1-Digest: Vcwbxmcb4aokZh9mB2AkoF+SySc=
+
+Name: birt/images/layout_tabletab.png
+SHA1-Digest: clwjIKRWGvcrFa8pPBgZHHbYwJw=
+
+Name: birt/lay-HowToInsertAnEmbeddedImage.html
+SHA1-Digest: 3khMHtSU0pRPW9B/Pz1uH30lX9s=
+
+Name: birt/images/nosubreports.png
+SHA1-Digest: 86/hzTwLRSFqsTfEELRrZwCOPU8=
+
+Name: birt/images/tablefilterwithparam.png
+SHA1-Digest: GO/yL8EunsNW5KDIbA0WYPZPbz4=
+
+Name: birt/sub-BuildingARptThatContainsSubreportsIntro.html
+SHA1-Digest: 48+vVmSNF3rMlUYEXxJ8MfN7l1k=
+
+Name: birt/images/print.gif
+SHA1-Digest: lnnu4RaxKoLBnv8LpnKW5iUHbEE=
+
+Name: birt/images/TextBeforeTemplate.png
+SHA1-Digest: JX5cocNplKfCwkHO3H+uw3NJVN0=
+
+Name: birt/loc-LocalizingTextIntro.html
+SHA1-Digest: id4m8jwAa7T42AwqMsDdnMn8E2A=
+
+Name: birt/sub-TutT8LinkOrdersSubrpttoMasterRpt.html
+SHA1-Digest: mDMM91vCa1a9kfA3AxlhwK5Qs7g=
+
+Name: birt/images/next.gif
+SHA1-Digest: Ltttm6Y2PDGJq99IAu4qFdB1wQs=
+
+Name: birt/images/newstyle.png
+SHA1-Digest: b49eQBNW70ysi2EBaYOOnXHxvYg=
+
+Name: birt/images/grpt_colbinding.png
+SHA1-Digest: CVvPB6Xqrwb0YNo1tuBiNK5uA5w=
+
+Name: birt/images/JavaClass.png
+SHA1-Digest: 21HfBskW22wCFjXe09Mpt+ZWOzA=
+
+Name: birt/fl-HowToFilterAtTheReportElementLevel.html
+SHA1-Digest: gqOUCGMUCj346hLoIAOZPdyvn1o=
+
+Name: birt/ds-HowToCreateASQLQueryToRetrieveDataFromJDBCDataSource.htm
+ l
+SHA1-Digest: 8l6ZtIDGcJXzvOeeGMBY1LFB8dM=
+
+Name: birt/fm-HowToImportStyles.html
+SHA1-Digest: /AzPSTqwcSYYZqj2iiW8X72OzDo=
+
+Name: birt/images/NewSortKey_qs.png
+SHA1-Digest: nOOu8AP5bW3m9T6FHq5vzYhZvMc=
+
+Name: birt/gs-TutT4BuildADataSet.html
+SHA1-Digest: ZwFZD7YFnZyEEttEuanVn0PnEbk=
+
+Name: birt/fm-HowToDeleteAFormattingRule.html
+SHA1-Digest: /6NogRkShEuwKxyYEObr/Jw26oo=
+
+Name: birt/images/browse_resource.png
+SHA1-Digest: xzS33S0t1lky/m608piFpeSMmf0=
+
+Name: birt/images/mergedcells.png
+SHA1-Digest: FlV5Bq65/TY8PxWcJnv389d6MLU=
+
+Name: birt/images/hyperlink.png
+SHA1-Digest: BhMWB3CWP0hxN6mvALN94FiqowA=
+
+Name: birt/css/layout.css
+SHA1-Digest: W1/1f+rvzbA/ihKAGnN0R/Orr3Y=
+
+Name: birt/images/CH_FontEditorBtn.png
+SHA1-Digest: EU11qRXG+5uR//vaQOQlAxB7yZ0=
+
+Name: birt/images/grouping.07.07.1.png
+SHA1-Digest: 4xTB37mUtvo1GCSSmnAth9A1XbA=
+
+Name: birt/images/xtab_layout4.png
+SHA1-Digest: FoIOkrNJ19JOXRsXFSv7UJEUN/U=
+
+Name: birt/images/crosstab.16.7.1.png
+SHA1-Digest: Pu/eIhH2F7+aJv/iRzOF/uyaBLA=
+
+Name: birt/images/grouping.07.09.02.png
+SHA1-Digest: pxIMtPYGyREQo/3ibwnmKi+1zgI=
+
+Name: birt/images/xtab_FilteredReport.png
+SHA1-Digest: x4u1CXVun+ZPRUQJbCWEUNpkEZs=
+
+Name: birt/loc-HowToAssignAnExistingResourceKeyToALabel.html
+SHA1-Digest: 606KU/kFx3w6N79Yl4UpqnJWhSg=
+
+Name: plugin.xml
+SHA1-Digest: 4crXdw9DHxk3s6rLfLKxB99i6ik=
+
+Name: birt/cd-HowToGroupCategoriesOnTheXaxis.html
+SHA1-Digest: cDGgNYwv3bzR7//iV7xc/DUfHWc=
+
+Name: birt/sub-SubreportsTutorialIntro.html
+SHA1-Digest: Ze+7mOJvXlm8JWm/uCiWviyHsTI=
+
+Name: birt/images/CH_GradientEditor.png
+SHA1-Digest: rK5RHgNj9tFcaljKfvdFGxPnGVI=
+
+Name: birt/images/ChartBasics.13.8.01.png
+SHA1-Digest: QqOHUiqaG+ZzEWPpEnlGjwM4Etk=
+
+Name: birt/images/ChartFormatting.15.3.1.png
+SHA1-Digest: B5Sq6QWyUCztNzVI/4WTi55FVao=
+
+Name: birt/images/connecting.02.02.1.png
+SHA1-Digest: +RqA7OLthJYdZCw/S5sq8dFD4As=
+
+Name: birt/images/grpt_layout6.png
+SHA1-Digest: HpTGntRVuk5r7NcM+dBfPR9Npd4=
+
+Name: birt/images/newdatasource_qs.png
+SHA1-Digest: D6f313jIjUjSTs9IcSZjYrUc+fY=
+
+Name: birt/images/oprpt_layout3.png
+SHA1-Digest: 1eVXlfQV31ka2ymnD03Fyt+N1kg=
+
+Name: birt/images/grouping.07.12.2.png
+SHA1-Digest: T7GgafYA8Nntz1SS385Ex87nXnE=
+
+Name: birt/images/join_ds.png
+SHA1-Digest: zKgm22VGFV/O6vJ82PWQr6tomPk=
+
+Name: birt/ct-TutT1CreateANewReport.html
+SHA1-Digest: WDo87fyD5D0i4WXwDAOx/m62CnE=
+
+Name: birt/fl-HowToFilterAtTheDataSetLevel.html
+SHA1-Digest: pCJPxPY7S6r+Qw+Ex/xiyQDgDOI=
+
+Name: birt/images/grpt_output7.png
+SHA1-Digest: 6xeqA0N1QouJdOscrPrSbSZQETc=
+
+Name: birt/images/sub_query.png
+SHA1-Digest: WRt4RpULtFVYAEq1EI902ku3MaU=
+
+Name: birt/images/layout3.png
+SHA1-Digest: PKNOJZBbcCEfqAuhrrh3NXWQ1bo=
+
+Name: birt/images/CHT_TSelectDatatop.png
+SHA1-Digest: z+TFehsTDTw/WRCK+I1kWATDoJA=
+
+Name: birt/lib-HowToAddAnElementToALibrary.html
+SHA1-Digest: kOQ4MpXLgt1B3VjXYRkdUxAK2WE=
+
+Name: birt/ScriptingReference.24.5.html
+SHA1-Digest: ta0LKCp7MdUbU0AqMMqJ0qGEnG0=
+
+Name: birt/images/EB_combined_fields.png
+SHA1-Digest: yDcoSQ4lzjib9MGj1Li1IXYlkr0=
+
+Name: birt/images/output4.png
+SHA1-Digest: hYlL5wiWfz/kX+82phU5HESU08Y=
+
+Name: birt/images/ChartBasics.13.4.1.png
+SHA1-Digest: Mg6isDu2XuWHxM68Vul/cS/08YU=
+
+Name: birt/css/ScriptingWithJava.css
+SHA1-Digest: 5qg05qyvJRu1tAI7SntFUTa5Wew=
+
+Name: birt/ag-HowToDisplayAggregateData.html
+SHA1-Digest: ScqLJuYYq662mzQ2hWJxV7fV1T0=
+
+Name: birt/ScriptingWithJavaScript.22.07.html
+SHA1-Digest: 6DV09dDQdLpCR2PyFtSNTNcyvr8=
+
+Name: birt/images/propertyrow.png
+SHA1-Digest: bkAX+B0/66VHEamN0xrIBfOd8Jg=
+
+Name: birt/sg-TutT3AddTheCreditLimitFieldToTheDataSet.html
+SHA1-Digest: fV8witMZd3ERioj3xuKXFJr1o0A=
+
+Name: birt/images/left_button.png
+SHA1-Digest: H2UpDsHvTBNQW6UQtc6U1GdvtGA=
+
+Name: birt/toc.html
+SHA1-Digest: gUgYKPU60m7awbOfwDmV+9alq2U=
+
+Name: birt/iv-HowToLinkTwoReports.html
+SHA1-Digest: GdvKjb/mX9i53jtWX3vaYvPvGoc=
+
+Name: eclipse32.png
+SHA1-Digest: oVfbwxeRaaOaYcvHpWRbk7Bdg/U=
+
+Name: birt/sub-TutT3BuildDataSetForCustomerRpt.html
+SHA1-Digest: 10geb1IMpTVQI7hOB9e8fGUz0EY=
+
+Name: birt/images/grpt_newquery.png
+SHA1-Digest: jy3n1Z3mtTEV5u7TzUTBdeNMt+o=
+
+Name: birt/images/Excel-04.png
+SHA1-Digest: 2PUvw+9KzcnmqCMqE/qX9IbSCps=
+
+Name: birt/lib-HowToSetUpATemplateFolder.html
+SHA1-Digest: qvNb4NxmC3kYY0U6qPydApz9L4k=
+
+Name: birt/images/chartpreviewresults.png
+SHA1-Digest: BSSOUOqtImDIB4Ncr1UQyeen7G4=
+
+Name: birt/ch-TutT1QueryTheDataSource.html
+SHA1-Digest: hqURmiuE7xSTVusBHzNPPsDXZCg=
+
+Name: birt/images/new_col_binding_contactname.png
+SHA1-Digest: xm9HI/CK39L0MBLDse2L5+e0bz4=
+
+Name: birt/ds-HowToJoinDataSets.html
+SHA1-Digest: JX1/YhXBRK58mv6qOJyg1EnX3Kc=
+
+Name: birt/images/optrpt_tableindesign.png
+SHA1-Digest: i2duTOhxwKX/HGAJMm9f7CXuGkM=
+
+Name: birt/lay-HowToAddARowOrColumn.html
+SHA1-Digest: xddHzZ72Gbzi5DCXKNrilQBZWD8=
+
+Name: birt/images/querywithmarker_03.png
+SHA1-Digest: Y6ioSepb7zFgv7m284lRaHVZXuI=
+
+Name: birt/images/oprpt_listbinding.png
+SHA1-Digest: eRVPhCo6TjReWZUtwknVlzIC7os=
+
+Name: birt/images/ifcondition.png
+SHA1-Digest: SP/XNZrJqkUsaxVf/nBZpDMkXf4=
+
+Name: birt/images/grpt_grptotal_text.png
+SHA1-Digest: R6+F4AFxpnKD/PmY/sBGQUbpcbM=
+
+Name: birt/images/highlightslist.png
+SHA1-Digest: HfZkriDIxRX2OzPenEPhIJ/w6IQ=
+
+Name: birt/images/viewing.18.3.1.png
+SHA1-Digest: v+cS9bJ9gqZT5ovSUdD4NJdIhW4=
+
+Name: birt/sg-PreviewTheReportInTheBIRTReportViewer.html
+SHA1-Digest: bHIjCE3BonF47LkBGQ11thz1xOk=
+
+Name: birt/images/crosstab.16.1.1.png
+SHA1-Digest: iWq1+X75jwYvRAWugbFoVJFDRtE=
+
+Name: birt/images/css_in_outline.png
+SHA1-Digest: JusBCC7PAzRs3Xn/+hHRgwL4Ino=
+
+Name: birt/images/grpt_layout4b.png
+SHA1-Digest: fUvW+M7pua389H6ZIMkANBGI2OA=
+
+Name: birt/images/xtab_layout3.png
+SHA1-Digest: byesNz7EVYVc1YbjKBAnieb+1Lk=
+
+Name: birt/ScriptingWithJavaScript.22.01.html
+SHA1-Digest: Z1weyKAOBcoxBpuVvzZE0X/a764=
+
+Name: birt/ct-PresentingDataInACrossTabIntro.html
+SHA1-Digest: HOIk9jkRhbPyOwYwXCOC/i61mIM=
+
+Name: birt/UsingScripting.21.1.html
+SHA1-Digest: Sfzd0MQnRUjmZ0R3UNBG3TRdiNo=
+
+Name: birt/images/SelectingReportDesign.png
+SHA1-Digest: v3gdKQBHPwYphDWZvhEwyu9ZhSg=
+
+Name: birt/images/xtab_cubeinDE.png
+SHA1-Digest: s2OIQK1d1Kz6SZIU32qa/Qv0XE4=
+
+Name: birt/images/grpt_layout5.png
+SHA1-Digest: po+//UCeg3NeOeJbQ8NYhLZrkqg=
+
+Name: birt/images/CreateTemplateReportItem.png
+SHA1-Digest: KDXxXxGwx5BWl2pXKcGgEe/h7LY=
+
+Name: birt/images/ChartBasics.13.8.08.png
+SHA1-Digest: qC6Ej9T0X5qxWqxODRfXNKrrBP0=
+
+Name: birt/css/parameter.css
+SHA1-Digest: kEY54LNmom3H/t43FJckst0xG9Q=
+
+Name: birt/images/grouping.07.12.1.png
+SHA1-Digest: ScRy7l9aoVf1i1VbB/NfBgJ3au8=
+
+Name: birt/iv-HowToDefineABookmark.html
+SHA1-Digest: GlSVgRyOpVO+wqCHANK42JY03VE=
+
+Name: birt/con-HowToSpecifyConnectionInformationForCassandraDataSource
+ .html
+SHA1-Digest: Eih9ddNw1Gniep+/4bC8hPuvkzg=
+
+Name: birt/con-AboutBIRTDataSources.html
+SHA1-Digest: zBU3FggQgtAaUJWVtmHscI2ooew=
+
+Name: birt/images/filter_with_reportparam.png
+SHA1-Digest: K/mdibrv3RFdCnPjknU8LCWO4UI=
+
+Name: birt/images/grpt_output6.png
+SHA1-Digest: oDooEucqtm1gV2RV543uyHGwPg4=
+
+Name: birt/images/grpt_selectcells.png
+SHA1-Digest: rWgoF3B999BmrPF3XwmeiBJMjXw=
+
+Name: birt/images/oprpt_output3.png
+SHA1-Digest: 5K2lShlRYM/U7IRP7gE/rLo2LsA=
+
+Name: birt/images/pojo_datasetPreview.png
+SHA1-Digest: Cu+V/F8fVbPnh85qz4A9K0A9zck=
+
+Name: birt/images/xtab_rowtotal.png
+SHA1-Digest: fFtQ39FvmTjQ2m42YnjcKtxf0hU=
+
+Name: birt/images/mappage_onemap.png
+SHA1-Digest: kglpCi3bYGsohEerch5GgtCwui0=
+
+Name: birt/con-ConnectingToADataSource.html
+SHA1-Digest: HMPksIDfiDIow8iNL9iGqtlkahQ=
+
+Name: birt/images/Excel-DS-07.png
+SHA1-Digest: xYpkj4fER/3riBeroUZT4k+gUzc=
+
+Name: birt/lay-HowToInsertImagesThatAreStoredInADataSource.html
+SHA1-Digest: ZrAH4webjiNciC/GSUy5b1Fgjk4=
+
+Name: birt/images/output3.png
+SHA1-Digest: hAGb2H63S1a6dw2sxI/9sjV0TjI=
+
+Name: birt/sub-TutT9CreateOrdersSubRpt.html
+SHA1-Digest: Q3t21nFcnZDfEZ54rStMqwDu+m0=
+
+Name: birt/sg-TutT1OpenTheReportDesign.html
+SHA1-Digest: cI8ZA5JpfKGlIA03yLS6471ddUU=
+
+Name: birt/sg-Tut2GroupingReportDataIntro.html
+SHA1-Digest: s6slPKyZ3RJ8bmqm592AR6gZ5ck=
+
+Name: birt/cf-HowToSetTheDataTypeAndFormatOfAnAxis.html
+SHA1-Digest: yBsP96S4kVrz2tIrxk4cNds3n5g=
+
+Name: birt/images/Mongo03.png
+SHA1-Digest: rFbwKCTU/IGggepgGxIWUEbd4ag=
+
+Name: birt/images/maprule.png
+SHA1-Digest: gm5LvZMV0D/JkxFLM6PjAw+LWbU=
+
+Name: birt/rp-EnablingTheUserToFilterData.html
+SHA1-Digest: Hr0n8Frj0YVexA6c8UE3XnXD+jQ=
+
+Name: birt/css/multipage.css
+SHA1-Digest: 0G0a+8vM1XAbHrZPJuMSgjPlRTo=
+
+Name: birt/con-HowToSpecifyConnectionInformationForPOJODataSource.html
+SHA1-Digest: OBImccow4CM/VEKfhgk0WxTgW5w=
+
+Name: birt/images/ManageThumbnail.png
+SHA1-Digest: zLExvko94/5tDLgKXuxfUS6lSpM=
+
+Name: birt/images/crosstab.16.6.1.png
+SHA1-Digest: 7j3ofNHOkJ1vmn8pzObvVS3SixM=
+
+Name: birt/lib-BuildingASharedDevelopmentFrameworkIntro.html
+SHA1-Digest: 9EK0zF4sEanlAOvwohmS7APqsSg=
+
+Name: birt/fm-HowToMapDataValuesToDifferentDisplayValues.html
+SHA1-Digest: IYayPFQFqr8Qa6KC/bnt5eoMLwY=
+
+Name: birt/images/editdataset02.png
+SHA1-Digest: Aia58Poe/VKRHnasRGCY2AMSugY=
+
+Name: birt/ScriptingReference.24.6.html
+SHA1-Digest: 6Pydd06LyaUOLpIVRGQ41/mS7M4=
+
+Name: birt/images/libexp_with_css.png
+SHA1-Digest: TDvczpKlLzD7NAXlvWlv7CvBjOc=
+
+Name: birt/images/JavaProjectPropertiesDialog.png
+SHA1-Digest: 2Z/zDp6OQ8pVr4l1UwaltG0r3Hk=
+
+Name: birt/sg-DisplayTheNumberOfCustomersTextOnOneLine.html
+SHA1-Digest: qHt82umy5IqMXR+KKolkW32XmWc=
+
+Name: birt/fm-HowToCreateAFormattingRule.html
+SHA1-Digest: vAq5mrd4VOo1sjNO4X/xDU6ZIMc=
+
+Name: birt/con-HowToSpecifyConnectionInformationForExcelDataSource.htm
+ l
+SHA1-Digest: bLD2SASWYpZ1tJ9bb/5ZbuBFlio=
+
+Name: birt/lay-HowToBindADataSetToATable.html
+SHA1-Digest: BbebDpV5zdX8Z1OPqc2+pJXX9hc=
+
+Name: birt/images/basic_query.png
+SHA1-Digest: N2MYrQJMwGl+dwYWM+igHnz9nLE=
+
+Name: birt/fm-HowToSpecifyARowHeight.html
+SHA1-Digest: DZvU7/xjYHxlPO1ZDHO6MMt/f6E=
+
+Name: birt/fm-HowToApplyAStyle.html
+SHA1-Digest: nY+51/iYwtGuYoqSNbt6XQX7qhA=
+
+Name: birt/ex-WritingExpressions.html
+SHA1-Digest: 404A8+cw9DuUpuqcaCfeUgp+ppM=
+
+Name: birt/gs-IncreaseTheSpaceBetweenRows.html
+SHA1-Digest: ikogjeOUMrQZy2EF2P8wK9A3rxM=
+
+Name: birt/css/grouping.css
+SHA1-Digest: sIhdh9DAvUE0Q2qZ16i7TtZKFus=
+
+Name: birt/images/dsfilter_results.png
+SHA1-Digest: vVhh0AeYrXavynA/Mi9t+u39FLY=
+
+Name: birt/images/newdsparam.png
+SHA1-Digest: uke+VwpRAQJhw27cUjb91sbJGiY=
+
+Name: birt/images/preferences_preview.png
+SHA1-Digest: GgrmqqNGK2LCtmXX5pncVxmrLtg=
+
+Name: birt/ch-TutT4EnlargeChartAndPreview.html
+SHA1-Digest: pHgqmtSkE6BIYUcZfptC50b4JTM=
+
+Name: birt/images/grouping.07.11.2.png
+SHA1-Digest: VKRF6RYLtcMG/Fw1q5muJdXFLyA=
+
+Name: birt/ScriptingWithJavaScript.22.08.html
+SHA1-Digest: BqzOBl0zonAIV5mP8fZSax0Myak=
+
+Name: birt/images/newproject_tut1.png
+SHA1-Digest: ZFFI+Mwl+lIzey5PWSW4aTyhC7M=
+
+Name: birt/images/oprpt_expbuilder..png
+SHA1-Digest: pHDWM+LsIpu6E7JhGTnoBEhR69A=
+
+Name: birt/gs-AboutTheReportDesignEnvironment.html
+SHA1-Digest: eadGqbY7urgmVkFqbF5iD7mDSDw=
+
+Name: birt/images/xtab_cubecomplete.png
+SHA1-Digest: 4EvBcAEFCI4JgcxrecPY9Qmn4aA=
+
+Name: birt/cf-OverviewOfFormatting.html
+SHA1-Digest: oeAo3m/MKzKXkoEO6AJ6MmrWHzs=
+
+Name: birt/images/grpt_agg_grp.png
+SHA1-Digest: 9jjxUaMSsC7Lgskyw0elw9HOMoQ=
+
+Name: birt/images/format.06.17.1.png
+SHA1-Digest: DInR90GqnJ8jYhYm7p4yRjcTNiE=
+
+Name: birt/images/ChartBasics.13.7.3.png
+SHA1-Digest: ExEGHI/hXYc+iCk4wC31N1jWm1A=
+
+Name: birt/images/xtab_layout2.png
+SHA1-Digest: qxLK3BBuLFFpZp2coi1GOQZCUr0=
+
+Name: birt/images/tutorial3Shot6.png
+SHA1-Digest: bH2j27Y1JTMhJApKDW76OKZaKL8=
+
+Name: birt/images/proptoc-2.png
+SHA1-Digest: LIAtqwH32imiPg1RMGc+i1cToT0=
+
+Name: birt/css/text.css
+SHA1-Digest: WqWmxaaw22baz5iEH1foaBNDtLE=
+
+Name: birt/mp-HowToDisplayTextInTheHeaderAndFooter.html
+SHA1-Digest: ROxQgMAUIzt8uyxotv1tjBcMuCk=
+
+Name: birt/gs-LearningTheBasics.html
+SHA1-Digest: kUWBn1rQ9I5J+3kDP/EMy0WVSZY=
+
+Name: birt/images/Edit_Group_filter_example.png
+SHA1-Digest: jO1juHaK8QrTLXBGlKYjMgA4Bsw=
+
+Name: birt/images/oprpt_layout1.png
+SHA1-Digest: yvYceylFA0sU5fuECun0S8a+Evw=
+
+Name: birt/images/grpt_output4b.png
+SHA1-Digest: EKBP+SPOg2uNeXsjhHX5CUYUgCE=
+
+Name: birt/images/nextx.gif
+SHA1-Digest: fVHFT3JeaSiTQIQQJR0jpCVNu/w=
+
+Name: birt/cf-HowToFormatAnAxisTitle.html
+SHA1-Digest: Q6ry/elreTKs569SXHYhOC2ZI3U=
+
+Name: birt/images/indexx.gif
+SHA1-Digest: xDa0H5S7/B1lba/FqRBLcXfD1mA=
+
+Name: birt/ch-TutT2AddTheChartToTheReport.html
+SHA1-Digest: +fEE8MnYdDsAPaw2ObSUQ4w+Tfk=
+
+Name: birt/images/grpt_output5.png
+SHA1-Digest: ljqrB29i/wpAoeCOeoFwKJyld2U=
+
+Name: birt/images/oprpt_layout1a.png
+SHA1-Digest: 7BN0UKOfkm38S+fiUDvHHoKxqts=
+
+Name: birt/images/oprpt_output2.png
+SHA1-Digest: Ck35wtS5XpA67joFCfHSJIfVuI0=
+
+Name: birt/ScriptingWithJavaScript.22.02.html
+SHA1-Digest: DScnsh2el7SHvPhromFqijwBwY4=
+
+Name: birt/images/add_ds_filter.png
+SHA1-Digest: x1axU8dhlvz80P1JnxNQ/Ex26LU=
+
+Name: birt/images/oprpt_paymentbinding.png
+SHA1-Digest: bm3S58lMpHQwtoKz8+w7UpyqIZc=
+
+Name: birt/images/Excel-DS-06.png
+SHA1-Digest: FL1SqVTifYkLbEBPiBXJj74Rj88=
+
+Name: birt/images/output2.png
+SHA1-Digest: 720eKnwFM2tITGB5qc3U+TCimnQ=
+

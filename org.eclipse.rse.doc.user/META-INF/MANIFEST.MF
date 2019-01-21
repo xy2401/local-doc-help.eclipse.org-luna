@@ -1,0 +1,202 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.tools.tm
+Bundle-SymbolicName: org.eclipse.rse.doc.user; singleton:=true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/doc/org.eclipse.rse.doc.user";commitId=9b55
+ 8c9e43775cfc1a340cc34d2af3e235958bdf
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 3.4.100.201403101646
+Bundle-ManifestVersion: 2
+
+Name: tasks/truncmdsview.html
+SHA1-Digest: FW8Yqe1jYQa29NWBYuwW87poCEU=
+
+Name: tasks/tteamsup1.html
+SHA1-Digest: d+JZ15HLqy4LN2RdteaICzCe+xA=
+
+Name: tasks/tmanagedel.html
+SHA1-Digest: g289YDlzOnYEh+s4FhmNgybBCxU=
+
+Name: tasks/ttabledrag.html
+SHA1-Digest: VDDGvs/pw7lIq3fSINNOGfhtisU=
+
+Name: tasks/tarchive.html
+SHA1-Digest: iS4bnXeyiZZPOd9OkvlGsdVF0RY=
+
+Name: tasks/tbeginsecprofile.html
+SHA1-Digest: Cs6NNnp0mcpE3R3ajwMY9WNoqcY=
+
+Name: tasks/tbeginwindows.html
+SHA1-Digest: 9vb5/EZJ5ccmy+yKhBlpqyWoD8U=
+
+Name: concepts/cuniversal.html
+SHA1-Digest: jB6pOeJw9F1hj088GIom0W5Y/Mg=
+
+Name: tasks/tbegindiscon.html
+SHA1-Digest: jW6BB7Mi+yB/wbEGBQ8HSYExxic=
+
+Name: tasks/tworkssl.html
+SHA1-Digest: WDzvTbT9ohzz5Ib68UOa1wUJT30=
+
+Name: gettingstarted/g1installing.html
+SHA1-Digest: y17xlbo/V/KuyntW+vH3ypGc/qg=
+
+Name: tasks/tworkuseract.html
+SHA1-Digest: An/so1HC0orWWMP+fXgbH2sU748=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.doc.user/pom.prope
+ rties
+SHA1-Digest: OGxFvesuuyTbV+B0EfYEaqcko5c=
+
+Name: concepts/cteam.html
+SHA1-Digest: b6KD1WzWfbjx7pyI4Pl2+JHvudI=
+
+Name: concepts/cfilters.html
+SHA1-Digest: 9mUB7azDvan9lRL6dniwkZ8yTb8=
+
+Name: notices.html
+SHA1-Digest: p8Gq1wUDCtF1tKwM6x7AsW3qjCQ=
+
+Name: tasks/tbuild.html
+SHA1-Digest: P9+ZDWqXOU/sMZM79IrY/0sFMpc=
+
+Name: gettingstarted/gxtending.html
+SHA1-Digest: aw4Ifj2IceYUbUehqkjU7NWxyNw=
+
+Name: gettingstarted/g_start.html
+SHA1-Digest: 0cWGXpcMg6fty6Owqtu48UFVMMc=
+
+Name: tasks/tremoexp.html
+SHA1-Digest: +N9au1EZ5zF2ijUREWBVCtcDFro=
+
+Name: tasks/tmanagepoolsref.html
+SHA1-Digest: jqhW35Kn/Vub01F2sjtjgmGEbYc=
+
+Name: images/newconnection_wiz.gif
+SHA1-Digest: PeibsGdzOfzAHE9GmV+ni7oSp40=
+
+Name: concepts/cuseractions.html
+SHA1-Digest: xyIVPaEVp/QTXo+cTCAoXybDj+c=
+
+Name: gettingstarted/gusing.html
+SHA1-Digest: rixd/p4vqeKS5tEZNueCK4pCQho=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.doc.user/pom.xml
+SHA1-Digest: LFTxJtKfb7LsgM3O872lc+vd4dE=
+
+Name: concepts/cprofile.html
+SHA1-Digest: OdykwFc8X0Fq7XLuEU7g1290Jbw=
+
+Name: images/RSESample_small.gif
+SHA1-Digest: CrV+CFL4uUiWQd14EqJ4loyWzSU=
+
+Name: tasks/tmanageedit.html
+SHA1-Digest: ecYOWaIHbP0escK2FmCIgrPtByc=
+
+Name: tasks/tremtype.html
+SHA1-Digest: o/kJlM5WatthrGt4N4IVXJIF1+Q=
+
+Name: tasks/tmanagepools.html
+SHA1-Digest: 5Mj6Mx+rlzAozgkmlbFx25JMHLk=
+
+Name: tasks/tbeginlinux.html
+SHA1-Digest: JJ/qxAZPERfiH8ayy9Bj6SG1Afc=
+
+Name: tasks/twrkcmdshl.html
+SHA1-Digest: Bf4ojetwGs2AKe8PP7RWsFKGiqU=
+
+Name: tasks/tedittype.html
+SHA1-Digest: NF82GGpEDMzf+60Ea9PrVKdcPoA=
+
+Name: ref/rrsepref.html
+SHA1-Digest: NvdBXK6vw4o3NZOdo7jNr0i3ar4=
+
+Name: plugin.properties
+SHA1-Digest: CIhxGLFGZPyGTEDzkDPahWmc5Ak=
+
+Name: tasks/tbeginsecond.html
+SHA1-Digest: L6kiB9sL56ZFAc/QlE7LAgkWmR4=
+
+Name: tasks/tbegindeleteprofile.html
+SHA1-Digest: J79ouNJyp9TW+19BE7ci9sjNFwA=
+
+Name: tasks/tbeginpass.html
+SHA1-Digest: m675ByBeOffg/qkuwi1+mc3dmcA=
+
+Name: tasks/tremoimp.html
+SHA1-Digest: LIqAyEYnne3YiBdLudFRSz2SWo8=
+
+Name: tasks/tusingefs.html
+SHA1-Digest: ezCA/yaio1ClFOIMsC/buNrLwe4=
+
+Name: tasks/tmanagesearch.html
+SHA1-Digest: fuSzg8KADN2P+4hJdpvNQ4l6zrw=
+
+Name: tasks/tteamsup.html
+SHA1-Digest: W+mweCLrbCgymRtSlUPurWCYn1g=
+
+Name: plugin.xml
+SHA1-Digest: Uv4pm0h/UAisqu4IG0s0zh5buJM=
+
+Name: images/gsarrow.gif
+SHA1-Digest: mYv8WSV/YO5O4/S1EapttwO0CKs=
+
+Name: concepts/cremcompile.html
+SHA1-Digest: 5svrBsBqIruyg65xkaEjZK+EmnA=
+
+Name: tasks/tbeginenv.html
+SHA1-Digest: hB24LcaK11eyEyXaW9Lfl7oD9DU=
+
+Name: gettingstarted/g2firststeps.html
+SHA1-Digest: fXqdKKUXkwW+PK1JKSPNbSwhc8o=
+
+Name: tasks/tbegindstore.html
+SHA1-Digest: 37Gq/GmGceMTIFrFjX5QOBseI9U=
+
+Name: tasks/ttablecopy.html
+SHA1-Digest: RNJqnlj0XIJTtHg5ZBJKrMaZpo0=
+
+Name: about.html
+SHA1-Digest: 5zvlJrcpnxpkhgBLuEb3nXkPyug=
+
+Name: images/RSESample.gif
+SHA1-Digest: uIqcltHUOyX/QZDiRmbXH9+8rqI=
+
+Name: images/ModelRSE.png
+SHA1-Digest: 8D3CR0EAa1YK3lxR8zHlyzthO+Q=
+
+Name: concepts/cbegin.html
+SHA1-Digest: 6AWKFx3vZCr+zUwUOgzu56lqW2I=
+
+Name: images/pw.jpg
+SHA1-Digest: zjOWhuB1vxkcoAw3kZfzr6BtgZg=
+
+Name: toc.xml
+SHA1-Digest: 7w+71x7Xg92bMkq/h0QjYeEdGjU=
+
+Name: concepts/crunremcmds.html
+SHA1-Digest: 6ySVf0vOetO6PkQvi7KTSzwy2tI=
+
+Name: images/navigator.jpg
+SHA1-Digest: ZoDYg/1j28R7unzEvg6pXR3Zs9w=
+
+Name: images/search.gif
+SHA1-Digest: AjpkKHY+mKyIpbNzbdXnQ3cH0cE=
+
+Name: tasks/tbegindelete.html
+SHA1-Digest: 6xTaPeVJx3RvomLuX8grvMR4Csw=
+
+Name: ref/rsearch.html
+SHA1-Digest: pd6ek5PctJTsbKNkyeozvVPHqJM=
+
+Name: tasks/tmanagemem.html
+SHA1-Digest: fowXMcTGU5MppKJkvwmAiniu66s=
+
+Name: book.css
+SHA1-Digest: 1kUM4qk7MW0+kEny5uW4Wr26zuA=
+

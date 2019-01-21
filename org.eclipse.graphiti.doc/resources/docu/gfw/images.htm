@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing own images</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Own Images</h1>
+<h2>Prerequisite</h2>
+<p>Providing own images is platform dependent (e.g. Eclipse specific). </p>
+<p>You have to <em>copy an icon</em> representing an association to the location
+<em>&quot;icons/ereference.gif&quot;</em> of your plugin. This icon will be registered and 
+used in this chapter.</p>
+<h2>Creating an Image Provider</h2>
+<p>Own images can be provided through implementations of image providers, which 
+have to be registered using extensions in the <em>plugin.xml.</em></p>
+<p>Graphiti is (mostly) platform independent, but instances of images are platform 
+dependent. Thus images in Graphiti are only used via identifiers, and the task of 
+the image provider is to deliver the platform-dependent image for an image identifier.</p>
+<p>In the following example we provide an own image representing an EReference, 
+and use it for the <a href="context-buttons.htm">context button</a> &quot;create connection&quot; 
+we created previously.</p>
+<p>First we have to create an image provider.</p>
+<p>An image provider has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/IImageProvider.html">
+IImageProvider</a>. Instead of implementing it directly it is recommended to extend 
+the base class
+<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/AbstractImageProvider.html">
+AbstractImageProvider</a>.</p>
+<p>In this case we have to implement/overwrite one method:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/ui/platform/AbstractImageProvider.html#addAvailableImages()">
+	addAvailableImages</a> has to register all available image identifiers, and 
+	map them to their platform-dependent images.</li>
+</ul>
+<p>You can see the complete implementation of the image provider here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package</span> org.eclipse.graphiti.examples.tutorial;<br>&nbsp;<br>
+		<span class="keyword">import</span> org.eclipse.graphiti.ui.platform.AbstractImageProvider;<br>&nbsp;<br>
+		<span class="keyword">public class</span> MyTutorialImageProvider
+		<span class="keyword">extends</span> AbstractImageProvider {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// The prefix for all identifiers of this image provider</span><br>&nbsp;&nbsp;
+		<span class="keyword">&nbsp;protected static final</span> String
+		<span class="string"><em>PREFIX</em> </span>= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&quot;org.eclipse.graphiti.examples.tutorial.&quot;</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// The image identifier for an EReference.</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public static final</span> String
+		<span class="string"><em>IMG_EREFERENCE</em></span>=
+		<span class="string"><em>PREFIX</em></span> + <span class="string">&quot;ereference&quot;</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">protected void</span> 
+		addAvailableImages() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// register the path for each image identifier</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		addImageFilePath(<span class="string"><em>IMG_EREFERENCE</em></span>,
+		<span class="string">&quot;icons/ereference.gif&quot;</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>The newly created image provider is registered through the extension point
+<a href="../extension-points/imageProviders.html">imageProviders</a>.</p>
+<p>Additionally the image provider has to be added to the extension point
+<a href="../extension-points/diagramTypeProviders.html">diagramTypeProviders</a>.</p>
+<p>The corresponding part of the <em>plugin.xml</em> should look like this:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="string">&lt;extension<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		point=</span><span class="comment">&quot;org.eclipse.graphiti.ui.diagramTypeProviders&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;
+		<span class="string">&lt;diagramTypeProvider<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		class=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.diagram.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		MyTutorialDiagramTypeProvider&quot;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&nbsp;description=</span><span class="comment">&quot;This 
+		is my editor for the Graphiti tutorial&quot;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">id=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.diagram.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		MyTutorialDiagramTypeProvider&quot;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">name=</span><span class="comment">&quot;My tutorial editor&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&lt;diagramType<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		id=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.diagram.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		MyTutorialDiagramType&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&lt;/diagramType&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;imageProvider<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		id=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.MyTutorialImageProvider&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">&lt;/imageProvider&gt;<br>&nbsp;&nbsp; &lt;/diagramTypeProvider&gt;<br>
+		&lt;/extension&gt;<br><br>&lt;extension<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; point=</span><span class="comment">&quot;org.eclipse.graphiti.ui.imageProviders&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;
+		<span class="string">&lt;imageProvider<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		class=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.MyTutorialImageProvider&quot;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="string">id=</span><span class="comment">&quot;org.eclipse.graphiti.examples.tutorial.MyTutorialImageProvider&quot;</span><span class="string">&gt;</span><br>&nbsp;&nbsp;
+		<span class="string">&lt;/imageProvider&gt;<br>&lt;/extension&gt; </span></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<p>Finally we can set the image for the <a href="context-buttons.htm">context button 
+we created previously</a>. </p>
+<p>This has to be done in the method
+<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getContextButtonPad(org.eclipse.graphiti.features.context.IPictogramElementContext)">
+getContextButtonPad</a> of the tool behavior provider, as you can see here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> IContextButtonPadData[] 
+		getContextButtonPad(IPictogramElementContext context) {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ... EXISTING CODING ...</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="comment">// create context button and 
+		add all applicable features</span><br>&nbsp;&nbsp;&nbsp; ContextButtonEntry 
+		button = <span class="keyword">new</span> ContextButtonEntry(null, context);<br>&nbsp;&nbsp;&nbsp; 
+		button.setText(<span class="string">&quot;Create connection&quot;</span>);<br>&nbsp;&nbsp;&nbsp; 
+		button.setIconId(MyTutorialImageProvider.<span class="string"><em>IMG_EREFERENCE</em></span>);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ... EXISTING CODING ...</span><br>&nbsp;<br>}
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Verify the Own Image for the Context-Button</h2>
+<p>Now start the editor and create a new EClass. Hover on top of the EClass to display 
+the context buttons. Verify that the &quot;create connection&quot; context button has the 
+image you provided before.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Document Type</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Preferences Storage",
+			"ag-concepts-4.htm","ag-concepts-preferences.html",
+			"../key-concepts.html","Concepts",
+		    "ag-concepts-preface.htm","Administrative Concepts");
+ -->
+</script>
+
+<h1>Document Types</h1>
+<p>Document Types are a useful tool for managing documents. It
+allows customizing the content and behavior of documents, managing file
+security and file attributes. A document type can be applied to any
+document in the document repository. The fields of information in the
+document type become then associated with the document. A document can
+be assigned exactly one Document Type at a time.</p>
+<ul>
+	<li><a href="#docTypeDef">Document Type Definition</a></li>
+	<li><a href="#modeler">Document Types Reflected in the Modeler</a></li>
+	<li><a href="#api">Managing Document Types via API</a></li>
+	<li><a href="#storage">Storage of Document Types in the Document
+	Repository</a></li>
+</ul>
+<h2 id="docTypeDef">Document Type Definition</h2>
+
+<p>A Document Type used in Stardust is defined
+by the following two parameters:</p>
+<ul>
+	<li><a href="#docTypeID">Document Type ID</a> and</li>
+	<li><a href="#xsdLoc">Document Type Schema Location</a></li>
+</ul>
+
+<p>The tuple is necessary to uniquely identify a <a href="#typeDecl">Type
+Declaration</a> in a particular schema location.</p>
+<p></p>
+<h3 id="typeDecl">Type Declaration</h3>
+<p>A Type Declaration is a declaration of an XML type defined by
+means of an XML Schema Definition (XSD). One XSD may contain more than
+one Type Declaration.</p>
+<h3 id="docTypeID">Document Type ID</h3>
+<p>The Document Type ID identifies a particular Type Declaration in
+the Document Repository regardless of its version. It is a qualified
+name as defined in the XML specification where:</p>
+<ul>
+	<li>the namespace URI contains the namespace of the Type
+	Declaration as defined in the XPDL model and</li>
+	<li>the local part contains the Type Declaration ID.</li>
+</ul>
+<p>For example: {&lt;Type Declaration Namespace&gt;}&lt;Type
+Declaration ID&gt;.</p>
+<h3 id="xsdLoc">Document Type Schema Location</h3>
+<p>A Document Type Schema Location identifies exactly one XSD in the
+Document Repository. When looking at the structure of schema locations,
+we have to distinguish between the following two different types:</p>
+<ul>
+	<li>Internal XSDs (i.e. the XSD resides in the XPDL model.)</li>
+	<li>External XSDs (i.e. the XSD references an external XSD that
+	resides outside the XPDL model.)</li>
+</ul>
+<p>The schema locations for these two types assemble as follows:</p>
+<ul>
+	<li>Internal XSDs: <tt>urn:internal:&lt;Type Declaration
+	Namespace&gt;?&lt;model OID&gt;</tt></li>
+	<li>External XSDs: <tt>classpath:/&lt;path to XSD
+	file&gt;/&lt;XSD file name&gt;</tt></li>
+</ul>
+<h2 id="modeler">Document Types Reflected in the Modeler</h2>
+<p>Document Types do not exist as first class elements in the
+modeler. The Document Type of a document is determined by associating a
+Structured Data Type with a document. Thus for the time being, to use a 
+Structured Data Type as Document Type, you need to create a Structured Data Type
+as well as a data object for the Structured Data Type.</p>
+<p>A specific Document Type can be assigned to each document upon
+addition to the document repository, thereby associating the document
+with a pre-defined meta-data structure.</p>
+<p>Type definitions stored in the document repository contain
+version information to be able to distinguish it from an altered type
+definition of the same Structured Data Type that will potentially be
+stored in the document repository later. Hence, deleting and modifying
+Structured Data Types in the model do not affect the Document Type of
+any document stored in the document repository, unless the model will be
+deployed using overwrite semantics.</p>
+<h2 id="api">Managing Document Types via API</h2>
+<p>Managing Document Types is provided via  
+Stardust API, e.g. for the following use cases:</p>
+<ul>
+	<li>Retrieving the Document Type of a
+	Document</li>
+	<li>Retrieving Document Type Objects
+	of a Model</li>
+	<li>Retrieving Data of Type Document
+	or DocumentList</li>
+	<li>Retrieving a Document</li>
+	<li>Retrieving the Document Type of a
+	Document</li>
+	<li>Retrieving the XSD Schema of a Document
+	Type</li>
+	<li>Assigning a Document Type to a
+	Document</li>
+	<li>Deleting a Document's Document Type</li>
+	<li>Updating a Document's Document Type</li>
+	<li>Linking a Document Type</li>
+	<li>Unlinking a Document Type</li>
+	<li>Searching for a Document Type</li>
+	<li>Replicating the Document Types' XSDs to
+	the Document Repository</li>
+</ul>
+<p>Refer to chapter
+<a href="../../handbooks/programming/embed/documents/pg-embed-doc-types.html">Managing Document Types</a>
+in the <a href="../../handbooks/programming/pg-preface.htm">Programming Guide</a>
+for a detailed description on these use cases.</p>
+<h2 id="storage">Storage of Document Types in the Document
+Repository</h2>
+<p>Document Types are stored in the document repository in the
+following way:</p>
+<table>
+	<tr>
+		<th>Content Description</th>
+		<th>Location</th>
+	</tr>
+	<tr>
+		<td>Root node for all Document Type data</td>
+		<td><tt>/ipp-repository/partitions/&lt;partition
+		ID&gt;/documentTypes/</tt></td>
+	</tr>
+	<tr>
+		<td>XSD file for a particular Document Type Schema Location</td>
+		<td><tt>/ipp-repository/partitions/&lt;partition
+		ID&gt;/documentTypes/schemas/&lt;URLEncode(Document Type Schema
+		Location)&gt;/&lt;XSD file&gt;</tt></td>
+	</tr>
+	<tr>
+		<td>Node hosts version specific settings for a particular
+		Document Type with the specified Document Type Schema Location</td>
+		<td><tt>/ipp-repository/partitions/&lt;partition
+		ID&gt;/documentTypes/schemas/&lt;URLEncode(Document Type Schema
+		Location)&gt;/types/&lt;Document Type ID&gt;/</tt></td>
+	</tr>
+	<tr>
+		<td>Node hosts version unspecific settings for all Document
+		Types of a particular Document Type ID</td>
+		<td><tt>/ipp-repository/partitions/&lt;partition
+		ID&gt;/documentTypes/types/&lt;Document Type ID&gt;/</tt></td>
+	</tr>
+</table>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

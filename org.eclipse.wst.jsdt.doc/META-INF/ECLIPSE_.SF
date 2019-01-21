@@ -1,0 +1,196 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: nbdhJNoVgnNtZ1gfpweAis/Ny8s=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: Wzc4YoItRFJRHPv+cPstyrwjja4=
+
+Name: images/rhino_debug/rhino-debug-pref-page.png
+SHA1-Digest: 2GbHE6NqRLb4VC3WdhJw3iwQrIU=
+
+Name: started/img/newhtml/2.jpg
+SHA1-Digest: ynasMgOAo8s4pW8JHeQRjtNuM9Q=
+
+Name: debug-contexts.xml
+SHA1-Digest: LHflF62su8jdg9nf3kqvPu7SC/U=
+
+Name: started/img/newhtml/3.jpg
+SHA1-Digest: a3bMIzjBYA+9+rKGwpsXqghr3ng=
+
+Name: images/include-path-source-tab.png
+SHA1-Digest: /7OIHkjcspRT4nhq2b5OZ6c72SU=
+
+Name: reference/rhino_debug/ref-common-tab.htm
+SHA1-Digest: H6RG3oTUdZ4XXd66yXoCZmVLQ5A=
+
+Name: reference/rhino_debug/ref-rhino-pref-page.htm
+SHA1-Digest: SZ34ZksJridIwVN2fXNiGLd4wek=
+
+Name: images/add-lib-mozilla-wizard.png
+SHA1-Digest: pMMqC70lAAnEqLXU0GnIK/wcRns=
+
+Name: images/add-lib-wizard.png
+SHA1-Digest: f7QhWxivMOUm/+pJaGBWr1VeRJ8=
+
+Name: started/standaloneProject.html
+SHA1-Digest: guX9Tkso93H5a4J0oQIC2DLX7R8=
+
+Name: reference/rhino_debug/ref-main-tab.htm
+SHA1-Digest: 8c9f7olQovsNqvEVXPio11pOll8=
+
+Name: images/rhino_debug/common_tab.png
+SHA1-Digest: 5zjtFE+k74FnHTYd7rNZROt7ZrA=
+
+Name: images/include-path.png
+SHA1-Digest: gVhuzntqw2gJDeP0PGWmsfat/uk=
+
+Name: reference/rhino_debug/ref-include-tab.htm
+SHA1-Digest: 6VvYUBnop30pYHloje/z7Bl4QHA=
+
+Name: notices.html
+SHA1-Digest: Ji5tEJ+aQJ5c3vSJ7fx1vhhjLUo=
+
+Name: started/newhtmlFile.html
+SHA1-Digest: Dv7Qu/OZCAkjNkjO/2cQFCc4MWg=
+
+Name: reference/extension-points/index.html
+SHA1-Digest: 3aKDhHGvf/YyDt+zs3Zot6xUdFw=
+
+Name: reference/debug/preferences/ref-debug-pref-page.htm
+SHA1-Digest: O4pn6hdKl/NW8xfIggEMc1O1IMI=
+
+Name: started/img/newjs/1.jpg
+SHA1-Digest: +zYQOoiCD2df/+tzTyZVTkU1hFU=
+
+Name: started/img/newjs/2.jpg
+SHA1-Digest: pKGdDbXBEFLddKf2utglUUpBUt0=
+
+Name: about.mappings
+SHA1-Digest: gjgQUlzyooBpQFpcsNU8vnILyEk=
+
+Name: started/img/newjs/3.jpg
+SHA1-Digest: JYY3HssRYyucphi7zkErcniv4qg=
+
+Name: images/include-path-new-lib.png
+SHA1-Digest: pOvkjYbLuzrsso/CngtfZE+iZ10=
+
+Name: images/debug/debug-pref-page.png
+SHA1-Digest: bAwHuzNHBQffkwtSyr69J6tPluo=
+
+Name: tocreference.xml
+SHA1-Digest: uTXuCNtteeOAYnkGgxVeUF8T7QU=
+
+Name: META-INF/maven/org.eclipse.webtools.jsdt.docs/org.eclipse.wst.js
+ dt.doc/pom.xml
+SHA1-Digest: U/6mpbPzH3yHVXy0AWoXPNe/P2g=
+
+Name: tocgettingstarted.xml
+SHA1-Digest: BnWuadu9e1RMjEwy3LTCBiReHSw=
+
+Name: build.properties
+SHA1-Digest: 2QCgMYzVVCobSopjaReNFGnAIZI=
+
+Name: reference/rhino_debug/ref-rhino-launch-shortcut.htm
+SHA1-Digest: +mf4SS/lEr4FGxzXwUIcVMg+5gY=
+
+Name: schema.css
+SHA1-Digest: uiMh4p63f2mx+ey5g5CF8OD2XNc=
+
+Name: concepts/features.html
+SHA1-Digest: 3hE84Wr9suw3FW34r8IvmWBENeg=
+
+Name: tasks/add-lib-global-scope.html
+SHA1-Digest: XOLbOtSw1RrpdnaSFxb+d0Wn+Oo=
+
+Name: reference/rhino_debug/ref-source-tab.htm
+SHA1-Digest: OfMugCBCHpB7SYOYfAf0aum2/4w=
+
+Name: started/newjsFile.html
+SHA1-Digest: YDmmdRZSM9e8I26omdoujugi7Zk=
+
+Name: concepts/archOverview.html
+SHA1-Digest: +RnDx2jGKbFHkDfrYnxNht6h++M=
+
+Name: images/rhino_debug/source_tab.png
+SHA1-Digest: 0aVwEulaOtD0VtEqGCZo+LgHN/Y=
+
+Name: plugin.properties
+SHA1-Digest: FeaSJJqbji9j+6dMcZqGO2N0tzY=
+
+Name: images/ngrelc.png
+SHA1-Digest: 6BaQSTXUNEum7cI3iM66agHK1+s=
+
+Name: started/img/html/2.jpg
+SHA1-Digest: LhoJKbfQBcPkcGRkIee9UKkVvE4=
+
+Name: images/rhino_debug/include_tab.png
+SHA1-Digest: rKxZAwJPspZzX0zYTs5vHY+iWuM=
+
+Name: plugin.xml
+SHA1-Digest: /PIYiWs9xAzIuY1qsx26A7OYbGM=
+
+Name: started/img/html/3.jpg
+SHA1-Digest: 2GID7sf6wJphgkG9pEmafTCFESI=
+
+Name: reference/rhino_debug/ref-rhino-tab-group.htm
+SHA1-Digest: pBXI34GAGwPHa3ZfvfnqsIrMvh0=
+
+Name: META-INF/maven/org.eclipse.webtools.jsdt.docs/org.eclipse.wst.js
+ dt.doc/pom.properties
+SHA1-Digest: p8zvYioDri0GkQCGSOs/0iwicwc=
+
+Name: concepts/limitations.html
+SHA1-Digest: CPgYoFHW1DkCKQT41RNz45uXl8E=
+
+Name: images/ngrelr.png
+SHA1-Digest: HsQuNsAwMFKEwYBLC5ja2JvyiY4=
+
+Name: ui-contexts.xml
+SHA1-Digest: FbPwKV9ZUr+rik++7QAb93UrPn4=
+
+Name: images/ngrelt.png
+SHA1-Digest: 7O1+TsWyHjzeS+knyVtc04vIW6U=
+
+Name: started/img/pure/1.jpg
+SHA1-Digest: DTIiYktuP8JO7P5JRKJ/kLN07d0=
+
+Name: started/img/pure/2.jpg
+SHA1-Digest: CdIHXbiwMvaPnv2aH9rG9Msw3FA=
+
+Name: images/rhino_debug/main_tab.png
+SHA1-Digest: FLm01x6lG+H2ZDZ00b6tNX4U0rI=
+
+Name: started/img/pure/3.jpg
+SHA1-Digest: pLqFngsLIGoPmhKPI/+sjStq4jo=
+
+Name: started/img/pure/4.jpg
+SHA1-Digest: 3EaHxg7NAGA5xoaoUmtBX0V2vH8=
+
+Name: images/rhino_debug/rhino.gif
+SHA1-Digest: 1OaUh73wyHflB7QiGJDG5hscjtY=
+
+Name: about.html
+SHA1-Digest: lo/s5VHAIwj46Ssz6g2n5nkhOY4=
+
+Name: toctasks.xml
+SHA1-Digest: wIaZStwIsyiXlwtiTxJd3JbAZD0=
+
+Name: toc.xml
+SHA1-Digest: euxmWidZygg+zj7iCn7yYs/36Wo=
+
+Name: started/overview.html
+SHA1-Digest: RWSdR+U5xPya384Cr6NrVnqayyU=
+
+Name: tasks/configure-source.html
+SHA1-Digest: 4ZDHLbKdMg83BAyLImEvfhtHLBw=
+
+Name: started/htmlProject.html
+SHA1-Digest: RJA0Ib6rnCvKIlfwLoQZzDpCoOU=
+
+Name: tocconcepts.xml
+SHA1-Digest: /kyKwl3TD4l6PMWNjjyBGmRzCTI=
+
+Name: book.css
+SHA1-Digest: /83/CfEs9IN0iTxbkwO1v42A/4w=
+
+Name: tasks/remove-lib-global-scope.html
+SHA1-Digest: WhmYW/DbdAJP0BAcsI6IXLZ4cvM=
+

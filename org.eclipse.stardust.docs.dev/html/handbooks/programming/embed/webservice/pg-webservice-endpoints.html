@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Endpoints</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("Building Web Services Queries",
+        "pg-webservice-classes.html","pg-webservice-queries.html",
+	"../../../handbooks.htm","Developer Handbook",
+	"../../pg-preface.htm","Programming Guide",
+	"../pg-embedded-preface.htm","Embedded Usage",
+	"../pg-webservice-api.html","Stardust Web Services");
+-->
+</script>
+
+<h1>Endpoints</h1>
+
+<p>A Web Service endpoint maps the given XML Transfer Objects (XTOs) to the corresponding
+Java object and delegates to the appropriate service, mapping the result back to an XTO.
+For example, calling <tt>findWorklist(WorklistQueryXto)</tt>
+on <tt>org.eclipse.stardust.engine.ws.WorkflowServiceFacade</tt> results in a parameter mapping 
+from <tt>org.eclipse.stardust.engine.api.ws.query.WorklistQueryXto</tt> to <tt>org.eclipse.stardust.engine.api.query.WorklistQuery</tt>, 
+calling <tt>org.eclipse.stardust.engine.api.runtime.WorkflowService#getWorklist(WorklistQuery)</tt>
+and returning an instance of <tt>org.eclipse.stardust.engine.api.ws.WorklistXto </tt>
+derived from an object of type <tt>org.eclipse.stardust.engine.api.query.Worklist</tt>.</p>
+<p>The aforementioned Web Service endpoints (including all XTOs) are generated from 
+the four XML documents residing in the
+<tt>ipp-portal/WEB-INF/wsdl</tt> folder of your Web application that define the Web Service Contract:
+<ul>
+	<li>WSDL
+	<ul>
+		<li><strong>StardustBpmService.wsdl</strong> - defines the Web Service 
+			contract using the XML schemata below</li>
+	</ul></li>
+	<li>XML Schemata
+	<ul>
+		<li><strong>StardustBpmService.xsd</strong> - contains all message elements</li>
+		<li><strong>StardustBpmTypes.xsd</strong> - contains all Stardust types, except query types</li>
+		<li><strong>StardustBpmQueryTypes.xsd</strong> - contains all Stardust query types</li>
+	</ul></li>
+</ul>
+<h2>Provided Endpoints</h2>
+<p>Endpoints provide you with access to the functionality the Stardust
+Services offer. Each Stardust Service provides three endpoints in order to 
+provide different authentication mechanisms. They can be found under </p>
+<pre>
+&lt;hostname&gt;:&lt;port&gt;/&lt;context-root&gt;/services/soap/&lt;endpoint&gt;
+</pre>
+<p>Hereby, <tt>&lt;hostname&gt;</tt>, <tt>&lt;port&gt;</tt> and 
+<tt>&lt;context root&gt;</tt> depend on the actual 
+deployment and <tt>&lt;endpoint&gt;</tt> is one of the following:</p>
+<ul>
+	<li><strong>Workflow Service</strong>
+	<ul>
+		<li><tt>WorkflowServiceHttpBasicAuth</tt> uses HTTP Basic Authentication over HTTP</li>
+		<li><tt>WorkflowServiceHttpBasicAuthSsl</tt> uses HTTP Basic Authentication over HTTPS</li>
+		<li><tt>WorkflowServiceWssUsernameToken</tt> uses WS-Security Username Token profile</li>
+	</ul></li>
+	<li><strong>User Service</strong>
+	<ul>
+		<li><tt>UserServiceHttpBasicAuth</tt> uses HTTP Basic Authentication over HTTP</li>
+		<li><tt>UserServiceHttpBasicAuthSsl</tt> uses HTTP Basic Authentication over HTTPS</li>
+		<li><tt>UserServiceWssUsernameToken</tt> uses WS-Security Username Token profile</li>
+	</ul></li>
+	<li><strong>Administration Service</strong>
+	<ul>
+		<li><tt>AdministrationServiceHttpBasicAuth</tt> uses HTTP Basic Authentication over HTTP</li>
+		<li><tt>AdministrationServiceHttpBasicAuthSsl</tt> uses HTTP Basic Authentication over HTTPS</li>
+		<li><tt>AdministrationServiceWssUsernameToken</tt> uses WS-Security Username Token profile</li>
+	</ul></li>
+	<li><strong>Query Service</strong>
+	<ul>
+		<li><tt>QueryServiceHttpBasicAuth</tt> uses HTTP Basic Authentication over HTTP</li>
+		<li><tt>QueryServiceHttpBasicAuthSsl</tt> uses HTTP Basic Authentication over HTTPS</li>
+		<li><tt>QueryServiceWssUsernameToken</tt> uses WS-Security Username Token profile</li>
+	</ul></li>
+	<li><strong>Document Management Service</strong>
+	<ul>
+		<li><tt>DocumentManagementServiceHttpBasicAuth</tt> uses HTTP Basic Authentication over HTTP</li>
+		<li><tt>DocumentManagementServiceHttpBasicAuthSsl</tt> uses HTTP Basic Authentication over HTTPS</li>
+		<li><tt>DocumentManagementServiceWssUsernameToken</tt> uses WS-Security Username Token profile</li>
+	</ul></li>
+</ul>
+<p>For detailed information on the provided service classes, please
+refer to the next chapter 
+<a href="pg-webservice-classes.html">Web Services API</a>.</p>
+
+<h3>Access Example</h3>
+<p>Assuming Stardust-WS is deployed on the local machine 
+(port 8080 for HTTP, port 8443 for HTTPS) and the context root is <tt>ipp</tt>, 
+the WorkflowService using HTTP Basic Authentication can be found under </p>
+<pre>http://localhost:8080/ipp/services/soap/WorkflowServiceHttpBasicAuth</pre>
+<p>Whereas the QueryService that provides the WS-Security Username Token profile
+ is located under</p>
+ <pre>https://localhost:8443/ipp/services/soap/QueryServiceWssUsernameToken</pre>
+<h2>RESTful Services</h2>
+<p>The following tables shows the paths of the REST endpoint URIs provided by 
+Stardust:</p>
+<table>
+<tr>
+<th>Project </th>
+<th>Plugin-ID  </th>
+<th>New Path</th>
+</tr>
+<tr>
+<td>views-common  </td>
+<td>views-common  </td>
+<td>&lt;resources base="http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/views-common"&gt;<br>
+&lt;resource path="/documentRepoService"&gt;&lt;/resource&gt;</td>
+</tr>
+<tr>
+<td>portal-common </td>
+<td>common  </td>
+<td>&lt;resources base="http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/common"&gt;<br>
+   &lt;resource path="/properties/{bundleName}/{locale}"&gt;&lt;/resource&gt;</td>
+</tr>
+<tr>
+<td>graphics-common  </td>
+<td>graphics-common  </td>
+<td>&lt;resources base="http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/graphics-common"&gt;<br>
+   &lt;resource path="/documents/{documentId}/pages/{pageNo}/{randomPostfix}"&gt;&lt;/resource&gt;</td>
+</tr>
+<tr>
+<td>web-modeler   </td>
+<td>bpm-modeler   </td>
+<td>&lt;resources base="http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/bpm-modeler"&gt;<br>
+   &lt;resource path="/modeler/{randomPostFix}"&gt;&lt;/resource&gt;<br>
+   &lt;resource path="/modeler/{randomPostFix}/sessions"&gt;&lt;/resource&gt;</td>
+</tr>
+<tr>
+<td>stardust-engine-ws-cxf </td>
+<td>engine  </td>
+<td>&lt;resources base="http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/engine"&gt;<br>
+   &lt;resource path="/interactions/{interactionId}"&gt;&lt;/resource&gt;<br>
+   &lt;resource path="/processes/{processId}"&gt;&lt;/resource&gt;<br>
+   &lt;resource path="/typeDeclarations/{typeDeclarationId}"&gt;&lt;/resource&gt;</td>
+</tr>
+</table>
+<p>Hereby <tt><i>context-root</i></tt> depends on the kind of
+   deployment:</p>
+   <ul>
+      <li>standalone deployment: <tt>ipp-portal</tt></li>
+      <li>RAD environment: the defined context URL, by
+      default the name of the dynamic Web project</li>
+   </ul>
+<p>You can check which RESTful services are available via the following URL:</p>
+<pre>http://localhost:8080/&lt;<i>context-root</i>&gt;/services/rest/ </pre>
+<p>For example for a dynamic Web project named <tt>DemoProject</tt> the
+following available endpoint addresses and WADLs are listed:</p>
+<p class="image"><img src="images/restful-services.png" alt="RESTful services"><br>
+<strong>Figure:</strong> Available RESTful services</p>
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

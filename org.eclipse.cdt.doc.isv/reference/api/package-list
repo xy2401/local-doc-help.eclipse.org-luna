@@ -1,0 +1,14 @@
+org.eclipse.cdt.core
+org.eclipse.cdt.core.dom.ast
+org.eclipse.cdt.core.dom.ast.c
+org.eclipse.cdt.core.dom.ast.cpp
+org.eclipse.cdt.core.dom.ast.gnu
+org.eclipse.cdt.core.dom.ast.gnu.c
+org.eclipse.cdt.core.dom.ast.gnu.cpp
+org.eclipse.cdt.core.model
+org.eclipse.cdt.debug.core.cdi
+org.eclipse.cdt.debug.core.cdi.event
+org.eclipse.cdt.debug.core.cdi.model
+org.eclipse.cdt.debug.core.cdi.model.type
+org.eclipse.cdt.utils.pty
+org.eclipse.cdt.utils.spawner

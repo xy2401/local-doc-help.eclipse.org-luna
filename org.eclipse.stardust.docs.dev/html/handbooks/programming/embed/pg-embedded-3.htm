@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Stardust Services</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Stardust Web Services",
+        "pg-embedded-2.htm","pg-webservice-api.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Stardust Services</h1>
+<p>The Stardust API is organized along the concepts of specific services needed to
+perform common usage scenarios. While typical workflow usage will mainly involve worklist
+introspection followed by process and activity execution, administrative operations or
+reporting tasks usually need a completely different set of APIs.</p>
+<p>This chapter comprises the following topics:</p>
+<ul>
+    <li><a href="#references">Obtaining Service References</a></li>
+    <li><a href="#services">Provided Services</a>
+    <ul>
+        <li><a href="#workflowservice">WorkflowService</a></li>
+		<li><a href="#queryservice">QueryService</a></li>
+    	<li><a href="#adminservice">AdministrationService</a></li>
+    	<li><a href="#userservice">UserService</a></li>
+    	<li><a href="#document">DocumentManagementService</a></li>
+    </ul></li>
+    <li><a href="#command">Service Command</a></li>
+    <li><a href="#security">Service Security Check</a></li>
+</ul>
+<h2 id="references">Obtaining Service References</h2>
+<p>The initial entry point to the Stardust API is the interface <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactory.html">
+    org.eclipse.stardust.engine.api.runtime.ServiceFactory</a>.
+Implementations of that interface allow you to centrally obtain (and optionally release)
+service references. One benefit is the transparent use of credentials for authentication
+and authorization needs. Another benefit is the option to be able to always write client
+code as if it would use the plain Java APIs as the service factory will transparently
+adapt EJB remote interfaces to the local API if needed, thus enabling easy transition from
+local deployments to distributed EJB or Web deployments.</p>
+<p>Service factory implementations are obtained from service factory locators:</p>
+<ul>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactoryLocator.html">
+    org.eclipse.stardust.engine.api.runtime.ServiceFactoryLocator</a> will be most commonly used as it
+    supports typical client scenarios like standalone operation or EJB remote clients.
+    This service locator supports direct credential passing as well as JAAS usage. The
+    implementation can be configured on a fine-grained level regarding remote (local or
+    EJB) or security strategies. For a more detailed description, please consult the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/deploymentconcepts/toc.html">
+    Deployment Concepts</a> chapters of the <a
+        href="PLUGINS_ROOT/org.eclipse.stardust.docs.deployment/html/toc.html"> Deployment Guide</a>.
+    </li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/web/ServiceFactoryLocator.html">
+    org.eclipse.stardust.engine.api.web.ServiceFactoryLocator</a>
+    is especially useful for workflow clients using form-based login security.</li>
+    <li><a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/ServiceFactoryLocator.html">
+    org.eclipse.stardust.engine.api.ejb2.ServiceFactoryLocator</a>
+    is especially useful for workflow clients being themselves an EJB component and using
+    EJB caller principal based security.</li>
+</ul>
+
+<p>The service factory obtained from the appropriate locator will ensure proper
+bootstrapping of Stardust client code and install all necessary transparent treatment like
+EJB exception unwrapping or security context management.</p>
+<p>While essential in plain Java environments, use of such service factories is
+optional in container environments like EJB or Web. As in the case of a plain Java usage,
+scenario service bootstrapping includes both client-side as well as implementation-side
+requirements (i.e. credential passing as well as resource binding), usage of a service
+factory is downright required. In managed environments the implementation-side setup is
+well served by the container itself, thus reducing the need for such extra efforts.<br>
+Depending on your needs you may safely continue directly using Stardust Session Bean homes
+looked up via JNDI.</p>
+<h3>Establishing a Connection with the Runtime Environment</h3>
+<p>You will use the appropriate service factory to authenticate and establish a
+connection with the Stardust runtime environment. Assuming you 
+authenticate and establish a connection with the Stardust runtime, 
+you can get a reference to Stardust services via this initialized 
+service factory. 
+You can initialize the service factory in the following way:</p>
+<pre>ServiceFactory sf = ServiceFactoryLocator.get(user, pwd, properties);</pre>
+<p class="note"><strong>Note</strong><br>
+The ServiceFactory caches the authenticated Stardust services for the 
+user. For use in a production environment it is important that you cache the 
+ServiceFactory per user. Not caching the ServiceFactory means that a new login 
+will be performed for every interaction with the engine.</p>
+<h3 id="credPassing">Credential Passing</h3>
+<p>When using the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactoryLocator.html">ServiceFactoryLocator</a>
+you have the option to pass one or more additional properties besides the user's name and
+password like the user's <strong>realm</strong>, <strong>partition</strong> and <strong>domain</strong>.
+Please refer to the <a href="../../../concepts/admin-concepts/ag-multipartition.htm">Managing
+Multi Partition Stardust Installations</a> chapter of the 
+<a href="../../../concepts/admin-concepts/ag-concepts-preface.htm">Administrative Concepts</a>
+part to receive more information on this credentials. The following keys in the
+properties map will be filled with the values passed as parameters,
+the following parameters are used:</p>
+<ul>
+    <li><tt>SecurityProperties.REALM</tt>,</li>
+    <li><tt>SecurityProperties.PARTITION</tt> and</li>
+    <li><tt>SecurityProperties.DOMAIN</tt>.</li>
+</ul>
+<p>In case partition, domain and realm are provided as credentials
+like user or password, 
+the following keys in the
+properties map will be filled with the values passed as parameters:</p>
+<ul>
+    <li><tt>SecurityProperties.CRED_REALM</tt>,</li>
+    <li><tt>SecurityProperties.CRED_PARTITION</tt> and</li>
+    <li><tt>SecurityProperties.CRED_DOMAIN</tt>.</li>
+</ul>
+<p>If these parameters are empty, the default values residing in the <tt>carnot.properties</tt>
+file are used, if existing:</p>
+<ul>
+    <li><tt>Security.DefaultRealm</tt>, if <tt>SecurityProperties.REALM</tt> is
+    empty.</li>
+    <li><tt>Security.DefaultPartition</tt>, if <tt>SecurityProperties.PARTITION</tt>
+    is empty.</li>
+    <li><tt>Security.DefaultDomain</tt>, if <tt>SecurityProperties.DOMAIN</tt>
+    is empty. In case it does not exist, the partition's ID is used. (There must be one
+    partition with the same ID as the domain).</li>
+</ul>
+<p>If no <tt>Security.DefaultRealm</tt>, <tt>Security.DefaultPartition</tt> or <tt>Security.DefaultDomain</tt>
+are set in the <tt>carnot.properties</tt> file, the following default values will be used:</p>
+<ul>
+    <li>realm: "carnot"</li>
+    <li>partition: "default"</li>
+    <li>domain: the value resulting from the corresponding value used for the
+    partition.</li>
+</ul>
+<p>The following code snippet shows how to fill the properties map:</p>
+<pre>import org.eclipse.stardust.engine.api.runtime.ServiceFactory;
+import org.eclipse.stardust.engine.api.runtime.ServiceFactoryLocator;
+
+    public ServiceFactory getTestService()
+    {
+        Map properties = new HashMap();
+        properties.put(SecurityProperties.PARTITION, partition);
+        properties.put(SecurityProperties.DOMAIN, domain);
+        properties.put(SecurityProperties.REALM, realm);
+        return ServiceFactoryLocator.get(user, password, properties);
+    }
+</pre>
+<h4 id="login">Providing Additional Fields for Login Screens</h4>
+<p>To provide the login screens for users with additional input fields to login with
+their <strong>partition</strong>, <strong>domain</strong> and <strong>realm</strong>, the
+following properties residing in the <tt>carnot.properties</tt> file have to be set to <tt>true</tt>
+respectively:</p>
+<ul>
+    <li><tt>Security.PromptRealm</tt></li>
+    <li><tt>Security.PromptPartition</tt></li>
+    <li><tt>Security.PromptDomain</tt></li>
+</ul>
+<p>For more information about security properties residing in the <tt>carnot.properties</tt>
+file, please refer to the <a
+    href="../../operation/properties/ag-appendix-properties-1.htm#security">Security</a>
+section of the <a href="../../operation/properties/ag-appendix-properties-1.htm">Client
+Side Properties</a> chapter.</p>
+
+<h3>Calling Stardust Services without Authentication in Local Mode</h3>
+<p>The 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/beans/EmbeddedServiceFactory.html">
+org.eclipse.stardust.engine.core.runtime.beans.EmbeddedServiceFactory</a>
+class determines, whether an execution takes 
+place in the engine context
+and returns an instance of the <tt>EmbeddedServiceFactory</tt>.</p>
+<p>To return the <tt>EmbeddedServiceFactory</tt> in case of Stardust Portal internal 
+invocation and only start authenticating if the call is remote,
+pass a transaction constant to indicate the intent of working in the scope
+of the current transaction. The transaction constants
+provided by the <tt>EmbeddedServiceFactory</tt> are:</p>
+<ul>
+   <li><tt>CURRENT_TX</tt> -  returns <tt>ServiceFactory</tt> that works 
+   within the same transaction without creating a new property layer</li>
+   <li><tt>CURRENT_TX_WITH_AUTO_FLUSH</tt> - returns <tt>ServiceFactory</tt>
+   that works within the same transaction without creating a new property layer
+   and automatically flushes the changes at the end of the service call.</li>
+   <li><tt>CURRENT_TX_WITH_PROPERTY_LAYER</tt> - returns <tt>ServiceFactory</tt>
+   that works within the same transaction with an added property layer</li>
+</ul>
+<p>E.g. use:</p>
+<pre>ServiceFactory sf = ServiceFactoryLocator.get(CredentialProvider.CURRENT_TX);</pre>
+<h3 id="userSessions">User Session Settings</h3>
+<h4>Disabling session tracking</h4>
+<p>You can determine for which user IDs (accounts) and user OIDs
+session tracking is disabled. Set a comma separated list of these users in the
+property <tt>Carnot.AuditTrail.Session.NoSessionTracking</tt> in your <tt>carnot.properties</tt>
+file. To disable session tracking for all users use <tt>*</tt>.</p>
+<h4>Setting the expiration interval</h4>
+<p>To determine the interval after a session is defined
+as expired, add a value in minutes to the property 
+<tt>Carnot.AuditTrail.Session.ExpirationInterval</tt>
+in your <tt>carnot.properties</tt> file.
+The default value is 60 minutes.</p>
+<h4>Setting the activity update delay</h4>
+<p>You can determine a delay until cached changes on
+user session entries are added to the database.
+Set this value in seconds via the property <tt>Carnot.AuditTrail.Session.UserActivityUpdateDelay</tt> in
+your <tt>carnot.properties</tt> file. The default value is 10 seconds.</p>
+
+<h2 id="services">Provided Services</h2>
+<p>Stardust provides the following services:</p>
+<ul>
+	<li><a href="#workflowservice">WorkflowService</a></li>
+	<li><a href="#queryservice">QueryService</a></li>
+	<li><a href="#adminservice">AdministrationService</a></li>
+	<li><a href="#userservice">UserService</a></li>
+	<li><a href="#document">DocumentManagementService</a></li>
+</ul>
+<p>For detailed information on the methods of these services, please
+refer to the according JavaDoc.</p>
+<h3 id="workflowservice">WorkflowService</h3>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">WorkflowService</a>
+provides all functionality for workflow enactment for a Stardust runtime environment such
+as:</p>
+<ul>
+    <li>basic workflow model introspection</li>
+    <li>creating and terminating process instances,</li>
+    <li>starting, activating, suspending, completing and aborting activities,</li>
+    <li>delegating activities,</li>
+    <li>controlling activity and process event handling,</li>
+    <li>accessing and manipulating workflow data and</li>
+    <li>logging custom log entries.</li>
+</ul>
+<p>The following classes are provided for this service:</p>
+<ul>
+    <li>The plain Java API <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/WorkflowService.html">org.eclipse.stardust.engine.api.runtime.WorkflowService</a></li>
+    <li>The EJB remote interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteWorkflowService.html">org.eclipse.stardust.engine.api.ejb2.RemoteWorkflowService</a></li>
+    <li>The EJB home interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteWorkflowServiceHome.html">org.eclipse.stardust.engine.api.ejb2.RemoteWorkflowServiceHome</a></li>
+</ul>
+<p>In case of an EJB deployment the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteWorkflowService.html">RemoteWorkflowService</a>
+bean is designed to be deployed as a stateless Session Bean.</p>
+<h3 id="queryservice">QueryService</h3>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+provides functionalities for introspecting a Stardust runtime environment such as:</p>
+<ul>
+    <li>retrieving details on deployed models and</li>
+    <li>counting or retrieving runtime objects matching specific filter criteria.</li>
+</ul>
+<p>The following classes are provided for this service:</p>
+<ul>
+    <li>The plain Java API <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">org.eclipse.stardust.engine.api.runtime.QueryService</a></li>
+    <li>The EJB remote interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteQueryService.html">org.eclipse.stardust.engine.api.ejb2.RemoteQueryService</a></li>
+    <li>The EJB home interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteQueryServiceHome.html">org.eclipse.stardust.engine.api.ejb2.RemoteQueryServiceHome</a></li>
+</ul>
+<p>In case of an EJB deployment the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteQueryService.html">RemoteQueryService</a>
+bean is designed to be deployed as a stateless Session Bean.</p>
+
+
+<h3 id="adminservice">AdministrationService</h3>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">AdministrationService</a>
+provides special functionalities to administer a Stardust runtime environment such as:</p>
+<ul>
+    <li>performing and managing workflow model deployments,</li>
+    <li>performing process or runtime environment recovery,</li>
+    <li>managing department structure,</li>
+    <li>setting password rules,</li>
+    <li>special purpose process start and abortion,</li>
+    <li>special purpose activity completion,</li>
+    <li>controlling daemon execution,</li>
+    <li>cleaning up the audit trail database and</li>
+    <li>logging custom log entries.</li>
+</ul>
+<p>The following classes are provided for this service:</p>
+<ul>
+    <li>The plain Java API <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/AdministrationService.html">org.eclipse.stardust.engine.api.runtime.AdministrationService</a></li>
+    <li>The EJB remote interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteAdministrationService.html">org.eclipse.stardust.engine.api.ejb2.RemoteAdministrationService</a></li>
+    <li>The EJB home interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteAdministrationServiceHome.html">org.eclipse.stardust.engine.api.ejb2.RemoteAdministrationServiceHome</a></li>
+</ul>
+<p>Use of the administration service requires the user to be granted the predefined
+role Administrator.</p>
+<p>In case of an EJB deployment the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteAdministrationService.html">RemoteAdministrationService</a>
+bean is designed to be deployed as a stateless Session Bean.</p>
+
+
+<h3 id="userservice">UserService</h3>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserService.html">UserService</a>
+provides user management functionalities needed in case of deployments using the Stardust
+integrated security such as:</p>
+<ul>
+    <li>modification of private user data by arbitrary users,</li>
+    <li>modification of arbitrary user or user group data by administrative users
+    and</li>
+    <li>creation and invalidation of users or user groups by administrative users.</li>
+</ul>
+<p>In case of deployments using third-party security infrastructure such user and
+user group management functions usually have to be performed using tools of the external
+system. In such a scenario it might even make sense to omit deployment of the user service
+at all.</p>
+<p>The following classes are provided for this service:</p>
+<ul>
+    <li>The plain Java API <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserService.html">org.eclipse.stardust.engine.api.runtime.UserService</a></li>
+    <li>The EJB remote interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteUserService.html">org.eclipse.stardust.engine.api.ejb2.RemoteUserService</a></li>
+    <li>The EJB home interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteUserServiceHome.html">org.eclipse.stardust.engine.api.ejb2.RemoteUserServiceHome</a></li>
+</ul>
+<p>In case of an EJB deployment the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteUserService.html">RemoteUserService</a>
+bean is designed to be deployed as a stateless Session Bean.</p>
+<h3 id="document">DocumentManagementService</h3>
+<p>The <a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+DocumentManagementService</a> provides all functionality for Document Management operations in an
+Stardust runtime environment.
+This includes the following:</p>
+<ul>
+	<li>retrieving, adding, updating and deleting documents and folders,</li>
+	<li>versioning documents,</li>
+	<li>retrieving and updating document content.</li>
+</ul>
+<p>The following classes are provided for this service:</p>
+<ul>
+    <li>The plain Java API <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">org.eclipse.stardust.engine.api.runtime.DocumentManagementService</a></li>
+    <li>The EJB remote interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteDocumentManagementService.html">org.eclipse.stardust.engine.api.ejb2.RemoteDocumentManagementService</a></li>
+    <li>The EJB home interface <a
+        href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteDocumentManagementServiceHome.html">org.eclipse.stardust.engine.api.ejb2.RemoteDocumentManagementServiceHome</a></li>
+</ul>
+<p>In case of an EJB deployment the <a
+    href="../../../reference/api/engine/org/eclipse/stardust/engine/api/ejb2/RemoteDocumentManagementService.html">DocumentManagementService</a>
+bean is designed to be deployed as a stateless Session Bean.</p>
+<h2 id="command">Service Command</h2>
+<p>Stardust provides a service command interface
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/command/ServiceCommand.html">
+ServiceCommand</a> as a client side wrapper around a series of service 
+invocations that have to be performed in a single server side transaction. The
+<tt>execute</tt> method serves to execute the service command:</p>  
+<pre>Serializable execute(ServiceFactory sf);</pre>
+<p>The parameter is a 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactory.html">
+ServiceFactory</a> provided by the engine that will ensure that all service calls
+will be performed in the parent transaction. The method returns
+the result of the service call execution, which will be returned to the client.
+For example, <tt>WorkflowService.execute(ServiceCommand)</tt> returns the 
+Serializable object produced by the execution of the <tt>ServiceCommand</tt>.</p>
+<p>Use the <tt>ServiceCommand</tt> in the following way:</p>
+<ol>
+    <li>Provide a <tt>ServiceFactory</tt> defining a call sequence definition.</li>
+    <li>Pass the <tt>ServiceCommand</tt> with this ServiceFactory to the server.</li>
+    <li>The server executes the call sequence defined in the <tt>ServiceCommand</tt> in 
+    one transaction and stores the return values as defined.</li>
+    <li>The server returns the <tt>ServiceCommand</tt>.</li>
+    <li>Now you are able to retrieve the return value of each executed call in 
+    the defined call sequence from the <tt>ServiceCommand</tt>.</li>
+</ol>
+<h3>Specifying Options for ServiceCommand</h3>
+<p>A generic interface 
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/command/Configurable.html">
+Configurable</a> exists for objects that supports client-side configuration.
+It allows to specify extra behavior options to the <tt>ServiceCommand</tt>.
+Your <tt>ServiceCommand</tt> implementation class may implement the 
+<tt>Configurable</tt> interface and provide the engine with options regarding 
+execution. For details of the supported options please check the relevant 
+Service API methods.</p>
+<p>Note that currently the only supported option is <tt>autoFlush</tt>. If you 
+set it to <tt>Boolean.TRUE</tt>, which is the default value, it will cause the 
+engine to flush the audit trail changes after every service call.</p>
+<h4>AutoFlush effect on service calls</h4>
+<p>AutoFlush must be called if your service calls in your service command depends 
+on the result of the previous service calls in the same service command.
+Please note that flushing will not commit the transaction. The transaction will 
+be committed as expected at the end of the service call.
+In general, using autoFlush will have an impact on the performance of the
+service call, because after flushing, objects you are reusing will have to be
+refetched from the database. If your service calls you perform in the service 
+command are independent on each other, e.g. when completing an activity and then 
+starting another process, or starting several processes in the same transaction, 
+you may not enable <tt>autoFlush</tt>.</p>
+<h4>Example implementation for setting the autoFlush</h4>
+<pre>
+public class MyServiceCommand implements ServiceCommand, Configurable
+{
+   public Serializable execute(ServiceFactory sf)
+   {
+      // do something here
+      return result;
+   }
+
+   public Map&lt;String, Object&gt; getOptions()
+   {
+      return Collections.&lt;String, Object&gt;singletonMap("autoFlush", Boolean.TRUE);
+   }
+}
+</pre>
+<h2 id="security">Service Security Check</h2>
+<p>In specific cases you can switch of the security check for a service
+via the Stardust property
+(<a href="../../operation/properties/ag-appendix-properties-1.htm#queryGuarded"><i>xxx</i>Service.Guarded</a>).</p>
+<p>Per default this property is set to <tt>true</tt> and
+the grants set in the  Stardust Modeler are active. Please
+refer to the chapter 
+<a href="../../modelling/property-page-authorization.html">Authorization</a>
+of the <a href="../../modelling/mg-preface.htm">The Modeling Guide</a> 
+for detailed information on how to set grants in the modeler.</p>
+<p>If set to <tt>false</tt>, 
+anyone has the grant to use the Workflow Service, but needs to be an administrator
+to use the Administration, Query or User Service.</p>
+<p class="note"><strong>Note</strong><br>
+It is not recommended to change this property.
+Changing the value to <tt>false</tt> introduces a high risk of 
+executing services without having a permission and 
+hence might cause a severe security hole in the deployment!</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing layout functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Layout Functionality</h1>
+<h2>Create a Layout Feature</h2>
+<p>If you already enlarged a EClass in the diagram, you may have observed that the 
+shapes inside the rectangle kept their size (EClass name is not longer in the centre 
+and the line separator is too short). Graphiti provides the concept of layout features, 
+which mainly supports the recalculation of positions and sizes inside the pictogram 
+model. </p>
+<p>Theoretical such functionality could also be implemented by
+<a href="resize-feature.htm">providing resize functionality</a>, but using a layout 
+feature for this is the recommended solution.</p>
+<p>A layout feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/ILayoutFeature.html">ILayoutFeature</a>. 
+Instead of implementing it directly you should extend one of the available base 
+classes. In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/AbstractLayoutFeature.html">
+AbstractLayoutFeature</a>.</p>
+<p>In this case we have to implement/overwrite two methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/ILayout.html#canLayout(org.eclipse.graphiti.features.context.ILayoutContext)">
+	canLayout</a> has to check whether the pictogram element of the given context 
+	can be layouted. </li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/ILayout.html#layout(org.eclipse.graphiti.features.context.ILayoutContext)">
+	layout</a> has to recalculate and modify everything needed to layout the pictogram 
+	element given with the context. </li>
+</ul>
+<p>You can see the complete implementation of the move feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialLayoutEClassFeature
+		<span class="keyword">extends </span>AbstractLayoutFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private static final int</span>
+		<span class="string"><em>MIN_HEIGHT</em> </span>= 30;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private static final int</span>
+		<span class="string"><em>MIN_WIDTH</em></span> = 50;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>TutorialLayoutEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> canLayout(ILayoutContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// return 
+		true, if pictogram element is linked to an EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement pe = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(!(pe <span class="keyword">instanceof
+		</span>ContainerShape))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EList&lt;EObject&gt; businessObjects = pe.getLink().getBusinessObjects();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>businessObjects.size() == 1 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		&amp;&amp; businessObjects.get(0) <span class="keyword">instanceof </span>EClass;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public boolean</span> 
+		layout(ILayoutContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean </span>anythingChanged =
+		<span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ContainerShape containerShape =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		(ContainerShape) context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm containerGa = containerShape.getGraphicsAlgorithm();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// height</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(containerGa.getHeight() &lt;
+		<span class="string"><em>MIN_HEIGHT</em></span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.setHeight(<span class="string"><em>MIN_HEIGHT</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// width</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(containerGa.getWidth() &lt;
+		<span class="string"><em>MIN_WIDTH</em></span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerGa.setWidth(<span class="string"><em>MIN_WIDTH</em></span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">int </span>containerWidth = containerGa.getWidth();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">for
+		</span>(Shape shape : containerShape.getChildren()){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		GraphicsAlgorithm graphicsAlgorithm = shape.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IGaService gaService = Graphiti.getGaService();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		IDimension size = <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.calculateSize(graphicsAlgorithm);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(containerWidth != size.getWidth()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (graphicsAlgorithm <span class="keyword">
+		instanceof </span>Polyline) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Polyline polyline = (Polyline) graphicsAlgorithm;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Point secondPoint = polyline.getPoints().get(1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Point newSecondPoint =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.createPoint(containerWidth, secondPoint.getY()); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		polyline.getPoints().set(1, newSecondPoint);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		} <span class="keyword">else </span>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		gaService.setWidth(graphicsAlgorithm,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		containerWidth);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		anythingChanged = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>anythingChanged;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getLayoutFeature(org.eclipse.graphiti.features.context.ILayoutContext)">
+getLayoutFeature</a>).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>ILayoutFeature 
+		getLayoutFeature(ILayoutContext context) {<br>&nbsp;&nbsp;&nbsp; PictogramElement 
+		pictogramElement = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pictogramElement);<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (bo <span class="keyword">instanceof</span> 
+		EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialLayoutEClassFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return super</span>.getLayoutFeature(context);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Finally we have to call the layout feature at the end of the add method of the
+<span class="incode"><em>TutorialAddEClassFeature</em></span>, as shown in the following 
+code snippet.</p>
+<p>This causes that the layout (especially the layout restrictions like minimum 
+size) are applied after adding a EClass.</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">&nbsp;<span class="keyword">public </span>PictogramElement 
+		add(IAddContext context) {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		... EXISTING CODING ...</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// call the layout feature</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		layoutPictogramElement(containerShape);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>containerShape;<br>&nbsp;&nbsp;&nbsp; 
+		}&nbsp; </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<h2>Test: Layout EClass after Resize</h2>
+<p>Now start the editor again and test it: Try to resize a EClass. You see that 
+the class name stays in the centre and the line separator will be automatically 
+extended.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

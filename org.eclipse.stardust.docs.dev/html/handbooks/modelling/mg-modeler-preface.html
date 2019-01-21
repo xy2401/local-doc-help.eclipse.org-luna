@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>The Process Workbench</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("","","",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide");
+ -->
+</script>
+<h1>The Process Workbench</h1>
+<p>This chapter serves as a user guide to model processes with the
+Stardust Process Workbench.</p>
+<p>In the Stardust Process Workbench you can construct and manage
+workflow models. It will be used primarily by modelers and integrators.
+By using it they can define their company's business processes in an
+easy and efficient way: the elements of a business process have been
+provided as graphically represented building blocks. The role of a
+modeler is to put them together in a diagram. Each building block is
+described by an element-specific set of properties and its relationships
+or connections to other elements of the process model. Both must be
+specified by the modeler at build time.</p>
+<p>For information about how to install the required Eclipse plugins
+and the Stardust Workbench Feature refer to the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.installation/html/installation/ig-toc.html">
+Stardust Installation Guide</a>.</p>
+<p>The Stardust Process Workbench provides you with a perspective for 
+developers, which is described in the
+chapter <a href="mg-modeler-views.html">The Process Development Perspective</a>.</p>
+<h2>Contents</h2>
+<ul>
+    <li><a href="mg-preferences.html">Setting Process Manager
+    Preferences</a></li>
+    <li class="expand" onclick="openClose(this, 'persp')">
+    <a href="mg-modeler-views.html">The Process Development Perspective</a></li>
+    <li class="noicon" id="persp" style="display: none;">
+    <ul>
+        <li><a href="model-views/views-outline.html">Outline
+        view</a></li>
+        <li><a href="model-views/views-diagrams.html">Working
+        with Diagrams</a></li>
+        <li><a href="model-views/views-cheat.html">Cheat Sheet
+        View</a></li>
+        <li><a href="model-views/views-repository.html">Process Model Repository</a></li>
+        <li><a href="model-views/views-bookmark.html">Process Model Bookmarks</a></li>
+        <li><a href="model-views/views-traversal.html">Process Model Traversal</a></li>
+    </ul></li>
+    
+    <li class="expand" onclick="openClose(this, 'model')">
+    <a href="models/model-preface.html">Working with Models</a></li>
+    <li class="noicon" id="model" style="display: none;">
+    <ul>
+        <li><a href="models/model-handling.html">Creating and
+        Deleting Models</a></li>
+        <li><a href="models/model-props.html">Model Properties</a></li>
+        <li><a href="models/model-validation.html">Workflow
+        Model Validation</a></li>
+        <li><a href="models/model-import.html">Importing and
+        Exporting Models</a></li>
+        <li><a href="models/model-element-refs.html">Element
+        References</a></li>
+        <li><a href="models/model-clean.html">Cleaning Up
+        Models</a></li>
+    </ul></li>
+    <li><a href="mg-defdesk-3.htm">Working with Process
+    Definitions</a></li>
+    <li><a href="mg-process-interface.htm">Working with Process
+    Interface</a></li>
+    <li class="expand" onclick="openClose(this, 'act')">
+    <a href="activities/activities-preface.html">Working with Activities</a></li>
+    <li class="noicon" id="act" style="display: none;">
+    <ul>
+      <li><a href="activities/mg-defdesk-4.htm">Specifying Activities</a></li>
+      <li><a href="activities/act-control-flow.html">Specifying Activity Control Flow</a></li>
+      <li><a href="activities/mg-subprocesses.html">Configuring Subprocess
+      Activities</a></li>
+      <li><a href="activities/manual-activities.html">Manual Activities</a></li>
+      <li><a href="activities/mg-convert-activities.html">Converting Manual
+      Activities to JSF Application Activities</a></li>
+      <li><a href="activities/quality-assurance.html">Quality Assurance on
+      interactive Activities</a></li>
+    </ul></li>
+    <li><a href="mg-defdesk-5.htm">Working with Transitions</a></li>
+    <li><a href="convert-gateways.html">Converting Gateways to a Business Modeler-compliant Format</a></li>
+    <li><a href="mg-defdesk-6.htm">Specifying Applications</a></li>
+    <li><a href="mg-defdesk-7.htm">Specifying Data</a></li>
+    <li><a href="mg-defdesk-8.htm">Specifying Data Mappings</a></li>
+    <li><a href="mg-defdesk-9.htm">Working with Data Paths</a></li>
+    <li><a href="mg-defdesk-10.htm">Modeling the Organizational
+    Structure</a></li>
+    <li><a href="mg-defdesk-11.htm">Working with Triggers</a></li>
+    <li><a href="model-variables.html">Using Configuration
+    Variables</a></li>
+    <li><a href="activity-criticality.html">Defining Activity
+    Criticality </a></li>
+    <li><a href="mg-defdesk-12.htm">Working with Process
+    Definition Event Handlers</a></li>
+    <li><a href="mg-defdesk-13.htm">Working with Activity Event
+    Handlers</a></li>
+    <li><a href="mg-defdesk-14.htm">Specifying Arbitrary Link
+    Types</a></li>
+    <li><a href="mg-pools-lanes.htm">Pools and Lanes Usage</a></li>
+    <li><a href="mg-defdesk-15.htm">Using Annotations</a></li>
+    <li><a href="mg-copy-paste-elements.html">Copying and
+    Pasting Modeled Elements</a></li>
+    <li><a href="property-page-authorization.html">Authorization</a></li>
+    <li><a href="process-effort-calculation.html">Project
+    Effort Calculation</a></li>
+    <li><a href="pattern-support.html">Modeling Pattern Support</a></li>
+    <li><a href="mg-defdesk-16.htm">Retrieving Diagrams from
+    Model Information</a></li>
+    <li><a href="mg-defdesk-17.htm">Loading Models from Audit
+    Trail</a></li>
+    <li><a href="mg-registry.html">External Model Resources</a></li>
+    <li><a href="mg-deploy-model.html">Deploying a Workflow
+    Model</a></li>
+    <li><a href="mg-defdesk-18.htm">Debugging Process
+    Definitions</a></li>
+    <li><a href="mg-internationalization.html">Native Language
+    Support</a></li>
+</ul>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

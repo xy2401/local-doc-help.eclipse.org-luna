@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Workflow Processing for Spawn Subprocess</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Workflow Processing to Abort and Start Subprocess",
+	        "","pg-workflow-switch.htm",
+	        "../../../handbooks.htm","Developer Handbook",
+	        "../../pg-preface.htm","Programming Guide",
+	        "../pg-embedded-preface.htm","Embedded Usage","wf-preface.html","Processing Workflow");
+ -->
+</script>
+<h1>Workflow Processing for Spawn Subprocess</h1>
+
+<p>This chapter describes the usage of Stardust APIs concerning spawnable processes:</p>
+
+<ul>
+	<li><a href="#workflow">Workflow Service Methods</a>
+	<ul>
+		<li><a href="#spawn">Spawning a Process</a></li>
+		<li><a href="#mspawn">Spawning Multiple Processes</a></li>
+		<li><a href="#spawninfo">Retrieving Information of Spawned Processes</a></li>
+		<li><a href="#aspawn">Aborting Spawned Process</a></li>
+		<li><a href="#rspawn">Recovering Spawned Process</a></li>
+	</ul></li>
+	<li><a href="#query">Query Service Methods</a>
+		<ul>
+			<li><a href="#qspawn">Querying Spawnable Processes</a></li>
+		</ul></li>
+</ul>
+
+<h2 id="workflow">Workflow Service Methods</h2>
+<h3 id="spawn">Spawning a Process</h3>
+<p>The Workflow Service method <tt>spawnSubprocessInstance</tt> spawns a process
+as subprocess of the specified process instance.</p>
+<pre>
+ /**
+    * Spawns a process as subprocess of the specified process instance. The spawned
+    * process executes asynchronously but has to be completed before the parent process is
+    * able to complete.
+    *
+    * @param parentProcessInstanceOID The oid of the process to spawn from.
+    * @param spawnProcessID The id of the process definition to spawn as a subprocess.
+    * @param copyData Defines if data of the parent process definition should be copied to the spawned process.
+    * @param data Contains data IDs as key set and corresponding data values to be set
+    *        as values.
+    *
+    * @return the {@link ProcessInstance} that was spawned.
+    */
+   ProcessInstance spawnSubprocessInstance(long parentProcessInstanceOID,
+         String spawnProcessID, boolean copyData, Map&lt;String, ?&gt; data);
+</pre>
+<p>The required permission to execute this method is <strong>spawnSubProcessInstance</strong>.</p>
+
+
+<h3 id="mspawn">Spawning Multiple Processes</h3>
+<p>To spawn multiple processes as subprocesses of the specified process instance, use <tt>spawnSubprocessInstances</tt> method.</p>
+
+<pre>
+/**
+    * Spawns multiple processes as subprocesses of the specified process instance. The spawned
+    * processes execute asynchronously but have to be completed before the parent process is
+    * able to complete.
+    *
+    * @param parentProcessInstanceOID The oid of the process to spawn from.
+    * @param subprocessSpawnInfo A List of {@link SubprocessSpawnInfo} holding information about the subprocesses to be spawned.
+    * @return A list of {@link ProcessInstance} that were spawned.
+    */
+   List&lt;ProcessInstance&gt; spawnSubprocessInstances(long parentProcessInstanceOID, List&lt;SubprocessSpawnInfo&gt; subprocessSpawnInfo);
+</pre>
+<h3 id="spawninfo">Retrieving Information of Spawned Processes</h3>
+<p>The <tt>SubprocessSpawnInfo</tt> method is used to retrieve the information of spawned processes.</p>
+
+<pre>
+/**
+    * @param processId The process id.
+    * @param copyData Specifies if data of the parent process instance should be copied.
+    * @param data Allows specifying explicit data values which are set instead of copied.
+    */
+   public SubprocessSpawnInfo(String processId, boolean copyData, Map&lt;String, ? &gt; data)
+</pre>
+<h3 id="aspawn">Aborting Spawned Process</h3>
+<p>A spawned subprocess can be aborted by following methods:</p>
+<ul>
+	<li>Calling <tt>workflowService.abortActivityInstance(oid, AbortScope.SubHierarchy)</tt> 
+	on any active activity instances of the spawned subprocess aborts the subprocess hierarchy</li>
+	<li>Calling <tt>workflowService.abortActivityInstance(oid, AbortScope.RootHierarchy)</tt> 
+	on any active activity instances of the spawned subprocess aborts the complete process hierarchy</li>
+	<li>Calling <tt>adminService.abortProcessInstance(oid)</tt> aborts the complete process hierarchy</li>
+</ul>
+
+<h3 id="rspawn">Recovering Spawned Process</h3>
+<p>Recovery of spawned process is similar to synchronously started subprocesses. To recover spawned process, use following methods:</p>
+<ul>
+	<li><tt>recoverProcessInstances(List&lt;Long&gt; oids)</tt></li>
+	<li><tt>recoverProcessInstance(long oid)</tt></li>
+</ul>
+
+<h2 id="query">Query Service Methods</h2>
+<p>The semantic of existing APIs is not changed for spawned processes but their scope is increased to include the spawn process
+as a subprocess.</p> 
+<p>Use following methods of 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html">ProcessInstanceQuery</a>
+class:</p>
+<ul>
+	<li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html#findForProcess(java.lang.String)">
+    findForProcess(String processID)</a> - with included subprocesses</li>
+   <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/ProcessInstanceQuery.html#findForProcess(java.lang.String, boolean)">
+    findForProcess(String processID, boolean includingSubprocesses)</a> - 
+    with the option to include or not include subprocesses</li>
+</ul>
+
+<h3 id="qspawn">Querying Spawnable Processes</h3>
+
+<p>The user is allowed to start spawnable processes as they are manual processes. They are 
+limited to processes of the same model and started in the scope of an active process instance. 
+The <tt>ProcessDefinitionQuery</tt> retrieves the manual startable processes from a specific model.
+The <tt>findStartable</tt> method returns the processes that have manual triggers assigned.</p>
+
+<pre>
+ /**
+    * Creates a query for finding manually startable processes contained in a specific model.
+    *
+    * @param modelOID specifies the model to retrieve manually startable processes from.
+    * @return The configured query.
+    *
+    */
+   public static ProcessDefinitionQuery findStartable(long modelOID)
+</pre>
+
+<p>Note that when using the API to spawn a subprocess, you may get <tt>ConcurrencyException</tt>.
+In that case, wait for sometime and retry the API call.</p>
+
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+<p></p>
+</body>
+</html>

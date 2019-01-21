@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_51
+Bundle-Vendor: %provider
+Bundle-Localization: plugin
+Bundle-Name: %bundleName
+Built-By: genie.linuxtools
+Bundle-SymbolicName: org.eclipse.linuxtools.cdt.libhover.library.docs;
+ singleton:=true
+Require-Bundle: org.eclipse.help
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.0.5
+Bundle-Version: 1.0.2.201502180018
+Bundle-ManifestVersion: 2
+
+Name: images/next.gif
+SHA1-Digest: lmLlDPE2WjVohevt+GNU13MFL5w=
+
+Name: images/prev.gif
+SHA1-Digest: qx89HZcOfCNP8URrsbXsnJSbNro=
+
+Name: Linux_Tools_Project/Libhover/Developers_Guide/Updating-This-Docu
+ ment.html
+SHA1-Digest: KIhZ56symLk90Takp+dx9iif6n8=
+
+Name: libraries.xml
+SHA1-Digest: eD/m7CzM+ZAyCp6BV4KeMkjuOK4=
+
+Name: Linux_Tools_Project/Libhover/Developers_Guide/Developers-Guide.h
+ tml
+SHA1-Digest: 6bUkKQDkjBX05znMDiLVR5FE3bo=
+
+Name: images/home.gif
+SHA1-Digest: 6ZkfXx5mGrHfp+Vr+YCQGGUsRIQ=
+
+Name: about.html
+SHA1-Digest: sAXgWZYB7tT9O9w6pl6VraWFVhk=
+
+Name: META-INF/maven/org.eclipse.linuxtools.cdt.libhover/org.eclipse.l
+ inuxtools.cdt.libhover.library.docs/pom.properties
+SHA1-Digest: hjeE+OEmOsYqYPVz+6q9YKMvFsc=
+
+Name: plugin.properties
+SHA1-Digest: c2GJgYhSDXXpR4/i80IyQHms32w=
+
+Name: toc.xml
+SHA1-Digest: dH03s+NaWq19wVC6OjO3j0AmkI4=
+
+Name: doc/notices.html
+SHA1-Digest: psAcn86IOc80uc4nqE7TIkPboXM=
+
+Name: plugin.xml
+SHA1-Digest: kBE2UTa+WLaZx3eRAVIcyADDivc=
+
+Name: META-INF/maven/org.eclipse.linuxtools.cdt.libhover/org.eclipse.l
+ inuxtools.cdt.libhover.library.docs/pom.xml
+SHA1-Digest: Pk9T1YtQQhCdZYS6leNaYDoyVbw=
+

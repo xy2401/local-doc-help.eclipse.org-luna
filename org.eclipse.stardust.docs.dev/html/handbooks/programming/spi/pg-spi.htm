@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Tutorial - Stardust SPI Programming</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../styles/carnot.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Tutorial - LDAP Synchronization Provider Example",
+        "pg-spi-tenant.html","pg-ldap.html",
+        "../../handbooks.htm","Developer Handbook",
+        "../pg-preface.htm","Programming Guide",
+        "spi-toc.html","SPI");
+ -->
+</script>
+
+<h1>Tutorial - Stardust SPI Programming</h1>
+<p>This small tutorial gives you a small overview on how a new
+custom application can be easily integrated in the Stardust Business
+Modeler.</p>
+<h2>Hello World Tutorial</h2>
+<p>We want to develop an &quot;hello world&quot; application. At
+modeling time we specify how many people we like to say hello.</p>
+<h3>Create a new Java Plug-in Project</h3>
+<p>We assume that you use Eclipse as your Java IDE. First of all
+create a new Java Plug-in Project - in our tutorial - named
+&quot;tutorial.spi.helloworld&quot;. Please follow the screenshot.</p>
+<p class="image"><img src="images/pg-spi-plugin1.png" alt="Plugin1">
+<br>
+<strong>Figure:</strong> Define the package structure</p>
+<p class="image"><img src="images/pg-spi-plugin2.png" alt="Plugin2">
+<br>
+<strong>Figure:</strong> Define the plug-in content</p>
+<p class="image"><img src="images/pg-spi-plugin3.png" alt="Plugin3">
+<br>
+<strong>Figure:</strong> Choose &quot;Plug-in with property page&quot;</p>
+<p class="image"><img src="images/pg-spi-plugin4.png" alt="Plugin4">
+<br>
+<strong>Figure:</strong> Specify plug-in names</p>
+<h3>Plugin.xml</h3>
+<p>After this initial creation of your new plug-in the <tt>plugin.xml</tt>
+file opens. Create a <tt>plugin.properties</tt> file beside your <tt>plugin.xml</tt>
+and add the following variables:</p>
+<pre>pluginName = Hello World Application Type
+providerName = SunGard CSA LLC</pre>
+<p>This variables will be dissolved in the <tt>plugin.xml</tt> file.</p>
+<p>Create an additional directory named &quot;icons&quot;, if you like to add a custom application icon. Otherwise you can use the standard 
+Stardust application icon in <tt>/icons/full/obj16/application.gif</tt>. 
+If you add a custom icon you have to export the image file in the 
+<tt>build</tt> section of the <tt>plugin.xml</tt> for binary and source build.</p>
+<p>The <tt>plugin.xml</tt> configuration has different layers which have to be configured. This is described in the next sections. </p>
+<h4>Overview</h4>
+<p>First of all we define the ID, Name and Version of the plug-in.
+For details see the image below.</p>
+<p class="image"><img src="images/pg-spi-plugin-overview.jpg"
+	alt="Overview" width="511" height="251"> <br>
+<strong>Figure:</strong> Plugin.xml overview configuration</p>
+<h4>Dependencies</h4>
+<p>The next step is to specify all dependent plug-ins. Select the <strong>Dependencies</strong>
+link in the <strong>Plug-in content</strong> part. Click <strong>Add..</strong>
+to open the <strong>Plug-in Selection</strong> dialog and choose the
+required plug-ins shown in the figure below.</p>
+<p class="image"><img src="images/pg-spi-plugin-dependencies.png"
+	alt="Dependencies"> <br>
+<strong>Figure:</strong> Plugin.xml dependencies configuration</p>
+<h4>Runtime</h4>
+<p>After plug-in development you need to export your plugin. In the
+<strong>Runtime</strong> view <strong>Exported Packages</strong> part,
+click the <strong>Add</strong> button to open the <strong>Package
+Selection</strong> dialog and choose the following packages:</p>
+<p class="image"><img src="images/pg-package-selection.png"
+	alt="Package Selection"> <br>
+<strong>Figure:</strong> Package Selection</p>
+<p>Now they are displayed in the <strong>Exported Packages</strong>
+part:</p>
+<p class="image"><img src="images/pg-spi-plugin-runtime.png"
+	alt="runtime"> <br>
+<strong>Figure:</strong> Plugin.xml runtime configuration</p>
+<h4>Extension Tab</h4>
+<p>Your custom application type needs two additional extensions:</p>
+<ul>
+	<li>org.eclipse.stardust.modeling.core.applicationTypes</li>
+	<li>org.eclipse.stardust.engine.api.model.validation.modelElementValidator</li>
+</ul>
+<p>In the <strong>All extensions</strong> part select <strong>Add...</strong>
+to add these plugins to the <strong>All Extensions</strong>
+configuration.</p>
+<p class="image"><img src="images/pg-spi-plugin-extensions.png"
+	alt="extentionPoints"> <br>
+<strong>Figure:</strong> Plugin.xml extension point selection</p>
+<p>After the creation of these extensions the applications with its
+attributes can be added:</p>
+<ul>
+	<li>Right-click the extension.</li>
+	<li>Select <strong>New &gt; application</strong> in the context
+	menu.</li>
+</ul>
+<p class="image"><img src="images/pg-spi-plugin-extension-add.jpg"
+	alt="app"> <br>
+<strong>Figure:</strong> Add new application to Extension Point</p>
+<p class="image"><img src="images/pg-spi-extension-added.png"
+	alt="allExtension"> <br>
+<strong>Figure:</strong> All added extensions</p>
+<!-- <p>Look at the <tt>plugin.xml</tt> in the example directory shipped with Stardust 
+distribution for more details on the configuration.</p> -->
+<h2>Development</h2>
+<p>Your new Plug-in project consists of a created package structure.
+The Activator class was generated with the creation of the plugin like
+the HelloWorldPropertyPage class.</p>
+<p>As additional classes you need:</p>
+<ul>
+	<li>HelloWorldValidator</li>
+	<li>HelloWorldApplicationInitializer</li>
+	<li>HelloWorldAccessPointProvider</li>
+	<li>DirectModelAdapter</li>
+</ul>
+<p>For best practice we recommend that you create also classes which
+provide constants or a small framework for messages.</p>
+<ul>
+	<li>HelloWorldConstants</li>
+	<li>HelloWorldMessages</li>
+	<li>helloworld_messages.properties</li>
+</ul>
+<!-- <p>In the example package you find the mentioned classes.</p> -->
+<h2>Test</h2>
+<p>To test your newly created application, add a new Eclipse
+&quot;runtime configuration&quot;:</p>
+<ul>
+	<li>In the main menu select <strong>Open Run Dialog...</strong>.</li>
+	<li>In the configuration panel add a new &quot;Eclipse
+	application&quot;.</li>
+	<li>Name it <tt>Stardust Process Workbench</tt>.</li>
+	<li>Select <strong>Run</strong> to run this application.</li>
+</ul>
+<p>In the new eclipse instance choose <strong>File &gt; New
+&gt; Process Manager Wizards &gt; Stardust Process Model</strong>. A java project will
+be automatically generated. After browsing to your Stardust license you
+see the Stardust Process Workbench and your newly created application in
+the applications section. Please refer to the section <a
+	href="../../modelling/models/model-handling.html#creating">Creating a
+new Model</a> of the chapter <a
+	href="../../modelling/models/model-handling.html">Creating and
+Deleting Models</a> for detailed information on how to create a Stardust 
+process model.</p>
+<h2>Runtime</h2>
+<p>Every custom application type needs a runtime component. In our
+&quot;Hello World&quot; example you need the following classes at
+runtime:</p>
+<ul>
+	<li>HelloWorldConstants</li>
+	<li>HelloWorldValidator</li>
+	<li>HelloWorldAccessPointProvider</li>
+</ul>
+<p>You can duplicate them to avoid the need of the runtime classes
+and vice versa. Or you reference them in the <tt>plugin.xml</tt> and
+load them at modeling time.</p>
+<p>The main runtime class is
+&quot;HelloWorldApplicationInstance&quot; which must be implemented.</p>
+<h2>Application Types</h2>
+<p>There a different types of applications you like to develop:</p>
+<ul>
+	<li>Application Type (Extension Point: <tt>org.eclipse.stardust.modeling.core.applicationTypes</tt>)
+	</li>
+	<li>Data Type (Extension Point: <tt>org.eclipse.stardust.modeling.core.dataTypes</tt>)
+	</li>
+	<li>Context Type (Extension Point: <tt>org.eclipse.stardust.modeling.core.contextTypes</tt>)</li>
+</ul>
+<h3>Application Type</h3>
+<p>Click the following link to download a ZIP file containing
+example attribute classes and access point provider classes for a plain
+Java application configuration:</p>
+<ul>
+	<li><a href="../../../examples/spi/spi.zip"> spi.zip</a></li>
+</ul>
+<p>Unzip this file to an example folder <tt>&lt;spi-examples&gt;</tt>
+of your choice. You find the access point provider classes in the folder
+<tt>&lt;spi-examples&gt;/org/eclipse/stardust/engine/core/pojo/app</tt>.</p>
+<p>By using these classes your <tt>plugin.xml</tt> could look like
+the following:</p>
+<pre>
+&lt;extension
+         point="org.eclipse.stardust.modeling.core.applicationTypes"&gt;
+    &lt;application
+            accessPointProvider="org.eclipse.stardust.engine.core.pojo.app.PlainJavaAccessPointProvider"
+            id="tutorial.spi.helloworld.application3"
+            name="Hello World Application"
+            synchronous="true"&gt;
+         &lt;attribute name="carnot:defdesk:icon" value="/org/eclipse/stardust/engine/core/pojo/app/icon.gif"/&gt;
+         &lt;attribute name="carnot:defdesk:panel" value="org.eclipse.stardust.engine.core.pojo.app.PlainJavaApplicationPanel"/&gt;
+         &lt;attribute name="carnot:engine:accessPointProvider" value="org.eclipse.stardust.engine.core.pojo.app.PlainJavaAccessPointProvider"/&gt;
+         &lt;attribute name="carnot:engine:applicationInstance" value="org.eclipse.stardust.engine.core.pojo.app.PlainJavaApplicationInstance"/&gt;
+         &lt;attribute name="carnot:engine:validator" value="org.eclipse.stardust.engine.core.pojo.app.PlainJavaValidator"/&gt;
+         &lt;attribute
+               name="carnot:engine:runtimeValidator"
+               value="org.eclipse.stardust.engine.core.pojo.app.PlainJavaValidator"/&gt;
+    &lt;/application&gt;
+&lt;extension&gt;
+</pre>
+<h3>Data Type</h3>
+<p>The following code shows an example configuration for a primitive
+data type in the <tt>plugin.xml</tt> file:</p>
+<pre>
+&lt;extension
+      point="org.eclipse.stardust.modeling.core.dataTypes"&gt;
+      &lt;dataType
+         accessPathEditorClass="org.eclipse.stardust.engine.extensions.xml.data.XPathEditor"
+         id="primitive"
+         name="Primitive Data"&gt;
+         &lt;attribute
+            name="carnot:defdesk:accessPathEditor"
+            value="org.eclipse.stardust.engine.core.pojo.data.POJOAccessPathEditor"/&gt;
+         &lt;attribute
+            name="carnot:defdesk:panel"
+            value="org.eclipse.stardust.engine.core.pojo.data.PrimitivePropertiesEditor"/&gt;
+         &lt;attribute
+            name="carnot:engine:evaluator"
+            value="org.eclipse.stardust.engine.core.pojo.data.PrimitiveAccessPathEvaluator"/&gt;
+         &lt;attribute
+            name="carnot:engine:validator"
+            value="org.eclipse.stardust.engine.core.pojo.data.PrimitiveValidator"/&gt;
+      &lt;/dataType&gt;
+&lt;extension&gt;
+</pre>
+
+<h3>Context Type</h3>
+<p>The following snippet shows a configuration example for a JSP
+application:</p>
+<pre>&lt;extension point=&quot;org.eclipse.stardust.modeling.core.contextTypes&quot;&gt;
+	&lt;context
+     hasApplicationPath=&quot;false&quot;
+     hasMappingId=&quot;true&quot;
+     icon=&quot;icons/full/obj16/jsp_context_icon.gif&quot;
+     id=&quot;jsp&quot;
+     name=&quot;%ctxJSPApp&quot;
+     propertyPageClass=&quot;org.eclipse.stardust.modeling.core.spi.contextTypes.jsp.JspPropertyPage&quot;&gt;
+ 	&lt;attribute name=&quot;carnot:defdesk:icon&quot; value=&quot;/org/eclipse/stardust/engine/extensions/web/jsp/contexts/icon.gif&quot;/&gt;
+ 	&lt;attribute name=&quot;carnot:defdesk:panel&quot; value=&quot;org.eclipse.stardust.engine.extensions.web.jsp.contexts.JSPContextTypePanel&quot;/&gt;
+ 	&lt;attribute name=&quot;carnot:engine:validator&quot; value=&quot;org.eclipse.stardust.engine.extensions.web.jsp.contexts..JSPValidator&quot;/&gt;
+	&lt;attribute name=&quot;carnot:engine:runtimeValidator&quot; value=&quot;org.eclipse.stardust.engine.extensions.web.jsp.contexts..JSPValidator&quot;/&gt;       
+ 	&lt;/context&gt;
+&lt;/extension&gt;</pre>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

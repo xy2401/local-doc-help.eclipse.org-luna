@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Retrieving Content of a Document Revision</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Creating a new Document Version and retrieving all Versions",
+		"documents-update.html","documents-versions.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage",
+		"docs-preface.html","Document Management");
+-->
+</script>
+<h1>Retrieving Content of a Document Revision</h1>
+<p>Assuming you have a specific number <tt>n</tt> of versions of a document in the 
+repository. Now you like to retrieve the contents of a particular revision of that document.</p>
+<h2>Solution Code</h2>
+<p>To retrieve the content of a particular revision we use 
+the <tt>retrieveDocumentContent()</tt> method of the
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+DocumentManagementService</a> and pass the <tt>RevisionId</tt>.</p> 
+<p>The sample code looks like below:</p>
+<pre>
+package com.sungard.bootcamp.client;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.eclipse.stardust.engine.api.runtime.DmsUtils;
+import org.eclipse.stardust.engine.api.runtime.Document;
+import org.eclipse.stardust.engine.api.runtime.DocumentInfo;
+import org.eclipse.stardust.engine.api.runtime.DocumentManagementService;
+import org.eclipse.stardust.engine.api.runtime.ServiceFactory;
+import org.eclipse.stardust.engine.api.runtime.ServiceFactoryLocator;
+import ag.carnot.workflow.runtime.beans.removethis.SecurityProperties;
+
+public class DMSClient {
+ 
+   public static void main(String[] args) {
+      // Obtain a reference to the ServiceFactory
+      ServiceFactory sf = getServiceFactory(null, null, null, "motu", "motu");
+      DocumentManagementService dmsService = sf.getDocumentManagementService(); 
+      // pass the documentId to get the document versions of that document 
+      List&lt;Document&gt; list = dmsService.getDocumentVersions("{jcrUuid}05044280-8411-4fd8-8927-99b23560e4c3"); 
+      for(int i=0;i&lt;list.size();i++){
+         Document document = (Document)list.get(i);
+         System.out.println("DocumentID&nbsp;:: " + document.getId()); 
+         System.out.println("Document RevisionId&nbsp;:: " +document.getRevisionId());
+         System.out.println("Document RevisionName&nbsp;:: "+ document.getRevisionName());
+         System.out.println("Document Contents&nbsp;:: " + new String(
+         dmsService.retrieveDocumentContent(document.getRevisionId())));
+      } 
+   }
+    
+   // Return ServiceFactory
+   private static ServiceFactory getServiceFactory(String partition,
+   String domain, String realm, String user, String password) {
+      Map properties = new HashMap();
+      properties.put(SecurityProperties.PARTITION, partition);
+      properties.put(SecurityProperties.DOMAIN, domain);
+      properties.put(SecurityProperties.REALM, realm);
+      return ServiceFactoryLocator.get(user, password, properties);
+   }
+}
+</pre>
+<p>The following API is used in this example:</p>
+<ul>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DmsUtils.html">DmsUtils</a></li>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/Document.html">Document</a></li>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">DocumentInfo</a></li>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">DocumentManagementService</a></li>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactory.html">ServiceFactory</a></li>
+  <li><a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/ServiceFactoryLocator.html">ServiceFactoryLocator</a></li>
+</ul>
+<h2>Example Output</h2>
+<p>The output of the above program could look similar like below. We are assuming that 
+there exist two versions of the document.</p>
+<pre>
+DocumentID&nbsp;:: {jcrUuid}05044280-8411-4fd8-8927-99b23560e4c3
+Document RevisionId&nbsp;:: {jcrRev}eb025fef-5609-4f42-911c-abd0ba1125bb
+Document RevisionName&nbsp;:: 1.0
+Document Contents&nbsp;:: This is a test document.. 
+</pre>
+<pre>
+DocumentID&nbsp;:: {jcrUuid}05044280-8411-4fd8-8927-99b23560e4c3
+Document RevisionId&nbsp;:: {jcrRev}1cc5d11a-9dbd-4733-b451-c0732458c36f
+Document RevisionName&nbsp;:: 1.1
+Document Contents&nbsp;:: This is the UPDATED document..
+</pre>
+
+<script language="JavaScript" type="text/javascript"> 
+writeFooter(); 
+</script>
+</body>
+</html>

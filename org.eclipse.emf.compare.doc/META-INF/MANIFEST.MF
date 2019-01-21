@@ -1,0 +1,637 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: genie.modeling.emfcompare
+Bundle-SymbolicName: org.eclipse.emf.compare.doc; singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help
+Bundle-Version: 3.1.1.201501201328
+Build-Jdk: 1.7.0_51
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: help/images/EMF_Compare_Tuto_Run_Button.png
+SHA1-Digest: Fua9zzqvKjXMf9+2GlHCzj3FRx8=
+
+Name: help/images/EMF_Compare_Tuto_New_Book_Difference_Rejected.png
+SHA1-Digest: clYXAo+1dii5l8QL8G6/KV8jV48=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison_Acce
+ pted.png
+SHA1-Digest: pMJB4GWlLfKON0QUyOVZWVvlaiE=
+
+Name: help/developer/logical-model.html
+SHA1-Digest: RRDH3Iu3XNs102dmYwiFUAPBqAs=
+
+Name: help/images/EMF_Compare_Graphical_Nested_Phantom.gif
+SHA1-Digest: v2ZS3THBKoHCZsG6IwK47h29KBo=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Rejected.png
+SHA1-Digest: yexoAqmoFZ02Z/QaLV9GeRblY3g=
+
+Name: help/images/EMF_Compare_Tuto_Setting_Book_Name.png
+SHA1-Digest: 6Y8xHqS7+UJil1NcZpX45e6SUDg=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison.png
+SHA1-Digest: 2MQo6X2eUtXheVEjlLFzsYz9gGw=
+
+Name: help/images/EMF_Compare_Use_Model_Changed.png
+SHA1-Digest: LtMswCqZXqLQA9w/sjq0wAU0BFc=
+
+Name: help/images/EMF_Compare_Tuto_Import_Project_Wizard1.png
+SHA1-Digest: LmAz9qjnjFov+g18d1J3EG/3yzQ=
+
+Name: help/images/EMF_Compare_Tuto_Book_Name_Comparison.png
+SHA1-Digest: Z8W7X1S+MFbFVgR4r71DRBpCFj4=
+
+Name: help/images/chg_ov.gif
+SHA1-Digest: V8yH4faWFqtZnonFdkEhqlLaTBE=
+
+Name: help/images/EMFC_Logic_right.png
+SHA1-Digest: K9R0sh2afgIexK+jFNEo/IdJ5pQ=
+
+Name: help/images/Logical_Model.png
+SHA1-Digest: l1oaL2cKLeO+L1/eoYgOkwXIshA=
+
+Name: help/images/removed_ov.gif
+SHA1-Digest: sE6RgcX+tnQb6YBl/LEEJtP2rz8=
+
+Name: help/images/EMF_Compare_Match_Engine_Preference_Page_Configurati
+ on.png
+SHA1-Digest: pl8qgK3+E9dQ9yCZ+tyRKZoCvi0=
+
+Name: help/images/pconfadd_ov.gif
+SHA1-Digest: MO5odWp5diuqBYcCgpnX3vt4rAM=
+
+Name: help/images/EMF_Compare_Tuto_Remove_Book_Setting.png
+SHA1-Digest: BIGouvbUMbzdeF4npQfSFgT16p4=
+
+Name: help/images/pconfr_chg_ov.gif
+SHA1-Digest: ifumhlmjAzpledoqeLqWRfXAwf4=
+
+Name: help/images/EMF_Compare_Tuto_Unset_Employee_Manager_Comparison.p
+ ng
+SHA1-Digest: ksGUdp+82dVBjc7+LC+c1TyvFD0=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Cascading_Fi
+ lter2.png
+SHA1-Digest: P///g8hpOc98v5LRMv6tUL+boFc=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Cascading_Fi
+ lter_Reject_Mode.png
+SHA1-Digest: ifaJk0hVfIuHR28RLHZu7kxLqd4=
+
+Name: help/images/EMF_Compare_User_Interface_Toolbar_With_Read_Only_Si
+ de.png
+SHA1-Digest: RR4qcznGf6Alm3sK1aeTTwvTPwo=
+
+Name: help/resources/custom.css
+SHA1-Digest: mr0Srqvb59CGKhgw+Eh1207pd+s=
+
+Name: help/images/confdel_ov.gif
+SHA1-Digest: b7mzMOR9uz7MMiu5EcbP0w3Ne7o=
+
+Name: help/images/EMFCompare_ColorPreferences.png
+SHA1-Digest: kfOoHKD55GHbvCNXgqxNGI1OU54=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Cascading_Fi
+ lter_Popup.png
+SHA1-Digest: TyCNqxsWL6jkiJ+YgEqXLwGlhQE=
+
+Name: help/images/EMF_Compare_Prev_Diff.gif
+SHA1-Digest: Yxsdfq+aXRfRviOHJijC7ipIhQ4=
+
+Name: help/images/EMF_Compare_Match_Engine_Preference_Page_List.png
+SHA1-Digest: ujW8OGl0D7M8ytc/JSg7rLp1MUI=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison.png
+SHA1-Digest: 0GxVnaOvSEtAzov+LJI033k49dU=
+
+Name: help/images/EMF_Compare_Use_Model.png
+SHA1-Digest: kaBEIN9PZv73/XJeEd+a2bwnDEM=
+
+Name: help/images/EMF_Compare_Tuto_Unset_Employee_Manager_Comparison_A
+ ccepted.png
+SHA1-Digest: hb8rNQU4xQw1prYR/3nY8AjDrbo=
+
+Name: help/images/Emf_logo.png
+SHA1-Digest: XV9nf8RhVb2UrzEfMc64sr55Ik8=
+
+Name: help/images/EMF_Compare_Copy_All.gif
+SHA1-Digest: HYyOFXnM3k5qhGqGrzOMcr3WjBY=
+
+Name: help/images/EMFC_Logic_origin.png
+SHA1-Digest: tUpBlNkb1u9VmzccanUNoDUqTV0=
+
+Name: help/images/r_outadd_ov.gif
+SHA1-Digest: SW8Pq6FkwrDfjwRE8Uzt8NrdVzs=
+
+Name: help/images/EMF_Compare_Tuto_Runtime_Platform.png
+SHA1-Digest: 3IOh3oki4PrAx7xCXr57MkBhiWg=
+
+Name: help/images/r_inadd_ov.gif
+SHA1-Digest: CU7RzuUUhN+a3ATagp8Efi/f6rI=
+
+Name: help/images/reject_change.gif
+SHA1-Digest: Up8YrjklxKqgGSMRo/NwyALuz0k=
+
+Name: help/images/EMF_Compare_Tuto_Remove_Book_Comparison.png
+SHA1-Digest: 32NIyf3h9foLjD5gNZE6Sv8W7QY=
+
+Name: help/images/EMF_Compare_With_Each_Other.png
+SHA1-Digest: aXUAlzuIvopj0ZDE7iRSfvhFEo0=
+
+Name: help/images/EMF_Compare_Preferences_Content_Type.png
+SHA1-Digest: uGDkS6VPSR4elEY5cNFyI4o8GQQ=
+
+Name: help/images/merged_ov.gif
+SHA1-Digest: 3jFV0v7l1oDy/eKOT+YkOWCFjXk=
+
+Name: help/user/user-guide.html
+SHA1-Digest: +T+do9FALLrM44fqiRIm6hACf9w=
+
+Name: help/images/merged_right_ov.gif
+SHA1-Digest: aWp5euLU6Wjc3RiytBwOxY1W01g=
+
+Name: help/images/accept_all_changes.gif
+SHA1-Digest: 1U5lAg/4U97yd77GQSOWVyNszqY=
+
+Name: help/images/EMF_Compare_Ancestor.gif
+SHA1-Digest: hoO1cRjCTQJiwFuUKIhPULzQWus=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Move_Accepted.png
+SHA1-Digest: JhUpfr5AC3hI5Fe0VHPZg3Kon7w=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison_Borr
+ owers_Diff.png
+SHA1-Digest: wEI6dmkKkhesjK3JgtOJtCUx7Og=
+
+Name: help/images/EMF_Compare_Text_Comparison.png
+SHA1-Digest: 0FqK1XyMq7lsZa7jZO/9vmc8Pzo=
+
+Name: help/images/EMF_Compare_Use_Compare_Master.png
+SHA1-Digest: +vW2y5KVjhSlfPMHCkvcz2JOgBs=
+
+Name: help/images/confr_chg_ov.gif
+SHA1-Digest: 1BPy1qldpaAU510DFpZOGn1k9y0=
+
+Name: help/user/sample-use-case.html
+SHA1-Digest: Pvkf9+OdWN8mhjoodGvc5rf6qQM=
+
+Name: help/developer/toc-logical-model.xml
+SHA1-Digest: M73aQnL9M5AGt4cC1XX3f1W9hiU=
+
+Name: help/images/EMF_Compare_Use_Compare_3.png
+SHA1-Digest: VY5c4rI09zUGmaAufJgSZZW5vKE=
+
+Name: help/images/EMF_Compare_Use_Compare_7.png
+SHA1-Digest: 5OLvSiza0OLB5Jcb9StaNS/wcN0=
+
+Name: help/images/EMF_Compare_Developer_New_Extension_Group.png
+SHA1-Digest: MiPWUGM9c39lUaZoN9SubGnR4hY=
+
+Name: help/images/Compare_With_Local_History.png
+SHA1-Digest: zuMBXXwFyvXwU3AHAzMoIsn+2xE=
+
+Name: help/images/EMF_Compare_Logical_Compare_Action.png
+SHA1-Digest: InuZMCqOh9KH2MRG5vfQWUJt4jE=
+
+Name: help/images/EMF_Compare_Groups_Preference_Page.png
+SHA1-Digest: fH8S/61SazLhhHL+1bHh8vV78z8=
+
+Name: help/images/accept.gif
+SHA1-Digest: PR9qMYmYKhm4FixbIl3d8kXrUio=
+
+Name: help/images/Local_History_View.png
+SHA1-Digest: V7ocZjOIboJyJzcrkeIoNv94Nho=
+
+Name: help/images/EMF_Compare_Groups_Synchronization_Dialog.png
+SHA1-Digest: lLZ+sATMmXbMP7/7MeGsOC9dpSg=
+
+Name: help/images/del_ov.gif
+SHA1-Digest: Hpg4HSFTYQ8Gqeo6OoD+aQGj3ss=
+
+Name: help/images/EMF_Compare_Incoming_Change.gif
+SHA1-Digest: guIdCvHbb6Prkh2jR8u8y9Mg5XM=
+
+Name: help/images/EMF_Compare_Engines_Preference_Page.png
+SHA1-Digest: GN2EBcl9cOa2b1+FM7dT4gPz4RQ=
+
+Name: help/developer/toc-how-to-open-compare-dialog.xml
+SHA1-Digest: +tRlTxlkcVnnvId4Z7hsQZJlfSw=
+
+Name: help/images/EMF_Compare_User_Interface.png
+SHA1-Digest: QIzuzRwp7j0X+4RCG8icsj52VX4=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison_Borr
+ owed_Diff.png
+SHA1-Digest: TZ6V/8/CbDUS77fY2MPYMoT13F4=
+
+Name: help/images/pconfr_del_ov.gif
+SHA1-Digest: cxGmOOhjbBLAcaivFkibMJyetWA=
+
+Name: help/images/EMF_Compare_Merged.png
+SHA1-Digest: dkr1KMxZvN5XL4IyCz7ElH5NkJ8=
+
+Name: help/images/EMF_Compare_Tuto_New_Book_Difference_Accepted.png
+SHA1-Digest: QPOsyKkMvz8pwFvqVjvWiQRjEQk=
+
+Name: help/images/EMFC_Compare_With.png
+SHA1-Digest: z8/8VWLhoH29YWcOj31kQ1LFSA0=
+
+Name: help/images/EMF_Compare_Merge.png
+SHA1-Digest: JfHBoQuDVSgrB6MPJSCh5tH7gKM=
+
+Name: help/FAQ.html
+SHA1-Digest: qM0FgzhRZvU5AFJzk9tr4urd5AQ=
+
+Name: help/images/EMF_Compare_Text_Compare.png
+SHA1-Digest: rQTuYLkFttvdK70uDofAnO3x9hM=
+
+Name: help/images/EMF_Compare_Use_Compare_With_Master_2.png
+SHA1-Digest: CeEycVyNVbPxFPDtpL/jSkxoRJ8=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Cascading_Fi
+ lter.png
+SHA1-Digest: VK4wmkQ4tGMKYsTPooaLBk8RXd4=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Comparison_Accepted.png
+SHA1-Digest: K686Ky9FMi64l2FQ/ieYM+QsI9c=
+
+Name: help/images/EMF_Compare_Handling_Conflict_2.png
+SHA1-Digest: m/y4oeJAP2htpM+kjP2z75xxcIw=
+
+Name: help/images/EMF_Compare_Developer_New_Extension_AccessorFactory.
+ png
+SHA1-Digest: hFcUCqxUQfNwIStA9/huhQv3q2A=
+
+Name: help/images/EMF_Compare_Post_Processor_Preference_Page.png
+SHA1-Digest: 342U5cGc+efdlieUqik/cJKlaTg=
+
+Name: plugin.properties
+SHA1-Digest: 8pi2wGjqqN9gW3JJ7aUCFN/UGR0=
+
+Name: help/images/EMF_Compare_Tuto_Book_Category_Comparison.png
+SHA1-Digest: DJs1+WzvJ2aSiHJwX7DZMkqvICg=
+
+Name: help/images/EMF_Compare_Tuto_Model_Creation.png
+SHA1-Digest: GgceAGaNC3HxecHpc+gMssr/agc=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Move_Comparison.png
+SHA1-Digest: ofwH/6CWHXGgbimVSdaD6Rr0mjg=
+
+Name: help/images/EMF_Compare_Tuto_Remove_Book_Rejected.png
+SHA1-Digest: C+KeZB94ESF2bFIS6e/xTurYPTc=
+
+Name: help/index.html
+SHA1-Digest: 4bqlFkL4mXguNPYWB8opZwh5O1k=
+
+Name: plugin.xml
+SHA1-Digest: GVINaIljkA/XdFUKtKhx/NVATy8=
+
+Name: help/images/Marketplace.png
+SHA1-Digest: e98YCILKfi3brqP7mHDLtoPAjMI=
+
+Name: help/images/v2.png
+SHA1-Digest: cQpWsGtxAFhvKd+u2mR6OhZ0SxA=
+
+Name: help/images/EMF_Compare_Tuto_Set_Manager_Chief_Rejected.png
+SHA1-Digest: Rwb8dQDUev7+qy4+iTRwxinHj5I=
+
+Name: help/user/toc-sample-use-case.xml
+SHA1-Digest: gP2yOsnkPbbR4Ej9OkZrZiuVoiQ=
+
+Name: help/images/confadd_ov.gif
+SHA1-Digest: L0Q3klrjqzrlJcSdAHSOkUv2CE8=
+
+Name: help/images/EMF_Compare_Tuto_Switch_Reject_Preview_Mode.png
+SHA1-Digest: eVPwsXIzXby+FhiUZTJ1W9rAAKk=
+
+Name: help/images/confr_del_ov.gif
+SHA1-Digest: /BetVeZPkx+9Yen6vBqg7jlh6Pw=
+
+Name: help/images/EMF_Compare_Tuto_Set_Manager_Chief_Comparison.png
+SHA1-Digest: GdmOOk7FlmR/OpUgsKLlS44Ziyw=
+
+Name: help/images/EMF_Compare_Logical_Compare_Result.png
+SHA1-Digest: EOuwcWyJgRwch6mYN8ffvRBMFHY=
+
+Name: help/images/EMF_Compare_Tuto_Fill_Borrowers.png
+SHA1-Digest: ByuE6vnJxdO96Y/zbaB/y8B4BHU=
+
+Name: help/images/EMF_Compare_Tuto_Set_Manager_Chief.png
+SHA1-Digest: L/qaL9ssDuTLilBV8Kd+dKQgbqw=
+
+Name: help/developer/developer-guide.html
+SHA1-Digest: YZrZzqb9yWe5j707V9JIUd3RtYA=
+
+Name: help/images/EMF_Compare_Use_Compare_2.png
+SHA1-Digest: CweKffaw6sqRela4ib/rVquOUAU=
+
+Name: help/images/EMF_Compare_Use_Compare_6.png
+SHA1-Digest: Mx5g54Y9KCeT+dE3O4m6o5YTcyI=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Move_Setting.png
+SHA1-Digest: it+2/Q2Ftn93w6jayJPiQJD77G0=
+
+Name: help/resources/bootstrap.js
+SHA1-Digest: hoZYUWOShMXgzSwNL1XBz1SKRKo=
+
+Name: help/images/EMF_Compare_Tuto_Setting_Book_Category.png
+SHA1-Digest: YTcX04YzmFhID9R8ncuIJgbukEA=
+
+Name: help/images/EMF_Compare_Groups_Choice.png
+SHA1-Digest: qLhR095wIzLxksPsK6NFstLy8fw=
+
+Name: help/images/pconfchg_ov.gif
+SHA1-Digest: gMh6J/aihYdzPui77DL0e+gwpKI=
+
+Name: help/images/EMF_Compare_Filters_Synchronization_Dialog.png
+SHA1-Digest: I835dfpfhMpbQXWHHZWu7+eLIYc=
+
+Name: help/images/EMF_Compare_Copy.gif
+SHA1-Digest: ApKDv5dH4axLh7l9PY5nH9S1IAE=
+
+Name: help/images/EMF_Compare_Editor_Tuto_New_Book.png
+SHA1-Digest: uufnzS0OLJymhpdujWQlQH7D4L4=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Setting.png
+SHA1-Digest: 6Ph8twghK9fSU96fndWviu9vsc0=
+
+Name: help/images/EMF_Compare_Merge_Book_Ancestor.png
+SHA1-Digest: 5iMhKB1H+4C5SJMVSklECgtltLA=
+
+Name: help/images/Create_Extlibrary_Model.png
+SHA1-Digest: R2qrSjENeVAx7sVX1ouuzoTVxTM=
+
+Name: help/images/Content_Types_Preference_Page.png
+SHA1-Digest: ig2lpK4gfyzuvv2JXZV3J/YMehM=
+
+Name: help/images/Logical_Model_Split.png
+SHA1-Digest: 2Jdg7/RM1doqAwZmn2PLlJblXEQ=
+
+Name: help/images/EMF_Compare_UML_Association_3.png
+SHA1-Digest: byBpHL+q/mroqfx6bPHdiavkvu4=
+
+Name: help/images/EMF_Compare_Tuto_Fill_Employees.png
+SHA1-Digest: WwGZNN9ypsqweurJxIgAk3OXH0Y=
+
+Name: help/images/EMF_Compare_Filters_Preference_Page.png
+SHA1-Digest: HXDEHf101I18HCjf8IQMWpZB0gk=
+
+Name: help/developer/how-to-open-compare-dialog.html
+SHA1-Digest: mRBRaskwE1cMnkzBOqfdZh673vI=
+
+Name: help/tutorial/toc-tutorial.xml
+SHA1-Digest: dgMTlK+QW+W3QUEOjsjfXQyb2Es=
+
+Name: help/images/EMF_Compare_Origin_Model.png
+SHA1-Digest: 48glFmLzPZcHDgtDXvRMfJrX2zQ=
+
+Name: help/images/EMF_Compare_Model_Resolver_Preference_Page.png
+SHA1-Digest: ThO7CSyjRmqw7mav9t49H55bvDs=
+
+Name: help/images/EMF_Compare_Groups_Resource.png
+SHA1-Digest: 1g/vTUSuyj229pLypyTYDqXyCnQ=
+
+Name: help/images/EMF_Compare_Tuto_Workspace.png
+SHA1-Digest: R/9YcV973nPZqd6HlRlXMLwVW3g=
+
+Name: help/images/EMF_Compare_Tuto_Install3.png
+SHA1-Digest: mHv/Ujunz+Yn4WGcc03qyEQkWy8=
+
+Name: help/images/r_outchg_ov.gif
+SHA1-Digest: DuXVXlVtpvQc1F1XCW97Q8yh3fw=
+
+Name: help/images/EMF_Compare_Use_Compare_With_Master_1.png
+SHA1-Digest: 5Nj9grf+FkXIcTtIThn/lEI68Lc=
+
+Name: help/images/EMFC_Logic_left.png
+SHA1-Digest: Q9q8qpLkfHkQoVL/sLEsNKyLPdo=
+
+Name: help/images/EMF_Compare_Tuto_Consequences_Preview_Button.png
+SHA1-Digest: 2iOsQCtGf04ifXHy4KPtr2wToq4=
+
+Name: help/images/EMF_Compare_Groups_Default.png
+SHA1-Digest: 6vSoryX86lIL7IQKB0PkuaQWRtc=
+
+Name: help/images/r_inchg_ov.gif
+SHA1-Digest: guIdCvHbb6Prkh2jR8u8y9Mg5XM=
+
+Name: help/images/EMF_Compare_Handling_Conflict_1.png
+SHA1-Digest: g1WxcBnWbB7lV74sX33IIZ0zwzI=
+
+Name: help/images/EMF_Compare_Groups_Kind.png
+SHA1-Digest: 0g3ZJvg8+7r7Bh1mgT6VKFIWhNw=
+
+Name: help/images/EMF_Compare_Tuto_Book_Category_Rejected.png
+SHA1-Digest: RxsaY9E/Yq2gFNv8T/Bnz9t9Fss=
+
+Name: help/images/add_ov.gif
+SHA1-Digest: P71J6/YUPr2JzXYX3rB/cusDpdA=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Setting.png
+SHA1-Digest: sPtpZG3tquBC4n6X0Upsa9NiMDw=
+
+Name: help/developer/toc-developer-guide.xml
+SHA1-Digest: Th1WNcaHLpBJyUVI2AHr/p7pQj0=
+
+Name: help/resources/bootstrap.css
+SHA1-Digest: 4rKoZ016idIaXVbye3uEOWNw1nk=
+
+Name: help/images/EMF_Compare_Graphical_Phantom.gif
+SHA1-Digest: IQJo7qFWxwXIxLBSoFEQ/QrveFY=
+
+Name: help/images/pconfr_add_ov.gif
+SHA1-Digest: PLgzXjbqpw8FIYXPPXhtrZI7I+M=
+
+Name: help/images/accept_change.gif
+SHA1-Digest: 4zZSZxddgdxwhW6D4pd9/0xnHFs=
+
+Name: help/images/EMF_Compare_Tuto_Book_Name_Rejected.png
+SHA1-Digest: 3uO6aYndK1lb3VU5tdpYc7LMPl0=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison_Reje
+ cted.png
+SHA1-Digest: BKXpzOcrZBkzWkMEx7V6sN3BEsc=
+
+Name: help/images/v1.png
+SHA1-Digest: EVwAUSmvtwQXyPBUFIv3OK4TTNk=
+
+Name: help/images/EMF_Compare_UML_Filter.png
+SHA1-Digest: 94Jpgrdu3S8Or/sjRhGKgsc1yBg=
+
+Name: help/images/EMF_Compare_Tutorial_Git_Repo_View.png
+SHA1-Digest: AwoJbxO+enVcPM7Yj2hUbWhENso=
+
+Name: help/images/EMF_Compare_Tuto_Graham_Borrows_Book_Comparison_EOpp
+ osite.png
+SHA1-Digest: 120iUmbTj+470kcIs624J+UCh1I=
+
+Name: help/images/EMF_Compare_Developer_New_Extension_Filter.png
+SHA1-Digest: Y77ba1blV/QH5keEZbTLLfCeed4=
+
+Name: about.html
+SHA1-Digest: ztzTKONYJdfqz4aa9yHkuSdsVnE=
+
+Name: help/images/EMF_Compare_Tuto_Unset_Employee_Manager.png
+SHA1-Digest: hwf2GoU0Uba8BQGYAbqkD3nJFH4=
+
+Name: help/images/EMF_Compare_Use_Compare_1.png
+SHA1-Digest: mduYSxdZBMiauXfDpgTU7qqEX+U=
+
+Name: help/images/EMF_Compare_Tuto_Install.png
+SHA1-Digest: UZhMFI55CKYi+en3GBx0mWjxtSg=
+
+Name: help/images/EMF_Compare_Groups_Side.png
+SHA1-Digest: 8Ej9B2XUKtHzptA7xUyUdHrfcKk=
+
+Name: help/images/EMF_Compare_Use_Compare_5.png
+SHA1-Digest: Nc9hJJP3LfdSE7pfNaB2suFhjSE=
+
+Name: help/images/EMF_Compare_Tuto_Remove_Book_Accepted.png
+SHA1-Digest: S1r/gx0tXD4veUIBopGK5rWpSB4=
+
+Name: help/images/pconfdel_ov.gif
+SHA1-Digest: XnBfnCReYrRmToXAbXTJW56ZNCE=
+
+Name: help/images/EMF_Compare_Process_Full.png
+SHA1-Digest: RP/0t9btd6eypT7M7RTFOv9z78Y=
+
+Name: help/images/EMF_Compare_Next_Diff.gif
+SHA1-Digest: ktgjNcK3ai1xIAmN0ckJJZZbmGQ=
+
+Name: help/images/Create_Extlibrary_Model_Set_Name.png
+SHA1-Digest: f0MX1X3cKYwnfvbRIgLMqG+gfpU=
+
+Name: help/images/EMF_Compare_Filters_Choice.png
+SHA1-Digest: JJ0yHH3Ay3z5GL5POjPm2NJlCSc=
+
+Name: help/images/EMF_Compare_Tuto_Import_Project_Wizard.png
+SHA1-Digest: l1hg7NVbwgysklLTjhjBChjF7uw=
+
+Name: help/images/EMF_Compare_Tuto_Set_Manager_Chief_Accepted.png
+SHA1-Digest: tzD8+0jOHx3jEvSsONW4W5RFYxo=
+
+Name: help/images/merged_left_ov.gif
+SHA1-Digest: ysECDH1Fxq4Yat8E6I7hGzdXCOU=
+
+Name: help/images/EMF_Compare_Tuto_Accept_Reject_Toolbar.png
+SHA1-Digest: e2Om5mm3KZwrvC2krIHbCq6Jzxk=
+
+Name: help/images/EMF_Compare_Tuto_New_Book_Difference.png
+SHA1-Digest: AAaEq0lgxbWcsdNbZG4pGFAHgXA=
+
+Name: help/images/confr_add_ov.gif
+SHA1-Digest: oMS4DcyoO9a5vqVE4XrS+K4Gy+8=
+
+Name: help/images/EMF_Compare_Outgoing_Change.gif
+SHA1-Digest: DuXVXlVtpvQc1F1XCW97Q8yh3fw=
+
+Name: help/images/EMFC_Logic_loaded_fragments.png
+SHA1-Digest: oH6mEzUz0gq5mB2gb3FUCmKSvsw=
+
+Name: help/images/EMF_Compare_Tuto_Top_Image_Reference.png
+SHA1-Digest: 0P/XdjcRGgKoKR+BA+FsnV6U2iU=
+
+Name: help/images/Create_Extlibrary_Model_Root_Element.png
+SHA1-Digest: RQyn9p1M9+KM+SK+cMrsn6Tmh6s=
+
+Name: help/images/EMF_Compare_Use_Setup.png
+SHA1-Digest: U0eApYNOUDhOejM/MH06FdKKpdk=
+
+Name: help/images/reject.gif
+SHA1-Digest: 9QefQnjHcKknhziSBUyIgPy1QDU=
+
+Name: help/images/EMF_Compare_UML_Association_2.png
+SHA1-Digest: xyuRi/XcD6oN5vTUxmz4FgD7GXg=
+
+Name: help/images/EMFC_2.1_Perf_Breakdown.png
+SHA1-Digest: Z7CTMc9yUffRjarMIf8YfQcvGM8=
+
+Name: help/images/EMF_Compare_Tuto_Import_Project_Wizard2.png
+SHA1-Digest: g6kmVy3E/lbQINU2kll13NjkTzo=
+
+Name: help/images/EMF_Compare_Tuto_Unset_Employee_Manager_Comparison_R
+ ejected.png
+SHA1-Digest: zcynz/+4HYvMycc7jIW6UiZsyJE=
+
+Name: help/toc.xml
+SHA1-Digest: 9xQJ5Cd91ktPEcLizjEa5Ia5gqg=
+
+Name: help/images/r_outdel_ov.gif
+SHA1-Digest: gnAMGgo2Np1jFNXTXqACHbYmgHE=
+
+Name: help/images/r_indel_ov.gif
+SHA1-Digest: hZM/ooZDM0TOyF8msV77V+PDa/I=
+
+Name: help/images/EMF_Compare_Tuto_Install2.png
+SHA1-Digest: oFT4VglpEXTSZFmjt0szTpjccUA=
+
+Name: help/images/EMF_Compare_Tuto_Book_Creation.png
+SHA1-Digest: 2CV18qSUAcyfPLXTrUdgbIvJu58=
+
+Name: help/images/EMF_Compare_Developer_New_Extension_Extender.png
+SHA1-Digest: Fuy7wAhlRWIQe8mdkyWkCmQGhLE=
+
+Name: help/user/toc-user-guide.xml
+SHA1-Digest: Y0h4zmhmE6lrZPGkM2Q/HFw6YhQ=
+
+Name: help/images/EMF_Compare_2_Architecture.png
+SHA1-Digest: EmG5OiSOfgtvtZlNXOjVYrgKdzU=
+
+Name: help/images/EMF_Compare_Tuto_Change_Manager_Master_Comparison.pn
+ g
+SHA1-Digest: vitksDOT2LUhggPwAN51kKrbxkU=
+
+Name: help/images/EMF_Compare_User_Interface_Toolbar.png
+SHA1-Digest: rM7vbFsQ6bZozv47palqO2wWMLU=
+
+Name: help/images/EMFC_1.3_Perf_Breakdown.png
+SHA1-Digest: bELTVsbl5RdKTSwYpdhyHw4ThL8=
+
+Name: help/images/EMF_Compare_Tuto_New_Library_Move_Rejected.png
+SHA1-Digest: sKN9t6qIfOaJC782V1kXaBqpytQ=
+
+Name: help/images/confchg_ov.gif
+SHA1-Digest: pdqv/J9VEI+R8jSPdhWnDQmKJDE=
+
+Name: help/toc-FAQ.xml
+SHA1-Digest: FAzhXV0WYBMuNePhX23DlQNw5r0=
+
+Name: help/images/EMF_Compare_Match_Engine_Preference_Page.png
+SHA1-Digest: NJtsP02PEU/Tp+VtUkvcYtiiivk=
+
+Name: help/images/EMF_Compare_Tuto_Change_Manager_Master_Reject.png
+SHA1-Digest: zJzJ1lfuHRoqZD1uwYRXqUcBAkw=
+
+Name: help/tutorial/tutorial.html
+SHA1-Digest: JDDrseApuYyRXuZL34NbLlw2RwE=
+
+Name: help/images/EMF_Compare_Select_Common_Ancestor.png
+SHA1-Digest: kr/GOkdxdk4bgAcwLvBED2d4kMk=
+
+Name: help/images/EMF_Compare_Model_Resolving.png
+SHA1-Digest: 16QnRyklPVKJAxqBPRLS0k0DqjA=
+
+Name: help/images/EMF_Compare_Tuto_Book_Category_Accepted.png
+SHA1-Digest: +2I0a5ESXJfQaZjiRLPV0SdO9eY=
+
+Name: help/images/EMF_Compare_UML_Association.png
+SHA1-Digest: CpAoQyW7miQe8Y7G8xzQr0Woz7M=
+
+Name: help/images/EMF_Compare_Graphical_AddClassA.png
+SHA1-Digest: 7CcxOrdFCBWUFTG8t1040MSyS7k=
+
+Name: help/images/EMF_Compare_Use_Compare_4.png
+SHA1-Digest: X+m3i9iLF5hG0TEq5u8oiKkFDPE=
+
+Name: help/images/EMF_Compare_Use_Compare_8.png
+SHA1-Digest: nRpSkIi0VfQIwISPwPvidaFNc0M=
+
+Name: help/images/EMF_Compare_Tuto_Book_Name_Accepted.png
+SHA1-Digest: UU8Rghvfr0u/ijQJxLTBWGiJ8MY=
+

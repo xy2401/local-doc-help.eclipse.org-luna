@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Managing Users and User Groups</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Managing Department Structures",
+        "","pg-embed-department.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage",
+		"admin-preface.html","Administration");
+ -->
+</script>
+<h1>Managing Users and User Groups</h1>
+<p>The
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserService.html">UserService</a>
+interface provides functionality to manage users and their deputies, user groups and realms.</p>
+<ul>
+   <li><a href="#user">Managing Users</a></li>
+   <li><a href="#usergr">Managing User Groups</a></li>
+   <li><a href="#realm">Managing Realms</a></li>
+   <li><a href="#deputy">Managing Deputies</a></li>
+</ul>
+<h2 id="user">Managing Users</h2>
+<ul>
+   <li><a href="#ucreate">Creating Users</a></li>
+   <li><a href="#umod">Modifying Users</a></li>
+   <li><a href="#uget">Retrieving specific Users</a></li>
+   <li><a href="#uinval">Invalidating Users</a></li>
+   <li><a href="#info">Retrieving Information on Users</a></li>
+</ul>
+<h3 id="ucreate">Creating Users</h3>
+<h4>Creating a new user with specific details</h4>
+<p>Use the following method to create a user:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User createUser(String realm, String account, String firstName, String lastName,
+         String description, String password, String eMail, Date validFrom, Date validTo)
+         throws UserExistsException, IllegalOperationException, InvalidPasswordException;
+</pre>
+<p>Hereby, the parameters determine the realm, account, first name, last name, description, password, email and 
+validation date of the user.</p>
+<p class="note"><strong>Note</strong><br>
+Do not use a colon (":") character in your user name as this leads to misinterpretations in a WebService environment!</p>
+
+<h4>Creating a new user with default realm Id</h4>
+<p>To create a new user with default realm Id, use the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User createUser(String account, String firstName, String lastName, String description,
+         String password, String eMail, Date validFrom, Date validTo)
+         throws UserExistsException, IllegalOperationException, InvalidPasswordException;
+</pre>
+<h3 id="umod">Modifying Users</h3>
+<h4>Modifying the current user</h4>
+<p>To modify the current user, use method <tt>modifyLoginUser</tt>:</p>
+<pre>
+   User modifyLoginUser(String oldPassword, String firstName, String lastName,
+         String newPassword, String eMail) throws ConcurrencyException,
+         IllegalOperationException, InvalidPasswordException;
+</pre>
+<p>Parameter <strong>newPassword</strong> is the new password that will replace the old password, which has to be 
+passed correctly via parameter <strong>oldPassword</strong>. Additionally you have to provide the first name, last name
+and email of the user.</p>
+<h4>Modifying a specific user</h4>
+<p>To modify a specific user use <tt>modifyUser</tt>:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User modifyUser(User user) throws ConcurrencyException, ObjectNotFoundException,
+         IllegalOperationException, InvalidPasswordException, AccessForbiddenException;
+</pre>
+<p>Parameter <strong>user</strong> determines the user to modify.</p>
+<h4>Modifying a specific user and generating a password</h4>
+<p>With the following method you can modify a specific user and optionally generate a password:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User modifyUser(User user, boolean generatePassword) throws ConcurrencyException, ObjectNotFoundException,
+         IllegalOperationException, InvalidPasswordException, AccessForbiddenException;   
+</pre>
+<p>Parameter <strong></strong> determines if a password should be generated. The password will be send per email to the
+user.</p>
+<h4 id="reset">Resetting the password of a user</h4>
+<p>To reset the password of a specific user, use method <tt>resetPassword</tt>:</p>
+<pre>
+   @ExecutionPermission(
+         id = ExecutionPermission.Id.resetUserPassword, 
+         defaults = { ExecutionPermission.Default.ALL })
+   void resetPassword(String account, Map properties, String token) throws ConcurrencyException,
+         ObjectNotFoundException, IllegalOperationException;
+</pre>
+<p>This method resets the password of the specified user by a generated password according to the configured
+password rules. On synchronization with external repository the specified user will
+be created in the audit trail if it is not already present there but exists in an external
+repository. If the user exists in the audit trail it will be updated on synchronization
+in case of any changes.</p>
+<p>Parameter <strong>account</strong> determines the user account to be modified.
+A map providing further login properties is specified by <strong>properties</strong>.
+Parameter <strong>token</strong> determines the token generated by method
+<a href="#gentok">generatePasswordResetToken(String)</a>.</p>
+<h4 id="gentok">Generating a password reset token</h4>
+<p>Use method <tt>generatePasswordResetToken</tt> to create a token for a user 
+account, which is required for the <a href="#reset">resetPassword</a> method
+described above.</p>
+<pre>
+   @ExecutionPermission(
+            id = ExecutionPermission.Id.resetUserPassword, 
+            defaults = { ExecutionPermission.Default.ALL })
+   void generatePasswordResetToken(String account);
+</pre>
+<h3 id="uget">Retrieving specific Users</h3>
+<h4>Retrieving a user associated with a given account</h4>
+<p>You can retrieve a user associated with a given account via the following method:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   User getUser(String account) throws ObjectNotFoundException, IllegalOperationException;
+</pre>
+<p>On synchronization with an external repository the specified user will be created in the audit trail if it is not
+already present there but exists in an external repository. If the user exists in the audit trail it will be updated on 
+synchronization in case of any changes.</p>
+<h4>Retrieving a user associated with a given account in a specific realm</h4>
+<p>You can retrieve a user associated with a given account in a specific realm via the following method:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   User getUser(String realm, String account) throws ObjectNotFoundException;
+</pre>
+<p>On synchronization with an external repository the specified user will be created in the audit trail if it is not
+already present there but exists in an external repository. If the user exists in the audit trail it will be updated on 
+synchronization in case of any changes.</p>
+<h4>Retrieving a user with specified OID</h4>
+<p>To retrieve a user with a specific OID, use:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   User getUser(long userOID) throws ObjectNotFoundException;
+</pre>
+<p>On synchronization the user with the specified OID will be updated if this user exists in the audit trail and there 
+are any changes. If this user does not exist in the audit trail but is present in an external repository it will not be
+created in audit trail on synchronization with external repository.</p>
+<h3 id="uinval">Invalidating Users</h3>
+<h4>Invalidating a user with a specific account</h4>
+<p>Use the following method to invalidate a user with a specified account:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User invalidateUser(String account) throws ObjectNotFoundException,
+         IllegalOperationException;</pre>
+<h4>Invalidating a user with a specified account and realm</h4>
+<p>To invalidate a user with a specific account in a specific realm, use:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   User invalidateUser(String realm, String account) throws ObjectNotFoundException,
+         IllegalOperationException;</pre>
+<h3 id="info">Retrieving Information on Users</h3>
+<h2 id="usergr">Managing User Groups</h2>
+<ul>
+   <li><a href="#ugcreate">Creating User Groups</a></li>
+   <li><a href="#ugmod">Modifying User Groups</a></li>
+   <li><a href="#ugget">Retrieving User Groups</a></li>
+   <li><a href="#uginval">Invalidating User Groups</a></li>
+</ul>
+<h3 id="ugcreate">Creating User Groups</h3>
+<p>To create a new user group, use the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   UserGroup createUserGroup(String id, String name, String description, Date validFrom,
+         Date validTo) throws UserGroupExistsException, IllegalOperationException,
+         InvalidPasswordException, InvalidArgumentException;</pre>
+<p>Specify the parameters for Id, name, description and validation date of the new user group.</p>
+<h3 id="ugmod">Modifying User Groups</h3>
+<p>To modify a user group, use the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   UserGroup modifyUserGroup(UserGroup userGroup) throws ConcurrencyException,
+         ObjectNotFoundException, IllegalOperationException;
+</pre>
+<h3 id="ugget">Retrieving User Groups</h3>
+<h4>Retrieving a user group with specific Id</h4>
+<p>To retrieve a user group with a specified Id, use the following method:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   UserGroup getUserGroup(String id) throws ObjectNotFoundException;
+</pre>
+<p>On synchronization with the external repository the specified user group will be created in the audit trail if it is
+not already present there but exists in the external repository. If the user group exists in the audit
+trail it will be updated on synchronization in case of any changes.</p>
+<h4>Retrieving a user group with specific OID</h4>
+<p>Use the following method to retrieve a user group with a specific OID:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   UserGroup getUserGroup(long oid) throws ObjectNotFoundException;</pre>
+<p>On synchronization the user group with the specified OID will be updated if this user group exists in the audit trail
+and there are any changes. If this user group does not exist in the audit trail but is present in the external
+repository it will not be created in the audit trail on synchronization with the external repository.</p>
+<h3 id="uginval">Invalidating User Groups</h3>
+<h4>Invalidating a user group associated with a specific Id</h4>
+<p>You can invalidate a user group associated with a specific Id via the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   UserGroup invalidateUserGroup(String id) throws ConcurrencyException,
+         ObjectNotFoundException, IllegalOperationException;</pre>
+<h4>Invalidating a user group with a specific OID</h4>
+<p>To invalidate a user group with a specific OID, use:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   UserGroup invalidateUserGroup(long oid) throws ConcurrencyException,
+         ObjectNotFoundException, IllegalOperationException;</pre>
+<h2 id="realm">Managing Realms</h2>
+<ul>
+   <li><a href="#rcreate">Creating User Realms</a></li>
+   <li><a href="#rdrop">Dropping User Realms</a></li>
+   <li><a href="#rget">Retrieving User Realms</a></li>
+</ul>
+<h3 id="rcreate">Creating User Realms</h3>
+<p>To create a new realm, use the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   UserRealm createUserRealm(String id, String name, String description)
+         throws UserRealmExistsException, IllegalOperationException;</pre>
+<p>The parameters determine the Id, name and short description of the realm.</p>
+<h3 id="rdrop">Dropping User Realms</h3>
+<p>To drop a user realm associated with a given Id, use the following method:</p>
+<pre>
+   @ExecutionPermission(id=ExecutionPermission.Id.modifyUserData)
+   void dropUserRealm(String id) throws ConcurrencyException, ObjectNotFoundException,
+         IllegalOperationException;
+</pre>
+<h3 id="rget">Retrieving User Realms</h3>
+<p>You can retrieve all existing user realms by using the following method:</p>
+<pre>
+   @ExecutionPermission(
+         id=ExecutionPermission.Id.readUserData,
+         defaults={ExecutionPermission.Default.ALL})
+   List getUserRealms() throws ConcurrencyException, IllegalOperationException;</pre>
+<h2 id="deputy">Managing Deputies</h2>
+<ul>
+   <li><a href="#depadd">Adding Deputies</a></li>
+   <li><a href="#depmod">Modifying Deputies</a></li>
+   <li><a href="#depdel">Removing Deputies</a></li>
+   <li><a href="#depget">Retrieving List of Deputies</a></li>
+   <li><a href="#depgetl">Retrieving List of Users being Deputy for</a></li>
+</ul>
+<h3 id="depadd">Adding Deputies</h3>
+<p>Use the following method to add a deputy for a given user:</p>
+<pre>
+    Deputy addDeputy(UserInfo user, UserInfo deputyUser, DeputyOptions options);</pre>
+<p>Parameter <strong>user</strong> determines the user to which a deputy user should be added. 
+Parameter <strong>deputyUser</strong> specified the deputy user. Both parameters are of type 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/UserInfo.html">UserInfo</a>.
+You can also add options associated with the operation via the parameter <strong>options</strong> of type
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeputyOptions.html">DeputyOptions</a>.
+This parameter can be null, in which case the default options are used.</p>
+<p>The deputy user inherits for the defined time frame all grants from the given user. Note that the deputy user has to 
+re-login before the inherited grants become active.</p>
+<h3 id="depmod">Modifying Deputies</h3>
+<p>To modify an existing deputy user for a given user, use the following method:</p>
+<pre>
+Deputy modifyDeputy(UserInfo user, UserInfo deputyUser, DeputyOptions options) throws ObjectNotFoundException;</pre>
+<p>This deputy user inherits for the defined time frame all grants from the given user. Note that the deputy user has to
+re-login before the changes become active.</p>
+<h3 id="depdel">Removing Deputies</h3>
+<p>Use the following method to remove an existing deputy user for a given user:</p>
+<pre>
+void removeDeputy(UserInfo user, UserInfo deputyUser) throws ObjectNotFoundException;</pre>
+<p>All inherited grants from the user are revoked from the deputy user. Note that the deputy user has to re-login 
+to apply the changes.</p>
+<h3 id="depget">Retrieving List of Deputies</h3>
+<p>To retrieve a list of all deputy users for a given user, use the following method:</p>
+<pre>
+List&lt;Deputy&gt; getDeputies(UserInfo user);</pre>
+<h3 id="depgetl">Retrieving List of Users being Deputy for</h3>
+<p>To retrieve a list of all users for which the given user is a deputy user, use:</p>
+<pre>
+List&lt;Deputy&gt; getUsersBeingDeputyFor(UserInfo deputyUser);</pre>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

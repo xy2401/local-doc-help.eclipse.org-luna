@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Defining Structured Types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<script language="JavaScript">
+<!--
+	writeNavigation("Using Structured Types in Process Data",
+    	"","struct-proc-data.html",
+		"../../../handbooks.htm","Developer Handbooks",
+		"../../mg-preface.htm","The Modeling Guide",
+		"../data-int-preface.html","Data Integration",
+		"../struct-data-preface.html","Structured Data Types");
+ -->
+</script>
+<body>
+<h1>Defining Structured Types</h1>
+<ul>
+   <li><a href="#defining">Defining Structured Types</a></li>
+   <li><a href="#comp">Composite Types</a></li>
+   <li><a href="#enum">Enumeration Types</a></li>
+   <li><a href="#extern">Using External XSD Types</a>
+   <ul>
+      <li><a href="#import">Importing Types</a></li>
+      <li><a href="#selproj">Importing Schemas from Workbench Projects</a></li>
+      <li><a href="#http">Importing Schemas from HTTP</a></li>
+      <li><a href="#wild">Importing Schemas containing Wildcards</a></li>
+      <li><a href="#eval">Evaluation of Xpaths for Nodes with the same Name but different Namespaces</a></li>
+      <li><a href="#xsdmulti">Using shared XSD Types</a></li>
+   </ul></li>
+   <li><a href="#exportTypes">Exporting Types</a></li>
+   <li><a href="#extend">Extending Structured Types</a></li>
+   <li><a href="#scoped">Using Structured Data Types in Scoped Data</a></li>
+   <li><a href="#refStruct">Using Referenced Structured Data Definition</a></li>
+   <li><a href="#storage">Structure Data Storage</a></li>
+</ul>
+<h2 id="defining">Defining Structured Types</h2>
+<p>Structured data are defined on the <strong>Structured Types</strong> 
+  element in the outline view of the model.</p>
+<p class="image"><img src="images/structured-types.png" 
+alt="Structured Types in the Outline View"><br>
+<strong>Figure:</strong> Structured Types in the Outline View</p>
+<p>Two categories of structured data types can be defined</p>
+<ul>
+  <li><a href="#comp">Composite Types</a> and</li>
+  <li><a href="#enum">Enumeration Types</a>.</li>
+</ul>
+<p>Additionally you can import Types, see section <a href="#import">Importing Types</a>.</p>
+<p>The Structured Types tree contains a table tree structure with all defined 
+  structured types:</p>
+<p class="image"><img src="images/struct-data-in-tree.png" alt="Subtree"><br>
+<strong>Figure:</strong> Structured Types Subtree</p>
+<h2 id="comp">Composite Types</h2>
+<p>Composite types are data types with fields of the following types</p>
+<ul>
+  <li>primitive data</li>
+  <li>enumeration types (see below)</li>
+  <li>other composite types</li>
+  <li>lists of all of the above</li>
+</ul>
+<p>Composite types can be used for example to describe data defining Person data or Order data.</p>
+<p>To create a new composite type:</p>
+<ul>
+    <li>In the outline view right-click the <strong>Structured Types</strong> entry.</li>
+    <li>Choose <strong>New Composite</strong>.</li>
+</ul> 
+<p class="image"><img src="images/struct-data-new-composite.png" 
+alt="Create a New Composite Type."><br>
+<strong>Figure:</strong> Create a New Composite Type.</p>
+
+<p>The name of the new composite type can be specified in the <strong>General</strong> 
+properties settings.</p> 
+
+<p>Using the Visibility Public option, you can
+    specify whether you want to import type definition by reference when referenced 
+    in another model. By default, the Visibility Public checkbox is selected.
+    For more information, please refer to <a href="../../mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="../../mg-preferences.html">Setting 
+   Process Manager Preferences</a> chapter.</p>
+   
+<p class="image"><img src="images/typevisiblity.png" alt="General Properties"></img>
+<br>
+<strong>Figure:</strong> Composite Type - Visibility Public</p>
+
+<p>The target namespace of the schema contained by a type declaration
+is selected by default. This namespace is used in creating and parsing XML documents based on this
+type declaration schema. A type declaration uses two fields, 
+the location which specifies the id of the other model and the Xref which specifies the id of the 
+type declaration in the other model.</p> 
+
+<p>To edit the new composite type, open its properties page with a double-click
+on its entry in the Structured Types tree.</p>
+<p class="image"><img src="images/new-composite-type-page.png" alt="New Composite Type"><br>
+<strong>Figure:</strong> Structured Type tree</p>
+
+<p>Data fields can be specified in the 
+<strong>Structured Type Definition</strong> field.</p>
+
+<p>To create a new data field, select the <strong>&lt;new&gt;</strong> table 
+  cell, type in a name for the data field to be created and press the <strong>TAB</strong> 
+  key. An entire row representing the new data field will be displayed and can 
+  be edited by selecting the corresponding table cells:</p>
+<p class="image">
+<img src="images/new-data-field-row.png" alt="New Data Field Row"><br>
+<strong>Figure:</strong> Structured Type Definition</p>
+
+<h3>Choice</h3>
+<p>Embedded Unions </p>
+<p class="image"><img src="images/struct-data-choice-selection.png" 
+alt="Setting a Choice Type."><br>
+<strong>Figure:</strong> Setting a Choice Type.</p>
+
+<h3>Types</h3>
+<p>In the <strong>Type</strong> column you can select xsd types
+as well as all other composite and enumeration types - except 
+  the current composite type to avoid recursion.</p>
+<p class="image"><img src="images/struct-data-type-selection.png" 
+alt="Choose a Type."><br>
+<strong>Figure:</strong> Choose a Type.</p>
+<h4>Anonymous substructures</h4>
+<p>Anonymous substructures can be defined within a structure in order to fully
+support XSD composite structures without defining the substructures as separate
+data structure definitions.</p>
+<p>For example:</p>
+<pre>
+&lt;xs:complexType name="PaymentTypeInformation1"&gt;
+   &lt;xs:sequence&gt;
+      &lt;xs:element name="InstrPrty" type="Priority2Code"/&gt;
+         &lt;xs:choice&gt;
+          &lt;xs:element name="SvcLvl" type="ServiceLevel2Choice"/&gt;
+        &lt;xs:element name="ClrChanl" type="ClearingChannel2Code"/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:element name="LclInstrm" type="LocalInstrument1Choice"/&gt;
+      &lt;xs:element name="CtgyPurp" type="PaymentCategoryPurpose1Code"/&gt;
+   &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+</pre>
+<p>Selecting the <tt>&lt;xsd:anonymous&gt;</tt> type sets the type of the new 
+field to <tt>&lt;New Composition&gt;</tt> and creates an indented line to enter
+subfields for this composition.</p>
+<p>The <tt>&lt;new&gt;</tt> entry appears as the last node whenever the node is expanded.</p>
+<p class="image"><img src="images/struct-data-anonymous-type.png" 
+alt="Anonymous Type"><br>
+<strong>Figure:</strong> Selecting the Anonymous Type.</p>
+<p class="image"><img src="images/struct-data-anonymous-example.png" 
+alt="Anonymous Type - Subtree"><br>
+<strong>Figure:</strong> Subtree of Anonymous Type.</p>
+<p>If the type of the field of the anonymous composition is changed to another type
+later, the subfields are deleted.</p>
+<!--  TODO not implemented yet: A confirmation dialog will ask the user to confirm
+this operation.</p>-->
+<h4>Attribute type</h4>
+<p>In case you intend to export a schema file containing XML attribute
+types, use the <tt>&lt;attribute&gt;</tt> type, e.g.:</p>
+<p class="image"><img src="images/struct-data-attribute-selection.png" 
+alt="Attribute Type"><br>
+<strong>Figure:</strong> Selecting the Attribute Type.</p>
+<p>An attribute type is displayed with an attribute icon on the left side
+of the name:</p>
+<p class="image"><img src="images/attribute-type-imported.png" 
+alt="Attribute Type"><br>
+<strong>Figure:</strong> Attribute Type displayed in Structured Type Definition.</p>
+
+<p>If you import a schema file containing XML attribute types, these types will
+be mapped as <tt>&lt;attribute&gt;</tt> type. Note that attribute types can have
+the cardinality <tt>Optional</tt>, <tt>Prohibited</tt> or <tt>Required</tt> as shown 
+in the above figure.</p>
+
+<p>For example importing a schema file containing:</p>
+<pre>
+...
+  &lt;xsd:complexType name="Product"&gt;
+    &lt;xsd:sequence&gt;
+      &lt;xsd:element name="Name" type="xsd:string"/&gt;
+      &lt;xsd:element name="Synopsis" type="xsd:string"/&gt;
+      &lt;xsd:element name="State" type="xsd:string"/&gt;
+    &lt;/xsd:sequence&gt;
+    &lt;xsd:attribute name="Analysis" type="xsd:string" use="required"/&gt;
+  &lt;/xsd:complexType&gt;
+  &lt;xsd:element name="Product" type="pro:Product"/&gt;
+...
+</pre>
+<p>will result in the following structured data definition:</p>
+<p class="image"><img src="images/attribute-type-import-example.png" 
+alt="Imported Attribute Type"><br>
+<strong>Figure:</strong> Imported Type Example.</p>
+
+<h3>Cardinality</h3>
+<p>In the <strong>Cardinality</strong> column, you can specify, how many times the 
+selected type should occur. The following cardinalities can be selected:</p>
+<ul>
+    <li>Exactly One</li>
+    <li>Zero or One</li>
+    <li>Zero or More</li>
+    <li>One or More</li>
+</ul>
+<p class="image"><img src="images/struct-data-cardinality.png" 
+alt="Choose Cardinality."><br>
+<strong>Figure:</strong> Choose Cardinality.</p>
+<p>The <strong>One or More</strong> cardinality provides a list-like behavior.</p>
+<p>
+For <tt>Attribute Type</tt>, following cardinalities can be selected:</p>
+<ul>
+    <li>Optional</li>
+    <li>Prohibited</li>
+    <li>Required</li>
+</ul>
+<p class="image"><img src="images/struct-data-cardinality_attribute_type.png" 
+alt="Choose Cardinality for attribute type."><br></p>
+
+<h3>Order of keys</h3>
+<p>You can change the order of the keys by using the <strong>Move 
+  Up</strong> and <strong>Move Down</strong> buttons.</p>
+<p><strong><span class="tip">! </span>Tip:</strong> </p>
+<p>You can create your entire structure just by using the TAB key, 
+typing in names and selecting types and cardinalities with the <strong>UP/DOWN</strong>
+keys.</p>
+
+<h2 id="enum">Enumeration Type</h2>
+<p>The Stardust Structured Enumeration type supports three flavors of the xsd simple types 
+that are enumerations, patterned and Java bound.</p>
+<ul>
+    <li><a href="#enumtype">Type Definition for Enumeration</a></li>
+    <li><a href="#pattern">Type Definition for Patterned</a></li>
+    <li><a href="#bound">Java bound Type Definitions</a></li>
+</ul>
+<h3 id="enumtype">Type Definition for Enumeration</h3>
+<p>The Enumeration type means that the data object will be of type string and it will accept
+values from the list of values defined in the enumeration.  
+Enumeration types are lists of enumeration keys, e.g. to describe salutations, 
+titles or countries.</p>
+<p>To create a new enumeration type:</p>
+<ul>
+    <li>In the outline view right-click the <strong>Structured Types</strong> entry.</li>
+    <li>Choose <strong>New Enumeration</strong>.</li>
+</ul> 
+<p class="image"><img src="images/struct-data-new-enumeration.png" 
+alt="Create a New Enumeration Type."><br>
+<strong>Figure:</strong> Create a New Enumeration Type.</p>
+<p>To edit the properties of the enumeration type, double-click its entry in
+the structured types tree.</p>
+<p class="image"><a href="images/new-enum-type_orgSize.png" target="_blank">
+<img src="images/new-enum-type.png" alt="New Enumeration Type"></a></p>
+<p>Select the <strong>&lt;new&gt;</strong> cell, type in an enumeration key and press the <strong>TAB</strong> 
+  key.</p>
+<p class="image"><img src="images/enumeration-keys.png" alt="Enumeration Key"></p>
+<p>Optionally you can enter a <strong>Minimum Length</strong> and a <strong>Maximum Length</strong>
+for the enumeration field.</p>
+<p>To change the order of enumeration keys use the <strong>Move 
+  Up</strong> and <strong>Move Down</strong> buttons.</p>
+
+<h3 id="pattern">Type Definition for Patterned</h3>
+
+<p>The Patterned type means that the data object is of type string and it accepts values 
+conforming to the defined pattern. Patterned types are series of values. You can define exact 
+sequence of characters that are acceptable. For example,
+you can define series of numbers [0 - 9] and letters [a - z], gender [male - feamale] where you can 
+give choice.</p>
+
+<p>To create a new patterned type:</p>
+<ul>
+    <li>In the outline view right-click the <strong>Structured Types</strong> entry.</li>
+    <li>Choose <strong>New Enumeration</strong>.</li>
+    <li>Select Patterned from the Structured Type Definition</li>
+</ul> 
+<p class="image"><img src="images/struct-data-new-pattern.png" 
+alt="Patterened Type"><br>
+<strong>Figure:</strong> Patterned Type</p>
+<p>Select the <strong>&lt;new&gt;</strong> cell, type in an enumeration key and press the <strong>TAB</strong> 
+  key.</p>
+  
+<p class="image"><img src="images/patterened.png" 
+alt="Patterened Type Values"><br>
+<strong>Figure:</strong> Patterned Type Values</p>  
+  
+<p>Optionally you can enter a <strong>Minimum Length</strong> and a <strong>Maximum Length</strong>
+for the enumeration field.</p>
+<p>To change the order of enumeration keys use the <strong>Move 
+  Up</strong> and <strong>Move Down</strong> buttons.</p>
+<h3 id="bound">Java bound Type Definitions</h3>
+<p>If you choose a <strong>Java bound</strong> base type, a field to enter the fully-qualified Java class name 
+is provided. You also have the option to browse to the Java class. The enumeration values defined by the class are listed
+in the <strong>Values</strong> section.</p>
+<p>For example, the following Java enum is used to determine an enumeration for currency:</p>
+<pre>
+package org.example.enumeration;
+
+/**
+ * Determines currency enumeration values
+ */
+public enum Currency {
+      EUR, USD, GBP, INR, CHF, AUD
+};</pre>
+<p>Browse to the Java class containing this enum type:</p>
+<p class="image"><img src="images/enum-java-browse.png" 
+alt="Browse to Java Class"><br>
+<strong>Figure:</strong> Browse to Java Class</p>
+<p>The enumeration values defined in the Currency class are listed in the <strong>Values</strong> section.</p>
+<p class="image"><img src="images/enum-java-bound.png" 
+alt="Java Bound"><br>
+<strong>Figure:</strong> Java Bound Enumeration Type</p>
+<h2 id="extern">Using External XSD Types</h2>
+<p>XSD files describing one or more data structure definition can be imported. 
+The corresponding data structure definitions will be created.</p>
+<ul>
+   <li><a href="#import">Importing Types</a></li>
+   <li><a href="#selproj">Importing Schemas from Workbench Projects</a></li>
+   <li><a href="#http">Importing Schemas from HTTP</a></li>
+   <li><a href="#wild">Importing Schemas containing Wildcards</a></li>
+   <li><a href="#eval">Evaluation of Xpaths for Nodes with the same Name but different Namespaces</a></li>
+   <li><a href="#xsdmulti">Using shared XSD Types</a></li>
+</ul>
+<h3 id="import">Importing Types</h3>
+<p>To import an xsd file select <strong>Structured Types &gt; Import Types</strong>
+in the Outline view:</p>
+<p class="image"><img src="images/struct-data-import-types.png" 
+alt="Import Types"><br>
+<strong>Figure:</strong> Import Types</p>
+<p>A dialog opens where you can choose if you want to select the schema from:</p>
+<ul>
+   <li>Workbench projects or</li>
+   <li>HTTP</li>
+</ul>
+<p class="image"><img src="images/struct-data-import-types-1.png" 
+alt="Choose where to select the Schema from."><br>
+<strong>Figure:</strong> Choose where to select the Schema from.</p>
+<h3 id="selproj">Importing Schemas from Workbench Projects</h3>
+<p>In case you chose to select from workbench project, the next dialog offers
+to import files from the project or the file system.</p>
+<p>To import a file from the project resource folders, select the
+source file and click the <strong>Import Files...</strong> button.</p>
+<p class="image"><img src="images/struct-data-import-types-2.png" 
+alt="Import Files"><br>
+<strong>Figure:</strong> Import files from project</p>
+<p>The file import dialog opens, where you can browse to the import resource
+ in your local file system. Select one or more xsd files.</p>
+<p class="image"><img src="images/import-types-select-resource.png" 
+alt="Browse to File"><br>
+<strong>Figure:</strong> Browse to XSD Files</p>
+<p>Now select <strong>Finish</strong> to accept the files you selected.
+These files will be added to the chosen source folder of your project.</p>
+<p>Select the schema file to be imported from the project and click <strong>Next</strong>.</p>
+<p class="image"><img src="images/import-types-next.png" 
+alt="Select an XML Schema File."><br>
+<strong>Figure:</strong> Select an XML Schema File</p>
+<p>Choose the types you want to import and select <strong>Finish</strong> to close
+the dialog.</p>
+<p class="image"><img src="images/import-types-finish.png" 
+alt="Choose the Types to be imported."><br>
+<strong>Figure:</strong> Choose the Types to be imported</p>
+<p>You see the imported xsd files in the chosen source folder of your project:</p>
+<p class="image"><img src="images/import-types-resources.png"
+alt="Imported xsd files in project resource folder"><br>
+<strong>Figure:</strong> Imported xsd files in project resource folder</p>
+<p>The imported xsd type is visible in the <strong>Structured Types</strong> section
+in the Outline view:</p>
+<p class="image"><img src="images/import-types-outline.png"
+alt="Imported xsd type"><br>
+<strong>Figure:</strong> Imported xsd type</p>
+<h3 id="http">Importing Schemas from HTTP</h3>
+<p>To select the schema from HTTP:</p>
+<ol>
+	<li>Choose <strong>HTTP</strong> and click <strong>Next</strong>.</li>
+	<li>In the <strong>Select an XML schema file from HTTP</strong> dialog,
+		type in the URL for your XML schema and select <strong>Load</strong> to 
+		load this URL, e.g.:</li>
+</ol>
+<p class="image"><img src="images/import-types-http-load.png" 
+alt="Enter a URL."><br>
+<strong>Figure:</strong> Enter a URL for your schema.</p>
+<ol start="3">
+	<li>After a successful load of the URL, select <strong>Next</strong>.</li>
+	<li>You can optionally save the resource in your current project.</li>
+</ol>
+<p class="image"><img src="images/import-types-http-1.png" 
+alt="Using the loaded schema"><br>
+<strong>Figure:</strong> Using the Loaded Schema</p>
+<ol start="5">
+	<li>In the next dialog select the types you like to import.</li>
+	<li>You can optionally save the original schema in the model to make
+	the imported structured data editable.</li>
+</ol>
+<p class="image"><img src="images/import-types-http-2.png" 
+alt="Select the Types"><br>
+<strong>Figure:</strong> Select the Types to be imported.</p>
+<ol start="7">
+	<li><strong>Finish</strong> the dialog.</li>
+</ol>
+<p>Now the imported type is added to your model. You can see it in the structured types tree of
+the Outline view, e.g.:</p>
+<p class="image"><img src="images/import-types-http-3.png" 
+alt="Imported Structured Type"><br>
+<strong>Figure:</strong> Imported Structured Type</p>
+<p class="note"><strong>Note</strong><br>
+Please note that there will be no warning in case the imported types have
+the same name or Id like existing structured types. You need to rename them explicitly.</p>
+<h4 id="reload">Reloading External Schemas</h4>
+<p>In case an external schema referenced via HTTP has changed, you
+need to reload this schema to make these changes effective. Right-click the schema in
+the Outline view and select <strong>Reload Schema</strong>.</p>
+<p class="image"><img src="images/schema-types-reload.png"
+alt="Reloading Schema"><br>
+<strong>Figure:</strong> Reload Schema option</p>
+
+<h3 id="wild">Importing Schemas containing Wildcards</h3>
+<p>Importing schemas with data paths that traverse a wildcard node (<tt>xs:any</tt>) is 
+supported. However you have to manually edit the xpath in the corresponding text fields to
+be able to access xml nodes that are not declared by the schema.</p>
+<p class="image"><img src="images/schema-any-type.png" 
+alt="xs:any Type"><br>
+<strong>Figure:</strong> Wildcard in imported schema</p>
+<p>Note that XML documents containing elements in place of wildcards with no corresponding
+type declaration are not supported.</p>
+<h3 id="eval">Evaluation of Xpaths for Nodes with the same Name but different Namespaces</h3>
+<p>In some cases you might import schemas having xpaths for nodes with the same name but different 
+namespaces used in place of wildcards.
+For example, if you have an xpath in the form <tt>x/y/node</tt>, where the schema for element 
+declaration <tt>y</tt> contains a wildcard (<tt>xs:any</tt>) but no node element 
+declaration, the evaluator picks the first type declaration where the root node that has 
+the same local name as the xpath segment (in this case <strong>node</strong>). Now if you have 
+multiple type declarations for elements named <strong>node</strong> but with a different namespace, 
+the first <strong>node</strong> could be the wrong node selected. 
+Thus the modeler distinguishs which <strong>node</strong> schema has to be used.
+This is done by qualifying the specific segment in the xpath. There are two ways of qualifying the segments:</p>
+<ul>
+   <li>in-place qualifying, i.e. <tt>x/y/{namespace}node</tt>
+   <li>pre-qualifying by explicitly declaring the namespace mappings before the xpath expression:
+    <tt>prefix=namespace x/y/prefix:node</tt></li>
+</ul>
+<h3 id="xsdmulti">Using shared XSD Types</h3>
+<p>In case a model has a reference to an external structured type definition that is
+also referenced by other models, a change of this structured type definition can cause
+problems in some of these models. If you change an XSD which is referenced by multiple models, 
+you must make sure that it is still valid for all other referencing models.
+We recommend to give the XSD file an unique name for every model version to prevent invalid XSDs.</p>
+<p>The following example shows such a situation:</p>
+<ul>
+   <li>Model_A uses XSD_GLOBAL</li>
+   <li>Model_B also uses XSD_GLOBAL</li>
+</ul>
+<p>If you change the content of XSD_GLOBAL, it can happen that the XSD is valid for Model_B but no longer for Model_A.
+Using two XSDs with unique names like XSD_GLOBAL_A and XSD_GLOBAL_B would prevent this problem.</p>
+<h2 id="exportTypes">Exporting Types</h2>
+<p>Data structure definitions can be exported to XSD for single data structures
+or for all data structure definitions in a process model. To export a structured
+data type:</p>
+<ol>
+    <li>In the Outline view right-click the data and select 
+        <strong>Export Schema</strong>.</li>
+</ol>
+<p class="image"><img src="images/export-struct-data.png" 
+alt="Export Schema"></p>
+<ol start="2">
+    <li>The <strong>Export XML schema</strong> dialog opens.</li>
+    <li>In case the type depends on other structured types, you
+        have to select in a list the types to be exported.</li>
+</ol>
+<p class="image"><img src="images/export-schema-type-dependencies.png" 
+alt="Export Schema"></p>
+<ol start="4">
+    <li>Select the folder where you like your schema to be located.</li>
+</ol>
+<p class="image"><img src="images/export-schema-location.png" 
+alt="Export Schema"></p>
+<p>Now the exported types appear as xsd files in the selected folder, e.g.:</p>
+<p class="image"><img src="images/export-schema-location-result.png" 
+alt="Exported Schema Files"><br>
+<strong>Figure:</strong> Exported Schema Files</p>
+
+<h2 id="extend">Extending Structured Types</h2>
+
+<p>If the imported XSDs contain extension type or if such a model is imported 
+from Web-based modeler then the property page of the structured type definition displays the 
+extended types as shown:
+</p>
+<pre>
+&lt;?xml version="1.0"?&gt;
+ &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+ 
+&lt;xs:element name="employee" type="fullpersoninfo"/&gt;
+ 
+&lt;xs:complexType name="personinfo"&gt;
+   &lt;xs:sequence&gt;
+     &lt;xs:element name="firstname" type="xs:string"/&gt;
+     &lt;xs:element name="lastname" type="xs:string"/&gt;
+   &lt;/xs:sequence&gt;
+ &lt;/xs:complexType&gt;
+ 
+&lt;xs:complexType name="fullpersoninfo"&gt;
+   &lt;xs:complexContent&gt;
+     &lt;xs:extension base="personinfo"&gt;
+       &lt;xs:sequence&gt;
+         &lt;xs:element name="address" type="xs:string"/&gt;
+         &lt;xs:element name="city" type="xs:string"/&gt;
+         &lt;xs:element name="country" type="xs:string"/&gt;
+       &lt;/xs:sequence&gt;
+     &lt;/xs:extension&gt;
+   &lt;/xs:complexContent&gt;
+ &lt;/xs:complexType&gt;
+ 
+&lt;/xs:schema&gt;
+</pre>
+<p class="image"><img src="images/extended-type.png" 
+alt="Extended Structured Type"><br>
+<strong>Figure:</strong> Extended Structured Type</p>
+<h2 id="scoped">Using Structured Data Types in Scoped Data</h2>
+<p>In case you use structured data that has a cardinality zero or more in scoped data,
+the data path must be set as <tt>structured data field [&lt;number&gt;]</tt>.
+If no field number is set, the following warning appears:</p>
+<p class="image">
+<img src="images/cardnalitywarning.png" alt="Structured Data with Cardinality - Validation Warning"></img>
+<br>
+<strong>Figure:</strong> Structured Data with Cardinality - Validation Warning</p>
+<p>You need to set a field number as in the following valid example:</p>
+<p class="image">
+<img src="images/cardnality-valid.png" alt="Structured Data with Cardinality"></img>
+<br>
+<strong>Figure:</strong> Valid Structured Data usage with Cardinality</p>
+
+<h2 id="refStruct">Using Referenced Structured Data Definition</h2>
+<p>Once the file connection is established, the referenced structured data definition can be referred in another model.
+Note that the structured types from the referenced model are read only. You cannot edit the referenced structured types.
+To refer the structure data in the referencing model:</p>
+<ol>
+   <li>In the referencing model, drag and drop the structure data from the <strong>Outline view</strong> &gt; <strong>
+	External Model Information</strong> &gt; <strong>File Connection</strong>
+	<p class="image"><img src="images/refstructdata.png" alt="Drag Referenced Structured Data"></img>
+	<br>
+	<strong>Figure:</strong> Drag Referenced Structured Data</p></li>
+   <li>Double-click on the dragged structured data in the diagram canvas. The structured data properties get displayed.</li>
+   <li>Click on the <strong>Structured Data Definition</strong>.
+	The declared types are displayed. If you select the check box <strong>Display Imported Model Elements as Groups</strong> then the
+	references for the declared types are also displayed.
+	<p class="image"><img src="images/refdeclaredtype.png" alt="Referenced Declared Type"></img>
+	<br>
+	<strong>Figure:</strong> Referenced Declared Type</p></li>
+</ol>
+<h2 id="storage">Structure Data Storage</h2>
+<p>Process data of structured type are stored in the tables in the Stardust Audit 
+  Trail Database. The storage layout is optimized for efficient access in queries. 
+</p>
+<p>See details about structured data storage in the chapter
+<a href="../../../operation/audit-trail/ag-struct-data.html">Structured Data Storage</a> of the
+<a href="../../../operation/ag-preface.htm">Operation Guide</a>.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Tuning for Performance via Data Clusters</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Improving Performance via Eager Link Fetching",
+	"ag-tuning-2.htm","ag-tuning-fetch.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-tuning-1.htm","Tuning Tasks");
+ -->
+</script>
+<h1>Tuning for Performance via Data Clusters</h1>
+<p>Data Clusters provide a way to tune performance by speeding
+ up queries.</p>
+<ul>
+	<li><a href="#clusters">Data Clusters in Stardust </a></li>
+	<li><a href="#designing">Designing Data Clusters</a></li>
+</ul>
+<h2 id="clusters">Data Clusters in Stardust </h2>
+<p>By default, the Stardust Process Engine stores all process data
+- their values or references to these - in a single table - the table <tt>DATA_VALUE</tt>
+- with tuples containing</p>
+<ul>
+	<li>the ID of the corresponding data in the process model,</li>
+	<li>the stringified or numeric value and</li>
+	<li>the data type.</li>
+</ul>
+<p>Binary data are stored in a separate table; the <tt>DATA_VALUE</tt>
+table contains a corresponding reference.</p>
+<p>Access to data values - for example in data-driven worklist
+queries - is performed against this table. Depending on</p>
+<ul>
+	<li>the access profile,</li>
+	<li>the size of the <tt>DATA_VALUE</tt> table and</li>
+	<li>the number of different data in the underlying process model</li>
+</ul>
+<p>accessing data values can be an expensive operation.</p>
+<p>Data Clusters provide a way to speed up queries by reducing the
+necessary amount of database join operations on the <tt>DATA_VALUES</tt>
+table. To accomplish this, data-specific cluster tables may be created
+during an administrative tuning task consisting of several data slots,
+each containing a replica of the referenced data value. The drawback of
+this approach is considerably increased persistent storage need as of
+data replication.</p>
+<p>Using n data slots from m data clusters for query evaluation
+reduces the number of join operations by (n-m). As some databases have
+tight limits on the number of efficiently performable parallel joins,
+doing so might considerably improve query execution plans, thus reducing
+query evaluation time. The implementation is straightforward, as for
+every data joined for predicate evaluation, the query builder just has
+to decide if the data is available inline in a cluster table and to
+replace SQL alias and attribute names accordingly.</p>
+<p>Usage of Data Clusters will cause a worst case performance on
+par with an unclustered environment.</p>
+<ul>
+   <li><a href="#config">Data Cluster Configuration</a></li>
+   <li><a href="#slots">Data Slots</a></li>
+   <li><a href="#igprep">Ignoring prepared Statements</a></li>
+   <li><a href="#cache">Caching and Context Propagation in a Non-Clustered Environment</a></li>
+   <li><a href="#sample">Sample Data Cluster Configuration File</a></li>
+   <li><a href="#sdt">Data Slots for Structured Data</a></li>
+   <li><a href="#secprin">Generating a Signature for authenticated Principals</a></li>
+</ul>
+<h3 id="config">Data Cluster Configuration</h3>
+<p>Since Data Clusters only contain copies of referenced data
+values the Data Cluster configuration can be created and changed easily.
+This (re-)configuration is done by deploying an XML cluster
+configuration file to the audit trail database which satisfies the
+following XML schema:</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; targetNamespace=&quot;http://www.carnot.ag/carnot-runtime-setup&quot; xmlns:crs=&quot;http://www.carnot.ag/carnot-runtime-setup&quot;&gt;
+   &lt;xs:element name=&quot;runtime-setup&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:audit-trail&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+   &lt;xs:element name=&quot;audit-trail&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:data-clusters&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-clusters&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:data-cluster&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-cluster&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:data-slots&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;&lt;/xs:element&gt;
+            &lt;xs:element ref=&quot;crs:data-cluster-indexes&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+         &lt;xs:attribute name=&quot;tableName&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;processInstanceColumn&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-slots&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:data-slot&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-slot&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:attribute name=&quot;modelId&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;dataId&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;attributeName&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;oidColumn&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;typeColumn&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;nValueColumn&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;sValueColumn&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;&lt;/xs:attribute&gt;
+         &lt;xs:attribute name=&quot;ignorePreparedStatements&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;&lt;/xs:attribute&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-cluster-indexes&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:data-cluster-index&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&lt;/xs:element&gt;
+         &lt;/xs:sequence&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;data-cluster-index&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:sequence&gt;
+            &lt;xs:element ref=&quot;crs:column&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot; /&gt;
+         &lt;/xs:sequence&gt;
+         &lt;xs:attribute name=&quot;indexName&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+         &lt;xs:attribute name=&quot;unique&quot; type=&quot;xs:boolean&quot; use=&quot;optional&quot; default=&quot;false&quot; /&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+   &lt;xs:element name=&quot;column&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:attribute name=&quot;name&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+&lt;/xs:schema&gt;</pre>
+<p>with the following specifications:</p>
+<table title="Cluster Configuration Elements" id="elements">
+	<tr>
+		<th>Elements / Attributes</th>
+		<th>Description</th>
+	</tr>
+	<tr><td>runtime-setup</td><td>The configuration file consists of one single <tt>&lt;runtime-setup&gt;</tt>
+	element. If more than one exists, the first one will be evaluated. A <tt>&lt;runtime-setup&gt;</tt> element consists of one <tt>&lt;audit-trail&gt;</tt>
+	element. If more than one exists, the first one will be evaluated.</td></tr>
+	<tr><td>audit-trail</td><td>An <tt>&lt;audit-trail&gt;</tt> element consists of one <tt>&lt;data-clusters&gt;</tt>
+	element. If more than one exists, the first one will be evaluated.</td></tr>
+	<tr><td>data-clusters</td><td>A <tt>&lt;data-clusters&gt;</tt> element consists of one or
+	more <tt>&lt;data-cluster&gt;</tt> elements and one <tt>&lt;data-cluster-indexes&gt;</tt>
+	element.</td></tr>
+	<tr><td>data-cluster</td><td>A <tt>&lt;data-cluster&gt;</tt> element consists of the
+	attribute <tt>tableName</tt>, the attribute <tt>processInstanceColumn</tt>
+	and one <tt>&lt;data-slots&gt;</tt> element. If more than one <tt>&lt;data-slots&gt;</tt>
+	element exists, the first one will be evaluated.</td></tr>
+	<tr><td>tableName</td><td>The attribute <tt>tableName</tt> defines the name of the
+	cluster table to be created.</td></tr>
+	<tr><td>processInstanceColumn</td><td>The attribute <tt>processInstanceColumn</tt> defines the
+	name of the column which contains the process instance OID the Data
+	Cluster entry is created for.</td></tr>
+	<tr><td>data-slots</td><td>A <tt>&lt;data-slots&gt;</tt> element consists
+	of one or more <tt>&lt;data-slot&gt;</tt> elements. This element
+	defines all data slots for the current data cluster.</td></tr>
+	<tr><td>data-slot</td><td>A <tt>&lt;data-slot&gt;</tt> element consists of the
+	attributes <tt>modelID</tt>, <tt>dataID</tt>, <tt>attributeName</tt>, 
+	<tt>oidColumn</tt>,	<tt>typeColumn</tt>, <tt>sValueColumn</tt>
+	and <tt>nValueColumn</tt>.</td></tr>
+	<tr><td>modelID</td><td>The attribute <tt>modelID</tt> defines the ID of the model
+	containing the data.</td></tr>
+	<tr><td>dataID</td><td>The attribute <tt>dataID</tt> defines the ID of the data
+	whose data value shall be copied to the Data Cluster for the process
+	instance.</td></tr>
+	<tr><td>oidColumn</td><td>The attribute <tt>oidColumn</tt> defines the column name in
+	the Data Cluster table which will take a copy of the OID column of
+	table <tt>DATA_VALUE</tt>.</td></tr>
+	<tr><td>typeColumn</td><td>The attribute <tt>typeColumn</tt> defines the column name of
+	the Data Cluster table which will take a copy of the <tt>type_key
+	column</tt> of table <tt>DATA_VALUE</tt>.</td></tr>
+	<tr><td>sValueColumn</td><td>The attribute <tt>sValueColumn</tt> defines the column name
+	of the Data Cluster table which will take a copy of the <tt>string_value
+	</tt>column of the table <tt>DATA_VALUE</tt>.</td></tr>
+	<tr><td>nValueColumn</td><td>The attribute <tt>nValueColumn</tt> defines the column name
+	of the Data Cluster table which will take a copy of the <tt>number_value</tt>
+	column of the table <tt>DATA_VALUE</tt>.</td></tr>
+	<tr><td>sValueColumn</td><td>The attributes <tt>sValueColumn</tt> and <tt>nValueColumn</tt>
+	are mutually exclusive. When the <tt>data_value</tt> is a <tt>number_value</tt>
+	but <tt>sValueColumn</tt> is configured then this data slot will be
+	ignored and vice versa.</td></tr>
+	<tr><td>data-cluster-indexes</td><td>A <tt>&lt;data-cluster-indexes&gt;</tt> elements consists of
+	one or more <tt>&lt;data-cluster-index&gt;</tt> elements. This element
+	defines all indexes for the current Data Cluster.</td></tr>
+	<tr><td>data-cluster-index</td><td>A <tt>&lt;data-cluster-index&gt;</tt> element consist of the
+	attribute <tt>indexName</tt>, the attribute unique and one or more <tt>&lt;column&gt;</tt>
+	elements.</td></tr>
+	<tr><td>indexName</td><td>The attribute <tt>indexName</tt> defines the name of one
+	index on the Data Cluster table.</td></tr>
+	<tr><td>unique</td><td>The attribute <tt>unique</tt> defines the uniqueness of the
+	index. Valid values are <tt>true</tt> and <tt>false</tt> . Default is <tt>false</tt>
+	.</td></tr>
+	<tr><td>column</td><td>A <tt>&lt;column&gt;</tt> element consists of the attribute
+	name. The order of the <tt>&lt;column&gt;</tt> elements in the <tt>&lt;data-cluster-index&gt;</tt>
+	element matters because the same order will be used for the database index.</td></tr>
+	<tr><td>name</td><td>The attribute <tt>name</tt> defines the column name in the Data
+	Cluster table which shall be part of the current index.</td></tr>
+   <tr>
+      <td>ignorePreparedStatements</td>
+      <td>If set to true, no prepared statement will be used for these columns 
+      when they are used in a query. The default value is <tt>false</tt>.
+      If this attribute is missing or any value other than <tt>true</tt> is 
+      specified, it defaults to <tt>false</tt>.</td>
+   </tr>
+   <tr>
+   	<td>enabledForProcessInstanceState</td>
+   	<td>The enabledForProcessInstanceState is an attribute of the data-cluster element.
+   	Using this attribute you can influence the storage of datavalues based on the process instance state.
+ It accepts either a single entry or a comma separated list of entries from the Attribute Value column.
+ Duplicates or intersections will be ignored.<br><br>
+   	<table>
+   	<tr>
+   		<th>Attribute Value</th>
+   		<th>Matching ProcessInstance States</th>
+   	</tr>
+   	<tr>
+   		
+   		<td>ALL</td>
+   		<td>CREATED,ACTIVE,ABORTED,ABORTING,INTERRUPTED,COMPLETED</td>
+   		  	
+   	</tr>
+   	<tr>
+   		<td>ALIVE</td>
+   		<td>CREATED,ACTIVE,ABORTING,INTERRUPTED</td>   	
+   	</tr>
+   	<tr>
+   		<td>CREATED</td>
+   		<td>CREATED</td>   	
+   	</tr>
+   	<tr>
+   		<td>ACTIVE</td>
+   		<td>ACTIVE</td>   	
+   	</tr>
+   	<tr>
+   		<td>ABORTED</td>
+   		<td>ABORTED</td>   	
+   	</tr>
+   	<tr>
+   		<td>ABORTING</td>
+   		<td>ABORTING</td>   	
+   	</tr>
+   	<tr>
+   		<td>INTERRUPTED</td>
+   		<td>INTERRUPTED</td>   	
+   	</tr>
+   	<tr>
+   		<td>COMPLETED</td>
+   		<td>COMPLETED</td>   	
+   	</tr>
+   	 	
+   	</table>
+   	
+   	</td>
+   
+   </tr>
+   
+   
+</table>
+<p>The usage of Data Clusters is activated with the property:</p>
+<pre>   Carnot.Engine.Tuning.Query.EvaluationProfile = dataClusters</pre>
+<p>Data Clusters are administered with the <a
+	href="../commandline/ag-commandline-2.htm">SysConsole Command</a> line
+tool.</p>
+<h3 id="slots">Data Slots</h3>
+<p>Data slots define a set of columns for a specific data. In data cluster definitions 
+they are defined by the following attributes:</p>
+<pre>
+   &lt;xs:element name=&quot;data-slot&quot;&gt;
+      &lt;xs:complexType&gt;
+         &lt;xs:attribute name=&quot;modelId&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+         &lt;xs:attribute name=&quot;dataId&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+         &lt;xs:attribute name=&quot;attributeName&quot; type=&quot;xs:string&quot; use=&quot;optional&quot; /&gt;
+         &lt;xs:attribute name=&quot;oidColumn&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+         &lt;xs:attribute name=&quot;typeColumn&quot; type=&quot;xs:string&quot; use=&quot;required&quot; /&gt;
+         &lt;xs:attribute name=&quot;nValueColumn&quot; type=&quot;xs:string&quot; use=&quot;optional&quot; /&gt;
+         &lt;xs:attribute name=&quot;sValueColumn&quot; type=&quot;xs:string&quot; use=&quot;optional&quot; /&gt;
+         &lt;xs:attribute name=&quot;ignorePreparedStatements&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;&lt;/xs:attribute&gt;
+      &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+</pre>
+<p>The attributes <tt>dataId</tt> and <tt>attributeName</tt> are unique within
+a model.</p>
+<p>The attribute <tt>modelId</tt> allows to define:</p>
+<ul>
+	<li>clusters containing data values for data from different models.<br>
+	Thus, it is possible to perform a query with DataFilters from 
+	different models by accessing only one cluster table.
+	</li>
+	<li>clusters only containing data values for data from the same model.<br>
+	This leads to performance enhancements due to less empty slots and 
+	less rows contained in cluster tables.</li>
+</ul>
+
+<p>In case a data cluster definition does not contain the <tt>modelId</tt>
+attribute, a warning appears that the specific slot will be ignored.
+This would result in:</p>
+<ul>
+	<li>A data cluster table which has less columns then defined on 
+	data cluster creation.</li>
+	<li>Ignoring the data slot during runtime, even if the data cluster 
+	table has corresponding columns.</li>
+</ul>
+
+<h3 id="igprep">Ignoring prepared Statements</h3>
+<p>The following example demonstrates the usage of the 
+<strong>ignorePreparedStatements</strong> attribute. It is assumed that prepared
+statement is turned on globally, e.g. the
+<strong>AuditTrail.UsePreparedStatements</strong> property is set to <tt>mixed</tt>.
+For details on this property, refer to section
+<a href="ag-tuning-4.htm#prepared">Using Prepared Statements</a> of chapter
+<a href="ag-tuning-4.htm">Stardust Database Access Tuning</a>.
+For example set the attribute in a data-slot element of a data cluster definition
+as follows:</p>
+<pre>
+&lt;data-slot modelId="DCModel" dataId="SimpleData" oidColumn="SimpleData_oid" 
+typeColumn="SimpleData_t" sValueColumn="SimpleData_s" ignorePreparedStatements="true"&gt;
+&lt;/data-slot&gt;
+</pre>
+<p>No prepared statement will be used for these columns in case they are used 
+in a query, e.g.:</p>
+<pre>
+ProcessInstanceQuery.findInStateHavingData(String processID,String dataID, Serializable dataValue, ProcessInstanceState state);
+</pre>
+<p>This would result in the following SQL statement:</p>
+<pre>
+SELECT pi.oid,
+       pi.starttime,
+       pi.terminationtime,
+       pi.state,
+       pi.model,
+       pi.processdefinition,
+       pi.priority,
+       pi.tokencount,
+       pi.propertiesavailable,
+       pi.rootprocessinstance,
+       pi.scopeprocessinstance,
+       pi.startinguser,
+       pi.startingactivityinstance
+FROM   carnot.process_instance pi
+       INNER JOIN carnot.model m
+               ON ( pi.model = m.oid )
+       INNER JOIN carnot.procinst_hierarchy PDF_PIH1
+               ON ( pi.oid = PDF_PIH1.subprocessinstance )
+       INNER JOIN carnot.process_instance PDF_PI1
+               ON ( PDF_PIH1.processinstance = PDF_PI1.oid )
+       INNER JOIN carnot.dc_test_data PR_DVCL1
+               ON ( pi.scopeprocessinstance = PR_DVCL1.process_instance )
+WHERE  ( PDF_PI1.processdefinition = ?
+         AND pi.state = 2
+         AND ( PR_DVCL1.simpledata_t = ?
+               AND PR_DVCL1.simpledata_s = ? )
+         AND m.partition = ? )  
+</pre>
+<p>Using prepared statements however would result in:</p>
+<pre>
+...
+WHERE  ( PDF_PI1.processdefinition = ?
+         AND pi.state = 2
+         AND ( PR_DVCL1.simpledata_t = 8
+               AND PR_DVCL1.simpledata_s = 'SimpleDataValue' )
+         AND m.partition = ? )  
+</pre>
+<h3 id="cache">Caching and Context Propagation in a Non-Clustered Environment</h3>
+<p>The caching and context propagation mechanisms provided by
+Stardust can currently only be used in a non-clustered Spring
+environment. To activate these mechanisms set the tuning property <tt>Carnot.Engine.Tuning.SingleNodeDeployment</tt>
+in your <tt>carnot.properties</tt> file to <tt>true</tt>:</p>
+<pre>Carnot.Engine.Tuning.SingleNodeDeployment = true</pre>
+<p>The default value <tt>false</tt> allows deployment and
+corresponding optimization without caching and context propagation for a
+clustered environment.</p>
+
+<h3 id="sample">Sample Data Cluster Configuration File</h3>
+<p>The following example configuration file creates one Data
+Cluster table with name <tt>dv_mqt01</tt> consisting of a column <tt>processInstance</tt>
+referencing the process instance primary key and three data slots
+referencing data values with data IDs <tt>anInt</tt>, <tt>aString</tt>
+and <tt>aTimestamp</tt>. Each data slot maps the<tt> DATA_VALUE</tt>
+table columns <tt>oid</tt>, <tt>type_key</tt> and <tt>number_value</tt>
+and <tt>string_value</tt> respectively to data slot columns.
+Additionally two non-unique indexes with the names <tt>DV_MQT01_IDX1</tt>
+and <tt>DV_MQT01_IDX2</tt> are created.</p>
+<p>Evaluation of a query referencing three data values with the
+IDs <tt>anInt</tt>, <tt>aString</tt> and <tt>aLong</tt> would result in
+a query joining the <tt>DATA_VALUE</tt> table once for ID <tt>aLong</tt>
+- because this is not a slot in the configured cluster - and one join of
+the cluster table <tt>dv_mqt01</tt>. Defining clusters with more slots
+could result in bigger reduction of joins.</p>
+<pre>   &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+   &lt;runtime-setup xmlns=&quot;http://www.carnot.ag/carnot-runtime-setup&quot;&gt;
+      &lt;audit-trail&gt;
+         &lt;data-clusters&gt;
+            &lt;data-cluster
+               tableName=&quot;dv_mqt01&quot;
+               processInstanceColumn=&quot;processInstance&quot;&gt;
+               &lt;data-slots&gt;
+                  &lt;data-slot 
+                     dataId=&quot;anInt&quot;
+                     oidColumn=&quot;oid_anInt&quot;
+                     typeColumn=&quot;tk_anInt&quot;
+                     nValueColumn=&quot;nval_anInt&quot; /&gt;
+                  &lt;data-slot
+                     dataId=&quot;aString&quot;
+                     oidColumn=&quot;oid_aString&quot;
+                     typeColumn=&quot;tk_aString&quot;
+                     sValueColumn=&quot;sval_aString&quot; /&gt;
+                  &lt;data-slot
+                     dataId=&quot;aTimestamp&quot;
+                     oidColumn=&quot;oid_aTime&quot;
+                     typeColumn=&quot;tk_aTime&quot;
+                     nValueColumn=&quot;nval_aTime&quot; /&gt;
+               &lt;/data-slots&gt;
+               &lt;data-cluster-indexes&gt;
+                 &lt;data-cluster-index indexName=&quot;DV_MQT01_IDX1&quot; unique=&quot;true&quot;&gt;
+                    &lt;column name=&quot;processInstance&quot;/&gt;
+                 &lt;/data-cluster-index&gt;
+                 &lt;data-cluster-index indexName=&quot;DV_MQT01_IDX2&quot; unique=&quot;false&quot;&gt;
+                    &lt;column name=&quot;nval_anInt&quot;/&gt;
+                    &lt;column name=&quot;nval_aLong&quot;/&gt;
+                    &lt;column name=&quot;nval_aTime&quot;/&gt;
+                    &lt;column name=&quot;tk_anInt&quot;/&gt;
+                    &lt;column name=&quot;tk_aLong&quot;/&gt;
+                    &lt;column name=&quot;tk_aTime&quot;/&gt;
+                    &lt;column name=&quot;processInstance&quot;/&gt;
+                 &lt;/data-cluster-index&gt;
+               &lt;/data-cluster-indexes&gt;
+            &lt;/data-cluster&gt;
+         &lt;/data-clusters&gt;
+      &lt;/audit-trail&gt;
+   &lt;/runtime-setup&gt;</pre>
+<h3 id="sdt">Data Slots for Structured Data</h3>
+<p>To create data slots for structured data, the additional
+attribute <tt>attributeName</tt> must be specified on the element <tt>data-slot</tt>.
+This attribute must contain the XPath to the primitive data field, that
+must be put to this data slot.</p>
+<p>For example add the following in the configuration file:</p>
+<pre>
+...
+&lt;data-slot
+dataId="OrderBook1"
+attributeName="order/qty"
+oidColumn="oid_qty_1"
+typeColumn="tk_qty_1"
+nValueColumn="nval_qty_1" /&gt;
+...
+</pre>
+<p>Hereby the value resulting from evaluating XPath expression <tt>order/qty</tt>
+on data <tt>OrderBook1</tt> is written to this data slot (table column <tt>nval_qty_1</tt>).</p>
+
+<p>For information on working with structured data please refer to
+the chapter <a href="../../modelling/data-integration/struct-data-preface.html">Structured
+Data Types</a>.</p>
+<p class="note"><strong>Note</strong><br>Structured data list values are not
+supported for Data Clusters as they would require more than one entry in the data slot.</p>
+<h4>Creating Data Slots for a Non-Empty Audit Trail</h4>
+<p>Note, that if a data slot is created when the Audit Trail
+database already contains data values, the following is required:</p>
+<p>Data XPaths put to the <tt>attributeName</tt> of cluster slots
+for structured data and DMS data types must have both annotations <tt>indexed</tt>
+and <tt>transient</tt> set to <strong>true</strong> from the beginning
+of the model execution (these are the defaults). Otherwise, for these
+data types, no values of already existing process instances can be
+transferred into the new data cluster.</p>
+<h4>Required column types</h4>
+<p>When defining a data cluster slot for a date field from a structured data,
+please take care on the according column type required. For example clusters
+with xsd types <tt>date</tt> or <tt>boolean</tt> require the column type
+<tt>Number</tt>.
+Please refer to the table in the section 
+<a href="../../modelling/data-integration/structured-data/struct-type-def.html#xsdMapping">Mapping XSD Types</a>
+of the chapter
+<a href="../../modelling/data-integration/structured-data/struct-type-def.html">Defining Structured Types</a>
+for detailed information on the mapping performed for XSD types.</p>
+<h3 id="secprin">Generating a Signature for authenticated Principals</h3>
+<p>In a clustured environment, it is recommended to generate a signature for authenticated principals
+to prevent that each node will generate its own value which is incompatible with the other nodes.
+You can set this signature via a property
+<strong>Security.Principal.Secret</strong> in your server-side <tt>carnot.properties</tt>.
+Principals with invalid signatures will be denied.
+If this property is not set, a randomized value will be generated.</p>
+<h2 id="designing">Designing Data Clusters</h2>
+<p>The design and use of Data Clusters has to be considered along
+the following guidelines:</p>
+<ul>
+	<li>The application only benefits from clustered data, if those
+	data are used for building predicates or as sorting criteria in the
+	context of workflow queries. A good start for designing Data Clusters
+	is identifying all such data and assigning them priorities with respect
+	to their frequency of use. Additionally, it should be noted which data
+	are used together, i.e. within AND- or OR-terms or for combined sort
+	criteria.</li>
+	<li>The data associated with a cluster slot ideally will not
+	change its value often during the lifetime of its associated process
+	instance. The guiding principle here should be the ratio between use of
+	the data for query execution and the frequency of data modification.
+	Process data with a high ratio are the best candidates for inclusion in
+	a Data Cluster.</li>
+	<li>The data associated with slots of one Data Cluster should
+	not be modified separately in concurrently executing threads. Ignoring
+	this guideline may have severe impact on the increased chance for
+	locking conflicts during process execution. If the candidate set of
+	cluster slots will be modified in concurrently executing activity
+	threads, there are basically two options to resolve such issues. The
+	first option is trying to split the candidate set along the
+	modification pattern, i.e. resulting in a first set of slots modified
+	in thread A and a second set of slots modified in thread B. If such a
+	split is possible, the best solution usually consists of defining two
+	(or more) cluster tables, one for each of the previous sets. Both
+	cluster tables will later be dynamically joined by the engine during
+	query execution, still providing the option for increased query
+	execution efficiency while avoiding locking conflicts. If, on the other
+	hand, a clean split is not possible and slots will be modified in both
+	threads of execution concurrently, it should be considered not
+	including the affected data in any Data Cluster.</li>
+	<li>Followed extremely, the previous guideline on splitting
+	cluster tables might result in cluster definitions consisting of only
+	one slot. While on first sight it might seem that such clusters do not
+	offer any benefit, there still might be situations where such an
+	approach will show increased query execution efficiency. Especially for
+	data used very often in predicates or as sorting criteria, use of a
+	cluster table might be more efficient with respect to query execution
+	against the default <tt>DATA_VALUE</tt> table due to the considerably
+	reduced size of the cluster table and any associated index.</li>
+</ul>
+<p>Usually, the design of clusters along the previous principles
+should not be too difficult, as values of process data intensively used
+for querying and sorting typically are quite stable during the lifetime
+of process instances.</p>
+<h3>Designing Data Cluster Indexes</h3>
+<p>Three categories of indexes have to be defined for Data
+Clusters:</p>
+<ul>
+	<li>Update indexes</li>
+	<li>Query indexes</li>
+	<li>Sorting indexes</li>
+</ul>
+<p>Update indexes have to exists and consist of only one column.
+This column is the same as the column defined by the attribute <tt>processInstanceColumn</tt>
+(see index <tt>DV_MQT01_IDX1</tt> in the sample configuration file
+above).</p>
+<p>Query Indexes are used for fast lookup in the first place.
+These indexes consist of columns defined by the attributes <tt>sValueColumn</tt>
+<tt>or nValueColumn</tt> of the <tt>&lt;data-slot&gt;</tt> elements as
+well as the columns defined by the according <tt>typeColumn</tt>
+attribute. Additionally, it should contain the same column as the update
+index.</p>
+<p class="Stil1">Sorting indexes are used for sorting purposes and
+therefore only need to consist of columns which are used in <tt>ORDER
+BY</tt> clauses. There is no use of columns defined in the <tt>typeColumn</tt>
+attribute.</p>
+<p>It depends on the ability of the used DBMS to combine several
+indexes in one query whether it is necessary to provide only a few small
+indexes which can be combined or many bigger indexes.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

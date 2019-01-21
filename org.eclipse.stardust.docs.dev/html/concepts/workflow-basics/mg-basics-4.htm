@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+   type="text/css">
+<title>Processes</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+   type="text/javascript"></script>
+</head>
+<body>
+   <script language="JavaScript">
+<!--
+	writeNavigation("Activities","mg-basics-3.htm","mg-basics-5.htm",
+		"../key-concepts.html","Concepts","mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+   <h1>Processes</h1>
+   <p>A business process consists of a network of activities performed to
+      achieve a certain objective and execution rules for these activities. In
+      short, it captures what is intended to happen. A formal representation of
+      such a process for process automation purposes is called a process
+      definition.</p>
+   <h2>Process Definitions</h2>
+   <p>A process definition identifies the various process activities,
+      procedural rules, control flow and data used to manage the process during
+      process execution. Several different processes will usually be defined
+      within one company (e.g. order processing, invoicing, complaint
+      management), which will be collected in a workflow model as described
+      above.</p>
+   <p>More formally, a process definition includes as a first level
+      container the definitions of</p>
+   <ul>
+      <li>activities,</li>
+      <li>transitions,</li>
+      <li>event handlers,</li>
+      <li>triggers,</li>
+      <li>data paths and</li>
+      <li>diagram information.</li>
+   </ul>
+   <p>As a model element a process definition has the following
+      properties:</p>
+   <ul>
+      <li>an ID unique inside the model and</li>
+      <li>a human readable name.</li>
+   </ul>
+   <p>A sales management process, for instance, could be defined by a
+      description of activities including cold calling, gaining a prospect,
+      processing an order and changing the status of the prospect to customer,
+      followed by the invoicing. Together with transitions between these
+      activities describing the control flow, this results in a complete process
+      definition.</p>
+   <p>If processes become too complex, parts of an elaborate process can be
+      defined in individual process definitions, e.g. an invoicing process may
+      be defined as a separate module then used as a sub-process of the sales
+      management process.</p>
+   <p>
+      <img src="images/mg-basics-3.jpg"> A process definition in
+      Stardust is visualized by a red and a blue gear.
+   </p>
+   <h2>Process Instances</h2>
+   <p>When a process model is deployed to the Stardust Process
+      Engine, the processes defined in the model can be instantiated. Multiple
+      instances of a single process can be created and executed in the process
+      engine. The execution of a process always follows the description provided
+      in the corresponding process definition.</p>
+   <p>Process instances have a persistent representation in the audit
+      trail. Refer to chapter 
+      <a href="../audit-trail/transient-procs.html">Audit Trail Persistence</a> for details
+      on the different persistence modes provided by Stardust.</p>
+   <h2 id="pInstanceStates">Process Instance States</h2>
+   <p>
+      During its lifetime a process instance passes through several states. It
+      is created in state created and turns to state active after it starts its
+      work. When the process is regularly finished it turns to state
+      <tt>completed</tt>. There are two special states for exceptional situations:
+   </p>
+   <ul>
+      <li>A process instance is interrupted if there is a temporary
+         problem in one of the activities waiting to be recovered.</li>
+      <li>A process instance is aborted after an administrator decided to
+         kill the process instance, abandoning any scheduled work for the
+         process instance.</li>
+   </ul>
+   <p class="image">
+      <img src="images/mg-basics-4.png"> <br>
+      <strong>Figure:</strong> Possible Process Instance State Changes
+   </p>
+   <p>Both, the completed state and the aborted state, are final states:
+      the process instance can never show any subsequent activity after going to
+      one of these states. Process instances, which are completed or aborted,
+      are referred to as terminated process instances. Initialization of abort
+      may result in aborting state (an intermediate state) if the process does
+      not get aborted successfully or the time span is large before abort. If it
+      gets aborted successfully then it achieves the aborted state else it
+      remains in aborting state.</p>
+   <script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

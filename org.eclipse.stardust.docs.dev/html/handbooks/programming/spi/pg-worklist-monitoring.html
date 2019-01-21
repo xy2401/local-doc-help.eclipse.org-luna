@@ -1,0 +1,108 @@
+<!doctype html PUBLIC "-//W3C//DTD html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html"; charset=ISO-8859-1">  -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Monitoring Worklists</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+writeNavigation("Monitoring Activity Instance State Changes",
+         "pg-ldap.html","spi-act-instance-state.html",
+	      "../../handbooks.htm","Developer Handbook",
+	      "../pg-preface.htm","Programming Guide",
+	      "spi-toc.html","SPI");
+ -->
+</script>
+<h1>Monitoring Worklists</h1>
+<p>To provide a worklist monitor which will be informed about changes
+to the worklist, you can implement the interface
+<a href="../../../reference/api/engine/org/eclipse/stardust/engine/core/spi/monitoring/IWorklistMonitor.html">
+org.eclipse.stardust.engine.core.spi.monitoring.IWorklistMonitor</a>.
+This interface is used to execute custom code when item are added to or removed from a 
+workflow participant's worklist. Typically this SPI is used to implement push notification
+to users like UI alerts or mails or other systems.</p>
+<pre>
+package org.eclipse.stardust.engine.core.spi.monitoring;
+
+import org.eclipse.stardust.engine.api.model.IParticipant;
+import org.eclipse.stardust.engine.core.runtime.beans.IActivityInstance;
+
+public interface IWorklistMonitor
+{
+
+   void addedToWorklist(IParticipant participant, IActivityInstance activityInstance);
+
+   void removedFromWorklist(IParticipant participant, IActivityInstance activityInstance);
+
+}
+</pre>
+<p>The <strong>participant</strong> parameter defines the participant 
+to whose worklist the activity instance has been added and from whose
+worklist the activity instance has been removed respectively.
+<strong>activityInstance</strong> specifies the activity instance 
+which is affected.</p>
+<p class="note"><strong>Note</strong><br>
+Use this interface with caution! We do not recommend to use this functionality to 
+constantly synchronize the worklists into another system.</p>
+<h2>Creating a custom Implementation</h2>
+<p>Create your own implementations for this interface. 
+For details on how to configure custom Service Provider Interface implementations refer
+to chapter
+<a href="pg-spi-tenant.html">Configuring SPI Implementations per Tenant</a>.</p>
+<p>To publish an implementor to the engine, a file named by the interface's 
+factory has to be created in the <tt>/META-INF/services</tt> folder of the jar
+as follows:</p>
+<ol>
+   <li>Implement the interface as shown below</li>
+   <li>Create a text file named <tt>org.eclipse.stardust.engine.core.spi.monitoring.IWorklistMonitor</tt>.
+    The file contents needs to be the fully qualified name of your implementation class, 
+    e.g. <tt>org.eclipse.stardust.example.WorklistMonitorImpl</tt>.</li>
+   <li>Place the file into the <tt>META-INF/services</tt> folder of the jar that will contain your implementation class</li>
+</ol>
+<pre>
+package org.eclipse.stardust.example;
+ 
+import org.eclipse.stardust.engine.api.model.IParticipant;
+import org.eclipse.stardust.engine.core.runtime.beans.IActivityInstance;
+import org.eclipse.stardust.engine.core.spi.monitoring.IWorklistMonitor;
+ 
+public class WorklistInterceptor implements IWorklistMonitor {
+ 
+    @Override
+    public void addedToWorklist(IParticipant arg0, IActivityInstance arg1) {
+   System.out.println("ADDED TO WORKLIST: " + arg0.getId() + " Activity OID: " + arg1.getOID());
+ 
+    }
+ 
+    @Override
+    public void removedFromWorklist(IParticipant arg0, IActivityInstance arg1) {
+   System.out.println("REMOVED FROM WORKLIST: " + arg0.getId() + " Activity OID: "+ arg1.getOID());
+    }
+ 
+}</pre>
+<p>The methods in this class are called (on <tt>Session.flush()</tt>)
+in the following cases:</p>
+<ul>
+	<li><tt>addedToWorklist()</tt>: <br>
+	 Method is called at the end of transaction, when the 
+	 current performer of the activity instance has changed and is not null.</li>
+	<li><tt>removedFromWorklist()</tt>:<br>
+	 This method is called at the end of transaction,
+	 when the previous performer of the activity instance 
+	 has changed and is not null.</li>
+</ul>
+<p>Note, that the notifications are not transaction save. You will be informed 
+even if later in transaction a rollback happens and the change is not committed to
+the database.</p>
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

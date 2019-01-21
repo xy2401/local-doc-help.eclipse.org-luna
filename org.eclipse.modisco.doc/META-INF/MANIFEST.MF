@@ -1,0 +1,101 @@
+Manifest-Version: 1.0
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: hudsonBuild
+Bundle-SymbolicName: org.eclipse.modisco.doc;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.help;bundle-versi
+ on="3.5.0",org.apache.ant;bundle-version="1.7.1"
+Bundle-Activator: org.eclipse.modisco.doc.internal.Activator
+Bundle-Version: 0.12.2.201501021045
+Build-Jdk: 1.6.0_21
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Name: %Bundle-Name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: mediawiki/new_and_noteworthy-toc.xml
+SHA1-Digest: Go/TGEquO0WdpeYc7TYhFjiTMzc=
+
+Name: mediawiki/new_and_noteworthy.mediawiki
+SHA1-Digest: ZhvwRd3mqqkPoo3ZtUP2uck5AvM=
+
+Name: img/MoDisco_BrowseInTextEditor_SourceCode.png
+SHA1-Digest: fnNFCNm8Y3dYNKUpCHcD/9NcBtc=
+
+Name: img/DialogLoadMoDiscoResource.png
+SHA1-Digest: G4kyzqWkiJQgAvQbMKl1cygf4eo=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA1-Digest: OTnsMz3mRqCd0X7WeKSAZhHhiGI=
+
+Name: img/MoDisco_ModelOpenSourceInEditor.png
+SHA1-Digest: RYL27eV6RDQpWPWCzZOJ5DPH3bU=
+
+Name: img/MoDisco_CreateJavaQueryImplementationClass.png
+SHA1-Digest: rpU3OQFTKC5Ge8w43xOLWuhAH0c=
+
+Name: img/ProjectExplorerWithModelContents.png
+SHA1-Digest: z6fsbkggLdsrDR8dYVrUZO8wkcM=
+
+Name: img/Customization_example.png
+SHA1-Digest: P6I8tG9sySMHxTj9ExuLWIbFVAo=
+
+Name: org/eclipse/modisco/doc/internal/Activator.class
+SHA1-Digest: vbpqYDSY/NF1iYFhC4bKjNxQe+M=
+
+Name: org/eclipse/modisco/doc/internal/GenerateApiJavadocTask.class
+SHA1-Digest: mLmu8KO4Y9jglvj2J1q2yrjxMPs=
+
+Name: img/MoDisco_createModelQueryWizard.png
+SHA1-Digest: izMEmBOwGCeg2tGGlOUPaxhVIS0=
+
+Name: img/MoDisco_javaCodeAfterCreateJavaQueryWizard.png
+SHA1-Digest: kDokqEuk8lPwQ2BbmOinFdIjebs=
+
+Name: img/MoDiscoBrowser_Element_id.gif
+SHA1-Digest: LsOyDpc5VDavuduj2RNxpPxkAZo=
+
+Name: maintoc.xml
+SHA1-Digest: GVIKFAjkPTPW5JW+c0NWYJnuUpM=
+
+Name: mediawiki/new_and_noteworthy.html
+SHA1-Digest: Wr0RDjlwQc8pNDETDCCKx0m0DrQ=
+
+Name: mediawiki/0-7.html
+SHA1-Digest: z2BfuTr0O/RusuM23OjHUO82Zlw=
+
+Name: img/MoDisco_DiscoveryParameters.jpg
+SHA1-Digest: aP/yFGXFogS6B/uLMtZTeykWvBE=
+
+Name: img/MoDisco_ModelBrowser_SortLinksByType.png
+SHA1-Digest: tL3xGYA3WBmwpWosCFHbJzp2Ajs=
+
+Name: plugin.xml
+SHA1-Digest: WgrORLepgRzploKV9SHJvRa8vH4=
+
+Name: img/MoDisco_ModelBrowser_Ordering.png
+SHA1-Digest: WCIKinbXgQGEBj9B/JG/ak35uYs=
+
+Name: about.html
+SHA1-Digest: ucbJ2JQyMW17Zy+4pyWJhaS7Sws=
+
+Name: META-INF/maven/org.eclipse.mdt/org.eclipse.modisco.doc/pom.prope
+ rties
+SHA1-Digest: z7pXOQuQg+JbgDvLHjHGYZi+jTo=
+
+Name: img/MoDisco_Queries_Tooltip.png
+SHA1-Digest: BarPWdBtB8Xzwk5R3MjuObMN6vM=
+
+Name: img/MoDisco_ModelBrowser_ShowOrdering.png
+SHA1-Digest: iK8wlwDdYixDXzsNXe6r/4oQE9w=
+
+Name: mediawiki/0-8.html
+SHA1-Digest: gY41cSDH5b21CQv6IvfUuGupYWU=
+
+Name: META-INF/maven/org.eclipse.mdt/org.eclipse.modisco.doc/pom.xml
+SHA1-Digest: V1DVzhjBbX314AFYwY2vCGp+cEM=
+
+Name: img/MoDisco_ModelBrowser_FormsLook.png
+SHA1-Digest: RDE8/4DJgoZZbgFxiXMKUF5t1kk=
+

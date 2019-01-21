@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Specifying Data</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Specifying Data Mappings","mg-defdesk-6.htm","mg-defdesk-8.htm",
+		"../handbooks.htm","Developer Handbook",
+		"mg-preface.htm","Modeling Guide",
+		"mg-modeler-preface.html","The Process Workbench");
+ -->
+</script>
+<h1>Specifying Data</h1>
+<p>Activities performed within the context of a business process may require data as
+their input or deliver data as output. This way activities manipulate workflow relevant
+data and transfer these data among themselves. The properties of these workflow data have
+to be defined in the model. For more details on workflow data refer to <a
+    href="../../concepts/workflow-basics/mg-basics-8.htm">Workflow Data</a>.</p>
+<p>This section will explain how to work with workflow data in the <strong>Process
+Workbench</strong>. In the section
+<a href="data-integration/data-int-preface.html">Data Integration</a>, more
+details on working with concrete data are found.</p>
+<p class="image"><img src="images/mg-defdesk-25.png" alt=""> <br>
+<strong>Figure:</strong> Representations of Data in the Outline View and Diagram of the
+Process Workbench</p>
+<h2>Creating Data</h2>
+<p>To create a data you can either:</p>
+<ul>
+    <li>Select <strong>Data</strong> under <strong>Items</strong> in the diagram <a
+        href="model-views/views-diagrams.html#toolbarPalette">toolbar palette</a> and choose the
+    type of data you want from its pop-up menu. Then, move the mouse pointer to the
+    diagram canvas to place the data symbol there. The data is created by subsequently
+    clicking on the diagram canvas and will appear in the <a
+        href="model-views/views-outline.html">Outline view</a>.</li>
+    <li>Or in the <strong>Data </strong>section of the <strong>Outline</strong>
+    view area, select <strong>Data</strong> and from the pop-up menu select <strong>New</strong>
+    and the data type you want. The created data will appear in the <strong>Outline</strong>
+    tree view.</li>
+    <li>With the drag-and-drop functionality you can drag a data symbol from the <strong>Outline</strong>
+    view area and drop it to the diagram canvas.</li>
+</ul>
+<p class="image"><img src="images/create-data.png" alt="Creating a Data Element"> <br>
+<strong>Figure:</strong> Creating a Data Element</p>
+<h3>Using Predefined Data</h3>
+<p>You can use one of the predefined data, which
+is displayed in the Outline view. Simply add it to the diagram
+via drag and drop.</p>
+<p class="image"><img src="images/mg-default-data.png" alt="Predefined Data"><br>
+<strong>Figure:</strong> Predefined Data</p>
+<h3>Properties</h3>
+<p>Double-click on the new data symbol to open the data properties dialog. 
+Choose an ID and a name for the workflow data. Select <strong>General</strong> from the left pane. The following
+general properties get displayed.
+<ul>
+	<li><strong>Element OID</strong> - Auto generated ID for that element</li>
+	<li><strong>Name</strong> - name of the data</li>
+	<li><strong>ID</strong> - Please note that IDs containing
+hyphens, blanks or dots and IDs starting with digits are not supported. </li>
+	<li><strong>Visibility Public</strong> - If you select the <strong>Visibility Public</strong> check box, the data becomes visible and available
+for reference from any other model. 
+For more information, please refer to <a href="mg-preferences.html#multipackage">
+   Multi Package Modeling Preferences</a> section of <a href="mg-preferences.html">Setting Process Manager 
+   Preferences</a> chapter. By default, all data types support the <strong>Visibility Public</strong> option.</li>
+	<li><strong>Description</strong> - Specify description for the data. If the description is provided, the tool tip text is displayed 
+	for Primitive data, Structured data and Document data.</li>
+</ul>
+
+<p class="image"><img src="images/mg-data-props.png" alt="Data Properties Dialog">
+<br>
+<strong>Figure:</strong> Properties - General</p>
+
+<p>Click the data type on the left
+pane of the properties dialog. There you can edit the data type specific properties. For a
+detailed discussion of the configuration of the Stardust data types, see the section
+<a href="data-integration/data-int-preface.html">Data Integration</a>.</p>
+<p class="image"><img src="images/mg-data-appl-props.png" alt="Data Properties Dialog">
+<br>
+<strong>Figure:</strong> Data Properties Dialog</p>
+
+<h4>Simulation</h4>
+<p>In this section you can specify simulation configurations, as described detailed in the chapter
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/simulation-configurations.html">
+            Simulation Configurations</a>
+of the 
+        <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.simulation/html/simulation/toc.html">
+            Stardust Simulation Guide</a>.)
+<h4>Effort Planning</h4>
+<p>In this section you can set the following Process Effort properties:</p>
+<p class="image"><img src="images/data-prop-effort.png" alt=""> <br>
+<strong>Figure:</strong> Effort Planning Properties of an Data Element</p>
+<p>Please refer to the chapter <a href="process-effort-calculation.html">Project Effort Calculation</a> for
+detailed information on this functionality.</p>
+<h2>Deleting Data</h2>
+<p>To delete a data, use the option <strong>Delete</strong> in the data's pop-up
+menu in a <a href="model-views/views-diagrams.html">diagram</a> or in the <a
+    href="model-views/views-outline.html">Outline view</a> tree area.</p>
+<p>To remove a data symbol from the diagram, choose the option <strong>Delete
+Symbol</strong> in the data's pop-up menu. After this operation the data and the data mappings
+between activities and the data will still be part of the model.</p>
+
+<h2 id="refdata">Working with Referenced Data</h2>
+<p>When the provider-consumer relationship is established between two models, the data 
+of the provider model can be referenced in the consumer model. To reference the data, 
+perform the following steps:</p>
+<ol>
+	<li>From the <strong>Outline View</strong> of the consumer model, 
+	drag the referenced data from the <strong>File Connection</strong> node</li>
+	<p class="image"><img src="images/refdata.png"
+    alt="Data Available for Reference"> <br>
+<strong>Figure:</strong> Data Available for Reference</p>
+	<li>Drop the referenced data to the diagram canvas</li>
+	<li>Create data mapping for the activity</li>
+</ol>
+<p>When you drag-and-drop the referenced data the reference is created and the referenced model data
+appears in the locally defined model data.
+
+<p class="image"><img src="images/outline-data.png"
+    alt="Data Available for Reference"> <br>
+<strong>Figure:</strong> Data Available for Reference</p>
+<p>For more information, please refer to the section <a href="mg-registry.html#fileConn">Referencing Model Elements</a> of the 
+<a href="mg-registry.html">External Model Resources</a> chapter.</p>
+
+<p>Note that if the data with identical ID already exists in the consumer or referencing 
+model then you cannot refer the data of the provider or referenced model. Similarly, you cannot
+create a data in the consumer model, if the data with identical ID is in use as a 
+reference from a provider model. In such a case, a model validation error is displayed.</p>
+<p>For more information, please refer to the section <a href="mg-deploy-model.html#consistency">Consistency Checks</a> 
+of the <a href="mg-deploy-model.html">Deploying a Workflow Model</a> chapter.
+</p>
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

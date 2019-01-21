@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Events</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Representation of Model Elements",
+        "mg-basics-config-vars.html","mg-basics-12.htm",
+		"../key-concepts.html","Concepts",
+		"mg-basics-preface.htm","Workflow Basics");
+ -->
+</script>
+<h1>Events</h1>
+<img src="images/mg-basics-36.png" alt="">
+<p>An event in the Stardust Process Engine is a condition or situation
+affecting the behavior of a running process instance or activity instance. An
+arising event is normally associated with a set of actions, which will then
+execute. Specific for such actions is that they allow richer process behavior
+than straight modeled control flow.</p>
+<p>However, an event itself can be caused by the workflow processing - see
+the explanation of engine events below.</p>
+<p>The difference to triggers is that events always have the scope of
+already running process instances or activity instances.</p>
+<p>See also <a href="../../handbooks/modelling/mg-defdesk-13.htm">Working With Activity Event
+Handlers</a> and <a href="../../handbooks/modelling/mg-defdesk-12.htm">Working with Process Definition
+Event Handlers</a>.</p>
+<h2>Event Types</h2>
+<p>The event types accepted by the Stardust Process Engine may be
+categorized as follows:</p>
+<ul>
+    <li>Engine Events</li>
+    <li>Pull Events</li>
+</ul>
+<h3>Engine Events</h3>
+<p>Engine events for an activity instance/process instance arise because
+of a change in the overall state of the activity instance/process instance:</p>
+<ul>
+    <li>A workflow data has changed.</li>
+    <li>The activity instance state/process instance state has changed.</li>
+    <li>The activity instance is assigned to a participant/user.</li>
+    <li>An exception occurred during application execution.</li>
+</ul>
+<h3>Pull Events</h3>
+<p>Pull events are events which arise by meeting a time condition (e.g. a
+timer event).</p>
+<h2>Event Handlers</h2>
+<p>For an activity/process definition event handlers have to be defined to
+be aware of a specific event at runtime. An event handler defines the specific
+match condition to accept the event at runtime. Multiple event handlers are
+possible - even for the same event type.</p>
+<p>An activity may define the following event handlers:</p>
+<ul>
+    <li>A state change handler, which accepts the state change from
+    created to hibernated.</li>
+    <li>An exception handler, catching the application exception
+    AException.</li>
+    <li>Another exception handler, catching the application exception
+    BException.</li>
+</ul>
+<h2>Event Actions</h2>
+<p>The ultimate goal of getting notified of event occurrence is to
+introduce custom side effects. Multiple event actions may be defined per event
+handler, which will execute consecutively at runtime if the event handler
+matches the event.</p>
+<p>A couple of event actions are predefined:</p>
+<ul>
+    <li>Triggering a process</li>
+    <li>Sending an email</li>
+    <li>Aborting the current activity instance hierarchy</li>
+    <li>Aborting the current process instance</li>
+    <li>Completing the current activity instance</li>
+    <li>Activating the current activity instance</li>
+    <li>Scheduling the current activity instance to a worklist</li>
+    <li>Setting a workflow data</li>
+    <li>Delegate Activity</li>
+    <li>Excluding a user from worklist assignment</li>
+</ul>
+<p>The following table displays for which process or activity event 
+handler specific event action types are supported:</p>
+<table class="autoWidth">
+<tr>
+    <th>Event Action Type</th>
+    <th>Process Event Handler Types</th>
+    <th>Activity Event Handler Types</th>
+</tr>
+<tr><td>Abort Process</td><td>Timer</td><td>Timer, On Exception</td></tr>
+<tr><td>Abort Activity</td><td></td><td>Timer, On Exception</td></tr>
+<tr><td>Delegate Activity</td><td></td><td>On Activity State Change, Timer, On Exception</td></tr>
+<tr><td>Send Mail</td><td>Timer, On Process State Change</td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td>Process Trigger</td><td>Timer, On Process State Change</td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td>Schedule Activity</td><td></td><td>On Activity State Change, Timer, On Exception</td></tr>
+<tr><td>Set Data</td><td>Timer, On Process State Change</td><td>On Activity State Change, Timer, On Exception, On Assignment</td></tr>
+<tr><td>Activate Activity</td><td></td><td>Timer, On Exception, On Assignment</td></tr>
+<tr><td>Complete Activity</td><td></td><td>Timer, On Exception</td></tr>
+<tr><td>Exclude User</td><td></td><td>On Assignment</td></tr>
+</table>
+<h3>Passing data to the actions</h3>
+<p>Event handlers can pass data to the subordinate actions. These data are
+offered as <a href="mg-basics-8.htm#accessPoints">access points</a>. The
+concrete set of available access points depends on the type of the event
+handler.</p>
+<h3>Custom Event Action Types</h3>
+<p>It is possible to extend the Stardust Process Engine by custom event
+action types. For details, refer to the <a href="../../handbooks/programming/pg-preface.htm">Programming
+Guide</a>.</p>
+<h2 id="eventBinding">Event Binding</h2>
+<p>Handlers for pull events are not automatically enabled by default but
+instead may be enabled programmatically at runtime by an operation called
+binding.</p>
+<p>When binding an event handler the Stardust API allows overriding the
+properties of the event handler and the subordinate event actions and bind
+actions (see below).</p>
+<h3>Binding Options</h3>
+<h4>Auto Binding</h4>
+<p>Alternatively, it is possible to configure the timer event to be bound
+automatically. This will bind the timer event at activity instance creation
+time. However, the bind actions are executed in this case, too.</p>
+<h4>Log Handler</h4>
+<p>An enabled &quot;Log Handler&quot; specifies whether an occurrence of
+the corresponding event should be logged to the audit trail or not.</p>
+<h4>Consume on Match</h4>
+<p>If <strong>Consume on match</strong> is selected any logically
+following handler accepting the same event will not be executed, thus
+effectively terminates the processing of the current event.</p>
+<h3>Bind Actions</h3>
+<p>Beyond event actions it is possible to specify bind actions which are
+executed when the event is bound. Bind actions are executed in order of
+definition.</p>
+<h4>Resubmission</h4>
+<p>Bind actions are especially useful in a workflow scenario called
+resubmission. Resubmission (of an activity) means removing an interactive
+activity instance from a worklist and putting it back later, based on some
+criterion. Resubmission for an activity in Stardust is modeled in the following
+way:</p>
+<ul>
+    <li>Add a timer event handler to the activity and configure it to be
+    not auto bound.</li>
+    <li>Add a schedule bind action to the event handler and configure it
+    to set the activity instance state to hibernated.</li>
+    <li>Add a schedule event action to the event handler and configure it
+    to set the activity instance state to suspended.</li>
+</ul>
+<p>At runtime, this would allow the following resubmission scenario:</p>
+<ol>
+    <li>A user having the activity instance in his worklist decides to
+    schedule the activity instance for resubmission. He can do this in the 
+   <strong>Workflow Execution Perspective</strong> of the
+   <a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+   Stardust Portal</a> or in a custom made embedded client. In both cases
+    the event handler is bound and configured for resubmission at a certain
+    time.</li>
+    <li>As the result of the bind action the activity instance is
+    hibernated and no longer visible in any standard worklist.</li>
+    <li>After the configured time period, the bound event handler will be
+    triggered, thus causing the event action to be executed and the activity
+    instance is set to suspended state. The activity instance is again visible
+    in the standard worklist.</li>
+</ol>
+<p>There are obviously variants of this scenario, e.g. to auto bind the
+handler and leave out step 2 of the above modeling scenario. This would result
+in a behavior where the activity instance is always put to the worklist only
+after a certain amount of time. This could be useful in situations where it is
+sure that you have to wait a certain time, e.g to receive a document by mail.</p>
+<h3>Unbind Actions</h3>
+<p>Analog to the process of binding there is the process of unbinding an
+event handler, which removes the binding of the handler. This also has to be
+done programmatically. 
+Unbind actions are defined similarly to bind actions. They are executed when
+unbinding happens.</p>
+<p>To continue the preceding example, imagine you want to explicitly
+remove the activity instance from resubmission because the reason for being
+hibernated no longer exists. When unbinding this activity instance there has to
+be a mechanism to put it back to the worklist. This could be done by an
+appropriate scheduled unbind action.</p>
+<h2 id="bpmn">Intermediate Events in the Business Process Modeler</h2>
+<p>The Business Process Modeler uses intermediate events, following the BPMN 2.0 standards.
+As the name implies, the Intermediate Event indicates where an event happens somewhere between the
+start and end of a Process. It affects the flow of the Process, but does not start or (directly) terminate the Process.
+Intermediate Events can be used to:</p>
+<ul>
+   <li>Show delays are expected within the Process</li>
+   <li>Disrupt the normal flow through exception handling</li>
+</ul>
+<p>Following diagram depicts the classification of intermediate events 
+supported in the Business Process Modeler.</p>
+<p class="image"><img src="images/intermediateve.png" alt=""> <br>
+<strong>Figure:</strong> Intermediate Event</p> 
+<ul>
+   <li><a href="#boundary">Boundary Events</a></li>
+   <li><a href="#nonbound">Non-Boundary Events</a></li>
+   <li><a href="#interrupt">Interrupting and Non-interrupting Events</a></li>
+   <li><a href="#exflow">Exception Flow</a></li>
+</ul>   
+<h3 id="boundary">Boundary Events</h3>
+<p>Boundary events are Intermediate events attached to the boundary of an Activity.
+Boundary events can be:
+</p>
+<ul>
+   <li>Interrupting - branch the process flow</li>
+   <li>Non-interrupting - fork the process flow </li>
+</ul>
+<p>You should use Timer Boundary event  
+if an activity is not processed within specified time interval, explanation email should be sent.</p>
+<p>You should use Error Boundary event in case an error occurs when executing an activity and 
+the activity should get aborted.</p>
+<h4 id="flow">Sequence Flow of Boundary Events</h4>
+<p>Boundary Events can have only one outbound exception flow, but multiple paths 
+can be supported using a gateway. All Boundary Events 
+in a model must have an outgoing sequence flow.</p>
+<p class="note"><strong>Note</strong><br>
+BPMN 2.0 allows multiple outbound exception flows from a boundary event.
+The Stardust engine currently does not support this, but may provide 
+it in a future release.</p>
+<h3 id="nonbound">Non-Boundary Events</h3>
+<p>Non-boundary events are Intermediate events specified always between two activities, 
+or gateway and activity. Only timer event can be added as a non-boundary event.</p>
+<p>You can use the non-boundary timer event if you want a delay between the two activities.</p>
+<p class="note"><strong>Note</strong><br>
+Non-Boundary Events are not directly supported by the Stardust engine, 
+but it is shown as a Route Activity.</p>
+<!-- DOne: description/what to use for -->
+<h4>Sequence Flow of Non-Boundary Events</h4>
+<p>Non-boundary Intermediate Events can have both an inbound and outbound sequence flow.
+All Intermediate Events in a model must have both an incoming and outgoing sequence flow.</p>
+<h3 id="interrupt">Interrupting and Non-interrupting Events</h3>
+<h4>Interrupting Events</h4>
+<p>Interrupting events do:</p>
+<ul>
+   <li>terminate other execution paths (within the container)</li>
+   <li>interrupt the activity</li>
+</ul>
+<p>Interrupting events can be timer or error boundary events.</p>
+<h4>Non-interrupting Events</h4>
+<p>Non-interrupting events do:</p>
+<ul>
+   <li>execute in parallel</li>
+   <li>not interrupt the activity to which they are attached</li>
+</ul>
+<p>Non-interrupting events can be timer boundary or non-boundary events.</p>
+
+<h3 id="exflow">Exception Flow</h3>
+<p>The following elements can be the exception flow target:</p>
+<ul>
+   <li>Activity (all types)</li>
+   <li>Gateway</li>
+   <li>End Event</li>
+   <li>Non-Boundary Intermediate Event (e.g. Timer Event)</li>
+</ul>
+<p>Note that Data may not be connected directly to Events in the Business Process Modeler.</p>
+<p>An existing exception flow (i.e., connection) is maintained when dropped 
+onto another activity or onto the drawing canvas.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

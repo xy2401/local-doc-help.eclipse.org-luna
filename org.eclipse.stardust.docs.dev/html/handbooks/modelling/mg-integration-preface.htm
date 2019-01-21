@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>System Integration</title>
+<script language="JavaScript" src="../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+   writeNavigation("","","",
+      "../handbooks.htm","Developer Handbook",
+      "mg-preface.htm","Modeling Guide");
+ -->
+</script>
+<h1>System Integration</h1>
+<h2>System Integration</h2>
+<p>This chapter describes the possibilities to integrate your existing IT
+infrastructure as a process modeler.</p>
+<h3>Integrating Stardust into an existing Infrastructure</h3>
+<p>Integrating the Stardust Process Engine into an existing IT infrastructure is
+mainly done by using Stardust applications and data.</p>
+<p>From the point of view of integration both concepts are somewhat dual.
+Applications concentrate on triggering behavior of the environment whereas data are used
+for storing and accessing state. Both concepts are strongly correlated by the way they
+interchange data by means of accessors. This requires a common type system provided by
+data types.</p>
+<p>Once application building blocks are configured, these can be
+reused across different Process Models. Hence, sets of these
+applications can be shipped as a library specific, e.g. for a certain
+product connectivity needs to be provided for. These libraries can then
+be used at clients to address integration requirements either with other
+products or other systems at the client.</p>
+
+<p>Although they don't have such a central position, triggers and events are also
+integration means. Refer to chapter
+<a href="mg-defdesk-11.htm">Working with Triggers</a> for details on those.</p>
+<p>This chapter describes the usage of application types and data types shipped with
+Stardust. The process engine can be extended by custom application types and data types.
+This is described in detail in the <a href="../programming/pg-preface.htm">Programming
+Guide</a>.</p>
+<h3>Contents</h3>
+<p>This section describes the integration and usage of the following data and application
+types:</p>
+<ul>
+    <li><a href="mg-integration-5.htm">Integrating Plain Java Classes and Session
+    Beans</a></li>
+    <li><a href="mg-integration-6.htm">Integrating JMS</a></li>
+    <li><a href="integration/mail-application-type.html">Using Mail Applications</a></li>
+    <li><a href="integration/message-appl-preface.html">Using Message Application Types</a></li>
+    <li><a href="mg-integration-7.htm">Integrating JFC Applications</a></li>
+    <li><a href="mg-integration-jsf.html">Integrating JSF Applications</a></li>
+    <li><a href="integration/camel-application-type.html">Using Camel Producer Applications</a></li>
+    <li><a href="mg-integration-8.htm">Integrating Synchronous Web Services</a></li>
+    <li><a href="mg-integration-jsp.html">Integrating Web via JSPs</a></li>
+    <li><a href="integration/activity-panel-integration.html">Using External Web Applications</a></li>
+</ul>
+<h3>Refactoring</h3>
+<p>Renaming of packages in a project, containing classes used for
+data or applications in a Stardust model will reflect in all occurrences where
+these classes are used in the model.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

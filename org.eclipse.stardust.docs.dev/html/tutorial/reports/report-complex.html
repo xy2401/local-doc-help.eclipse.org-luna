@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Creating and Running a Report with Table Layout and a computed Column</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../styles/carnot.css"
+	title="Style">
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Creating a Composite Report",
+      "report-example.html","report-composite.html",
+      "../tut-preface.htm","Tutorials",
+      "tut-reports.html","Defining and Running Reports");
+-->
+</script>
+<h1>Creating and Running a Report with Table Layout and a computed Column</h1>
+<p>This tutorial demonstrates how to create a report definition with a table 
+layout, which uses computed columns and filtering. Additionally we will schedule
+this report for execution.</p>
+<p>The report definition should provides an 
+overview on the number of product items that have been sold in a process for
+different customers. We use a computed column to provide customer details
+containing the customer name and last four digits of the customer Id. Later
+we will filter the report for specific countries.</p>
+<ul>
+   <li><a href="#start">Preparing the Workflow and Data</a></li>
+   <li><a href="#crdata">Creating Data Input</a></li>
+   <li><a href="#crrep">Creating the Report Definition</a></li>
+   <li><a href="#filter">Running the Report with a Filter Parameter</a></li>
+   <li><a href="#sched">Scheduling the Report Execution</a></li>
+   <li><a href="#export">Exporting the Report as Excel File</a></li>
+</ul>
+<h2 id="start">Preparing the Workflow and Data</h2>
+<p>Create a model containing a structured data with customer information.
+<p>You can also import the completed 
+example model provided by Stardust. 
+Therefore download the following ZIP file containing the 
+model <strong>ProductOrders</strong> prepared for this example:</p>
+<p class="ind"><a href="../../examples/tutorials/reports/reports.zip">
+reports.zip</a></p>
+<p>This ZIP file also contains the completed
+example report, which you can import as well.</p>
+<p>The customer details data should contain the following entries:</p>
+<ul>
+   <li>Customer name</li>
+   <li>Customer Id of type <strong>Long Number</strong></li>
+   <li>Enumeration data for countries</li>
+   <li>Enumeration data with values for product names that can be sold.</li>
+</ul>
+<p>For example:</p>
+<p class="image"><img src="images/struct-data.png" alt="Structured Data"><br>
+<strong>Figure:</strong> Structured Data</p>  
+<p>Create a simple process reading data for the customer details.</p>
+<p class="image"><img src="images/process-diagram.png" alt="Process"><br>
+<strong>Figure:</strong> Process Diagram</p>
+<p>Open the process properties panel to add descriptors, which will be used
+in our report. Click on <strong>Data Path</strong> and add the following 
+descriptors:</p>
+<ul>
+   <li><strong>OrderedItem</strong> - with reference path to the Enumeration
+   of product names of the customer details structured data</li>
+   <li><strong>CustomerName</strong> - with reference path to the customer name
+   of the customer details structured data</li>
+   <li><strong>Country</strong> - with reference path to the country Enumeration
+    of the customer details structured data</li>
+   <li><strong>CustomerId</strong> - the reference path to the Id of the
+   customer details structured data</li>
+</ul>
+<p class="image"><img src="images/process-descriptors.png" alt="Setting Descriptors"><br>
+<strong>Figure:</strong> Setting Descriptors</p>
+<p>For details on setting process data path a descriptors, please refer to section
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-process.htm#datapath">
+Data Path</a> of chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-process.htm">
+Working with Process Definitions</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeling Handbook</a>.</p>
+<p>Save and deploy the model.</p>
+<h2 id="crdata">Creating Data Input</h2>
+<p>Start the process and enter data several times. Enter long numbers for 
+customer Ids.</p>
+<p class="image"><img src="images/enter-data-long-id.png" alt="Enter Data"><br>
+<strong>Figure:</strong> Enter customer details with long Id</p>
+<h2 id="crrep">Creating the Report Definition</h2>
+<p>To create the report definition, switch to the 
+<strong>Business Process Reporting</strong> perspective.
+Click the <strong>Create Ad hoc Report</strong> button to create the report
+definition.</p>
+<p class="image"><img src="images/create-report.png" alt="Creating a new Report"><br>
+<strong>Figure:</strong> Creating a new Report</p>
+<p>In the <strong>Data Source</strong> tab keep the default
+selection to retrieve data about process instances in the 
+<strong>Retrieve Data about</strong> drop-down list.</p>
+<p class="image"><img src="images/proc-data-source.png" alt="Data Source"><br>
+<strong>Figure:</strong> Retrieve data about process instances</p>
+<ul>
+   <li><a href="#comp">Adding a computed Column</a></li>
+   <li><a href="#dataset">Configuring the Data Set</a></li>
+   <li><a href="#layout">Specifying the Layout</a></li>
+   <li><a href="#preview">Previewing the Report</a></li>
+   <li><a href="#store">Storing the Report</a></li>
+</ul>
+<h3 id="comp">Adding a computed Column</h3>
+<p>Now we create a computed column to display the customer name together with 
+the last four digits of the customer Id.</p>
+<ol>
+   <li>In the <strong>Computed Columns</strong> section, click the <strong>Add</strong>
+   icon
+   <p class="image"><img src="images/add-computed-column.png" alt="Add a Computed Column"></p></li>
+   <li>Add a field name and the name the field is displayed with</li>
+   <li>In the <strong>JavaScript Formular</strong> section enter the following
+   code:
+   <pre>CustomerName + " - " + (CustomerId - parseInt((CustomerId / 10000), 10) * 10000);</pre></li>
+</ol>
+<p class="image"><img src="images/computed-columns.png" alt="JavaScript"><br>
+<strong>Figure:</strong> Enter JavaScript to compute the column</p>
+<h3 id="dataset">Configuring the Data Set</h3>
+<p>Switch to the <strong>Data Set</strong> tab to configure the data set.
+<ol>
+   <li>Select <strong>Series Group</strong></li>
+   <li>Select <strong>Fact</strong> <tt>Count</tt></li>
+   <li>In the <strong>Dimension</strong> drop-down list select our computed 
+   column
+   <p class="image"><img src="images/select-comp-column.png" alt=""></p></li>
+   <li>Select to group the data set by descriptor <strong>OrderedItem</strong>
+   <p class="image"><img src="images/select-group-by.png" alt=""></p></li>
+</ol>
+<p>The data set is now configured as in the following screenshot:</p>
+<p class="image"><img src="images/specify-data-set.png" alt="Data Set properties"><br>
+<strong>Figure:</strong> Setting Data Set properties</p>
+<h3 id="layout">Specifying the Layout</h3>
+<p>Switch to the <strong>Layout</strong> tab to specify the table layout.</p>
+<ol>
+   <li>Select <strong>Simple Report</strong></li>
+   <li>Enter the <strong>Report Title</strong></li>
+   <li>Select <strong>Layout Type</strong> <tt>Table</tt></li>
+   <li>Choose <tt>Columns</tt> for 
+   <strong>Display Dimension as</strong></li>
+   <li>Select <strong>Display Totals</strong></li>
+</ol>
+<p class="image"><img src="images/select-table-layout.png" alt="Layout Settings"><br>
+<strong>Figure:</strong> Layout Settings</p>
+<h3 id="preview">Previewing the Report</h3>
+<p>Switch to the <strong>Preview</strong> tab to view the report.
+The columns are created for each computed column containing the customer name
+together with the last four digits of the customer id. The table layout is 
+grouped by the name of the ordered items. Additionally a <strong>Total</strong>
+column is displayed with the total count for each row.</p>
+<p class="image"><a href="images/resulting-table_orgsize.png" target="_blank">
+<img src="images/resulting-table.png" alt="Report Preview"></a><br>
+<strong>Figure:</strong> Report Preview</p>
+<h3 id="store">Storing the Report</h3>
+<p>To set properties for storing the report, switch to the <strong>Storage</strong>
+tab. Enter the report definition name and optionally a description of the
+report. Determine to store the report definition as <strong>Personal Report Template</strong>.</p>
+<p class="image"><img src="images/store-report.png" alt="Storage properties"><br>
+<strong>Figure:</strong> Setting Storage properties</p>
+<p>To save the report, click the <strong>Save</strong> icon in the upper right
+corner of the view.</p>
+<p class="image"><img src="images/save-report.png" alt="Saving the Report"><br>
+<strong>Figure:</strong> Saving the Report</p>
+<p>You can now find the saved report in the following locations:</p>
+<ul>
+   <li>In the <strong>My Reports</strong> folder under <strong>Personal Report Definitions</strong>
+   <p class="image"><img src="images/my-report-saved.png" alt="My Reports"></p></li>
+   <li>In the <strong>Reports/Report Definitions/Private Report Definitions</strong> 
+   folder in the <strong>Report Manager</strong> view of the 
+   <strong>Business Control Center</strong> perspective
+   <p class="image"><img src="images/saved-report-manager.png" alt="Report Manager"></p></li>
+   <li>In the <strong>My Documents</strong> view of the <strong>Workflow Execution</strong>
+   perspective in the <strong>reports/designs</strong> folder
+   <p class="image"><img src="images/saved-report-my-docs.png" alt="My Documents"></p></li>
+</ul>
+<h2 id="filter">Running the Report with a Filter Parameter</h2>
+<p>Now we filter our report to filter out products from a specific country:</p>
+<ol>
+   <li>In the <strong>Filtering</strong> section, click the <strong>Plus</strong>
+   icon to add a filter
+   <li>Select <tt>Country</tt> in the <strong>Descriptors</strong> section of the
+   drop-down list
+   <p class="image"><img src="images/filtering-set-data.png" alt="Filter - descriptor"></p></li>
+   <li>In the operator drop-down list select <tt>Not Equal</tt>
+   <p class="image"><img src="images/filtering-add-operator.png" alt="Filter - operator"></p></li>
+   <li>Enter the country to be filtered out for the report</li>
+   <li>Click the <strong>Add Parameter</strong> icon to add this filter as 
+   parameter
+   <p class="image"><img src="images/filtering-set-param.png" alt="Filter - param"></p></li>
+</ol>
+<p>The entered filter should look similar to the one in the following screenshot:</p>
+<p class="image"><img src="images/set-report-filter.png" alt="Filter"><br>
+<strong>Figure:</strong> Setting a report filter</p>
+<h4>Viewing the filtered report</h4>
+<p>Switch to the <strong>Preview</strong> tab to see the resulting report.
+You can see that the column for the country to be filtered out does not appear
+anymore in the table. Above the table, the filter is displayed in the
+<strong>Parameters</strong> section.</p>
+<p class="image"><img src="images/report-filter-result.png" alt="Filter Result"><br>
+<strong>Figure:</strong> Report preview result with filter</p>
+<h2 id="sched">Scheduling the Report Execution</h2>
+<p>To schedule our report definition for weekly execution perform the 
+following steps:</p>
+<ol>
+   <li><a href="#daemon">Starting the Reporting Daemon</a></li>
+   <li><a href="#screp">Setting Scheduling Properties</a></li>
+</ol>
+<h3 id="daemon">Starting the Reporting Daemon</h3>
+<p>The reporting daemon must be running to facilitate report execution. It runs
+periodically to check the next recurrence date for the report definition.
+Once the next recurrence date arrives, it executes the report and distributes 
+it via the specified delivery method. To start the report daemon:</p>
+<ol>
+   <li>Open the <strong>Administration</strong> perspective</li>
+   <li>Select <strong>Daemon</strong> in the launch panel</li>
+   <li>In the <strong>Actions</strong> column of the <strong>Reporting Daemon</strong>
+   in the displayed <strong>Daemon</strong> table click the icon to start the 
+   reporting daemon.
+   <p class="image"><img src="images/start-report-daemon.png" alt=""></p></li>
+</ol>
+<h3 id="screp">Setting Scheduling Properties</h3>
+<p>To set scheduling execution properties do the following:</p>
+<ol>
+   <li>Open the <strong>Scheduling</strong> tab</li>
+   <li>Enable the option to schedule the report template to be executed with
+   one or more recurrences</li>
+   <li>Select <strong>Weekly</strong> in the <strong>Recurrence Pattern</strong>
+   section</li>
+   <li>To receive an E-mail with the report attached, select
+   <strong>E-mail to me</strong> in the <strong>Delivery</strong> section</li>
+   <li>In the <strong>Next Execution</strong> section you can see when the 
+   report template will be executed next</li>
+</ol>
+<p class="image"><a href="images/schedule_orgsize.png" target="_blank">
+<img src="images/schedule.png" alt="Scheduling"></a><br>
+<strong>Figure:</strong> Scheduling the report</p>
+<p>An E-mail will be sent to you on a weekly basis with the report in HTML 
+format as attachment.</p>
+<p class="image"><img src="images/report-mail.png" alt="Report E-mail"><br>
+<strong>Figure:</strong> Report E-mail</p>
+<h2 id="export">Exporting the Report as Excel File</h2>
+<p>You can export our report to an Excel file. In the <strong>Preview</strong> tab
+click the <strong>Excel</strong> button in the left upper corner of the table.</p>
+<p class="image"><img src="images/export-excel.png" alt="Export as Excel File"><br>
+<strong>Figure:</strong> Export as Excel File</p>
+<p>In the upcoming browser dialog select a location to store the report as 
+Excel file. You can now view and edit your report results in Excel format.</p>
+<p class="image"><img src="images/excel-result.png" alt="Exported Excel Result"><br>
+<strong>Figure:</strong> Exported Excel Result</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>new_and_noteworthy</title>
+	</head>
+	<body>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<th style="width: 100%" align="center" colspan="3">new_and_noteworthy</th>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left"></td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right">
+					<a href="0-8.html" title="0.8">Next</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top"></td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">0.8</td>
+			</tr>
+		</table><hr/>
+		<h1 id="0.9">0.9</h1>
+		<h2 id="Discovery_manager">Discovery manager</h2>
+		<p>The discoverer framework has been refactored to satisfy new requirements, including major simplifications for adopters and developers: discoverers are now easier to define and call programmatically.</p>
+		<p>All existing discoverer implementations have been migrated to this new framework, and old discoverer implementations have been deprecated.</p>
+		<p>Please consult the related documentation for more details on new features.</p>
+		<h2 id="Model_Browser">Model Browser</h2>
+		<p>The browser now does more operations in the background, so that you can continue to interact with the UI while it is loading model elements or computing queries, customizations or facets</p>
+		<h2 id="Query_Manager">Query Manager</h2>
+		<ul>
+			<li>Tooltips on queries:</li>
+		</ul>
+		<p>
+			<img border="0" src="../img/MoDisco_Queries_Tooltip.png"/>
+		</p>
+		<h2 id="Workflow">Workflow</h2>
+		<p>The workflow component was simplified by removing cruft.</p>
+		<h2 id="Java">Java</h2>
+		<h3 id="New_Java_Discoverer_conforming_to_new_Discovery_framework">New Java Discoverer conforming to new Discovery framework</h3>
+		<p>The discoverer framework has been refactored to satisfy new requirements, including some simplification for adopters and developers. Existing discoverer implementations have be migrated to this new framework. Old discoverer implementations have been deprecated. </p>
+		<h3 id="Java_Discoverer_API">Java Discoverer API</h3>
+		<p>Some unnecessary limitations have been removed for calling the java discoverer from Java. It is now possible to specify a set of IJavaProject instances as input, whatever the dependencies between these java projects.</p>
+		<h3 id="Java_Generation_API">Java Generation API</h3>
+		<p>org.eclipse.gmt.modisco.java.generation.files.GenerateJavaExtended becomes the main public API. So Generate_JavaStructures is deprecated.</p>
+		<h3 id="Java_to_KDM_discoverer">Java to KDM discoverer</h3>
+		<p>An additional discoverer parameter allows to indicate some path to a custom .asm file to use while transforming Java models to KDM models.</p>
+		<h3 id="Java_Discovery_filters">Java Discovery filters</h3>
+		<p>Discovery filters are improved using regular expressions for types and packages to exclude/include.</p>
+		<h2 id="Composition">Composition</h2>
+		<ul>
+			<li>On a model discovered with the Discoverer named 
+				<b>Discover Java and Inventory Model from Java Project</b>, you can now browse from a model element to its source code:
+			</li>
+		</ul>
+		<p>
+			<img align="middle" title="Browse Code in Text Editor" alt="Browse Code in Text Editor" border="1" src="../img/MoDisco_ModelOpenSourceInEditor.png"/>
+		</p>
+		<p>The corresponding code is then highlighted in a source editor:</p>
+		<p>
+			<img align="middle" title="Corresponding code" alt="Corresponding code" border="1" src="../img/MoDisco_BrowseInTextEditor_SourceCode.png"/>
+		</p>
+		<ul>
+			<li>You can also activate 
+				<b>Synchronize with source code</b>. Then, when you double click on a model element, the corresponding code is highlighted.
+			</li>
+		</ul><hr/>
+		<table class="navigation" style="width: 100%;" border="0" summary="navigation">
+			<tr>
+				<td style="width: 20%" align="left"></td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right">
+					<a href="0-8.html" title="0.8">Next</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 20%" align="left" valign="top"></td>
+				<td style="width: 60%" align="center"></td>
+				<td style="width: 20%" align="right" valign="top">0.8</td>
+			</tr>
+		</table>
+	</body>
+</html>

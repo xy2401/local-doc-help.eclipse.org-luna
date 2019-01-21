@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="help/developer/how-to-open-compare-dialog.html#How_To_Open_Compare_Dialog" label="How To Open Compare Dialog">
+	<topic href="help/developer/how-to-open-compare-dialog.html#Preparing_the_input" label="Preparing the input"></topic>
+	<topic href="help/developer/how-to-open-compare-dialog.html#Preparing_the_configuration" label="Preparing the configuration">
+		<topic href="help/developer/how-to-open-compare-dialog.html#ComparisonEditorInput" label="ComparisonEditorInput"></topic>
+		<topic href="help/developer/how-to-open-compare-dialog.html#ComparisonScopeEditorInput" label="ComparisonScopeEditorInput"></topic>
+	</topic>
+	<topic href="help/developer/how-to-open-compare-dialog.html#Opening_the_compare_UI" label="Opening the compare UI"></topic>
+	<topic href="help/developer/how-to-open-compare-dialog.html#End-to-end_examples" label="End-to-end examples">
+		<topic href="help/developer/how-to-open-compare-dialog.html#With_pre-computed_comparison" label="With pre-computed comparison"></topic>
+		<topic href="help/developer/how-to-open-compare-dialog.html#With_a_comparison_scope" label="With a comparison scope"></topic>
+	</topic>
+</toc>

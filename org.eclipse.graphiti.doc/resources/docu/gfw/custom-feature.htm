@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<title>Providing custom functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Custom Functionality</h1>
+<p>If the tool developer wants to add some tool specific functionality (e.g. 
+context menu actions which can change the business and/or the pictogram model) the 
+predefined features are not enough. In this case we need a more general feature. 
+For that purpose the framework provides a custom feature. Examples for a custom 
+feature are rename, change color, check out, etc.</p>
+<h2>Create a Custom Feature</h2>
+<p>A custom feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/custom/ICustomFeature.html">
+ICustomFeature</a>. Instead of implementing it directly it should extend one of 
+the available base classes. In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/custom/AbstractCustomFeature.html">
+AbstractCustomFeature</a>.</p>
+<p>In this case we have to implement/overwrite 4 methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/features/custom/ICustomFeature.html#canExecute(org.eclipse.graphiti.features.context.ICustomContext)">
+	canExecute</a> has to check whether the custom feature can be executed on the 
+	current pictogram element of the given context.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/features/custom/ICustomFeature.html#execute(org.eclipse.graphiti.features.context.ICustomContext)">
+	execute</a> has to perform the custom specific stuff.</li>
+	<li>These two methods receive a custom context as parameter. Interface
+	<a href="../../../javadoc/org/eclipse/graphiti/features/context/ICustomContext.html">
+	ICostomContext</a> provides the inner pictogram element and the inner graphics 
+	algorithm additionally to the (selected) pictogram element. These are the inner 
+	elements the mouse pointer is placed / clicked on.</li>
+	<li>Currently only custom features receive the information on the inner elements 
+	additionally to the selected/selectable ones. </li>
+</ul>
+<p>The methods
+<a href="../../../javadoc/org/eclipse/graphiti/IName.html#getName()">getName</a> 
+/
+<a href="../../../javadoc/org/eclipse/graphiti/IDescription.html#getDescription()">
+getDescription</a> have to return the information for the UI representation.</p>
+<p>In this example we want to implement a custom feature which opens a popup-dialog 
+to change the EClass name. This custom feature should be available and enabled in 
+the context menu if exactly one EClass is selected.</p>
+<p>You can see the complete implementation of the custom feature here:</p>
+
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialRenameEClassFeature extends 
+		AbstractCustomFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private boolean</span> <span class="string">hasDoneChanges
+		</span>= <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>TutorialRenameEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>String 
+		getName() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Rename EClass&quot;</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>String getDescription() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span><span class="string">&quot;Change the name 
+		of the EClass&quot;</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp; <span class="keyword">&nbsp;public boolean</span> 
+		canExecute(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// allow rename if exactly one pictogram element</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// representing a EClass is selected</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean </span>ret = <span class="keyword">false</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pes != <span class="keyword">null
+		</span>&amp;&amp; pes.<span class="string">length </span>== 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pes[0]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret = <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>ret;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; 
+		@Override<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>void 
+		execute(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement[] pes = context.getPictogramElements();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pes != null &amp;&amp; pes.<span class="string">length
+		</span>== 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pes[0]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		if (bo <span class="keyword">instanceof </span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClass = (EClass) bo;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String currentName = eClass.getName();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// ask user for a new class name</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String newName = ExampleUtil.askString(getName(), getDescription(),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		currentName);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(newName != <span class="keyword">null
+		</span>&amp;&amp; !newName.equals(currentName)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">this</span>.<span class="string">hasDoneChanges
+		</span>= <span class="keyword">true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eClass.setName(newName);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		updatePictogramElement(pes[0]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> hasDoneChanges() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return this</span>.<span class="string">hasDoneChanges</span>;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>}<br></p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created custom feature 
+(overwrite the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getCustomFeatures(org.eclipse.graphiti.features.context.ICustomContext)">
+getCustomFeatures</a>). </p>
+<p>This implementation can be seen here:</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>ICustomFeature[] 
+		getCustomFeatures(ICustomContext context) {<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> ICustomFeature[] {
+		<span class="keyword">new </span>TutorialRenameEClassFeature(<span class="keyword">this</span>) 
+		};<br>} </p>
+	</div>
+</div>
+<p>&nbsp; </p>
+<!-- End code ------------------------------------------------------------------------------- -->
+
+<h2>Test: Rename a EClass with a Custom Popup-Dialog</h2>
+<p>Now start the editor and test this new custom feature:</p>
+<ol>
+	<li>create or open a diagram </li>
+	<li>create a new EClass &quot;A&quot;</li>
+	<li>open the context menu on this newly created EClass; choose &quot;Rename EClass&quot;</li>
+	<li>rename this EClass to &quot;B&quot;</li>
+	<li>the diagram will be updated automatically with new class name</li>
+</ol>
+<p>&nbsp; </p>
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing create connection functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Create Connection Functionality</h1>
+<h2>Creating a Create Connection Feature</h2>
+<p>Usually a new connection object is created graphically by using the corresponding 
+connection tool from the diagrams’s tool palette. When using Graphiti you only have 
+to provide a so called create connection feature. The integration into the platform’s 
+UI is done by the framework.</p>
+<p>A create connection feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/ICreateConnectionFeature.html">
+ICreateConnectionFeature</a>. Instead of implementing it directly it should extend 
+one of the available base classes. In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/AbstractCreateConnectionFeature.html">
+AbstractCreateConnectionFeature</a>.</p>
+<p>We have to implement/overwrite 3 methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/ICreateConnection.html#canCreate(org.eclipse.graphiti.features.context.ICreateConnectionContext)">canCreate</a> has to check whether the connection can be created for the given context. 
+It has to check the business objects which are behind the source and the target 
+anchors.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/ICreateConnection.html#canStartConnection(org.eclipse.graphiti.features.context.ICreateConnectionContext)">canStartConnection</a> has to check whether the connection can be started at the 
+given source anchor.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/ICreateConnection.html#create(org.eclipse.graphiti.features.context.ICreateConnectionContext)">create</a> has to create the business object for the connection and also has to 
+add the graphical representation of the newly created business object to the diagram. 
+The creation of the business object must be implemented here. To add the graphical 
+representation, an <a href="add-connection-feature.htm">add connection feature</a> 
+should be used.</li>
+</ul>
+<p>In this example we want create an EReference between EClasses via the connection 
+tool from the palette.</p>
+<p>&nbsp;</p>
+<p>
+<img alt="" height="253" src="visio/connection-routing-direct.png" width="251"></p>
+<p><strong>Figure: EReference between EClasses</strong></p>
+<p>&nbsp;</p>
+<p>You can see the complete implementation of the create connection feature here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialCreateEReferenceFeature 
+		<span class="keyword">extends</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AbstractCreateConnectionFeature 
+		{<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">public </span>TutorialCreateEReferenceFeature 
+		(IFeatureProvider fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// provide name and description for the UI, e.g. the 
+		palette</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp, <span class="string">&quot;EReference&quot;</span>,
+		<span class="string">&quot;Create EReference&quot;</span>);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp; <span class="keyword">&nbsp;public boolean</span> 
+		canCreate(ICreateConnectionContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// return true if both anchors belong to an EClass<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		// and those EClasses are not identical</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass source = getEClass(context.getSourceAnchor());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass target = getEClass(context.getTargetAnchor());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (source != <span class="keyword">null
+		</span>&amp;&amp; target != <span class="keyword">null </span>&amp;&amp; source != target) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">return 
+		false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> canStartConnection(ICreateConnectionContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// return true if start anchor belongs to a EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(getEClass(context.getSourceAnchor()) !=
+		<span class="keyword">null</span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">&nbsp;return 
+		false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>Connection create(ICreateConnectionContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Connection newConnection 
+		= <span class="keyword">null</span>;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// get EClasses which should be connected</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass source = getEClass(context.getSourceAnchor());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass target = getEClass(context.getTargetAnchor());<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (source != <span class="keyword">null
+		</span>&amp;&amp; target != <span class="keyword">null</span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// create new business object </span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EReference eReference = createEReference(source, target);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add connection for business object</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		AddConnectionContext addContext =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<span class="keyword">new</span> AddConnectionContext(context.getSourceAnchor(), context<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getTargetAnchor());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		addContext.setNewObject(eReference);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		newConnection =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		(Connection) getFeatureProvider().addIfPossible(addContext);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>newConnection;<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="string">/**<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+		* Returns the EClass belonging to the anchor, or null if not available.<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+		*/</span><br>&nbsp;&nbsp;&nbsp; <span class="keyword">private </span>EClass 
+		getEClass(Anchor anchor) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(anchor != <span class="keyword">null</span>) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object object =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		getBusinessObjectForPictogramElement(anchor.getParent());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (object <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>(EClass) object;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return null</span>;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="string">/**<br>&nbsp;&nbsp;&nbsp; * Creates a EReference between 
+		two EClasses.<br>&nbsp;&nbsp;&nbsp; */</span><br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">private </span>EReference createEReference(EClass 
+		source, EClass target) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EReference 
+		eReference = EcoreFactory.eINSTANCE.createEReference();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eReference.setName(<span class="string">&quot;new EReference&quot;</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eReference.setEType(target);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eReference.setLowerBound(0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		eReference.setUpperBound(1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		source.getEStructuralFeatures().add(eReference);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>eReference;<br>&nbsp;&nbsp; }<br>}<br>
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getCreateConnectionFeatures()">
+getCreateConnectionFeatures</a>).</p>
+<p>This implementation can be seen here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">&nbsp;@Override<br>&nbsp;<span class="keyword">public
+		</span>ICreateConnectionFeature[] getCreateConnectionFeatures() {<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> ICreateConnectionFeature[] { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new </span>TutorialCreateEReferenceFeature (<span class="keyword">this</span>) 
+		};<br>&nbsp;} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<p>Before we can run the editor we have to add <a href="anchors.htm">anchors</a> 
+to the container shapes of the EClasses. Anchors are explained later in detail.</p>
+<p>For now simply create an anchor at end of the add method of the 
+<span class="inlinecode">TutorialAddEClassFeature</span>, 
+as shown in the following code snippet:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">&nbsp;<span class="keyword">public </span>PictogramElement 
+		add(IAddContext context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		... EXISTING CODING ... <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // add a chopbox anchor to 
+		the shape </span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peCreateService.createChopboxAnchor(containerShape);<br>&nbsp;
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		call the layout feature</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		layoutPictogramElement(containerShape);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>containerShape;<br>&nbsp;&nbsp;&nbsp; 
+		} <br>&nbsp; </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code ------------------------------------------------------------------------------- -->
+<h2>Test: Create a Connection</h2>
+<p>Now start the editor and test the create connection feature:</p>
+<ol>
+	<li>create or open a diagram</li>
+	<li>create two new EClasses (existing EClasses don’t work because they have 
+	no anchor</li>
+	<li>click on &quot;EReference&quot; which should be now available as connection tool in 
+	the palette</li>
+	<li>move the mouse over the EClasses; you can see that it is allowed to start 
+	the connection</li>
+	<li>click on one EClass</li>
+	<li>move mouse over the start EClass; you can see that it is not allowed to 
+	end the connection on the same EClass</li>
+	<li>move the mouse over the other EClass and click</li>
+	<li>the new connection should be created</li>
+</ol>
+<p>&nbsp;</p>
+</body>
+
+</html>

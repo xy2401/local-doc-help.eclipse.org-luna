@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Structured Data Storage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../styles/carnot.css" TITLE="Style">
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>  
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	writeNavigation("","ag-archiving.htm","",
+		"../../handbooks.htm","Developer Handbook",
+		"../ag-preface.htm","Operation Guide",
+		"ag-appendix-audittrail.html","Audit Trail Model");
+ -->
+</script>
+
+<h1>Structured Data Storage</h1>
+<p>Process data of structured type are stored in the tables in the Stardust Audit 
+  Trail Database. The storage layout is optimized for efficient access in queries. 
+</p>
+<h2>XPath Storage</h2>
+<p>Based on the Structured Data Definition created using the modeler, possible 
+  XPath expressions are identified and written to <tt>structured_data-table</tt> during 
+  deployment.</p>
+<p align="center"><img src="images/database-structure.png" alt=""></p>
+<h2>Structured Data Value Storage</h2>
+<p>Structured data values are stored in the <tt>structured_data_value-table</tt>. 
+  The column PROCESSINSTANCE (1 in this case) references the corresponding process instance 
+  the <tt>process_instance</tt> table. Data definition is indirectly referenced by the column
+  XPATH.</p>
+<p align="center"><img src="images/data-value-table.png"><br>
+</p>
+
+
+<p>If structured data is nullified then  STRING_VALUE and NUMBER_VALUE column values
+are set to NULL and 0, respectively. In case of date, it is set to 0.
+</p>
+<p>The following table list how null values are saved in STRUCTURED_DATA_VALUE and CLOB table of the
+Audit trail database.</p>
+
+<table>
+	<tr>
+	<th>Passing Value</th>
+	<th>String_value</th>
+	<th>Number_Value</th>
+	
+	</tr>
+	<tr>
+	
+	<td>Null</td>
+	<td>Null</td>
+	<td>0</td>
+	
+	
+	</tr>
+	<tr>
+	
+	<td>Empty String</td>
+	<td>Empty String</td>
+	<td></td>
+	
+	
+	</tr>
+	<tr>
+	
+	<td>new HashMap(string, object)</td>
+	<td>Null</td>
+	<td>0</td>
+	
+	
+	</tr>
+	
+	<tr>
+	
+	<td>Collections.emptyMap()</td>
+	<td>Null</td>
+	<td>0</td>
+	
+	
+	</tr>
+	<tr>
+	
+	<td>Collections.EMPTY_MAP</td>
+	<td>Null</td>
+	<td>0</td>
+	
+	
+	</tr>
+
+</table>
+
+
+
+
+
+
+<script language="JavaScript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

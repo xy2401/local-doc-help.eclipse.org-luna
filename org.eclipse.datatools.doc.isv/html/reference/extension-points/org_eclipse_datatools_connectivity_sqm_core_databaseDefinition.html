@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Database Definition</title>
+<style type="text/css">@import url("../../book.css");</style>
+<style type="text/css">@import url("../../schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Database Definition</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.datatools.connectivity.sqm.core.databaseDefinition<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>0.7
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>Provides a database definition.  The data definition, which must implement the <code>org.eclipse.datatools.connectivity.sqm.core.definition.DatabaseDefinition</code> interface, can be used to obtain meta-information about the database of given type and version, and can also be used to obtain a data model element factory, as contributed by the <code>org.eclipse.datatools.connectivity.sqm.core.dataModelElementFactory</code> extension point.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.definition">definition</a>+)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.definition">definition</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST definition</p>
+<p class="code SchemaDtdAttlist">description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">previous&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">allowsConnections&nbsp;&nbsp;&nbsp;&nbsp;(true | false) </p><p class="code SchemaDtdAttlist">productDisplayString&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">versionDisplayString&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>description</b> - A description of the database definition.</li>
+<li><b>product</b> - Vendor name for the db definition.</li>
+<li><b>version</b> - Version name for the db definition.</li>
+<li><b>previous</b> - This attribute should be deprecated.  It is never loaded by the code.</li>
+<li><b>allowsConnections</b> - This method should be deprecated. It is left over from WTP and does not make sense in DTP.</li>
+<li><b>productDisplayString</b> - A string suitable for display to users for product. See product attribute.</li>
+<li><b>versionDisplayString</b> - A string suitable for display to users for version.  See version attribute.</li>
+<li><b>file</b> - The  location of the instance of the database definition model file.  The path is relative to the root of the plug-in.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>Use the <code>org.eclipse.datatools.connectivity.sqm.core.definition.DatabaseDefinitionRegistry</code> instance to obtain the database definition.
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+Copyright 2005, 2007 IBM Corporation and others.<br>
+All rights reserved. This program and the accompanying materials are made 
+available under the terms of the Eclipse Public License v1.0 which 
+accompanies this distribution, and is available at 
+<a href="http://www.eclipse.org/legal/epl-v10.html">http://www.eclipse.org/legal/epl-v10.html</a>
+
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,480 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Process Interface - External Invocation Mechanism</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Extending the Stardust Portal Components",
+			"pg-embed-entitlements.html","PLUGINS_ROOT/org.eclipse.stardust.docs.misc/html/programming/using-portal-framework.htm",
+			"../handbooks.htm","Developer Handbook",
+			"pg-preface.htm","Programming Guide");
+ -->
+</script>
+<h1>Process Interface - External Invocation Mechanism</h1>
+<p>A Web Service endpoint is provided for all processes in deployed models defining a 
+Process Interface and being marked for exposure via Web Service endpoint. 
+The WSDL is the same as displayed in Process Interface Definition.</p>
+
+<p>The external invocation mechanism is provided to:</p>
+
+<ul>
+	<li>Start a process instance</li>
+	<li>Retrieve a process instance' results after completion</li>
+</ul>
+<p>These services can be invoked via:</p>
+<ul>
+	<li><a href="#soap">SOAP Web Service for Process Interface</a></li>
+	<li><a href="#rest">RESTful Web Service for Process Interface</a></li>
+</ul>
+
+<h2 id="soap">SOAP Web Service for Process Interface</h2>
+<p>You can start a process instance and retrieve process instance results using the SOAP Web service operation.</p>
+<p>The SOAP Web service can be used for both starting a process instance and retrieving the process instance' results after 
+it has been completed. This Web Service is available for each process interface that has been marked to be 
+exposed via a SOAP Web Service. </p>
+
+<h3>Starting a Process Instance</h3>
+<p>Process Name:
+<tt>startProcess&lt;Process Definition ID&gt;</tt></p>
+<p>Parameters:</p>
+<ul>
+	<li>Arguments:  all IN and INOUT formal parameters as defined in the process interface</li>
+	<li>Synchronous/Asynchronous Invocation: whether the process should be started synchronously</li>
+</ul>	
+<p>Return Value: . depends on the primary implementation set for the process interface.  
+The return value also depends on the OUT and INOUT formal parameters defined for process interface and synchronous invocation. 
+The result is returned if the</p>	
+<ul> 
+	<li>Process contains non-interactive activities, no split gateways and invoked synchronously 
+	</li>
+	<li>Else the OID of the process instance is returned</li>
+</ul>
+<h3>Retrieving Process Instance Results</h3>
+<p>Process Name: <tt>getProcessResults&lt;Process Definition ID&gt;</tt></p>
+<p>Parameter: the OID of the process instance for which the result should be retrieved</p>
+<p>Return Value: if the process instance is completed the OUT and INOUT formal parameters as defined in the corresponding WSDL</p>
+<h3>WSDL Granularity</h3>
+<p>A one-to-one relationship is maintained between an XPDL model file and the corresponding WSDL file. The WSDL file is generated
+based on the XPDL model. It reflects all the process interfaces the model exposes. Since the WSDL contains two Web service operations 
+per Process Definition the Web service operation's name should be post-fixed to ensure uniqueness within a WSDL file. 
+It should be post-fixed because a model and WSDL file has one-to-one relationship. It may contain more than one
+process definition that exposes a process interface. A unique WS operation's name sets it apart from the WS operation names of the other process definitions.
+
+For more information,
+please refer to the section
+<a href="../modelling/mg-process-interface.htm#provide">
+Providing Process Interface</a> of the chapter <a href="../modelling/mg-process-interface.htm">Working with Process Interface
+</a> of the Modeling Guide.</p>	
+<h3>Web Services SOAP Invocation for Process Interface Listing</h3>
+<p>Web services SOAP invocation for Process Interface listing is performed via:</p>
+<pre>http://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/services</pre>
+<p>For example:</p>
+<pre>http://localhost:8080/ipp/services/soap/services</pre>
+<p>The process interface listing for the default partition is exposed.</p>
+<h4>Partition aware listing</h4>
+<p>The Web services SOAP invocation also supports a partition aware listing. If the invocation
+should be partition aware, add the specific partition in the following way:</p>
+<pre>http://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/services?partition=&lt;partition&gt;</pre>
+<p>For example:</p>
+<pre>http://localhost:8080/ipp/services/soap/services?partition=partition1</pre>
+<h4>Listing static services</h4>
+<p>By adding the query parameter <tt>static</tt>, the static services can be listed also.
+To list static endpoints, e.g. Web Service API, which is always available for all partitions,
+use:</p>
+<pre>http://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/services?static</pre>
+<p>For example:</p>
+<pre>http://localhost:8080/ipp/services/soap/services?static</pre>
+
+<h3>SOAP Web Service Endpoints</h3>
+<p>The following endpoints are provided for the aforementioned Web service operations for the process interface to be exposed.</p>
+<ul>
+	<li><tt>http://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/&lt;DynamicEndpoint.HttpBasicAuth.Name&gt;</tt> for the 
+	<tt>HTTP Basic Authentication over HTTP</tt> secured variant if <tt>DynamicEndpoint.HttpBasicAuth.Enable</tt> is true</li>
+	<li><tt>https://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/&lt;DynamicEndpoint.HttpBasicAuthSsl.Name&gt;</tt> 
+	for the <tt>HTTP Basic Authentication over HTTPS</tt> secured variant if <tt>DynamicEndpoint.HttpBasicAuthSsl.Enable</tt> is true 
+	</li>
+	<li><tt>https://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/soap/&lt;DynamicEndpoint.WssUsernameToken.Name&gt;</tt> 
+	for the <tt>WS-Security UsernameToken over HTTPS</tt> secured variant if <tt>DynamicEndpoint.WssUsernameToken.Enable</tt> is true 
+	</li>
+</ul>
+
+<h3>Preferences</h3>
+<ul>
+	<li>Scope - <tt>PARTITION</tt></li>
+	<li>Module ID - <tt>web-service</tt></li>
+	<li>Preference ID - <tt>process-interface</tt></li>
+</ul>
+
+<p>Please note that all the following preferences are loaded only once during the bootstrap of the WS facility. That means 
+after the bootstrap operation, changes to these 
+preferences do not take effect until the WS facility has been restarted. </p>
+<ul>
+	<li><tt>DynamicEndpoint.HttpBasicAuth.Name</tt> - the name of the endpoint that is secured by <tt>HTTP Basic Authentication</tt> over HTTP; 
+	<tt>defaults to ProcessServiceHttpBasicAuth</tt>, expected data type is <tt>String</tt>. 
+	</li>
+	<li><tt>DynamicEndpoint.HttpBasicAuth.Enable </tt>- whether the <tt>HTTP Basic Authentication</tt> over HTTP secured endpoint for dynamically exposed process interfaces should be enabled; 
+	defaults to <tt>false</tt>, </li>
+	<li><tt>DynamicEndpoint.HttpBasicAuthSsl.Name </tt>- the name of the endpoint that is secured by <tt>HTTP Basic Authentication</tt> over HTTPS; 
+	defaults to <tt>ProcessServiceHttpBasicAuthSsl</tt> 
+	</li>
+	<li><tt>DynamicEndpoint.HttpBasicAuthSsl.Enable </tt> - whether the <tt>HTTP Basic Authentication</tt> over HTTPS secured endpoint for dynamically 
+	exposed process interfaces should be enabled; defaults to <tt>false</tt>, expected data type is <tt>String</tt> 
+	</li>
+	<li><tt>DynamicEndpoint.WssUsernameToken.Name </tt>- the name of the endpoint that is secured by <tt>WS-Security UsernameToken</tt> over HTTPS; 
+	defaults to <tt>ProcessServiceWssUsernameToken</tt></li>
+	<li><tt>DynamicEndpoint.WssUsernameToken.Enable </tt>- whether the <tt>WS-Security UsernameToken</tt> over HTTPS secured endpoint for dynamically exposed process 
+	interfaces should be enabled; defaults to <tt>true</tt> 
+	</li>
+	<li><tt>DynamicEndpoint.DefaultModelId </tt>- the default value for the target model ID in the context of dynamic Web Service endpoints,
+	expected data type is <tt>String</tt> 
+	</li>
+</ul>
+<p>Following is the example for preferences:</p>
+<pre>
+&lt;preferences id="process-interface" module="web-service"&gt;
+&lt;preference name="DynamicEndpoint.DefaultModelId"&gt;ProviderModel_WS&lt;/preference&gt;
+&lt;preference name="DynamicEndpoint.HttpBasicAuth.Enable" type="boolean"&gt;true&lt;/preference&gt;
+&lt;/preferences&gt;
+</pre>
+<p>For more information on preferences, please refer to the <a href="embed/administration/pg-embed-preferences.html">Retrieving and Changing Preferences
+</a> chapter.</p>
+
+
+<h3>Selecting a Specific Web Service Endpoint WSDL</h3>
+<ul>
+	<li>URL - any one of the three endpoints URL</li>
+	<li>HTTP Method - <tt>GET</tt></li>
+	<li>Query Parameter - <tt>wsdl</tt>, mandatory 
+	 </li>
+	<li>Query Parameter - <tt>modelId=&lt;Model ID&gt;</tt>, defaults to <tt>DynamicEndpoint.DefaultModelId</tt> 
+	</li>
+	<li>Query Parameter - <tt>partition=&lt;Partition&gt;</tt>, defaults to the default partition 
+	</li>
+</ul>
+
+<h3>Selecting a Specific Web Service Endpoint Process</h3>
+<ul>
+	<li>URL - any one of the three endpoints URL</li>
+	<li>HTTP method - <tt>POST</tt></li>
+	<li>HTTP Header <tt>SOAPAction</tt> - the unqualified target process ID</li>
+	<li>WS-Addressing Reference Parameters </li>
+	
+		<li>&lt;stardust-bpm-domain/&gt; - the target domain, defaults to the default domain</li>
+		<li>&lt;stardust-bpm-partition/&gt; - the target partition, defaults to the default partition 
+		</li>
+		<li>&lt;stardust-bpm-realm/&gt; - the target realm, defaults to the default realm 
+		</li>
+		<li>&lt;stardust-bpm-model/&gt; - the target model ID, defaults to DynamicEndpoint.DefaultModelId 
+		</li>
+
+</ul>
+<h3>Supported Data Types</h3>
+<p>The primitive and structured data types are supported as parameters and return types. </p>
+<h3>SOAP Binding</h3>
+<p>Document/Literal is used.</p>
+
+
+
+<h3>Specifying Technical User</h3>
+<p>Specify the technical user in the <tt>carnot.properties</tt> file because to generate WSDL, the user should have access to APIs. 
+The technical user should have the permission <tt>readModelData</tt> to retrieve the formal parameters and type declarations from the model.</p>
+<ul>
+	<li><tt>WebService.ProcessService.Username </tt>the username of the technical user; defaults to 'motu'.</li>
+	<li><tt>WebService.ProcessService.Password </tt> the password of the technical user; defaults to 'motu'.</li>
+	<li><tt>WebService.ProcessService.Realm </tt>the realm of the technical user; defaults to the default realm.</li>	
+</ul>
+<h3>Setting Synchronization Interval</h3>
+<p>
+The interval specifies the minimum interval in seconds that has to pass before synchronizing the Web service endpoints 
+and WSDLs with the engine's deployed models.
+Synchronization takes place only if a WSDL (HTTP GET) or Web service (HTTP POST) request takes place and 
+the synchronization interval has passed.
+A value can be defined in the property <tt>WebService.ProcessService.EndpointSyncPeriod</tt> of <tt>carnot.properties</tt> file. 
+The default value is 10 (seconds).</p>
+
+<h3>SOAP Endpoint Examples</h3>
+<p>Following are the typical examples of SOAP request and response.</p>
+<ul>
+	<li><a href="#reqstart">SOAP Request to Start Process</a></li>
+	<li><a href="#restart">SOAP Response of Start Process</a></li>
+	<li><a href="#reqget">SOAP Request to Get Process Result</a></li>
+	<li><a href="#resget">Soap Response of Get Process Result</a></li>
+	<li><a href="#head">Header for Start Process Request of WS-Security UsernameToken over HTTPS</a></li>
+	<li><a href="#wadl">WS-Addressing Reference Parameters Example Request</a></li>
+</ul>
+<h4 id="reqstart">SOAP Request to Start Process</h4>
+<p>URL - <tt>http://localhost:9890/ipp-portal/services/soap/ProcessServiceHttpBasicAuth?wsdl</tt></p>
+<pre>
+&lt;soapenv:Envelope xmlns:prov=&quot;http://infinity.com/bpm/models/generated/ProviderModel_WS&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prov:startProcessPrimitiveProcess&gt;
+         &lt;prov:Args&gt;
+            &lt;prov:FormalParameter_1&gt;abc&lt;/prov:FormalParameter_1&gt;
+            &lt;prov:FormalParameter_2&gt;123&lt;/prov:FormalParameter_2&gt;
+         &lt;/prov:Args&gt;
+      &lt;/prov:startProcessPrimitiveProcess&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</pre>	
+
+<h4 id="restart">SOAP Response of Start Process</h4>
+<pre>
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;S:Body&gt;
+      &lt;startProcessResponsePrimitiveProcess xmlns=&quot;http://infinity.com/bpm/models/generated/ProviderModel_WS&quot;&gt;
+         &lt;ProcessInstanceOid&gt;205&lt;/ProcessInstanceOid&gt;
+         &lt;Return&gt;
+            &lt;FormalParameter_3&gt;Function of provider get Called :abc 123&lt;/FormalParameter_3&gt;
+         &lt;/Return&gt;
+      &lt;/startProcessResponsePrimitiveProcess&gt;
+   &lt;/S:Body&gt;
+&lt;/S:Envelope&gt;
+</pre>
+
+<h4 id="reqget">SOAP Request to Get Process Result</h4>
+<p>URL - <tt>http://localhost:9890/ipp-portal/services/soap/ProcessServiceHttpBasicAuth?wsdl</tt></p>
+<pre>
+&lt;soapenv:Envelope xmlns:prov=&quot;http://infinity.com/bpm/models/generated/ProviderModel_WS&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prov:getProcessResultsPrimitiveProcess&gt;
+         &lt;prov:ProcessInstanceOid&gt;204&lt;/prov:ProcessInstanceOid&gt;
+      &lt;/prov:getProcessResultsPrimitiveProcess&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</pre>
+<h4 id="resget">Soap Response of Get Process Result</h4>
+<pre>
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+    &lt;S:Body&gt;
+       &lt;getProcessResultsResponsePrimitiveProcess xmlns=&quot;http://infinity.com/bpm/models/generated/ProviderModel_WS&quot;&gt;
+          &lt;Return&gt;
+             &lt;FormalParameter_3&gt;Function of provider get Called :abc 123 &lt;/FormalParameter_3&gt;
+          &lt;/Return&gt;
+       &lt;/getProcessResultsResponsePrimitiveProcess&gt;
+    &lt;/S:Body&gt;
+ &lt;/S:Envelope&gt;
+</pre>
+
+<h4 id="head">Header for Start Process Request of WS-Security UsernameToken over HTTPS</h4>
+<pre>
+&lt;soapenv:Header&gt;
+ &lt;wsse:Security soapenv:mustUnderstand=&quot;1&quot; xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;&gt;
+   &lt;wsse:UsernameToken wsu:Id=&quot;UsernameToken-3&quot; xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"&gt;
+     &lt;wsse:Username&gt;motu&lt;/wsse:Username&gt;
+     &lt;wsse:Password Type=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText&quot;&gt;motu&lt;/wsse:Password&gt;
+     &lt;wsse:Nonce EncodingType=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary&quot;&gt;mc3h952DGu2z+JckfCXUdQ==&lt;/wsse:Nonce&gt;
+     &lt;wsu:Created&gt;2012-01-05T12:33:41.984Z&lt;/wsu:Created&gt;
+  &lt;/wsse:UsernameToken&gt;
+ &lt;/wsse:Security&gt;
+&lt;/soapenv:Header&gt;
+</pre>
+
+<h4 id="wadl">WS-Addressing Reference Parameters Example Request</h4> 
+<pre>
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:new="http://infinity.com/bpm/models/generated/NewWorkflowModel" xmlns:com="http://www.infinity.com/bpm/model/NewWorkflowModel/Composite_1"&gt;
+   &lt;soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"&gt;
+      &lt;To&gt;http://localhost:8080/ipp2/services/soap/ProcessServiceHttpBasicAuth&lt;/To&gt;
+      &lt;Action&gt;startProcessProcessDefinition_1&lt;/Action&gt;
+      &lt;ReplyTo&gt;
+         &lt;Address&gt;http://www.w3.org/2005/08/addressing/anonymous&lt;/Address&gt;
+      &lt;/ReplyTo&gt;
+      &lt;MessageID&gt;uuid:35ea1109-344d-4d15-92b8-8de227f757fe&lt;/MessageID&gt;
+      &lt;stardust-bpm-domain wsa:IsReferenceParameter="1" xmlns="http://eclipse.org/stardust/ws/v2009a/api"&gt;part2&lt;/stardust-bpm-domain&gt;
+      &lt;stardust-bpm-partition wsa:IsReferenceParameter="1" xmlns="http://eclipse.org/stardust/ws/v2009a/api"&gt;default&lt;/stardust-bpm-partition&gt;
+      &lt;stardust-bpm-realm wsa:IsReferenceParameter="1" xmlns="http://eclipse.org/stardust/ws/v2009a/api"&gt;carnot&lt;/stardust-bpm-realm&gt;
+      &lt;stardust-bpm-model wsa:IsReferenceParameter="1" xmlns="http://eclipse.org/stardust/ws/v2009a/api"&gt;NewWorkflowModel&lt;/stardust-bpm-model&gt;
+   &lt;/soapenv:Header&gt;
+   &lt;soapenv:Body&gt;
+      &lt;new:startProcessProcessDefinition_1&gt;
+         &lt;new:Args&gt;
+            &lt;new:FormalParameter_1&gt;str&lt;/new:FormalParameter_1&gt;
+            &lt;new:FormalParameter_2&gt;
+               &lt;com:Composite_1&gt;
+                  &lt;myString&gt;str&lt;/myString&gt;
+               &lt;/com:Composite_1&gt;
+            &lt;/new:FormalParameter_2&gt;
+         &lt;/new:Args&gt;
+      &lt;/new:startProcessProcessDefinition_1&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</pre>
+
+<h2 id="rest">RESTful Web Services for Process Interface</h2>
+<p>This RESTlet can be used for both starting a process instance and retrieving the process instance' results 
+after it has been completed. This Web Service is available for each process interface 
+that has been marked to be exposed via a RESTful Web Service. </p>
+<h3>Starting a Process Instance</h3>
+<ul>
+	<li>URL - <tt>(http or https)://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/rest/engine/processes/&lt;Process ID&gt;</tt>
+	<ul>
+		<li>http or https - whether the communication should be done over <tt>HTTP</tt> or <tt>HTTPS</tt></li>
+		<li>Process ID - the process ID of the process which should be started</li>
+	</ul>
+	</li>
+	<li>HTTP Method - <tt>POST</tt></li>
+	<li><a href="#query">Query Parameter</a>: synchronously, true or false are allowed; 
+	indicates whether the Process Instance should be started synchronously; optional, defaults to false. 
+	</li>
+	<li>Arguments - the XML representation of the Process Instance's arguments (IN and INOUT formal parameters) 
+	</li>
+	<li>Return Value - the return value depends on the structure of the started process instance and whether it has been started synchronously 
+	<ul>
+		<li>Process contains only non-interactive activities, no split gateways and the process instance has been started synchronously: 
+		HTTP Status Code 200 returns the XML representation of the process instance' return values (OUT or INOUT formal parameters) 
+		</li>
+		<li>else HTTP Status Code 202 returns the link to the started process instance. 
+      For example, <tt>/services/rest/engine/processes/&lt;Process ID&gt;?piOID=&lt;Process Instance OID&gt;</tt>
+		</li>
+	</ul>
+	</li>
+	<li>HTTP Fault Messages
+	<ul>
+	<li>HTTP Status Code 400 - The request could not be understood. 
+	</li>
+	<li>HTTP Status Code 401 - Unauthorized.</li>
+	<li>HTTP Status Code 404 - The requested resource could not be found. 
+	</li>
+	</ul>
+	</li>
+</ul>
+
+<h3>Retrieving the Results of the Completed Process Instance</h3>
+<ul>
+	<li>URL - <tt>(http|https)://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/rest/engine/processes/&lt;Process ID&gt;?piOID=&lt;Process Instance OID&gt;</tt>. 
+	For example, <tt>http://localhost:8080/myApp/services/rest/engine/processes/MyProcess?piOID=42</tt>
+	<ul>
+	<li>http or https: whether the communication should be done over <tt>HTTP</tt> or <tt>HTTPS</tt> 
+	</li>
+	<li>&lt;Process ID&gt;: the process ID that refers to the process instance whose results should be retrieved 
+	</li>
+	<li>&lt;Process Instance OID&gt;: the OID of the process instance whose results should be retrieved 
+	</li>
+	</ul></li>
+	<li>HTTP method - <tt>GET</tt></li>
+	<li>Return - HTTP Status Code 200 the XML representation of the process instance's return values (OUT or INOUT formal parameters)</li>
+	<li>HTTP Fault Messages
+	<ul>
+		<li>HTTP Status Code 400 - The request could not be understood.</li>
+		<li>HTTP Status Code 401 - Unauthorized.</li>
+		<li>HTTP Status Code 404 - The requested resource could not be found.</li>
+		<li>HTTP Status Code 503 - The Process Instance hasn't been completed yet.</li>
+		
+	</ul></li>
+</ul>
+<h3>Type Declaration Web Service </h3>
+<p>This RESTlet can be used to retrieve the XML Schema Definition (XSD) of a particular 
+Structured Type declared in an active XPDL Model.</p>
+<ul>
+	<li>URL - <tt>(http|https)://&lt;host&gt;:&lt;port&gt;/&lt;context root&gt;/services/rest/engine/typeDeclarations/&lt;Type Declaration ID&gt;</tt>. 
+	For example, <tt>http://localhost:8080/myApp/services/rest/engine/typeDeclarations/MyString</tt>
+	<ul>
+	<li>http or https: whether the communication should be done over HTTP or HTTPS 
+	</li>
+	<li>&lt;Type Declaration ID&gt;: the ID of the type declaration whose XSD should be retrieved 
+	</li>
+	</ul></li>
+	<li>HTTP method - GET</li>
+	<li>Return - HTTP Status Code 200 the XSD of the type declaration ID given in the request 
+	</li>
+	<li>HTTP Fault Messages
+	<ul>
+	<li>HTTP Status Code 401 - Unauthorized.</li>
+	<li>HTTP Status Code 404 - The requested resource could not be found. 
+	</li>
+	</ul></li>
+</ul>
+
+<h3 id="query">Session Properties as Query Parameters</h3>
+<p>All of the Web Services mentioned above accept the following session properties submitted as Query Parameters:
+</p>
+<ul>
+	<li><tt>stardust-bpm-model</tt> the target model, defaults to <tt>DynamicEndpoint.DefaultModelId</tt> (see section SOAP Web Services) 
+	</li>
+	<li><tt>stardust-bpm-partition</tt> the target partition, defaults to the default partition 
+	</li>
+	<li><tt>stardust-bpm-realm</tt> the target realm, defaults to the default realm 
+	</li>
+	<li><tt>stardust-bpm-domain</tt> the target domain, defaults to the default domain 
+	</li>
+</ul>
+
+<h3>Supported Data Types</h3>
+<p>The primitive and structured data types are supported as parameters and return types. </p>
+
+<h3>Retrieving WADL Definition</h3>
+<p>A WADL file describing the RESTful processes Web Service can be retrieved either via:</p>
+<ul>
+	<li>a HTTP GET request at http://<tt>&lt;host&gt;/services/rest/engine/processes/&lt;Process ID&gt;/application.wadl?stardust-bpm-model=&lt;Model ID&gt;</tt>
+		<p>OR</p></li>
+	<li>a HTTP OPTIONS request at http://<tt>&lt;host&gt;/services/rest/engine/processes/&lt;Process ID&gt;</tt></li>	
+</ul>
+<p>Note that this WADL URL also needs the query parameters to find the right model.
+For example, <tt>?stardust-bpm-model=NewWorkflowModel</tt></p>
+
+<h3>REST Examples</h3>
+<ul>
+	<li><a href="#startrest">REST Request to Start Process</a></li>
+	<li><a href="#restresp">REST Response</a></li>
+	<li><a href="#restget">REST Request to Get Process Results</a></li>
+	<li><a href="#restprim">REST Response - No Primary Implementation is Set</a></li>
+	<li><a href="#restprimset">REST Response - Primary Implementation is Set</a></li>
+</ul>
+
+<h4 id="startrest">REST Request to Start Process</h4>
+<p>URL - <tt>http://localhost:9890/ipp-portal/services/rest/engine/processes/PrimitiveProcess?stardust-bpm-model=ProviderModel_WS</tt>
+<p>Method : Post</p>
+<pre>
+Arguments 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Args xmlns=&quot;http://eclipse.org/stardust/rest/v2012a/types&quot;&gt;
+&lt;FormalParameter_1 xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;Hello&lt;/FormalParameter_1&gt;
+&lt;FormalParameter_2 xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;5&lt;/FormalParameter_2&gt;
+&lt;/Args&gt;
+</pre>
+<p class="image"><img src="images/rest-req.png" alt=""> <br>
+<strong>Figure:</strong> REST Request - Start Process</p>
+<h4 id="restresp">REST Response</h4>
+<pre>
+http://localhost:9890/ipp-portal/services/rest/engine/processes/PrimitiveProcess?piOID=208&amp;stardust-bpm-model=ProviderModel_WS
+</pre>
+
+<h4 id="restget">REST Request to Get Process Results</h4>
+<p>URL- <tt>http://localhost:9890/ipp-portal/services/rest/engine/processes/PrimitiveProcess?stardust-bpm-model=ProviderModel_WS&amp;piOID=208</tt>
+</p>
+<p>Method - GET</p>
+
+<p>
+No arguments. Please note the given query parameters in the above URL</p>
+
+<h4 id="restprim">REST Response - No Primary Implementation is Set</h4>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Results xmlns=&quot;http://eclipse.org/stardust/rest/v2012a/types&quot;&gt;
+    &lt;FormalParameter_3 xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;Function of provider get Called :Hello 5&lt;/FormalParameter_3&gt;
+&lt;/Results&gt;
+</pre>
+<h4 id="restprimset">REST Response - Primary Implementation is Set</h4>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Results xmlns=&quot;http://eclipse.org/stardust/rest/v2012a/types&quot;&gt;
+&lt;FormalParameter_3 xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;Function of Implementer1 get Called :Hello 5&lt;/FormalParameter_3&gt;
+&lt;/Results&gt;
+</pre>
+   
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

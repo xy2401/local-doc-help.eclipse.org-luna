@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Business Objects</title>
+<link rel="stylesheet" type="text/css" href="../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Activity Criticality",
+		"multi-instance.html","activity-criticality.html",
+		"key-concepts.html","Concepts");
+ -->
+</script>
+<h1>Business Objects (Technology Preview)</h1>
+<p>Stardust provides support for a
+business object-centric view on Process Data.</p>
+<ul>
+    <li><a href="#mot">Common Use Cases</a></li>
+    <li><a href="#portal">Using Business Objects in the Stardust Portal</a></li>
+    <li><a href="#usec">Example Use Case</a></li>
+</ul>
+<!--  It represents business entities such as an invoice, a transaction or a person -->
+<h2 id="mot">Common Use Cases</h2>
+<p>In many cases you might intend to access process information via the business objects 
+the processes are working on, for example:</p>
+<ul>
+   <li>List all processes on an insured person during document indexing</li>
+   <li>List the status of the daily processing on a fund</li>
+</ul>
+<p>In Stardust these objects are mostly Process Data 
+(e.g. named <strong>Claim, Order, Trade, Fund</strong>) of a specific structured data type
+(e.g. <strong>Claim, Order, Trade, Fund</strong>) whose values or instances are stored in 
+the <a href="../handbooks/operation/audit-trail/ag-appendix-audittrail-1.htm#struct_data_val">structured_data_value</a>
+table of the audit trail.</p>
+<p>As different processes store (independent) process data, referring to the same business object 
+via a Primary Key (e.g. <strong>Member Id, Fund Name</strong>) an implicit version history 
+of the Business Object is created. The latest version could be considered the "current state 
+of a Business Object as known to Stardust".</p>
+<p>Stardust Business Objects Management allows you to search for Business Objects, 
+find corresponding Process Instances and even update and/or create Business Objects 
+independently of Processes creating Process Data.</p>
+<h2 id="portal">Using Business Objects in the Stardust Portal</h2>
+<h3 id="mark">Marking Process Data as Business Objects</h3>
+<p>You can mark process data of structured type as Business Objects.
+A primary key out of the (top-level) data of the structured data type can be defined, which 
+allows to identify the Business Object in the Browser Modeler.</p>
+<p>Relationships to other Business Objects can be created by specifying fields
+with single or multiple cardinality to serve as foreign keys to other Business Objects.</p>
+
+<p>For details on marking process data as Business Object, please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/handbooks/modelling_analyst/pep-data.htm">
+Specifying Data</a> of the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.analyst/html/toc.html">
+Business Process Modeling Handbook</a>.</p>
+<h3 id="mngmt">Managing Business Objects in the Stardust Portal</h3>
+<p>The Stardust Portal provides a view in the Business Control Center 
+perspective to manage Business Objects. It allows to:</p>
+<ul>
+   <li>search for Business Object Instances</li>
+   <li>find corresponding Process Instances</li>
+   <li>update Business Object Instances</li>
+   <li>add Business Object Instances independently of Processes</li>
+</ul>
+<p>For details on this view, please refer to chapter
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/businessObjectManagement.html">
+Managing Business Objects</a> in the
+<a href="PLUGINS_ROOT/org.eclipse.stardust.docs.enduser/html/handbooks/execution-clients/carnot-clients.html">
+Stardust Portal</a> documentation.</p>
+<h2 id="usec">Example Use Case</h2>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

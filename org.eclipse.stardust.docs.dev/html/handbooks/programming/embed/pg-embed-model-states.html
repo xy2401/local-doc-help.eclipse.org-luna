@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1" type="text/css">
+<title>Model States</title>
+<script language="JavaScript" src="../../../styles/naviLine.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Objects and Model Elements",
+        "pg-state-changes.html","pg-embed-objects.html",
+		"../../handbooks.htm","Developer Handbook",
+		"../pg-preface.htm","Programming Guide",
+		"pg-embedded-preface.htm","Embedded Usage");
+ -->
+</script>
+<h1>Model States</h1>
+<p>Models can have one of the following
+states or specific combinations of those:</p>
+<ul>
+    <li><a href="#active">ACTIVE</a></li>
+    <li><a href="#alive">ALIVE</a></li>
+    <li><a href="#disabled">DISABLED</a></li>
+    <li><a href="#inactive">INACTIVE</a></li>
+    <li><a href="#valid">VALID</a></li>
+</ul>
+<p>The following combinations are possible:</p>
+<ul>
+	<li>active and alive</li>
+	<li>disabled and active</li>
+	<li>disabled and inactive</li>
+</ul>
+<h2 id="active">Active</h2>
+<p>The definition for state <strong>ACTIVE</strong> is the following:</p>
+<ul>
+   <li>For each model ID, there are either zero or one active model version</li> 
+   <li>The model with the most recent deployment date that has <tt>validTo</tt> and 
+   <tt>validFrom</tt> dates compatible with the current date is the active model for any 
+   given model ID</li>
+</ul>
+<p>New processes instances can be started only for active models.</p>
+<h2 id="alive">Alive</h2>
+<p>Any deployed model that either has running instances or is in <strong>ACTIVE</strong>
+state is called <strong>Alive</strong></p>
+<p>For a given model ID, there can be an arbitrary number [0,...N] of alive model versions.</p>
+
+<h2 id="disabled">Disabled</h2>
+<p>If model processes are marked as disabled (suspended), the
+model has the state <strong>DISABLED</strong>. Note that a model marked as
+disabled might still be alive.</p>
+<h2 id="inactive">Inactive</h2>
+<p>Models that are not in <strong>ALIVE</strong> state, which means they are not active and
+have no running processes, are in <strong>INACTIVE</strong> state.</p>
+<h2 id="valid">Valid</h2>
+<p>The <strong>VALID</strong> state is determined by
+checking the validity (valid from / valid to), the disabled flag and/or 
+priority setting.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

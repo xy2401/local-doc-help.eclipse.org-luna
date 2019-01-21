@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css" charset="ISO-8859-1"
+    type="text/css">
+<title>Quality Assurance on interactive Activities</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Working with Transitions",
+        "mg-convert-activities.html","../mg-defdesk-5.htm",
+		"../../handbooks.htm","Developer Handbook",
+		"../mg-preface.htm","Modeling Guide",
+		"../mg-modeler-preface.html","The Process Workbench","activities-preface.html","Working with Activities");
+ -->
+</script>
+
+<h1>Quality Assurance on interactive Activities</h1>
+<p>In the property page of interactive activities marked
+for quality assurance, quality 
+assurance criteria can be specified to determine during runtime if the activity
+instance requires quality assurance or not. For failing quality assurance,
+error code can be selected, which was created in the model property page.</p>
+<ul>
+    <li><a href="#mark">Marking Interactive Activities for Quality Assurance</a></li>
+    <li><a href="#criteria">Quality Assurance Criteria</a></li>
+    <li><a href="#qac">Quality Assurance Codes</a></li>
+</ul>
+
+<h2 id="mark">Marking Interactive Activities for Quality Assurance</h2>
+<p>To mark interactive activities for quality assurance, select the 
+checkbox <strong>Quality Assurance Activity</strong> in the property page.</p>
+<p class="image"><img src="images/qa-select-for-qa.png" alt=""><br>
+<strong>Figure:</strong> Mark activity for quality assurance.</p>
+<p>Note that it is not supported to mark an activity with a conditional
+performer as default performer. In this case, selecting the checkbox results in 
+an inconsistency error.</p> 
+<p class="image"><img src="images/qa-cond-perf-error.png" 
+    alt="Inconsistency Error"><br>
+<strong>Figure:</strong> Conditional Performer is not allowed for Quality 
+Assurance.</p>
+<h2 id="criteria">Quality Assurance Criteria</h2>
+<p>The following criteria for quality assurance can be entered in the activity
+property page, in case the activity is marked for quality assurance:</p>
+<ul>
+    <li><a href="#qaperf">Quality Assurance Performer</a></li>
+    <li><a href="#prob">Probability</a></li>
+    <li><a href="#formula">Formula</a></li>
+</ul>
+<p class="image"><img src="images/act-prop-qa.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance</p>
+<p>For details on how probability value and 
+formula are used to determine quality assurance,
+refer to chapter <a href="../../../concepts/quality-assurance.html">Quality Assurance</a>
+in the <a href="../../../concepts/key-concepts.html">Concepts</a>
+section for Stardust.</p>
+<h3 id="qaperf">Quality Assurance Performer</h3>
+<p>In the <strong>QA Participant</strong> drop-down list you can choose the 
+participant for quality assurance. All scoped and unscoped roles and
+organizations are available except conditional
+performers.</p>
+<p class="image"><img src="images/qa-participant-select.png" alt=""><br>
+<strong>Figure:</strong> Select Quality Assurance Participant.</p>
+<h3 id="prob">Probability</h3>
+<p>The probability determines the percentage for quality assurance performed
+on activities. The default probability has to be an Integer value between 
+<tt>0</tt> and <tt>100</tt>. For example:</p>
+<ul>
+    <li><tt>100%</tt>: results in performing quality assurance on all activity 
+    instances, only depending on the formula result.</li>
+    <li><tt>75%</tt>: result in performing quality assurance on three out of
+    four of all activity instances in average (if formula results in 
+    <tt>true</tt>).</li>
+    <li><tt>50%</tt>: result in performing quality assurance on half of all 
+    activity instances in average (if formula results in <tt>true</tt>).</li>
+    <li><tt>0%</tt>: result in no quality assurance regardless of the formula
+    result.</li>
+</ul>
+<p>The default value is <tt>100%</tt>. If the value is outside the accepted
+range, an error message appears.</p>
+<p class="image"><img src="images/qa-invalid-prob.png" alt=""><br>
+<strong>Figure:</strong> Error message for invalid Default Probability value.</p>
+<h3 id="formula">Formula</h3>
+<p>The <strong>Formula</strong> section provides a JavaScript editor,
+where you can enter a formula that will be evaluated during runtime to check
+if this activity needs quality assurance. The default 
+value is <tt>true</tt>. For details on how this formula is evaluated, refer 
+to section
+<a href="../../../concepts/quality-assurance.html#formula">JavaScript Expression</a>
+of chapter <a href="../../../concepts/quality-assurance.html">Quality Assurance</a>
+in the <a href="../../../concepts/key-concepts.html">Concepts</a>
+section for Stardust.</p>   
+<p class="image"><img src="images/qa-criteria.png" alt=""><br>
+<strong>Figure:</strong> Quality Assurance Criteria</p>
+<h2 id="qac">Quality Assurance Codes</h2>
+<p>You have the option to define Quality Assurance codes that can be 
+used to track the reasons for Quality Assurance failures. This codes
+can be set and edited in the property page of the workflow model. In an 
+interactive activity marked for quality assurance, you can select one or more
+of these quality assurance codes.</p>
+<ul>
+    <li><a href="#addeditcode">Adding and Editing Quality Assurance Codes</a></li>
+    <li><a href="#selectcode">Selecting Quality Assurance Codes</a></li>
+</ul>
+<h3 id="addeditcode">Adding and Editing Quality Assurance Codes</h3>
+<p>The <strong>Quality Assurance Codes</strong> panel in the model property page
+contains a table of all Quality Assurance codes defined for the model
+and their values.</p>
+<p class="image"><img src="images/quality-code.png"     
+alt="Quality Assurance Code">
+<br>
+<strong>Figure:</strong> Quality Assurance Code entries</p>
+
+<h4>Adding a code</h4>
+<p>To add a new code, click <strong>Add</strong>. Enter the code ID,
+name and description.</p>
+<p class="image"><img src="images/add-qa-code.png" 
+    alt="Adding a QA Code">
+<br><strong>Figure:</strong> Adding a QA Code</p>
+<p>Note the following restrictions:</p>
+<ul>
+    <li>Code Ids 
+    containing special characters like hyphens, blanks or dots and IDs starting with 
+    digits are not supported. An invalid code error message appears:
+    <p><img src="images/qa-invalid-id.png"     
+        alt="Invalid Code Id"></p></li>
+	<li>Quality Assurance codes with the same Id are not supported.
+    The following error is indicated:
+    <p><img src="images/qa-dupl-entry.png"     
+        alt="Duplicate Entry Error"></p></li>
+</ul>
+<h4>Deleting a code</h4>
+<p>To delete a code, select the according row and click 
+<strong>Delete</strong>.</p>
+<h4>Editing a code</h4>
+<p>Select a code in the tree on the left side to edit its properties.</p>
+<p class="image"><img src="images/qa-edit.png" 
+    alt="Editing Quality Assurance Code entries">
+<br><strong>Figure:</strong> Editing Quality Assurance Code entries</p>
+<h4>Moving code entries</h4>
+<p>You can use the <strong>Move Up</strong> and <strong>Move Down</strong>
+buttons to adjust the order of the codes.</p>
+<h4>Applying the changes</h4>
+<p>Click <strong>Apply</strong>
+or <strong>OK</strong> to apply all changes.
+In case you like to restore the default values, click
+<strong>Restore Defaults</strong>.</p>
+<h3 id="selectcode">Selecting Quality Assurance Codes</h3>
+<p>In the activity property page <strong>Quality Assurance Codes</strong> you
+can select a subset of code you will use for this quality assurance activity.</p>
+<p class="image"><img src="images/qa-select-code.png" 
+    alt="Selecting Quality Assurance Code"><br>
+<strong>Figure:</strong> Selecting Quality Assurance Code.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../../styles/carnot.css"
+    charset="ISO-8859-1" type="text/css">
+<title>How to use the EJB3 Entity Data Type</title>
+<script language="JavaScript" src="../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("",
+   "jboss-with-oracle.html","",
+   "../../handbooks.htm","Developer Handbooks",
+   "../howto.html","How To");
+-->
+</script>
+<h1>How to use the EJB3 Entity Data Type</h1>
+<p>This chapter demonstrates how to use the EJB3 Entity Data type.
+Perform the following steps to prepare and use an Entity Data type in Stardust:</p>
+<ul>
+   <li><a href="#database">Prepare the Database</a></li>
+   <li><a href="#entity">Create an Entity Bean Class</a></li>
+   <li><a href="#persist">Create a persistence.xml</a></li>
+   <li><a href="#depldesc">Update the Deployment Descriptor</a></li>
+   <li><a href="#bbean">Create a Backing Bean</a></li>
+   <li><a href="#model">Create a Model</a></li>
+</ul>
+<p>For general details on using Entity Bean data and Session Bean applications refer to
+chapters
+<a href="../../modelling/data-integration/java-style-data/entity-bean-data.html">
+Entity Bean Data</a> and
+<a href="../../modelling/integration/integration-session-bean.html">Session Bean Applications</a>
+accordingly.</p>
+<p>You can download the example model and source files used for this example
+from here:
+<a href="../../../examples/ejb/entity-data.zip">entity-data.zip</a></p>
+<h2 id="database">Prepare the Database</h2>
+<p>To prepare the database do the following:</p>
+<ol>
+   <li><a href="#cts">Create the Table and Sequences</a></li>
+   <li><a href="#regist">Register the Data Source</a></li>
+</ol>
+<h3 id="cts">Create the Table and Sequences</h3>
+<p>Start by creating the table and sequences via the following command:</p>
+<pre>CREATE TABLE PERSON (ID NUMBER(10) NOT NULL, NAME VARCHAR2(255) NULL, VORNAME VARCHAR2(255) NULL, PRIMARY KEY (ID));
+create sequence person_seq START WITH 1 INCREMENT BY 50;</pre>
+<p>Note that you can also generate them via JPA.</p>
+<h3 id="regist">Register the Data Source</h3>
+<p>Create a data source under the JNDI name <tt>jdbc/sample-db</tt>. Make sure that it is 
+an XA data source.</p>
+<h2 id="entity">Create an Entity Bean Class</h2>
+<p>Create the following entity bean class. You can also find this class
+in the example sources zip file, which you can download
+from the link mentioned above.</p>
+<pre>
+package org.eclipse.stardust.examples.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.GenerationType;
+
+@Entity
+@SequenceGenerator(name="person_seq", initialValue=1, allocationSize=50)
+public class Person  {
+   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="person_seq")
+   @Id
+   private Long id;
+   private String name;
+   private String vorname;
+   
+   public Long getId() {
+      return id;
+   }
+   public void setId(Long id) {
+      this.id = id;
+   }
+   public String getName() {
+      return name;
+   }
+   public void setName(String name) {
+      this.name = name;
+   }
+   public String getVorname() {
+      return vorname;
+   }
+   public void setVorname(String vorname) {
+      this.vorname = vorname;
+   }
+   
+   public String toString() {
+   StringBuilder sb = new StringBuilder();
+   sb.append("&gt;&gt;&gt; Person id: ").append(id).append(" | vorname: ").append(vorname);
+   sb.append(" | name: ").append(name).append(" | hashCode: ").append(hashCode());
+   return sb.toString();
+   }
+}</pre>
+<h2 id="persist">Create a persistence.xml</h2>
+<p>Create the following <tt>persistence.xml</tt> in the <tt><nobr>WEB-INF</nobr></tt> 
+folder of your Web application:</p>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;1.0&quot;
+	xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;&gt;
+	&lt;persistence-unit name=&quot;WebLogicCustomerPU&quot;
+		transaction-type=&quot;JTA&quot;&gt;
+		&lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
+		&lt;jta-data-source&gt;jdbc/sample-db&lt;/jta-data-source&gt;
+
+		&lt;shared-cache-mode&gt;DISABLE_SELECTIVE&lt;/shared-cache-mode&gt;
+		&lt;exclude-unlisted-classes&gt;false&lt;/exclude-unlisted-classes&gt;
+		&lt;properties&gt;
+			&lt;!-- Deactivate Cache for the moment. Configure to your needs --&gt;
+			&lt;property name=&quot;eclipselink.cache.shared.default&quot; value=&quot;false&quot; /&gt;
+			&lt;property name=&quot;eclipselink.cache.size.default&quot; value=&quot;0&quot; /&gt;
+			&lt;property name=&quot;eclipselink.cache.type.default&quot; value=&quot;None&quot; /&gt;
+		&lt;/properties&gt;
+	&lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</pre>
+<h2 id="depldesc">Update the Deployment Descriptor</h2>
+<p>Add to every @prodcutnameshort@ bean in the deployment descriptor (<tt>ejb-jar.xml</tt>)
+ the following fragment to publish the entity manager name:</p>
+<pre>
+&lt;session&gt;
+      &lt;ejb-name&gt;WorkflowService&lt;/ejb-name&gt;
+      ...
+      &lt;persistence-context-ref&gt;&lt;!-- java:comp/env/userEntityManager/WebLogicCustomerPU --&gt;
+        &lt;persistence-context-ref-name&gt;userEntityManager/WebLogicCustomerPU&lt;/persistence-context-ref-name&gt;
+        &lt;persistence-unit-name&gt;WebLogicCustomerPU&lt;/persistence-unit-name&gt;
+      &lt;/persistence-context-ref&gt;
+    &lt;/session&gt;
+</pre>
+<h2 id="bbean">Create a Backing Bean</h2>
+<p>Create the backing bean to be used in the Session Bean application.
+<span class="ipp">You can also find these classes in the example sources zip file, which you can download
+from the link mentioned above.</span></p>
+<pre>
+package org.eclipse.stardust.examples.service;
+
+import org.eclipse.stardust.examples.entity.*;
+
+public interface TestService {
+
+   public Person createPersonEntity();
+
+   public Person changePerson(Person p);
+
+}</pre>
+<pre>
+package org.eclipse.stardust.examples.service;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
+
+import org.eclipse.stardust.examples.entity.Person;
+
+@Remote(TestService.class)
+@Stateful(mappedName = "ejb/TestService")
+public class TestServiceBean implements TestService {
+
+   @Override
+   public Person createPersonEntity() {
+
+      Person p = new Person();
+
+      p.setVorname("Bart");
+      p.setName("Simpson");
+
+      return p;
+   }
+
+   @Override
+   public Person changePerson(Person p) {
+
+      System.out.println("Original: " + p);
+
+      p.setVorname("Changed-Bart");
+      p.setName("Changed-Simpson");
+      System.out.println("Changed: " + p);
+      
+      return p;
+   }
+}
+</pre>
+<h2 id="model">Create a Model</h2>
+<p>Create a model with an entity data and session bean applications as described 
+in the following sections or import the model provided in the example
+zip file if downloaded from the link mentioned above.</p>
+<h3 id="entdata">Setting for the Entity Data</h3>
+<p>Create an entity data with the following settings:</p>
+<ul>
+   <li><strong>Entity Manager</strong>: JNDI</li>
+   <li><strong>JNDI Path</strong>: <tt>java:comp/env/userEntityManager/WebLogicCustomerPU</tt></li>
+</ul>
+<p class="image"><img src="images/entity-bean.png" alt="Entity Data"><br>
+<strong>Figure:</strong> Entity Data settings</p>
+<h3 id="sessbeans">Settings for the Session Bean Applications</h3>
+<p>Create two session bean applications with the following settings:</p>
+<ul>
+   <li><strong>Session Bean</strong>: (empty)</li>
+   <li><strong>Business Interface</strong>: <tt>TestService</tt>
+   <li><strong>JNDI Path</strong>: <tt>ejb/TestService</tt>
+   <li><strong>Completion Method</strong>:
+   <ul>
+      <li><tt>createPersonEntity()</tt> for the first application</li>
+      <li><tt>updatePersonEntity()</tt> for the second application</li>
+   </ul></li>
+</ul>
+<p class="image"><img src="images/session-bean-appl.png" alt="Session Bean Application"><br>
+<strong>Figure:</strong> Session Bean Application settings</p>
+<h3 id="proc">Create the Model Workflow</h3>
+<p>Now create appropriate workflow as for example in the following screenshot:</p>
+<p class="image"><img src="images/model-diagram.png" alt="Model Workflow"><br>
+<strong>Figure:</strong> Example Model Workflow</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

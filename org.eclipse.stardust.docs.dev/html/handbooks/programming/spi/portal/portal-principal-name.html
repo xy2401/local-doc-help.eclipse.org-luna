@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Implementing a Principal Name Provider</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../styles/carnot.css"
+    title="Style">
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+    type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Implementing a Static Configuration Provider for Default Preferences",
+	   "portal-config-skin.html","../pg-config-provider-spi.html",
+      "../../../handbooks.htm","Developer Handbook",
+      "../../pg-preface.htm","Programming Guide",
+      "spi-toc.html","SPI",
+      "pg-portal-config.html","Portal Configurations");
+ -->
+</script>
+<h1>Implementing a Principal Name Provider</h1>
+<p>In some environments, the login mechanism returns different login names through the 
+principal object. This leads to the effect that one physical user acts with different 
+Stardust logins and therefore with different personal worklists. The interface
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/compatibility/spi/security/PrincipalNameProvider.html">
+PrincipalNameProvider</a> provides the option to return a more specific name for a given 
+principal.</p>
+<pre>public interface PrincipalNameProvider
+{
+   public static final String PRP_PRINCIPAL_NAME_PROVIDER = PrincipalNameProvider.class
+         .getName();
+
+   /**
+    * Provides the name for a given principal. Default implementation would be to return principal.getName().
+    * It is possible to test for a certain implementation and use method of these implementation
+    * in order to return a more specific name for the given principal.
+    *
+    * @param principal the principal
+    * @return the name of the principal. Not allowed to be null.
+    */
+   public String getName(Principal principal);
+}
+</pre>
+<p>Configure your custom implementation in this interface. By default the default 
+implementation 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/compatibility/spi/security/DefaultPrincipalNameProvider.html">
+org.eclipse.stardust.engine.core.compatibility.spi.security.DefaultPrincipalNameProvider</a>
+is added, which just returns the name of the provided principal via <tt>principal.getName()</tt>.
+Replace this default interface by the fully qualified class name of your custom 
+implementation.</p>
+ 
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

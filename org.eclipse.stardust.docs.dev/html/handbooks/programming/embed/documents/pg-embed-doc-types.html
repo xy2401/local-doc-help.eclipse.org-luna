@@ -1,0 +1,500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="../../../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Managing Document Types</title>
+<script language="JavaScript" src="../../../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+	writeNavigation("Changing Document Settings and Annotations",
+        "pg-embed-doc-ops.html","pg-embed-documents.html",
+		"../../../handbooks.htm","Developer Handbook",
+		"../../pg-preface.htm","Programming Guide",
+		"../pg-embedded-preface.htm","Embedded Usage","docs-preface.html","Document Management");
+ -->
+</script>
+<h1>Managing Document Types</h1>
+<p>A document type object consists of the Document Type ID and the
+Document Type Schema Location, determined via the class <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/DocumentType.html">
+DocumentType</a>.</p>
+<pre>
+   public DocumentType(String documentTypeId, String schemaLocation)
+   {
+      super();
+      this.documentTypeId = documentTypeId;
+      this.schemaLocation = schemaLocation;
+   }
+</pre>
+<p>The following sections describe options for managing Document
+Types:</p>
+<ul>
+   <li><a href="#metaDocType">Setting and retrieving the Meta Data Structure of a 
+   Document</a></li>
+	<li><a href="#getDocType">Retrieving the Document Type of a
+	Document</a></li>
+	<li><a href="#createDocType">Retrieving Document Type Objects
+	of a Model</a></li>
+	<li><a href="#getDocTypeData">Retrieving Document Types Used in Specified Data</a>
+	<li><a href="#getDocTypeObj">Retrieving Data of Type Document
+	or DocumentList</a></li>
+	<li><a href="#getDataDef">Retrieving Data Using Type Definition Defined by Given Document Type</a>
+	<li><a href="#useCases">Use Cases</a></li>
+</ul>
+<p>For general concepts on working with Document Types in the
+Stardust, refer to chapter <a
+	href="../../../../concepts/admin-concepts/ag-concepts-doc-types.html">
+Document Types</a> of the <a href="../../../../concepts/key-concepts.html">Concepts</a>
+documentation.</p>
+<h2 id="metaDocType">Setting and retrieving the Meta Data Structure of a 
+   Document</h2>
+<p>The DocumentType class provides the following access on the meta data 
+structure of a document:</p>
+<ul>
+   <li><a href="#getTypeId">Getting the Document Type Id</a></li>
+   <li><a href="#setId">Setting the qualified Id of a specific Document Type</a></li>
+   <li><a href="#getSchemaloc">Getting the Schema Location</a></li>
+   <li><a href="#setSchemaloc">Setting the Schema Location</a></li>
+</ul>
+<h3 id="getTypeId">Getting the Document Type Id</h3>
+<p>To retrieve the qualified Id of a particular document type in the repository,
+use method <tt>getDocumentTypeId()</tt>:</p>
+<pre>   public String getDocumentTypeId()
+   {
+      return documentTypeId;
+   }</pre>
+<h3 id="setId">Setting the qualified Id of a specific Document Type</h3>
+<p>To set the unique qualified Id of a particular document type within the 
+repository, use <tt>setDocumentTypeId(String documentTypeId)</tt>:</p>
+<pre>   public void setDocumentTypeId(String documentTypeId)
+   {
+      this.documentTypeId = documentTypeId;
+   }</pre>
+<h3 id="getSchemaloc">Getting the Schema Location</h3>
+<p>To retrieve the identifier for the schema location in the repository, use
+method <tt>getSchemaLocation()</tt>:</p>
+<pre>   public String getSchemaLocation()
+   {
+      return schemaLocation;
+   }</pre>
+<h3 id="setSchemaloc">Setting the Schema Location</h3>
+<p>Use <tt>setSchemaLocation(String schemaLocation)</tt> to set the identifier 
+for exactly one XSD schema location in the repository:</p>
+<pre>   public void setSchemaLocation(String schemaLocation)
+   {
+      this.schemaLocation = schemaLocation;
+   }}</pre>
+ 
+<h2 id="getDocType">Retrieving the Document Type of a Document</h2>
+<p>To retrieve the document type of a document, the following method
+of the <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/extensions/dms/data/DocumentType.html">
+Document</a> interface is used:</p>
+<pre>DocumentType getDocumentType();</pre>
+
+<h2 id="createDocType">Retrieving Document Type Objects of a Model</h2>
+<p>The class <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/beans/DocumentTypeUtils.html">
+DocumentTypeUtils</a> provides the following method to create DocumentType
+objects based on the Document and DocumentList data having a
+TypeDeclaration assigned in a given model:</p>
+<pre>List&lt;DocumentType&gt; getDeclaredDocumentTypes(DeployedModel model)</pre>
+<p>Parameter <strong>model</strong> of type <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModel.html">
+DeployedModel</a> determines the model to search for declared DocumentTypes.
+The method returns a list of DocumentTypes that are declared within the
+specified model. Note that using this method does not resolve the
+DocumentType of Document or DocumentList data referencing a
+TypeDeclaration from an external model reference.</p>
+<h2 id="getDocTypeData">Retrieving Document Types Used in Specified Data</h2>
+<p>To retrieve a set of Document Types used in a specified data, the 
+following method is provided:</p>
+<pre>
+public static Set&lt;DocumentType&gt; getDocumentTypesFromData(DeployedModel model,
+         List&lt;Data&gt; dataList)
+</pre>
+<p>Parameters are the deployed model and a list of specified data.
+The method returns a set of Document Types that are used in the
+specified data.</p>
+<h2 id="getDocTypeObj">Retrieving Data of Type Document or
+DocumentList</h2>
+<p>To retrieve data which are of type Document or DocumentList and
+having a reference to an external TypeDefinition, the class <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/core/runtime/beans/DocumentTypeUtils.html">
+DocumentTypeUtils</a> provides the following method:</p>
+
+<pre>List&gt;Data&gt; getReferencedDocumentData(DeployedModel model)</pre>
+<p>Parameter <strong>model</strong> of type <a
+	href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DeployedModel.html">
+DeployedModel</a> determines the model to search for data referencing
+DocumentTypes. The method returns a list of of data referencing
+DocumentTypes.</p>
+
+<!--  <h3>Retrieving Folder hosting version unspecific Settings for a given Document Type ID</h3>
+This folder hosts version unspecific settings for all Document Types of a particular
+    * Document Type ID
+    *
+    * @param documentTypeId
+    * @return
+    */
+   public static String getUnversionedInfoPath(String documentTypeId)
+<h3>Retrieving Folder hosting version specific Settings for a given Document Type</h3>
+/**
+    * This folder hosts version specific settings for a particular Document Type with the
+    * specified Document Type Schema Location
+    *
+    * @param documentTypeId
+    * @param schemaLocation
+    * @return
+    */
+   public static String getVersionedInfoPath(String documentTypeId, String schemaLocation)
+   {
+      return getXsdFolderPath(schemaLocation) + "/types/" + encodeUrl(documentTypeId);
+   }
+<h3>Retrieving the Document Name All XSD Schemas are Stored With</h3>
+The document name all xsd schemas are stored and retrieved with.
+    *
+    * @return
+    */
+   public static String getXsdDocumentName()
+   {
+      return SCHEMA_XSD;
+   }
+<h3>Retrieving the Document Path for a Specific Schema Location</h3>
+@param schemaLocation
+    * @return
+    */
+   public static String getXsdDocumentPath(String schemaLocation)
+<h3>Retrieving the Folder for a Specific Schema Location</h3>
+@param schemaLocation
+    * @return
+    */
+   public static String getXsdFolderPath(String schemaLocation)
+   
+-->
+<h2 id="getDataDef">Retrieving Data Using Type Definition Defined by Given Document Type</h2>
+<p>You can retrieve data from a given model, which uses the type definition defined
+by a given Document Type, via the following method:</p>
+<pre>
+public static List&lt;Data&gt; getDataUsingDocumentType(DeployedModel model,
+         DocumentType documentType)
+</pre>
+<p>Parameters are the model containing the data and type definitions as well
+as the Document Type to retrieve the matching data for.</p>
+<h2 id="useCases">Use Cases</h2>
+<ul>
+	<li><a href="#retrDoc">Retrieving a Document</a></li>
+	<li><a href="#retrDocType">Retrieving the Document Type of a
+	Document</a></li>
+   <li><a href="#retrXSD">Retrieving the XSD Schema of a Document
+   Type</a></li>
+   <li><a href="#retrsdt">Retrieving the Document Type for a fully-qualified 
+   Structured Data Type</a></li>
+	<li><a href="#assDocType">Assigning a Document Type to a
+	Document</a></li>
+	<li><a href="#delDocType">Deleting a Document's Document Type</a></li>
+	<li><a href="#update">Updating a Document's Document Type</a></li>
+	<li><a href="#link">Linking a Document Type</a></li>
+	<li><a href="#unlink">Unlinking a Document Type</a></li>
+	<li><a href="#search">Searching for Document Types</a></li>
+	<li><a href="#repl">Replicating the Document Types' XSDs to
+	the Document Repository</a></li>
+</ul>
+<h3 id="retrDoc">Retrieving Documents</h3>
+<p>To retrieve document(s) using the Document Management Service,
+the following workflow is performed:</p>
+<ol>
+	<li>Use one of the following methods of the <a
+		href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+	DocumentManagementService</a> using ID(s), namePattern or an xpathQuery
+	accordingly of the document(s) you want to retrieve:
+	<ul>
+		<li><tt>getDocument(String documentId)</tt></li>
+		<li><tt>getDocuments(List/*&lt;String&gt;*/ documentIds)</tt></li>
+		<li><tt>findDocuments(String xpathQuery) (deprecated)</tt></li>
+		<li><tt>findDocumentsByName(String namePattern) (deprecated)</tt></li>
+      <li><tt>findDocuments(DocumentQuery query)</tt></li>
+	</ul>
+	For details on these methods, refer to chapter <a
+		href="pg-embed-doc-ops.html">Managing Documents and Folders</a>.</li>
+	<li>The system retrieves the document and the corresponding
+	Document Type, if existing, from the Document Repository.</li>
+	<li>The document is returned to the user.</li>
+	<li>In case the given document ID is unknown, a DocumentManagementServiceException occurs.</li>
+</ol>
+<h3 id="retrDocType">Retrieving the Document Type of a Document</h3>
+<p>The workflow to retrieve the document type of a document
+is as follows:</p>
+<ol>
+	<li>Retrieve a document object from the Document Management Service as described in section
+   <a href="#retrDoc">Retrieving Documents</a>.</li>
+	<li>Retrieve the Document Type from the document's object via
+   the following method provided by the 
+   <a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">
+	DocumentInfo</a> interface:
+	<pre>DocumentType getDocumentType();</pre></li>
+</ol>
+<h3 id="retrXSD">Retrieving the XSD Schema of a Document Type</h3>
+<p>You can retrieve the XSD schema for a schema location of a document type
+ serialized into a byte[] in the following way:</p>
+<ol>
+	<li>Retrieve the Document Type from the document's object as described in section
+   <a href="#retrDocType">Retrieving the Document Type of a Document</a>.</li>
+	<li>Retrieve the Document Type Schema Location from the Document Type
+	via <tt>getSchemaLocation()</tt>.</li>
+	<li>Pass the Document Type Schema Location to the 
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+	DocumentManagementService</a> in order 
+	to get the corresponding XSD by using the following method:
+	<pre>@ExecutionPermission(
+    id=ExecutionPermission.Id.readModelData,
+    defaults={ExecutionPermission.Default.ALL})
+        byte[] getSchemaDefinition(String schemaLocation)
+        throws ObjectNotFoundException;</pre>
+	If the specified schema location
+	cannot be found, an <strong>ObjectNotFoundException</strong> is thrown.
+	To use this method, you need the permission to read model data.</li>
+	<li>The system resolves the Document Type Schema Location in the 
+	Document Repository and fetches the corresponding XSD from the 
+	Document Repository.</li>
+	<li>The system returns the fetched XSD to the user.</li>
+</ol>
+<h3 id="retrsdt">Retrieving the Document Type for a fully-qualified 
+Structured Data Type</h3>
+<p>If the fully-qualified Structured Data Type is known and it is prepared to
+be used as Document Type, you can create the Document Type in the following way:</p>
+<pre>
+DocumentInfo docInfo = DmsUtils.createDocumentInfo("xyz");
+docInfo.setDocumentType(new DocumentType("{http://www.infinity.com/bpm/model/Echos/CompanyDocumentType}CompanyDocumentType", null));
+</pre>
+<p>To create a Document Type for which the schema location part will be
+resolved internally, you can use the following code:</p>
+<pre>
+TypeDeclaration typeDeclaration = model.getTypeDeclaration("Composite1");
+      
+if (typeDeclaration != null)
+{
+   XpdlType xpdlType = typeDeclaration.getXpdlType();
+   if (xpdlType instanceof ExternalReference)
+   {
+      // external schemas use xref as documentTypeId
+      String documentTypeId = ((ExternalReference) xpdlType).getXref();
+     
+      documentType = new DocumentType(documentTypeId, null);
+   }
+   else if (xpdlType instanceof SchemaType)
+   {
+      // internal schemas use a composition of targetNamespace and typeDeclarationId
+      XSDSchema xsdSchema = ((SchemaType) xpdlType).getSchema();
+      QName documentTypeIdQname = new QName(xsdSchema.getTargetNamespace(), typeDeclaration.getId());
+      documentType = new DocumentType(documentTypeIdQname.toString(), null);
+   }
+}
+</pre>
+<h3 id="assDocType">Assigning a Document's Document Type</h3>
+<p>There are two options to assign a Document Type to a document:</p>
+<ol>
+	<li><a href="#byID">Assigning by Document Type ID</a></li>
+	<li><a href="#byIDSchema">Assigning by Document Type ID and
+	schema location</a></li>
+</ol>
+<h4 id="byID">Assigning by Document Type ID</h4>
+<p>To assign the Document Type by a Document Type ID, do the
+following:</p>
+<ol>
+	<li>Retrieve a document object from the DMS as described in
+	section <a href="#retrDoc">Retrieving a Document</a>.</li>
+	<li>Assign a Document Type to the document by setting the Document
+	Type ID via the 
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">
+	DocumentInfo</a> method
+	<pre>setDocumentType(DocumentType documentType);</pre></li>
+	<li>Pass the document object to the 
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+	DocumentManagementService</a> in order to apply changes (using <tt>updateDocument</tt>).</li>
+	<li>The system links the document to the Type Declaration the
+	given Document Type ID points to. Refer to section <a href="#link">Linking
+	a Document Type</a> for details.</li>
+</ol>
+<h4 id="byIDSchema">Assigning by Document Type ID and schema
+location</h4>
+<p>Another option to assign a Document Type to the document is to
+set the Document Type ID and the Document Type Schema Location in order
+to specify a particular Document Type version.</p>
+<p>Therefore, use the following method of the 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">
+DocumentInfo</a> interface:</p>
+<pre>void setDocumentType(DocumentType documentType)</pre>
+<p>The parameter is an object of type DocumentType, containing the
+Document Type ID and Document Type schema location.</p>
+<h3 id="delDocType">Deleting a Document's Document Type</h3>
+<p>This Use Case describes how to delete a Document Type from a
+document using the Document Management Service.</p>
+<ol>
+	<li>Retrieve a document object from the DMS as described in
+	section <a href="#retrDoc">Retrieving a Document</a>.</li>
+	<li>Reset the Document Type on the document object, by using the 
+	<tt>setDocumentType</tt> method of the
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">
+	DocumentInfo</a> with parameter <tt>null</tt>:
+	<pre>setDocumentType(null);</pre></li>
+	<li>Pass the document object to the 
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+	DocumentManagementService</a> in order to apply changes (using <tt>updateDocument</tt>).</li>
+	<li>The system unlinks the document from the Type Declaration (see
+	section <a href="#unlink">Unlinking a Document Type</a>).</li>
+</ol>
+<h3 id="update">Updating a Document's Document Type</h3>
+<p>To update a Document Type of a document, the following
+workflow is necessary:</p>
+<ol>
+	<li>Retrieve a document object from the DMS as described in
+	section <a href="#retrDoc">Retrieving a Document</a>.</li>
+	<li>Change the Document Type on the document object by changing the 
+	Document Type ID by using the <tt>setDocumentType(DocumentType documentType)</tt> 
+	method of the
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentInfo.html">
+	DocumentInfo</a>.</li>
+	<li>Pass the document object to the 
+	<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/DocumentManagementService.html">
+	DocumentManagementService</a> in order to apply changes (using <tt>updateDocument</tt>).</li>
+	<li>The system unlinks the document from the current Type Declaration.
+	Refer to section <a href="#unlink">Unlinking a Document Type</a> for details.</li>
+	<li>The system links the document to the Type Declaration the given 
+	Document Type ID points to. 
+	Refer to section <a href="#link">Linking a Document Type</a> for details.</li>
+</ol>
+<p>Another option to change the Document Type on the document object is 
+to change the Document Type ID and the Document Type Schema Location
+in order to specify a particular Document Type version.</p>
+<h3 id="link">Linking a Document Type</h3>
+<p>This section describes how a document is linked to a Type Declaration
+in the Document Repository.</p>
+<ol>
+	<li>Get a document object with a Document Type ID
+	set, like described in section <a href="#retrDoc">Retrieving Documents</a>.</li>
+	<li>The Type Declaration is resolved in the Document
+	Repository the Document Type ID points to. The Document Type Schema
+	Location of this Type Declaration is determined by the schema location
+	derived from the
+	Type Declaration in a currently active model the Document Type ID refers
+	to.</li>
+	<li>The system links the given document in the Document Repository
+	to the Type Declaration.</li>
+</ol>
+
+<h4>Behavior in specific cases</h4>
+<ul>
+	<li><strong>The given Document Type ID is unknown in the Document
+	Repository:</strong><br>
+	The system rejects the document linking with an appropriate error
+	message.</li>
+	<li><strong>The given Document Type ID is unknown in all currently active
+	models and the document's Document Type does not contain a Document
+	Type Schema Location:</strong><br>
+	The system rejects the document linking with an appropriate error
+	message.</li>
+	<li><strong>The given document is already linked to a Type Declaration:</strong><br>
+	The system rejects the document linking with an appropriate error
+	message.</li>
+	<li><strong>The document's Document Type contains a Document Type Schema
+	Location:</strong><br>
+	The system does not link the given document to the Type Declaration in
+	the Document Repository that's a replication of a Type Declaration
+	contained in a currently active model, but the one that corresponds to
+	the given Document Type Schema Location.</li>
+</ul>
+<h3 id="unlink">Unlinking a Document Type</h3>
+<p>This section describes how a document is unlinked from a Type Declaration
+in the Document Repository.</p>
+<ol>
+	<li>Get a document object with no Document Type 
+	set. Refer to section <a href="#retrDoc">Retrieving Documents</a>
+	for details on getting documents.</li>
+	<li>The existing link between the document and the Type Declaration is removed in the Document Repository.</li>
+	<li>Even if no document points to the Type Declaration and to no other
+	 Type Declaration in the enclosing XSD any longer, the enclosing XSD will be 
+	 retained in the Document Repository.</li>
+</ol>
+<p>In case the given document is not linked to a Type Declaration,
+the document unlinking is rejected with an appropriate error message.</p>
+
+<h3 id="search">Searching for Document Types</h3>
+<p>The Stardust 
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/runtime/QueryService.html">QueryService</a>
+provides functionality to filter for
+<a href="../../../../reference/api/engine/org/eclipse/stardust/engine/api/query/DocumentQuery.html">DocumentQuery</a>
+types, which can be used to search for documents a particular Document Type,
+Document Type ID or Document Type Schema Location 
+adheres to.</p>
+<ul>
+   <li><a href="#queryDocType">Filtering on Document Type</a></li>
+	<li><a href="#queryDocTypeID">Filtering on Document Type ID</a></li>
+	<li><a href="#querySchema">Filtering on Document Type Schema Location</a></li>
+</ul>
+<h4 id="queryDocType">Filtering on Document Type</h4>
+<ol>
+	<li>Specify the search for documents a particular Document Type
+	 adheres to by setting the wanted Document Type ID (<tt>DOCUMENT_TYPE_ID</tt>)
+	 as well as	the wanted Document Type Schema Location
+	 (<tt>DOCUMENT_TYPE_SCHEMA_LOCATION</tt>) as a predicate in a Document Query.</li>
+	<li>Pass the Document Query to the system.</li>
+	<li>The system collects all documents that maintain a link to the Type Declaration 
+	the given Document Type points to.</li>
+	<li>The system returns all collected documents to the user.</li>
+</ol>
+<h4 id="queryDocTypeID">Filtering on Document Type ID</h4>
+<ol>
+	<li>Specify the search for documents a particular Document Type ID
+	 adheres to by setting the wanted Document Type ID (<tt>DOCUMENT_TYPE_ID</tt>)
+	 as a predicate in a Document Query.</li>
+	<li>Pass the Document Query to the system.</li>
+	<li>The system collects all documents that maintain a link to the Type Declaration 
+	the given Document Type points to.</li>
+	<li>The system returns all collected documents to the user.</li>
+</ol>
+<pre>public static final FilterableAttribute DOCUMENT_TYPE_ID = new Attribute(
+         "attributesTypeId");</pre>
+<h4 id="querySchema">Filtering on Document Type Schema Location</h4>
+<ol>
+	<li>Specify the search for documents a particular Document Type
+	 adheres to by setting the wanted Document Type Schema Location
+	 (<tt>DOCUMENT_TYPE_SCHEMA_LOCATION</tt>) as a predicate in a Document Query.</li>
+	<li>Pass the Document Query to the system.</li>
+	<li>The system collects all documents that maintain a link to the Type Declaration 
+	the given Document Type points to.</li>
+	<li>The system returns all collected documents to the user.</li>
+</ol>
+<pre>public static final FilterableAttribute DOCUMENT_TYPE_SCHEMA_LOCATION = new Attribute(
+         "attributesTypeSchemaLocation");</pre>
+<h3 id="repl">Replicating the Document Types' XSDs to the Document
+Repository</h3>
+<p>This section describes how the XSD of Document Types is replicated
+from the XPDL models to the Document Repository during model deployment:</p>
+<ol>
+	<li>The system collects all XSDs that contain Type Declarations that 
+	are used as Document Types in the models being deployed, for example:
+	<ul>
+		<li>by picking up the matching internal XSDs in the XPDL models.</li>
+		<li>by picking up the matching external XSDs in the classpath.</li>
+	</ul></li>
+	<li>The system inserts the transitive closure of all collected XSDs
+	into the Document Repository.</li>
+</ol>
+<p>In case an external XSD cannot be found, the
+model deployment is rejected with an appropriate error message.</p>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

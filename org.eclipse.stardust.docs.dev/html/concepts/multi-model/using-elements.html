@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="STYLESHEET" href="../../styles/carnot.css"
+	charset="ISO-8859-1" type="text/css">
+<title>Using Elements from Other Process Models</title>
+<script language="JavaScript" src="../../styles/naviLine.js"
+	type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+writeNavigation("Deploying Different Models into One Runtime",
+		"usage-pattern.html","model-deployment.html",
+		"../key-concepts.html","Concepts",
+		"multi-model.html","Multi Model Audit Trail Setups");
+ -->
+</script>
+
+<h1>Using Elements from Other Process Models</h1>
+<p>Models can use the following model elements from other model
+files via reference:</p>
+<ul>
+	<li>Applications</li>
+	<li>Data Structures</li>
+	<li>Process Definition</li>
+	<li>Data</li>
+	<li>Participants</li>
+</ul>
+<p>The following figure illustrates a model (<tt>Model 1</tt>) using
+elements from another model (<tt>Model 2</tt>).</p>
+<p class="image"><img src="images/model-references.png" alt="">
+<br>
+<strong>Figure:</strong> Model 1 using elements from Model 2.</p>
+<p>The following sections describe</p>
+<ul>
+	<li><a href="#appl">Using Applications from another Model</a></li>
+	<li><a href="#dataT">Using Data Types from another Model</a></li>
+	<li><a href="#struct">Using Data from another Model</a></li>
+	<li><a href="#part">Using Participants from another Model</a></li>
+	
+	<li><a href="#procdef">Using Process Definitions from another
+	Model</a></li>
+	<li><a href="#flow">Specifying the Data Flow between Models
+	via Process Interfaces</a></li>
+</ul>
+<h2 id="appl">Using Applications from another Model</h2>
+<p>In a provider model, you can mark applications that should be
+available for usage in other models, as public. Thus, they can be used
+in the consumer models referencing this provider model.</p>
+<p>Application activities can use application types from another
+model.</p>
+<h2 id="dataT">Using Data Types from another Model</h2>
+<p>Structured Types can be marked visible and thus available for
+consumer models. Thus, consumer models referencing the provider model
+can use those Structured Types definitions.</p>
+<p>For detailed information on how to mark a structured type visible
+for other models, please refer to the  
+<a href="../../handbooks/modelling/data-integration/structured-data/struct-type-def.html#comp">
+Composite Types</a> section of the chapter <a
+	href="../../handbooks/modelling/data-integration/structured-data/struct-type-def.html">Defining Structured Types
+</a> in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling
+Guide</a> .</p>
+<h2 id="struct">Using Data from another Model</h2>
+<p>You should mark data of the provider model as public. Then only the consumer model can 
+reference the data. All data are supported.</p>
+
+<h2 id="part">Using Participants from another Model</h2>
+<p>The participant marked as public can referenced in the consumer model.</p>
+
+<h2 id="procdef">Using Process Definitions from another Model</h2>
+<p>In case a provider model has defined a process definition to
+expose its process to consumer models, the consumer model can implement
+this interface for sub-processes and applications.</p>
+<h2 id="flow">Specifying the Data Flow between Models via Process
+Interfaces</h2>
+<p></p>
+<ul>
+	<li><a href="#inout">Using Input and Output Parameters</a></li>
+	<li><a href="#implProc">Implementing Process Interfaces</a></li>
+</ul>
+<h3 id="inout">Using Input and Output Parameters</h3>
+<p>A Process Interface can define Input and Output parameters to
+declare which data are public for reference by other models.
+Access points for these parameters will be provided on every sub-process
+activity using a process defining a Process Interface.
+Please refer to section 
+<a href="../../handbooks/modelling/mg-defdesk-8.htm#PI">Data Mappings in Process Interface Context</a>
+of chapter <a href="../../handbooks/modelling/mg-defdesk-8.htm">Specifying Data Mappings</a> in the
+in the <a href="../../handbooks/modelling/mg-preface.htm">Modeling
+Guide</a> for details on defining Input and Output parameters
+for a Process Interface.</p>
+<h3 id="implProc">Implementing Process Interfaces</h3>
+<p>Process definitions in a consumer model can implement Process Interfaces
+defined on a process definition in a provider model. With this relationship, the
+process definition of the provider model can be used as an alternative
+implementation for the process definition of the consumer model at runtime.
+The implementing process definition to invoke at runtime can be defined 
+either statically as an administrative action or determined from process data,
+as described in detail in section
+<a href="multiple-impl.html#dynBind">Dynamic Binding</a>
+of chapter <a href="multiple-impl.html">Multiple Implementations</a>.</p>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+writeFooter(); 
+-->
+</script>
+</body>
+</html>

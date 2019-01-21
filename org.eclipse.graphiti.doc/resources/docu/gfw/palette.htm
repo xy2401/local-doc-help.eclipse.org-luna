@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Palette</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Palette</h1>
+<h2>Palette Entries</h2>
+<p>The palette of a graphical editor or viewer provides tools to create connections and objects 
+in the diagram.</p>
+<p>There are different types of palette entries available in the palette:</p>
+<h3>
+<a href="../../../javadoc/org/eclipse/graphiti/palette/impl/PaletteCompartmentEntry.html">
+PaletteCompartmentEntry</a></h3>
+<p>This is a container which allows structuring the tools into different compartments, 
+which can be collapsed and expanded. The tools (see below) can be added to the container 
+by calling addToolEntry. </p>
+<p><img alt="" height="218" src="visio/palette-compartment.png" width="128"></p>
+<p><strong>Figure: Compartments containing several creation tools</strong></p>
+<h3>
+<a href="../../../javadoc/org/eclipse/graphiti/palette/impl/ConnectionCreationToolEntry.html">
+ConnectionCreationToolEntry</a></h3>
+<p>This tool lets the user create a connection between two objects by starting the 
+connection on a source object dropping it on a target object. It is also possible 
+(if enabled) to drop the connection on the canvas, in which case a new target object 
+will be created. </p>
+<p>You can add an arbitrary number of <a href="create-connection-feature.htm">create 
+connection features</a> to this tool. If you add exactly one create connection feature, 
+then this feature will be executed directly on drop. If you provide more than one 
+create connection feature, a popup menu containing all features appears on drop 
+and the user can select the one to execute.</p>
+<h3>
+<a href="../../../javadoc/org/eclipse/graphiti/palette/impl/ObjectCreationToolEntry.html">
+ObjectCreationToolEntry</a></h3>
+<p>This tool lets the user create objects in the diagram using one
+<a href="create-feature.htm">create feature</a>.</p>
+<h3>
+<a href="../../../javadoc/org/eclipse/graphiti/palette/impl/StackEntry.html">StackEntry</a></h3>
+<p>A stack can contain an arbitrary number of creation tools (not directly create 
+features) which belong semantically together. The user can choose the creation tool 
+which is active on this stack in a drop down list.</p>
+<p><img alt="" height="384" src="visio/palette-stack.png" width="130"><img alt="" height="270" src="visio/palette-stack-2.png" width="125"></p>
+<p><strong>Figure: Drop down list (on the left expanded) of the stack tool</strong></p>
+<h2>Creating a Palette</h2>
+<p>The palette is defined in the tool behavior provider.</p>
+<p>If you didn’t do so already you must <strong>first create a tool behavior provider 
+and add it to the diagram type provider as described </strong>
+<a href="tool-behavior-provider.htm"><strong>here</strong></a>.</p>
+<p>There is one method of the tool behavior provider to overwrite:</p>
+<p>The method
+<a href="../../../javadoc/org/eclipse/graphiti/tb/IToolBehaviorProvider.html#getPalette()">
+getPalette</a> has to return the palette entries (which implement
+<a href="../../../javadoc/org/eclipse/graphiti/palette/IPaletteCompartmentEntry.html">
+IPaletteCompartmentEntry</a>)</p>
+<p>The default implementation of this method in the class
+<a href="../../../javadoc/org/eclipse/graphiti/tb/DefaultToolBehaviorProvider.html">
+DefaultToolBehaviorProvider</a> builds a palette with two compartments. The first 
+compartment contains a connection creation tool for each
+<a href="create-connection-feature.htm">create connection feature</a> and the second 
+compartment contains a creation tool for each <a href="create-feature.htm">create 
+feature</a> you provide in your feature provider.</p>
+<p>In this example we want create one additional compartment at below the compartments 
+of the default implementation. This compartment contains one stack entry, which 
+allows to choose between all create features.</p>
+<p>You can see the complete implementation of the palette here:</p>
+<!-- Begin code ------------------------------------------------------------------------------- -->
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public</span> IPaletteCompartmentEntry[] 
+		getPalette() {<br>&nbsp;&nbsp;&nbsp; List&lt;IPaletteCompartmentEntry&gt; ret 
+		=<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">new</span> 
+		ArrayList&lt;IPaletteCompartmentEntry&gt;();<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add compartments from super class</span><br>&nbsp;&nbsp;&nbsp; 
+		IPaletteCompartmentEntry[] superCompartments =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>.getPalette();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (<span class="keyword">int</span> i = 0; 
+		i &lt; superCompartments.<span class="string">length</span>; i++)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ret.add(superCompartments[i]);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add new compartment at the end of the existing 
+		compartments</span><br>&nbsp;&nbsp;&nbsp; PaletteCompartmentEntry compartmentEntry 
+		=<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">new</span> 
+		PaletteCompartmentEntry(<span class="string">&quot;Stacked&quot;</span>,
+		<span class="keyword">null</span>);<br>&nbsp;&nbsp;&nbsp; ret.add(compartmentEntry);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add new stack entry to new compartment</span><br>&nbsp;&nbsp;&nbsp; 
+		StackEntry stackEntry = <span class="keyword">new</span> StackEntry(<span class="string">&quot;EObject&quot;</span>,
+		<span class="string">&quot;EObject&quot;</span>, <span class="keyword">null</span>);<br>&nbsp;&nbsp;&nbsp; 
+		compartmentEntry.addToolEntry(stackEntry);<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add all create-features to the new stack-entry</span><br>&nbsp;&nbsp;&nbsp; 
+		IFeatureProvider featureProvider = getFeatureProvider();<br>&nbsp;&nbsp;&nbsp; 
+		ICreateFeature[] createFeatures = featureProvider.getCreateFeatures();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (ICreateFeature cf : createFeatures) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ObjectCreationToolEntry objectCreationToolEntry = <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> ObjectCreationToolEntry(cf.getCreateName(),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		cf.getCreateDescription(), cf.getCreateImageId(),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		cf.getCreateLargeImageId(), cf);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		stackEntry.addCreationToolEntry(objectCreationToolEntry);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;
+		<span class="comment">// add all create-connection-features to the new stack-entry</span><br>&nbsp;&nbsp;&nbsp; 
+		ICreateConnectionFeature[] createConnectionFeatures =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		featureProvider.getCreateConnectionFeatures();<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (ICreateConnectionFeature cf : createConnectionFeatures) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ConnectionCreationToolEntry 
+		connectionCreationToolEntry = <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">new</span> ConnectionCreationToolEntry(cf.getCreateName(), 
+		cf<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		.getCreateDescription(), cf.getCreateImageId(),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		cf.getCreateLargeImageId());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		connectionCreationToolEntry.addCreateConnectionFeature(cf);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		stackEntry.addCreationToolEntry(connectionCreationToolEntry);<br>&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; <span class="keyword">return</span> ret.toArray(<span class="keyword">new</span> 
+		IPaletteCompartmentEntry[ret.size()]);<br>} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<!-- End code  -------------------------------------------------------------------------------  -->
+<h2>Test: Use the Stack Entry to Create Objects</h2>
+<p>Now start the editor and verify that the palette has a new stack entry providing 
+all objects, which can be created (same as the simple create object entries in the 
+palette).</p>
+<p>Use the stack entry to create an instance of the object, which is currently active 
+in the stack entry. Afterwards change the active object of the stack entry (if several 
+objects are available) and use the stack entry to create an instance of that object.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Providing update functionality</title>
+<link href="../book.css" rel="Stylesheet" type="text/css">
+<link href="../code.css" rel="Stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Providing Update Functionality</h1>
+<h2>Strategies for Update</h2>
+<p>As described in the chapter “<a href="add-feature.htm">providing add functionality</a>” 
+the values of the business objects (e.g. the EClass name) are stored in the graphics 
+algorithm of the pictogram elements. But this is done only once. If the business 
+model changes the example diagram does not realize the changes.</p>
+<p>For that purpose we need an update feature which is used by the diagram to react 
+on business model changes.</p>
+<p>The behavior of the update is straight forward, when the user is changing the 
+domain model directly via the diagram. For example if the user changes a text in 
+the diagram using direct-editing or the property-sheet, then this text should be 
+changed in the diagram immediately. </p>
+<p>However, if the domain-model is changed outside the diagram (e.g. in a separate 
+editor or viewer, maybe even by another user), then it is questionable, if the diagram should 
+be updated immediately. Often an immediate update would destroy a previously good 
+layout or hide previously important information. Therefore Graphiti supports two 
+update-strategies:</p>
+<ol>
+	<li>If the <b>automatic update is active</b>, then a change in the business 
+	model will immediately update the diagram.</li>
+	<li>If the <b>automatic update is inactive</b>, then a change in the business 
+	model will only mark the changed diagram shapes as outdated. The user can then 
+	manually update the outdated shapes.<br></li>
+</ol>
+<p>&nbsp;</p>
+<p><img alt="" height="157" src="visio/outdated-shape.png" width="253"></p>
+<p><strong>Figure: Shape marked as outdated (tooltip shows reason)</strong></p>
+<p>&nbsp;</p>
+<p><img alt="" height="157" src="visio/outdated-shape-update.png" width="258"></p>
+<p><strong>Figure: Outdated shape can be updated manually</strong></p>
+<p>&nbsp;</p>
+<p>By default the automatic update is inactive, but this can be configured by overwriting 
+the following methods in the
+<a href="../../../javadoc/org/eclipse/graphiti/dt/IDiagramTypeProvider.html">IDiagramTypeProvider</a>:</p>
+<ul>
+	<li>If
+	<a href="../../../javadoc/org/eclipse/graphiti/dt/IDiagramTypeProvider.html#isAutoUpdateAtStartup()">
+	isAutoUpdateAtStartup</a> returns true, then the diagram will be updated, when 
+	it is initially opened in the graphical editor or viewr. This will make the tool dirty.
+	</li>
+	<li>If
+	<a href="../../../javadoc/org/eclipse/graphiti/dt/IDiagramTypeProvider.html#isAutoUpdateAtRuntime()">
+	isAutoUpdateAtRuntime</a> returns true, then the diagram will be updated, when 
+	it is already open in the graphical editor or viewer, but only if the tool is already 
+	dirty.</li>
+	<li>If
+	<a href="../../../javadoc/org/eclipse/graphiti/dt/IDiagramTypeProvider.html#isAutoUpdateAtReset()">
+	isAutoUpdateAtReset</a> returns true, then the diagram will be updated, if the 
+	tool is already dirty and the user chooses to discard his changes (reset the 
+	diagram), when a change from outside the diagram occurs.</li>
+</ul>
+<h2>Creating an Update Feature</h2>
+<p>An update feature has to implement the interface
+<a href="../../../javadoc/org/eclipse/graphiti/features/IUpdateFeature.html">IUpdateFeature</a>. 
+Instead of implementing it directly it should extend one of the available base classes. 
+In this example we extend the base class
+<a href="../../../javadoc/org/eclipse/graphiti/features/impl/AbstractUpdateFeature.html">
+AbstractUpdateFeature</a></p>
+<p>In this case we have to implement/overwrite 3 methods:</p>
+<ul>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IUpdate.html#canUpdate(org.eclipse.graphiti.features.context.IUpdateContext)">
+	canUpdate</a> has to check whether the values of the current pictogram element 
+	of the given context can be updated.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IUpdate.html#update(org.eclipse.graphiti.features.context.IUpdateContext)">
+	update</a> has to update this pictogram element.&nbsp; It has to copy the latest 
+	values from the business objects to the graphics algorithm of this pictogram 
+	element.</li>
+	<li>The method
+	<a href="../../../javadoc/org/eclipse/graphiti/func/IUpdate.html#updateNeeded(org.eclipse.graphiti.features.context.IUpdateContext)">
+	updateNeeded</a> has to check whether the values in the pictogram element are 
+	up to date, that means whether the graphics algorithm of this pictogram element 
+	contain the latest values from the business objects. </li>
+</ul>
+<p class="Note">Hint: An update feature can and should also be used (called) if 
+any functionality of the editor or viewer (e.g. any custom feature) modifies parts of the 
+domain model. This works just like the model view controller pattern.</p>
+<p>In this example we want to update the EClass name. You can see the complete implementation 
+of the update feature here:</p>
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code"><span class="keyword">package </span>org.eclipse.graphiti.examples.tutorial.features;<br>&nbsp;<br>
+		<span class="keyword">public class</span> TutorialUpdateEClassFeature
+		<span class="keyword">extends </span>AbstractUpdateFeature {<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>TutorialUpdateEClassFeature(IFeatureProvider 
+		fp) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">super</span>(fp);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> canUpdate(IUpdateContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		return true, if linked business object is a EClass</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		getBusinessObjectForPictogramElement(context.getPictogramElement());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>(bo <span class="keyword">instanceof
+		</span>EClass);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public </span>IReason updateNeeded(IUpdateContext 
+		context) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// retrieve name from pictogram model</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String pictogramName = <span class="keyword">null</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement pictogramElement = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(pictogramElement <span class="keyword">
+		instanceof </span>ContainerShape) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ContainerShape cs = (ContainerShape) pictogramElement;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for </span>(Shape shape : cs.getChildren()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(shape.getGraphicsAlgorithm()
+		<span class="keyword">instanceof </span>Text) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Text text = (Text) shape.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		pictogramName = text.getValue();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// retrieve name from business model</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String businessName = <span class="keyword">null</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pictogramElement);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClass = (EClass) bo;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		businessName = eClass.getName();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// update needed, if names are different</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">boolean </span>updateNameNeeded =<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		((pictogramName == <span class="keyword">null </span>&amp;&amp; businessName !=
+		<span class="keyword">null</span>) || <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		(pictogramName != <span class="keyword">null </span>&amp;&amp; !pictogramName.equals(businessName)));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(updateNameNeeded) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>Reason.createTrueReason(<span class="string">&quot;Name 
+		is out of date&quot;</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+		<span class="keyword">else </span>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return </span>Reason.createFalseReason();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;
+		<span class="keyword">public boolean</span> update(IUpdateContext context) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 
+		retrieve name from business model</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		String businessName = <span class="keyword">null</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		PictogramElement pictogramElement = context.getPictogramElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pictogramElement);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		EClass eClass = (EClass) bo;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		businessName = eClass.getName();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="comment">// Set name in pictogram model</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (pictogramElement instanceof ContainerShape) 
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ContainerShape cs = (ContainerShape) pictogramElement;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">for</span> (Shape shape : cs.getChildren()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if</span> (shape.getGraphicsAlgorithm()
+		<span class="keyword">instanceof </span>Text) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Text text = (Text) shape.getGraphicsAlgorithm();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		text.setValue(businessName);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return true</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return false</span>;<br>&nbsp;&nbsp;&nbsp; }<br>}
+		</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<p>Additionally the feature provider has to deliver our newly created feature (overwrite 
+the method
+<a href="../../../javadoc/org/eclipse/graphiti/features/IFeatureProvider.html#getUpdateFeature(org.eclipse.graphiti.features.context.IUpdateContext)">
+getUpdateFeature</a>)<i>. </i></p>
+<p>This implementation can be seen here:</p>
+<p>&nbsp;</p>
+<div class="literallayout">
+	<div class="incode">
+		<p class="code">@Override<br><span class="keyword">public </span>IUpdateFeature 
+		getUpdateFeature(IUpdateContext context) {<br>&nbsp;&nbsp; PictogramElement 
+		pictogramElement = context.getPictogramElement();<br>&nbsp;&nbsp;
+		<span class="keyword">if</span> (pictogramElement <span class="keyword">
+		instanceof </span>ContainerShape) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		Object bo = getBusinessObjectForPictogramElement(pictogramElement);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">if </span>(bo <span class="keyword">instanceof
+		</span>EClass) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="keyword">return new</span> TutorialUpdateEClassFeature(<span class="keyword">this</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp; <span class="keyword">return super</span>.getUpdateFeature(context);<br>
+		} </p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<h2>Test: Update a EClass Name</h2>
+<p class="Note">Note: if the Graphiti project wizard for a &quot;<a href="example-projects.htm">New 
+Graphiti Sample Project</a>&quot; does not work correctly and you can not test the update 
+feature as described below, please continue with the next chapters and
+<a href="custom-feature.htm">provide custom functionality</a> to rename a EClass. 
+That will allow testing the update feature by changing the same EClass in two different 
+diagrams.</p>
+<p>Now start the editor again and test it:</p>
+<ol>
+	<li>create new diagram</li>
+	<li>create a EClass &quot;A&quot;</li>
+	<li>save current diagram</li>
+	<li>move this new EClass to make the diagram editor dirty</li>
+	<li>go to the Project Explorer</li>
+	<li>find the new EClass under &quot;EClasses&quot;</li>
+	<li>rename this EClass via context menu to &quot;B&quot;</li>
+	<li>when you activate the editor, you will receive a popup, choose yes and you 
+	will get the updated EClass (since <i>isAutoUpdateAtReset</i> is set to <b>true</b> 
+	by default)</li>
+	<li>save current diagram </li>
+	<li>close the editor</li>
+	<li>go to the Project Explorer</li>
+	<li>rename this EClass via context menu to &quot;C&quot;</li>
+	<li>reopen the diagram editor</li>
+	<li>the diagram will not be updated automatically, instead the editor visualizes 
+	dirty states, when the editor is activated (since <i>isAutoUpdateAtStartup</i> 
+	is set to <b>false</b> by default)</li>
+	<li>move mouse on dirty EClass shape and hit appearing update button. The name 
+	&quot;C&quot; should appear.</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

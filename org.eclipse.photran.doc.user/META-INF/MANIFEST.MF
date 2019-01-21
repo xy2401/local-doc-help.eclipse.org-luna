@@ -1,0 +1,323 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_45
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Built-By: genie.tools.ptp
+Bundle-SymbolicName: org.eclipse.photran.doc.user; singleton:=true
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-Version: 9.0.0.201502031411
+Bundle-ManifestVersion: 2
+
+Name: html/basic/Troubleshooting.html
+SHA1-Digest: Zp/7d543hrNtykfPTNd7UfUs3yc=
+
+Name: html/images/Replace CharacterStar with Character(len=).png
+SHA1-Digest: pXAadPKMpDb7kfahR+9AVdaimS4=
+
+Name: html/images/Remove Assigned Goto.png
+SHA1-Digest: xJvZN+BReTLlEX/CdT6SrndpEV4=
+
+Name: html/images/ReverseLoopExample.jpg
+SHA1-Digest: yBqlJBuHSkw7GUrIdKPAiZdpti8=
+
+Name: tocbasic.xml
+SHA1-Digest: PbVwmDUKmrMNxpl1EgNy2ETXvcU=
+
+Name: html/images/Photran-editor-fixed-1.PNG
+SHA1-Digest: IitfJyL1qqHRr0FJa/njVHxcbNk=
+
+Name: html/advanced/SearchNavigation.html
+SHA1-Digest: rC9OdUxP4uPjkuGQIp68YByH7I8=
+
+Name: html/advanced/Introduction.html
+SHA1-Digest: 3jEbNF78WK9TE6tUrU97O2D4Ric=
+
+Name: html/images/Display Edge Model of Current File.png
+SHA1-Digest: NRC/s545G1naU2+bm9U0nNba8JY=
+
+Name: html/images/Photran-f-vs-c-project.png
+SHA1-Digest: JaxclZGfGP472AFJcXvqGM2atXU=
+
+Name: html/images/RemoveComputedGoto.png
+SHA1-Digest: ZVa8VFslyjlEaWC1MeMyIhQtNXs=
+
+Name: html/images/ContentAssist.jpg
+SHA1-Digest: lO1LfqR3rhq47hckFwsWZT/2ybQ=
+
+Name: html/images/Text_Editors.png
+SHA1-Digest: buVO1A4skyMqi7BQkfL0taq+6/g=
+
+Name: html/images/Photran-outline-view-error.PNG
+SHA1-Digest: CXyAyw6hh03Duh5i5WHWTER0ofA=
+
+Name: html/images/Photran-outline-view.PNG
+SHA1-Digest: /z/7K8m2s7brIOykhqXE73IK52s=
+
+Name: html/images/Photran-editor-1.PNG
+SHA1-Digest: bBEqfrS8j/t0+Xvh11LN/gIrFqY=
+
+Name: html/images/Fonts.png
+SHA1-Digest: 41UN9yd3P2Xpc4//L1aXEvG3IK8=
+
+Name: html/images/Photran-replace-obsolete-1.png
+SHA1-Digest: EU9kGwnr+02Zh3jE6wrd50o18Lo=
+
+Name: html/images/Highlight Variable Accesses.png
+SHA1-Digest: JWI/7lCIXCGWM5FHur417vT/DQs=
+
+Name: html/images/Photran-run-as-local-fortran.png
+SHA1-Digest: XcIorodgJ2VrjnDc6bhHr8ohCFc=
+
+Name: html/images/Photran-priv-to-public.PNG
+SHA1-Digest: +fA57tbZRZ5SksV9wLB2Ssupdlc=
+
+Name: html/images/Add Identifier to END.png
+SHA1-Digest: pUKGue27gPgOnJyGld805qL53s0=
+
+Name: html/images/Photran-Data-To-Parameter.png
+SHA1-Digest: rVZsTUj/1NLhSu5DFsvja0AVwaU=
+
+Name: html/images/Photran-intro-implicit-1.png
+SHA1-Digest: gatDfqWfiBfAGBbcnsnAzPz2lb0=
+
+Name: html/images/Photran-project-type.PNG
+SHA1-Digest: v+ExRY+bthdgUFEI+Hb/EeD8emo=
+
+Name: html/images/Find All Declarations in Scope.png
+SHA1-Digest: FxGLpKLlDLdS8x/ZnanAZ+aD8lg=
+
+Name: html/images/Photran-make-common-var-names-consist.PNG
+SHA1-Digest: ZYFYv+XpwNdG6HafFGa8EOq04t0=
+
+Name: html/basic/top.html
+SHA1-Digest: E9PXsxe/mbcFWe/UZ8E5SZZlSPE=
+
+Name: html/basic/UpgradingProjects.html
+SHA1-Digest: 7xUVDYTF5XAqmZy81aeCQ6oMAu0=
+
+Name: html/images/Move Module Entities.png
+SHA1-Digest: hykrFKHgGVdikcGUuAcNH2/kuZQ=
+
+Name: html/basic/WritingCode.html
+SHA1-Digest: XggNdPV2FxP2d4uK1xqOx5nVC24=
+
+Name: html/images/Remove Pause Statement.png
+SHA1-Digest: AFvN6cV3Ri4J7sWdttNS+r0kl8o=
+
+Name: html/images/Add Subroutine Parameter.png
+SHA1-Digest: 9yPqx9NYoaLUAiEcDdGRpqcJmP8=
+
+Name: html/images/Photran-rename-1.png
+SHA1-Digest: 8CMdqucyWNv0C/S4gA/NR/Gn9e4=
+
+Name: html/basic/StartingNewProject.html
+SHA1-Digest: dscldxr5ul/7kRM4EIY7Fmhb98w=
+
+Name: html/images/NumLoopUnrollWBoundsCheck.jpg
+SHA1-Digest: YX9jUi2DeRPxQy1gNPBDO77pVq8=
+
+Name: html/images/GetterSetterNames.jpg
+SHA1-Digest: 6XREgPuxrSLeykLUK1BGjiM8mz8=
+
+Name: html/images/TilingExample.jpg
+SHA1-Digest: 5dAfxBEnZmuk59QmYgy/S/WOfO4=
+
+Name: html/images/Remove Unreferenced Labels.png
+SHA1-Digest: hmt5RgriDlvdoodNgFTm7O/oyq0=
+
+Name: about.html
+SHA1-Digest: sQp339U+fmNojWwulG00Oz2xOXQ=
+
+Name: html/images/Photran-editor-ruler.PNG
+SHA1-Digest: 0599tBgfgp6JeJWKTcDU4yb9Qfc=
+
+Name: html/images/Safe-Delete Internal Subprograms.png
+SHA1-Digest: oPndsw7dcE5OOgro4RmasQIxaF8=
+
+Name: toc.xml
+SHA1-Digest: OqwQAv2r13pTv6fn9wlFEH4uLFQ=
+
+Name: html/images/Photran-rename-dialog.png
+SHA1-Digest: kQwNdMtpKg0OifV+KshNIKX/5uA=
+
+Name: html/toc.html
+SHA1-Digest: vcysEPU5gjRJgi+1bEuDlWyW4Fg=
+
+Name: pom.xml
+SHA1-Digest: QNEQZkeQUyXZGKw3akBceYzEeJc=
+
+Name: html/basic/GettingStarted.html
+SHA1-Digest: m5IQwkf/+jlHX/v4G1TC+op9G2A=
+
+Name: html/images/PhotranHoverTips.jpg
+SHA1-Digest: iPcDq+tAgPnMA6kgUwODCN2guMw=
+
+Name: html/images/EncapsulateVariablesPart2.jpg
+SHA1-Digest: HHhVJB6UsB09UL089LBmPcOwIQk=
+
+Name: html/images/Photran-add-only-dialog.PNG
+SHA1-Digest: cK40+D8+ef0TiwHtsEWQHu1c+EE=
+
+Name: html/images/Photran-min-only-list.PNG
+SHA1-Digest: MNVNSFRpPilQqPYHiTzWCB+Pw0Q=
+
+Name: html/advanced/Refactoring.html
+SHA1-Digest: slhis9auQiHTPeM90HeJr1HIxaM=
+
+Name: html/images/Photran-make-common-var-names-consist-dialog.PNG
+SHA1-Digest: UC3X8cb+S4M+Xaa7IhBR5//BT7U=
+
+Name: html/images/Photran-refac-properties.png
+SHA1-Digest: 9P+ERDklMa7poBT3ErLOPOudOmI=
+
+Name: html/images/Photran-Remove-Unused-Variables.png
+SHA1-Digest: t3vkYezepfVKNU6GK0m9M4CYIO0=
+
+Name: html/images/Replace Old-Style Do Loops.png
+SHA1-Digest: ou5bz6dKF/9kQpYP9Cm4ZK9XP30=
+
+Name: html/advanced/top.html
+SHA1-Digest: Q6oQtOY/3zo/x7anQhCAi8iRnWk=
+
+Name: html/images/Photran-extract-proc-dialog.png
+SHA1-Digest: Z2gXrLhxUx9vQKCvZo2abX1LKzU=
+
+Name: html/images/Photran-add-only-list.PNG
+SHA1-Digest: xLCH+rm9n2lH74I2487Kd+S3G+c=
+
+Name: html/basic/CompilingFortran.html
+SHA1-Digest: iXv54AypEBakb/YsBYpQBG9ep6g=
+
+Name: html/images/Photran-priv-to-public2.PNG
+SHA1-Digest: ueHBtw9+vCCviyfRuKDwVaWGOw8=
+
+Name: tocadvanced.xml
+SHA1-Digest: cQxT3uOEfDdehkwmYSqaZmPXsCg=
+
+Name: html/images/Change Subroutine to Function.png
+SHA1-Digest: knhWFNqggcRRO7ufWUcx0LVH3C0=
+
+Name: html/images/Photran-editor-folding-1.PNG
+SHA1-Digest: rJwqre0toTv/hOVegFOH0FubdpE=
+
+Name: html/images/MoveSavedToCommonBlock.PNG
+SHA1-Digest: Bqcvo1aIfGsjmwJ05iBXTnO/vWU=
+
+Name: html/images/Display Binder Statistics.png
+SHA1-Digest: b/HYHhnPyqfUoLMgOGstrx6XBKU=
+
+Name: html/images/SearchDeclarations.jpg
+SHA1-Digest: 1c0tv5gS7OqgEa5I5DGJ+AVkTkw=
+
+Name: META-INF/maven/org.eclipse.photran/org.eclipse.photran.doc.user/
+ pom.properties
+SHA1-Digest: m+y3DftiAqin/JmfDHLD9OibBYE=
+
+Name: html/images/Photran-make-common-var-names-consist-1.PNG
+SHA1-Digest: Vo+kp3NNtkvxOy0JSounU0P1HKw=
+
+Name: html/images/Remove Branch to End If.png
+SHA1-Digest: ZjHv/jE6znfqtT/+WUsI89KppHw=
+
+Name: html/images/Photran-canonicalize-keyword-cap-dialog.PNG
+SHA1-Digest: kkq1uxoV9169UaT9DS2lbi/IKgk=
+
+Name: html/images/Photran-source-form-config.png
+SHA1-Digest: EiWXpm8Fs1zTAoKUgJywjkvNvn8=
+
+Name: html/images/Photran-Standardize-Statements.png
+SHA1-Digest: YzumFL5NE6dm2irYFkli2TPz86M=
+
+Name: html/images/Code_Templates.png
+SHA1-Digest: H5nmKB4dvhaMvwpXMKjBBdSgB4k=
+
+Name: html/images/Photran-set-breakpoint.png
+SHA1-Digest: bUd3gJ9QbGlcrjIR2XKLmnAliPE=
+
+Name: html/images/OpenSearch.jpg
+SHA1-Digest: kXVAXtpHoIlgkkUf0AUCTzr2fFQ=
+
+Name: html/basic/RunningDebuggingFortran.html
+SHA1-Digest: NqB0FptuT700hLCHj5Luv+eW4Sw=
+
+Name: html/images/Photran-fortran-binary-parsers.PNG
+SHA1-Digest: a3IAUD65zMT9Q1Arr5k4rmHzLhc=
+
+Name: html/help.css
+SHA1-Digest: v0bxtEHg+qy/MPn2rjvq3QTwJIY=
+
+Name: META-INF/maven/org.eclipse.photran/org.eclipse.photran.doc.user/
+ pom.xml
+SHA1-Digest: QNEQZkeQUyXZGKw3akBceYzEeJc=
+
+Name: html/images/Photran-canonicalize-keyword-cap-1.PNG
+SHA1-Digest: MwTy0dIqoF2sJ18Y8YgSufgBeRc=
+
+Name: html/images/Photran-extract-proc-1.png
+SHA1-Digest: 7oF4BB0EojOMKJ/QJzjvXGiiBwk=
+
+Name: html/images/Remove Real or Double Precision Loop Counter.png
+SHA1-Digest: gtsHvwEm/62VuMirhhrGYRwx7vg=
+
+Name: html/images/Photran-fortran-declaration-view.png
+SHA1-Digest: V9eg4ePADd2vBR67UF2gIp0zaS4=
+
+Name: html/images/Browse VPG Database.png
+SHA1-Digest: QYNDrV2bxZbp1WKXqvz4oU82rys=
+
+Name: contexts.xml
+SHA1-Digest: mOmrrrxsusjYENrwi7dogiXPHwc=
+
+Name: plugin.properties
+SHA1-Digest: Dyl10q3Y+f3g2V5HnEBvc59dqxw=
+
+Name: html/advanced/AdvancedEditingFeatures.html
+SHA1-Digest: B5pWhqGp15g2ygDO/C9aIh35z4I=
+
+Name: html/images/InterchangeLoops.png
+SHA1-Digest: ToNvk0PnlAnSgA/kZgmq46ZSSMI=
+
+Name: plugin.xml
+SHA1-Digest: 8qIVKOlSB1IwVnasLwSfs1JYw3Q=
+
+Name: html/images/Photran-comment-action.png
+SHA1-Digest: AqbVUpV/6BdtaXQybPOkTChAggE=
+
+Name: html/images/Display Symbol Table for Current File.png
+SHA1-Digest: B83tYfoAyZ6TS07BKtzRCqQEU+0=
+
+Name: html/images/TheEditor.png
+SHA1-Digest: ib0AgaYGA0NkJSN/dcWhGYfI68g=
+
+Name: html/images/Display Database.png
+SHA1-Digest: E4LUNcJFNAfvBfPP6NXGTmxVJC8=
+
+Name: html/images/CompleteLoopUnrolling.jpg
+SHA1-Digest: w8Lthlz0kBWDp24km7gBgnWeFi4=
+
+Name: html/images/Display Database Statistics.png
+SHA1-Digest: Nvyjvfv1f/tWCU1NLM5dD3EImyI=
+
+Name: html/images/Photran-fortran-error-parsers.PNG
+SHA1-Digest: vb/f2607tL7AsjBvOO8gS/asNIE=
+
+Name: html/images/Change Subroutine Signature.png
+SHA1-Digest: XkMKcKKVKT3hyrERwx+SvsoRmls=
+
+Name: html/images/Convert Between If Statement and If Construct.png
+SHA1-Digest: GZYNelFk6fpbKy2Dn34Z1acLU70=
+
+Name: html/images/FusionRefactoringExample.jpg
+SHA1-Digest: I9f6zZvpkNFczehXvgbc89qWXIo=
+
+Name: html/images/Make Save Attributes Explicit.png
+SHA1-Digest: TOGrdunISdMoDNDxgPnkTptC7Uo=
+
+Name: html/images/EncapsulateVariablesPart1.jpg
+SHA1-Digest: UqxKSrKVN//V5o5QMeDRAV7t3Gg=
+
+Name: html/images/RemoveArithmeticIf.png
+SHA1-Digest: yU4utEEEWsE9vaW6FXsYU12p+5s=
+
